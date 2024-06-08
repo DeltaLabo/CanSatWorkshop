@@ -39,7 +39,12 @@ void loop() {
     String TX_Request = LORA_HEADER + "," + GS_LORA_ID + "," + CANSAT_LORA_ID + "," + "DATA" + LORA_FOOTER;
 
     if (RX_Message == TX_Request) {
-      
+      // Read sensors
+
+      // Package data
+
+      // Send payload via LoRa
+      LoRa.println("AT+SEND=0," + LENGTH + "," + PAYLOAD);
     }
   }
 }

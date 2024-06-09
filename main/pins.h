@@ -6,8 +6,8 @@
 #define LORA_RX_PIN D1
 /******* End Comms Pins *******/
 
-/******* Begin Sensors Pins *******/
-/******* End Sensors Pins *******/
+/******* Begin Sensor Pins *******/
+/******* End Sensor Pins *******/
 
 /******* Begin Position and Orientation Pins *******/
 /******* End Position and Orientation Pins *******/

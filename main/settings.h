@@ -11,7 +11,7 @@
 // Unique ID of the CanSat (2 alphanumeric characters)
 #define CANSAT_LORA_ID "M1"
 
-// Unique ID of the ground station
+// Unique ID of the ground station                               
 #define GS_LORA_ID "GS"
 
 // LoRa frequency band
@@ -28,12 +28,10 @@
 
 // Coding rates 1 to 4 are supported
 #define LORA_CODING_RATE "1"
-
-#define PAYLOAD_LENGTH "240"
 /******* End Comms Settings *******/
 
-/******* Begin Sensors Settings *******/
-/******* End Sensors Settings *******/
+/******* Begin Sensor Settings *******/
+/******* End Sensor Settings *******/
 
 /******* Begin Position and Orientation Settings *******/
 /******* End Position and Orientation Settings *******/

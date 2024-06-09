@@ -14,6 +14,9 @@
 // Unique ID of the ground station                               
 #define GS_LORA_ID "GS"
 
+// Ground station TX request command
+#define LORA_TX_COMMAND "DATA"
+
 // LoRa frequency band
 // 915 MHz for Costa Rica and Panama
 #define LORA_BAND "915" // MHz

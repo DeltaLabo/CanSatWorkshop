@@ -40,6 +40,10 @@
 
 // Time that the ground station waits for a response after a TX Request
 #define GS_LISTEN_PERIOD 500 // ms
+
+#define LORA_PAYLOAD_SIZE 100 // bytes
+// Total amount of bytes expected to be received
+#define LORA_RX_BUFFER_SIZE LORA_PAYLOAD_SIZE + sizeof("0,100,,RSS,SNR")
 /******* End Comms Settings *******/
 
 /******* Begin Sensor Settings *******/

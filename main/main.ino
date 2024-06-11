@@ -16,7 +16,7 @@ union {
 } floatUnion;
 
 // LoRa payload with a size of 100 bytes
-byte payload[100];
+byte payload[LORA_PAYLOAD_SIZE];
 /******* End Comms Global Variables *******/
 
 /******* Begin Sensor Global Variables *******/
@@ -89,8 +89,8 @@ void SendPayload() {
   // Note that radio addresses are not a LoRa standard but specific to the
   // transceiver being used, thus they're not implemented
   LoRa.print("AT+SEND=0,100,");
-  // Write payload as a byte array of size 100
-  LoRa.write(payload, 100);
+  // Write payload as a byte array
+  LoRa.write(payload, LORA_PAYLOAD_SIZE);
   // Write CRLF to terminate the command, as required by the transceiver
   LoRa.println();
 }
@@ -107,7 +107,7 @@ void setup() {
   // 8 bits, no parity, 1 stop bit
   LoRa.begin(115200, SERIAL_8N1, LORA_RX_PIN, LORA_TX_PIN);
   // Set buffer size to 100 bytes to transmit payload
-  LoRa.setTxBufferSize(100);
+  LoRa.setTxBufferSize(LORA_RX_BUFFER_SIZE);
   // Set UART RX timeout to 1 ms
   // Since the baud rate is 115200, more than 1 ms without receiving data
   // means that the transmission has ended 
@@ -150,7 +150,6 @@ void loop() {
   // If any data was received via LoRa
   if (LoRa.available() > 0) {
     // Read from LoRa serial port
-    // Only 16 bytes are read since that's the ground station request size
     String RXString = LoRa.readString();
     Serial.println("[INFO]: LoRa data received");
 
@@ -160,7 +159,7 @@ void loop() {
       // Respond to the request
       PackagePayload();
       SendPayload();
-      Serial.println("[INFO]: Payload sent")
+      Serial.println("[INFO]: Payload sent");
     }
   }
 }

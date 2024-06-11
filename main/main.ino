@@ -1,6 +1,7 @@
 #include <HardwareSerial.h>
 #include <Arduino.h>
 #include <string.h>
+
 #include "settings.h"
 #include "pins.h"
 
@@ -16,13 +17,6 @@ union {
 
 // LoRa payload with a size of 100 bytes
 byte payload[100];
-
-// Data request expected from ground station
-byte TXRequest[16];
-
-// 16 byte buffer for incoming LoRa data
-// Its size is the same as TXRequest, since that's the only data expected to be received
-byte RXBuffer[16];
 /******* End Comms Global Variables *******/
 
 /******* Begin Sensor Global Variables *******/
@@ -30,6 +24,19 @@ byte RXBuffer[16];
 
 /******* Begin Position and Orientation Global Variables *******/
 /******* End Position and Orientation Global Variables *******/
+
+/******* Begin Test Functions *******/
+float readVelocity() {return 1.0;}
+float readRotation() {return 2.0;}
+float readAcceleration() {return 3.0;}
+float readPosition() {return 4.0;}
+float readOrientation() {return 5.0;}
+float readAltitude() {return 6.0;}
+float readPressure() {return 7.0;}
+float readTemperature() {return 8.0;}
+float readVoltage() {return 9.0;}
+float readCurrent() {return 10.0;}
+/******* End Test Functions *******/
 
 /******* Begin Comms Functions *******/
 // Read all variables and package them into a LoRa payload
@@ -106,29 +113,14 @@ void setup() {
   // means that the transmission has ended 
   LoRa.setTimeout(1); 
 
-  // Construct the expected request from the ground station
-  for (int i=0;i<4;i++) TXRequest[i] = LORA_HEADER[i];
-  for (int i=0;i<2;i++) TXRequest[i+4] = GS_LORA_ID[i];
-  for (int i=0;i<2;i++) TXRequest[i+6] = CANSAT_LORA_ID[i];
-  for (int i=0;i<4;i++) TXRequest[i+8] = LORA_TX_COMMAND[i];
-  for (int i=0;i<4;i++) TXRequest[i+12] = LORA_FOOTER[i];
-
   // Set LoRa frequency band
   // The LORA_BAND variable is in MHz
-  LoRa.print("AT+BAND=");
-  LoRa.print(LORA_BAND);
-  LoRa.println("000000");
+  LoRa.println("AT+BAND=" + LORA_BAND + "000000");
 
   // Set Spreading Factor, Bandwidth, and Coding Rate
   // The ",0" at the end sets the radio to not send any network ID data as a preamble,
   // since sender and receiver identification will be implemented within the payload
-  LoRa.print("AT+PARAMETER=");
-  LoRa.print(LORA_SF);
-  LoRa.print(",");
-  LoRa.print(LORA_BANDWIDTH);
-  LoRa.print(",");
-  LoRa.print(LORA_CODING_RATE);
-  LoRa.println(",0");
+  LoRa.println("AT+PARAMETER=" + LORA_SF + "," + LORA_BANDWIDTH + "," + LORA_CODING_RATE + ",0");
 
   // Populate payload with its default values
   // Header
@@ -141,6 +133,9 @@ void setup() {
   for (int i=0;i<48;i++) payload[i+48] = 0;
   // Footer
   for (int i=0;i<4;i++) payload[i+96] = LORA_FOOTER[i];
+
+  // Serial port for logging
+  Serial.begin(115200);
   /******* End Comms Setup *******/
 
   /******* Begin Sensor Setup *******/
@@ -156,13 +151,16 @@ void loop() {
   if (LoRa.available() > 0) {
     // Read from LoRa serial port
     // Only 16 bytes are read since that's the ground station request size
-    LoRa.readBytes(RXBuffer, 16);
+    String RXString = LoRa.readString();
+    Serial.println("[INFO]: LoRa data received");
 
-    // If the incoming data is a valid request from the ground station
-    if (memcmp(RXBuffer, TXRequest, 16) == 0) {
+    // If the incoming data contains a valid request from the ground station
+    if (RXString.indexOf(TXRequest) != -1) {
+      Serial.println("[INFO]: Valid request received");
       // Respond to the request
       PackagePayload();
       SendPayload();
+      Serial.println("[INFO]: Payload sent")
     }
   }
 }

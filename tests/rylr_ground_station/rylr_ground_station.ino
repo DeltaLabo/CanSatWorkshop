@@ -73,7 +73,6 @@ void setup() {
 // The loop function should only be used for LoRa comms polling
 void loop() {
   if (millis() - lastCheckTime >= GS_TX_REQUEST_PERIOD && LoRaState == NORMAL) {
-    Serial.println("[INFO]: TX Request sent");
     LoRa.print("AT+SEND=0,16,");
     LoRa.println(TXRequest);
     // Transition to LISTEN state
@@ -86,9 +85,13 @@ void loop() {
     if (LoRa.available() > 0) {
       // Read from LoRa serial port
       String RXString = LoRa.readString();
-      Serial.println("[INFO]: LoRa data received:");
-      Serial.println();
-
+      if (RXString.indexOf(LORA_HEADER) != -1) {
+        RXString.remove(0,16);
+        if (RXString.substring(0, 4) == "CSWS") {
+          RXString.remove(LORA_PAYLOAD_SIZE, sizeof(RXString));
+          Serial.println(RXString);
+        }
+      }
       // Transition back to NORMAL state
       LoRaState = NORMAL;
       // Reset time counter
@@ -96,7 +99,6 @@ void loop() {
     }
   }
   else if (LoRaState == LISTEN) {
-    Serial.println("[ERROR]: RX Timeout");
     // Transition back to NORMAL state
     LoRaState = NORMAL;
     // Reset time counter

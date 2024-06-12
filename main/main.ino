@@ -45,20 +45,6 @@ float deltaTime;
 uint32_t lastIMUUPdateTime = 0;
 /******* End Position and Orientation Global Variables *******/
 
-/******* Begin Test Functions *******/
-// Only using z-axis functions
-float readSpeed() {return 1.0;}
-float readRotz() {return 2.0;}
-float readAz() {return 3.0;}
-float readLat() {return 4.0;}
-float readYaw() {return 5.0;}
-float readAltitude() {return 6.0;}
-float readPressure() {return 7.0;}
-float readTemperature() {return 8.0;}
-float readVoltage() {return 9.0;}
-float readCurrent() {return 10.0;}
-/******* End Test Functions *******/
-
 /******* Begin Comms Functions *******/
 // Read all variables and package them into a LoRa payload
 void PackagePayload() {
@@ -123,7 +109,7 @@ float readTemperature(){
   // Read Temperature
   float temperature = 0;
   temperature = bmp.readTemperature();
-  Serial.print("Temperature = ");
+  Serial.print("[DATA]: Temperature = ");
   Serial.print(temperature);
   Serial.println(" °C");
 
@@ -133,7 +119,7 @@ float readPressure(){
   // Read pressure
   float pressure = 0;
   pressure = bmp.readPressure() / 1000;
-  Serial.print("Pressure = ");
+  Serial.print("[DATA]: Pressure = ");
   Serial.print(pressure);
   Serial.println(" MPa");
 
@@ -143,7 +129,7 @@ float readAltitude(){
   // Calculate altitude
   float altitude = 0;
   altitude = bmp.readAltitude(1013.25);
-  Serial.print("Approx altitude = ");
+  Serial.print("[DATA]: Approx. altitude = ");
   Serial.print(altitude);
   Serial.println(" m");
 
@@ -153,7 +139,7 @@ float readAltitude(){
 float readVoltage(){
   float busvoltage = 0;
   busvoltage = ina219.getBusVoltage_V();
-  Serial.print("Bus Voltage: ");
+  Serial.print("[DATA]: Bus Voltage: ");
   Serial.print(busvoltage);
   Serial.println(" V");
 
@@ -162,7 +148,7 @@ float readVoltage(){
 float readCurrent(){
   float current_mA = 0;
   current_mA = ina219.getCurrent_mA();
-  Serial.print("Current: ");
+  Serial.print("[DATA]: Current: ");
   Serial.print(current_mA);
   Serial.println(" mA");
 
@@ -178,6 +164,9 @@ float readRotx(){
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
 
+  Serial.print("[DATA]: Rotation (x): ");
+  Serial.print(g.gyro.x);
+  Serial.println(" rad/s");
   // Return gyro reading for x axis
   return g.gyro.x;
 }
@@ -187,6 +176,9 @@ float readRoty(){
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
 
+  Serial.print("[DATA]: Rotation (y): ");
+  Serial.print(g.gyro.y);
+  Serial.println(" rad/s");
   // Return gyro reading for y axis
   return g.gyro.y;
 }
@@ -196,6 +188,9 @@ float readRotz(){
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
 
+  Serial.print("[DATA]: Rotation (z): ");
+  Serial.print(g.gyro.z);
+  Serial.println(" rad/s");
   // Return gyro reading for z axis
   return g.gyro.z;
 }
@@ -205,6 +200,9 @@ float readAx(){
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
 
+  Serial.print("[DATA]: Acceleration (x): ");
+  Serial.print(a.acceleration.x);
+  Serial.println(" m/s2");
   // Return accel reading for x axis
   return a.acceleration.x;
 }
@@ -214,6 +212,9 @@ float readAy(){
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
 
+  Serial.print("[DATA]: Acceleration (y): ");
+  Serial.print(a.acceleration.y);
+  Serial.println(" m/s2");
   // Return accel reading for y axis
   return a.acceleration.y;
 }
@@ -223,19 +224,31 @@ float readAz(){
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
 
+  Serial.print("[DATA]: Acceleration (z): ");
+  Serial.print(a.acceleration.z);
+  Serial.println(" m/s2");
   // Return accel reading for z axis
   return a.acceleration.z;
 }
 
 float readPitch() {
+  Serial.print("[DATA]: Pitch: ");
+  Serial.print(pitch);
+  Serial.println(" deg");
   return pitch;
 }
 
 float readRoll() {
+  Serial.print("[DATA]: Roll: ");
+  Serial.print(roll);
+  Serial.println(" deg");
   return roll;
 }
 
 float readYaw() {
+  Serial.print("[DATA]: Yaw ");
+  Serial.print(yaw);
+  Serial.println(" deg");
   return yaw;
 }
 
@@ -263,6 +276,10 @@ float readLat(){
   float latitude = -1.0;
   // If the GPS has updated its data via GPS, get the latitude
   if (gps.location.isUpdated()) latitude = gps.location.lat();
+
+  Serial.print("Latitude: ");
+  Serial.print(latitude);
+  Serial.println(" deg");
   return latitude;
 }
 
@@ -271,6 +288,10 @@ float readLong(){
   float longitude = -1.0;
   // If the GPS has updated its data via GPS, get the latitude
   if (gps.location.isUpdated()) longitude = gps.location.lng();
+
+  Serial.print("Longitude: ");
+  Serial.print(longitude);
+  Serial.println(" deg");
   return longitude;
 }
 
@@ -279,6 +300,10 @@ float readSpeed(){
   float speed = -1.0;
   // If the GPS has updated its data via GPS, get the latitude
   if (gps.location.isUpdated()) speed = gps.speed.kmph();
+
+  Serial.print("Speed: ");
+  Serial.print(speed);
+  Serial.println(" m/s");
   return speed;
 }
 /******* End Position and Orientation Functions *******/
@@ -322,17 +347,17 @@ void setup() {
   /******* Begin Sensor Setup *******/
   // Initialize BMP280 (temperature and pressure sensor)
   if (!bmp.begin(0x76)) {
-    Serial.println("Could not find a valid BMP280 sensor, check wiring!");
+    Serial.println("[ERROR]: Could not find a valid BMP280 sensor, check wiring");
   }
   // Initialize INA219 sensor (voltage and current sensor)
   if (!ina219.begin()) {
-    Serial.println("Could not find a valid INA219 sensor, check wiring!");
+    Serial.println("[ERROR]: Could not find a valid INA219 sensor, check wiring");
   }
   /******* End Sensor Setup *******/
 
   /******* Begin Position and Orientation Setup *******/
   // Initialize MPU6050 (Orientation sensor)
-  mpu.begin();
+  if(!mpu.begin()) Serial.println("[ERROR]: Could not find a valid MPU6050 sensor, check wiring");
   // Set the MPU to measure up to 8 times gravity
   mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
   // Set the gyro range to 500 degrees
@@ -343,7 +368,6 @@ void setup() {
 
   // Initialize GPS
   GPS_Serial.begin(38400, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);
-
 
   // Update IMU update time counter
   lastOrientationUPdateTime = millis();
@@ -360,11 +384,11 @@ void loop() {
 
     // If the incoming data contains a valid request from the ground station
     if (RXString.indexOf(TXRequest) != -1) {
-      Serial.println("[INFO]: Valid request received");
+      Serial.println("[INFO]: Valid LoRa TX request received");
       // Respond to the request
       PackagePayload();
       SendPayload();
-      Serial.println("[INFO]: Payload sent");
+      Serial.println("[INFO]: LoRa payload sent");
     }
   }
 

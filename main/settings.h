@@ -9,7 +9,7 @@
 #define LORA_FOOTER String("DTLB") // [D]el[t]a [L]a[b]
 
 // Unique ID of the CanSat (2 alphanumeric characters)
-#define CANSAT_LORA_ID String("M1")
+#define CANSAT_LORA_ID String("M2")
 
 // Unique ID of the ground station                           
 #define GS_LORA_ID String("GS")

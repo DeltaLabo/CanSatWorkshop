@@ -1,106 +1,108 @@
-#include <HardwareSerial.h>
-#include <Arduino.h>
-#include <string.h>
+/**
+ * Send and receive LoRa-modulation packets with a sequence number, showing RSSI
+ * and SNR for received packets on the little display.
+ *
+ * Note that while this send and received using LoRa modulation, it does not do
+ * LoRaWAN. For that, see the LoRaWAN_TTN example.
+ *
+ * This works on the stick, but the output on the screen gets cut off.
+*/
 
-#include "settings.h"
-#include "pins.h"
+#iinclude <heltec_unofficial.h>
 
-/******* Begin Comms Global Variables *******/
-// Serial port to communicate with the LoRa radio
-HardwareSerial LoRa(1);
+// Pause between transmited packets in seconds.
+// Set to zero to only transmit a packet when pressing the user button
+// Will not exceed 1% duty cycle, even if you set a lower value.
+#define PAUSE               1
 
-// Used to convert a float as a 4-byte array
-union {
-  float value;
-  byte bytes[4];
-} floatUnion;
+// Frequency in MHz. Keep the decimal point to designate float.
+// Check your own rules and regulations to see what is legal where you are.
+#define FREQUENCY           915.0
 
-// LoRa comms states
-#define NORMAL 0 // Normal operation, idle or transmit states
-#define LISTEN 1 // Awaiting response to a TX Request
-short LoRaState = NORMAL;
+// LoRa bandwidth. Keep the decimal point to designate float.
+// Allowed values are 7.8, 10.4, 15.6, 20.8, 31.25, 41.7, 62.5, 125.0, 250.0 and 500.0 kHz.
+#define BANDWIDTH           125.0
 
-// Time counter for LoRa TX request period
-uint32_t lastCheckTime = millis();
-/******* End Comms Global Variables *******/
+// Number from 5 to 12. Higher means slower but higher "processor gain",
+// meaning (in nutshell) longer range and more robust against interference. 
+#define SPREADING_FACTOR    9
 
-/******* Begin Sensor Global Variables *******/
-/******* End Sensor Global Variables *******/
+// Transmit power in dBm. 0 dBm = 1 mW, enough for tabletop-testing. This value can be
+// set anywhere between -9 dBm (0.125 mW) to 22 dBm (158 mW). Note that the maximum ERP
+// (which is what your antenna maximally radiates) on the EU ISM band is 25 mW, and that
+// transmissting without an antenna can damage your hardware.
+#define TRANSMIT_POWER      0
 
-/******* Begin Position and Orientation Global Variables *******/
-/******* End Position and Orientation Global Variables *******/
-
-/******* Begin Comms Functions *******/
-/******* End Comms Functions *******/
-
-/******* Begin Sensor Functions *******/
-/******* End Sensor Functions *******/
-
-/******* Begin Position and Orientation Functions *******/
-/******* End Position and Orientation Functions *******/
+String rxdata;
+volatile bool rxFlag = false;
+long counter = 0;
+uint64_t last_tx = 0;
+uint64_t tx_time;
+uint64_t minimum_pause;
 
 void setup() {
-  /******* Begin Comms Setup *******/
-  // 8 bits, no parity, 1 stop bit
-  LoRa.begin(115200, SERIAL_8N1, LORA_RX_PIN, LORA_TX_PIN);
-  // Set buffer size to 100 bytes to transmit payload
-  LoRa.setTxBufferSize(100);
-  // Set UART RX timeout to 1 ms
-  // Since the baud rate is 115200, more than 1 ms without receiving data
-  // means that the transmission has ended 
-  LoRa.setTimeout(1); 
-
-  // Set LoRa frequency band
-  // The LORA_BAND variable is in MHz
-  LoRa.println("AT+BAND=" + LORA_BAND + "000000");
-
-  // Set Spreading Factor, Bandwidth, and Coding Rate
-  // The ",0" at the end sets the radio to not send any network ID data as a preamble,
-  // since sender and receiver identification will be implemented within the payload
-  LoRa.println("AT+PARAMETER=" + LORA_SF + "," + LORA_BANDWIDTH + "," + LORA_CODING_RATE + ",0");
-
-  // Serial port for logging
-  Serial.begin(115200);
-  /******* End Comms Setup *******/
-
-  /******* Begin Sensor Setup *******/
-  /******* End Sensor Setup *******/
-
-  /******* Begin Position and Orientation Setup *******/
-  /******* End Position and Orientation Setup *******/
+  heltec_setup();
+  both.println("Radio init");
+  RADIOLIB_OR_HALT(radio.begin());
+  // Set the callback function for received packets
+  radio.setDio1Action(rx);
+  // Set radio parameters
+  both.printf("Frequency: %.2f MHz\n", FREQUENCY);
+  RADIOLIB_OR_HALT(radio.setFrequency(FREQUENCY));
+  both.printf("Bandwidth: %.1f kHz\n", BANDWIDTH);
+  RADIOLIB_OR_HALT(radio.setBandwidth(BANDWIDTH));
+  both.printf("Spreading Factor: %i\n", SPREADING_FACTOR);
+  RADIOLIB_OR_HALT(radio.setSpreadingFactor(SPREADING_FACTOR));
+  both.printf("TX power: %i dBm\n", TRANSMIT_POWER);
+  RADIOLIB_OR_HALT(radio.setOutputPower(TRANSMIT_POWER));
+  // Start receiving
+  RADIOLIB_OR_HALT(radio.startReceive(RADIOLIB_SX126X_RX_TIMEOUT_INF));
 }
 
-// The loop function should only be used for LoRa comms polling
 void loop() {
-  if (millis() - lastCheckTime >= GS_TX_REQUEST_PERIOD && LoRaState == NORMAL) {
-    Serial.println("[INFO]: TX Request sent");
-    LoRa.print("AT+SEND=0,16,");
-    LoRa.println(TXRequest);
-    // Transition to LISTEN state
-    LoRaState = LISTEN;
-    // Reset time counter
-    lastCheckTime = millis();
-  }
-  else if (millis() - lastCheckTime <= GS_LISTEN_PERIOD && LoRaState == LISTEN) {
-    // If any data was received via LoRa
-    if (LoRa.available() > 0) {
-      // Read from LoRa serial port
-      String RXString = LoRa.readString();
-      Serial.println("[INFO]: LoRa data received:");
-      Serial.print(RXString);
-      Serial.println();
-
-      // Transition back to NORMAL state
-      LoRaState = NORMAL;
-      // Reset time counter
-      lastCheckTime = millis();
+  heltec_loop();
+  
+  bool tx_legal = millis() > last_tx + minimum_pause;
+  // Transmit a packet every PAUSE seconds or when the button is pressed
+  if ((PAUSE && tx_legal && millis() - last_tx > (PAUSE * 1000)) || button.isSingleClick()) {
+    // In case of button click, tell user to wait
+    if (!tx_legal) {
+      both.printf("Legal limit, wait %i sec.\n", (int)((minimum_pause - (millis() - last_tx)) / 1000) + 1);
+      return;
     }
+    both.printf("TX [%s] ", String(counter).c_str());
+    radio.clearDio1Action();
+    heltec_led(50); // 50% brightness is plenty for this LED
+    tx_time = millis();
+    RADIOLIB(radio.transmit(String(counter++).c_str()));
+    tx_time = millis() - tx_time;
+    heltec_led(0);
+    if (_radiolib_status == RADIOLIB_ERR_NONE) {
+      both.printf("OK (%i ms)\n", (int)tx_time);
+    } else {
+      both.printf("fail (%i)\n", _radiolib_status);
+    }
+    // Maximum 1% duty cycle
+    minimum_pause = tx_time * 100;
+    last_tx = millis();
+    radio.setDio1Action(rx);
+    RADIOLIB_OR_HALT(radio.startReceive(RADIOLIB_SX126X_RX_TIMEOUT_INF));
   }
-  else if (LoRaState == LISTEN) {
-    Serial.println("[ERROR]: RX Timeout");
-    // Transition back to NORMAL state
-    LoRaState = NORMAL;
-    // Reset time counter
-    lastCheckTime = millis();
+
+  // If a packet was received, display it and the RSSI and SNR
+  if (rxFlag) {
+    rxFlag = false;
+    radio.readData(rxdata);
+    if (_radiolib_status == RADIOLIB_ERR_NONE) {
+      both.printf("RX [%s]\n", rxdata.c_str());
+      both.printf("  RSSI: %.2f dBm\n", radio.getRSSI());
+      both.printf("  SNR: %.2f dB\n", radio.getSNR());
+    }
+    RADIOLIB_OR_HALT(radio.startReceive(RADIOLIB_SX126X_RX_TIMEOUT_INF));
   }
+}
+
+// Can't do Serial or display things here, takes too much time for the interrupt
+void rx() {
+  rxFlag = true;
 }

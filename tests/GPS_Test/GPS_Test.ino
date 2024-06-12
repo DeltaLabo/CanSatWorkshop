@@ -1,35 +1,44 @@
 #include <TinyGPS++.h>
-#include <TinyGPSPlus.h>
 #include <HardwareSerial.h>
 
-// Inicializa las bibliotecas y el puerto serial
+// Instantiate TinyGPS++ object
 TinyGPSPlus gps;
-HardwareSerial GPS_Serial(0);
+
+// Use Serial1 for GPS on Arduino Mega
+HardwareSerial GPS_Serial(1);
 
 void setup() {
-  // Configura el puerto serial para la depuración
+  // Start the serial communication for debugging
   Serial.begin(115200);
   
-  // Configura el puerto serial para el GPS
-  GPS_Serial.begin(9600, SERIAL_8N1, 7, 6);
+  // Start the serial communication with GPS module
+  GPS_Serial.begin(38400, SERIAL_8N1, D3, D2);
+
+  Serial.println("GPS Module Test");
 }
 
 void loop() {
-  // Lee datos del GPS
+  // Check if data is available from the GPS module
   while (GPS_Serial.available() > 0) {
     gps.encode(GPS_Serial.read());
   }
-  
-  // Si se recibe una ubicación válida, la muestra por el puerto serial
+
+  // If location is updated, print it
   if (gps.location.isUpdated()) {
-    Serial.print("Latitud: ");
-    Serial.println(gps.location.lat(), 6);
-    Serial.print("Longitud: ");
-    Serial.println(gps.location.lng(), 6);
-    Serial.print("Satélites: ");
-    Serial.println(gps.satellites.value());
-    Serial.print("Altitud: ");
-    Serial.println(gps.altitude.meters());
+    float latitude = gps.location.lat();
+    float longitude = gps.location.lng();
+    float speed = gps.speed.kmph();
+    
+    Serial.print("Latitude: ");
+    Serial.println(latitude, 6);
+    
+    Serial.print("Longitude: ");
+    Serial.println(longitude, 6);
+    
+    Serial.print("Speed: ");
+    Serial.print(speed);
+    Serial.println(" km/h");
+    
     Serial.println();
   }
 }

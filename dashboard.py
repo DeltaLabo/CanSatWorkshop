@@ -488,27 +488,41 @@ def update_graphs4():
 # Inicializar ventana
 root = customtkinter.CTk()
 root.title("Monitor de CAN-SATS")
-root.geometry("1250x1000")
+root.geometry("1250x800")
 
 # Crear frames
-frame = customtkinter.CTkScrollableFrame(root, orientation="vertical", width=1325, height=650, label_text="MONITOREO DE CAN-SATS")
-frame.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
+frame = customtkinter.CTkScrollableFrame(root, orientation="vertical", label_text="MONITOREO DE CAN-SATS")
+frame.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
+frame.grid_rowconfigure(0, weight=1)
+frame.grid_columnconfigure(0, weight=1)
 
 # CAN_SAT 1
-frame_CAN_SAT_1 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", width=1300, height=230, label_text="CAN-SAT 1")
-frame_CAN_SAT_1.grid(row=1, column=0, padx=10, pady=10, sticky="ew")
+frame_CAN_SAT_1 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CAN-SAT 1")
+frame_CAN_SAT_1.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
+frame_CAN_SAT_1.grid_rowconfigure(0, weight=1)
+frame_CAN_SAT_1.grid_columnconfigure(0, weight=1)
 
 # CAN_SAT 2
-frame_CAN_SAT_2 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", width=1300, height=230, label_text="CAN-SAT 2")
-frame_CAN_SAT_2.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
+frame_CAN_SAT_2 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CAN-SAT 2")
+frame_CAN_SAT_2.grid(row=2, column=0, padx=10, pady=10, sticky="nsew")
+frame_CAN_SAT_2.grid_rowconfigure(0, weight=1)
+frame_CAN_SAT_2.grid_columnconfigure(0, weight=1)
 
 # CAN_SAT 3
-frame_CAN_SAT_3 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", width=1300, height=230, label_text="CAN-SAT 3")
-frame_CAN_SAT_3.grid(row=3, column=0, padx=10, pady=10, sticky="ew")
+frame_CAN_SAT_3 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CAN-SAT 3")
+frame_CAN_SAT_3.grid(row=3, column=0, padx=10, pady=10, sticky="nsew")
+frame_CAN_SAT_3.grid_rowconfigure(0, weight=1)
+frame_CAN_SAT_3.grid_columnconfigure(0, weight=1)
 
 # CAN_SAT 4
-frame_CAN_SAT_4 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", width=1300, height=230, label_text="CAN-SAT 4")
-frame_CAN_SAT_4.grid(row=4, column=0, padx=10, pady=10, sticky="ew")
+frame_CAN_SAT_4 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CAN-SAT 4")
+frame_CAN_SAT_4.grid(row=4, column=0, padx=10, pady=10, sticky="nsew")
+frame_CAN_SAT_4.grid_rowconfigure(0, weight=1)
+frame_CAN_SAT_4.grid_columnconfigure(0, weight=1)
+
+# RESIZE
+root.grid_rowconfigure(0, weight=1)
+root.grid_columnconfigure(0, weight=1)
 
 ################################################################
 #                                                              #

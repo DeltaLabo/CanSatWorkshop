@@ -87,7 +87,6 @@ void loop() {
       // Read from LoRa serial port
       String RXString = LoRa.readString();
       Serial.println("[INFO]: LoRa data received:");
-      Serial.print(RXString);
       Serial.println();
 
       // Transition back to NORMAL state

@@ -7,7 +7,7 @@
 
 /******* Begin Comms Global Variables *******/
 // Serial port to communicate with the LoRa radio
-HardwareSerial LoRa(2);
+HardwareSerial LoRa(0);
 
 // Used to convert a float as a 4-byte array
 union {
@@ -152,6 +152,7 @@ void loop() {
     // Read from LoRa serial port
     String RXString = LoRa.readString();
     Serial.println("[INFO]: LoRa data received");
+    Serial.print(RXString);
 
     // If the incoming data contains a valid request from the ground station
     if (RXString.indexOf(TXRequest) != -1) {

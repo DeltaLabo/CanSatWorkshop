@@ -5,7 +5,6 @@
 #include "settings.h"
 #include "pins.h"
 
-/******* Begin Comms Global Variables *******/
 // Serial port to communicate with the LoRa radio
 HardwareSerial LoRa(1);
 
@@ -22,25 +21,11 @@ short LoRaState = NORMAL;
 
 // Time counter for LoRa TX request period
 uint32_t lastCheckTime = millis();
-/******* End Comms Global Variables *******/
 
-/******* Begin Sensor Global Variables *******/
-/******* End Sensor Global Variables *******/
-
-/******* Begin Position and Orientation Global Variables *******/
-/******* End Position and Orientation Global Variables *******/
-
-/******* Begin Comms Functions *******/
-/******* End Comms Functions *******/
-
-/******* Begin Sensor Functions *******/
-/******* End Sensor Functions *******/
-
-/******* Begin Position and Orientation Functions *******/
-/******* End Position and Orientation Functions *******/
+// Numeric identifier of the targeted CanSat
+short LoRaTarget = 0;
 
 void setup() {
-  /******* Begin Comms Setup *******/
   // 8 bits, no parity, 1 stop bit
   LoRa.begin(115200, SERIAL_8N1, LORA_RX_PIN, LORA_TX_PIN);
   // Set buffer size to 100 bytes to transmit payload
@@ -61,19 +46,13 @@ void setup() {
 
   // Serial port for logging
   Serial.begin(115200);
-  /******* End Comms Setup *******/
-
-  /******* Begin Sensor Setup *******/
-  /******* End Sensor Setup *******/
-
-  /******* Begin Position and Orientation Setup *******/
-  /******* End Position and Orientation Setup *******/
 }
 
-// The loop function should only be used for LoRa comms polling
 void loop() {
   if (millis() - lastCheckTime >= GS_TX_REQUEST_PERIOD && LoRaState == NORMAL) {
     LoRa.print("AT+SEND=0,16,");
+    // Generate TX Request for the targeted CanSat
+    String TXRequest = LORA_HEADER + GS_LORA_ID + CANSAT_LORA_IDS[LoRaTarget] + LORA_TX_COMMAND + LORA_FOOTER;
     LoRa.println(TXRequest);
     // Transition to LISTEN state
     LoRaState = LISTEN;
@@ -87,20 +66,37 @@ void loop() {
       String RXString = LoRa.readString();
       if (RXString.indexOf(LORA_HEADER) != -1) {
         RXString.remove(0,16);
-        if (RXString.substring(0, 4) == "CSWS") {
+        if (RXString.substring(0, 4) == LORA_HEADER) {
           RXString.remove(LORA_PAYLOAD_SIZE, sizeof(RXString));
           Serial.println(RXString);
         }
       }
       // Transition back to NORMAL state
       LoRaState = NORMAL;
+
+      // Update target
+      if (LoRaTarget < 2) {
+        LoRaTarget++;
+      } else {
+        LoRaTarget = 0;
+      }
+
       // Reset time counter
       lastCheckTime = millis();
     }
   }
+  // RX Timeout
   else if (LoRaState == LISTEN) {
     // Transition back to NORMAL state
     LoRaState = NORMAL;
+
+    // Update target
+    if (LoRaTarget < 2) {
+      LoRaTarget++;
+    } else {
+      LoRaTarget = 0;
+    }
+
     // Reset time counter
     lastCheckTime = millis();
   }

@@ -60,7 +60,7 @@ void PackagePayload() {
   // Only using z-axis values
   floatUnion.value = readSpeed();
   for (int i=0;i<4;i++) payload[i+8] = floatUnion.bytes[i];
-
+ 
   floatUnion.value = readRotz(); // Replace with actual function, which must return a float
   for (int i=0;i<4;i++) payload[i+12] = floatUnion.bytes[i];
 

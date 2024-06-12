@@ -541,28 +541,30 @@ frame.grid_rowconfigure(0, weight=1)
 frame.grid_columnconfigure(0, weight=1)
 
 # CAN_SAT 1
-frame_CAN_SAT_1 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CANSAT 1")
+frame_CAN_SAT_1 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CANSAT M1")
 frame_CAN_SAT_1.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
 frame_CAN_SAT_1.grid_rowconfigure(0, weight=1)
 frame_CAN_SAT_1.grid_columnconfigure(0, weight=1)
 
 # CAN_SAT 2
-frame_CAN_SAT_2 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CANSAT 2")
+frame_CAN_SAT_2 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CANSAT M2")
 frame_CAN_SAT_2.grid(row=2, column=0, padx=10, pady=10, sticky="nsew")
 frame_CAN_SAT_2.grid_rowconfigure(0, weight=1)
 frame_CAN_SAT_2.grid_columnconfigure(0, weight=1)
 
 # CAN_SAT 3
-frame_CAN_SAT_3 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CANSAT 3")
+frame_CAN_SAT_3 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CANSAT M3")
 frame_CAN_SAT_3.grid(row=3, column=0, padx=10, pady=10, sticky="nsew")
 frame_CAN_SAT_3.grid_rowconfigure(0, weight=1)
 frame_CAN_SAT_3.grid_columnconfigure(0, weight=1)
 
+"""
 # CAN_SAT 4
-frame_CAN_SAT_4 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CANSAT 4")
+frame_CAN_SAT_4 = customtkinter.CTkScrollableFrame(frame, orientation="horizontal", label_text="CANSAT M4")
 frame_CAN_SAT_4.grid(row=4, column=0, padx=10, pady=10, sticky="nsew")
 frame_CAN_SAT_4.grid_rowconfigure(0, weight=1)
 frame_CAN_SAT_4.grid_columnconfigure(0, weight=1)
+"""
 
 # RESIZE
 root.grid_rowconfigure(0, weight=1)
@@ -847,6 +849,7 @@ axCor3.set_ylim(-10.0, 500.0)
 canvasCor3 = FigureCanvasTkAgg(figCorriente3, master=frame_CAN_SAT_3)
 canvasCor3.get_tk_widget().grid(row = 0, column = 9, padx = 2, pady = 2)
 
+"""
 ########################## CANSAT4 #############################
 # Se crea la gráfica de Monitorio de Velocidad (m/s)
 figVelocity4 = Figure(figsize=(6, 4), dpi=100)
@@ -937,6 +940,7 @@ axCor4.set_xlabel('Tiempo')
 axCor4.set_ylim(-10.0, 500.0)
 canvasCor4 = FigureCanvasTkAgg(figCorriente4, master=frame_CAN_SAT_4)
 canvasCor4.get_tk_widget().grid(row = 0, column = 9, padx = 2, pady = 2)
+"""
 
 # Configurar la comunicación serial
 ser = serial.Serial('COM37', 115200, timeout=1)  # Ajusta el puerto y la velocidad según sea necesario
@@ -945,7 +949,7 @@ ser = serial.Serial('COM37', 115200, timeout=1)  # Ajusta el puerto y la velocid
 update_graphs1()
 update_graphs2()
 update_graphs3()
-update_graphs4()
+#update_graphs4()
 
 ################################################################
 #                                                              #

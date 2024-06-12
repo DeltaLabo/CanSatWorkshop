@@ -11,7 +11,7 @@
 // Unique ID of the CanSat (2 alphanumeric characters)
 #define CANSAT_LORA_ID String("M1")
 
-// Unique ID of the ground station                               
+// Unique ID of the ground station                           
 #define GS_LORA_ID String("GS")
 
 // Ground station TX request command

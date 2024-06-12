@@ -41,20 +41,6 @@ float yaw = 0.0;
 unsigned long lastTime = 0;
 /******* End Position and Orientation Global Variables *******/
 
-/******* Begin Test Functions *******/
-// Only using z-axis functions
-float readSpeed() {return 1.0;}
-float readRotx() {return 2.0;}
-float readAz() {return 3.0;}
-float readLat() {return 4.0;}
-float readYaw() {return 5.0;}
-float readAltitude() {return 6.0;}
-float readPressure() {return 7.0;}
-float readTemperature() {return 8.0;}
-float readVoltage() {return 9.0;}
-float readCurrent() {return 10.0;}
-/******* End Test Functions *******/
-
 /******* Begin Comms Functions *******/
 // Read all variables and package them into a LoRa payload
 void PackagePayload() {
@@ -436,7 +422,7 @@ void setup() {
   mpu.setFilterBandwidth(MPU6050_BAND_5_HZ);
 
   // Initialize GPS
-  GPS_Serial.begin(9600, SERIAL_8N1, 7, 6);
+  GPS_Serial.begin(9600, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);
   Serial.println("GPS Serial started");
 
   lastTime = millis();

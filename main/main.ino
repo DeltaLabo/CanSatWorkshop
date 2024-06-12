@@ -7,7 +7,7 @@
 
 /******* Begin Comms Global Variables *******/
 // Serial port to communicate with the LoRa radio
-HardwareSerial LoRa(0);
+HardwareSerial LoRa(2);
 
 // Used to convert a float as a 4-byte array
 union {

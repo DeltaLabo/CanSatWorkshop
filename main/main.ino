@@ -277,7 +277,7 @@ float readLat(){
   // If the GPS has updated its data via GPS, get the latitude
   if (gps.location.isUpdated()) latitude = gps.location.lat();
 
-  Serial.print("Latitude: ");
+  Serial.print("[DATA]: Latitude: ");
   Serial.print(latitude);
   Serial.println(" deg");
   return latitude;
@@ -289,7 +289,7 @@ float readLong(){
   // If the GPS has updated its data via GPS, get the latitude
   if (gps.location.isUpdated()) longitude = gps.location.lng();
 
-  Serial.print("Longitude: ");
+  Serial.print("[DATA]: Longitude: ");
   Serial.print(longitude);
   Serial.println(" deg");
   return longitude;
@@ -301,7 +301,7 @@ float readSpeed(){
   // If the GPS has updated its data via GPS, get the latitude
   if (gps.location.isUpdated()) speed = gps.speed.kmph();
 
-  Serial.print("Speed: ");
+  Serial.print("[DATA]: Speed: ");
   Serial.print(speed);
   Serial.println(" m/s");
   return speed;

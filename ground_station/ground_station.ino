@@ -8,7 +8,7 @@
  * This works on the stick, but the output on the screen gets cut off.
 */
 
-#iinclude <heltec_unofficial.h>
+#include <heltec_unofficial.h>
 
 // Pause between transmited packets in seconds.
 // Set to zero to only transmit a packet when pressing the user button
@@ -25,13 +25,15 @@
 
 // Number from 5 to 12. Higher means slower but higher "processor gain",
 // meaning (in nutshell) longer range and more robust against interference. 
-#define SPREADING_FACTOR    9
+#define SPREADING_FACTOR    7
 
 // Transmit power in dBm. 0 dBm = 1 mW, enough for tabletop-testing. This value can be
 // set anywhere between -9 dBm (0.125 mW) to 22 dBm (158 mW). Note that the maximum ERP
 // (which is what your antenna maximally radiates) on the EU ISM band is 25 mW, and that
 // transmissting without an antenna can damage your hardware.
 #define TRANSMIT_POWER      0
+
+#define CODING_RATE 1
 
 String rxdata;
 volatile bool rxFlag = false;
@@ -55,6 +57,8 @@ void setup() {
   RADIOLIB_OR_HALT(radio.setSpreadingFactor(SPREADING_FACTOR));
   both.printf("TX power: %i dBm\n", TRANSMIT_POWER);
   RADIOLIB_OR_HALT(radio.setOutputPower(TRANSMIT_POWER));
+  both.printf("Coding rate: %i\n", CODING_RATE+4);
+  RADIOLIB_OR_HALT(radio.setCodingRate(CODING_RATE+4));
   // Start receiving
   RADIOLIB_OR_HALT(radio.startReceive(RADIOLIB_SX126X_RX_TIMEOUT_INF));
 }
@@ -74,7 +78,7 @@ void loop() {
     radio.clearDio1Action();
     heltec_led(50); // 50% brightness is plenty for this LED
     tx_time = millis();
-    RADIOLIB(radio.transmit(String(counter++).c_str()));
+    RADIOLIB(radio.transmit("0,16,CSWSGSM1DATADTLB\r\n"));
     tx_time = millis() - tx_time;
     heltec_led(0);
     if (_radiolib_status == RADIOLIB_ERR_NONE) {

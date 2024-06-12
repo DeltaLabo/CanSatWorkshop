@@ -2,12 +2,12 @@
 #include <Arduino.h>
 #include <string.h>
 #include <TinyGPS++.h>
-#include <TinyGPSPlus.h>
 #include "Wire.h"
 #include "Adafruit_Sensor.h"
 #include "Adafruit_INA219.h"
 #include "Adafruit_BMP280.h"
 #include "Adafruit_MPU6050.h"
+#include <math.h>
 #include "settings.h"
 #include "pins.h"
 
@@ -32,14 +32,32 @@ Adafruit_BMP280 bmp;
 
 /******* Begin Position and Orientation Global Variables *******/
 Adafruit_MPU6050 mpu;
-TinyGPS gps;
+TinyGPSPlus gps;
 HardwareSerial GPS_Serial(1);
-// Variables for complementary filter
+// Variables for Orientation calculations
 float pitch = 0.0;
 float roll = 0.0;
 float yaw = 0.0;
-unsigned long lastTime = 0;
+// Used to calculate time difference between IMU readings
+uint32_t lastOrientationUPdateTime = 0;
+float deltaTime;
+// Used to time IMU updates
+uint32_t lastIMUUPdateTime = 0;
 /******* End Position and Orientation Global Variables *******/
+
+/******* Begin Test Functions *******/
+// Only using z-axis functions
+float readSpeed() {return 1.0;}
+float readRotz() {return 2.0;}
+float readAz() {return 3.0;}
+float readLat() {return 4.0;}
+float readYaw() {return 5.0;}
+float readAltitude() {return 6.0;}
+float readPressure() {return 7.0;}
+float readTemperature() {return 8.0;}
+float readVoltage() {return 9.0;}
+float readCurrent() {return 10.0;}
+/******* End Test Functions *******/
 
 /******* Begin Comms Functions *******/
 // Read all variables and package them into a LoRa payload
@@ -126,7 +144,7 @@ float readAltitude(){
   float altitude = 0;
   altitude = bmp.readAltitude(1013.25);
   Serial.print("Approx altitude = ");
-  Serial.print(altitude); /* Adjusted to local forecast! */
+  Serial.print(altitude);
   Serial.println(" m");
 
   return altitude;
@@ -150,215 +168,118 @@ float readCurrent(){
 
   return current_mA;
 }
+
 /******* End Sensor Functions *******/
 
 /******* Begin Position and Orientation Functions *******/
 // MPU Functions
 float readRotx(){
-  int16_t ax, ay, az;
-  int16_t gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+  // Get new sensor events with the readings
+  sensors_event_t a, g, temp;
+  mpu.getEvent(&a, &g, &temp);
 
-  // Convert raw gyroscope values to degrees per second
-  float gx_deg = gx / 65.5;
-  Serial.print("Rotation X: ");
-  Serial.print(gx_deg);
-  Serial.println(" deg/s");
-
-  return gx_deg
+  // Return gyro reading for x axis
+  return g.gyro.x;
 }
+
 float readRoty(){
-  int16_t ax, ay, az;
-  int16_t gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+  // Get new sensor events with the readings
+  sensors_event_t a, g, temp;
+  mpu.getEvent(&a, &g, &temp);
 
-  // Convert raw gyroscope values to degrees per second
-  float gy_deg = gy / 65.5;
-  Serial.print("Rotation Y: ");
-  Serial.print(gy_deg);
-  Serial.println(" deg/s");
-
-  return gy_deg
+  // Return gyro reading for y axis
+  return g.gyro.y;
 }
+
 float readRotz(){
-  int16_t ax, ay, az;
-  int16_t gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+  // Get new sensor events with the readings
+  sensors_event_t a, g, temp;
+  mpu.getEvent(&a, &g, &temp);
 
-  // Convert raw gyroscope values to degrees per second
-  float gz_deg = gz / 65.5;
-  Serial.print("Rotation z: ");
-  Serial.print(gz_deg);
-  Serial.println(" deg/s");
-
-  return gz_deg
+  // Return gyro reading for z axis
+  return g.gyro.z;
 }
+
 float readAx(){
-  int16_t ax, ay, az;
-  int16_t gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+  // Get new sensor events with the readings
+  sensors_event_t a, g, temp;
+  mpu.getEvent(&a, &g, &temp);
 
-  // Convert raw values to 'g' and then to 'm/s²'
-  float ax_ms2 = (ax / 4096.0) * 9.80665;
-  Serial.print("Acceleration X: ");
-  Serial.print(ax_ms2);
-  Serial.println(" m/s^2");
-
-  return ax_ms2;
+  // Return accel reading for x axis
+  return a.acceleration.x;
 }
+
 float readAy(){
-  int16_t ax, ay, az;
-  int16_t gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+  // Get new sensor events with the readings
+  sensors_event_t a, g, temp;
+  mpu.getEvent(&a, &g, &temp);
 
-  // Convert raw values to 'g' and then to 'm/s²'
-  float ay_ms2 = (ay / 4096.0) * 9.80665;
-  Serial.print("Acceleration Y: ");
-  Serial.print(ay_ms2);
-  Serial.println(" m/s^2");
-
-  return ay_ms2;
+  // Return accel reading for y axis
+  return a.acceleration.y;
 }
+
 float readAz(){
-  int16_t ax, ay, az;
-  int16_t gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+  // Get new sensor events with the readings
+  sensors_event_t a, g, temp;
+  mpu.getEvent(&a, &g, &temp);
 
-  // Convert raw values to 'g' and then to 'm/s²'
-  float az_ms2 = (ay / 4096.0) * 9.80665;
-  Serial.print("Acceleration Z: ");
-  Serial.print(az_ms2);
-  Serial.println(" m/s^2");
-
-  return az_ms2;
+  // Return accel reading for z axis
+  return a.acceleration.z;
 }
-float readPitch(){
-  int16_t ax, ay, az;
-  int16_t gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
-  // Convert raw accelerometer values to 'g' and then to 'm/s²'
-  float ax_ms2 = (ax / 4096.0) * 9.80665;
-  float ay_ms2 = (ay / 4096.0) * 9.80665;
-  float az_ms2 = (az / 4096.0) * 9.80665;
-  // Convert raw gyroscope values to degrees per second
-  float gx_deg = gx / 65.5;
-  float gy_deg = gy / 65.5;
-  float gz_deg = gz / 65.5;
-
-  // Calculate delta time
-  unsigned long currentTime = millis();
-  float dt = (currentTime - lastTime) / 1000.0;
-  lastTime = currentTime;
-
-  // Calculate pitch from accelerometer data
-  float accel_pitch = atan2(ay_ms2, sqrt(ax_ms2 * ax_ms2 + az_ms2 * az_ms2)) * 180 / PI;
-
-  // Complementary filter to combine accelerometer and gyroscope data
-  pitch = 0.98 * (pitch + gx_deg * dt) + 0.02 * accel_pitch;  
-  Serial.print("Pitch: ");
-  Serial.print(pitch);
-
+float readPitch() {
   return pitch;
 }
-float readRoll(){
-  int16_t ax, ay, az;
-  int16_t gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
-  // Convert raw accelerometer values to 'g' and then to 'm/s²'
-  float ax_ms2 = (ax / 4096.0) * 9.80665;
-  float ay_ms2 = (ay / 4096.0) * 9.80665;
-  float az_ms2 = (az / 4096.0) * 9.80665;
-  // Convert raw gyroscope values to degrees per second
-  float gx_deg = gx / 65.5;
-  float gy_deg = gy / 65.5;
-  float gz_deg = gz / 65.5;
-
-  // Calculate delta time
-  unsigned long currentTime = millis();
-  float dt = (currentTime - lastTime) / 1000.0;
-  lastTime = currentTime;
-
-  // Calculate pitch and roll from accelerometer data
-  float accel_roll = atan2(-ax_ms2, az_ms2) * 180 / PI;
-
-  // Complementary filter to combine accelerometer and gyroscope data
-  roll = 0.98 * (roll + gy_deg * dt) + 0.02 * accel_roll;
-  Serial.print(" Roll: ");
-  Serial.print(roll);
-
+float readRoll() {
   return roll;
 }
-float readYaw(){
-  int16_t ax, ay, az;
-  int16_t gx, gy, gz;
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
-  // Convert raw accelerometer values to 'g' and then to 'm/s²'
-  float ax_ms2 = (ax / 4096.0) * 9.80665;
-  float ay_ms2 = (ay / 4096.0) * 9.80665;
-  float az_ms2 = (az / 4096.0) * 9.80665;
-  // Convert raw gyroscope values to degrees per second
-  float gx_deg = gx / 65.5;
-  float gy_deg = gy / 65.5;
-  float gz_deg = gz / 65.5;
-
-  // Calculate delta time
-  unsigned long currentTime = millis();
-  float dt = (currentTime - lastTime) / 1000.0;
-  lastTime = currentTime;
-
-  // Gyroscope integration for yaw (without magnetometer correction)
-  yaw += gz_deg * dt;
-  Serial.print(" Yaw: ");
-  Serial.println(yaw);
-
+float readYaw() {
   return yaw;
 }
+
+void updateOrientation() {
+  // Get a new sensor event
+  sensors_event_t a, g, temp;
+  mpu.getEvent(&a, &g, &temp);
+
+  // Calculate the time difference
+  unsigned long currentTime = millis();
+  deltaTime = (currentTime - lastOrientationUPdateTime) / 1000.0;
+  lastOrientationUPdateTime = currentTime;
+
+  // Calculate roll and pitch from accelerometer data
+  roll = atan2(a.acceleration.y, a.acceleration.z) * 180 / PI;
+  pitch = atan2(-a.acceleration.x, sqrt(a.acceleration.y * a.acceleration.y + a.acceleration.z * a.acceleration.z)) * 180 / PI;
+
+  // Integrate gyroscope data to estimate yaw
+  yaw += g.gyro.z * deltaTime;
+}
+
 // GPS Functions
 float readLat(){
-  while (GPS_Serial.available() > 0) {
-    gps.encode(GPS_Serial.read());
-  }
-
-  if (gps.location.isUpdated()) {
-    float latitude = gps.location.lat();
-    Serial.print("GPS Latitude: ");
-    Serial.println(latitude, 6);
-  } else {
-    Serial.println("Waiting for GPS signal...");
-  }
+  // Initialize to example value
+  float latitude = -1.0;
+  // If the GPS has updated its data via GPS, get the latitude
+  if (gps.location.isUpdated()) latitude = gps.location.lat();
   return latitude;
 }
-float readLong(){
-  while (GPS_Serial.available() > 0) {
-    gps.encode(GPS_Serial.read());
-  }
 
-  if (gps.location.isUpdated()) {
-    float longitude = gps.location.lng();
-    Serial.print("GPS Longitude: ");
-    Serial.println(longitude, 6);
-  } else {
-    Serial.println("Waiting for GPS signal...");
-  }
+float readLong(){
+  // Initialize to example value
+  float longitude = -1.0;
+  // If the GPS has updated its data via GPS, get the latitude
+  if (gps.location.isUpdated()) longitude = gps.location.lng();
   return longitude;
 }
-float readSpeed(){
-  while (GPS_Serial.available() > 0) {
-    gps.encode(GPS_Serial.read());
-  }
 
-  if (gps.location.isUpdated()) {
-    float speed_kmph = gps.speed.kmph();
-    Serial.print("GPS Speed: ");
-    Serial.print(speed_kmph);
-    Serial.println(" km/h");
-  } else {
-    Serial.println("Waiting for GPS signal...");
-  }
-  return speed_kmph;
+float readSpeed(){
+  // Initialize to example value
+  float speed = -1.0;
+  // If the GPS has updated its data via GPS, get the latitude
+  if (gps.location.isUpdated()) speed = gps.speed.kmph();
+  return speed;
 }
 /******* End Position and Orientation Functions *******/
 
@@ -371,7 +292,7 @@ void setup() {
   // Set UART RX timeout to 1 ms
   // Since the baud rate is 115200, more than 1 ms without receiving data
   // means that the transmission has ended 
-  LoRa.setTimeout(1); 
+  LoRa.setTimeout(1);
 
   // Set LoRa frequency band
   // The LORA_BAND variable is in MHz
@@ -411,25 +332,25 @@ void setup() {
 
   /******* Begin Position and Orientation Setup *******/
   // Initialize MPU6050 (Orientation sensor)
-  Wire.begin();
-  mpu.initialize();
-  if (!mpu.testConnection()) {
-    Serial.println("MPU6050 connection failed!");
-  }
-  // MPU parameters
+  mpu.begin();
+  // Set the MPU to measure up to 8 times gravity
   mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
+  // Set the gyro range to 500 degrees
   mpu.setGyroRange(MPU6050_RANGE_500_DEG);
-  mpu.setFilterBandwidth(MPU6050_BAND_5_HZ);
+  // Set the digital low-pass filter bandwidth to 21 Hz
+  // for the accelerometer and gyro to reduce high-frequency noise
+  mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
 
   // Initialize GPS
-  GPS_Serial.begin(9600, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);
-  Serial.println("GPS Serial started");
+  GPS_Serial.begin(38400, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);
 
-  lastTime = millis();
+
+  // Update IMU update time counter
+  lastOrientationUPdateTime = millis();
+  lastIMUUPdateTime = millis();
   /******* End Position and Orientation Setup *******/
 }
 
-// The loop function should only be used for LoRa comms polling
 void loop() {
   // If any data was received via LoRa
   if (LoRa.available() > 0) {
@@ -445,5 +366,18 @@ void loop() {
       SendPayload();
       Serial.println("[INFO]: Payload sent");
     }
+  }
+
+  // Check if data is available from the GPS module
+  while (GPS_Serial.available() > 0) {
+    // If data is available, read it and pass it to the TinyGPS++ library for parsing
+    gps.encode(GPS_Serial.read());
+  }
+
+  // Update IMU every 100 ms
+  if (millis() - lastIMUUPdateTime >= 100) {
+    updateOrientation();
+    // Reset time counter
+    lastIMUUPdateTime = millis();
   }
 }

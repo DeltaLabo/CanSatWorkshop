@@ -15,8 +15,8 @@ union {
 } floatUnion;
 
 // LoRa comms states
-#define NORMAL 0 // Normal operation, idle or transmit states
-#define LISTEN 1 // Awaiting response to a TX Request
+#define NORMAL 0  // Normal operation, idle or transmit states
+#define LISTEN 1  // Awaiting response to a TX Request
 short LoRaState = NORMAL;
 
 // Time counter for LoRa TX request period
@@ -32,8 +32,8 @@ void setup() {
   LoRa.setTxBufferSize(100);
   // Set UART RX timeout to 1 ms
   // Since the baud rate is 115200, more than 1 ms without receiving data
-  // means that the transmission has ended 
-  LoRa.setTimeout(1); 
+  // means that the transmission has ended
+  LoRa.setTimeout(1);
 
   // Set LoRa frequency band
   // The LORA_BAND variable is in MHz
@@ -58,14 +58,13 @@ void loop() {
     LoRaState = LISTEN;
     // Reset time counter
     lastCheckTime = millis();
-  }
-  else if (millis() - lastCheckTime <= GS_LISTEN_PERIOD && LoRaState == LISTEN) {
+  } else if (millis() - lastCheckTime <= GS_LISTEN_PERIOD && LoRaState == LISTEN) {
     // If any data was received via LoRa
     if (LoRa.available() > 0) {
       // Read from LoRa serial port
       String RXString = LoRa.readString();
       if (RXString.indexOf(LORA_HEADER) != -1) {
-        RXString.remove(0,16);
+        RXString.remove(0, 16);
         if (RXString.substring(0, 4) == LORA_HEADER) {
           RXString.remove(LORA_PAYLOAD_SIZE, sizeof(RXString));
           Serial.println(RXString);

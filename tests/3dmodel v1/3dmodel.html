@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CanSat IMU Data Visualization</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>CanSat IMU Data Visualization</h1>
+        <div id="gui"></div>
+        <button id="resetButton">Reset Position</button>
+        <div id="acceleration"></div>
+        <div id="angularSpeed"></div>
+        <div id="speed"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+    <script>
+        // Create the 3D scene
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Load the 3D model using OBJLoader
+        const loader = new THREE.OBJLoader();
+        let model;
+        loader.load('3dmodel.obj', function (obj) {
+            model = obj;
+            scene.add(model);
+
+            // Adjust the model's position and scale if necessary
+            model.position.set(0, 0, 0);
+            model.scale.set(1, 1, 1);
+        });
+
+        camera.position.z = 5;
+
+        // WebSocket connection to receive IMU data
+        const socket = new WebSocket('ws://localhost:5678');
+        socket.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+
+            // Update GUI elements
+            document.getElementById('acceleration').textContent = `Acceleration: X=${data.Acceleration_x}, Y=${data.Acceleration_y}, Z=${data.Acceleration_z}`;
+            document.getElementById('angularSpeed').textContent = `Angular Speed: X=${data.Rotation_x}, Y=${data.Rotation_y}, Z=${data.Rotation_z}`;
+            document.getElementById('speed').textContent = `Speed: ${data.Speed}`;
+
+            // Update the 3D model rotation
+            if (model) {
+                model.rotation.x = THREE.Math.degToRad(data.Pitch);
+                model.rotation.y = THREE.Math.degToRad(data.Roll);
+                model.rotation.z = THREE.Math.degToRad(data.Yaw);
+            }
+        };
+
+        // GUI to reset the model position
+        document.getElementById('resetButton').addEventListener('click', function () {
+            if (model) {
+                model.rotation.set(0, 0, 0);
+            }
+        });
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>

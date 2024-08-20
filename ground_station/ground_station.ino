@@ -25,6 +25,7 @@ uint32_t lastCheckTime = millis();
 // Numeric identifier of the targeted CanSat
 short LoRaTarget = 0;
 
+
 void setup() {
   // 8 bits, no parity, 1 stop bit
   LoRa.begin(115200, SERIAL_8N1, LORA_RX_PIN, LORA_TX_PIN);
@@ -47,6 +48,7 @@ void setup() {
   // Serial port for logging
   Serial.begin(115200);
 }
+
 
 void loop() {
   if (millis() - lastCheckTime >= GS_TX_REQUEST_PERIOD && LoRaState == NORMAL) {

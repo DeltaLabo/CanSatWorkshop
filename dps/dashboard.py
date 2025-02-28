@@ -50,6 +50,9 @@ relative_humidity_graph = graph(
 )
 relative_humidity_curve = gcurve(graph=relative_humidity_graph, color=color.green)
 
+# Data point index
+i = 0
+
 # Simulated data update loop
 while True:
     # Generate random test values
@@ -69,6 +72,9 @@ while True:
     cansat.rotate(axis=vec(1, 0, 0), angle=cansat_rot_x)
     cansat.rotate(axis=vec(0, 1, 0), angle=cansat_rot_y)
     cansat.rotate(axis=vec(0, 0, 1), angle=cansat_rot_z)
+
+    # Increment index
+    i += 1
 
     # Update frequency in Hz
     rate(10)

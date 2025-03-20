@@ -7,7 +7,7 @@ def on_recv(payload):
     print("RSSI: {}; SNR: {}".format(payload.rssi, payload.snr))
 
 lora = LoRa(
-    0, # Chip select channel 
+    1, # SPI Channel
     26, # Interrupt pin, in BOARD numbering
     2, # Device address
     modem_config=ModemConfig.Bw125Cr45Sf128,

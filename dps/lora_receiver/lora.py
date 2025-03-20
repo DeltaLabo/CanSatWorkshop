@@ -45,7 +45,7 @@ class LoRa(object):
         self.retry_timeout = 0.2
 
         # Setup the module
-        GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self._interrupt, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.add_event_detect(self._interrupt, GPIO.RISING, callback=self._handle_interrupt)
 

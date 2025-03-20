@@ -8,7 +8,7 @@ def on_recv(payload):
 
 lora = LoRa(
     0, # Chip select channel 
-    8, # Interrupt pin, in BCM numbering
+    26, # Interrupt pin, in BOARD numbering
     2, # Device address
     modem_config=ModemConfig.Bw125Cr45Sf128,
     tx_power=14,

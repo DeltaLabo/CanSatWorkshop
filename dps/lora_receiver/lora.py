@@ -4,10 +4,10 @@ import math
 from collections import namedtuple
 from random import random
 
-import OPi.GPIO as GPIO
+from gpiozero import DigitalInputDevice
 import spidev
 
-from .constants import *
+from constants import *
 
 
 class ModemConfig(Enum):
@@ -44,10 +44,9 @@ class LoRa(object):
         self.wait_packet_sent_timeout = 0.2  
         self.retry_timeout = 0.2
 
-        # Setup the module
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(self._interrupt, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-        GPIO.add_event_detect(self._interrupt, GPIO.RISING, callback=self._handle_interrupt)
+        # Setup the module using gpiozero
+        self._interrupt_pin = DigitalInputDevice(self._interrupt, pull_up=False)
+        self._interrupt_pin.when_activated = self._handle_interrupt
 
         self.spi = spidev.SpiDev()
         self.spi.open(0, self._channel)      
@@ -56,7 +55,7 @@ class LoRa(object):
         self._spi_write(REG_01_OP_MODE, MODE_SLEEP | LONG_RANGE_MODE)
         time.sleep(0.1)
 
-        assert self._spi_read(REG_01_OP_MODE) == (MODE_SLEEP | LONG_RANGE_MODE), \        
+        assert self._spi_read(REG_01_OP_MODE) == (MODE_SLEEP | LONG_RANGE_MODE), \
             "LoRa initialization failed"     
 
         self._spi_write(REG_0E_FIFO_TX_BASE_ADDR, 0)
@@ -235,7 +234,7 @@ class LoRa(object):
         encrypted_msg = self.crypto.encrypt(msg_bytes)
         return encrypted_msg
 
-    def _handle_interrupt(self, channel):    
+    def _handle_interrupt(self):    
         irq_flags = self._spi_read(REG_12_IRQ_FLAGS)
 
         if self._mode == MODE_RXCONTINUOUS and (irq_flags & RX_DONE):
@@ -294,5 +293,5 @@ class LoRa(object):
         self._spi_write(REG_12_IRQ_FLAGS, 0xff)
 
     def close(self):
-        GPIO.cleanup()
+        self._interrupt_pin.close()
         self.spi.close()

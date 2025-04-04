@@ -1,31 +1,43 @@
-from raspi_lora import LoRa, ModemConfig
+from lora import LoRa
+import time
 
-# This is our callback function that runs when a message is received
+# Custom handler for received messages
 def on_recv(payload):
-    print("From:", payload.header_from)
-    print("Received:", payload.message)
-    print("RSSI: {}; SNR: {}".format(payload.rssi, payload.snr))
+    print("Received: ", end="")
+    print(payload.message.decode('utf-8'))
+    print(f"Got: {payload.message.decode('utf-8')}")
+    print(f"RSSI: {payload.rssi}")
+    
+    # Send a reply back to the sender
+    reply_message = "And hello back to you"
+    lora.send(reply_message.encode('utf-8'), payload.header_from)
+    print("Sent a reply")
+    print("-" * 30)
 
+# LoRa module configuration
 lora = LoRa(
-    1, # SPI Channel
-    26, # Interrupt pin, in BOARD numbering
-    2, # Device address
-    modem_config=ModemConfig.Bw125Cr45Sf128,
-    tx_power=14,
-    acks=True
+    freq=915E6,  # Changed from 868MHz to 915MHz to match the Arduino example
+    tx_power=23, # Increased from 14 to 23 dBm to match Arduino example
+    channel=0,
+    interrupt=5,
+    this_address=10
 )
+
+# Set the callback function
 lora.on_recv = on_recv
 
+print("Arduino LoRa RX Test!")
+print("LoRa radio init OK!")
+print(f"Set Freq to: {int(915)}") # Display frequency like Arduino example
+
+# Set the module in receive mode
 lora.set_mode_rx()
 
-# Send a message to a recipient device with address 10
-# Retry sending the message twice if we don't get an  acknowledgment from the recipient
-message = "Hello there!"
-status = lora.send_to_wait(message, 10, retries=2)
-if status is True:
-    print("Message sent!")
-else:
-    print("No acknowledgment from recipient")
-    
-# And remember to call this as your program exits...
-lora.close()
+try:
+    # Keep the program running
+    while True:
+        time.sleep(0.1)
+except KeyboardInterrupt:
+    print("\nReceiver stopped")
+finally:
+    lora.close()

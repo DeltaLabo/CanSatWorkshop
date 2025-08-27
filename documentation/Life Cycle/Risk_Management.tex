@@ -1,0 +1,136 @@
+\documentclass{article}
+\input{shared/preamble}
+
+\usepackage{geometry}
+\usepackage{longtable}
+\geometry{a4paper}
+
+\title{DeltaLAB CanSat Risk Management Document}
+\author{Kaleb Granados}
+\date{February 2025}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{1. Introduction}
+
+\subsection*{Purpose}
+This document describes how risks will be managed within the Cansat project to ensure the success of the mission with an appropriate focus on its complexity.
+
+\subsection*{Scope}
+Risk management applies to the 8 subsystems of the Cansat (e.g., communication systems, power, temperature control, etc.).
+
+\subsection*{Relation to Other Documents}
+This document aligns with the \textit{Systems Engineering Management Plan (SEMP)} and other project planning documents.
+
+\section*{2. Simplified Risk Management Approach}
+
+\subsection*{Risk Management Process}
+\begin{itemize}
+    \item \textbf{Identification:} Use brainstorming and lessons learned reviews for the 8 subsystems.
+    \item \textbf{Analysis:} Qualitative analysis using probability and impact matrices.
+    \item \textbf{Mitigation:} Simple strategies such as redundant design for critical subsystems.
+\end{itemize}
+
+\subsection*{Required Tools}
+\begin{itemize}
+    \item Simplified risk matrix.
+    \item Risk log in a spreadsheet or lightweight tool like Trello.
+\end{itemize}
+
+\section*{3. Roles and Responsibilities}
+
+\subsection*{Subsystem Risk Owners}
+Each subsystem owner (e.g., communications, thermal control) will be responsible for identifying and tracking risks related to their area.
+
+\subsection*{Global Risk Manager}
+One person will coordinate the risk management process across all subsystems.
+
+\section*{4. Risk Identification}
+
+\subsection*{Risk Sources}
+Review of the 8 Cansat subsystems considering:
+\begin{itemize}
+    \item Hardware failures
+    \item Adverse environmental conditions
+    \item Communication risks
+    \item Power limitations
+\end{itemize}
+
+\subsection*{Simplified Methods}
+Brainstorming sessions with the engineering team for each subsystem.
+
+\section*{5. Risk Analysis}
+
+\subsection*{Qualitative Analysis}
+\begin{itemize}
+    \item Probability estimation: low, medium, high
+    \item Impact estimation: low, medium, high
+\end{itemize}
+
+\subsection*{Quantitative Analysis (if necessary)}
+If significant risks are detected, such as signal loss, a more technical approach like signal loss simulations could be used.
+
+\section*{6. Risk Response Planning}
+
+\subsection*{Response Strategies}
+\begin{itemize}
+    \item \textbf{Avoid:} Improve design to prevent critical component failures.
+    \item \textbf{Mitigate:} Implement redundancy in the communication system.
+    \item \textbf{Accept:} Minor risks that do not affect mission success.
+\end{itemize}
+
+\section*{7. Monitoring and Control}
+
+\subsection*{Periodic Review}
+Bi-weekly risk review meetings focused on the most critical subsystems.
+
+\subsection*{Tracking Tools}
+Use a spreadsheet or Trello for risk tracking and monitoring.
+
+\section*{8. Tools and Repositories}
+
+\subsection*{Supporting Tools}
+Spreadsheets to store identified risks, mitigation actions, and risk owners.
+
+\subsection*{Document Repositories}
+A shared document where the status of risks and actions is updated.
+
+\section*{9. Key Metrics and Indicators}
+
+\subsection*{Key Metrics}
+\begin{itemize}
+    \item Percentage of identified risks mitigated.
+    \item Number of critical risks resolved before launch.
+\end{itemize}
+
+\subsection*{Lessons Learned Documentation}
+Ensure lessons learned are stored in an accessible database for future Cansat teams.
+
+\section*{10. Appendices}
+
+\subsection*{Initial Risk Matrix}
+\begin{longtable}{|l|l|l|l|}
+    \hline
+    \textbf{Risk} & \textbf{Probability} & \textbf{Impact} & \textbf{Response Strategy} \\
+    \hline
+    \endfirsthead
+    \hline
+    \endfoot
+    Communication failure & High & High & Mitigate with redundancy \\
+    Battery failure & Medium & High & Avoid with robust design \\
+    Adverse environmental conditions & Low & Medium & Accept, evaluate conditions \\
+    Signal loss & Medium & High & Mitigate with pre-launch testing \\
+\end{longtable}
+
+\subsection*{Risk Evaluation Form}
+\[
+\text{Risk:} \quad \text{(Risk description)} \quad \quad \text{Probability:} \quad \text{(Low/Medium/High)}
+\]
+\[
+\text{Impact:} \quad \text{(Low/Medium/High)} \quad \quad \text{Response Strategy:} \quad \text{(Avoid/Transfer/Mitigate/Accept)}
+\]
+
+\end{document}

@@ -1,0 +1,226 @@
+% Documento de Guía Instruccional para Instructores del Workshop.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Realizado por Angie Cubillo y Mareya Villegas - Asistentes del laboratorio Delta, 2025.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\documentclass[a4paper,12pt]{article}
+
+
+\usepackage{graphicx}  % Para incluir imágenes
+\usepackage{titling}   % Para mejorar la portada
+\usepackage{xcolor}    % Para colores
+\usepackage{float} % para anclar las cosas a un lugar 
+
+\begin{document}
+
+\setlength{\parskip}{3mm}
+
+% Configuración de la portada
+\begin{titlepage}
+    \centering
+    {\Huge \textbf{Instructional Guide}}\\[1.5cm] % Título grande y en negrita
+    
+    \textbf{\Large Laboratorio Delta }\\[0.5cm]  % Nombre del autor
+    
+    \textbf{\large Instituto Tecnológico de Costa Rica}\\[0.5cm] % Nombre de la institución
+    
+    
+    {\Large Marzo 2025}\\[2cm]  % Fecha
+
+    
+\end{titlepage}
+
+\newpage
+
+\section{Introduction}
+
+This workshop offers students a hands-on introduction to systems integration through the assembly and testing of a CanSat—an educational satellite model designed for learning purposes. Rather than simulating complex aerospace missions, the main objective is to provide a first experience in integrating multiple subsystems into a single, functional system.
+
+The course begins with a session on Systems Engineering, giving students foundational concepts and tools to approach the design and organization of interconnected components. From the outset, participants will work with the structural frame, a lightweight and modular chassis that supports and protects all internal components. They will also use a BackPlane, a custom-designed printed circuit board that helps organize and stabilize power and data connections between subsystems.
+
+Throughout the workshop, students will explore key components such as the Attitude Determination System (for orientation tracking via GPS and IMU), the Atmospheric Measurement System (for monitoring environmental conditions), the Data Processing System (for managing and analyzing sensor data), and the Energy Storage and Power Distribution Systems (for supplying and regulating electrical power). They will also configure the On-Board Computer and Communications (for coordinating system functions and transmitting telemetry), and test the Parachute Deployment Mechanism (for ensuring a safe and controlled descent).
+
+As the workshop progresses, participants will learn how each subsystem contributes to the overall mission, how to code and integrate functional components, and how to apply engineering principles to solve real-world challenges. By the end of the course, students will have developed a practical understanding of subsystem interaction, system-level integration, and data analysis—culminating in the actual launch and operational testing of their CanSat.
+
+
+\newpage
+
+\section{Objectives}
+
+\textbf{General Objective: }
+\\
+To provide participants with a comprehensive understanding of the CanSat system by exploring its subsystems, fostering practical skills in System Engineering design and programming, and enabling the evaluation of system performance through hands-on experimentation and data analysis.
+
+
+\textbf{Specific Objectives:}
+\\
+After completing the workshop the participant will be able to:
+
+Understand the fundamentals of Systems Engineering and recognizes their importance in the design and integration of CanSat subsystems.
+
+Apply theoretical concepts to program solutions and analyze CAD models that support the functioning of each CanSat subsystem.
+
+Implement and test3 the CanSat subsystems through hands-on activities, and analyzes their performance after an experimental launch by collecting relevant data and drawing evidence-based conclusions.
+
+
+\newpage
+
+\section{Workshop Overview}
+
+This document contains detailed information about the CanSat Workshop, organized at the Delta Laboratory. The workshop will last for two days, running from 8:00 a.m. to 5:00 p.m., and will be structured into eight sessions.
+
+The first session will provide an introduction to Systems Engineering. Afterward, the different CanSat subsystems will be addressed, starting with structures, as this subsystem integrates and connects all the others. The following six subsystems will then be explored: ESS, PDS, AMS, OBCC, ADS, PDM and S A. 
+
+Each session will last approximately two hours. During this time, the instructor will present a theoretical introduction to the corresponding subsystem and its functionality, using presentations and CAD representations. Participants will then be required to complete the assigned code for each subsystem, promoting a hands-on and interactive learning experience.
+
+At the end of the technical sessions, the CanSats will be launched, allowing for the evaluation of the parachute deployment and the data collection process. Finally, a dedicated session will be held for data analysis and interpretation, aiming to assess system performance and draw relevant conclusions.
+
+The CanSat Workshop offers participants a comprehensive, hands-on learning experience focused on the design, integration, and operation of a miniaturized satellite system. Throughout the workshop, attendees will explore fundamental concepts of Systems Engineering and gain practical knowledge about the key subsystems that make up a CanSat, including structural integration, energy storage, atmospheric measurement, data processing, and communication systems.
+
+This workshop is designed to strengthen technical skills, foster teamwork, and encourage problem-solving abilities essential for careers in aerospace, electronics, and systems engineering.    
+
+\newpage
+
+\section{Session Breakdown}
+
+\begin{table}[H]
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Session & Topic & Duration  & Learning Activities  & Expected Outcomes \\ \hline
+1 &  &  &  &  \\ \hline
+2 &  &  &  &  \\ \hline
+3 &  &  &  &  \\ \hline
+4 &  &  &  &  \\ \hline
+5 &  &  &  &  \\ \hline
+6 &  &  &  &  \\ \hline
+7 &  &  &  &  \\ \hline
+8 &  &  &  &  \\ \hline
+9 &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+
+\textbf{Required Materials:} ......
+
+\newpage
+
+\section{Development of Workshop Sessions}
+
+\subsection{Session 1}
+
+\subsubsection{Introduction to Systems Engineering}
+
+\newpage
+
+\subsection{Session 2}
+\subsubsection{S A}
+
+\textbf{Description:} This session introduces the physical framework of the CanSat, emphasizing its modular and lightweight design. Participants will analyze a pre-manufactured 3D-printed structure, exploring how it integrates all subsystems, ensures impact resistance, and facilitates maintenance and handling.
+
+\textbf{Lead Instructor:}
+
+\textbf{Support Staff: }
+
+\textbf{Learning Outcome:} Identify the key structural features of a CanSat and understand their role in subsystem integration, impact protection, and reliability. Participants will be able to evaluate the suitability of the structure for the CanSat mission.
+
+\newpage
+
+\subsection{Session 3}
+\subsubsection{ESS}
+
+\textbf{Description:} This session introduces the subsystem responsible for supplying energy to all CanSat components. Participants will study how rechargeable batteries are used to ensure stable operation, with a focus on power management and real-time charge level monitoring throughout the mission.
+
+\textbf{Lead Instructor:}
+
+\textbf{Support Staff: }
+
+\textbf{Learning Outcome:} Understand the design and role of the energy storage system in ensuring uninterrupted power. Participants will be able to monitor charge levels and verify that energy reserves are adequate for mission requirements.
+
+\newpage
+
+\subsection{Session 4}
+\subsubsection{PDS}
+
+\textbf{Description:} This session introduces the Power Distribution System (PDS), which is designed to deliver electrical power efficiently and safely to all onboard subsystems. It ensures that each component receives the correct voltage and current levels required for proper operation. The system also includes automatic fault recovery, which means that it can detect and respond to power issues without user intervention. 
+
+\textbf{Lead Instructor:}
+
+\textbf{Support Staff: }
+
+\textbf{Learning Outcome:} Students will learn how the CanSat PDS safety supplies the correct voltage and current to all subsystems. They will understand its ability to automatically detect and resolve power issues, ensuring the protection and continuous operation of the system throughout the mission.
+
+\newpage
+
+\subsection{Session 5}
+\subsubsection{Atmospheric Monitoring System (AMS)}
+
+\textbf{Description:} This session covers the subsystem responsible for collecting environmental data during the CanSat's descent. Participants will examine how sensors for temperature, pressure, and humidity function, and how real-time data transmission to the DPS supports environmental monitoring objectives.
+
+\textbf{Lead Instructor:}
+
+\textbf{Support Staff: }
+
+\textbf{Learning Outcome:} Understand how atmospheric sensors operate and how they contribute to the mission’s scientific goals. Participants will be able to interpret sensor data and validate real-time transmission processes to the Data Processing System (DPS).
+
+\newpage
+
+\subsection{Session 6}
+\subsubsection{OBCC}
+
+\textbf{Description:} This session covers the central processing unit of the CanSat. It is the responsible for executing commands, managing subsystems interactions, and coordinating data collection and transmision.
+
+\textbf{Lead Instructor:}
+
+\textbf{Support Staff: }
+
+\textbf{Learning Outcome:} Understand the role of the OBCC as the brain of the CanSat. Participants will be able to write basic firmware for the microcontroller, implement communication protocols and test data transmission.
+
+\newpage
+
+\subsection{Session 7}
+\subsubsection{ADS}
+
+\textbf{Description:} This session introduces the Attitude Determination System (ADS), which is responsible for tracking the orientation of the CanSat during flight. Participants will explore how inertial measurement units, which typically include accelerometers, gyroscopes, and magnetometers, are used to estimate pitch, roll, and yaw angles.
+
+
+
+\textbf{Lead Instructor:}
+
+\textbf{Support Staff: }
+
+\textbf{Learning Outcome:} Understand how the CanSat determines its spacial orientation using sensor data. Participants will be able to read and interpret IMU outputs, calculate orientation angles, and integrate these data to enhance system stability and mission performance.
+\newpage
+
+\subsection{Session 8}
+\subsubsection{PDM}
+
+\textbf{Description:} This session focuses on the design of the PDM (Parachute Deployment Mechanism) subsystem. The discussion covers how the subsystem is engineered to ensure reliable parachute deployment under specified atmospheric conditions and strict timing requirements. Emphasis is also placed on the electromechanical safeguards implemented to reduce the risk of deployment failure. The session aims to provide a clear understanding of the technical functions and safety strategies essential for a successful CanSat descent and recovery.
+
+\textbf{Lead Instructor:}
+
+\textbf{Support Staff: }
+
+
+\textbf{Learning Outcome:} Understand how it functions under specific atmospheric and timing constraints, and how electromechanical safeguards are used to ensure reliable deployment and reduce failure risks. Emphasis will be placed on the connection between PDM design and mission success.
+
+
+\subsection{Session 9}
+\subsubsection{DPS}
+
+\textbf{Description:} 
+
+\textbf{Lead Instructor:}
+
+\textbf{Support Staff: }
+
+\textbf{Learning Outcome:} 
+\textbf{Learning Outcome:} 
+
+
+
+\end{document}
+

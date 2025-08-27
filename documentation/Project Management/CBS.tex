@@ -1,0 +1,40 @@
+\documentclass[a4paper,landscape]{article} % Documento en modo horizontal
+\usepackage[margin=1in]{geometry} % Márgenes optimizados
+\usepackage{booktabs} % Mejor formato de tablas
+\usepackage{longtable} % Para tablas largas
+\usepackage{lscape} % Permite rotar páginas
+\usepackage{xcolor} % Para colores en tablas
+
+\begin{document}
+
+\section*{Cost Breakdown Structure (CBS)}
+
+\subsection*{1. Structure of the CBS}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{llll}
+        \toprule
+        \textbf{Category} & \textbf{Subcategory} & \textbf{Cost Detail} & \textbf{Total Cost (\$)} \\
+        \midrule
+        \textbf{Direct Costs} & Materials and Components &   & XX.XX \\
+                              &                          &   & XX.XX \\
+                              &                          &   & XX.XX \\
+                              &                          &   & XX.XX \\
+                              &                          &   & XX.XX \\
+                              &                          &   & XX.XX \\
+                              &                          &   & XX.XX \\
+        \midrule
+        \textbf{Indirect Costs} & Manufacturing &     & XX.XX \\
+                              &               &       & XX.XX \\
+                              &               &       & XX.XX \\
+        \midrule
+        \textbf{operational costs} & Logistic &  & XX.XX \\
+                              &                      &  & XX.XX \\
+        \bottomrule
+    \end{tabular}
+    \caption{Estimated Cost Breakdown}
+    \label{tab:direct_costs}
+\end{table}
+\end{document}

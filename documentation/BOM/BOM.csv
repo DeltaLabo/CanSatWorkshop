@@ -3,6 +3,9 @@ OBCC01,Microcontroller,XIAO ESP32S3,//,,Seed Studio,,OBCC,4.99,,
 OBCC02,Radio,RFM95W,SPI,,HopeRF,,OBCC,19.95,,
 ADS01,IMU,ICM-20948,I2C,,TDK,,ADS,12,,
 ADS02,GPS,UBX-G7020-KT,UART,,DFRobot,,ADS,21.22,,
-ESS01,Current Sensor,INA219,I2C,,Adafruit,,AMS,9.95,,
+ESS01,Cell,802540,,1,,,,,,
+ESS02,Current Sensor,INA219,I2C,,Adafruit,,AMS,9.95,,
+
+PDS01,DC-DC Converter,TPS631000,,2,,Texas Instruments,PDS,,,,
+
 AMS01,Temperature. Presure & humidity sensor,BME280,I2C,,Naylamp,,AMS,9.0,,
-8,Battery,603959 Lipo,//,,YDL,https://a.co/d/6Gx0Jeu,PDS & ESS,9.99,,

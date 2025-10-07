@@ -1,8 +1,8 @@
 #include <TinyGPSPlus.h>   // Si da error, prueba: #include <TinyGPS++.h>
 
 //////////////// CONFIG //////////////////
-#define GPS_RX_PIN   16     // ← TX del GPS
-#define GPS_TX_PIN   17     // → RX del GPS
+#define GPS_RX_PIN   4     // ← TX del GPS
+#define GPS_TX_PIN   3     // → RX del GPS
 #define LED_PIN       2     // LED on-board
 #define SHOW_NMEA     0     // 1 = mostrar tramas NMEA crudas ($GPRMC, etc.)
 //////////////////////////////////////////
@@ -12,12 +12,12 @@ uint32_t gpsBaud = 9600;    // se ajusta automáticamente
 
 // Detecta si hay NMEA a cierto baud
 bool detectBaud(uint32_t baud, uint32_t ms = 2000) {
-  Serial2.begin(baud, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);
+  Serial1.begin(baud, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);
   uint32_t start = millis();
   bool seen = false;
   while (millis() - start < ms) {
-    if (Serial2.available()) {
-      char c = Serial2.read();
+    if (Serial1.available()) {
+      char c = Serial1.read();
 #if SHOW_NMEA
       Serial.write(c);
 #endif
@@ -43,7 +43,7 @@ void setup() {
   else {
     // Si no detectó, deja 9600 por defecto
     Serial.println(F("[GPS] No se detectaron tramas; usando 9600 por defecto."));
-    Serial2.begin(9600, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);
+    Serial1.begin(9600, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);
   }
 
   Serial.println(F("[INFO] Esperando fix (prueba cerca de una ventana)."));
@@ -55,8 +55,8 @@ void loop() {
   if (millis() - tBeat > 1000) { tBeat = millis(); digitalWrite(LED_PIN, !digitalRead(LED_PIN)); }
 
   // Leer y procesar NMEA
-  while (Serial2.available()) {
-    char c = Serial2.read();
+  while (Serial1.available()) {
+    char c = Serial1.read();
 #if SHOW_NMEA
     Serial.write(c);
 #endif
@@ -93,7 +93,7 @@ void loop() {
   if (millis() - tDiag > 4000) {
     tDiag = millis();
     if (gps.charsProcessed() == lastChars) {
-      Serial.println(F("[ALERTA] No llegan datos del GPS. Revisa TX->16, RX->17, GND/VCC y el baud."));
+      Serial.println(F("[ALERTA] No llegan datos del GPS. Revisa TX->3, RX->4, GND/VCC y el baud."));
     }
     lastChars = gps.charsProcessed();
   }

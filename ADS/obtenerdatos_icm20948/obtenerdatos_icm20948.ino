@@ -310,3 +310,57 @@ void loop(){
   delay(5); // carga estable; el dt real viene de micros()
 }
 
+// Variable Getter for IMU Sensor
+
+unsigned short getOrientation(long* outRoll, long* outPitch, long* outYaw) {
+  // Logica  de TIMEOUT
+  if (millis() - lastGoodReadMs > SENSOR_TIMEOUT_MS) {
+    if (outRoll)  *outRoll  = 0;
+    if (outPitch) *outPitch = 0;
+    if (outYaw)   *outYaw   = 0;
+    return 4; // Timeout
+  }
+
+  // Datos inválidos (NaN/Inf) => trátalo como no disponible (timeout-like)
+  if (!isfinite(roll_deg) || !isfinite(pitch_deg) || !isfinite(yaw_deg)) {
+    if (outRoll)  *outRoll  = 0;
+    if (outPitch) *outPitch = 0;
+    if (outYaw)   *outYaw   = 0;
+    return 4; // Timeout
+  }
+
+  // Conversión a centésimas de grado (usa double para evitar overflow intermedio)
+  double r = (double)roll_deg  * 100.0;
+  double p = (double)pitch_deg * 100.0;
+  double y = (double)yaw_deg   * 100.0;
+
+  // Límites de entero 32-bit (evita añadir headers; valores literales exactos)
+  const double I32_MAX_D =  2147483647.0;
+  // const double I32_MIN_D = -2147483648.0;
+
+  // Chequeo/saturación por variable; prioriza Overflow (1) sobre Underflow (2)
+  unsigned short code = 0;
+
+  auto clampAndCode = [&](double v, long* out) {
+    if (!out) return;
+    if (v > I32_MAX_D) {
+      *out = (long)I32_MAX_D;
+      if (code == 0) code = 1; // Overflow
+    } else if (v < -I32_MAX_D) {
+      *out = (long)-I32_MAX_D;
+      if (code == 0) code = 2; // Underflow
+    } else {
+      *out = (long)v; // Success
+    }
+  };
+
+  clampAndCode(r, outRoll);
+  clampAndCode(p, outPitch);
+  clampAndCode(y, outYaw);
+
+  return code == 0 ? 0 : code;
+}
+
+
+
+

@@ -13,4 +13,4 @@ See [Understanding Capella Physical Diagrams]() if needed.
 
 ### v1.0
 
-[Structure Diagram for DPS v1.0. Everything inside the CanSat Physical Component doesn’t belong to DPS and is implemented separately by the OBCC team.]("documentation/Subsystems/DPS/DPS v1.0")
+[Structure Diagram for DPS v1.0. Everything inside the CanSat Physical Component doesn’t belong to DPS and is implemented separately by the OBCC team.]("documentation/Subsystems/DPS/DPS v1.0.jpg")

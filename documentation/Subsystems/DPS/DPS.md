@@ -1,5 +1,5 @@
 ---
-owners: @anthonyarguedas, @abimonge, @ItsMaxXs, @JLPL1503
+owners: anthonyarguedas, abimonge, ItsMaxXs, JLPL1503
 status: active
 ---
 

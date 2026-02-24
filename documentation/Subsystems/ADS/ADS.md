@@ -1,6 +1,6 @@
 # Attitude Determination System
 
-Owners: @KGaboArayaIA, @diego211002, @KalebG13
+Owners: @GaboArayaIA, @diego211002, @KalebG13
 
 The attitude determination system calculates and updates the CanSat’s orientation in flight, based on sensor data such as GPS and IMU. This is crucial for monitoring the CanSat’s relative position in the mission and provides essential orientation information for the mission.
 

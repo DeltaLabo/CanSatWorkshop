@@ -8,8 +8,6 @@ See [Understanding Capella Physical Diagrams](./../..//Understanding%20Capella%2
 
 ## Integration, Verification, and Validation (IVV) Plan
 
-### Subsystem Integration Version (SSIV) 1.0
-
 ![Structure Diagram for DPS v1.0. Everything inside the CanSat Physical Component doesn’t belong to DPS and is implemented separately by the OBCC team.](DPS%20v1.0.jpg)
 Structure Diagram for DPS v1.0. Everything inside the CanSat Physical Component doesn’t belong to DPS and is implemented separately by the OBCC team.
 

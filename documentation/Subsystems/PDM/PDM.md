@@ -1,12 +1,12 @@
 # Parachute Deployment Mechanism
 
+Owners: @prigo11, @secoher26 
+
 The function of this subsystem is to reliably deploy the parachute, controlling the descent speed of the CanSat for a safe landing. This mechanism automatically activates the parachute upon reaching a specified altitude or conditions, using an electromechanical system that ensures precise and successful deployment.
 
 See [Understanding Capella Physical Diagrams](./../..//Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
 
 ## Integration, Verification, and Validation (IVV) Plan
-
-### Subsystem Integration Version (SSIV) 0.1
 
 ![PDM v0.1 structure. The dummy CanSat is S&A v0.1.](PDM_v0.1_S.png)
 PDM v0.1 structure. The dummy CanSat is S&A v0.1.
@@ -14,15 +14,11 @@ PDM v0.1 structure. The dummy CanSat is S&A v0.1.
 ![PDM v0.1 fall test functional chain. Terminal speed taken from [ESA](https://cansat.esa.int/wp-content/uploads/2023/09/T10_Parachute_Design_EN.pdf) CanSat guide.](PDM_v0.1_FC.png)
 PDM v0.1 fall test functional chain. Terminal speed taken from [ESA](https://cansat.esa.int/wp-content/uploads/2023/09/T10_Parachute_Design_EN.pdf) CanSat guide.
 
-### SSIV 0.2
-
 ![PDM v0.2 structure.](PDM_v0.2_S.png)
 PDM v0.2 structure.
 
 ![PDM v0.2 parachute deployment test functional chain.](PDM_v0.2_FC.jpg)
 PDM v0.2 parachute deployment test functional chain.
-
-### SSIV 1.0
 
 ## Requirements
 

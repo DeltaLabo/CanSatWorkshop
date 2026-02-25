@@ -30,3 +30,11 @@ v1.0
 ### Success Criteria
 
 The ADS presents a functional design capable of determining the CanSat’s position, orientation, acceleration, and rotation with the required accuracy, ensuring data transmission to the OBCC
+
+## Components
+
+GPS:
+
+https://www.robotshop.com/products/gps-module-ubx-g7020-kt-enclosure?qd=6880226c030e69d617cd8368fe0825b5
+
+IMU: [https://www.amazon.com/-/es/dp/B0DZ2MHSJ6/ref=sr_1_9?__mk_es_US=ÅMÅŽÕÑ&dib=eyJ2IjoiMSJ9.MdKyLwZ4832ylX3VPjX9dQ7kjZyskSQobXiQ5nkS8GmbMrh1YktK-Jf1_B7ptU2bTenENvOtWaBGEF_vbMhFIOanLcprl0x7KkCNnE1Dc9Ool0FPW7fqXgRKQdT7SvnmXUkYgEil2XKrWa85BL00IQ.hF0_eVr7xy7s35L26tJXCYdrJ8iIi_2qJ_y7thbin-g&dib_tag=se&keywords=MPU9250&qid=1741380426&sr=8-9](https://www.amazon.com/-/es/dp/B0DZ2MHSJ6/ref=sr_1_9?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dib=eyJ2IjoiMSJ9.MdKyLwZ4832ylX3VPjX9dQ7kjZyskSQobXiQ5nkS8GmbMrh1YktK-Jf1_B7ptU2bTenENvOtWaBGEF_vbMhFIOanLcprl0x7KkCNnE1Dc9Ool0FPW7fqXgRKQdT7SvnmXUkYgEil2XKrWa85BL00IQ.hF0_eVr7xy7s35L26tJXCYdrJ8iIi_2qJ_y7thbin-g&dib_tag=se&keywords=MPU9250&qid=1741380426&sr=8-9)

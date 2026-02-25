@@ -32,3 +32,11 @@ PDM v0.2 parachute deployment test functional chain.
 ### Success Criteria
 
 The PDM subsystem has defined a reliable preliminary design capable of deploying the parachute within specified atmospheric conditions and timing constraints, while mitigating failure risks through electromechanical safeguards.
+
+## Components
+
+- [ ]  Micro Servo Motor 180 degrees.
+- [ ]  Nylon Taffeta.
+- [ ]  Nylon string.
+- [ ]  Springs kit.
+- [ ]  M2 screws.

@@ -57,3 +57,21 @@ The AMS has established a preliminary design capable of accurately measuring tem
 | The Atmosferic Measurement System must measure relative humidity around the CanSat with an accuracy of ±10%. | Humidity Test |
 | The Atmosferic Measurement System must be capable of collecting the atmospheric pressure at an accuracy sufficient to detect changes equivalent to a minimum altitude variation of 10 meters, corresponding to a pressure change of 130 Pa, based on a lapse rate of 13 Pa per meter. | Flight Test |
 | The Atmospheric Measurement System data must be transmitted in real-time to the On Board Computer & Communication System (OBCC) with an update rate of at least 5 Hz. | Communication Test |
+
+## Components
+
+Humidity, Temperature, Pressure sensor: **BME280**
+
+[**BME280 Datasheet**](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf)
+
+**Accuracy Stats:**
+
+**Temperature:** ±0.5 °C for temperatures within 0-65 °C
+
+**Humidity:** ±3 % RH for RH within 20-80 %
+
+**Pressure:** ±1.0 hPa for temperatures within 0-65 °C.
+
+**Pressure Resolution:** 0.18 Pa
+
+**Pressure Range:** 300-1100 hPa

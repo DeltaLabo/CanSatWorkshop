@@ -4,7 +4,7 @@ Owners: @Cubillo29, @nicolepradom
 
 This subsystem collects atmospheric data, such as temperature, pressure, and humidity, which are fundamental for the scientific and research objectives of the mission. Data is sent in real-time to the DPS for analysis, helping to monitor the CanSat’s environmental conditions in flight.
 
-See [Understanding Capella Physical Diagrams](./../..//Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
+See [Understanding Capella Physical Diagrams](./../PM&SE//Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
 
 ## Integration, Verification, and Validation (IVV) Plan
 

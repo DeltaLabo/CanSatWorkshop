@@ -4,7 +4,7 @@ Owners: @anthonyarguedas, @abimonge, @ItsMaxXs, @JLPL1503
 
 The data processing system manages the reception, storage, and analysis of data collected by the CanSat’s sensors. It organizes and prioritizes information for transmission, enabling real-time reporting and providing positional and orientation data for mission analysis.
 
-See [Understanding Capella Physical Diagrams](./../..//Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
+See [Understanding Capella Physical Diagrams](./../PM&SE//Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
 
 ## Integration, Verification, and Validation (IVV) Plan
 

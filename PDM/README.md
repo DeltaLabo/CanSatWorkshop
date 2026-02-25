@@ -4,7 +4,7 @@ Owners: @prigo11, @secoher26
 
 The function of this subsystem is to reliably deploy the parachute, controlling the descent speed of the CanSat for a safe landing. This mechanism automatically activates the parachute upon reaching a specified altitude or conditions, using an electromechanical system that ensures precise and successful deployment.
 
-See [Understanding Capella Physical Diagrams](./../..//Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
+See [Understanding Capella Physical Diagrams](./../PM&SE//Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
 
 ## Integration, Verification, and Validation (IVV) Plan
 

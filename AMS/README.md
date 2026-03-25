@@ -6,6 +6,8 @@ This subsystem collects atmospheric data, such as temperature, pressure, and hum
 
 See [Understanding Capella Physical Diagrams](./../PM&SE//Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
 
+See [Variable Getter Template](./../OBCC/Variable%20Getter%20Template.md) if needed.
+
 ## Integration, Verification, and Validation (IVV) Plan
 
 ![v0.1. Mostly a reminder that initial tests don’t need PCB assembly.](AMS_v0.1.jpg)

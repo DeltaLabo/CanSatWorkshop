@@ -6,6 +6,8 @@ The attitude determination system calculates and updates the CanSat’s orientat
 
 See [Understanding Capella Physical Diagrams](./../PM&SE//Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
 
+See [Variable Getter Template](./../OBCC/Variable%20Getter%20Template.md) if needed.
+
 ## Subsystem Integration Version (SSIV) 
 
 ![v0.1](ADS_v0.1.jpg)

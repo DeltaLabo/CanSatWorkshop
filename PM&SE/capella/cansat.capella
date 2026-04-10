@@ -223,11 +223,20 @@
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunctionPkg"
           id="4a74b2c0-df09-45c5-b648-4d1f2a38ac38" name="Physical Functions">
         <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
-            id="53a93749-d23d-44ce-8992-96ec48adf8b4" name="Result Code" exchanges="#e37c6250-efcb-4610-8232-19698a6cd0e2 #08219f38-43db-4fd9-996a-5e32338151de #e7279ee8-b347-4008-a5ce-15d1b3285d88 #f204362e-40f8-49d2-a26c-7d132604ca7c #a818c7d0-2c11-423f-bafa-5c62578fc343 #394a41cc-f192-49ec-b484-0d5af86babaf #ee20e8c0-6ac4-4c9d-88f5-016c14ee092d #ca183899-1b4a-48d8-85f1-5ab375d42244 #23707034-9186-4d5d-9280-014813da47f0 #ffedb2bd-e0b5-4c16-afc7-9411e0fe5725 #72fd0ac1-c61f-41a4-a42d-b94d0d58fdd3 #7bc7aca7-1ef9-41d2-b913-065e480d43fc #3bdb09f1-2cc9-4f1e-b6a0-9b948cdd4c7c #8b45ccd2-1038-492e-ad10-b3583fbd43f0 #d1e93eb6-37f8-47d2-995a-4b9034641b83 #371fa547-4580-4f24-ad68-e729ffd711b6 #6df14d71-e028-488e-8c11-f05236d6125c #fec22a30-49d3-4720-990a-8dd3a7133ba5 #c93526a8-ce89-40a5-a93f-c32be2d73172 #19445103-bf1c-40f5-9549-c07cbcea2e45 #c38a95ad-a798-4980-8fef-4e7a7f4ba856 #b97c9786-89af-4507-9b97-1516ec982604 #2f42a8fa-393e-4e30-b15b-8dde37858066 #a0692620-9762-4a29-8dab-aedad4643690"/>
+            id="53a93749-d23d-44ce-8992-96ec48adf8b4" name="Result Code" exchanges="#e37c6250-efcb-4610-8232-19698a6cd0e2 #08219f38-43db-4fd9-996a-5e32338151de #e7279ee8-b347-4008-a5ce-15d1b3285d88 #f204362e-40f8-49d2-a26c-7d132604ca7c #a818c7d0-2c11-423f-bafa-5c62578fc343 #394a41cc-f192-49ec-b484-0d5af86babaf #ee20e8c0-6ac4-4c9d-88f5-016c14ee092d #ca183899-1b4a-48d8-85f1-5ab375d42244 #23707034-9186-4d5d-9280-014813da47f0 #ffedb2bd-e0b5-4c16-afc7-9411e0fe5725 #72fd0ac1-c61f-41a4-a42d-b94d0d58fdd3 #7bc7aca7-1ef9-41d2-b913-065e480d43fc #3bdb09f1-2cc9-4f1e-b6a0-9b948cdd4c7c #8b45ccd2-1038-492e-ad10-b3583fbd43f0 #d1e93eb6-37f8-47d2-995a-4b9034641b83 #371fa547-4580-4f24-ad68-e729ffd711b6 #6df14d71-e028-488e-8c11-f05236d6125c #fec22a30-49d3-4720-990a-8dd3a7133ba5 #c93526a8-ce89-40a5-a93f-c32be2d73172 #19445103-bf1c-40f5-9549-c07cbcea2e45 #c38a95ad-a798-4980-8fef-4e7a7f4ba856 #b97c9786-89af-4507-9b97-1516ec982604 #2f42a8fa-393e-4e30-b15b-8dde37858066 #a0692620-9762-4a29-8dab-aedad4643690 #5292b15e-027d-4fd1-9d9a-d44e964f3508"/>
         <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
             id="c8106a72-0ae2-4a12-bb05-a44fb6df2d15" name="I2C Request" exchanges="#88a738f4-2c5b-4700-84e1-8670f1f92517 #349746e2-45ac-4ed4-8078-3eb9f3aa3404 #928ad74d-619f-4d20-8c1c-25d416a37f64 #31f89655-2773-4e92-aef2-921bf97087de #1a9eae51-17d6-4169-9940-9b8f423042aa #359df06e-326c-4b6a-a002-ac53077067e4 #bfe20c80-c117-475d-b8db-4ee7b0884faa #4609b848-dc09-43e0-9808-155077ea67f1 #7adf513b-9188-44d8-8fcb-edb100da429f #dabe053b-be01-401a-8d94-ff50dfe9ed5f #10335081-1330-43b5-8c2b-6fafec3cd2bc #adcb25fa-03be-47dd-99c4-aaeb0b34a3b1 #b64bae00-94dd-4b81-934a-3e6d5c3320c2 #389a6c3c-a93f-41b7-97f2-837d02dfb2bb #8f505dbe-8877-4172-bcab-d66aa836a77a #007dbab6-f008-4f44-8a1c-7592f8902bf8 #5e48679c-d7ba-4191-9850-723ff30af930"/>
         <ownedPhysicalFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
             id="4dd5809d-5c21-4761-8d92-043cd1aa0464" name="Root Physical Function">
+          <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
+              id="cc784d7f-a539-4a9b-835e-719cdb65c6a8" name="Return code 3 when GPS has no fix"
+              constrainedElements="#c93526a8-ce89-40a5-a93f-c32be2d73172 #19445103-bf1c-40f5-9549-c07cbcea2e45 #5292b15e-027d-4fd1-9d9a-d44e964f3508">
+            <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
+                id="c01fd098-d885-4080-9bbf-855a3076f809">
+              <bodies>When the GPS module does not have a satellite fix, all position-related result codes shall be set to 3.</bodies>
+              <languages>capella:linkedText</languages>
+            </ownedSpecification>
+          </ownedConstraints>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
               id="f9cf2360-afe2-4187-a477-4c9ca2513524" name="Limit terminal speed"
               availableInStates="#9b1bda11-6935-43de-87cb-36192851ffc6 #73d85dad-790a-4530-ad0d-d59cb323faf6">
@@ -2046,18 +2055,13 @@
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
               id="a7331f09-0dfe-4be1-9331-71814fd1dc8a" name="Read and store lat, lon">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="b7615f39-f483-4392-a259-1d4e6ca01ce7" name="FIP 1_3"/>
+                id="b7615f39-f483-4392-a259-1d4e6ca01ce7" name="UART Response"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="d3335fe3-cc5f-479a-82bf-2cab8f19e7bd" name="FOP 1_3"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="f8bbc570-3677-40a3-a4b4-f405772683a2" name="FOP 1_3"/>
-          </ownedFunctions>
-          <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
-              id="8874e39d-7f9c-46fb-8861-b07fb0e9c963" name="Receive GPS UART RX Interrupt">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="c9445659-eea9-40eb-9a92-ff6a3911dfc4" name="FIP 1_3"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="251af4fb-a620-4e75-afcb-0d25bc7a11df" name="FOP 1_3"/>
+                id="1688284e-b605-47f8-9103-f5fb05cebe4f" name="UART Req"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
               id="5cea5e13-5b6d-4d9b-9d80-3ad07f8a8bad" name="Get lat">
@@ -2087,13 +2091,17 @@
                 id="fe30df87-62d3-451f-848c-b04b39d597d5" name="FOP 1"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
-              id="82857e8a-2599-48a8-9fba-50f790bb9592" name="Send payload">
+              id="82857e8a-2599-48a8-9fba-50f790bb9592" name="Respond to UART Requests">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="7e521aee-cb77-4a3a-87ec-5511b8c2408b" name="FIP 2_3"/>
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="9d84b00f-10c7-4321-ac7f-6a2021ec79a8" name="FIP 1_3"/>
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="29f94eb2-cfad-4b8f-9c4d-a8f1daa08dbb" name="UART Req"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="4e16cd11-25fa-45fb-a3eb-45f65d11e8ea" name="FOP 1_3"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="97f1211f-8dc0-48ac-9691-00d72dbbc666" name="UART Response"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
               id="378ab3ab-39fb-41bc-a70b-65f6e8c04995" name="Respond to I2C Requests">
@@ -2127,7 +2135,7 @@
                 id="6a33315e-350a-4c0d-a95a-dcef7a224379" name="FOP 1_3"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
-              id="a0d13e1e-82d2-4ba7-af73-3a96ec163d37" name="Init Serial0 and Serial1 with interrupts"/>
+              id="a0d13e1e-82d2-4ba7-af73-3a96ec163d37" name="Init Serial0 and Serial1"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
               id="4dbe8ad8-e144-493f-93b7-c3a4baff40de" name="Log via Serial0">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
@@ -3051,11 +3059,11 @@
               id="19445103-bf1c-40f5-9549-c07cbcea2e45" name="Code" target="#6602e65d-1380-4912-b7fd-d96dcfccf049"
               source="#f40018b1-8fde-4576-bd45-ea84f88609ed" exchangedItems="#3021d43a-a378-42f8-a464-ea2a32de5b3b"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="74f96126-685c-4fcc-9333-a2d823344e09" name="GPS Payload" target="#c9445659-eea9-40eb-9a92-ff6a3911dfc4"
-              source="#4e16cd11-25fa-45fb-a3eb-45f65d11e8ea"/>
+              id="b35899f2-c03a-426f-b9df-56eaa8410c06" name="UART Req" target="#29f94eb2-cfad-4b8f-9c4d-a8f1daa08dbb"
+              source="#1688284e-b605-47f8-9103-f5fb05cebe4f"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="eb896204-6338-4e15-8a3c-8285d9199276" name="Interrupt signal" target="#b7615f39-f483-4392-a259-1d4e6ca01ce7"
-              source="#251af4fb-a620-4e75-afcb-0d25bc7a11df"/>
+              id="5292b15e-027d-4fd1-9d9a-d44e964f3508" name="UART Response" target="#b7615f39-f483-4392-a259-1d4e6ca01ce7"
+              source="#97f1211f-8dc0-48ac-9691-00d72dbbc666" exchangedItems="#3021d43a-a378-42f8-a464-ea2a32de5b3b"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="4d697116-06a5-40e9-9734-1f566bd1d16d" name="Init state" target="#869c26b0-a398-409a-b5b6-90ee45976505"
               source="#745a2ff6-de23-43d3-a95e-6bbb72a059c3" exchangedItems="#3021d43a-a378-42f8-a464-ea2a32de5b3b"/>
@@ -5962,9 +5970,6 @@
               id="1f2207df-d70a-4af1-9cb6-4a9f2928d04f" name="Loop" nature="BEHAVIOR">
             <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
                 id="3cc8b255-c0e3-40fc-8b9b-56bd30a64b70" targetElement="#a7331f09-0dfe-4be1-9331-71814fd1dc8a"
-                sourceElement="#1f2207df-d70a-4af1-9cb6-4a9f2928d04f"/>
-            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-                id="eeebfb48-1ab8-4780-89ff-6199bd40c9e0" targetElement="#8874e39d-7f9c-46fb-8861-b07fb0e9c963"
                 sourceElement="#1f2207df-d70a-4af1-9cb6-4a9f2928d04f"/>
             <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
                 id="1c0ada01-f3a1-4fda-9251-4b95d556520c" targetElement="#5cea5e13-5b6d-4d9b-9d80-3ad07f8a8bad"

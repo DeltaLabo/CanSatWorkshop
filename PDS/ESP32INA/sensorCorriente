@@ -1,0 +1,157 @@
+#include <Wire.h>
+#include <Adafruit_INA219.h>
+#include <limits.h>
+#include <LoRa.h>
+
+Adafruit_INA219 ina219;
+
+// =========================
+// VARIABLES DE TIEMPO (5 Hz)
+// =========================
+unsigned long lastTime = 0;
+const int period = 200; // 200 ms → 5 Hz
+float voltageFiltered = 0;
+long lastBattery = -1;
+
+// =========================
+// SETUP
+// =========================
+void setup() {
+  Serial.begin(115200);
+  Serial1.begin(9600, SERIAL_8N1, 44, 43); // RX, TX
+
+  Wire.begin();
+  Wire.setClock(400000); // I2C rápido
+
+  if (!ina219.begin()) {
+    Serial.println("INA219 no encontrado");
+    while (1);
+  }
+
+  Serial.println("=== POWER SYSTEM READY ===");
+}
+
+// =========================
+// GETTERS (reciben valor ya leído, no acceden a I2C)
+// =========================
+
+unsigned short getVoltage(float voltage, long* output) {
+  double scaled = voltage * 100.0;
+
+  if (scaled > INT32_MAX) {
+    *output = INT32_MAX;
+    return 1;
+  } else if (scaled < -(double)(INT32_MAX + 1LL)) {
+    *output = -(INT32_MAX + 1);
+    return 2;
+  } else {
+    *output = (long)scaled;
+    return 0;
+  }
+}
+
+unsigned short getCurrent(float current, long* output) {
+  double scaled = current * 100.0;
+
+  if (scaled > INT32_MAX) {
+    *output = INT32_MAX;
+    return 1;
+  } else if (scaled < -(double)(INT32_MAX + 1LL)) {
+    *output = -(INT32_MAX + 1);
+    return 2;
+  } else {
+    *output = (long)scaled;
+    return 0;
+  }
+}
+
+unsigned short getPower(float voltage, float current, long* output) {
+  float power = voltage * current; // mW
+  double scaled = power * 100.0;
+
+  if (scaled > INT32_MAX) {
+    *output = INT32_MAX;
+    return 1;
+  } else if (scaled < -(double)(INT32_MAX + 1LL)) {
+    *output = -(INT32_MAX + 1);
+    return 2;
+  } else {
+    *output = (long)scaled;
+    return 0;
+  }
+}
+
+unsigned short getBatteryPercentage(float voltage, long* output) {
+  // Filtro exponencial
+  voltageFiltered = 0.9 * voltageFiltered + 0.1 * voltage;
+
+  float porcentaje = (voltageFiltered - 3.3) / (4.2 - 3.3) * 100.0;
+  if (porcentaje > 100) porcentaje = 100;
+  if (porcentaje < 0)   porcentaje = 0;
+
+  long currentBattery = (long)round(porcentaje);
+
+  // Histéresis anti-fluctuación
+  if (lastBattery == -1) {
+    lastBattery = currentBattery;
+  }
+  if (abs(currentBattery - lastBattery) >= 1) {
+    lastBattery = currentBattery;
+  }
+
+  *output = lastBattery;
+  return 0;
+}
+
+// =========================
+// LOOP (NO BLOQUEANTE, 5 Hz)
+// =========================
+void loop() {
+  if (millis() - lastTime >= period) {
+    lastTime = millis();
+
+    // ===== UNA SOLA LECTURA I2C POR CICLO =====
+    float rawVoltage = ina219.getBusVoltage_V();
+    float rawCurrent = ina219.getCurrent_mA();
+
+    long voltage, current, power, battery;
+    unsigned short v_status, c_status, p_status, b_status;
+
+    // ===== GETTERS (sin acceso I2C) =====
+    v_status = getVoltage(rawVoltage, &voltage);
+    c_status = getCurrent(rawCurrent, &current);
+    p_status = getPower(rawVoltage, rawCurrent, &power);
+    b_status = getBatteryPercentage(rawVoltage, &battery);
+
+    // ===== LOG Serial0 =====
+    Serial.print("V: ");   Serial.print(voltage);  Serial.print(" | ");
+    Serial.print("I: ");   Serial.print(current);  Serial.print(" | ");
+    Serial.print("P: ");   Serial.print(power);    Serial.print(" | ");
+    Serial.print("Bat: "); Serial.print(battery);  Serial.println(" %");
+
+    // ===== ENVÍO UART =====
+    Serial1.print(voltage);
+    Serial1.print(",");
+    Serial1.print(current);
+    Serial1.print(",");
+    Serial1.print(power);
+    Serial1.print(",");
+    Serial1.println(battery);
+
+    /*
+    // ===== LORA FRAME (campos no usados en 0) =====
+    sendLoRa(voltage, current, power, battery);
+    */
+  }
+}
+
+/*
+void sendLoRa(long voltage, long current, long power, long battery) {
+  LoRa.beginPacket();
+  LoRa.print(voltage);  LoRa.print(",");
+  LoRa.print(current);  LoRa.print(",");
+  LoRa.print(power);    LoRa.print(",");
+  LoRa.print(battery);
+  LoRa.endPacket();
+}
+*/

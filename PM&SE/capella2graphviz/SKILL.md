@@ -189,11 +189,12 @@ Conceptually, physical links belong between:
 **Explicit rule:** red physical/component exchanges must **not** start or end at green function boxes.
 They must attach to physical elements or to representative physical anchor nodes that stand in for a component, subsystem, port, terminal, or connector.
 
-However, in Graphviz, cluster-to-cluster links are usually implemented by connecting **representative physical anchor nodes** and using:
+However, in Graphviz, cluster-to-cluster links are usually implemented by connecting **invisible representative physical anchor nodes** and using:
 - `ltail=cluster_*`
 - `lhead=cluster_*`
 
 This is often the best practical compromise.
+Keep those representative nodes visually invisible whenever they exist only to support routing, and place them deliberately near the side/port/terminal where the exchange should appear to enter or leave the container.
 If a red link seems to need to touch a function, introduce a nearby physical anchor node instead and connect the red link to that anchor.
 
 ### Constraints connect to constrained elements
@@ -448,9 +449,17 @@ Use `subgraph cluster_*` for:
 When reconstructing a screenshot, nested clusters are usually the best default.
 
 ### Representative nodes for cluster links
-When a link is really between containers, implement it through representative nodes and add:
+When a physical/component exchange is really between containers, implement it through **invisible representative nodes** and add:
 - `ltail=cluster_name`
 - `lhead=cluster_name`
+
+Recommended pattern:
+- place one representative node inside each physical container,
+- make those nodes invisible if they are only routing anchors,
+- position them deliberately near the intended border/port side,
+- connect anchor node to anchor node, while `ltail` / `lhead` makes the edge visually terminate on the container borders.
+
+This gives cleaner routing than trying to connect red exchanges directly to functions or to arbitrary visible content inside the clusters.
 
 ### Internal ordering
 Use invisible edges like:

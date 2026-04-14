@@ -173,6 +173,8 @@ Use these rules unless the user wants a different modeling style.
 Functional exchanges should usually connect:
 - function -> function
 
+Do not terminate functional exchanges on physical components when the source semantics are behavioral.
+
 Examples:
 - `Switch power on` -> `Restore power`
 - `Provide power` -> `Regulate voltage`
@@ -182,18 +184,23 @@ Conceptually, physical links belong between:
 - physical component <-> physical component
 - physical subsystem <-> physical subsystem
 - component/block <-> component/block
+- terminal/port/connector anchor <-> terminal/port/connector anchor
 
-However, in Graphviz, cluster-to-cluster links are usually implemented by connecting **representative nodes** and using:
+**Explicit rule:** red physical/component exchanges must **not** start or end at green function boxes.
+They must attach to physical elements or to representative physical anchor nodes that stand in for a component, subsystem, port, terminal, or connector.
+
+However, in Graphviz, cluster-to-cluster links are usually implemented by connecting **representative physical anchor nodes** and using:
 - `ltail=cluster_*`
 - `lhead=cluster_*`
 
 This is often the best practical compromise.
+If a red link seems to need to touch a function, introduce a nearby physical anchor node instead and connect the red link to that anchor.
 
 ### Constraints connect to constrained elements
 Constraint notes should point to the element they constrain.
 This can be:
 - a component
-n- a terminal
+- a terminal
 - a function
 - a subsystem/container
 

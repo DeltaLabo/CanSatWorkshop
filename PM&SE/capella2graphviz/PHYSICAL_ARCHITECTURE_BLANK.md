@@ -64,6 +64,12 @@ Use giant HTML-table nodes only when a block is mostly self-contained and has ve
 Functional exchanges should usually connect function-to-function and stay green.
 Do not make them terminate on physical containers just because those containers are visually convenient.
 
+When a component shows an internal measurement/processing chain plus a visible service/respond/report function, keep that service function as the interaction boundary for external reads or requests.
+In that situation, prefer:
+- measurement -> processing -> service/respond/report,
+- external read/request -> service/respond/report,
+rather than bypassing the visible service function with direct external links into internal measurement steps.
+
 ### Physical exchanges attach to physical things
 Red physical/component exchanges must connect to:
 - physical components,

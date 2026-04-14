@@ -144,6 +144,34 @@ Functional exchanges should usually connect **function to function**.
 
 Do not terminate behavioral exchanges on physical containers when the semantics are clearly functional.
 
+#### Mediated service-function pattern
+When a component contains an internal chain such as:
+- measurement / sensing,
+- processing / calculation / validation,
+- service / response / reporting,
+
+prefer to model the **service/respond/report function as the visible interaction boundary** for external consumers.
+
+Use this reusable pattern:
+- internal measurement or sensing functions feed processing/calculation functions,
+- processing/calculation functions feed a visible service/respond/report function,
+- external read/request/query/get functions interact with that service/respond/report function,
+- avoid drawing external read/request/query/get functions directly to internal measurement functions when a visible service/respond/report function is part of the intended behavior.
+
+This helps preserve the diagram's behavioral layering:
+- internal functions create or prepare the data,
+- the service/respond/report function exposes it,
+- external consumers interact with the exposed service, not with hidden internal measurement steps.
+
+Direct external-to-measurement links are only appropriate when the measurement function is itself explicitly the exposed service boundary in the source semantics.
+
+Typical reusable names for the mediating function include:
+- `Respond to ... requests`
+- `Provide ... data`
+- `Serve ... value`
+- `Report ... state`
+- `Return ... measurement`
+
 ### Physical / component exchanges
 Red physical exchanges should connect:
 - physical component ↔ physical component,
@@ -199,9 +227,10 @@ edge [fontname="Helvetica", fontsize=16, penwidth=2.5, arrowsize=0.8];
 3. Identify external actors/components and note lanes.
 4. Build cluster hierarchy first.
 5. Add functions/internal behavior.
-6. Add exchanges using the correct semantic color/style.
-7. Render and compare against the source.
-8. Fix composition first, then routing, then labels.
+6. When a component has an internal measurement/processing pipeline plus a visible service/respond function, keep that mediation explicit rather than shortcutting external reads into the internal pipeline.
+7. Add exchanges using the correct semantic color/style.
+8. Render and compare against the source.
+9. Fix composition first, then routing, then labels.
 
 ## Generic workflow for XML-assisted reconstruction
 

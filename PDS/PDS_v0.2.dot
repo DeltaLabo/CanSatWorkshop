@@ -125,7 +125,7 @@ digraph PDS_v0_2 {
         }
       }
 
-      connector_terminal [label="Connector\nTerminal", fillcolor="#FFF5B0", color="#D1B24A"];
+      connector_terminal [label="Connector\nTerminal", fillcolor="#FFF8BF", color="#D1B24A", penwidth=2];
 
       subgraph cluster_ina219 {
         label="INA219";
@@ -307,7 +307,7 @@ digraph PDS_v0_2 {
     headport=nw
   ];
   protection_pc_out -> connector_terminal [
-    xlabel="PC Out trace / GND",
+    xlabel="PC Out / GND",
     color="#E11D28",
     fontcolor="#E11D28",
     constraint=false,

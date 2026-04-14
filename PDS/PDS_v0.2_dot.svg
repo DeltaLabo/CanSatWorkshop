@@ -230,7 +230,7 @@
 <!-- connector_terminal -->
 <g id="node17" class="node">
 <title>connector_terminal</title>
-<polygon fill="#fff5b0" stroke="#d1b24a" points="776.84,-1010.49 669.16,-1010.49 669.16,-955.71 776.84,-955.71 776.84,-1010.49"/>
+<polygon fill="#fff8bf" stroke="#d1b24a" stroke-width="2" points="776.84,-1010.49 669.16,-1010.49 669.16,-955.71 776.84,-955.71 776.84,-1010.49"/>
 <text xml:space="preserve" text-anchor="middle" x="723" y="-984.75" font-family="Helvetica,sans-Serif" font-size="18.00">Connector</text>
 <text xml:space="preserve" text-anchor="middle" x="723" y="-966" font-family="Helvetica,sans-Serif" font-size="18.00">Terminal</text>
 </g>
@@ -238,7 +238,7 @@
 <g id="edge70" class="edge">
 <title>protection_pc_out:e&#45;&gt;connector_terminal:w</title>
 <path fill="none" stroke="#e11d28" stroke-width="2.2" d="M227.15,-1105.13C227.15,-1105.13 241,-1071.11 241,-1071.11 241,-1071.11 649,-1063.12 649,-1063.12 649,-1063.12 668.16,-983.1 668.16,-983.1"/>
-<text xml:space="preserve" text-anchor="middle" x="400.65" y="-1068.17" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">PC Out trace / GND</text>
+<text xml:space="preserve" text-anchor="middle" x="419.77" y="-1068.17" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">PC Out / GND</text>
 </g>
 <!-- protection_ina_out -->
 <g id="node12" class="node">

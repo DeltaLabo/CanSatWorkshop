@@ -90,6 +90,10 @@ digraph PDS_v0_2 {
           battchg_usb_in  [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
           battchg_batt_in [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
           charger_reg [label="Regulate voltage", fillcolor="#BDFB9B", color="#166534"];
+
+          battchg_usb_in -> battchg_batt_in [style=invis, weight=10];
+          battchg_usb_in -> charger_reg [style=invis, weight=14];
+          battchg_batt_in -> charger_reg [style=invis, weight=10];
         }
 
         subgraph cluster_power_protection {
@@ -103,6 +107,10 @@ digraph PDS_v0_2 {
           protection_ina_out [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
           restore_power [label="Restore power", fillcolor="#BDFB9B", color="#166534"];
           cut_off_power [label="Cut off power", fillcolor="#BDFB9B", color="#166534"];
+
+          restore_power -> protection_ina_out [style=invis, weight=8];
+          cut_off_power -> protection_pc_out [style=invis, weight=12];
+          protection_ina_out -> protection_pc_out [style=invis, weight=10];
         }
       }
 
@@ -122,6 +130,8 @@ digraph PDS_v0_2 {
 
           regulator_out [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
           regulate_voltage [label="Regulate\nvoltage", fillcolor="#BDFB9B", color="#166534"];
+
+          regulate_voltage -> regulator_out [style=invis, weight=10];
         }
       }
 

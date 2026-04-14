@@ -4,6 +4,8 @@
 #include "Adafruit_BMP280.h"
 #include <limits.h>
 
+#define TIMEOUT_US 5000
+
 Adafruit_BMP280 bmp;
 
 /**
@@ -11,13 +13,20 @@ Adafruit_BMP280 bmp;
  */
 unsigned short getTemperature(long* output) {
 
-  // Data acquisition
+  unsigned long start = micros();
+
+  // Raw data acquisition 
   float rawTemperature = bmp.readTemperature();
+
+  // Timeout check
+  if (micros() - start > TIMEOUT_US) {
+    return 3;
+  }
 
   // Data processing
   double tempScaled = rawTemperature * 100.0;
 
-  // Error Validation
+  // Error Validation 
   if (tempScaled > INT32_MAX) {  
     *output = INT32_MAX;
     return 1;  
@@ -36,13 +45,20 @@ unsigned short getTemperature(long* output) {
  */
 unsigned short getPressure(long* output) {
 
-  // Data Acquisition
+  unsigned long start = micros();
+
+  // Raw data acquisition 
   float rawPressure = bmp.readPressure() / 1000.0; 
 
-  // Data processing
+  // Timeout check
+  if (micros() - start > TIMEOUT_US) {
+    return 3;
+  }
+
+  // Data processing 
   double pressureScaled = rawPressure * 100.0;
 
-  // Error Validation
+  // Error Validation 
   if (pressureScaled > INT32_MAX) {
     *output = INT32_MAX;
     return 1;
@@ -61,13 +77,20 @@ unsigned short getPressure(long* output) {
  */
 unsigned short getAltitude(long* output) {
 
-  // Data Acquisition
+  unsigned long start = micros();
+
+  //Raw data acquisition 
   float rawAltitude = bmp.readAltitude(1013.25);
 
-  // Data processing
+  // Timeout check
+  if (micros() - start > TIMEOUT_US) {
+    return 3;
+  }
+
+  // Data processing 
   double altitudeScaled = rawAltitude * 100.0;
 
-  // Error Validation
+  // Error Validation 
   if (altitudeScaled > INT32_MAX) {
     *output = INT32_MAX;
     return 1;
@@ -84,6 +107,15 @@ unsigned short getAltitude(long* output) {
 void setup() {
   Serial.begin(9600);
   bmp.begin(0x76);
+
+  // Continuous measurement mode
+  bmp.setSampling(
+    Adafruit_BMP280::MODE_NORMAL,
+    Adafruit_BMP280::SAMPLING_X1,
+    Adafruit_BMP280::SAMPLING_X1,
+    Adafruit_BMP280::FILTER_OFF,
+    Adafruit_BMP280::STANDBY_MS_1
+  );
 }
 
 void loop() {
@@ -99,7 +131,6 @@ void loop() {
   tStatus = getTemperature(&temperature);
   pStatus = getPressure(&pressure);
   aStatus = getAltitude(&altitude);
-
 
   Serial.print("Temp: ");
   Serial.print(temperature / 100.0);

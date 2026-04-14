@@ -316,20 +316,10 @@ digraph PDS_v0_2 {
     minlen=1,
     dir=none,
     tailport=s,
-    headport=nw
+    headport=n
   ];
-  protection_pc_out -> connector_terminal [
+  protection_pc_out -> ina_power_in [
     xlabel="PC Out / GND",
-    color="#E11D28",
-    fontcolor="#E11D28",
-    ltail=cluster_power_protection,
-    constraint=false,
-    dir=none,
-    tailport=e,
-    headport=w
-  ];
-  protection_ina_out -> ina_signal_in [
-    xlabel="INA Out",
     color="#E11D28",
     fontcolor="#E11D28",
     ltail=cluster_power_protection,
@@ -337,7 +327,17 @@ digraph PDS_v0_2 {
     constraint=false,
     dir=none,
     tailport=s,
-    headport=n
+    headport=nw
+  ];
+  protection_ina_out -> connector_terminal [
+    xlabel="INA Out",
+    color="#E11D28",
+    fontcolor="#E11D28",
+    ltail=cluster_power_protection,
+    constraint=false,
+    dir=none,
+    tailport=e,
+    headport=w
   ];
   regulator_out -> connector_terminal [
     xlabel="5V / 3V3 / GND",

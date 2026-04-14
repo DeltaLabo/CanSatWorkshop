@@ -223,8 +223,8 @@ digraph PDS_v0_2 {
   { rank=same; xiao_collect; note_5hz; }
 
   // Lane guidance
-  charger_power -> batt_store [style=invis, weight=10];
-  batt_store -> charger_reg [style=invis, weight=80];
+  charger_power -> charger_reg [style=invis, weight=80];
+  batt_store -> charger_reg [style=invis, weight=65];
   batt_provide -> regulate_voltage [style=invis, weight=90];
   connector_terminal -> xiao_get_init [style=invis, weight=115];
   ina_respond -> xiao_read_v [style=invis, weight=120];
@@ -254,13 +254,77 @@ digraph PDS_v0_2 {
   ina_measure_i -> xiao_read_i [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
 
   // Physical/component exchanges (red)
-  charger_power -> charger_reg [xlabel="USB-C Cable", color="#E11D28", fontcolor="#E11D28", lhead=cluster_protection, constraint=false, minlen=2];
-  batt_store -> restore_power [xlabel="Battery Cable JST", color="#E11D28", fontcolor="#E11D28", ltail=cluster_battpack, lhead=cluster_protection, constraint=false];
-  restore_power -> connector_terminal [xlabel="PC Out trace / GND", color="#E11D28", fontcolor="#E11D28", ltail=cluster_protection, constraint=false];
-  restore_power -> ina_measure_v [xlabel="INA Out", color="#E11D28", fontcolor="#E11D28", ltail=cluster_protection, lhead=cluster_ina219, constraint=false];
-  regulate_voltage -> connector_terminal [xlabel="5V / 3V3 / GND", color="#E11D28", fontcolor="#E11D28", ltail=cluster_regulator_block, constraint=false];
-  connector_terminal -> xiao_read_v [xlabel="3V3 / GND", color="#E11D28", fontcolor="#E11D28", ltail=cluster_board, lhead=cluster_xiao, constraint=false, minlen=2];
-  connector_terminal -> xiao_read_i [xlabel="5V / GND", color="#E11D28", fontcolor="#E11D28", ltail=cluster_board, lhead=cluster_xiao, constraint=false, minlen=2];
+  charger_power -> charger_reg [
+    xlabel="USB-C Cable",
+    color="#E11D28",
+    fontcolor="#E11D28",
+    constraint=false,
+    minlen=1,
+    dir=none,
+    tailport=e,
+    headport=w
+  ];
+  batt_provide -> charger_reg [
+    xlabel="Battery Cable JST",
+    color="#E11D28",
+    fontcolor="#E11D28",
+    constraint=false,
+    minlen=1,
+    dir=none,
+    tailport=s,
+    headport=nw
+  ];
+  restore_power -> connector_terminal [
+    xlabel="PC Out trace / GND",
+    color="#E11D28",
+    fontcolor="#E11D28",
+    constraint=false,
+    dir=none,
+    tailport=e,
+    headport=w
+  ];
+  restore_power -> ina_measure_v [
+    xlabel="INA Out",
+    color="#E11D28",
+    fontcolor="#E11D28",
+    constraint=false,
+    dir=none,
+    tailport=s,
+    headport=n
+  ];
+  regulate_voltage -> connector_terminal [
+    xlabel="5V / 3V3 / GND",
+    color="#E11D28",
+    fontcolor="#E11D28",
+    constraint=false,
+    dir=none,
+    tailport=s,
+    headport=n
+  ];
+  connector_terminal -> xiao_read_v [
+    xlabel="3V3 / GND",
+    color="#E11D28",
+    fontcolor="#E11D28",
+    ltail=cluster_board,
+    lhead=cluster_xiao,
+    constraint=false,
+    minlen=1,
+    dir=none,
+    tailport=s,
+    headport=nw
+  ];
+  connector_terminal -> xiao_read_i [
+    xlabel="5V / GND",
+    color="#E11D28",
+    fontcolor="#E11D28",
+    ltail=cluster_board,
+    lhead=cluster_xiao,
+    constraint=false,
+    minlen=1,
+    dir=none,
+    tailport=s,
+    headport=ne
+  ];
 
   // Constraints / notes
   note_nb   -> xiao_read_v    [style=dashed, color="#333333", constraint=false];

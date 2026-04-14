@@ -1,20 +1,274 @@
 digraph PDS_v0_2 {
   graph [
-    layout=dot,
     rankdir=TB,
-    pad=0.15,
-    margin=0,
+    splines=polyline,
+    nodesep=0.42,
+    ranksep=0.9,
+    pad=0.28,
     bgcolor="white",
-    fontname="Helvetica"
+    fontname="Helvetica",
+    compound=true,
+    forcelabels=true,
+    newrank=true
   ];
 
-  node [shape=none, margin=0, fontname="Helvetica"];
-  edge [style=invis];
+  node [shape=box, style="filled", fontname="Helvetica", fontsize=18, margin="0.18,0.12"];
+  edge [fontname="Helvetica", fontsize=15, penwidth=2.2, arrowsize=0.8];
 
-  source_view [
-    label="",
-    image="PDS/PDS_v0.2.jpg",
-    imagescale=true,
-    fixedsize=false
-  ];
+  // Left exterior lane
+  subgraph cluster_charger {
+    label="Charger";
+    style="filled,rounded";
+    fillcolor="#BFEAF4";
+    color="#5B65C9";
+    penwidth=2;
+
+    charger_power [label="Provide power", fillcolor="#BDFB9B", color="#166534"];
+  }
+
+  subgraph cluster_user {
+    label="User";
+    style="filled,rounded";
+    fillcolor="#BFEAF4";
+    color="#5B65C9";
+    penwidth=2;
+
+    user_on  [label="Switch power on",  fillcolor="#BDFB9B", color="#166534"];
+    user_off [label="Switch power off", fillcolor="#BDFB9B", color="#166534"];
+  }
+
+  // Main subsystem
+  subgraph cluster_pds {
+    label="PDS v0.2-0.3 Subsystem";
+    style="filled,rounded";
+    fillcolor="#D9D9D9";
+    color="#888888";
+    penwidth=2;
+
+    subgraph cluster_battpack {
+      label="1S1P Li-Ion";
+      style="filled";
+      fillcolor="#FFF8BF";
+      color="#D1B24A";
+      penwidth=2;
+
+      subgraph cluster_battery {
+        label="Battery";
+        style="filled,rounded";
+        fillcolor="#A9C7E6";
+        color="#5B65C9";
+        penwidth=2;
+
+        batt_store   [label="Store energy",  fillcolor="#BDFB9B", color="#166534"];
+        batt_provide [label="Provide power", fillcolor="#BDFB9B", color="#166534"];
+      }
+    }
+
+    subgraph cluster_board {
+      label="PDS Circuitboard";
+      style="filled";
+      fillcolor="#FFF8BF";
+      color="#D1B24A";
+      penwidth=2;
+
+      subgraph cluster_protection {
+        label="Protection Circuit";
+        style="filled";
+        fillcolor="#FFF8BF";
+        color="#D1B24A";
+        penwidth=2;
+
+        subgraph cluster_batt_charger {
+          label="Battery Charger";
+          style="filled,rounded";
+          fillcolor="#A9C7E6";
+          color="#5B65C9";
+          penwidth=2;
+
+          charger_reg [label="Regulate voltage", fillcolor="#BDFB9B", color="#166534"];
+        }
+
+        subgraph cluster_power_protection {
+          label="Power Protection";
+          style="filled,rounded";
+          fillcolor="#A9C7E6";
+          color="#5B65C9";
+          penwidth=2;
+
+          restore_power [label="Restore power", fillcolor="#BDFB9B", color="#166534"];
+          cut_off_power [label="Cut off power", fillcolor="#BDFB9B", color="#166534"];
+        }
+      }
+
+      subgraph cluster_regulator_block {
+        label="Regulator";
+        style="filled";
+        fillcolor="#FFF8BF";
+        color="#D1B24A";
+        penwidth=2;
+
+        subgraph cluster_regulator {
+          label="Regulator";
+          style="filled,rounded";
+          fillcolor="#A9C7E6";
+          color="#5B65C9";
+          penwidth=2;
+
+          regulate_voltage [label="Regulate\nvoltage", fillcolor="#BDFB9B", color="#166534"];
+        }
+      }
+
+      connector_terminal [label="Connector\nTerminal", fillcolor="#FFF5B0", color="#D1B24A"];
+
+      subgraph cluster_ina219 {
+        label="INA219";
+        style="filled";
+        fillcolor="#FFF8BF";
+        color="#D1B24A";
+        penwidth=2;
+
+        subgraph cluster_batt_monitoring {
+          label="Battery monitoring";
+          style="filled,rounded";
+          fillcolor="#A9C7E6";
+          color="#5B65C9";
+          penwidth=2;
+
+          ina_measure_v [label="Measure voltage", fillcolor="#BDFB9B", color="#166534"];
+          ina_measure_i [label="Measure current", fillcolor="#BDFB9B", color="#166534"];
+          ina_respond   [label="Respond to I2C Requests", fillcolor="#BDFB9B", color="#166534"];
+        }
+      }
+    }
+
+    subgraph cluster_xiao {
+      label="XIAO ESP32-S3";
+      style="filled";
+      fillcolor="#FFF8BF";
+      color="#D1B24A";
+      penwidth=2;
+
+      subgraph cluster_setup {
+        label="Setup";
+        style="filled,rounded";
+        fillcolor="#A9C7E6";
+        color="#5B65C9";
+        penwidth=2;
+
+        xiao_get_init [label="Get\nINA219\ninit state", fillcolor="#BDFB9B", color="#166534"];
+        xiao_collect_init [label="Collect\nperipheral init\nstates", fillcolor="#BDFB9B", color="#166534"];
+        xiao_init_bus [label="Init Serial0 and\nI2C", fillcolor="#BDFB9B", color="#166534"];
+      }
+
+      subgraph cluster_loop {
+        label="Loop";
+        style="filled,rounded";
+        fillcolor="#A9C7E6";
+        color="#5B65C9";
+        penwidth=2;
+
+        xiao_read_v    [label="Read voltage", fillcolor="#BDFB9B", color="#166534"];
+        xiao_read_i    [label="Read current", fillcolor="#BDFB9B", color="#166534"];
+        xiao_process_v [label="Process\nvoltage", fillcolor="#BDFB9B", color="#166534"];
+        xiao_process_i [label="Process\ncurrent", fillcolor="#BDFB9B", color="#166534"];
+        xiao_collect   [label="Collect PDS measurements", fillcolor="#BDFB9B", color="#166534"];
+        xiao_log       [label="Log measurements via Serial0", fillcolor="#BDFB9B", color="#166534"];
+      }
+    }
+  }
+
+  // Right note lane
+  note_nb   [label="No blocking\n{c} operations besides I2C\nor UART comms", fillcolor="#FFF5B0", color="#D1B24A"];
+  note_to   [label="All I2C Read functions\n{c} must have a max.\ntimeout of 5 ms", fillcolor="#FFF5B0", color="#D1B24A"];
+  note_vgt  [label="All pairs of (Read X, Process X) or\n(Read X, Calculate Y) must be\nimplemented as a Variable Getter\nTemplate", fillcolor="#FFF5B0", color="#D1B24A"];
+  note_proc [label="All Process or Calculate\n{c} functions must take less\nthan 5ms", fillcolor="#FFF5B0", color="#D1B24A"];
+  note_5hz  [label="{c} At 5 Hz", fillcolor="#FFF5B0", color="#D1B24A"];
+  note_zero [label="Set unused\n{c} frame fields\nto 0", fillcolor="#FFF5B0", color="#D1B24A"];
+
+  // Vertical composition of main architecture
+  batt_store -> batt_provide [style=invis, weight=15];
+  charger_reg -> restore_power [style=invis, weight=15];
+  restore_power -> cut_off_power [style=invis, weight=15];
+  ina_measure_v -> ina_measure_i [style=invis, weight=10];
+  ina_measure_v -> ina_respond [style=invis, weight=18];
+  ina_measure_i -> ina_respond [style=invis, weight=18];
+  restore_power -> ina_measure_v [style=invis, weight=55];
+  regulate_voltage -> ina_measure_i [style=invis, weight=55];
+  connector_terminal -> ina_respond [style=invis, weight=45];
+  xiao_get_init -> xiao_collect_init [style=invis, weight=12];
+  xiao_collect_init -> xiao_init_bus [style=invis, weight=12];
+  xiao_read_v -> xiao_process_v [style=invis, weight=12];
+  xiao_read_i -> xiao_process_i [style=invis, weight=12];
+  xiao_process_v -> xiao_collect [style=invis, weight=10];
+  xiao_process_i -> xiao_collect [style=invis, weight=10];
+  xiao_collect -> xiao_log [style=invis, weight=12];
+
+  batt_provide -> regulate_voltage [style=invis, weight=80];
+  regulate_voltage -> xiao_collect [style=invis, weight=90];
+  charger_power -> user_on [style=invis, weight=16];
+  user_on -> user_off [style=invis, weight=12];
+  note_nb -> note_to [style=invis, weight=10];
+  note_to -> note_vgt [style=invis, weight=10];
+  note_vgt -> note_proc [style=invis, weight=10];
+  note_proc -> note_5hz [style=invis, weight=10];
+  note_5hz -> note_zero [style=invis, weight=10];
+
+  { rank=same; batt_store; batt_provide; }
+  { rank=same; charger_reg; regulate_voltage; }
+  { rank=same; restore_power; cut_off_power; connector_terminal; }
+  { rank=same; ina_measure_v; ina_measure_i; }
+  { rank=same; xiao_get_init; xiao_read_v; xiao_read_i; note_nb; }
+  { rank=same; xiao_process_v; xiao_process_i; note_vgt; }
+  { rank=same; xiao_collect; note_5hz; }
+
+  // Lane guidance
+  charger_power -> batt_store [style=invis, weight=10];
+  batt_store -> charger_reg [style=invis, weight=80];
+  batt_provide -> regulate_voltage [style=invis, weight=90];
+  connector_terminal -> xiao_get_init [style=invis, weight=100];
+  ina_respond -> xiao_read_v [style=invis, weight=110];
+  user_on -> restore_power [style=invis, weight=16];
+  xiao_read_i -> note_vgt [style=invis, weight=8];
+
+  // Functional exchanges (green)
+  charger_power -> charger_reg [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+  user_on  -> restore_power [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+  user_off -> cut_off_power [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+  charger_reg -> batt_store [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+  batt_provide -> regulate_voltage [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+
+  ina_measure_v -> ina_respond [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+  ina_measure_i -> ina_respond [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+  xiao_get_init -> xiao_collect_init [xlabel="[Result]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+  xiao_read_v -> xiao_process_v [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+  xiao_read_i -> xiao_process_i [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+  xiao_process_v -> xiao_collect [xlabel="[Result]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+  xiao_process_i -> xiao_collect [xlabel="[Result]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+  xiao_collect -> xiao_log [xlabel="[LoRa Frame]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
+
+  xiao_get_init -> ina_respond [xlabel="[I2C Req]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
+  xiao_read_v -> ina_respond [xlabel="[I2C Req]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
+  xiao_read_i -> ina_respond [xlabel="[I2C Req]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
+  ina_measure_v -> xiao_read_v [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
+  ina_measure_i -> xiao_read_i [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
+
+  // Physical/component exchanges (red)
+  charger_power -> charger_reg [xlabel="USB-C Cable", color="#E11D28", fontcolor="#E11D28", lhead=cluster_protection, constraint=false, minlen=2];
+  batt_store -> restore_power [xlabel="Battery Cable JST", color="#E11D28", fontcolor="#E11D28", ltail=cluster_battpack, lhead=cluster_protection, constraint=false];
+  restore_power -> connector_terminal [xlabel="PC Out trace / GND", color="#E11D28", fontcolor="#E11D28", ltail=cluster_protection, constraint=false];
+  restore_power -> ina_measure_v [xlabel="INA Out", color="#E11D28", fontcolor="#E11D28", ltail=cluster_protection, lhead=cluster_ina219, constraint=false];
+  regulate_voltage -> connector_terminal [xlabel="5V / 3V3 / GND", color="#E11D28", fontcolor="#E11D28", ltail=cluster_regulator_block, constraint=false];
+  connector_terminal -> xiao_read_v [xlabel="3V3 / GND", color="#E11D28", fontcolor="#E11D28", ltail=cluster_board, lhead=cluster_xiao, constraint=false, minlen=2];
+  connector_terminal -> xiao_read_i [xlabel="5V / GND", color="#E11D28", fontcolor="#E11D28", ltail=cluster_board, lhead=cluster_xiao, constraint=false, minlen=2];
+
+  // Constraints / notes
+  note_nb   -> xiao_read_v    [style=dashed, color="#333333", constraint=false];
+  note_nb   -> xiao_read_i    [style=dashed, color="#333333", constraint=false];
+  note_to   -> xiao_read_v    [style=dashed, color="#333333", constraint=false];
+  note_to   -> xiao_read_i    [style=dashed, color="#333333", constraint=false];
+  note_vgt  -> xiao_process_v [style=dashed, color="#333333", constraint=false];
+  note_vgt  -> xiao_process_i [style=dashed, color="#333333", constraint=false];
+  note_proc -> xiao_process_i [style=dashed, color="#333333", constraint=false];
+  note_5hz  -> xiao_collect   [style=dashed, color="#333333", constraint=false];
+  note_zero -> xiao_collect   [style=dashed, color="#333333", constraint=false];
 }

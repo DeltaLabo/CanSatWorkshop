@@ -320,18 +320,6 @@
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M365.48,-964.68C398.06,-946.43 444.6,-917.64 474.53,-897.34"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="475.89,-899.8 480.89,-892.96 472.71,-895.19 475.89,-899.8"/>
 </g>
-<!-- xiao_read_v -->
-<g id="node33" class="node">
-<title>xiao_read_v</title>
-<polygon fill="#bdfb9b" stroke="#166534" points="983.09,-741.93 852.91,-741.93 852.91,-705.9 983.09,-705.9 983.09,-741.93"/>
-<text xml:space="preserve" text-anchor="middle" x="918" y="-716.19" font-family="Helvetica,sans-Serif" font-size="18.00">Read voltage</text>
-</g>
-<!-- ina_measure_v&#45;&gt;xiao_read_v -->
-<g id="edge79" class="edge">
-<title>ina_measure_v&#45;&gt;xiao_read_v</title>
-<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M387.25,-964.59C475.53,-938.05 633,-890.71 633,-890.71 633,-890.71 838,-822.68 838,-822.68 838,-822.68 873.06,-779.84 896.76,-750.87"/>
-<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="898.69,-752.93 901.59,-744.97 894.36,-749.39 898.69,-752.93"/>
-</g>
 <!-- ina_measure_i&#45;&gt;ina_respond -->
 <!-- ina_measure_i&#45;&gt;ina_respond -->
 <g id="edge69" class="edge">
@@ -339,19 +327,33 @@
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M547.62,-964.68C543.88,-947.46 533.78,-920.84 523.67,-900.84"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="526.24,-899.72 519.99,-894 521.31,-902.37 526.24,-899.72"/>
 </g>
+<!-- xiao_read_v -->
+<g id="node33" class="node">
+<title>xiao_read_v</title>
+<polygon fill="#bdfb9b" stroke="#166534" points="983.09,-741.93 852.91,-741.93 852.91,-705.9 983.09,-705.9 983.09,-741.93"/>
+<text xml:space="preserve" text-anchor="middle" x="918" y="-716.19" font-family="Helvetica,sans-Serif" font-size="18.00">Read voltage</text>
+</g>
+<!-- ina_respond&#45;&gt;xiao_read_v -->
+<!-- ina_respond&#45;&gt;xiao_read_v -->
+<g id="edge79" class="edge">
+<title>ina_respond&#45;&gt;xiao_read_v</title>
+<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M617.99,-858.04C725.44,-843.54 868,-822.68 868,-822.68 868,-822.68 901.86,-781.3 917.26,-752.38"/>
+<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="919.68,-753.83 920.58,-745.4 914.62,-751.43 919.68,-753.83"/>
+<text xml:space="preserve" text-anchor="middle" x="749.87" y="-835.85" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[I2C Resp]</text>
+</g>
 <!-- xiao_read_i -->
 <g id="node34" class="node">
 <title>xiao_read_i</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="1141.34,-741.93 1012.66,-741.93 1012.66,-705.9 1141.34,-705.9 1141.34,-741.93"/>
 <text xml:space="preserve" text-anchor="middle" x="1077" y="-716.19" font-family="Helvetica,sans-Serif" font-size="18.00">Read current</text>
 </g>
-<!-- ina_measure_i&#45;&gt;xiao_read_i -->
+<!-- ina_respond&#45;&gt;xiao_read_i -->
 <g id="edge80" class="edge">
-<title>ina_measure_i&#45;&gt;xiao_read_i</title>
-<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M600.24,-964.64C615.49,-959.74 628,-955.71 628,-955.71 628,-955.71 871,-890.71 871,-890.71 871,-890.71 998,-822.68 998,-822.68 998,-822.68 1032.62,-779.84 1056.02,-750.87"/>
-<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="1057.93,-752.97 1060.78,-744.98 1053.58,-749.45 1057.93,-752.97"/>
+<title>ina_respond&#45;&gt;xiao_read_i</title>
+<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M618.39,-861.24C768.96,-846.85 1013,-822.68 1013,-822.68 1013,-822.68 1047.03,-780.57 1066.18,-751.63"/>
+<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="1068.33,-753.46 1070.25,-745.21 1063.6,-750.46 1068.33,-753.46"/>
+<text xml:space="preserve" text-anchor="middle" x="824.23" y="-839.14" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[I2C Resp]</text>
 </g>
-<!-- ina_respond&#45;&gt;xiao_read_v -->
 <!-- xiao_i2c_port -->
 <!-- xiao_i2c_port&#45;&gt;xiao_get_init -->
 <!-- xiao_pwr_3v3&#45;&gt;xiao_get_init -->
@@ -390,9 +392,9 @@
 <!-- xiao_read_v&#45;&gt;ina_respond -->
 <g id="edge77" class="edge">
 <title>xiao_read_v&#45;&gt;ina_respond</title>
-<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M894.54,-742.39C865.69,-770.51 823,-822.68 823,-822.68 823,-822.68 712.87,-838.79 621.72,-852.54"/>
-<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="621.49,-849.75 614,-853.71 622.33,-855.28 621.49,-849.75"/>
-<text xml:space="preserve" text-anchor="middle" x="743.67" y="-831.22" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[I2C Req]</text>
+<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M885.39,-742.39C850.69,-770.51 808,-822.68 808,-822.68 808,-822.68 698.31,-838.73 610.09,-852.46"/>
+<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="609.66,-849.69 602.19,-853.69 610.52,-855.23 609.66,-849.69"/>
+<text xml:space="preserve" text-anchor="middle" x="732.31" y="-830.77" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[I2C Req]</text>
 </g>
 <!-- xiao_process_v -->
 <g id="node35" class="node">
@@ -411,9 +413,9 @@
 <!-- xiao_read_i&#45;&gt;ina_respond -->
 <g id="edge78" class="edge">
 <title>xiao_read_i&#45;&gt;ina_respond</title>
-<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M1062.88,-742.39C1040.15,-770.51 998,-822.68 998,-822.68 998,-822.68 775.95,-844.67 629.29,-859.19"/>
-<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="629.43,-856.36 621.74,-859.94 629.98,-861.93 629.43,-856.36"/>
-<text xml:space="preserve" text-anchor="middle" x="833.13" y="-837.35" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[I2C Req]</text>
+<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M1053.72,-742.39C1025.15,-770.51 983,-822.68 983,-822.68 983,-822.68 771.68,-843.61 629.37,-858.11"/>
+<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="629.38,-855.3 621.7,-858.89 629.94,-860.87 629.38,-855.3"/>
+<text xml:space="preserve" text-anchor="middle" x="827.54" y="-836.56" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[I2C Req]</text>
 </g>
 <!-- xiao_process_i -->
 <g id="node36" class="node">

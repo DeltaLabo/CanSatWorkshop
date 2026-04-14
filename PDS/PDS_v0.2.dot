@@ -301,8 +301,8 @@ digraph PDS_v0_2 {
   xiao_get_init -> ina_respond [xlabel="[I2C Req]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
   xiao_read_v -> ina_respond [xlabel="[I2C Req]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
   xiao_read_i -> ina_respond [xlabel="[I2C Req]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
-  ina_measure_v -> xiao_read_v [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
-  ina_measure_i -> xiao_read_i [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
+  ina_respond -> xiao_read_v [xlabel="[I2C Resp]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
+  ina_respond -> xiao_read_i [xlabel="[I2C Resp]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
 
   // Physical/component exchanges (red)
   charger_usb -> protection_usb_anchor [

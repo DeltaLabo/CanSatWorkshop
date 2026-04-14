@@ -81,6 +81,9 @@ Use these defaults unless the source diagram or user asks for something else.
   - `color="#5B65C9"`
   - `style="filled,rounded"`
   - `penwidth=2`
+- often modeled functionally, but may also be **hybrid participants**:
+  - green functional exchanges may connect to the actor's functions/behaviors
+  - red physical/component exchanges may connect to the actor's physical container/component level or representative physical anchor when the actor is also a real physical participant/device/interface
 
 #### Physical components / physical subsystems
 - pale yellow containers
@@ -145,9 +148,12 @@ Do not terminate behavioral exchanges on physical containers when the semantics 
 Red physical exchanges should connect:
 - physical component ↔ physical component,
 - subsystem ↔ subsystem,
-- component ↔ port/terminal/connector anchor.
+- component ↔ port/terminal/connector anchor,
+- physically participating external actor ↔ physical component/subsystem.
 
 Red physical/component exchanges should **not** start or end at green function boxes.
+
+If a physical component contains an inner logical/functional block with the same or a similar name, a named physical link must terminate on the **physical container/component level** or on its representative physical anchor, not on the inner logical block.
 
 When Graphviz needs help routing a container-to-container exchange, use **invisible representative anchor nodes**:
 - place one anchor node inside each relevant container,

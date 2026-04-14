@@ -70,9 +70,12 @@ Red physical/component exchanges must connect to:
 - physical subsystems,
 - ports,
 - connector or terminal anchors,
-- invisible representative anchors for those physical elements.
+- invisible representative anchors for those physical elements,
+- physically participating external actors at their physical container/component level.
 
 They must **not** start or end at green function boxes.
+
+If a physical component contains an inner logical/functional block with the same or a similar name, terminate the named physical link on the physical container/component level or its representative physical anchor, not on the inner logical block.
 
 ## Invisible-anchor placement technique
 

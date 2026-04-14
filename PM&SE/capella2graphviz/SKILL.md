@@ -144,34 +144,6 @@ Functional exchanges should usually connect **function to function**.
 
 Do not terminate behavioral exchanges on physical containers when the semantics are clearly functional.
 
-#### Mediated service-function pattern
-When a component contains an internal chain such as:
-- measurement / sensing,
-- processing / calculation / validation,
-- service / response / reporting,
-
-prefer to model the **service/respond/report function as the visible interaction boundary** for external consumers.
-
-Use this reusable pattern:
-- internal measurement or sensing functions feed processing/calculation functions,
-- processing/calculation functions feed a visible service/respond/report function,
-- external read/request/query/get functions interact with that service/respond/report function,
-- avoid drawing external read/request/query/get functions directly to internal measurement functions when a visible service/respond/report function is part of the intended behavior.
-
-This helps preserve the diagram's behavioral layering:
-- internal functions create or prepare the data,
-- the service/respond/report function exposes it,
-- external consumers interact with the exposed service, not with hidden internal measurement steps.
-
-Direct external-to-measurement links are only appropriate when the measurement function is itself explicitly the exposed service boundary in the source semantics.
-
-Typical reusable names for the mediating function include:
-- `Respond to ... requests`
-- `Provide ... data`
-- `Serve ... value`
-- `Report ... state`
-- `Return ... measurement`
-
 ### Physical / component exchanges
 Red physical exchanges should connect:
 - physical component ↔ physical component,

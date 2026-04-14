@@ -1,0 +1,120 @@
+In this file you can find the first BMP280 version 
+#include "Adafruit_Sensor.h"
+#include "Adafruit_INA219.h"
+#include "Adafruit_BMP280.h"
+#include <limits.h>
+
+Adafruit_BMP280 bmp;
+
+/**
+ * @brief Obtiene la temperatura en °C multiplicada por 100 (2 decimales)
+ */
+unsigned short getTemperature(long* output) {
+
+  // Data acquisition
+  float rawTemperature = bmp.readTemperature();
+
+  // 
+  double tempScaled = rawTemperature * 100.0;
+
+  // Error Validation
+  if (tempScaled > INT32_MAX) {
+    *output = INT32_MAX;
+    return 1;
+  } 
+  else if (tempScaled < -(INT32_MAX + 1)) {
+    *output = -(INT32_MAX + 1);
+    return 2;
+  }
+
+  *output = (long)tempScaled;
+  return 0;
+}
+
+/**
+ * @brief Obtiene la presión en MPa multiplicada por 100 (2 decimales)
+ */
+unsigned short getPressure(long* output) {
+
+  // Acquire
+  float rawPressure = bmp.readPressure() / 1000.0; 
+
+  // 
+  double pressureScaled = rawPressure * 100.0;
+
+  // Validation
+  if (pressureScaled > INT32_MAX) {
+    *output = INT32_MAX;
+    return 1;
+  } 
+  else if (pressureScaled < -(INT32_MAX + 1)) {
+    *output = -(INT32_MAX + 1);
+    return 2;
+  }
+
+  *output = (long)pressureScaled;
+  return 0;
+}
+
+/**
+ * @brief Obtiene la altitud en metros multiplicada por 100 (2 decimales)
+ */
+unsigned short getAltitude(long* output) {
+
+  // Acquire
+  float rawAltitude = bmp.readAltitude(1013.25);
+
+  // Procesamiento
+  double altitudeScaled = rawAltitude * 100.0;
+
+  // Validation
+  if (altitudeScaled > INT32_MAX) {
+    *output = INT32_MAX;
+    return 1;
+  } 
+  else if (altitudeScaled < -(INT32_MAX + 1)) {
+    *output = -(INT32_MAX + 1);
+    return 2;
+  }
+
+  *output = (long)altitudeScaled;
+  return 0;
+}
+
+void setup() {
+  Serial.begin(9600);
+  bmp.begin(0x76);
+}
+
+void loop() {
+
+  long temperature;
+  long pressure;
+  long altitude;
+
+  unsigned short tStatus;
+  unsigned short pStatus;
+  unsigned short aStatus;
+
+  tStatus = getTemperature(&temperature);
+  pStatus = getPressure(&pressure);
+  aStatus = getAltitude(&altitude);
+
+
+  Serial.print("Temp: ");
+  Serial.print(temperature / 100.0);
+  Serial.print(" °C | Status: ");
+  Serial.println(tStatus);
+
+  Serial.print("Pressure: ");
+  Serial.print(pressure / 100.0);
+  Serial.print(" MPa | Status: ");
+  Serial.println(pStatus);
+
+  Serial.print("Altitude: ");
+  Serial.print(altitude / 100.0);
+  Serial.print(" m | Status: ");
+  Serial.println(aStatus);
+
+  delay(500);
+}

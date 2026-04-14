@@ -23,6 +23,7 @@ digraph PDS_v0_2 {
     color="#5B65C9";
     penwidth=2;
 
+    charger_usb   [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
     charger_power [label="Provide power", fillcolor="#BDFB9B", color="#166534"];
   }
 
@@ -59,6 +60,7 @@ digraph PDS_v0_2 {
         color="#5B65C9";
         penwidth=2;
 
+        battery_jst  [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
         batt_store   [label="Store energy",  fillcolor="#BDFB9B", color="#166534"];
         batt_provide [label="Provide power", fillcolor="#BDFB9B", color="#166534"];
       }
@@ -85,6 +87,8 @@ digraph PDS_v0_2 {
           color="#5B65C9";
           penwidth=2;
 
+          battchg_usb_in  [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+          battchg_batt_in [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
           charger_reg [label="Regulate voltage", fillcolor="#BDFB9B", color="#166534"];
         }
 
@@ -95,6 +99,8 @@ digraph PDS_v0_2 {
           color="#5B65C9";
           penwidth=2;
 
+          protection_pc_out [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+          protection_ina_out [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
           restore_power [label="Restore power", fillcolor="#BDFB9B", color="#166534"];
           cut_off_power [label="Cut off power", fillcolor="#BDFB9B", color="#166534"];
         }
@@ -114,6 +120,7 @@ digraph PDS_v0_2 {
           color="#5B65C9";
           penwidth=2;
 
+          regulator_out [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
           regulate_voltage [label="Regulate\nvoltage", fillcolor="#BDFB9B", color="#166534"];
         }
       }
@@ -134,6 +141,8 @@ digraph PDS_v0_2 {
           color="#5B65C9";
           penwidth=2;
 
+          ina_power_in  [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+          ina_signal_in [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
           ina_measure_v [label="Measure voltage", fillcolor="#BDFB9B", color="#166534"];
           ina_measure_i [label="Measure current", fillcolor="#BDFB9B", color="#166534"];
           ina_respond   [label="Respond to I2C Requests", fillcolor="#BDFB9B", color="#166534"];
@@ -155,6 +164,9 @@ digraph PDS_v0_2 {
         color="#5B65C9";
         penwidth=2;
 
+        xiao_i2c_port [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+        xiao_pwr_3v3  [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+        xiao_pwr_5v   [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
         xiao_get_init [label="Get\nINA219\ninit state", fillcolor="#BDFB9B", color="#166534"];
         xiao_collect_init [label="Collect\nperipheral init\nstates", fillcolor="#BDFB9B", color="#166534"];
         xiao_init_bus [label="Init Serial0 and\nI2C", fillcolor="#BDFB9B", color="#166534"];
@@ -187,15 +199,27 @@ digraph PDS_v0_2 {
 
   // Vertical composition of main architecture
   batt_store -> batt_provide [style=invis, weight=15];
+  battery_jst -> batt_store [style=invis, weight=20];
+  charger_usb -> charger_power [style=invis, weight=18];
+  battchg_usb_in -> charger_reg [style=invis, weight=18];
+  battchg_batt_in -> charger_reg [style=invis, weight=18];
   charger_reg -> restore_power [style=invis, weight=15];
+  protection_pc_out -> restore_power [style=invis, weight=20];
+  protection_ina_out -> restore_power [style=invis, weight=18];
   restore_power -> cut_off_power [style=invis, weight=15];
   ina_measure_v -> ina_measure_i [style=invis, weight=10];
   ina_measure_v -> ina_respond [style=invis, weight=18];
   ina_measure_i -> ina_respond [style=invis, weight=18];
   restore_power -> ina_measure_v [style=invis, weight=55];
   regulate_voltage -> ina_measure_i [style=invis, weight=55];
-  regulate_voltage -> connector_terminal [style=invis, weight=42];
+  regulator_out -> regulate_voltage [style=invis, weight=18];
+  regulator_out -> connector_terminal [style=invis, weight=42];
   connector_terminal -> ina_respond [style=invis, weight=55];
+  ina_power_in -> ina_measure_v [style=invis, weight=18];
+  ina_signal_in -> ina_measure_i [style=invis, weight=18];
+  xiao_i2c_port -> xiao_get_init [style=invis, weight=18];
+  xiao_pwr_3v3 -> xiao_get_init [style=invis, weight=16];
+  xiao_pwr_5v -> xiao_read_i [style=invis, weight=16];
   xiao_get_init -> xiao_collect_init [style=invis, weight=12];
   xiao_collect_init -> xiao_init_bus [style=invis, weight=12];
   xiao_read_v -> xiao_process_v [style=invis, weight=12];
@@ -214,18 +238,22 @@ digraph PDS_v0_2 {
   note_proc -> note_5hz [style=invis, weight=10];
   note_5hz -> note_zero [style=invis, weight=10];
 
-  { rank=same; batt_store; batt_provide; }
-  { rank=same; charger_reg; regulate_voltage; }
-  { rank=same; restore_power; cut_off_power; }
-  { rank=same; ina_measure_v; ina_measure_i; connector_terminal; }
-  { rank=same; xiao_get_init; xiao_read_v; xiao_read_i; note_nb; }
+  { rank=same; battery_jst; batt_store; batt_provide; }
+  { rank=same; battchg_usb_in; battchg_batt_in; charger_reg; regulate_voltage; regulator_out; }
+  { rank=same; protection_pc_out; restore_power; cut_off_power; protection_ina_out; }
+  { rank=same; ina_power_in; ina_measure_v; ina_measure_i; connector_terminal; ina_signal_in; }
+  { rank=same; xiao_i2c_port; xiao_pwr_3v3; xiao_pwr_5v; xiao_get_init; xiao_read_v; xiao_read_i; note_nb; }
   { rank=same; xiao_process_v; xiao_process_i; note_vgt; }
   { rank=same; xiao_collect; note_5hz; }
 
   // Lane guidance
+  charger_usb -> battchg_usb_in [style=invis, weight=50];
   charger_power -> charger_reg [style=invis, weight=80];
+  battery_jst -> battchg_batt_in [style=invis, weight=50];
   batt_store -> charger_reg [style=invis, weight=65];
   batt_provide -> regulate_voltage [style=invis, weight=90];
+  connector_terminal -> xiao_pwr_3v3 [style=invis, weight=115];
+  connector_terminal -> xiao_pwr_5v [style=invis, weight=115];
   connector_terminal -> xiao_get_init [style=invis, weight=115];
   ina_respond -> xiao_read_v [style=invis, weight=120];
   user_on -> restore_power [style=invis, weight=16];
@@ -254,27 +282,31 @@ digraph PDS_v0_2 {
   ina_measure_i -> xiao_read_i [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
 
   // Physical/component exchanges (red)
-  charger_power -> charger_reg [
+  charger_usb -> battchg_usb_in [
     xlabel="USB-C Cable",
     color="#E11D28",
     fontcolor="#E11D28",
+    ltail=cluster_charger,
+    lhead=cluster_batt_charger,
     constraint=false,
     minlen=1,
     dir=none,
     tailport=e,
     headport=w
   ];
-  batt_provide -> charger_reg [
+  battery_jst -> battchg_batt_in [
     xlabel="Battery Cable JST",
     color="#E11D28",
     fontcolor="#E11D28",
+    ltail=cluster_battery,
+    lhead=cluster_batt_charger,
     constraint=false,
     minlen=1,
     dir=none,
     tailport=s,
     headport=nw
   ];
-  restore_power -> connector_terminal [
+  protection_pc_out -> connector_terminal [
     xlabel="PC Out trace / GND",
     color="#E11D28",
     fontcolor="#E11D28",
@@ -283,16 +315,18 @@ digraph PDS_v0_2 {
     tailport=e,
     headport=w
   ];
-  restore_power -> ina_measure_v [
+  protection_ina_out -> ina_signal_in [
     xlabel="INA Out",
     color="#E11D28",
     fontcolor="#E11D28",
+    ltail=cluster_power_protection,
+    lhead=cluster_batt_monitoring,
     constraint=false,
     dir=none,
     tailport=s,
     headport=n
   ];
-  regulate_voltage -> connector_terminal [
+  regulator_out -> connector_terminal [
     xlabel="5V / 3V3 / GND",
     color="#E11D28",
     fontcolor="#E11D28",
@@ -301,7 +335,7 @@ digraph PDS_v0_2 {
     tailport=s,
     headport=n
   ];
-  connector_terminal -> xiao_read_v [
+  connector_terminal -> xiao_pwr_3v3 [
     xlabel="3V3 / GND",
     color="#E11D28",
     fontcolor="#E11D28",
@@ -313,7 +347,7 @@ digraph PDS_v0_2 {
     tailport=s,
     headport=nw
   ];
-  connector_terminal -> xiao_read_i [
+  connector_terminal -> xiao_pwr_5v [
     xlabel="5V / GND",
     color="#E11D28",
     fontcolor="#E11D28",

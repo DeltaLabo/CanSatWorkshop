@@ -245,8 +245,10 @@ digraph PDS_v0_2 {
   xiao_pwr_5v -> xiao_read_i [style=invis, weight=16];
   xiao_get_init -> xiao_collect_init [style=invis, weight=12];
   xiao_collect_init -> xiao_init_bus [style=invis, weight=12];
-  xiao_read_v -> xiao_process_v [style=invis, weight=12];
-  xiao_read_i -> xiao_process_i [style=invis, weight=12];
+  xiao_read_v -> ina_respond [style=invis, weight=12];
+  xiao_read_i -> ina_respond [style=invis, weight=12];
+  ina_respond -> xiao_process_v [style=invis, weight=12];
+  ina_respond -> xiao_process_i [style=invis, weight=12];
   xiao_process_v -> xiao_collect [style=invis, weight=10];
   xiao_process_i -> xiao_collect [style=invis, weight=10];
   xiao_collect -> xiao_log [style=invis, weight=12];
@@ -278,7 +280,7 @@ digraph PDS_v0_2 {
   connector_terminal -> xiao_pwr_3v3 [style=invis, weight=115];
   connector_terminal -> xiao_pwr_5v [style=invis, weight=115];
   connector_terminal -> xiao_get_init [style=invis, weight=115];
-  ina_respond -> xiao_read_v [style=invis, weight=120];
+  ina_respond -> xiao_process_v [style=invis, weight=120];
   user_on -> restore_power [style=invis, weight=16];
   xiao_read_i -> note_vgt [style=invis, weight=8];
 
@@ -289,11 +291,7 @@ digraph PDS_v0_2 {
   charger_reg -> batt_store [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
   batt_provide -> regulate_voltage [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
 
-  ina_measure_v -> ina_respond [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
-  ina_measure_i -> ina_respond [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
   xiao_get_init -> xiao_collect_init [xlabel="[Result]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
-  xiao_read_v -> xiao_process_v [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
-  xiao_read_i -> xiao_process_i [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
   xiao_process_v -> xiao_collect [xlabel="[Result]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
   xiao_process_i -> xiao_collect [xlabel="[Result]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
   xiao_collect -> xiao_log [xlabel="[LoRa Frame]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false];
@@ -301,8 +299,8 @@ digraph PDS_v0_2 {
   xiao_get_init -> ina_respond [xlabel="[I2C Req]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
   xiao_read_v -> ina_respond [xlabel="[I2C Req]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
   xiao_read_i -> ina_respond [xlabel="[I2C Req]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
-  ina_respond -> xiao_read_v [xlabel="[I2C Resp]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
-  ina_respond -> xiao_read_i [xlabel="[I2C Resp]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
+  ina_respond -> xiao_process_v [xlabel="[I2C Resp]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
+  ina_respond -> xiao_process_i [xlabel="[I2C Resp]", color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
 
   // Physical/component exchanges (red)
   charger_usb -> protection_usb_anchor [

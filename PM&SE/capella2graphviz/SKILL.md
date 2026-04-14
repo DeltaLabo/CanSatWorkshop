@@ -28,7 +28,19 @@ When asked to create or improve a Capella-like diagram:
 The key lesson: **Capella-like Graphviz diagrams must be visually iterated**. Good structure in DOT does not guarantee a good rendered diagram.
 
 When the input is an existing image (JPG/PNG/PDF screenshot), first treat it as a **layout to reconstruct**, not just semantics to restate.
+The source image is a **reference and acceptance target**, not an asset to embed as the finished Graphviz result.
 If exact reconstruction matters and the Capella model files are available, prefer XML-assisted reconstruction over image-only guessing.
+
+### Forbidden shortcut: embedding the source image as the diagram
+Do **not** "solve" an image-to-Graphviz task by placing the original screenshot, raster image, or PDF into the DOT as the main content.
+This includes patterns such as:
+- a single giant node whose label/image is the source screenshot,
+- HTML-like labels that just display the source image,
+- `image=...` on the main node or main structure,
+- using the source screenshot as a background that replaces reconstruction.
+
+Those approaches may visually match the input, but they are **not Graphviz reconstructions** and do not satisfy the task.
+Use the source image only to infer structure, composition, labels, and layout quality; the final DOT must recreate the view with Graphviz nodes, clusters, and edges.
 
 ---
 
@@ -231,6 +243,10 @@ Observed result from iteration:
 
 When converting an existing Capella screenshot/image into Graphviz, follow this sequence before writing DOT:
 
+0. **Reject source-image embedding shortcuts**
+   - Do **not** embed the original screenshot/image/PDF as the output diagram's main content.
+   - The deliverable must be a reconstructed Graphviz diagram, not a wrapper around the source asset.
+
 1. **Read the image as a spatial composition**
    - Identify the outer subsystem container.
    - Identify every first-level block inside it.
@@ -259,6 +275,7 @@ When converting an existing Capella screenshot/image into Graphviz, follow this 
 6. **Do a composition-first acceptance check before detailed routing**
    - Compare the render against the source image side by side.
    - Reject the render immediately if the major composition is wrong, even if many labels and exchanges are already present.
+   - Also reject any result that merely displays the source image instead of reconstructing it.
    - Only continue into detailed exchange cleanup once the big blocks are in the right regions of the page.
 
 ### Strong recommendation for screenshots with many cross-boundary edges

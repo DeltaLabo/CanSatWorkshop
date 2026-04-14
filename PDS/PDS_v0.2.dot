@@ -1,0 +1,20 @@
+digraph PDS_v0_2 {
+  graph [
+    layout=dot,
+    rankdir=TB,
+    pad=0.15,
+    margin=0,
+    bgcolor="white",
+    fontname="Helvetica"
+  ];
+
+  node [shape=none, margin=0, fontname="Helvetica"];
+  edge [style=invis];
+
+  source_view [
+    label="",
+    image="PDS/PDS_v0.2.jpg",
+    imagescale=true,
+    fixedsize=false
+  ];
+}

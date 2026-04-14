@@ -23,7 +23,7 @@ digraph PDS_v0_2 {
     color="#5B65C9";
     penwidth=2;
 
-    charger_usb   [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+    charger_usb   [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
     charger_power [label="Provide power", fillcolor="#BDFB9B", color="#166534"];
   }
 
@@ -60,7 +60,7 @@ digraph PDS_v0_2 {
         color="#5B65C9";
         penwidth=2;
 
-        battery_jst  [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+        battery_jst  [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
         batt_store   [label="Store energy",  fillcolor="#BDFB9B", color="#166534"];
         batt_provide [label="Provide power", fillcolor="#BDFB9B", color="#166534"];
       }
@@ -87,8 +87,8 @@ digraph PDS_v0_2 {
           color="#5B65C9";
           penwidth=2;
 
-          battchg_usb_in  [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
-          battchg_batt_in [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+          battchg_usb_in  [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
+          battchg_batt_in [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
           charger_reg [label="Regulate voltage", fillcolor="#BDFB9B", color="#166534"];
         }
 
@@ -99,8 +99,8 @@ digraph PDS_v0_2 {
           color="#5B65C9";
           penwidth=2;
 
-          protection_pc_out [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
-          protection_ina_out [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+          protection_pc_out [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
+          protection_ina_out [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
           restore_power [label="Restore power", fillcolor="#BDFB9B", color="#166534"];
           cut_off_power [label="Cut off power", fillcolor="#BDFB9B", color="#166534"];
         }
@@ -120,7 +120,7 @@ digraph PDS_v0_2 {
           color="#5B65C9";
           penwidth=2;
 
-          regulator_out [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+          regulator_out [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
           regulate_voltage [label="Regulate\nvoltage", fillcolor="#BDFB9B", color="#166534"];
         }
       }
@@ -141,8 +141,8 @@ digraph PDS_v0_2 {
           color="#5B65C9";
           penwidth=2;
 
-          ina_power_in  [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
-          ina_signal_in [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+          ina_power_in  [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
+          ina_signal_in [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
           ina_measure_v [label="Measure voltage", fillcolor="#BDFB9B", color="#166534"];
           ina_measure_i [label="Measure current", fillcolor="#BDFB9B", color="#166534"];
           ina_respond   [label="Respond to I2C Requests", fillcolor="#BDFB9B", color="#166534"];
@@ -164,9 +164,9 @@ digraph PDS_v0_2 {
         color="#5B65C9";
         penwidth=2;
 
-        xiao_i2c_port [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
-        xiao_pwr_3v3  [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
-        xiao_pwr_5v   [label="", shape=point, width=0.08, height=0.08, fixedsize=true, fillcolor="#D1B24A", color="#D1B24A"];
+        xiao_i2c_port [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
+        xiao_pwr_3v3  [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
+        xiao_pwr_5v   [label="", shape=point, width=0, height=0, fixedsize=true, style=invis];
         xiao_get_init [label="Get\nINA219\ninit state", fillcolor="#BDFB9B", color="#166534"];
         xiao_collect_init [label="Collect\nperipheral init\nstates", fillcolor="#BDFB9B", color="#166534"];
         xiao_init_bus [label="Init Serial0 and\nI2C", fillcolor="#BDFB9B", color="#166534"];
@@ -207,6 +207,8 @@ digraph PDS_v0_2 {
   protection_pc_out -> restore_power [style=invis, weight=20];
   protection_ina_out -> restore_power [style=invis, weight=18];
   restore_power -> cut_off_power [style=invis, weight=15];
+  cut_off_power -> protection_pc_out [style=invis, weight=20];
+  protection_pc_out -> protection_ina_out [style=invis, weight=20];
   ina_measure_v -> ina_measure_i [style=invis, weight=10];
   ina_measure_v -> ina_respond [style=invis, weight=18];
   ina_measure_i -> ina_respond [style=invis, weight=18];
@@ -240,7 +242,7 @@ digraph PDS_v0_2 {
 
   { rank=same; battery_jst; batt_store; batt_provide; }
   { rank=same; battchg_usb_in; battchg_batt_in; charger_reg; regulate_voltage; regulator_out; }
-  { rank=same; protection_pc_out; restore_power; cut_off_power; protection_ina_out; }
+  { rank=same; restore_power; cut_off_power; protection_pc_out; protection_ina_out; }
   { rank=same; ina_power_in; ina_measure_v; ina_measure_i; connector_terminal; ina_signal_in; }
   { rank=same; xiao_i2c_port; xiao_pwr_3v3; xiao_pwr_5v; xiao_get_init; xiao_read_v; xiao_read_i; note_nb; }
   { rank=same; xiao_process_v; xiao_process_i; note_vgt; }
@@ -310,6 +312,7 @@ digraph PDS_v0_2 {
     xlabel="PC Out / GND",
     color="#E11D28",
     fontcolor="#E11D28",
+    ltail=cluster_power_protection,
     constraint=false,
     dir=none,
     tailport=e,
@@ -330,6 +333,7 @@ digraph PDS_v0_2 {
     xlabel="5V / 3V3 / GND",
     color="#E11D28",
     fontcolor="#E11D28",
+    ltail=cluster_regulator,
     constraint=false,
     dir=none,
     tailport=s,

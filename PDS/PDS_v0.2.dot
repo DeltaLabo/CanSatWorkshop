@@ -194,7 +194,8 @@ digraph PDS_v0_2 {
   ina_measure_i -> ina_respond [style=invis, weight=18];
   restore_power -> ina_measure_v [style=invis, weight=55];
   regulate_voltage -> ina_measure_i [style=invis, weight=55];
-  connector_terminal -> ina_respond [style=invis, weight=45];
+  regulate_voltage -> connector_terminal [style=invis, weight=42];
+  connector_terminal -> ina_respond [style=invis, weight=55];
   xiao_get_init -> xiao_collect_init [style=invis, weight=12];
   xiao_collect_init -> xiao_init_bus [style=invis, weight=12];
   xiao_read_v -> xiao_process_v [style=invis, weight=12];
@@ -215,8 +216,8 @@ digraph PDS_v0_2 {
 
   { rank=same; batt_store; batt_provide; }
   { rank=same; charger_reg; regulate_voltage; }
-  { rank=same; restore_power; cut_off_power; connector_terminal; }
-  { rank=same; ina_measure_v; ina_measure_i; }
+  { rank=same; restore_power; cut_off_power; }
+  { rank=same; ina_measure_v; ina_measure_i; connector_terminal; }
   { rank=same; xiao_get_init; xiao_read_v; xiao_read_i; note_nb; }
   { rank=same; xiao_process_v; xiao_process_i; note_vgt; }
   { rank=same; xiao_collect; note_5hz; }
@@ -225,8 +226,8 @@ digraph PDS_v0_2 {
   charger_power -> batt_store [style=invis, weight=10];
   batt_store -> charger_reg [style=invis, weight=80];
   batt_provide -> regulate_voltage [style=invis, weight=90];
-  connector_terminal -> xiao_get_init [style=invis, weight=100];
-  ina_respond -> xiao_read_v [style=invis, weight=110];
+  connector_terminal -> xiao_get_init [style=invis, weight=115];
+  ina_respond -> xiao_read_v [style=invis, weight=120];
   user_on -> restore_power [style=invis, weight=16];
   xiao_read_i -> note_vgt [style=invis, weight=8];
 

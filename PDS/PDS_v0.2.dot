@@ -53,6 +53,8 @@ digraph PDS_v0_2 {
       color="#D1B24A";
       penwidth=2;
 
+      battpack_jst [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
+
       subgraph cluster_battery {
         label="Battery";
         style="filled,rounded";
@@ -79,6 +81,9 @@ digraph PDS_v0_2 {
         fillcolor="#FFF8BF";
         color="#D1B24A";
         penwidth=2;
+
+        protection_usb_anchor  [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
+        protection_batt_anchor [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
 
         subgraph cluster_batt_charger {
           label="Battery Charger";
@@ -120,6 +125,8 @@ digraph PDS_v0_2 {
         fillcolor="#FFF8BF";
         color="#D1B24A";
         penwidth=2;
+
+        regulator_phys_out [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
 
         subgraph cluster_regulator {
           label="Regulator";
@@ -209,10 +216,13 @@ digraph PDS_v0_2 {
 
   // Vertical composition of main architecture
   batt_store -> batt_provide [style=invis, weight=15];
+  battpack_jst -> battery_jst [style=invis, weight=24];
   battery_jst -> batt_store [style=invis, weight=20];
   charger_usb -> charger_power [style=invis, weight=18];
   battchg_usb_in -> charger_reg [style=invis, weight=18];
   battchg_batt_in -> charger_reg [style=invis, weight=18];
+  protection_usb_anchor -> battchg_usb_in [style=invis, weight=26];
+  protection_batt_anchor -> battchg_batt_in [style=invis, weight=26];
   charger_reg -> restore_power [style=invis, weight=15];
   protection_pc_out -> restore_power [style=invis, weight=20];
   protection_ina_out -> restore_power [style=invis, weight=18];
@@ -224,7 +234,8 @@ digraph PDS_v0_2 {
   ina_measure_i -> ina_respond [style=invis, weight=18];
   restore_power -> ina_measure_v [style=invis, weight=55];
   regulate_voltage -> ina_measure_i [style=invis, weight=55];
-  regulator_out -> regulate_voltage [style=invis, weight=18];
+  regulate_voltage -> regulator_out [style=invis, weight=18];
+  regulator_phys_out -> regulator_out [style=invis, weight=24];
   regulator_out -> connector_terminal [style=invis, weight=42];
   connector_terminal -> ina_respond [style=invis, weight=55];
   ina_power_in -> ina_measure_v [style=invis, weight=18];
@@ -250,8 +261,8 @@ digraph PDS_v0_2 {
   note_proc -> note_5hz [style=invis, weight=10];
   note_5hz -> note_zero [style=invis, weight=10];
 
-  { rank=same; battery_jst; batt_store; batt_provide; }
-  { rank=same; battchg_usb_in; battchg_batt_in; charger_reg; regulate_voltage; regulator_out; }
+  { rank=same; battpack_jst; battery_jst; batt_store; batt_provide; }
+  { rank=same; protection_usb_anchor; battchg_usb_in; protection_batt_anchor; battchg_batt_in; charger_reg; regulate_voltage; regulator_out; regulator_phys_out; }
   { rank=same; restore_power; cut_off_power; protection_pc_out; protection_ina_out; }
   { rank=same; ina_power_in; ina_measure_v; ina_measure_i; connector_terminal; ina_signal_in; }
   { rank=same; xiao_i2c_port; xiao_pwr_3v3; xiao_pwr_5v; xiao_get_init; xiao_read_v; xiao_read_i; note_nb; }
@@ -259,9 +270,9 @@ digraph PDS_v0_2 {
   { rank=same; xiao_collect; note_5hz; }
 
   // Lane guidance
-  charger_usb -> battchg_usb_in [style=invis, weight=50];
+  charger_usb -> protection_usb_anchor [style=invis, weight=50];
   charger_power -> charger_reg [style=invis, weight=80];
-  battery_jst -> battchg_batt_in [style=invis, weight=50];
+  battpack_jst -> protection_batt_anchor [style=invis, weight=50];
   batt_store -> charger_reg [style=invis, weight=65];
   batt_provide -> regulate_voltage [style=invis, weight=90];
   connector_terminal -> xiao_pwr_3v3 [style=invis, weight=115];
@@ -294,24 +305,24 @@ digraph PDS_v0_2 {
   ina_measure_i -> xiao_read_i [color="#1F7A4D", fontcolor="#1F7A4D", constraint=false, minlen=2];
 
   // Physical/component exchanges (red)
-  charger_usb -> battchg_usb_in [
+  charger_usb -> protection_usb_anchor [
     xlabel="USB-C Cable",
     color="#E11D28",
     fontcolor="#E11D28",
     ltail=cluster_charger,
-    lhead=cluster_batt_charger,
+    lhead=cluster_protection,
     constraint=false,
     minlen=1,
     dir=none,
     tailport=e,
     headport=w
   ];
-  battery_jst -> battchg_batt_in [
+  battpack_jst -> protection_batt_anchor [
     xlabel="Battery Cable JST",
     color="#E11D28",
     fontcolor="#E11D28",
-    ltail=cluster_battery,
-    lhead=cluster_batt_charger,
+    ltail=cluster_battpack,
+    lhead=cluster_protection,
     constraint=false,
     minlen=1,
     dir=none,
@@ -339,11 +350,11 @@ digraph PDS_v0_2 {
     tailport=e,
     headport=w
   ];
-  regulator_out -> connector_terminal [
+  regulator_phys_out -> connector_terminal [
     xlabel="5V / 3V3 / GND",
     color="#E11D28",
     fontcolor="#E11D28",
-    ltail=cluster_regulator,
+    ltail=cluster_regulator_block,
     constraint=false,
     dir=none,
     tailport=s,

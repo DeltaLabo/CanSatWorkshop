@@ -26,18 +26,18 @@
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_battpack</title>
-<polygon fill="#fff8bf" stroke="#d1b24a" stroke-width="2" points="428,-1343.92 428,-1457.95 788,-1457.95 788,-1343.92 428,-1343.92"/>
-<text xml:space="preserve" text-anchor="middle" x="608" y="-1440.65" font-family="Helvetica,sans-Serif" font-size="14.00">1S1P Li&#45;Ion</text>
+<polygon fill="#fff8bf" stroke="#d1b24a" stroke-width="2" points="397,-1343.92 397,-1457.95 779,-1457.95 779,-1343.92 397,-1343.92"/>
+<text xml:space="preserve" text-anchor="middle" x="588" y="-1440.65" font-family="Helvetica,sans-Serif" font-size="14.00">1S1P Li&#45;Ion</text>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_battery</title>
-<path fill="#a9c7e6" stroke="#5b65c9" stroke-width="2" d="M448,-1351.92C448,-1351.92 768,-1351.92 768,-1351.92 774,-1351.92 780,-1357.92 780,-1363.92 780,-1363.92 780,-1414.95 780,-1414.95 780,-1420.95 774,-1426.95 768,-1426.95 768,-1426.95 448,-1426.95 448,-1426.95 442,-1426.95 436,-1420.95 436,-1414.95 436,-1414.95 436,-1363.92 436,-1363.92 436,-1357.92 442,-1351.92 448,-1351.92"/>
-<text xml:space="preserve" text-anchor="middle" x="608" y="-1409.65" font-family="Helvetica,sans-Serif" font-size="14.00">Battery</text>
+<path fill="#a9c7e6" stroke="#5b65c9" stroke-width="2" d="M417,-1351.92C417,-1351.92 737,-1351.92 737,-1351.92 743,-1351.92 749,-1357.92 749,-1363.92 749,-1363.92 749,-1414.95 749,-1414.95 749,-1420.95 743,-1426.95 737,-1426.95 737,-1426.95 417,-1426.95 417,-1426.95 411,-1426.95 405,-1420.95 405,-1414.95 405,-1414.95 405,-1363.92 405,-1363.92 405,-1357.92 411,-1351.92 417,-1351.92"/>
+<text xml:space="preserve" text-anchor="middle" x="577" y="-1409.65" font-family="Helvetica,sans-Serif" font-size="14.00">Battery</text>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_board</title>
-<polygon fill="#fff8bf" stroke="#d1b24a" stroke-width="2" points="196,-830.68 196,-1335.92 774,-1335.92 774,-830.68 196,-830.68"/>
-<text xml:space="preserve" text-anchor="middle" x="485" y="-1318.62" font-family="Helvetica,sans-Serif" font-size="14.00">PDS Circuitboard</text>
+<polygon fill="#fff8bf" stroke="#d1b24a" stroke-width="2" points="196,-830.68 196,-1335.92 797,-1335.92 797,-830.68 196,-830.68"/>
+<text xml:space="preserve" text-anchor="middle" x="496.5" y="-1318.62" font-family="Helvetica,sans-Serif" font-size="14.00">PDS Circuitboard</text>
 </g>
 <g id="clust7" class="cluster">
 <title>cluster_protection</title>
@@ -56,8 +56,8 @@
 </g>
 <g id="clust10" class="cluster">
 <title>cluster_regulator_block</title>
-<polygon fill="#fff8bf" stroke="#d1b24a" stroke-width="2" points="607,-1172.14 607,-1304.92 766,-1304.92 766,-1172.14 607,-1172.14"/>
-<text xml:space="preserve" text-anchor="middle" x="686.5" y="-1287.62" font-family="Helvetica,sans-Serif" font-size="14.00">Regulator</text>
+<polygon fill="#fff8bf" stroke="#d1b24a" stroke-width="2" points="607,-1172.14 607,-1304.92 789,-1304.92 789,-1172.14 607,-1172.14"/>
+<text xml:space="preserve" text-anchor="middle" x="698" y="-1287.62" font-family="Helvetica,sans-Serif" font-size="14.00">Regulator</text>
 </g>
 <g id="clust11" class="cluster">
 <title>cluster_regulator</title>
@@ -97,13 +97,13 @@
 <text xml:space="preserve" text-anchor="middle" x="102" y="-1370.21" font-family="Helvetica,sans-Serif" font-size="18.00">Provide power</text>
 </g>
 <!-- charger_usb&#45;&gt;charger_power -->
-<!-- battchg_usb_in -->
-<!-- charger_usb&#45;&gt;battchg_usb_in -->
-<!-- charger_usb&#45;&gt;battchg_usb_in -->
-<g id="edge77" class="edge">
-<title>charger_usb:e&#45;&gt;battchg_usb_in:w</title>
-<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M180,-1497.17C204.58,-1495.32 289,-1488.95 289,-1488.95 289,-1488.95 393,-1335.92 393,-1335.92 393,-1335.92 397.63,-1297.87 401.68,-1264.55"/>
-<text xml:space="preserve" text-anchor="middle" x="286.24" y="-1429.41" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">USB&#45;C Cable</text>
+<!-- protection_usb_anchor -->
+<!-- charger_usb&#45;&gt;protection_usb_anchor -->
+<!-- charger_usb&#45;&gt;protection_usb_anchor -->
+<g id="edge81" class="edge">
+<title>charger_usb:e&#45;&gt;protection_usb_anchor:w</title>
+<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M180,-1497.12C202.86,-1495.19 277,-1488.95 277,-1488.95 277,-1488.95 398,-1343.92 398,-1343.92 398,-1343.92 455,-1335.92 455,-1335.92 455,-1335.92 457.21,-1317.76 459.91,-1295.55"/>
+<text xml:space="preserve" text-anchor="middle" x="293.53" y="-1417.6" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">USB&#45;C Cable</text>
 </g>
 <!-- user_on -->
 <g id="node3" class="node">
@@ -113,14 +113,14 @@
 </g>
 <!-- charger_power&#45;&gt;user_on -->
 <!-- charger_reg -->
-<g id="node10" class="node">
+<g id="node13" class="node">
 <title>charger_reg</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="378.33,-1233.55 219.67,-1233.55 219.67,-1197.52 378.33,-1197.52 378.33,-1233.55"/>
 <text xml:space="preserve" text-anchor="middle" x="299" y="-1207.81" font-family="Helvetica,sans-Serif" font-size="18.00">Regulate voltage</text>
 </g>
 <!-- charger_power&#45;&gt;charger_reg -->
 <!-- charger_power&#45;&gt;charger_reg -->
-<g id="edge59" class="edge">
+<g id="edge63" class="edge">
 <title>charger_power&#45;&gt;charger_reg</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M150.81,-1359.43C176.4,-1348.28 202,-1335.92 202,-1335.92 202,-1335.92 256.48,-1277.85 284.36,-1242.71"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="286.45,-1244.58 289.11,-1236.53 282.01,-1241.17 286.45,-1244.58"/>
@@ -133,111 +133,117 @@
 </g>
 <!-- user_on&#45;&gt;user_off -->
 <!-- restore_power -->
-<g id="node13" class="node">
+<g id="node16" class="node">
 <title>restore_power</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="422.71,-1123.14 281.29,-1123.14 281.29,-1087.11 422.71,-1087.11 422.71,-1123.14"/>
 <text xml:space="preserve" text-anchor="middle" x="352" y="-1097.4" font-family="Helvetica,sans-Serif" font-size="18.00">Restore power</text>
 </g>
 <!-- user_on&#45;&gt;restore_power -->
 <!-- user_on&#45;&gt;restore_power -->
-<g id="edge60" class="edge">
+<g id="edge64" class="edge">
 <title>user_on&#45;&gt;restore_power</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M152.17,-1197.05C185.37,-1185.37 220,-1172.14 220,-1172.14 220,-1172.14 281,-1154.14 281,-1154.14 281,-1154.14 303.39,-1141.64 323.33,-1129.4"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="324.69,-1131.85 329.99,-1125.23 321.72,-1127.1 324.69,-1131.85"/>
 </g>
 <!-- cut_off_power -->
-<g id="node14" class="node">
+<g id="node17" class="node">
 <title>cut_off_power</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="583.46,-1123.14 452.54,-1123.14 452.54,-1087.11 583.46,-1087.11 583.46,-1123.14"/>
 <text xml:space="preserve" text-anchor="middle" x="518" y="-1097.4" font-family="Helvetica,sans-Serif" font-size="18.00">Cut off power</text>
 </g>
 <!-- user_off&#45;&gt;cut_off_power -->
-<g id="edge61" class="edge">
+<g id="edge65" class="edge">
 <title>user_off&#45;&gt;cut_off_power</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M133.87,-1123.49C170.78,-1140.48 220,-1163.14 220,-1163.14 220,-1163.14 423,-1163.14 423,-1163.14 423,-1163.14 438,-1154.14 438,-1154.14 438,-1154.14 458.47,-1141.6 478.7,-1129.21"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="480.01,-1131.69 485.37,-1125.12 477.09,-1126.91 480.01,-1131.69"/>
 </g>
+<!-- battpack_jst -->
 <!-- battery_jst -->
+<!-- battpack_jst&#45;&gt;battery_jst -->
+<!-- protection_batt_anchor -->
+<!-- battpack_jst&#45;&gt;protection_batt_anchor -->
+<!-- battpack_jst&#45;&gt;protection_batt_anchor -->
+<g id="edge82" class="edge">
+<title>battpack_jst:s&#45;&gt;protection_batt_anchor:n</title>
+<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M756,-1343.92C756,-1343.92 608,-1335.92 608,-1335.92 608,-1335.92 603.41,-1303.86 599,-1273.07"/>
+<text xml:space="preserve" text-anchor="middle" x="589.55" y="-1339.71" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">Battery Cable JST</text>
+</g>
 <!-- batt_store -->
-<g id="node6" class="node">
+<g id="node7" class="node">
 <title>batt_store</title>
-<polygon fill="#bdfb9b" stroke="#166534" points="601.96,-1395.95 474.04,-1395.95 474.04,-1359.92 601.96,-1359.92 601.96,-1395.95"/>
-<text xml:space="preserve" text-anchor="middle" x="538" y="-1370.21" font-family="Helvetica,sans-Serif" font-size="18.00">Store energy</text>
+<polygon fill="#bdfb9b" stroke="#166534" points="570.96,-1395.95 443.04,-1395.95 443.04,-1359.92 570.96,-1359.92 570.96,-1395.95"/>
+<text xml:space="preserve" text-anchor="middle" x="507" y="-1370.21" font-family="Helvetica,sans-Serif" font-size="18.00">Store energy</text>
 </g>
 <!-- battery_jst&#45;&gt;batt_store -->
-<!-- battchg_batt_in -->
-<!-- battery_jst&#45;&gt;battchg_batt_in -->
-<!-- battery_jst&#45;&gt;battchg_batt_in -->
-<g id="edge78" class="edge">
-<title>battery_jst:s&#45;&gt;battchg_batt_in:nw</title>
-<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M443.33,-1351.93C442.7,-1328.77 441.73,-1293.28 440.94,-1264.55"/>
-<text xml:space="preserve" text-anchor="middle" x="381.39" y="-1309.74" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">Battery Cable JST</text>
-</g>
 <!-- batt_provide -->
-<g id="node7" class="node">
+<g id="node8" class="node">
 <title>batt_provide</title>
-<polygon fill="#bdfb9b" stroke="#166534" points="771.59,-1395.95 632.41,-1395.95 632.41,-1359.92 771.59,-1359.92 771.59,-1395.95"/>
-<text xml:space="preserve" text-anchor="middle" x="702" y="-1370.21" font-family="Helvetica,sans-Serif" font-size="18.00">Provide power</text>
+<polygon fill="#bdfb9b" stroke="#166534" points="740.59,-1395.95 601.41,-1395.95 601.41,-1359.92 740.59,-1359.92 740.59,-1395.95"/>
+<text xml:space="preserve" text-anchor="middle" x="671" y="-1370.21" font-family="Helvetica,sans-Serif" font-size="18.00">Provide power</text>
 </g>
 <!-- batt_store&#45;&gt;batt_provide -->
 <!-- batt_store&#45;&gt;charger_reg -->
 <!-- regulate_voltage -->
-<g id="node16" class="node">
+<g id="node20" class="node">
 <title>regulate_voltage</title>
-<polygon fill="#bdfb9b" stroke="#166534" points="750.21,-1242.92 653.79,-1242.92 653.79,-1188.14 750.21,-1188.14 750.21,-1242.92"/>
-<text xml:space="preserve" text-anchor="middle" x="702" y="-1217.18" font-family="Helvetica,sans-Serif" font-size="18.00">Regulate</text>
-<text xml:space="preserve" text-anchor="middle" x="702" y="-1198.43" font-family="Helvetica,sans-Serif" font-size="18.00">voltage</text>
+<polygon fill="#bdfb9b" stroke="#166534" points="719.21,-1242.92 622.79,-1242.92 622.79,-1188.14 719.21,-1188.14 719.21,-1242.92"/>
+<text xml:space="preserve" text-anchor="middle" x="671" y="-1217.18" font-family="Helvetica,sans-Serif" font-size="18.00">Regulate</text>
+<text xml:space="preserve" text-anchor="middle" x="671" y="-1198.43" font-family="Helvetica,sans-Serif" font-size="18.00">voltage</text>
 </g>
 <!-- batt_provide&#45;&gt;regulate_voltage -->
 <!-- batt_provide&#45;&gt;regulate_voltage -->
 <!-- batt_provide&#45;&gt;regulate_voltage -->
-<g id="edge63" class="edge">
+<g id="edge67" class="edge">
 <title>batt_provide&#45;&gt;regulate_voltage</title>
-<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M716.67,-1359.47C725.19,-1334.3 726.76,-1287.22 721.38,-1253.98"/>
-<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="724.21,-1253.88 719.92,-1246.56 718.71,-1254.95 724.21,-1253.88"/>
+<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M685.67,-1359.47C694.19,-1334.3 695.76,-1287.22 690.38,-1253.98"/>
+<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="693.21,-1253.88 688.92,-1246.56 687.71,-1254.95 693.21,-1253.88"/>
 </g>
+<!-- battchg_usb_in -->
+<!-- protection_usb_anchor&#45;&gt;battchg_usb_in -->
+<!-- battchg_batt_in -->
+<!-- protection_batt_anchor&#45;&gt;battchg_batt_in -->
 <!-- battchg_usb_in&#45;&gt;battchg_batt_in -->
 <!-- battchg_usb_in&#45;&gt;charger_reg -->
 <!-- battchg_usb_in&#45;&gt;charger_reg -->
 <!-- battchg_batt_in&#45;&gt;charger_reg -->
 <!-- battchg_batt_in&#45;&gt;charger_reg -->
 <!-- charger_reg&#45;&gt;batt_store -->
-<g id="edge62" class="edge">
+<g id="edge66" class="edge">
 <title>charger_reg&#45;&gt;batt_store</title>
-<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M304.39,-1233.9C324.16,-1267.01 379,-1335.92 379,-1335.92 379,-1335.92 444,-1343.92 444,-1343.92 444,-1343.92 456.51,-1349.15 472.51,-1355.45"/>
-<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="471.28,-1357.97 479.75,-1358.26 473.31,-1352.75 471.28,-1357.97"/>
+<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M304.39,-1233.9C324.16,-1267.01 379,-1335.92 379,-1335.92 379,-1335.92 413,-1343.92 413,-1343.92 413,-1343.92 425.51,-1349.15 441.51,-1355.45"/>
+<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="440.28,-1357.97 448.75,-1358.26 442.31,-1352.75 440.28,-1357.97"/>
 </g>
 <!-- charger_reg&#45;&gt;restore_power -->
 <!-- protection_pc_out -->
 <!-- protection_ina_out -->
 <!-- protection_pc_out&#45;&gt;protection_ina_out -->
 <!-- protection_pc_out&#45;&gt;restore_power -->
-<!-- connector_terminal -->
-<g id="node17" class="node">
-<title>connector_terminal</title>
-<polygon fill="#fff8bf" stroke="#d1b24a" stroke-width="2" points="765.84,-1010.49 658.16,-1010.49 658.16,-955.71 765.84,-955.71 765.84,-1010.49"/>
-<text xml:space="preserve" text-anchor="middle" x="712" y="-984.75" font-family="Helvetica,sans-Serif" font-size="18.00">Connector</text>
-<text xml:space="preserve" text-anchor="middle" x="712" y="-966" font-family="Helvetica,sans-Serif" font-size="18.00">Terminal</text>
-</g>
-<!-- protection_pc_out&#45;&gt;connector_terminal -->
-<g id="edge79" class="edge">
-<title>protection_pc_out:e&#45;&gt;connector_terminal:w</title>
-<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M232.56,-1079.12C234.55,-1074.49 236,-1071.11 236,-1071.11 236,-1071.11 639,-1063.12 639,-1063.12 639,-1063.12 657.16,-983.1 657.16,-983.1"/>
-<text xml:space="preserve" text-anchor="middle" x="426.16" y="-1067.89" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">PC Out / GND</text>
+<!-- ina_power_in -->
+<!-- protection_pc_out&#45;&gt;ina_power_in -->
+<g id="edge83" class="edge">
+<title>protection_pc_out:s&#45;&gt;ina_power_in:nw</title>
+<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M219.93,-1079.12C219.89,-1065.57 219.83,-1048.22 219.78,-1032.11"/>
+<text xml:space="preserve" text-anchor="middle" x="171.85" y="-1057.11" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">PC Out / GND</text>
 </g>
 <!-- protection_ina_out&#45;&gt;protection_pc_out -->
 <!-- protection_ina_out&#45;&gt;restore_power -->
-<!-- ina_signal_in -->
-<!-- protection_ina_out&#45;&gt;ina_signal_in -->
-<g id="edge80" class="edge">
-<title>protection_ina_out:s&#45;&gt;ina_signal_in:n</title>
-<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M262.28,-1079.12C264.42,-1074.52 266,-1071.11 266,-1071.11 266,-1071.11 423,-1063.12 423,-1063.12 423,-1063.12 425.78,-1048.63 428.94,-1032.11"/>
-<text xml:space="preserve" text-anchor="middle" x="329.23" y="-1068.04" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">INA Out</text>
+<!-- connector_terminal -->
+<g id="node21" class="node">
+<title>connector_terminal</title>
+<polygon fill="#fff8bf" stroke="#d1b24a" stroke-width="2" points="766.84,-1010.49 659.16,-1010.49 659.16,-955.71 766.84,-955.71 766.84,-1010.49"/>
+<text xml:space="preserve" text-anchor="middle" x="713" y="-984.75" font-family="Helvetica,sans-Serif" font-size="18.00">Connector</text>
+<text xml:space="preserve" text-anchor="middle" x="713" y="-966" font-family="Helvetica,sans-Serif" font-size="18.00">Terminal</text>
+</g>
+<!-- protection_ina_out&#45;&gt;connector_terminal -->
+<g id="edge84" class="edge">
+<title>protection_ina_out:e&#45;&gt;connector_terminal:w</title>
+<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M262.79,-1079.12C264.65,-1074.49 266,-1071.11 266,-1071.11 266,-1071.11 639,-1063.12 639,-1063.12 639,-1063.12 658.16,-983.1 658.16,-983.1"/>
+<text xml:space="preserve" text-anchor="middle" x="462.69" y="-1067.83" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">INA Out</text>
 </g>
 <!-- restore_power&#45;&gt;protection_ina_out -->
 <!-- restore_power&#45;&gt;cut_off_power -->
 <!-- ina_measure_v -->
-<g id="node20" class="node">
+<g id="node24" class="node">
 <title>ina_measure_v</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="407.58,-1001.11 250.42,-1001.11 250.42,-965.08 407.58,-965.08 407.58,-1001.11"/>
 <text xml:space="preserve" text-anchor="middle" x="329" y="-975.37" font-family="Helvetica,sans-Serif" font-size="18.00">Measure voltage</text>
@@ -245,32 +251,34 @@
 <!-- restore_power&#45;&gt;ina_measure_v -->
 <!-- cut_off_power&#45;&gt;protection_pc_out -->
 <!-- cut_off_power&#45;&gt;protection_pc_out -->
+<!-- regulator_phys_out -->
 <!-- regulator_out -->
-<!-- regulator_out&#45;&gt;regulate_voltage -->
-<!-- regulator_out&#45;&gt;connector_terminal -->
-<!-- regulator_out&#45;&gt;connector_terminal -->
-<g id="edge81" class="edge">
-<title>regulator_out:s&#45;&gt;connector_terminal:n</title>
-<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M632.67,-1180.15C644.79,-1137.96 664,-1071.11 664,-1071.11 664,-1071.11 712,-1011.49 712,-1011.49"/>
-<text xml:space="preserve" text-anchor="middle" x="606.78" y="-1090.35" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">5V / 3V3 / GND</text>
+<!-- regulator_phys_out&#45;&gt;regulator_out -->
+<!-- regulator_phys_out&#45;&gt;connector_terminal -->
+<g id="edge85" class="edge">
+<title>regulator_phys_out:s&#45;&gt;connector_terminal:n</title>
+<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M767,-1172.15C747.09,-1112.92 713,-1011.49 713,-1011.49"/>
+<text xml:space="preserve" text-anchor="middle" x="687.87" y="-1093.32" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">5V / 3V3 / GND</text>
 </g>
+<!-- regulator_out&#45;&gt;connector_terminal -->
+<!-- regulate_voltage&#45;&gt;regulator_out -->
 <!-- regulate_voltage&#45;&gt;regulator_out -->
 <!-- ina_measure_i -->
-<g id="node21" class="node">
+<g id="node25" class="node">
 <title>ina_measure_i</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="623.84,-1001.11 468.17,-1001.11 468.17,-965.08 623.84,-965.08 623.84,-1001.11"/>
 <text xml:space="preserve" text-anchor="middle" x="546" y="-975.37" font-family="Helvetica,sans-Serif" font-size="18.00">Measure current</text>
 </g>
 <!-- regulate_voltage&#45;&gt;ina_measure_i -->
 <!-- xiao_collect -->
-<g id="node33" class="node">
+<g id="node37" class="node">
 <title>xiao_collect</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="1141.46,-187.81 896.54,-187.81 896.54,-151.78 1141.46,-151.78 1141.46,-187.81"/>
 <text xml:space="preserve" text-anchor="middle" x="1019" y="-162.07" font-family="Helvetica,sans-Serif" font-size="18.00">Collect PDS measurements</text>
 </g>
 <!-- regulate_voltage&#45;&gt;xiao_collect -->
 <!-- ina_respond -->
-<g id="node22" class="node">
+<g id="node26" class="node">
 <title>ina_respond</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="617.96,-890.71 388.04,-890.71 388.04,-854.68 617.96,-854.68 617.96,-890.71"/>
 <text xml:space="preserve" text-anchor="middle" x="503" y="-864.97" font-family="Helvetica,sans-Serif" font-size="18.00">Respond to I2C Requests</text>
@@ -279,7 +287,7 @@
 <!-- xiao_pwr_3v3 -->
 <!-- connector_terminal&#45;&gt;xiao_pwr_3v3 -->
 <!-- connector_terminal&#45;&gt;xiao_pwr_3v3 -->
-<g id="edge82" class="edge">
+<g id="edge86" class="edge">
 <title>connector_terminal:s&#45;&gt;xiao_pwr_3v3:nw</title>
 <path fill="none" stroke="#e11d28" stroke-width="2.2" d="M673,-830.68C673,-830.68 654,-822.68 654,-822.68"/>
 <text xml:space="preserve" text-anchor="middle" x="627.12" y="-828.18" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">3V3 / GND</text>
@@ -287,13 +295,13 @@
 <!-- xiao_pwr_5v -->
 <!-- connector_terminal&#45;&gt;xiao_pwr_5v -->
 <!-- connector_terminal&#45;&gt;xiao_pwr_5v -->
-<g id="edge83" class="edge">
+<g id="edge87" class="edge">
 <title>connector_terminal:s&#45;&gt;xiao_pwr_5v:ne</title>
-<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M701,-830.68C701,-830.68 685,-822.68 685,-822.68"/>
-<text xml:space="preserve" text-anchor="middle" x="660.75" y="-812.43" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">5V / GND</text>
+<path fill="none" stroke="#e11d28" stroke-width="2.2" d="M702,-830.68C702,-830.68 685,-822.68 685,-822.68"/>
+<text xml:space="preserve" text-anchor="middle" x="661.25" y="-828.18" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#e11d28">5V / GND</text>
 </g>
 <!-- xiao_get_init -->
-<g id="node26" class="node">
+<g id="node30" class="node">
 <title>xiao_get_init</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="823.34,-760.68 730.66,-760.68 730.66,-687.15 823.34,-687.15 823.34,-760.68"/>
 <text xml:space="preserve" text-anchor="middle" x="777" y="-734.94" font-family="Helvetica,sans-Serif" font-size="18.00">Get</text>
@@ -301,44 +309,44 @@
 <text xml:space="preserve" text-anchor="middle" x="777" y="-697.44" font-family="Helvetica,sans-Serif" font-size="18.00">init state</text>
 </g>
 <!-- connector_terminal&#45;&gt;xiao_get_init -->
-<!-- ina_power_in -->
 <!-- ina_power_in&#45;&gt;ina_measure_v -->
+<!-- ina_signal_in -->
 <!-- ina_signal_in&#45;&gt;ina_measure_i -->
 <!-- ina_measure_v&#45;&gt;ina_measure_i -->
 <!-- ina_measure_v&#45;&gt;ina_respond -->
 <!-- ina_measure_v&#45;&gt;ina_respond -->
-<g id="edge64" class="edge">
+<g id="edge68" class="edge">
 <title>ina_measure_v&#45;&gt;ina_respond</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M365.48,-964.68C398.06,-946.43 444.6,-917.64 474.53,-897.34"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="475.89,-899.8 480.89,-892.96 472.71,-895.19 475.89,-899.8"/>
 </g>
 <!-- xiao_read_v -->
-<g id="node29" class="node">
+<g id="node33" class="node">
 <title>xiao_read_v</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="983.09,-741.93 852.91,-741.93 852.91,-705.9 983.09,-705.9 983.09,-741.93"/>
 <text xml:space="preserve" text-anchor="middle" x="918" y="-716.19" font-family="Helvetica,sans-Serif" font-size="18.00">Read voltage</text>
 </g>
 <!-- ina_measure_v&#45;&gt;xiao_read_v -->
-<g id="edge75" class="edge">
+<g id="edge79" class="edge">
 <title>ina_measure_v&#45;&gt;xiao_read_v</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M387.25,-964.59C475.53,-938.05 633,-890.71 633,-890.71 633,-890.71 838,-822.68 838,-822.68 838,-822.68 873.06,-779.84 896.76,-750.87"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="898.69,-752.93 901.59,-744.97 894.36,-749.39 898.69,-752.93"/>
 </g>
 <!-- ina_measure_i&#45;&gt;ina_respond -->
 <!-- ina_measure_i&#45;&gt;ina_respond -->
-<g id="edge65" class="edge">
+<g id="edge69" class="edge">
 <title>ina_measure_i&#45;&gt;ina_respond</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M547.62,-964.68C543.88,-947.46 533.78,-920.84 523.67,-900.84"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="526.24,-899.72 519.99,-894 521.31,-902.37 526.24,-899.72"/>
 </g>
 <!-- xiao_read_i -->
-<g id="node30" class="node">
+<g id="node34" class="node">
 <title>xiao_read_i</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="1141.34,-741.93 1012.66,-741.93 1012.66,-705.9 1141.34,-705.9 1141.34,-741.93"/>
 <text xml:space="preserve" text-anchor="middle" x="1077" y="-716.19" font-family="Helvetica,sans-Serif" font-size="18.00">Read current</text>
 </g>
 <!-- ina_measure_i&#45;&gt;xiao_read_i -->
-<g id="edge76" class="edge">
+<g id="edge80" class="edge">
 <title>ina_measure_i&#45;&gt;xiao_read_i</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M600.24,-964.64C615.49,-959.74 628,-955.71 628,-955.71 628,-955.71 871,-890.71 871,-890.71 871,-890.71 998,-822.68 998,-822.68 998,-822.68 1032.62,-779.84 1056.02,-750.87"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="1057.93,-752.97 1060.78,-744.98 1053.58,-749.45 1057.93,-752.97"/>
@@ -349,14 +357,14 @@
 <!-- xiao_pwr_3v3&#45;&gt;xiao_get_init -->
 <!-- xiao_pwr_5v&#45;&gt;xiao_read_i -->
 <!-- xiao_get_init&#45;&gt;ina_respond -->
-<g id="edge72" class="edge">
+<g id="edge76" class="edge">
 <title>xiao_get_init&#45;&gt;ina_respond</title>
-<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M754.09,-761.04C736.43,-788.89 715,-822.68 715,-822.68 715,-822.68 648.11,-838.15 589.47,-851.7"/>
-<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="589.05,-848.93 581.88,-853.46 590.31,-854.38 589.05,-848.93"/>
-<text xml:space="preserve" text-anchor="middle" x="655.92" y="-830.47" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[I2C Req]</text>
+<path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M754.09,-761.04C736.43,-788.89 715,-822.68 715,-822.68 715,-822.68 622,-830.68 622,-830.68 622,-830.68 593.57,-840.48 564.5,-850.5"/>
+<polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="563.61,-847.84 556.96,-853.1 565.44,-853.14 563.61,-847.84"/>
+<text xml:space="preserve" text-anchor="middle" x="642.69" y="-811.91" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[I2C Req]</text>
 </g>
 <!-- xiao_collect_init -->
-<g id="node27" class="node">
+<g id="node31" class="node">
 <title>xiao_collect_init</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="819.84,-622.15 688.16,-622.15 688.16,-548.62 819.84,-548.62 819.84,-622.15"/>
 <text xml:space="preserve" text-anchor="middle" x="754" y="-596.41" font-family="Helvetica,sans-Serif" font-size="18.00">Collect</text>
@@ -365,14 +373,14 @@
 </g>
 <!-- xiao_get_init&#45;&gt;xiao_collect_init -->
 <!-- xiao_get_init&#45;&gt;xiao_collect_init -->
-<g id="edge66" class="edge">
+<g id="edge70" class="edge">
 <title>xiao_get_init&#45;&gt;xiao_collect_init</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M780.96,-686.69C779.5,-670.2 776.4,-650.49 772.57,-632.92"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="775.39,-632.71 770.85,-625.55 769.94,-633.98 775.39,-632.71"/>
 <text xml:space="preserve" text-anchor="middle" x="751.27" y="-661.3" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[Result]</text>
 </g>
 <!-- xiao_init_bus -->
-<g id="node28" class="node">
+<g id="node32" class="node">
 <title>xiao_init_bus</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="823.21,-464.87 678.79,-464.87 678.79,-410.09 823.21,-410.09 823.21,-464.87"/>
 <text xml:space="preserve" text-anchor="middle" x="751" y="-439.13" font-family="Helvetica,sans-Serif" font-size="18.00">Init Serial0 and</text>
@@ -380,14 +388,14 @@
 </g>
 <!-- xiao_collect_init&#45;&gt;xiao_init_bus -->
 <!-- xiao_read_v&#45;&gt;ina_respond -->
-<g id="edge73" class="edge">
+<g id="edge77" class="edge">
 <title>xiao_read_v&#45;&gt;ina_respond</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M894.54,-742.39C865.69,-770.51 823,-822.68 823,-822.68 823,-822.68 712.87,-838.79 621.72,-852.54"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="621.49,-849.75 614,-853.71 622.33,-855.28 621.49,-849.75"/>
 <text xml:space="preserve" text-anchor="middle" x="743.67" y="-831.22" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[I2C Req]</text>
 </g>
 <!-- xiao_process_v -->
-<g id="node31" class="node">
+<g id="node35" class="node">
 <title>xiao_process_v</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="963.21,-464.87 872.79,-464.87 872.79,-410.09 963.21,-410.09 963.21,-464.87"/>
 <text xml:space="preserve" text-anchor="middle" x="918" y="-439.13" font-family="Helvetica,sans-Serif" font-size="18.00">Process</text>
@@ -395,20 +403,20 @@
 </g>
 <!-- xiao_read_v&#45;&gt;xiao_process_v -->
 <!-- xiao_read_v&#45;&gt;xiao_process_v -->
-<g id="edge67" class="edge">
+<g id="edge71" class="edge">
 <title>xiao_read_v&#45;&gt;xiao_process_v</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M923.75,-705.55C930.26,-660.45 930.99,-538.79 925.95,-476.44"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="928.74,-476.19 925.21,-468.48 923.16,-476.71 928.74,-476.19"/>
 </g>
 <!-- xiao_read_i&#45;&gt;ina_respond -->
-<g id="edge74" class="edge">
+<g id="edge78" class="edge">
 <title>xiao_read_i&#45;&gt;ina_respond</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M1062.88,-742.39C1040.15,-770.51 998,-822.68 998,-822.68 998,-822.68 775.95,-844.67 629.29,-859.19"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="629.43,-856.36 621.74,-859.94 629.98,-861.93 629.43,-856.36"/>
 <text xml:space="preserve" text-anchor="middle" x="833.13" y="-837.35" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[I2C Req]</text>
 </g>
 <!-- xiao_process_i -->
-<g id="node32" class="node">
+<g id="node36" class="node">
 <title>xiao_process_i</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="1122.21,-464.87 1031.79,-464.87 1031.79,-410.09 1122.21,-410.09 1122.21,-464.87"/>
 <text xml:space="preserve" text-anchor="middle" x="1077" y="-439.13" font-family="Helvetica,sans-Serif" font-size="18.00">Process</text>
@@ -416,13 +424,13 @@
 </g>
 <!-- xiao_read_i&#45;&gt;xiao_process_i -->
 <!-- xiao_read_i&#45;&gt;xiao_process_i -->
-<g id="edge68" class="edge">
+<g id="edge72" class="edge">
 <title>xiao_read_i&#45;&gt;xiao_process_i</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M1082.75,-705.55C1089.26,-660.45 1089.99,-538.79 1084.95,-476.44"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="1087.74,-476.19 1084.21,-468.48 1082.16,-476.71 1087.74,-476.19"/>
 </g>
 <!-- note_vgt -->
-<g id="node37" class="node">
+<g id="node41" class="node">
 <title>note_vgt</title>
 <polygon fill="#fff5b0" stroke="#d1b24a" points="1515.46,-483.62 1216.54,-483.62 1216.54,-391.34 1515.46,-391.34 1515.46,-483.62"/>
 <text xml:space="preserve" text-anchor="middle" x="1366" y="-457.88" font-family="Helvetica,sans-Serif" font-size="18.00">All pairs of (Read X, Process X) or</text>
@@ -433,7 +441,7 @@
 <!-- xiao_read_i&#45;&gt;note_vgt -->
 <!-- xiao_process_v&#45;&gt;xiao_collect -->
 <!-- xiao_process_v&#45;&gt;xiao_collect -->
-<g id="edge69" class="edge">
+<g id="edge73" class="edge">
 <title>xiao_process_v&#45;&gt;xiao_collect</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M935.13,-410.03C959.8,-359.64 1001.42,-250.28 1015.61,-198.74"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="1018.24,-199.76 1017.51,-191.32 1012.81,-198.37 1018.24,-199.76"/>
@@ -441,28 +449,28 @@
 </g>
 <!-- xiao_process_i&#45;&gt;xiao_collect -->
 <!-- xiao_process_i&#45;&gt;xiao_collect -->
-<g id="edge70" class="edge">
+<g id="edge74" class="edge">
 <title>xiao_process_i&#45;&gt;xiao_collect</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M1078.3,-410.03C1072.81,-359.64 1048.99,-250.28 1032.33,-198.74"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="1035.01,-197.9 1029.77,-191.24 1029.71,-199.72 1035.01,-197.9"/>
 <text xml:space="preserve" text-anchor="middle" x="1029.82" y="-305.89" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[Result]</text>
 </g>
 <!-- xiao_log -->
-<g id="node34" class="node">
+<g id="node38" class="node">
 <title>xiao_log</title>
 <polygon fill="#bdfb9b" stroke="#166534" points="1140.96,-68.03 875.04,-68.03 875.04,-32 1140.96,-32 1140.96,-68.03"/>
 <text xml:space="preserve" text-anchor="middle" x="1008" y="-42.29" font-family="Helvetica,sans-Serif" font-size="18.00">Log measurements via Serial0</text>
 </g>
 <!-- xiao_collect&#45;&gt;xiao_log -->
 <!-- xiao_collect&#45;&gt;xiao_log -->
-<g id="edge71" class="edge">
+<g id="edge75" class="edge">
 <title>xiao_collect&#45;&gt;xiao_log</title>
 <path fill="none" stroke="#1f7a4d" stroke-width="2.2" d="M1025.64,-151.42C1027.26,-132.45 1024.9,-101.81 1020.43,-79.35"/>
 <polygon fill="#1f7a4d" stroke="#1f7a4d" stroke-width="2.2" points="1023.19,-78.87 1018.65,-71.71 1017.73,-80.13 1023.19,-78.87"/>
 <text xml:space="preserve" text-anchor="middle" x="976.91" y="-116.89" font-family="Helvetica,sans-Serif" font-size="15.00" fill="#1f7a4d">[LoRa Frame]</text>
 </g>
 <!-- note_nb -->
-<g id="node35" class="node">
+<g id="node39" class="node">
 <title>note_nb</title>
 <polygon fill="#fff5b0" stroke="#d1b24a" points="1482.84,-760.68 1249.16,-760.68 1249.16,-687.15 1482.84,-687.15 1482.84,-760.68"/>
 <text xml:space="preserve" text-anchor="middle" x="1366" y="-734.94" font-family="Helvetica,sans-Serif" font-size="18.00">No blocking</text>
@@ -470,19 +478,19 @@
 <text xml:space="preserve" text-anchor="middle" x="1366" y="-697.44" font-family="Helvetica,sans-Serif" font-size="18.00">or UART comms</text>
 </g>
 <!-- note_nb&#45;&gt;xiao_read_v -->
-<g id="edge84" class="edge">
+<g id="edge88" class="edge">
 <title>note_nb&#45;&gt;xiao_read_v</title>
 <path fill="none" stroke="#333333" stroke-width="2.2" stroke-dasharray="5,2" d="M1295.95,-761.11C1243.22,-789.11 1180,-822.68 1180,-822.68 1180,-822.68 1165,-826.68 1165,-826.68 1165,-826.68 1013,-826.68 1013,-826.68 1013,-826.68 998,-822.68 998,-822.68 998,-822.68 963.32,-779.86 939.62,-750.61"/>
 <polygon fill="#333333" stroke="#333333" stroke-width="2.2" points="941.98,-749.07 934.77,-744.62 937.63,-752.6 941.98,-749.07"/>
 </g>
 <!-- note_nb&#45;&gt;xiao_read_i -->
-<g id="edge85" class="edge">
+<g id="edge89" class="edge">
 <title>note_nb&#45;&gt;xiao_read_i</title>
 <path fill="none" stroke="#333333" stroke-width="2.2" stroke-dasharray="5,2" d="M1248.76,-723.91C1220.43,-723.91 1173.33,-723.91 1173.33,-723.91 1173.33,-723.91 1164.89,-723.91 1153,-723.91"/>
 <polygon fill="#333333" stroke="#333333" stroke-width="2.2" points="1153.12,-721.12 1145.12,-723.92 1153.12,-726.72 1153.12,-721.12"/>
 </g>
 <!-- note_to -->
-<g id="node36" class="node">
+<g id="node40" class="node">
 <title>note_to</title>
 <polygon fill="#fff5b0" stroke="#d1b24a" points="1467.09,-622.15 1264.91,-622.15 1264.91,-548.62 1467.09,-548.62 1467.09,-622.15"/>
 <text xml:space="preserve" text-anchor="middle" x="1366" y="-596.41" font-family="Helvetica,sans-Serif" font-size="18.00">All I2C Read functions</text>
@@ -491,32 +499,32 @@
 </g>
 <!-- note_nb&#45;&gt;note_to -->
 <!-- note_to&#45;&gt;xiao_read_v -->
-<g id="edge86" class="edge">
+<g id="edge90" class="edge">
 <title>note_to&#45;&gt;xiao_read_v</title>
 <path fill="none" stroke="#333333" stroke-width="2.2" stroke-dasharray="5,2" d="M1264.47,-614.19C1155.54,-644.01 998,-687.15 998,-687.15 998,-687.15 983.58,-693.59 966.99,-701.01"/>
 <polygon fill="#333333" stroke="#333333" stroke-width="2.2" points="966.26,-698.27 960.1,-704.09 968.55,-703.38 966.26,-698.27"/>
 </g>
 <!-- note_to&#45;&gt;xiao_read_i -->
-<g id="edge87" class="edge">
+<g id="edge91" class="edge">
 <title>note_to&#45;&gt;xiao_read_i</title>
 <path fill="none" stroke="#333333" stroke-width="2.2" stroke-dasharray="5,2" d="M1289.51,-622.52C1236.88,-647.38 1168.67,-679.61 1123.91,-700.75"/>
 <polygon fill="#333333" stroke="#333333" stroke-width="2.2" points="1122.94,-698.11 1116.91,-704.06 1125.34,-703.18 1122.94,-698.11"/>
 </g>
 <!-- note_to&#45;&gt;note_vgt -->
 <!-- note_vgt&#45;&gt;xiao_process_v -->
-<g id="edge88" class="edge">
+<g id="edge92" class="edge">
 <title>note_vgt&#45;&gt;xiao_process_v</title>
 <path fill="none" stroke="#333333" stroke-width="2.2" stroke-dasharray="5,2" d="M1247.04,-484.02C1203.64,-501 1165,-516.12 1165,-516.12 1165,-516.12 1032,-516.12 1032,-516.12 1032,-516.12 998.05,-492.7 967.2,-471.42"/>
 <polygon fill="#333333" stroke="#333333" stroke-width="2.2" points="969.11,-469.33 960.93,-467.1 965.93,-473.94 969.11,-469.33"/>
 </g>
 <!-- note_vgt&#45;&gt;xiao_process_i -->
-<g id="edge89" class="edge">
+<g id="edge93" class="edge">
 <title>note_vgt&#45;&gt;xiao_process_i</title>
 <path fill="none" stroke="#333333" stroke-width="2.2" stroke-dasharray="5,2" d="M1216.15,-437.48C1193.97,-437.48 1173.33,-437.48 1173.33,-437.48 1173.33,-437.48 1154.62,-437.48 1133.69,-437.48"/>
 <polygon fill="#333333" stroke="#333333" stroke-width="2.2" points="1133.96,-434.68 1125.96,-437.48 1133.96,-440.28 1133.96,-434.68"/>
 </g>
 <!-- note_proc -->
-<g id="node38" class="node">
+<g id="node42" class="node">
 <title>note_proc</title>
 <polygon fill="#fff5b0" stroke="#d1b24a" points="1487.71,-326.34 1244.29,-326.34 1244.29,-252.81 1487.71,-252.81 1487.71,-326.34"/>
 <text xml:space="preserve" text-anchor="middle" x="1366" y="-300.6" font-family="Helvetica,sans-Serif" font-size="18.00">All Process or Calculate</text>
@@ -525,26 +533,26 @@
 </g>
 <!-- note_vgt&#45;&gt;note_proc -->
 <!-- note_proc&#45;&gt;xiao_process_i -->
-<g id="edge90" class="edge">
+<g id="edge94" class="edge">
 <title>note_proc&#45;&gt;xiao_process_i</title>
 <path fill="none" stroke="#333333" stroke-width="2.2" stroke-dasharray="5,2" d="M1294.35,-326.75C1244.36,-351.99 1178.61,-385.18 1132.57,-408.43"/>
 <polygon fill="#333333" stroke="#333333" stroke-width="2.2" points="1131.33,-405.92 1125.45,-412.02 1133.85,-410.92 1131.33,-405.92"/>
 </g>
 <!-- note_5hz -->
-<g id="node39" class="node">
+<g id="node43" class="node">
 <title>note_5hz</title>
 <polygon fill="#fff5b0" stroke="#d1b24a" points="1420.96,-187.81 1311.04,-187.81 1311.04,-151.78 1420.96,-151.78 1420.96,-187.81"/>
 <text xml:space="preserve" text-anchor="middle" x="1366" y="-162.07" font-family="Helvetica,sans-Serif" font-size="18.00">{c} At 5 Hz</text>
 </g>
 <!-- note_proc&#45;&gt;note_5hz -->
 <!-- note_5hz&#45;&gt;xiao_collect -->
-<g id="edge91" class="edge">
+<g id="edge95" class="edge">
 <title>note_5hz&#45;&gt;xiao_collect</title>
 <path fill="none" stroke="#333333" stroke-width="2.2" stroke-dasharray="5,2" d="M1310.88,-169.8C1281.09,-169.8 1250.33,-169.8 1250.33,-169.8 1250.33,-169.8 1185.56,-169.8 1152.96,-169.8"/>
 <polygon fill="#333333" stroke="#333333" stroke-width="2.2" points="1153.23,-167 1145.23,-169.8 1153.23,-172.6 1153.23,-167"/>
 </g>
 <!-- note_zero -->
-<g id="node40" class="node">
+<g id="node44" class="node">
 <title>note_zero</title>
 <polygon fill="#fff5b0" stroke="#d1b24a" points="1438.21,-86.78 1293.79,-86.78 1293.79,-13.25 1438.21,-13.25 1438.21,-86.78"/>
 <text xml:space="preserve" text-anchor="middle" x="1366" y="-61.04" font-family="Helvetica,sans-Serif" font-size="18.00">Set unused</text>
@@ -553,7 +561,7 @@
 </g>
 <!-- note_5hz&#45;&gt;note_zero -->
 <!-- note_zero&#45;&gt;xiao_collect -->
-<g id="edge92" class="edge">
+<g id="edge96" class="edge">
 <title>note_zero&#45;&gt;xiao_collect</title>
 <path fill="none" stroke="#333333" stroke-width="2.2" stroke-dasharray="5,2" d="M1293.59,-75.59C1230.69,-96.94 1140.59,-127.53 1080.97,-147.76"/>
 <polygon fill="#333333" stroke="#333333" stroke-width="2.2" points="1080.4,-145 1073.73,-150.22 1082.2,-150.3 1080.4,-145"/>

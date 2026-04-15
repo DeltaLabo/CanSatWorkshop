@@ -84,6 +84,7 @@ digraph PDS_v0_2 {
 
         protection_usb_anchor  [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
         protection_batt_anchor [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
+        protection_phys_out    [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
 
         subgraph cluster_batt_charger {
           label="Battery Charger";
@@ -126,6 +127,7 @@ digraph PDS_v0_2 {
         color="#D1B24A";
         penwidth=2;
 
+        regulator_phys_in  [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
         regulator_phys_out [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
 
         subgraph cluster_regulator {
@@ -150,6 +152,9 @@ digraph PDS_v0_2 {
         fillcolor="#FFF8BF";
         color="#D1B24A";
         penwidth=2;
+
+        ina_phys_in  [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
+        ina_phys_out [label="", shape=box, width=0.01, height=0.01, fixedsize=true, style=invis, margin=0];
 
         subgraph cluster_batt_monitoring {
           label="Battery monitoring";
@@ -224,6 +229,7 @@ digraph PDS_v0_2 {
   protection_usb_anchor -> battchg_usb_in [style=invis, weight=26];
   protection_batt_anchor -> battchg_batt_in [style=invis, weight=26];
   charger_reg -> restore_power [style=invis, weight=15];
+  protection_phys_out -> restore_power [style=invis, weight=20];
   protection_pc_out -> restore_power [style=invis, weight=20];
   protection_ina_out -> restore_power [style=invis, weight=18];
   restore_power -> cut_off_power [style=invis, weight=15];
@@ -235,9 +241,12 @@ digraph PDS_v0_2 {
   restore_power -> ina_measure_v [style=invis, weight=55];
   regulate_voltage -> ina_measure_i [style=invis, weight=55];
   regulate_voltage -> regulator_out [style=invis, weight=18];
+  regulator_phys_in -> regulator_out [style=invis, weight=20];
   regulator_phys_out -> regulator_out [style=invis, weight=24];
   regulator_out -> connector_terminal [style=invis, weight=42];
   connector_terminal -> ina_respond [style=invis, weight=55];
+  ina_phys_in -> ina_measure_v [style=invis, weight=18];
+  ina_phys_out -> ina_respond [style=invis, weight=18];
   ina_power_in -> ina_measure_v [style=invis, weight=18];
   ina_signal_in -> ina_measure_i [style=invis, weight=18];
   xiao_i2c_port -> xiao_get_init [style=invis, weight=18];
@@ -265,9 +274,9 @@ digraph PDS_v0_2 {
   note_5hz -> note_zero [style=invis, weight=10];
 
   { rank=same; battpack_jst; battery_jst; batt_store; batt_provide; }
-  { rank=same; protection_usb_anchor; battchg_usb_in; protection_batt_anchor; battchg_batt_in; charger_reg; regulate_voltage; regulator_out; regulator_phys_out; }
-  { rank=same; restore_power; cut_off_power; protection_pc_out; protection_ina_out; }
-  { rank=same; ina_power_in; ina_measure_v; ina_measure_i; connector_terminal; ina_signal_in; }
+  { rank=same; protection_usb_anchor; battchg_usb_in; protection_batt_anchor; battchg_batt_in; charger_reg; regulate_voltage; regulator_phys_in; regulator_out; regulator_phys_out; }
+  { rank=same; restore_power; cut_off_power; protection_phys_out; protection_pc_out; protection_ina_out; }
+  { rank=same; ina_phys_in; ina_power_in; ina_measure_v; ina_measure_i; connector_terminal; ina_signal_in; ina_phys_out; }
   { rank=same; xiao_i2c_port; xiao_pwr_3v3; xiao_pwr_5v; xiao_get_init; xiao_read_v; xiao_read_i; note_nb; }
   { rank=same; xiao_process_v; xiao_process_i; note_vgt; }
   { rank=same; xiao_collect; note_5hz; }
@@ -277,6 +286,8 @@ digraph PDS_v0_2 {
   charger_power -> charger_reg [style=invis, weight=80];
   battpack_jst -> protection_batt_anchor [style=invis, weight=50];
   batt_store -> charger_reg [style=invis, weight=65];
+  protection_phys_out -> ina_phys_in [style=invis, weight=95];
+  ina_phys_out -> regulator_phys_in [style=invis, weight=90];
   batt_provide -> regulate_voltage [style=invis, weight=90];
   connector_terminal -> xiao_pwr_3v3 [style=invis, weight=115];
   connector_terminal -> xiao_pwr_5v [style=invis, weight=115];
@@ -319,7 +330,7 @@ digraph PDS_v0_2 {
     headport=w
   ];
   battpack_jst -> protection_batt_anchor [
-    xlabel="Battery Cable JST",
+    xlabel="Battery Cable",
     color="#E11D28",
     fontcolor="#E11D28",
     ltail=cluster_battpack,
@@ -330,48 +341,40 @@ digraph PDS_v0_2 {
     tailport=s,
     headport=n
   ];
-  protection_pc_out -> ina_power_in [
-    xlabel="PC Out / GND",
+  protection_phys_out -> ina_phys_in [
+    xlabel="BAT+ / GND",
     color="#E11D28",
     fontcolor="#E11D28",
-    ltail=cluster_power_protection,
-    lhead=cluster_batt_monitoring,
-    constraint=false,
-    dir=none,
-    tailport=s,
-    headport=nw
-  ];
-  protection_ina_out -> connector_terminal [
-    xlabel="INA Out",
-    color="#E11D28",
-    fontcolor="#E11D28",
-    ltail=cluster_power_protection,
-    constraint=false,
-    dir=none,
-    tailport=e,
-    headport=w
-  ];
-  regulator_phys_out -> connector_terminal [
-    xlabel="5V / 3V3 / GND",
-    color="#E11D28",
-    fontcolor="#E11D28",
-    ltail=cluster_regulator_block,
-    constraint=false,
-    dir=none,
-    tailport=s,
-    headport=n
-  ];
-  connector_terminal -> xiao_pwr_3v3 [
-    xlabel="3V3 / GND",
-    color="#E11D28",
-    fontcolor="#E11D28",
-    ltail=cluster_board,
-    lhead=cluster_xiao,
+    ltail=cluster_protection,
+    lhead=cluster_ina219,
     constraint=false,
     minlen=1,
     dir=none,
     tailport=s,
     headport=nw
+  ];
+  ina_phys_out -> regulator_phys_in [
+    xlabel="INA Out / GND",
+    color="#E11D28",
+    fontcolor="#E11D28",
+    ltail=cluster_ina219,
+    lhead=cluster_regulator_block,
+    constraint=false,
+    minlen=1,
+    dir=none,
+    tailport=ne,
+    headport=sw
+  ];
+  regulator_phys_out -> connector_terminal [
+    xlabel="3V3 / 5V / GND",
+    color="#E11D28",
+    fontcolor="#E11D28",
+    ltail=cluster_regulator_block,
+    constraint=false,
+    minlen=1,
+    dir=none,
+    tailport=se,
+    headport=n
   ];
   connector_terminal -> xiao_pwr_5v [
     xlabel="5V / GND",

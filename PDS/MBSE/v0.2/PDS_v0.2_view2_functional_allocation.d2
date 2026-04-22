@@ -1,0 +1,166 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 14 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 16 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 18 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+charger: "[EA] Charger" {
+  class: ea
+  charger_power: "[F] Provide power" { class: func }
+}
+
+user: "[EA] User" {
+  class: ea
+  direction: down
+  switch_on: "[F] Switch power on" { class: func }
+  switch_off: "[F] Switch power off" { class: func }
+}
+
+pds: "[System] PDS v0.2-0.3 Subsystem" {
+  class: sys
+  direction: right
+
+  battpack: "[PC] 1S1P Li-Ion" {
+    class: pc
+    battery_lc: "[LC] Battery" {
+      class: lc
+      direction: right
+      store_energy: "[F] Store energy" { class: func }
+      provide_power: "[F] Provide power" { class: func }
+    }
+  }
+
+  board: "[PC] PDS Circuitboard" {
+    class: pc
+    direction: down
+
+    protection: "[PC] Protection Circuit" {
+      class: pc
+      direction: right
+
+      battery_charger: "[LC] Battery Charger" {
+        class: lc
+        charger_regulate_voltage: "[F] Regulate\nvoltage" { class: func }
+      }
+
+      power_protection: "[LC] Power Protection" {
+        class: lc
+        direction: right
+        restore_power: "[F] Restore power" { class: func }
+        cut_off_power: "[F] Cut off power" { class: func }
+      }
+    }
+
+    ina219: "[PC] INA219" {
+      class: pc
+      battery_monitoring: "[LC] Battery monitoring" {
+        class: lc
+        direction: right
+        measure_voltage: "[F] Measure\nvoltage" { class: func }
+        measure_current: "[F] Measure\ncurrent" { class: func }
+        respond_i2c: "[F] Respond to\nI2C Requests" { class: func }
+      }
+    }
+
+    regulator_block: "[PC] Regulator" {
+      class: pc
+      regulator_lc: "[LC] Regulator" {
+        class: lc
+        regulate_voltage: "[F] Regulate\nvoltage" { class: func }
+      }
+    }
+
+    connector_terminal: "[PC] Connector\nTerminal" { class: pc }
+  }
+
+  xiao: "[PC] XIAO ESP32-S3" {
+    class: pc
+    direction: down
+
+    setup: "[LC] Setup" {
+      class: lc
+      direction: right
+      get_init_state: "[F] Get INA219\ninit state" { class: func }
+      collect_init_states: "[F] Collect peripheral\ninit states" { class: func }
+      init_bus: "[F] Init Serial0\nand I2C" { class: func }
+    }
+
+    loop: "[LC] Loop" {
+      class: lc
+      direction: down
+      read_voltage: "[F] Read voltage" { class: func }
+      read_current: "[F] Read current" { class: func }
+      process_voltage: "[F] Process\nvoltage" { class: func }
+      process_current: "[F] Process\ncurrent" { class: func }
+      collect_measurements: "[F] Collect PDS\nmeasurements" { class: func }
+      log_measurements: "[F] Log measurements\nvia Serial0" { class: func }
+    }
+  }
+}
+
+note_no_blocking: "[C] No blocking\noperations besides I2C\nor UART comms" {
+  class: note
+  shape: page
+}
+
+note_i2c_timeout: "[C] All I2C Read functions\nmust have a max.\ntimeout of 5 ms" {
+  class: note
+  shape: page
+}
+
+note_variable_getter: "[C] All pairs of (Read X,\nProcess X) or (Read X,\nCalculate Y) must be\nimplemented as a\nVariable Getter\nTemplate" {
+  class: note
+  shape: page
+}
+
+note_process_time: "[C] All Process or\nCalculate functions\nmust take less\nthan 5 ms" {
+  class: note
+  shape: page
+}
+
+note_5hz: "[C] At 5 Hz" {
+  class: note
+  shape: page
+}
+
+note_unused_fields: "[C] Set unused\nframe fields\nto 0" {
+  class: note
+  shape: page
+}
+
+note_no_blocking -> pds.xiao.loop { class: cstr }
+note_i2c_timeout -> pds.xiao.loop { class: cstr }
+note_variable_getter -> pds.xiao.loop { class: cstr }
+note_process_time -> pds.xiao.loop { class: cstr }
+note_5hz -> pds.xiao.loop.collect_measurements { class: cstr }
+note_unused_fields -> pds.xiao.loop.collect_measurements { class: cstr }

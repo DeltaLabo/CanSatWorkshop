@@ -10,19 +10,41 @@ See [Understanding Capella Physical Diagrams](./../PM&SE/Understanding%20Capella
 
 See [Variable Getter Template](./../OBCC/Variable%20Getter%20Template.md) if needed.
 
+## Diagram Sources
+
+- [`diagrams/v0.1/`](./diagrams/v0.1/)
+- [`diagrams/v0.2/`](./diagrams/v0.2/)
+- [`diagrams/v0.3/`](./diagrams/v0.3/)
+
 ## Integration, Verification, and Validation (IVV) Plan
 
-![v0.1](PDS_v0.1.jpg)
+![v0.1](./diagrams/v0.1/PDS_v0.1.jpg)
 v0.1
 
-![v0.2](PDS_v0.2.jpg)
+![v0.2](./diagrams/v0.2/PDS_v0.2.jpg)
 v0.2
 
-![v0.3](PDS_v0.3.jpg)
+![v0.3](./diagrams/v0.3/PDS_v0.3.jpg)
 v0.3
 
-![v1.0](PDS_v1.0.jpg)
+![v1.0](./PDS_v1.0.jpg)
 v1.0
+
+### Split views
+
+Latest available split views are grouped under [`./diagrams/v0.3/`](./diagrams/v0.3/).
+
+![view 1 physical](./diagrams/v0.3/PDS_v0.3_view1_physical.d2.png)
+View 1 — physical architecture and physical links
+
+![view 2 functional allocation](./diagrams/v0.3/PDS_v0.3_view2_functional_allocation.d2.png)
+View 2 — functional allocation across physical components
+
+![view 3 power and protection](./diagrams/v0.3/PDS_v0.3_view3_power_and_protection_chain.d2.png)
+View 3 — power delivery and protection functional chain
+
+![view 4 battery supervision](./diagrams/v0.3/PDS_v0.3_view4_battery_supervision_chain.d2.png)
+View 4 — battery supervision and software chain
 
 ## Requirements
 

@@ -1,0 +1,46 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 16 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 18 }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+pds: "[System] PDS v0.1 Subsystem" {
+  class: sys
+  direction: right
+
+  board: "[PC] PDS Circuitboard" {
+    class: pc
+    direction: down
+
+    protection: "[PC] Protection Circuit" { class: pc }
+    regulator_block: "[PC] Regulator" { class: pc }
+    connector_terminal: "[PC] Connector\nTerminal" { class: pc }
+  }
+
+  battpack: "[PC] 1S1P Li-Ion" { class: pc }
+}
+
+screw_terminals: "[C] Screw\nterminal or\ncrimped\ncables" {
+  class: note
+  shape: page
+}
+
+pds.battpack -- pds.board.protection: "[PL] Battery\ncable JST" { class: pl }
+pds.board.protection -- pds.board.regulator_block: "[PL] PC Out /\nGND" { class: pl }
+pds.board.regulator_block -- pds.board.connector_terminal: "[PL] 5V / 3V3 / GND" { class: pl }
+
+screw_terminals -> pds.board.connector_terminal { class: cstr }

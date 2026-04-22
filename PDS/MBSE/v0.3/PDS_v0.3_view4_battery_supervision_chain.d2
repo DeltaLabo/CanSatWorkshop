@@ -1,0 +1,50 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 14 }
+  }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 18
+    }
+  }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 12 } }
+}
+
+chain: "PDS v0.3 — Battery supervision chain" {
+  class: chain
+  direction: right
+
+  get_init_state: "[F] Get INA219\ninit state" { class: func }
+  read_voltage: "[F] Read voltage" { class: func }
+  read_current: "[F] Read current" { class: func }
+  measure_voltage: "[F] Measure\nvoltage" { class: func }
+  measure_current: "[F] Measure\ncurrent" { class: func }
+  respond_i2c: "[F] Respond to\nI2C requests" { class: func }
+  collect_init_states: "[F] Collect peripheral\ninit states" { class: func }
+  process_voltage: "[F] Process\nvoltage" { class: func }
+  process_current: "[F] Process\ncurrent" { class: func }
+  collect_measurements: "[F] Collect PDS\nmeasurements" { class: func }
+  log_measurements: "[F] Log via\nSerial0" { class: func }
+}
+
+chain.get_init_state -> chain.respond_i2c: "[FE] Init request" { class: fe }
+chain.read_voltage -> chain.respond_i2c: "[FE] I2C request" { class: fe }
+chain.read_current -> chain.respond_i2c: "[FE] I2C request" { class: fe }
+chain.measure_voltage -> chain.respond_i2c: "[FE] Measured voltage" { class: fe }
+chain.measure_current -> chain.respond_i2c: "[FE] Measured current" { class: fe }
+chain.respond_i2c -> chain.collect_init_states: "[FE] Init result" { class: fe }
+chain.respond_i2c -> chain.process_voltage: "[FE] I2C response" { class: fe }
+chain.respond_i2c -> chain.process_current: "[FE] I2C response" { class: fe }
+chain.process_voltage -> chain.collect_measurements: "[FE] Processed voltage" { class: fe }
+chain.process_current -> chain.collect_measurements: "[FE] Processed current" { class: fe }
+chain.collect_measurements -> chain.log_measurements: "[FE] LoRa frame" { class: fe }

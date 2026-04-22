@@ -1,0 +1,39 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 14 }
+  }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 18
+    }
+  }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 12 } }
+}
+
+chain: "PDS v0.1 — Power chain" {
+  class: chain
+  direction: right
+
+  switch_on: "[F] Switch power on" { class: func }
+  switch_off: "[F] Switch power off" { class: func }
+  restore_power: "[F] Restore power" { class: func }
+  cut_off_power: "[F] Cut off power" { class: func }
+  store_energy: "[F] Store energy" { class: func }
+  provide_power: "[F] Provide power" { class: func }
+  regulate_voltage: "[F] Regulate\nvoltage" { class: func }
+}
+
+chain.switch_on -> chain.restore_power: "[FE] Power-on" { class: fe }
+chain.switch_off -> chain.cut_off_power: "[FE] Power-off" { class: fe }
+chain.store_energy -> chain.provide_power: "[FE] Stored\npower" { class: fe }
+chain.provide_power -> chain.regulate_voltage: "[FE] Battery\npower" { class: fe }

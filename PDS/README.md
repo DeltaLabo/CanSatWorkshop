@@ -8,43 +8,42 @@ The power distribution system is responsible for regulating and supplying the ne
 
 See [Understanding Capella Physical Diagrams](./../PM&SE/Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
 
-See [Variable Getter Template](./../OBCC/Variable%20Getter%20Template.md) if needed.
+See [Variable Getter Template](./../OBCC/Variable%20Getter%20Template.md) and [LoRa Frame](./../OBCC/LoRa%Frame.md) if needed.
 
 ## Diagram Sources
 
-- [`diagrams/v0.1/`](./diagrams/v0.1/)
-- [`diagrams/v0.2/`](./diagrams/v0.2/)
-- [`diagrams/v0.3/`](./diagrams/v0.3/)
+- [`MBSE/v0.1/`](./MBSE/v0.1/)
+- [`MBSE/v0.2/`](./MBSE/v0.2/)
+- [`MBSE/v0.3/`](./MBSE/v0.3/)
+- [`MBSE/v1.0/`](./MBSE/v1.0/)
 
 ## Integration, Verification, and Validation (IVV) Plan
 
-![v0.1](./diagrams/v0.1/PDS_v0.1.jpg)
-v0.1
+### Diagram sets by version
 
-![v0.2](./diagrams/v0.2/PDS_v0.2.jpg)
-v0.2
+- **v0.1** — [physical PNG](./MBSE/v0.1/PDS_v0.1_view1_physical.d2.png) · [functional allocation PNG](./MBSE/v0.1/PDS_v0.1_view2_functional_allocation.d2.png) · [power chain PNG](./MBSE/v0.1/PDS_v0.1_view3_power_chain.d2.png)
+- **v0.2** — [physical PNG](./MBSE/v0.2/PDS_v0.2_view1_physical.d2.png) · [functional allocation PNG](./MBSE/v0.2/PDS_v0.2_view2_functional_allocation.d2.png) · [power chain PNG](./MBSE/v0.2/PDS_v0.2_view3_power_chain.d2.png) · [measurement chain PNG](./MBSE/v0.2/PDS_v0.2_view4_measurement_chain.d2.png)
+- **v0.3** — [physical PNG](./MBSE/v0.3/PDS_v0.3_view1_physical.d2.png) · [functional allocation PNG](./MBSE/v0.3/PDS_v0.3_view2_functional_allocation.d2.png) · [power and protection chain PNG](./MBSE/v0.3/PDS_v0.3_view3_power_and_protection_chain.d2.png) · [battery supervision chain PNG](./MBSE/v0.3/PDS_v0.3_view4_battery_supervision_chain.d2.png)
+- **v1.0** — [physical PNG](./MBSE/v1.0/PDS_v1.0_view1_physical.d2.png) · [logical PNG](./MBSE/v1.0/PDS_v1.0_view2_logical.d2.png) · [functional allocation PNG](./MBSE/v1.0/PDS_v1.0_view3_functional_allocation.d2.png) · [power and protection chain PNG](./MBSE/v1.0/PDS_v1.0_view4_power_and_protection_chain.d2.png) · [battery supervision chain PNG](./MBSE/v1.0/PDS_v1.0_view5_battery_supervision_chain.d2.png)
 
-![v0.3](./diagrams/v0.3/PDS_v0.3.jpg)
-v0.3
+### Latest split views
 
-![v1.0](./PDS_v1.0.jpg)
-v1.0
+Latest available split views are grouped under [`./MBSE/v1.0/`](./MBSE/v1.0/).
 
-### Split views
+![view 1 physical](./MBSE/v1.0/PDS_v1.0_view1_physical.d2.png)
+View 1 — physical architecture and physical links ([D2 source](./MBSE/v1.0/PDS_v1.0_view1_physical.d2))
 
-Latest available split views are grouped under [`./diagrams/v0.3/`](./diagrams/v0.3/).
+![view 2 logical](./MBSE/v1.0/PDS_v1.0_view2_logical.d2.png)
+View 2 — logical components and software exchanges ([D2 source](./MBSE/v1.0/PDS_v1.0_view2_logical.d2))
 
-![view 1 physical](./diagrams/v0.3/PDS_v0.3_view1_physical.d2.png)
-View 1 — physical architecture and physical links
+![view 3 functional allocation](./MBSE/v1.0/PDS_v1.0_view3_functional_allocation.d2.png)
+View 3 — functional allocation across physical and logical components ([D2 source](./MBSE/v1.0/PDS_v1.0_view3_functional_allocation.d2))
 
-![view 2 functional allocation](./diagrams/v0.3/PDS_v0.3_view2_functional_allocation.d2.png)
-View 2 — functional allocation across physical components
+![view 4 power and protection](./MBSE/v1.0/PDS_v1.0_view4_power_and_protection_chain.d2.png)
+View 4 — power delivery and protection functional chain ([D2 source](./MBSE/v1.0/PDS_v1.0_view4_power_and_protection_chain.d2))
 
-![view 3 power and protection](./diagrams/v0.3/PDS_v0.3_view3_power_and_protection_chain.d2.png)
-View 3 — power delivery and protection functional chain
-
-![view 4 battery supervision](./diagrams/v0.3/PDS_v0.3_view4_battery_supervision_chain.d2.png)
-View 4 — battery supervision and software chain
+![view 5 battery supervision](./MBSE/v1.0/PDS_v1.0_view5_battery_supervision_chain.d2.png)
+View 5 — battery supervision and software chain ([D2 source](./MBSE/v1.0/PDS_v1.0_view5_battery_supervision_chain.d2))
 
 ## Requirements
 

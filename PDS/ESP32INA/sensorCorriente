@@ -2,7 +2,7 @@
 #include <Adafruit_INA219.h>
 #include <limits.h>
 #include <LoRa.h>
-
+#define VOLTAGE_OFFSET 0.123
 Adafruit_INA219 ina219;
 
 // =========================
@@ -111,8 +111,8 @@ void loop() {
     lastTime = millis();
 
     // ===== UNA SOLA LECTURA I2C POR CICLO =====
-    float rawVoltage = ina219.getBusVoltage_V();
-    float rawCurrent = ina219.getCurrent_mA();
+    float rawVoltage = ina219.getBusVoltage_V() + VOLTAGE_OFFSET;
+    float rawCurrent = ina219.getCurrent_mA() * 0.82;
 
     long voltage, current, power, battery;
     unsigned short v_status, c_status, p_status, b_status;
@@ -155,3 +155,4 @@ void sendLoRa(long voltage, long current, long power, long battery) {
   LoRa.endPacket();
 }
 */
+

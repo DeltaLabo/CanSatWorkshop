@@ -1,3 +1,5 @@
+// In this file you can find the 0.1 version of the code
+
 #include <Wire.h>
 #include <limits.h>
 #include <math.h>

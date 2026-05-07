@@ -1,0 +1,156 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Logical view
+# Show the allocated software / behaviour containers and the component exchanges between them.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 20 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+
+        cansat_rfm: "[PC] RFM95W LoRa" {
+          class: pc
+          direction: down
+          cansat_lora: "[LC] LoRa Transceiver" { class: lc }
+        }
+
+        cansat_xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+          grid-columns: 2
+
+          obcc: "[LC] OBCC" { class: lc }
+          ess_processing: "[LC] ESS Processing" { class: lc }
+          ads_processing: "[LC] ADS Processing" { class: lc }
+          pdm_processing: "[LC] PDM Processing" { class: lc }
+          ams_processing: "[LC] AMS Processing" { class: lc }
+        }
+
+        cansat_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm: "[PC] RFM95W LoRa" {
+      class: pc
+      direction: down
+      ground_lora: "[LC] LoRa Transceiver" { class: lc }
+    }
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: down
+      ground_forwarder: "[LC] LoRa Forwarder" { class: lc }
+    }
+  }
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: right
+    grid-columns: 3
+
+    decoder: "[LC] Decoder" { class: lc }
+
+    note_concurrent: "[C] Concurrent\nexecution" {
+      class: note
+      shape: page
+    }
+
+    dashboard: "[LC] Dashboard" { class: lc }
+    csv_writer: "[LC] CSV Writer" { class: lc }
+
+    note_browser: "[C] Accesible via\na web browser" {
+      class: note
+      shape: page
+    }
+
+    usb_port: "[PC] USB Port" {
+      class: pc
+      direction: down
+      usb_power: "[LC] USB Power" { class: lc }
+    }
+  }
+}
+
+note_separation: "[C] Max. separation of 500m\nbetween CanSat and DPS" {
+  class: note
+  shape: page
+}
+
+system.cansat.obcc_module.obcc_pcb.cansat_rfm.cansat_lora -> system.cansat.obcc_module.obcc_pcb.cansat_xiao.obcc: "[CE] SPI" { class: ce }
+system.ground_station_pcb.ground_xiao.ground_forwarder -> system.ground_station_pcb.ground_rfm.ground_lora: "[CE] SPI" { class: ce }
+system.ground_station_pcb.ground_xiao.ground_forwarder -> system.pc.decoder: "[CE] UART" { class: ce }
+system.pc.decoder -> system.pc.csv_writer: "[CE] Payload" { class: ce }
+system.pc.decoder -> system.pc.dashboard: "[CE] Payload" { class: ce }
+system.pc.dashboard -> system.pc.decoder: "[CE] Command" { class: ce }
+
+system.pc.note_concurrent -> system.pc.decoder { class: cstr }
+system.pc.note_concurrent -> system.pc.csv_writer { class: cstr }
+system.pc.note_concurrent -> system.pc.dashboard { class: cstr }
+system.pc.note_browser -> system.pc.dashboard { class: cstr }
+note_separation -> system.cansat { class: cstr }
+note_separation -> system.ground_station_pcb { class: cstr }
+
+# Layout-only edges to preserve the Capella reading order and open space for the PC-side CE labels.
+system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.pc { style: { opacity: 0 } }
+system.pc.decoder -> system.pc.note_concurrent { style: { opacity: 0 } }
+system.pc.note_concurrent -> system.pc.dashboard { style: { opacity: 0 } }

@@ -10,8 +10,24 @@ See [Variable Getter Template](./../OBCC/Variable%20Getter%20Template.md) if nee
 
 ## Integration, Verification, and Validation (IVV) Plan
 
-![Structure Diagram for DPS v1.0. Everything inside the CanSat Physical Component doesn’t belong to DPS and is implemented separately by the OBCC team.](DPS%20v1.0.jpg)
-Structure Diagram for DPS v1.0. Everything inside the CanSat Physical Component doesn’t belong to DPS and is implemented separately by the OBCC team.
+The DPS v1.0 MBSE views translated from Capella XML to D2 are available in [`./MBSE/v1.0/`](./MBSE/v1.0/):
+
+### Architecture views
+- [View 1 — Physical view (PNG)](./MBSE/v1.0/DPS_v1.0_view1_physical.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view1_physical.d2)
+- [View 2 — Logical view (PNG)](./MBSE/v1.0/DPS_v1.0_view2_logical.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view2_logical.d2)
+- [View 3 — Functional allocation view (PNG)](./MBSE/v1.0/DPS_v1.0_view3_functional_allocation.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view3_functional_allocation.d2)
+
+### Functional chain views
+- [View 4 — Downlink decode and storage chain (PNG)](./MBSE/v1.0/DPS_v1.0_view4_downlink_processing_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view4_downlink_processing_chain.d2)
+- [View 5 — Dashboard command and uplink chain (PNG)](./MBSE/v1.0/DPS_v1.0_view5_command_uplink_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view5_command_uplink_chain.d2)
+- [View 6 — CanSat receive path (PNG)](./MBSE/v1.0/DPS_v1.0_view6_cansat_receive_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view6_cansat_receive_chain.d2)
+- [View 7 — CanSat transmit path (PNG)](./MBSE/v1.0/DPS_v1.0_view7_cansat_transmit_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view7_cansat_transmit_chain.d2)
+- [View 8 — Dashboard visualisation chain (PNG)](./MBSE/v1.0/DPS_v1.0_view8_dashboard_visualisation_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view8_dashboard_visualisation_chain.d2)
+- [View 9 — Forwarder initialisation chain (PNG)](./MBSE/v1.0/DPS_v1.0_view9_forwarder_initialisation_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view9_forwarder_initialisation_chain.d2)
+
+Recommended reading order: View 1 → View 2 → View 3 → View 4 → View 8 → View 5 → View 6 → View 7 → View 9.
+
+This order goes from structure to allocation, then follows the main DPS operational flows: downlink decoding and storage, dashboard visualisation, command uplink, CanSat-side receive/transmit behavior, and finally forwarder initialisation.
 
 ## Requirements
 

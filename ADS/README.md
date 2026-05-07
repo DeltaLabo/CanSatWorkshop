@@ -19,6 +19,25 @@ v0.2
 ![v1.0](ADS_v1.0.jpg)
 v1.0
 
+## Integration, Verification, and Validation (IVV) Plan
+
+The ADS v1.0 MBSE views translated from Capella XML to D2 are available in [`./MBSE/v1.0/`](./MBSE/v1.0/):
+
+### Architecture views
+- [View 1 — Physical view (PNG)](./MBSE/v1.0/ADS_v1.0_view1_physical.png) · [D2 source](./MBSE/v1.0/ADS_v1.0_view1_physical.d2)
+- [View 2 — Logical view (PNG)](./MBSE/v1.0/ADS_v1.0_view2_logical.png) · [D2 source](./MBSE/v1.0/ADS_v1.0_view2_logical.d2)
+- [View 3 — Functional allocation view (PNG)](./MBSE/v1.0/ADS_v1.0_view3_functional_allocation.png) · [D2 source](./MBSE/v1.0/ADS_v1.0_view3_functional_allocation.d2)
+
+### Functional chain views
+- [View 4 — GPS position chain (PNG)](./MBSE/v1.0/ADS_v1.0_view4_gps_position_chain.png) · [D2 source](./MBSE/v1.0/ADS_v1.0_view4_gps_position_chain.d2)
+- [View 5 — Angular velocity chain (PNG)](./MBSE/v1.0/ADS_v1.0_view5_angular_velocity_chain.png) · [D2 source](./MBSE/v1.0/ADS_v1.0_view5_angular_velocity_chain.d2)
+- [View 6 — Attitude estimation chain (PNG)](./MBSE/v1.0/ADS_v1.0_view6_attitude_estimation_chain.png) · [D2 source](./MBSE/v1.0/ADS_v1.0_view6_attitude_estimation_chain.d2)
+- [View 7 — Peripheral initialisation chain (PNG)](./MBSE/v1.0/ADS_v1.0_view7_peripheral_initialisation_chain.png) · [D2 source](./MBSE/v1.0/ADS_v1.0_view7_peripheral_initialisation_chain.d2)
+
+Recommended reading order: View 1 → View 2 → View 3 → View 4 → View 5 → View 6 → View 7.
+
+This order goes from physical structure to logical allocation, then follows the main ADS flows: GPS position acquisition, angular-rate sensing, attitude estimation, and peripheral initialisation reporting.
+
 ## Requirements
 
 | **Requirement** | **Verification method** |

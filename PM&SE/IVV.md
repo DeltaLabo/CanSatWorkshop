@@ -20,6 +20,7 @@ Information already controlled in the model need not be restated in the report u
 
 1. **Physical components and physical links**  
    For every physical component or physical link in the model, perform a presence/absence inspection. Pass if all modeled physical components and physical links are present.
+   For every physical component, consider performing a unit test modeled as a functional chain.
 
 2. **Component exchanges**  
    For every component exchange, perform a presence/absence analysis. Pass if all modeled component exchanges are present and implemented consistently with the model intent. For example, if the component exchange is modeled as multi-point communication, analyze whether the implemented protocol is consistent with that intent, such as I2C or SPI rather than UART.

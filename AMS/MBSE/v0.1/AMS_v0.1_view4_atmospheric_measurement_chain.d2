@@ -4,7 +4,7 @@ vars: {
   }
 }
 
-# Functional chain: BME280 atmospheric measurement polling, processing, and delivery to OBCC
+# Functional chain: BME280 pressure and temperature polling, processing, and measurement collection.
 direction: right
 
 classes: {
@@ -44,12 +44,12 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-chain: "AMS v1.0 — Atmospheric measurement chain" {
+chain: "AMS v0.1 — Atmospheric measurement chain" {
   class: chain
   direction: right
 
   measure_pressure: "[F] Measure\npressure" { class: func }
-  measure_temperature: "[F] Measure\ntemp." { class: func }
+  measure_temperature: "[F] Measure\ntemperature" { class: func }
   respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
   read_pressure: "[F] Read\npressure" { class: func }
   read_temperature: "[F] Read\ntemperature" { class: func }
@@ -75,7 +75,7 @@ chain.measure_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nsignal" { 
 chain.measure_temperature -> chain.respond_i2c_requests: "[FE] Temperature\nsignal" { class: fe }
 
 chain.read_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nI2C Req" { class: fe }
-chain.read_temperature -> chain.respond_i2c_requests: "[FE] Temp.\nI2C Req" { class: fe }
+chain.read_temperature -> chain.respond_i2c_requests: "[FE] Temperature\nI2C Req" { class: fe }
 
 chain.respond_i2c_requests -> chain.read_pressure: "[FE] Pressure" { class: fe }
 chain.respond_i2c_requests -> chain.read_temperature: "[FE] Temperature" { class: fe }
@@ -90,5 +90,5 @@ chain.note_accuracy_pressure -> chain.measure_pressure { class: cstr }
 chain.note_accuracy_temperature -> chain.measure_temperature { class: cstr }
 chain.note_resolution -> chain.calculate_altitude { class: cstr }
 
-# Layout-only edge to keep the two runtime branches grouped before collection.
+# Layout-only edge to keep the two processing branches grouped before collection.
 chain.calculate_altitude -> chain.process_temperature { style: { opacity: 0 } }

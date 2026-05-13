@@ -72,16 +72,11 @@ system: "[System] Physical System" {
             direction: down
             grid-columns: 3
 
-            measure_humidity: "[F] Measure\nhumidity" { class: func }
             measure_pressure: "[F] Measure\npressure" { class: func }
             measure_temperature: "[F] Measure\ntemp." { class: func }
             respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
           }
 
-          note_accuracy_humidity: "[C] Accuracy < 5%,\n20-80% range" {
-            class: note
-            shape: page
-          }
           note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
             class: note
             shape: page
@@ -115,10 +110,8 @@ system: "[System] Physical System" {
             grid-columns: 4
 
             get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
-            read_humidity: "[F] Read\nhumidity" { class: func }
             read_pressure: "[F] Read\npressure" { class: func }
             read_temperature: "[F] Read\ntemperature" { class: func }
-            process_humidity: "[F] Process\nhumidity" { class: func }
             calculate_altitude: "[F] Calculate\naltitude" { class: func }
             process_temperature: "[F] Process\ntemperature" { class: func }
 
@@ -171,7 +164,6 @@ system: "[System] Physical System" {
   }
 }
 
-system.cansat.ams_module.ams_pcb.bme280.note_accuracy_humidity -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_humidity { class: cstr }
 system.cansat.ams_module.ams_pcb.bme280.note_accuracy_pressure -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_pressure { class: cstr }
 system.cansat.ams_module.ams_pcb.bme280.note_accuracy_temperature -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
 system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.note_resolution -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.calculate_altitude { class: cstr }

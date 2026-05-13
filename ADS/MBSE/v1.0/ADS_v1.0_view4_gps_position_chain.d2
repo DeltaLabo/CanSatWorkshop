@@ -4,7 +4,7 @@ vars: {
   }
 }
 
-# Functional chain: GPS position acquisition and delivery to OBCC
+# Functional chain: GPS position polling over UART and delivery to OBCC
 direction: right
 
 classes: {
@@ -51,7 +51,6 @@ chain: "ADS v1.0 — GPS position chain" {
   measure_longitude: "[F] Measure\nlongitude" { class: func }
   measure_latitude: "[F] Measure\nlatitude" { class: func }
   send_payload: "[F] Send payload" { class: func }
-  receive_gps_uart_rx_interrupt: "[F] Receive GPS UART\nRX Interrupt" { class: func }
   read_store_lat_lon: "[F] Read and store\nlat, lon" { class: func }
   get_lat: "[F] Get lat" { class: func }
   get_lon: "[F] Get lon" { class: func }
@@ -65,10 +64,10 @@ chain: "ADS v1.0 — GPS position chain" {
 
 chain.measure_longitude -> chain.send_payload: "[FE] Longitude\nsignal" { class: fe }
 chain.measure_latitude -> chain.send_payload: "[FE] Latitude\nsignal" { class: fe }
-chain.send_payload -> chain.receive_gps_uart_rx_interrupt: "[FE] GPS Payload" { class: fe }
-chain.receive_gps_uart_rx_interrupt -> chain.read_store_lat_lon: "[FE] Interrupt\nsignal" { class: fe }
-chain.read_store_lat_lon -> chain.get_lat: "[FE] Latitude" { class: fe }
-chain.read_store_lat_lon -> chain.get_lon: "[FE] Longitude" { class: fe }
+chain.read_store_lat_lon -> chain.send_payload: "[FE] UART Req" { class: fe }
+chain.send_payload -> chain.read_store_lat_lon: "[FE] UART Response\n[GPS Payload]" { class: fe }
+chain.read_store_lat_lon -> chain.get_lat: "[FE] Stored\nLatitude" { class: fe }
+chain.read_store_lat_lon -> chain.get_lon: "[FE] Stored\nLongitude" { class: fe }
 chain.get_lat -> chain.collect_measurements: "[FE] Result\n[Lat]" { class: fe }
 chain.get_lon -> chain.collect_measurements: "[FE] Result\n[Lon]" { class: fe }
 

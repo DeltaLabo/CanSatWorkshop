@@ -1,0 +1,85 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain: downlink reception, payload decoding, latency computation, and local storage
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "DPS v0.1 — Downlink decode and storage chain" {
+  class: chain
+  direction: right
+
+  store_incoming_data: "[F] Store incoming data" { class: func }
+  receive_lora_rx_interrupt: "[F] Receive LoRa\nRX Interrupt" { class: func }
+  read_payload: "[F] Read payload" { class: func }
+  forward_to_pc: "[F] Forward to PC" { class: func }
+  check_if_data_is_available: "[F] Check if data\nis available" { class: func }
+  read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+  get_rx_timestamp: "[F] Get RX\ntimestamp" { class: func }
+  calculate_latency: "[F] Calculate\nlatency" { class: func }
+  push_to_payload_queue: "[F] Push to\npayload queue" { class: func }
+  csv_consume_payload_queue: "[F] Consume\npayload queue" { class: func }
+  append_to_csv: "[F] Append to CSV" { class: func }
+  log_error: "[F] Log error" { class: func }
+
+  note_csv_name: "[C] Give each CSV a\nunique name based\non the initial\ntimestamp" {
+    class: note
+    shape: page
+  }
+}
+
+chain.store_incoming_data -> chain.receive_lora_rx_interrupt: "[FE] Interrupt []" { class: fe }
+chain.store_incoming_data -> chain.read_payload: "[FE] LoRa Data\n[LoRa Frame]" { class: fe }
+chain.receive_lora_rx_interrupt -> chain.read_payload: "[FE] Flag []" { class: fe }
+chain.read_payload -> chain.forward_to_pc: "[FE] Payload\n[LoRa Frame]" { class: fe }
+chain.read_payload -> chain.log_error: "[FE] Reading error []" { class: fe }
+chain.forward_to_pc -> chain.check_if_data_is_available: "[FE] Payload\n[LoRa Frame]" { class: fe }
+chain.check_if_data_is_available -> chain.read_and_decode_frame: "[FE] Available UART bytes []" { class: fe }
+chain.check_if_data_is_available -> chain.get_rx_timestamp: "[FE] UART is\navailable []" { class: fe }
+chain.get_rx_timestamp -> chain.calculate_latency: "[FE] Timestamp []" { class: fe }
+chain.get_rx_timestamp -> chain.push_to_payload_queue: "[FE] Timestamp []" { class: fe }
+chain.read_and_decode_frame -> chain.push_to_payload_queue: "[FE] Payload\n[Decoded Payload]" { class: fe }
+chain.calculate_latency -> chain.push_to_payload_queue: "[FE] Latency []" { class: fe }
+chain.push_to_payload_queue -> chain.csv_consume_payload_queue: "[FE] Payload\n[Timestamped Payload]" { class: fe }
+chain.csv_consume_payload_queue -> chain.append_to_csv: "[FE] Payload\n[Timestamped Payload]" { class: fe }
+
+chain.note_csv_name -> chain.append_to_csv { class: cstr }

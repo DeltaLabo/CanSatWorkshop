@@ -1,0 +1,138 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Logical view
+# DPS v0.1 keeps the v1.0 logical behaviour, with a simplified datalogger circuitboard instead of CanSat/module/PCB packaging.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 20 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  datalogger_board: "[PC] Datalogger Circuitboard" {
+    class: pc
+    direction: right
+
+    cansat_rfm: "[PC] RFM95W LoRa" {
+      class: pc
+      direction: down
+      cansat_lora: "[LC] LoRa Transceiver" { class: lc }
+    }
+
+    cansat_xiao: "[PC] XIAO ESP32-S3" {
+      class: pc
+      direction: down
+      dummy_datalogger: "[LC] Dummy Datalogger" { class: lc }
+    }
+  }
+
+  ground_station_board: "[PC] Ground Station Circuitboard" {
+    class: pc
+    direction: right
+
+    ground_rfm: "[PC] RFM95W LoRa" {
+      class: pc
+      direction: down
+      ground_lora: "[LC] LoRa Transceiver" { class: lc }
+    }
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: down
+      ground_forwarder: "[LC] LoRa Forwarder" { class: lc }
+    }
+  }
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: right
+    grid-columns: 3
+
+    decoder: "[LC] Decoder" { class: lc }
+
+    note_concurrent: "[C] Concurrent\nexecution" {
+      class: note
+      shape: page
+    }
+
+    dashboard: "[LC] Dashboard" { class: lc }
+    csv_writer: "[LC] CSV Writer" { class: lc }
+
+    note_browser: "[C] Accesible via\na web browser" {
+      class: note
+      shape: page
+    }
+
+    usb_port: "[PC] USB Port" {
+      class: pc
+      direction: down
+      usb_power: "[LC] USB Power" { class: lc }
+    }
+  }
+}
+
+note_separation: "[C] Max. separation of 500m\nbetween datalogger circuitboard\nand ground station" {
+  class: note
+  shape: page
+}
+
+system.datalogger_board.cansat_rfm.cansat_lora -> system.datalogger_board.cansat_xiao.dummy_datalogger: "[CE] SPI" { class: ce }
+system.ground_station_board.ground_xiao.ground_forwarder -> system.ground_station_board.ground_rfm.ground_lora: "[CE] SPI" { class: ce }
+system.ground_station_board.ground_xiao.ground_forwarder -> system.pc.decoder: "[CE] UART" { class: ce }
+system.pc.decoder -> system.pc.csv_writer: "[CE]\nPayload" { class: ce }
+system.pc.decoder -> system.pc.dashboard: "[CE]\nPayload" { class: ce }
+system.pc.dashboard -> system.pc.decoder: "[CE]\nCommand" { class: ce }
+
+system.pc.note_concurrent -> system.pc.decoder { class: cstr }
+system.pc.note_concurrent -> system.pc.csv_writer { class: cstr }
+system.pc.note_concurrent -> system.pc.dashboard { class: cstr }
+system.pc.note_browser -> system.pc.dashboard { class: cstr }
+note_separation -> system.datalogger_board { class: cstr }
+note_separation -> system.ground_station_board { class: cstr }
+
+# Layout-only edges to preserve the Capella reading order and open space for the PC-side CE labels.
+system.datalogger_board -> system.ground_station_board { style: { opacity: 0 } }
+system.ground_station_board -> system.pc { style: { opacity: 0 } }
+system.pc.decoder -> system.pc.note_concurrent { style: { opacity: 0 } }
+system.pc.note_concurrent -> system.pc.dashboard { style: { opacity: 0 } }

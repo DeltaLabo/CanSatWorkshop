@@ -8,16 +8,24 @@ See [Understanding Capella Physical Diagrams](./../PM&SE//Understanding%20Capell
 
 ## Integration, Verification, and Validation (IVV) Plan
 
-![PDM v0.1 structure. The dummy CanSat is S&A v0.1.](PDM_v0.1_S.png)
+[D2 source](MBSE/v0.1/PDM_v0.1_view1_physical.d2) · [legacy Capella export](PDM_v0.1_S.png)
+
+![PDM v0.1 structure. The dummy CanSat is S&A v0.1.](MBSE/v0.1/PDM_v0.1_view1_physical.png)
 PDM v0.1 structure. The dummy CanSat is S&A v0.1.
 
-![PDM v0.1 fall test functional chain. Terminal speed taken from [ESA](https://cansat.esa.int/wp-content/uploads/2023/09/T10_Parachute_Design_EN.pdf) CanSat guide.](PDM_v0.1_FC.png)
+[D2 source](MBSE/v0.1/PDM_v0.1_view2_fall_test_chain.d2) · [legacy Capella export](PDM_v0.1_FC.png)
+
+![PDM v0.1 fall test functional chain. Terminal speed taken from ESA CanSat guide.](MBSE/v0.1/PDM_v0.1_view2_fall_test_chain.png)
 PDM v0.1 fall test functional chain. Terminal speed taken from [ESA](https://cansat.esa.int/wp-content/uploads/2023/09/T10_Parachute_Design_EN.pdf) CanSat guide.
 
-![PDM v0.2 structure.](PDM_v0.2_S.png)
+[D2 source](MBSE/v0.2/PDM_v0.2_view1_physical.d2) · [legacy Capella export](PDM_v0.2_S.png)
+
+![PDM v0.2 structure.](MBSE/v0.2/PDM_v0.2_view1_physical.png)
 PDM v0.2 structure.
 
-![PDM v0.2 parachute deployment test functional chain.](PDM_v0.2_FC.jpg)
+[D2 source](MBSE/v0.2/PDM_v0.2_view2_parachute_deployment_chain.d2) · [legacy Capella export](PDM_v0.2_FC.jpg)
+
+![PDM v0.2 parachute deployment test functional chain.](MBSE/v0.2/PDM_v0.2_view2_parachute_deployment_chain.png)
 PDM v0.2 parachute deployment test functional chain.
 
 ## Requirements

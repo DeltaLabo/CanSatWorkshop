@@ -17,17 +17,22 @@ vars: {
 # - Current PDM v1.0 XML includes Cap, Backplane PCB, OBCC PCB, connectors, and
 #   backplane physical links that are not visible in this v0.2 raster; they are
 #   not added here.
-# - Raster also shows LC/F allocations and FE/CE-like labels (Descent speed
-#   control, Parachute trigger, OBCC, Power storage, Voltage regulation,
-#   Release dummy, Trigger PWM Signal, Limit terminal speed, Open parachute,
-#   Set PWM to open position, Provide power, Step up voltage, Trigger enable,
-#   PWM, Parachute opened, Parachute open signal). They are omitted from this
-#   physical view per the PDM MBSE physical-view convention.
+# - Raster visibly overlays LC/F allocations and FE/CE labels on the physical
+#   structure (Descent speed control, Parachute trigger, OBCC, Power storage,
+#   Voltage regulation, Release dummy, Trigger PWM Signal, Limit terminal speed,
+#   Open parachute, Set PWM to open position, Provide power, Step up voltage,
+#   Trigger enable, PWM, Parachute opened, Parachute open signal). These are
+#   preserved here because they are major visible content of the source export.
+# - Historical raster labels such as "Parachute trigger", "Open parachute",
+#   and "Set PWM to open position" are kept instead of normalizing to the
+#   current XML's Trigger/open-servo-state names.
 # - BLE is rendered as [PL] because it is drawn in the raster with the same red
 #   physical-link styling as the cable links, although a wireless link to a
 #   human tester is semantically borderline.
-# - The visible constraint notes target omitted/ambiguous content; see constraint
-#   links below for the chosen attachment points.
+# - The visible constraint notes are preserved; the PDS v0.1 target near the
+#   Power Module remains ambiguous, so its chosen attachment is documented below.
+# - Layout order puts Servo before Parachute to keep the visible FE/CE labels
+#   readable; the source raster places Parachute before Servo.
 direction: right
 
 classes: {
@@ -67,7 +72,14 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-human_tester: "[EA] Human Tester" { class: ea }
+human_tester: "[EA] Human Tester" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  release_dummy: "[F] Release\ndummy" { class: func }
+  trigger_pwm_signal: "[F] Trigger PWM\nSignal" { class: func }
+}
 
 note_airborne: "[C] While CanSat\nis airborne" { class: note; shape: page }
 note_pds_v0_1: "[C] PDS\nv0.1" { class: note; shape: page }
@@ -84,23 +96,75 @@ system: "[System] Physical System" {
       class: pc
       direction: right
 
-      parachute: "[PC] Parachute" { class: pc }
-      servo: "[PC] Servo" { class: pc }
+      servo: "[PC] Servo" {
+        class: pc
+        direction: down
+
+        parachute_trigger: "[LC] Parachute trigger" {
+          class: lc
+          direction: down
+
+          open_parachute: "[F] Open parachute" { class: func }
+        }
+      }
+
+      parachute: "[PC] Parachute" {
+        class: pc
+        direction: down
+
+        descent_speed_control: "[LC] Descent speed control" {
+          class: lc
+          direction: down
+
+          limit_terminal_speed: "[F] Limit terminal speed" { class: func }
+        }
+      }
     }
 
     obcc_module: "[PC] OBCC Module" {
       class: pc
       direction: down
 
-      xiao_esp32_c3: "[PC] XIAO ESP32-C3" { class: pc }
+      xiao_esp32_c3: "[PC] XIAO ESP32-C3" {
+        class: pc
+        direction: down
+
+        obcc: "[LC] OBCC" {
+          class: lc
+          direction: down
+
+          set_pwm_open_position: "[F] Set PWM to open\nposition" { class: func }
+        }
+      }
     }
 
     power_module: "[PC] Power Module" {
       class: pc
       direction: right
 
-      battery: "[PC] Battery" { class: pc }
-      boost_converter: "[PC] Boost Converter" { class: pc }
+      battery: "[PC] Battery" {
+        class: pc
+        direction: down
+
+        power_storage: "[LC] Power storage" {
+          class: lc
+          direction: down
+
+          provide_power: "[F] Provide power" { class: func }
+        }
+      }
+
+      boost_converter: "[PC] Boost Converter" {
+        class: pc
+        direction: down
+
+        voltage_regulation: "[LC] Voltage regulation" {
+          class: lc
+          direction: down
+
+          step_up_voltage: "[F] Step up voltage" { class: func }
+        }
+      }
     }
   }
 }
@@ -112,9 +176,14 @@ system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.parachute_module.servo:
 system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.power_module.boost_converter: "[PL] 5V Power\nCable Pair" { class: pl }
 system.cansat.power_module.battery -- system.cansat.power_module.boost_converter: "[PL] Soldered Power\nCables (2x)" { class: pl }
 
-# The raster's airborne constraint points to the omitted "Trigger PWM Signal"
-# function inside Human Tester; attach it to the actor in this physical view.
-note_airborne -> human_tester { class: cstr }
+human_tester.trigger_pwm_signal -> system.cansat.obcc_module.xiao_esp32_c3.obcc.set_pwm_open_position: "[FE] Trigger enable []" { class: fe }
+system.cansat.obcc_module.xiao_esp32_c3.obcc.set_pwm_open_position -> system.cansat.parachute_module.servo.parachute_trigger.open_parachute: "[FE] Parachute open\nsignal []" { class: fe }
+system.cansat.parachute_module.servo.parachute_trigger.open_parachute -> system.cansat.parachute_module.parachute.descent_speed_control.limit_terminal_speed: "[FE] Parachute opened []" { class: fe }
+
+system.cansat.obcc_module.xiao_esp32_c3.obcc -> system.cansat.parachute_module.servo.parachute_trigger: "[CE] PWM" { class: ce; style: { font-size: 24 } }
+
+# The raster's airborne constraint points to the Trigger PWM Signal function.
+note_airborne -> human_tester.trigger_pwm_signal { class: cstr }
 
 # The raster's PDS v0.1 note has a dashed arrow into the CanSat around the Power
 # Module; attach it to Power Module, but the exact target is ambiguous.

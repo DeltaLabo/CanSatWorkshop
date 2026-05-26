@@ -87,7 +87,8 @@ max_diameter_30cm: "[C] Max. diameter 30cm" { class: note; shape: page }
 - Labels must carry the Capella prefix: `[System]`, `[PC]`, `[LC]`, `[EA]`, `[F]`, `[C]`, `[PL]`, `[CE]`, `[FE]`.
 - Preserve Capella names and exchange payload brackets when known, e.g. `[FE] Close Signal [PWM]`; use line breaks only for readability.
 - Physical links are undirected (`--`, class `pl`). Component exchanges and functional exchanges are directed (`->`, classes `ce` and `fe`). Constraint links use class `cstr` and no label.
-- Physical views should contain only the system boundary, physical components, physical links, and relevant constraints/external actors. Functional chain views should contain the chain container, participating functions, functional exchanges, and applicable constraints; do not add PCs, LCs, EAs, or ad-hoc visible clusters.
+- Clean physical views should contain only the system boundary, physical components, physical links, and relevant constraints/external actors. For historical raster reconstructions, preserve visible LC/F allocation and FE/CE overlays when they are major source content, and document the reason in D2 comments.
+- Functional chain views should normally contain the chain container, participating functions, functional exchanges, and applicable constraints. When the source raster explicitly displays allocation/context (EA/PC/LC containers plus visible CE/PL links), preserve that visible context for traceability; do not add non-visible context or ad-hoc clusters solely for layout.
 
 ## PDM v1.0 extraction summary
 

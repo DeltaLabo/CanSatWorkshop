@@ -84,7 +84,6 @@ chain: "PDM v0.2 — Parachute deployment test (3 reps)" {
   cansat: "[PC] CanSat" {
     class: pc
     direction: right
-    grid-columns: 2
 
     obcc_module: "[PC] OBCC Module" {
       class: pc
@@ -178,8 +177,9 @@ chain.cansat.power_module.battery -- chain.cansat.power_module.boost_converter: 
 # Source dashed constraint targets the Trigger PWM Signal function.
 chain.note_airborne -> chain.human_tester.trigger_pwm_signal { class: cstr }
 
-# Source dashed constraint points toward the CanSat around the Power Module; attach it to Power Module.
-chain.note_pds_v0_1 -> chain.cansat.power_module { class: cstr }
+# Source dashed constraint points toward the CanSat around the Power Module; attach it to
+# the CanSat boundary to preserve the visible target without forcing a long crossing.
+chain.note_pds_v0_1 -> chain.cansat { class: cstr }
 
 # Layout-only edges to keep the notes, external actor, and CanSat in a readable left-to-right band.
 # These carry no Capella semantics.

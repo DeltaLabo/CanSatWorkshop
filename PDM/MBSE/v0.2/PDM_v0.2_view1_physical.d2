@@ -1,0 +1,126 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical view reconstructed from PDM/PDM_v0.2_S.png.
+# The source raster top-level visible container is [PC] CanSat; the D2 view adds
+# the shared [System] Physical System boundary to stay consistent with current
+# PDM v1.0 XML / MBSE conventions.
+#
+# Source/XML drift documented for review:
+# - Raster labels the MCU as XIAO ESP32-C3; current PDM v1.0 XML labels the
+#   equivalent component XIAO ESP32-S3. The historical C3 label is preserved.
+# - Raster includes Power Module, Battery, Boost Converter, BLE, 5V power cable,
+#   and soldered power cables; these are not present in current PDM v1.0 XML.
+# - Current PDM v1.0 XML includes Cap, Backplane PCB, OBCC PCB, connectors, and
+#   backplane physical links that are not visible in this v0.2 raster; they are
+#   not added here.
+# - Raster also shows LC/F allocations and FE/CE-like labels (Descent speed
+#   control, Parachute trigger, OBCC, Power storage, Voltage regulation,
+#   Release dummy, Trigger PWM Signal, Limit terminal speed, Open parachute,
+#   Set PWM to open position, Provide power, Step up voltage, Trigger enable,
+#   PWM, Parachute opened, Parachute open signal). They are omitted from this
+#   physical view per the PDM MBSE physical-view convention.
+# - BLE is rendered as [PL] because it is drawn in the raster with the same red
+#   physical-link styling as the cable links, although a wireless link to a
+#   human tester is semantically borderline.
+# - The visible constraint notes target omitted/ambiguous content; see constraint
+#   links below for the chosen attachment points.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+human_tester: "[EA] Human Tester" { class: ea }
+
+note_airborne: "[C] While CanSat\nis airborne" { class: note; shape: page }
+note_pds_v0_1: "[C] PDS\nv0.1" { class: note; shape: page }
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: right
+
+      parachute: "[PC] Parachute" { class: pc }
+      servo: "[PC] Servo" { class: pc }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      xiao_esp32_c3: "[PC] XIAO ESP32-C3" { class: pc }
+    }
+
+    power_module: "[PC] Power Module" {
+      class: pc
+      direction: right
+
+      battery: "[PC] Battery" { class: pc }
+      boost_converter: "[PC] Boost Converter" { class: pc }
+    }
+  }
+}
+
+human_tester -- system.cansat.obcc_module.xiao_esp32_c3: "[PL] BLE" { class: pl }
+
+system.cansat.parachute_module.parachute -- system.cansat.parachute_module.servo: "[PL] Deployment\nmechanism" { class: pl }
+system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.parachute_module.servo: "[PL] Soldered\ncables (3x)" { class: pl }
+system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.power_module.boost_converter: "[PL] 5V Power\nCable Pair" { class: pl }
+system.cansat.power_module.battery -- system.cansat.power_module.boost_converter: "[PL] Soldered Power\nCables (2x)" { class: pl }
+
+# The raster's airborne constraint points to the omitted "Trigger PWM Signal"
+# function inside Human Tester; attach it to the actor in this physical view.
+note_airborne -> human_tester { class: cstr }
+
+# The raster's PDS v0.1 note has a dashed arrow into the CanSat around the Power
+# Module; attach it to Power Module, but the exact target is ambiguous.
+note_pds_v0_1 -> system.cansat.power_module { class: cstr }
+
+# Layout-only edges keep the external actor and visible notes in a compact
+# left-to-right band outside the system. These carry no Capella semantics.
+human_tester -> note_airborne { style: { opacity: 0 } }
+note_airborne -> note_pds_v0_1 { style: { opacity: 0 } }

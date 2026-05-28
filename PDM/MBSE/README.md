@@ -2,14 +2,27 @@
 
 This directory will hold D2 reconstructions of the historical PDM Capella raster views. Do not treat this file as a converted diagram; it is shared context for the conversion work.
 
-## Target D2 outputs
+## Canonical target D2 outputs
 
-| Source raster | Target D2 path |
-| --- | --- |
-| `PDM/PDM_v0.1_S.png` | `PDM/MBSE/v0.1/PDM_v0.1_view1_physical.d2` |
-| `PDM/PDM_v0.1_FC.png` | `PDM/MBSE/v0.1/PDM_v0.1_view2_fall_test_chain.d2` |
-| `PDM/PDM_v0.2_S.png` | `PDM/MBSE/v0.2/PDM_v0.2_view1_physical.d2` |
-| `PDM/PDM_v0.2_FC.jpg` | `PDM/MBSE/v0.2/PDM_v0.2_view2_parachute_deployment_chain.d2` |
+The legacy raster exports may contain physical, logical, functional-allocation, and exchange overlays in the same image. Treat those rasters as full-context references only: conversion agents must split the content into the canonical views below and must not preserve mixed overlays in a single D2 view. For each version, the canonical D2 source set is exactly the four files listed here.
+
+### PDM v0.1
+
+| View | Primary legacy context | Target D2 path |
+| --- | --- | --- |
+| Physical | `PDM/PDM_v0.1_S.png` | `PDM/MBSE/v0.1/PDM_v0.1_view1_physical.d2` |
+| Logical | `PDM/PDM_v0.1_S.png` | `PDM/MBSE/v0.1/PDM_v0.1_view2_logical.d2` |
+| Functional allocation | `PDM/PDM_v0.1_S.png`, `PDM/PDM_v0.1_FC.png` | `PDM/MBSE/v0.1/PDM_v0.1_view3_functional_allocation.d2` |
+| Fall-test functional chain | `PDM/PDM_v0.1_FC.png` | `PDM/MBSE/v0.1/PDM_v0.1_view4_fall_test_chain.d2` |
+
+### PDM v0.2
+
+| View | Primary legacy context | Target D2 path |
+| --- | --- | --- |
+| Physical | `PDM/PDM_v0.2_S.png` | `PDM/MBSE/v0.2/PDM_v0.2_view1_physical.d2` |
+| Logical | `PDM/PDM_v0.2_S.png` | `PDM/MBSE/v0.2/PDM_v0.2_view2_logical.d2` |
+| Functional allocation | `PDM/PDM_v0.2_S.png`, `PDM/PDM_v0.2_FC.jpg` | `PDM/MBSE/v0.2/PDM_v0.2_view3_functional_allocation.d2` |
+| Parachute deployment functional chain | `PDM/PDM_v0.2_FC.jpg` | `PDM/MBSE/v0.2/PDM_v0.2_view4_parachute_deployment_chain.d2` |
 
 Render each D2 file to a `.png` next to it with ELK tight spacing:
 
@@ -20,6 +33,58 @@ d2 --layout=elk \
   --elk-edgeNodeBetweenLayers=20 \
   input.d2 output.png
 ```
+
+## Strict view separation rules
+
+These rules are acceptance criteria for PDM D2 conversion. When a legacy raster shows content from multiple MBSE concerns, move each element or exchange into the appropriate canonical view instead of copying the mixed overlay.
+
+### Physical view
+
+Allowed:
+
+- `[System]`, `[PC]`, `[EA]`, and physical `[C]` nodes.
+- `[PL]` physical links.
+
+Not allowed:
+
+- `[LC]`, `[F]`, `[FE]`, `[CE]`.
+
+### Logical view
+
+Allowed:
+
+- Physical context: `[System]`, `[PC]`, and `[EA]` as allocation/deployment context.
+- `[LC]` logical components.
+- `[CE]` component exchanges.
+- Logical `[C]` constraints/notes.
+
+Not allowed:
+
+- `[F]`, `[FE]`, `[PL]`.
+
+### Functional allocation view
+
+Allowed:
+
+- `[System]`, `[PC]`, `[EA]`, `[LC]`, `[F]`, and allocation `[C]` constraints/notes.
+- Functions nested under their allocated logical component or external actor where possible.
+
+Not allowed:
+
+- `[FE]`, `[CE]`, `[PL]`.
+
+### Functional chain view
+
+Allowed:
+
+- A chain container.
+- Participating `[F]` function nodes.
+- `[FE]` functional exchanges.
+- Chain-specific `[C]` constraints/notes.
+
+Not allowed:
+
+- `[System]`, `[PC]`, `[LC]`, `[EA]`, `[CE]`, `[PL]`.
 
 ## Shared D2 style block
 
@@ -87,8 +152,8 @@ max_diameter_30cm: "[C] Max. diameter 30cm" { class: note; shape: page }
 - Labels must carry the Capella prefix: `[System]`, `[PC]`, `[LC]`, `[EA]`, `[F]`, `[C]`, `[PL]`, `[CE]`, `[FE]`.
 - Preserve Capella names and exchange payload brackets when known, e.g. `[FE] Close Signal [PWM]`; use line breaks only for readability.
 - Physical links are undirected (`--`, class `pl`). Component exchanges and functional exchanges are directed (`->`, classes `ce` and `fe`). Constraint links use class `cstr` and no label.
-- Clean physical views should contain only the system boundary, physical components, physical links, and relevant constraints/external actors. For historical raster reconstructions, preserve visible LC/F allocation and FE/CE overlays when they are major source content, and document the reason in D2 comments.
-- Functional chain views should normally contain the chain container, participating functions, functional exchanges, and applicable constraints. When the source raster explicitly displays allocation/context (EA/PC/LC containers plus visible CE/PL links), preserve that visible context for traceability; do not add non-visible context or ad-hoc clusters solely for layout.
+- Do not copy a legacy raster's mixed overlays into one D2 file. Move `[PL]` content to the physical view, `[LC]`/`[CE]` content to the logical view, allocated `[F]` content to the functional allocation view, and `[FE]` sequences to the functional chain view.
+- Functional chain views must remain focused on chain participation: the chain container, participating `[F]` functions, `[FE]` exchanges, and chain-specific `[C]` notes only. If a raster shows actors, components, physical links, or component exchanges around a chain, represent that context in the physical, logical, or functional allocation views instead.
 
 ## PDM v1.0 extraction summary
 
@@ -167,4 +232,4 @@ The extractor reported `validation.ok: true` with counts: 1 system, 1 external a
 
 ## Historical raster vs current XML
 
-The old v0.1/v0.2 raster images remain the source of each historical view: reproduce the components, functions, exchanges, and omissions shown in those images. Use the current `PDM v1.0` XML extraction above only to normalize names and semantics when applicable. If a raster contains content not present in `PDM v1.0`, keep the raster faithful and document the drift in comments in the D2 file.
+The old v0.1/v0.2 raster images remain the source context for historical content, but not for view boundaries. Reproduce the components, functions, exchanges, and omissions shown in those images in the appropriate canonical view according to the strict separation rules above. Use the current `PDM v1.0` XML extraction above only to normalize names and semantics when applicable. If a raster contains content not present in `PDM v1.0`, keep that historical content faithful and document the drift in comments in the relevant D2 file.

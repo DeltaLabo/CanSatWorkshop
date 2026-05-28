@@ -4,14 +4,13 @@ vars: {
   }
 }
 
-# Physical view reconstructed from PDM/PDM_v0.2_S.png.
-# The legacy raster mixes several concerns; this file keeps only tangible
-# structure, the visible physical/wireless links, and the physical context note.
+# Logical view reconstructed from PDM/PDM_v0.2_S.png.
+# Physical containment is retained only as deployment context for logical
+# components and communication exchanges.
 # Historical drift: the raster labels the MCU XIAO ESP32-C3, while current PDM
 # v1.0 XML uses XIAO ESP32-S3. The historical v0.2 label is preserved here.
-# BLE is drawn in the raster with the same red styling as cable links. It is
-# kept as a physical/wireless link endpoint here, although it is semantically
-# borderline and appears as communication in the logical view.
+# BLE is connected to the OBCC logical component because this view represents
+# communication, not the raster's red physical/wireless styling.
 direction: right
 
 classes: {
@@ -65,33 +64,53 @@ system: "[System] Physical System" {
       class: pc
       direction: down
 
-      xiao_esp32_c3: "[PC] XIAO ESP32-C3" { class: pc }
+      xiao_esp32_c3: "[PC] XIAO ESP32-C3" {
+        class: pc
+        direction: down
+
+        obcc: "[LC] OBCC" { class: lc }
+      }
     }
 
     parachute_module: "[PC] Parachute Module" {
       class: pc
       direction: right
 
-      parachute: "[PC] Parachute" { class: pc }
-      servo: "[PC] Servo" { class: pc }
+      servo: "[PC] Servo" {
+        class: pc
+        direction: down
+
+        parachute_trigger: "[LC] Parachute trigger" { class: lc }
+      }
+
+      parachute: "[PC] Parachute" {
+        class: pc
+        direction: down
+
+        descent_speed_control: "[LC] Descent speed control" { class: lc }
+      }
     }
 
     power_module: "[PC] Power Module" {
       class: pc
       direction: right
 
-      battery: "[PC] Battery" { class: pc }
-      boost_converter: "[PC] Boost Converter" { class: pc }
-      note_pds_v0_1: "[C] PDS\nv0.1" { class: note; shape: page }
+      battery: "[PC] Battery" {
+        class: pc
+        direction: down
+
+        power_storage: "[LC] Power storage" { class: lc }
+      }
+
+      boost_converter: "[PC] Boost Converter" {
+        class: pc
+        direction: down
+
+        voltage_regulation: "[LC] Voltage regulation" { class: lc }
+      }
     }
   }
 }
 
-human_tester -- system.cansat.obcc_module.xiao_esp32_c3: "[PL] BLE" { class: pl }
-
-system.cansat.parachute_module.parachute -- system.cansat.parachute_module.servo: "[PL] Deployment\nmechanism" { class: pl }
-system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.parachute_module.servo: "[PL] Soldered\ncables (3x)" { class: pl }
-system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.power_module.boost_converter: "[PL] 5V Power\nCable Pair" { class: pl }
-system.cansat.power_module.battery -- system.cansat.power_module.boost_converter: "[PL] Soldered Power\nCables (2x)" { class: pl }
-
-system.cansat.power_module.note_pds_v0_1 -> system.cansat.power_module { class: cstr }
+human_tester -> system.cansat.obcc_module.xiao_esp32_c3.obcc: "[CE] BLE" { class: ce }
+system.cansat.obcc_module.xiao_esp32_c3.obcc -> system.cansat.parachute_module.servo.parachute_trigger: "[CE] PWM" { class: ce }

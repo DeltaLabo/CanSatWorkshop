@@ -4,8 +4,8 @@ vars: {
   }
 }
 
-# Physical view reconstructed from PDM/PDM_v0.1_S.png.
-# Historical v0.1 names are preserved: Dummy CanSat and Top module.
+# Functional chain reconstructed from PDM/PDM_v0.1_FC.png.
+# Source label: v0.1 fall test (3 reps).
 direction: right
 
 classes: {
@@ -45,20 +45,22 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-dummy_cansat: "[PC] Dummy CanSat" {
-  class: pc
-  direction: down
+chain: "PDM v0.1 — Fall test chain (3 reps)" {
+  class: chain
+  direction: right
 
-  top_module: "[PC] Top module" {
-    class: pc
-    direction: down
+  record_fall: "[F] Record fall" { class: func }
+  release_dummy: "[F] Release dummy" { class: func }
+  limit_terminal_speed: "[F] Limit terminal speed" { class: func }
+  measure_terminal_speed: "[F] Measure\nterminal speed\nfrom video" { class: func }
 
-    parachute: "[PC] Parachute" { class: pc }
-  }
+  with_parachute_open: "[C] With\nparachute open" { class: note; shape: page }
+  terminal_speed_max: "[C] 11 m/s max." { class: note; shape: page }
 }
 
-same_weight: "[C] Same weight as\nfinal estimate" { class: note; shape: page }
-foldable_deployed_manually: "[C] Foldable, but\ndeployed manually" { class: note; shape: page }
+chain.record_fall -> chain.release_dummy: "[FE] Test Ready []" { class: fe }
+chain.release_dummy -> chain.limit_terminal_speed: "[FE] Manual release []" { class: fe }
+chain.limit_terminal_speed -> chain.measure_terminal_speed: "[FE] Landing []" { class: fe }
 
-same_weight -> dummy_cansat { class: cstr }
-foldable_deployed_manually -> dummy_cansat.top_module.parachute { class: cstr }
+chain.with_parachute_open -> chain.release_dummy { class: cstr }
+chain.terminal_speed_max -> chain.limit_terminal_speed { class: cstr }

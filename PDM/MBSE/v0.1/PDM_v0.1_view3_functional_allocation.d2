@@ -4,9 +4,9 @@ vars: {
   }
 }
 
-# Physical view reconstructed from PDM/PDM_v0.1_S.png.
-# Historical v0.1 names are preserved: Dummy CanSat and Top module.
-direction: right
+# Functional allocation view reconstructed from PDM/PDM_v0.1_S.png and PDM/PDM_v0.1_FC.png.
+# Historical fall-test functions are preserved from the v0.1 raster.
+direction: down
 
 classes: {
   func: {
@@ -45,6 +45,20 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
+human_tester: "[EA] Human Tester" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  record_fall: "[F] Record fall" { class: func }
+  release_dummy: "[F] Release dummy" { class: func }
+  with_parachute_open: "[C] With\nparachute open" { class: note; shape: page }
+  measure_terminal_speed: "[F] Measure\nterminal speed\nfrom video" { class: func }
+}
+
+same_weight: "[C] Same weight as\nfinal estimate" { class: note; shape: page }
+foldable_deployed_manually: "[C] Foldable, but\ndeployed manually" { class: note; shape: page }
+
 dummy_cansat: "[PC] Dummy CanSat" {
   class: pc
   direction: down
@@ -53,12 +67,22 @@ dummy_cansat: "[PC] Dummy CanSat" {
     class: pc
     direction: down
 
-    parachute: "[PC] Parachute" { class: pc }
+    parachute: "[PC] Parachute" {
+      class: pc
+      direction: down
+
+      descent_speed_control: "[LC] Descent speed control" {
+        class: lc
+        direction: down
+
+        terminal_speed_max: "[C] 11 m/s max." { class: note; shape: page }
+        limit_terminal_speed: "[F] Limit terminal speed" { class: func }
+      }
+    }
   }
 }
 
-same_weight: "[C] Same weight as\nfinal estimate" { class: note; shape: page }
-foldable_deployed_manually: "[C] Foldable, but\ndeployed manually" { class: note; shape: page }
-
+human_tester.with_parachute_open -> human_tester.release_dummy { class: cstr }
 same_weight -> dummy_cansat { class: cstr }
 foldable_deployed_manually -> dummy_cansat.top_module.parachute { class: cstr }
+dummy_cansat.top_module.parachute.descent_speed_control.terminal_speed_max -> dummy_cansat.top_module.parachute.descent_speed_control.limit_terminal_speed { class: cstr }

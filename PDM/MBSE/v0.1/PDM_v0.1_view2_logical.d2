@@ -4,9 +4,9 @@ vars: {
   }
 }
 
-# Physical view reconstructed from PDM/PDM_v0.1_S.png.
+# Logical view reconstructed from PDM/PDM_v0.1_S.png.
 # Historical v0.1 names are preserved: Dummy CanSat and Top module.
-direction: right
+direction: down
 
 classes: {
   func: {
@@ -53,12 +53,11 @@ dummy_cansat: "[PC] Dummy CanSat" {
     class: pc
     direction: down
 
-    parachute: "[PC] Parachute" { class: pc }
+    parachute: "[PC] Parachute" {
+      class: pc
+      direction: down
+
+      descent_speed_control: "[LC] Descent speed control" { class: lc }
+    }
   }
 }
-
-same_weight: "[C] Same weight as\nfinal estimate" { class: note; shape: page }
-foldable_deployed_manually: "[C] Foldable, but\ndeployed manually" { class: note; shape: page }
-
-same_weight -> dummy_cansat { class: cstr }
-foldable_deployed_manually -> dummy_cansat.top_module.parachute { class: cstr }

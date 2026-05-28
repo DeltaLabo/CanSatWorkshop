@@ -8,25 +8,27 @@ See [Understanding Capella Physical Diagrams](./../PM&SE//Understanding%20Capell
 
 ## Integration, Verification, and Validation (IVV) Plan
 
-[D2 source](MBSE/v0.1/PDM_v0.1_view1_physical.d2) · [legacy Capella export](PDM_v0.1_S.png)
+The canonical PDM MBSE views are maintained as D2 sources with rendered PNGs next to them. The historical Capella raster exports remain linked as legacy references.
 
-![PDM v0.1 structure. The dummy CanSat is S&A v0.1.](MBSE/v0.1/PDM_v0.1_view1_physical.png)
-PDM v0.1 structure. The dummy CanSat is S&A v0.1.
+### PDM v0.1 canonical views
 
-[D2 source](MBSE/v0.1/PDM_v0.1_view2_fall_test_chain.d2) · [legacy Capella export](PDM_v0.1_FC.png)
+| View | D2 source | Rendered PNG | Legacy raster reference |
+| --- | --- | --- | --- |
+| Physical | [D2](MBSE/v0.1/PDM_v0.1_view1_physical.d2) | [PNG](MBSE/v0.1/PDM_v0.1_view1_physical.png) | [structure export](PDM_v0.1_S.png) |
+| Logical | [D2](MBSE/v0.1/PDM_v0.1_view2_logical.d2) | [PNG](MBSE/v0.1/PDM_v0.1_view2_logical.png) | [structure export](PDM_v0.1_S.png) |
+| Functional allocation | [D2](MBSE/v0.1/PDM_v0.1_view3_functional_allocation.d2) | [PNG](MBSE/v0.1/PDM_v0.1_view3_functional_allocation.png) | [structure export](PDM_v0.1_S.png), [fall-test export](PDM_v0.1_FC.png) |
+| Fall-test functional chain | [D2](MBSE/v0.1/PDM_v0.1_view4_fall_test_chain.d2) | [PNG](MBSE/v0.1/PDM_v0.1_view4_fall_test_chain.png) | [fall-test export](PDM_v0.1_FC.png) |
 
-![PDM v0.1 fall test functional chain. Terminal speed taken from ESA CanSat guide.](MBSE/v0.1/PDM_v0.1_view2_fall_test_chain.png)
-PDM v0.1 fall test functional chain. Terminal speed taken from [ESA](https://cansat.esa.int/wp-content/uploads/2023/09/T10_Parachute_Design_EN.pdf) CanSat guide.
+The v0.1 fall-test chain uses the terminal-speed context from the [ESA](https://cansat.esa.int/wp-content/uploads/2023/09/T10_Parachute_Design_EN.pdf) CanSat guide.
 
-[D2 source](MBSE/v0.2/PDM_v0.2_view1_physical.d2) · [legacy Capella export](PDM_v0.2_S.png)
+### PDM v0.2 canonical views
 
-![PDM v0.2 structure.](MBSE/v0.2/PDM_v0.2_view1_physical.png)
-PDM v0.2 structure.
-
-[D2 source](MBSE/v0.2/PDM_v0.2_view2_parachute_deployment_chain.d2) · [legacy Capella export](PDM_v0.2_FC.jpg)
-
-![PDM v0.2 parachute deployment test functional chain.](MBSE/v0.2/PDM_v0.2_view2_parachute_deployment_chain.png)
-PDM v0.2 parachute deployment test functional chain.
+| View | D2 source | Rendered PNG | Legacy raster reference |
+| --- | --- | --- | --- |
+| Physical | [D2](MBSE/v0.2/PDM_v0.2_view1_physical.d2) | [PNG](MBSE/v0.2/PDM_v0.2_view1_physical.png) | [structure export](PDM_v0.2_S.png) |
+| Logical | [D2](MBSE/v0.2/PDM_v0.2_view2_logical.d2) | [PNG](MBSE/v0.2/PDM_v0.2_view2_logical.png) | [structure export](PDM_v0.2_S.png) |
+| Functional allocation | [D2](MBSE/v0.2/PDM_v0.2_view3_functional_allocation.d2) | [PNG](MBSE/v0.2/PDM_v0.2_view3_functional_allocation.png) | [structure export](PDM_v0.2_S.png), [deployment-chain export](PDM_v0.2_FC.jpg) |
+| Parachute deployment functional chain | [D2](MBSE/v0.2/PDM_v0.2_view4_parachute_deployment_chain.d2) | [PNG](MBSE/v0.2/PDM_v0.2_view4_parachute_deployment_chain.png) | [deployment-chain export](PDM_v0.2_FC.jpg) |
 
 ## Requirements
 

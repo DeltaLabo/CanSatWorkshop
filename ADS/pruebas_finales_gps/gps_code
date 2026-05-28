@@ -1,0 +1,163 @@
+#include <TinyGPS++.h>
+#include <HardwareSerial.h>
+
+TinyGPSPlus gps;
+HardwareSerial GPS_Serial(1);
+
+// ─────────────────────────────────────────────
+// Inicialización
+// ─────────────────────────────────────────────
+void setup() {
+  // Init Serial0 con interrupts
+  Serial.begin(115200);
+
+  // Esperar al puerto USB CDC con timeout (crítico para XIAO ESP32 S3)
+  unsigned long startTime = millis();
+  while (!Serial && (millis() - startTime) < 3000);
+
+  // Init Serial1 con interrupts — RX=GPIO3 (D2), TX=GPIO4 (D3)
+  GPS_Serial.begin(38400, SERIAL_8N1, 3, 4, false, 5);
+
+  Serial.println("GPS Module Test - XIAO ESP32 S3");
+}
+
+// ─────────────────────────────────────────────
+// Loop de prueba — simula cómo el OBCC usaría
+// los getters en producción a 5 Hz
+// ─────────────────────────────────────────────
+void loop() {
+  // Medir tiempo de inicio de la iteración
+  unsigned long iterationStart = millis();
+
+  long latitude, longitude, speed;
+  unsigned short result;
+
+  result = getLatitude(&latitude);
+  Serial.print("Latitud:   "); Serial.print(latitude);
+  Serial.print("  |  código: "); Serial.println(result);
+
+  result = getLongitude(&longitude);
+  Serial.print("Longitud:  "); Serial.print(longitude);
+  Serial.print("  |  código: "); Serial.println(result);
+
+  result = getSpeed(&speed);
+  Serial.print("Velocidad: "); Serial.print(speed);
+  Serial.print("  |  código: "); Serial.println(result);
+
+  // Diagnóstico de fix
+  Serial.print("Satélites: "); Serial.println(gps.satellites.value());
+  Serial.print("Fix válido: "); Serial.println(gps.location.isValid() ? "SÍ" : "NO");
+  Serial.print("Tramas procesadas: "); Serial.println(gps.charsProcessed());
+
+  if (millis() > 5000 && gps.charsProcessed() < 10) {
+    Serial.println("⚠️  Sin datos del GPS — revisa el cableado y el baud rate");
+  }
+
+  // Tiempo que tomó esta iteración
+  unsigned long iterationTime = millis() - iterationStart;
+  Serial.print("Tiempo de iteración: "); Serial.print(iterationTime); Serial.println("ms");
+
+  Serial.println();
+
+  // Esperar el tiempo restante para completar 200ms (5 Hz)
+  if (iterationTime < 200) {
+    delay(200 - iterationTime);
+  }
+}
+
+// ─────────────────────────────────────────────
+// Adquisición de datos compartida
+// Timeout máximo de 5ms sobre la lectura UART
+// ─────────────────────────────────────────────
+void acquireGPSData() {
+  unsigned long startTime = millis();
+
+  while (GPS_Serial.available() > 0) {
+    if (millis() - startTime >= 4) {
+      break; // Timeout de 5ms alcanzado
+    }
+    gps.encode(GPS_Serial.read());
+  }
+}
+
+// ─────────────────────────────────────────────
+// Getters
+// ─────────────────────────────────────────────
+
+/**
+ * @brief Returns current latitude multiplied by 1,000,000
+ *        to preserve 6 decimal places.
+ * @param output 32-bit integer address to save the measurement to.
+ * @return result Byte containing the result of the get operation.
+ *               0: Success
+ *               1: Overflow
+ *               2: Underflow
+ */
+unsigned short getLatitude(long* output) {
+  acquireGPSData();
+
+  double multipliedLatitude = gps.location.lat() * 1000000.0;
+
+  if (multipliedLatitude > INT32_MAX) {
+    *output = INT32_MAX;
+    return 1;
+  } else if (multipliedLatitude < -(INT32_MAX + 1)) {
+    *output = -(INT32_MAX + 1);
+    return 2;
+  } else {jjjjjjjjjjjjjjjjjjjjj
+    *output = (long)multipliedLatitude;
+    return 0;
+  }
+}
+
+/**
+ * @brief Returns current longitude multiplied by 1,000,000
+ *        to preserve 6 decimal places.
+ * @param output 32-bit integer address to save the measurement to.
+ * @return result Byte containing the result of the get operation.
+ *               0: Success
+ *               1: Overflow
+ *               2: Underflow
+ */
+unsigned short getLongitude(long* output) {
+  acquireGPSData();
+
+  double multipliedLongitude = gps.location.lng() * 1000000.0;
+
+  if (multipliedLongitude > INT32_MAX) {
+    *output = INT32_MAX;
+    return 1;
+  } else if (multipliedLongitude < -(INT32_MAX + 1)) {
+    *output = -(INT32_MAX + 1);
+    return 2;
+  } else {
+    *output = (long)multipliedLongitude;
+    return 0;
+  }
+}
+
+/**
+ * @brief Returns current speed in km/h multiplied by 100
+ *        to preserve 2 decimal places.
+ * @param output 32-bit integer address to save the measurement to.
+ * @return result Byte containing the result of the get operation.
+ *               0: Success
+ *               1: Overflow
+ *               2: Underflow
+ */
+unsigned short getSpeed(long* output) {
+  acquireGPSData();c
+
+  double multipliedSpeed = gps.speed.kmph() * 100.0;
+
+  if (multipliedSpeed > INT32_MAX) {
+    *output = INT32_MAX;
+    return 1;
+  } else if (multipliedSpeed < -(INT32_MAX + 1)) {
+    *output = -(INT32_MAX + 1);
+    return 2;
+  } else {
+    *output = (long)multipliedSpeed;
+    return 0;
+  }
+}

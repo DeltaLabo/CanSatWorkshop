@@ -135,6 +135,11 @@ note_separation: "[C] Max. separation of 500m\nbetween CanSat and DPS" {
   shape: page
 }
 
+note_ground_pcb_reuse: "[C] Ground Station PCB\nreuses OBCC PCB;\nBackplane Connector\nis not soldered" {
+  class: note
+  shape: page
+}
+
 system.cansat.obcc_module.obcc_pcb.cansat_rfm.cansat_lora -> system.cansat.obcc_module.obcc_pcb.cansat_xiao.obcc: "[CE] SPI" { class: ce }
 system.ground_station_pcb.ground_xiao.ground_forwarder -> system.ground_station_pcb.ground_rfm.ground_lora: "[CE] SPI" { class: ce }
 system.ground_station_pcb.ground_xiao.ground_forwarder -> system.pc.decoder: "[CE] UART" { class: ce }
@@ -148,6 +153,7 @@ system.pc.note_concurrent -> system.pc.dashboard { class: cstr }
 system.pc.note_browser -> system.pc.dashboard { class: cstr }
 note_separation -> system.cansat { class: cstr }
 note_separation -> system.ground_station_pcb { class: cstr }
+note_ground_pcb_reuse -> system.ground_station_pcb { class: cstr }
 
 # Layout-only edges to preserve the Capella reading order and open space for the PC-side CE labels.
 system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }

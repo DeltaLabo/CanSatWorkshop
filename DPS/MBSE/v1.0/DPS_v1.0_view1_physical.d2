@@ -89,6 +89,11 @@ note_separation: "[C] Max. separation of 500m\nbetween CanSat and DPS" {
   shape: page
 }
 
+note_ground_pcb_reuse: "[C] Ground Station PCB\nreuses OBCC PCB;\nBackplane Connector\nis not soldered" {
+  class: note
+  shape: page
+}
+
 system.cansat.obcc_module -- system.cansat.obcc_module.obcc_pcb: "[PL] Screws" { class: pl }
 system.cansat.obcc_module.obcc_pcb.cansat_rfm -- system.cansat.obcc_module.obcc_pcb: "[PL] RFM Footprint" { class: pl }
 system.cansat.obcc_module.obcc_pcb.cansat_xiao -- system.cansat.obcc_module.obcc_pcb: "[PL] XIAO Footprint" { class: pl }
@@ -104,6 +109,7 @@ system.ground_station_pcb.ground_xiao -- system.pc.usb_port: "[PL] USB-C Cable" 
 
 note_separation -> system.cansat { class: cstr }
 note_separation -> system.ground_station_pcb { class: cstr }
+note_ground_pcb_reuse -> system.ground_station_pcb { class: cstr }
 
 # Layout-only edges to keep the physical bands stacked.
 system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }

@@ -232,6 +232,11 @@ note_separation: "[C] Max. separation of 500m\nbetween CanSat and DPS" {
   shape: page
 }
 
+note_ground_pcb_reuse: "[C] Ground Station PCB\nreuses OBCC PCB;\nBackplane Connector\nis not soldered" {
+  class: note
+  shape: page
+}
+
 system.pc.csv_writer.note_csv_name -> system.pc.csv_writer.append_to_csv { class: cstr }
 system.pc.note_alert -> system.pc.dashboard.update_latency_alert { class: cstr }
 system.pc.note_cooldown -> system.pc.dashboard.cooldown { class: cstr }
@@ -242,6 +247,7 @@ system.pc.note_concurrent -> system.pc.dashboard { class: cstr }
 system.pc.note_browser -> system.pc.dashboard { class: cstr }
 note_separation -> system.cansat { class: cstr }
 note_separation -> system.ground_station_pcb { class: cstr }
+note_ground_pcb_reuse -> system.ground_station_pcb { class: cstr }
 
 # Layout-only edges to preserve the original banding.
 system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }

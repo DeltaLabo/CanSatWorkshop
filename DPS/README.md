@@ -10,13 +10,11 @@ See [Variable Getter Template](./../OBCC/Variable%20Getter%20Template.md) if nee
 
 ## Integration, Verification, and Validation (IVV) Plan
 
-The IMU-downlink DPS v0.3 MBSE views are available in [`./MBSE/v0.3/`](./MBSE/v0.3/). v0.3 keeps circuitboard-only hardware, adds IMU-only processing on the datalogger XIAO, and sends IMU payloads to the ground station.
-
-The PCB-only DPS v0.2 MBSE view is available in [`./MBSE/v0.2/`](./MBSE/v0.2/). v0.2 delivers only the ground-station PCB hardware.
+The IMU-downlink DPS v0.2 MBSE views are available in [`./MBSE/v0.2/`](./MBSE/v0.2/). v0.2 keeps circuitboard-only hardware, adds IMU-only processing on the datalogger XIAO, and sends IMU payloads to the ground station. The earlier PCB-only v0.2 scope was retired because v1.0 reuses the OBCC PCB for the ground station.
 
 The hardware-downgraded DPS v0.1 MBSE views are available in [`./MBSE/v0.1/`](./MBSE/v0.1/). v0.1 keeps the v1.0 functional chains, but represents the hardware as simple datalogger and ground-station circuitboards.
 
-The DPS v1.0 MBSE views translated from Capella XML to D2 are available in [`./MBSE/v1.0/`](./MBSE/v1.0/):
+The DPS v1.0 MBSE views translated from Capella XML to D2 are available in [`./MBSE/v1.0/`](./MBSE/v1.0/). In v1.0, the `[PC] Ground Station PCB` is the OBCC PCB reused without the Backplane Connector soldered:
 
 ### Architecture views
 - [View 1 — Physical view (PNG)](./MBSE/v1.0/DPS_v1.0_view1_physical.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view1_physical.d2)

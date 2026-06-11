@@ -5,7 +5,7 @@ vars: {
 }
 
 # Physical view
-# DPS v0.2 delivers only the ground-station PCB hardware.
+# DPS v0.2 adds an IMU to the datalogger circuitboard and keeps all hardware on circuitboards.
 direction: down
 
 classes: {
@@ -45,21 +45,49 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-ground_station_pcb: "[PC] Ground Station PCB" {
-  class: pc
-  direction: right
+system: "[System] Physical System" {
+  class: sys
+  direction: down
 
-  ground_rfm: "[PC] RFM95W LoRa" { class: pc }
-  ground_xiao: "[PC] XIAO ESP32" { class: pc }
+  datalogger_board: "[PC] Datalogger Circuitboard" {
+    class: pc
+    direction: right
+
+    imu: "[PC] ICM20948 IMU" { class: pc }
+    cansat_xiao: "[PC] XIAO ESP32-S3" { class: pc }
+    cansat_rfm: "[PC] RFM95W LoRa" { class: pc }
+  }
+
+  ground_station_board: "[PC] Ground Station Circuitboard" {
+    class: pc
+    direction: right
+
+    ground_rfm: "[PC] RFM95W LoRa" { class: pc }
+    ground_xiao: "[PC] XIAO ESP32" { class: pc }
+  }
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: down
+
+    usb_port: "[PC] USB Port" { class: pc }
+  }
 }
 
-note_manufacturing: "[C] Can be manufactured in\na Carvera Air CNC,\nand soldered via reflux\nor manually" {
+note_separation: "[C] Max. separation of 500m\nbetween datalogger circuitboard\nand ground station" {
   class: note
   shape: page
 }
 
-ground_station_pcb.ground_rfm -- ground_station_pcb: "[PL] Footprint" { class: pl }
-ground_station_pcb.ground_xiao -- ground_station_pcb: "[PL] Footprint" { class: pl }
-ground_station_pcb.ground_rfm -- ground_station_pcb.ground_xiao: "[PL] SPI + 5V Power\nTraces" { class: pl }
+system.datalogger_board.imu -- system.datalogger_board.cansat_xiao: "[PL] I2C + 3V3 + GND\nWires" { class: pl }
+system.datalogger_board.cansat_xiao -- system.datalogger_board.cansat_rfm: "[PL] SPI\nWires" { class: pl }
 
-note_manufacturing -> ground_station_pcb { class: cstr }
+system.ground_station_board.ground_rfm -- system.ground_station_board.ground_xiao: "[PL] SPI + 5V Power\nWires" { class: pl }
+system.ground_station_board.ground_xiao -- system.pc.usb_port: "[PL] USB-C Cable" { class: pl }
+
+note_separation -> system.datalogger_board { class: cstr }
+note_separation -> system.ground_station_board { class: cstr }
+
+# Layout-only edges to keep the physical bands stacked.
+system.datalogger_board -> system.ground_station_board { style: { opacity: 0 } }
+system.ground_station_board -> system.pc { style: { opacity: 0 } }

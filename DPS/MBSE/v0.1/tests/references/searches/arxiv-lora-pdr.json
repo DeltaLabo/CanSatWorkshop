@@ -1,0 +1,276 @@
+{
+  "query": "LoRa packet delivery ratio range measurement",
+  "total": 758892,
+  "pages_retrieved": 1,
+  "results_retrieved": 10,
+  "results": [
+    {
+      "paperId": "1510.03255",
+      "doi": "",
+      "title": "Characterization of the ranges of wave operators for Schrodinger equations with time-dependent short-range potentials via wave packet transform",
+      "authors": [
+        {
+          "name": "Taisuke Yoneyama"
+        },
+        {
+          "name": "Keiichi Kato"
+        }
+      ],
+      "year": 2015,
+      "abstract": "In this paper, we give a characterization of the ranges of the wave operators for Schrodinger equations with time-dependent short-range potentials by using wave packet transform. We also give an alternative proof of the existence of the wave operators for time-dependent potentials and the asymptotic completeness for timeindependent potentials.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/1510.03255v2"
+      }
+    },
+    {
+      "paperId": "1002.1186",
+      "doi": "",
+      "title": "Efficient Packet Forwarding Approach in Vehicular Ad Hoc Networks Using EBGR Algorithm",
+      "authors": [
+        {
+          "name": "K. Prasanth"
+        },
+        {
+          "name": "K. Duraiswamy"
+        },
+        {
+          "name": "K. Jayasudha"
+        },
+        {
+          "name": "C. Chandrasekar"
+        }
+      ],
+      "year": 2010,
+      "abstract": "VANETs (Vehicular Ad hoc Networks) are highly mobile wireless ad hoc networks and will play an important role in public safety communications and commercial applications. Routing of data in VANETs is a challenging task due to rapidly changing topology and high speed mobility of vehicles. Conventional routing protocols in MANETs (Mobile Ad hoc Networks) are unable to fully address the unique characteristics in vehicular networks. In this paper, we propose EBGR (Edge Node Based Greedy Routing), a reliable greedy position based routing approach to forward packets to the node present in the edge of the transmission range of source/forwarding node as most suitable next hop, with consideration of nodes moving in the direction of the destination. We propose Revival Mobility model (RMM) to evaluate the performance of our routing technique. This paper presents a detailed description of our approach and simulation results show that packet delivery ratio is improved considerably compared to other routing techniques of VANET.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/1002.1186v1"
+      }
+    },
+    {
+      "paperId": "2411.14961",
+      "doi": "",
+      "title": "LoRA-FAIR: Federated LoRA Fine-Tuning with Aggregation and Initialization Refinement",
+      "authors": [
+        {
+          "name": "Jieming Bian"
+        },
+        {
+          "name": "Lei Wang"
+        },
+        {
+          "name": "Letian Zhang"
+        },
+        {
+          "name": "Jie Xu"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Foundation models (FMs) achieve strong performance across diverse tasks with task-specific fine-tuning, yet full parameter fine-tuning is often computationally prohibitive for large models. Parameter-efficient fine-tuning (PEFT) methods like Low-Rank Adaptation (LoRA) reduce this cost by introducing low-rank matrices for tuning fewer parameters. While LoRA allows for efficient fine-tuning, it requires significant data for adaptation, making Federated Learning (FL) an appealing solution due to its privacy-preserving collaborative framework. However, combining LoRA with FL introduces two key challenges: the \\textbf{Server-Side Aggregation Bias}, where server-side averaging of LoRA matrices diverges from the ideal global update, and the \\textbf{Client-Side Initialization Lag}, emphasizing the need for consistent initialization across rounds. Existing approaches address these challenges individually, limiting their effectiveness. We propose LoRA-FAIR, a novel method that tackles both issues by introducing a correction term on the server, enhancing aggregation efficiency and accuracy. LoRA-FAIR maintains computational and communication efficiency, yielding superior performance over state-of-the-art methods. Experimental results on ViT and MLP-Mixer models across large-scale datasets demonstrate that LoRA-FAIR consistently achieves performance improvements in FL settings.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2411.14961v3"
+      }
+    },
+    {
+      "paperId": "1904.12300",
+      "doi": "10.1109/ICNC47757.2020.9049729",
+      "title": "Achieving Max-Min Throughput in LoRa Networks",
+      "authors": [
+        {
+          "name": "Jiangbin Lyu"
+        },
+        {
+          "name": "Dan Yu"
+        },
+        {
+          "name": "Liqun Fu"
+        }
+      ],
+      "year": 2019,
+      "abstract": "With growing popularity, LoRa networks are pivotally enabling Long Range connectivity to low-cost and power-constrained user equipments (UEs). Due to its wide coverage area, a critical issue is to effectively allocate wireless resources to support potentially massive UEs in the cell while resolving the prominent near-far fairness problem for cell-edge UEs, which is challenging to address due to the lack of tractable analytical model for the LoRa network and its practical requirement for low-complexity and low-overhead design. To achieve massive connectivity with fairness, we investigate the problem of maximizing the minimum throughput of all UEs in the LoRa network, by jointly designing high-level policies of spreading factor (SF) allocation, power control, and duty cycle adjustment based only on average channel statistics and spatial UE distribution. By leveraging on the Poisson rain model along with tailored modifications to our considered LoRa network, we are able to account for channel fading, aggregate interference and accurate packet overlapping, and still obtain a tractable and yet accurate closed-form formula for the packet success probability and hence throughput. We further propose an iterative balancing (IB) method to allocate the SFs in the cell such that the overall max-min throughput can be achieved within the considered time period and cell area. Numerical results show that the proposed scheme with optimized design greatly alleviates the near-far fairness issue, and significantly improves the cell-edge throughput.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/1904.12300v2"
+      }
+    },
+    {
+      "paperId": "2410.20625",
+      "doi": "",
+      "title": "LoRA Done RITE: Robust Invariant Transformation Equilibration for LoRA Optimization",
+      "authors": [
+        {
+          "name": "Jui-Nan Yen"
+        },
+        {
+          "name": "Si Si"
+        },
+        {
+          "name": "Zhao Meng"
+        },
+        {
+          "name": "Felix Yu"
+        },
+        {
+          "name": "Sai Surya Duvvuri"
+        },
+        {
+          "name": "Inderjit S. Dhillon"
+        },
+        {
+          "name": "Cho-Jui Hsieh"
+        },
+        {
+          "name": "Sanjiv Kumar"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Low-rank adaption (LoRA) is a widely used parameter-efficient finetuning method for LLM that reduces memory requirements. However, current LoRA optimizers lack transformation invariance, meaning the actual updates to the weights depends on how the two LoRA factors are scaled or rotated. This deficiency leads to inefficient learning and sub-optimal solutions in practice. This paper introduces LoRA-RITE, a novel adaptive matrix preconditioning method for LoRA optimization, which can achieve transformation invariance and remain computationally efficient. We provide theoretical analysis to demonstrate the benefit of our method and conduct experiments on various LLM tasks with different models including Gemma 2B, 7B, and mT5-XXL. The results demonstrate consistent improvements against existing optimizers. For example, replacing Adam with LoRA-RITE during LoRA fine-tuning of Gemma-2B yielded 4.6\\% accuracy gain on Super-Natural Instructions and 3.5\\% accuracy gain across other four LLM benchmarks (HellaSwag, ArcChallenge, GSM8K, OpenBookQA).",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2410.20625v2"
+      }
+    },
+    {
+      "paperId": "2506.20629",
+      "doi": "",
+      "title": "PLoP: Precise LoRA Placement for Efficient Finetuning of Large Models",
+      "authors": [
+        {
+          "name": "Soufiane Hayou"
+        },
+        {
+          "name": "Nikhil Ghosh"
+        },
+        {
+          "name": "Bin Yu"
+        }
+      ],
+      "year": 2025,
+      "abstract": "Low-Rank Adaptation (LoRA) is a widely used finetuning method for large models. Its small memory footprint allows practitioners to adapt large models to specific tasks at a fraction of the cost of full finetuning. Different modifications have been proposed to enhance its efficiency by, for example, setting the learning rate, the rank, and the initialization. Another improvement axis is adapter placement strategy: when using LoRA, practitioners usually pick module types to adapt with LoRA, such as Query and Key modules. Few works have studied the problem of adapter placement, with nonconclusive results: original LoRA paper suggested placing adapters in attention modules, while other works suggested placing them in the MLP modules. Through an intuitive theoretical analysis, we introduce PLoP (Precise LoRA Placement), a lightweight method that allows automatic identification of module types where LoRA adapters should be placed, given a pretrained model and a finetuning task. We demonstrate that PLoP consistently outperforms, and in the worst case competes, with commonly used placement strategies through comprehensive experiments on supervised finetuning and reinforcement learning for reasoning.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2506.20629v1"
+      }
+    },
+    {
+      "paperId": "2403.14572",
+      "doi": "",
+      "title": "Implicit Style-Content Separation using B-LoRA",
+      "authors": [
+        {
+          "name": "Yarden Frenkel"
+        },
+        {
+          "name": "Yael Vinker"
+        },
+        {
+          "name": "Ariel Shamir"
+        },
+        {
+          "name": "Daniel Cohen-Or"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Image stylization involves manipulating the visual appearance and texture (style) of an image while preserving its underlying objects, structures, and concepts (content). The separation of style and content is essential for manipulating the image's style independently from its content, ensuring a harmonious and visually pleasing result. Achieving this separation requires a deep understanding of both the visual and semantic characteristics of images, often necessitating the training of specialized models or employing heavy optimization. In this paper, we introduce B-LoRA, a method that leverages LoRA (Low-Rank Adaptation) to implicitly separate the style and content components of a single image, facilitating various image stylization tasks. By analyzing the architecture of SDXL combined with LoRA, we find that jointly learning the LoRA weights of two specific blocks (referred to as B-LoRAs) achieves style-content separation that cannot be achieved by training each B-LoRA independently. Consolidating the training into only two blocks and separating style and content allows for significantly improving style manipulation and overcoming overfitting issues often associated with model fine-tuning. Once trained, the two B-LoRAs can be used as independent components to allow various image stylization tasks, including image style transfer, text-based image stylization, consistent style generation, and style-content mixing.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2403.14572v2"
+      }
+    },
+    {
+      "paperId": "2002.08208",
+      "doi": "",
+      "title": "An Open-Source LoRa Physical Layer Prototype on GNU Radio",
+      "authors": [
+        {
+          "name": "Joachim Tapparel"
+        },
+        {
+          "name": "Orion Afisiadis"
+        },
+        {
+          "name": "Paul Mayoraz"
+        },
+        {
+          "name": "Alexios Balatsoukas-Stimming"
+        },
+        {
+          "name": "Andreas Burg"
+        }
+      ],
+      "year": 2020,
+      "abstract": "LoRa is the proprietary physical layer (PHY) of LoRaWAN, which is a popular Internet-of-Things (IoT) protocol enabling low-power devices to communicate over long ranges. A number of reverse engineering attempts have been published in the last few years that helped to reveal many of the LoRa PHY details. In this work, we describe our standard compatible LoRa PHY software-defined radio (SDR) prototype based on GNU Radio. We show how this SDR prototype can be used to develop and evaluate receiver algorithms for LoRa. As an example, we describe the sampling time offset and the carrier frequency offset estimation and compensation blocks. We experimentally evaluate the error rate of LoRa, both for the uncoded and the coded cases, to illustrate that our publicly available open-source implementation is a solid basis for further research.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2002.08208v2"
+      }
+    },
+    {
+      "paperId": "2602.04998",
+      "doi": "",
+      "title": "Learning Rate Matters: Vanilla LoRA May Suffice for LLM Fine-tuning",
+      "authors": [
+        {
+          "name": "Yu-Ang Lee"
+        },
+        {
+          "name": "Ching-Yun Ko"
+        },
+        {
+          "name": "Pin-Yu Chen"
+        },
+        {
+          "name": "Mi-Yen Yeh"
+        }
+      ],
+      "year": 2026,
+      "abstract": "Low-Rank Adaptation (LoRA) is the prevailing approach for efficient large language model (LLM) fine-tuning. Building on this paradigm, recent studies have proposed alternative initialization strategies, architectural modifications, and optimization adjustments, reporting substantial improvements over vanilla LoRA. However, these gains are often demonstrated under fixed or narrowly tuned hyperparameter settings, despite the known sensitivity of neural networks to training configurations. In this work, we systematically re-evaluate nine representative LoRA variants alongside vanilla LoRA through extensive hyperparameter searches over learning rate, batch size, rank, and training duration. Across tasks spanning mathematical reasoning, commonsense reasoning, code generation, and instruction following at diverse model scales, we find that different LoRA methods favor distinct learning rate ranges. Crucially, once learning rates are properly tuned, all methods achieve similar peak performance (within 1-2%), with only subtle rank-dependent behaviors. These results suggest that vanilla LoRA remains a competitive baseline and that improvements reported under a single training configuration may not reflect consistent methodological advantages. Finally, a second-order analysis attributes the differing optimal learning rate ranges to variations in the largest Hessian eigenvalue, aligning with classical learning theories.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2602.04998v2"
+      }
+    },
+    {
+      "paperId": "2602.05988",
+      "doi": "",
+      "title": "Layer-wise LoRA fine-tuning: a similarity metric approach",
+      "authors": [
+        {
+          "name": "Keith Ando Ogawa"
+        },
+        {
+          "name": "Bruno Lopes Yamamoto"
+        },
+        {
+          "name": "Lucas Lauton de Alcantara"
+        },
+        {
+          "name": "Lucas Pellicer"
+        },
+        {
+          "name": "Rosimeire Pereira Costa"
+        },
+        {
+          "name": "Edson Bollis"
+        },
+        {
+          "name": "Anna Helena Reali Costa"
+        },
+        {
+          "name": "Artur Jordao"
+        }
+      ],
+      "year": 2026,
+      "abstract": "Pre-training Large Language Models (LLMs) on web-scale datasets becomes fundamental for advancing general-purpose AI. In contrast, enhancing their predictive performance on downstream tasks typically involves adapting their knowledge through fine-tuning. Parameter-efficient fine-tuning techniques, such as Low-Rank Adaptation (LoRA), aim to reduce the computational cost of this process by freezing the pre-trained model and updating a smaller number of parameters. In comparison to full fine-tuning, these methods achieve over 99\\% reduction in trainable parameter count, depending on the configuration. Unfortunately, such a reduction may prove insufficient as LLMs continue to grow in scale. In this work, we address the previous problem by systematically selecting only a few layers to fine-tune using LoRA or its variants. We argue that not all layers contribute equally to the model adaptation. Leveraging this, we identify the most relevant layers to fine-tune by measuring their contribution to changes in internal representations. Our method is orthogonal to and readily compatible with existing low-rank adaptation techniques. We reduce the trainable parameters in LoRA-based techniques by up to 50\\%, while maintaining the predictive performance across different models and tasks. Specifically, on encoder-only architectures, this reduction in trainable parameters leads to a negligible predictive performance drop on the GLUE benchmark. On decoder-only architectures, we achieve a small drop or even improvements in the predictive performance on mathematical problem-solving capabilities and coding tasks. Finally, this effectiveness extends to multimodal models, for which we also observe competitive results relative to fine-tuning with LoRA modules in all layers. Code is available at: https://github.com/c2d-usp/Layer-wise-LoRA-with-CKA",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2602.05988v1"
+      }
+    }
+  ],
+  "output_metadata": {
+    "extracted_at": "2026-06-11T14:33:45.916267"
+  }
+}

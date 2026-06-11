@@ -1,0 +1,862 @@
+{
+  "query": "Semtech LoRa modulation basics application note SX1276 link budget PDF",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "LoRa Connect Transceiver, SX1276, 137MHz to 1020MHz | Semtech",
+      "url": "https://www.semtech.com/products/wireless-rf/lora-transceivers/sx1276",
+      "description": "Using Semtech’s patented LoRa ... The high sensitivity combined with the integrated +20dBm power amplifier yields industry leading link budget making it optimal for any application requiring range or robustness...",
+      "content": "Using Semtech’s patented LoRa ... The high sensitivity combined with the integrated +20dBm power amplifier yields industry leading link budget making it optimal for any application requiring range or robustness...\nUsing Semtech’s patented LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20dBm power amplifier yields industry leading link budget making it optimal for any application requiring range or robustness.\nBLOG How LoRa Plus™ Enables Tomorrow's AI Applications · DesignCon remains the premier annual destination for engineers and technology leaders working at the cutting edge of chip-to-chip and chip-to-module interconnects — and DesignCon 2026 was no exception.\nShahar Feldman, senior product marketing director for LoRa integrated circuits (ICs) at Semtech, recently presented how the company's new LoRa Plus™ technology addresses this critical challenge head-on, ushering in a new era of AI-enabled IoT deployments.\nThe answer for LoRaWAN® is a confident yes and here's why.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Semtech",
+        "url": "https://www.semtech.com/products/wireless-rf/lora-transceivers/sx1276",
+        "long_name": "semtech.com",
+        "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "semtech.com",
+        "hostname": "www.semtech.com",
+        "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+        "path": "› products  › wireless-rf  › lora-transceivers  › sx1276"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/UPWOu9kGEYYm9UCb6cxbfcsGl8bdsY1lC6jic5X_Ge0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c2VtdGVjaC5jb20v/dXBsb2Fkcy9wcm9k/dWN0cy9TZW10ZWNo/LUNoaXAtTGFiZWwt/U1gxMjc2XzEucG5n",
+        "original": "https://www.semtech.com/uploads/products/Semtech-Chip-Label-SX1276_1.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 2,
+      "title": "SX1276/77/78/79 www.semtech.com Page 1 WIRELESS, SENSING & TIMING DATASHEET",
+      "url": "https://cdn-shop.adafruit.com/product-files/3179/sx1276_77_78_79.pdf",
+      "description": "In FSK/OOK mode the SX1276/77/78/79 supports standard modulation techniques including OOK, FSK, GFSK, MSK and · GMSK. The SX1276/77/78/79 is especially suited to narrow band communication thanks the low-IF architecture employed · and the built-in AFC functionality. For full information on the FSK/OOK modem please consult Section 4.2 of this document. ... Rev. 4 - March 2015 ... The LoRaTM modem uses spread spectrum modulation and forward error correction techniques to increase the range and",
+      "content": "In FSK/OOK mode the SX1276/77/78/79 supports standard modulation techniques including OOK, FSK, GFSK, MSK and · GMSK. The SX1276/77/78/79 is especially suited to narrow band communication thanks the low-IF architecture employed · and the built-in AFC functionality. For full information on the FSK/OOK modem please consult Section 4.2 of this document. ... Rev. 4 - March 2015 ... The LoRaTM modem uses spread spectrum modulation and forward error correction techniques to increase the range and\nThe table below gives the electrical specifications for the transceiver operating with LoRaTM modulation. Following ... Rev. 4 - March 2015 ... Rev. 4 - March 2015 ... Image rejection after calibration. ... Rev. 4 - March 2015 ... Conditions: Temp = 25° C, VDD = 3.3 V, FXOSC = 32 MHz, unless otherwise specified. ... Rev. 4 - March 2015 ... This section gives a high-level overview of the functionality of the SX1276/77/78/79 low-power, highly integrated\nThe SX1276/77/78/79 are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems. Depending upon the mode selected either conventional OOK or FSK modulation may be employed or the LoRaTM spread\n2.5.5. Electrical Specification for LoRaTM Modulation ........................................................................................19 · 2.5.6. Digital Specification ...................................................................................................................................22 ... SX1276/77/78/79 Features....................................................................................................................................",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Adafruit",
+        "url": "https://cdn-shop.adafruit.com/product-files/3179/sx1276_77_78_79.pdf",
+        "long_name": "cdn-shop.adafruit.com",
+        "img": "https://imgs.search.brave.com/wdA4B29VjXZIfoMwIiVI-heji_b56-W5kHIBDYXM6iQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTUwYzY1NjAx/MGRmNmJiMDAyNGU2/OTE2MmM3YWQ4MWY3/YmNhMTFmYzNlYmUy/MTljM2RlYzM0Y2Mw/YTZjZGIwYS9jZG4t/c2hvcC5hZGFmcnVp/dC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cdn-shop.adafruit.com",
+        "hostname": "cdn-shop.adafruit.com",
+        "favicon": "https://imgs.search.brave.com/wdA4B29VjXZIfoMwIiVI-heji_b56-W5kHIBDYXM6iQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTUwYzY1NjAx/MGRmNmJiMDAyNGU2/OTE2MmM3YWQ4MWY3/YmNhMTFmYzNlYmUy/MTljM2RlYzM0Y2Mw/YTZjZGIwYS9jZG4t/c2hvcC5hZGFmcnVp/dC5jb20v",
+        "path": "› product-files  › 3179  › sx1276_77_78_79.pdf"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Semtech SX1276-7-8-9 LoRa® Transceiver Datasheet | Manualzz",
+      "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+      "description": "SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20 dBm power amplifier yields industry leading link budget making it optimal for any ...",
+      "content": "SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20 dBm power amplifier yields industry leading link budget making it optimal for any ...\nThe SX1276/77/78/79 transceivers feature the LoRa® long range modem that provides ultra-long range spread spectrum communication and high interference immunity whilst minimising current consumption. Using Semtech’s patented LoRa modulation technique\nSX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20 dBm power amplifier yields industry leading link budget making it optimal for any application requiring range or robustness. LoRa provides significant advantages in both blocking and selectivity over conventional modulation techniques, solving the traditional design compromise between range, interference immunity and energy consumption.\nThe SX1276/77/78/79 incorporates the LoRa spread spectrum modem which is capable of achieving significantly longer range than existing systems based on FSK or OOK modulation. At maximum data rates of LoRa the sensitivity is 8dB better than FSK, but using a low cost bill of materials with a 20ppm XTAL LoRa can improve receiver sensitivity by more than 20dB compared to FSK.\nThe SX1276/77/78/79 are equipped with both standard FSK and long range spread spectrum (LoRa ... Depending upon the mode selected either conventional OOK or FSK modulation may be employed or the LoRa",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "faq",
+      "profile": {
+        "name": "Manualzz",
+        "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+        "long_name": "manualzz.com",
+        "img": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "manualzz.com",
+        "hostname": "manualzz.com",
+        "favicon": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v",
+        "path": "  › semtech  › integrated circuits  › sx1276-7-8-9  › data sheet"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/b8_0M5JGU2rHc1VRFEctk0uw0xHMORNd9um8Cpfft9w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9tYW51/YWx6ei5jb20vdGhl/bWUvbWFudWFsenov/c3RhdGljL2Rlc2ln/bi01L3N2Zy9sb2dv/LnN2Zw",
+        "original": "https://manualzz.com/theme/manualzz/static/design-5/svg/logo.svg",
+        "logo": true
+      }
+    },
+    {
+      "rank": 4,
+      "title": "SX1276/77/78/79 www.semtech.com Page 1 WIRELESS & SENSING PRODUCTS DATASHEET",
+      "url": "https://cdn.sparkfun.com/assets/7/7/3/2/2/SX1276_Datasheet.pdf",
+      "description": "In FSK/OOK mode the SX1276/77/78/79 supports standard modulation techniques including OOK, FSK, GFSK, MSK and · GMSK. The SX1276/77/78/79 is especially suited to narrow band communication thanks the low-IF architecture employed · and the built-in AFC functionality. For full information on the FSK/OOK modem please consult Section 2.1 of this document. ... Rev. 7 - May 2020 ... The LoRa® modem uses spread spectrum modulation and forward error correction techniques to increase the range and",
+      "content": "In FSK/OOK mode the SX1276/77/78/79 supports standard modulation techniques including OOK, FSK, GFSK, MSK and · GMSK. The SX1276/77/78/79 is especially suited to narrow band communication thanks the low-IF architecture employed · and the built-in AFC functionality. For full information on the FSK/OOK modem please consult Section 2.1 of this document. ... Rev. 7 - May 2020 ... The LoRa® modem uses spread spectrum modulation and forward error correction techniques to increase the range and\nThe table below gives the electrical specifications for the transceiver operating with LoRa modulation. Following conditions ... Rev. 7 - May 2020 ... Rev. 7 - May 2020 ... Image rejection after calibration. ... Rev. 7 - May 2020 ... Conditions: Temp = 25° C, VDD = 3.3 V, FXOSC = 32 MHz, unless otherwise specified. ... Rev. 7 - May 2020 ... This section gives a high-level overview of the functionality of the SX1276/77/78/79 low-power, highly integrated\nThe SX1276/77/78/79 are equipped with both standard FSK and long range spread spectrum (LoRa®) modems. Depending upon the mode selected either conventional OOK or FSK modulation may be employed or the LoRa® spread\nLoRa® mode, the configuration register mapping of the SX1276/77/78/79 changes. For full details of this change please ... So that it is possible to optimise the LoRa® modulation for a given application, access is given to the designer to three",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Sparkfun",
+        "url": "https://cdn.sparkfun.com/assets/7/7/3/2/2/SX1276_Datasheet.pdf",
+        "long_name": "cdn.sparkfun.com",
+        "img": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cdn.sparkfun.com",
+        "hostname": "cdn.sparkfun.com",
+        "favicon": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw",
+        "path": "› assets  › 7  › 7  › 3  › 2  › 2  › SX1276_Datasheet.pdf"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Find Product Documentation",
+      "url": "https://www.semtech.com/uploads/documents/sx1276_77_78-errata.pdf",
+      "description": "Helpful tips for finding updated Semtech product documentation.",
+      "content": "Helpful tips for finding updated Semtech product documentation.",
+      "age": "September 1, 2013",
+      "page_age": "2013-09-01T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Semtech",
+        "url": "https://www.semtech.com/uploads/documents/sx1276_77_78-errata.pdf",
+        "long_name": "semtech.com",
+        "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "semtech.com",
+        "hostname": "www.semtech.com",
+        "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+        "path": "› uploads  › documents  › sx1276_77_78-errata.pdf"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "SX1276 Datasheet(PDF) - Semtech Corporation",
+      "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/800239/SEMTECH/SX1276.html",
+      "description": "Part #: SX1276. Download. File Size: 3MbKbytes. Page: 132 Pages. Description: Low Power Long Range Transceiver. Manufacturer: Semtech Corporation.",
+      "content": "Part #: SX1276. Download. File Size: 3MbKbytes. Page: 132 Pages. Description: Low Power Long Range Transceiver. Manufacturer: Semtech Corporation.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/800239/SEMTECH/SX1276.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› datasheet-pdf  › pdf  › 800239  › SEMTECH  › SX1276.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    },
+    {
+      "rank": 7,
+      "title": "semtech.com/LoRa Long Range, Low Power Consumption",
+      "url": "https://www.semtech.com/uploads/design-support/SEMTECH_LORA_PG.pdf",
+      "description": "The SX1276/78 transceivers features the LoRa long range modem that provides ultra-long range spread spectrum communication",
+      "content": "The SX1276/78 transceivers features the LoRa long range modem that provides ultra-long range spread spectrum communication\nmodulation in the global ISM band(s), the 2. 4GHz band and the · S-band for satellite communication. When paired with LoRa Cloud\nLoRa Edge chip versions can support standard LoRa modulation\nUltra-low power platform that integrates a LoRa transceiver, long range FHSS modulator, multi-constellation scanner,",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Semtech",
+        "url": "https://www.semtech.com/uploads/design-support/SEMTECH_LORA_PG.pdf",
+        "long_name": "semtech.com",
+        "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "semtech.com",
+        "hostname": "www.semtech.com",
+        "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+        "path": "› uploads  › design-support  › SEMTECH_LORA_PG.pdf"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "LoRa Connect Transceiver, SX1278, 137MHz to 525MHz | Semtech",
+      "url": "https://www.semtech.com/products/wireless-rf/lora-connect/sx1278",
+      "description": "The SX1276/77/78/79 transceivers ... LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials....",
+      "content": "The SX1276/77/78/79 transceivers ... LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials....\nThe SX1276/77/78/79 transceivers feature the LoRa® long range modem that provides ultra-long range spread spectrum communication and high interference immunity whilst minimizing current consumption. Using Semtech’s patented LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials.\nBLOG How LoRa Plus™ Enables Tomorrow's AI Applications · DesignCon remains the premier annual destination for engineers and technology leaders working at the cutting edge of chip-to-chip and chip-to-module interconnects — and DesignCon 2026 was no exception.\nShahar Feldman, senior product marketing director for LoRa integrated circuits (ICs) at Semtech, recently presented how the company's new LoRa Plus™ technology addresses this critical challenge head-on, ushering in a new era of AI-enabled IoT deployments.\nThe answer for LoRaWAN® is a confident yes and here's why.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Semtech",
+        "url": "https://www.semtech.com/products/wireless-rf/lora-connect/sx1278",
+        "long_name": "semtech.com",
+        "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "semtech.com",
+        "hostname": "www.semtech.com",
+        "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+        "path": "› products  › wireless-rf  › lora-connect  › sx1278"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/qZPad_Nqnhk78Fx_Q2NiViPsF8s0xBkX7T7cijGY2EI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c2VtdGVjaC5jb20v/dXBsb2Fkcy9wcm9k/dWN0cy9TZW10ZWNo/LUNoaXAtTGFiZWwt/U1gxMjc4XzEucG5n",
+        "original": "https://www.semtech.com/uploads/products/Semtech-Chip-Label-SX1278_1.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 9,
+      "title": "WIRELESS & SENSING Revision 1 July 2013 © 2013 Semtech Corporation 1",
+      "url": "https://www.mouser.com/pdfdocs/semtech-lora-modem-design.pdf",
+      "description": "the underling modulation scheme. It is the signal to noise ratio and bandwidth that are available as design ... The basic premise of spread spectrum is that each bit of information is encoded as multiple chips. The · relationship between the bit and chip rate for LoRa modulation, and respectively, ...",
+      "content": "the underling modulation scheme. It is the signal to noise ratio and bandwidth that are available as design ... The basic premise of spread spectrum is that each bit of information is encoded as multiple chips. The · relationship between the bit and chip rate for LoRa modulation, and respectively, ...\n125 kHz (as shown below). (The SX1276 has bandwidths from 500 kHz to as low as 7.8 kHz). ... Figure 1. The LoRa Bandwidth Corresponds to the Double Sided Transmit Spectrum Bandwidth\nTable 1. SNR for Various Modulation Configurations ... The substitution of one bit for multiple chips of information means that the spreading factor has a direct · influence on the duration of the LoRa packet.\nthe underling modulation scheme. It is the signal to noise ratio and bandwidth that are available as design ... The basic premise of spread spectrum is that each bit of information is encoded as multiple chips. The · relationship between the bit and chip rate for LoRa modulation, and respectively, is given by:\ncombine to allow significant SNR improvements. Some example SNRs for both conventional and LoRa · modulation formats are shown in the table below.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Mouser",
+        "url": "https://www.mouser.com/pdfdocs/semtech-lora-modem-design.pdf",
+        "long_name": "mouser.com",
+        "img": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "mouser.com",
+        "hostname": "www.mouser.com",
+        "favicon": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8",
+        "path": "› pdfdocs  › semtech-lora-modem-design.pdf"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "AN1200 22 Semtech LoRa Basics v2 STD PDF | PDF | Modulation | Signal To Noise Ratio",
+      "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+      "description": "This application note explains some of the basic concepts of LoRa modulation and the advantages that this modulation scheme can provide when deploying both fixed and mobile low-power real-world communications networks.",
+      "content": "This application note explains some of the basic concepts of LoRa modulation and the advantages that this modulation scheme can provide when deploying both fixed and mobile low-power real-world communications networks.\nScribd is the world's largest social reading and publishing site.\nSub-GHz LoRa sensitivity is as per the specification in both the SX1272 and SX1276 datasheets [3], [4] and takes into account the typical 6 dB noise figure of the receiver architecture.\nThis application note explains some of the basic concepts of LoRa modulation and the advantages that this modulation scheme can provide when deploying both fixed and mobile low-power real-world communications networks. ©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics\nSemtech’s LoRa modulation addresses all of the issues associated with DSSS systems to provide a low- cost, low-power, yet above all robust alternative to the traditional spread-spectrum communications techniques [1], [2].",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "creative_work",
+      "profile": {
+        "name": "Scribd",
+        "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+        "long_name": "scribd.com",
+        "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "scribd.com",
+        "hostname": "www.scribd.com",
+        "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+        "path": "› document  › 440591273  › AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/K4zpKul4EhJIf0VjfDzevzpGvXSQSecT9Ecm_K9mqeI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDQwNTkxMjczLzE0/OXgxOTgvMzA0ZjI0/MWM3Ny8xNTc2OTYy/MTIzP3Y9MQ",
+        "original": "https://imgv2-2-f.scribdassets.com/img/document/440591273/149x198/304f241c77/1576962123?v=1",
+        "logo": false
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "Semtech LoRa modulation basics application note SX1276 link budget PDF",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.95,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "Semtech LoRa modulation basics application note SX1276 link budget PDF",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "faq": {
+      "type": "faq",
+      "results": [
+        {
+          "question": "What is the maximum link budget of the SX1276-7-8-9?",
+          "answer": "168 dB",
+          "title": "Semtech SX1276-7-8-9 LoRa® Transceiver Datasheet | Manualzz",
+          "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "manualzz.com",
+            "hostname": "manualzz.com",
+            "favicon": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v",
+            "path": "  › semtech  › integrated circuits  › sx1276-7-8-9  › data sheet"
+          }
+        },
+        {
+          "question": "What is the operating voltage range of the SX1276-7-8-9?",
+          "answer": "2.1V to 3.9V",
+          "title": "Semtech SX1276-7-8-9 LoRa® Transceiver Datasheet | Manualzz",
+          "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "manualzz.com",
+            "hostname": "manualzz.com",
+            "favicon": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v",
+            "path": "  › semtech  › integrated circuits  › sx1276-7-8-9  › data sheet"
+          }
+        },
+        {
+          "question": "What is the maximum output power of the SX1276-7-8-9?",
+          "answer": "+20 dBm (100 mW)",
+          "title": "Semtech SX1276-7-8-9 LoRa® Transceiver Datasheet | Manualzz",
+          "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "manualzz.com",
+            "hostname": "manualzz.com",
+            "favicon": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v",
+            "path": "  › semtech  › integrated circuits  › sx1276-7-8-9  › data sheet"
+          }
+        },
+        {
+          "question": "What is the receiver sensitivity of the SX1276-7-8-9?",
+          "answer": "-148 dBm",
+          "title": "Semtech SX1276-7-8-9 LoRa® Transceiver Datasheet | Manualzz",
+          "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "manualzz.com",
+            "hostname": "manualzz.com",
+            "favicon": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v",
+            "path": "  › semtech  › integrated circuits  › sx1276-7-8-9  › data sheet"
+          }
+        }
+      ]
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "faq",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "LoRa Connect Transceiver, SX1276, 137MHz to 1020MHz | Semtech",
+          "url": "https://www.semtech.com/products/wireless-rf/lora-transceivers/sx1276",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Using Semtech’s patented LoRa ... The high sensitivity combined with the integrated +20dBm power amplifier yields industry leading link budget making it optimal for any application requiring range or robustness...",
+          "profile": {
+            "name": "Semtech",
+            "url": "https://www.semtech.com/products/wireless-rf/lora-transceivers/sx1276",
+            "long_name": "semtech.com",
+            "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "semtech.com",
+            "hostname": "www.semtech.com",
+            "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+            "path": "› products  › wireless-rf  › lora-transceivers  › sx1276"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/UPWOu9kGEYYm9UCb6cxbfcsGl8bdsY1lC6jic5X_Ge0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c2VtdGVjaC5jb20v/dXBsb2Fkcy9wcm9k/dWN0cy9TZW10ZWNo/LUNoaXAtTGFiZWwt/U1gxMjc2XzEucG5n",
+            "original": "https://www.semtech.com/uploads/products/Semtech-Chip-Label-SX1276_1.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "Using Semtech’s patented LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20dBm power amplifier yields industry leading link budget making it optimal for any application requiring range or robustness.",
+            "BLOG How LoRa Plus™ Enables Tomorrow's AI Applications · DesignCon remains the premier annual destination for engineers and technology leaders working at the cutting edge of chip-to-chip and chip-to-module interconnects — and DesignCon 2026 was no exception.",
+            "Shahar Feldman, senior product marketing director for LoRa integrated circuits (ICs) at Semtech, recently presented how the company's new LoRa Plus™ technology addresses this critical challenge head-on, ushering in a new era of AI-enabled IoT deployments.",
+            "The answer for LoRaWAN® is a confident yes and here's why."
+          ]
+        },
+        {
+          "title": "SX1276/77/78/79 www.semtech.com Page 1 WIRELESS, SENSING & TIMING DATASHEET",
+          "url": "https://cdn-shop.adafruit.com/product-files/3179/sx1276_77_78_79.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "In FSK/OOK mode the SX1276/77/78/79 supports standard modulation techniques including OOK, FSK, GFSK, MSK and · GMSK. The SX1276/77/78/79 is especially suited to narrow band communication thanks the low-IF architecture employed · and the built-in AFC functionality. For full information on the FSK/OOK modem please consult Section 4.2 of this document. ... Rev. 4 - March 2015 ... The LoRaTM modem uses spread spectrum modulation and forward error correction techniques to increase the range and",
+          "profile": {
+            "name": "Adafruit",
+            "url": "https://cdn-shop.adafruit.com/product-files/3179/sx1276_77_78_79.pdf",
+            "long_name": "cdn-shop.adafruit.com",
+            "img": "https://imgs.search.brave.com/wdA4B29VjXZIfoMwIiVI-heji_b56-W5kHIBDYXM6iQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTUwYzY1NjAx/MGRmNmJiMDAyNGU2/OTE2MmM3YWQ4MWY3/YmNhMTFmYzNlYmUy/MTljM2RlYzM0Y2Mw/YTZjZGIwYS9jZG4t/c2hvcC5hZGFmcnVp/dC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cdn-shop.adafruit.com",
+            "hostname": "cdn-shop.adafruit.com",
+            "favicon": "https://imgs.search.brave.com/wdA4B29VjXZIfoMwIiVI-heji_b56-W5kHIBDYXM6iQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTUwYzY1NjAx/MGRmNmJiMDAyNGU2/OTE2MmM3YWQ4MWY3/YmNhMTFmYzNlYmUy/MTljM2RlYzM0Y2Mw/YTZjZGIwYS9jZG4t/c2hvcC5hZGFmcnVp/dC5jb20v",
+            "path": "› product-files  › 3179  › sx1276_77_78_79.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The table below gives the electrical specifications for the transceiver operating with LoRaTM modulation. Following ... Rev. 4 - March 2015 ... Rev. 4 - March 2015 ... Image rejection after calibration. ... Rev. 4 - March 2015 ... Conditions: Temp = 25° C, VDD = 3.3 V, FXOSC = 32 MHz, unless otherwise specified. ... Rev. 4 - March 2015 ... This section gives a high-level overview of the functionality of the SX1276/77/78/79 low-power, highly integrated",
+            "The SX1276/77/78/79 are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems. Depending upon the mode selected either conventional OOK or FSK modulation may be employed or the LoRaTM spread",
+            "In FSK/OOK mode the SX1276/77/78/79 supports standard modulation techniques including OOK, FSK, GFSK, MSK and · GMSK. The SX1276/77/78/79 is especially suited to narrow band communication thanks the low-IF architecture employed · and the built-in AFC functionality. For full information on the FSK/OOK modem please consult Section 4.2 of this document. ... Rev. 4 - March 2015 ... The LoRaTM modem uses spread spectrum modulation and forward error correction techniques to increase the range and",
+            "2.5.5. Electrical Specification for LoRaTM Modulation ........................................................................................19 · 2.5.6. Digital Specification ...................................................................................................................................22 ... SX1276/77/78/79 Features...................................................................................................................................."
+          ]
+        },
+        {
+          "title": "Semtech SX1276-7-8-9 LoRa® Transceiver Datasheet | Manualzz",
+          "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20 dBm power amplifier yields industry leading link budget making it optimal for any ...",
+          "profile": {
+            "name": "Manualzz",
+            "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+            "long_name": "manualzz.com",
+            "img": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "faq",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "manualzz.com",
+            "hostname": "manualzz.com",
+            "favicon": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v",
+            "path": "  › semtech  › integrated circuits  › sx1276-7-8-9  › data sheet"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/b8_0M5JGU2rHc1VRFEctk0uw0xHMORNd9um8Cpfft9w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9tYW51/YWx6ei5jb20vdGhl/bWUvbWFudWFsenov/c3RhdGljL2Rlc2ln/bi01L3N2Zy9sb2dv/LnN2Zw",
+            "original": "https://manualzz.com/theme/manualzz/static/design-5/svg/logo.svg",
+            "logo": true
+          },
+          "faq": {
+            "items": [
+              {
+                "question": "What is the maximum link budget of the SX1276-7-8-9?",
+                "answer": "168 dB",
+                "title": "Semtech SX1276-7-8-9 LoRa® Transceiver Datasheet | Manualzz",
+                "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "manualzz.com",
+                  "hostname": "manualzz.com",
+                  "favicon": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v",
+                  "path": "  › semtech  › integrated circuits  › sx1276-7-8-9  › data sheet"
+                }
+              },
+              {
+                "question": "What is the maximum output power of the SX1276-7-8-9?",
+                "answer": "+20 dBm (100 mW)",
+                "title": "Semtech SX1276-7-8-9 LoRa® Transceiver Datasheet | Manualzz",
+                "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "manualzz.com",
+                  "hostname": "manualzz.com",
+                  "favicon": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v",
+                  "path": "  › semtech  › integrated circuits  › sx1276-7-8-9  › data sheet"
+                }
+              },
+              {
+                "question": "What is the receiver sensitivity of the SX1276-7-8-9?",
+                "answer": "-148 dBm",
+                "title": "Semtech SX1276-7-8-9 LoRa® Transceiver Datasheet | Manualzz",
+                "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "manualzz.com",
+                  "hostname": "manualzz.com",
+                  "favicon": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v",
+                  "path": "  › semtech  › integrated circuits  › sx1276-7-8-9  › data sheet"
+                }
+              },
+              {
+                "question": "What is the operating voltage range of the SX1276-7-8-9?",
+                "answer": "2.1V to 3.9V",
+                "title": "Semtech SX1276-7-8-9 LoRa® Transceiver Datasheet | Manualzz",
+                "url": "https://manualzz.com/doc/55353706/semtech-sx1276-7-8-9-lora%C2%AE-transceiver-datasheet",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "manualzz.com",
+                  "hostname": "manualzz.com",
+                  "favicon": "https://imgs.search.brave.com/YY34DxbmWVI4z6iD0dBZaZ5IcLJ7wFN6avvNyW4-qzw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTA3MDcyMjI5/OThiZDAzNTU5MmFm/ZWM3YTI4ZmYxZmFi/ZGRkNjQ5NmNlNmRk/MWNiZmM0YTllMjYz/OTQxZjZkZS9tYW51/YWx6ei5jb20v",
+                  "path": "  › semtech  › integrated circuits  › sx1276-7-8-9  › data sheet"
+                }
+              }
+            ]
+          },
+          "extra_snippets": [
+            "The SX1276/77/78/79 transceivers feature the LoRa® long range modem that provides ultra-long range spread spectrum communication and high interference immunity whilst minimising current consumption. Using Semtech’s patented LoRa modulation technique",
+            "SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20 dBm power amplifier yields industry leading link budget making it optimal for any application requiring range or robustness. LoRa provides significant advantages in both blocking and selectivity over conventional modulation techniques, solving the traditional design compromise between range, interference immunity and energy consumption.",
+            "The SX1276/77/78/79 incorporates the LoRa spread spectrum modem which is capable of achieving significantly longer range than existing systems based on FSK or OOK modulation. At maximum data rates of LoRa the sensitivity is 8dB better than FSK, but using a low cost bill of materials with a 20ppm XTAL LoRa can improve receiver sensitivity by more than 20dB compared to FSK.",
+            "The SX1276/77/78/79 are equipped with both standard FSK and long range spread spectrum (LoRa ... Depending upon the mode selected either conventional OOK or FSK modulation may be employed or the LoRa"
+          ]
+        },
+        {
+          "title": "SX1276/77/78/79 www.semtech.com Page 1 WIRELESS & SENSING PRODUCTS DATASHEET",
+          "url": "https://cdn.sparkfun.com/assets/7/7/3/2/2/SX1276_Datasheet.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "In FSK/OOK mode the SX1276/77/78/79 supports standard modulation techniques including OOK, FSK, GFSK, MSK and · GMSK. The SX1276/77/78/79 is especially suited to narrow band communication thanks the low-IF architecture employed · and the built-in AFC functionality. For full information on the FSK/OOK modem please consult Section 2.1 of this document. ... Rev. 7 - May 2020 ... The LoRa® modem uses spread spectrum modulation and forward error correction techniques to increase the range and",
+          "profile": {
+            "name": "Sparkfun",
+            "url": "https://cdn.sparkfun.com/assets/7/7/3/2/2/SX1276_Datasheet.pdf",
+            "long_name": "cdn.sparkfun.com",
+            "img": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cdn.sparkfun.com",
+            "hostname": "cdn.sparkfun.com",
+            "favicon": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw",
+            "path": "› assets  › 7  › 7  › 3  › 2  › 2  › SX1276_Datasheet.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The table below gives the electrical specifications for the transceiver operating with LoRa modulation. Following conditions ... Rev. 7 - May 2020 ... Rev. 7 - May 2020 ... Image rejection after calibration. ... Rev. 7 - May 2020 ... Conditions: Temp = 25° C, VDD = 3.3 V, FXOSC = 32 MHz, unless otherwise specified. ... Rev. 7 - May 2020 ... This section gives a high-level overview of the functionality of the SX1276/77/78/79 low-power, highly integrated",
+            "The SX1276/77/78/79 are equipped with both standard FSK and long range spread spectrum (LoRa®) modems. Depending upon the mode selected either conventional OOK or FSK modulation may be employed or the LoRa® spread",
+            "In FSK/OOK mode the SX1276/77/78/79 supports standard modulation techniques including OOK, FSK, GFSK, MSK and · GMSK. The SX1276/77/78/79 is especially suited to narrow band communication thanks the low-IF architecture employed · and the built-in AFC functionality. For full information on the FSK/OOK modem please consult Section 2.1 of this document. ... Rev. 7 - May 2020 ... The LoRa® modem uses spread spectrum modulation and forward error correction techniques to increase the range and",
+            "LoRa® mode, the configuration register mapping of the SX1276/77/78/79 changes. For full details of this change please ... So that it is possible to optimise the LoRa® modulation for a given application, access is given to the designer to three"
+          ]
+        },
+        {
+          "title": "Find Product Documentation",
+          "url": "https://www.semtech.com/uploads/documents/sx1276_77_78-errata.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Helpful tips for finding updated Semtech product documentation.",
+          "page_age": "2013-09-01T00:00:00",
+          "profile": {
+            "name": "Semtech",
+            "url": "https://www.semtech.com/uploads/documents/sx1276_77_78-errata.pdf",
+            "long_name": "semtech.com",
+            "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "semtech.com",
+            "hostname": "www.semtech.com",
+            "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+            "path": "› uploads  › documents  › sx1276_77_78-errata.pdf"
+          },
+          "age": "September 1, 2013"
+        },
+        {
+          "title": "SX1276 Datasheet(PDF) - Semtech Corporation",
+          "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/800239/SEMTECH/SX1276.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Part #: SX1276. Download. File Size: 3MbKbytes. Page: 132 Pages. Description: Low Power Long Range Transceiver. Manufacturer: Semtech Corporation.",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/800239/SEMTECH/SX1276.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› datasheet-pdf  › pdf  › 800239  › SEMTECH  › SX1276.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          }
+        },
+        {
+          "title": "semtech.com/LoRa Long Range, Low Power Consumption",
+          "url": "https://www.semtech.com/uploads/design-support/SEMTECH_LORA_PG.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The SX1276/78 transceivers features the LoRa long range modem that provides ultra-long range spread spectrum communication",
+          "profile": {
+            "name": "Semtech",
+            "url": "https://www.semtech.com/uploads/design-support/SEMTECH_LORA_PG.pdf",
+            "long_name": "semtech.com",
+            "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "semtech.com",
+            "hostname": "www.semtech.com",
+            "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+            "path": "› uploads  › design-support  › SEMTECH_LORA_PG.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The SX1276/78 transceivers features the LoRa long range modem that provides ultra-long range spread spectrum communication",
+            "modulation in the global ISM band(s), the 2. 4GHz band and the · S-band for satellite communication. When paired with LoRa Cloud",
+            "LoRa Edge chip versions can support standard LoRa modulation",
+            "Ultra-low power platform that integrates a LoRa transceiver, long range FHSS modulator, multi-constellation scanner,"
+          ]
+        },
+        {
+          "title": "LoRa Connect Transceiver, SX1278, 137MHz to 525MHz | Semtech",
+          "url": "https://www.semtech.com/products/wireless-rf/lora-connect/sx1278",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The SX1276/77/78/79 transceivers ... LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials....",
+          "profile": {
+            "name": "Semtech",
+            "url": "https://www.semtech.com/products/wireless-rf/lora-connect/sx1278",
+            "long_name": "semtech.com",
+            "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "semtech.com",
+            "hostname": "www.semtech.com",
+            "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+            "path": "› products  › wireless-rf  › lora-connect  › sx1278"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/qZPad_Nqnhk78Fx_Q2NiViPsF8s0xBkX7T7cijGY2EI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c2VtdGVjaC5jb20v/dXBsb2Fkcy9wcm9k/dWN0cy9TZW10ZWNo/LUNoaXAtTGFiZWwt/U1gxMjc4XzEucG5n",
+            "original": "https://www.semtech.com/uploads/products/Semtech-Chip-Label-SX1278_1.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "The SX1276/77/78/79 transceivers feature the LoRa® long range modem that provides ultra-long range spread spectrum communication and high interference immunity whilst minimizing current consumption. Using Semtech’s patented LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials.",
+            "BLOG How LoRa Plus™ Enables Tomorrow's AI Applications · DesignCon remains the premier annual destination for engineers and technology leaders working at the cutting edge of chip-to-chip and chip-to-module interconnects — and DesignCon 2026 was no exception.",
+            "Shahar Feldman, senior product marketing director for LoRa integrated circuits (ICs) at Semtech, recently presented how the company's new LoRa Plus™ technology addresses this critical challenge head-on, ushering in a new era of AI-enabled IoT deployments.",
+            "The answer for LoRaWAN® is a confident yes and here's why."
+          ]
+        },
+        {
+          "title": "WIRELESS & SENSING Revision 1 July 2013 © 2013 Semtech Corporation 1",
+          "url": "https://www.mouser.com/pdfdocs/semtech-lora-modem-design.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "the underling modulation scheme. It is the signal to noise ratio and bandwidth that are available as design ... The basic premise of spread spectrum is that each bit of information is encoded as multiple chips. The · relationship between the bit and chip rate for LoRa modulation, and respectively, ...",
+          "profile": {
+            "name": "Mouser",
+            "url": "https://www.mouser.com/pdfdocs/semtech-lora-modem-design.pdf",
+            "long_name": "mouser.com",
+            "img": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "mouser.com",
+            "hostname": "www.mouser.com",
+            "favicon": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8",
+            "path": "› pdfdocs  › semtech-lora-modem-design.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "125 kHz (as shown below). (The SX1276 has bandwidths from 500 kHz to as low as 7.8 kHz). ... Figure 1. The LoRa Bandwidth Corresponds to the Double Sided Transmit Spectrum Bandwidth",
+            "Table 1. SNR for Various Modulation Configurations ... The substitution of one bit for multiple chips of information means that the spreading factor has a direct · influence on the duration of the LoRa packet.",
+            "the underling modulation scheme. It is the signal to noise ratio and bandwidth that are available as design ... The basic premise of spread spectrum is that each bit of information is encoded as multiple chips. The · relationship between the bit and chip rate for LoRa modulation, and respectively, is given by:",
+            "combine to allow significant SNR improvements. Some example SNRs for both conventional and LoRa · modulation formats are shown in the table below."
+          ]
+        },
+        {
+          "title": "AN1200 22 Semtech LoRa Basics v2 STD PDF | PDF | Modulation | Signal To Noise Ratio",
+          "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This application note explains some of the basic concepts of LoRa modulation and the advantages that this modulation scheme can provide when deploying both fixed and mobile low-power real-world communications networks.",
+          "profile": {
+            "name": "Scribd",
+            "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+            "long_name": "scribd.com",
+            "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "creative_work",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› document  › 440591273  › AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/K4zpKul4EhJIf0VjfDzevzpGvXSQSecT9Ecm_K9mqeI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDQwNTkxMjczLzE0/OXgxOTgvMzA0ZjI0/MWM3Ny8xNTc2OTYy/MTIzP3Y9MQ",
+            "original": "https://imgv2-2-f.scribdassets.com/img/document/440591273/149x198/304f241c77/1576962123?v=1",
+            "logo": false
+          },
+          "creative_work": {
+            "name": "AN1200_22_Semtech_LoRa_Basics_v2_STD (1).pdf",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/K4zpKul4EhJIf0VjfDzevzpGvXSQSecT9Ecm_K9mqeI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDQwNTkxMjczLzE0/OXgxOTgvMzA0ZjI0/MWM3Ny8xNTc2OTYy/MTIzP3Y9MQ",
+              "original": "https://imgv2-2-f.scribdassets.com/img/document/440591273/149x198/304f241c77/1576962123?v=1"
+            }
+          },
+          "extra_snippets": [
+            "Scribd is the world's largest social reading and publishing site.",
+            "Sub-GHz LoRa sensitivity is as per the specification in both the SX1272 and SX1276 datasheets [3], [4] and takes into account the typical 6 dB noise figure of the receiver architecture.",
+            "This application note explains some of the basic concepts of LoRa modulation and the advantages that this modulation scheme can provide when deploying both fixed and mobile low-power real-world communications networks. ©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics",
+            "Semtech’s LoRa modulation addresses all of the issues associated with DSSS systems to provide a low- cost, low-power, yet above all robust alternative to the traditional spread-spectrum communications techniques [1], [2]."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

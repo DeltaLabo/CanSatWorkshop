@@ -1,0 +1,715 @@
+{
+  "query": "AN1200.22 LoRa Modulation Basics PDF Semtech",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "Semtech: AN1200.22 - LoRa Modulation Basics | Information Technologies for Security",
+      "url": "https://it4sec.org/article/semtech-an120022-lora-modulation-basics",
+      "description": "https://www.semtech.com/uploads/documents/an1200.22.pdf · 6984 reads · Google Scholar · RTF · EndNote XML · Last updated: Wednesday, 21 October 2020 · English · Български · Security policy · Cybersecurity · Intelligence · Law Enforcement ·",
+      "content": "https://www.semtech.com/uploads/documents/an1200.22.pdf · 6984 reads · Google Scholar · RTF · EndNote XML · Last updated: Wednesday, 21 October 2020 · English · Български · Security policy · Cybersecurity · Intelligence · Law Enforcement ·",
+      "age": "October 21, 2020",
+      "page_age": "2020-10-21T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "It4sec",
+        "url": "https://it4sec.org/article/semtech-an120022-lora-modulation-basics",
+        "long_name": "it4sec.org",
+        "img": "https://imgs.search.brave.com/t9VERpvn4Q_Q-N2a3XW3DX2M3MB_oiIwqZmCKRE2SDk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGMxYTcyMTJk/ZGU3NGJiZDFjODEy/YjhjN2U2OTU1ZDBm/MjVlN2FiNjY3ZmI3/NGFlNjExMDcyNTE2/M2JmZGFkNy9pdDRz/ZWMub3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "it4sec.org",
+        "hostname": "it4sec.org",
+        "favicon": "https://imgs.search.brave.com/t9VERpvn4Q_Q-N2a3XW3DX2M3MB_oiIwqZmCKRE2SDk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGMxYTcyMTJk/ZGU3NGJiZDFjODEy/YjhjN2U2OTU1ZDBm/MjVlN2FiNjY3ZmI3/NGFlNjExMDcyNTE2/M2JmZGFkNy9pdDRz/ZWMub3JnLw",
+        "path": "› article  › semtech-an120022-lora-modulation-basics"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "Revision 2, May 2015 www.semtech.com P a g e | 1 ©2015 Semtech Corporation",
+      "url": "http://wiki.lahoud.fr/lib/exe/fetch.php?media=an1200.22.pdf",
+      "description": "This application note explains some of the basic concepts of LoRa modulation and the advantages that · this modulation scheme can provide when deploying both fixed and mobile low-power real-world · communications networks. Revision 2, May 2015 · www.semtech.com · P a g e | 5 · ©2015 Semtech Corporation · APPLICATION NOTE · AN1200.22 ·",
+      "content": "This application note explains some of the basic concepts of LoRa modulation and the advantages that · this modulation scheme can provide when deploying both fixed and mobile low-power real-world · communications networks. Revision 2, May 2015 · www.semtech.com · P a g e | 5 · ©2015 Semtech Corporation · APPLICATION NOTE · AN1200.22 ·\nThe relationship between the wanted data bit rate, symbol rate and chip rate for LoRa modulation can · be expressed as follows: We can define the modulation bit rate, Rb, as: +, \" -. ∗ · \" /012 · 345 · 6789/9;< Where: SF = spreading factor (7..12) BW = modulation bandwidth (Hz) Revision 2, May 2015 · www.semtech.com · P a g e | 10 · ©2015 Semtech Corporation · APPLICATION NOTE · AN1200.22 ·\nSemtech’s LoRa modulation addresses all of the issues associated with DSSS systems to provide a low-\nThe wanted data signal is chipped at a higher data rate and modulated onto the chirp signal. The relationship between the wanted data bit rate, symbol rate and chip rate for LoRa modulation can",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Lahoud",
+        "url": "http://wiki.lahoud.fr/lib/exe/fetch.php?media=an1200.22.pdf",
+        "long_name": "wiki.lahoud.fr",
+        "img": "https://imgs.search.brave.com/fpt8ztkKCkxf4wTjwj9iR2NAxIRbQuiDpqZidx4FG2Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQ5NzE1ZTY4/YjYxNjFmZWRiZTcw/NjEyNmZkZjAyMzQx/MzM0YTViMGE4NGFm/MmZiNzFhZjhhNTgw/OTU4NDEzYi93aWtp/LmxhaG91ZC5mci8"
+      },
+      "meta_url": {
+        "scheme": "http",
+        "netloc": "wiki.lahoud.fr",
+        "hostname": "wiki.lahoud.fr",
+        "favicon": "https://imgs.search.brave.com/fpt8ztkKCkxf4wTjwj9iR2NAxIRbQuiDpqZidx4FG2Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQ5NzE1ZTY4/YjYxNjFmZWRiZTcw/NjEyNmZkZjAyMzQx/MzM0YTViMGE4NGFm/MmZiNzFhZjhhNTgw/OTU4NDEzYi93aWtp/LmxhaG91ZC5mci8",
+        "path": "› lib  › exe  › fetch.php"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Semtech: AN1200.22 - LoRa Modulation Basics | Procon Ltd. Information & Security: An International Journal",
+      "url": "https://procon.bg/article/semtech-an120022-lora-modulation-basics",
+      "description": "https://www.semtech.com/uploads/documents/an1200.22.pdf · 6520 reads · Google Scholar · RTF · EndNote XML · I&amp;S Volumes · Policy · Editorial Board · Active Calls · Copyright &amp; Licensing · Indexing &amp; Archiving · Submit a paper · Books &amp; Papers · Top downloads ·",
+      "content": "https://www.semtech.com/uploads/documents/an1200.22.pdf · 6520 reads · Google Scholar · RTF · EndNote XML · I&amp;S Volumes · Policy · Editorial Board · Active Calls · Copyright &amp; Licensing · Indexing &amp; Archiving · Submit a paper · Books &amp; Papers · Top downloads ·",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Procon",
+        "url": "https://procon.bg/article/semtech-an120022-lora-modulation-basics",
+        "long_name": "procon.bg",
+        "img": "https://imgs.search.brave.com/t0oAtJ19EMiXljKBMJtZHc1ilHyjl_Yw60cSFzG-L-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGFkNWU3OTY4/YTU4NzdlMmRkM2Zj/NzQ0MmU2NzAzMzhi/NDg1NTIxNDgzMmZl/NDQ0MmUyNmRiYjMw/ODAzYmIxNC9wcm9j/b24uYmcv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "procon.bg",
+        "hostname": "procon.bg",
+        "favicon": "https://imgs.search.brave.com/t0oAtJ19EMiXljKBMJtZHc1ilHyjl_Yw60cSFzG-L-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGFkNWU3OTY4/YTU4NzdlMmRkM2Zj/NzQ0MmU2NzAzMzhi/NDg1NTIxNDgzMmZl/NDQ0MmUyNmRiYjMw/ODAzYmIxNC9wcm9j/b24uYmcv",
+        "path": "› article  › semtech-an120022-lora-modulation-basics"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "AN1200 22 Semtech LoRa Basics v2 STD PDF | PDF | Modulation | Signal To Noise Ratio",
+      "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+      "description": "This application note explains some of the basic concepts of LoRa modulation and the advantages that this modulation scheme can provide when deploying both fixed and mobile low-power real-world communications networks. ©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics",
+      "content": "This application note explains some of the basic concepts of LoRa modulation and the advantages that this modulation scheme can provide when deploying both fixed and mobile low-power real-world communications networks. ©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics\nScribd is the world's largest social reading and publishing site.\nThe Eb/N0 of LoRa offers typically 10 dB improvement over that for GFSK and thus it can be seen that LoRa offers a significant sensitivity improvement over FSK. It should be noted that if the noise figure is added to the absolute noise floor plot, the sensitivity achievable with LoRa modulation is within 6 dB of the relative noise floor. ©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics\nWe observe in the case of an adjacent or alternate channel interferer (at ±200 kHz and ±400 kHz, respectively – see inset) that LoRa offers between 15 and 20 dB increased immunity to the unwanted interferer and approximately 10 dB for frequency offsets in excess of 5 MHz (typically, beyond 1 MHz offset, receiver linearity at the expense of current consumption and independent of modulation, dominates). ©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "creative_work",
+      "profile": {
+        "name": "Scribd",
+        "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+        "long_name": "scribd.com",
+        "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "scribd.com",
+        "hostname": "www.scribd.com",
+        "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+        "path": "› document  › 440591273  › AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/K4zpKul4EhJIf0VjfDzevzpGvXSQSecT9Ecm_K9mqeI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDQwNTkxMjczLzE0/OXgxOTgvMzA0ZjI0/MWM3Ny8xNTc2OTYy/MTIzP3Y9MQ",
+        "original": "https://imgv2-2-f.scribdassets.com/img/document/440591273/149x198/304f241c77/1576962123?v=1",
+        "logo": false
+      }
+    },
+    {
+      "rank": 5,
+      "title": "The LoRa Modulation Over Rapidly-Varying Channels",
+      "url": "https://arxiv.org/pdf/2009.01176",
+      "description": "[5] AN1200.22 LoRa Modulation Basics, Rev. 2. Semtech Corporation,",
+      "content": "[5] AN1200.22 LoRa Modulation Basics, Rev. 2. Semtech Corporation,\n[12] Understanding the LoRa Adaptive Data Rate, Semtech Corporation,\nLoRa communications.\nIndex Terms—LoRa, Chirp spread spectrum, PHY, fading, IoT.\nThe LoRa communication technology has received signif-",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "arXiv",
+        "url": "https://arxiv.org/pdf/2009.01176",
+        "long_name": "arxiv.org",
+        "img": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "arxiv.org",
+        "hostname": "arxiv.org",
+        "favicon": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv",
+        "path": "› pdf  › 2009.01176"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "AN1200.22 LoRa™ Modulation Basics - FRUGAL PROTOTYPE / an1200-22-lora-modulation-basics-frugal-prototype.pdf / PDF4PRO",
+      "url": "https://pdf4pro.com/amp/view/an1200-22-lora-modulation-basics-frugal-prototype-6561fd.html",
+      "description": "Revision 2, May 2015 P a g e | 1 2015 Semtech Corporation APPLICATION NOTE LoRa Modulation Basics LoRa Modulation Basics Revision 2, May 2015 P a g e | 2 2015 Semtech Corporation APPLICATION NOTE LoRa Modulation Basics Table of Contents 1 Introduction .. 4 2 Acronyms ..",
+      "content": "Revision 2, May 2015 P a g e | 1 2015 Semtech Corporation APPLICATION NOTE LoRa Modulation Basics LoRa Modulation Basics Revision 2, May 2015 P a g e | 2 2015 Semtech Corporation APPLICATION NOTE LoRa Modulation Basics Table of Contents 1 Introduction .. 4 2 Acronyms ..\nmechanisms such as multipath, fading, Doppler and in-band jamming interferers. A CSS PHY was adopted by the IEEE for the Low-Rate Wireless Personal Area Networks (LR-WPANs) standard 802.15.4 for applications requiring longer range and mobility than that achievable with the O-QPSK DSSS PHY mode. 4 LoRa Spread Spectrum",
+      "age": "August 25, 2020",
+      "page_age": "2020-08-25T11:35:50",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "PDF4PRO",
+        "url": "https://pdf4pro.com/amp/view/an1200-22-lora-modulation-basics-frugal-prototype-6561fd.html",
+        "long_name": "pdf4pro.com",
+        "img": "https://imgs.search.brave.com/v0ldZhzr33TZ9if0tmuZCltvWOwxFDiqjOIOZm5dDm0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2EzMzkwNGY3/OWZkOWJhMDg1ZWZm/MGQ1ZTQ2MDU5MDhm/Yjg4MzNkMmVjYjUz/MGNkMzllMTRmZDE1/MTMzMDJkMi9wZGY0/cHJvLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "pdf4pro.com",
+        "hostname": "pdf4pro.com",
+        "favicon": "https://imgs.search.brave.com/v0ldZhzr33TZ9if0tmuZCltvWOwxFDiqjOIOZm5dDm0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2EzMzkwNGY3/OWZkOWJhMDg1ZWZm/MGQ1ZTQ2MDU5MDhm/Yjg4MzNkMmVjYjUz/MGNkMzllMTRmZDE1/MTMzMDJkMi9wZGY0/cHJvLmNvbS8",
+        "path": "› amp  › view  › an1200-22-lora-modulation-basics-frugal-prototype-6561fd.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/6ZUVyJ9ZvqJaLECMZYd6vpKUZoCwxn6KPK0o9D-c5mI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wZGY0/cHJvLmNvbS9jYWNo/ZS9wcmV2aWV3LzMv/Ny9hL2UvNi8zLzIv/MS90aHVtYi0zN2Fl/NjMyMTg1OTNiZDhi/YmMwNjM5MDU2ZjJk/Y2JhOS5qcGc",
+        "original": "https://pdf4pro.com/cache/preview/3/7/a/e/6/3/2/1/thumb-37ae63218593bd8bbc0639056f2dcba9.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "Find Product Documentation",
+      "url": "https://www.semtech.com/uploads/documents/an1200.22.pdf",
+      "description": "Helpful tips for finding updated Semtech product documentation.",
+      "content": "Helpful tips for finding updated Semtech product documentation.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Semtech",
+        "url": "https://www.semtech.com/uploads/documents/an1200.22.pdf",
+        "long_name": "semtech.com",
+        "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "semtech.com",
+        "hostname": "www.semtech.com",
+        "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+        "path": "› uploads  › documents  › an1200.22.pdf"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "978-1-5386-2256-8/17/$31.00 ©2017 IEEE Comparison of LoRaWAN Classes",
+      "url": "https://www.famaey.eu/papers/cnf-sancheong2017a.pdf",
+      "description": "[11] AN1200.22 · – · LoRa · Modulation · Basics. [Online]. Available: http://www.semtech.com/images/datasheet/an1200.22.pdf · [12] SX1272/3/6/7/8: LoRa Modem. Designer’s Guide AN1200.13. [Online]. https://www.semtech.com/images/datasheet/LoraDesignGuide_STD.pd ·",
+      "content": "[11] AN1200.22 · – · LoRa · Modulation · Basics. [Online]. Available: http://www.semtech.com/images/datasheet/an1200.22.pdf · [12] SX1272/3/6/7/8: LoRa Modem. Designer’s Guide AN1200.13. [Online]. https://www.semtech.com/images/datasheet/LoraDesignGuide_STD.pd ·\nThe LoRa Modulation technique is patented by Semtech\non the chirp signal and the resulting modulated signal is spread · over a wide band beyond the original data signal’s bandwidth. ... C. Adaptive Data Rate · A second technique used in a LoRaWAN network is the\npower requirements of the LoRa device both in class A and · class C mode, using different modulation techniques and",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Famaey",
+        "url": "https://www.famaey.eu/papers/cnf-sancheong2017a.pdf",
+        "long_name": "famaey.eu",
+        "img": "https://imgs.search.brave.com/NtT0zXqReWnA7m8F6om7jtgTn8awerptQoGcaTLVnnI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNjdkNTg1/NTQxN2U2NmJjNmYy/MWFlMjVlM2Q1NmVk/ODQ2ZGE0ZTllYTA5/NjM1YWNjN2Q2YTE3/YTk4M2NiNS93d3cu/ZmFtYWV5LmV1Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "famaey.eu",
+        "hostname": "www.famaey.eu",
+        "favicon": "https://imgs.search.brave.com/NtT0zXqReWnA7m8F6om7jtgTn8awerptQoGcaTLVnnI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNjdkNTg1/NTQxN2U2NmJjNmYy/MWFlMjVlM2Q1NmVk/ODQ2ZGE0ZTllYTA5/NjM1YWNjN2Q2YTE3/YTk4M2NiNS93d3cu/ZmFtYWV5LmV1Lw",
+        "path": "› papers  › cnf-sancheong2017a.pdf"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "12 January 2026 Alma Mater Studiorum Università di Bologna",
+      "url": "https://cris.unibo.it/retrieve/handle/11585/870161/db055512-6e5c-4f54-a65a-bd5cb452ae11/TWC3095667.pdf",
+      "description": "[32] “Semtech Corporation. AN1200.22 LoRa Modulation Basics, May",
+      "content": "[32] “Semtech Corporation. AN1200.22 LoRa Modulation Basics, May\nJune 22, 2021. layer and the message formats. At the physical (PHY) layer, they are based on LoRa, a proprietary modulation scheme · developed by Semtech Corporation and derived from Chirp\nV. DEMODULATION OF LORA SIGNALS. FREQUENCY ... M s)(t−nTs), nTs+Th≤t≤(n+1)Ts. ... M s) in the interval [nTs+Th, (n+1)Ts]. Taking the Continuous Time Fourier Transform Rn(f) of · (21) and computing its modulus leads to (see Appendix G): ... B = 500 kHz (the same setting used to derive Figs.1 and 4). Remark 3. With reference to (22), it is worth observing that\nLoRa is a proprietary spread-spectrum modulation scheme · patented by Semtech Corporation [32], which is derivative of\nIn any symbol interval n, for any SF and modulation symbol · s, (19) provides the corresponding phase samples to be fed to · the cos(·) and sin(·) terms in (12) and (13). This results in a · simple implementation of LoRa transmitters, which can thus",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cris",
+        "url": "https://cris.unibo.it/retrieve/handle/11585/870161/db055512-6e5c-4f54-a65a-bd5cb452ae11/TWC3095667.pdf",
+        "long_name": "cris.unibo.it",
+        "img": "https://imgs.search.brave.com/0-WCAusE-rZOcGa86qeg3pbDaSbXTOGWTz2VQ-T2k1w/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzlmMDdmNGQw/YzQ5NDU3YmZjOWEx/MmU0NTE5OThiYzdl/NjIzNzRiMDhkZGU0/NDM2MmQ3ZjQ5MDVi/ODkyZjAzNC9jcmlz/LnVuaWJvLml0Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cris.unibo.it",
+        "hostname": "cris.unibo.it",
+        "favicon": "https://imgs.search.brave.com/0-WCAusE-rZOcGa86qeg3pbDaSbXTOGWTz2VQ-T2k1w/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzlmMDdmNGQw/YzQ5NDU3YmZjOWEx/MmU0NTE5OThiYzdl/NjIzNzRiMDhkZGU0/NDM2MmQ3ZjQ5MDVi/ODkyZjAzNC9jcmlz/LnVuaWJvLml0Lw",
+        "path": "› retrieve  › handle  › 11585  › 870161  › db055512-6e5c-4f54-a65a-bd5cb452ae11  › TWC3095667.pdf"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "An1200 22 | PDF | Modulation | Signal To Noise Ratio",
+      "url": "https://www.scribd.com/document/282369354/an1200-22",
+      "description": "JavaScript is disabled in your browser · Please enable JavaScript to proceed · A required part of this site couldn’t load. This may be due to a browser extension, network issues, or browser settings. Please check your connection, disable any ad blockers, or try using a different browser",
+      "content": "JavaScript is disabled in your browser · Please enable JavaScript to proceed · A required part of this site couldn’t load. This may be due to a browser extension, network issues, or browser settings. Please check your connection, disable any ad blockers, or try using a different browser",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Scribd",
+        "url": "https://www.scribd.com/document/282369354/an1200-22",
+        "long_name": "scribd.com",
+        "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "scribd.com",
+        "hostname": "www.scribd.com",
+        "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+        "path": "› document  › 282369354  › an1200-22"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "AN1200.22 LoRa Modulation Basics PDF Semtech",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.024,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "AN1200.22 LoRa Modulation Basics PDF Semtech",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "Semtech: AN1200.22 - LoRa Modulation Basics | Information Technologies for Security",
+          "url": "https://it4sec.org/article/semtech-an120022-lora-modulation-basics",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "https://www.semtech.com/uploads/documents/an1200.22.pdf · 6984 reads · Google Scholar · RTF · EndNote XML · Last updated: Wednesday, 21 October 2020 · English · Български · Security policy · Cybersecurity · Intelligence · Law Enforcement ·",
+          "page_age": "2020-10-21T00:00:00",
+          "profile": {
+            "name": "It4sec",
+            "url": "https://it4sec.org/article/semtech-an120022-lora-modulation-basics",
+            "long_name": "it4sec.org",
+            "img": "https://imgs.search.brave.com/t9VERpvn4Q_Q-N2a3XW3DX2M3MB_oiIwqZmCKRE2SDk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGMxYTcyMTJk/ZGU3NGJiZDFjODEy/YjhjN2U2OTU1ZDBm/MjVlN2FiNjY3ZmI3/NGFlNjExMDcyNTE2/M2JmZGFkNy9pdDRz/ZWMub3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "it4sec.org",
+            "hostname": "it4sec.org",
+            "favicon": "https://imgs.search.brave.com/t9VERpvn4Q_Q-N2a3XW3DX2M3MB_oiIwqZmCKRE2SDk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGMxYTcyMTJk/ZGU3NGJiZDFjODEy/YjhjN2U2OTU1ZDBm/MjVlN2FiNjY3ZmI3/NGFlNjExMDcyNTE2/M2JmZGFkNy9pdDRz/ZWMub3JnLw",
+            "path": "› article  › semtech-an120022-lora-modulation-basics"
+          },
+          "age": "October 21, 2020"
+        },
+        {
+          "title": "Revision 2, May 2015 www.semtech.com P a g e | 1 ©2015 Semtech Corporation",
+          "url": "http://wiki.lahoud.fr/lib/exe/fetch.php?media=an1200.22.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This application note explains some of the basic concepts of LoRa modulation and the advantages that · this modulation scheme can provide when deploying both fixed and mobile low-power real-world · communications networks. Revision 2, May 2015 · www.semtech.com · P a g e | 5 · ©2015 Semtech Corporation · APPLICATION NOTE · AN1200.22 ·",
+          "profile": {
+            "name": "Lahoud",
+            "url": "http://wiki.lahoud.fr/lib/exe/fetch.php?media=an1200.22.pdf",
+            "long_name": "wiki.lahoud.fr",
+            "img": "https://imgs.search.brave.com/fpt8ztkKCkxf4wTjwj9iR2NAxIRbQuiDpqZidx4FG2Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQ5NzE1ZTY4/YjYxNjFmZWRiZTcw/NjEyNmZkZjAyMzQx/MzM0YTViMGE4NGFm/MmZiNzFhZjhhNTgw/OTU4NDEzYi93aWtp/LmxhaG91ZC5mci8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "http",
+            "netloc": "wiki.lahoud.fr",
+            "hostname": "wiki.lahoud.fr",
+            "favicon": "https://imgs.search.brave.com/fpt8ztkKCkxf4wTjwj9iR2NAxIRbQuiDpqZidx4FG2Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQ5NzE1ZTY4/YjYxNjFmZWRiZTcw/NjEyNmZkZjAyMzQx/MzM0YTViMGE4NGFm/MmZiNzFhZjhhNTgw/OTU4NDEzYi93aWtp/LmxhaG91ZC5mci8",
+            "path": "› lib  › exe  › fetch.php"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "This application note explains some of the basic concepts of LoRa modulation and the advantages that · this modulation scheme can provide when deploying both fixed and mobile low-power real-world · communications networks. Revision 2, May 2015 · www.semtech.com · P a g e | 5 · ©2015 Semtech Corporation · APPLICATION NOTE · AN1200.22 ·",
+            "The relationship between the wanted data bit rate, symbol rate and chip rate for LoRa modulation can · be expressed as follows: We can define the modulation bit rate, Rb, as: +, \" -. ∗ · \" /012 · 345 · 6789/9;< Where: SF = spreading factor (7..12) BW = modulation bandwidth (Hz) Revision 2, May 2015 · www.semtech.com · P a g e | 10 · ©2015 Semtech Corporation · APPLICATION NOTE · AN1200.22 ·",
+            "Semtech’s LoRa modulation addresses all of the issues associated with DSSS systems to provide a low-",
+            "The wanted data signal is chipped at a higher data rate and modulated onto the chirp signal. The relationship between the wanted data bit rate, symbol rate and chip rate for LoRa modulation can"
+          ]
+        },
+        {
+          "title": "Semtech: AN1200.22 - LoRa Modulation Basics | Procon Ltd. Information & Security: An International Journal",
+          "url": "https://procon.bg/article/semtech-an120022-lora-modulation-basics",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "https://www.semtech.com/uploads/documents/an1200.22.pdf · 6520 reads · Google Scholar · RTF · EndNote XML · I&amp;S Volumes · Policy · Editorial Board · Active Calls · Copyright &amp; Licensing · Indexing &amp; Archiving · Submit a paper · Books &amp; Papers · Top downloads ·",
+          "profile": {
+            "name": "Procon",
+            "url": "https://procon.bg/article/semtech-an120022-lora-modulation-basics",
+            "long_name": "procon.bg",
+            "img": "https://imgs.search.brave.com/t0oAtJ19EMiXljKBMJtZHc1ilHyjl_Yw60cSFzG-L-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGFkNWU3OTY4/YTU4NzdlMmRkM2Zj/NzQ0MmU2NzAzMzhi/NDg1NTIxNDgzMmZl/NDQ0MmUyNmRiYjMw/ODAzYmIxNC9wcm9j/b24uYmcv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "procon.bg",
+            "hostname": "procon.bg",
+            "favicon": "https://imgs.search.brave.com/t0oAtJ19EMiXljKBMJtZHc1ilHyjl_Yw60cSFzG-L-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGFkNWU3OTY4/YTU4NzdlMmRkM2Zj/NzQ0MmU2NzAzMzhi/NDg1NTIxNDgzMmZl/NDQ0MmUyNmRiYjMw/ODAzYmIxNC9wcm9j/b24uYmcv",
+            "path": "› article  › semtech-an120022-lora-modulation-basics"
+          }
+        },
+        {
+          "title": "AN1200 22 Semtech LoRa Basics v2 STD PDF | PDF | Modulation | Signal To Noise Ratio",
+          "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This application note explains some of the basic concepts of LoRa modulation and the advantages that this modulation scheme can provide when deploying both fixed and mobile low-power real-world communications networks. ©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics",
+          "profile": {
+            "name": "Scribd",
+            "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+            "long_name": "scribd.com",
+            "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "creative_work",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› document  › 440591273  › AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/K4zpKul4EhJIf0VjfDzevzpGvXSQSecT9Ecm_K9mqeI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDQwNTkxMjczLzE0/OXgxOTgvMzA0ZjI0/MWM3Ny8xNTc2OTYy/MTIzP3Y9MQ",
+            "original": "https://imgv2-2-f.scribdassets.com/img/document/440591273/149x198/304f241c77/1576962123?v=1",
+            "logo": false
+          },
+          "creative_work": {
+            "name": "AN1200_22_Semtech_LoRa_Basics_v2_STD (1).pdf",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/K4zpKul4EhJIf0VjfDzevzpGvXSQSecT9Ecm_K9mqeI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDQwNTkxMjczLzE0/OXgxOTgvMzA0ZjI0/MWM3Ny8xNTc2OTYy/MTIzP3Y9MQ",
+              "original": "https://imgv2-2-f.scribdassets.com/img/document/440591273/149x198/304f241c77/1576962123?v=1"
+            }
+          },
+          "extra_snippets": [
+            "Scribd is the world's largest social reading and publishing site.",
+            "This application note explains some of the basic concepts of LoRa modulation and the advantages that this modulation scheme can provide when deploying both fixed and mobile low-power real-world communications networks. ©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics",
+            "The Eb/N0 of LoRa offers typically 10 dB improvement over that for GFSK and thus it can be seen that LoRa offers a significant sensitivity improvement over FSK. It should be noted that if the noise figure is added to the absolute noise floor plot, the sensitivity achievable with LoRa modulation is within 6 dB of the relative noise floor. ©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics",
+            "We observe in the case of an adjacent or alternate channel interferer (at ±200 kHz and ±400 kHz, respectively – see inset) that LoRa offers between 15 and 20 dB increased immunity to the unwanted interferer and approximately 10 dB for frequency offsets in excess of 5 MHz (typically, beyond 1 MHz offset, receiver linearity at the expense of current consumption and independent of modulation, dominates). ©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics"
+          ]
+        },
+        {
+          "title": "The LoRa Modulation Over Rapidly-Varying Channels",
+          "url": "https://arxiv.org/pdf/2009.01176",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "[5] AN1200.22 LoRa Modulation Basics, Rev. 2. Semtech Corporation,",
+          "profile": {
+            "name": "arXiv",
+            "url": "https://arxiv.org/pdf/2009.01176",
+            "long_name": "arxiv.org",
+            "img": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "arxiv.org",
+            "hostname": "arxiv.org",
+            "favicon": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv",
+            "path": "› pdf  › 2009.01176"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "[12] Understanding the LoRa Adaptive Data Rate, Semtech Corporation,",
+            "LoRa communications.",
+            "Index Terms—LoRa, Chirp spread spectrum, PHY, fading, IoT.",
+            "The LoRa communication technology has received signif-"
+          ]
+        },
+        {
+          "title": "AN1200.22 LoRa™ Modulation Basics - FRUGAL PROTOTYPE / an1200-22-lora-modulation-basics-frugal-prototype.pdf / PDF4PRO",
+          "url": "https://pdf4pro.com/amp/view/an1200-22-lora-modulation-basics-frugal-prototype-6561fd.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Revision 2, May 2015 P a g e | 1 2015 Semtech Corporation APPLICATION NOTE LoRa Modulation Basics LoRa Modulation Basics Revision 2, May 2015 P a g e | 2 2015 Semtech Corporation APPLICATION NOTE LoRa Modulation Basics Table of Contents 1 Introduction .. 4 2 Acronyms ..",
+          "page_age": "2020-08-25T11:35:50",
+          "profile": {
+            "name": "PDF4PRO",
+            "url": "https://pdf4pro.com/amp/view/an1200-22-lora-modulation-basics-frugal-prototype-6561fd.html",
+            "long_name": "pdf4pro.com",
+            "img": "https://imgs.search.brave.com/v0ldZhzr33TZ9if0tmuZCltvWOwxFDiqjOIOZm5dDm0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2EzMzkwNGY3/OWZkOWJhMDg1ZWZm/MGQ1ZTQ2MDU5MDhm/Yjg4MzNkMmVjYjUz/MGNkMzllMTRmZDE1/MTMzMDJkMi9wZGY0/cHJvLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "pdf4pro.com",
+            "hostname": "pdf4pro.com",
+            "favicon": "https://imgs.search.brave.com/v0ldZhzr33TZ9if0tmuZCltvWOwxFDiqjOIOZm5dDm0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2EzMzkwNGY3/OWZkOWJhMDg1ZWZm/MGQ1ZTQ2MDU5MDhm/Yjg4MzNkMmVjYjUz/MGNkMzllMTRmZDE1/MTMzMDJkMi9wZGY0/cHJvLmNvbS8",
+            "path": "› amp  › view  › an1200-22-lora-modulation-basics-frugal-prototype-6561fd.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/6ZUVyJ9ZvqJaLECMZYd6vpKUZoCwxn6KPK0o9D-c5mI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wZGY0/cHJvLmNvbS9jYWNo/ZS9wcmV2aWV3LzMv/Ny9hL2UvNi8zLzIv/MS90aHVtYi0zN2Fl/NjMyMTg1OTNiZDhi/YmMwNjM5MDU2ZjJk/Y2JhOS5qcGc",
+            "original": "https://pdf4pro.com/cache/preview/3/7/a/e/6/3/2/1/thumb-37ae63218593bd8bbc0639056f2dcba9.jpg",
+            "logo": false
+          },
+          "age": "August 25, 2020",
+          "extra_snippets": [
+            "mechanisms such as multipath, fading, Doppler and in-band jamming interferers. A CSS PHY was adopted by the IEEE for the Low-Rate Wireless Personal Area Networks (LR-WPANs) standard 802.15.4 for applications requiring longer range and mobility than that achievable with the O-QPSK DSSS PHY mode. 4 LoRa Spread Spectrum",
+            "Revision 2, May 2015 P a g e | 1 2015 Semtech Corporation APPLICATION NOTE LoRa Modulation Basics LoRa Modulation Basics Revision 2, May 2015 P a g e | 2 2015 Semtech Corporation APPLICATION NOTE LoRa Modulation Basics Table of Contents 1 Introduction .. 4 2 Acronyms .."
+          ]
+        },
+        {
+          "title": "Find Product Documentation",
+          "url": "https://www.semtech.com/uploads/documents/an1200.22.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Helpful tips for finding updated Semtech product documentation.",
+          "profile": {
+            "name": "Semtech",
+            "url": "https://www.semtech.com/uploads/documents/an1200.22.pdf",
+            "long_name": "semtech.com",
+            "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "semtech.com",
+            "hostname": "www.semtech.com",
+            "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+            "path": "› uploads  › documents  › an1200.22.pdf"
+          }
+        },
+        {
+          "title": "978-1-5386-2256-8/17/$31.00 ©2017 IEEE Comparison of LoRaWAN Classes",
+          "url": "https://www.famaey.eu/papers/cnf-sancheong2017a.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "[11] AN1200.22 · – · LoRa · Modulation · Basics. [Online]. Available: http://www.semtech.com/images/datasheet/an1200.22.pdf · [12] SX1272/3/6/7/8: LoRa Modem. Designer’s Guide AN1200.13. [Online]. https://www.semtech.com/images/datasheet/LoraDesignGuide_STD.pd ·",
+          "profile": {
+            "name": "Famaey",
+            "url": "https://www.famaey.eu/papers/cnf-sancheong2017a.pdf",
+            "long_name": "famaey.eu",
+            "img": "https://imgs.search.brave.com/NtT0zXqReWnA7m8F6om7jtgTn8awerptQoGcaTLVnnI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNjdkNTg1/NTQxN2U2NmJjNmYy/MWFlMjVlM2Q1NmVk/ODQ2ZGE0ZTllYTA5/NjM1YWNjN2Q2YTE3/YTk4M2NiNS93d3cu/ZmFtYWV5LmV1Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "famaey.eu",
+            "hostname": "www.famaey.eu",
+            "favicon": "https://imgs.search.brave.com/NtT0zXqReWnA7m8F6om7jtgTn8awerptQoGcaTLVnnI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNjdkNTg1/NTQxN2U2NmJjNmYy/MWFlMjVlM2Q1NmVk/ODQ2ZGE0ZTllYTA5/NjM1YWNjN2Q2YTE3/YTk4M2NiNS93d3cu/ZmFtYWV5LmV1Lw",
+            "path": "› papers  › cnf-sancheong2017a.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "[11] AN1200.22 · – · LoRa · Modulation · Basics. [Online]. Available: http://www.semtech.com/images/datasheet/an1200.22.pdf · [12] SX1272/3/6/7/8: LoRa Modem. Designer’s Guide AN1200.13. [Online]. https://www.semtech.com/images/datasheet/LoraDesignGuide_STD.pd ·",
+            "The LoRa Modulation technique is patented by Semtech",
+            "on the chirp signal and the resulting modulated signal is spread · over a wide band beyond the original data signal’s bandwidth. ... C. Adaptive Data Rate · A second technique used in a LoRaWAN network is the",
+            "power requirements of the LoRa device both in class A and · class C mode, using different modulation techniques and"
+          ]
+        },
+        {
+          "title": "12 January 2026 Alma Mater Studiorum Università di Bologna",
+          "url": "https://cris.unibo.it/retrieve/handle/11585/870161/db055512-6e5c-4f54-a65a-bd5cb452ae11/TWC3095667.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "[32] “Semtech Corporation. AN1200.22 LoRa Modulation Basics, May",
+          "profile": {
+            "name": "Cris",
+            "url": "https://cris.unibo.it/retrieve/handle/11585/870161/db055512-6e5c-4f54-a65a-bd5cb452ae11/TWC3095667.pdf",
+            "long_name": "cris.unibo.it",
+            "img": "https://imgs.search.brave.com/0-WCAusE-rZOcGa86qeg3pbDaSbXTOGWTz2VQ-T2k1w/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzlmMDdmNGQw/YzQ5NDU3YmZjOWEx/MmU0NTE5OThiYzdl/NjIzNzRiMDhkZGU0/NDM2MmQ3ZjQ5MDVi/ODkyZjAzNC9jcmlz/LnVuaWJvLml0Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cris.unibo.it",
+            "hostname": "cris.unibo.it",
+            "favicon": "https://imgs.search.brave.com/0-WCAusE-rZOcGa86qeg3pbDaSbXTOGWTz2VQ-T2k1w/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzlmMDdmNGQw/YzQ5NDU3YmZjOWEx/MmU0NTE5OThiYzdl/NjIzNzRiMDhkZGU0/NDM2MmQ3ZjQ5MDVi/ODkyZjAzNC9jcmlz/LnVuaWJvLml0Lw",
+            "path": "› retrieve  › handle  › 11585  › 870161  › db055512-6e5c-4f54-a65a-bd5cb452ae11  › TWC3095667.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "June 22, 2021. layer and the message formats. At the physical (PHY) layer, they are based on LoRa, a proprietary modulation scheme · developed by Semtech Corporation and derived from Chirp",
+            "V. DEMODULATION OF LORA SIGNALS. FREQUENCY ... M s)(t−nTs), nTs+Th≤t≤(n+1)Ts. ... M s) in the interval [nTs+Th, (n+1)Ts]. Taking the Continuous Time Fourier Transform Rn(f) of · (21) and computing its modulus leads to (see Appendix G): ... B = 500 kHz (the same setting used to derive Figs.1 and 4). Remark 3. With reference to (22), it is worth observing that",
+            "LoRa is a proprietary spread-spectrum modulation scheme · patented by Semtech Corporation [32], which is derivative of",
+            "In any symbol interval n, for any SF and modulation symbol · s, (19) provides the corresponding phase samples to be fed to · the cos(·) and sin(·) terms in (12) and (13). This results in a · simple implementation of LoRa transmitters, which can thus"
+          ]
+        },
+        {
+          "title": "An1200 22 | PDF | Modulation | Signal To Noise Ratio",
+          "url": "https://www.scribd.com/document/282369354/an1200-22",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "JavaScript is disabled in your browser · Please enable JavaScript to proceed · A required part of this site couldn’t load. This may be due to a browser extension, network issues, or browser settings. Please check your connection, disable any ad blockers, or try using a different browser",
+          "profile": {
+            "name": "Scribd",
+            "url": "https://www.scribd.com/document/282369354/an1200-22",
+            "long_name": "scribd.com",
+            "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› document  › 282369354  › an1200-22"
+          }
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

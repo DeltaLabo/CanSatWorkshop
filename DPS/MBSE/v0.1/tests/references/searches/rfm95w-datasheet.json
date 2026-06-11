@@ -1,0 +1,896 @@
+{
+  "query": "RFM95W LoRa module datasheet HopeRF PDF SPI power",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "Version:2.0 www.hoperf.com RFM95W/96W/98W 1/123",
+      "url": "https://cdn.sparkfun.com/assets/a/9/6/1/0/RFM95W-V2.0.pdf",
+      "description": "This includes a mode auto sequencer that oversees the · transition and calibration of the RFM95W/96W/98W between intermediate modes of operation in the fastest time possible. The RFM95W/96W/98W are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems.",
+      "content": "This includes a mode auto sequencer that oversees the · transition and calibration of the RFM95W/96W/98W between intermediate modes of operation in the fastest time possible. The RFM95W/96W/98W are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems.\nAll major parameters of the RF front end and digital state machine are fully configurable via an SPI interface which gives · access to RFM95W/96W/98W’s configuration registers. This includes a mode auto sequencer that oversees the · transition and calibration of the RFM95W/96W/98W between intermediate modes of operation in the fastest time possible. The RFM95W/96W/98W are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems.\nThe LoRaTM modem comprises three types of digital interface, static configuration registers, status registers and a FIFO · data buffer. All are accessed through the RFM95W/96W/98W’s SPI interface - full details of each type of register are\nThe RFM95W/96W/98W is equipped with a 256 byte RAM data buffer which is uniquely accessible in LoRa mode. This · RAM area, thereafter reffered to as the FIFO Data buffer, is fully customizable by the user and allows access to the · received, or to be transmitted, data. All access to the LoRaTM FIFO data buffer is done via the SPI interface.\nindependent dual port data buffer FIFO that is accessed through an SPI interface common to all modes. Upon selection of · LoRaTM mode, the configuration register mapping of the RFM95W/96W/98W changes.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Sparkfun",
+        "url": "https://cdn.sparkfun.com/assets/a/9/6/1/0/RFM95W-V2.0.pdf",
+        "long_name": "cdn.sparkfun.com",
+        "img": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cdn.sparkfun.com",
+        "hostname": "cdn.sparkfun.com",
+        "favicon": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw",
+        "path": "› assets  › a  › 9  › 6  › 1  › 0  › RFM95W-V2.0.pdf"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "RFM95/96/97/98（W）",
+      "url": "https://cdn.sparkfun.com/assets/learn_tutorials/8/0/4/RFM95_96_97_98W.pdf",
+      "description": "This includes a mode auto sequencer that oversees the · transition and calibration of the RFM95/96/97/98(W) between intermediate modes of operation in the fastest time possible. The RFM95/96/97/98(W) are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems.",
+      "content": "This includes a mode auto sequencer that oversees the · transition and calibration of the RFM95/96/97/98(W) between intermediate modes of operation in the fastest time possible. The RFM95/96/97/98(W) are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems.\nAll major parameters of the RF front end and digital state machine are fully configurable via an SPI interface which gives · access to RFM95/96/97/98(W)’s configuration registers. This includes a mode auto sequencer that oversees the · transition and calibration of the RFM95/96/97/98(W) between intermediate modes of operation in the fastest time possible. The RFM95/96/97/98(W) are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems.\nA simplified outline of the transmit and receive processes is also shown above. Here we see that the LoRaTM modem has an · independent dual port data buffer FIFO that is accessed through an SPI interface common to all modes.\nThe LoRaTM modem comprises three types of digital interface, static configuration registers, status registers and a FIFO · data buffer. All are accessed through the RFM95/96/97/98(W)’s SPI interface - full details of each type of register are\nConfiguration registers are accessed through the SPI interface. Registers are readable in all device mode including Sleep. However, they should be written only in Sleep and Stand-by modes. Please note that the automatic top level · sequencer (TLS modes) are not available in LoRaTM mode and the configuration register mapping changes as",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Sparkfun",
+        "url": "https://cdn.sparkfun.com/assets/learn_tutorials/8/0/4/RFM95_96_97_98W.pdf",
+        "long_name": "cdn.sparkfun.com",
+        "img": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cdn.sparkfun.com",
+        "hostname": "cdn.sparkfun.com",
+        "favicon": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw",
+        "path": "› assets  › learn_tutorials  › 8  › 0  › 4  › RFM95_96_97_98W.pdf"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "LoRa Module Manufacturer | RFM95W Supplier",
+      "url": "https://www.hoperf.com/modules/lora/RFM95W.html",
+      "description": "Transmitter Module Receiver Module ... transceivers feature the LoRaTM long range modem that provides ultra-long range spread spectrum communication and high interference immunity whilst minimising current consumption....",
+      "content": "Transmitter Module Receiver Module ... transceivers feature the LoRaTM long range modem that provides ultra-long range spread spectrum communication and high interference immunity whilst minimising current consumption....\nTransmitter Module Receiver Module Transceiver Module SOC Transceiver Module Enhanced Power Module Sub-1GHz Pass-through ... The RFM95W transceivers feature the LoRaTM long range modem that provides ultra-long range spread spectrum communication and high interference immunity whilst minimising current consumption.\nUsing Hope RF’s patented LoRaTM modulation technique RFM95W can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20 dBm power amplifier yields industry leading link budget making it optimal for any application requiring range or robustness.\nLoRaTM also provides significant advantages in both blocking and selectivity over conventional modulation techniques, solving the traditional design compromise between range, interference immunity and energy consumption. These devices also support high performance (G)FSK modes for systems including WMBus, IEEE802.15.4g. The RFM95W deliver exceptional phase noise, selectivity, receiver linearity and IIP3 for significantly lower current consumption than competing devices.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Hoperf",
+        "url": "https://www.hoperf.com/modules/lora/RFM95W.html",
+        "long_name": "hoperf.com",
+        "img": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "hoperf.com",
+        "hostname": "www.hoperf.com",
+        "favicon": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8",
+        "path": "› modules  › lora  › RFM95W.html"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "RFM95 Datasheet(PDF) - HOPE Microelectronics CO., Ltd.",
+      "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/1132605/HOPE/RFM95.html",
+      "description": "Part #: RFM95. Download. File Size: 1MbKbytes. Page: 121 Pages. Description: Low Power Long Range Transceiver Module. Manufacturer: HOPE Microelectronics CO., Ltd..",
+      "content": "Part #: RFM95. Download. File Size: 1MbKbytes. Page: 121 Pages. Description: Low Power Long Range Transceiver Module. Manufacturer: HOPE Microelectronics CO., Ltd..",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/1132605/HOPE/RFM95.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› datasheet-pdf  › pdf  › 1132605  › HOPE  › RFM95.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    },
+    {
+      "rank": 5,
+      "title": "RFM95PW - HOPERF - Reliable original manufacturer of IoT key components",
+      "url": "https://www.hoperf.com/modules/lora/RFM95PW.html",
+      "description": "STM32F103ZE_sx127x_SPI · 2024 / 06 / 12size：6.77MB · AN0002-Hopeduino_platform_construction_guideline · 2023 / 09 / 27size：1.17MB · AN2003-LoRa_communication_example · 2023 / 09 / 27size：451.69KB · RF Module ROHS · 2024 / 05 / 08size：1.02MB · RF Module REACH · 2024 / 05 / 08size：1.21MB · Related Products · RFM95W ·",
+      "content": "STM32F103ZE_sx127x_SPI · 2024 / 06 / 12size：6.77MB · AN0002-Hopeduino_platform_construction_guideline · 2023 / 09 / 27size：1.17MB · AN2003-LoRa_communication_example · 2023 / 09 / 27size：451.69KB · RF Module ROHS · 2024 / 05 / 08size：1.02MB · RF Module REACH · 2024 / 05 / 08size：1.21MB · Related Products · RFM95W ·\nRFM98PW/RFM95PW RF LoRa Transceiver module series’ design is based on the high performance LoRaTM modulation technique RF98/RF96 chip, It operate at 169/433/470MHz (RFM98PW) and 868/915MHz(RFM95PW) ISM band , The low receive sensitivity(–136dBm) coupled with Enhanced +30dBm output power ensures extended range and improved link performance.\nTypical Application of RF LoRa Transceiver Module RFM95PW:",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Hoperf",
+        "url": "https://www.hoperf.com/modules/lora/RFM95PW.html",
+        "long_name": "hoperf.com",
+        "img": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "hoperf.com",
+        "hostname": "www.hoperf.com",
+        "favicon": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8",
+        "path": "› modules  › lora  › RFM95PW.html"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "RFM95W Datasheet(PDF) - Shenzhen Hope Microelectronics Co., Ltd.",
+      "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/2228743/HOPERF/RFM95W.html",
+      "description": "Part #: RFM95W. Download. File Size: 1MbKbytes. Page: 121 Pages. Description: Low Power Long Range Transceiver Module. Manufacturer: Shenzhen Hope Microelectronics Co., Ltd..",
+      "content": "Part #: RFM95W. Download. File Size: 1MbKbytes. Page: 121 Pages. Description: Low Power Long Range Transceiver Module. Manufacturer: Shenzhen Hope Microelectronics Co., Ltd..",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/2228743/HOPERF/RFM95W.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› datasheet-pdf  › pdf  › 2228743  › HOPERF  › RFM95W.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    },
+    {
+      "rank": 7,
+      "title": "HopeRF RFM95W LoRa Module - 868MHz - RFM95W-868-S2",
+      "url": "https://www.tinytronics.nl/en/communication-and-signals/wireless/lora/modules/hoperf-rfm95w-lora-module-868mhz",
+      "description": "Datasheet: 000760_RFM98W-V2.0.pdf · Tags: HopeRF RFM95W LoRa Module - 868MHz , RFM95W-868-S2 , Modules · Product questions · Warranty and problems · Mistake on this product page · × · Merge with the product from the cart? The main product of the kit has already been added to the cart.",
+      "content": "Datasheet: 000760_RFM98W-V2.0.pdf · Tags: HopeRF RFM95W LoRa Module - 868MHz , RFM95W-868-S2 , Modules · Product questions · Warranty and problems · Mistake on this product page · × · Merge with the product from the cart? The main product of the kit has already been added to the cart.\nHopeRF RFM95W LoRa Module - 868MHz - RFM95W-868-S2 - Modules - A LoRa module with lots of possibilities for a low price. For more information see the datasheet under the tab\nA LoRa module with lots of possibilities for a low price. For more information see the datasheet under the tab \"Downloads\".",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "product",
+      "profile": {
+        "name": "TinyTronics",
+        "url": "https://www.tinytronics.nl/en/communication-and-signals/wireless/lora/modules/hoperf-rfm95w-lora-module-868mhz",
+        "long_name": "tinytronics.nl",
+        "img": "https://imgs.search.brave.com/rvF58fYGBvzKutmCNOceS5QjkP-l1u7Ym0GqUNSL5Ug/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2UxOTJjMjc4/ZDViZDk3NzRkZmI1/MjVlYWU5ZDMxNDFl/MzJkYmMyZjQ5YzY4/OThjZjA2ZmI1ZmFj/OTI3M2U0NC93d3cu/dGlueXRyb25pY3Mu/bmwv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "tinytronics.nl",
+        "hostname": "www.tinytronics.nl",
+        "favicon": "https://imgs.search.brave.com/rvF58fYGBvzKutmCNOceS5QjkP-l1u7Ym0GqUNSL5Ug/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2UxOTJjMjc4/ZDViZDk3NzRkZmI1/MjVlYWU5ZDMxNDFl/MzJkYmMyZjQ5YzY4/OThjZjA2ZmI1ZmFj/OTI3M2U0NC93d3cu/dGlueXRyb25pY3Mu/bmwv",
+        "path": "  › home  › communication and signals  › wireless  › lora  › modules  › hoperf rfm95w lora module - 868mhz"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/U9BL_TWHajWFIY0cs38vHfzxJtsAIibrEnDB_Lu6bEE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGlueXRyb25pY3Mu/bmwvaW1hZ2UvY2Fj/aGUvZGF0YS9wcm9k/dWN0LTc2MC9SRk05/Ni0xMDA4eDc0Ny5w/bmc",
+        "original": "https://www.tinytronics.nl/image/cache/data/product-760/RFM96-1008x747.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "RFM95CW - HOPERF - Reliable original manufacturer of IoT key components",
+      "url": "https://www.hoperf.com/modules/lora/RFM95CW.html",
+      "description": "RFM95CW is an ultra-low-power, high-performance LoRa transceiver for various frequency of 137-1020 MHz wireless applications. It is part of the SEMTECH RF product line, which includes complete transmitters, receivers and transceivers. The high integration of RFM95C simplifies the peripheral ...",
+      "content": "RFM95CW is an ultra-low-power, high-performance LoRa transceiver for various frequency of 137-1020 MHz wireless applications. It is part of the SEMTECH RF product line, which includes complete transmitters, receivers and transceivers. The high integration of RFM95C simplifies the peripheral ...\nSTM32F103ZE_sx127x_SPI · 2024 / 06 / 12size：6.77MB · RF Module ROHS · 2024 / 05 / 08size：1.02MB · RF Module REACH · 2024 / 05 / 08size：1.21MB · Related Products · RFM95W · Manufacturer of LoRa Module · Learn More · RFM98PW · LoRa Module · Learn More ·\nRFM95CW is an ultra-low-power, high-performance LoRa transceiver for various frequency of 137-1020 MHz wireless applications. It is part of the SEMTECH RF product line, which includes complete transmitters, receivers and transceivers. The high integration of RFM95C simplifies the peripheral materials needed in the system design.\nTypical Application of RF LoRa Transceiver Module RFM95CW:",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Hoperf",
+        "url": "https://www.hoperf.com/modules/lora/RFM95CW.html",
+        "long_name": "hoperf.com",
+        "img": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "hoperf.com",
+        "hostname": "www.hoperf.com",
+        "favicon": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8",
+        "path": "› modules  › lora  › RFM95CW.html"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "RFM95W Low Power Long Range Transceiver Module (HOPERF)",
+      "url": "https://www.datasheet4u.com/datasheet-pdf/HOPERF/RFM95W/pdf.php?id=968438",
+      "description": "Datasheet · RFM95W-HOPERF.pdf · Description · Low Power Long Range Transceiver Module · Features * LoRaTM Modem. * 168 dB maximum link budget. * +20 dBm - 100 mW constant RF output vs. V supply. * +14 dBm high efficiency PA. * Programmable bit rate up to 300 kbps.",
+      "content": "Datasheet · RFM95W-HOPERF.pdf · Description · Low Power Long Range Transceiver Module · Features * LoRaTM Modem. * 168 dB maximum link budget. * +20 dBm - 100 mW constant RF output vs. V supply. * +14 dBm high efficiency PA. * Programmable bit rate up to 300 kbps.\nHOPERF · &#128229 Download Datasheet · Description RFM95/96/97/98（W） RFM95/96/97/98(W) - Low Power Long Range Transceiver Module V1.0 GENERAL . The RFM95/96/97/98(W) transceivers feature the LoRaTM long range modem that provides ultra-long range spread spectrum communication and high interf. &#128229 Download Datasheet · Preview of RFM95W PDF ·\nFeatures * LoRaTM Modem. * 168 dB maximum link budget. * +20 dBm - 100 mW constant RF output vs. V supply. * +14 dBm high efficiency PA. * Programmable bit rate up to 300 kbps. * High sensitivity: down to -148 dBm. * Bullet-proof front end: IIP3 = -12.5 dBm.\nApplications * Automated Meter Reading. * Home and Building Automation. * Wireless Alarm and Security Systems. * Industrial Monitoring and Control * Long range Irrigation Systems Page 1 Tel: +86-755-82973805 Fax: +86-755-82973550 E-mail: sales@hoperf. com http:/ / www.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Datasheet4u",
+        "url": "https://www.datasheet4u.com/datasheet-pdf/HOPERF/RFM95W/pdf.php?id=968438",
+        "long_name": "datasheet4u.com",
+        "img": "https://imgs.search.brave.com/_3nh6xciwSROQyMD7gERur_VL8TsvQuhvba_e_XwRfY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzc1Njk4NmQy/MGQ2ZDIzOTA3M2Jm/YzdjMTZkMjRmNjIw/MTJhZmVlOTA4Y2M1/NTZlOWE5NWJhNjk4/OGRkNWJiMi93d3cu/ZGF0YXNoZWV0NHUu/Y29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "datasheet4u.com",
+        "hostname": "www.datasheet4u.com",
+        "favicon": "https://imgs.search.brave.com/_3nh6xciwSROQyMD7gERur_VL8TsvQuhvba_e_XwRfY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzc1Njk4NmQy/MGQ2ZDIzOTA3M2Jm/YzdjMTZkMjRmNjIw/MTJhZmVlOTA4Y2M1/NTZlOWE5NWJhNjk4/OGRkNWJiMi93d3cu/ZGF0YXNoZWV0NHUu/Y29tLw",
+        "path": "› datasheet-pdf  › HOPERF  › RFM95W  › pdf.php"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "RFM95PW Datasheet(PDF) - HOPE Microelectronics CO., Ltd.",
+      "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/1139152/HOPE/RFM95PW.html",
+      "description": "Part #: RFM95PW. Download. File Size: 675Kbytes. Page: 6 Pages. Description: Enhanced Power Long Range Transceiver Module. Manufacturer: HOPE Microelectronics CO., Ltd..",
+      "content": "Part #: RFM95PW. Download. File Size: 675Kbytes. Page: 6 Pages. Description: Enhanced Power Long Range Transceiver Module. Manufacturer: HOPE Microelectronics CO., Ltd..",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/1139152/HOPE/RFM95PW.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› datasheet-pdf  › pdf  › 1139152  › HOPE  › RFM95PW.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "RFM95W LoRa module datasheet HopeRF PDF SPI power",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.562,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "RFM95W LoRa module datasheet HopeRF PDF SPI power",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "videos",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "videos": {
+      "type": "videos",
+      "results": [
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=XdZYyVmIQj0",
+          "title": "Build LoRaWAN OTAA End Node: Arduino Nano + RFM95 Tutorial - YouTube",
+          "description": "Build LoRaWAN OTAA End Node: Arduino Nano + RFM95 TutorialReady to dive into LoRaWAN? In this step-by-step tutorial, how to build a secure OTAA-based LoRa e...",
+          "age": "September 29, 2025",
+          "page_age": "2025-09-29T21:25:34",
+          "fetched_content_timestamp": 1759664641,
+          "video": {
+            "duration": "04:47",
+            "creator": "Electronics Innovation",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/tcf1XCf8rfHV0zMEJB5GuWkJsOCzpjZCGMmhOFOBiNc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9Y/ZFpZeVZtSVFqMC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/XdZYyVmIQj0/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=RB8cwYLXP5E",
+          "title": "LoRa RFM95 Tutorial Ra-02 HopeRF module comparison RFM95W | LCSC ...",
+          "description": "Check out LCSC to buy genuine electronic components for your project (Sign up today and get $8 off on your first order): http://lcsc.com/?href=Arkash&source=...",
+          "age": "April 14, 2019",
+          "page_age": "2019-04-14T14:01:00",
+          "fetched_content_timestamp": 1780748123,
+          "video": {
+            "duration": "18:01",
+            "creator": "CETech",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/NTFc9YVM2SKFH77TNvWtT-EjtCMUGFjL8kRElCakNSI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9S/Qjhjd1lMWFA1RS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/RB8cwYLXP5E/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=YhilJivurVQ",
+          "title": "Intro to LoRa with Arduino, Long Range Wireless for Makers (RFM95 ...",
+          "description": "If you've ever wanted to get started using LoRa wireless communication in your Arduino projects this video is for you. It covers some popular LoRa module opt...",
+          "age": "January 3, 2020",
+          "page_age": "2020-01-03T02:06:57",
+          "fetched_content_timestamp": 1780101864,
+          "video": {
+            "duration": "15:51",
+            "creator": "Davy Wybiral",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Hq4BiqUaL7zqOzeeX3QXKv8wAGlE2FRkEqRBdOoucxw/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9Z/aGlsSml2dXJWUS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/YhilJivurVQ/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=HwAkhZXlg2c",
+          "title": "Create a LoRa node, part 1: HopeRF RFM95 LoRa transceiver module ...",
+          "description": "This is part 1 in how to create a LoRa node.In this movie the HopeRF RFM95 LoRa transceiver module v1.2 is described.The HopeRF RFM95 LoRa transceiver module...",
+          "age": "January 16, 2017",
+          "page_age": "2017-01-16T21:36:03",
+          "fetched_content_timestamp": 1780748123,
+          "video": {
+            "duration": "02:35",
+            "creator": "Mobilefish.com",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/UVXt1_UK4C58DjYMhcXw-0Wjp5RbSNSaEnvtTv9mmqY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9I/d0FraFpYbGcyYy9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/HwAkhZXlg2c/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=YQ7aLHCTeeE",
+          "title": "LoRa - Long-Range Radio for IoT | Arduino, ESP32, RPI Pico - YouTube",
+          "description": "LoRa is a low-cost, license-free method of sending short data bursts over long distances. It’s perfect for IoT sensors and remote control projects. Today, we...",
+          "age": "September 11, 2023",
+          "page_age": "2023-09-11T13:03:32",
+          "fetched_content_timestamp": 1727626870,
+          "video": {
+            "duration": "01:07:58",
+            "views": 334139,
+            "creator": "DroneBot Workshop",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/hW-1g2X_NtgrkGcKlj2M2e0OQ1opTUBUc7VmktPyoNE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9Z/UTdhTEhDVGVlRS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/YQ7aLHCTeeE/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=KWir1v-cyBU",
+          "title": "Prepare Arduino and Makerfabs RFM95W/RFM98W LoRa Shield to send ...",
+          "description": "Video excerpt for the \"Arduino and Visuino: Long Distance Remote Light Sensor With RFM95W/RFM98W Makerfabs LoRa Shields\" Instructable:https://www.instructabl...",
+          "age": "April 10, 2017",
+          "page_age": "2017-04-10T16:45:22",
+          "fetched_content_timestamp": 1753847010,
+          "video": {
+            "duration": "02:16",
+            "creator": "Boian Mitov",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/BMQuz90_2el7GsECVL1uZakf4SUcetPmxz7RwvvgU7I/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9L/V2lyMXYtY3lCVS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/KWir1v-cyBU/maxresdefault.jpg"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "Version:2.0 www.hoperf.com RFM95W/96W/98W 1/123",
+          "url": "https://cdn.sparkfun.com/assets/a/9/6/1/0/RFM95W-V2.0.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This includes a mode auto sequencer that oversees the · transition and calibration of the RFM95W/96W/98W between intermediate modes of operation in the fastest time possible. The RFM95W/96W/98W are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems.",
+          "profile": {
+            "name": "Sparkfun",
+            "url": "https://cdn.sparkfun.com/assets/a/9/6/1/0/RFM95W-V2.0.pdf",
+            "long_name": "cdn.sparkfun.com",
+            "img": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cdn.sparkfun.com",
+            "hostname": "cdn.sparkfun.com",
+            "favicon": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw",
+            "path": "› assets  › a  › 9  › 6  › 1  › 0  › RFM95W-V2.0.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "All major parameters of the RF front end and digital state machine are fully configurable via an SPI interface which gives · access to RFM95W/96W/98W’s configuration registers. This includes a mode auto sequencer that oversees the · transition and calibration of the RFM95W/96W/98W between intermediate modes of operation in the fastest time possible. The RFM95W/96W/98W are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems.",
+            "The LoRaTM modem comprises three types of digital interface, static configuration registers, status registers and a FIFO · data buffer. All are accessed through the RFM95W/96W/98W’s SPI interface - full details of each type of register are",
+            "The RFM95W/96W/98W is equipped with a 256 byte RAM data buffer which is uniquely accessible in LoRa mode. This · RAM area, thereafter reffered to as the FIFO Data buffer, is fully customizable by the user and allows access to the · received, or to be transmitted, data. All access to the LoRaTM FIFO data buffer is done via the SPI interface.",
+            "independent dual port data buffer FIFO that is accessed through an SPI interface common to all modes. Upon selection of · LoRaTM mode, the configuration register mapping of the RFM95W/96W/98W changes."
+          ]
+        },
+        {
+          "title": "RFM95/96/97/98（W）",
+          "url": "https://cdn.sparkfun.com/assets/learn_tutorials/8/0/4/RFM95_96_97_98W.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This includes a mode auto sequencer that oversees the · transition and calibration of the RFM95/96/97/98(W) between intermediate modes of operation in the fastest time possible. The RFM95/96/97/98(W) are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems.",
+          "profile": {
+            "name": "Sparkfun",
+            "url": "https://cdn.sparkfun.com/assets/learn_tutorials/8/0/4/RFM95_96_97_98W.pdf",
+            "long_name": "cdn.sparkfun.com",
+            "img": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cdn.sparkfun.com",
+            "hostname": "cdn.sparkfun.com",
+            "favicon": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw",
+            "path": "› assets  › learn_tutorials  › 8  › 0  › 4  › RFM95_96_97_98W.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "All major parameters of the RF front end and digital state machine are fully configurable via an SPI interface which gives · access to RFM95/96/97/98(W)’s configuration registers. This includes a mode auto sequencer that oversees the · transition and calibration of the RFM95/96/97/98(W) between intermediate modes of operation in the fastest time possible. The RFM95/96/97/98(W) are equipped with both standard FSK and long range spread spectrum (LoRaTM) modems.",
+            "A simplified outline of the transmit and receive processes is also shown above. Here we see that the LoRaTM modem has an · independent dual port data buffer FIFO that is accessed through an SPI interface common to all modes.",
+            "The LoRaTM modem comprises three types of digital interface, static configuration registers, status registers and a FIFO · data buffer. All are accessed through the RFM95/96/97/98(W)’s SPI interface - full details of each type of register are",
+            "Configuration registers are accessed through the SPI interface. Registers are readable in all device mode including Sleep. However, they should be written only in Sleep and Stand-by modes. Please note that the automatic top level · sequencer (TLS modes) are not available in LoRaTM mode and the configuration register mapping changes as"
+          ]
+        },
+        {
+          "title": "LoRa Module Manufacturer | RFM95W Supplier",
+          "url": "https://www.hoperf.com/modules/lora/RFM95W.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Transmitter Module Receiver Module ... transceivers feature the LoRaTM long range modem that provides ultra-long range spread spectrum communication and high interference immunity whilst minimising current consumption....",
+          "profile": {
+            "name": "Hoperf",
+            "url": "https://www.hoperf.com/modules/lora/RFM95W.html",
+            "long_name": "hoperf.com",
+            "img": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "hoperf.com",
+            "hostname": "www.hoperf.com",
+            "favicon": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8",
+            "path": "› modules  › lora  › RFM95W.html"
+          },
+          "extra_snippets": [
+            "Transmitter Module Receiver Module Transceiver Module SOC Transceiver Module Enhanced Power Module Sub-1GHz Pass-through ... The RFM95W transceivers feature the LoRaTM long range modem that provides ultra-long range spread spectrum communication and high interference immunity whilst minimising current consumption.",
+            "Using Hope RF’s patented LoRaTM modulation technique RFM95W can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20 dBm power amplifier yields industry leading link budget making it optimal for any application requiring range or robustness.",
+            "LoRaTM also provides significant advantages in both blocking and selectivity over conventional modulation techniques, solving the traditional design compromise between range, interference immunity and energy consumption. These devices also support high performance (G)FSK modes for systems including WMBus, IEEE802.15.4g. The RFM95W deliver exceptional phase noise, selectivity, receiver linearity and IIP3 for significantly lower current consumption than competing devices."
+          ]
+        },
+        {
+          "title": "RFM95 Datasheet(PDF) - HOPE Microelectronics CO., Ltd.",
+          "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/1132605/HOPE/RFM95.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Part #: RFM95. Download. File Size: 1MbKbytes. Page: 121 Pages. Description: Low Power Long Range Transceiver Module. Manufacturer: HOPE Microelectronics CO., Ltd..",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/1132605/HOPE/RFM95.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› datasheet-pdf  › pdf  › 1132605  › HOPE  › RFM95.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          }
+        },
+        {
+          "title": "RFM95PW - HOPERF - Reliable original manufacturer of IoT key components",
+          "url": "https://www.hoperf.com/modules/lora/RFM95PW.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "STM32F103ZE_sx127x_SPI · 2024 / 06 / 12size：6.77MB · AN0002-Hopeduino_platform_construction_guideline · 2023 / 09 / 27size：1.17MB · AN2003-LoRa_communication_example · 2023 / 09 / 27size：451.69KB · RF Module ROHS · 2024 / 05 / 08size：1.02MB · RF Module REACH · 2024 / 05 / 08size：1.21MB · Related Products · RFM95W ·",
+          "profile": {
+            "name": "Hoperf",
+            "url": "https://www.hoperf.com/modules/lora/RFM95PW.html",
+            "long_name": "hoperf.com",
+            "img": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "hoperf.com",
+            "hostname": "www.hoperf.com",
+            "favicon": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8",
+            "path": "› modules  › lora  › RFM95PW.html"
+          },
+          "extra_snippets": [
+            "STM32F103ZE_sx127x_SPI · 2024 / 06 / 12size：6.77MB · AN0002-Hopeduino_platform_construction_guideline · 2023 / 09 / 27size：1.17MB · AN2003-LoRa_communication_example · 2023 / 09 / 27size：451.69KB · RF Module ROHS · 2024 / 05 / 08size：1.02MB · RF Module REACH · 2024 / 05 / 08size：1.21MB · Related Products · RFM95W ·",
+            "RFM98PW/RFM95PW RF LoRa Transceiver module series’ design is based on the high performance LoRaTM modulation technique RF98/RF96 chip, It operate at 169/433/470MHz (RFM98PW) and 868/915MHz(RFM95PW) ISM band , The low receive sensitivity(–136dBm) coupled with Enhanced +30dBm output power ensures extended range and improved link performance.",
+            "Typical Application of RF LoRa Transceiver Module RFM95PW:"
+          ]
+        },
+        {
+          "title": "RFM95W Datasheet(PDF) - Shenzhen Hope Microelectronics Co., Ltd.",
+          "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/2228743/HOPERF/RFM95W.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Part #: RFM95W. Download. File Size: 1MbKbytes. Page: 121 Pages. Description: Low Power Long Range Transceiver Module. Manufacturer: Shenzhen Hope Microelectronics Co., Ltd..",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/2228743/HOPERF/RFM95W.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› datasheet-pdf  › pdf  › 2228743  › HOPERF  › RFM95W.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          }
+        },
+        {
+          "title": "HopeRF RFM95W LoRa Module - 868MHz - RFM95W-868-S2",
+          "url": "https://www.tinytronics.nl/en/communication-and-signals/wireless/lora/modules/hoperf-rfm95w-lora-module-868mhz",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Datasheet: 000760_RFM98W-V2.0.pdf · Tags: HopeRF RFM95W LoRa Module - 868MHz , RFM95W-868-S2 , Modules · Product questions · Warranty and problems · Mistake on this product page · × · Merge with the product from the cart? The main product of the kit has already been added to the cart.",
+          "profile": {
+            "name": "TinyTronics",
+            "url": "https://www.tinytronics.nl/en/communication-and-signals/wireless/lora/modules/hoperf-rfm95w-lora-module-868mhz",
+            "long_name": "tinytronics.nl",
+            "img": "https://imgs.search.brave.com/rvF58fYGBvzKutmCNOceS5QjkP-l1u7Ym0GqUNSL5Ug/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2UxOTJjMjc4/ZDViZDk3NzRkZmI1/MjVlYWU5ZDMxNDFl/MzJkYmMyZjQ5YzY4/OThjZjA2ZmI1ZmFj/OTI3M2U0NC93d3cu/dGlueXRyb25pY3Mu/bmwv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "product",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "tinytronics.nl",
+            "hostname": "www.tinytronics.nl",
+            "favicon": "https://imgs.search.brave.com/rvF58fYGBvzKutmCNOceS5QjkP-l1u7Ym0GqUNSL5Ug/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2UxOTJjMjc4/ZDViZDk3NzRkZmI1/MjVlYWU5ZDMxNDFl/MzJkYmMyZjQ5YzY4/OThjZjA2ZmI1ZmFj/OTI3M2U0NC93d3cu/dGlueXRyb25pY3Mu/bmwv",
+            "path": "  › home  › communication and signals  › wireless  › lora  › modules  › hoperf rfm95w lora module - 868mhz"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/U9BL_TWHajWFIY0cs38vHfzxJtsAIibrEnDB_Lu6bEE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGlueXRyb25pY3Mu/bmwvaW1hZ2UvY2Fj/aGUvZGF0YS9wcm9k/dWN0LTc2MC9SRk05/Ni0xMDA4eDc0Ny5w/bmc",
+            "original": "https://www.tinytronics.nl/image/cache/data/product-760/RFM96-1008x747.png",
+            "logo": false
+          },
+          "product": {
+            "type": "Product",
+            "name": "HopeRF RFM95W LoRa Module - 868MHz - RFM95W-868-S2",
+            "url": "https://www.tinytronics.nl/en/communication-and-signals/wireless/lora/modules/hoperf-rfm95w-lora-module-868mhz",
+            "price": "9.0",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/U3ZtX3rCyldnb0-20o-bLqbihbB2ASc4gNjUJ_RlE4o/rs:fit:360:283:1:0/g:ce/aHR0cHM6Ly93d3cu/dGlueXRyb25pY3Mu/bmwvaW1hZ2UvY2Fj/aGUvZGF0YS9wcm9k/dWN0LTc2MC9SRk05/Ni02MDB4NjAwLnBu/Zw",
+              "original": "https://www.tinytronics.nl/image/cache/data/product-760/RFM96-600x600.png"
+            },
+            "description": "A LoRa module with lots of possibilities for a low price.\r\n\r\nFor more information see the datasheet under the tab \"Downloads\".\r\n\r\nNote: This module requires knowledge of RF and EMC to ensure that it works correctly and requires an 868MHz antenna.\r\nCheck the tab \"Downloads\" for more information and/o",
+            "offers": [
+              {
+                "url": "https://www.tinytronics.nl/en/communication-and-signals/wireless/lora/modules/hoperf-rfm95w-lora-module-868mhz",
+                "priceCurrency": "EUR",
+                "price": "9.0"
+              }
+            ]
+          },
+          "extra_snippets": [
+            "HopeRF RFM95W LoRa Module - 868MHz - RFM95W-868-S2 - Modules - A LoRa module with lots of possibilities for a low price. For more information see the datasheet under the tab",
+            "Datasheet: 000760_RFM98W-V2.0.pdf · Tags: HopeRF RFM95W LoRa Module - 868MHz , RFM95W-868-S2 , Modules · Product questions · Warranty and problems · Mistake on this product page · × · Merge with the product from the cart? The main product of the kit has already been added to the cart.",
+            "A LoRa module with lots of possibilities for a low price. For more information see the datasheet under the tab \"Downloads\"."
+          ]
+        },
+        {
+          "title": "RFM95CW - HOPERF - Reliable original manufacturer of IoT key components",
+          "url": "https://www.hoperf.com/modules/lora/RFM95CW.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "RFM95CW is an ultra-low-power, high-performance LoRa transceiver for various frequency of 137-1020 MHz wireless applications. It is part of the SEMTECH RF product line, which includes complete transmitters, receivers and transceivers. The high integration of RFM95C simplifies the peripheral ...",
+          "profile": {
+            "name": "Hoperf",
+            "url": "https://www.hoperf.com/modules/lora/RFM95CW.html",
+            "long_name": "hoperf.com",
+            "img": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "hoperf.com",
+            "hostname": "www.hoperf.com",
+            "favicon": "https://imgs.search.brave.com/qV5v0FmbDsqbpfq4JPYU7QTEFuxyOjgLjAN510Hqb-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWI4NWI1Mzhj/ZmFkNmY3ZjQwOTJj/MmY5MGI0YzRhODll/ZDYwNTAzMjI4Y2I0/MDk4NmY0MjkyN2M3/MmU4ODM1ZS93d3cu/aG9wZXJmLmNvbS8",
+            "path": "› modules  › lora  › RFM95CW.html"
+          },
+          "extra_snippets": [
+            "STM32F103ZE_sx127x_SPI · 2024 / 06 / 12size：6.77MB · RF Module ROHS · 2024 / 05 / 08size：1.02MB · RF Module REACH · 2024 / 05 / 08size：1.21MB · Related Products · RFM95W · Manufacturer of LoRa Module · Learn More · RFM98PW · LoRa Module · Learn More ·",
+            "RFM95CW is an ultra-low-power, high-performance LoRa transceiver for various frequency of 137-1020 MHz wireless applications. It is part of the SEMTECH RF product line, which includes complete transmitters, receivers and transceivers. The high integration of RFM95C simplifies the peripheral materials needed in the system design.",
+            "Typical Application of RF LoRa Transceiver Module RFM95CW:"
+          ]
+        },
+        {
+          "title": "RFM95W Low Power Long Range Transceiver Module (HOPERF)",
+          "url": "https://www.datasheet4u.com/datasheet-pdf/HOPERF/RFM95W/pdf.php?id=968438",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Datasheet · RFM95W-HOPERF.pdf · Description · Low Power Long Range Transceiver Module · Features * LoRaTM Modem. * 168 dB maximum link budget. * +20 dBm - 100 mW constant RF output vs. V supply. * +14 dBm high efficiency PA. * Programmable bit rate up to 300 kbps.",
+          "profile": {
+            "name": "Datasheet4u",
+            "url": "https://www.datasheet4u.com/datasheet-pdf/HOPERF/RFM95W/pdf.php?id=968438",
+            "long_name": "datasheet4u.com",
+            "img": "https://imgs.search.brave.com/_3nh6xciwSROQyMD7gERur_VL8TsvQuhvba_e_XwRfY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzc1Njk4NmQy/MGQ2ZDIzOTA3M2Jm/YzdjMTZkMjRmNjIw/MTJhZmVlOTA4Y2M1/NTZlOWE5NWJhNjk4/OGRkNWJiMi93d3cu/ZGF0YXNoZWV0NHUu/Y29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "datasheet4u.com",
+            "hostname": "www.datasheet4u.com",
+            "favicon": "https://imgs.search.brave.com/_3nh6xciwSROQyMD7gERur_VL8TsvQuhvba_e_XwRfY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzc1Njk4NmQy/MGQ2ZDIzOTA3M2Jm/YzdjMTZkMjRmNjIw/MTJhZmVlOTA4Y2M1/NTZlOWE5NWJhNjk4/OGRkNWJiMi93d3cu/ZGF0YXNoZWV0NHUu/Y29tLw",
+            "path": "› datasheet-pdf  › HOPERF  › RFM95W  › pdf.php"
+          },
+          "extra_snippets": [
+            "HOPERF · &#128229 Download Datasheet · Description RFM95/96/97/98（W） RFM95/96/97/98(W) - Low Power Long Range Transceiver Module V1.0 GENERAL . The RFM95/96/97/98(W) transceivers feature the LoRaTM long range modem that provides ultra-long range spread spectrum communication and high interf. &#128229 Download Datasheet · Preview of RFM95W PDF ·",
+            "Datasheet · RFM95W-HOPERF.pdf · Description · Low Power Long Range Transceiver Module · Features * LoRaTM Modem. * 168 dB maximum link budget. * +20 dBm - 100 mW constant RF output vs. V supply. * +14 dBm high efficiency PA. * Programmable bit rate up to 300 kbps.",
+            "Features * LoRaTM Modem. * 168 dB maximum link budget. * +20 dBm - 100 mW constant RF output vs. V supply. * +14 dBm high efficiency PA. * Programmable bit rate up to 300 kbps. * High sensitivity: down to -148 dBm. * Bullet-proof front end: IIP3 = -12.5 dBm.",
+            "Applications * Automated Meter Reading. * Home and Building Automation. * Wireless Alarm and Security Systems. * Industrial Monitoring and Control * Long range Irrigation Systems Page 1 Tel: +86-755-82973805 Fax: +86-755-82973550 E-mail: sales@hoperf. com http:/ / www."
+          ]
+        },
+        {
+          "title": "RFM95PW Datasheet(PDF) - HOPE Microelectronics CO., Ltd.",
+          "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/1139152/HOPE/RFM95PW.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Part #: RFM95PW. Download. File Size: 675Kbytes. Page: 6 Pages. Description: Enhanced Power Long Range Transceiver Module. Manufacturer: HOPE Microelectronics CO., Ltd..",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/1139152/HOPE/RFM95PW.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› datasheet-pdf  › pdf  › 1139152  › HOPE  › RFM95PW.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          }
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

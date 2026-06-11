@@ -1,0 +1,22 @@
+{
+  "url": "https://lirias.kuleuven.be/bitstream/123456789/643406/2/main.pdf",
+  "saved_at": "2026-06-11T20:35:28.847784+00:00",
+  "reason": "http_status_404",
+  "warnings": [],
+  "final_url": "https://lirias.kuleuven.be/bitstream/123456789/643406/2/main.pdf",
+  "status_code": 404,
+  "content_type": "text/html; charset=iso-8859-1",
+  "content_length_header": "173",
+  "response_headers": {
+    "Access-Control-Allow-Origin": "*",
+    "ntCoent-Length": "196",
+    "Content-Type": "text/html; charset=iso-8859-1",
+    "Date": "Thu, 11 Jun 2026 20:35:28 GMT",
+    "Server": "Apache/2.4.37 (centos) OpenSSL/1.1.1g",
+    "Vary": "Origin",
+    "Set-Cookie": "[redacted]",
+    "Cache-Control": "private",
+    "Content-Encoding": "gzip",
+    "Content-Length": "173"
+  }
+}

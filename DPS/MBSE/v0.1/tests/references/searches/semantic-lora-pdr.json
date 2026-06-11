@@ -1,0 +1,266 @@
+{
+  "query": "LoRa packet delivery ratio distance range reliability measurement",
+  "total": 225,
+  "pages_retrieved": 1,
+  "results": [
+    {
+      "paperId": "f7ab2e4667695b207d56dfa706bf68aa0b561b6b",
+      "doi": "10.3390/jsan13060089",
+      "title": "Enhanced Reinforcement Learning Algorithm Based-Transmission Parameter Selection for Optimization of Energy Consumption and Packet Delivery Ratio in LoRa Wireless Networks",
+      "authors": [
+        {
+          "name": "B. Zholamanov"
+        },
+        {
+          "name": "A. Bolatbek"
+        },
+        {
+          "name": "A. Saymbetov"
+        },
+        {
+          "name": "M. Nurgaliyev"
+        },
+        {
+          "name": "E. Yershov"
+        },
+        {
+          "name": "Kymbat Kopbay"
+        },
+        {
+          "name": "S. Orynbassar"
+        },
+        {
+          "name": "G. Dosymbetova"
+        },
+        {
+          "name": "Ainur K. Kussainova"
+        },
+        {
+          "name": "N. Kuttybay"
+        },
+        {
+          "name": "Nursultan Koshkarbay"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Wireless communication technologies (WSN) are pivotal for the successful deployment of the Internet of Things (IoT). Among them, long-range (LoRa) and long-range wide-area network (LoRaWAN) technologies have been widely adopted due to their ability to provide long-distance communication, low energy consumption (EC), and cost-effectiveness. One of the critical issues in the implementation of wireless networks is the selection of optimal transmission parameters to minimize EC while maximizing the packet delivery ratio (PDR). This study introduces a reinforcement learning (RL) algorithm, Double Deep Q-Network with Prioritized Experience Replay (DDQN-PER), designed to optimize network transmission parameter selection, particularly the spreading factor (SF) and transmission power (TP). This research explores a variety of network scenarios, characterized by different device numbers and simulation times. The proposed approach demonstrates the best performance, achieving a 17.2% increase in the packet delivery ratio compared to the traditional Adaptive Data Rate (ADR) algorithm. The proposed DDQN-PER algorithm showed PDR improvement in the range of 6.2–8.11% compared to other existing RL and machine-learning-based works.",
+      "citationCount": 7,
+      "openAccess_pdf": {
+        "url": "https://doi.org/10.3390/jsan13060089"
+      }
+    },
+    {
+      "paperId": "6cb899064aa60ac25d4c7855a499e16c69bf617b",
+      "doi": "10.1109/R10-HTC63995.2025.11394583",
+      "title": "A Measurement of Packet Delivery Rate and Signal Strength in LoRa Communication in Urban and Suburban Areas of Sapporo",
+      "authors": [
+        {
+          "name": "Yuito Ishisaki"
+        },
+        {
+          "name": "Kyotaro Kunii"
+        },
+        {
+          "name": "Hiroshi Tsutsui"
+        },
+        {
+          "name": "Takeo Ohgane"
+        }
+      ],
+      "year": 2025,
+      "abstract": "LoRa is a modulation scheme for wireless communication with IoT devices offering long-range communication with low power consumption. In this study, the authors conducted field measurements of LoRa communication in urban and suburban areas and measured PDR and RSSI under varying transmission distances and spreading factors (SFs). The results show that, at the suburban site located 11.8km from the transmitter, the packet delivery rate (PDR) was greater than some closer urban sites despite lower average reveived signal strength indicator (RSSI). Futhermore, the authors confirmed that increasing the height of the receiver antenna led to improvements in both PDR and average RSSI.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "6bb0d462dce79951ad96f15f450c646fa85ae425",
+      "doi": "10.1109/SAS60918.2024.10636398",
+      "title": "Packet Delivery Ratio and Latency Analysis in BLE Mesh Networks: the Effect of Protocol Parameters Configuration",
+      "authors": [
+        {
+          "name": "Marco Esposito"
+        },
+        {
+          "name": "Alberto Belli"
+        },
+        {
+          "name": "Lorenzo Palma"
+        },
+        {
+          "name": "Sara Raggiunto"
+        },
+        {
+          "name": "Marco Mercuri"
+        },
+        {
+          "name": "P. Pierleoni"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Emerging sensing and Internet of Things applications require very dense deployments that rely on wireless sensor networks (WSNs). Among the many communication schemes for WSNs, Mesh technologies, such as Bluetooth Low Energy (BLE) Mesh, offer flexibility, scalability and enhanced reliability, which are especially attractive for large scale sensor networks. This study examines the impact of protocol parameters configurations on BLE Mesh communication in dense sensor networks. Different parameters regulate communication in a BLE Mesh network, influencing energy consumption, traffic, reliability, and latency. Using the MAT LAB Bluetooth Toolbox Mesh simulator, simulations were carried out to evaluate the effect of Time- To-Live (TTL), Scan Interval, and Advertising inter-PDU interval on Packet Delivery Ratio (PDR), latency and traffic. Results reveal that lowering TTL just above the minimum path length, along with tailored scanning and advertising configurations, achieves a PDR above 90% while also granting traffic reduction compared to higher TTL values. Furthermore, it was found out that choosing a value of inter PDU in the range 1–2 ms gives both the best latency and PD R results. As an increase in messages transmission may severely degrade the performance in the BLE mesh flooding scenario, these findings provide insight into how to achieve traffic reduction while also granting available routes for correct message reception.",
+      "citationCount": 1,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "10a39a44fcf8d00fca92e22a59bae1406178ba22",
+      "doi": "10.1109/TIM.2025.3545712",
+      "title": "LoRa Mesh Network With Time-Efficient Medium Utilization for IoT Building Monitoring System",
+      "authors": [
+        {
+          "name": "Man Ho Tsoi"
+        },
+        {
+          "name": "Yuen Wing Lo"
+        },
+        {
+          "name": "Yat Sze Choy"
+        },
+        {
+          "name": "Cheuk-fai Chow"
+        },
+        {
+          "name": "Steve W. Y. Mung"
+        }
+      ],
+      "year": 2025,
+      "abstract": "Flexibility, reliability, large coverage, and low cost are critical traits for low-power wide-area networks (LPWANs). The network infrastructure is the prerequisite for implementing the Internet of Things (IoT) end device (ED) in building monitoring systems. Long range (LoRa) is one of the best candidates for LPWAN, but the lack of a mesh network limits its potential, especially on the cost. Multiple medium access control (MAC) protocols with various features were proposed to handle the collision problem in LoRa mesh networks. New evaluation methods were established to verify the MAC protocols in the highly contentious period in which network extenders (NEs) compete for idle medium in a mesh network. The experiments consisted of 30 NEs with overlapping coverage, whereas in real-life applications, usually, coverage overlap of only two to three NEs occurs. The performance of the proposed MAC protocols was evaluated by comparing their packet delivery ratios (PDRs) and data throughput values (bps). The best MAC protocol, namely, carrier-sense multiple access (CSMA)/collision avoidance (CA) with assigned distributed interframe spacing (DIFS), achieved a PDR of approximately 100% and data throughput of approximately 2500 bps. The proposed LoRa mesh network can serve as the basis of low-latency, low-collision, wide-coverage IoT monitoring, and control systems. A real commercial large-scale building was deployed by this proposed network with 205 devices located across 23 continuous floors with single gateway as a deployment test. The test period spans over six months and an overall PDR of 92% is obtained, which outperforms previous research in terms of duration, scales, and PDR.",
+      "citationCount": 7,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "ab3905f9d6ea6ad8a7a0a0024a0277f2cd52c59d",
+      "doi": "10.24138/jcomss-2025-0058",
+      "title": "A Reliable LoRa-based Vehicle-to-Vehicle Communication System",
+      "authors": [
+        {
+          "name": "Ameer A. Al-Shammaa"
+        },
+        {
+          "name": "Doaa H. Al-Hadrawi"
+        }
+      ],
+      "year": 2025,
+      "abstract": "— Communication reliability in vehicular networks depends critically on system architecture and wireless technology. This paper develops a reliable LoRa-based vehicle-to-vehicle (RL-V2V) system employing finished frame passing, an innovative method where transmitters broadcast explicit event-termination packets to eliminate idle channel occupancy after event reporting. Our infrastructure-free design uses direct machine-to-machine communication, avoiding LoRaWAN’s gateway dependency. An experimental investigation using vehicular testbeds quantified LoRa’s maximum reliable range under varying parameters: spreading factor (SF), transmission power (TP), packet delivery ratio (PDR), and received signal strength indication (RSSI). Results demonstrate that configuring TP=20 dBm and SF=12 enables communication up to 2.45 km (in low traffic conditions), with RSSI ≥ −77 dBm, ensuring link reliability. The system achieves 71–100% PDR at ≤ 50 km/h, demonstrating 23% superior reliability to LoRaWAN in mobility scenarios. Finished frame passing further reduces channel contention by 37%, enabling efficient channel reuse by other vehicles. While suited for non-latency-critical events (e.g., hazard warnings), the approach tolerates sub-second delays.",
+      "citationCount": 2,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "a9a29467fed0314bdbcc785cd48964903cf52172",
+      "doi": "10.3390/electronics14244977",
+      "title": "Secure LoRa-Based Transmission System: An IoT Solution for Smart Homes and Industries",
+      "authors": [
+        {
+          "name": "Sebastian Ryczek"
+        },
+        {
+          "name": "Maciej Sobieraj"
+        }
+      ],
+      "year": 2025,
+      "abstract": "This article addresses the lack of low-cost, secure image-transmission solutions for IoT systems in remote environments. The design and implementation of a complete LoRa-based transmission system using ESP32 microcontrollers and Ebyte E220 modules, featuring AES-CBC encryption, HMAC integrity protection, and a custom retransmission protocol, are presented. The system achieves 100% packet delivery ratio (PDR) for 20 kB images over distances exceeding 2 km under line-of-sight conditions, with functional transmission up to 4.1 km. Image transmission time ranges from 35 s (0.1 m) to 110 s (600 m), while energy consumption increases from 4.95 mWh to 15.18 mWh. Critically, encryption imposes less than 1% overhead on total energy consumption. Unlike prior work focusing on isolated components, this article provides a complete, deployable architecture combining (i) low-cost hardware (<USD 50 total), (ii) long-range LoRa communication, (iii) custom reliability mechanisms for fragmenting 20 kB images into 100 packets, and (iv) end-to-end cryptographic protection, all evaluated experimentally across multi-kilometer distances. These findings demonstrate that secure long-range image transmission using commodity hardware is feasible and scalable for smart home and industrial monitoring applications.",
+      "citationCount": 2,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "47efffdc81802ad845638b2d63d648e9f166e6f9",
+      "doi": "10.11591/ijres.v14.i1.pp165-175",
+      "title": "Comparative analysis of ZigBee, LoRa, and NB-IoT in a smart building: advantages, limitations, and integration possibilities",
+      "authors": [
+        {
+          "name": "Tanakorn Inthasuth"
+        },
+        {
+          "name": "Yongyut Kaewjumras"
+        },
+        {
+          "name": "Sahapong Somwong"
+        },
+        {
+          "name": "W. Boonsong"
+        }
+      ],
+      "year": 2025,
+      "abstract": "This paper compares the performance of various wireless technologies: ZigBee, long range (LoRa), and narrowband internet of things (NB-IoT), which support smart building applications. The highlight of this work is that we focus on wireless communication between the floors of the building by analyzing the performance metrics using the received signal strength indicator (RSSI) and packet loss ratio (PLR). First, the ZigBee tests confirmed reliable packet delivery without any loss over distances up to 40 meters on the same floor, with RSSI results ranging from -65.5 to -87.5 dBm. ZigBee also maintained signal transmission through one cross-floor level, with RSSI values between -60 and -119 dBm. The second set of tests, with LoRa, indicated signal transmission over several floors with slightly improved RSSI values for the 2 dBi antenna compared to those for the -4 dBi antenna, despite increased packet loss with distance. Finally, NB-IoT showed the most consistent long-range connectivity, achieving a stable signal up to 458 meters from the base station with RSSI levels varying from -55.6 to -74.6 dBm, without packet loss in all tests. This study demonstrates how such technologies could be used in smart buildings and provides suggestions on how to determine the most suitable systems and configure them to ensure reliable communication networks within the building.",
+      "citationCount": 8,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "d1294e6c7e513c489f13568ffeb05814eb5cf180",
+      "doi": "10.1109/JIOT.2019.2953804",
+      "title": "Characterization of LoRa Point-to-Point Path Loss: Measurement Campaigns and Modeling Considering Censored Data",
+      "authors": [
+        {
+          "name": "Gilles Callebaut"
+        },
+        {
+          "name": "L. Van der Perre"
+        }
+      ],
+      "year": 2020,
+      "abstract": "Low-power wide-area technologies have demonstrated their usefulness in a wide variety of Internet of Things applications. New applications are emerging, requiring a mesh or point-to-point (P2P) topology, in contrast to the conventional star-of-stars topology. In this article, we evaluate the coverage and model the path loss (PL) of these links, based on experimental campaigns in three environments: 1) urban; 2) forest; and 3) coastal. More obstructions, scattering, and diffraction are encountered because the terminals are typically at a low height. This results in a higher PL compared to the star-of-stars topology. Consequently, more packets drop below the receiver sensitivity. Realistic PL parameters are estimated by also taking the censored data into account. The packet error ratio is determined based on the estimated PL parameters to evaluate the performance of P2P links. Even in these adverse environments, 80% of the transmitted packets are successfully received at a distance of approximately 200 m. Moreover, a range of over 4 km is observed in the line-of-sight scenario. Despite the unfavorable radio propagation in the urban scenario and the densely forested terrain, a maximum range of 1 km is achieved.",
+      "citationCount": 89,
+      "openAccess_pdf": {
+        "url": "https://lirias.kuleuven.be/bitstream/123456789/643406/2/main.pdf"
+      }
+    },
+    {
+      "paperId": "633b752bcdcef3c4a0559fef64b74d5f3113051f",
+      "doi": "10.1109/WoWMoM57956.2023.00069",
+      "title": "ELORA: Even Longer Range Sensor Networking Through Modulated Concurrent LoRa Transmissions",
+      "authors": [
+        {
+          "name": "Daniel Szafranski"
+        },
+        {
+          "name": "Andreas Reinhardt"
+        }
+      ],
+      "year": 2023,
+      "abstract": "LoRa is a widely used physical layer for Low Power Wide Area Networks (LPWANs). Its comparably low data rates still suffice for many IoT applications, while communication ranges of several kilometers can be accomplished. Due to their wireless nature, LoRa data transmissions become unreliable when the distance between sender and receiver approaches the limit at which the signal-to-noise ratio falls below the receiver’s sensitivity. Furthermore, reliability can also be hampered by rough environmental conditions, like heavy rain or high humidity levels, both of which can have attenuating effects on the wireless signal propagation. While the Forward Error Correction in LoRa can compensate for sporadic bit errors, its overall efficacy is limited. To prevent data loss even in adverse weather conditions, alternative methods need to be found to maintain the reliability of communications. One such approach is the use of Constructive Interference, i.e., the concurrent transmission of identical LoRa packets by multiple transmitting stations. As the required clock synchronization is hard to accomplish, however, fully constructive LoRa data transmissions are virtually impossible in practice. In this paper, we hence present two modulation techniques (based on On–Off Keying and Pulse Width Modulation) that take advantage of constructive interference periods occurring in concurrent transmissions to increase the range and thus make a Wireless Sensor Network better usable in emergency scenarios. We present their implementation on actual LoRa transceivers and analyze the resulting signal’s characteristics. Our first experimental results prove the viability of our concept, and show that data can be modulated and demodulated without the knowledge of the actual LoRa message.",
+      "citationCount": 4,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "1d7c32adba9312698f4cb800ef0422ffab2e8012",
+      "doi": "10.1145/3479241.3486698",
+      "title": "Improving Delivery Ratio in LoRa Network",
+      "authors": [
+        {
+          "name": "Rafał Marjasz"
+        },
+        {
+          "name": "Konrad Połys"
+        },
+        {
+          "name": "Anna Strzoda"
+        },
+        {
+          "name": "K. Grochla"
+        }
+      ],
+      "year": 2021,
+      "abstract": "The LoRa (Long Range) radio communication provides large coverage areas, low bandwidth, small data rates, and transmitting limited data sizes, with very low energy usage. Multiple transmission channels are used, but the number of channels available is fairly limited - e.g. 8 in most countries in Europe. The amount of interferences may be estimated by the continuous observation of the number of delivered packets and the received signal strength. We propose to aggregate and analyse those metrics per channel and geographical area. When the proportion of received packets per some of the areas decreases, it is subjected to heavier interferences than other parts of the network and should be used less intensively. Thus we propose to allocate the weights for each channel per geographic area and/or device, defining the probability of the channel usage. Furthermore, we created an algorithm that periodically updates the weights and a simulation model using OMNeT++, FloRa, taking into account possible packets collisions. The algorithm has been validated for both random and realistic network topologies. The simulation evaluations show a significant improvement in the package delivery efficiency, by almost 50% in scenarios with very high interference level simulated and by more than 13% in scenarios fed with real-life measurements of packet delivery probability changes in time.",
+      "citationCount": 4,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    }
+  ],
+  "output_metadata": {
+    "extracted_at": "2026-06-11T14:33:42.041145"
+  }
+}

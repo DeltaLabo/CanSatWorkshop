@@ -1,0 +1,977 @@
+{
+  "query": "CanSat telemetry testing guide LoRa ground station",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "GitHub - Bammer187/Cansat: A real-time telemetry system for CanSat missions using LoRa, Python (Flask), and Vue.js. Collects, transmits, and visualizes environmental and motion sensor data via a responsive web dashboard. Includes simulation mode for development without hardware.",
+      "url": "https://github.com/Bammer187/Cansat",
+      "description": "This CanSat project integrates a real-time telemetry system using LoRa for long-range data transmission, Python for backend data processing and Vue.js for a responsive web dashboard. The system collects and visualizes environmental and positional data from the CanSat during flight, providing reliable communication and an intuitive interface for monitoring mission parameters. You are also able to test the GUI and Python Code without sensors.",
+      "content": "This CanSat project integrates a real-time telemetry system using LoRa for long-range data transmission, Python for backend data processing and Vue.js for a responsive web dashboard. The system collects and visualizes environmental and positional data from the CanSat during flight, providing reliable communication and an intuitive interface for monitoring mission parameters. You are also able to test the GUI and Python Code without sensors.\nThe next steps will assume that you are starting in the Cansat/ directory. ... cd Groundstation\\ Raspberry/ # On Windows (PS): cd '.\\Groundstation Raspberry\\' python -m venv venv source venv/bin/activate # On Windows: venv\\Scripts\\activate pip install -r requirements.txt ... Copy the dist/ folder into Groundstation Raspberry/. ... Access the UI at http://localhost:5000. ... If you are using the same sensors as we are and they are running with the LoRa modules, you can start the entire communication in this way:\nAfter each measurement cycle, the data is transmitted via LoRa modules. The ground module is connected to a Raspberry Pi through UART. The Pi reads the incoming values, stores them in a database, and forwards them to a server.\nIf you encounter errors, try running the script outside the virtual environment, as this has resolved similar issues in our tests.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "software",
+      "profile": {
+        "name": "GitHub",
+        "url": "https://github.com/Bammer187/Cansat",
+        "long_name": "github.com",
+        "img": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "github.com",
+        "hostname": "github.com",
+        "favicon": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw",
+        "path": "› Bammer187  › Cansat"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/od6sNukWXAPc6IK4nXJX9w_YcvqlaIe-KtrfTkw6Jk8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9vcGVu/Z3JhcGguZ2l0aHVi/YXNzZXRzLmNvbS9l/NWQ5ZGE3OGY0OGM0/MTE0ZDQzNDQyM2Fi/YmQ1NGFkZDY4Nzdl/MzY5NDViMzhiZTY3/YjExYzIwNDAyNmE5/OThmL0JhbW1lcjE4/Ny9DYW5zYXQ",
+        "original": "https://opengraph.githubassets.com/e5d9da78f48c4114d434423abbd54add6877e36945b38be67b11c204026a998f/Bammer187/Cansat",
+        "logo": false
+      }
+    },
+    {
+      "rank": 2,
+      "title": "(PDF) CanSat: Design, Development, and Deployment of Open-Source Weather Monitoring Nano-Satellite",
+      "url": "https://www.researchgate.net/publication/385668609_CanSat_Design_Development_and_Deployment_of_Open-Source_Weather_Monitoring_Nano-Satellite",
+      "description": "Thorough testing validated the CanSat&#x27;s reliability ... GPS accuracy to ensure mission success. J. Educational Outreach ... Fig. 4. 4-Stack (Active) circuit · The CanSat mission provides crucial data on weather, ... III. HARDWARE FLOWCHART · The hardware flowchart illustrates the integration of all · components with the ESP32 microcontroller, ensuring · efficient communication with the ground station via · wireless LoRa technology.",
+      "content": "Thorough testing validated the CanSat&#x27;s reliability ... GPS accuracy to ensure mission success. J. Educational Outreach ... Fig. 4. 4-Stack (Active) circuit · The CanSat mission provides crucial data on weather, ... III. HARDWARE FLOWCHART · The hardware flowchart illustrates the integration of all · components with the ESP32 microcontroller, ensuring · efficient communication with the ground station via · wireless LoRa technology.\nGROUND STATION The ground station for the CanSat features a TTGO LoRa32 operating at 433MHz, ensuring reliable communication with the CanSat shown in Fig. 10. Utilizing license-free RF bands, LoRa technology facilitates efficient data transmission. Telemetry data is processed and displayed in real-time on a custom webpage, providing instant access to key environmental parameters like temperature, pressure, humidity, altitude, and more.\nThorough testing validated the CanSat's reliability ... GPS accuracy to ensure mission success. J. Educational Outreach ... Fig. 4. 4-Stack (Active) circuit · The CanSat mission provides crucial data on weather, ... III. HARDWARE FLOWCHART · The hardware flowchart illustrates the integration of all · components with the ESP32 microcontroller, ensuring · efficient communication with the ground station via · wireless LoRa technology.\nPDF | On Oct 22, 2024, Talha Alam and others published CanSat: Design, Development, and Deployment of Open-Source Weather Monitoring Nano-Satellite | Find, read and cite all the research you need on ResearchGate\nThe communication architecture of CanSat with ground ... Fig. 9. Communication Pattern · IX. GROUND STATION ... Fig. 10. Ground Station (TTGO LoRa32)",
+      "age": "October 22, 2024",
+      "page_age": "2024-10-22T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ResearchGate",
+        "url": "https://www.researchgate.net/publication/385668609_CanSat_Design_Development_and_Deployment_of_Open-Source_Weather_Monitoring_Nano-Satellite",
+        "long_name": "researchgate.net",
+        "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "researchgate.net",
+        "hostname": "www.researchgate.net",
+        "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+        "path": "› publication  › 385668609_CanSat_Design_Development_and_Deployment_of_Open-Source_Weather_Monitoring_Nano-Satellite"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/as5lBuJ-XqgRRJCeG5-x2zzH3XK8hWjA0WyUaabx7z8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/cHVibGljYXRpb24v/Mzg1NjY4NjA5X0Nh/blNhdF9EZXNpZ25f/RGV2ZWxvcG1lbnRf/YW5kX0RlcGxveW1l/bnRfb2ZfT3Blbi1T/b3VyY2VfV2VhdGhl/cl9Nb25pdG9yaW5n/X05hbm8tU2F0ZWxs/aXRlL2xpbmtzLzY3/MmY2ZTdlZWNiYmRl/NzE2YjY0MmM0Ny9s/YXJnZXByZXZpZXcu/cG5n",
+        "original": "https://i1.rgstatic.net/publication/385668609_CanSat_Design_Development_and_Deployment_of_Open-Source_Weather_Monitoring_Nano-Satellite/links/672f6e7eecbbde716b642c47/largepreview.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Design of CANSAT for Air Quality Monitoring at an Altitude of 900m",
+      "url": "https://arxiv.org/html/2409.03727v1",
+      "description": "Following this, the telemetry data from the CANSAT was collected at the Ground Station with the help of Xbee communication module. Simultaneously,The results of the experiment were observed at the GUI Dashboard. The descent of CANSAT was timed to be approximately 25 minutes.",
+      "content": "Following this, the telemetry data from the CANSAT was collected at the Ground Station with the help of Xbee communication module. Simultaneously,The results of the experiment were observed at the GUI Dashboard. The descent of CANSAT was timed to be approximately 25 minutes.\nThe telemetry data from the CANSAT was collected at the Ground Station with the help of LoRa communication module.[10]The goal of the CANSAT project is to create a nanosatellite for the purpose of gathering telemetry data on air pollutants in Veracruz-Boca del Rio, specifically carbon monoxide, methane, benzene, and butane.\nFollowing this, the telemetry data from the CANSAT was collected at the Ground Station with the help of Xbee communication module. Simultaneously,The results of the experiment were observed at the GUI Dashboard. The descent of CANSAT was timed to be approximately 25 minutes. The Snapshot of experiments at Ahmedabad,Gujarat.The Table 4 shows the results after the experiments. ... Thus a Novel CANSAT was designed for 727gms tested and operated at an altitude of 900 m from the ground level and intended actions such as power on of the Satellite after deployment from the satellite, Antenna Deployment, Sensor information of Air quality Monitoring and Temperature with latitude and longitude of a decent path were tested, deployed and verified.\nThe ground station is equipped with an RF receiving antenna and a computer interface for real-time data processing and storage. [11]The paper outlines the design and development of a CANSAT for environmental monitoring and scientific exploration, focusing on sensors, telemetry, and descent systems.\nThe telemetry data is also transmitted in real-time to the ground station using the MQTT protocol. An unique aerodynamic rotor mechanism with a 3 axis mechanical gyroscopic system is placed in the CANSAT to control the stabilisation of the satellite. A two-stage parachute system used for safe descent.",
+      "age": "September 5, 2024",
+      "page_age": "2024-09-05T17:32:01",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "arXiv",
+        "url": "https://arxiv.org/html/2409.03727v1",
+        "long_name": "arxiv.org",
+        "img": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "arxiv.org",
+        "hostname": "arxiv.org",
+        "favicon": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv",
+        "path": "› html  › 2409.03727v1"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "Telemetry system - The CanSat book",
+      "url": "https://learn.andoyaspace.no/docs/cansat/teensy/telemetry_system/",
+      "description": "This signal is received by the ground station and sent to a laptop, where it is stored before being processed as experimental data. Students follow their descending CanSat while they receive radio signals from their CanSat via an antenna. Photo: Andøya Space · The RFM96 is a radio for 433 MHz ISM band, which is free to use and perfect for CanSat use. The radio uses a proprietary protocol called LoRa (short for long range), patented by Semtech, that is perfect for low data rate, but long range and relatively low transmission power (+20 dBm, 100 mW maximum).",
+      "content": "This signal is received by the ground station and sent to a laptop, where it is stored before being processed as experimental data. Students follow their descending CanSat while they receive radio signals from their CanSat via an antenna. Photo: Andøya Space · The RFM96 is a radio for 433 MHz ISM band, which is free to use and perfect for CanSat use. The radio uses a proprietary protocol called LoRa (short for long range), patented by Semtech, that is perfect for low data rate, but long range and relatively low transmission power (+20 dBm, 100 mW maximum).\nThis information is called the “mission data” or “scientific data”. In your CanSat this would be the information from the sensor board. This data is sent to a ground station to be studied by scientists. CanSat telemetry operations can be broken down into three distinct components: transmitting data, receiving data, and processing data.\nWhen working as a ground station, the Teensy 4.1 will be connected and powered via an USB cable to your pc, and needs no voltage regulator or other components on the board, except the radio and sma connector. The CanSat shield board is now ready to be tested.\nAndøya Space has used this radio in other activities than CanSats also, and actually we routinely use this radio in weather balloons which go up to 25 km altitude with a total distance between the ground station and the transmitter of 230 km!",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Andoyaspace",
+        "url": "https://learn.andoyaspace.no/docs/cansat/teensy/telemetry_system/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› docs  › cansat  › teensy  › telemetry_system"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Cansat Competition Guide 2025 Auto Gyro Descender Rev 1.0e Jan 12, 2025 1",
+      "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025e.pdf",
+      "description": "The sensor telemetry shall be transmitted at a 1 Hz rate. ... A second video camera shall point in the north direction during descent. ... Cost of the Cansat shall be under $1000. Ground support and analysis",
+      "content": "The sensor telemetry shall be transmitted at a 1 Hz rate. ... A second video camera shall point in the north direction during descent. ... Cost of the Cansat shall be under $1000. Ground support and analysis\nCansat must be completed, built and ready to launch at the flight readiness review. A ball of · wires and boards does not constitute flight ready. To emphasize, when presented at the Flight · Readiness Review (FRR), it must be in a state where it can be turned on and placed into a · rocket for immediate launch and be fully operational. Flight Readiness Review will be ... Teams must be prepared to demonstrate the ground station. The first test at the FRR will be the drop test.\nThe second test will verify communications with the Cansat and demonstrate the ground · station software. The ground station software operations will be scored at this time.\nThe purpose of Simulation Mode is to provide a mechanism for testing the Cansat as well as · for demonstrating the Cansat over the full mission profile in the event an actual launch cannot ... The Cansat telemetry operates the same in FLIGHT and SIMULATION mode.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025e.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+        "path": "› docs  › CanSat_Mission_Guide_2025e.pdf"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "CanSat Competition Guide 2023 Planetary Probe Lander Mission Rev 1.0c",
+      "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2023c.pdf",
+      "description": "commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry is being received. ... Release the CanSat. ... Verify the CanSat did not lose power. ... Inspect for any damage, or detached parts. ... Verify telemetry is still being received. 2. Thermal Test - This test is to verify the CanSat and container can operate in a hot",
+      "content": "commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry is being received. ... Release the CanSat. ... Verify the CanSat did not lose power. ... Inspect for any damage, or detached parts. ... Verify telemetry is still being received. 2. Thermal Test - This test is to verify the CanSat and container can operate in a hot\nTeams must be prepared to demonstrate the ground station. The first test at the FRR will be the drop test. The CanSat must be in flight configuration and\nThe second test will verify communications with the CanSat and demonstrate the ground · station software. The ground station software operations will be scored at this time.\nCost of the CanSat shall be under $1000. Ground support and analysis · tools are not included in the cost. Equipment from previous years shall be · included in this cost, based on current market value. ... XBEE radios shall be used for telemetry.",
+      "age": "September 21, 2022",
+      "page_age": "2022-09-21T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2023c.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "www.cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+        "path": "› docs  › CanSat_Mission_Guide_2023c.pdf"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "Building Your Own CanSat: A DIY Guide to Miniature Space Exploration – Frank's World of Data Science & AI",
+      "url": "https://www.franksworld.com/2026/05/27/building-your-own-cansat-a-diy-guide-to-miniature-space-exploration/",
+      "description": "One of the significant hurdles was ensuring our miniature satellite could communicate effectively with a ground station over considerable distances. The answer was found in the REYAX LoRa module, renowned for its ability to send data over kilometers using minimal power — perfect for our needs. Before finalizing the design, extensive testing on a breadboard was necessary to confirm all components worked seamlessly. Once satisfied, I transitioned the circuit to a zero PCB, soldering everything securely for permanence. Powering the CanSat independently, I added a 18650 battery in its holder, eliminating the need for USB dependency.",
+      "content": "One of the significant hurdles was ensuring our miniature satellite could communicate effectively with a ground station over considerable distances. The answer was found in the REYAX LoRa module, renowned for its ability to send data over kilometers using minimal power — perfect for our needs. Before finalizing the design, extensive testing on a breadboard was necessary to confirm all components worked seamlessly. Once satisfied, I transitioned the circuit to a zero PCB, soldering everything securely for permanence. Powering the CanSat independently, I added a 18650 battery in its holder, eliminating the need for USB dependency.\nHave you ever wondered how you could bring your curiosity for space exploration down to Earth? Welcome to the world of CanSat, a remarkable project where technology enthusiasts and students dive in…\nThe most exhilarating moment was testing the CanSat’s communication and descent capabilities. During a ground range test, the satellite continued transmitting data seamlessly, affirming its robust communication link. Finally, testing the parachute from a height stimulated the same thrilling experience akin to a real satellite deployment.\nDesigned to fit within a regular soft drink can, a CanSat allows you to create a fully functional satellite capable of collecting real-time atmospheric data such as temperature, pressure, and humidity. What’s more? It safely descends back to the ground using a parachute.",
+      "age": "2 weeks ago",
+      "page_age": "2026-05-28T02:12:06",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Frank's World",
+        "url": "https://www.franksworld.com/2026/05/27/building-your-own-cansat-a-diy-guide-to-miniature-space-exploration/",
+        "long_name": "franksworld.com",
+        "img": "https://imgs.search.brave.com/A1MiGPLZ95ioCs5YZUwxjxKlXFgZ3sUlU4XDaweQPpI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWFhNzI2NDI4/YWJiOWJmNDBmNDhk/ZTgwYjg4MzQ3NWFm/ZmE1NjBkOWQxZDc1/MDZkMDMzNWVmOTUy/NjFlNjI1ZC93d3cu/ZnJhbmtzd29ybGQu/Y29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "franksworld.com",
+        "hostname": "www.franksworld.com",
+        "favicon": "https://imgs.search.brave.com/A1MiGPLZ95ioCs5YZUwxjxKlXFgZ3sUlU4XDaweQPpI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWFhNzI2NDI4/YWJiOWJmNDBmNDhk/ZTgwYjg4MzQ3NWFm/ZmE1NjBkOWQxZDc1/MDZkMDMzNWVmOTUy/NjFlNjI1ZC93d3cu/ZnJhbmtzd29ybGQu/Y29tLw",
+        "path": "› 2026  › 05  › 27  › building-your-own-cansat-a-diy-guide-to-miniature-space-exploration"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/fb30iGDLA_WNstqaPfxIjyN-my8ULQtYQDDJimhZj0Q/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vd3d3LmZy/YW5rc3dvcmxkLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/Ni8wNS9idWlsZGlu/Zy15b3VyLW93bi1j/YW5zYXQtYS1kaXkt/Z3VpZGUtdG8tbWlu/aWF0dXJlLmpwZz9m/aXQ9NDgwJTJDMzYw/JiMwMzg7c3NsPTE",
+        "original": "https://i0.wp.com/www.franksworld.com/wp-content/uploads/2026/05/building-your-own-cansat-a-diy-guide-to-miniature.jpg?fit=480%2C360&#038;ssl=1",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "CanSat Kit and TSL Mini Ground Station – Twiggs Space Lab",
+      "url": "https://twiggs-space-lab.myshopify.com/products/cansat-kit",
+      "description": "Students solder all of the components on each board. The CSK includes: all the boards, parts, and electronic components required to build a CanSat; a detailed User’s Manual for assembly, testing and operations; and software libraries.",
+      "content": "Students solder all of the components on each board. The CSK includes: all the boards, parts, and electronic components required to build a CanSat; a detailed User’s Manual for assembly, testing and operations; and software libraries.\nThe CanSat Kit (“CSK”) is an exciting and challenging project-based educational engineering system for students to acquire hands-on training in the life cycle development of a basic satellite project at an affordable price. Critical skills learned, include mission planning and design, building and testing satellite subsystems, systems engineering, project management, remote sensing and data analytics, and many other competences required for the development and management of new technologies.\nDescription of TSL Mini Ground Station: The TSL Mini Ground Station (\"TSL MiniGS\") is a basic ground station designed to support communications with HC-05 Bluetooth (included), LoRa RF98 and LoRa E5 modules and includes its own microcontroller.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Myshopify",
+        "url": "https://twiggs-space-lab.myshopify.com/products/cansat-kit",
+        "long_name": "twiggs-space-lab.myshopify.com",
+        "img": "https://imgs.search.brave.com/XuaZ6IXufKKeKVnc2XyMJnVOxre5fnJiokTW6bM8uHI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTNkNjNhNTRj/ZTU0ZTQ1N2JkMTE4/NWQ0NTBlNjBiMjBj/NGYyNjJjMDkyYTlj/NDY3YmM0NjViZWMz/ZTcwODE0OS90d2ln/Z3Mtc3BhY2UtbGFi/Lm15c2hvcGlmeS5j/b20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "twiggs-space-lab.myshopify.com",
+        "hostname": "twiggs-space-lab.myshopify.com",
+        "favicon": "https://imgs.search.brave.com/XuaZ6IXufKKeKVnc2XyMJnVOxre5fnJiokTW6bM8uHI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTNkNjNhNTRj/ZTU0ZTQ1N2JkMTE4/NWQ0NTBlNjBiMjBj/NGYyNjJjMDkyYTlj/NDY3YmM0NjViZWMz/ZTcwODE0OS90d2ln/Z3Mtc3BhY2UtbGFi/Lm15c2hvcGlmeS5j/b20v",
+        "path": "› products  › cansat-kit"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/wpmkG4J5EXPtLEp0OwCL9epyaIX1WhhF6ctXlEBEkoc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly90d2ln/Z3Mtc3BhY2UtbGFi/Lm15c2hvcGlmeS5j/b20vY2RuL3Nob3Av/cHJvZHVjdHMvQ2Fu/U2F0S2l0UHJvZHVj/dEltYWdlX21lZGl1/bS5wbmc_dj0xNjYz/MDAwMDIy",
+        "original": "https://twiggs-space-lab.myshopify.com/cdn/shop/products/CanSatKitProductImage_medium.png?v=1663000022",
+        "logo": false
+      }
+    },
+    {
+      "rank": 9,
+      "title": "CanSat - A Simulation of A Real Satellite - Sponsor - PCBWay",
+      "url": "https://www.pcbway.com/project/sponsor/CanSat___A_Simulation_of_A_Real_Satellite.html",
+      "description": "We decided on the following: · ... (also helpful for targeted landing) – FONA 808 · All the data will be transmitted using a LoRa (Long Range) RFM95W Transceiver....",
+      "content": "We decided on the following: · ... (also helpful for targeted landing) – FONA 808 · All the data will be transmitted using a LoRa (Long Range) RFM95W Transceiver....\nThey are responsible for all aspects: those sensors and sending it to the base station, situated on the ground. My team must build a CanSat and program it to accomplish a primary compulsory mission and a secondary one. The primary mission consists of measuring the following parameters and transmitting the following data as telemetry to the ground station at least one every second:\nThe secondary mission of the CanSat must be selected by the team. We decided on the following: · Targeted landing using a parafoil – using Servo Motors for steering · · Measure photosynthetic activity with a special camera filter – PTC06 Serial Camera + Infragram Filter · · Gather GPS data (also helpful for targeted landing) – FONA 808 · All the data will be transmitted using a LoRa (Long Range) RFM95W Transceiver.\nThe CanSat is then launched by a rocket to an altitude of about one kilometer, or dropped from a platform or captive balloon. Then its mission begins.",
+      "age": "April 26, 2017",
+      "page_age": "2017-04-26T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "PCBWay",
+        "url": "https://www.pcbway.com/project/sponsor/CanSat___A_Simulation_of_A_Real_Satellite.html",
+        "long_name": "pcbway.com",
+        "img": "https://imgs.search.brave.com/r8tRNqpF4su-Kno-zb6xHTYRrUQ80c_4l8uIjPGYzjo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTYxYzUyOTc5/ZTM0MGM3YzliMjcy/MjY3NzdmNjE3MTkw/ZDU5ZmZlZWFlZWUx/NDlkMWQ4NGQ0Y2Jl/MmEwNTMzZS93d3cu/cGNid2F5LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "pcbway.com",
+        "hostname": "www.pcbway.com",
+        "favicon": "https://imgs.search.brave.com/r8tRNqpF4su-Kno-zb6xHTYRrUQ80c_4l8uIjPGYzjo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTYxYzUyOTc5/ZTM0MGM3YzliMjcy/MjY3NzdmNjE3MTkw/ZDU5ZmZlZWFlZWUx/NDlkMWQ4NGQ0Y2Jl/MmEwNTMzZS93d3cu/cGNid2F5LmNvbS8",
+        "path": "› project  › sponsor  › CanSat___A_Simulation_of_A_Real_Satellite.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/8JYB3Va5Ni9AMQDs3rEqhve_5yF8eFsHOVYzQRpJlMk/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9maWxl/LnBjYndheS5jb20v/d2Vic3BvbnNvci8x/Ny8wNC8yNi8xMTM0/MjgwNTEucG5n",
+        "original": "https://file.pcbway.com/websponsor/17/04/26/113428051.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 10,
+      "title": "Cansat Competition Guide 2024 Planetary Probe Instrument Delivery Mission",
+      "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024c.pdf",
+      "description": "The second test will verify communications with the Cansat and demonstrate the ground · station software. The ground station software operations will be scored at this time.",
+      "content": "The second test will verify communications with the Cansat and demonstrate the ground · station software. The ground station software operations will be scored at this time.\nCansat must be completed, built and ready to launch at the flight readiness review. A ball of · wires and boards does not constitute flight ready. To emphasize, when presented at the Flight · Readiness Review (FRR), it must be in a state where it can be turned on and placed into a · rocket for immediate launch and be fully operational. Flight Readiness Review will be ... Teams must be prepared to demonstrate the ground station. The first test at the FRR will be the drop test.\nVerify the Cansat did not lose power. ... Inspect for any damage, or detached parts. ... Verify telemetry is still being received. 2. Thermal Test - This test is to verify the Cansat can operate in a hot environment.\nPower down Cansat. 4. Vacuum Test - This test is designed to verify deployment operation of the payload(s). A · vacuum chamber can be simply constructed using a bucket or pail of 5 gallons or 18+ litres. A lid can be used or a ¼ inch or 6 mm thick sheet of polycarbonate can be · placed on top of the bucket. Do not use acrylic as that can shatter. A vacuum cleaner ... Turn on the vacuum to start pulling a vacuum. ... Make the saved telemetry available for the judges to review.",
+      "age": "September 1, 2023",
+      "page_age": "2023-09-01T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024c.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "www.cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+        "path": "› docs  › CanSat_Mission_Guide_2024c.pdf"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "CanSat telemetry testing guide LoRa ground station",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.127,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "CanSat telemetry testing guide LoRa ground station",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "videos",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "videos": {
+      "type": "videos",
+      "results": [
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=Z83ihDBL1M8",
+          "title": "How To Receive & Track Lora Satellites - TinyGS - YouTube",
+          "description": "Here we take a look at the TinyGS Lora Satellite project and how to receive their transmissions. https://tinygs.comLora Boards available here (Make sure to o",
+          "age": "February 27, 2022",
+          "page_age": "2022-02-27T18:53:41",
+          "fetched_content_timestamp": 1780478846,
+          "video": {
+            "duration": "09:13",
+            "creator": "Tech Minds",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/4EEtQnFO_pRn_AdmxnZ4tdLS5ZTlshfAh7fikNSg_wU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9a/ODNpaERCTDFNOC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/Z83ihDBL1M8/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=d1ojiuuqhio",
+          "title": "TinyGS - How to build your own satellite ground station - YouTube",
+          "description": "TinyGS is an open source community providing ground station tracking for amateur cube sats that communicate via the Lora protocol from space. You can easily ...",
+          "age": "June 24, 2021",
+          "page_age": "2021-06-24T07:00:36",
+          "fetched_content_timestamp": 1780958935,
+          "video": {
+            "duration": "29:13",
+            "creator": "Csongor Varga",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/1qHUB_adNcompOuHGZ9HCcSS_3Br40EIECGtoHuewro/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9k/MW9qaXV1cWhpby9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/d1ojiuuqhio/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=ltJQjqm5bKA&vl=en",
+          "title": "#376 How to receive and track LoRa Satellites (TinyGS). Incl. ...",
+          "description": "Satellites are fascinating but costly and therefore only available to governments, the military, and, recently, also billionaires like Elon Musk (SpaceX) or ...",
+          "age": "March 21, 2021",
+          "page_age": "2021-03-21T08:00:10",
+          "fetched_content_timestamp": 1764364432,
+          "video": {
+            "duration": "17:26",
+            "creator": "Andreas Spiess",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Tc94K_J0UN3v4RghIhJNBcxwRMR16wkLMhL3C7RjIr4/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9s/dEpRanFtNWJLQS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/ltJQjqm5bKA/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=WRklD4zGTRQ",
+          "title": "LORA Cubesat empfang - Fossa Groundstation - YouTube",
+          "description": "LORA CUBESAT RECEPTION FOSSA GROUNDSTATIONInfo:Fossa 2 Bilder empfang:Wenn man nun in dieses Dokument schaut https://github.com/FOSSASystems/FOSSASAT-2/blob/...",
+          "age": "November 14, 2020",
+          "page_age": "2020-11-14T06:00:07",
+          "fetched_content_timestamp": 1721406104,
+          "video": {
+            "duration": "34:48",
+            "views": 3054,
+            "creator": "Manuel Lausmann",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/9oSC8cnVsSDkHLL53BO1yvs9vU5n9xXYDxsiQ7msRsA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9X/UmtsRDR6R1RSUS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/WRklD4zGTRQ/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=iwocSYupdIQ",
+          "title": "LoRaWAN satellite connectivity by Thomas Telkamp, Lacuna Space ...",
+          "description": "Learn more about LoRaWAN on our website: https://www.thethingsnetwork.org/Start with The Things Network: https://www.thethingsnetwork.org/Scale with The Thin",
+          "age": "February 12, 2020",
+          "page_age": "2020-02-12T14:11:13",
+          "fetched_content_timestamp": 1753789171,
+          "video": {
+            "duration": "03:13",
+            "creator": "The Things Industries",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/otvrNHlSnFp9EZCqZun8BAGJBaPIM_s_B9ju0FNoYH8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9p/d29jU1l1cGRJUS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/iwocSYupdIQ/maxresdefault.jpg"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "GitHub - Bammer187/Cansat: A real-time telemetry system for CanSat missions using LoRa, Python (Flask), and Vue.js. Collects, transmits, and visualizes environmental and motion sensor data via a responsive web dashboard. Includes simulation mode for development without hardware.",
+          "url": "https://github.com/Bammer187/Cansat",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This CanSat project integrates a real-time telemetry system using LoRa for long-range data transmission, Python for backend data processing and Vue.js for a responsive web dashboard. The system collects and visualizes environmental and positional data from the CanSat during flight, providing reliable communication and an intuitive interface for monitoring mission parameters. You are also able to test the GUI and Python Code without sensors.",
+          "profile": {
+            "name": "GitHub",
+            "url": "https://github.com/Bammer187/Cansat",
+            "long_name": "github.com",
+            "img": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "software",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "github.com",
+            "hostname": "github.com",
+            "favicon": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw",
+            "path": "› Bammer187  › Cansat"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/od6sNukWXAPc6IK4nXJX9w_YcvqlaIe-KtrfTkw6Jk8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9vcGVu/Z3JhcGguZ2l0aHVi/YXNzZXRzLmNvbS9l/NWQ5ZGE3OGY0OGM0/MTE0ZDQzNDQyM2Fi/YmQ1NGFkZDY4Nzdl/MzY5NDViMzhiZTY3/YjExYzIwNDAyNmE5/OThmL0JhbW1lcjE4/Ny9DYW5zYXQ",
+            "original": "https://opengraph.githubassets.com/e5d9da78f48c4114d434423abbd54add6877e36945b38be67b11c204026a998f/Bammer187/Cansat",
+            "logo": false
+          },
+          "software": {
+            "name": "Cansat",
+            "author": "Bammer187",
+            "is_npm": false,
+            "is_pypi": false,
+            "stars": 0,
+            "forks": 0,
+            "programmingLanguage": "Python 38.8% | TypeScript 23.1% | Vue 17.8% | C++ 13.8% | CSS 5.7% | HTML 0.8% | Python 38.8% | TypeScript 23.1% | Vue 17.8% | C++ 13.8% | CSS 5.7% | HTML 0.8%"
+          },
+          "extra_snippets": [
+            "This CanSat project integrates a real-time telemetry system using LoRa for long-range data transmission, Python for backend data processing and Vue.js for a responsive web dashboard. The system collects and visualizes environmental and positional data from the CanSat during flight, providing reliable communication and an intuitive interface for monitoring mission parameters. You are also able to test the GUI and Python Code without sensors.",
+            "The next steps will assume that you are starting in the Cansat/ directory. ... cd Groundstation\\ Raspberry/ # On Windows (PS): cd '.\\Groundstation Raspberry\\' python -m venv venv source venv/bin/activate # On Windows: venv\\Scripts\\activate pip install -r requirements.txt ... Copy the dist/ folder into Groundstation Raspberry/. ... Access the UI at http://localhost:5000. ... If you are using the same sensors as we are and they are running with the LoRa modules, you can start the entire communication in this way:",
+            "After each measurement cycle, the data is transmitted via LoRa modules. The ground module is connected to a Raspberry Pi through UART. The Pi reads the incoming values, stores them in a database, and forwards them to a server.",
+            "If you encounter errors, try running the script outside the virtual environment, as this has resolved similar issues in our tests."
+          ]
+        },
+        {
+          "title": "(PDF) CanSat: Design, Development, and Deployment of Open-Source Weather Monitoring Nano-Satellite",
+          "url": "https://www.researchgate.net/publication/385668609_CanSat_Design_Development_and_Deployment_of_Open-Source_Weather_Monitoring_Nano-Satellite",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Thorough testing validated the CanSat&#x27;s reliability ... GPS accuracy to ensure mission success. J. Educational Outreach ... Fig. 4. 4-Stack (Active) circuit · The CanSat mission provides crucial data on weather, ... III. HARDWARE FLOWCHART · The hardware flowchart illustrates the integration of all · components with the ESP32 microcontroller, ensuring · efficient communication with the ground station via · wireless LoRa technology.",
+          "page_age": "2024-10-22T00:00:00",
+          "profile": {
+            "name": "ResearchGate",
+            "url": "https://www.researchgate.net/publication/385668609_CanSat_Design_Development_and_Deployment_of_Open-Source_Weather_Monitoring_Nano-Satellite",
+            "long_name": "researchgate.net",
+            "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "researchgate.net",
+            "hostname": "www.researchgate.net",
+            "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+            "path": "› publication  › 385668609_CanSat_Design_Development_and_Deployment_of_Open-Source_Weather_Monitoring_Nano-Satellite"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/as5lBuJ-XqgRRJCeG5-x2zzH3XK8hWjA0WyUaabx7z8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/cHVibGljYXRpb24v/Mzg1NjY4NjA5X0Nh/blNhdF9EZXNpZ25f/RGV2ZWxvcG1lbnRf/YW5kX0RlcGxveW1l/bnRfb2ZfT3Blbi1T/b3VyY2VfV2VhdGhl/cl9Nb25pdG9yaW5n/X05hbm8tU2F0ZWxs/aXRlL2xpbmtzLzY3/MmY2ZTdlZWNiYmRl/NzE2YjY0MmM0Ny9s/YXJnZXByZXZpZXcu/cG5n",
+            "original": "https://i1.rgstatic.net/publication/385668609_CanSat_Design_Development_and_Deployment_of_Open-Source_Weather_Monitoring_Nano-Satellite/links/672f6e7eecbbde716b642c47/largepreview.png",
+            "logo": false
+          },
+          "age": "October 22, 2024",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Talha Alam",
+                "url": "https://www.researchgate.net/profile/Talha-Alam-3",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/VB3lkYK3j3eWI3PKQ8Xwylxu1WCsPW6OjVBHeBSnEeg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS8xMTQzMTI4/MTIxNzY2MDYyMS0x/NzA1MzcxODg3NTE2/X1E2NC9UYWxoYS1B/bGFtLTMuanBn",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/11431281217660621-1705371887516_Q64/Talha-Alam-3.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Mazhar Javed",
+                "url": "https://www.researchgate.net/scientific-contributions/Mazhar-Javed-2297060685",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/dMtHr8-Qesx_n1eD_yC484AdHx5Mu-SKRnED6CeBoes/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jNS5y/Z3N0YXRpYy5uZXQv/bS80MzU5ODIzMDk0/ODEwMTAvaW1hZ2Vz/L3RlbXBsYXRlL2Rl/ZmF1bHQvYXV0aG9y/L2F1dGhvcl9kZWZh/dWx0X20uanBn",
+                  "original": "https://c5.rgstatic.net/m/435982309481010/images/template/default/author/author_default_m.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Abdur Rahman Qureshi",
+                "url": "https://www.researchgate.net/scientific-contributions/Abdur-Rahman-Qureshi-2297088460",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/dMtHr8-Qesx_n1eD_yC484AdHx5Mu-SKRnED6CeBoes/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jNS5y/Z3N0YXRpYy5uZXQv/bS80MzU5ODIzMDk0/ODEwMTAvaW1hZ2Vz/L3RlbXBsYXRlL2Rl/ZmF1bHQvYXV0aG9y/L2F1dGhvcl9kZWZh/dWx0X20uanBn",
+                  "original": "https://c5.rgstatic.net/m/435982309481010/images/template/default/author/author_default_m.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Abdullah All Mamun Anik",
+                "url": "https://www.researchgate.net/profile/Abdullah-Anik",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/NWzQGGri14RLgMLWIb5JsSZw7bd_c479OUuRxaN31Qg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS8xMTQzMTI4/MTI5MDc1MjM1NC0x/NzMxNzM5NDcyMTgz/X1E2NC9BYmR1bGxh/aC1BbmlrLmpwZw",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/11431281290752354-1731739472183_Q64/Abdullah-Anik.jpg"
+                }
+              }
+            ],
+            "date": "Oct 22, 2024",
+            "publisher": {
+              "type": "organization",
+              "name": "unknown",
+              "url": "https://www.researchgate.net/unknown",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/UjSGsXBrrrqKndxfeOp5EGUdM15aJCsZ_BUDIJcDQhs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC91bmtub3du",
+                "original": "https://www.researchgate.net/unknown"
+              }
+            }
+          },
+          "extra_snippets": [
+            "GROUND STATION The ground station for the CanSat features a TTGO LoRa32 operating at 433MHz, ensuring reliable communication with the CanSat shown in Fig. 10. Utilizing license-free RF bands, LoRa technology facilitates efficient data transmission. Telemetry data is processed and displayed in real-time on a custom webpage, providing instant access to key environmental parameters like temperature, pressure, humidity, altitude, and more.",
+            "Thorough testing validated the CanSat's reliability ... GPS accuracy to ensure mission success. J. Educational Outreach ... Fig. 4. 4-Stack (Active) circuit · The CanSat mission provides crucial data on weather, ... III. HARDWARE FLOWCHART · The hardware flowchart illustrates the integration of all · components with the ESP32 microcontroller, ensuring · efficient communication with the ground station via · wireless LoRa technology.",
+            "PDF | On Oct 22, 2024, Talha Alam and others published CanSat: Design, Development, and Deployment of Open-Source Weather Monitoring Nano-Satellite | Find, read and cite all the research you need on ResearchGate",
+            "The communication architecture of CanSat with ground ... Fig. 9. Communication Pattern · IX. GROUND STATION ... Fig. 10. Ground Station (TTGO LoRa32)"
+          ]
+        },
+        {
+          "title": "Design of CANSAT for Air Quality Monitoring at an Altitude of 900m",
+          "url": "https://arxiv.org/html/2409.03727v1",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Following this, the telemetry data from the CANSAT was collected at the Ground Station with the help of Xbee communication module. Simultaneously,The results of the experiment were observed at the GUI Dashboard. The descent of CANSAT was timed to be approximately 25 minutes.",
+          "page_age": "2024-09-05T17:32:01",
+          "profile": {
+            "name": "arXiv",
+            "url": "https://arxiv.org/html/2409.03727v1",
+            "long_name": "arxiv.org",
+            "img": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "arxiv.org",
+            "hostname": "arxiv.org",
+            "favicon": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv",
+            "path": "› html  › 2409.03727v1"
+          },
+          "age": "September 5, 2024",
+          "extra_snippets": [
+            "The telemetry data from the CANSAT was collected at the Ground Station with the help of LoRa communication module.[10]The goal of the CANSAT project is to create a nanosatellite for the purpose of gathering telemetry data on air pollutants in Veracruz-Boca del Rio, specifically carbon monoxide, methane, benzene, and butane.",
+            "Following this, the telemetry data from the CANSAT was collected at the Ground Station with the help of Xbee communication module. Simultaneously,The results of the experiment were observed at the GUI Dashboard. The descent of CANSAT was timed to be approximately 25 minutes. The Snapshot of experiments at Ahmedabad,Gujarat.The Table 4 shows the results after the experiments. ... Thus a Novel CANSAT was designed for 727gms tested and operated at an altitude of 900 m from the ground level and intended actions such as power on of the Satellite after deployment from the satellite, Antenna Deployment, Sensor information of Air quality Monitoring and Temperature with latitude and longitude of a decent path were tested, deployed and verified.",
+            "The ground station is equipped with an RF receiving antenna and a computer interface for real-time data processing and storage. [11]The paper outlines the design and development of a CANSAT for environmental monitoring and scientific exploration, focusing on sensors, telemetry, and descent systems.",
+            "The telemetry data is also transmitted in real-time to the ground station using the MQTT protocol. An unique aerodynamic rotor mechanism with a 3 axis mechanical gyroscopic system is placed in the CANSAT to control the stabilisation of the satellite. A two-stage parachute system used for safe descent."
+          ]
+        },
+        {
+          "title": "Telemetry system - The CanSat book",
+          "url": "https://learn.andoyaspace.no/docs/cansat/teensy/telemetry_system/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This signal is received by the ground station and sent to a laptop, where it is stored before being processed as experimental data. Students follow their descending CanSat while they receive radio signals from their CanSat via an antenna. Photo: Andøya Space · The RFM96 is a radio for 433 MHz ISM band, which is free to use and perfect for CanSat use. The radio uses a proprietary protocol called LoRa (short for long range), patented by Semtech, that is perfect for low data rate, but long range and relatively low transmission power (+20 dBm, 100 mW maximum).",
+          "profile": {
+            "name": "Andoyaspace",
+            "url": "https://learn.andoyaspace.no/docs/cansat/teensy/telemetry_system/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› docs  › cansat  › teensy  › telemetry_system"
+          },
+          "extra_snippets": [
+            "This signal is received by the ground station and sent to a laptop, where it is stored before being processed as experimental data. Students follow their descending CanSat while they receive radio signals from their CanSat via an antenna. Photo: Andøya Space · The RFM96 is a radio for 433 MHz ISM band, which is free to use and perfect for CanSat use. The radio uses a proprietary protocol called LoRa (short for long range), patented by Semtech, that is perfect for low data rate, but long range and relatively low transmission power (+20 dBm, 100 mW maximum).",
+            "This information is called the “mission data” or “scientific data”. In your CanSat this would be the information from the sensor board. This data is sent to a ground station to be studied by scientists. CanSat telemetry operations can be broken down into three distinct components: transmitting data, receiving data, and processing data.",
+            "When working as a ground station, the Teensy 4.1 will be connected and powered via an USB cable to your pc, and needs no voltage regulator or other components on the board, except the radio and sma connector. The CanSat shield board is now ready to be tested.",
+            "Andøya Space has used this radio in other activities than CanSats also, and actually we routinely use this radio in weather balloons which go up to 25 km altitude with a total distance between the ground station and the transmitter of 230 km!"
+          ]
+        },
+        {
+          "title": "Cansat Competition Guide 2025 Auto Gyro Descender Rev 1.0e Jan 12, 2025 1",
+          "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025e.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The sensor telemetry shall be transmitted at a 1 Hz rate. ... A second video camera shall point in the north direction during descent. ... Cost of the Cansat shall be under $1000. Ground support and analysis",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025e.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+            "path": "› docs  › CanSat_Mission_Guide_2025e.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Cansat must be completed, built and ready to launch at the flight readiness review. A ball of · wires and boards does not constitute flight ready. To emphasize, when presented at the Flight · Readiness Review (FRR), it must be in a state where it can be turned on and placed into a · rocket for immediate launch and be fully operational. Flight Readiness Review will be ... Teams must be prepared to demonstrate the ground station. The first test at the FRR will be the drop test.",
+            "The second test will verify communications with the Cansat and demonstrate the ground · station software. The ground station software operations will be scored at this time.",
+            "The sensor telemetry shall be transmitted at a 1 Hz rate. ... A second video camera shall point in the north direction during descent. ... Cost of the Cansat shall be under $1000. Ground support and analysis",
+            "The purpose of Simulation Mode is to provide a mechanism for testing the Cansat as well as · for demonstrating the Cansat over the full mission profile in the event an actual launch cannot ... The Cansat telemetry operates the same in FLIGHT and SIMULATION mode."
+          ]
+        },
+        {
+          "title": "CanSat Competition Guide 2023 Planetary Probe Lander Mission Rev 1.0c",
+          "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2023c.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry is being received. ... Release the CanSat. ... Verify the CanSat did not lose power. ... Inspect for any damage, or detached parts. ... Verify telemetry is still being received. 2. Thermal Test - This test is to verify the CanSat and container can operate in a hot",
+          "page_age": "2022-09-21T00:00:00",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2023c.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "www.cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+            "path": "› docs  › CanSat_Mission_Guide_2023c.pdf"
+          },
+          "age": "September 21, 2022",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry is being received. ... Release the CanSat. ... Verify the CanSat did not lose power. ... Inspect for any damage, or detached parts. ... Verify telemetry is still being received. 2. Thermal Test - This test is to verify the CanSat and container can operate in a hot",
+            "Teams must be prepared to demonstrate the ground station. The first test at the FRR will be the drop test. The CanSat must be in flight configuration and",
+            "The second test will verify communications with the CanSat and demonstrate the ground · station software. The ground station software operations will be scored at this time.",
+            "Cost of the CanSat shall be under $1000. Ground support and analysis · tools are not included in the cost. Equipment from previous years shall be · included in this cost, based on current market value. ... XBEE radios shall be used for telemetry."
+          ]
+        },
+        {
+          "title": "Building Your Own CanSat: A DIY Guide to Miniature Space Exploration – Frank's World of Data Science & AI",
+          "url": "https://www.franksworld.com/2026/05/27/building-your-own-cansat-a-diy-guide-to-miniature-space-exploration/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "One of the significant hurdles was ensuring our miniature satellite could communicate effectively with a ground station over considerable distances. The answer was found in the REYAX LoRa module, renowned for its ability to send data over kilometers using minimal power — perfect for our needs. Before finalizing the design, extensive testing on a breadboard was necessary to confirm all components worked seamlessly. Once satisfied, I transitioned the circuit to a zero PCB, soldering everything securely for permanence. Powering the CanSat independently, I added a 18650 battery in its holder, eliminating the need for USB dependency.",
+          "page_age": "2026-05-28T02:12:06",
+          "profile": {
+            "name": "Frank's World",
+            "url": "https://www.franksworld.com/2026/05/27/building-your-own-cansat-a-diy-guide-to-miniature-space-exploration/",
+            "long_name": "franksworld.com",
+            "img": "https://imgs.search.brave.com/A1MiGPLZ95ioCs5YZUwxjxKlXFgZ3sUlU4XDaweQPpI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWFhNzI2NDI4/YWJiOWJmNDBmNDhk/ZTgwYjg4MzQ3NWFm/ZmE1NjBkOWQxZDc1/MDZkMDMzNWVmOTUy/NjFlNjI1ZC93d3cu/ZnJhbmtzd29ybGQu/Y29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "franksworld.com",
+            "hostname": "www.franksworld.com",
+            "favicon": "https://imgs.search.brave.com/A1MiGPLZ95ioCs5YZUwxjxKlXFgZ3sUlU4XDaweQPpI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWFhNzI2NDI4/YWJiOWJmNDBmNDhk/ZTgwYjg4MzQ3NWFm/ZmE1NjBkOWQxZDc1/MDZkMDMzNWVmOTUy/NjFlNjI1ZC93d3cu/ZnJhbmtzd29ybGQu/Y29tLw",
+            "path": "› 2026  › 05  › 27  › building-your-own-cansat-a-diy-guide-to-miniature-space-exploration"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/fb30iGDLA_WNstqaPfxIjyN-my8ULQtYQDDJimhZj0Q/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vd3d3LmZy/YW5rc3dvcmxkLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/Ni8wNS9idWlsZGlu/Zy15b3VyLW93bi1j/YW5zYXQtYS1kaXkt/Z3VpZGUtdG8tbWlu/aWF0dXJlLmpwZz9m/aXQ9NDgwJTJDMzYw/JiMwMzg7c3NsPTE",
+            "original": "https://i0.wp.com/www.franksworld.com/wp-content/uploads/2026/05/building-your-own-cansat-a-diy-guide-to-miniature.jpg?fit=480%2C360&#038;ssl=1",
+            "logo": false
+          },
+          "age": "2 weeks ago",
+          "extra_snippets": [
+            "One of the significant hurdles was ensuring our miniature satellite could communicate effectively with a ground station over considerable distances. The answer was found in the REYAX LoRa module, renowned for its ability to send data over kilometers using minimal power — perfect for our needs. Before finalizing the design, extensive testing on a breadboard was necessary to confirm all components worked seamlessly. Once satisfied, I transitioned the circuit to a zero PCB, soldering everything securely for permanence. Powering the CanSat independently, I added a 18650 battery in its holder, eliminating the need for USB dependency.",
+            "Have you ever wondered how you could bring your curiosity for space exploration down to Earth? Welcome to the world of CanSat, a remarkable project where technology enthusiasts and students dive in…",
+            "The most exhilarating moment was testing the CanSat’s communication and descent capabilities. During a ground range test, the satellite continued transmitting data seamlessly, affirming its robust communication link. Finally, testing the parachute from a height stimulated the same thrilling experience akin to a real satellite deployment.",
+            "Designed to fit within a regular soft drink can, a CanSat allows you to create a fully functional satellite capable of collecting real-time atmospheric data such as temperature, pressure, and humidity. What’s more? It safely descends back to the ground using a parachute."
+          ]
+        },
+        {
+          "title": "CanSat Kit and TSL Mini Ground Station – Twiggs Space Lab",
+          "url": "https://twiggs-space-lab.myshopify.com/products/cansat-kit",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Students solder all of the components on each board. The CSK includes: all the boards, parts, and electronic components required to build a CanSat; a detailed User’s Manual for assembly, testing and operations; and software libraries.",
+          "profile": {
+            "name": "Myshopify",
+            "url": "https://twiggs-space-lab.myshopify.com/products/cansat-kit",
+            "long_name": "twiggs-space-lab.myshopify.com",
+            "img": "https://imgs.search.brave.com/XuaZ6IXufKKeKVnc2XyMJnVOxre5fnJiokTW6bM8uHI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTNkNjNhNTRj/ZTU0ZTQ1N2JkMTE4/NWQ0NTBlNjBiMjBj/NGYyNjJjMDkyYTlj/NDY3YmM0NjViZWMz/ZTcwODE0OS90d2ln/Z3Mtc3BhY2UtbGFi/Lm15c2hvcGlmeS5j/b20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "twiggs-space-lab.myshopify.com",
+            "hostname": "twiggs-space-lab.myshopify.com",
+            "favicon": "https://imgs.search.brave.com/XuaZ6IXufKKeKVnc2XyMJnVOxre5fnJiokTW6bM8uHI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTNkNjNhNTRj/ZTU0ZTQ1N2JkMTE4/NWQ0NTBlNjBiMjBj/NGYyNjJjMDkyYTlj/NDY3YmM0NjViZWMz/ZTcwODE0OS90d2ln/Z3Mtc3BhY2UtbGFi/Lm15c2hvcGlmeS5j/b20v",
+            "path": "› products  › cansat-kit"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/wpmkG4J5EXPtLEp0OwCL9epyaIX1WhhF6ctXlEBEkoc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly90d2ln/Z3Mtc3BhY2UtbGFi/Lm15c2hvcGlmeS5j/b20vY2RuL3Nob3Av/cHJvZHVjdHMvQ2Fu/U2F0S2l0UHJvZHVj/dEltYWdlX21lZGl1/bS5wbmc_dj0xNjYz/MDAwMDIy",
+            "original": "https://twiggs-space-lab.myshopify.com/cdn/shop/products/CanSatKitProductImage_medium.png?v=1663000022",
+            "logo": false
+          },
+          "extra_snippets": [
+            "The CanSat Kit (“CSK”) is an exciting and challenging project-based educational engineering system for students to acquire hands-on training in the life cycle development of a basic satellite project at an affordable price. Critical skills learned, include mission planning and design, building and testing satellite subsystems, systems engineering, project management, remote sensing and data analytics, and many other competences required for the development and management of new technologies.",
+            "Students solder all of the components on each board. The CSK includes: all the boards, parts, and electronic components required to build a CanSat; a detailed User’s Manual for assembly, testing and operations; and software libraries.",
+            "Description of TSL Mini Ground Station: The TSL Mini Ground Station (\"TSL MiniGS\") is a basic ground station designed to support communications with HC-05 Bluetooth (included), LoRa RF98 and LoRa E5 modules and includes its own microcontroller."
+          ]
+        },
+        {
+          "title": "CanSat - A Simulation of A Real Satellite - Sponsor - PCBWay",
+          "url": "https://www.pcbway.com/project/sponsor/CanSat___A_Simulation_of_A_Real_Satellite.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "We decided on the following: · ... (also helpful for targeted landing) – FONA 808 · All the data will be transmitted using a LoRa (Long Range) RFM95W Transceiver....",
+          "page_age": "2017-04-26T00:00:00",
+          "profile": {
+            "name": "PCBWay",
+            "url": "https://www.pcbway.com/project/sponsor/CanSat___A_Simulation_of_A_Real_Satellite.html",
+            "long_name": "pcbway.com",
+            "img": "https://imgs.search.brave.com/r8tRNqpF4su-Kno-zb6xHTYRrUQ80c_4l8uIjPGYzjo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTYxYzUyOTc5/ZTM0MGM3YzliMjcy/MjY3NzdmNjE3MTkw/ZDU5ZmZlZWFlZWUx/NDlkMWQ4NGQ0Y2Jl/MmEwNTMzZS93d3cu/cGNid2F5LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "pcbway.com",
+            "hostname": "www.pcbway.com",
+            "favicon": "https://imgs.search.brave.com/r8tRNqpF4su-Kno-zb6xHTYRrUQ80c_4l8uIjPGYzjo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTYxYzUyOTc5/ZTM0MGM3YzliMjcy/MjY3NzdmNjE3MTkw/ZDU5ZmZlZWFlZWUx/NDlkMWQ4NGQ0Y2Jl/MmEwNTMzZS93d3cu/cGNid2F5LmNvbS8",
+            "path": "› project  › sponsor  › CanSat___A_Simulation_of_A_Real_Satellite.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/8JYB3Va5Ni9AMQDs3rEqhve_5yF8eFsHOVYzQRpJlMk/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9maWxl/LnBjYndheS5jb20v/d2Vic3BvbnNvci8x/Ny8wNC8yNi8xMTM0/MjgwNTEucG5n",
+            "original": "https://file.pcbway.com/websponsor/17/04/26/113428051.png",
+            "logo": false
+          },
+          "age": "April 26, 2017",
+          "extra_snippets": [
+            "They are responsible for all aspects: those sensors and sending it to the base station, situated on the ground. My team must build a CanSat and program it to accomplish a primary compulsory mission and a secondary one. The primary mission consists of measuring the following parameters and transmitting the following data as telemetry to the ground station at least one every second:",
+            "The secondary mission of the CanSat must be selected by the team. We decided on the following: · Targeted landing using a parafoil – using Servo Motors for steering · · Measure photosynthetic activity with a special camera filter – PTC06 Serial Camera + Infragram Filter · · Gather GPS data (also helpful for targeted landing) – FONA 808 · All the data will be transmitted using a LoRa (Long Range) RFM95W Transceiver.",
+            "The CanSat is then launched by a rocket to an altitude of about one kilometer, or dropped from a platform or captive balloon. Then its mission begins."
+          ]
+        },
+        {
+          "title": "Cansat Competition Guide 2024 Planetary Probe Instrument Delivery Mission",
+          "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024c.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The second test will verify communications with the Cansat and demonstrate the ground · station software. The ground station software operations will be scored at this time.",
+          "page_age": "2023-09-01T00:00:00",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024c.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "www.cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+            "path": "› docs  › CanSat_Mission_Guide_2024c.pdf"
+          },
+          "age": "September 1, 2023",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Cansat must be completed, built and ready to launch at the flight readiness review. A ball of · wires and boards does not constitute flight ready. To emphasize, when presented at the Flight · Readiness Review (FRR), it must be in a state where it can be turned on and placed into a · rocket for immediate launch and be fully operational. Flight Readiness Review will be ... Teams must be prepared to demonstrate the ground station. The first test at the FRR will be the drop test.",
+            "The second test will verify communications with the Cansat and demonstrate the ground · station software. The ground station software operations will be scored at this time.",
+            "Verify the Cansat did not lose power. ... Inspect for any damage, or detached parts. ... Verify telemetry is still being received. 2. Thermal Test - This test is to verify the Cansat can operate in a hot environment.",
+            "Power down Cansat. 4. Vacuum Test - This test is designed to verify deployment operation of the payload(s). A · vacuum chamber can be simply constructed using a bucket or pail of 5 gallons or 18+ litres. A lid can be used or a ¼ inch or 6 mm thick sheet of polycarbonate can be · placed on top of the bucket. Do not use acrylic as that can shatter. A vacuum cleaner ... Turn on the vacuum to start pulling a vacuum. ... Make the saved telemetry available for the judges to review."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

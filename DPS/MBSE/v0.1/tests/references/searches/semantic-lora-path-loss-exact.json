@@ -1,0 +1,213 @@
+{
+  "query": "\"Characterization of LoRa Point-to-Point Path Loss\"",
+  "total": 8,
+  "pages_retrieved": 1,
+  "results": [
+    {
+      "paperId": "d1294e6c7e513c489f13568ffeb05814eb5cf180",
+      "doi": "10.1109/JIOT.2019.2953804",
+      "title": "Characterization of LoRa Point-to-Point Path Loss: Measurement Campaigns and Modeling Considering Censored Data",
+      "authors": [
+        {
+          "name": "Gilles Callebaut"
+        },
+        {
+          "name": "L. Van der Perre"
+        }
+      ],
+      "year": 2020,
+      "abstract": "Low-power wide-area technologies have demonstrated their usefulness in a wide variety of Internet of Things applications. New applications are emerging, requiring a mesh or point-to-point (P2P) topology, in contrast to the conventional star-of-stars topology. In this article, we evaluate the coverage and model the path loss (PL) of these links, based on experimental campaigns in three environments: 1) urban; 2) forest; and 3) coastal. More obstructions, scattering, and diffraction are encountered because the terminals are typically at a low height. This results in a higher PL compared to the star-of-stars topology. Consequently, more packets drop below the receiver sensitivity. Realistic PL parameters are estimated by also taking the censored data into account. The packet error ratio is determined based on the estimated PL parameters to evaluate the performance of P2P links. Even in these adverse environments, 80% of the transmitted packets are successfully received at a distance of approximately 200 m. Moreover, a range of over 4 km is observed in the line-of-sight scenario. Despite the unfavorable radio propagation in the urban scenario and the densely forested terrain, a maximum range of 1 km is achieved.",
+      "citationCount": 89,
+      "openAccess_pdf": {
+        "url": "https://lirias.kuleuven.be/bitstream/123456789/643406/2/main.pdf"
+      }
+    },
+    {
+      "paperId": "42234f8ac685edfa99653aa166b15c44e3c1d2d3",
+      "doi": "10.1016/J.MSEB.2008.02.004",
+      "title": "Chemical characterization of melt-textured YBCO produced by hybrid powder metallurgy",
+      "authors": [
+        {
+          "name": "Po-Cheng To"
+        },
+        {
+          "name": "J. Meen"
+        }
+      ],
+      "year": 2008,
+      "abstract": null,
+      "citationCount": 3,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "407c85b17fe41d3f6bf981ddf2523a07e08c1a54",
+      "doi": "",
+      "title": "Performance Evaluation of Class A LoRa Communications",
+      "authors": [
+        {
+          "name": "J. Pacheco"
+        }
+      ],
+      "year": 2019,
+      "abstract": null,
+      "citationCount": 1,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "66399c1f72720e1ab27a97c01f74884e954826a8",
+      "doi": "",
+      "title": "Wireless Channel Characterization: Modeling the 5 GHz Microwave Landing System Extension Band for Future Airport Surface Communications",
+      "authors": [
+        {
+          "name": "D. Matolak"
+        },
+        {
+          "name": "R. Apaza"
+        },
+        {
+          "name": "L. Foore"
+        }
+      ],
+      "year": 2006,
+      "abstract": null,
+      "citationCount": 4,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "8a57453faf3d1c3658d286e29ea32867cb829c57",
+      "doi": "10.23919/EMC.2006.10813079",
+      "title": "Measurement Method to Describe the Attenuation Characteristics of the Mains Network",
+      "authors": [
+        {
+          "name": "S. Battermann"
+        },
+        {
+          "name": "H. Garbe"
+        },
+        {
+          "name": "L. Dunker"
+        }
+      ],
+      "year": 2006,
+      "abstract": "The discussion of limits for broadband telecommunication services is still going on with high intensity. For the rational derivation of limits with regard to CISPR 16-4-4 [1] the disturbance probability of the different services has to be described statistically. The most important point is the analysis of the coupling path to determine the attenuation characteristics of the mains network. This quantity has to be known to calculate the permitted feeding power of the disturbance source to obtain a specified signal-/noise ratio at the receiver. Former powerline communication (PLC) studies [2] showed, that the longitudinal (LCL) and transverse conversion loss (TCL) are insufficient for the characterization of the mains network. For this reason a suitable measurement technique will be used to reproduce the real coupling and to describe the mains characteristics. Furthermore this paper examines if the assumption of CISPR 16-4-4 is valid, that the line-guided disturbance is always larger than the field guided disturbance below 30 MHz.",
+      "citationCount": 3,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "a975cd29d361eeb36f67c49f6bb241bfab3924dc",
+      "doi": "",
+      "title": "Managing Waste Inventory and License Limits at the Perma-Fix Northwest Facility to Meet CH2M HILL Plateau Remediation Company (CHPRC) American Recovery and Reinvestment Act (ARRA) Deliverables – 12335",
+      "authors": [
+        {
+          "name": "D. J. Moak"
+        },
+        {
+          "name": "G. C. Triner"
+        },
+        {
+          "name": "Lori D. West"
+        },
+        {
+          "name": "R. Grondin"
+        }
+      ],
+      "year": 2012,
+      "abstract": null,
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "a33bfcb38958de82c87a9a8137182e055ac4c9a8",
+      "doi": "10.1158/1078-0432.CCR-16-0323",
+      "title": "Subtypes of HPV-positive head and neck cancers are associated with HPV characteristics, copy number alterations, PIK3CA mutation, and pathway signatures",
+      "authors": [
+        {
+          "name": "Yanxiao Zhang"
+        },
+        {
+          "name": "L. Koneva"
+        },
+        {
+          "name": "Shama Virani"
+        },
+        {
+          "name": "A. Arthur"
+        },
+        {
+          "name": "A. Virani"
+        },
+        {
+          "name": "Pelle Hall"
+        },
+        {
+          "name": "C. Warden"
+        },
+        {
+          "name": "T. Carey"
+        },
+        {
+          "name": "D. Chepeha"
+        },
+        {
+          "name": "M. Prince"
+        },
+        {
+          "name": "J. Mchugh"
+        },
+        {
+          "name": "G. Wolf"
+        },
+        {
+          "name": "L. Rozek"
+        },
+        {
+          "name": "M. Sartor"
+        }
+      ],
+      "year": 2016,
+      "abstract": "Purpose: There is substantial heterogeneity within human papillomavirus (HPV)-associated head and neck cancer (HNC) tumors that predispose them to different outcomes; however, the molecular heterogeneity in this subgroup is poorly characterized due to various historical reasons. Experimental Design: We performed unsupervised gene expression clustering on deeply annotated (transcriptome and genome) HPV+ HNC samples from two cohorts (84 total primary tumors), including 18 HPV− HNC samples, to discover subtypes and characterize the differences between subgroups in terms of their HPV characteristics, pathway activity, whole-genome somatic copy number alterations, and mutation frequencies. Results: We identified two distinct HPV+ subtypes (namely HPV-KRT and HPV-IMU). HPV-KRT is characterized by elevated expression of genes in keratinocyte differentiation and oxidation–reduction process, whereas HPV-IMU has strong immune response and mesenchymal differentiation. The differences in expression are likely connected to the differences in HPV characteristics and genomic changes. HPV-KRT has more genic viral integration, lower E2/E4/E5 expression levels, and higher ratio of spliced to full-length HPV oncogene E6 than HPV-IMU; the subgroups also show differences in copy number alterations and mutations, in particular the loss of chr16q in HPV-IMU and gain of chr3q and PIK3CA mutation in HPV-KRT. Conclusions: Our characterization of two subtypes of HPV+ HNC tumors provides valuable molecular level information that point to two main carcinogenic paths. Together, these results shed light on stratifications of the HPV+ HNCs and will help to guide personalized care for HPV+ HNC patients. Clin Cancer Res; 22(18); 4735–45. ©2016 AACR.",
+      "citationCount": 135,
+      "openAccess_pdf": {
+        "url": "https://clincancerres.aacrjournals.org/content/clincanres/22/18/4735.full.pdf"
+      }
+    },
+    {
+      "paperId": "e6cdf8c357a35f3b6de0c5a9753d49e2987448b8",
+      "doi": "",
+      "title": "Using Geographical Information Systems to Predict Coverage in Broadband Wireless Systems",
+      "authors": [
+        {
+          "name": "C. Bostian"
+        },
+        {
+          "name": "L. W. Carstensen"
+        },
+        {
+          "name": "D. Sweeney"
+        },
+        {
+          "name": "Virginia Tech"
+        }
+      ],
+      "year": 2002,
+      "abstract": null,
+      "citationCount": 2,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    }
+  ],
+  "output_metadata": {
+    "extracted_at": "2026-06-11T14:33:57.017503"
+  }
+}

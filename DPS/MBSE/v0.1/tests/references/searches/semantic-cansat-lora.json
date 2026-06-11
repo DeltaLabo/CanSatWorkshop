@@ -1,0 +1,284 @@
+{
+  "query": "\"CanSat\" \"LoRa\" telemetry ground station",
+  "total": 58,
+  "pages_retrieved": 1,
+  "results": [
+    {
+      "paperId": "224afe1e04ff6a592437b161be1d3bde4a6ac805",
+      "doi": "10.1109/SCEECS64059.2025.10940725",
+      "title": "Design of Ground Station Antennas for Tracking of LoRa based Satellites at 433MHz Amateur Frequencies",
+      "authors": [
+        {
+          "name": "V. K."
+        },
+        {
+          "name": "K Giridhar Reddy"
+        },
+        {
+          "name": "V. Datta"
+        },
+        {
+          "name": "Narasimhulu C V"
+        },
+        {
+          "name": "K. K."
+        },
+        {
+          "name": "S. K."
+        }
+      ],
+      "year": 2025,
+      "abstract": "A Real Time ¼ Ground Plane antenna operating at 433MHz for tracking of LoRa based satellites is proposed. The Work Intends to develop different antennas for the proposed ground station. The developed antennas were designed, simulated to compare and contrast various features of antenna design. The simulated antennas were physically realized and connected to a ground station made of ESP module and LoRa module which are interconnected using Internet of Things to the internet to the online interfaces like VayuVani and TinyGS Ground Stations where satellite passes and tracking of Satellite telemetry packets are managed. It was found that the ¼ GP antenna was better in receiving packets from the LoRa based satellites. It was evident from real time tracking that the proposed ¼ Ground plane antenna could receive telemetries from slant range of around 3101.0 Km with more than 4000 Telemetry packets over a period of time.",
+      "citationCount": 1,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "8a104d762931aac44a5bc314f13e36d80b4d277e",
+      "doi": "10.1109/TLA.2023.10305241",
+      "title": "An IoT Ground Station: Mechanics, Control, Antenna, and Reception from a LoRa Satellite Network",
+      "authors": [
+        {
+          "name": "Juvenal Villanueva Maldonado"
+        },
+        {
+          "name": "José Luis Alvarez Flores"
+        },
+        {
+          "name": "Marco Cárdenas Juárez"
+        },
+        {
+          "name": "Jorge Flores Troncoso"
+        },
+        {
+          "name": "Jorge Simón Rodríguez"
+        }
+      ],
+      "year": 2023,
+      "abstract": "In this article, the design and the integral implementation of a satellite ground station connected to the Internet of Things is presented. The communication system is based on long-range wireless technology, with the objective of receiving telemetry packets from a network of low-arth orbit satellites that transmit at frequencies around 433 MHz. The design covers mechanical design aspects, the control system, the antenna system, and the receiver. The ground station is oriented with respect to the elevation and azimuth coordinates obtained from a web page. This web page contains a console that shows the telemetry packets that have been received, as well as the satellite from which they came. The ground station is a low-cost proposal since commercial ground stations could be purchased at prices much higher than 2 orders of magnitude. All these aspects implied in this easy-to-replicate ground station are especially relevant in educational terms and for amateur radio enthusiasts.",
+      "citationCount": 3,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "387bcb88091378c72317528ddd7f9fead907b436",
+      "doi": "10.1109/LA-CCI66231.2025.11270177",
+      "title": "A New Low-Power IoT Telemetry Platform for Stratospheric Balloons Using LoRa and Cloud Integration",
+      "authors": [
+        {
+          "name": "Rodrigo Andres Murillo Murillo"
+        },
+        {
+          "name": "Eynar Calle Viles"
+        },
+        {
+          "name": "Edgar Roberto Ramos Silvestre"
+        },
+        {
+          "name": "Elias Brayan Choque Maydana"
+        }
+      ],
+      "year": 2025,
+      "abstract": "This article presents the design and implementation of a low-power, long-range telemetry platform for stratospheric balloon applications, based on LoRa wireless communication and IoT protocols. The proposed system consists of three modular components: (1) a Space Station (payload) equipped with sensors (MPU6050 accelerometer/gyroscope, MPL3115A2 barometer, BMM150 magnetometer, and NEO-7M GPS) for real-time environmental and positional monitoring; (2) a Ground Station that receives data via LoRa and transmits it via MQTT to a cloud server; and (3) an Oracle VPS server for data processing, MySQL database storage, and interactive visualization through web-based dashboards. The shield-type modular architecture ensures system scalability and adaptability.Field tests validated the system’s robustness in controlled environments, achieving stable inter-station communication and efficient energy consumption with a 14,000 mAh battery. Sensor integration and data integrity were verified through synchronized measurements, while the cloud dashboard enabled real-time visualization and historical analysis of atmospheric parameters. Key limitations include reliance on terrestrial internet connectivity and pending validation in actual flight conditions. Results demonstrate the platform’s effectiveness for atmospheric research, providing low-latency telemetry with minimal energy consumption.This work highlights the potential synergy between LoRa and MQTT in aerospace IoT applications, offering a scalable and cost-effective framework for academic and industrial use. Future efforts will focus on antenna optimization, flight simulations, and edge computing enhancements to reduce internet dependency.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "0e39c38727fdc0c604b099a7288a867884d3e2d9",
+      "doi": "10.21272/JES.2020.7(2).E3",
+      "title": "Modeling of the Meteorological Balloon-Cube with LoRa-Based Ground Station",
+      "authors": [
+        {
+          "name": "V. Rastinasab"
+        },
+        {
+          "name": "H. Weidong"
+        }
+      ],
+      "year": 2020,
+      "abstract": "Every day 80,000 weather balloons are launched to the Earth’s upper atmosphere with meteorology payloads to provide accurate meteorological data. Meteorological data could be used for airport stations and weather stations. Meanwhile, there are many remote sensing satellites above the Earth’s atmosphere, but balloons are still essential due to increased weather prediction accuracy. Many balloons launch into the atmosphere daily, but it would be a one trip tripe because this balloon goes to the atmosphere then transmits the meteorological data to the ground segment, and that is all no one looks to recycle it, on the other hand, if the balloon could be recycled there would be many financial benefits. This project presents a high altitude meteorological balloon-Cube relative to measuring atmosphere humidity, temperature, air pressure, and a photography payload for surface imaging that ascended up to 20Km altitude Cube reach this altitude will eject box on the ground. The telemetry data are transmitted to the ground station through two communication applications, first using a LoRa based transceiver at which it receives a command from the LoRa ground station and the second one, and payload transmits the data by an SMS in 5min after it lands on the ground. Therefore, it could be recycled. This paper presents a Cube-Balloon fabrication and flight test information to acknowledge this Cube’s feasibility for real meteorological projects.",
+      "citationCount": 2,
+      "openAccess_pdf": {
+        "url": "http://jes.sumdu.edu.ua/wp-content/uploads/2021/03/jes_7_2_2020_E14-E18.pdf"
+      }
+    },
+    {
+      "paperId": "1282332b5513abcc6dd20fe6d1af0bb7cd55ba16",
+      "doi": "10.37869/ijatec.v1i2.24",
+      "title": "The Ground Control Station Design For Can-Sized Satellite (CanSAT) System",
+      "authors": [
+        {
+          "name": "N. A. Razak"
+        },
+        {
+          "name": "H. Majid"
+        },
+        {
+          "name": "Faiz Asraf Saparuddin"
+        },
+        {
+          "name": "M. A. Jalil"
+        },
+        {
+          "name": "Muhamad Jalil"
+        },
+        {
+          "name": "M. Mokhtar"
+        }
+      ],
+      "year": 2020,
+      "abstract": "Nowadays, Natural disaster tragedy is now one of the world's biggest concerns. Can-sized satellite, MedSAT: Location-Aware CanSAT for On-Site Emergency Medical Supplies develop a platform for finding direction and accurately locating an emergency patient and providing emergency medical supplies such as bandages, antiseptic wipes, sterile gauze pads of various sizes, insulin, pills, syringe and antivenom, as well as real-time visual feed for medical diagnosis during and after landing. This project focuses on the design of MedSAT and provides a real-time system to capture MedSAT’s real-time data during descent. The objective of the real-time system is to improve the accuracy and location speed of MedSAT data collection which can provide readings of altitude, latitude and longitude to help MedSAT navigate to the patient location. Hardware design (flight controller, GPS module and telemetry kit), software design (Mission Planner) and real-time system (RTS) are the main components of this platform. In addition, the ground station was developed to communicate with users via wireless telemetry communication using MAVLink protocol. Based on the overall findings, MedSAT and ground station's compact and lightweight design was developed in search and rescue operations for emergency location.",
+      "citationCount": 1,
+      "openAccess_pdf": {
+        "url": "https://doi.org/10.37869/ijatec.v1i2.24"
+      }
+    },
+    {
+      "paperId": "7f9bd36f8ab6cccc1f5e626d6bac4c154a4636fa",
+      "doi": "10.1109/MECON67253.2025.11277175",
+      "title": "Design and Implementation of Quarter-Wave Dipole Antenna for LEO Satellite Communication via LoRa and TinyGS",
+      "authors": [
+        {
+          "name": "Saiful Yusri Mohd Yassin"
+        },
+        {
+          "name": "Muhammad Zikri Afkar Mohd Rusaidi"
+        },
+        {
+          "name": "N. H. Mohd Yunus"
+        },
+        {
+          "name": "J. Sampe"
+        },
+        {
+          "name": "Norliana Yusof"
+        },
+        {
+          "name": "H. M. Nadzirin"
+        }
+      ],
+      "year": 2025,
+      "abstract": "Satellite communication technology is essential for global connectivity. Conventional ground stations for satellite communication typically require high power consumption and incur substantial construction costs. These factors make it challenging to build accessible ground stations for observing and exploring satellite communication principles, as they are primarily designed for industrial applications. These limitations can be overcome by implementing Long Range (LoRa) technology, which provides a cost-effective and energy-efficient solution. This paper proposes utilizing the TinyGS system and the LoRa32 V2.1_1.6 board, which enables satellite communication to be more user-friendly and accessible. A specific calculation was performed to design a quarter-wave dipole antenna that resonates at 433 MHz. The ground station received data from Low Earth Orbit (LEO) satellites via LoRa, processed via Message Queuing Telemetry Transport (MQTT), and made it available for further observation in TinyGS open system interface. Upon the activation of the ground station, it was observed that environmental factors, such as an open space with a direct sky view and no surrounding buildings, optimized telemetry data reception by reducing signal reflection and attenuation. A total of 371 telemetry signals were successfully received within one month of operation. The telemetry data obtained can be interpreted. However, it requires a special decoder from the satellite signal provider. The successful implementation of a LoRa ground station could transform remote data collection, making it more accessible and efficient.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "a86e09ca7eb3bf16cd3d6c39841208fc553ec071",
+      "doi": "10.1109/SPACE63117.2024.10668138",
+      "title": "Design and Development of a Functional CANSAT Model for Atmospheric Data Collection",
+      "authors": [
+        {
+          "name": "Maelona Maxim Vas"
+        },
+        {
+          "name": "S. A"
+        },
+        {
+          "name": "Nishchith B C"
+        },
+        {
+          "name": "Rajalekshmi Kishore"
+        },
+        {
+          "name": "Salila Hegde"
+        }
+      ],
+      "year": 2024,
+      "abstract": "This paper presents the design and development of a functional Can sized Satellite(CANSAT) prototype focused on acquiring atmospheric data while demonstrating the feasibility and effectiveness of miniaturized satellite systems. The prototype incorporates a telemetry system for data collection and transmission to a ground station, employing reliable wireless communication protocols for real-time monitoring. Controlled velocity descent is achieved through careful parachute dimensioning and the integration of servo-actuated PID(Proportional-Integral-derivative) controlled fins for precise orientation control. The successful implementation of this prototype serves as a proof-of-concept for future miniaturized satellite missions, showcasing its capabilities in telemetry, communication, and controlled descent.",
+      "citationCount": 2,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "08a54d7de6afd0dfbc5a2a2872c419fb54239adf",
+      "doi": "10.1109/AIDE69088.2026.11544893",
+      "title": "EASEL: Effective Actionable Surveillance with Enhanced Layered User Interfaces for Secure Remote Drone Identification using LoRa Communication",
+      "authors": [
+        {
+          "name": "K. Rajanikanth"
+        },
+        {
+          "name": "N. Nishchit"
+        },
+        {
+          "name": "Meghana Sathish"
+        },
+        {
+          "name": "Shourya K S"
+        }
+      ],
+      "year": 2026,
+      "abstract": "The rapid increase in civilian and tactical drone usage has created a pressing need for secure, operator-centered systems that can identify and monitor unmanned aerial vehicles (UAVs) in real time across wide areas. This paper presents a layered UAV identification framework that integrates long-range, low-power LoRa communication with a human-centered visualization interface. A drone-mounted ESP32 module encrypts telemetry using AES-128 and transmits it via LoRa to a ground station, where a Python Folium-based dashboard decrypts, parses, and displays positional and status data on an interactive geospatial map. The interface emphasizes situational awareness through color-coded markers, geofencing overlays, and latency-optimized updates (<3 s). Results demonstrate reliable LoRa telemetry beyond 5 km with visualization latency under 3 seconds, validating the framework’s suitability for scalable and secure UAV identification in low-connectivity environments.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "816c201c15918aa59106bec0e44b2eea573a9028",
+      "doi": "10.47392/irjaem.2025.0360",
+      "title": "Advanced Design and Implementation of a CanSat for Environmental Monitoring and Data Transmission",
+      "authors": [
+        {
+          "name": "Dr. Chandrika J"
+        },
+        {
+          "name": "Chandrababu Gowda"
+        },
+        {
+          "name": "Chandu H Y"
+        },
+        {
+          "name": "Darshan K"
+        },
+        {
+          "name": "Darshan S P"
+        }
+      ],
+      "year": 2025,
+      "abstract": "This paper presents the design and implementation of a CanSat system for real-time environmental monitoring and data forecasting. The CanSat prototype is built using a custom 3D-printed enclosure housing sensor such as BME280, MPU6050, and NEO-M8N, interfaced with an Arduino Nano. Data transmission is enabled through NRF modules, with the ground station comprising an NRF receiver paired with an ESP8266 microcontroller. Upon reception, the ESP8266 publishes the sensor data to an MQTT broker and concurrently logs it into an Excel sheet, while forwarding structured JSON packets at 3-second intervals to a web-based frontend. Due to the NRF’s limited payload capacity, sensor readings are batched every 3 seconds, with each JSON packet representing 1-second inter- vals. The frontend, developed using Next.js, provides interactive dashboards for visualizing real-time data, 7-day forecasts using Meta’s Prophet model, and historical sensor readings based on user queries. This architecture demonstrates a robust, modular approach to environmental telemetry and predictive analytics using low-cost hardware and modern web technologies.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "c541d99773f24b9b6e1b6abb6a74aa340b276815",
+      "doi": "10.1109/LACAP67012.2026.11471222",
+      "title": "LoRa Downlink Measurements from Starlink Satellites at 137 Mhz",
+      "authors": [
+        {
+          "name": "Cristobal Huidobro"
+        },
+        {
+          "name": "M. Gaitán"
+        },
+        {
+          "name": "C. Azurdia"
+        },
+        {
+          "name": "Rodrigo Muñoz-Lazo"
+        },
+        {
+          "name": "M. Diaz"
+        }
+      ],
+      "year": 2026,
+      "abstract": "This paper reports initial measurements of LoRa signals downlinked from Starlink satellites operating in the 137138 MHz Very High Frequency (VHF) band. These signals correspond to the Starlink VHF beacon, which uses a LoRabased format derived from the Swarm SpaceBEE system (now integrated into SpaceX's infrastructure) for low-rate telemetry and tracking. Measurements were obtained over a five-month observation campaign, with valid data from three satellites received using a compact, low-cost ground station. Each decoded packet includes received signal strength indicator (RSSI), signal-to-noise ratio (SNR), and satellite geometry derived from public Two-Line Element (TLE) data. Successful receptions generally occurred for SNR above -10 dB, while RSSI alone showed a weaker correlation with decoding success. Both metrics improved at higher elevation angles and decayed with slant range. Although limited in scope, these measurements provide the first empirical view of Starlink's 137 MHz LoRa downlink and suggest that deploying additional tiny ground stations could support crosssite validation and improved modeling of VHF satellite-to-Earth LoRa links, which is relevant for emerging IoT satellite systems.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    }
+  ],
+  "output_metadata": {
+    "extracted_at": "2026-06-11T14:33:57.182140"
+  }
+}

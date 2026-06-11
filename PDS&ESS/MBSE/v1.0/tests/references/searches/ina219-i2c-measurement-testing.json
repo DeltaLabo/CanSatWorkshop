@@ -1,0 +1,917 @@
+{
+  "query": "INA219 datasheet I2C current voltage monitor accuracy calibration timeout",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "INA219 data sheet, product information and support | TI.com",
+      "url": "https://www.ti.com/product/INA219",
+      "description": "document-pdfAcrobat INA219 Zerø-Drift, Bidirectional Current/Power Monitor With I2C Interface datasheet (Rev. G) PDF | HTML ... The INA219 is a current shunt and power monitor with an I2C- or SMBUS-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A programmable calibration value, combined with an internal multiplier, enables direct readouts of current in amperes.",
+      "content": "document-pdfAcrobat INA219 Zerø-Drift, Bidirectional Current/Power Monitor With I2C Interface datasheet (Rev. G) PDF | HTML ... The INA219 is a current shunt and power monitor with an I2C- or SMBUS-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A programmable calibration value, combined with an internal multiplier, enables direct readouts of current in amperes.\nThe I2C- or SMBUS-compatible interface features 16 programmable addresses. The INA219 is available in two grades: A and B. The B grade version has higher accuracy and higher precision specifications. The INA219 senses across shunts on buses that can vary from 0 to 26 V. The device uses a single 3- to 5.5-V supply, drawing a maximum of 1 mA of supply current. The INA219 operates from 40°C to 125°C.\nThe INA219 evaluation module (EVM) is an easy-to-use platform to evaluate the main features and performance of the INA219.\nThis Excel calculator provides a comparison between two and five of our standard current sense amplifiers, delivering a chart containing the basic parameters of each device. This calculator also takes system condition inputs from users such as common-mode voltage, supply voltage, shunt resistor (...)",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Texas Instruments",
+        "url": "https://www.ti.com/product/INA219",
+        "long_name": "ti.com",
+        "img": "https://imgs.search.brave.com/0sM8G0xlAN71ldOBWLfk2CgJqYBDL8rEcF171RRBD88/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMzMzU2YmUw/MDI1NzM1ZWQ0NTgy/MGRlYjg3ODlmZDZm/NTcwNmIwMGQ4M2E4/MjkwYzYwNzI4ZDc2/YmE1YjAxMy93d3cu/dGkuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "ti.com",
+        "hostname": "www.ti.com",
+        "favicon": "https://imgs.search.brave.com/0sM8G0xlAN71ldOBWLfk2CgJqYBDL8rEcF171RRBD88/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMzMzU2YmUw/MDI1NzM1ZWQ0NTgy/MGRlYjg3ODlmZDZm/NTcwNmIwMGQ4M2E4/MjkwYzYwNzI4ZDc2/YmE1YjAxMy93d3cu/dGkuY29tLw",
+        "path": "› product  › INA219"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "´ Power Register Current Register I C Interface 2 Voltage Register VIN+ VIN- VS",
+      "url": "https://cdn-shop.adafruit.com/datasheets/ina219.pdf",
+      "description": "INA219 includes a 28ms timeout on its interface to ... SMBus interfaces. The I2C and SMBus protocols are",
+      "content": "INA219 includes a 28ms timeout on its interface to ... SMBus interfaces. The I2C and SMBus protocols are\nINA219 acknowledges receipt of each data byte. The ... START or STOP condition. ... I2C bus and SMBus.\nI2C bus General Call Reset. ... Figure 19. INA219 Configured for Shunt and Bus Voltage Measurement\nAll INA219 registers 16-bit registers are actually two 8-bit bytes via the I2C interface.\nThe INA219 is available in two grades: A and B.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Adafruit",
+        "url": "https://cdn-shop.adafruit.com/datasheets/ina219.pdf",
+        "long_name": "cdn-shop.adafruit.com",
+        "img": "https://imgs.search.brave.com/wdA4B29VjXZIfoMwIiVI-heji_b56-W5kHIBDYXM6iQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTUwYzY1NjAx/MGRmNmJiMDAyNGU2/OTE2MmM3YWQ4MWY3/YmNhMTFmYzNlYmUy/MTljM2RlYzM0Y2Mw/YTZjZGIwYS9jZG4t/c2hvcC5hZGFmcnVp/dC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cdn-shop.adafruit.com",
+        "hostname": "cdn-shop.adafruit.com",
+        "favicon": "https://imgs.search.brave.com/wdA4B29VjXZIfoMwIiVI-heji_b56-W5kHIBDYXM6iQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTUwYzY1NjAx/MGRmNmJiMDAyNGU2/OTE2MmM3YWQ4MWY3/YmNhMTFmYzNlYmUy/MTljM2RlYzM0Y2Mw/YTZjZGIwYS9jZG4t/c2hvcC5hZGFmcnVp/dC5jb20v",
+        "path": "› datasheets  › ina219.pdf"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "INA219 Zerø-Drift, Bidirectional Current/Power Monitor With I",
+      "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+      "description": "Resistor values shown are typical: consult either the I2C or SMBus · specification to determine the acceptable minimum or maximum values and also refer to the Specifications for · Output Current Limitations. Figure 28. Typical Application Circuit ... The INA219 measures the voltage across a current-sensing resistor (RSHUNT) when current passes through the",
+      "content": "Resistor values shown are typical: consult either the I2C or SMBus · specification to determine the acceptable minimum or maximum values and also refer to the Specifications for · Output Current Limitations. Figure 28. Typical Application Circuit ... The INA219 measures the voltage across a current-sensing resistor (RSHUNT) when current passes through the\nThe I2C interface is used throughout this data sheet as the primary example, with SMBus protocol specified only · when a difference between the two systems is being addressed. Two bidirectional lines, SCL and SDA, connect · the INA219 to the bus.\nINA219 to support the F/S mode. For bus timing, see Bus Timing Diagram Definitions(1) and Figure 1. ... Power-up conditions apply to a software reset through the RST bit (bit 15) in the Configuration register, or the I2C\nThe INA219 offers compatibility with both I2C and SMBus interfaces.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Texas Instruments",
+        "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+        "long_name": "ti.com",
+        "img": "https://imgs.search.brave.com/0sM8G0xlAN71ldOBWLfk2CgJqYBDL8rEcF171RRBD88/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMzMzU2YmUw/MDI1NzM1ZWQ0NTgy/MGRlYjg3ODlmZDZm/NTcwNmIwMGQ4M2E4/MjkwYzYwNzI4ZDc2/YmE1YjAxMy93d3cu/dGkuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "ti.com",
+        "hostname": "www.ti.com",
+        "favicon": "https://imgs.search.brave.com/0sM8G0xlAN71ldOBWLfk2CgJqYBDL8rEcF171RRBD88/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMzMzU2YmUw/MDI1NzM1ZWQ0NTgy/MGRlYjg3ODlmZDZm/NTcwNmIwMGQ4M2E4/MjkwYzYwNzI4ZDc2/YmE1YjAxMy93d3cu/dGkuY29tLw",
+        "path": "› lit  › ds  › symlink  › ina219.pdf"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "Understanding the INA219 I2C Current/Power Monitor · cdwilson.dev",
+      "url": "https://cdwilson.dev/articles/understanding-the-ina219/",
+      "description": "The INA219 datasheet provides an example calibration workflow, but doesn’t really explain how some of the equations and constant values are derived. This article tries to fill in some of the gaps that weren’t obvious to me when I first read the datasheet. “The INA219 is a high-side current shunt and power monitor with an I2C interface. The INA219 monitors both shunt drop and supply voltage, with programmable conversion times and filtering.",
+      "content": "The INA219 datasheet provides an example calibration workflow, but doesn’t really explain how some of the equations and constant values are derived. This article tries to fill in some of the gaps that weren’t obvious to me when I first read the datasheet. “The INA219 is a high-side current shunt and power monitor with an I2C interface. The INA219 monitors both shunt drop and supply voltage, with programmable conversion times and filtering.\nA programmable calibration value, combined with an internal multiplier, enables direct readouts in amperes. An additional multiplying register calculates power in watts. The I2C interface features 16 programmable addresses.” ... The INA219 calculates the current flowing through the “Current Shunt” sense resistor by first measuring the voltage across the resistor, and then applying Ohm’s law,\nFrom the datasheet, “The Calibration Register can also be selected to provide values in the Current and Power Registers that either provide direct decimal equivalents of the values being measured, or yield a round LSB number.\" The power management engine calculates the Current and Power Register values according to the following equations, $$ \\boxed{Current\\ Register = \\frac{Shunt\\ Voltage\\ Register \\cdot Calibration\\ Register}{4096}} $$\nWhen measuring the shunt voltage, the internal ADC converts the analog voltage into a digital value which is stored in binary representation in the Shunt Voltage Register. The INA219 uses a 12-bit ADC, meaning it can resolve the analog voltage into $2^{12}$ (4096) discrete digital values.",
+      "age": "June 28, 2022",
+      "page_age": "2022-06-28T22:04:52",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cdwilson",
+        "url": "https://cdwilson.dev/articles/understanding-the-ina219/",
+        "long_name": "cdwilson.dev",
+        "img": "https://imgs.search.brave.com/VmErp8Hi3vugxpNue25COQLEOSrXHB-KjL6UkPOKTXU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGEyNzg2Zjhh/ZTRjYWVhYjBlMjE0/NDhhMjkxZGFmNmQx/MTc5Y2IwZmVhNGNi/NjI0YjhkMGM0ZDQx/YmUxZWVkZi9jZHdp/bHNvbi5kZXYv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cdwilson.dev",
+        "hostname": "cdwilson.dev",
+        "favicon": "https://imgs.search.brave.com/VmErp8Hi3vugxpNue25COQLEOSrXHB-KjL6UkPOKTXU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGEyNzg2Zjhh/ZTRjYWVhYjBlMjE0/NDhhMjkxZGFmNmQx/MTc5Y2IwZmVhNGNi/NjI0YjhkMGM0ZDQx/YmUxZWVkZi9jZHdp/bHNvbi5kZXYv",
+        "path": "› articles  › understanding-the-ina219"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "INA219 DC Current Voltage Sensor Module - I2C Interface",
+      "url": "https://electropeak.com/cjmcu219-ina219-i2c-interface-current-power-monitor-sensor",
+      "description": "The I2C interface has a timeout setting that not only avoids bus lock, but also provides a high-speed mode that meets communication requirements of up to 3.4 MHz. All aspects of the INA219 support software programmable.",
+      "content": "The I2C interface has a timeout setting that not only avoids bus lock, but also provides a high-speed mode that meets communication requirements of up to 3.4 MHz. All aspects of the INA219 support software programmable.\nThe I2C interface has a timeout setting that not only avoids bus lock, but also provides a high-speed mode that meets communication requirements of up to 3.4 MHz. All aspects of the INA219 support software programmable. The programmable calibration register reads the current, directly in amperes, also, by additional multiplying register calculates and\nThe I2C or SMBUS-compatible interface features 16 programmable addresses. The device uses a single 3V to 5.5V supply, drawing a maximum of 1mA of supply current. The INA219 achieves an 1% maximum error accuracy over the -40C to +85C temperature range with a maximum offset of 100 · uV, thus with the industry's highest accuracy and the smallest size, it not only monitors the voltage drop across the shunt resistor, senses the shunt supply voltage, but also calculates the power supply.\nFeatures: Supply Voltage: 3.0 “ 5.5 V Voltage Measurement Range: 0 “ 26 V Current Measurement Range: 0 “ 3.2 A Power Measurement Range: 0 “ 83.2 W 16 Programmable Addresses High Accuracy: 0.5% (Maximum) Over Temperature (INA219B) Filtering Options Calibration Registers SOT23-8 and SOIC-8 Packages\nYun Express is a shipping courier known for its reliable and efficient international shipping services. With a strong global network and advanced logistics solutions, Yun Express ensures timely delivery and provides tracking options for customers to monitor their shipments.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "product",
+      "profile": {
+        "name": "ElectroPeak",
+        "url": "https://electropeak.com/cjmcu219-ina219-i2c-interface-current-power-monitor-sensor",
+        "long_name": "electropeak.com",
+        "img": "https://imgs.search.brave.com/O4JYsSf2qFcmw0dA4hUWnsnPQCzujMhRilEtz1QQrXI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDM1NzgxODFj/NTM0NjIxZmNjMDVk/MTNkMzVjZGQyMmJl/ZDFiYTM3MWIzMWZj/NDZkMDc3MTIyNGE0/YmZhMWY0MS9lbGVj/dHJvcGVhay5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "electropeak.com",
+        "hostname": "electropeak.com",
+        "favicon": "https://imgs.search.brave.com/O4JYsSf2qFcmw0dA4hUWnsnPQCzujMhRilEtz1QQrXI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDM1NzgxODFj/NTM0NjIxZmNjMDVk/MTNkMzVjZGQyMmJl/ZDFiYTM3MWIzMWZj/NDZkMDc3MTIyNGE0/YmZhMWY0MS9lbGVj/dHJvcGVhay5jb20v",
+        "path": "› cjmcu219-ina219-i2c-interface-current-power-monitor-sensor"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/eqfaU6bT7hxApQeVp_lCFVns543buOf91yxKfDP7oYo/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9lbGVj/dHJvcGVhay5jb20v/bWVkaWEvY2F0YWxv/Zy9wcm9kdWN0L2Nh/Y2hlL2ZkMzAwN2Q1/NTI2NmY3Mjc2YzEw/ZWJmN2YzZGEyMjE1/L3MvZS9zZW4tMDQt/MDA5LTEtY2ptY3Uy/MTktaW5hMjE5LWky/Yy5qcGc",
+        "original": "https://electropeak.com/media/catalog/product/cache/fd3007d55266f7276c10ebf7f3da2215/s/e/sen-04-009-1-cjmcu219-ina219-i2c.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "INA219 - Bidirectional Current/Power Monitor | .NET nanoFramework Documentation",
+      "url": "https://docs.nanoframework.net/devicesdetails/Ina219/README.html",
+      "description": "The INA219 is a current shunt and power monitor with an I2C- or SMBUS-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A programmable calibration value, combined with an internal multiplier, enables direct ...",
+      "content": "The INA219 is a current shunt and power monitor with an I2C- or SMBUS-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A programmable calibration value, combined with an internal multiplier, enables direct ...\nThe INA219 is a current shunt and power monitor with an I2C- or SMBUS-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A programmable calibration value, combined with an internal multiplier, enables direct readouts of current in amperes.\nGiven this we can use a shunt voltage range of +/- 40mV · The maximum possible current would then be 40mV / 0.1 = 400mA · With a 400mA maximum current and a range of the ADC of 15bits then the LSB of the current would be 400mA/32767 = 12.2207 microamps. We will chose 12.2uA as a round number. From the INA219 Datasheet the calibration register should be set at 0.04096/(currentLSB * shunt resistance) = 33574 = 0x8326\nThis sample uses an INA219 breakout board and monitors a LED wired into the 3.3 volts supply with a 150 ohm current limiting resistor. It prints the bus voltage, shunt voltage, current and power every second. The configuration and calibration is determinined as follows.\nconst byte Ina219_I2cAddress = 0x40; const byte Ina219_I2cBus = 0x1; // create an INA219 device on I2C bus 1 addressing channel 64 using (Ina219 device = new Ina219(new I2cConnectionSettings(Ina219_I2cBus, Ina219_I2cAddress))) { // reset the device device.Reset(); // set up the bus and shunt voltage ranges and the calibration.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": ".NET nanoFramework",
+        "url": "https://docs.nanoframework.net/devicesdetails/Ina219/README.html",
+        "long_name": "docs.nanoframework.net",
+        "img": "https://imgs.search.brave.com/3YPqS0GaRA8wS5H3KIUruTGsYjc5AilgXO06lrIl8t0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDY1MjY1ODU1/MTViNzlmMDBhZTk5/NjY3NmYwMDE0MTlk/YjE3MzA1NzFkMjZm/ZDJjYWQ2MTkzODgw/MzA2OTM2MS9kb2Nz/Lm5hbm9mcmFtZXdv/cmsubmV0Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "docs.nanoframework.net",
+        "hostname": "docs.nanoframework.net",
+        "favicon": "https://imgs.search.brave.com/3YPqS0GaRA8wS5H3KIUruTGsYjc5AilgXO06lrIl8t0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDY1MjY1ODU1/MTViNzlmMDBhZTk5/NjY3NmYwMDE0MTlk/YjE3MzA1NzFkMjZm/ZDJjYWQ2MTkzODgw/MzA2OTM2MS9kb2Nz/Lm5hbm9mcmFtZXdv/cmsubmV0Lw",
+        "path": "› devicesdetails  › Ina219  › README.html"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "INA219: Simple Arduino current measurement up to 3.2A",
+      "url": "https://www.best-microcontroller-projects.com/ina219.html",
+      "description": "Inside the INA219 there is an ADC which can only measure voltage; Specifically the differential input VIN+ - VIN-, and using internal switches it also measures VIN- referenced to ground (using the same amplifier). [Source: datasheet] The INA219 cannot measure current unless it knows the value of the external shunt resistance. This why there is are programmable registers for configuration and calibration (See Table 2 in the datasheet &quot;Summary of Register Set&quot;).",
+      "content": "Inside the INA219 there is an ADC which can only measure voltage; Specifically the differential input VIN+ - VIN-, and using internal switches it also measures VIN- referenced to ground (using the same amplifier). [Source: datasheet] The INA219 cannot measure current unless it knows the value of the external shunt resistance. This why there is are programmable registers for configuration and calibration (See Table 2 in the datasheet &quot;Summary of Register Set&quot;).\nInside the INA219 there is an ADC which can only measure voltage; Specifically the differential input VIN+ - VIN-, and using internal switches it also measures VIN- referenced to ground (using the same amplifier). [Source: datasheet] The INA219 cannot measure current unless it knows the value of the external shunt resistance. This why there is are programmable registers for configuration and calibration (See Table 2 in the datasheet \"Summary of Register Set\").\nTop of page INA219 INA219 Specification How to Wire INA219 Resolution Resolution with Averaging INA219 Datasheet INA219 Pinout How the INA219 works Resolution Bits and Sampling Trade Off Bit Range and PGA Gain Software Arduino Libraries INA219 WE INA219 WE Library Functions INA219 Calibration Functions Default settings (Simple use) Sketch using simple equations Simple Current Bus Voltage Fixed Point Reading Example Sketch Using Full Equations, raw and fixed point.\nThis is a statement from that datasheet that allows simple use: \"The Calibration Register can also be selected to provide values in the Current Register (04h) and Power Register (03h) that either provide direct decimal equivalents of the values being measured, or yield a round LSB value for each corresponding register.\" The idea is to use the minimal (I2C) read and write, and obtain an output that can be processed using fixed point maths - and this will save Flash memory.\nUses a simple I2C interface. Has a resolution of 100uA (with a 0.1R shunt resistor). Measures voltage and current and therefore power. This chip measures voltage across a known resistance (usually 0.1R - see above image). You program the value of the resistance into the chip and it returns a value in Amps. The breakout board version below can measure ~3.2A but the chip can measure 10~15A using a different sense resistor (See the datasheet for example calculations).",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Best Microcontroller Projects",
+        "url": "https://www.best-microcontroller-projects.com/ina219.html",
+        "long_name": "best-microcontroller-projects.com",
+        "img": "https://imgs.search.brave.com/9Gt2DU2WRtsJBXP8lhDetjUj5XyazmtWQq4BZp-nxjU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc4NDAzOTky/ZWY3ZmEyYzM3NGNm/NzVlNjAxNDI0MTZi/Mjk5Yjk2MzY2MzI5/ODc3ZTE0NGEyNGI5/ZjgwYTVhYi93d3cu/YmVzdC1taWNyb2Nv/bnRyb2xsZXItcHJv/amVjdHMuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "best-microcontroller-projects.com",
+        "hostname": "www.best-microcontroller-projects.com",
+        "favicon": "https://imgs.search.brave.com/9Gt2DU2WRtsJBXP8lhDetjUj5XyazmtWQq4BZp-nxjU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc4NDAzOTky/ZWY3ZmEyYzM3NGNm/NzVlNjAxNDI0MTZi/Mjk5Yjk2MzY2MzI5/ODc3ZTE0NGEyNGI5/ZjgwYTVhYi93d3cu/YmVzdC1taWNyb2Nv/bnRyb2xsZXItcHJv/amVjdHMuY29tLw",
+        "path": "  › home  › current sensor chips  › ina219"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/8MhAQMR3tTE5D4ypjsa94d_eg-5XyVl21zYsikfUst0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YmVzdC1taWNyb2Nv/bnRyb2xsZXItcHJv/amVjdHMuY29tL2lt/YWdlLWZpbGVzL2lu/YTIxOS1mdW5jdGlv/bmFsLWJsb2NrLWRp/YWdyYW0tZW5oLmpw/Zw",
+        "original": "https://www.best-microcontroller-projects.com/image-files/ina219-functional-block-diagram-enh.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "INA219 Current Sensor Module : PinOut, Datasheet & Its Working",
+      "url": "https://www.watelectronics.com/ina219-current-sensor-module/",
+      "description": "INA219 is a small with the highest precision current sensor module. This module solves all your power-monitoring issues. This module has an SMBUS or I2C compatible interface including 16 programmable addresses. This sensor module can communicate with different microcontrollers like ESP, Raspberry Pi, Arduino, etc. This module reliably detects a few milliamperes currents. It includes a programmable calibration value &amp; internal multiplier, thus it permits for DC readouts within amperes.",
+      "content": "INA219 is a small with the highest precision current sensor module. This module solves all your power-monitoring issues. This module has an SMBUS or I2C compatible interface including 16 programmable addresses. This sensor module can communicate with different microcontrollers like ESP, Raspberry Pi, Arduino, etc. This module reliably detects a few milliamperes currents. It includes a programmable calibration value &amp; internal multiplier, thus it permits for DC readouts within amperes.\nSo it utilizes the voltage drop across the shunt & the voltage drop across the bus to measure the power consumption of the consumer. The INA219 utilizes a 12-bit ADC to change the sensed current through a precision amplifier. After that, it submits the information to a host microcontroller with the I2C bus protocol. So this module has a programmable calibration value which is merged through an internal multiplier and it allows for direct current readouts within amperes.\nINA219 is a small with the highest precision current sensor module. This module solves all your power-monitoring issues. This module has an SMBUS or I2C compatible interface including 16 programmable addresses. This sensor module can communicate with different microcontrollers like ESP, Raspberry Pi, Arduino, etc. This module reliably detects a few milliamperes currents. It includes a programmable calibration value & internal multiplier, thus it permits for DC readouts within amperes.\nThe INA219 is a small and powerful DC sensor module introduced by TI (Texas Instruments). It is a Bidirectional, zero-drift, Power Monitor module that monitors bus voltage, shunt voltage, current, and power. So this module uses an integrated interface for communication with different microcontrollers and is well-matched with SMBus and I2C.\nThe INA219 DC sensor module works by sensing current, shunt voltage, and power and submitting the data through the I2C protocol. So this module has 0.1 Ohms, a 1% shunt resistor which fulfills the necessities of current measurements. So it has a 12-bit powerful ADC that changes the detected current through a precision amplifier.",
+      "age": "August 4, 2025",
+      "page_age": "2025-08-04T05:10:50",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Watelectronics",
+        "url": "https://www.watelectronics.com/ina219-current-sensor-module/",
+        "long_name": "watelectronics.com",
+        "img": "https://imgs.search.brave.com/cluQBexQsbyfG-uMXXOxwsrkO1vOb0ucu46yoxtav9c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjIwMjQxYjg1/NzVmMGUzNDdiMTdl/ZGQwMTA5ZGMxMzM0/MjM3YzcwNzAzNWUw/ZjhjMDNiM2M3Njg0/OTBhZmZlNS93d3cu/d2F0ZWxlY3Ryb25p/Y3MuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "watelectronics.com",
+        "hostname": "www.watelectronics.com",
+        "favicon": "https://imgs.search.brave.com/cluQBexQsbyfG-uMXXOxwsrkO1vOb0ucu46yoxtav9c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjIwMjQxYjg1/NzVmMGUzNDdiMTdl/ZGQwMTA5ZGMxMzM0/MjM3YzcwNzAzNWUw/ZjhjMDNiM2M3Njg0/OTBhZmZlNS93d3cu/d2F0ZWxlY3Ryb25p/Y3MuY29tLw",
+        "path": "  › home  › ina219 current sensor module : pinout, features, specifications, interfacing, differences & its applications"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/tmb_y65o1DtIlcTsixRp4sUDCIABppdflG1EFA6DPFM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/d2F0ZWxlY3Ryb25p/Y3MuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy9JTkEyMTktQ3Vy/cmVudC1TZW5zb3It/TW9kdWxlLmpwZw",
+        "original": "https://www.watelectronics.com/wp-content/uploads/INA219-Current-Sensor-Module.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 9,
+      "title": "INA219 DC Power Sensor - Pinout, Hookup, Specs, and Operation",
+      "url": "https://datacapturecontrol.com/articles/io-components/sensors/power/ina219",
+      "description": "Both libraries currently only support continuous reads of voltage and power, but not triggered reads. This hardware overview of the INA219 IC and Modules covered specs, board layout, pinout, operation, basic hookup, and libraries in Arduino, CircuitPython, and MicroPython. The output of the INA219 is an I2C digital communication interface that can be read using libraries. The Adafruit libraries in Arduino or CircuitPython are is the easiest to use with pre-calculated calibration options and simple function commands to read measurements, while the the custom made libraries in Arduino or MicroPython have more functionality to control of the INA219.",
+      "content": "Both libraries currently only support continuous reads of voltage and power, but not triggered reads. This hardware overview of the INA219 IC and Modules covered specs, board layout, pinout, operation, basic hookup, and libraries in Arduino, CircuitPython, and MicroPython. The output of the INA219 is an I2C digital communication interface that can be read using libraries. The Adafruit libraries in Arduino or CircuitPython are is the easiest to use with pre-calculated calibration options and simple function commands to read measurements, while the the custom made libraries in Arduino or MicroPython have more functionality to control of the INA219.\nAlso referred to as IIC or I2C. interface that operates from a single 3V to 5.5V DC supply. It has a Programmable Gain Amplifier (PGAA Programmable Gain Amplifier (PGA) is an electronic amplifier whose gain can be controlled by external digital or analog signals.) and 12-Bit ADCAnalog-to-Digital Converter (ADC, A/D, or A-to-D) for continuous or trigger operation. It also has programmable calibration, gain, filtering, and ADC resolution. The INA219 measures the voltage, current, and power consumption of a circuit using an external shunt resistor.\nThe pyb_ina219 MicroPython library uses the I2C Class from the built-in Machine library. The Adafruit library is the easiest to use with three pre-calculated calibration options (32V 2A, 32V 1A, and 16V 400mA) and simple function commands to read measurements. The pyb_ina219 library has more functionality and control that allows you to set the gain and bus voltage range, set ADC resolution/sampling, set wake or sleep modes, and check for overflow.\nHigher ADC resolution or sampling requires longer conversion times. The ADC resolution settings in the table below can be found in Table 5 of the INA219 Datasheet. The INA219 has six 16-bit registers for Configuration, Shunt Voltage, Bus Voltage, Power, Current, and Calibration.",
+      "age": "July 27, 2024",
+      "page_age": "2024-07-27T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Data Capture Control",
+        "url": "https://datacapturecontrol.com/articles/io-components/sensors/power/ina219",
+        "long_name": "datacapturecontrol.com",
+        "img": "https://imgs.search.brave.com/3mZDUCX9aHMcv1bctg8zohBVsD43J876NnpCM0SGfRg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODVmYTEwNmRj/NWZhZThjNWFkYWI3/YTI1Mzk4NmRlMWNk/NjBkOWQ1MThmMmZh/ZDQ4YWU4ZjQ5NTVm/ODg1ZWNjZi9kYXRh/Y2FwdHVyZWNvbnRy/b2wuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "datacapturecontrol.com",
+        "hostname": "datacapturecontrol.com",
+        "favicon": "https://imgs.search.brave.com/3mZDUCX9aHMcv1bctg8zohBVsD43J876NnpCM0SGfRg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODVmYTEwNmRj/NWZhZThjNWFkYWI3/YTI1Mzk4NmRlMWNk/NjBkOWQ1MThmMmZh/ZDQ4YWU4ZjQ5NTVm/ODg1ZWNjZi9kYXRh/Y2FwdHVyZWNvbnRy/b2wuY29tLw",
+        "path": "› articles  › io-components  › sensors  › power  › ina219"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "INA219 datasheet - 26V, 12-bit, i2c output current/voltage/ ...",
+      "url": "https://www.digchip.com/datasheets/parts/datasheet/2/477/INA219.php",
+      "description": "DigChip is a provider of integrated circuits documentation search engine, it is also distributor agent between buyers and distributors excess inventory stock.",
+      "content": "DigChip is a provider of integrated circuits documentation search engine, it is also distributor agent between buyers and distributors excess inventory stock.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "DigChip",
+        "url": "https://www.digchip.com/datasheets/parts/datasheet/2/477/INA219.php",
+        "long_name": "digchip.com",
+        "img": "https://imgs.search.brave.com/_Vg-2IuH782dwVtstqPAxT359wDngESpXTsKlIXvy4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjM2ZWYxZjI3/Y2UxYjIyODMzYzgw/MmQ5MmFhMjM1MWVi/YjA1ZDgxYjYyNDVm/N2NkOWY0MmE0ZDM1/NjVhNDM0OC93d3cu/ZGlnY2hpcC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "digchip.com",
+        "hostname": "www.digchip.com",
+        "favicon": "https://imgs.search.brave.com/_Vg-2IuH782dwVtstqPAxT359wDngESpXTsKlIXvy4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjM2ZWYxZjI3/Y2UxYjIyODMzYzgw/MmQ5MmFhMjM1MWVi/YjA1ZDgxYjYyNDVm/N2NkOWY0MmE0ZDM1/NjVhNDM0OC93d3cu/ZGlnY2hpcC5jb20v",
+        "path": "› datasheets  › parts  › datasheet  › 2  › 477  › INA219.php"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "INA219 datasheet I2C current voltage monitor accuracy calibration timeout",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.889,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "INA219 datasheet I2C current voltage monitor accuracy calibration timeout",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "videos",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "videos": {
+      "type": "videos",
+      "results": [
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=ZQkV4fgAook",
+          "title": "INA219 I2C Current Sensor: Soldering to Serial Monitor - YouTube",
+          "description": "Join me as I delve into the world of power monitoring with the INA219 Current Power Monitor. This video is a comprehensive guide that covers everything from ...",
+          "age": "May 4, 2024",
+          "page_age": "2024-05-04T22:14:34",
+          "fetched_content_timestamp": 1780897035,
+          "video": {
+            "duration": "09:34",
+            "creator": "Just Botond",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/b5n52YSGNX5OOQYJ8gvOLTFuqDJaCDYhWxCQN133qdI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9a/UWtWNGZnQW9vay9o/cWRlZmF1bHQuanBn",
+            "original": "https://i.ytimg.com/vi/ZQkV4fgAook/hqdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=K1nS1x_TiUA",
+          "title": "Arduino based Power & Energy Meter using INA219 Current Sensor ...",
+          "description": "In this video, I’ll show you how to make an Arduino-based power and energy meter that can measure current, power, and energy consumption using the INA219 cur...",
+          "age": "September 15, 2022",
+          "page_age": "2022-09-15T05:24:49",
+          "fetched_content_timestamp": 1753717341,
+          "video": {
+            "duration": "08:30",
+            "creator": "IoT Projects Ideas",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/b-R5uY58fmIkHr7gYOcx7r_G6MUCEpCsJM8v-8_8b94/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9L/MW5TMXhfVGlVQS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/K1nS1x_TiUA/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=WI4pWs0DYPU",
+          "title": "How to use INA219 current sensor with arduino and how to make DIY ...",
+          "description": "INA219 is an accurate DC current sensor that can sense small current. INA219 use I2C to communicate with another device like arduino. We can easily using thi...",
+          "age": "May 14, 2020",
+          "page_age": "2020-05-14T00:00:00",
+          "fetched_content_timestamp": 1603786594,
+          "video": {
+            "duration": "07:26",
+            "views": 3320,
+            "creator": "miliohm",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/nW-13A93QUxVlvIeEjS3XW2VicPn_c1ZSTO9WAehY6k/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9X/STRwV3MwRFlQVS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/WI4pWs0DYPU/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=IcNyGlCa4lE",
+          "title": "IoT Energy Meter using INA219 Sensor ESP8266 & Blynk 2.0 - YouTube",
+          "description": "ESP8266 based Multifunction IoT Energy Meter using INA219 current sensor and Blynk IoT cloud.***************************************Get 1-2 Layer PCBs only a...",
+          "age": "February 28, 2025",
+          "page_age": "2025-02-28T00:15:02",
+          "fetched_content_timestamp": 1780491765,
+          "video": {
+            "duration": "07:06",
+            "creator": "IoT Projects Ideas",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/tR8FtbtQXUBzb2eOVtpHrHW68O8Db2tQ7xBi-UqUM_Q/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9J/Y055R2xDYTRsRS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/IcNyGlCa4lE/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=cMeVRrwsC8g",
+          "title": "RP2040 and INA219, 3.2-inch GUI for DC Voltage, Current, and Power ...",
+          "description": "RP2040 and INA219, 3.2-inch GUI for DC Voltage, Current, and Power======================================Altium Designer + Altium-365 (Free): https://www.alti...",
+          "age": "December 24, 2024",
+          "page_age": "2024-12-24T12:32:47",
+          "fetched_content_timestamp": 1753824064,
+          "video": {
+            "duration": "13:10",
+            "creator": "MyVanitar",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/nojRKyZ4QLMlMqoo-Q6jQ2DCU4l8_OhOuDvOBmTPZ8c/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9j/TWVWUnJ3c0M4Zy9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/cMeVRrwsC8g/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=fvBmfI-2-AE",
+          "title": "DC Power, Current & Voltage measurement using INA219 and Arduino ...",
+          "description": "#using INA219 and Arduino we can measure the DC voltage, current, and power in the circuit. Using these data we can design control circuits, protective circu...",
+          "age": "February 10, 2024",
+          "page_age": "2024-02-10T05:23:39",
+          "fetched_content_timestamp": 1780738547,
+          "video": {},
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/FaweRz1VNliDRDX6z1SlGBX703N3fbTwQE3VDT2xF64/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9m/dkJtZkktMi1BRS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/fvBmfI-2-AE/maxresdefault.jpg"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "INA219 data sheet, product information and support | TI.com",
+          "url": "https://www.ti.com/product/INA219",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "document-pdfAcrobat INA219 Zerø-Drift, Bidirectional Current/Power Monitor With I2C Interface datasheet (Rev. G) PDF | HTML ... The INA219 is a current shunt and power monitor with an I2C- or SMBUS-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A programmable calibration value, combined with an internal multiplier, enables direct readouts of current in amperes.",
+          "profile": {
+            "name": "Texas Instruments",
+            "url": "https://www.ti.com/product/INA219",
+            "long_name": "ti.com",
+            "img": "https://imgs.search.brave.com/0sM8G0xlAN71ldOBWLfk2CgJqYBDL8rEcF171RRBD88/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMzMzU2YmUw/MDI1NzM1ZWQ0NTgy/MGRlYjg3ODlmZDZm/NTcwNmIwMGQ4M2E4/MjkwYzYwNzI4ZDc2/YmE1YjAxMy93d3cu/dGkuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "ti.com",
+            "hostname": "www.ti.com",
+            "favicon": "https://imgs.search.brave.com/0sM8G0xlAN71ldOBWLfk2CgJqYBDL8rEcF171RRBD88/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMzMzU2YmUw/MDI1NzM1ZWQ0NTgy/MGRlYjg3ODlmZDZm/NTcwNmIwMGQ4M2E4/MjkwYzYwNzI4ZDc2/YmE1YjAxMy93d3cu/dGkuY29tLw",
+            "path": "› product  › INA219"
+          },
+          "extra_snippets": [
+            "document-pdfAcrobat INA219 Zerø-Drift, Bidirectional Current/Power Monitor With I2C Interface datasheet (Rev. G) PDF | HTML ... The INA219 is a current shunt and power monitor with an I2C- or SMBUS-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A programmable calibration value, combined with an internal multiplier, enables direct readouts of current in amperes.",
+            "The I2C- or SMBUS-compatible interface features 16 programmable addresses. The INA219 is available in two grades: A and B. The B grade version has higher accuracy and higher precision specifications. The INA219 senses across shunts on buses that can vary from 0 to 26 V. The device uses a single 3- to 5.5-V supply, drawing a maximum of 1 mA of supply current. The INA219 operates from 40°C to 125°C.",
+            "The INA219 evaluation module (EVM) is an easy-to-use platform to evaluate the main features and performance of the INA219.",
+            "This Excel calculator provides a comparison between two and five of our standard current sense amplifiers, delivering a chart containing the basic parameters of each device. This calculator also takes system condition inputs from users such as common-mode voltage, supply voltage, shunt resistor (...)"
+          ]
+        },
+        {
+          "title": "´ Power Register Current Register I C Interface 2 Voltage Register VIN+ VIN- VS",
+          "url": "https://cdn-shop.adafruit.com/datasheets/ina219.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "INA219 includes a 28ms timeout on its interface to ... SMBus interfaces. The I2C and SMBus protocols are",
+          "profile": {
+            "name": "Adafruit",
+            "url": "https://cdn-shop.adafruit.com/datasheets/ina219.pdf",
+            "long_name": "cdn-shop.adafruit.com",
+            "img": "https://imgs.search.brave.com/wdA4B29VjXZIfoMwIiVI-heji_b56-W5kHIBDYXM6iQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTUwYzY1NjAx/MGRmNmJiMDAyNGU2/OTE2MmM3YWQ4MWY3/YmNhMTFmYzNlYmUy/MTljM2RlYzM0Y2Mw/YTZjZGIwYS9jZG4t/c2hvcC5hZGFmcnVp/dC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cdn-shop.adafruit.com",
+            "hostname": "cdn-shop.adafruit.com",
+            "favicon": "https://imgs.search.brave.com/wdA4B29VjXZIfoMwIiVI-heji_b56-W5kHIBDYXM6iQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTUwYzY1NjAx/MGRmNmJiMDAyNGU2/OTE2MmM3YWQ4MWY3/YmNhMTFmYzNlYmUy/MTljM2RlYzM0Y2Mw/YTZjZGIwYS9jZG4t/c2hvcC5hZGFmcnVp/dC5jb20v",
+            "path": "› datasheets  › ina219.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "INA219 acknowledges receipt of each data byte. The ... START or STOP condition. ... I2C bus and SMBus.",
+            "I2C bus General Call Reset. ... Figure 19. INA219 Configured for Shunt and Bus Voltage Measurement",
+            "All INA219 registers 16-bit registers are actually two 8-bit bytes via the I2C interface.",
+            "The INA219 is available in two grades: A and B."
+          ]
+        },
+        {
+          "title": "INA219 Zerø-Drift, Bidirectional Current/Power Monitor With I",
+          "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Resistor values shown are typical: consult either the I2C or SMBus · specification to determine the acceptable minimum or maximum values and also refer to the Specifications for · Output Current Limitations. Figure 28. Typical Application Circuit ... The INA219 measures the voltage across a current-sensing resistor (RSHUNT) when current passes through the",
+          "profile": {
+            "name": "Texas Instruments",
+            "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+            "long_name": "ti.com",
+            "img": "https://imgs.search.brave.com/0sM8G0xlAN71ldOBWLfk2CgJqYBDL8rEcF171RRBD88/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMzMzU2YmUw/MDI1NzM1ZWQ0NTgy/MGRlYjg3ODlmZDZm/NTcwNmIwMGQ4M2E4/MjkwYzYwNzI4ZDc2/YmE1YjAxMy93d3cu/dGkuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "ti.com",
+            "hostname": "www.ti.com",
+            "favicon": "https://imgs.search.brave.com/0sM8G0xlAN71ldOBWLfk2CgJqYBDL8rEcF171RRBD88/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMzMzU2YmUw/MDI1NzM1ZWQ0NTgy/MGRlYjg3ODlmZDZm/NTcwNmIwMGQ4M2E4/MjkwYzYwNzI4ZDc2/YmE1YjAxMy93d3cu/dGkuY29tLw",
+            "path": "› lit  › ds  › symlink  › ina219.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The I2C interface is used throughout this data sheet as the primary example, with SMBus protocol specified only · when a difference between the two systems is being addressed. Two bidirectional lines, SCL and SDA, connect · the INA219 to the bus.",
+            "INA219 to support the F/S mode. For bus timing, see Bus Timing Diagram Definitions(1) and Figure 1. ... Power-up conditions apply to a software reset through the RST bit (bit 15) in the Configuration register, or the I2C",
+            "Resistor values shown are typical: consult either the I2C or SMBus · specification to determine the acceptable minimum or maximum values and also refer to the Specifications for · Output Current Limitations. Figure 28. Typical Application Circuit ... The INA219 measures the voltage across a current-sensing resistor (RSHUNT) when current passes through the",
+            "The INA219 offers compatibility with both I2C and SMBus interfaces."
+          ]
+        },
+        {
+          "title": "Understanding the INA219 I2C Current/Power Monitor · cdwilson.dev",
+          "url": "https://cdwilson.dev/articles/understanding-the-ina219/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The INA219 datasheet provides an example calibration workflow, but doesn’t really explain how some of the equations and constant values are derived. This article tries to fill in some of the gaps that weren’t obvious to me when I first read the datasheet. “The INA219 is a high-side current shunt and power monitor with an I2C interface. The INA219 monitors both shunt drop and supply voltage, with programmable conversion times and filtering.",
+          "page_age": "2022-06-28T22:04:52",
+          "profile": {
+            "name": "Cdwilson",
+            "url": "https://cdwilson.dev/articles/understanding-the-ina219/",
+            "long_name": "cdwilson.dev",
+            "img": "https://imgs.search.brave.com/VmErp8Hi3vugxpNue25COQLEOSrXHB-KjL6UkPOKTXU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGEyNzg2Zjhh/ZTRjYWVhYjBlMjE0/NDhhMjkxZGFmNmQx/MTc5Y2IwZmVhNGNi/NjI0YjhkMGM0ZDQx/YmUxZWVkZi9jZHdp/bHNvbi5kZXYv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cdwilson.dev",
+            "hostname": "cdwilson.dev",
+            "favicon": "https://imgs.search.brave.com/VmErp8Hi3vugxpNue25COQLEOSrXHB-KjL6UkPOKTXU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGEyNzg2Zjhh/ZTRjYWVhYjBlMjE0/NDhhMjkxZGFmNmQx/MTc5Y2IwZmVhNGNi/NjI0YjhkMGM0ZDQx/YmUxZWVkZi9jZHdp/bHNvbi5kZXYv",
+            "path": "› articles  › understanding-the-ina219"
+          },
+          "age": "June 28, 2022",
+          "extra_snippets": [
+            "The INA219 datasheet provides an example calibration workflow, but doesn’t really explain how some of the equations and constant values are derived. This article tries to fill in some of the gaps that weren’t obvious to me when I first read the datasheet. “The INA219 is a high-side current shunt and power monitor with an I2C interface. The INA219 monitors both shunt drop and supply voltage, with programmable conversion times and filtering.",
+            "A programmable calibration value, combined with an internal multiplier, enables direct readouts in amperes. An additional multiplying register calculates power in watts. The I2C interface features 16 programmable addresses.” ... The INA219 calculates the current flowing through the “Current Shunt” sense resistor by first measuring the voltage across the resistor, and then applying Ohm’s law,",
+            "From the datasheet, “The Calibration Register can also be selected to provide values in the Current and Power Registers that either provide direct decimal equivalents of the values being measured, or yield a round LSB number.\" The power management engine calculates the Current and Power Register values according to the following equations, $$ \\boxed{Current\\ Register = \\frac{Shunt\\ Voltage\\ Register \\cdot Calibration\\ Register}{4096}} $$",
+            "When measuring the shunt voltage, the internal ADC converts the analog voltage into a digital value which is stored in binary representation in the Shunt Voltage Register. The INA219 uses a 12-bit ADC, meaning it can resolve the analog voltage into $2^{12}$ (4096) discrete digital values."
+          ]
+        },
+        {
+          "title": "INA219 DC Current Voltage Sensor Module - I2C Interface",
+          "url": "https://electropeak.com/cjmcu219-ina219-i2c-interface-current-power-monitor-sensor",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The I2C interface has a timeout setting that not only avoids bus lock, but also provides a high-speed mode that meets communication requirements of up to 3.4 MHz. All aspects of the INA219 support software programmable.",
+          "profile": {
+            "name": "ElectroPeak",
+            "url": "https://electropeak.com/cjmcu219-ina219-i2c-interface-current-power-monitor-sensor",
+            "long_name": "electropeak.com",
+            "img": "https://imgs.search.brave.com/O4JYsSf2qFcmw0dA4hUWnsnPQCzujMhRilEtz1QQrXI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDM1NzgxODFj/NTM0NjIxZmNjMDVk/MTNkMzVjZGQyMmJl/ZDFiYTM3MWIzMWZj/NDZkMDc3MTIyNGE0/YmZhMWY0MS9lbGVj/dHJvcGVhay5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "product",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "electropeak.com",
+            "hostname": "electropeak.com",
+            "favicon": "https://imgs.search.brave.com/O4JYsSf2qFcmw0dA4hUWnsnPQCzujMhRilEtz1QQrXI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDM1NzgxODFj/NTM0NjIxZmNjMDVk/MTNkMzVjZGQyMmJl/ZDFiYTM3MWIzMWZj/NDZkMDc3MTIyNGE0/YmZhMWY0MS9lbGVj/dHJvcGVhay5jb20v",
+            "path": "› cjmcu219-ina219-i2c-interface-current-power-monitor-sensor"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/eqfaU6bT7hxApQeVp_lCFVns543buOf91yxKfDP7oYo/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9lbGVj/dHJvcGVhay5jb20v/bWVkaWEvY2F0YWxv/Zy9wcm9kdWN0L2Nh/Y2hlL2ZkMzAwN2Q1/NTI2NmY3Mjc2YzEw/ZWJmN2YzZGEyMjE1/L3MvZS9zZW4tMDQt/MDA5LTEtY2ptY3Uy/MTktaW5hMjE5LWky/Yy5qcGc",
+            "original": "https://electropeak.com/media/catalog/product/cache/fd3007d55266f7276c10ebf7f3da2215/s/e/sen-04-009-1-cjmcu219-ina219-i2c.jpg",
+            "logo": false
+          },
+          "product": {
+            "type": "Product",
+            "name": "INA219 DC Current Voltage Sensor Module - I2C Interface",
+            "price": "0.7269",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/70cg4IM5Sk-pSeX8RSLmOSza4sL6v_WkEElPc5YjmL0/rs:fit:360:283:1:0/g:ce/aHR0cHM6Ly9lbGVj/dHJvcGVhay5jb20v/bWVkaWEvY2F0YWxv/Zy9wcm9kdWN0L2Nh/Y2hlL2ZkMzAwN2Q1/NTI2NmY3Mjc2YzEw/ZWJmN2YzZGEyMjE1/L3MvZS9zZW4tMDQt/MDA5LTEtY2ptY3Uy/MTktaW5hMjE5LWky/Yy5qcGc",
+              "original": "https://electropeak.com/media/catalog/product/cache/fd3007d55266f7276c10ebf7f3da2215/s/e/sen-04-009-1-cjmcu219-ina219-i2c.jpg"
+            },
+            "offers": [
+              {
+                "url": "https://electropeak.com/cjmcu219-ina219-i2c-interface-current-power-monitor-sensor",
+                "priceCurrency": "EUR",
+                "price": "0.7269"
+              },
+              {
+                "url": "https://electropeak.com/cjmcu219-ina219-i2c-interface-current-power-monitor-sensor",
+                "priceCurrency": "EUR",
+                "price": "0.7269"
+              }
+            ]
+          },
+          "extra_snippets": [
+            "The I2C interface has a timeout setting that not only avoids bus lock, but also provides a high-speed mode that meets communication requirements of up to 3.4 MHz. All aspects of the INA219 support software programmable. The programmable calibration register reads the current, directly in amperes, also, by additional multiplying register calculates and",
+            "The I2C or SMBUS-compatible interface features 16 programmable addresses. The device uses a single 3V to 5.5V supply, drawing a maximum of 1mA of supply current. The INA219 achieves an 1% maximum error accuracy over the -40C to +85C temperature range with a maximum offset of 100 · uV, thus with the industry's highest accuracy and the smallest size, it not only monitors the voltage drop across the shunt resistor, senses the shunt supply voltage, but also calculates the power supply.",
+            "Features: Supply Voltage: 3.0 “ 5.5 V Voltage Measurement Range: 0 “ 26 V Current Measurement Range: 0 “ 3.2 A Power Measurement Range: 0 “ 83.2 W 16 Programmable Addresses High Accuracy: 0.5% (Maximum) Over Temperature (INA219B) Filtering Options Calibration Registers SOT23-8 and SOIC-8 Packages",
+            "Yun Express is a shipping courier known for its reliable and efficient international shipping services. With a strong global network and advanced logistics solutions, Yun Express ensures timely delivery and provides tracking options for customers to monitor their shipments."
+          ]
+        },
+        {
+          "title": "INA219 - Bidirectional Current/Power Monitor | .NET nanoFramework Documentation",
+          "url": "https://docs.nanoframework.net/devicesdetails/Ina219/README.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The INA219 is a current shunt and power monitor with an I2C- or SMBUS-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A programmable calibration value, combined with an internal multiplier, enables direct ...",
+          "profile": {
+            "name": ".NET nanoFramework",
+            "url": "https://docs.nanoframework.net/devicesdetails/Ina219/README.html",
+            "long_name": "docs.nanoframework.net",
+            "img": "https://imgs.search.brave.com/3YPqS0GaRA8wS5H3KIUruTGsYjc5AilgXO06lrIl8t0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDY1MjY1ODU1/MTViNzlmMDBhZTk5/NjY3NmYwMDE0MTlk/YjE3MzA1NzFkMjZm/ZDJjYWQ2MTkzODgw/MzA2OTM2MS9kb2Nz/Lm5hbm9mcmFtZXdv/cmsubmV0Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "docs.nanoframework.net",
+            "hostname": "docs.nanoframework.net",
+            "favicon": "https://imgs.search.brave.com/3YPqS0GaRA8wS5H3KIUruTGsYjc5AilgXO06lrIl8t0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDY1MjY1ODU1/MTViNzlmMDBhZTk5/NjY3NmYwMDE0MTlk/YjE3MzA1NzFkMjZm/ZDJjYWQ2MTkzODgw/MzA2OTM2MS9kb2Nz/Lm5hbm9mcmFtZXdv/cmsubmV0Lw",
+            "path": "› devicesdetails  › Ina219  › README.html"
+          },
+          "extra_snippets": [
+            "The INA219 is a current shunt and power monitor with an I2C- or SMBUS-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A programmable calibration value, combined with an internal multiplier, enables direct readouts of current in amperes.",
+            "Given this we can use a shunt voltage range of +/- 40mV · The maximum possible current would then be 40mV / 0.1 = 400mA · With a 400mA maximum current and a range of the ADC of 15bits then the LSB of the current would be 400mA/32767 = 12.2207 microamps. We will chose 12.2uA as a round number. From the INA219 Datasheet the calibration register should be set at 0.04096/(currentLSB * shunt resistance) = 33574 = 0x8326",
+            "This sample uses an INA219 breakout board and monitors a LED wired into the 3.3 volts supply with a 150 ohm current limiting resistor. It prints the bus voltage, shunt voltage, current and power every second. The configuration and calibration is determinined as follows.",
+            "const byte Ina219_I2cAddress = 0x40; const byte Ina219_I2cBus = 0x1; // create an INA219 device on I2C bus 1 addressing channel 64 using (Ina219 device = new Ina219(new I2cConnectionSettings(Ina219_I2cBus, Ina219_I2cAddress))) { // reset the device device.Reset(); // set up the bus and shunt voltage ranges and the calibration."
+          ]
+        },
+        {
+          "title": "INA219: Simple Arduino current measurement up to 3.2A",
+          "url": "https://www.best-microcontroller-projects.com/ina219.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Inside the INA219 there is an ADC which can only measure voltage; Specifically the differential input VIN+ - VIN-, and using internal switches it also measures VIN- referenced to ground (using the same amplifier). [Source: datasheet] The INA219 cannot measure current unless it knows the value of the external shunt resistance. This why there is are programmable registers for configuration and calibration (See Table 2 in the datasheet &quot;Summary of Register Set&quot;).",
+          "profile": {
+            "name": "Best Microcontroller Projects",
+            "url": "https://www.best-microcontroller-projects.com/ina219.html",
+            "long_name": "best-microcontroller-projects.com",
+            "img": "https://imgs.search.brave.com/9Gt2DU2WRtsJBXP8lhDetjUj5XyazmtWQq4BZp-nxjU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc4NDAzOTky/ZWY3ZmEyYzM3NGNm/NzVlNjAxNDI0MTZi/Mjk5Yjk2MzY2MzI5/ODc3ZTE0NGEyNGI5/ZjgwYTVhYi93d3cu/YmVzdC1taWNyb2Nv/bnRyb2xsZXItcHJv/amVjdHMuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "best-microcontroller-projects.com",
+            "hostname": "www.best-microcontroller-projects.com",
+            "favicon": "https://imgs.search.brave.com/9Gt2DU2WRtsJBXP8lhDetjUj5XyazmtWQq4BZp-nxjU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc4NDAzOTky/ZWY3ZmEyYzM3NGNm/NzVlNjAxNDI0MTZi/Mjk5Yjk2MzY2MzI5/ODc3ZTE0NGEyNGI5/ZjgwYTVhYi93d3cu/YmVzdC1taWNyb2Nv/bnRyb2xsZXItcHJv/amVjdHMuY29tLw",
+            "path": "  › home  › current sensor chips  › ina219"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/8MhAQMR3tTE5D4ypjsa94d_eg-5XyVl21zYsikfUst0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YmVzdC1taWNyb2Nv/bnRyb2xsZXItcHJv/amVjdHMuY29tL2lt/YWdlLWZpbGVzL2lu/YTIxOS1mdW5jdGlv/bmFsLWJsb2NrLWRp/YWdyYW0tZW5oLmpw/Zw",
+            "original": "https://www.best-microcontroller-projects.com/image-files/ina219-functional-block-diagram-enh.jpg",
+            "logo": false
+          },
+          "extra_snippets": [
+            "Inside the INA219 there is an ADC which can only measure voltage; Specifically the differential input VIN+ - VIN-, and using internal switches it also measures VIN- referenced to ground (using the same amplifier). [Source: datasheet] The INA219 cannot measure current unless it knows the value of the external shunt resistance. This why there is are programmable registers for configuration and calibration (See Table 2 in the datasheet \"Summary of Register Set\").",
+            "Top of page INA219 INA219 Specification How to Wire INA219 Resolution Resolution with Averaging INA219 Datasheet INA219 Pinout How the INA219 works Resolution Bits and Sampling Trade Off Bit Range and PGA Gain Software Arduino Libraries INA219 WE INA219 WE Library Functions INA219 Calibration Functions Default settings (Simple use) Sketch using simple equations Simple Current Bus Voltage Fixed Point Reading Example Sketch Using Full Equations, raw and fixed point.",
+            "This is a statement from that datasheet that allows simple use: \"The Calibration Register can also be selected to provide values in the Current Register (04h) and Power Register (03h) that either provide direct decimal equivalents of the values being measured, or yield a round LSB value for each corresponding register.\" The idea is to use the minimal (I2C) read and write, and obtain an output that can be processed using fixed point maths - and this will save Flash memory.",
+            "Uses a simple I2C interface. Has a resolution of 100uA (with a 0.1R shunt resistor). Measures voltage and current and therefore power. This chip measures voltage across a known resistance (usually 0.1R - see above image). You program the value of the resistance into the chip and it returns a value in Amps. The breakout board version below can measure ~3.2A but the chip can measure 10~15A using a different sense resistor (See the datasheet for example calculations)."
+          ]
+        },
+        {
+          "title": "INA219 Current Sensor Module : PinOut, Datasheet & Its Working",
+          "url": "https://www.watelectronics.com/ina219-current-sensor-module/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "INA219 is a small with the highest precision current sensor module. This module solves all your power-monitoring issues. This module has an SMBUS or I2C compatible interface including 16 programmable addresses. This sensor module can communicate with different microcontrollers like ESP, Raspberry Pi, Arduino, etc. This module reliably detects a few milliamperes currents. It includes a programmable calibration value &amp; internal multiplier, thus it permits for DC readouts within amperes.",
+          "page_age": "2025-08-04T05:10:50",
+          "profile": {
+            "name": "Watelectronics",
+            "url": "https://www.watelectronics.com/ina219-current-sensor-module/",
+            "long_name": "watelectronics.com",
+            "img": "https://imgs.search.brave.com/cluQBexQsbyfG-uMXXOxwsrkO1vOb0ucu46yoxtav9c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjIwMjQxYjg1/NzVmMGUzNDdiMTdl/ZGQwMTA5ZGMxMzM0/MjM3YzcwNzAzNWUw/ZjhjMDNiM2M3Njg0/OTBhZmZlNS93d3cu/d2F0ZWxlY3Ryb25p/Y3MuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "watelectronics.com",
+            "hostname": "www.watelectronics.com",
+            "favicon": "https://imgs.search.brave.com/cluQBexQsbyfG-uMXXOxwsrkO1vOb0ucu46yoxtav9c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjIwMjQxYjg1/NzVmMGUzNDdiMTdl/ZGQwMTA5ZGMxMzM0/MjM3YzcwNzAzNWUw/ZjhjMDNiM2M3Njg0/OTBhZmZlNS93d3cu/d2F0ZWxlY3Ryb25p/Y3MuY29tLw",
+            "path": "  › home  › ina219 current sensor module : pinout, features, specifications, interfacing, differences & its applications"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/tmb_y65o1DtIlcTsixRp4sUDCIABppdflG1EFA6DPFM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/d2F0ZWxlY3Ryb25p/Y3MuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy9JTkEyMTktQ3Vy/cmVudC1TZW5zb3It/TW9kdWxlLmpwZw",
+            "original": "https://www.watelectronics.com/wp-content/uploads/INA219-Current-Sensor-Module.jpg",
+            "logo": false
+          },
+          "age": "August 4, 2025",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "WatElectronics"
+              }
+            ],
+            "date": "Aug 04, 2025"
+          },
+          "extra_snippets": [
+            "So it utilizes the voltage drop across the shunt & the voltage drop across the bus to measure the power consumption of the consumer. The INA219 utilizes a 12-bit ADC to change the sensed current through a precision amplifier. After that, it submits the information to a host microcontroller with the I2C bus protocol. So this module has a programmable calibration value which is merged through an internal multiplier and it allows for direct current readouts within amperes.",
+            "INA219 is a small with the highest precision current sensor module. This module solves all your power-monitoring issues. This module has an SMBUS or I2C compatible interface including 16 programmable addresses. This sensor module can communicate with different microcontrollers like ESP, Raspberry Pi, Arduino, etc. This module reliably detects a few milliamperes currents. It includes a programmable calibration value & internal multiplier, thus it permits for DC readouts within amperes.",
+            "The INA219 is a small and powerful DC sensor module introduced by TI (Texas Instruments). It is a Bidirectional, zero-drift, Power Monitor module that monitors bus voltage, shunt voltage, current, and power. So this module uses an integrated interface for communication with different microcontrollers and is well-matched with SMBus and I2C.",
+            "The INA219 DC sensor module works by sensing current, shunt voltage, and power and submitting the data through the I2C protocol. So this module has 0.1 Ohms, a 1% shunt resistor which fulfills the necessities of current measurements. So it has a 12-bit powerful ADC that changes the detected current through a precision amplifier."
+          ]
+        },
+        {
+          "title": "INA219 DC Power Sensor - Pinout, Hookup, Specs, and Operation",
+          "url": "https://datacapturecontrol.com/articles/io-components/sensors/power/ina219",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Both libraries currently only support continuous reads of voltage and power, but not triggered reads. This hardware overview of the INA219 IC and Modules covered specs, board layout, pinout, operation, basic hookup, and libraries in Arduino, CircuitPython, and MicroPython. The output of the INA219 is an I2C digital communication interface that can be read using libraries. The Adafruit libraries in Arduino or CircuitPython are is the easiest to use with pre-calculated calibration options and simple function commands to read measurements, while the the custom made libraries in Arduino or MicroPython have more functionality to control of the INA219.",
+          "page_age": "2024-07-27T00:00:00",
+          "profile": {
+            "name": "Data Capture Control",
+            "url": "https://datacapturecontrol.com/articles/io-components/sensors/power/ina219",
+            "long_name": "datacapturecontrol.com",
+            "img": "https://imgs.search.brave.com/3mZDUCX9aHMcv1bctg8zohBVsD43J876NnpCM0SGfRg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODVmYTEwNmRj/NWZhZThjNWFkYWI3/YTI1Mzk4NmRlMWNk/NjBkOWQ1MThmMmZh/ZDQ4YWU4ZjQ5NTVm/ODg1ZWNjZi9kYXRh/Y2FwdHVyZWNvbnRy/b2wuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "datacapturecontrol.com",
+            "hostname": "datacapturecontrol.com",
+            "favicon": "https://imgs.search.brave.com/3mZDUCX9aHMcv1bctg8zohBVsD43J876NnpCM0SGfRg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODVmYTEwNmRj/NWZhZThjNWFkYWI3/YTI1Mzk4NmRlMWNk/NjBkOWQ1MThmMmZh/ZDQ4YWU4ZjQ5NTVm/ODg1ZWNjZi9kYXRh/Y2FwdHVyZWNvbnRy/b2wuY29tLw",
+            "path": "› articles  › io-components  › sensors  › power  › ina219"
+          },
+          "age": "July 27, 2024",
+          "extra_snippets": [
+            "Also referred to as IIC or I2C. interface that operates from a single 3V to 5.5V DC supply. It has a Programmable Gain Amplifier (PGAA Programmable Gain Amplifier (PGA) is an electronic amplifier whose gain can be controlled by external digital or analog signals.) and 12-Bit ADCAnalog-to-Digital Converter (ADC, A/D, or A-to-D) for continuous or trigger operation. It also has programmable calibration, gain, filtering, and ADC resolution. The INA219 measures the voltage, current, and power consumption of a circuit using an external shunt resistor.",
+            "The pyb_ina219 MicroPython library uses the I2C Class from the built-in Machine library. The Adafruit library is the easiest to use with three pre-calculated calibration options (32V 2A, 32V 1A, and 16V 400mA) and simple function commands to read measurements. The pyb_ina219 library has more functionality and control that allows you to set the gain and bus voltage range, set ADC resolution/sampling, set wake or sleep modes, and check for overflow.",
+            "Both libraries currently only support continuous reads of voltage and power, but not triggered reads. This hardware overview of the INA219 IC and Modules covered specs, board layout, pinout, operation, basic hookup, and libraries in Arduino, CircuitPython, and MicroPython. The output of the INA219 is an I2C digital communication interface that can be read using libraries. The Adafruit libraries in Arduino or CircuitPython are is the easiest to use with pre-calculated calibration options and simple function commands to read measurements, while the the custom made libraries in Arduino or MicroPython have more functionality to control of the INA219.",
+            "Higher ADC resolution or sampling requires longer conversion times. The ADC resolution settings in the table below can be found in Table 5 of the INA219 Datasheet. The INA219 has six 16-bit registers for Configuration, Shunt Voltage, Bus Voltage, Power, Current, and Calibration."
+          ]
+        },
+        {
+          "title": "INA219 datasheet - 26V, 12-bit, i2c output current/voltage/ ...",
+          "url": "https://www.digchip.com/datasheets/parts/datasheet/2/477/INA219.php",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "DigChip is a provider of integrated circuits documentation search engine, it is also distributor agent between buyers and distributors excess inventory stock.",
+          "profile": {
+            "name": "DigChip",
+            "url": "https://www.digchip.com/datasheets/parts/datasheet/2/477/INA219.php",
+            "long_name": "digchip.com",
+            "img": "https://imgs.search.brave.com/_Vg-2IuH782dwVtstqPAxT359wDngESpXTsKlIXvy4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjM2ZWYxZjI3/Y2UxYjIyODMzYzgw/MmQ5MmFhMjM1MWVi/YjA1ZDgxYjYyNDVm/N2NkOWY0MmE0ZDM1/NjVhNDM0OC93d3cu/ZGlnY2hpcC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "digchip.com",
+            "hostname": "www.digchip.com",
+            "favicon": "https://imgs.search.brave.com/_Vg-2IuH782dwVtstqPAxT359wDngESpXTsKlIXvy4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjM2ZWYxZjI3/Y2UxYjIyODMzYzgw/MmQ5MmFhMjM1MWVi/YjA1ZDgxYjYyNDVm/N2NkOWY0MmE0ZDM1/NjVhNDM0OC93d3cu/ZGlnY2hpcC5jb20v",
+            "path": "› datasheets  › parts  › datasheet  › 2  › 477  › INA219.php"
+          }
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

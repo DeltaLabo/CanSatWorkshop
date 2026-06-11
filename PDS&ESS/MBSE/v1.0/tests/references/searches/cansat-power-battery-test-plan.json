@@ -1,0 +1,939 @@
+{
+  "query": "CanSat power subsystem battery test plan Li-ion",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power Subsystem for CubeSat",
+      "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+      "description": "The experiment required the development of a nonrechargeable battery-powered instrument for biological material life support. Crew and ship safety is vital in space flight; thus, the experiment’s use of batteries must be certified through a series of technical tests required by NASA. This article describes the certification process, including: the protection of circuits, and the electrical, vibration and vacuum tests. Finally, test results, that allowed the use of the instrument in space, are shown. ... The design process of an Electrical Power Subsystem (EPS) for a space mission is a key factor in order to be successful.",
+      "content": "The experiment required the development of a nonrechargeable battery-powered instrument for biological material life support. Crew and ship safety is vital in space flight; thus, the experiment’s use of batteries must be certified through a series of technical tests required by NASA. This article describes the certification process, including: the protection of circuits, and the electrical, vibration and vacuum tests. Finally, test results, that allowed the use of the instrument in space, are shown. ... The design process of an Electrical Power Subsystem (EPS) for a space mission is a key factor in order to be successful.\nPhoenix consists of several subsystems and one of the most critical one is Electrical Power Subsystem (EPS), which provides, stores, distributes, and controls the satellite's electrical power. A battery pack consisting of standard cylindrical 18650 lithium-ion cells has been chosen for PHOENIX-CubeSat missions.\nThis fact has allowed access to the space power technologies to an increased number of users, resulting in the arrival of COTS elements to the design and development of space power subsystems (specially in nanosats). In the present work, the development of a Li-Ion battery at IDR/UPM based on COTS elements for the UNION/Lian-He mission is described.\nThe integrated model can be useful for engineers when developing the subsystems of their CubeSats, taking into account, for example, the battery temperature control through a heater. Simulations were performed to illustrate the functioning of the proposed model with variations in the power requi... ... Cycle life evaluation of 3Ah LixMn2O4-based lithium-ion secondary cells for low-earth-orbit satellitesI.",
+      "age": "October 12, 2025",
+      "page_age": "2025-10-12T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "faq",
+      "profile": {
+        "name": "Academia.edu",
+        "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+        "long_name": "academia.edu",
+        "img": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "academia.edu",
+        "hostname": "www.academia.edu",
+        "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+        "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/9ViTlnDGYxJYTG95G7EUBMqEraAqfN2qnAh9No65cac/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9hdHRh/Y2htZW50cy5hY2Fk/ZW1pYS1hc3NldHMu/Y29tLzUyNTI1MTI3/L3RodW1ibmFpbHMv/MS5qcGc",
+        "original": "https://attachments.academia-assets.com/52525127/thumbnails/1.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 2,
+      "title": "Architectures for Lithium Ion Based Power Subsystems",
+      "url": "https://aerospace.org/sites/default/files/maiw/TOR-2013-00295.pdf",
+      "description": "weight batteries with reduced volumetric requirements. Due to its unique chemistry, implementation · of this technology may require modification to prior spacecraft architectures that used nickel · hydrogen technology. Specific challenges surrounding the inability of lithium ion cells to tolerate · overcharge and over-discharge are discussed. This document gives consideration to a variety of · power subsystem architectures and provides an approach to safely implement lithium ion technology.",
+      "content": "weight batteries with reduced volumetric requirements. Due to its unique chemistry, implementation · of this technology may require modification to prior spacecraft architectures that used nickel · hydrogen technology. Specific challenges surrounding the inability of lithium ion cells to tolerate · overcharge and over-discharge are discussed. This document gives consideration to a variety of · power subsystem architectures and provides an approach to safely implement lithium ion technology.\nmeet full mission while preventing, surviving, and recovering from power subsystem fault conditions. Implementation of lithium ion batteries requires a system level approach for mission assurance.\nvariety of power subsystem architectures that are currently used in satellite systems will be addressed. The performance characteristics of lithium ion cells differ significantly from prior satellite battery\nBattery Disconnect and Maintenance System (BDMS) .................................................. 87 ... Electrical Power Subsystem Test Bed Tests ................................................................... 88 ... Spacecraft Level Verification ......................................................................................... 88 ... Special Test Equipment (STE) Implications for Li-Ion Systems .....................",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "The Aerospace Corporation",
+        "url": "https://aerospace.org/sites/default/files/maiw/TOR-2013-00295.pdf",
+        "long_name": "aerospace.org",
+        "img": "https://imgs.search.brave.com/QQ6vnYlf6OOmni8oL7o2XORhM8ABFUFUsU0HkVw-0R8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDc0NTE5OWI1/M2UwMGUxZDZlZGMz/NjlmMDg1ZWZhYmU3/MGJhY2EyN2E1ZWI4/ZjRmYmYxODAzYWUw/ZTJlNGI3MC9hZXJv/c3BhY2Uub3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "aerospace.org",
+        "hostname": "aerospace.org",
+        "favicon": "https://imgs.search.brave.com/QQ6vnYlf6OOmni8oL7o2XORhM8ABFUFUsU0HkVw-0R8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDc0NTE5OWI1/M2UwMGUxZDZlZGMz/NjlmMDg1ZWZhYmU3/MGJhY2EyN2E1ZWI4/ZjRmYmYxODAzYWUw/ZTJlNGI3MC9hZXJv/c3BhY2Uub3JnLw",
+        "path": "› sites  › default  › files  › maiw  › TOR-2013-00295.pdf"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Cansat rechargeable energy module for Litio-Ion batteries - Sponsor - PCBWay",
+      "url": "https://www.pcbway.com/project/sponsor/Cansat_rechargeable_energy_module_for_Litio_Ion_batteries.html",
+      "description": "The Cansat energy module is a simple power board that lets you connect and charge a lipo battery and switch it on or off.",
+      "content": "The Cansat energy module is a simple power board that lets you connect and charge a lipo battery and switch it on or off.\nCansat rechargeable energy module for Litio-Ion batteries ### DESCRIPTION My name is Jose Tlacaelel and I&#39;m from Mexico cityEnergy module it&#39;s a power...\nEnergy module it's a power source for a cansat, the cansat have to sense enviromental variables for example: temperature, humidity, co2, uv index, etc, the energy module have to power the computer module and the comunication module.\nMy Profile My projects My Likes My Deals My Goods for Bazaar Settings Sign Out",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "PCBWay",
+        "url": "https://www.pcbway.com/project/sponsor/Cansat_rechargeable_energy_module_for_Litio_Ion_batteries.html",
+        "long_name": "pcbway.com",
+        "img": "https://imgs.search.brave.com/r8tRNqpF4su-Kno-zb6xHTYRrUQ80c_4l8uIjPGYzjo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTYxYzUyOTc5/ZTM0MGM3YzliMjcy/MjY3NzdmNjE3MTkw/ZDU5ZmZlZWFlZWUx/NDlkMWQ4NGQ0Y2Jl/MmEwNTMzZS93d3cu/cGNid2F5LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "pcbway.com",
+        "hostname": "www.pcbway.com",
+        "favicon": "https://imgs.search.brave.com/r8tRNqpF4su-Kno-zb6xHTYRrUQ80c_4l8uIjPGYzjo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTYxYzUyOTc5/ZTM0MGM3YzliMjcy/MjY3NzdmNjE3MTkw/ZDU5ZmZlZWFlZWUx/NDlkMWQ4NGQ0Y2Jl/MmEwNTMzZS93d3cu/cGNid2F5LmNvbS8",
+        "path": "› project  › sponsor  › Cansat_rechargeable_energy_module_for_Litio_Ion_batteries.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/jaHXBPX9JsWuUR4qijDEe75GMttkLGWpyvJqcPzVztM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9maWxl/LnBjYndheS5jb20v/d2Vic3BvbnNvci8x/Ny8xMi8wOC8wNDEx/MTUzNzEucG5n",
+        "original": "https://file.pcbway.com/websponsor/17/12/08/041115371.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 4,
+      "title": "energies Review A Review of Battery Technology in CubeSats",
+      "url": "https://s3vi.ndc.nasa.gov/ssri-kb/static/resources/energies-13-04097-v2.pdf",
+      "description": "Li-ion batteries for nano-satellites in [50]. ... shall be tested in vacuum for extreme temperatures (i.e., hot and cold case) and temperature rate of · change. Eight thermal cycles shall be performed between maximum and minimum temperature limits.",
+      "content": "Li-ion batteries for nano-satellites in [50]. ... shall be tested in vacuum for extreme temperatures (i.e., hot and cold case) and temperature rate of · change. Eight thermal cycles shall be performed between maximum and minimum temperature limits.\nShuhei [25] tested a Li-ion capacitor system in a satellite. The Li-ion capacitor cell speciﬁcations were · 303 g weight, 125 × 165 × 15 mm size, pouch format, 1.171 Ah capacity, and 11.8 Wh/kg energy density. They identiﬁed that if the battery capacity is utilized only to 10% and less, Li-ion capacitors can be\nLi-ion battery and super-capacitor Hybrid energy system for low-temperature SmallSat applications · Conference on Small Satellites, with permission from the authors. Great attention is given also to the development of Lithium-Sulfur (Li-S) batteries.\nHence, it is considered generally negligible [11]. Nevertheless, the ESA Li-ion battery · testing handbook [43] recommends performing radiation test for cell qualiﬁcation. The total dose · irradiation test [44] is still very relevant for battery packs since electronic parts are sensitive to the ... Figure 4. Changes in cell resistance during charge (top) and discharge (bottom) as a function of · (a) irradiation dose to the LiFePO4 cathode, and (b) irradiation dose to the electrolyte.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NASA",
+        "url": "https://s3vi.ndc.nasa.gov/ssri-kb/static/resources/energies-13-04097-v2.pdf",
+        "long_name": "s3vi.ndc.nasa.gov",
+        "img": "https://imgs.search.brave.com/vRdgmAhHyTbd3SumHAKC2Izv2HhvBUcaC6SiSK382wk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJmZTYzMmNh/Y2YxZjRiYzFhNjli/YjIzMjQwMTRjNDU2/MDcxYWNjOWYyNDRk/MzZiMTY4OTRiNjk5/NWY2OTRjNy9zM3Zp/Lm5kYy5uYXNhLmdv/di8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "s3vi.ndc.nasa.gov",
+        "hostname": "s3vi.ndc.nasa.gov",
+        "favicon": "https://imgs.search.brave.com/vRdgmAhHyTbd3SumHAKC2Izv2HhvBUcaC6SiSK382wk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJmZTYzMmNh/Y2YxZjRiYzFhNjli/YjIzMjQwMTRjNDU2/MDcxYWNjOWYyNDRk/MzZiMTY4OTRiNjk5/NWY2OTRjNy9zM3Zp/Lm5kYy5uYXNhLmdv/di8",
+        "path": "› ssri-kb  › static  › resources  › energies-13-04097-v2.pdf"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "I I I I I I I I I I I I I I I I I I I TESTING AND EVALUATION OF LITHIUM-ION",
+      "url": "https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=2689&context=smallsat",
+      "description": "TESTING AND EVALUATION OF LITHIUM-ION · BATTERIES FOR LEO SPACE MISSIONS",
+      "content": "TESTING AND EVALUATION OF LITHIUM-ION · BATTERIES FOR LEO SPACE MISSIONS\nThis work was performed under the auspices of the U.S. Department of Energy by Lawrence Livermore National\nSony Energytec Inc. Lithium",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Utah State University",
+        "url": "https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=2689&context=smallsat",
+        "long_name": "digitalcommons.usu.edu",
+        "img": "https://imgs.search.brave.com/HrGaAL4EDlD4xqB0KxwHenSIbhnFoBD0n2ZQqR4aNqY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQwOWJmMWVh/YTk0ZDkzMDllM2Uw/ZDhhNTlmY2FkZjll/ZWE4Zjg3NWI0ZjM5/NmU3Y2E4YjI3MWVj/ZWIwNmRlNC9kaWdp/dGFsY29tbW9ucy51/c3UuZWR1Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "digitalcommons.usu.edu",
+        "hostname": "digitalcommons.usu.edu",
+        "favicon": "https://imgs.search.brave.com/HrGaAL4EDlD4xqB0KxwHenSIbhnFoBD0n2ZQqR4aNqY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQwOWJmMWVh/YTk0ZDkzMDllM2Uw/ZDhhNTlmY2FkZjll/ZWE4Zjg3NWI0ZjM5/NmU3Y2E4YjI3MWVj/ZWIwNmRlNC9kaWdp/dGFsY29tbW9ucy51/c3UuZWR1Lw",
+        "path": "› cgi  › viewcontent.cgi"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "A Battery Certification Testbed for Small Satellite Missions - S3VI",
+      "url": "https://s3vi.ndc.nasa.gov/ssri-kb/static/resources/42704616.pdf",
+      "description": "the-shelf 18650 lithium ion batteries for small satellite",
+      "content": "the-shelf 18650 lithium ion batteries for small satellite\ncal 18650 lithium-ion cells in their current and updated\nof lithium-ion cells has been chosen to ﬂy based on\nterize and conﬁrm the safety of the lithium-ion cells and",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NASA",
+        "url": "https://s3vi.ndc.nasa.gov/ssri-kb/static/resources/42704616.pdf",
+        "long_name": "s3vi.ndc.nasa.gov",
+        "img": "https://imgs.search.brave.com/vRdgmAhHyTbd3SumHAKC2Izv2HhvBUcaC6SiSK382wk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJmZTYzMmNh/Y2YxZjRiYzFhNjli/YjIzMjQwMTRjNDU2/MDcxYWNjOWYyNDRk/MzZiMTY4OTRiNjk5/NWY2OTRjNy9zM3Zp/Lm5kYy5uYXNhLmdv/di8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "s3vi.ndc.nasa.gov",
+        "hostname": "s3vi.ndc.nasa.gov",
+        "favicon": "https://imgs.search.brave.com/vRdgmAhHyTbd3SumHAKC2Izv2HhvBUcaC6SiSK382wk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJmZTYzMmNh/Y2YxZjRiYzFhNjli/YjIzMjQwMTRjNDU2/MDcxYWNjOWYyNDRk/MzZiMTY4OTRiNjk5/NWY2OTRjNy9zM3Zp/Lm5kYy5uYXNhLmdv/di8",
+        "path": "› ssri-kb  › static  › resources  › 42704616.pdf"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "Guidelines on Lithium-ion Battery Use in Space Applications",
+      "url": "https://ntrs.nasa.gov/api/citations/20090023862/downloads/20090023862.pdf",
+      "description": "This charger can · be a “smart” charger in some cases. The discharge of the cell depends on the load used but the · end voltage during discharge should not go below 2.5 V. Typical end-of-discharge voltages for · the batteries in different equipment have been 3.0 V/cell.",
+      "content": "This charger can · be a “smart” charger in some cases. The discharge of the cell depends on the load used but the · end voltage during discharge should not go below 2.5 V. Typical end-of-discharge voltages for · the batteries in different equipment have been 3.0 V/cell.\nSpecific guidance related to Li-ion systems is addressed in Attachment 1 to the Department of · the Air Force 30th Space Wing Memorandum Dated May 2005. “Joint 45 SW/SE and 30 SW/SE ... New Flight Vehicles (e.g. Ares) Battery requirements are specified in Section 3.16 “Batteries” of RCC 319-07 “Flight · Termination Systems Commonality Standard”. Batteries test and analysis requirements are specified in Sections 4.1 through 4.15 and Section ... Subsystem, and System Prelaunch Test and Launch Requirements” of RCC 319-07.\nSimilarly to the li-ion cells with liquid electrolyte, charging of li-ion polymer · cells requires a dedicated charger due to their unique charging characteristics. This charger can · be a “smart” charger in some cases. The discharge of the cell depends on the load used but the · end voltage during discharge should not go below 2.5 V. Typical end-of-discharge voltages for · the batteries in different equipment have been 3.0 V/cell.\nRefrigerated batteries should be warmed to the optimum operational temperature suggested by · the manufacturer before discharge to obtain maximum capacity and to avoid condensation. Li- ion batteries should be stored at lower states-of-charge to avoid chemical changes in the battery\nLi-ion batteries are rechargeable (secondary) batteries.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NASA Technical Reports Server",
+        "url": "https://ntrs.nasa.gov/api/citations/20090023862/downloads/20090023862.pdf",
+        "long_name": "ntrs.nasa.gov",
+        "img": "https://imgs.search.brave.com/jrviRdZiVe44yAMOAVvEb9iGTRwMdxgbrosWlTvW8HU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQ2Y2M5MWJk/NmEwMzRhYTVlNTk3/ZTkyZDNhZDNlNWI4/MTMwYTRhZWU4Y2Fi/MDViNGY0N2IwNzc1/MmFiYTZjNC9udHJz/Lm5hc2EuZ292Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "ntrs.nasa.gov",
+        "hostname": "ntrs.nasa.gov",
+        "favicon": "https://imgs.search.brave.com/jrviRdZiVe44yAMOAVvEb9iGTRwMdxgbrosWlTvW8HU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQ2Y2M5MWJk/NmEwMzRhYTVlNTk3/ZTkyZDNhZDNlNWI4/MTMwYTRhZWU4Y2Fi/MDViNGY0N2IwNzc1/MmFiYTZjNC9udHJz/Lm5hc2EuZ292Lw",
+        "path": "› api  › citations  › 20090023862  › downloads  › 20090023862.pdf"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "Satellite batteries - for CubeSats, nanosats, and other form factors | satsearch blog",
+      "url": "https://blog.satsearch.co/2021-06-23-satellite-batteries-for-cubesats-nanosats-and-other-form-factors",
+      "description": "An overview of satellite batteries and a comprehensive list of batteries for CubeSats, nanosats, and other form factors on the global market.",
+      "content": "An overview of satellite batteries and a comprehensive list of batteries for CubeSats, nanosats, and other form factors on the global market.\nFor repeated cycles of usage, as in the case of eclipsed seasons, secondary (rechargeable) batteries are preferred. Typically, nickel-cadmium (NiCd), nickel-hydrogen (NiH2), lithium polymer (LiPo), and lithium-ion (Li-ion) cells are used as secondary batteries in space applications.\nThe reliability of a battery depends mainly on the choice of the electrochemical system it is based on. Among the many different types, the most widely used batteries are Nickel–Cadmium (NiCad), Nickel–Hydrogen (NiH2), and Lithium-ion (Li-ion) batteries.\nA classic example is the Nickel-Hydrogen batteries powering the Hubble Telescope in LEO, which were in operation from its launch in 1990 to 2009, and were then replaced by improved versions of the same type of system. Lithiumi-ion batteries are known for their dense energy, longer lifetime, and rechargeable capacity.\nThe highlights of Li-ion battery characteristics include a wide range of operating temperatures, and a prominent working cycle. The systems are also capable of delivering short and high energy peaks without affecting the cell.",
+      "age": "March 19, 2025",
+      "page_age": "2025-03-19T17:15:04",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "satsearch",
+        "url": "https://blog.satsearch.co/2021-06-23-satellite-batteries-for-cubesats-nanosats-and-other-form-factors",
+        "long_name": "blog.satsearch.co",
+        "img": "https://imgs.search.brave.com/YBKD5jl7dS4Su9Wpo4UT9DHY7u-3xwkznHhX5Al8phc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDk0OTNmMzBm/YjQ2MmZjYmU0YWQw/ODM0ZDA5ZmUxM2Vl/MWI3NjZlYThjMDU0/OGI2ZTAzM2IyMDIy/YWVlMDViZi9ibG9n/LnNhdHNlYXJjaC5j/by8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "blog.satsearch.co",
+        "hostname": "blog.satsearch.co",
+        "favicon": "https://imgs.search.brave.com/YBKD5jl7dS4Su9Wpo4UT9DHY7u-3xwkznHhX5Al8phc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDk0OTNmMzBm/YjQ2MmZjYmU0YWQw/ODM0ZDA5ZmUxM2Vl/MWI3NjZlYThjMDU0/OGI2ZTAzM2IyMDIy/YWVlMDViZi9ibG9n/LnNhdHNlYXJjaC5j/by8",
+        "path": "› 2021-06-23-satellite-batteries-for-cubesats-nanosats-and-other-form-factors"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/ZLXt4RFb7eyIexAOAb69Go5vADh8e3YroN7Umc-ABqE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9ibG9n/LWFkbWluLnNhdHNl/YXJjaC5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIxMDYyM19z/YXRzZWFyY2hfc2F0/ZWxsaXRlX2JhdHRl/cmllc19yb3VuZHVw/X2FydGljbGVfY292/ZXIuanBn",
+        "original": "https://blog-admin.satsearch.com/wp-content/uploads/210623_satsearch_satellite_batteries_roundup_article_cover.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 9,
+      "title": "Lithium-ion batteries for space applications in low earth orbits: Promising Technologies and testing methods - ScienceDirect",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0306261925019968",
+      "description": "COTS 18650 cells are common in CubeSats, accepting some risk to reduce battery cost and development time. Lithium-ion batteries (LIBs) are important components of power supply systems for space applications. An important factor in the selection of LIB in this area is the requirement for reliability and fault tolerance during long-term orbital flights.",
+      "content": "COTS 18650 cells are common in CubeSats, accepting some risk to reduce battery cost and development time. Lithium-ion batteries (LIBs) are important components of power supply systems for space applications. An important factor in the selection of LIB in this area is the requirement for reliability and fault tolerance during long-term orbital flights.\nLIBs are one of the primary space power sources due to their high energy density, reducing launch weight and cost. ... LFP cathodes are safer and longer-lasting, making them preferred over NMC for long-duration space missions. ... Cylindrical cells (e.g., 18650) are common in space due to strength, safety, and mass production economics. ... Pre-launch testing in simulated mission conditions is vital for space battery reliability, as full-life testing is impossible.\nSpecial attention is given to the influence of low-Earth orbit conditions on the characteristics of LIB materials in CubeSat-type satellites, because this type of satellite is cheap, easy to manufacture, standardized, and can be used to develop new technological solutions in space. A separate part of the review is devoted to the input control of batteries and the prediction of LIB stability under space conditions.\nPower supply systems based on lithium-ion batteries (LIBs) have become widely used in land, air, sea and rail transport. This is facilitated not only by the mobility of LIBs but also by a wide range of performance characteristics.",
+      "age": "December 23, 2025",
+      "page_age": "2025-12-23T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "ScienceDirect",
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S0306261925019968",
+        "long_name": "sciencedirect.com",
+        "img": "https://imgs.search.brave.com/NJbb0P2bwbdnGnD5FijFoBbn5rA0Jwz-yK3fG5QOBng/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc5YWUwYmQ5/YWNmYWRiMDAxZWU5/ODc3NjJmYTVmOTNi/ZjRmYmE2OTk5Zjk2/MTUzZjMwZmE5OTQ5/MWFjY2ZjNS93d3cu/c2NpZW5jZWRpcmVj/dC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "sciencedirect.com",
+        "hostname": "www.sciencedirect.com",
+        "favicon": "https://imgs.search.brave.com/NJbb0P2bwbdnGnD5FijFoBbn5rA0Jwz-yK3fG5QOBng/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc5YWUwYmQ5/YWNmYWRiMDAxZWU5/ODc3NjJmYTVmOTNi/ZjRmYmE2OTk5Zjk2/MTUzZjMwZmE5OTQ5/MWFjY2ZjNS93d3cu/c2NpZW5jZWRpcmVj/dC5jb20v",
+        "path": "› science  › article  › abs  › pii  › S0306261925019968"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/45ts8VoseimiekBIXqRNY1PDfon01UIWT7Gj_a_wg58/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9hcnMu/ZWxzLWNkbi5jb20v/Y29udGVudC9pbWFn/ZS8xLXMyLjAtUzAz/MDYyNjE5MjVYMDAz/MDEtY292MTUwaC5n/aWY.jpeg",
+        "original": "https://ars.els-cdn.com/content/image/1-s2.0-S0306261925X00301-cov150h.gif",
+        "logo": false
+      }
+    },
+    {
+      "rank": 10,
+      "title": "Problems with the Interim Li Ion Rechargeable Batteries ...",
+      "url": "https://www.sarsat.noaa.gov/wp-content/uploads/2021/08/Proposed-changes-to-the-Interim-Li-Ion-rechargeable-rev-1_JC.pdf",
+      "description": "– Measurements of the internal resistance of the battery should be undertaken for later analysis.",
+      "content": "– Measurements of the internal resistance of the battery should be undertaken for later analysis.\nSome Li Ion discharge voltage curves vs..\nGet real battery experts involved!\nStudy what requirements are needed to indicate the battery condition.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "SARSAT",
+        "url": "https://www.sarsat.noaa.gov/wp-content/uploads/2021/08/Proposed-changes-to-the-Interim-Li-Ion-rechargeable-rev-1_JC.pdf",
+        "long_name": "sarsat.noaa.gov",
+        "img": "https://imgs.search.brave.com/LYJ--amcZPExnwzCQ84BQj_VyxXEkYSrjQ_-YWT5CWc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzMyNjZiNjAw/YmM2NmRlYzU2N2M5/M2EzYmM3Y2Y2YzRl/M2JiOTdiYmQwMzcw/ODhiNmE3NWYwNTMw/MGMwNWU4OS93d3cu/c2Fyc2F0Lm5vYWEu/Z292Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "sarsat.noaa.gov",
+        "hostname": "www.sarsat.noaa.gov",
+        "favicon": "https://imgs.search.brave.com/LYJ--amcZPExnwzCQ84BQj_VyxXEkYSrjQ_-YWT5CWc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzMyNjZiNjAw/YmM2NmRlYzU2N2M5/M2EzYmM3Y2Y2YzRl/M2JiOTdiYmQwMzcw/ODhiNmE3NWYwNTMw/MGMwNWU4OS93d3cu/c2Fyc2F0Lm5vYWEu/Z292Lw",
+        "path": "› wp-content  › uploads  › 2021  › 08  › Proposed-changes-to-the-Interim-Li-Ion-rechargeable-rev-1_JC.pdf"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "CanSat power subsystem battery test plan Li-ion",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.004,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "CanSat power subsystem battery test plan Li-ion",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "faq": {
+      "type": "faq",
+      "results": [
+        {
+          "question": "What causes dendrite formation in lithium-ion batteries during CubeSat missions?",
+          "answer": "Dendrites form when batteries experience voltage, current, and temperature conditions exceeding their tolerance, potentially leading to internal shorts.",
+          "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power ...",
+          "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "academia.edu",
+            "hostname": "www.academia.edu",
+            "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+            "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+          }
+        },
+        {
+          "question": "What are the key safety requirements for CubeSat batteries?",
+          "answer": "The study identifies critical safety requirements including overcharge, overdischarge, and external short tests to maintain compliance with NASA standards.",
+          "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power ...",
+          "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "academia.edu",
+            "hostname": "www.academia.edu",
+            "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+            "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+          }
+        },
+        {
+          "question": "How does EPS ensure battery safety in CubeSats?",
+          "answer": "EPS employs protection mechanisms such as Over Voltage Protection, Over Current Protection, and Under Voltage Protection to enhance battery safety.",
+          "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power ...",
+          "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "academia.edu",
+            "hostname": "www.academia.edu",
+            "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+            "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+          }
+        },
+        {
+          "question": "What are the outcomes of the vibration and vacuum tests on the battery?",
+          "answer": "Tests indicate that there should be less than 0.1% change in Open Circuit Voltage and under 5% change in capacity post-vacuum testing.",
+          "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power ...",
+          "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "academia.edu",
+            "hostname": "www.academia.edu",
+            "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+            "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+          }
+        },
+        {
+          "question": "How do charging cycles affect battery performance in CubeSats?",
+          "answer": "Charge/discharge cycles indicate depth of discharge and state of charge, impacting battery life and mission functionality significantly.",
+          "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power ...",
+          "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "academia.edu",
+            "hostname": "www.academia.edu",
+            "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+            "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+          }
+        }
+      ]
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "faq",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power Subsystem for CubeSat",
+          "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The experiment required the development of a nonrechargeable battery-powered instrument for biological material life support. Crew and ship safety is vital in space flight; thus, the experiment’s use of batteries must be certified through a series of technical tests required by NASA. This article describes the certification process, including: the protection of circuits, and the electrical, vibration and vacuum tests. Finally, test results, that allowed the use of the instrument in space, are shown. ... The design process of an Electrical Power Subsystem (EPS) for a space mission is a key factor in order to be successful.",
+          "page_age": "2025-10-12T00:00:00",
+          "profile": {
+            "name": "Academia.edu",
+            "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+            "long_name": "academia.edu",
+            "img": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "faq",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "academia.edu",
+            "hostname": "www.academia.edu",
+            "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+            "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/9ViTlnDGYxJYTG95G7EUBMqEraAqfN2qnAh9No65cac/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9hdHRh/Y2htZW50cy5hY2Fk/ZW1pYS1hc3NldHMu/Y29tLzUyNTI1MTI3/L3RodW1ibmFpbHMv/MS5qcGc",
+            "original": "https://attachments.academia-assets.com/52525127/thumbnails/1.jpg",
+            "logo": false
+          },
+          "age": "October 12, 2025",
+          "faq": {
+            "items": [
+              {
+                "question": "What are the key safety requirements for CubeSat batteries?",
+                "answer": "The study identifies critical safety requirements including overcharge, overdischarge, and external short tests to maintain compliance with NASA standards.",
+                "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power ...",
+                "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "academia.edu",
+                  "hostname": "www.academia.edu",
+                  "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+                  "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+                }
+              },
+              {
+                "question": "How does EPS ensure battery safety in CubeSats?",
+                "answer": "EPS employs protection mechanisms such as Over Voltage Protection, Over Current Protection, and Under Voltage Protection to enhance battery safety.",
+                "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power ...",
+                "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "academia.edu",
+                  "hostname": "www.academia.edu",
+                  "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+                  "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+                }
+              },
+              {
+                "question": "What causes dendrite formation in lithium-ion batteries during CubeSat missions?",
+                "answer": "Dendrites form when batteries experience voltage, current, and temperature conditions exceeding their tolerance, potentially leading to internal shorts.",
+                "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power ...",
+                "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "academia.edu",
+                  "hostname": "www.academia.edu",
+                  "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+                  "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+                }
+              },
+              {
+                "question": "What are the outcomes of the vibration and vacuum tests on the battery?",
+                "answer": "Tests indicate that there should be less than 0.1% change in Open Circuit Voltage and under 5% change in capacity post-vacuum testing.",
+                "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power ...",
+                "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "academia.edu",
+                  "hostname": "www.academia.edu",
+                  "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+                  "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+                }
+              },
+              {
+                "question": "How do charging cycles affect battery performance in CubeSats?",
+                "answer": "Charge/discharge cycles indicate depth of discharge and state of charge, impacting battery life and mission functionality significantly.",
+                "title": "(PDF) Certification of Lithium-ion Cells with Electrical Power ...",
+                "url": "https://www.academia.edu/32312455/Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "academia.edu",
+                  "hostname": "www.academia.edu",
+                  "favicon": "https://imgs.search.brave.com/7J9uPNH9ZFuUX6lmeZqLEl2mtfTqhnxMHQ8jWKVmHJQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzkyYTA0Zjdi/YjJkMzgzMjI4ZTUz/OTg3ODAwZjllOGZl/ZjIyOTdlY2U0YTcz/N2ZiMWJlZmEwNzFi/ZjgwZWEwMC93d3cu/YWNhZGVtaWEuZWR1/Lw",
+                  "path": "› 32312455  › Certification_of_Lithium_ion_Cells_with_Electrical_Power_Subsystem_for_CubeSat"
+                }
+              }
+            ]
+          },
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "chia heng yeh",
+                "url": "https://independent.academia.edu/chiahengyeh"
+              }
+            ],
+            "date": "Apr 07, 2017"
+          },
+          "extra_snippets": [
+            "Phoenix consists of several subsystems and one of the most critical one is Electrical Power Subsystem (EPS), which provides, stores, distributes, and controls the satellite's electrical power. A battery pack consisting of standard cylindrical 18650 lithium-ion cells has been chosen for PHOENIX-CubeSat missions.",
+            "The experiment required the development of a nonrechargeable battery-powered instrument for biological material life support. Crew and ship safety is vital in space flight; thus, the experiment’s use of batteries must be certified through a series of technical tests required by NASA. This article describes the certification process, including: the protection of circuits, and the electrical, vibration and vacuum tests. Finally, test results, that allowed the use of the instrument in space, are shown. ... The design process of an Electrical Power Subsystem (EPS) for a space mission is a key factor in order to be successful.",
+            "This fact has allowed access to the space power technologies to an increased number of users, resulting in the arrival of COTS elements to the design and development of space power subsystems (specially in nanosats). In the present work, the development of a Li-Ion battery at IDR/UPM based on COTS elements for the UNION/Lian-He mission is described.",
+            "The integrated model can be useful for engineers when developing the subsystems of their CubeSats, taking into account, for example, the battery temperature control through a heater. Simulations were performed to illustrate the functioning of the proposed model with variations in the power requi... ... Cycle life evaluation of 3Ah LixMn2O4-based lithium-ion secondary cells for low-earth-orbit satellitesI."
+          ]
+        },
+        {
+          "title": "Architectures for Lithium Ion Based Power Subsystems",
+          "url": "https://aerospace.org/sites/default/files/maiw/TOR-2013-00295.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "weight batteries with reduced volumetric requirements. Due to its unique chemistry, implementation · of this technology may require modification to prior spacecraft architectures that used nickel · hydrogen technology. Specific challenges surrounding the inability of lithium ion cells to tolerate · overcharge and over-discharge are discussed. This document gives consideration to a variety of · power subsystem architectures and provides an approach to safely implement lithium ion technology.",
+          "profile": {
+            "name": "The Aerospace Corporation",
+            "url": "https://aerospace.org/sites/default/files/maiw/TOR-2013-00295.pdf",
+            "long_name": "aerospace.org",
+            "img": "https://imgs.search.brave.com/QQ6vnYlf6OOmni8oL7o2XORhM8ABFUFUsU0HkVw-0R8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDc0NTE5OWI1/M2UwMGUxZDZlZGMz/NjlmMDg1ZWZhYmU3/MGJhY2EyN2E1ZWI4/ZjRmYmYxODAzYWUw/ZTJlNGI3MC9hZXJv/c3BhY2Uub3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "aerospace.org",
+            "hostname": "aerospace.org",
+            "favicon": "https://imgs.search.brave.com/QQ6vnYlf6OOmni8oL7o2XORhM8ABFUFUsU0HkVw-0R8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDc0NTE5OWI1/M2UwMGUxZDZlZGMz/NjlmMDg1ZWZhYmU3/MGJhY2EyN2E1ZWI4/ZjRmYmYxODAzYWUw/ZTJlNGI3MC9hZXJv/c3BhY2Uub3JnLw",
+            "path": "› sites  › default  › files  › maiw  › TOR-2013-00295.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "meet full mission while preventing, surviving, and recovering from power subsystem fault conditions. Implementation of lithium ion batteries requires a system level approach for mission assurance.",
+            "variety of power subsystem architectures that are currently used in satellite systems will be addressed. The performance characteristics of lithium ion cells differ significantly from prior satellite battery",
+            "Battery Disconnect and Maintenance System (BDMS) .................................................. 87 ... Electrical Power Subsystem Test Bed Tests ................................................................... 88 ... Spacecraft Level Verification ......................................................................................... 88 ... Special Test Equipment (STE) Implications for Li-Ion Systems .....................",
+            "weight batteries with reduced volumetric requirements. Due to its unique chemistry, implementation · of this technology may require modification to prior spacecraft architectures that used nickel · hydrogen technology. Specific challenges surrounding the inability of lithium ion cells to tolerate · overcharge and over-discharge are discussed. This document gives consideration to a variety of · power subsystem architectures and provides an approach to safely implement lithium ion technology."
+          ]
+        },
+        {
+          "title": "Cansat rechargeable energy module for Litio-Ion batteries - Sponsor - PCBWay",
+          "url": "https://www.pcbway.com/project/sponsor/Cansat_rechargeable_energy_module_for_Litio_Ion_batteries.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The Cansat energy module is a simple power board that lets you connect and charge a lipo battery and switch it on or off.",
+          "profile": {
+            "name": "PCBWay",
+            "url": "https://www.pcbway.com/project/sponsor/Cansat_rechargeable_energy_module_for_Litio_Ion_batteries.html",
+            "long_name": "pcbway.com",
+            "img": "https://imgs.search.brave.com/r8tRNqpF4su-Kno-zb6xHTYRrUQ80c_4l8uIjPGYzjo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTYxYzUyOTc5/ZTM0MGM3YzliMjcy/MjY3NzdmNjE3MTkw/ZDU5ZmZlZWFlZWUx/NDlkMWQ4NGQ0Y2Jl/MmEwNTMzZS93d3cu/cGNid2F5LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "pcbway.com",
+            "hostname": "www.pcbway.com",
+            "favicon": "https://imgs.search.brave.com/r8tRNqpF4su-Kno-zb6xHTYRrUQ80c_4l8uIjPGYzjo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTYxYzUyOTc5/ZTM0MGM3YzliMjcy/MjY3NzdmNjE3MTkw/ZDU5ZmZlZWFlZWUx/NDlkMWQ4NGQ0Y2Jl/MmEwNTMzZS93d3cu/cGNid2F5LmNvbS8",
+            "path": "› project  › sponsor  › Cansat_rechargeable_energy_module_for_Litio_Ion_batteries.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/jaHXBPX9JsWuUR4qijDEe75GMttkLGWpyvJqcPzVztM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9maWxl/LnBjYndheS5jb20v/d2Vic3BvbnNvci8x/Ny8xMi8wOC8wNDEx/MTUzNzEucG5n",
+            "original": "https://file.pcbway.com/websponsor/17/12/08/041115371.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "The Cansat energy module is a simple power board that lets you connect and charge a lipo battery and switch it on or off.",
+            "Cansat rechargeable energy module for Litio-Ion batteries ### DESCRIPTION My name is Jose Tlacaelel and I&#39;m from Mexico cityEnergy module it&#39;s a power...",
+            "Energy module it's a power source for a cansat, the cansat have to sense enviromental variables for example: temperature, humidity, co2, uv index, etc, the energy module have to power the computer module and the comunication module.",
+            "My Profile My projects My Likes My Deals My Goods for Bazaar Settings Sign Out"
+          ]
+        },
+        {
+          "title": "energies Review A Review of Battery Technology in CubeSats",
+          "url": "https://s3vi.ndc.nasa.gov/ssri-kb/static/resources/energies-13-04097-v2.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Li-ion batteries for nano-satellites in [50]. ... shall be tested in vacuum for extreme temperatures (i.e., hot and cold case) and temperature rate of · change. Eight thermal cycles shall be performed between maximum and minimum temperature limits.",
+          "profile": {
+            "name": "NASA",
+            "url": "https://s3vi.ndc.nasa.gov/ssri-kb/static/resources/energies-13-04097-v2.pdf",
+            "long_name": "s3vi.ndc.nasa.gov",
+            "img": "https://imgs.search.brave.com/vRdgmAhHyTbd3SumHAKC2Izv2HhvBUcaC6SiSK382wk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJmZTYzMmNh/Y2YxZjRiYzFhNjli/YjIzMjQwMTRjNDU2/MDcxYWNjOWYyNDRk/MzZiMTY4OTRiNjk5/NWY2OTRjNy9zM3Zp/Lm5kYy5uYXNhLmdv/di8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "s3vi.ndc.nasa.gov",
+            "hostname": "s3vi.ndc.nasa.gov",
+            "favicon": "https://imgs.search.brave.com/vRdgmAhHyTbd3SumHAKC2Izv2HhvBUcaC6SiSK382wk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJmZTYzMmNh/Y2YxZjRiYzFhNjli/YjIzMjQwMTRjNDU2/MDcxYWNjOWYyNDRk/MzZiMTY4OTRiNjk5/NWY2OTRjNy9zM3Zp/Lm5kYy5uYXNhLmdv/di8",
+            "path": "› ssri-kb  › static  › resources  › energies-13-04097-v2.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Shuhei [25] tested a Li-ion capacitor system in a satellite. The Li-ion capacitor cell speciﬁcations were · 303 g weight, 125 × 165 × 15 mm size, pouch format, 1.171 Ah capacity, and 11.8 Wh/kg energy density. They identiﬁed that if the battery capacity is utilized only to 10% and less, Li-ion capacitors can be",
+            "Li-ion battery and super-capacitor Hybrid energy system for low-temperature SmallSat applications · Conference on Small Satellites, with permission from the authors. Great attention is given also to the development of Lithium-Sulfur (Li-S) batteries.",
+            "Hence, it is considered generally negligible [11]. Nevertheless, the ESA Li-ion battery · testing handbook [43] recommends performing radiation test for cell qualiﬁcation. The total dose · irradiation test [44] is still very relevant for battery packs since electronic parts are sensitive to the ... Figure 4. Changes in cell resistance during charge (top) and discharge (bottom) as a function of · (a) irradiation dose to the LiFePO4 cathode, and (b) irradiation dose to the electrolyte.",
+            "Li-ion batteries for nano-satellites in [50]. ... shall be tested in vacuum for extreme temperatures (i.e., hot and cold case) and temperature rate of · change. Eight thermal cycles shall be performed between maximum and minimum temperature limits."
+          ]
+        },
+        {
+          "title": "I I I I I I I I I I I I I I I I I I I TESTING AND EVALUATION OF LITHIUM-ION",
+          "url": "https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=2689&context=smallsat",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "TESTING AND EVALUATION OF LITHIUM-ION · BATTERIES FOR LEO SPACE MISSIONS",
+          "profile": {
+            "name": "Utah State University",
+            "url": "https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=2689&context=smallsat",
+            "long_name": "digitalcommons.usu.edu",
+            "img": "https://imgs.search.brave.com/HrGaAL4EDlD4xqB0KxwHenSIbhnFoBD0n2ZQqR4aNqY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQwOWJmMWVh/YTk0ZDkzMDllM2Uw/ZDhhNTlmY2FkZjll/ZWE4Zjg3NWI0ZjM5/NmU3Y2E4YjI3MWVj/ZWIwNmRlNC9kaWdp/dGFsY29tbW9ucy51/c3UuZWR1Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "digitalcommons.usu.edu",
+            "hostname": "digitalcommons.usu.edu",
+            "favicon": "https://imgs.search.brave.com/HrGaAL4EDlD4xqB0KxwHenSIbhnFoBD0n2ZQqR4aNqY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQwOWJmMWVh/YTk0ZDkzMDllM2Uw/ZDhhNTlmY2FkZjll/ZWE4Zjg3NWI0ZjM5/NmU3Y2E4YjI3MWVj/ZWIwNmRlNC9kaWdp/dGFsY29tbW9ucy51/c3UuZWR1Lw",
+            "path": "› cgi  › viewcontent.cgi"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "This work was performed under the auspices of the U.S. Department of Energy by Lawrence Livermore National",
+            "Sony Energytec Inc. Lithium"
+          ]
+        },
+        {
+          "title": "A Battery Certification Testbed for Small Satellite Missions - S3VI",
+          "url": "https://s3vi.ndc.nasa.gov/ssri-kb/static/resources/42704616.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "the-shelf 18650 lithium ion batteries for small satellite",
+          "profile": {
+            "name": "NASA",
+            "url": "https://s3vi.ndc.nasa.gov/ssri-kb/static/resources/42704616.pdf",
+            "long_name": "s3vi.ndc.nasa.gov",
+            "img": "https://imgs.search.brave.com/vRdgmAhHyTbd3SumHAKC2Izv2HhvBUcaC6SiSK382wk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJmZTYzMmNh/Y2YxZjRiYzFhNjli/YjIzMjQwMTRjNDU2/MDcxYWNjOWYyNDRk/MzZiMTY4OTRiNjk5/NWY2OTRjNy9zM3Zp/Lm5kYy5uYXNhLmdv/di8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "s3vi.ndc.nasa.gov",
+            "hostname": "s3vi.ndc.nasa.gov",
+            "favicon": "https://imgs.search.brave.com/vRdgmAhHyTbd3SumHAKC2Izv2HhvBUcaC6SiSK382wk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJmZTYzMmNh/Y2YxZjRiYzFhNjli/YjIzMjQwMTRjNDU2/MDcxYWNjOWYyNDRk/MzZiMTY4OTRiNjk5/NWY2OTRjNy9zM3Zp/Lm5kYy5uYXNhLmdv/di8",
+            "path": "› ssri-kb  › static  › resources  › 42704616.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "cal 18650 lithium-ion cells in their current and updated",
+            "of lithium-ion cells has been chosen to ﬂy based on",
+            "terize and conﬁrm the safety of the lithium-ion cells and",
+            "the-shelf 18650 lithium ion batteries for small satellite"
+          ]
+        },
+        {
+          "title": "Guidelines on Lithium-ion Battery Use in Space Applications",
+          "url": "https://ntrs.nasa.gov/api/citations/20090023862/downloads/20090023862.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This charger can · be a “smart” charger in some cases. The discharge of the cell depends on the load used but the · end voltage during discharge should not go below 2.5 V. Typical end-of-discharge voltages for · the batteries in different equipment have been 3.0 V/cell.",
+          "profile": {
+            "name": "NASA Technical Reports Server",
+            "url": "https://ntrs.nasa.gov/api/citations/20090023862/downloads/20090023862.pdf",
+            "long_name": "ntrs.nasa.gov",
+            "img": "https://imgs.search.brave.com/jrviRdZiVe44yAMOAVvEb9iGTRwMdxgbrosWlTvW8HU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQ2Y2M5MWJk/NmEwMzRhYTVlNTk3/ZTkyZDNhZDNlNWI4/MTMwYTRhZWU4Y2Fi/MDViNGY0N2IwNzc1/MmFiYTZjNC9udHJz/Lm5hc2EuZ292Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "ntrs.nasa.gov",
+            "hostname": "ntrs.nasa.gov",
+            "favicon": "https://imgs.search.brave.com/jrviRdZiVe44yAMOAVvEb9iGTRwMdxgbrosWlTvW8HU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQ2Y2M5MWJk/NmEwMzRhYTVlNTk3/ZTkyZDNhZDNlNWI4/MTMwYTRhZWU4Y2Fi/MDViNGY0N2IwNzc1/MmFiYTZjNC9udHJz/Lm5hc2EuZ292Lw",
+            "path": "› api  › citations  › 20090023862  › downloads  › 20090023862.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Specific guidance related to Li-ion systems is addressed in Attachment 1 to the Department of · the Air Force 30th Space Wing Memorandum Dated May 2005. “Joint 45 SW/SE and 30 SW/SE ... New Flight Vehicles (e.g. Ares) Battery requirements are specified in Section 3.16 “Batteries” of RCC 319-07 “Flight · Termination Systems Commonality Standard”. Batteries test and analysis requirements are specified in Sections 4.1 through 4.15 and Section ... Subsystem, and System Prelaunch Test and Launch Requirements” of RCC 319-07.",
+            "Similarly to the li-ion cells with liquid electrolyte, charging of li-ion polymer · cells requires a dedicated charger due to their unique charging characteristics. This charger can · be a “smart” charger in some cases. The discharge of the cell depends on the load used but the · end voltage during discharge should not go below 2.5 V. Typical end-of-discharge voltages for · the batteries in different equipment have been 3.0 V/cell.",
+            "Refrigerated batteries should be warmed to the optimum operational temperature suggested by · the manufacturer before discharge to obtain maximum capacity and to avoid condensation. Li- ion batteries should be stored at lower states-of-charge to avoid chemical changes in the battery",
+            "Li-ion batteries are rechargeable (secondary) batteries."
+          ]
+        },
+        {
+          "title": "Satellite batteries - for CubeSats, nanosats, and other form factors | satsearch blog",
+          "url": "https://blog.satsearch.co/2021-06-23-satellite-batteries-for-cubesats-nanosats-and-other-form-factors",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "An overview of satellite batteries and a comprehensive list of batteries for CubeSats, nanosats, and other form factors on the global market.",
+          "page_age": "2025-03-19T17:15:04",
+          "profile": {
+            "name": "satsearch",
+            "url": "https://blog.satsearch.co/2021-06-23-satellite-batteries-for-cubesats-nanosats-and-other-form-factors",
+            "long_name": "blog.satsearch.co",
+            "img": "https://imgs.search.brave.com/YBKD5jl7dS4Su9Wpo4UT9DHY7u-3xwkznHhX5Al8phc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDk0OTNmMzBm/YjQ2MmZjYmU0YWQw/ODM0ZDA5ZmUxM2Vl/MWI3NjZlYThjMDU0/OGI2ZTAzM2IyMDIy/YWVlMDViZi9ibG9n/LnNhdHNlYXJjaC5j/by8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "blog.satsearch.co",
+            "hostname": "blog.satsearch.co",
+            "favicon": "https://imgs.search.brave.com/YBKD5jl7dS4Su9Wpo4UT9DHY7u-3xwkznHhX5Al8phc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDk0OTNmMzBm/YjQ2MmZjYmU0YWQw/ODM0ZDA5ZmUxM2Vl/MWI3NjZlYThjMDU0/OGI2ZTAzM2IyMDIy/YWVlMDViZi9ibG9n/LnNhdHNlYXJjaC5j/by8",
+            "path": "› 2021-06-23-satellite-batteries-for-cubesats-nanosats-and-other-form-factors"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/ZLXt4RFb7eyIexAOAb69Go5vADh8e3YroN7Umc-ABqE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9ibG9n/LWFkbWluLnNhdHNl/YXJjaC5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIxMDYyM19z/YXRzZWFyY2hfc2F0/ZWxsaXRlX2JhdHRl/cmllc19yb3VuZHVw/X2FydGljbGVfY292/ZXIuanBn",
+            "original": "https://blog-admin.satsearch.com/wp-content/uploads/210623_satsearch_satellite_batteries_roundup_article_cover.jpg",
+            "logo": false
+          },
+          "age": "March 19, 2025",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Hywel Curtis"
+              }
+            ],
+            "date": "Jun 23, 2021",
+            "publisher": {
+              "type": "organization",
+              "name": "satsearch",
+              "url": "https://satsearch.co",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/tLDofBPOfxdqSintV3TKUvbXQP1y6ul-JF0ujmk4fEo/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zYXRz/ZWFyY2guY28vYXNz/ZXRzL2ltZy9sb2dv/LnBuZw",
+                "original": "https://satsearch.co/assets/img/logo.png"
+              }
+            }
+          },
+          "organization": {
+            "type": "organization",
+            "name": "satsearch",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "For repeated cycles of usage, as in the case of eclipsed seasons, secondary (rechargeable) batteries are preferred. Typically, nickel-cadmium (NiCd), nickel-hydrogen (NiH2), lithium polymer (LiPo), and lithium-ion (Li-ion) cells are used as secondary batteries in space applications.",
+            "The reliability of a battery depends mainly on the choice of the electrochemical system it is based on. Among the many different types, the most widely used batteries are Nickel–Cadmium (NiCad), Nickel–Hydrogen (NiH2), and Lithium-ion (Li-ion) batteries.",
+            "A classic example is the Nickel-Hydrogen batteries powering the Hubble Telescope in LEO, which were in operation from its launch in 1990 to 2009, and were then replaced by improved versions of the same type of system. Lithiumi-ion batteries are known for their dense energy, longer lifetime, and rechargeable capacity.",
+            "The highlights of Li-ion battery characteristics include a wide range of operating temperatures, and a prominent working cycle. The systems are also capable of delivering short and high energy peaks without affecting the cell."
+          ]
+        },
+        {
+          "title": "Lithium-ion batteries for space applications in low earth orbits: Promising Technologies and testing methods - ScienceDirect",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0306261925019968",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "COTS 18650 cells are common in CubeSats, accepting some risk to reduce battery cost and development time. Lithium-ion batteries (LIBs) are important components of power supply systems for space applications. An important factor in the selection of LIB in this area is the requirement for reliability and fault tolerance during long-term orbital flights.",
+          "page_age": "2025-12-23T00:00:00",
+          "profile": {
+            "name": "ScienceDirect",
+            "url": "https://www.sciencedirect.com/science/article/abs/pii/S0306261925019968",
+            "long_name": "sciencedirect.com",
+            "img": "https://imgs.search.brave.com/NJbb0P2bwbdnGnD5FijFoBbn5rA0Jwz-yK3fG5QOBng/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc5YWUwYmQ5/YWNmYWRiMDAxZWU5/ODc3NjJmYTVmOTNi/ZjRmYmE2OTk5Zjk2/MTUzZjMwZmE5OTQ5/MWFjY2ZjNS93d3cu/c2NpZW5jZWRpcmVj/dC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "sciencedirect.com",
+            "hostname": "www.sciencedirect.com",
+            "favicon": "https://imgs.search.brave.com/NJbb0P2bwbdnGnD5FijFoBbn5rA0Jwz-yK3fG5QOBng/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc5YWUwYmQ5/YWNmYWRiMDAxZWU5/ODc3NjJmYTVmOTNi/ZjRmYmE2OTk5Zjk2/MTUzZjMwZmE5OTQ5/MWFjY2ZjNS93d3cu/c2NpZW5jZWRpcmVj/dC5jb20v",
+            "path": "› science  › article  › abs  › pii  › S0306261925019968"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/45ts8VoseimiekBIXqRNY1PDfon01UIWT7Gj_a_wg58/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9hcnMu/ZWxzLWNkbi5jb20v/Y29udGVudC9pbWFn/ZS8xLXMyLjAtUzAz/MDYyNjE5MjVYMDAz/MDEtY292MTUwaC5n/aWY.jpeg",
+            "original": "https://ars.els-cdn.com/content/image/1-s2.0-S0306261925X00301-cov150h.gif",
+            "logo": false
+          },
+          "age": "December 23, 2025",
+          "extra_snippets": [
+            "LIBs are one of the primary space power sources due to their high energy density, reducing launch weight and cost. ... LFP cathodes are safer and longer-lasting, making them preferred over NMC for long-duration space missions. ... Cylindrical cells (e.g., 18650) are common in space due to strength, safety, and mass production economics. ... Pre-launch testing in simulated mission conditions is vital for space battery reliability, as full-life testing is impossible.",
+            "COTS 18650 cells are common in CubeSats, accepting some risk to reduce battery cost and development time. Lithium-ion batteries (LIBs) are important components of power supply systems for space applications. An important factor in the selection of LIB in this area is the requirement for reliability and fault tolerance during long-term orbital flights.",
+            "Special attention is given to the influence of low-Earth orbit conditions on the characteristics of LIB materials in CubeSat-type satellites, because this type of satellite is cheap, easy to manufacture, standardized, and can be used to develop new technological solutions in space. A separate part of the review is devoted to the input control of batteries and the prediction of LIB stability under space conditions.",
+            "Power supply systems based on lithium-ion batteries (LIBs) have become widely used in land, air, sea and rail transport. This is facilitated not only by the mobility of LIBs but also by a wide range of performance characteristics."
+          ]
+        },
+        {
+          "title": "Problems with the Interim Li Ion Rechargeable Batteries ...",
+          "url": "https://www.sarsat.noaa.gov/wp-content/uploads/2021/08/Proposed-changes-to-the-Interim-Li-Ion-rechargeable-rev-1_JC.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "– Measurements of the internal resistance of the battery should be undertaken for later analysis.",
+          "profile": {
+            "name": "SARSAT",
+            "url": "https://www.sarsat.noaa.gov/wp-content/uploads/2021/08/Proposed-changes-to-the-Interim-Li-Ion-rechargeable-rev-1_JC.pdf",
+            "long_name": "sarsat.noaa.gov",
+            "img": "https://imgs.search.brave.com/LYJ--amcZPExnwzCQ84BQj_VyxXEkYSrjQ_-YWT5CWc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzMyNjZiNjAw/YmM2NmRlYzU2N2M5/M2EzYmM3Y2Y2YzRl/M2JiOTdiYmQwMzcw/ODhiNmE3NWYwNTMw/MGMwNWU4OS93d3cu/c2Fyc2F0Lm5vYWEu/Z292Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "sarsat.noaa.gov",
+            "hostname": "www.sarsat.noaa.gov",
+            "favicon": "https://imgs.search.brave.com/LYJ--amcZPExnwzCQ84BQj_VyxXEkYSrjQ_-YWT5CWc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzMyNjZiNjAw/YmM2NmRlYzU2N2M5/M2EzYmM3Y2Y2YzRl/M2JiOTdiYmQwMzcw/ODhiNmE3NWYwNTMw/MGMwNWU4OS93d3cu/c2Fyc2F0Lm5vYWEu/Z292Lw",
+            "path": "› wp-content  › uploads  › 2021  › 08  › Proposed-changes-to-the-Interim-Li-Ion-rechargeable-rev-1_JC.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Some Li Ion discharge voltage curves vs..",
+            "Get real battery experts involved!",
+            "Study what requirements are needed to indicate the battery condition.",
+            "– Measurements of the internal resistance of the battery should be undertaken for later analysis."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

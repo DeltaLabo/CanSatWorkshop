@@ -1,0 +1,46 @@
+{
+  "url": "https://standards.nasa.gov/standard/GSFC/GSFC-STD-7000",
+  "saved_at": "2026-06-11T22:23:32.080837+00:00",
+  "reason": "confidence_below_0.55",
+  "warnings": [],
+  "final_url": "https://standards.nasa.gov/standard/GSFC/GSFC-STD-7000",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "content_length_header": null,
+  "response_headers": {
+    "Content-Type": "text/html; charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Date": "Thu, 11 Jun 2026 22:23:31 GMT",
+    "x-real-client-ip": "201.206.80.145",
+    "Content-Encoding": "gzip",
+    "Server": "nginx",
+    "Vary": "Accept-Encoding",
+    "Cache-Control": "must-revalidate, no-cache, private",
+    "X-Drupal-Dynamic-Cache": "MISS",
+    "X-UA-Compatible": "IE=edge",
+    "Content-language": "en",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+    "X-Generator": "Drupal 9 (https://www.drupal.org)",
+    "X-Drupal-Cache": "HIT",
+    "Via": "1.1 a2ca37a37e21a31e9023503d2ebff24a.cloudfront.net (CloudFront)",
+    "Referrer-Policy": "same-origin",
+    "Strict-Transport-Security": "max-age=31536000",
+    "X-XSS-Protection": "1; mode=block",
+    "X-Cache": "Miss from cloudfront",
+    "X-Amz-Cf-Pop": "MIA50-P6",
+    "X-Amz-Cf-Id": "DsV1aKpBlPNvMralt8M1fAgXGA1XTLEp0Wkf02FX-FrIsll2YTY95Q=="
+  },
+  "extraction": {
+    "parser": "trafilatura-markdown",
+    "title": "General Environmental Verification Standard (GEVS) for GSFC Flight Programs and Projects",
+    "confidence": 0.543,
+    "word_count": 181,
+    "metadata": {
+      "date": "2015-08-07",
+      "sitename": "standards.nasa.gov"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "url": "https://www.phmsa.dot.gov/training/hazmat/new-un-requirement-test-summaries",
+  "saved_at": "2026-06-11T22:24:00.343810+00:00",
+  "reason": "http_status_403",
+  "warnings": [],
+  "final_url": "https://www.phmsa.dot.gov/training/hazmat/new-un-requirement-test-summaries",
+  "status_code": 403,
+  "content_type": "text/html",
+  "content_length_header": "448",
+  "response_headers": {
+    "Server": "AkamaiGHost",
+    "Mime-Version": "1.0",
+    "Content-Type": "text/html",
+    "Content-Length": "448",
+    "Expires": "Thu, 11 Jun 2026 22:24:00 GMT",
+    "Date": "Thu, 11 Jun 2026 22:24:00 GMT",
+    "Connection": "close",
+    "Alt-Svc": "h3=\":443\"; ma=93600",
+    "Strict-Transport-Security": "max-age=31536000 ; includeSubDomains ; preload"
+  }
+}

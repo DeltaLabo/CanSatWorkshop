@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- inj yui3-seed: --><script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/yui/3.6.0/yui/yui-min.js'></script><script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script><!-- Adobe Analytics --><script type='text/javascript' src='https://assets.adobedtm.com/4a848ae9611a/d0e96722185b/launch-d525bb0064d8.min.js'></script><script type='text/javascript' src=/assets/nr_browser_production.js></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        body {
+            font-family: "Arial";
+        }
+    </style>
+    <script type="text/javascript">
+    window.awsWafCookieDomainList = [];
+    window.gokuProps = {
+"key":"AQIDAHjcYu/GjX+QlghicBgQ/7bFaQZ+m5FKCMDnO+vTbNg96AHelQmubTlF0rfRzqvP1tdAAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM8avVrKRtF4YDtNr/AgEQgDthnKC493X/uuYKO+CZF68lU/gRIV4cWMvVY5d7awNf9q10cjr9uMZFsYSeQj+z7iESWwniBqIIFduQ2w==",
+          "iv":"CgAEhjYTOAAAC4Dk",
+          "context":"2eCCu6Ra0LhMpgR8Z2ZTlrRzjRrXw4AowAIGsUu/eBUUcJUxL/jYX76Ii/UiKPa7IpRwSoM2Ula1fBjcCk/GcPm3Pcki78asZyFRBe3VNFcbIczPov6D1ZWy+kh12DguQxQrPN7oeavQmBuEGWwiDn7itQSXO2HErBlUNBUz3aJc5JoQOmgeeU+24hTAAM6cGZhP+rAJ8iXW/g8n9jaQbJt0CaKv2AFQehrGbJCjvCDlti4SF6gH4ZOO2mFC/CbxOYOecgpuhdQzZptBfuPMwM5nT2+WxOpJpMj7vIDCQhqArdU6Rv/qyRzstApsSBdFj2bd3MW9ZaNtWnoCKGoLN0tiPmwNVeFLwXYHia/5TcltIkosS8jJAuL/IhTpSuqi3fsH/Lc6FuaBllia+Z7Bg3z7lLiKcTkMgB6Ovw+6IZauYtz2s+pBeuR0Rm+Y+R+Y2lmLUX7V+gjg/LF009W7eSfBY/ZzXSjvIScO4sxgSzyBD2tuNPp4g9PfIK8nB89BzvrrL+AYDLUwsVdoXv7/2IX940b/6J3nqrnTVDqpNqqJfROqRRTJ84BCbCbxJspHXf0BvGxNXleCf93/7Gg8Cy/SSNDHRfBKYCF/NakHi3Fumq0pyyq5qbypFVVUFF4inmWVVAy6YlE6cLE0xB1OQK5f8VYScVRyYL7Z8QofKiXgpUJIBNpNgThrZMqO8QojkRNlV97s8SVxL9mb/xctpUO5FkTW5D4O0O1FwUzqL6dF8qQPPMJ0EmGBKyUFSx0V5hanFLIrOmFOiyC+WWCbJ0+od7SaEnQ4"
+};
+    </script>
+    <script src="https://706f4033c08d.7e9e77ab.us-west-1.token.awswaf.com/706f4033c08d/527833e1eb9e/f0c7aede8f2c/challenge.js"></script>
+</head>
+<body>
+    <div id="challenge-container"></div>
+    <script type="text/javascript">
+        AwsWafIntegration.saveReferrer();
+        AwsWafIntegration.checkForceRefresh().then((forceRefresh) => {
+            if (forceRefresh) {
+                AwsWafIntegration.forceRefreshToken().then(() => {
+                    window.location.reload(true);
+                });
+            } else {
+                AwsWafIntegration.getToken().then(() => {
+                    window.location.reload(true);
+                });
+            }
+        });
+    </script>
+    <noscript>
+        <h1>JavaScript is disabled</h1>
+        In order to continue, we need to verify that you're not a robot.
+        This requires JavaScript. Enable JavaScript and then reload the page.
+    </noscript>
+<script type='text/javascript' src='/assets/scripts/bpbootstrap-20160726.pack.js'></script><script type='text/javascript'>BPBootstrap.init({appendCookie:''})</script></body>
+</html>

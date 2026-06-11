@@ -1,0 +1,258 @@
+{
+  "query": "CubeSat electrical power subsystem battery testing",
+  "total": 602870,
+  "pages_retrieved": 1,
+  "results_retrieved": 10,
+  "results": [
+    {
+      "paperId": "2111.11317",
+      "doi": "10.1016/j.ijepes.2021.107784",
+      "title": "Electric Vehicle Attack Impact on Power Grid Operation",
+      "authors": [
+        {
+          "name": "Mohammad Ali Sayed"
+        },
+        {
+          "name": "Ribal Atallah"
+        },
+        {
+          "name": "Chadi Assi"
+        },
+        {
+          "name": "Mourad Debbabi"
+        }
+      ],
+      "year": 2021,
+      "abstract": "The increasing need for reducing greenhouse gas emissions and the drive for green cities have promoted the use of electric vehicles due to their environmental benefits. In fact, countries have set their own targets and are offering incentives for people to purchase EVs as opposed to traditional gasoline-powered cars. Manufacturers have been hastily deploying charging stations to meet the charging requirements of the EVs on the road. This rapid deployment has contributed to the EV ecosystem's lack of proper security measures, raising multiple questions related to the power grid security and vulnerability. In this paper, we offer a complete examination of the EV ecosystem from the vulnerability to the attacks and finally the solutions. We start by examining the existing vulnerabilities in the EV ecosystem that can be exploited to control the EV charging and launch attacks against the power grid. We then discuss the non-linear nature of the EV charging load and simulate multiple attacks that can be launched against the power grid using these EVs. EV loads have high reactive power demand which can have a larger impact on the grid compared to residential loads. We perform simulations on two power grids and demonstrate that while the grid can recover after a 48 MW attack utilizing traditional residential loads, a smaller 30 MW EV load attack can completely destabilize the system. Finally, we suggest several patches for the existing vulnerabilities and discuss two methods aimed at detecting EV attacks.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2111.11317v1"
+      }
+    },
+    {
+      "paperId": "0712.4321",
+      "doi": "",
+      "title": "Subsystem Code Constructions",
+      "authors": [
+        {
+          "name": "Salah A. Aly"
+        },
+        {
+          "name": "Andreas Klappenecker"
+        }
+      ],
+      "year": 2007,
+      "abstract": "Subsystem codes are the most versatile class of quantum error-correcting codes known to date that combine the best features of all known passive and active error-control schemes. The subsystem code is a subspace of the quantum state space that is decomposed into a tensor product of two vector spaces: the subsystem and the co-subsystem. A generic method to derive subsystem codes from existing subsystem codes is given that allows one to trade the dimensions of subsystem and co-subsystem while maintaining or improving the minimum distance. As a consequence, it is shown that all pure MDS subsystem codes are derived from MDS stabilizer codes. The existence of numerous families of MDS subsystem codes is established. Propagation rules are derived that allow one to obtain longer and shorter subsystem codes from given subsystem codes. Furthermore, propagation rules are derived that allow one to construct a new subsystem code by combining two given subsystem codes.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/0712.4321v3"
+      }
+    },
+    {
+      "paperId": "1506.07097",
+      "doi": "",
+      "title": "A Strategy for Power System Stability Improvement via Controlled Charge/Discharge of Plug-in Electric Vehicles",
+      "authors": [
+        {
+          "name": "Andrej Gajduk"
+        },
+        {
+          "name": "Vladimir Zdraveski"
+        },
+        {
+          "name": "Lasko Basnarkov"
+        },
+        {
+          "name": "Mirko Todorovski"
+        },
+        {
+          "name": "Ljupco Kocarev"
+        }
+      ],
+      "year": 2015,
+      "abstract": "Plug-in electrical vehicles (PEV) are capable of both grid-to-vehicle (G2V) and vehicle-to-grid (V2G) power transfer. The advantages of developing V2G include an additional revenue stream for cleaner vehicles, increased stability and reliability of the electric grid, lower electric system costs, and eventually, inexpensive storage and backup for renewable electricity. Here we show how smart control of PEVs can improve the stability of power grids using only local frequency measurements. We evaluate the proposed control strategy on the IEEE Case 3 and the IEEE New England power systems. The results show that V2G leads to improved steady-state stability, larger region of stability, reduced frequency and voltage fluctuations during transients and longer critical clearing times.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/1506.07097v1"
+      }
+    },
+    {
+      "paperId": "1907.01069",
+      "doi": "10.1103/PhysRevAccelBeams.23.011301",
+      "title": "Development and high-power testing of an X-band dielectric-loaded power extractor",
+      "authors": [
+        {
+          "name": "Jiahang Shao"
+        },
+        {
+          "name": "Chunguang Jing"
+        },
+        {
+          "name": "Eric Wisniewski"
+        },
+        {
+          "name": "Gwanghui Ha"
+        },
+        {
+          "name": "Manoel Conde"
+        },
+        {
+          "name": "Wanming Liu"
+        },
+        {
+          "name": "John Power"
+        },
+        {
+          "name": "Lianmin Zheng"
+        }
+      ],
+      "year": 2019,
+      "abstract": "Dielectric loaded structures are promising candidates for use in the structure wakefield acceleration (SWFA) technique, for both the collinear wakefield and the two-beam acceleration (CWA and TBA respectively) approaches, due to their low fabrication cost, low rf losses, and the potential to withstand high gradient. A short pulse (<=20 ns) TBA program is under development at the Argonne Wakefield Accelerator (AWA) facility where dielectric loaded structures are being used for both the power extractor/transfer structure (PETS) and the accelerator. In this study, an X-band 11.7 GHz dielectric PETS was developed and tested at the AWA facility to demonstrate high power wakefield generation. The PETS was driven by a train of eight electron bunches separated by 769.2 ps (9 times of the X-band rf period) in order to achieve coherent wakefield superposition. A total train charge of 360 nC was passed through the PETS structure to generate ~200 MW, ~3 ns flat-top rf pulses without rf breakdown. A future experiment is being planned to increase the generated rf power to approximately ~1 GW by optimizing the structure design and improving the drive beam quality.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/1907.01069v1"
+      }
+    },
+    {
+      "paperId": "2107.05891",
+      "doi": "10.1109/ICPSAsia52756.2021.9621514",
+      "title": "Dynamic State Estimation for Integrated Natural Gas and Electric Power Systems",
+      "authors": [
+        {
+          "name": "Liang Chen"
+        },
+        {
+          "name": "Xinxin Hui"
+        },
+        {
+          "name": "Songlin Gu"
+        },
+        {
+          "name": "Manyun Huang"
+        },
+        {
+          "name": "Yang Li"
+        }
+      ],
+      "year": 2021,
+      "abstract": "A dynamic state estimation method of integrated natural gas and electric power systems (IGESs) in proposed. Firstly, the coupling model of gas pipeline networks and power systems by gas turbine units (GTUs) is established. Secondly, the Kalman filter based linear DSE model for the IGES is built. The gas density and mass flow rate, as well as the real and imaginary parts of bus voltages are taken as states, which are predicted by the linearized fluid dynamic equations of gases and exponential smoothing techniques. Boundary conditions of pipeline networks are used as supplementary constraints in the system model. At last, the proposed method is applied to an IGES including a 30-node pipeline network and IEEE 39-bus system coupled by two GTUs. Two indexes are used to evaluate the DSE performance under three measurement error conditions, and the results show that the DSE can obtain the accurate dynamic states in different conditions.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2107.05891v1"
+      }
+    },
+    {
+      "paperId": "2512.14894",
+      "doi": "",
+      "title": "Assessing the Frequency Response Potential of Heavy-Duty Electric Vehicles with Vehicle-to-Grid Integration in the California Power System",
+      "authors": [
+        {
+          "name": "Xiaojie Tao"
+        },
+        {
+          "name": "Yaoyu Fan"
+        },
+        {
+          "name": "Zhaoyi Ye"
+        },
+        {
+          "name": "Rajit Gadh"
+        }
+      ],
+      "year": 2025,
+      "abstract": "The integration of heavy-duty electric vehicles (EVs) with Vehicle-to-Grid (V2G) capability can enhance primary frequency response and improve stability in power systems with high renewable penetration. This study evaluates the technical potential of heavy-duty EV fleets to support the California power grid under three practical charging strategies: immediate charging, delayed charging, and constant-minimum-power charging. We develop a simulation framework that couples aggregated frequency dynamics with battery and charger constraints, state-of-charge management, and fleet-availability profiles. Performance is assessed using standard frequency security metrics, including nadir, rate-of-change-of-frequency, overshoot, and settling time, across credible contingency scenarios and renewable generation conditions. Results indicate that both non-V2G modes and V2G-enabled operation can contribute meaningful primary response, with V2G providing the strongest and fastest support while respecting mobility and network limits. Sensitivity analyses show that the relative benefits depend on charging strategy, control parameters, and renewable output, highlighting design trade-offs between response magnitude, duration, and battery usage. Overall, heavy-duty EV fleets-when coordinated by appropriate charging and V2G controls-offer a viable resource for strengthening primary frequency control on the California grid and mitigating stability challenges associated with increasing renewable penetration.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2512.14894v1"
+      }
+    },
+    {
+      "paperId": "2306.10654",
+      "doi": "",
+      "title": "Dynamic Cell Modeling of Li-Ion Polymer Batteries for Precise SOC Estimation in Power-Needy Autonomous Electric Vehicles",
+      "authors": [
+        {
+          "name": "Qasim Ajao"
+        },
+        {
+          "name": "Lanre Sadeeq"
+        }
+      ],
+      "year": 2023,
+      "abstract": "This paper presents findings on dynamic cell modeling for state-of-charge (SOC) estimation in an autonomous electric vehicle (AEV). The studied cells are Lithium-Ion Polymer-based with a nominal capacity of around 8Ah, optimized for power-needy applications. The AEV operates in a harsh environment with rate requirements up to +/-25C and highly dynamic rate profiles, unlike portable-electronic applications with constant power output and fractional C rates. SOC estimation methods effective in portable electronics may not suffice for the AEV. Accurate SOC estimation necessitates a precise cell model. The proposed SOC estimation method utilizes a detailed Kalman-filtering approach. The cell model must include SOC as a state in the model state vector. Multiple cell models are presented, starting with a simple one employing \"Coulomb counting\" as the state equation and Shepherd's rule as the output equation, lacking prediction of cell relaxation dynamics. An improved model incorporates filter states to account for relaxation and other dynamics in closed-circuit cell voltage, yielding better performance. The best overall results are achieved with a method combining nonlinear autoregressive filtering and dynamic radial basis function networks. The paper includes lab test results comparing physical cells with model predictions. The most accurate models obtained have an RMS estimation error lower than the quantization noise floor expected in the battery-management-system design. Importantly, these models enable precise SOC estimation, allowing the vehicle controller to utilize the battery pack's full operating range without overcharging or undercharging concerns.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2306.10654v1"
+      }
+    },
+    {
+      "paperId": "1801.03813",
+      "doi": "",
+      "title": "Energy Harvesting Communications Using Dual Alternating Batteries",
+      "authors": [
+        {
+          "name": "Rajshekhar Vishweshwar Bhat"
+        },
+        {
+          "name": "Mehul Motani"
+        },
+        {
+          "name": "Chandra R Murthy"
+        },
+        {
+          "name": "Rahul Vaze"
+        }
+      ],
+      "year": 2018,
+      "abstract": "Practical energy harvesting (EH) based communication systems typically use a battery to temporarily store the harvested energy prior to its use for communication. The batteries can be damaged when they are repeatedly charged (discharged) after being partially discharged (charged), overcharged or deeply discharged. This motivates the cycle constraint which says that a battery must be charged (discharged) only after it is sufficiently discharged (charged). We also assume Bernoulli energy arrivals, and a half-duplex constraint due to which the batteries are not charged and discharged simultaneously. In this context, we study EH communication systems with: (a) a single-battery with capacity 2B units and (b) dual-batteries, each having capacity of B units. The aim is to obtain the best possible long-term average throughputs and throughput regions in point-to-point (P2P) channels and multiple access channels (MAC), respectively. For the P2P channel, we obtain an analytical optimal solution in the single-battery case, and propose optimal and sub-optimal power allocation policies for the dual-battery case. We extend these policies to obtain achievable throughput regions in MACs by jointly allocating rates and powers. From numerical simulations, we find that the optimal throughput in the dual-battery case is significantly higher than that in the single-battery case, although the total storage capacity in both cases is 2B units. Further, in the proposed policies, the largest throughput region in the single-battery case is contained within that of the dual-battery case.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/1801.03813v3"
+      }
+    },
+    {
+      "paperId": "2202.12139",
+      "doi": "10.1109/ICSTW55395.2022.00035",
+      "title": "Testing Deep Learning Models: A First Comparative Study of Multiple Testing Techniques",
+      "authors": [
+        {
+          "name": "Mohit Kumar Ahuja"
+        },
+        {
+          "name": "Arnaud Gotlieb"
+        },
+        {
+          "name": "Helge Spieker"
+        }
+      ],
+      "year": 2022,
+      "abstract": "Deep Learning (DL) has revolutionized the capabilities of vision-based systems (VBS) in critical applications such as autonomous driving, robotic surgery, critical infrastructure surveillance, air and maritime traffic control, etc. By analyzing images, voice, videos, or any type of complex signals, DL has considerably increased the situation awareness of these systems. At the same time, while relying more and more on trained DL models, the reliability and robustness of VBS have been challenged and it has become crucial to test thoroughly these models to assess their capabilities and potential errors. To discover faults in DL models, existing software testing methods have been adapted and refined accordingly. In this article, we provide an overview of these software testing methods, namely differential, metamorphic, mutation, and combinatorial testing, as well as adversarial perturbation testing and review some challenges in their deployment for boosting perception systems used in VBS. We also provide a first experimental comparative study on a classical benchmark used in VBS and discuss its results.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2202.12139v1"
+      }
+    },
+    {
+      "paperId": "2401.07238",
+      "doi": "",
+      "title": "Coherently Driven Quantum Harmonic Oscillator Battery",
+      "authors": [
+        {
+          "name": "Kuldeep Gangwar"
+        },
+        {
+          "name": "Anirban Pathak"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Quantum harmonic oscillator (QHO) battery models have been studied with significant importance in the recent past because these batteries are experimentally realizable and have high ergotropy and capacity to store more than one quanta of energy. QHO battery models are reinvestigated here to answer a set of fundamental questions: Do such models have any benefit? Is unbounded charging possible? Does the use of a catalyst system enhance the energy transfer to quantum batteries? These questions are answered both numerically and analytically by considering a model that allows a laser to shine on a QHO charger that interacts with a QHO battery. In contrast to some of the existing works, the obtained answers are mostly negative. Specifically, in the present work, the laser frequency is tuned with the frequency of the global charger-battery system, which is affected by the interaction between QHOs. It is reported that for a fixed laser field amplitude $\\textit{F}$, the battery can store more energy when tuned with the frequency of the global charger-battery system compared to energy stored by tuning the laser frequency with local frequencies of the charger and battery. The charging process of the open QHO, which is a simplified model, and the self-discharging (dissipation) process after switching off the laser field are also investigated to reveal that the charging process of QHO in the simplified model is faster than the charging process of the catalytic (non-catalytic) battery. Further, it's observed that the self-discharging process is almost two times faster than the charging process which makes such models unstable against interaction with the environment.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2401.07238v1"
+      }
+    }
+  ],
+  "output_metadata": {
+    "extracted_at": "2026-06-11T16:22:57.737691"
+  }
+}

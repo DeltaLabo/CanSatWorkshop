@@ -1,0 +1,760 @@
+{
+  "query": "CanSat competition design requirements battery safety testing power system",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "CanSat Competition Design for Manufacturing-Reliability-Cost",
+      "url": "https://web1.eng.famu.fsu.edu/me/senior_design/2013/team18/Documents/Manu-Reli-Eco-Finalv3.pdf",
+      "description": "The battery supply voltage is connected through a SPST switch to the raw input of the Pro Mini (Pin 2). The ground of the electrical power system is connected to all common ground through the ... the severity of failure can be rated between 1-6, with 1 having “No relevant effect on reliability or · safety” and 6 having “catastrophic (product becomes inoperative) failure”. The main mission of the · cansat is to safely deliver a payload from an aerial vehicle.",
+      "content": "The battery supply voltage is connected through a SPST switch to the raw input of the Pro Mini (Pin 2). The ground of the electrical power system is connected to all common ground through the ... the severity of failure can be rated between 1-6, with 1 having “No relevant effect on reliability or · safety” and 6 having “catastrophic (product becomes inoperative) failure”. The main mission of the · cansat is to safely deliver a payload from an aerial vehicle.\nrequirement of 700g of the cansat. We achieved a higher factor of safety for the separation ring by using\nlevel to achieve the desired amount of drag to bring the cansat to the required descent velocity. By · using larger torsion springs achieve the quick deployment time for a reliable aero braking structure. If it ... beads. The detection of any irregular placement of the beads can be caught prior to operation and thus ... Electronic components can be tested for reliability and repeatability of results.\nThe CanSat must weigh 700g with a tolerance of 10g.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Florida A&M University",
+        "url": "https://web1.eng.famu.fsu.edu/me/senior_design/2013/team18/Documents/Manu-Reli-Eco-Finalv3.pdf",
+        "long_name": "web1.eng.famu.fsu.edu",
+        "img": "https://imgs.search.brave.com/LJMkaa8QO5JrQ2Fd0G0oHvfKmD_VzDW0av18xFVod_c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODdhOWUxYzY5/MTc3ZjNlYzVlN2Qw/ZTYwYmU4Yjc2NTQy/YzdkZjM1YWM4Njk0/ZGFhOGYzYzJkMzFh/Njg1NzM5NC93ZWIx/LmVuZy5mYW11LmZz/dS5lZHUv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "web1.eng.famu.fsu.edu",
+        "hostname": "web1.eng.famu.fsu.edu",
+        "favicon": "https://imgs.search.brave.com/LJMkaa8QO5JrQ2Fd0G0oHvfKmD_VzDW0av18xFVod_c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODdhOWUxYzY5/MTc3ZjNlYzVlN2Qw/ZTYwYmU4Yjc2NTQy/YzdkZjM1YWM4Njk0/ZGFhOGYzYzJkMzFh/Njg1NzM5NC93ZWIx/LmVuZy5mYW11LmZz/dS5lZHUv",
+        "path": "› me  › senior_design  › 2013  › team18  › Documents  › Manu-Reli-Eco-Finalv3.pdf"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "ESA - What is a CanSat?",
+      "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+      "description": "All materials used must be safe for the personnel, the equipment, and the environment. In case of doubt, Material Safety Data Sheets (MSDS) will be requested. The CanSat must be powered by a battery and/or solar panels.",
+      "content": "All materials used must be safe for the personnel, the equipment, and the environment. In case of doubt, Material Safety Data Sheets (MSDS) will be requested. The CanSat must be powered by a battery and/or solar panels.\nExplosives, detonators, pyrotechnics, and inflammable or dangerous materials are strictly forbidden. All materials used must be safe for the personnel, the equipment, and the environment. In case of doubt, Material Safety Data Sheets (MSDS) will be requested. The CanSat must be powered by a battery and/or solar panels.\nThey are responsible for all aspects: designing the CanSat, selecting its mission, integrating the components, testing, preparing for launch and then analysing the data. ... CanSat competitions have taken place in many countries around the world since the late 1990s.\nThe battery must be easily accessible in case it has to be replaced/recharged. The CanSat must have an easily accessible master power switch. Inclusion of a retrieval system (beeper, radio beacon, GPS, etc.) is recommended. The CanSat should have a recovery system, such as a parachute, capable of being reused after launch. It is recommended to use bright coloured fabric, which will facilitate recovery of the CanSat after landing.\nThe strength of the parachute must be tested to ensure that the system will operate nominally. For recovery reasons, a maximum flight time of 120 seconds is recommended. If attempting a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons. In case of a directed landing, a lower descent rate of 6m/s is recommended. The CanSat must be able to withstand an acceleration of up to 20 g.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "European Space Agency",
+        "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+        "long_name": "esa.int",
+        "img": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "esa.int",
+        "hostname": "www.esa.int",
+        "favicon": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8",
+        "path": "› Education  › CanSat  › What_is_a_CanSat"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/JnNjwYGRLF8qK7hW28PuCb8wyW_K6sx7K0fBlGXxaKA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXNhLmludC92YXIv/ZXNhL3N0b3JhZ2Uv/aW1hZ2VzL2VzYV9t/dWx0aW1lZGlhL2lt/YWdlcy8yMDEwLzAx/L2FfY2Fuc2F0X2Rl/c2NlbmRpbmcvOTc3/NTEzNi0zLWVuZy1H/Qi9BX0NhblNhdF9k/ZXNjZW5kaW5nX3Bp/bGxhcnMuanBn",
+        "original": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2010/01/a_cansat_descending/9775136-3-eng-GB/A_CanSat_descending_pillars.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 3,
+      "title": "CanSat-Guidelines-23-24.pdf",
+      "url": "https://cansat.esa.int/wp-content/uploads/2023/09/CanSat-Guidelines-23-24.pdf",
+      "description": "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 10 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!",
+      "content": "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 10 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!\nHowever, it is important to show in your Final Design how you tested your CanSat design and how you used ... See competition overview for exact dates!\nTo participate in the CanSat Competition, teams have to submit an application.\nCanSat Competition Proposal NAME TEAM”.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Esa",
+        "url": "https://cansat.esa.int/wp-content/uploads/2023/09/CanSat-Guidelines-23-24.pdf",
+        "long_name": "cansat.esa.int",
+        "img": "https://imgs.search.brave.com/mKVEllVV_KNXm6GM8KKjXomXoHqmzDEcA3YsO8-yWkk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJjMWU4ZTFi/Y2ZhZmMyNWMzNzUz/OTU2ODE2Mzk4NDU2/M2RiNzg4MjBiMGJm/OGY3ZTFkY2FlNWVi/ODQ0MjdjYi9jYW5z/YXQuZXNhLmludC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansat.esa.int",
+        "hostname": "cansat.esa.int",
+        "favicon": "https://imgs.search.brave.com/mKVEllVV_KNXm6GM8KKjXomXoHqmzDEcA3YsO8-yWkk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJjMWU4ZTFi/Y2ZhZmMyNWMzNzUz/OTU2ODE2Mzk4NDU2/M2RiNzg4MjBiMGJm/OGY3ZTFkY2FlNWVi/ODQ0MjdjYi9jYW5z/YXQuZXNhLmludC8",
+        "path": "› wp-content  › uploads  › 2023  › 09  › CanSat-Guidelines-23-24.pdf"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "CanSat-Guidelines.pdf",
+      "url": "https://esero.nl/wp-content/uploads/2025/04/CanSat-Guidelines.pdf",
+      "description": "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 10 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!",
+      "content": "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 10 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!\nHowever, it is important to show in your Final Design how you tested your CanSat design and how you ... See competition overview for exact dates!\nTo participate in the CanSat Competition, teams have to submit an application.\nCanSat Competition Proposal NAME TEAM”.",
+      "age": "April 17, 2025",
+      "page_age": "2025-04-17T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Esero",
+        "url": "https://esero.nl/wp-content/uploads/2025/04/CanSat-Guidelines.pdf",
+        "long_name": "esero.nl",
+        "img": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "esero.nl",
+        "hostname": "esero.nl",
+        "favicon": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8",
+        "path": "› wp-content  › uploads  › 2025  › 04  › CanSat-Guidelines.pdf"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Cansat Competition Guide 2024 Planetary Probe Instrument Delivery Mission",
+      "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024a.pdf",
+      "description": "Turn on the Cansat. ... Close and seal the thermal chamber. ... Turn on the heat source. ... Maintain the test conditions for two hours. ... Verify epoxy joints and composite materials still maintain their strengths. 3. Vibration Test - This test is designed to verify the mounting integrity of all components, mounting connections, structural integrity, and battery ...",
+      "content": "Turn on the Cansat. ... Close and seal the thermal chamber. ... Turn on the heat source. ... Maintain the test conditions for two hours. ... Verify epoxy joints and composite materials still maintain their strengths. 3. Vibration Test - This test is designed to verify the mounting integrity of all components, mounting connections, structural integrity, and battery ...\nTurn on the Cansat. ... Close and seal the thermal chamber. ... Turn on the heat source. ... Maintain the test conditions for two hours. ... Verify epoxy joints and composite materials still maintain their strengths. 3. Vibration Test - This test is designed to verify the mounting integrity of all components, mounting connections, structural integrity, and battery connections.\nThe second test will verify communications with the Cansat and demonstrate the ground · station software. The ground station software operations will be scored at this time. The · ground station must show data being plotted in real time. The Cansat will then be inspected for safety.\nComponent mounts and battery mount will also be tested. The · drop test generates about 30 Gs of shock to the system. a. Drop Test Description - This test requires a 61 cm non-stretching cord. The test · was developed with a 1/8 thick kevlar cord. One end is secured to an eyebolt · attached to a fixed point, such as ceiling or rigid structure with enough clearance · to accommodate the cord, Cansat, and free space so the Cansat does not hit\nreadiness review at their designated time. Teams late for the review will lose points. Cansats · must pass the drop test, fit check, and battery verification in order to fly.",
+      "age": "August 10, 2023",
+      "page_age": "2023-08-10T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024a.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "www.cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+        "path": "› docs  › CanSat_Mission_Guide_2024a.pdf"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "European CanSat Competition: Tips for Teams",
+      "url": "https://studylib.net/doc/9523016/cansat-document",
+      "description": "All materials used must be safe for the personnel, the equipment and the environment. Material Safety Data Sheets (MSDS) will be requested in case of doubt. [5] The CanSat must be powered by a battery and/or solar panels.",
+      "content": "All materials used must be safe for the personnel, the equipment and the environment. Material Safety Data Sheets (MSDS) will be requested in case of doubt. [5] The CanSat must be powered by a battery and/or solar panels.\nFinding a balance between labels and lines is dependent on many aspects and to the choice of the designer. 3V 3V Battery Line2 Switch 0V Line2 Lamp 0V Figure 17: different schematic representation of the flash light. Using labels does not necessarily makes the diagram more readable. Components There are many different electronic components available. The core of every CanSat is built up with a few basic components.\n[4] Explosives, detonators, pyrotechnics, and flammable or dangerous materials are strictly forbidden. All materials used must be safe for the personnel, the equipment and the environment. Material Safety Data Sheets (MSDS) will be requested in case of doubt. [5] The CanSat must be powered by a battery and/or solar panels.\nThe board provided with the CanSat kit has a 5V power supply, which is within the range indicated in the table. The supply current of this device is normally 7 mA with a maximum at 10 mA. This current can be used in calculations on required power supply or the expected battery life.",
+      "age": "March 13, 2025",
+      "page_age": "2025-03-13T10:34:18",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "StudyLib",
+        "url": "https://studylib.net/doc/9523016/cansat-document",
+        "long_name": "studylib.net",
+        "img": "https://imgs.search.brave.com/JWPVLhxdy1hGJE6Lt10ki_lgwoOQq6RsxVfh8WiLVD4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjA4ZTE1MDgw/OGU4ZmNhMWRhNTVi/ZWE2MTlmZDZkNjc2/MTAxZjhkNWNiNjc0/N2QyN2ZhZGQzNjRk/OTc1NjE2My9zdHVk/eWxpYi5uZXQv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "studylib.net",
+        "hostname": "studylib.net",
+        "favicon": "https://imgs.search.brave.com/JWPVLhxdy1hGJE6Lt10ki_lgwoOQq6RsxVfh8WiLVD4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjA4ZTE1MDgw/OGU4ZmNhMWRhNTVi/ZWE2MTlmZDZkNjc2/MTAxZjhkNWNiNjc0/N2QyN2ZhZGQzNjRk/OTc1NjE2My9zdHVk/eWxpYi5uZXQv",
+        "path": "  › engineering & technology  › electrical engineering"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/fuZtRRj6lT7PUPDV_fy78dijw6HgLAs74euVAcpRp30/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zMy5z/dHVkeWxpYi5uZXQv/c3RvcmUvZGF0YS8w/MDk1MjMwMTZfMS00/YWM4MzlmZGRmYmRl/NzBiNTI1ZjVmMmE5/ODM3YjUzNy5wbmc",
+        "original": "https://s3.studylib.net/store/data/009523016_1-4ac839fddfbde70b525f5f2a9837b537.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "CANSAT Competition Guide 2025 Planetary Probe Instrument Mission Version 1.1",
+      "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+      "description": "readiness review. CANSATs must pass a drop test, sabot fit check, and battery",
+      "content": "readiness review. CANSATs must pass a drop test, sabot fit check, and battery\nComponent mounts and battery mount will also be tested. The · drop test generates about 30 Gs of shock to the system. a. Drop Test Description - This test requires a 61 cm non-stretching cord. The test · was developed with a 1/8 thick kevlar cord. One end is secured to an eyebolt · attached to a fixed point, such as ceiling or rigid structure with enough clearance · to accommodate the cord, CANSAT, and free space so the CANSAT does not\nVerify the CANSAT did not lose power. ... Inspect for any damage, or detached parts. ... Verify telemetry is still being received. 2. Vacuum Test - This test is designed to verify deployment operation of the payload(s).\nparts, test subsystems and start developing the flight unit. Teams will generate a PDR slide · package using the provided template. Teams will submit PDR slides by the designated due · date. The printed slides will only be accepted in PDF format. After the PDR, a maximum of 12 teams will be invited to the competition. Ten (10) teams · will be allowed to fly their CANSAT, the other two teams will be in reserve in case one of the",
+      "age": "April 7, 2025",
+      "page_age": "2025-04-07T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "University of Waikato",
+        "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+        "long_name": "waikato.ac.nz",
+        "img": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "waikato.ac.nz",
+        "hostname": "www.waikato.ac.nz",
+        "favicon": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8",
+        "path": "› assets  › Uploads  › About-us  › Faculties-and-schools  › School-of-Engineering  › CanSat_Mission_Guide_2025-1.1.pdf"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "CanSat-Competition-Guidelines-2025-2026.pdf",
+      "url": "https://esero.nl/wp-content/uploads/2025/09/CanSat-Competition-Guidelines-2025-2026.pdf",
+      "description": "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 12 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!",
+      "content": "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 12 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!\nHowever, it is important to show in your Final Design how you tested your CanSat design and how you ... See competition overview for exact dates!\nTo participate in the CanSat Competition, teams have to submit an application.\nCanSat Competition Proposal NAME TEAM”.",
+      "age": "September 10, 2025",
+      "page_age": "2025-09-10T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Esero",
+        "url": "https://esero.nl/wp-content/uploads/2025/09/CanSat-Competition-Guidelines-2025-2026.pdf",
+        "long_name": "esero.nl",
+        "img": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "esero.nl",
+        "hostname": "esero.nl",
+        "favicon": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8",
+        "path": "› wp-content  › uploads  › 2025  › 09  › CanSat-Competition-Guidelines-2025-2026.pdf"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "Cansat Competition Guide 2026 Paraglider Instrument Delivery Rev 1.0g",
+      "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2026g.pdf",
+      "description": "Turn on the Cansat. ... Close and seal the thermal chamber. ... Turn on the heat source. ... Maintain the test conditions for two hours. ... Verify epoxy joints and composite materials still maintain their strengths. 3.​ Vibration Test - This test is designed to verify the mounting integrity of all components, mounting connections, structural integrity, and battery connections.",
+      "content": "Turn on the Cansat. ... Close and seal the thermal chamber. ... Turn on the heat source. ... Maintain the test conditions for two hours. ... Verify epoxy joints and composite materials still maintain their strengths. 3.​ Vibration Test - This test is designed to verify the mounting integrity of all components, mounting connections, structural integrity, and battery connections.\nThe purpose of Simulation Mode is to provide a mechanism for testing the Cansat as well as · for demonstrating the Cansat over the full mission profile in the event an actual launch cannot ... The Cansat telemetry operates the same in FLIGHT and SIMULATION mode. So, the values, other than the pressure and altitude (calculated from the pressure values) will be actual · sensor readings (e.g., actual battery, temperature, and GPS).\nComponent mounts and battery mount will also be tested. The · drop test generates about 30 Gs of shock to the system. a.​ Drop Test Description - This test requires a 61 cm non-stretching cord. The test · was developed with a 1/8 thick kevlar cord. One end is secured to an eyebolt · attached to a fixed point, such as ceiling or rigid structure with enough clearance · to accommodate the cord, Cansat, and free space so the Cansat does not hit\nreadiness review at their designated time. Teams late for the review will lose points. Cansats · must pass the drop test, fit check, and battery verification in order to fly.",
+      "age": "December 5, 2025",
+      "page_age": "2025-12-05T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2026g.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "www.cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+        "path": "› docs  › CanSat_Mission_Guide_2026g.pdf"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "CanSat 2025 Critical Design Review (CDR)",
+      "url": "https://cansatcompetition.com/docs/teams/Cansat2025_3133_cdr_v01.pdf",
+      "description": "Index of /docs · Apache/2.4.18 (Ubuntu) Server at www.cansatcompetition.com Port 80",
+      "content": "Index of /docs · Apache/2.4.18 (Ubuntu) Server at www.cansatcompetition.com Port 80",
+      "age": "June 15, 2025",
+      "page_age": "2025-06-15T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://cansatcompetition.com/docs/teams/Cansat2025_3133_cdr_v01.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+        "path": "› docs  › teams  › Cansat2025_3133_cdr_v01.pdf"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "CanSat competition design requirements battery safety testing power system",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.053,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "CanSat competition design requirements battery safety testing power system",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "CanSat Competition Design for Manufacturing-Reliability-Cost",
+          "url": "https://web1.eng.famu.fsu.edu/me/senior_design/2013/team18/Documents/Manu-Reli-Eco-Finalv3.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The battery supply voltage is connected through a SPST switch to the raw input of the Pro Mini (Pin 2). The ground of the electrical power system is connected to all common ground through the ... the severity of failure can be rated between 1-6, with 1 having “No relevant effect on reliability or · safety” and 6 having “catastrophic (product becomes inoperative) failure”. The main mission of the · cansat is to safely deliver a payload from an aerial vehicle.",
+          "profile": {
+            "name": "Florida A&M University",
+            "url": "https://web1.eng.famu.fsu.edu/me/senior_design/2013/team18/Documents/Manu-Reli-Eco-Finalv3.pdf",
+            "long_name": "web1.eng.famu.fsu.edu",
+            "img": "https://imgs.search.brave.com/LJMkaa8QO5JrQ2Fd0G0oHvfKmD_VzDW0av18xFVod_c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODdhOWUxYzY5/MTc3ZjNlYzVlN2Qw/ZTYwYmU4Yjc2NTQy/YzdkZjM1YWM4Njk0/ZGFhOGYzYzJkMzFh/Njg1NzM5NC93ZWIx/LmVuZy5mYW11LmZz/dS5lZHUv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "web1.eng.famu.fsu.edu",
+            "hostname": "web1.eng.famu.fsu.edu",
+            "favicon": "https://imgs.search.brave.com/LJMkaa8QO5JrQ2Fd0G0oHvfKmD_VzDW0av18xFVod_c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODdhOWUxYzY5/MTc3ZjNlYzVlN2Qw/ZTYwYmU4Yjc2NTQy/YzdkZjM1YWM4Njk0/ZGFhOGYzYzJkMzFh/Njg1NzM5NC93ZWIx/LmVuZy5mYW11LmZz/dS5lZHUv",
+            "path": "› me  › senior_design  › 2013  › team18  › Documents  › Manu-Reli-Eco-Finalv3.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The battery supply voltage is connected through a SPST switch to the raw input of the Pro Mini (Pin 2). The ground of the electrical power system is connected to all common ground through the ... the severity of failure can be rated between 1-6, with 1 having “No relevant effect on reliability or · safety” and 6 having “catastrophic (product becomes inoperative) failure”. The main mission of the · cansat is to safely deliver a payload from an aerial vehicle.",
+            "requirement of 700g of the cansat. We achieved a higher factor of safety for the separation ring by using",
+            "level to achieve the desired amount of drag to bring the cansat to the required descent velocity. By · using larger torsion springs achieve the quick deployment time for a reliable aero braking structure. If it ... beads. The detection of any irregular placement of the beads can be caught prior to operation and thus ... Electronic components can be tested for reliability and repeatability of results.",
+            "The CanSat must weigh 700g with a tolerance of 10g."
+          ]
+        },
+        {
+          "title": "ESA - What is a CanSat?",
+          "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "All materials used must be safe for the personnel, the equipment, and the environment. In case of doubt, Material Safety Data Sheets (MSDS) will be requested. The CanSat must be powered by a battery and/or solar panels.",
+          "profile": {
+            "name": "European Space Agency",
+            "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+            "long_name": "esa.int",
+            "img": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "esa.int",
+            "hostname": "www.esa.int",
+            "favicon": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8",
+            "path": "› Education  › CanSat  › What_is_a_CanSat"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/JnNjwYGRLF8qK7hW28PuCb8wyW_K6sx7K0fBlGXxaKA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXNhLmludC92YXIv/ZXNhL3N0b3JhZ2Uv/aW1hZ2VzL2VzYV9t/dWx0aW1lZGlhL2lt/YWdlcy8yMDEwLzAx/L2FfY2Fuc2F0X2Rl/c2NlbmRpbmcvOTc3/NTEzNi0zLWVuZy1H/Qi9BX0NhblNhdF9k/ZXNjZW5kaW5nX3Bp/bGxhcnMuanBn",
+            "original": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2010/01/a_cansat_descending/9775136-3-eng-GB/A_CanSat_descending_pillars.jpg",
+            "logo": false
+          },
+          "extra_snippets": [
+            "Explosives, detonators, pyrotechnics, and inflammable or dangerous materials are strictly forbidden. All materials used must be safe for the personnel, the equipment, and the environment. In case of doubt, Material Safety Data Sheets (MSDS) will be requested. The CanSat must be powered by a battery and/or solar panels.",
+            "They are responsible for all aspects: designing the CanSat, selecting its mission, integrating the components, testing, preparing for launch and then analysing the data. ... CanSat competitions have taken place in many countries around the world since the late 1990s.",
+            "The battery must be easily accessible in case it has to be replaced/recharged. The CanSat must have an easily accessible master power switch. Inclusion of a retrieval system (beeper, radio beacon, GPS, etc.) is recommended. The CanSat should have a recovery system, such as a parachute, capable of being reused after launch. It is recommended to use bright coloured fabric, which will facilitate recovery of the CanSat after landing.",
+            "The strength of the parachute must be tested to ensure that the system will operate nominally. For recovery reasons, a maximum flight time of 120 seconds is recommended. If attempting a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons. In case of a directed landing, a lower descent rate of 6m/s is recommended. The CanSat must be able to withstand an acceleration of up to 20 g."
+          ]
+        },
+        {
+          "title": "CanSat-Guidelines-23-24.pdf",
+          "url": "https://cansat.esa.int/wp-content/uploads/2023/09/CanSat-Guidelines-23-24.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 10 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!",
+          "profile": {
+            "name": "Esa",
+            "url": "https://cansat.esa.int/wp-content/uploads/2023/09/CanSat-Guidelines-23-24.pdf",
+            "long_name": "cansat.esa.int",
+            "img": "https://imgs.search.brave.com/mKVEllVV_KNXm6GM8KKjXomXoHqmzDEcA3YsO8-yWkk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJjMWU4ZTFi/Y2ZhZmMyNWMzNzUz/OTU2ODE2Mzk4NDU2/M2RiNzg4MjBiMGJm/OGY3ZTFkY2FlNWVi/ODQ0MjdjYi9jYW5z/YXQuZXNhLmludC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansat.esa.int",
+            "hostname": "cansat.esa.int",
+            "favicon": "https://imgs.search.brave.com/mKVEllVV_KNXm6GM8KKjXomXoHqmzDEcA3YsO8-yWkk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJjMWU4ZTFi/Y2ZhZmMyNWMzNzUz/OTU2ODE2Mzk4NDU2/M2RiNzg4MjBiMGJm/OGY3ZTFkY2FlNWVi/ODQ0MjdjYi9jYW5z/YXQuZXNhLmludC8",
+            "path": "› wp-content  › uploads  › 2023  › 09  › CanSat-Guidelines-23-24.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "However, it is important to show in your Final Design how you tested your CanSat design and how you used ... See competition overview for exact dates!",
+            "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 10 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!",
+            "To participate in the CanSat Competition, teams have to submit an application.",
+            "CanSat Competition Proposal NAME TEAM”."
+          ]
+        },
+        {
+          "title": "CanSat-Guidelines.pdf",
+          "url": "https://esero.nl/wp-content/uploads/2025/04/CanSat-Guidelines.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 10 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!",
+          "page_age": "2025-04-17T00:00:00",
+          "profile": {
+            "name": "Esero",
+            "url": "https://esero.nl/wp-content/uploads/2025/04/CanSat-Guidelines.pdf",
+            "long_name": "esero.nl",
+            "img": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "esero.nl",
+            "hostname": "esero.nl",
+            "favicon": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8",
+            "path": "› wp-content  › uploads  › 2025  › 04  › CanSat-Guidelines.pdf"
+          },
+          "age": "April 17, 2025",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "However, it is important to show in your Final Design how you tested your CanSat design and how you ... See competition overview for exact dates!",
+            "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 10 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!",
+            "To participate in the CanSat Competition, teams have to submit an application.",
+            "CanSat Competition Proposal NAME TEAM”."
+          ]
+        },
+        {
+          "title": "Cansat Competition Guide 2024 Planetary Probe Instrument Delivery Mission",
+          "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024a.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Turn on the Cansat. ... Close and seal the thermal chamber. ... Turn on the heat source. ... Maintain the test conditions for two hours. ... Verify epoxy joints and composite materials still maintain their strengths. 3. Vibration Test - This test is designed to verify the mounting integrity of all components, mounting connections, structural integrity, and battery ...",
+          "page_age": "2023-08-10T00:00:00",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024a.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "www.cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+            "path": "› docs  › CanSat_Mission_Guide_2024a.pdf"
+          },
+          "age": "August 10, 2023",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Turn on the Cansat. ... Close and seal the thermal chamber. ... Turn on the heat source. ... Maintain the test conditions for two hours. ... Verify epoxy joints and composite materials still maintain their strengths. 3. Vibration Test - This test is designed to verify the mounting integrity of all components, mounting connections, structural integrity, and battery connections.",
+            "The second test will verify communications with the Cansat and demonstrate the ground · station software. The ground station software operations will be scored at this time. The · ground station must show data being plotted in real time. The Cansat will then be inspected for safety.",
+            "Component mounts and battery mount will also be tested. The · drop test generates about 30 Gs of shock to the system. a. Drop Test Description - This test requires a 61 cm non-stretching cord. The test · was developed with a 1/8 thick kevlar cord. One end is secured to an eyebolt · attached to a fixed point, such as ceiling or rigid structure with enough clearance · to accommodate the cord, Cansat, and free space so the Cansat does not hit",
+            "readiness review at their designated time. Teams late for the review will lose points. Cansats · must pass the drop test, fit check, and battery verification in order to fly."
+          ]
+        },
+        {
+          "title": "European CanSat Competition: Tips for Teams",
+          "url": "https://studylib.net/doc/9523016/cansat-document",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "All materials used must be safe for the personnel, the equipment and the environment. Material Safety Data Sheets (MSDS) will be requested in case of doubt. [5] The CanSat must be powered by a battery and/or solar panels.",
+          "page_age": "2025-03-13T10:34:18",
+          "profile": {
+            "name": "StudyLib",
+            "url": "https://studylib.net/doc/9523016/cansat-document",
+            "long_name": "studylib.net",
+            "img": "https://imgs.search.brave.com/JWPVLhxdy1hGJE6Lt10ki_lgwoOQq6RsxVfh8WiLVD4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjA4ZTE1MDgw/OGU4ZmNhMWRhNTVi/ZWE2MTlmZDZkNjc2/MTAxZjhkNWNiNjc0/N2QyN2ZhZGQzNjRk/OTc1NjE2My9zdHVk/eWxpYi5uZXQv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "studylib.net",
+            "hostname": "studylib.net",
+            "favicon": "https://imgs.search.brave.com/JWPVLhxdy1hGJE6Lt10ki_lgwoOQq6RsxVfh8WiLVD4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjA4ZTE1MDgw/OGU4ZmNhMWRhNTVi/ZWE2MTlmZDZkNjc2/MTAxZjhkNWNiNjc0/N2QyN2ZhZGQzNjRk/OTc1NjE2My9zdHVk/eWxpYi5uZXQv",
+            "path": "  › engineering & technology  › electrical engineering"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/fuZtRRj6lT7PUPDV_fy78dijw6HgLAs74euVAcpRp30/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zMy5z/dHVkeWxpYi5uZXQv/c3RvcmUvZGF0YS8w/MDk1MjMwMTZfMS00/YWM4MzlmZGRmYmRl/NzBiNTI1ZjVmMmE5/ODM3YjUzNy5wbmc",
+            "original": "https://s3.studylib.net/store/data/009523016_1-4ac839fddfbde70b525f5f2a9837b537.png",
+            "logo": false
+          },
+          "age": "March 13, 2025",
+          "article": {
+            "author": [],
+            "date": "Mar 10, 2016"
+          },
+          "extra_snippets": [
+            "Finding a balance between labels and lines is dependent on many aspects and to the choice of the designer. 3V 3V Battery Line2 Switch 0V Line2 Lamp 0V Figure 17: different schematic representation of the flash light. Using labels does not necessarily makes the diagram more readable. Components There are many different electronic components available. The core of every CanSat is built up with a few basic components.",
+            "[4] Explosives, detonators, pyrotechnics, and flammable or dangerous materials are strictly forbidden. All materials used must be safe for the personnel, the equipment and the environment. Material Safety Data Sheets (MSDS) will be requested in case of doubt. [5] The CanSat must be powered by a battery and/or solar panels.",
+            "The board provided with the CanSat kit has a 5V power supply, which is within the range indicated in the table. The supply current of this device is normally 7 mA with a maximum at 10 mA. This current can be used in calculations on required power supply or the expected battery life."
+          ]
+        },
+        {
+          "title": "CANSAT Competition Guide 2025 Planetary Probe Instrument Mission Version 1.1",
+          "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "readiness review. CANSATs must pass a drop test, sabot fit check, and battery",
+          "page_age": "2025-04-07T00:00:00",
+          "profile": {
+            "name": "University of Waikato",
+            "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+            "long_name": "waikato.ac.nz",
+            "img": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "waikato.ac.nz",
+            "hostname": "www.waikato.ac.nz",
+            "favicon": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8",
+            "path": "› assets  › Uploads  › About-us  › Faculties-and-schools  › School-of-Engineering  › CanSat_Mission_Guide_2025-1.1.pdf"
+          },
+          "age": "April 7, 2025",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Component mounts and battery mount will also be tested. The · drop test generates about 30 Gs of shock to the system. a. Drop Test Description - This test requires a 61 cm non-stretching cord. The test · was developed with a 1/8 thick kevlar cord. One end is secured to an eyebolt · attached to a fixed point, such as ceiling or rigid structure with enough clearance · to accommodate the cord, CANSAT, and free space so the CANSAT does not",
+            "Verify the CANSAT did not lose power. ... Inspect for any damage, or detached parts. ... Verify telemetry is still being received. 2. Vacuum Test - This test is designed to verify deployment operation of the payload(s).",
+            "readiness review. CANSATs must pass a drop test, sabot fit check, and battery",
+            "parts, test subsystems and start developing the flight unit. Teams will generate a PDR slide · package using the provided template. Teams will submit PDR slides by the designated due · date. The printed slides will only be accepted in PDF format. After the PDR, a maximum of 12 teams will be invited to the competition. Ten (10) teams · will be allowed to fly their CANSAT, the other two teams will be in reserve in case one of the"
+          ]
+        },
+        {
+          "title": "CanSat-Competition-Guidelines-2025-2026.pdf",
+          "url": "https://esero.nl/wp-content/uploads/2025/09/CanSat-Competition-Guidelines-2025-2026.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 12 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!",
+          "page_age": "2025-09-10T00:00:00",
+          "profile": {
+            "name": "Esero",
+            "url": "https://esero.nl/wp-content/uploads/2025/09/CanSat-Competition-Guidelines-2025-2026.pdf",
+            "long_name": "esero.nl",
+            "img": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "esero.nl",
+            "hostname": "esero.nl",
+            "favicon": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8",
+            "path": "› wp-content  › uploads  › 2025  › 09  › CanSat-Competition-Guidelines-2025-2026.pdf"
+          },
+          "age": "September 10, 2025",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "However, it is important to show in your Final Design how you tested your CanSat design and how you ... See competition overview for exact dates!",
+            "Teams that cannot prove that their CanSat meets the technical requirements (see · page 10) will not be selected. From the teams that do meet the requirements, the best 12 teams will be · selected following the selection criteria on page 11. The final selection will be communicated to the team · leaders two weeks after the deadline for the final design (see above). ... See competition overview for exact dates!",
+            "To participate in the CanSat Competition, teams have to submit an application.",
+            "CanSat Competition Proposal NAME TEAM”."
+          ]
+        },
+        {
+          "title": "Cansat Competition Guide 2026 Paraglider Instrument Delivery Rev 1.0g",
+          "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2026g.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Turn on the Cansat. ... Close and seal the thermal chamber. ... Turn on the heat source. ... Maintain the test conditions for two hours. ... Verify epoxy joints and composite materials still maintain their strengths. 3.​ Vibration Test - This test is designed to verify the mounting integrity of all components, mounting connections, structural integrity, and battery connections.",
+          "page_age": "2025-12-05T00:00:00",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2026g.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "www.cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+            "path": "› docs  › CanSat_Mission_Guide_2026g.pdf"
+          },
+          "age": "December 5, 2025",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Turn on the Cansat. ... Close and seal the thermal chamber. ... Turn on the heat source. ... Maintain the test conditions for two hours. ... Verify epoxy joints and composite materials still maintain their strengths. 3.​ Vibration Test - This test is designed to verify the mounting integrity of all components, mounting connections, structural integrity, and battery connections.",
+            "The purpose of Simulation Mode is to provide a mechanism for testing the Cansat as well as · for demonstrating the Cansat over the full mission profile in the event an actual launch cannot ... The Cansat telemetry operates the same in FLIGHT and SIMULATION mode. So, the values, other than the pressure and altitude (calculated from the pressure values) will be actual · sensor readings (e.g., actual battery, temperature, and GPS).",
+            "Component mounts and battery mount will also be tested. The · drop test generates about 30 Gs of shock to the system. a.​ Drop Test Description - This test requires a 61 cm non-stretching cord. The test · was developed with a 1/8 thick kevlar cord. One end is secured to an eyebolt · attached to a fixed point, such as ceiling or rigid structure with enough clearance · to accommodate the cord, Cansat, and free space so the Cansat does not hit",
+            "readiness review at their designated time. Teams late for the review will lose points. Cansats · must pass the drop test, fit check, and battery verification in order to fly."
+          ]
+        },
+        {
+          "title": "CanSat 2025 Critical Design Review (CDR)",
+          "url": "https://cansatcompetition.com/docs/teams/Cansat2025_3133_cdr_v01.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Index of /docs · Apache/2.4.18 (Ubuntu) Server at www.cansatcompetition.com Port 80",
+          "page_age": "2025-06-15T00:00:00",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://cansatcompetition.com/docs/teams/Cansat2025_3133_cdr_v01.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+            "path": "› docs  › teams  › Cansat2025_3133_cdr_v01.pdf"
+          },
+          "age": "June 15, 2025",
+          "content_type": "pdf"
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

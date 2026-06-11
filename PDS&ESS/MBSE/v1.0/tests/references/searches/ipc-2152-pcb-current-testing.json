@@ -1,0 +1,890 @@
+{
+  "query": "PCB trace current carrying capacity IPC-2152 testing 1 amp 5V 3.3V regulator",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "IPC-2152 Explained: PCB Trace Width & Current Capacity Calculations - PCBSync",
+      "url": "https://pcbsync.com/ipc-2152/",
+      "description": "Learn IPC-2152 trace width calculations for current capacity. Includes formulas, correction factors, via sizing, and IPC-2221 comparison for PCB design.",
+      "content": "Learn IPC-2152 trace width calculations for current capacity. Includes formulas, correction factors, via sizing, and IPC-2221 comparison for PCB design.\nCopper Trace / Current Carrying Capacity / ipc standards / IPC-2152 / PCB design / PCB Power Design / PCB Trace Width / Temperature Rise / Trace Width Calculation / Via Current Capacity · Nothing ruins a prototype faster than watching a trace turn into a fuse. You’ve done everything right—schematic verified, layout optimized, impedance controlled—but you forgot to properly size your power traces. The board powers up, current flows, and suddenly you’re staring at a burnt copper ribbon where your 5V rail used to be.\nOnline calculators based on IPC-2152 are sufficient for most design work. These tools implement the formulas and correction factors from the standard, giving you practical results without purchasing the document. However, if you need to understand the test methodology, reference specific charts for documentation, or work in a regulated industry requiring standard compliance, purchasing IPC-2152 is worthwhile.\nUnlike its predecessor IPC-2221, which relied on theoretical calculations and limited testing from the 1950s, IPC-2152 is built on extensive empirical data collected from real boards under controlled conditions.\nTemperature rise (ΔT) is how much hotter your trace gets compared to ambient conditions. IPC-2152 provides data for temperature rises from 10°C to 100°C, but most designs target 10-20°C rise for several reasons.",
+      "age": "January 5, 2026",
+      "page_age": "2026-01-05T08:49:43",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "PCBSync",
+        "url": "https://pcbsync.com/ipc-2152/",
+        "long_name": "pcbsync.com",
+        "img": "https://imgs.search.brave.com/_wGMk685oDZm7SYJdpTqpOpktq8fnCedG5FOmN0QEGU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDcxNTMwYjk0/OGVhZDYyNzhmNDFj/MTVjYWFjZDA4MDQ5/M2YxOTM1ZGU0NTgz/MTBkMGEzNGM1Nzhj/NjU2ODU2Ny9wY2Jz/eW5jLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "pcbsync.com",
+        "hostname": "pcbsync.com",
+        "favicon": "https://imgs.search.brave.com/_wGMk685oDZm7SYJdpTqpOpktq8fnCedG5FOmN0QEGU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDcxNTMwYjk0/OGVhZDYyNzhmNDFj/MTVjYWFjZDA4MDQ5/M2YxOTM1ZGU0NTgz/MTBkMGEzNGM1Nzhj/NjU2ODU2Ny9wY2Jz/eW5jLmNvbS8",
+        "path": "  › home  › ipc standards pdf download  › ipc-2152 explained: pcb trace width & current capacity calculations"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/FwGOBoSkdgu-DFlCEbx4lWjOKo-dl8_3lY-8lu-KS3o/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wY2Jz/eW5jLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyNi8wMS9J/UEMtMjE1Mi5wbmc",
+        "original": "https://pcbsync.com/wp-content/uploads/2026/01/IPC-2152.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 2,
+      "title": "PCB Trace Width and Current Capacity: IPC-2152 Design Guide — AtlasPCB",
+      "url": "https://atlaspcb.com/blog/pcb-trace-width-current-capacity/",
+      "description": "This is one of the most significant factors. An external trace with a ground plane on the adjacent layer at 100 µm spacing can carry 30–40% more current than the IPC-2152 baseline (which assumes no adjacent plane in the basic charts).",
+      "content": "This is one of the most significant factors. An external trace with a ground plane on the adjacent layer at 100 µm spacing can carry 30–40% more current than the IPC-2152 baseline (which assumes no adjacent plane in the basic charts).\nComponents dissipating significant power (voltage regulators, MOSFETs, power inductors) benefit from thermal via arrays connecting the thermal pad to inner copper planes: ... For a 3.3V rail, this is 5.9% voltage drop—potentially too high. Solutions: widen the trace, use heavier copper, or shorten the path. For critical power delivery designs, thermal simulation provides much more accurate results than IPC-2152 tables:\nOne of the most fundamental PCB design tasks is sizing copper traces to carry the required current without excessive temperature rise. Under-sized traces cause reliability failures from overheating; over-sized traces waste board space. This guide covers the IPC-2152 standard for trace current capacity, practical design tables, and high-current layout techniques.\nIPC-2152, published in 2009 and titled “Standard for Determining Current Carrying Capacity in Printed Board Design,” replaced the IPC-2221 charts with data from modern testing under controlled conditions.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AtlasPCB",
+        "url": "https://atlaspcb.com/blog/pcb-trace-width-current-capacity/",
+        "long_name": "atlaspcb.com",
+        "img": "https://imgs.search.brave.com/sKw3bG1x-B9NvAyaYqYtWoQpV-_-CP9d0vYkCkwdZfQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTQxNGZiNTNj/OTgwODcxZGMwNDZj/NmFkNjYxMDYzMjAw/NDk5YTMyMWRlZGZk/OTdlNGU5YjE2NTM3/YmYyZDZjZi9hdGxh/c3BjYi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "atlaspcb.com",
+        "hostname": "atlaspcb.com",
+        "favicon": "https://imgs.search.brave.com/sKw3bG1x-B9NvAyaYqYtWoQpV-_-CP9d0vYkCkwdZfQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTQxNGZiNTNj/OTgwODcxZGMwNDZj/NmFkNjYxMDYzMjAw/NDk5YTMyMWRlZGZk/OTdlNGU5YjE2NTM3/YmYyZDZjZi9hdGxh/c3BjYi5jb20v",
+        "path": "› blog  › pcb-trace-width-current-capacity"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/fNyOE64RVqMhuuiB_8raXliT5md_-XazYYYMbu6FM78/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YXRsYXNwY2IuY29t/L19hc3Ryby9wY2It/dHJhY2Utd2lkdGgt/Y3VycmVudC1jYXBh/Y2l0eS1pcGMyMTUy/LWNoYXJ0LkNMRG5D/S0I3X1pIb2xWRy5q/cGc",
+        "original": "https://www.atlaspcb.com/_astro/pcb-trace-width-current-capacity-ipc2152-chart.CLDnCKB7_ZHolVG.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 3,
+      "title": "IPC-2152 Standard: PCB Trace & Via Current Calculator, Free PDF Download, and Design Guidelines - RayPCB",
+      "url": "https://www.raypcb.com/ipc-2152/",
+      "description": "In the world of PCB design, proper trace and via sizing is critical for ensuring reliability and performance. The IPC-2152 standard provides essential guidelines for determining current-carrying capacity in printed circuit boards. This comprehensive guide explores everything you need to know about implementing IPC-2152 in your designs, including calculators, resources, and best practices.",
+      "content": "In the world of PCB design, proper trace and via sizing is critical for ensuring reliability and performance. The IPC-2152 standard provides essential guidelines for determining current-carrying capacity in printed circuit boards. This comprehensive guide explores everything you need to know about implementing IPC-2152 in your designs, including calculators, resources, and best practices.\nTo use an IPC-2152 trace width calculator effectively, you’ll need to provide several key parameters: Current Requirements: The maximum current the trace will need to carry (in amperes)\nWhen designing printed circuit boards, engineers must carefully consider the current-carrying capacity of traces and vias. Insufficient width or improper design can lead to overheating, voltage drops, and even catastrophic board failures. The IPC-2152 standard addresses these concerns by providing empirical data and methodologies for accurate current calculations.\nIPC-2152 is the comprehensive industry standard for determining current-carrying capacity in printed circuit boards. Released by the Association Connecting Electronics Industries (IPC), this standard represents a significant advancement from previous guidelines.",
+      "age": "May 26, 2025",
+      "page_age": "2025-05-26T05:43:24",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "RayPCB",
+        "url": "https://www.raypcb.com/ipc-2152/",
+        "long_name": "raypcb.com",
+        "img": "https://imgs.search.brave.com/r7iss5mPHKMJUjFsIBHG0Bn5TfCVWeQGw4SKQtXDFAk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2IzNGY3YmQ0/ZjRhNjNlOWU4NTA3/ZDM1NmI5ODFjZDMx/NmVjMTdhMjhlYjg3/YTAyYmZkMzU3Nzc5/ZmFiNGFiZC93d3cu/cmF5cGNiLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "raypcb.com",
+        "hostname": "www.raypcb.com",
+        "favicon": "https://imgs.search.brave.com/r7iss5mPHKMJUjFsIBHG0Bn5TfCVWeQGw4SKQtXDFAk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2IzNGY3YmQ0/ZjRhNjNlOWU4NTA3/ZDM1NmI5ODFjZDMx/NmVjMTdhMjhlYjg3/YTAyYmZkMzU3Nzc5/ZmFiNGFiZC93d3cu/cmF5cGNiLmNvbS8",
+        "path": "  › home  › ipc-2152 standard: pcb trace & via current calculator, free pdf download, and design guidelines"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/62Z29K0rr1AWRMINVrdJC2QUnS3aLFiZOr3SplLYzU0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmF5cGNiLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMS8w/Ni9QQ0ItSVBDLXN0/YW5kYXJkcy5qcGc",
+        "original": "https://www.raypcb.com/wp-content/uploads/2021/06/PCB-IPC-standards.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 4,
+      "title": "IPC 2152, Current Carrying Capacity in Printed Board Design - The ANSI Blog",
+      "url": "https://blog.ansi.org/ansi/ipc-2152-current-carrying-capacity-in-pcbs/",
+      "description": "The current-carrying capacity of ... surrounding environment. IPC 2152 is the industry standard for determining the current capacity, temperature rise, and width of a trace in a printed circuit board....",
+      "content": "The current-carrying capacity of ... surrounding environment. IPC 2152 is the industry standard for determining the current capacity, temperature rise, and width of a trace in a printed circuit board....\nDetermining the current-carrying capacity of printed circuit boards (PCBs) is critical for reliable and safe operation. This process assures that traces can handle the required current without overheating, which could lead to component damage, fire hazards, and signal integrity issues. IPC-2152, Standard for Determining Current Carrying Capacity in Printed Board Design is a guide that can be used in the design and evaluation of copper conductors in printed boards.\nThe current-carrying capacity of a PCB trace is determined by several factors, including trace width, thickness (copper weight), temperature rise, and the surrounding environment. IPC 2152 is the industry standard for determining the current capacity, temperature rise, and width of a trace in a printed circuit board.\nThe purpose of IPC 2152 is to provide guidance on determining the appropriate conductor sizes on the finished printed boards as a function of the current carrying capacity required and the acceptable conductor temperature rise. Factors that influence current-carrying capacity of a trace on a printed circuit board (PCB) include:\nPCB material and structure: Different materials have different thermal conductivities, affecting heat dissipation. Understanding and accurately determining current-carrying capacity is essential for designing reliable and safe electronic devices. IPC 2152 exists to lay out the requirements for determining the appropriate internal and external conductor sizes on printed boards.",
+      "age": "May 22, 2025",
+      "page_age": "2025-05-22T17:39:48",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ANSI",
+        "url": "https://blog.ansi.org/ansi/ipc-2152-current-carrying-capacity-in-pcbs/",
+        "long_name": "blog.ansi.org",
+        "img": "https://imgs.search.brave.com/H4mxjKYeQNsn4O6jncFCYjyozYhem7HC1f9KLaygA6c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDE3ZDY5M2Mw/YzcwZTAzODNjMjYz/NThkZTVlZTc0M2Y2/MGYyN2NlZTNmZDg5/ODdjNGMzMmRiODEy/MWE0OTYwNi9ibG9n/LmFuc2kub3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "blog.ansi.org",
+        "hostname": "blog.ansi.org",
+        "favicon": "https://imgs.search.brave.com/H4mxjKYeQNsn4O6jncFCYjyozYhem7HC1f9KLaygA6c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDE3ZDY5M2Mw/YzcwZTAzODNjMjYz/NThkZTVlZTc0M2Y2/MGYyN2NlZTNmZDg5/ODdjNGMzMmRiODEy/MWE0OTYwNi9ibG9n/LmFuc2kub3JnLw",
+        "path": "  › home  › ipc 2152, current carrying capacity in printed board design"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/QT69SIGxbsExounSL6BWY1RJhdaNYVsZ820uGGC1MD8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9ibG9n/LmFuc2kub3JnL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI1LzA1/L3ByaW50ZWQtY2ly/Y2l1dC1ib2FyZC53/ZWJw",
+        "original": "https://blog.ansi.org/wp-content/uploads/2025/05/printed-circiut-board.webp",
+        "logo": false
+      }
+    },
+    {
+      "rank": 5,
+      "title": "IPC-2152 Current Carrying Capacity Standard | PDF | Electrical Conductor | Heat",
+      "url": "https://www.scribd.com/document/799587919/IPC-2152-Determiner-la-capacite-du-courant-dans-le-PCB",
+      "description": "The criteria are PB thickness, copper thickness, number of copper plane layers and the distance from the conductor to each adjacent copper plane layer. The charts in IPC-2152, with the exception of Figure 5-1 (which is duplicated in this Appendix ...",
+      "content": "The criteria are PB thickness, copper thickness, number of copper plane layers and the distance from the conductor to each adjacent copper plane layer. The charts in IPC-2152, with the exception of Figure 5-1 (which is duplicated in this Appendix ...\nScribd is the source for 300M+ user uploaded documents and specialty resources.\nInternal Conductors (Still Air) Figure A-1 External and Internal Conductors (5 - 100 Sq-mils) ............................................. 44 (This figure is a duplicate of Figure 5-1 Figure A-30 2 oz. Internal Conductors (Still Air) in IPC-2152) ...................................................\nThe criteria are PB thickness, copper thickness, number of copper plane layers and the distance from the conductor to each adjacent copper plane layer. The charts in IPC-2152, with the exception of Figure 5-1 (which is duplicated in this Appendix as Figure A-1), are devel- oped from 1.79 mm [0.070 in] thick, polyimide PB test vehicles.\nA.2 DERATING Conductors that are sized using IPC-2152 have no specific derating applied to them. In most cases, conductors will operate at a temperature rise less than estimated using the charts in this document. In the general case of a PB that has one or more copper planes in the PB, the conductors will have a lower temperature rise than estimated using the conductor sizing charts.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "creative_work",
+      "profile": {
+        "name": "Scribd",
+        "url": "https://www.scribd.com/document/799587919/IPC-2152-Determiner-la-capacite-du-courant-dans-le-PCB",
+        "long_name": "scribd.com",
+        "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "scribd.com",
+        "hostname": "www.scribd.com",
+        "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+        "path": "› document  › 799587919  › IPC-2152-Determiner-la-capacite-du-courant-dans-le-PCB"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/Awq1HbGenVXLkfKQLRZpouYVToVQiGf6pjMXQRR9XCY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/Nzk5NTg3OTE5LzE0/OXgxOTgvOGZiYTA2/NzA3MS8xNzMzMTM1/MzU2P3Y9MQ",
+        "original": "https://imgv2-1-f.scribdassets.com/img/document/799587919/149x198/8fba067071/1733135356?v=1",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Optimize your PCB trace using IPC-2152 standard | Sierra Circuits",
+      "url": "https://www.protoexpress.com/blog/how-to-optimize-your-pcb-trace-using-ipc-2152-standard/",
+      "description": "IPC-2152 is the standard for determining the current capacity, temperature rise, and width of a trace in a printed circuit board.",
+      "content": "IPC-2152 is the standard for determining the current capacity, temperature rise, and width of a trace in a printed circuit board.\nNormally, a 10°C temperature rise above the ambient temperature (25 °C) is allowed in a conductor. Although today’s PCBs have evolved drastically, the IPC 2152 standard is still implemented for thermal management, power budgeting, and energy efficiency analysis.\nTo expedite this process, EDA tools include many calculators and simulators. However, only a few of these calculators cater to managing the thermal characteristics of a circuit. Currently, thermal calculators for computing the trace width are based on IPC-2152 and IPC-2221.\nIPC-2152 updates the conductor sizing charts and formulas that existed in IPC-2221, which was more than 50 years old. Additionally, the formula for the current capacity of the trace provided in the IPC-2221 standard was developed by considering a single-type board with a single copper weight.",
+      "age": "February 16, 2023",
+      "page_age": "2023-02-16T11:57:16",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ProtoExpress",
+        "url": "https://www.protoexpress.com/blog/how-to-optimize-your-pcb-trace-using-ipc-2152-standard/",
+        "long_name": "protoexpress.com",
+        "img": "https://imgs.search.brave.com/gl-nNLmWXqD4kQ7rMHkOQKc9wRYHTDuIBEaPr66ZVoA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VkNjM0MTdk/OGUwZjg3NTFjYzM3/ODNiYWExOGU3MGQx/NzQwNTdlOGQ3OWVl/M2FiMjNkODM5ODMy/M2E2ZWMyZi93d3cu/cHJvdG9leHByZXNz/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "protoexpress.com",
+        "hostname": "www.protoexpress.com",
+        "favicon": "https://imgs.search.brave.com/gl-nNLmWXqD4kQ7rMHkOQKc9wRYHTDuIBEaPr66ZVoA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VkNjM0MTdk/OGUwZjg3NTFjYzM3/ODNiYWExOGU3MGQx/NzQwNTdlOGQ3OWVl/M2FiMjNkODM5ODMy/M2E2ZWMyZi93d3cu/cHJvdG9leHByZXNz/LmNvbS8",
+        "path": "› blog  › how-to-optimize-your-pcb-trace-using-ipc-2152-standard"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/frNxj8xmXtnfveoRIbXyITyNn-dxP-kng8vQKgH9Eds/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cHJvdG9leHByZXNz/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyMy8wMi9pcGMt/MjE1Mi1zdGFuZGFy/ZC1mb3ItY3VycmVu/dC1jYXBhY2l0eS5q/cGc",
+        "original": "https://www.protoexpress.com/wp-content/uploads/2023/02/ipc-2152-standard-for-current-capacity.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "The Value of IPC-2152 Michael R. Jouppi Thermal Management Inc.",
+      "url": "https://www.electronics.org/system/files/technical_resource/E7&S22_03.pdf",
+      "description": "The Value of IPC-2152 · Michael R. Jouppi · Thermal Management Inc · Centennial, Colorado · Abstract · Current carrying capacity in printed board design is technology dependent and an element of printed circuit board thermal · management. Conductor temperature rise as a function of current ...",
+      "content": "The Value of IPC-2152 · Michael R. Jouppi · Thermal Management Inc · Centennial, Colorado · Abstract · Current carrying capacity in printed board design is technology dependent and an element of printed circuit board thermal · management. Conductor temperature rise as a function of current ...\nIPC-2152 are based on tests conducted on traces in boards with no copper planes, suspended in still air as well as in vacuum.\nIPC-2152 is a technology enabler.\nIPC-2152 contains information that can be used to develop current carrying capacity guidelines for individual designs.\nThrough the use of computer modeling and information within IPC-2152 and the",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Global Electronics Association",
+        "url": "https://www.electronics.org/system/files/technical_resource/E7&S22_03.pdf",
+        "long_name": "electronics.org",
+        "img": "https://imgs.search.brave.com/QrKn6g4Zjrw9nAFDLfmxPYMiY5T5hDvBDRYjpBo3xFY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTAwZjU3MjNm/OGIzNDA1YjBmMmQ3/Mjg3ZjNkMzFlMWZi/OGRiNDY5NWQ0NGY3/NzY5NGY2YWFhN2Rh/ZTk0M2JiZi93d3cu/ZWxlY3Ryb25pY3Mu/b3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "electronics.org",
+        "hostname": "www.electronics.org",
+        "favicon": "https://imgs.search.brave.com/QrKn6g4Zjrw9nAFDLfmxPYMiY5T5hDvBDRYjpBo3xFY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTAwZjU3MjNm/OGIzNDA1YjBmMmQ3/Mjg3ZjNkMzFlMWZi/OGRiNDY5NWQ0NGY3/NzY5NGY2YWFhN2Rh/ZTk0M2JiZi93d3cu/ZWxlY3Ryb25pY3Mu/b3JnLw",
+        "path": "› system  › files  › technical_resource  › E7&S22_03.pdf"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "Optimizing for PCB Trace Thickness vs Current Capacity | Cadence",
+      "url": "https://resources.pcb.cadence.com/blog/2024-optimizing-for-pcb-trace-thickness-vs-current-capacity",
+      "description": "Trace width and copper layer thickness are crucial for managing the current-carrying capacity of PCBs, with standards provided by IPC-2152 and IPC-2221.",
+      "content": "Trace width and copper layer thickness are crucial for managing the current-carrying capacity of PCBs, with standards provided by IPC-2152 and IPC-2221.\nPCB trace thickness vs current: how to select considering copper weight, position, and IPC guidelines to manage current capacity and temperature rise effectively.\nAlternatively, employing a calculator that adheres to either the IPC-2152 or IPC-2221 standards can provide precise guidance. Generally, the aim during operations is to maintain the temperature increase within the conductive paths of your board at a manageable 10-20 degrees Celsius. If you’d like especially detailed information, consider consulting one of the following IPC Regulations.\nYour voltage regulator outputs clean power, but the IC has noise. The issue lies in the copper.",
+      "age": "October 30, 2025",
+      "page_age": "2025-10-30T12:47:05",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Cadence",
+        "url": "https://resources.pcb.cadence.com/blog/2024-optimizing-for-pcb-trace-thickness-vs-current-capacity",
+        "long_name": "resources.pcb.cadence.com",
+        "img": "https://imgs.search.brave.com/NSXXzmIecsdxQ4C0Wjc9rEuHi0xU_cmfETgZSSY8pyc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2U5MjUwMjk0/ZTZlMjc5MzIwMDA1/Yzc5ZGQ0MGQyODI2/NmUyYjZhZTMzMDY1/NTlmNWI5MWM2ZGI0/ZDRhYmQ4My9yZXNv/dXJjZXMucGNiLmNh/ZGVuY2UuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "resources.pcb.cadence.com",
+        "hostname": "resources.pcb.cadence.com",
+        "favicon": "https://imgs.search.brave.com/NSXXzmIecsdxQ4C0Wjc9rEuHi0xU_cmfETgZSSY8pyc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2U5MjUwMjk0/ZTZlMjc5MzIwMDA1/Yzc5ZGQ0MGQyODI2/NmUyYjZhZTMzMDY1/NTlmNWI5MWM2ZGI0/ZDRhYmQ4My9yZXNv/dXJjZXMucGNiLmNh/ZGVuY2UuY29tLw",
+        "path": "› blog  › 2024-optimizing-for-pcb-trace-thickness-vs-current-capacity"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/xU941ZFxxGj-iTVo9spK73629IAbJJJn8mWJeVRTk1M/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9yZXMu/Y2xvdWRpbmFyeS5j/b20vdWYtNTUyODYx/L2ltYWdlL3VwbG9h/ZC92MTcxNjQ1NzM2/OC9EaWFncmFtX2ls/bHVzdHJhdGluZ190/cmFjZV90aGlja25l/c3NfYW5kX3dpZHRo/X253YXB3eC5wbmc",
+        "original": "https://res.cloudinary.com/uf-552861/image/upload/v1716457368/Diagram_illustrating_trace_thickness_and_width_nwapwx.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 9,
+      "title": "IPC-2152 Standard for Determining Current Carrying Capacity",
+      "url": "https://www.electronics.org/TOC/IPC-2152.pdf",
+      "description": "This document is intended as a general guide to understanding the relationship between current, conductor size, and tem- · The words ‘‘should’’ and ‘‘may’’ are used whenever it is necessary to express non-mandatory provisions · The conﬁguration or design of the conductive ...",
+      "content": "This document is intended as a general guide to understanding the relationship between current, conductor size, and tem- · The words ‘‘should’’ and ‘‘may’’ are used whenever it is necessary to express non-mandatory provisions · The conﬁguration or design of the conductive ...",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Global Electronics Association",
+        "url": "https://www.electronics.org/TOC/IPC-2152.pdf",
+        "long_name": "electronics.org",
+        "img": "https://imgs.search.brave.com/QrKn6g4Zjrw9nAFDLfmxPYMiY5T5hDvBDRYjpBo3xFY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTAwZjU3MjNm/OGIzNDA1YjBmMmQ3/Mjg3ZjNkMzFlMWZi/OGRiNDY5NWQ0NGY3/NzY5NGY2YWFhN2Rh/ZTk0M2JiZi93d3cu/ZWxlY3Ryb25pY3Mu/b3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "electronics.org",
+        "hostname": "www.electronics.org",
+        "favicon": "https://imgs.search.brave.com/QrKn6g4Zjrw9nAFDLfmxPYMiY5T5hDvBDRYjpBo3xFY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTAwZjU3MjNm/OGIzNDA1YjBmMmQ3/Mjg3ZjNkMzFlMWZi/OGRiNDY5NWQ0NGY3/NzY5NGY2YWFhN2Rh/ZTk0M2JiZi93d3cu/ZWxlY3Ryb25pY3Mu/b3JnLw",
+        "path": "› TOC  › IPC-2152.pdf"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "Using an IPC-2152 Calculator: Designing to Standards | PCB Design Blog | Altium",
+      "url": "https://resources.altium.com/p/using-ipc-2152-calculator-designing-standards",
+      "description": "The industry has stepped up in a long-standing effort to develop standards that cover best practices for thermal management. The results have been a bit underwhelming, leading to a set of empirical formulas defined in IPC-2152 and IPC-2221. These formulas can be used to estimate the relationship between current in a trace, the trace width, and the expected temperature rise above ambient, assuming the design is on an FR4-grade substrate.",
+      "content": "The industry has stepped up in a long-standing effort to develop standards that cover best practices for thermal management. The results have been a bit underwhelming, leading to a set of empirical formulas defined in IPC-2152 and IPC-2221. These formulas can be used to estimate the relationship between current in a trace, the trace width, and the expected temperature rise above ambient, assuming the design is on an FR4-grade substrate.\nIf you look at modern EDA programs, there are many calculators and simulators built into these applications. But one of the areas of simulation that has lagged behind everything else is thermal simulations. Thermal calculations are important particularly in power electronics, and in high-reliability electronics, even if these systems are running lower overall power.\nIf you need to design to industry standards, an online IPC-2152 calculator can be a real time saver.\nComparator Propagation Delay in High Speed Mixed-Signal Design Comparator-based thresholding circuits are often described in simple terms: an analog signal crosses a threshold, the comparator changes its output voltage level, typically to a standard logic level like 3.3V or 5V.",
+      "age": "March 13, 2026",
+      "page_age": "2026-03-13T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Altium",
+        "url": "https://resources.altium.com/p/using-ipc-2152-calculator-designing-standards",
+        "long_name": "resources.altium.com",
+        "img": "https://imgs.search.brave.com/3twZ63-Swi42-mMopNC4sX2DyrPtdunWkWj35C2Wzs8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzM0NjMzYmVh/MjU1ZWExOWJlNDA4/NTk3YzE4OTg2ZDZl/Yzg3Y2QzNmEyZmJi/OTMxYTRiYjIzZDQ0/MDU3YTVkZi9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "resources.altium.com",
+        "hostname": "resources.altium.com",
+        "favicon": "https://imgs.search.brave.com/3twZ63-Swi42-mMopNC4sX2DyrPtdunWkWj35C2Wzs8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzM0NjMzYmVh/MjU1ZWExOWJlNDA4/NTk3YzE4OTg2ZDZl/Yzg3Y2QzNmEyZmJi/OTMxYTRiYjIzZDQ0/MDU3YTVkZi9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS8",
+        "path": "› p  › using-ipc-2152-calculator-designing-standards"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/Vk7dfmIPl0KdCW6JCTb4iqUY-8O-0c63ADSpQ5htWGs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS9zaXRlcy9k/ZWZhdWx0L2ZpbGVz/L2Jsb2dzL1VzaW5n/JTIwYW4lMjBJUEMt/MjE1MiUyMENhbGN1/bGF0b3IlM0ElMjBE/ZXNpZ25pbmclMjB0/byUyMFN0YW5kYXJk/cy05NzU5OC5qcGc",
+        "original": "https://resources.altium.com/sites/default/files/blogs/Using%20an%20IPC-2152%20Calculator%3A%20Designing%20to%20Standards-97598.jpg"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "PCB trace current carrying capacity IPC-2152 testing 1 amp 5V 3.3V regulator",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.013,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "PCB trace current carrying capacity IPC-2152 testing 1 amp 5V 3.3V regulator",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "IPC-2152 Explained: PCB Trace Width & Current Capacity Calculations - PCBSync",
+          "url": "https://pcbsync.com/ipc-2152/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Learn IPC-2152 trace width calculations for current capacity. Includes formulas, correction factors, via sizing, and IPC-2221 comparison for PCB design.",
+          "page_age": "2026-01-05T08:49:43",
+          "profile": {
+            "name": "PCBSync",
+            "url": "https://pcbsync.com/ipc-2152/",
+            "long_name": "pcbsync.com",
+            "img": "https://imgs.search.brave.com/_wGMk685oDZm7SYJdpTqpOpktq8fnCedG5FOmN0QEGU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDcxNTMwYjk0/OGVhZDYyNzhmNDFj/MTVjYWFjZDA4MDQ5/M2YxOTM1ZGU0NTgz/MTBkMGEzNGM1Nzhj/NjU2ODU2Ny9wY2Jz/eW5jLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "pcbsync.com",
+            "hostname": "pcbsync.com",
+            "favicon": "https://imgs.search.brave.com/_wGMk685oDZm7SYJdpTqpOpktq8fnCedG5FOmN0QEGU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDcxNTMwYjk0/OGVhZDYyNzhmNDFj/MTVjYWFjZDA4MDQ5/M2YxOTM1ZGU0NTgz/MTBkMGEzNGM1Nzhj/NjU2ODU2Ny9wY2Jz/eW5jLmNvbS8",
+            "path": "  › home  › ipc standards pdf download  › ipc-2152 explained: pcb trace width & current capacity calculations"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/FwGOBoSkdgu-DFlCEbx4lWjOKo-dl8_3lY-8lu-KS3o/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wY2Jz/eW5jLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyNi8wMS9J/UEMtMjE1Mi5wbmc",
+            "original": "https://pcbsync.com/wp-content/uploads/2026/01/IPC-2152.png",
+            "logo": false
+          },
+          "age": "January 5, 2026",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Yoyo"
+              }
+            ],
+            "date": "Jan 05, 2026",
+            "publisher": {
+              "type": "organization",
+              "name": "PCBSync",
+              "url": "https://pcbsync.com/",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/0vB9CSgSTgTOomvVBE0fx3QEbV--rAx97UyJDOfruhI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wY2Jz/eW5jLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyNi8wMS_l/vq7kv6Hlm77niYdf/MjAyNjAxMjIxNzEz/NThfMTAzXzg2OC5q/cGc",
+                "original": "https://pcbsync.com/wp-content/uploads/2026/01/微信图片_20260122171358_103_868.jpg"
+              }
+            }
+          },
+          "extra_snippets": [
+            "Copper Trace / Current Carrying Capacity / ipc standards / IPC-2152 / PCB design / PCB Power Design / PCB Trace Width / Temperature Rise / Trace Width Calculation / Via Current Capacity · Nothing ruins a prototype faster than watching a trace turn into a fuse. You’ve done everything right—schematic verified, layout optimized, impedance controlled—but you forgot to properly size your power traces. The board powers up, current flows, and suddenly you’re staring at a burnt copper ribbon where your 5V rail used to be.",
+            "Online calculators based on IPC-2152 are sufficient for most design work. These tools implement the formulas and correction factors from the standard, giving you practical results without purchasing the document. However, if you need to understand the test methodology, reference specific charts for documentation, or work in a regulated industry requiring standard compliance, purchasing IPC-2152 is worthwhile.",
+            "Unlike its predecessor IPC-2221, which relied on theoretical calculations and limited testing from the 1950s, IPC-2152 is built on extensive empirical data collected from real boards under controlled conditions.",
+            "Temperature rise (ΔT) is how much hotter your trace gets compared to ambient conditions. IPC-2152 provides data for temperature rises from 10°C to 100°C, but most designs target 10-20°C rise for several reasons."
+          ]
+        },
+        {
+          "title": "PCB Trace Width and Current Capacity: IPC-2152 Design Guide — AtlasPCB",
+          "url": "https://atlaspcb.com/blog/pcb-trace-width-current-capacity/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This is one of the most significant factors. An external trace with a ground plane on the adjacent layer at 100 µm spacing can carry 30–40% more current than the IPC-2152 baseline (which assumes no adjacent plane in the basic charts).",
+          "profile": {
+            "name": "AtlasPCB",
+            "url": "https://atlaspcb.com/blog/pcb-trace-width-current-capacity/",
+            "long_name": "atlaspcb.com",
+            "img": "https://imgs.search.brave.com/sKw3bG1x-B9NvAyaYqYtWoQpV-_-CP9d0vYkCkwdZfQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTQxNGZiNTNj/OTgwODcxZGMwNDZj/NmFkNjYxMDYzMjAw/NDk5YTMyMWRlZGZk/OTdlNGU5YjE2NTM3/YmYyZDZjZi9hdGxh/c3BjYi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "atlaspcb.com",
+            "hostname": "atlaspcb.com",
+            "favicon": "https://imgs.search.brave.com/sKw3bG1x-B9NvAyaYqYtWoQpV-_-CP9d0vYkCkwdZfQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTQxNGZiNTNj/OTgwODcxZGMwNDZj/NmFkNjYxMDYzMjAw/NDk5YTMyMWRlZGZk/OTdlNGU5YjE2NTM3/YmYyZDZjZi9hdGxh/c3BjYi5jb20v",
+            "path": "› blog  › pcb-trace-width-current-capacity"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/fNyOE64RVqMhuuiB_8raXliT5md_-XazYYYMbu6FM78/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YXRsYXNwY2IuY29t/L19hc3Ryby9wY2It/dHJhY2Utd2lkdGgt/Y3VycmVudC1jYXBh/Y2l0eS1pcGMyMTUy/LWNoYXJ0LkNMRG5D/S0I3X1pIb2xWRy5q/cGc",
+            "original": "https://www.atlaspcb.com/_astro/pcb-trace-width-current-capacity-ipc2152-chart.CLDnCKB7_ZHolVG.jpg",
+            "logo": false
+          },
+          "extra_snippets": [
+            "Components dissipating significant power (voltage regulators, MOSFETs, power inductors) benefit from thermal via arrays connecting the thermal pad to inner copper planes: ... For a 3.3V rail, this is 5.9% voltage drop—potentially too high. Solutions: widen the trace, use heavier copper, or shorten the path. For critical power delivery designs, thermal simulation provides much more accurate results than IPC-2152 tables:",
+            "One of the most fundamental PCB design tasks is sizing copper traces to carry the required current without excessive temperature rise. Under-sized traces cause reliability failures from overheating; over-sized traces waste board space. This guide covers the IPC-2152 standard for trace current capacity, practical design tables, and high-current layout techniques.",
+            "IPC-2152, published in 2009 and titled “Standard for Determining Current Carrying Capacity in Printed Board Design,” replaced the IPC-2221 charts with data from modern testing under controlled conditions.",
+            "This is one of the most significant factors. An external trace with a ground plane on the adjacent layer at 100 µm spacing can carry 30–40% more current than the IPC-2152 baseline (which assumes no adjacent plane in the basic charts)."
+          ]
+        },
+        {
+          "title": "IPC-2152 Standard: PCB Trace & Via Current Calculator, Free PDF Download, and Design Guidelines - RayPCB",
+          "url": "https://www.raypcb.com/ipc-2152/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "In the world of PCB design, proper trace and via sizing is critical for ensuring reliability and performance. The IPC-2152 standard provides essential guidelines for determining current-carrying capacity in printed circuit boards. This comprehensive guide explores everything you need to know about implementing IPC-2152 in your designs, including calculators, resources, and best practices.",
+          "page_age": "2025-05-26T05:43:24",
+          "profile": {
+            "name": "RayPCB",
+            "url": "https://www.raypcb.com/ipc-2152/",
+            "long_name": "raypcb.com",
+            "img": "https://imgs.search.brave.com/r7iss5mPHKMJUjFsIBHG0Bn5TfCVWeQGw4SKQtXDFAk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2IzNGY3YmQ0/ZjRhNjNlOWU4NTA3/ZDM1NmI5ODFjZDMx/NmVjMTdhMjhlYjg3/YTAyYmZkMzU3Nzc5/ZmFiNGFiZC93d3cu/cmF5cGNiLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "raypcb.com",
+            "hostname": "www.raypcb.com",
+            "favicon": "https://imgs.search.brave.com/r7iss5mPHKMJUjFsIBHG0Bn5TfCVWeQGw4SKQtXDFAk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2IzNGY3YmQ0/ZjRhNjNlOWU4NTA3/ZDM1NmI5ODFjZDMx/NmVjMTdhMjhlYjg3/YTAyYmZkMzU3Nzc5/ZmFiNGFiZC93d3cu/cmF5cGNiLmNvbS8",
+            "path": "  › home  › ipc-2152 standard: pcb trace & via current calculator, free pdf download, and design guidelines"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/62Z29K0rr1AWRMINVrdJC2QUnS3aLFiZOr3SplLYzU0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmF5cGNiLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMS8w/Ni9QQ0ItSVBDLXN0/YW5kYXJkcy5qcGc",
+            "original": "https://www.raypcb.com/wp-content/uploads/2021/06/PCB-IPC-standards.jpg",
+            "logo": false
+          },
+          "age": "May 26, 2025",
+          "extra_snippets": [
+            "In the world of PCB design, proper trace and via sizing is critical for ensuring reliability and performance. The IPC-2152 standard provides essential guidelines for determining current-carrying capacity in printed circuit boards. This comprehensive guide explores everything you need to know about implementing IPC-2152 in your designs, including calculators, resources, and best practices.",
+            "To use an IPC-2152 trace width calculator effectively, you’ll need to provide several key parameters: Current Requirements: The maximum current the trace will need to carry (in amperes)",
+            "When designing printed circuit boards, engineers must carefully consider the current-carrying capacity of traces and vias. Insufficient width or improper design can lead to overheating, voltage drops, and even catastrophic board failures. The IPC-2152 standard addresses these concerns by providing empirical data and methodologies for accurate current calculations.",
+            "IPC-2152 is the comprehensive industry standard for determining current-carrying capacity in printed circuit boards. Released by the Association Connecting Electronics Industries (IPC), this standard represents a significant advancement from previous guidelines."
+          ]
+        },
+        {
+          "title": "IPC 2152, Current Carrying Capacity in Printed Board Design - The ANSI Blog",
+          "url": "https://blog.ansi.org/ansi/ipc-2152-current-carrying-capacity-in-pcbs/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The current-carrying capacity of ... surrounding environment. IPC 2152 is the industry standard for determining the current capacity, temperature rise, and width of a trace in a printed circuit board....",
+          "page_age": "2025-05-22T17:39:48",
+          "profile": {
+            "name": "ANSI",
+            "url": "https://blog.ansi.org/ansi/ipc-2152-current-carrying-capacity-in-pcbs/",
+            "long_name": "blog.ansi.org",
+            "img": "https://imgs.search.brave.com/H4mxjKYeQNsn4O6jncFCYjyozYhem7HC1f9KLaygA6c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDE3ZDY5M2Mw/YzcwZTAzODNjMjYz/NThkZTVlZTc0M2Y2/MGYyN2NlZTNmZDg5/ODdjNGMzMmRiODEy/MWE0OTYwNi9ibG9n/LmFuc2kub3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "blog.ansi.org",
+            "hostname": "blog.ansi.org",
+            "favicon": "https://imgs.search.brave.com/H4mxjKYeQNsn4O6jncFCYjyozYhem7HC1f9KLaygA6c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDE3ZDY5M2Mw/YzcwZTAzODNjMjYz/NThkZTVlZTc0M2Y2/MGYyN2NlZTNmZDg5/ODdjNGMzMmRiODEy/MWE0OTYwNi9ibG9n/LmFuc2kub3JnLw",
+            "path": "  › home  › ipc 2152, current carrying capacity in printed board design"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/QT69SIGxbsExounSL6BWY1RJhdaNYVsZ820uGGC1MD8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9ibG9n/LmFuc2kub3JnL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI1LzA1/L3ByaW50ZWQtY2ly/Y2l1dC1ib2FyZC53/ZWJw",
+            "original": "https://blog.ansi.org/wp-content/uploads/2025/05/printed-circiut-board.webp",
+            "logo": false
+          },
+          "age": "May 22, 2025",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Alexandra Schirn"
+              }
+            ],
+            "date": "May 03, 2025",
+            "publisher": {
+              "type": "organization",
+              "name": "The ANSI Blog",
+              "url": "https://blog.ansi.org/",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/w_JmtyXsl3eaAQUDL7oARFmXRDlO0YQJC3dzzeUP8ls/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9ibG9n/LmFuc2kub3JnL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI1LzA1/L0FOU0lfbG9nby5z/dmdfLnBuZw",
+                "original": "https://blog.ansi.org/wp-content/uploads/2025/05/ANSI_logo.svg_.png"
+              }
+            }
+          },
+          "extra_snippets": [
+            "Determining the current-carrying capacity of printed circuit boards (PCBs) is critical for reliable and safe operation. This process assures that traces can handle the required current without overheating, which could lead to component damage, fire hazards, and signal integrity issues. IPC-2152, Standard for Determining Current Carrying Capacity in Printed Board Design is a guide that can be used in the design and evaluation of copper conductors in printed boards.",
+            "The current-carrying capacity of a PCB trace is determined by several factors, including trace width, thickness (copper weight), temperature rise, and the surrounding environment. IPC 2152 is the industry standard for determining the current capacity, temperature rise, and width of a trace in a printed circuit board.",
+            "The purpose of IPC 2152 is to provide guidance on determining the appropriate conductor sizes on the finished printed boards as a function of the current carrying capacity required and the acceptable conductor temperature rise. Factors that influence current-carrying capacity of a trace on a printed circuit board (PCB) include:",
+            "PCB material and structure: Different materials have different thermal conductivities, affecting heat dissipation. Understanding and accurately determining current-carrying capacity is essential for designing reliable and safe electronic devices. IPC 2152 exists to lay out the requirements for determining the appropriate internal and external conductor sizes on printed boards."
+          ]
+        },
+        {
+          "title": "IPC-2152 Current Carrying Capacity Standard | PDF | Electrical Conductor | Heat",
+          "url": "https://www.scribd.com/document/799587919/IPC-2152-Determiner-la-capacite-du-courant-dans-le-PCB",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The criteria are PB thickness, copper thickness, number of copper plane layers and the distance from the conductor to each adjacent copper plane layer. The charts in IPC-2152, with the exception of Figure 5-1 (which is duplicated in this Appendix ...",
+          "profile": {
+            "name": "Scribd",
+            "url": "https://www.scribd.com/document/799587919/IPC-2152-Determiner-la-capacite-du-courant-dans-le-PCB",
+            "long_name": "scribd.com",
+            "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "creative_work",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› document  › 799587919  › IPC-2152-Determiner-la-capacite-du-courant-dans-le-PCB"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Awq1HbGenVXLkfKQLRZpouYVToVQiGf6pjMXQRR9XCY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/Nzk5NTg3OTE5LzE0/OXgxOTgvOGZiYTA2/NzA3MS8xNzMzMTM1/MzU2P3Y9MQ",
+            "original": "https://imgv2-1-f.scribdassets.com/img/document/799587919/149x198/8fba067071/1733135356?v=1",
+            "logo": false
+          },
+          "creative_work": {
+            "name": "IPC-2152 - Déterminer la capacité du courant dans le PCB",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/Awq1HbGenVXLkfKQLRZpouYVToVQiGf6pjMXQRR9XCY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/Nzk5NTg3OTE5LzE0/OXgxOTgvOGZiYTA2/NzA3MS8xNzMzMTM1/MzU2P3Y9MQ",
+              "original": "https://imgv2-1-f.scribdassets.com/img/document/799587919/149x198/8fba067071/1733135356?v=1"
+            }
+          },
+          "extra_snippets": [
+            "Scribd is the source for 300M+ user uploaded documents and specialty resources.",
+            "Internal Conductors (Still Air) Figure A-1 External and Internal Conductors (5 - 100 Sq-mils) ............................................. 44 (This figure is a duplicate of Figure 5-1 Figure A-30 2 oz. Internal Conductors (Still Air) in IPC-2152) ...................................................",
+            "The criteria are PB thickness, copper thickness, number of copper plane layers and the distance from the conductor to each adjacent copper plane layer. The charts in IPC-2152, with the exception of Figure 5-1 (which is duplicated in this Appendix as Figure A-1), are devel- oped from 1.79 mm [0.070 in] thick, polyimide PB test vehicles.",
+            "A.2 DERATING Conductors that are sized using IPC-2152 have no specific derating applied to them. In most cases, conductors will operate at a temperature rise less than estimated using the charts in this document. In the general case of a PB that has one or more copper planes in the PB, the conductors will have a lower temperature rise than estimated using the conductor sizing charts."
+          ]
+        },
+        {
+          "title": "Optimize your PCB trace using IPC-2152 standard | Sierra Circuits",
+          "url": "https://www.protoexpress.com/blog/how-to-optimize-your-pcb-trace-using-ipc-2152-standard/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "IPC-2152 is the standard for determining the current capacity, temperature rise, and width of a trace in a printed circuit board.",
+          "page_age": "2023-02-16T11:57:16",
+          "profile": {
+            "name": "ProtoExpress",
+            "url": "https://www.protoexpress.com/blog/how-to-optimize-your-pcb-trace-using-ipc-2152-standard/",
+            "long_name": "protoexpress.com",
+            "img": "https://imgs.search.brave.com/gl-nNLmWXqD4kQ7rMHkOQKc9wRYHTDuIBEaPr66ZVoA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VkNjM0MTdk/OGUwZjg3NTFjYzM3/ODNiYWExOGU3MGQx/NzQwNTdlOGQ3OWVl/M2FiMjNkODM5ODMy/M2E2ZWMyZi93d3cu/cHJvdG9leHByZXNz/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "protoexpress.com",
+            "hostname": "www.protoexpress.com",
+            "favicon": "https://imgs.search.brave.com/gl-nNLmWXqD4kQ7rMHkOQKc9wRYHTDuIBEaPr66ZVoA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VkNjM0MTdk/OGUwZjg3NTFjYzM3/ODNiYWExOGU3MGQx/NzQwNTdlOGQ3OWVl/M2FiMjNkODM5ODMy/M2E2ZWMyZi93d3cu/cHJvdG9leHByZXNz/LmNvbS8",
+            "path": "› blog  › how-to-optimize-your-pcb-trace-using-ipc-2152-standard"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/frNxj8xmXtnfveoRIbXyITyNn-dxP-kng8vQKgH9Eds/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cHJvdG9leHByZXNz/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyMy8wMi9pcGMt/MjE1Mi1zdGFuZGFy/ZC1mb3ItY3VycmVu/dC1jYXBhY2l0eS5q/cGc",
+            "original": "https://www.protoexpress.com/wp-content/uploads/2023/02/ipc-2152-standard-for-current-capacity.jpg",
+            "logo": false
+          },
+          "age": "February 16, 2023",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Sushmitha V"
+              }
+            ],
+            "date": "Feb 16, 2023",
+            "publisher": {
+              "type": "organization",
+              "name": "Sierra Circuits, Inc.",
+              "url": "https://www.protoexpress.com/",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/T54b0OmtLAk54btrU2kMktVX0pcwrk85YynnfHEO6j4/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cHJvdG9leHByZXNz/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyMi8wMS9sb2dv/LnN2Zw",
+                "original": "https://www.protoexpress.com/wp-content/uploads/2022/01/logo.svg"
+              }
+            }
+          },
+          "extra_snippets": [
+            "Normally, a 10°C temperature rise above the ambient temperature (25 °C) is allowed in a conductor. Although today’s PCBs have evolved drastically, the IPC 2152 standard is still implemented for thermal management, power budgeting, and energy efficiency analysis.",
+            "To expedite this process, EDA tools include many calculators and simulators. However, only a few of these calculators cater to managing the thermal characteristics of a circuit. Currently, thermal calculators for computing the trace width are based on IPC-2152 and IPC-2221.",
+            "IPC-2152 updates the conductor sizing charts and formulas that existed in IPC-2221, which was more than 50 years old. Additionally, the formula for the current capacity of the trace provided in the IPC-2221 standard was developed by considering a single-type board with a single copper weight.",
+            "IPC-2152 is the standard for determining the current capacity, temperature rise, and width of a trace in a printed circuit board."
+          ]
+        },
+        {
+          "title": "The Value of IPC-2152 Michael R. Jouppi Thermal Management Inc.",
+          "url": "https://www.electronics.org/system/files/technical_resource/E7&S22_03.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The Value of IPC-2152 · Michael R. Jouppi · Thermal Management Inc · Centennial, Colorado · Abstract · Current carrying capacity in printed board design is technology dependent and an element of printed circuit board thermal · management. Conductor temperature rise as a function of current ...",
+          "profile": {
+            "name": "Global Electronics Association",
+            "url": "https://www.electronics.org/system/files/technical_resource/E7&S22_03.pdf",
+            "long_name": "electronics.org",
+            "img": "https://imgs.search.brave.com/QrKn6g4Zjrw9nAFDLfmxPYMiY5T5hDvBDRYjpBo3xFY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTAwZjU3MjNm/OGIzNDA1YjBmMmQ3/Mjg3ZjNkMzFlMWZi/OGRiNDY5NWQ0NGY3/NzY5NGY2YWFhN2Rh/ZTk0M2JiZi93d3cu/ZWxlY3Ryb25pY3Mu/b3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "electronics.org",
+            "hostname": "www.electronics.org",
+            "favicon": "https://imgs.search.brave.com/QrKn6g4Zjrw9nAFDLfmxPYMiY5T5hDvBDRYjpBo3xFY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTAwZjU3MjNm/OGIzNDA1YjBmMmQ3/Mjg3ZjNkMzFlMWZi/OGRiNDY5NWQ0NGY3/NzY5NGY2YWFhN2Rh/ZTk0M2JiZi93d3cu/ZWxlY3Ryb25pY3Mu/b3JnLw",
+            "path": "› system  › files  › technical_resource  › E7&S22_03.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "IPC-2152 are based on tests conducted on traces in boards with no copper planes, suspended in still air as well as in vacuum.",
+            "IPC-2152 is a technology enabler.",
+            "IPC-2152 contains information that can be used to develop current carrying capacity guidelines for individual designs.",
+            "Through the use of computer modeling and information within IPC-2152 and the"
+          ]
+        },
+        {
+          "title": "Optimizing for PCB Trace Thickness vs Current Capacity | Cadence",
+          "url": "https://resources.pcb.cadence.com/blog/2024-optimizing-for-pcb-trace-thickness-vs-current-capacity",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Trace width and copper layer thickness are crucial for managing the current-carrying capacity of PCBs, with standards provided by IPC-2152 and IPC-2221.",
+          "page_age": "2025-10-30T12:47:05",
+          "profile": {
+            "name": "Cadence",
+            "url": "https://resources.pcb.cadence.com/blog/2024-optimizing-for-pcb-trace-thickness-vs-current-capacity",
+            "long_name": "resources.pcb.cadence.com",
+            "img": "https://imgs.search.brave.com/NSXXzmIecsdxQ4C0Wjc9rEuHi0xU_cmfETgZSSY8pyc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2U5MjUwMjk0/ZTZlMjc5MzIwMDA1/Yzc5ZGQ0MGQyODI2/NmUyYjZhZTMzMDY1/NTlmNWI5MWM2ZGI0/ZDRhYmQ4My9yZXNv/dXJjZXMucGNiLmNh/ZGVuY2UuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "resources.pcb.cadence.com",
+            "hostname": "resources.pcb.cadence.com",
+            "favicon": "https://imgs.search.brave.com/NSXXzmIecsdxQ4C0Wjc9rEuHi0xU_cmfETgZSSY8pyc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2U5MjUwMjk0/ZTZlMjc5MzIwMDA1/Yzc5ZGQ0MGQyODI2/NmUyYjZhZTMzMDY1/NTlmNWI5MWM2ZGI0/ZDRhYmQ4My9yZXNv/dXJjZXMucGNiLmNh/ZGVuY2UuY29tLw",
+            "path": "› blog  › 2024-optimizing-for-pcb-trace-thickness-vs-current-capacity"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/xU941ZFxxGj-iTVo9spK73629IAbJJJn8mWJeVRTk1M/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9yZXMu/Y2xvdWRpbmFyeS5j/b20vdWYtNTUyODYx/L2ltYWdlL3VwbG9h/ZC92MTcxNjQ1NzM2/OC9EaWFncmFtX2ls/bHVzdHJhdGluZ190/cmFjZV90aGlja25l/c3NfYW5kX3dpZHRo/X253YXB3eC5wbmc",
+            "original": "https://res.cloudinary.com/uf-552861/image/upload/v1716457368/Diagram_illustrating_trace_thickness_and_width_nwapwx.png",
+            "logo": false
+          },
+          "age": "October 30, 2025",
+          "article": {
+            "author": [],
+            "date": "Sep 29, 2025"
+          },
+          "extra_snippets": [
+            "PCB trace thickness vs current: how to select considering copper weight, position, and IPC guidelines to manage current capacity and temperature rise effectively.",
+            "Alternatively, employing a calculator that adheres to either the IPC-2152 or IPC-2221 standards can provide precise guidance. Generally, the aim during operations is to maintain the temperature increase within the conductive paths of your board at a manageable 10-20 degrees Celsius. If you’d like especially detailed information, consider consulting one of the following IPC Regulations.",
+            "Trace width and copper layer thickness are crucial for managing the current-carrying capacity of PCBs, with standards provided by IPC-2152 and IPC-2221.",
+            "Your voltage regulator outputs clean power, but the IC has noise. The issue lies in the copper."
+          ]
+        },
+        {
+          "title": "IPC-2152 Standard for Determining Current Carrying Capacity",
+          "url": "https://www.electronics.org/TOC/IPC-2152.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This document is intended as a general guide to understanding the relationship between current, conductor size, and tem- · The words ‘‘should’’ and ‘‘may’’ are used whenever it is necessary to express non-mandatory provisions · The conﬁguration or design of the conductive ...",
+          "profile": {
+            "name": "Global Electronics Association",
+            "url": "https://www.electronics.org/TOC/IPC-2152.pdf",
+            "long_name": "electronics.org",
+            "img": "https://imgs.search.brave.com/QrKn6g4Zjrw9nAFDLfmxPYMiY5T5hDvBDRYjpBo3xFY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTAwZjU3MjNm/OGIzNDA1YjBmMmQ3/Mjg3ZjNkMzFlMWZi/OGRiNDY5NWQ0NGY3/NzY5NGY2YWFhN2Rh/ZTk0M2JiZi93d3cu/ZWxlY3Ryb25pY3Mu/b3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "electronics.org",
+            "hostname": "www.electronics.org",
+            "favicon": "https://imgs.search.brave.com/QrKn6g4Zjrw9nAFDLfmxPYMiY5T5hDvBDRYjpBo3xFY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTAwZjU3MjNm/OGIzNDA1YjBmMmQ3/Mjg3ZjNkMzFlMWZi/OGRiNDY5NWQ0NGY3/NzY5NGY2YWFhN2Rh/ZTk0M2JiZi93d3cu/ZWxlY3Ryb25pY3Mu/b3JnLw",
+            "path": "› TOC  › IPC-2152.pdf"
+          },
+          "content_type": "pdf"
+        },
+        {
+          "title": "Using an IPC-2152 Calculator: Designing to Standards | PCB Design Blog | Altium",
+          "url": "https://resources.altium.com/p/using-ipc-2152-calculator-designing-standards",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The industry has stepped up in a long-standing effort to develop standards that cover best practices for thermal management. The results have been a bit underwhelming, leading to a set of empirical formulas defined in IPC-2152 and IPC-2221. These formulas can be used to estimate the relationship between current in a trace, the trace width, and the expected temperature rise above ambient, assuming the design is on an FR4-grade substrate.",
+          "page_age": "2026-03-13T00:00:00",
+          "profile": {
+            "name": "Altium",
+            "url": "https://resources.altium.com/p/using-ipc-2152-calculator-designing-standards",
+            "long_name": "resources.altium.com",
+            "img": "https://imgs.search.brave.com/3twZ63-Swi42-mMopNC4sX2DyrPtdunWkWj35C2Wzs8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzM0NjMzYmVh/MjU1ZWExOWJlNDA4/NTk3YzE4OTg2ZDZl/Yzg3Y2QzNmEyZmJi/OTMxYTRiYjIzZDQ0/MDU3YTVkZi9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "resources.altium.com",
+            "hostname": "resources.altium.com",
+            "favicon": "https://imgs.search.brave.com/3twZ63-Swi42-mMopNC4sX2DyrPtdunWkWj35C2Wzs8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzM0NjMzYmVh/MjU1ZWExOWJlNDA4/NTk3YzE4OTg2ZDZl/Yzg3Y2QzNmEyZmJi/OTMxYTRiYjIzZDQ0/MDU3YTVkZi9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS8",
+            "path": "› p  › using-ipc-2152-calculator-designing-standards"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Vk7dfmIPl0KdCW6JCTb4iqUY-8O-0c63ADSpQ5htWGs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS9zaXRlcy9k/ZWZhdWx0L2ZpbGVz/L2Jsb2dzL1VzaW5n/JTIwYW4lMjBJUEMt/MjE1MiUyMENhbGN1/bGF0b3IlM0ElMjBE/ZXNpZ25pbmclMjB0/byUyMFN0YW5kYXJk/cy05NzU5OC5qcGc",
+            "original": "https://resources.altium.com/sites/default/files/blogs/Using%20an%20IPC-2152%20Calculator%3A%20Designing%20to%20Standards-97598.jpg"
+          },
+          "age": "March 13, 2026",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Zachariah Peterson",
+                "url": "https://resources.altium.com/experts/zachariah-peterson"
+              }
+            ],
+            "date": "Jan 04, 2019",
+            "publisher": {
+              "type": "organization",
+              "name": "Altium Limited",
+              "url": "https://www.altium.com",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/oHt_V38P9hIwjpFwB0zOpG5wanWTDTlko3lOyIqg64A/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWx0aXVtLmNvbS9z/aXRlcy9hbGwvdGhl/bWVzL2FsdGl1bS9s/b2dvLnBuZw",
+                "original": "https://www.altium.com/sites/all/themes/altium/logo.png"
+              }
+            },
+            "isAccessibleForFree": true
+          },
+          "extra_snippets": [
+            "If you look at modern EDA programs, there are many calculators and simulators built into these applications. But one of the areas of simulation that has lagged behind everything else is thermal simulations. Thermal calculations are important particularly in power electronics, and in high-reliability electronics, even if these systems are running lower overall power.",
+            "If you need to design to industry standards, an online IPC-2152 calculator can be a real time saver.",
+            "Comparator Propagation Delay in High Speed Mixed-Signal Design Comparator-based thresholding circuits are often described in simple terms: an analog signal crosses a threshold, the comparator changes its output voltage level, typically to a standard logic level like 3.3V or 5V.",
+            "The industry has stepped up in a long-standing effort to develop standards that cover best practices for thermal management. The results have been a bit underwhelming, leading to a set of empirical formulas defined in IPC-2152 and IPC-2221. These formulas can be used to estimate the relationship between current in a trace, the trace width, and the expected temperature rise above ambient, assuming the design is on an FR4-grade substrate."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

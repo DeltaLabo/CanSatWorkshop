@@ -1,0 +1,937 @@
+{
+  "query": "The Things Network EU868 duty cycle EIRP LoRa frequency plan",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "EU863-870 MHz Band | The Things Network",
+      "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/eu868/",
+      "description": "The LoRa Alliance® recommends a duty cycle limitation of 1% in the European band which means that a device can transmit for no more than 1% of the time while ensuring the maximum EIRP (Effective Isotropic Radiated Power) of +16 dBm.",
+      "content": "The LoRa Alliance® recommends a duty cycle limitation of 1% in the European band which means that a device can transmit for no more than 1% of the time while ensuring the maximum EIRP (Effective Isotropic Radiated Power) of +16 dBm.\nAll EU868-870 end devices must support one of the following three data rate options. DR0 – DR5 – the minimal data rate set supported to obtain the LoRaWAN certification. ... The Effective Isotropic Radiated Power (EIRP) is the total power radiated by an isotropic antenna in a single direction.\nThe table below displays the list of EIRP values that can be used for data transmission. *The TXPower 15 is defined in the LinkADRReq MAC command of the LoRaWAN1.0.4 and subsequent specifications and were previously RFU.\nThe above mentioned EIRP and ERP values can also be expressed in milliwatts (mW). For example, ... The maximum MACPayload size (M) and application payload size (N) vary by Data Rate. The maximum application payload size is calculated using M-8 if the FOpts field is absent. The table below shows both the maximum MACPayload size and the application payload size for each Data Rate, and it is compatible with repeaters. The LoRa Alliance® recommends a duty cycle limitation of 1% in the European band which means that a device can transmit for no more than 1% of the time while ensuring the maximum EIRP (Effective Isotropic Radiated Power) of +16 dBm.\nFor devices compliant with LoRaWAN version 1.0.x, these three default channels shall not be modified using the NewChannelReq command.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "The Things Network",
+        "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/eu868/",
+        "long_name": "thethingsnetwork.org",
+        "img": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "thethingsnetwork.org",
+        "hostname": "www.thethingsnetwork.org",
+        "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+        "path": "› docs  › lorawan  › regional-parameters  › eu868"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/IADwf6bitlbMBIJSOGCswwwV7ispR1VVccRiX4SUQ_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcvZG9j/cy9pbWcvb2ctaW1h/Z2UucG5n",
+        "original": "https://www.thethingsnetwork.org/docs/img/og-image.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 2,
+      "title": "Regional Parameters | The Things Network",
+      "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/",
+      "description": "For example, in the Netherlands (NL), both EU868-870 and EU433 can be used. The regional parameters include physical layer parameters such as frequency plans (channel plans), mandatory channel frequencies and data rates for join-request messages. The Regional Parameters also include LoRaWAN layer parameters such as maximum payload size.",
+      "content": "For example, in the Netherlands (NL), both EU868-870 and EU433 can be used. The regional parameters include physical layer parameters such as frequency plans (channel plans), mandatory channel frequencies and data rates for join-request messages. The Regional Parameters also include LoRaWAN layer parameters such as maximum payload size.\nLoRaWAN operates in unlicensed radio spectrum. This means that anyone can use the radio frequencies without having to pay million dollar fees for transmission rights. It is similar to WiFi, which uses the 2.4GHz and 5GHz ISM bands worldwide.\nLoRaWAN uses lower radio frequencies with a longer range. The fact that frequencies have a longer range also comes with more restrictions, that are often country-specific. This poses a challenge for LoRaWAN, as it strives to maintain uniformity across various regions of the world.\nThese LoRaWAN regional specifications do not specify everything either. They only cover a region by specifying the common denominator. For example, the LoRaWAN regional parameters for Asia only specify a common subset of channels - but there are variations between regulations in Asian countries.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "The Things Network",
+        "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/",
+        "long_name": "thethingsnetwork.org",
+        "img": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "thethingsnetwork.org",
+        "hostname": "www.thethingsnetwork.org",
+        "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+        "path": "› docs  › lorawan  › regional-parameters"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/IADwf6bitlbMBIJSOGCswwwV7ispR1VVccRiX4SUQ_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcvZG9j/cy9pbWcvb2ctaW1h/Z2UucG5n",
+        "original": "https://www.thethingsnetwork.org/docs/img/og-image.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Frequency Plans | The Things Network",
+      "url": "https://www.thethingsnetwork.org/docs/lorawan/frequency-plans/",
+      "description": "This is a list of frequency plan definitions used in The Things Network. These frequency plans are based on what is specified in the LoRaWAN regional parameters document.",
+      "content": "This is a list of frequency plan definitions used in The Things Network. These frequency plans are based on what is specified in the LoRaWAN regional parameters document.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "The Things Network",
+        "url": "https://www.thethingsnetwork.org/docs/lorawan/frequency-plans/",
+        "long_name": "thethingsnetwork.org",
+        "img": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "thethingsnetwork.org",
+        "hostname": "www.thethingsnetwork.org",
+        "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+        "path": "› docs  › lorawan  › frequency-plans"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/IADwf6bitlbMBIJSOGCswwwV7ispR1VVccRiX4SUQ_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcvZG9j/cy9pbWcvb2ctaW1h/Z2UucG5n",
+        "original": "https://www.thethingsnetwork.org/docs/img/og-image.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 4,
+      "title": "LoRaWAN Frequency Bands in Europe: A Guide to EU868 Regulations and Compliance | EdgePilot.io",
+      "url": "https://edgepilot.io/news/lorawan-frequency-bands-europe-eu868-guide",
+      "description": "The sub-bands relevant to LoRaWAN are: ERP = Effective Radiated Power. The LoRaWAN specification uses EIRP (Effective Isotropic Radiated Power), where the maximum is +16 dBm (40 mW).",
+      "content": "The sub-bands relevant to LoRaWAN are: ERP = Effective Radiated Power. The LoRaWAN specification uses EIRP (Effective Isotropic Radiated Power), where the maximum is +16 dBm (40 mW).\nThe EU868 band is divided into several sub-bands, each with its own maximum transmit power and duty cycle limitations. This is fundamentally different from regions like the US (US915), where a wider frequency band is available with different rules. ETSI EN 300 220-2 divides the 863–870 MHz range into six sub-bands, each designated by a letter. The sub-bands relevant to LoRaWAN are: ERP = Effective Radiated Power. The LoRaWAN specification uses EIRP (Effective Isotropic Radiated Power), where the maximum is +16 dBm (40 mW).\nEIRP ≈ ERP + 2.15 dBi antenna gain. The M sub-band (868.0–868.6 MHz) is where the three mandatory LoRaWAN uplink channels sit: 868.1, 868.3, and 868.5 MHz. Every LoRaWAN end device must implement these channels, and all gateways must listen on them. The five additional channels at 867.1–867.9 MHz fall within the L sub-band (1% duty cycle).\nNote that the K sub-band (863–865 MHz) has a much stricter 0.1% duty cycle, which limits its usefulness for LoRaWAN traffic. While only three channels are mandatory, a standard EU868 deployment uses eight LoRa channels plus one FSK channel.\n→LoRaWAN in Europe uses the EU868 band (863–870 MHz), divided into six ETSI sub-bands (K, L, M, N, P, Q) with different power and duty cycle limits.",
+      "age": "April 13, 2026",
+      "page_age": "2026-04-13T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "EdgePilot",
+        "url": "https://edgepilot.io/news/lorawan-frequency-bands-europe-eu868-guide",
+        "long_name": "edgepilot.io",
+        "img": "https://imgs.search.brave.com/wWdJOxD2d8DIlUMaJBTAi3JFyA0hFGaKz2lUNR6vWcY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjJhOTJmNDQy/M2I2NDY0MzQzYjQ5/OTI4MDMzZjVlZjE2/ZGRkNDc3NjQ5NmI4/OWYxODg1NWFjNWQ3/YTlmYzQzMy9lZGdl/cGlsb3QuaW8v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "edgepilot.io",
+        "hostname": "edgepilot.io",
+        "favicon": "https://imgs.search.brave.com/wWdJOxD2d8DIlUMaJBTAi3JFyA0hFGaKz2lUNR6vWcY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjJhOTJmNDQy/M2I2NDY0MzQzYjQ5/OTI4MDMzZjVlZjE2/ZGRkNDc3NjQ5NmI4/OWYxODg1NWFjNWQ3/YTlmYzQzMy9lZGdl/cGlsb3QuaW8v",
+        "path": "  › home  › news  › lorawan frequency bands in europe: a guide to eu868 regulations and compliance"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/vPqiPXlAxrCO9XWL-B-nsR-T4QR2-nthB0yhB4loksg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9lZGdl/cGlsb3QuaW8vaW5z/dGFsbC1jb2FzdGFs/LmpwZWc",
+        "original": "https://edgepilot.io/install-coastal.jpeg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Duty Cycle | The Things Network",
+      "url": "https://www.thethingsnetwork.org/docs/lorawan/duty-cycle/",
+      "description": "On The Things Network’s The Things Stack Sandbox a Fair Use Policy applies which limits the uplink airtime to 30 seconds per day (24 hours) per node and the downlink messages to 10 messages per day (24 hours) per node.",
+      "content": "On The Things Network’s The Things Stack Sandbox a Fair Use Policy applies which limits the uplink airtime to 30 seconds per day (24 hours) per node and the downlink messages to 10 messages per day (24 hours) per node.\nAdditionally, the LoRaWAN specification specifies duty cycles for the join frequencies, which are used for over-the-air activations (OTAA) by every LoRaWAN-compliant end device.\nOn The Things Network’s The Things Stack Sandbox a Fair Use Policy applies which limits the uplink airtime to 30 seconds per day (24 hours) per node and the downlink messages to 10 messages per day (24 hours) per node. If you use a private network, these limits do not apply, but you still have to be compliant with the governmental and LoRaWAN limits.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "The Things Network",
+        "url": "https://www.thethingsnetwork.org/docs/lorawan/duty-cycle/",
+        "long_name": "thethingsnetwork.org",
+        "img": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "thethingsnetwork.org",
+        "hostname": "www.thethingsnetwork.org",
+        "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+        "path": "› docs  › lorawan  › duty-cycle"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/IADwf6bitlbMBIJSOGCswwwV7ispR1VVccRiX4SUQ_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcvZG9j/cy9pbWcvb2ctaW1h/Z2UucG5n",
+        "original": "https://www.thethingsnetwork.org/docs/img/og-image.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Regional Limitations of RF Use in LoRaWAN | The Things Network",
+      "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-limitations-of-rf-use/",
+      "description": "The LoRa Alliance® recommends a duty cycle limitation of 1% in the European band which means that a device can transmit for no more than 1% of the time while ensuring the maximum EIRP (Effective Isotropic Radiated Power) of +16 dBm.",
+      "content": "The LoRa Alliance® recommends a duty cycle limitation of 1% in the European band which means that a device can transmit for no more than 1% of the time while ensuring the maximum EIRP (Effective Isotropic Radiated Power) of +16 dBm.\nFor the US ISM band, the dwell time for transmitting a LoRaWAN message must not exceed 400 ms. It is important to consider this dwell time limitation when designing and operating devices. For example, if a device is transmitting data at a high rate, it may need to use a faster hopping rate in order to comply with the 400 ms dwell time limitation. Both end devices and gateways are also limited to a maximum EIRP of +30 dBm.\nThe EIRP of 16 dBm is equal to 40 mW and is equivalent to an ERP of 14 dBm, which is equal to 25 mW. To learn more about EIRP and ERP, you can refer to the LoRaWAN® section.\nUsually, the limitations of sub-bands K, L, M, N and Q are applied for uplink transmissions and the limitations of sub-band P are mainly applied for downlink transmissions. Usually, a number of end devices in a LoRaWAN network is way higher than a number of gateways.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "The Things Network",
+        "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-limitations-of-rf-use/",
+        "long_name": "thethingsnetwork.org",
+        "img": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "thethingsnetwork.org",
+        "hostname": "www.thethingsnetwork.org",
+        "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+        "path": "› docs  › lorawan  › regional-limitations-of-rf-use"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/IADwf6bitlbMBIJSOGCswwwV7ispR1VVccRiX4SUQ_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcvZG9j/cy9pbWcvb2ctaW1h/Z2UucG5n",
+        "original": "https://www.thethingsnetwork.org/docs/img/og-image.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "GitHub - TheThingsNetwork/lorawan-frequency-plans: LoRaWAN Frequency Plans for The Things Stack · GitHub",
+      "url": "https://github.com/TheThingsNetwork/lorawan-frequency-plans",
+      "description": "band-id: BAND_ID # ID of the band (needs to match band-id in the index) sub-bands: - min-frequency: 868000000 # Minimum frequency (Hz, inclusive) max-frequency: 868600000 # Maximum frequency (Hz, inclusive) duty-cycle: 0.01 # Duty cycle for ...",
+      "content": "band-id: BAND_ID # ID of the band (needs to match band-id in the index) sub-bands: - min-frequency: 868000000 # Minimum frequency (Hz, inclusive) max-frequency: 868600000 # Maximum frequency (Hz, inclusive) duty-cycle: 0.01 # Duty cycle for ...\nIf you want to contribute to the band definitions in The Things Stack, please contribute to the TheThingsNetwork/lorawan-stack repository. Regulatory restrictions for the band can be configured with the max-eirp, duty-cycle, dwell-time, time-off-air and listen-before-talk settings.\nband-id: BAND_ID # ID of the band (needs to match band-id in the index) sub-bands: - min-frequency: 868000000 # Minimum frequency (Hz, inclusive) max-frequency: 868600000 # Maximum frequency (Hz, inclusive) duty-cycle: 0.01 # Duty cycle for this sub-band (optional; default: 1) max-eirp: 16.15 # Maximum EIRP for this sub-band (optional; takes precedence over frequency plan's max-eirp) uplink-channels: # List of uplink channels (zero indexed) - frequency: 868100000 # Frequency (Hz) min-data-rate: 0 # Mininum data rate index max-data-rate: 5 # Maximum data rate index radio: 0 # Radio index (see b\nThe Things Stack uses the github.com/TheThingsNetwork/lorawan-frequency-plans as default source for fetching frequency plans. Therefore, contributing to this open source repository makes frequency plans automatically available to Stack deployments with default settings.\nFrequency plans are defined for a band. Bands are specified by the LoRa Alliance Technical Committee and are published as the LoRaWAN Regional Parameters technical document.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "software",
+      "profile": {
+        "name": "GitHub",
+        "url": "https://github.com/TheThingsNetwork/lorawan-frequency-plans",
+        "long_name": "github.com",
+        "img": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "github.com",
+        "hostname": "github.com",
+        "favicon": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw",
+        "path": "› TheThingsNetwork  › lorawan-frequency-plans"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/fWPS-knQpzQQ6VR60W0MwZNa1gz4Znv9TRQyULmkGlY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9vcGVu/Z3JhcGguZ2l0aHVi/YXNzZXRzLmNvbS85/OTI4NDNjNjAxMmY5/ZGU4YzdhNGNlOWRj/MDJkZmNjMTZjYWYz/NjdmNmVjYWZmZjBm/YzM1MWUzMzY0ZDIy/NTQ5L1RoZVRoaW5n/c05ldHdvcmsvbG9y/YXdhbi1mcmVxdWVu/Y3ktcGxhbnM",
+        "original": "https://opengraph.githubassets.com/992843c6012f9de8c7a4ce9dc02dfcc16caf367f6ecafff0fc351e3364d22549/TheThingsNetwork/lorawan-frequency-plans",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "LoRaWAN | Smart Parks Wiki",
+      "url": "https://wiki.smartparks.org/en/concepts/lorawan",
+      "description": "The maximum radiated output power allowed in the USA is EIRP = +30 dBm but for most devices +20 dBm is sufficient. Under the Federal Communications Commission (FCC) there are no duty cycle limitations but there is a 400 ms maximum dwell time per channel.",
+      "content": "The maximum radiated output power allowed in the USA is EIRP = +30 dBm but for most devices +20 dBm is sufficient. Under the Federal Communications Commission (FCC) there are no duty cycle limitations but there is a 400 ms maximum dwell time per channel.\nFor example, in the Netherlands, both EU868-870 and EU433 can be used. The regional parameters include physical layer parameters such as frequency plans (channel plans), mandatory channel frequencies and data rates for join-request messages. The Regional Parameters also include LoRaWAN layer parameters such as maximum payload size.\nIN865: Applies to India. The default maximum EIRP allowed is +30 dBm. There are a few recommended default settings available that can be applied to all the regions. ... In this chapter, you will learn about different message types used in LoRaWAN 1.0.x and 1.1.\nAU915-928: Applies to Australia and all other countries whose band extends from 915 to 928MHz. There is no duty cycle limitation applicable and the dwell time limitation is 400ms. The default maximum EIRP allowed is +30 dBm.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Smart Parks Wiki",
+        "url": "https://wiki.smartparks.org/en/concepts/lorawan",
+        "long_name": "wiki.smartparks.org",
+        "img": "https://imgs.search.brave.com/MWtBo30rKXmF_wfYlf-0uBSYcaYffQofxIuo44HytGc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjk3MzdkMmJi/M2ZiZmEwMTkwMTUz/NmU0NjQ3OThhNmZj/MGQwM2Y4MDgwOWVh/MmY2NTU4N2EzNDZi/MTViMzRmNi93aWtp/LnNtYXJ0cGFya3Mu/b3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "wiki.smartparks.org",
+        "hostname": "wiki.smartparks.org",
+        "favicon": "https://imgs.search.brave.com/MWtBo30rKXmF_wfYlf-0uBSYcaYffQofxIuo44HytGc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjk3MzdkMmJi/M2ZiZmEwMTkwMTUz/NmU0NjQ3OThhNmZj/MGQwM2Y4MDgwOWVh/MmY2NTU4N2EzNDZi/MTViMzRmNi93aWtp/LnNtYXJ0cGFya3Mu/b3JnLw",
+        "path": "› en  › concepts  › lorawan"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "LoRa documentation - Read the Docs",
+      "url": "https://lora.readthedocs.io/en/latest/",
+      "description": "If your country uses the EU863-870 ISM band, than according to the LoRaWAN Regional Parameters document every EU868MHz end device must implement the following default channels:",
+      "content": "If your country uses the EU863-870 ISM band, than according to the LoRaWAN Regional Parameters document every EU868MHz end device must implement the following default channels:\nThe Effective Isotropic Radiated Power (EIRP) is the total power radiated by a hypothetical isotropic antenna in a single direction.\nOne of these rules: radio devices must not exceed certain ERP or EIRP values set by these regulatory bodies.\nEIRP = Tx power (dBm) + antenna gain (dBi) - cable loss (dBm)",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Readthedocs",
+        "url": "https://lora.readthedocs.io/en/latest/",
+        "long_name": "lora.readthedocs.io",
+        "img": "https://imgs.search.brave.com/f4QwOKUmDwR-D-VY9VqR0x_VWxXuRXMSF1zn5gNjeXI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWVlMmY3ZWZl/ZDY2MjU5ZTgyMWNh/MzlmYjExYjI1YzU5/ZDFhYWVmN2JkYjA4/ZTQzOTQ2MzI2OTEx/YjlhZjFlZC9sb3Jh/LnJlYWR0aGVkb2Nz/LmlvLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "lora.readthedocs.io",
+        "hostname": "lora.readthedocs.io",
+        "favicon": "https://imgs.search.brave.com/f4QwOKUmDwR-D-VY9VqR0x_VWxXuRXMSF1zn5gNjeXI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWVlMmY3ZWZl/ZDY2MjU5ZTgyMWNh/MzlmYjExYjI1YzU5/ZDFhYWVmN2JkYjA4/ZTQzOTQ2MzI2OTEx/YjlhZjFlZC9sb3Jh/LnJlYWR0aGVkb2Nz/LmlvLw",
+        "path": "› en  › latest"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "What Is LoRa Frequency Planning? Regional Bands (EU868, US915, AS923)",
+      "url": "https://eureka.patsnap.com/article/what-is-lora-frequency-planning-regional-bands-eu868-us915-as923",
+      "description": "This band operates within the 863-870 MHz range, and it is regulated by ETSI (European Telecommunications Standards Institute). The EU868 band is divided into several sub-bands, each with specific characteristics and limitations regarding duty cycle and transmit power.",
+      "content": "This band operates within the 863-870 MHz range, and it is regulated by ETSI (European Telecommunications Standards Institute). The EU868 band is divided into several sub-bands, each with specific characteristics and limitations regarding duty cycle and transmit power.\nEU868: The European Band In Europe, the EU868 band is commonly used for LoRa communication. This band operates within the 863-870 MHz range, and it is regulated by ETSI (European Telecommunications Standards Institute). The EU868 band is divided into several sub-bands, each with specific characteristics and limitations regarding duty cycle and transmit power.\nAS923's dynamic nature makes it suitable for countries with diverse regulatory landscapes, and it is often used in applications such as logistics and smart metering. Challenges in Frequency Planning Despite the advantages of LoRa technology, frequency planning comes with its own set of challenges.\nNetwork designers must also consider factors like the density of IoT devices, geographical coverage, and environmental conditions to achieve efficient frequency planning. Optimizing Network Design To optimize LoRa frequency planning, network designers must conduct thorough assessments of the area in which the network will operate.\nTechniques such as frequency hopping, adaptive data rate management, and use of advanced antenna systems can enhance network performance and reliability. The Future of LoRa Frequency Planning As IoT continues to grow, the need for effective LoRa frequency planning becomes increasingly important.",
+      "age": "June 27, 2025",
+      "page_age": "2025-06-27T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Eureka",
+        "url": "https://eureka.patsnap.com/article/what-is-lora-frequency-planning-regional-bands-eu868-us915-as923",
+        "long_name": "eureka.patsnap.com",
+        "img": "https://imgs.search.brave.com/css2-yJgx4c9TrAcHO73O8sn-gT0y7boo3SPUZP04Mc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjgzYmE3YWM0/ZmRhMmFlZjFlM2Ez/MTViMmFiMjFjMDhi/NmVhZmI0Mzc5NDU5/MjFiOGVhYjM5ZGJj/MmNlMDQ5OS9ldXJl/a2EucGF0c25hcC5j/b20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "eureka.patsnap.com",
+        "hostname": "eureka.patsnap.com",
+        "favicon": "https://imgs.search.brave.com/css2-yJgx4c9TrAcHO73O8sn-gT0y7boo3SPUZP04Mc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjgzYmE3YWM0/ZmRhMmFlZjFlM2Ez/MTViMmFiMjFjMDhi/NmVhZmI0Mzc5NDU5/MjFiOGVhYjM5ZGJj/MmNlMDQ5OS9ldXJl/a2EucGF0c25hcC5j/b20v",
+        "path": "› article  › what-is-lora-frequency-planning-regional-bands-eu868-us915-as923"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "The Things Network EU868 duty cycle EIRP LoRa frequency plan",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.975,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "The Things Network EU868 duty cycle EIRP LoRa frequency plan",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "discussions": {
+      "type": "search",
+      "results": [
+        {
+          "title": "Frequency Planning Private LoraWan system - EU868 - Channel Plan management - ChirpStack Community Forum",
+          "url": "https://forum.chirpstack.io/t/frequency-planning-private-lorawan-system-eu868/9605",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Hi All, Im really enjoing using this well supported project! Question: I set up a 8 channel gateway and logged all packets received at my urban location for 24 hrs to see any trends in channel activity. I found that TTN channel 0 - 868.100 and SF 8 were by far the most active.",
+          "fetched_content_timestamp": 1779710323,
+          "language": "en",
+          "family_friendly": true,
+          "type": "discussion",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "forum.chirpstack.io",
+            "hostname": "forum.chirpstack.io",
+            "favicon": "https://imgs.search.brave.com/cHgiDYnUhd8zz7oFkrvcGUERLnxYaOvafduJHlhfygg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmRhMGM3MzBl/M2M1YzUxYThiZmEy/NDk0ZGQ0M2QzYTkx/NmI5YTdkMmFlNGYx/YjA0NDM0NmY0ZGU2/NjJmNmU1OC9mb3J1/bS5jaGlycHN0YWNr/LmlvLw",
+            "path": "› t  › frequency-planning-private-lorawan-system-eu868  › 9605"
+          },
+          "age": "November 1, 2020",
+          "data": {
+            "forum_name": "forum.chirpstack.io",
+            "score": "0",
+            "top_comment": "Hi All, Im really enjoing using this well supported project! Question: I set up a 8 channel gateway and logged all packets received at my urban location for 24 hrs to see any trends in channel activity. I found that TTN channel 0 - 868.100 and SF 8 were by far the most active."
+          }
+        },
+        {
+          "title": "European Frequencies and Channel Plans - TTKG - The Things Kickstarter Gateway - The Things Network",
+          "url": "https://www.thethingsnetwork.org/forum/t/european-frequencies-and-channel-plans/13324",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Hi, I’m trying to setup a demo to work with TTN gateways in Europe. I would like to know what frequencies are normally used in EU for ETSI certification. It looks like the ETSI SRD sub-band from 868.0 to 868.6 MHz is used. The three required default channels 868.1 868.3 and 868.5 are defined ...",
+          "fetched_content_timestamp": 1780570535,
+          "language": "en",
+          "family_friendly": true,
+          "type": "discussion",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "thethingsnetwork.org",
+            "hostname": "www.thethingsnetwork.org",
+            "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+            "path": "› forum  › t  › european-frequencies-and-channel-plans  › 13324"
+          },
+          "age": "April 3, 2018",
+          "data": {
+            "forum_name": "thethingsnetwork.org",
+            "score": "0",
+            "top_comment": "Hi, I’m trying to setup a demo to work with TTN gateways in Europe. I would like to know what frequencies are normally used in EU for ETSI certification. It looks like the ETSI SRD sub-band from 868.0 to 868.6 MHz is used. The three required default channels 868.1 868.3 and 868.5 are defined ..."
+          }
+        },
+        {
+          "title": "EU 868 TX Levels?",
+          "url": "https://www.thethingsnetwork.org/forum/t/eu-868-tx-levels/70166",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Are the EIRP TX levels listed here correct? https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/eu868/ They flow highest to lowest vs. lowest to highest in the LoRa Alliance RP’s and other documentation. Thanks in advance",
+          "fetched_content_timestamp": 1757675764,
+          "language": "en",
+          "family_friendly": true,
+          "type": "discussion",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "thethingsnetwork.org",
+            "hostname": "www.thethingsnetwork.org",
+            "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+            "path": "› forum  › t  › eu-868-tx-levels  › 70166"
+          },
+          "age": "December 28, 2024",
+          "data": {
+            "forum_name": "thethingsnetwork.org",
+            "num_answers": 0,
+            "score": "0",
+            "title": "EU 868 TX Levels?",
+            "question": "Are the EIRP TX levels listed here correct? <a href=\"https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/eu868/\" class=\"inline-onebox-loading\">https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/eu868/</a>\n\nThey flow highest to lowest vs. lowest to highest in the LoRa Alliance RP’s and other documentation.\n\nThanks in advance",
+            "top_comment": "Are the EIRP TX levels listed here correct? https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/eu868/ They flow highest to lowest vs. lowest to highest in the LoRa Alliance RP’s and other documentation. Thanks in advance"
+          }
+        },
+        {
+          "title": "1% Duty Cycle Regulation in Europe",
+          "url": "https://www.reddit.com/r/Lora/comments/1akzhbj/1_duty_cycle_regulation_in_europe/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "1% is for all devices in this frequency band. Whatever where or how you emit it.",
+          "fetched_content_timestamp": 1770638887,
+          "language": "en",
+          "family_friendly": true,
+          "type": "discussion",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "reddit.com",
+            "hostname": "www.reddit.com",
+            "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+            "path": "› r  › Lora  › comments  › 1akzhbj  › 1_duty_cycle_regulation_in_europe"
+          },
+          "age": "February 7, 2024",
+          "data": {
+            "forum_name": "r/Lora",
+            "num_answers": 8,
+            "score": "1",
+            "title": "1% Duty Cycle Regulation in Europe",
+            "question": "<p>Hello,</p><p>I&#39;d like to develop some applications in the area of wildlife conservation and came across LoRa as an option for long range communication on areas where there is very limited infrastructure.</p><p>But there are two things I&#39;d like to know about the 1% regulation in Europe:</p><p>a) does the 1% regulation also applies in fairly remote areas (for example inside a forest far away from the next city)?</p><p>b) does the 1% limitation only applies when using the LoRaWAN protocol? in other words: would &quot;plain&quot; LoRa transmission be exempt from this regulation?</p>",
+            "top_comment": "1% is for all devices in this frequency band. Whatever where or how you emit it."
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "discussions",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "EU863-870 MHz Band | The Things Network",
+          "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/eu868/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The LoRa Alliance® recommends a duty cycle limitation of 1% in the European band which means that a device can transmit for no more than 1% of the time while ensuring the maximum EIRP (Effective Isotropic Radiated Power) of +16 dBm.",
+          "profile": {
+            "name": "The Things Network",
+            "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/eu868/",
+            "long_name": "thethingsnetwork.org",
+            "img": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "thethingsnetwork.org",
+            "hostname": "www.thethingsnetwork.org",
+            "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+            "path": "› docs  › lorawan  › regional-parameters  › eu868"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/IADwf6bitlbMBIJSOGCswwwV7ispR1VVccRiX4SUQ_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcvZG9j/cy9pbWcvb2ctaW1h/Z2UucG5n",
+            "original": "https://www.thethingsnetwork.org/docs/img/og-image.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "All EU868-870 end devices must support one of the following three data rate options. DR0 – DR5 – the minimal data rate set supported to obtain the LoRaWAN certification. ... The Effective Isotropic Radiated Power (EIRP) is the total power radiated by an isotropic antenna in a single direction.",
+            "The table below displays the list of EIRP values that can be used for data transmission. *The TXPower 15 is defined in the LinkADRReq MAC command of the LoRaWAN1.0.4 and subsequent specifications and were previously RFU.",
+            "The above mentioned EIRP and ERP values can also be expressed in milliwatts (mW). For example, ... The maximum MACPayload size (M) and application payload size (N) vary by Data Rate. The maximum application payload size is calculated using M-8 if the FOpts field is absent. The table below shows both the maximum MACPayload size and the application payload size for each Data Rate, and it is compatible with repeaters. The LoRa Alliance® recommends a duty cycle limitation of 1% in the European band which means that a device can transmit for no more than 1% of the time while ensuring the maximum EIRP (Effective Isotropic Radiated Power) of +16 dBm.",
+            "For devices compliant with LoRaWAN version 1.0.x, these three default channels shall not be modified using the NewChannelReq command."
+          ]
+        },
+        {
+          "title": "Regional Parameters | The Things Network",
+          "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "For example, in the Netherlands (NL), both EU868-870 and EU433 can be used. The regional parameters include physical layer parameters such as frequency plans (channel plans), mandatory channel frequencies and data rates for join-request messages. The Regional Parameters also include LoRaWAN layer parameters such as maximum payload size.",
+          "profile": {
+            "name": "The Things Network",
+            "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/",
+            "long_name": "thethingsnetwork.org",
+            "img": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "thethingsnetwork.org",
+            "hostname": "www.thethingsnetwork.org",
+            "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+            "path": "› docs  › lorawan  › regional-parameters"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/IADwf6bitlbMBIJSOGCswwwV7ispR1VVccRiX4SUQ_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcvZG9j/cy9pbWcvb2ctaW1h/Z2UucG5n",
+            "original": "https://www.thethingsnetwork.org/docs/img/og-image.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "For example, in the Netherlands (NL), both EU868-870 and EU433 can be used. The regional parameters include physical layer parameters such as frequency plans (channel plans), mandatory channel frequencies and data rates for join-request messages. The Regional Parameters also include LoRaWAN layer parameters such as maximum payload size.",
+            "LoRaWAN operates in unlicensed radio spectrum. This means that anyone can use the radio frequencies without having to pay million dollar fees for transmission rights. It is similar to WiFi, which uses the 2.4GHz and 5GHz ISM bands worldwide.",
+            "LoRaWAN uses lower radio frequencies with a longer range. The fact that frequencies have a longer range also comes with more restrictions, that are often country-specific. This poses a challenge for LoRaWAN, as it strives to maintain uniformity across various regions of the world.",
+            "These LoRaWAN regional specifications do not specify everything either. They only cover a region by specifying the common denominator. For example, the LoRaWAN regional parameters for Asia only specify a common subset of channels - but there are variations between regulations in Asian countries."
+          ]
+        },
+        {
+          "title": "Frequency Plans | The Things Network",
+          "url": "https://www.thethingsnetwork.org/docs/lorawan/frequency-plans/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This is a list of frequency plan definitions used in The Things Network. These frequency plans are based on what is specified in the LoRaWAN regional parameters document.",
+          "profile": {
+            "name": "The Things Network",
+            "url": "https://www.thethingsnetwork.org/docs/lorawan/frequency-plans/",
+            "long_name": "thethingsnetwork.org",
+            "img": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "thethingsnetwork.org",
+            "hostname": "www.thethingsnetwork.org",
+            "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+            "path": "› docs  › lorawan  › frequency-plans"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/IADwf6bitlbMBIJSOGCswwwV7ispR1VVccRiX4SUQ_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcvZG9j/cy9pbWcvb2ctaW1h/Z2UucG5n",
+            "original": "https://www.thethingsnetwork.org/docs/img/og-image.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "This is a list of frequency plan definitions used in The Things Network. These frequency plans are based on what is specified in the LoRaWAN regional parameters document."
+          ]
+        },
+        {
+          "title": "LoRaWAN Frequency Bands in Europe: A Guide to EU868 Regulations and Compliance | EdgePilot.io",
+          "url": "https://edgepilot.io/news/lorawan-frequency-bands-europe-eu868-guide",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The sub-bands relevant to LoRaWAN are: ERP = Effective Radiated Power. The LoRaWAN specification uses EIRP (Effective Isotropic Radiated Power), where the maximum is +16 dBm (40 mW).",
+          "page_age": "2026-04-13T00:00:00",
+          "profile": {
+            "name": "EdgePilot",
+            "url": "https://edgepilot.io/news/lorawan-frequency-bands-europe-eu868-guide",
+            "long_name": "edgepilot.io",
+            "img": "https://imgs.search.brave.com/wWdJOxD2d8DIlUMaJBTAi3JFyA0hFGaKz2lUNR6vWcY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjJhOTJmNDQy/M2I2NDY0MzQzYjQ5/OTI4MDMzZjVlZjE2/ZGRkNDc3NjQ5NmI4/OWYxODg1NWFjNWQ3/YTlmYzQzMy9lZGdl/cGlsb3QuaW8v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "edgepilot.io",
+            "hostname": "edgepilot.io",
+            "favicon": "https://imgs.search.brave.com/wWdJOxD2d8DIlUMaJBTAi3JFyA0hFGaKz2lUNR6vWcY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjJhOTJmNDQy/M2I2NDY0MzQzYjQ5/OTI4MDMzZjVlZjE2/ZGRkNDc3NjQ5NmI4/OWYxODg1NWFjNWQ3/YTlmYzQzMy9lZGdl/cGlsb3QuaW8v",
+            "path": "  › home  › news  › lorawan frequency bands in europe: a guide to eu868 regulations and compliance"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/vPqiPXlAxrCO9XWL-B-nsR-T4QR2-nthB0yhB4loksg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9lZGdl/cGlsb3QuaW8vaW5z/dGFsbC1jb2FzdGFs/LmpwZWc",
+            "original": "https://edgepilot.io/install-coastal.jpeg",
+            "logo": false
+          },
+          "age": "April 13, 2026",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "EdgePilot",
+                "url": "https://edgepilot.io"
+              }
+            ],
+            "date": "Apr 13, 2026",
+            "publisher": {
+              "type": "organization",
+              "name": "EdgePilot",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/XJhmf_AQLrP-OPyRMOMDy0-AHPoc7iG4PKqYWy6eLnk/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9lZGdl/cGlsb3QuaW8vZWRn/ZXBpbG90X2Z1bGwu/cG5n",
+                "original": "https://edgepilot.io/edgepilot_full.png"
+              }
+            }
+          },
+          "organization": {
+            "type": "organization",
+            "name": "EdgePilot",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "The EU868 band is divided into several sub-bands, each with its own maximum transmit power and duty cycle limitations. This is fundamentally different from regions like the US (US915), where a wider frequency band is available with different rules. ETSI EN 300 220-2 divides the 863–870 MHz range into six sub-bands, each designated by a letter. The sub-bands relevant to LoRaWAN are: ERP = Effective Radiated Power. The LoRaWAN specification uses EIRP (Effective Isotropic Radiated Power), where the maximum is +16 dBm (40 mW).",
+            "EIRP ≈ ERP + 2.15 dBi antenna gain. The M sub-band (868.0–868.6 MHz) is where the three mandatory LoRaWAN uplink channels sit: 868.1, 868.3, and 868.5 MHz. Every LoRaWAN end device must implement these channels, and all gateways must listen on them. The five additional channels at 867.1–867.9 MHz fall within the L sub-band (1% duty cycle).",
+            "Note that the K sub-band (863–865 MHz) has a much stricter 0.1% duty cycle, which limits its usefulness for LoRaWAN traffic. While only three channels are mandatory, a standard EU868 deployment uses eight LoRa channels plus one FSK channel.",
+            "→LoRaWAN in Europe uses the EU868 band (863–870 MHz), divided into six ETSI sub-bands (K, L, M, N, P, Q) with different power and duty cycle limits."
+          ]
+        },
+        {
+          "title": "Duty Cycle | The Things Network",
+          "url": "https://www.thethingsnetwork.org/docs/lorawan/duty-cycle/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "On The Things Network’s The Things Stack Sandbox a Fair Use Policy applies which limits the uplink airtime to 30 seconds per day (24 hours) per node and the downlink messages to 10 messages per day (24 hours) per node.",
+          "profile": {
+            "name": "The Things Network",
+            "url": "https://www.thethingsnetwork.org/docs/lorawan/duty-cycle/",
+            "long_name": "thethingsnetwork.org",
+            "img": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "thethingsnetwork.org",
+            "hostname": "www.thethingsnetwork.org",
+            "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+            "path": "› docs  › lorawan  › duty-cycle"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/IADwf6bitlbMBIJSOGCswwwV7ispR1VVccRiX4SUQ_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcvZG9j/cy9pbWcvb2ctaW1h/Z2UucG5n",
+            "original": "https://www.thethingsnetwork.org/docs/img/og-image.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "Additionally, the LoRaWAN specification specifies duty cycles for the join frequencies, which are used for over-the-air activations (OTAA) by every LoRaWAN-compliant end device.",
+            "On The Things Network’s The Things Stack Sandbox a Fair Use Policy applies which limits the uplink airtime to 30 seconds per day (24 hours) per node and the downlink messages to 10 messages per day (24 hours) per node. If you use a private network, these limits do not apply, but you still have to be compliant with the governmental and LoRaWAN limits."
+          ]
+        },
+        {
+          "title": "Regional Limitations of RF Use in LoRaWAN | The Things Network",
+          "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-limitations-of-rf-use/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The LoRa Alliance® recommends a duty cycle limitation of 1% in the European band which means that a device can transmit for no more than 1% of the time while ensuring the maximum EIRP (Effective Isotropic Radiated Power) of +16 dBm.",
+          "profile": {
+            "name": "The Things Network",
+            "url": "https://www.thethingsnetwork.org/docs/lorawan/regional-limitations-of-rf-use/",
+            "long_name": "thethingsnetwork.org",
+            "img": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "thethingsnetwork.org",
+            "hostname": "www.thethingsnetwork.org",
+            "favicon": "https://imgs.search.brave.com/bFyG9Yv0QWlQKhsC9uRnIbXq_xy430ExB2HSBe-aD9s/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE2MWRiZTU3/N2E4YThhZTNhODRh/OTRkNTE5NjJjYzA5/YzYxMzViZmIwOTg2/MGMwNWEwMzZhYzRm/YTE0MGIzMC93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcv",
+            "path": "› docs  › lorawan  › regional-limitations-of-rf-use"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/IADwf6bitlbMBIJSOGCswwwV7ispR1VVccRiX4SUQ_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dGhldGhpbmdzbmV0/d29yay5vcmcvZG9j/cy9pbWcvb2ctaW1h/Z2UucG5n",
+            "original": "https://www.thethingsnetwork.org/docs/img/og-image.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "The LoRa Alliance® recommends a duty cycle limitation of 1% in the European band which means that a device can transmit for no more than 1% of the time while ensuring the maximum EIRP (Effective Isotropic Radiated Power) of +16 dBm.",
+            "For the US ISM band, the dwell time for transmitting a LoRaWAN message must not exceed 400 ms. It is important to consider this dwell time limitation when designing and operating devices. For example, if a device is transmitting data at a high rate, it may need to use a faster hopping rate in order to comply with the 400 ms dwell time limitation. Both end devices and gateways are also limited to a maximum EIRP of +30 dBm.",
+            "The EIRP of 16 dBm is equal to 40 mW and is equivalent to an ERP of 14 dBm, which is equal to 25 mW. To learn more about EIRP and ERP, you can refer to the LoRaWAN® section.",
+            "Usually, the limitations of sub-bands K, L, M, N and Q are applied for uplink transmissions and the limitations of sub-band P are mainly applied for downlink transmissions. Usually, a number of end devices in a LoRaWAN network is way higher than a number of gateways."
+          ]
+        },
+        {
+          "title": "GitHub - TheThingsNetwork/lorawan-frequency-plans: LoRaWAN Frequency Plans for The Things Stack · GitHub",
+          "url": "https://github.com/TheThingsNetwork/lorawan-frequency-plans",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "band-id: BAND_ID # ID of the band (needs to match band-id in the index) sub-bands: - min-frequency: 868000000 # Minimum frequency (Hz, inclusive) max-frequency: 868600000 # Maximum frequency (Hz, inclusive) duty-cycle: 0.01 # Duty cycle for ...",
+          "profile": {
+            "name": "GitHub",
+            "url": "https://github.com/TheThingsNetwork/lorawan-frequency-plans",
+            "long_name": "github.com",
+            "img": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "software",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "github.com",
+            "hostname": "github.com",
+            "favicon": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw",
+            "path": "› TheThingsNetwork  › lorawan-frequency-plans"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/fWPS-knQpzQQ6VR60W0MwZNa1gz4Znv9TRQyULmkGlY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9vcGVu/Z3JhcGguZ2l0aHVi/YXNzZXRzLmNvbS85/OTI4NDNjNjAxMmY5/ZGU4YzdhNGNlOWRj/MDJkZmNjMTZjYWYz/NjdmNmVjYWZmZjBm/YzM1MWUzMzY0ZDIy/NTQ5L1RoZVRoaW5n/c05ldHdvcmsvbG9y/YXdhbi1mcmVxdWVu/Y3ktcGxhbnM",
+            "original": "https://opengraph.githubassets.com/992843c6012f9de8c7a4ce9dc02dfcc16caf367f6ecafff0fc351e3364d22549/TheThingsNetwork/lorawan-frequency-plans",
+            "logo": false
+          },
+          "software": {
+            "name": "lorawan-frequency-plans",
+            "author": "TheThingsNetwork",
+            "is_npm": false,
+            "is_pypi": false,
+            "stars": 47,
+            "forks": 33,
+            "programmingLanguage": ""
+          },
+          "extra_snippets": [
+            "If you want to contribute to the band definitions in The Things Stack, please contribute to the TheThingsNetwork/lorawan-stack repository. Regulatory restrictions for the band can be configured with the max-eirp, duty-cycle, dwell-time, time-off-air and listen-before-talk settings.",
+            "band-id: BAND_ID # ID of the band (needs to match band-id in the index) sub-bands: - min-frequency: 868000000 # Minimum frequency (Hz, inclusive) max-frequency: 868600000 # Maximum frequency (Hz, inclusive) duty-cycle: 0.01 # Duty cycle for this sub-band (optional; default: 1) max-eirp: 16.15 # Maximum EIRP for this sub-band (optional; takes precedence over frequency plan's max-eirp) uplink-channels: # List of uplink channels (zero indexed) - frequency: 868100000 # Frequency (Hz) min-data-rate: 0 # Mininum data rate index max-data-rate: 5 # Maximum data rate index radio: 0 # Radio index (see b",
+            "The Things Stack uses the github.com/TheThingsNetwork/lorawan-frequency-plans as default source for fetching frequency plans. Therefore, contributing to this open source repository makes frequency plans automatically available to Stack deployments with default settings.",
+            "Frequency plans are defined for a band. Bands are specified by the LoRa Alliance Technical Committee and are published as the LoRaWAN Regional Parameters technical document."
+          ]
+        },
+        {
+          "title": "LoRaWAN | Smart Parks Wiki",
+          "url": "https://wiki.smartparks.org/en/concepts/lorawan",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The maximum radiated output power allowed in the USA is EIRP = +30 dBm but for most devices +20 dBm is sufficient. Under the Federal Communications Commission (FCC) there are no duty cycle limitations but there is a 400 ms maximum dwell time per channel.",
+          "profile": {
+            "name": "Smart Parks Wiki",
+            "url": "https://wiki.smartparks.org/en/concepts/lorawan",
+            "long_name": "wiki.smartparks.org",
+            "img": "https://imgs.search.brave.com/MWtBo30rKXmF_wfYlf-0uBSYcaYffQofxIuo44HytGc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjk3MzdkMmJi/M2ZiZmEwMTkwMTUz/NmU0NjQ3OThhNmZj/MGQwM2Y4MDgwOWVh/MmY2NTU4N2EzNDZi/MTViMzRmNi93aWtp/LnNtYXJ0cGFya3Mu/b3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "wiki.smartparks.org",
+            "hostname": "wiki.smartparks.org",
+            "favicon": "https://imgs.search.brave.com/MWtBo30rKXmF_wfYlf-0uBSYcaYffQofxIuo44HytGc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjk3MzdkMmJi/M2ZiZmEwMTkwMTUz/NmU0NjQ3OThhNmZj/MGQwM2Y4MDgwOWVh/MmY2NTU4N2EzNDZi/MTViMzRmNi93aWtp/LnNtYXJ0cGFya3Mu/b3JnLw",
+            "path": "› en  › concepts  › lorawan"
+          },
+          "extra_snippets": [
+            "For example, in the Netherlands, both EU868-870 and EU433 can be used. The regional parameters include physical layer parameters such as frequency plans (channel plans), mandatory channel frequencies and data rates for join-request messages. The Regional Parameters also include LoRaWAN layer parameters such as maximum payload size.",
+            "IN865: Applies to India. The default maximum EIRP allowed is +30 dBm. There are a few recommended default settings available that can be applied to all the regions. ... In this chapter, you will learn about different message types used in LoRaWAN 1.0.x and 1.1.",
+            "The maximum radiated output power allowed in the USA is EIRP = +30 dBm but for most devices +20 dBm is sufficient. Under the Federal Communications Commission (FCC) there are no duty cycle limitations but there is a 400 ms maximum dwell time per channel.",
+            "AU915-928: Applies to Australia and all other countries whose band extends from 915 to 928MHz. There is no duty cycle limitation applicable and the dwell time limitation is 400ms. The default maximum EIRP allowed is +30 dBm."
+          ]
+        },
+        {
+          "title": "LoRa documentation - Read the Docs",
+          "url": "https://lora.readthedocs.io/en/latest/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "If your country uses the EU863-870 ISM band, than according to the LoRaWAN Regional Parameters document every EU868MHz end device must implement the following default channels:",
+          "profile": {
+            "name": "Readthedocs",
+            "url": "https://lora.readthedocs.io/en/latest/",
+            "long_name": "lora.readthedocs.io",
+            "img": "https://imgs.search.brave.com/f4QwOKUmDwR-D-VY9VqR0x_VWxXuRXMSF1zn5gNjeXI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWVlMmY3ZWZl/ZDY2MjU5ZTgyMWNh/MzlmYjExYjI1YzU5/ZDFhYWVmN2JkYjA4/ZTQzOTQ2MzI2OTEx/YjlhZjFlZC9sb3Jh/LnJlYWR0aGVkb2Nz/LmlvLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "lora.readthedocs.io",
+            "hostname": "lora.readthedocs.io",
+            "favicon": "https://imgs.search.brave.com/f4QwOKUmDwR-D-VY9VqR0x_VWxXuRXMSF1zn5gNjeXI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWVlMmY3ZWZl/ZDY2MjU5ZTgyMWNh/MzlmYjExYjI1YzU5/ZDFhYWVmN2JkYjA4/ZTQzOTQ2MzI2OTEx/YjlhZjFlZC9sb3Jh/LnJlYWR0aGVkb2Nz/LmlvLw",
+            "path": "› en  › latest"
+          },
+          "extra_snippets": [
+            "If your country uses the EU863-870 ISM band, than according to the LoRaWAN Regional Parameters document every EU868MHz end device must implement the following default channels:",
+            "The Effective Isotropic Radiated Power (EIRP) is the total power radiated by a hypothetical isotropic antenna in a single direction.",
+            "One of these rules: radio devices must not exceed certain ERP or EIRP values set by these regulatory bodies.",
+            "EIRP = Tx power (dBm) + antenna gain (dBi) - cable loss (dBm)"
+          ]
+        },
+        {
+          "title": "What Is LoRa Frequency Planning? Regional Bands (EU868, US915, AS923)",
+          "url": "https://eureka.patsnap.com/article/what-is-lora-frequency-planning-regional-bands-eu868-us915-as923",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This band operates within the 863-870 MHz range, and it is regulated by ETSI (European Telecommunications Standards Institute). The EU868 band is divided into several sub-bands, each with specific characteristics and limitations regarding duty cycle and transmit power.",
+          "page_age": "2025-06-27T00:00:00",
+          "profile": {
+            "name": "Eureka",
+            "url": "https://eureka.patsnap.com/article/what-is-lora-frequency-planning-regional-bands-eu868-us915-as923",
+            "long_name": "eureka.patsnap.com",
+            "img": "https://imgs.search.brave.com/css2-yJgx4c9TrAcHO73O8sn-gT0y7boo3SPUZP04Mc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjgzYmE3YWM0/ZmRhMmFlZjFlM2Ez/MTViMmFiMjFjMDhi/NmVhZmI0Mzc5NDU5/MjFiOGVhYjM5ZGJj/MmNlMDQ5OS9ldXJl/a2EucGF0c25hcC5j/b20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "eureka.patsnap.com",
+            "hostname": "eureka.patsnap.com",
+            "favicon": "https://imgs.search.brave.com/css2-yJgx4c9TrAcHO73O8sn-gT0y7boo3SPUZP04Mc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjgzYmE3YWM0/ZmRhMmFlZjFlM2Ez/MTViMmFiMjFjMDhi/NmVhZmI0Mzc5NDU5/MjFiOGVhYjM5ZGJj/MmNlMDQ5OS9ldXJl/a2EucGF0c25hcC5j/b20v",
+            "path": "› article  › what-is-lora-frequency-planning-regional-bands-eu868-us915-as923"
+          },
+          "age": "June 27, 2025",
+          "organization": {
+            "type": "organization",
+            "name": "Patsnap",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "EU868: The European Band In Europe, the EU868 band is commonly used for LoRa communication. This band operates within the 863-870 MHz range, and it is regulated by ETSI (European Telecommunications Standards Institute). The EU868 band is divided into several sub-bands, each with specific characteristics and limitations regarding duty cycle and transmit power.",
+            "AS923's dynamic nature makes it suitable for countries with diverse regulatory landscapes, and it is often used in applications such as logistics and smart metering. Challenges in Frequency Planning Despite the advantages of LoRa technology, frequency planning comes with its own set of challenges.",
+            "Network designers must also consider factors like the density of IoT devices, geographical coverage, and environmental conditions to achieve efficient frequency planning. Optimizing Network Design To optimize LoRa frequency planning, network designers must conduct thorough assessments of the area in which the network will operate.",
+            "Techniques such as frequency hopping, adaptive data rate management, and use of advanced antenna systems can enhance network performance and reliability. The Future of LoRa Frequency Planning As IoT continues to grow, the need for effective LoRa frequency planning becomes increasingly important."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "query": "LoRa path loss measurement campaign",
+  "total": 599373,
+  "pages_retrieved": 1,
+  "results_retrieved": 10,
+  "results": [
+    {
+      "paperId": "2101.08607",
+      "doi": "10.1109/TCOMM.2022.3193400",
+      "title": "Path Loss Modeling and Measurements for Reconfigurable Intelligent Surfaces in the Millimeter-Wave Frequency Band",
+      "authors": [
+        {
+          "name": "Wankai Tang"
+        },
+        {
+          "name": "Xiangyu Chen"
+        },
+        {
+          "name": "Ming Zheng Chen"
+        },
+        {
+          "name": "Jun Yan Dai"
+        },
+        {
+          "name": "Yu Han"
+        },
+        {
+          "name": "Marco Di Renzo"
+        },
+        {
+          "name": "Shi Jin"
+        },
+        {
+          "name": "Qiang Cheng"
+        },
+        {
+          "name": "Tie Jun Cui"
+        }
+      ],
+      "year": 2021,
+      "abstract": "Reconfigurable intelligent surfaces (RISs) provide an interface between the electromagnetic world of wireless propagation environments and the digital world of information science. Simple yet sufficiently accurate path loss models for RISs are an important basis for theoretical analysis and optimization of RIS-assisted wireless communication systems. In this paper, we refine our previously proposed free-space path loss model for RISs to make it simpler, more applicable, and easier to use. The impact of the antenna's directivity of the transmitter, receiver, and the unit cells of the RIS on the path loss is explicitly formulated as an angle-dependent loss factor. The refined model gives more accurate estimates of the path loss of RISs comprised of unit cells with a deep sub-wavelength size. Based on the proposed model, the properties of a single unit cell are evaluated in terms of scattering performance, power consumption, and area, which allows us to unveil fundamental considerations for deploying RISs in high frequency bands. Two fabricated RISs operating in the millimeter-wave (mmWave) band are utilized to carry out a measurement campaign. The measurement results are shown to be in good agreement with the proposed path loss model. In addition, the experimental results suggest an effective form to characterize the power radiation pattern of the unit cell for path loss modeling.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2101.08607v2"
+      }
+    },
+    {
+      "paperId": "1911.05326",
+      "doi": "10.1109/TWC.2020.3024887",
+      "title": "Wireless Communications with Reconfigurable Intelligent Surface: Path Loss Modeling and Experimental Measurement",
+      "authors": [
+        {
+          "name": "Wankai Tang"
+        },
+        {
+          "name": "Ming Zheng Chen"
+        },
+        {
+          "name": "Xiangyu Chen"
+        },
+        {
+          "name": "Jun Yan Dai"
+        },
+        {
+          "name": "Yu Han"
+        },
+        {
+          "name": "Marco Di Renzo"
+        },
+        {
+          "name": "Yong Zeng"
+        },
+        {
+          "name": "Shi Jin"
+        },
+        {
+          "name": "Qiang Cheng"
+        },
+        {
+          "name": "Tie Jun Cui"
+        }
+      ],
+      "year": 2019,
+      "abstract": "Reconfigurable intelligent surfaces (RISs) comprised of tunable unit cells have recently drawn significant attention due to their superior capability in manipulating electromagnetic waves. In particular, RIS-assisted wireless communications have the great potential to achieve significant performance improvement and coverage enhancement in a cost-effective and energy-efficient manner, by properly programming the reflection coefficients of the unit cells of RISs. In this paper, free-space path loss models for RIS-assisted wireless communications are developed for different scenarios by studying the physics and electromagnetic nature of RISs. The proposed models, which are first validated through extensive simulation results, reveal the relationships between the free-space path loss of RIS-assisted wireless communications and the distances from the transmitter/receiver to the RIS, the size of the RIS, the near-field/far-field effects of the RIS, and the radiation patterns of antennas and unit cells. In addition, three fabricated RISs (metasurfaces) are utilized to further corroborate the theoretical findings through experimental measurements conducted in a microwave anechoic chamber. The measurement results match well with the modeling results, thus validating the proposed free-space path loss models for RIS, which may pave the way for further theoretical studies and practical applications in this field.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/1911.05326v2"
+      }
+    },
+    {
+      "paperId": "2411.05920",
+      "doi": "",
+      "title": "Measurement incompatibility under loss",
+      "authors": [
+        {
+          "name": "Mohammad Mehboudi"
+        },
+        {
+          "name": "Fatemeh Rezaeinia"
+        },
+        {
+          "name": "Saleh Rahimi-Keshari"
+        }
+      ],
+      "year": 2024,
+      "abstract": "We investigate the measurement incompatibility of continuous-variable systems with infinite-dimensional Hilbert spaces under the influence of pure losses, a fundamental noise source in quantum optics, and a significant challenge for long-distance quantum communication. We show that loss channels with transmissivities less than $1/n$ make any set of $n$ measurements compatible. Additionally, we design a set of measurements that remains incompatible even under extreme losses, where the number of measurements in the set increases with the amount of loss. These measurements rely on on-off photodetectors and linear optics, making them feasible for implementation under realistic laboratory conditions. Furthermore, we demonstrate that no loss channel can break the incompatibility of all measurements. As a result, quantum steering remains achievable in the presence of pure loss.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2411.05920v3"
+      }
+    },
+    {
+      "paperId": "2411.14961",
+      "doi": "",
+      "title": "LoRA-FAIR: Federated LoRA Fine-Tuning with Aggregation and Initialization Refinement",
+      "authors": [
+        {
+          "name": "Jieming Bian"
+        },
+        {
+          "name": "Lei Wang"
+        },
+        {
+          "name": "Letian Zhang"
+        },
+        {
+          "name": "Jie Xu"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Foundation models (FMs) achieve strong performance across diverse tasks with task-specific fine-tuning, yet full parameter fine-tuning is often computationally prohibitive for large models. Parameter-efficient fine-tuning (PEFT) methods like Low-Rank Adaptation (LoRA) reduce this cost by introducing low-rank matrices for tuning fewer parameters. While LoRA allows for efficient fine-tuning, it requires significant data for adaptation, making Federated Learning (FL) an appealing solution due to its privacy-preserving collaborative framework. However, combining LoRA with FL introduces two key challenges: the \\textbf{Server-Side Aggregation Bias}, where server-side averaging of LoRA matrices diverges from the ideal global update, and the \\textbf{Client-Side Initialization Lag}, emphasizing the need for consistent initialization across rounds. Existing approaches address these challenges individually, limiting their effectiveness. We propose LoRA-FAIR, a novel method that tackles both issues by introducing a correction term on the server, enhancing aggregation efficiency and accuracy. LoRA-FAIR maintains computational and communication efficiency, yielding superior performance over state-of-the-art methods. Experimental results on ViT and MLP-Mixer models across large-scale datasets demonstrate that LoRA-FAIR consistently achieves performance improvements in FL settings.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2411.14961v3"
+      }
+    },
+    {
+      "paperId": "2109.07768",
+      "doi": "",
+      "title": "Path Loss in Urban LoRa Networks: A Large-Scale Measurement Study",
+      "authors": [
+        {
+          "name": "Michael Rademacher"
+        },
+        {
+          "name": "Hendrik Linka"
+        },
+        {
+          "name": "Thorsten Horstmann"
+        },
+        {
+          "name": "Martin Henze"
+        }
+      ],
+      "year": 2021,
+      "abstract": "Urban LoRa networks promise to provide a cost-efficient and scalable communication backbone for smart cities. One core challenge in rolling out and operating these networks is radio network planning, i.e., precise predictions about possible new locations and their impact on network coverage. Path loss models aid in this task, but evaluating and comparing different models requires a sufficiently large set of high-quality received packet power samples. In this paper, we report on a corresponding large-scale measurement study covering an urban area of 200km2 over a period of 230 days using sensors deployed on garbage trucks, resulting in more than 112 thousand high-quality samples for received packet power. Using this data, we compare eleven previously proposed path loss models and additionally provide new coefficients for the Log-distance model. Our results reveal that the Log-distance model and other well-known empirical models such as Okumura or Winner+ provide reasonable estimations in an urban environment, and terrain based models such as ITM or ITWOM have no advantages. In addition, we derive estimations for the needed sample size in similar measurement campaigns. To stimulate further research in this direction, we make all our data publicly available.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2109.07768v1"
+      }
+    },
+    {
+      "paperId": "0710.4352",
+      "doi": "10.1103/PhysRevLett.101.130502",
+      "title": "Measurement based entanglement under conditions of extreme photon loss",
+      "authors": [
+        {
+          "name": "Earl T. Campbell"
+        },
+        {
+          "name": "Simon C. Benjamin"
+        }
+      ],
+      "year": 2007,
+      "abstract": "The act of measuring optical emissions from two remote qubits can entangle them. By demanding that a photon from each qubit reaches the detectors, one can ensure than no photon was lost. But the failure rate then rises quadratically with loss probability. In [1] this resulted in 30 successes per billion attempts. We describe a means to exploit the low grade entanglement heralded by the detection of a lone photon: A subsequent perfect operation is quickly achieved by consuming this noisy resource. We require only two qubits per node, and can tolerate both path length variation and loss asymmetry. The impact of photon loss upon the failure rate is then linear; realistic high-loss devices can gain orders of magnitude in performance and thus support QIP.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/0710.4352v4"
+      }
+    },
+    {
+      "paperId": "2506.20629",
+      "doi": "",
+      "title": "PLoP: Precise LoRA Placement for Efficient Finetuning of Large Models",
+      "authors": [
+        {
+          "name": "Soufiane Hayou"
+        },
+        {
+          "name": "Nikhil Ghosh"
+        },
+        {
+          "name": "Bin Yu"
+        }
+      ],
+      "year": 2025,
+      "abstract": "Low-Rank Adaptation (LoRA) is a widely used finetuning method for large models. Its small memory footprint allows practitioners to adapt large models to specific tasks at a fraction of the cost of full finetuning. Different modifications have been proposed to enhance its efficiency by, for example, setting the learning rate, the rank, and the initialization. Another improvement axis is adapter placement strategy: when using LoRA, practitioners usually pick module types to adapt with LoRA, such as Query and Key modules. Few works have studied the problem of adapter placement, with nonconclusive results: original LoRA paper suggested placing adapters in attention modules, while other works suggested placing them in the MLP modules. Through an intuitive theoretical analysis, we introduce PLoP (Precise LoRA Placement), a lightweight method that allows automatic identification of module types where LoRA adapters should be placed, given a pretrained model and a finetuning task. We demonstrate that PLoP consistently outperforms, and in the worst case competes, with commonly used placement strategies through comprehensive experiments on supervised finetuning and reinforcement learning for reasoning.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2506.20629v1"
+      }
+    },
+    {
+      "paperId": "2410.20625",
+      "doi": "",
+      "title": "LoRA Done RITE: Robust Invariant Transformation Equilibration for LoRA Optimization",
+      "authors": [
+        {
+          "name": "Jui-Nan Yen"
+        },
+        {
+          "name": "Si Si"
+        },
+        {
+          "name": "Zhao Meng"
+        },
+        {
+          "name": "Felix Yu"
+        },
+        {
+          "name": "Sai Surya Duvvuri"
+        },
+        {
+          "name": "Inderjit S. Dhillon"
+        },
+        {
+          "name": "Cho-Jui Hsieh"
+        },
+        {
+          "name": "Sanjiv Kumar"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Low-rank adaption (LoRA) is a widely used parameter-efficient finetuning method for LLM that reduces memory requirements. However, current LoRA optimizers lack transformation invariance, meaning the actual updates to the weights depends on how the two LoRA factors are scaled or rotated. This deficiency leads to inefficient learning and sub-optimal solutions in practice. This paper introduces LoRA-RITE, a novel adaptive matrix preconditioning method for LoRA optimization, which can achieve transformation invariance and remain computationally efficient. We provide theoretical analysis to demonstrate the benefit of our method and conduct experiments on various LLM tasks with different models including Gemma 2B, 7B, and mT5-XXL. The results demonstrate consistent improvements against existing optimizers. For example, replacing Adam with LoRA-RITE during LoRA fine-tuning of Gemma-2B yielded 4.6\\% accuracy gain on Super-Natural Instructions and 3.5\\% accuracy gain across other four LLM benchmarks (HellaSwag, ArcChallenge, GSM8K, OpenBookQA).",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2410.20625v2"
+      }
+    },
+    {
+      "paperId": "2403.14572",
+      "doi": "",
+      "title": "Implicit Style-Content Separation using B-LoRA",
+      "authors": [
+        {
+          "name": "Yarden Frenkel"
+        },
+        {
+          "name": "Yael Vinker"
+        },
+        {
+          "name": "Ariel Shamir"
+        },
+        {
+          "name": "Daniel Cohen-Or"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Image stylization involves manipulating the visual appearance and texture (style) of an image while preserving its underlying objects, structures, and concepts (content). The separation of style and content is essential for manipulating the image's style independently from its content, ensuring a harmonious and visually pleasing result. Achieving this separation requires a deep understanding of both the visual and semantic characteristics of images, often necessitating the training of specialized models or employing heavy optimization. In this paper, we introduce B-LoRA, a method that leverages LoRA (Low-Rank Adaptation) to implicitly separate the style and content components of a single image, facilitating various image stylization tasks. By analyzing the architecture of SDXL combined with LoRA, we find that jointly learning the LoRA weights of two specific blocks (referred to as B-LoRAs) achieves style-content separation that cannot be achieved by training each B-LoRA independently. Consolidating the training into only two blocks and separating style and content allows for significantly improving style manipulation and overcoming overfitting issues often associated with model fine-tuning. Once trained, the two B-LoRAs can be used as independent components to allow various image stylization tasks, including image style transfer, text-based image stylization, consistent style generation, and style-content mixing.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2403.14572v2"
+      }
+    },
+    {
+      "paperId": "2311.06344",
+      "doi": "",
+      "title": "Robustness of direct measurements of the mean free path of ionizing photons in the epoch of reionization",
+      "authors": [
+        {
+          "name": "Sindhu Satyavolu"
+        },
+        {
+          "name": "Girish Kulkarni"
+        },
+        {
+          "name": "Laura C. Keating"
+        },
+        {
+          "name": "Martin G. Haehnelt"
+        }
+      ],
+      "year": 2023,
+      "abstract": "Measurements of the mean free path of Lyman-continuum photons in the intergalactic medium during the epoch of reionization can help constrain the nature of the sources as well as sinks of hydrogen-ionizing radiation. A recent approach to this measurement has been to utilize composite spectra of multiple quasars at $z\\sim 6$, and infer the mean free path after correcting the spectra for the presence of quasar proximity zones. This has revealed not only a steep drop in the mean free path from $z=5$ to $z=6$, but also potentially a mild tension with reionization simulations. We critically examine such direct measurements of the mean free path for biases due to quasar environment, incomplete reionization, and quasar proximity zones. Using cosmological radiative transfer simulations of reionization combined with one-dimensional radiative transfer calculations of quasar proximity zones, we find that the bias in the mean free path due to overdensities around quasars is minimal at $z\\sim 6$. Patchiness of reionization at this redshift also does not affect the measurements significantly. Fitting our model to the data results in a mean free path of $λ_{\\mathrm{mfp}}=1.49^{+0.47}_{-0.52}$~pMpc at $z=6$, which is consistent with the recent measurements in the literature, indicating robustness with respect to the modelling of quasar proximity zones. We also compare various ways in which the mean free path has been defined in simulations before the end of reionization. Overall, our finding is that recent measurements of the mean free path appear to be robust relative to several sources of potential bias.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2311.06344v2"
+      }
+    }
+  ],
+  "output_metadata": {
+    "extracted_at": "2026-06-11T16:21:57.454099"
+  }
+}

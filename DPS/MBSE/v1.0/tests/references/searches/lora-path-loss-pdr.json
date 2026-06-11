@@ -1,0 +1,839 @@
+{
+  "query": "LoRa point-to-point path loss packet delivery ratio measurement campaign",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "Characterization of LoRa Point-to-Point Path-Loss: Measurement Campaigns and Modeling Considering Censored Data | Request PDF",
+      "url": "https://www.researchgate.net/publication/337301203_Characterization_of_LoRa_Point-to-Point_Path-Loss_Measurement_Campaigns_and_Modeling_Considering_Censored_Data",
+      "description": "The average measured packet success delivery ratio for this case was 96.7%, even with no acknowledgements and retransmissions used. The campus was covered also with lower spreading factors with 2 dBm transmit power, but considerably more packets ...",
+      "content": "The average measured packet success delivery ratio for this case was 96.7%, even with no acknowledgements and retransmissions used. The campus was covered also with lower spreading factors with 2 dBm transmit power, but considerably more packets ...\nWe have conducted an extensive numerical evaluation by using the LoRaEnergySim simulator, and compared MAGELLAN against various routing approaches, including LMHP, a state-of-the-art routing algorithm. The results show that MAGELLAN achieves a superior performance in terms of energy-fairness and Packet Delivery Ratio (PDR), therefore improving the network lifetime and performance.\nThe second, Beacon-Forwarding LoRaWAN with Channel-Aware Path Selection (BF-LoRaCAPS), maintains continuous device awareness using a scheduling mechanism and integrates the OSR-DLM strategy for further optimisation. We evaluate these protocols through extensive simulations that model the detrimental effects of severe weather on data transmission, validated by analysing varied parameter settings in massive Maritime of Things (MoT) scenarios. Key performance metrics, including packet delivery ratio, end-to-end latency, throughput, and traffic intensity for each hop-ratio, are analysed.\nOur observations show that in urban areas, LoRa requires dense deployment of LoRa gateways (GWs) to ensure that indoor LoRa devices can successfully transfer data back to remote GWs. Wireless mesh networking is a solution for increasing communication range and packet delivery ratio (PDR) without the need to install additional GWs.\nThe average measured packet success delivery ratio for this case was 96.7%, even with no acknowledgements and retransmissions used. The campus was covered also with lower spreading factors with 2 dBm transmit power, but considerably more packets were lost. For example with spreading factor 8, 13.1% of the transmitted packets were lost. Aside of this, we have investigated the power consumption of the LoRa compliant transceiver with different physical layer settings.",
+      "age": "November 15, 2019",
+      "page_age": "2019-11-15T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ResearchGate",
+        "url": "https://www.researchgate.net/publication/337301203_Characterization_of_LoRa_Point-to-Point_Path-Loss_Measurement_Campaigns_and_Modeling_Considering_Censored_Data",
+        "long_name": "researchgate.net",
+        "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "researchgate.net",
+        "hostname": "www.researchgate.net",
+        "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+        "path": "› publication  › 337301203_Characterization_of_LoRa_Point-to-Point_Path-Loss_Measurement_Campaigns_and_Modeling_Considering_Censored_Data"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/NA3UWQdok5rp6uI2kyF0cHLVZy0QBikNBsFv8yDMrrc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC9pbWFnZXMv/dGVtcGxhdGUvZGVm/YXVsdF9wdWJsaWNh/dGlvbl9wcmV2aWV3/X2xhcmdlLnBuZw",
+        "original": "https://www.researchgate.net/images/template/default_publication_preview_large.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 2,
+      "title": "[PDF] Characterization of LoRa Point-to-Point Path Loss: Measurement Campaigns and Modeling Considering Censored Data | Semantic Scholar",
+      "url": "https://www.semanticscholar.org/paper/Characterization-of-LoRa-Point-to-Point-Path-Loss:-Callebaut-Perre/d1294e6c7e513c489f13568ffeb05814eb5cf180",
+      "description": "The packet error ratio is determined based on the estimated PL parameters to evaluate the performance of P2P links, and despite the unfavorable radio propagation in the urban scenario and the densely forested terrain, a maximum range of 1 km ...",
+      "content": "The packet error ratio is determined based on the estimated PL parameters to evaluate the performance of P2P links, and despite the unfavorable radio propagation in the urban scenario and the densely forested terrain, a maximum range of 1 km ...\nThe packet error ratio is determined based on the estimated PL parameters to evaluate the performance of P2P links, and despite the unfavorable radio propagation in the urban scenario and the densely forested terrain, a maximum range of 1 km is achieved. Low-power wide-area technologies have demonstrated their usefulness in a wide variety of Internet of Things applications.\nA data descriptor is delivered that includes a set of LoRaWAN measurements performed in Medellín, Colombia, including PL, distance, frequency, temperature, relative humidity, barometric pressure, particulate matter, and energy, among other things, which can be used by designers who need to fit highly accurate PL models.Expand\nSimulation results show that a LoRa network can scale well, achieving packet success rates above 95% in presence of a number of end devices in the order of 104.5% in typical urban scenario.Expand\n@article{Callebaut2020CharacterizationOL, title={Characterization of LoRa Point-to-Point Path Loss: Measurement Campaigns and Modeling Considering Censored Data}, author={Gilles Callebaut and Liesbet Van der Perre}, journal={IEEE Internet of Things Journal}, year={2020}, volume={7}, pages={1910-1918}, url={https://api.semanticscholar.org/CorpusID:209051236} } Gilles Callebaut, L. Van der Perre · Published in IEEE Internet of Things… 1 March 2020 · Engineering, Computer Science, Environmental Science ... The packet error ratio is determined based on the estimated PL parameters to evaluate the performance of P2P links, and despite the unfavorable radio propagation in the urban scenario and the densely forested terrain, a maximum range of 1 km is achieved.Expand",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Semantic Scholar",
+        "url": "https://www.semanticscholar.org/paper/Characterization-of-LoRa-Point-to-Point-Path-Loss:-Callebaut-Perre/d1294e6c7e513c489f13568ffeb05814eb5cf180",
+        "long_name": "semanticscholar.org",
+        "img": "https://imgs.search.brave.com/K-sZ3Vgcj9LFjkcTUpjjK40LWCyX6WutMxHJiE7XYPI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGI3NTZiOWVj/YTE5N2MzYTNhYzA2/NWEyMzQwMzA5N2Yy/NGY3MjhhYTcxYmI2/YWQ3NjdjNDk5NGE2/NmUyYTdlYi93d3cu/c2VtYW50aWNzY2hv/bGFyLm9yZy8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "semanticscholar.org",
+        "hostname": "www.semanticscholar.org",
+        "favicon": "https://imgs.search.brave.com/K-sZ3Vgcj9LFjkcTUpjjK40LWCyX6WutMxHJiE7XYPI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGI3NTZiOWVj/YTE5N2MzYTNhYzA2/NWEyMzQwMzA5N2Yy/NGY3MjhhYTcxYmI2/YWQ3NjdjNDk5NGE2/NmUyYTdlYi93d3cu/c2VtYW50aWNzY2hv/bGFyLm9yZy8",
+        "path": "  › papers  › characterization of lora point-to-point path loss: measurement campaigns and modeling considering censored data"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/A3fktYElQA3Sms9BB_yLvcb2tzI-8lZyB7LvUT1A-us/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c2VtYW50aWNzY2hv/bGFyLm9yZy9pbWcv/c2VtYW50aWNfc2No/b2xhcl9vZy5wbmc",
+        "original": "https://www.semanticscholar.org/img/semantic_scholar_og.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Characterization of LoRa Point-to-Point Path Loss: Measurement Campaigns and Modeling Considering Censored Data | IEEE Journals & Magazine | IEEE Xplore",
+      "url": "https://ieeexplore.ieee.org/document/8902126/",
+      "description": "Low-power wide-area technologies have demonstrated their usefulness in a wide variety of Internet of Things applications. New applications are emerging, requiring a mesh or point-to-point (P2P) topology, in contrast to the conventional star-of-stars topology.",
+      "content": "Low-power wide-area technologies have demonstrated their usefulness in a wide variety of Internet of Things applications. New applications are emerging, requiring a mesh or point-to-point (P2P) topology, in contrast to the conventional star-of-stars topology.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "IEEE Xplore",
+        "url": "https://ieeexplore.ieee.org/document/8902126/",
+        "long_name": "ieeexplore.ieee.org",
+        "img": "https://imgs.search.brave.com/Pr3gNu-kVf-oded6UAgVYC0mXlyfwEL8yNiKsplOmlY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQyMTA0Y2Fk/OWI3Mzc5ODMwOGM5/MjM0ODJjZTBiNzQx/ZDE4OWI0YTAxMmE4/NmYwZWI5NjUwZjhj/MGRlY2MzOS9pZWVl/eHBsb3JlLmllZWUu/b3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "ieeexplore.ieee.org",
+        "hostname": "ieeexplore.ieee.org",
+        "favicon": "https://imgs.search.brave.com/Pr3gNu-kVf-oded6UAgVYC0mXlyfwEL8yNiKsplOmlY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQyMTA0Y2Fk/OWI3Mzc5ODMwOGM5/MjM0ODJjZTBiNzQx/ZDE4OWI0YTAxMmE4/NmYwZWI5NjUwZjhj/MGRlY2MzOS9pZWVl/eHBsb3JlLmllZWUu/b3JnLw",
+        "path": "› document  › 8902126"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/1Yj1c8K5zP1AWFtkhZFjcosmrsRFLx0OY2nEczMxSmA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pZWVl/eHBsb3JlLmllZWUu/b3JnL2Fzc2V0cy9p/bWcvaWVlZV9sb2dv/X3NtZWRpYV8yMDBY/MjAwLnBuZw",
+        "original": "https://ieeexplore.ieee.org/assets/img/ieee_logo_smedia_200X200.png",
+        "logo": true
+      }
+    },
+    {
+      "rank": 4,
+      "title": "(PDF) Path Loss in Urban LoRa Networks: A Large-Scale Measurement Study",
+      "url": "https://www.researchgate.net/publication/354653955_Path_Loss_in_Urban_LoRa_Networks_A_Large-Scale_Measurement_Study",
+      "description": "The packet error ratio is determined based on the estimated path loss parameters to evaluate the performance of point-to-point links. Even in these adverse environments, 80the transmitted packets are successfully received at a distance of ...",
+      "content": "The packet error ratio is determined based on the estimated path loss parameters to evaluate the performance of point-to-point links. Even in these adverse environments, 80the transmitted packets are successfully received at a distance of ...\nThe packet error ratio is determined based on the estimated path loss parameters to evaluate the performance of point-to-point links. Even in these adverse environments, 80the transmitted packets are successfully received at a distance of approximately 200 m. Moreover, a range of over 4km is observed in the line-of-sight scenario. Despite the unfavorable radio propagation in the urban scenario and the densely forested terrain, a maximum range of 1km is achieved. ... Power Distribution Monitoring Using LoRa: Coverage Analysis in Suburban Areas.\ndiscuss certain aspects of previous campaigns such as sample · size, post-processing of samples, and lack of veriﬁcation of · GPS and Received Packet Power (RPP) values. We survey previous work on real-world measurement cam- paigns and an associated evaluation of different PL models for · LoRa networks operating at ≈868 MHz.\ncampaign over a period of 230 days. If a truck (detected by · the accelerometer of our sensor) moves, the GPS is switched · on. As soon as the location has been determined, a LoRa · packet with the determined GPS coordinates is sent to all\n[7] G. Callebaut and L. Van der Perre, “Characterization of LoRa Point-to- Point Path Loss: Measurement Campaigns and Modeling Considering",
+      "age": "September 16, 2021",
+      "page_age": "2021-09-16T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ResearchGate",
+        "url": "https://www.researchgate.net/publication/354653955_Path_Loss_in_Urban_LoRa_Networks_A_Large-Scale_Measurement_Study",
+        "long_name": "researchgate.net",
+        "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "researchgate.net",
+        "hostname": "www.researchgate.net",
+        "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+        "path": "› publication  › 354653955_Path_Loss_in_Urban_LoRa_Networks_A_Large-Scale_Measurement_Study"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/vCzdlTiA64_9FOTLRJh1QBMJS7Bpy4T26LlpoEJiP0o/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/cHVibGljYXRpb24v/MzU0NjUzOTU1X1Bh/dGhfTG9zc19pbl9V/cmJhbl9Mb1JhX05l/dHdvcmtzX0FfTGFy/Z2UtU2NhbGVfTWVh/c3VyZW1lbnRfU3R1/ZHkvbGlua3MvNjE0/NWEyNGM1MTlhMWEz/ODFmNjkxOTMzL2xh/cmdlcHJldmlldy5w/bmc",
+        "original": "https://i1.rgstatic.net/publication/354653955_Path_Loss_in_Urban_LoRa_Networks_A_Large-Scale_Measurement_Study/links/6145a24c519a1a381f691933/largepreview.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 5,
+      "title": "1 Characterization of LoRa Point-to-Point Path-Loss:",
+      "url": "https://lirias.kuleuven.be/server/api/core/bitstreams/ed79c4b2-0bc8-4c09-9da9-80f3b0d75426/content",
+      "description": "Experimental campaigns in three different · environments were performed with this set-up. Secondly, path · loss models are ﬁtted based on the measured censored data in · realistic environments with non-uniform numbers of samples · with respect to the distance. Finally, the packet error ratio · (PER) for P2P LoRa links is determined to evaluate the link",
+      "content": "Experimental campaigns in three different · environments were performed with this set-up. Secondly, path · loss models are ﬁtted based on the measured censored data in · realistic environments with non-uniform numbers of samples · with respect to the distance. Finally, the packet error ratio · (PER) for P2P LoRa links is determined to evaluate the link\nTABLE I: Sensitivity of the LoRa demodulator (BW125 kHz) expressed in received signal strength (RSS) and signal-to-noise ... III. MEASUREMENT SETUP AND PROCEDURE · We have realized an experimental setup with low-height trans- mitters and receivers, representative for use cases where low · complexity antenna and gateway installations are required. Multiple experimental campaigns have been conducted to\nmeasurement campaign conducted in another city. Both the · path loss models and the PER can be adopted in network · planning and in simulations to design new MAC protocols. A · few illustrative examples of successful P2P LoRa deployments ... This paper is further organized as follows. LoRa P2P systems\nbeen utilized in the measurement campaigns: either a quarter · wave helical antenna [23] or a PCB antenna [24]. Both · antennas feature a quasi-omnidirectional radiation pattern with · 2Note, that the range can be further extended by increasing the height of · both nodes and creating a line-of-sight (LoS) connection. By doing so, we · were able to receive packets at a distance of over 40 km3.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Kuleuven",
+        "url": "https://lirias.kuleuven.be/server/api/core/bitstreams/ed79c4b2-0bc8-4c09-9da9-80f3b0d75426/content",
+        "long_name": "lirias.kuleuven.be",
+        "img": "https://imgs.search.brave.com/Waa993bSX_mX8T5OqID_96ldXDnz-rWtBye2H6qKMYw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDQ1ODU3Mjdk/ZmJhMmM0ZGMzMDk0/OGEyMjhhM2ZlYzM4/YTQxYjNiZDM4YTg0/NmJhYmVlMmM3OTg0/YWVmZWJlNS9saXJp/YXMua3VsZXV2ZW4u/YmUv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "lirias.kuleuven.be",
+        "hostname": "lirias.kuleuven.be",
+        "favicon": "https://imgs.search.brave.com/Waa993bSX_mX8T5OqID_96ldXDnz-rWtBye2H6qKMYw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDQ1ODU3Mjdk/ZmJhMmM0ZGMzMDk0/OGEyMjhhM2ZlYzM4/YTQxYjNiZDM4YTg0/NmJhYmVlMmM3OTg0/YWVmZWJlNS9saXJp/YXMua3VsZXV2ZW4u/YmUv",
+        "path": "› server  › api  › core  › bitstreams  › ed79c4b2-0bc8-4c09-9da9-80f3b0d75426  › content"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "LoRaWAN LoRa and LR-FHSS: outdoor PDR and RSSI measurements",
+      "url": "https://zenodo.org/records/17201713",
+      "description": "An outdoor campaign was conducted in urban and semi-urban scenarios in and near the city of Castelldefels using a complete LR-FHSS-enabled network and an end-device transmitting at LoRa and LR-FHSS data rates (DRs). Measurements were collected along four diverse paths, capturing key metrics such as Received Signal Strength Indicator (RSSI) and Packet Delivery Ratio (PDR).",
+      "content": "An outdoor campaign was conducted in urban and semi-urban scenarios in and near the city of Castelldefels using a complete LR-FHSS-enabled network and an end-device transmitting at LoRa and LR-FHSS data rates (DRs). Measurements were collected along four diverse paths, capturing key metrics such as Received Signal Strength Indicator (RSSI) and Packet Delivery Ratio (PDR).\nOverview: This is the raw data of an outdoor coverage measurement campaign of an end-device implementing the novel LoRaWAN LR-FHSS mechanism. The measurements have been made implementing a complete network, which includes a gateway, end-device and network server all implementing the LoRaWAN LR-FHSS technology.\nThis dataset is part of a published journal article: R. Sanchez-Vital, L. Casals, B. Jara-Ortínez, J. Bodvanski, R. Vidal, E. Garcia-Villegas, and C. Gomez, “Experimental Evaluation of LR-FHSS: A Comparison with LoRa,” Sensors, vol. 25, no. 23, Art. no. 7209, 2025, doi: 10.3390/s25237209. The manuscript provides experimental Received Signal Strength Indicator (RSSI) and Packet Delivery Ratio (PDR) measurements collected around the Castelldefels city surroundings. Apart from the data representation, the article also provides a path loss analysis and an open issues discussion.",
+      "age": "November 26, 2025",
+      "page_age": "2025-11-26T10:35:23",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Zenodo",
+        "url": "https://zenodo.org/records/17201713",
+        "long_name": "zenodo.org",
+        "img": "https://imgs.search.brave.com/TPjptHmupRgxDAa0WHYEZqvs4vrQbcdVghMEYbBGTfc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTFjMDcyMjI1/MmNhNDk1OGYzNDBm/ODExMTkxOGU2YzNk/NzFhODhjNjIzN2Rj/MTRiN2M5M2U0MDkz/NTI2OWRkNi96ZW5v/ZG8ub3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "zenodo.org",
+        "hostname": "zenodo.org",
+        "favicon": "https://imgs.search.brave.com/TPjptHmupRgxDAa0WHYEZqvs4vrQbcdVghMEYbBGTfc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTFjMDcyMjI1/MmNhNDk1OGYzNDBm/ODExMTkxOGU2YzNk/NzFhODhjNjIzN2Rj/MTRiN2M5M2U0MDkz/NTI2OWRkNi96ZW5v/ZG8ub3JnLw",
+        "path": "› records  › 17201713"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "(IJACSA) International Journal of Advanced Computer Science and Applications,",
+      "url": "https://thesai.org/Downloads/Volume10No10/Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf",
+      "description": "and 4) to measure maximum distance with the highest · successful data transmission in mesh and star network. 1) PDR in Non-line-of-sight: We have tested our proposed · LoRa based network by sending 38 data packet and a duration",
+      "content": "and 4) to measure maximum distance with the highest · successful data transmission in mesh and star network. 1) PDR in Non-line-of-sight: We have tested our proposed · LoRa based network by sending 38 data packet and a duration\nradio signals. In this research, we proposed the LoRa-based · mesh network to improve the packet delivery ratio in tropical\nSemtech SX1278 LoRa RF 430MHz transceiver with a 1.9dBi · gain helical antenna. Nodes and gateways are powered by a 5- (IJACSA) International Journal of Advanced Computer Science and Applications, Vol. 10, No. 10, 2019 ... V USB adapter. This system achieves an average packet\nLoRa Wireless Mesh Network System: Design and Evaluation”, IEEE · Transaction on Instrumentation and Measurement, Vol.\nthe gradual increase of rain increases the amount of packet · loss gradually. It shows the decrease of PDR value from 100% to 89.50% as the rain increased from light to heavy rain. Fig. 5. PDR in 400m Non-Line-of-Sight. Fig. 6. PDR in 400m Line-of-Sight. ... Fig. 7. PDR in Rain at 200m with Mesh Network. We have installed our network at the same place where we · installed our network during rain experiments to measure the",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "IJACSA",
+        "url": "https://thesai.org/Downloads/Volume10No10/Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf",
+        "long_name": "thesai.org",
+        "img": "https://imgs.search.brave.com/qz83RLthXBioUexyxbwuZ_khk7aJpgq_oVXUQqP0HmE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMTIxOTBjM2Zk/OTc3NjNkZTIwNjg1/NzZjNTdlYjRiZTNl/ODIxN2MyNWZhMjM5/M2IzMjllYjQwYmI5/MDg5MmQ5YS90aGVz/YWkub3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "thesai.org",
+        "hostname": "thesai.org",
+        "favicon": "https://imgs.search.brave.com/qz83RLthXBioUexyxbwuZ_khk7aJpgq_oVXUQqP0HmE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMTIxOTBjM2Zk/OTc3NjNkZTIwNjg1/NzZjNTdlYjRiZTNl/ODIxN2MyNWZhMjM5/M2IzMjllYjQwYmI5/MDg5MmQ5YS90aGVz/YWkub3JnLw",
+        "path": "› Downloads  › Volume10No10  › Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "A Comprehensive Data Description for LoRaWAN Path Loss Measurements in an Indoor Office Setting: Effects of Environmental Factors",
+      "url": "https://arxiv.org/html/2505.06375v1",
+      "description": "LoRaWAN performance examinations ... SNR across different SFs (SF7 to SF12). Results showed 100% packet delivery at all measured points except in the basement, where PDR decreased, with the lowest being 62% for SF7....",
+      "content": "LoRaWAN performance examinations ... SNR across different SFs (SF7 to SF12). Results showed 100% packet delivery at all measured points except in the basement, where PDR decreased, with the lowest being 62% for SF7....\nIf the SNR falls below the required threshold specified in Table II, packets cannot be decoded successfully. Understanding these factors is essential for optimizing node placement and network configuration to ensure robust and reliable data transmission in LoRaWAN networks, thus improving the packet delivery ratio (PDR) in high-interference places of deployment.\nClose-In (CI) and Floating-Intercept (FI) models were used to analyze path loss, with LoRa performing better than Zigbee, particularly in more obstructed areas. The CI model showed LoRa with a path loss slope of 1.96 in NLoS-1 and 3.01 in NLoS-2. LoRa maintained stronger signal strength and higher packet delivery rates than Zigbee, making it more suitable for long-range indoor communications.\nLoRaWAN performance examinations in an indoor setting, focusing on the signal strength and PDR across various floors of a building, were carried out in [46]. The indoor tests were conducted in a multi-story building with walls of gypsum and concrete ceilings. The study evaluated parameters such as RSSI and SNR across different SFs (SF7 to SF12). Results showed 100% packet delivery at all measured points except in the basement, where PDR decreased, with the lowest being 62% for SF7.\nHowever, lower SFs led to greater packet loss, particularly at distances beyond ... 200 roman_m from the base station. The research showed that while LoRaWAN can maintain indoor solid performance, its reliability diminishes as SF decreases and physical obstructions increase. Despite growing interest in using LoRaWAN for indoor applications, comprehensive experimental campaigns are still lacking.",
+      "age": "May 9, 2025",
+      "page_age": "2025-05-09T18:19:08",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "arXiv",
+        "url": "https://arxiv.org/html/2505.06375v1",
+        "long_name": "arxiv.org",
+        "img": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "arxiv.org",
+        "hostname": "arxiv.org",
+        "favicon": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv",
+        "path": "› html  › 2505.06375v1"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "LoRaWAN Path Loss Measurements in an Urban Scenario including Environmental Effects",
+      "url": "https://ouci.dntb.gov.ua/en/works/4vJGBNK4/",
+      "description": "To address these challenges, PF-ADR, an alternative ADR scheme, is proposed for LoRaWAN networks with mobile devices. PF-ADR employs a particle filter to estimate a representative SNR value, maintaining multiple hypotheses of the communication channel state to enable more precise parameter adjustments. Simulations conducted under various scalability conditions reveal that PF-ADR achieves up to 29.5% higher packet delivery ratio compared to M-ADR, and 52.17% more than the standard ADR, while demonstrating a 43.19% improvement in energy efficiency over MB-ADR.",
+      "content": "To address these challenges, PF-ADR, an alternative ADR scheme, is proposed for LoRaWAN networks with mobile devices. PF-ADR employs a particle filter to estimate a representative SNR value, maintaining multiple hypotheses of the communication channel state to enable more precise parameter adjustments. Simulations conducted under various scalability conditions reveal that PF-ADR achieves up to 29.5% higher packet delivery ratio compared to M-ADR, and 52.17% more than the standard ADR, while demonstrating a 43.19% improvement in energy efficiency over MB-ADR.\nSome previous measurement campaigns have been performed to characterize this phenomenon, primarily based on distance and frequency. However, previous works have shown that weather variations also impact PL, so using the conventional approaches and available datasets without capturing important environmental effects can lead to inaccurate predictions. Therefore, this paper delivers a data descriptor that includes a set of LoRaWAN measurements performed in Medellín, Colombia, including PL, distance, frequency, temperature, relative humidity, barometric pressure, particulate matter, and energy, among other things.\nAdditionally, the algorithm reduces packet loss due to signal degradation while maintaining scalable performance in large networks. These results highlight the potential of PF-ADR to enhance communication reliability and energy efficiency in dynamic mobile environments. ... Maram A. Alkhayyal, Almetwally M. Mostafa · Accurate path loss prediction is essential for optimizing Long-Range Wide-Area Network (LoRaWAN) performance.\nCallebaut, Characterization of LoRa point-to-point path loss: Measurement campaigns and modeling considering censored data, IEEE Internet Things J., № 7, с.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "DNTB",
+        "url": "https://ouci.dntb.gov.ua/en/works/4vJGBNK4/",
+        "long_name": "ouci.dntb.gov.ua",
+        "img": "https://imgs.search.brave.com/6kQ1pCjlxkJh3HVDO8jf28w94T8TpxT6wbOXhKjDB-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTNkNDI4NWI5/NWQyZTFkMjJjYjcz/ZmUyMjI2MjBmYTVh/NTMxZjM2MWJiZjdm/MWQwNGM4NmZjMzk5/ZmIwNThmNy9vdWNp/LmRudGIuZ292LnVh/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "ouci.dntb.gov.ua",
+        "hostname": "ouci.dntb.gov.ua",
+        "favicon": "https://imgs.search.brave.com/6kQ1pCjlxkJh3HVDO8jf28w94T8TpxT6wbOXhKjDB-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTNkNDI4NWI5/NWQyZTFkMjJjYjcz/ZmUyMjI2MjBmYTVh/NTMxZjM2MWJiZjdm/MWQwNGM4NmZjMzk5/ZmIwNThmNy9vdWNp/LmRudGIuZ292LnVh/Lw",
+        "path": "› en  › works  › 4vJGBNK4"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "DeepLoRa: Learning Accurate Path Loss Model for Long Distance Links in LPWAN",
+      "url": "https://cse.msu.edu/~caozc/papers/infocom21-liu.pdf",
+      "description": "distances are approximate 9.08km and 2km when the packet · delivery ratio is higher than 70%. Numerous other empirical · studies [4], [9], [20]–[24] have been conducted to measure · LoRa coverage ranges.",
+      "content": "distances are approximate 9.08km and 2km when the packet · delivery ratio is higher than 70%. Numerous other empirical · studies [4], [9], [20]–[24] have been conducted to measure · LoRa coverage ranges.\nin each indoor Wi-Fi measurement by Convolutional Neural · Networks (CNNs). According to our best knowledge, there · is no learning-based approaches for outdoor LoRa path loss ... THE TYPES OF LAND-COVERS. ... III. PROBLEM BACKGROUND AND MOTIVATION · A. LoRa Path Loss Estimation · Generally, actual signal path loss can be calculated by : ... Those terms are in dB(m) units. In practice, given a received LoRa packet, we can obtain\nalso emphasize the heterogeneity of LoRa links in the same · area. So we need to elaborate per-link environment information ... Remote Sensing based Land-cover Recognition. Using · remote sensing frees researchers from tedious measurement\nLoRa links across a large area in outdoor scenarios.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "MSU CSE",
+        "url": "https://cse.msu.edu/~caozc/papers/infocom21-liu.pdf",
+        "long_name": "cse.msu.edu",
+        "img": "https://imgs.search.brave.com/HPTyxzRSX23iu1QnCM01IkLnP7quomrUk3Nrnk9kY84/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzljMTIxODlk/MDdiZjYxYzMwNjU0/MWVmZDBkYWY2NjAz/Mzc5YjViOWRiNjFm/MjE3NzgxMzJlNzQz/MGUwODk3OC9jc2Uu/bXN1LmVkdS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cse.msu.edu",
+        "hostname": "cse.msu.edu",
+        "favicon": "https://imgs.search.brave.com/HPTyxzRSX23iu1QnCM01IkLnP7quomrUk3Nrnk9kY84/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzljMTIxODlk/MDdiZjYxYzMwNjU0/MWVmZDBkYWY2NjAz/Mzc5YjViOWRiNjFm/MjE3NzgxMzJlNzQz/MGUwODk3OC9jc2Uu/bXN1LmVkdS8",
+        "path": "› ~caozc  › papers  › infocom21-liu.pdf"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "LoRa point-to-point path loss packet delivery ratio measurement campaign",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.975,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "LoRa point-to-point path loss packet delivery ratio measurement campaign",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "Characterization of LoRa Point-to-Point Path-Loss: Measurement Campaigns and Modeling Considering Censored Data | Request PDF",
+          "url": "https://www.researchgate.net/publication/337301203_Characterization_of_LoRa_Point-to-Point_Path-Loss_Measurement_Campaigns_and_Modeling_Considering_Censored_Data",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The average measured packet success delivery ratio for this case was 96.7%, even with no acknowledgements and retransmissions used. The campus was covered also with lower spreading factors with 2 dBm transmit power, but considerably more packets ...",
+          "page_age": "2019-11-15T00:00:00",
+          "profile": {
+            "name": "ResearchGate",
+            "url": "https://www.researchgate.net/publication/337301203_Characterization_of_LoRa_Point-to-Point_Path-Loss_Measurement_Campaigns_and_Modeling_Considering_Censored_Data",
+            "long_name": "researchgate.net",
+            "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "researchgate.net",
+            "hostname": "www.researchgate.net",
+            "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+            "path": "› publication  › 337301203_Characterization_of_LoRa_Point-to-Point_Path-Loss_Measurement_Campaigns_and_Modeling_Considering_Censored_Data"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/NA3UWQdok5rp6uI2kyF0cHLVZy0QBikNBsFv8yDMrrc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC9pbWFnZXMv/dGVtcGxhdGUvZGVm/YXVsdF9wdWJsaWNh/dGlvbl9wcmV2aWV3/X2xhcmdlLnBuZw",
+            "original": "https://www.researchgate.net/images/template/default_publication_preview_large.png",
+            "logo": false
+          },
+          "age": "November 15, 2019",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Gilles Callebaut",
+                "url": "https://www.researchgate.net/profile/Gilles-Callebaut",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/pz26t_rrp21cAPiy2QE0p5mMoEJywxF6JOcd4RmP8-k/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS82MzQ4NzY4/NTIxOTk0MjctMTUy/ODM3Nzg0NTMwNF9R/NjQvR2lsbGVzLUNh/bGxlYmF1dC5qcGc",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/634876852199427-1528377845304_Q64/Gilles-Callebaut.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Liesbet van der perre",
+                "url": "https://www.researchgate.net/profile/Liesbet-Van-Der-Perre",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/ZjaCLjqNlCP3Nf46XQGmYWprw_mg-hL96ATjMUlgPJc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS8yNzI2NDkz/ODEyMTYyNTctMTQ0/MjAxNjA4NjA3NV9R/NjQvTGllc2JldC1W/YW4tRGVyLVBlcnJl/LmpwZw",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/272649381216257-1442016086075_Q64/Liesbet-Van-Der-Perre.jpg"
+                }
+              }
+            ],
+            "date": "Nov 15, 2019",
+            "publisher": {
+              "type": "organization",
+              "name": "IEEE",
+              "url": "https://www.researchgate.net/unknown",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/UjSGsXBrrrqKndxfeOp5EGUdM15aJCsZ_BUDIJcDQhs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC91bmtub3du",
+                "original": "https://www.researchgate.net/unknown"
+              }
+            }
+          },
+          "extra_snippets": [
+            "We have conducted an extensive numerical evaluation by using the LoRaEnergySim simulator, and compared MAGELLAN against various routing approaches, including LMHP, a state-of-the-art routing algorithm. The results show that MAGELLAN achieves a superior performance in terms of energy-fairness and Packet Delivery Ratio (PDR), therefore improving the network lifetime and performance.",
+            "The second, Beacon-Forwarding LoRaWAN with Channel-Aware Path Selection (BF-LoRaCAPS), maintains continuous device awareness using a scheduling mechanism and integrates the OSR-DLM strategy for further optimisation. We evaluate these protocols through extensive simulations that model the detrimental effects of severe weather on data transmission, validated by analysing varied parameter settings in massive Maritime of Things (MoT) scenarios. Key performance metrics, including packet delivery ratio, end-to-end latency, throughput, and traffic intensity for each hop-ratio, are analysed.",
+            "Our observations show that in urban areas, LoRa requires dense deployment of LoRa gateways (GWs) to ensure that indoor LoRa devices can successfully transfer data back to remote GWs. Wireless mesh networking is a solution for increasing communication range and packet delivery ratio (PDR) without the need to install additional GWs.",
+            "The average measured packet success delivery ratio for this case was 96.7%, even with no acknowledgements and retransmissions used. The campus was covered also with lower spreading factors with 2 dBm transmit power, but considerably more packets were lost. For example with spreading factor 8, 13.1% of the transmitted packets were lost. Aside of this, we have investigated the power consumption of the LoRa compliant transceiver with different physical layer settings."
+          ]
+        },
+        {
+          "title": "[PDF] Characterization of LoRa Point-to-Point Path Loss: Measurement Campaigns and Modeling Considering Censored Data | Semantic Scholar",
+          "url": "https://www.semanticscholar.org/paper/Characterization-of-LoRa-Point-to-Point-Path-Loss:-Callebaut-Perre/d1294e6c7e513c489f13568ffeb05814eb5cf180",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The packet error ratio is determined based on the estimated PL parameters to evaluate the performance of P2P links, and despite the unfavorable radio propagation in the urban scenario and the densely forested terrain, a maximum range of 1 km ...",
+          "profile": {
+            "name": "Semantic Scholar",
+            "url": "https://www.semanticscholar.org/paper/Characterization-of-LoRa-Point-to-Point-Path-Loss:-Callebaut-Perre/d1294e6c7e513c489f13568ffeb05814eb5cf180",
+            "long_name": "semanticscholar.org",
+            "img": "https://imgs.search.brave.com/K-sZ3Vgcj9LFjkcTUpjjK40LWCyX6WutMxHJiE7XYPI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGI3NTZiOWVj/YTE5N2MzYTNhYzA2/NWEyMzQwMzA5N2Yy/NGY3MjhhYTcxYmI2/YWQ3NjdjNDk5NGE2/NmUyYTdlYi93d3cu/c2VtYW50aWNzY2hv/bGFyLm9yZy8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "semanticscholar.org",
+            "hostname": "www.semanticscholar.org",
+            "favicon": "https://imgs.search.brave.com/K-sZ3Vgcj9LFjkcTUpjjK40LWCyX6WutMxHJiE7XYPI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGI3NTZiOWVj/YTE5N2MzYTNhYzA2/NWEyMzQwMzA5N2Yy/NGY3MjhhYTcxYmI2/YWQ3NjdjNDk5NGE2/NmUyYTdlYi93d3cu/c2VtYW50aWNzY2hv/bGFyLm9yZy8",
+            "path": "  › papers  › characterization of lora point-to-point path loss: measurement campaigns and modeling considering censored data"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/A3fktYElQA3Sms9BB_yLvcb2tzI-8lZyB7LvUT1A-us/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c2VtYW50aWNzY2hv/bGFyLm9yZy9pbWcv/c2VtYW50aWNfc2No/b2xhcl9vZy5wbmc",
+            "original": "https://www.semanticscholar.org/img/semantic_scholar_og.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "The packet error ratio is determined based on the estimated PL parameters to evaluate the performance of P2P links, and despite the unfavorable radio propagation in the urban scenario and the densely forested terrain, a maximum range of 1 km is achieved. Low-power wide-area technologies have demonstrated their usefulness in a wide variety of Internet of Things applications.",
+            "A data descriptor is delivered that includes a set of LoRaWAN measurements performed in Medellín, Colombia, including PL, distance, frequency, temperature, relative humidity, barometric pressure, particulate matter, and energy, among other things, which can be used by designers who need to fit highly accurate PL models.Expand",
+            "Simulation results show that a LoRa network can scale well, achieving packet success rates above 95% in presence of a number of end devices in the order of 104.5% in typical urban scenario.Expand",
+            "@article{Callebaut2020CharacterizationOL, title={Characterization of LoRa Point-to-Point Path Loss: Measurement Campaigns and Modeling Considering Censored Data}, author={Gilles Callebaut and Liesbet Van der Perre}, journal={IEEE Internet of Things Journal}, year={2020}, volume={7}, pages={1910-1918}, url={https://api.semanticscholar.org/CorpusID:209051236} } Gilles Callebaut, L. Van der Perre · Published in IEEE Internet of Things… 1 March 2020 · Engineering, Computer Science, Environmental Science ... The packet error ratio is determined based on the estimated PL parameters to evaluate the performance of P2P links, and despite the unfavorable radio propagation in the urban scenario and the densely forested terrain, a maximum range of 1 km is achieved.Expand"
+          ]
+        },
+        {
+          "title": "Characterization of LoRa Point-to-Point Path Loss: Measurement Campaigns and Modeling Considering Censored Data | IEEE Journals & Magazine | IEEE Xplore",
+          "url": "https://ieeexplore.ieee.org/document/8902126/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Low-power wide-area technologies have demonstrated their usefulness in a wide variety of Internet of Things applications. New applications are emerging, requiring a mesh or point-to-point (P2P) topology, in contrast to the conventional star-of-stars topology.",
+          "profile": {
+            "name": "IEEE Xplore",
+            "url": "https://ieeexplore.ieee.org/document/8902126/",
+            "long_name": "ieeexplore.ieee.org",
+            "img": "https://imgs.search.brave.com/Pr3gNu-kVf-oded6UAgVYC0mXlyfwEL8yNiKsplOmlY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQyMTA0Y2Fk/OWI3Mzc5ODMwOGM5/MjM0ODJjZTBiNzQx/ZDE4OWI0YTAxMmE4/NmYwZWI5NjUwZjhj/MGRlY2MzOS9pZWVl/eHBsb3JlLmllZWUu/b3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "ieeexplore.ieee.org",
+            "hostname": "ieeexplore.ieee.org",
+            "favicon": "https://imgs.search.brave.com/Pr3gNu-kVf-oded6UAgVYC0mXlyfwEL8yNiKsplOmlY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQyMTA0Y2Fk/OWI3Mzc5ODMwOGM5/MjM0ODJjZTBiNzQx/ZDE4OWI0YTAxMmE4/NmYwZWI5NjUwZjhj/MGRlY2MzOS9pZWVl/eHBsb3JlLmllZWUu/b3JnLw",
+            "path": "› document  › 8902126"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/1Yj1c8K5zP1AWFtkhZFjcosmrsRFLx0OY2nEczMxSmA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pZWVl/eHBsb3JlLmllZWUu/b3JnL2Fzc2V0cy9p/bWcvaWVlZV9sb2dv/X3NtZWRpYV8yMDBY/MjAwLnBuZw",
+            "original": "https://ieeexplore.ieee.org/assets/img/ieee_logo_smedia_200X200.png",
+            "logo": true
+          },
+          "extra_snippets": [
+            "Low-power wide-area technologies have demonstrated their usefulness in a wide variety of Internet of Things applications. New applications are emerging, requiring a mesh or point-to-point (P2P) topology, in contrast to the conventional star-of-stars topology."
+          ]
+        },
+        {
+          "title": "(PDF) Path Loss in Urban LoRa Networks: A Large-Scale Measurement Study",
+          "url": "https://www.researchgate.net/publication/354653955_Path_Loss_in_Urban_LoRa_Networks_A_Large-Scale_Measurement_Study",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The packet error ratio is determined based on the estimated path loss parameters to evaluate the performance of point-to-point links. Even in these adverse environments, 80the transmitted packets are successfully received at a distance of ...",
+          "page_age": "2021-09-16T00:00:00",
+          "profile": {
+            "name": "ResearchGate",
+            "url": "https://www.researchgate.net/publication/354653955_Path_Loss_in_Urban_LoRa_Networks_A_Large-Scale_Measurement_Study",
+            "long_name": "researchgate.net",
+            "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "researchgate.net",
+            "hostname": "www.researchgate.net",
+            "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+            "path": "› publication  › 354653955_Path_Loss_in_Urban_LoRa_Networks_A_Large-Scale_Measurement_Study"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/vCzdlTiA64_9FOTLRJh1QBMJS7Bpy4T26LlpoEJiP0o/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/cHVibGljYXRpb24v/MzU0NjUzOTU1X1Bh/dGhfTG9zc19pbl9V/cmJhbl9Mb1JhX05l/dHdvcmtzX0FfTGFy/Z2UtU2NhbGVfTWVh/c3VyZW1lbnRfU3R1/ZHkvbGlua3MvNjE0/NWEyNGM1MTlhMWEz/ODFmNjkxOTMzL2xh/cmdlcHJldmlldy5w/bmc",
+            "original": "https://i1.rgstatic.net/publication/354653955_Path_Loss_in_Urban_LoRa_Networks_A_Large-Scale_Measurement_Study/links/6145a24c519a1a381f691933/largepreview.png",
+            "logo": false
+          },
+          "age": "September 16, 2021",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Michael Rademacher",
+                "url": "https://www.researchgate.net/profile/Michael-Rademacher-2",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/G4ByGQLR0Qlg_iWja8OMfvk_hSR2aYI-Og8tjq3zLK4/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS8xMTQzMTI4/MTIyMzQwOTUzNC0x/NzA3NzQ4NzQ1NTA4/X1E2NC9NaWNoYWVs/LVJhZGVtYWNoZXIt/Mi5qcGc",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/11431281223409534-1707748745508_Q64/Michael-Rademacher-2.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Hendrik Linka",
+                "url": "https://www.researchgate.net/profile/Hendrik-Linka",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/ZmnjnyIfTGBYxKvypv-rQN3iODJnk1sYSaLKHsvyl1w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS82MzQ4NDgy/NzIyMDc4NzMtMTUy/ODM3MTAzMTE5MF9R/NjQvSGVuZHJpay1M/aW5rYS5qcGc",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/634848272207873-1528371031190_Q64/Hendrik-Linka.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Thorsten Horstmann",
+                "url": "https://www.researchgate.net/profile/Thorsten-Horstmann",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/5jdanc3fs81vgQBY3UQGDJ2wAFoDb6oMFimjRZ-ywAw/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS8xMDA3MDQ1/ODgwODUyNDg1LTE2/MTcxMDk4NTYxMjJf/UTY0L1Rob3JzdGVu/LUhvcnN0bWFubi5q/cGc",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/1007045880852485-1617109856122_Q64/Thorsten-Horstmann.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Martin Henze",
+                "url": "https://www.researchgate.net/profile/Martin-Henze-2",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/HxVyoswr7zV1pQ4_teaxKKenHeJoVyhXsSV1Nh2Ove8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS8xMTQzMTI4/MTExNDIyMTQyOC0x/Njc0MzMyNDQyNDA4/X1E2NC9NYXJ0aW4t/SGVuemUtMi5qcGc",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/11431281114221428-1674332442408_Q64/Martin-Henze-2.jpg"
+                }
+              }
+            ],
+            "date": "Sep 16, 2021",
+            "publisher": {
+              "type": "organization",
+              "name": "unknown",
+              "url": "https://www.researchgate.net/unknown",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/UjSGsXBrrrqKndxfeOp5EGUdM15aJCsZ_BUDIJcDQhs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC91bmtub3du",
+                "original": "https://www.researchgate.net/unknown"
+              }
+            }
+          },
+          "extra_snippets": [
+            "The packet error ratio is determined based on the estimated path loss parameters to evaluate the performance of point-to-point links. Even in these adverse environments, 80the transmitted packets are successfully received at a distance of approximately 200 m. Moreover, a range of over 4km is observed in the line-of-sight scenario. Despite the unfavorable radio propagation in the urban scenario and the densely forested terrain, a maximum range of 1km is achieved. ... Power Distribution Monitoring Using LoRa: Coverage Analysis in Suburban Areas.",
+            "discuss certain aspects of previous campaigns such as sample · size, post-processing of samples, and lack of veriﬁcation of · GPS and Received Packet Power (RPP) values. We survey previous work on real-world measurement cam- paigns and an associated evaluation of different PL models for · LoRa networks operating at ≈868 MHz.",
+            "campaign over a period of 230 days. If a truck (detected by · the accelerometer of our sensor) moves, the GPS is switched · on. As soon as the location has been determined, a LoRa · packet with the determined GPS coordinates is sent to all",
+            "[7] G. Callebaut and L. Van der Perre, “Characterization of LoRa Point-to- Point Path Loss: Measurement Campaigns and Modeling Considering"
+          ]
+        },
+        {
+          "title": "1 Characterization of LoRa Point-to-Point Path-Loss:",
+          "url": "https://lirias.kuleuven.be/server/api/core/bitstreams/ed79c4b2-0bc8-4c09-9da9-80f3b0d75426/content",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Experimental campaigns in three different · environments were performed with this set-up. Secondly, path · loss models are ﬁtted based on the measured censored data in · realistic environments with non-uniform numbers of samples · with respect to the distance. Finally, the packet error ratio · (PER) for P2P LoRa links is determined to evaluate the link",
+          "profile": {
+            "name": "Kuleuven",
+            "url": "https://lirias.kuleuven.be/server/api/core/bitstreams/ed79c4b2-0bc8-4c09-9da9-80f3b0d75426/content",
+            "long_name": "lirias.kuleuven.be",
+            "img": "https://imgs.search.brave.com/Waa993bSX_mX8T5OqID_96ldXDnz-rWtBye2H6qKMYw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDQ1ODU3Mjdk/ZmJhMmM0ZGMzMDk0/OGEyMjhhM2ZlYzM4/YTQxYjNiZDM4YTg0/NmJhYmVlMmM3OTg0/YWVmZWJlNS9saXJp/YXMua3VsZXV2ZW4u/YmUv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "lirias.kuleuven.be",
+            "hostname": "lirias.kuleuven.be",
+            "favicon": "https://imgs.search.brave.com/Waa993bSX_mX8T5OqID_96ldXDnz-rWtBye2H6qKMYw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDQ1ODU3Mjdk/ZmJhMmM0ZGMzMDk0/OGEyMjhhM2ZlYzM4/YTQxYjNiZDM4YTg0/NmJhYmVlMmM3OTg0/YWVmZWJlNS9saXJp/YXMua3VsZXV2ZW4u/YmUv",
+            "path": "› server  › api  › core  › bitstreams  › ed79c4b2-0bc8-4c09-9da9-80f3b0d75426  › content"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Experimental campaigns in three different · environments were performed with this set-up. Secondly, path · loss models are ﬁtted based on the measured censored data in · realistic environments with non-uniform numbers of samples · with respect to the distance. Finally, the packet error ratio · (PER) for P2P LoRa links is determined to evaluate the link",
+            "TABLE I: Sensitivity of the LoRa demodulator (BW125 kHz) expressed in received signal strength (RSS) and signal-to-noise ... III. MEASUREMENT SETUP AND PROCEDURE · We have realized an experimental setup with low-height trans- mitters and receivers, representative for use cases where low · complexity antenna and gateway installations are required. Multiple experimental campaigns have been conducted to",
+            "measurement campaign conducted in another city. Both the · path loss models and the PER can be adopted in network · planning and in simulations to design new MAC protocols. A · few illustrative examples of successful P2P LoRa deployments ... This paper is further organized as follows. LoRa P2P systems",
+            "been utilized in the measurement campaigns: either a quarter · wave helical antenna [23] or a PCB antenna [24]. Both · antennas feature a quasi-omnidirectional radiation pattern with · 2Note, that the range can be further extended by increasing the height of · both nodes and creating a line-of-sight (LoS) connection. By doing so, we · were able to receive packets at a distance of over 40 km3."
+          ]
+        },
+        {
+          "title": "LoRaWAN LoRa and LR-FHSS: outdoor PDR and RSSI measurements",
+          "url": "https://zenodo.org/records/17201713",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "An outdoor campaign was conducted in urban and semi-urban scenarios in and near the city of Castelldefels using a complete LR-FHSS-enabled network and an end-device transmitting at LoRa and LR-FHSS data rates (DRs). Measurements were collected along four diverse paths, capturing key metrics such as Received Signal Strength Indicator (RSSI) and Packet Delivery Ratio (PDR).",
+          "page_age": "2025-11-26T10:35:23",
+          "profile": {
+            "name": "Zenodo",
+            "url": "https://zenodo.org/records/17201713",
+            "long_name": "zenodo.org",
+            "img": "https://imgs.search.brave.com/TPjptHmupRgxDAa0WHYEZqvs4vrQbcdVghMEYbBGTfc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTFjMDcyMjI1/MmNhNDk1OGYzNDBm/ODExMTkxOGU2YzNk/NzFhODhjNjIzN2Rj/MTRiN2M5M2U0MDkz/NTI2OWRkNi96ZW5v/ZG8ub3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "zenodo.org",
+            "hostname": "zenodo.org",
+            "favicon": "https://imgs.search.brave.com/TPjptHmupRgxDAa0WHYEZqvs4vrQbcdVghMEYbBGTfc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTFjMDcyMjI1/MmNhNDk1OGYzNDBm/ODExMTkxOGU2YzNk/NzFhODhjNjIzN2Rj/MTRiN2M5M2U0MDkz/NTI2OWRkNi96ZW5v/ZG8ub3JnLw",
+            "path": "› records  › 17201713"
+          },
+          "age": "November 26, 2025",
+          "extra_snippets": [
+            "Overview: This is the raw data of an outdoor coverage measurement campaign of an end-device implementing the novel LoRaWAN LR-FHSS mechanism. The measurements have been made implementing a complete network, which includes a gateway, end-device and network server all implementing the LoRaWAN LR-FHSS technology.",
+            "This dataset is part of a published journal article: R. Sanchez-Vital, L. Casals, B. Jara-Ortínez, J. Bodvanski, R. Vidal, E. Garcia-Villegas, and C. Gomez, “Experimental Evaluation of LR-FHSS: A Comparison with LoRa,” Sensors, vol. 25, no. 23, Art. no. 7209, 2025, doi: 10.3390/s25237209. The manuscript provides experimental Received Signal Strength Indicator (RSSI) and Packet Delivery Ratio (PDR) measurements collected around the Castelldefels city surroundings. Apart from the data representation, the article also provides a path loss analysis and an open issues discussion.",
+            "An outdoor campaign was conducted in urban and semi-urban scenarios in and near the city of Castelldefels using a complete LR-FHSS-enabled network and an end-device transmitting at LoRa and LR-FHSS data rates (DRs). Measurements were collected along four diverse paths, capturing key metrics such as Received Signal Strength Indicator (RSSI) and Packet Delivery Ratio (PDR)."
+          ]
+        },
+        {
+          "title": "(IJACSA) International Journal of Advanced Computer Science and Applications,",
+          "url": "https://thesai.org/Downloads/Volume10No10/Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "and 4) to measure maximum distance with the highest · successful data transmission in mesh and star network. 1) PDR in Non-line-of-sight: We have tested our proposed · LoRa based network by sending 38 data packet and a duration",
+          "profile": {
+            "name": "IJACSA",
+            "url": "https://thesai.org/Downloads/Volume10No10/Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf",
+            "long_name": "thesai.org",
+            "img": "https://imgs.search.brave.com/qz83RLthXBioUexyxbwuZ_khk7aJpgq_oVXUQqP0HmE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMTIxOTBjM2Zk/OTc3NjNkZTIwNjg1/NzZjNTdlYjRiZTNl/ODIxN2MyNWZhMjM5/M2IzMjllYjQwYmI5/MDg5MmQ5YS90aGVz/YWkub3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "thesai.org",
+            "hostname": "thesai.org",
+            "favicon": "https://imgs.search.brave.com/qz83RLthXBioUexyxbwuZ_khk7aJpgq_oVXUQqP0HmE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMTIxOTBjM2Zk/OTc3NjNkZTIwNjg1/NzZjNTdlYjRiZTNl/ODIxN2MyNWZhMjM5/M2IzMjllYjQwYmI5/MDg5MmQ5YS90aGVz/YWkub3JnLw",
+            "path": "› Downloads  › Volume10No10  › Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "radio signals. In this research, we proposed the LoRa-based · mesh network to improve the packet delivery ratio in tropical",
+            "Semtech SX1278 LoRa RF 430MHz transceiver with a 1.9dBi · gain helical antenna. Nodes and gateways are powered by a 5- (IJACSA) International Journal of Advanced Computer Science and Applications, Vol. 10, No. 10, 2019 ... V USB adapter. This system achieves an average packet",
+            "LoRa Wireless Mesh Network System: Design and Evaluation”, IEEE · Transaction on Instrumentation and Measurement, Vol.",
+            "the gradual increase of rain increases the amount of packet · loss gradually. It shows the decrease of PDR value from 100% to 89.50% as the rain increased from light to heavy rain. Fig. 5. PDR in 400m Non-Line-of-Sight. Fig. 6. PDR in 400m Line-of-Sight. ... Fig. 7. PDR in Rain at 200m with Mesh Network. We have installed our network at the same place where we · installed our network during rain experiments to measure the"
+          ]
+        },
+        {
+          "title": "A Comprehensive Data Description for LoRaWAN Path Loss Measurements in an Indoor Office Setting: Effects of Environmental Factors",
+          "url": "https://arxiv.org/html/2505.06375v1",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "LoRaWAN performance examinations ... SNR across different SFs (SF7 to SF12). Results showed 100% packet delivery at all measured points except in the basement, where PDR decreased, with the lowest being 62% for SF7....",
+          "page_age": "2025-05-09T18:19:08",
+          "profile": {
+            "name": "arXiv",
+            "url": "https://arxiv.org/html/2505.06375v1",
+            "long_name": "arxiv.org",
+            "img": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "arxiv.org",
+            "hostname": "arxiv.org",
+            "favicon": "https://imgs.search.brave.com/l36MWBCdhb-teoPlxGGMWEenj3njVas--CoLjN2ciHU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjcxZDU5ZmZl/ZmIwNzY4NTUyZDg1/ZTVjNGNhMzE2NjUz/MjljMzQwZTA0MThm/NTdjN2Q0N2I3NjFm/ZjIwZmU5MC9hcnhp/di5vcmcv",
+            "path": "› html  › 2505.06375v1"
+          },
+          "age": "May 9, 2025",
+          "extra_snippets": [
+            "If the SNR falls below the required threshold specified in Table II, packets cannot be decoded successfully. Understanding these factors is essential for optimizing node placement and network configuration to ensure robust and reliable data transmission in LoRaWAN networks, thus improving the packet delivery ratio (PDR) in high-interference places of deployment.",
+            "Close-In (CI) and Floating-Intercept (FI) models were used to analyze path loss, with LoRa performing better than Zigbee, particularly in more obstructed areas. The CI model showed LoRa with a path loss slope of 1.96 in NLoS-1 and 3.01 in NLoS-2. LoRa maintained stronger signal strength and higher packet delivery rates than Zigbee, making it more suitable for long-range indoor communications.",
+            "LoRaWAN performance examinations in an indoor setting, focusing on the signal strength and PDR across various floors of a building, were carried out in [46]. The indoor tests were conducted in a multi-story building with walls of gypsum and concrete ceilings. The study evaluated parameters such as RSSI and SNR across different SFs (SF7 to SF12). Results showed 100% packet delivery at all measured points except in the basement, where PDR decreased, with the lowest being 62% for SF7.",
+            "However, lower SFs led to greater packet loss, particularly at distances beyond ... 200 roman_m from the base station. The research showed that while LoRaWAN can maintain indoor solid performance, its reliability diminishes as SF decreases and physical obstructions increase. Despite growing interest in using LoRaWAN for indoor applications, comprehensive experimental campaigns are still lacking."
+          ]
+        },
+        {
+          "title": "LoRaWAN Path Loss Measurements in an Urban Scenario including Environmental Effects",
+          "url": "https://ouci.dntb.gov.ua/en/works/4vJGBNK4/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "To address these challenges, PF-ADR, an alternative ADR scheme, is proposed for LoRaWAN networks with mobile devices. PF-ADR employs a particle filter to estimate a representative SNR value, maintaining multiple hypotheses of the communication channel state to enable more precise parameter adjustments. Simulations conducted under various scalability conditions reveal that PF-ADR achieves up to 29.5% higher packet delivery ratio compared to M-ADR, and 52.17% more than the standard ADR, while demonstrating a 43.19% improvement in energy efficiency over MB-ADR.",
+          "profile": {
+            "name": "DNTB",
+            "url": "https://ouci.dntb.gov.ua/en/works/4vJGBNK4/",
+            "long_name": "ouci.dntb.gov.ua",
+            "img": "https://imgs.search.brave.com/6kQ1pCjlxkJh3HVDO8jf28w94T8TpxT6wbOXhKjDB-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTNkNDI4NWI5/NWQyZTFkMjJjYjcz/ZmUyMjI2MjBmYTVh/NTMxZjM2MWJiZjdm/MWQwNGM4NmZjMzk5/ZmIwNThmNy9vdWNp/LmRudGIuZ292LnVh/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "ouci.dntb.gov.ua",
+            "hostname": "ouci.dntb.gov.ua",
+            "favicon": "https://imgs.search.brave.com/6kQ1pCjlxkJh3HVDO8jf28w94T8TpxT6wbOXhKjDB-c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTNkNDI4NWI5/NWQyZTFkMjJjYjcz/ZmUyMjI2MjBmYTVh/NTMxZjM2MWJiZjdm/MWQwNGM4NmZjMzk5/ZmIwNThmNy9vdWNp/LmRudGIuZ292LnVh/Lw",
+            "path": "› en  › works  › 4vJGBNK4"
+          },
+          "extra_snippets": [
+            "To address these challenges, PF-ADR, an alternative ADR scheme, is proposed for LoRaWAN networks with mobile devices. PF-ADR employs a particle filter to estimate a representative SNR value, maintaining multiple hypotheses of the communication channel state to enable more precise parameter adjustments. Simulations conducted under various scalability conditions reveal that PF-ADR achieves up to 29.5% higher packet delivery ratio compared to M-ADR, and 52.17% more than the standard ADR, while demonstrating a 43.19% improvement in energy efficiency over MB-ADR.",
+            "Some previous measurement campaigns have been performed to characterize this phenomenon, primarily based on distance and frequency. However, previous works have shown that weather variations also impact PL, so using the conventional approaches and available datasets without capturing important environmental effects can lead to inaccurate predictions. Therefore, this paper delivers a data descriptor that includes a set of LoRaWAN measurements performed in Medellín, Colombia, including PL, distance, frequency, temperature, relative humidity, barometric pressure, particulate matter, and energy, among other things.",
+            "Additionally, the algorithm reduces packet loss due to signal degradation while maintaining scalable performance in large networks. These results highlight the potential of PF-ADR to enhance communication reliability and energy efficiency in dynamic mobile environments. ... Maram A. Alkhayyal, Almetwally M. Mostafa · Accurate path loss prediction is essential for optimizing Long-Range Wide-Area Network (LoRaWAN) performance.",
+            "Callebaut, Characterization of LoRa point-to-point path loss: Measurement campaigns and modeling considering censored data, IEEE Internet Things J., № 7, с."
+          ]
+        },
+        {
+          "title": "DeepLoRa: Learning Accurate Path Loss Model for Long Distance Links in LPWAN",
+          "url": "https://cse.msu.edu/~caozc/papers/infocom21-liu.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "distances are approximate 9.08km and 2km when the packet · delivery ratio is higher than 70%. Numerous other empirical · studies [4], [9], [20]–[24] have been conducted to measure · LoRa coverage ranges.",
+          "profile": {
+            "name": "MSU CSE",
+            "url": "https://cse.msu.edu/~caozc/papers/infocom21-liu.pdf",
+            "long_name": "cse.msu.edu",
+            "img": "https://imgs.search.brave.com/HPTyxzRSX23iu1QnCM01IkLnP7quomrUk3Nrnk9kY84/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzljMTIxODlk/MDdiZjYxYzMwNjU0/MWVmZDBkYWY2NjAz/Mzc5YjViOWRiNjFm/MjE3NzgxMzJlNzQz/MGUwODk3OC9jc2Uu/bXN1LmVkdS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cse.msu.edu",
+            "hostname": "cse.msu.edu",
+            "favicon": "https://imgs.search.brave.com/HPTyxzRSX23iu1QnCM01IkLnP7quomrUk3Nrnk9kY84/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzljMTIxODlk/MDdiZjYxYzMwNjU0/MWVmZDBkYWY2NjAz/Mzc5YjViOWRiNjFm/MjE3NzgxMzJlNzQz/MGUwODk3OC9jc2Uu/bXN1LmVkdS8",
+            "path": "› ~caozc  › papers  › infocom21-liu.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "in each indoor Wi-Fi measurement by Convolutional Neural · Networks (CNNs). According to our best knowledge, there · is no learning-based approaches for outdoor LoRa path loss ... THE TYPES OF LAND-COVERS. ... III. PROBLEM BACKGROUND AND MOTIVATION · A. LoRa Path Loss Estimation · Generally, actual signal path loss can be calculated by : ... Those terms are in dB(m) units. In practice, given a received LoRa packet, we can obtain",
+            "distances are approximate 9.08km and 2km when the packet · delivery ratio is higher than 70%. Numerous other empirical · studies [4], [9], [20]–[24] have been conducted to measure · LoRa coverage ranges.",
+            "also emphasize the heterogeneity of LoRa links in the same · area. So we need to elaborate per-link environment information ... Remote Sensing based Land-cover Recognition. Using · remote sensing frees researchers from tedious measurement",
+            "LoRa links across a large area in outdoor scenarios."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

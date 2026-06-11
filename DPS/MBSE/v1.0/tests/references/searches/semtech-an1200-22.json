@@ -1,0 +1,703 @@
+{
+  "query": "Semtech AN1200.22 LoRa modulation basics link budget SX1276 PDF",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "Revision 2, May 2015 www.semtech.com P a g e | 1 ©2015 Semtech Corporation",
+      "url": "http://wiki.lahoud.fr/lib/exe/fetch.php?media=an1200.22.pdf",
+      "description": "From equation 3 it can be seen that to transmit error free information in a channel of fixed noise-to- · A CSS PHY was adopted by the IEEE for the Low-Rate Wireless Personal Area Networks (LR-WPANs) · Semtech’s LoRa modulation addresses all of the issues associated with DSSS systems to ...",
+      "content": "From equation 3 it can be seen that to transmit error free information in a channel of fixed noise-to- · A CSS PHY was adopted by the IEEE for the Low-Rate Wireless Personal Area Networks (LR-WPANs) · Semtech’s LoRa modulation addresses all of the issues associated with DSSS systems to ...\nSub-GHz LoRa sensitivity is as per the specification in both the SX1272 and SX1276 datasheets [3], [4]\nFigure 8: LoRa vs FSK Selectivity in the vicinity of an AM interfering Signal ..............................................\nLoRa is a PHY layer implementation and is agnostic with to higher-layer implementations.\nLoRa to coexist and interoperate with existing network architectures.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Lahoud",
+        "url": "http://wiki.lahoud.fr/lib/exe/fetch.php?media=an1200.22.pdf",
+        "long_name": "wiki.lahoud.fr",
+        "img": "https://imgs.search.brave.com/fpt8ztkKCkxf4wTjwj9iR2NAxIRbQuiDpqZidx4FG2Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQ5NzE1ZTY4/YjYxNjFmZWRiZTcw/NjEyNmZkZjAyMzQx/MzM0YTViMGE4NGFm/MmZiNzFhZjhhNTgw/OTU4NDEzYi93aWtp/LmxhaG91ZC5mci8"
+      },
+      "meta_url": {
+        "scheme": "http",
+        "netloc": "wiki.lahoud.fr",
+        "hostname": "wiki.lahoud.fr",
+        "favicon": "https://imgs.search.brave.com/fpt8ztkKCkxf4wTjwj9iR2NAxIRbQuiDpqZidx4FG2Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQ5NzE1ZTY4/YjYxNjFmZWRiZTcw/NjEyNmZkZjAyMzQx/MzM0YTViMGE4NGFm/MmZiNzFhZjhhNTgw/OTU4NDEzYi93aWtp/LmxhaG91ZC5mci8",
+        "path": "› lib  › exe  › fetch.php"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "AN1200 22 Semtech LoRa Basics v2 STD PDF | PDF | Modulation | Signal To Noise Ratio",
+      "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+      "description": "8 References: [1]. Semtech Application Note AN1200.13, “SX1272/3/6/7/8: LoRa Modem Designer’s Guide” ([Link] [2]. Semtech Application Note AN1200.17, “SX1272/3/6/7/8: LoRa Energy Consumption Design” ([Link] [3]. SX1272 Datasheet ([Link] [4]. SX1276 Datasheet ([Link] [5]. Rappaport, “Wireless Communications Principals and Practices,” (Prentice-Hall) [6]. Xiong, “Digital Modulation Techniques, 2nd ed.,” (Artech House) [7]. Siwak, Bahreini, “Radiowave Propagation and Antennas, ” (Artech House) [8]. FCC Office of Engineering and Technology Laboratory Division “Guidance for",
+      "content": "8 References: [1]. Semtech Application Note AN1200.13, “SX1272/3/6/7/8: LoRa Modem Designer’s Guide” ([Link] [2]. Semtech Application Note AN1200.17, “SX1272/3/6/7/8: LoRa Energy Consumption Design” ([Link] [3]. SX1272 Datasheet ([Link] [4]. SX1276 Datasheet ([Link] [5]. Rappaport, “Wireless Communications Principals and Practices,” (Prentice-Hall) [6]. Xiong, “Digital Modulation Techniques, 2nd ed.,” (Artech House) [7]. Siwak, Bahreini, “Radiowave Propagation and Antennas, ” (Artech House) [8]. FCC Office of Engineering and Technology Laboratory Division “Guidance for\nScribd is the world's largest social reading and publishing site.\n©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "creative_work",
+      "profile": {
+        "name": "Scribd",
+        "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+        "long_name": "scribd.com",
+        "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "scribd.com",
+        "hostname": "www.scribd.com",
+        "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+        "path": "› document  › 440591273  › AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/K4zpKul4EhJIf0VjfDzevzpGvXSQSecT9Ecm_K9mqeI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDQwNTkxMjczLzE0/OXgxOTgvMzA0ZjI0/MWM3Ny8xNTc2OTYy/MTIzP3Y9MQ",
+        "original": "https://imgv2-2-f.scribdassets.com/img/document/440591273/149x198/304f241c77/1576962123?v=1",
+        "logo": false
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Semtech: AN1200.22 - LoRa Modulation Basics | Information Technologies for Security",
+      "url": "https://it4sec.org/article/semtech-an120022-lora-modulation-basics",
+      "description": "© IT for Security Department, Institute of ICT, 2010 -",
+      "content": "© IT for Security Department, Institute of ICT, 2010 -",
+      "age": "October 21, 2020",
+      "page_age": "2020-10-21T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "It4sec",
+        "url": "https://it4sec.org/article/semtech-an120022-lora-modulation-basics",
+        "long_name": "it4sec.org",
+        "img": "https://imgs.search.brave.com/t9VERpvn4Q_Q-N2a3XW3DX2M3MB_oiIwqZmCKRE2SDk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGMxYTcyMTJk/ZGU3NGJiZDFjODEy/YjhjN2U2OTU1ZDBm/MjVlN2FiNjY3ZmI3/NGFlNjExMDcyNTE2/M2JmZGFkNy9pdDRz/ZWMub3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "it4sec.org",
+        "hostname": "it4sec.org",
+        "favicon": "https://imgs.search.brave.com/t9VERpvn4Q_Q-N2a3XW3DX2M3MB_oiIwqZmCKRE2SDk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGMxYTcyMTJk/ZGU3NGJiZDFjODEy/YjhjN2U2OTU1ZDBm/MjVlN2FiNjY3ZmI3/NGFlNjExMDcyNTE2/M2JmZGFkNy9pdDRz/ZWMub3JnLw",
+        "path": "› article  › semtech-an120022-lora-modulation-basics"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "Find Product Documentation",
+      "url": "https://www.semtech.com/uploads/documents/an1200.22.pdf",
+      "description": "Helpful tips for finding updated Semtech product documentation.",
+      "content": "Helpful tips for finding updated Semtech product documentation.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Semtech",
+        "url": "https://www.semtech.com/uploads/documents/an1200.22.pdf",
+        "long_name": "semtech.com",
+        "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "semtech.com",
+        "hostname": "www.semtech.com",
+        "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+        "path": "› uploads  › documents  › an1200.22.pdf"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "semtech.com/LoRa Long Range, Low Power Consumption",
+      "url": "https://www.semtech.com/uploads/design-support/SEMTECH_LORA_PG.pdf",
+      "description": "the SX1262 and SX1268 can transmit up to +22dBm with highly efficient integrated power amplifiers. ... The SX1276/78 transceivers features the LoRa long range modem that provides ultra-long range spread spectrum communication",
+      "content": "the SX1262 and SX1268 can transmit up to +22dBm with highly efficient integrated power amplifiers. ... The SX1276/78 transceivers features the LoRa long range modem that provides ultra-long range spread spectrum communication",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Semtech",
+        "url": "https://www.semtech.com/uploads/design-support/SEMTECH_LORA_PG.pdf",
+        "long_name": "semtech.com",
+        "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "semtech.com",
+        "hostname": "www.semtech.com",
+        "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+        "path": "› uploads  › design-support  › SEMTECH_LORA_PG.pdf"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "SX1276/77/78/79 www.semtech.com Page 1 WIRELESS & SENSING PRODUCTS DATASHEET",
+      "url": "https://cdn.sparkfun.com/assets/7/7/3/2/2/SX1276_Datasheet.pdf",
+      "description": "Figure 9. LoRa® Modulation Transmission Sequence.",
+      "content": "Figure 9. LoRa® Modulation Transmission Sequence.\n2.5.5. Electrical Specification for LoRa Modulation............................................................................................. 19 · 2.5.6. Digital Specification................................................................................................................................... 22\nLoRa Receiver Specification .........................................................................................................................19 · Table 11. Digital Specification .......................................................................................................................................22\nFigure 10. LoRa® Receive Sequence.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Sparkfun",
+        "url": "https://cdn.sparkfun.com/assets/7/7/3/2/2/SX1276_Datasheet.pdf",
+        "long_name": "cdn.sparkfun.com",
+        "img": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cdn.sparkfun.com",
+        "hostname": "cdn.sparkfun.com",
+        "favicon": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw",
+        "path": "› assets  › 7  › 7  › 3  › 2  › 2  › SX1276_Datasheet.pdf"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "LoRa Connect Transceiver, SX1276, 137MHz to 1020MHz | Semtech",
+      "url": "https://www.semtech.com/products/wireless-rf/lora-connect/sx1276",
+      "description": "Using Semtech’s patented LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20dBm power amplifier yields industry ...",
+      "content": "Using Semtech’s patented LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20dBm power amplifier yields industry ...\nUsing Semtech’s patented LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20dBm power amplifier yields industry leading link budget making it optimal for any application requiring range or robustness.\nLoRa also provides significant advantages in both blocking and selectivity over conventional modulation techniques, solving the traditional design compromise between range, interference immunity and energy consumption.\nDesignCon remains the premier annual destination for engineers and technology leaders working at the cutting edge of chip-to-chip and chip-to-module interconnects — and DesignCon 2026 was no exception.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Semtech",
+        "url": "https://www.semtech.com/products/wireless-rf/lora-connect/sx1276",
+        "long_name": "semtech.com",
+        "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "semtech.com",
+        "hostname": "www.semtech.com",
+        "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+        "path": "› products  › wireless-rf  › lora-connect  › sx1276"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/UPWOu9kGEYYm9UCb6cxbfcsGl8bdsY1lC6jic5X_Ge0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c2VtdGVjaC5jb20v/dXBsb2Fkcy9wcm9k/dWN0cy9TZW10ZWNo/LUNoaXAtTGFiZWwt/U1gxMjc2XzEucG5n",
+        "original": "https://www.semtech.com/uploads/products/Semtech-Chip-Label-SX1276_1.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "SX1272/3/6/7/8: LoRa Modem Designer's Guide AN1200.13",
+      "url": "https://www.openhacks.com/uploadsproductos/loradesignguide_std.pdf",
+      "description": "125 kHz (as shown below). (The SX1276 has bandwidths from 500 kHz to as low as 7.8 kHz). ... Figure 1. The LoRa Bandwidth Corresponds to the Double Sided Transmit Spectrum Bandwidth",
+      "content": "125 kHz (as shown below). (The SX1276 has bandwidths from 500 kHz to as low as 7.8 kHz). ... Figure 1. The LoRa Bandwidth Corresponds to the Double Sided Transmit Spectrum Bandwidth\nFigure 1. The LoRa Bandwidth Corresponds to the Double Sided Transmit Spectrum Bandwidth ..............................\nFigure 4. LoRa Modem Packet formatting.\nFigure 5. The LoRa Calculator Interface.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "OpenHacks",
+        "url": "https://www.openhacks.com/uploadsproductos/loradesignguide_std.pdf",
+        "long_name": "openhacks.com",
+        "img": "https://imgs.search.brave.com/FwECPVgbZJVa0IQMeGPIjgQYpQjpSXm8zPMzzYADgB4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2Y5MDBhMzcy/MTFmMTg5MTZkYTQw/ZTJiZDcwMDVmMjJm/YzI2NDc0YTFmNDc3/NmQyNmE2MDcwMmJi/ZGYwNTY4Yy93d3cu/b3BlbmhhY2tzLmNv/bS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "openhacks.com",
+        "hostname": "www.openhacks.com",
+        "favicon": "https://imgs.search.brave.com/FwECPVgbZJVa0IQMeGPIjgQYpQjpSXm8zPMzzYADgB4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2Y5MDBhMzcy/MTFmMTg5MTZkYTQw/ZTJiZDcwMDVmMjJm/YzI2NDc0YTFmNDc3/NmQyNmE2MDcwMmJi/ZGYwNTY4Yy93d3cu/b3BlbmhhY2tzLmNv/bS8",
+        "path": "› uploadsproductos  › loradesignguide_std.pdf"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "Semtech: AN1200.22 - LoRa Modulation Basics | Procon Ltd. Information & Security: An International Journal",
+      "url": "https://procon.bg/article/semtech-an120022-lora-modulation-basics",
+      "description": "Skip to main content · Procon Ltd. Information &amp; Security: An International Journal · About · Business areas · Business Process · Business Intelligence · Knowledge Dissemination · Studies · Publishing · Partners",
+      "content": "Skip to main content · Procon Ltd. Information &amp; Security: An International Journal · About · Business areas · Business Process · Business Intelligence · Knowledge Dissemination · Studies · Publishing · Partners",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Procon",
+        "url": "https://procon.bg/article/semtech-an120022-lora-modulation-basics",
+        "long_name": "procon.bg",
+        "img": "https://imgs.search.brave.com/t0oAtJ19EMiXljKBMJtZHc1ilHyjl_Yw60cSFzG-L-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGFkNWU3OTY4/YTU4NzdlMmRkM2Zj/NzQ0MmU2NzAzMzhi/NDg1NTIxNDgzMmZl/NDQ0MmUyNmRiYjMw/ODAzYmIxNC9wcm9j/b24uYmcv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "procon.bg",
+        "hostname": "procon.bg",
+        "favicon": "https://imgs.search.brave.com/t0oAtJ19EMiXljKBMJtZHc1ilHyjl_Yw60cSFzG-L-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGFkNWU3OTY4/YTU4NzdlMmRkM2Zj/NzQ0MmU2NzAzMzhi/NDg1NTIxNDgzMmZl/NDQ0MmUyNmRiYjMw/ODAzYmIxNC9wcm9j/b24uYmcv",
+        "path": "› article  › semtech-an120022-lora-modulation-basics"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "semtech.com LoRa Basics™ Modem Relay: A Low-Cost Battery Powered",
+      "url": "https://info.semtech.com/hubfs/LoRa-Basics%20Modem%20Relay%20A%20Low-Cost%20Battery%20Powered%20Network%20Extender-Whitepaper-F.pdf",
+      "description": "There is a limit to the link-budget of every wireless technology, even for LoRa modulation which has an exceptional · link-budget of up to 158dB with a transmit (TX) power level of 22dBm (160mW).",
+      "content": "There is a limit to the link-budget of every wireless technology, even for LoRa modulation which has an exceptional · link-budget of up to 158dB with a transmit (TX) power level of 22dBm (160mW).\nAN1200.48 provides more details on CAD.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Semtech",
+        "url": "https://info.semtech.com/hubfs/LoRa-Basics%20Modem%20Relay%20A%20Low-Cost%20Battery%20Powered%20Network%20Extender-Whitepaper-F.pdf",
+        "long_name": "info.semtech.com",
+        "img": "https://imgs.search.brave.com/oGajG9nRCkm2gwFfVISZ2-DHB8IAS6gcSqkv9vBAQgE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDk5NzYyOTRh/MzY3YmU2MjMzMGY0/MDlhZWFiMWQxNDFh/Y2YwZmVlYzhiYTY0/OWNmMWU5Yjk1NTYy/ZjQ2ZmM4OS9pbmZv/LnNlbXRlY2guY29t/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "info.semtech.com",
+        "hostname": "info.semtech.com",
+        "favicon": "https://imgs.search.brave.com/oGajG9nRCkm2gwFfVISZ2-DHB8IAS6gcSqkv9vBAQgE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDk5NzYyOTRh/MzY3YmU2MjMzMGY0/MDlhZWFiMWQxNDFh/Y2YwZmVlYzhiYTY0/OWNmMWU5Yjk1NTYy/ZjQ2ZmM4OS9pbmZv/LnNlbXRlY2guY29t/Lw",
+        "path": "› hubfs  › LoRa-Basics Modem Relay A Low-Cost Battery Powered Network Extender-Whitepaper-F.pdf"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "Semtech AN1200.22 LoRa modulation basics link budget SX1276 PDF",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.971,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "Semtech AN1200.22 LoRa modulation basics link budget SX1276 PDF",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "Revision 2, May 2015 www.semtech.com P a g e | 1 ©2015 Semtech Corporation",
+          "url": "http://wiki.lahoud.fr/lib/exe/fetch.php?media=an1200.22.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "From equation 3 it can be seen that to transmit error free information in a channel of fixed noise-to- · A CSS PHY was adopted by the IEEE for the Low-Rate Wireless Personal Area Networks (LR-WPANs) · Semtech’s LoRa modulation addresses all of the issues associated with DSSS systems to ...",
+          "profile": {
+            "name": "Lahoud",
+            "url": "http://wiki.lahoud.fr/lib/exe/fetch.php?media=an1200.22.pdf",
+            "long_name": "wiki.lahoud.fr",
+            "img": "https://imgs.search.brave.com/fpt8ztkKCkxf4wTjwj9iR2NAxIRbQuiDpqZidx4FG2Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQ5NzE1ZTY4/YjYxNjFmZWRiZTcw/NjEyNmZkZjAyMzQx/MzM0YTViMGE4NGFm/MmZiNzFhZjhhNTgw/OTU4NDEzYi93aWtp/LmxhaG91ZC5mci8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "http",
+            "netloc": "wiki.lahoud.fr",
+            "hostname": "wiki.lahoud.fr",
+            "favicon": "https://imgs.search.brave.com/fpt8ztkKCkxf4wTjwj9iR2NAxIRbQuiDpqZidx4FG2Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQ5NzE1ZTY4/YjYxNjFmZWRiZTcw/NjEyNmZkZjAyMzQx/MzM0YTViMGE4NGFm/MmZiNzFhZjhhNTgw/OTU4NDEzYi93aWtp/LmxhaG91ZC5mci8",
+            "path": "› lib  › exe  › fetch.php"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Sub-GHz LoRa sensitivity is as per the specification in both the SX1272 and SX1276 datasheets [3], [4]",
+            "Figure 8: LoRa vs FSK Selectivity in the vicinity of an AM interfering Signal ..............................................",
+            "LoRa is a PHY layer implementation and is agnostic with to higher-layer implementations.",
+            "LoRa to coexist and interoperate with existing network architectures."
+          ]
+        },
+        {
+          "title": "AN1200 22 Semtech LoRa Basics v2 STD PDF | PDF | Modulation | Signal To Noise Ratio",
+          "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "8 References: [1]. Semtech Application Note AN1200.13, “SX1272/3/6/7/8: LoRa Modem Designer’s Guide” ([Link] [2]. Semtech Application Note AN1200.17, “SX1272/3/6/7/8: LoRa Energy Consumption Design” ([Link] [3]. SX1272 Datasheet ([Link] [4]. SX1276 Datasheet ([Link] [5]. Rappaport, “Wireless Communications Principals and Practices,” (Prentice-Hall) [6]. Xiong, “Digital Modulation Techniques, 2nd ed.,” (Artech House) [7]. Siwak, Bahreini, “Radiowave Propagation and Antennas, ” (Artech House) [8]. FCC Office of Engineering and Technology Laboratory Division “Guidance for",
+          "profile": {
+            "name": "Scribd",
+            "url": "https://www.scribd.com/document/440591273/AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf",
+            "long_name": "scribd.com",
+            "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "creative_work",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› document  › 440591273  › AN1200-22-Semtech-LoRa-Basics-v2-STD-1-pdf"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/K4zpKul4EhJIf0VjfDzevzpGvXSQSecT9Ecm_K9mqeI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDQwNTkxMjczLzE0/OXgxOTgvMzA0ZjI0/MWM3Ny8xNTc2OTYy/MTIzP3Y9MQ",
+            "original": "https://imgv2-2-f.scribdassets.com/img/document/440591273/149x198/304f241c77/1576962123?v=1",
+            "logo": false
+          },
+          "creative_work": {
+            "name": "AN1200_22_Semtech_LoRa_Basics_v2_STD (1).pdf",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/K4zpKul4EhJIf0VjfDzevzpGvXSQSecT9Ecm_K9mqeI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDQwNTkxMjczLzE0/OXgxOTgvMzA0ZjI0/MWM3Ny8xNTc2OTYy/MTIzP3Y9MQ",
+              "original": "https://imgv2-2-f.scribdassets.com/img/document/440591273/149x198/304f241c77/1576962123?v=1"
+            }
+          },
+          "extra_snippets": [
+            "Scribd is the world's largest social reading and publishing site.",
+            "©2015 Semtech Corporation AN1200.22 LoRa™ Modulation Basics",
+            "8 References: [1]. Semtech Application Note AN1200.13, “SX1272/3/6/7/8: LoRa Modem Designer’s Guide” ([Link] [2]. Semtech Application Note AN1200.17, “SX1272/3/6/7/8: LoRa Energy Consumption Design” ([Link] [3]. SX1272 Datasheet ([Link] [4]. SX1276 Datasheet ([Link] [5]. Rappaport, “Wireless Communications Principals and Practices,” (Prentice-Hall) [6]. Xiong, “Digital Modulation Techniques, 2nd ed.,” (Artech House) [7]. Siwak, Bahreini, “Radiowave Propagation and Antennas, ” (Artech House) [8]. FCC Office of Engineering and Technology Laboratory Division “Guidance for"
+          ]
+        },
+        {
+          "title": "Semtech: AN1200.22 - LoRa Modulation Basics | Information Technologies for Security",
+          "url": "https://it4sec.org/article/semtech-an120022-lora-modulation-basics",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "© IT for Security Department, Institute of ICT, 2010 -",
+          "page_age": "2020-10-21T00:00:00",
+          "profile": {
+            "name": "It4sec",
+            "url": "https://it4sec.org/article/semtech-an120022-lora-modulation-basics",
+            "long_name": "it4sec.org",
+            "img": "https://imgs.search.brave.com/t9VERpvn4Q_Q-N2a3XW3DX2M3MB_oiIwqZmCKRE2SDk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGMxYTcyMTJk/ZGU3NGJiZDFjODEy/YjhjN2U2OTU1ZDBm/MjVlN2FiNjY3ZmI3/NGFlNjExMDcyNTE2/M2JmZGFkNy9pdDRz/ZWMub3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "it4sec.org",
+            "hostname": "it4sec.org",
+            "favicon": "https://imgs.search.brave.com/t9VERpvn4Q_Q-N2a3XW3DX2M3MB_oiIwqZmCKRE2SDk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGMxYTcyMTJk/ZGU3NGJiZDFjODEy/YjhjN2U2OTU1ZDBm/MjVlN2FiNjY3ZmI3/NGFlNjExMDcyNTE2/M2JmZGFkNy9pdDRz/ZWMub3JnLw",
+            "path": "› article  › semtech-an120022-lora-modulation-basics"
+          },
+          "age": "October 21, 2020"
+        },
+        {
+          "title": "Find Product Documentation",
+          "url": "https://www.semtech.com/uploads/documents/an1200.22.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Helpful tips for finding updated Semtech product documentation.",
+          "profile": {
+            "name": "Semtech",
+            "url": "https://www.semtech.com/uploads/documents/an1200.22.pdf",
+            "long_name": "semtech.com",
+            "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "semtech.com",
+            "hostname": "www.semtech.com",
+            "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+            "path": "› uploads  › documents  › an1200.22.pdf"
+          }
+        },
+        {
+          "title": "semtech.com/LoRa Long Range, Low Power Consumption",
+          "url": "https://www.semtech.com/uploads/design-support/SEMTECH_LORA_PG.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "the SX1262 and SX1268 can transmit up to +22dBm with highly efficient integrated power amplifiers. ... The SX1276/78 transceivers features the LoRa long range modem that provides ultra-long range spread spectrum communication",
+          "profile": {
+            "name": "Semtech",
+            "url": "https://www.semtech.com/uploads/design-support/SEMTECH_LORA_PG.pdf",
+            "long_name": "semtech.com",
+            "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "semtech.com",
+            "hostname": "www.semtech.com",
+            "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+            "path": "› uploads  › design-support  › SEMTECH_LORA_PG.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "the SX1262 and SX1268 can transmit up to +22dBm with highly efficient integrated power amplifiers. ... The SX1276/78 transceivers features the LoRa long range modem that provides ultra-long range spread spectrum communication"
+          ]
+        },
+        {
+          "title": "SX1276/77/78/79 www.semtech.com Page 1 WIRELESS & SENSING PRODUCTS DATASHEET",
+          "url": "https://cdn.sparkfun.com/assets/7/7/3/2/2/SX1276_Datasheet.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Figure 9. LoRa® Modulation Transmission Sequence.",
+          "profile": {
+            "name": "Sparkfun",
+            "url": "https://cdn.sparkfun.com/assets/7/7/3/2/2/SX1276_Datasheet.pdf",
+            "long_name": "cdn.sparkfun.com",
+            "img": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cdn.sparkfun.com",
+            "hostname": "cdn.sparkfun.com",
+            "favicon": "https://imgs.search.brave.com/4O8sy1ekZrAQFWlG9aKKLVCCseelRtLvyllY4kZ0OZs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGE2MWYxNTM3/ZGI5MDc3M2VmMDQy/MjE2ZDM1NzMzNzhl/YmQwNGFiZWMxMTg0/NmNhMmJjYjE0NzE1/YzRiMThiMi9jZG4u/c3BhcmtmdW4uY29t/Lw",
+            "path": "› assets  › 7  › 7  › 3  › 2  › 2  › SX1276_Datasheet.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "2.5.5. Electrical Specification for LoRa Modulation............................................................................................. 19 · 2.5.6. Digital Specification................................................................................................................................... 22",
+            "LoRa Receiver Specification .........................................................................................................................19 · Table 11. Digital Specification .......................................................................................................................................22",
+            "Figure 9. LoRa® Modulation Transmission Sequence.",
+            "Figure 10. LoRa® Receive Sequence."
+          ]
+        },
+        {
+          "title": "LoRa Connect Transceiver, SX1276, 137MHz to 1020MHz | Semtech",
+          "url": "https://www.semtech.com/products/wireless-rf/lora-connect/sx1276",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Using Semtech’s patented LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20dBm power amplifier yields industry ...",
+          "profile": {
+            "name": "Semtech",
+            "url": "https://www.semtech.com/products/wireless-rf/lora-connect/sx1276",
+            "long_name": "semtech.com",
+            "img": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "semtech.com",
+            "hostname": "www.semtech.com",
+            "favicon": "https://imgs.search.brave.com/XIvtno9gS8OaHA5DhV68vorCpC4f5EISgn-n8-nrY1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDFhNjdiNmNk/MzQ3NGM0Nzk4MjQ2/Y2RmNWVlZjY5MDYz/NTVhMGU1ZTZhYTlj/Yjg3NThjZGQ2YjZj/N2Y3YWY1ZS93d3cu/c2VtdGVjaC5jb20v",
+            "path": "› products  › wireless-rf  › lora-connect  › sx1276"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/UPWOu9kGEYYm9UCb6cxbfcsGl8bdsY1lC6jic5X_Ge0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c2VtdGVjaC5jb20v/dXBsb2Fkcy9wcm9k/dWN0cy9TZW10ZWNo/LUNoaXAtTGFiZWwt/U1gxMjc2XzEucG5n",
+            "original": "https://www.semtech.com/uploads/products/Semtech-Chip-Label-SX1276_1.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "Using Semtech’s patented LoRa modulation technique SX1276/77/78/79 can achieve a sensitivity of over -148dBm using a low cost crystal and bill of materials. The high sensitivity combined with the integrated +20dBm power amplifier yields industry leading link budget making it optimal for any application requiring range or robustness.",
+            "LoRa also provides significant advantages in both blocking and selectivity over conventional modulation techniques, solving the traditional design compromise between range, interference immunity and energy consumption.",
+            "DesignCon remains the premier annual destination for engineers and technology leaders working at the cutting edge of chip-to-chip and chip-to-module interconnects — and DesignCon 2026 was no exception."
+          ]
+        },
+        {
+          "title": "SX1272/3/6/7/8: LoRa Modem Designer's Guide AN1200.13",
+          "url": "https://www.openhacks.com/uploadsproductos/loradesignguide_std.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "125 kHz (as shown below). (The SX1276 has bandwidths from 500 kHz to as low as 7.8 kHz). ... Figure 1. The LoRa Bandwidth Corresponds to the Double Sided Transmit Spectrum Bandwidth",
+          "profile": {
+            "name": "OpenHacks",
+            "url": "https://www.openhacks.com/uploadsproductos/loradesignguide_std.pdf",
+            "long_name": "openhacks.com",
+            "img": "https://imgs.search.brave.com/FwECPVgbZJVa0IQMeGPIjgQYpQjpSXm8zPMzzYADgB4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2Y5MDBhMzcy/MTFmMTg5MTZkYTQw/ZTJiZDcwMDVmMjJm/YzI2NDc0YTFmNDc3/NmQyNmE2MDcwMmJi/ZGYwNTY4Yy93d3cu/b3BlbmhhY2tzLmNv/bS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "openhacks.com",
+            "hostname": "www.openhacks.com",
+            "favicon": "https://imgs.search.brave.com/FwECPVgbZJVa0IQMeGPIjgQYpQjpSXm8zPMzzYADgB4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2Y5MDBhMzcy/MTFmMTg5MTZkYTQw/ZTJiZDcwMDVmMjJm/YzI2NDc0YTFmNDc3/NmQyNmE2MDcwMmJi/ZGYwNTY4Yy93d3cu/b3BlbmhhY2tzLmNv/bS8",
+            "path": "› uploadsproductos  › loradesignguide_std.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "125 kHz (as shown below). (The SX1276 has bandwidths from 500 kHz to as low as 7.8 kHz). ... Figure 1. The LoRa Bandwidth Corresponds to the Double Sided Transmit Spectrum Bandwidth",
+            "Figure 1. The LoRa Bandwidth Corresponds to the Double Sided Transmit Spectrum Bandwidth ..............................",
+            "Figure 4. LoRa Modem Packet formatting.",
+            "Figure 5. The LoRa Calculator Interface."
+          ]
+        },
+        {
+          "title": "Semtech: AN1200.22 - LoRa Modulation Basics | Procon Ltd. Information & Security: An International Journal",
+          "url": "https://procon.bg/article/semtech-an120022-lora-modulation-basics",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Skip to main content · Procon Ltd. Information &amp; Security: An International Journal · About · Business areas · Business Process · Business Intelligence · Knowledge Dissemination · Studies · Publishing · Partners",
+          "profile": {
+            "name": "Procon",
+            "url": "https://procon.bg/article/semtech-an120022-lora-modulation-basics",
+            "long_name": "procon.bg",
+            "img": "https://imgs.search.brave.com/t0oAtJ19EMiXljKBMJtZHc1ilHyjl_Yw60cSFzG-L-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGFkNWU3OTY4/YTU4NzdlMmRkM2Zj/NzQ0MmU2NzAzMzhi/NDg1NTIxNDgzMmZl/NDQ0MmUyNmRiYjMw/ODAzYmIxNC9wcm9j/b24uYmcv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "procon.bg",
+            "hostname": "procon.bg",
+            "favicon": "https://imgs.search.brave.com/t0oAtJ19EMiXljKBMJtZHc1ilHyjl_Yw60cSFzG-L-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGFkNWU3OTY4/YTU4NzdlMmRkM2Zj/NzQ0MmU2NzAzMzhi/NDg1NTIxNDgzMmZl/NDQ0MmUyNmRiYjMw/ODAzYmIxNC9wcm9j/b24uYmcv",
+            "path": "› article  › semtech-an120022-lora-modulation-basics"
+          }
+        },
+        {
+          "title": "semtech.com LoRa Basics™ Modem Relay: A Low-Cost Battery Powered",
+          "url": "https://info.semtech.com/hubfs/LoRa-Basics%20Modem%20Relay%20A%20Low-Cost%20Battery%20Powered%20Network%20Extender-Whitepaper-F.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "There is a limit to the link-budget of every wireless technology, even for LoRa modulation which has an exceptional · link-budget of up to 158dB with a transmit (TX) power level of 22dBm (160mW).",
+          "profile": {
+            "name": "Semtech",
+            "url": "https://info.semtech.com/hubfs/LoRa-Basics%20Modem%20Relay%20A%20Low-Cost%20Battery%20Powered%20Network%20Extender-Whitepaper-F.pdf",
+            "long_name": "info.semtech.com",
+            "img": "https://imgs.search.brave.com/oGajG9nRCkm2gwFfVISZ2-DHB8IAS6gcSqkv9vBAQgE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDk5NzYyOTRh/MzY3YmU2MjMzMGY0/MDlhZWFiMWQxNDFh/Y2YwZmVlYzhiYTY0/OWNmMWU5Yjk1NTYy/ZjQ2ZmM4OS9pbmZv/LnNlbXRlY2guY29t/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "info.semtech.com",
+            "hostname": "info.semtech.com",
+            "favicon": "https://imgs.search.brave.com/oGajG9nRCkm2gwFfVISZ2-DHB8IAS6gcSqkv9vBAQgE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDk5NzYyOTRh/MzY3YmU2MjMzMGY0/MDlhZWFiMWQxNDFh/Y2YwZmVlYzhiYTY0/OWNmMWU5Yjk1NTYy/ZjQ2ZmM4OS9pbmZv/LnNlbXRlY2guY29t/Lw",
+            "path": "› hubfs  › LoRa-Basics Modem Relay A Low-Cost Battery Powered Network Extender-Whitepaper-F.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "AN1200.48 provides more details on CAD.",
+            "There is a limit to the link-budget of every wireless technology, even for LoRa modulation which has an exceptional · link-budget of up to 158dB with a transmit (TX) power level of 22dBm (160mW)."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "url": "https://ieeexplore.ieee.org/document/8902126/",
+  "saved_at": "2026-06-11T22:24:45.939307+00:00",
+  "reason": "confidence_below_0.55",
+  "warnings": [],
+  "final_url": "https://ieeexplore.ieee.org/document/8902126/",
+  "status_code": 200,
+  "content_type": "text/html;charset=UTF-8",
+  "content_length_header": null,
+  "response_headers": {
+    "Content-Type": "text/html;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Date": "Thu, 11 Jun 2026 22:24:45 GMT",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Content-Language": "en-US",
+    "Set-Cookie": "[redacted]",
+    "X-XSS-Protection": "1",
+    "Content-Security-Policy": "upgrade-insecure-requests",
+    "X-Content-Type-Options": "text/html; charset=UTF-8; nosniff",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "X-Cache": "Miss from cloudfront",
+    "Via": "1.1 a1a3e9c9be99aa77194bbbf2d84bbedc.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Pop": "MIA50-P8",
+    "X-Amz-Cf-Id": "y7NFZIi3ePS5439MjrA3dNDMfKXurud2ZEfqlC6cTT_wEGm3qKO2IQ=="
+  },
+  "extraction": {
+    "parser": "beautifulsoup-density",
+    "title": "Characterization of LoRa Point-to-Point Path Loss: Measurement Campaigns and Modeling Considering Censored Data | IEEE Journals & Magazine | IEEE Xplore",
+    "confidence": 0.279,
+    "word_count": 100,
+    "metadata": {}
+  }
+}

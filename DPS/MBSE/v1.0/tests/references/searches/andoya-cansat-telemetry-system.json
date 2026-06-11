@@ -1,0 +1,702 @@
+{
+  "query": "site:learn.andoyaspace.no CanSat telemetry system RFM96 ground station radio test",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "Telemetry system - The CanSat book",
+      "url": "https://learn.andoyaspace.no/docs/cansat/teensy/telemetry_system/",
+      "description": "When working as a ground station, the Teensy 4.1 will be connected and powered via an USB cable to your pc, and needs no voltage regulator or other components on the board, except the radio and sma connector. The CanSat shield board is now ready to be tested. The antenna that is included with the RFM96 radio is a 433MHz Rubber Duck antenna.",
+      "content": "When working as a ground station, the Teensy 4.1 will be connected and powered via an USB cable to your pc, and needs no voltage regulator or other components on the board, except the radio and sma connector. The CanSat shield board is now ready to be tested. The antenna that is included with the RFM96 radio is a 433MHz Rubber Duck antenna.\nThis signal is received by the ground station and sent to a laptop, where it is stored before being processed as experimental data. Students follow their descending CanSat while they receive radio signals from their CanSat via an antenna. Photo: Andøya Space · The RFM96 is a radio for 433 MHz ISM band, which is free to use and perfect for CanSat use.\nRFM96 radio for the 433 MHz band. Photo: Andøya Space · Andøya Space has used this radio in other activities than CanSats also, and actually we routinely use this radio in weather balloons which go up to 25 km altitude with a total distance between the ground station and the transmitter of 230 km!\nThe RSSI is an indicator of the received signal strength, and is an excellent indication of how «far» you are from losing communication between the CanSat and the ground station. Normally the CanSSat starts dropping out at about -80 dBm. You can read more about RSSI in general here (which is not specific to the RFM96 radio).",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Andoyaspace",
+        "url": "https://learn.andoyaspace.no/docs/cansat/teensy/telemetry_system/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› docs  › cansat  › teensy  › telemetry_system"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "Getting started - The CanSat book",
+      "url": "https://learn.andoyaspace.no/docs/cansat/teensy/getting_started/",
+      "description": "When you imported the two Cansat related libraries into the Arduino IDE, some examples was automatically added. We will start be using these now. First, go to Files -&gt; Examples and locate the Cansat_RFM96 sub-menu. There you will find the sketch called «Cansat_DigitalAndAnalog». Select this ...",
+      "content": "When you imported the two Cansat related libraries into the Arduino IDE, some examples was automatically added. We will start be using these now. First, go to Files -&gt; Examples and locate the Cansat_RFM96 sub-menu. There you will find the sketch called «Cansat_DigitalAndAnalog». Select this ...\nWhen you imported the two Cansat related libraries into the Arduino IDE, some examples was automatically added. We will start be using these now. First, go to Files -> Examples and locate the Cansat_RFM96 sub-menu. There you will find the sketch called «Cansat_DigitalAndAnalog». Select this and upload it to the Teensy.\nIMU GY-91-library Radio RFM96 library GY-91 first_sketch 3D print by Bodin vgs More 3D CanSat designs\nThe Teensy 3.5 based v2018 kit tries to solve these issues. It is a based on a 3.3V system running on a Cortex M4F core with 120 MHz nominal CPU speed (which is overclockable, but this is normally not needed working with Cansat). It has 23 analog input channels (where 19 of these are available to the user on the Cansat kit) and 2 analog outputs (DAC0 and DAC1, which share pins with A21 and A22 channels).\nOn the Teensy you can see the USB port on the right side of the figure, the microcontroller in the middle (the black square with text on it) and the micro-SD card mount on the left side. The buzzer, marked with text, is on the top left on the Cansat PCB and is free to be controlled by the user by GPIO.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Andoyaspace",
+        "url": "https://learn.andoyaspace.no/docs/cansat/teensy/getting_started/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› docs  › cansat  › teensy  › getting_started"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Testing and using the RFM96 radio – Learn with Andøya Space",
+      "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/testing-and-using-the-rfm96-radio/",
+      "description": "Disconnect the Cansat board and connect the ground control board (GCB) to the USB. Now locate the example sketch «Cansat_RadioRecvTest» in the same example folder as above and upload it to the GCB.",
+      "content": "Disconnect the Cansat board and connect the ground control board (GCB) to the USB. Now locate the example sketch «Cansat_RadioRecvTest» in the same example folder as above and upload it to the GCB.\nNow we are finally ready to send something over the air! In the Cansat_RFM96 library there are some examples that can be used for testing the radios.\nNow, in principle you can also connect the Cansat board to the computer to power it up, but it will be simpler for you to not connect the GCB and Cansat boards to the same computer, so life is going to be easier for you if you find another power supply for the Cansat (like a wall charger or a USB battery pack). While the GCB is connected and Cansat board unconnected to power, open Serial Monitor and see that you will periodically get text from the GCB stating that it did not receive any data in a given time frame.\nConnect now the Cansat to power, and you should then see text and data from the Cansat streaming in on the Serial Monitor connected to the GCB. If this is not the case, look in the code and find out if the radio frequency is the same for both transmitter and receiver, change to the same frequency if necessary.",
+      "language": "nb",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Andoyaspace",
+        "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/testing-and-using-the-rfm96-radio/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› ebook  › the-cansat-book  › v2018  › testing-and-using-the-rfm96-radio"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "The RFM96 radio – Learn with Andøya Space",
+      "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/the-rfm96-radio/",
+      "description": "The RFM96 is a radio for 433 MHz ISM band, which is free to use and perfect for Cansat use.",
+      "content": "The RFM96 is a radio for 433 MHz ISM band, which is free to use and perfect for Cansat use.\nOne of the advantages with this radio compared to the previous Cansat radio is that you can check when the radio is ready to send more data, so you can make better use of the time when you send, because you can send a new data packet directly after the previous one has been sent.\nIt is important that you do not use the same frequency as another Cansat team, and at the Cansat operation, use at least 100 kHz difference in frequencies. Another advantage of this radio compared to the previous radio is that the frequency used is set in software at runtime of your current sketch, so it does not need to be programmed before using it.\nYou as a user set the frequency, and the first two bytes of each package (hidden to the user) is a sync word. This sync word is unique for the frequency that you use. If another Cansat team sets approximately the same frequency as you have chosen, it might interfere with your transmission, but the library will only handle packets with the same sync word as you.",
+      "language": "nb",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Andoyaspace",
+        "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/the-rfm96-radio/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› ebook  › the-cansat-book  › v2018  › the-rfm96-radio"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "The Andøya Space Education v2018 CanSat book Content – Learn with Andøya Space",
+      "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/",
+      "description": "Testing the Cansat kit and start programming · Using the Sensors · Calibrating the NTC Sensor · Altitude Calculations · The RFM96 radio · Transmitter and ground control setup · Testing and using the RFM96 radio · The RFM96 library command set · Terminal program ·",
+      "content": "Testing the Cansat kit and start programming · Using the Sensors · Calibrating the NTC Sensor · Altitude Calculations · The RFM96 radio · Transmitter and ground control setup · Testing and using the RFM96 radio · The RFM96 library command set · Terminal program ·",
+      "language": "nb",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Andoyaspace",
+        "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› ebook  › the-cansat-book  › v2018"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "The RFM96 library command set – Learn with Andøya Space",
+      "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/the-rfm96-library-command-set/",
+      "description": "This will make an object for the library named rfm96, with the frequency of 433500 kHz (433.500 MHz), so please use the frequency that your tutor tells you to if you have been given one. Using this object initialization will use SD card by default. This «command» (it is not strictly as command per se) or the one below must be used when using the radio, or else you will get an error. Cansat_RFM96 rfm96(433500, False); Cansat_RFM96 rfm96(433500, 0);",
+      "content": "This will make an object for the library named rfm96, with the frequency of 433500 kHz (433.500 MHz), so please use the frequency that your tutor tells you to if you have been given one. Using this object initialization will use SD card by default. This «command» (it is not strictly as command per se) or the one below must be used when using the radio, or else you will get an error. Cansat_RFM96 rfm96(433500, False); Cansat_RFM96 rfm96(433500, 0);\nThe RSSI is an indicator of the received signal strength, and is an excellent indication of how «far» you are from losing communication between the Cansat and the ground station. Normally the Cansat starts dropping out at about -80 dBm. You can read more about RSSI in general here (which is not specific to the RFM96 radio).\nNAROM has written an Arduino library for the RFM96 radio for use on Cansat activities. This page will list the different commands than can and should be used by the user.\nThis is not often used in Cansat, but it might be used for very advanced users which will try to compact the data that it sends to binary. It is not very user friendly to do this, so make sure you understand how to use it works. ... This will mark anything in the buffer to transmit. It is a so-called blocking command, which means that if the radio is not ready for transmission it will wait (block anything else going on) before setting the buffer to transmit the data currently in the buffer.",
+      "language": "nb",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Andoyaspace",
+        "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/the-rfm96-library-command-set/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› ebook  › the-cansat-book  › v2018  › the-rfm96-library-command-set"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "Constructing the v2018 CanSat shield – ASE",
+      "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/constructing-the-v2018-cansat-shield/",
+      "description": "Assembling the Components and Constructing the v2018 CanSat-shield This section will show you step by step how to assemble the components for the v2018 CanSat shield. A list of components and link suggestions for ordering the components can be found here. Parts list Teensy 3.5CanSat Shield v2018 (Circuit board)RFM96 Radio ModuleVoltage Regulator TO252-3. This voltage...",
+      "content": "Assembling the Components and Constructing the v2018 CanSat-shield This section will show you step by step how to assemble the components for the v2018 CanSat shield. A list of components and link suggestions for ordering the components can be found here. Parts list Teensy 3.5CanSat Shield v2018 (Circuit board)RFM96 Radio ModuleVoltage Regulator TO252-3. This voltage...\nThe CanSat shield board is now ready to be tested.\n(This type and size of battery is optional, but will for convenience be included in the v2018 CanSat kit on courses/workshops by Andøya Space Education):\nFor the ground Station, you will need another empty CanSat board and only equip it with:",
+      "age": "November 12, 2021",
+      "page_age": "2021-11-12T10:19:35",
+      "language": "nb",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "ASE",
+        "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/constructing-the-v2018-cansat-shield/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› ebook  › the-cansat-book  › v2018  › constructing-the-v2018-cansat-shield"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/Hz06fk77eL38L2mwHUFdDt5qX5FRpbw0ZGTt2KQw-QI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9sZWFy/bi5hbmRveWFzcGFj/ZS5uby93cC1jb250/ZW50L3VwbG9hZHMv/MjAxOC8wNC9JTUdf/NDcwMF9qdXN0LWUx/NTMwNzA4OTUwMTI3/LmpwZw",
+        "original": "https://learn.andoyaspace.no/wp-content/uploads/2018/04/IMG_4700_just-e1530708950127.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "Using the radio – Learn with Andøya Space Education",
+      "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/common/getting-started/using-the-radio/",
+      "description": "Information is transmitted wirelessly using radio waves. On the ground these signals are collected by radio receivers. Large space agencies have networks of these ground stations stretching all over the globe, tracking, monitoring and receiving telemetry from their satellites.",
+      "content": "Information is transmitted wirelessly using radio waves. On the ground these signals are collected by radio receivers. Large space agencies have networks of these ground stations stretching all over the globe, tracking, monitoring and receiving telemetry from their satellites.\nCanSat telemetry operations can be broken down into three distinct components: transmitting data, receiving data, and processing data.\nCanSat kit Radio Modules.\nform of sensors or other equipment which measures and generates data about our planet, the space environment, the sun, the stars, or any number of other things depending on the mission. This information is called the “mission data” or “scientific data”. In your CanSat this would be the information from the sensor board.",
+      "language": "nb",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Andoyaspace",
+        "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/common/getting-started/using-the-radio/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› ebook  › the-cansat-book  › common  › getting-started  › using-the-radio"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "Testing the radio in the v3 CanSat kit – Learn with Andøya Space",
+      "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/common/getting-started/using-the-radio/testing-the-radio/",
+      "description": "When you are finished programming the v3 CanSat kit you should test that the radio link is working properly. Place jumpers on J2, connect the receiver to the PC via the USB to UART Bridge (USB-converter) and open the Arduino software · Change the COM-port from Arduino Uno R3 (COMxx) to Silicon ...",
+      "content": "When you are finished programming the v3 CanSat kit you should test that the radio link is working properly. Place jumpers on J2, connect the receiver to the PC via the USB to UART Bridge (USB-converter) and open the Arduino software · Change the COM-port from Arduino Uno R3 (COMxx) to Silicon ...",
+      "language": "nb",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Andoyaspace",
+        "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/common/getting-started/using-the-radio/testing-the-radio/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› ebook  › the-cansat-book  › common  › getting-started  › using-the-radio  › testing-the-radio"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "Testing the Cansat kit and start programming – Learn with Andøya Space",
+      "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/testing-the-cansat-kit-and-start-programming/",
+      "description": "When you imported the two Cansat related libraries into the Arduino IDE, some examples was automatically added. We will start be using these now. First, go to Files -&gt; Examples and locate the Cansat_RFM96 sub-menu. There you will find the sketch called «Cansat_DigitalAndAnalog». Select this ...",
+      "content": "When you imported the two Cansat related libraries into the Arduino IDE, some examples was automatically added. We will start be using these now. First, go to Files -&gt; Examples and locate the Cansat_RFM96 sub-menu. There you will find the sketch called «Cansat_DigitalAndAnalog». Select this ...\nWhen you imported the two Cansat related libraries into the Arduino IDE, some examples was automatically added. We will start be using these now. First, go to Files -> Examples and locate the Cansat_RFM96 sub-menu. There you will find the sketch called «Cansat_DigitalAndAnalog». Select this and upload it to the Teensy.\nFirst, start by connect the Teensy board (which now is mounted to the Cansat PCB) by USB cable. We do not need any more power than USB for now (now battery needed). When plugging in the cable, the LED light on the Cansat PCB should light up. If not, please detach the board and problem-solve why.\nSo whatever voltage you set on that pin, that is the voltage that the Teensy will measure. Take a jumper cable which should have been given to you by the tutor and take one line at the header pin marked 3.3V on the Cansat PCB and the other end on digital pin 2 and 3, and on the analog pin A0 and A1.\nWhat happens when you set 0 V (there is a header pin marked with GND on the Cansat PCB, which means 0V power line) on pin 2 and 3? Try both, and also see what happens when you do the same with analog pin A0 and A1. What happens if you only touch A0 and A1 with your finger without using a cable?",
+      "language": "nb",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Andoyaspace",
+        "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/testing-the-cansat-kit-and-start-programming/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› ebook  › the-cansat-book  › v2018  › testing-the-cansat-kit-and-start-programming"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "site:learn.andoyaspace.no CanSat telemetry system RFM96 ground station radio test",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.836,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "site:learn.andoyaspace.no CanSat telemetry system RFM96 ground station radio test",
+      "show_strict_warning": false,
+      "cleaned": "CanSat telemetry system RFM96 ground station radio test",
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": false,
+      "state": "",
+      "search_operators": {
+        "applied": true,
+        "cleaned_query": "CanSat telemetry system RFM96 ground station radio test",
+        "sites": [
+          "learn.andoyaspace.no"
+        ]
+      }
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "Telemetry system - The CanSat book",
+          "url": "https://learn.andoyaspace.no/docs/cansat/teensy/telemetry_system/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "When working as a ground station, the Teensy 4.1 will be connected and powered via an USB cable to your pc, and needs no voltage regulator or other components on the board, except the radio and sma connector. The CanSat shield board is now ready to be tested. The antenna that is included with the RFM96 radio is a 433MHz Rubber Duck antenna.",
+          "profile": {
+            "name": "Andoyaspace",
+            "url": "https://learn.andoyaspace.no/docs/cansat/teensy/telemetry_system/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› docs  › cansat  › teensy  › telemetry_system"
+          },
+          "extra_snippets": [
+            "This signal is received by the ground station and sent to a laptop, where it is stored before being processed as experimental data. Students follow their descending CanSat while they receive radio signals from their CanSat via an antenna. Photo: Andøya Space · The RFM96 is a radio for 433 MHz ISM band, which is free to use and perfect for CanSat use.",
+            "RFM96 radio for the 433 MHz band. Photo: Andøya Space · Andøya Space has used this radio in other activities than CanSats also, and actually we routinely use this radio in weather balloons which go up to 25 km altitude with a total distance between the ground station and the transmitter of 230 km!",
+            "The RSSI is an indicator of the received signal strength, and is an excellent indication of how «far» you are from losing communication between the CanSat and the ground station. Normally the CanSSat starts dropping out at about -80 dBm. You can read more about RSSI in general here (which is not specific to the RFM96 radio).",
+            "When working as a ground station, the Teensy 4.1 will be connected and powered via an USB cable to your pc, and needs no voltage regulator or other components on the board, except the radio and sma connector. The CanSat shield board is now ready to be tested. The antenna that is included with the RFM96 radio is a 433MHz Rubber Duck antenna."
+          ]
+        },
+        {
+          "title": "Getting started - The CanSat book",
+          "url": "https://learn.andoyaspace.no/docs/cansat/teensy/getting_started/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "When you imported the two Cansat related libraries into the Arduino IDE, some examples was automatically added. We will start be using these now. First, go to Files -&gt; Examples and locate the Cansat_RFM96 sub-menu. There you will find the sketch called «Cansat_DigitalAndAnalog». Select this ...",
+          "profile": {
+            "name": "Andoyaspace",
+            "url": "https://learn.andoyaspace.no/docs/cansat/teensy/getting_started/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› docs  › cansat  › teensy  › getting_started"
+          },
+          "extra_snippets": [
+            "When you imported the two Cansat related libraries into the Arduino IDE, some examples was automatically added. We will start be using these now. First, go to Files -> Examples and locate the Cansat_RFM96 sub-menu. There you will find the sketch called «Cansat_DigitalAndAnalog». Select this and upload it to the Teensy.",
+            "IMU GY-91-library Radio RFM96 library GY-91 first_sketch 3D print by Bodin vgs More 3D CanSat designs",
+            "The Teensy 3.5 based v2018 kit tries to solve these issues. It is a based on a 3.3V system running on a Cortex M4F core with 120 MHz nominal CPU speed (which is overclockable, but this is normally not needed working with Cansat). It has 23 analog input channels (where 19 of these are available to the user on the Cansat kit) and 2 analog outputs (DAC0 and DAC1, which share pins with A21 and A22 channels).",
+            "On the Teensy you can see the USB port on the right side of the figure, the microcontroller in the middle (the black square with text on it) and the micro-SD card mount on the left side. The buzzer, marked with text, is on the top left on the Cansat PCB and is free to be controlled by the user by GPIO."
+          ]
+        },
+        {
+          "title": "Testing and using the RFM96 radio – Learn with Andøya Space",
+          "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/testing-and-using-the-rfm96-radio/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Disconnect the Cansat board and connect the ground control board (GCB) to the USB. Now locate the example sketch «Cansat_RadioRecvTest» in the same example folder as above and upload it to the GCB.",
+          "profile": {
+            "name": "Andoyaspace",
+            "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/testing-and-using-the-rfm96-radio/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "nb",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› ebook  › the-cansat-book  › v2018  › testing-and-using-the-rfm96-radio"
+          },
+          "extra_snippets": [
+            "Now we are finally ready to send something over the air! In the Cansat_RFM96 library there are some examples that can be used for testing the radios.",
+            "Disconnect the Cansat board and connect the ground control board (GCB) to the USB. Now locate the example sketch «Cansat_RadioRecvTest» in the same example folder as above and upload it to the GCB.",
+            "Now, in principle you can also connect the Cansat board to the computer to power it up, but it will be simpler for you to not connect the GCB and Cansat boards to the same computer, so life is going to be easier for you if you find another power supply for the Cansat (like a wall charger or a USB battery pack). While the GCB is connected and Cansat board unconnected to power, open Serial Monitor and see that you will periodically get text from the GCB stating that it did not receive any data in a given time frame.",
+            "Connect now the Cansat to power, and you should then see text and data from the Cansat streaming in on the Serial Monitor connected to the GCB. If this is not the case, look in the code and find out if the radio frequency is the same for both transmitter and receiver, change to the same frequency if necessary."
+          ]
+        },
+        {
+          "title": "The RFM96 radio – Learn with Andøya Space",
+          "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/the-rfm96-radio/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The RFM96 is a radio for 433 MHz ISM band, which is free to use and perfect for Cansat use.",
+          "profile": {
+            "name": "Andoyaspace",
+            "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/the-rfm96-radio/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "nb",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› ebook  › the-cansat-book  › v2018  › the-rfm96-radio"
+          },
+          "extra_snippets": [
+            "The RFM96 is a radio for 433 MHz ISM band, which is free to use and perfect for Cansat use.",
+            "One of the advantages with this radio compared to the previous Cansat radio is that you can check when the radio is ready to send more data, so you can make better use of the time when you send, because you can send a new data packet directly after the previous one has been sent.",
+            "It is important that you do not use the same frequency as another Cansat team, and at the Cansat operation, use at least 100 kHz difference in frequencies. Another advantage of this radio compared to the previous radio is that the frequency used is set in software at runtime of your current sketch, so it does not need to be programmed before using it.",
+            "You as a user set the frequency, and the first two bytes of each package (hidden to the user) is a sync word. This sync word is unique for the frequency that you use. If another Cansat team sets approximately the same frequency as you have chosen, it might interfere with your transmission, but the library will only handle packets with the same sync word as you."
+          ]
+        },
+        {
+          "title": "The Andøya Space Education v2018 CanSat book Content – Learn with Andøya Space",
+          "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Testing the Cansat kit and start programming · Using the Sensors · Calibrating the NTC Sensor · Altitude Calculations · The RFM96 radio · Transmitter and ground control setup · Testing and using the RFM96 radio · The RFM96 library command set · Terminal program ·",
+          "profile": {
+            "name": "Andoyaspace",
+            "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "nb",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› ebook  › the-cansat-book  › v2018"
+          }
+        },
+        {
+          "title": "The RFM96 library command set – Learn with Andøya Space",
+          "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/the-rfm96-library-command-set/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This will make an object for the library named rfm96, with the frequency of 433500 kHz (433.500 MHz), so please use the frequency that your tutor tells you to if you have been given one. Using this object initialization will use SD card by default. This «command» (it is not strictly as command per se) or the one below must be used when using the radio, or else you will get an error. Cansat_RFM96 rfm96(433500, False); Cansat_RFM96 rfm96(433500, 0);",
+          "profile": {
+            "name": "Andoyaspace",
+            "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/the-rfm96-library-command-set/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "nb",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› ebook  › the-cansat-book  › v2018  › the-rfm96-library-command-set"
+          },
+          "extra_snippets": [
+            "The RSSI is an indicator of the received signal strength, and is an excellent indication of how «far» you are from losing communication between the Cansat and the ground station. Normally the Cansat starts dropping out at about -80 dBm. You can read more about RSSI in general here (which is not specific to the RFM96 radio).",
+            "This will make an object for the library named rfm96, with the frequency of 433500 kHz (433.500 MHz), so please use the frequency that your tutor tells you to if you have been given one. Using this object initialization will use SD card by default. This «command» (it is not strictly as command per se) or the one below must be used when using the radio, or else you will get an error. Cansat_RFM96 rfm96(433500, False); Cansat_RFM96 rfm96(433500, 0);",
+            "NAROM has written an Arduino library for the RFM96 radio for use on Cansat activities. This page will list the different commands than can and should be used by the user.",
+            "This is not often used in Cansat, but it might be used for very advanced users which will try to compact the data that it sends to binary. It is not very user friendly to do this, so make sure you understand how to use it works. ... This will mark anything in the buffer to transmit. It is a so-called blocking command, which means that if the radio is not ready for transmission it will wait (block anything else going on) before setting the buffer to transmit the data currently in the buffer."
+          ]
+        },
+        {
+          "title": "Constructing the v2018 CanSat shield – ASE",
+          "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/constructing-the-v2018-cansat-shield/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Assembling the Components and Constructing the v2018 CanSat-shield This section will show you step by step how to assemble the components for the v2018 CanSat shield. A list of components and link suggestions for ordering the components can be found here. Parts list Teensy 3.5CanSat Shield v2018 (Circuit board)RFM96 Radio ModuleVoltage Regulator TO252-3. This voltage...",
+          "page_age": "2021-11-12T10:19:35",
+          "profile": {
+            "name": "ASE",
+            "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/constructing-the-v2018-cansat-shield/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "nb",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› ebook  › the-cansat-book  › v2018  › constructing-the-v2018-cansat-shield"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Hz06fk77eL38L2mwHUFdDt5qX5FRpbw0ZGTt2KQw-QI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9sZWFy/bi5hbmRveWFzcGFj/ZS5uby93cC1jb250/ZW50L3VwbG9hZHMv/MjAxOC8wNC9JTUdf/NDcwMF9qdXN0LWUx/NTMwNzA4OTUwMTI3/LmpwZw",
+            "original": "https://learn.andoyaspace.no/wp-content/uploads/2018/04/IMG_4700_just-e1530708950127.jpg",
+            "logo": false
+          },
+          "age": "November 12, 2021",
+          "extra_snippets": [
+            "Assembling the Components and Constructing the v2018 CanSat-shield This section will show you step by step how to assemble the components for the v2018 CanSat shield. A list of components and link suggestions for ordering the components can be found here. Parts list Teensy 3.5CanSat Shield v2018 (Circuit board)RFM96 Radio ModuleVoltage Regulator TO252-3. This voltage...",
+            "The CanSat shield board is now ready to be tested.",
+            "(This type and size of battery is optional, but will for convenience be included in the v2018 CanSat kit on courses/workshops by Andøya Space Education):",
+            "For the ground Station, you will need another empty CanSat board and only equip it with:"
+          ]
+        },
+        {
+          "title": "Using the radio – Learn with Andøya Space Education",
+          "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/common/getting-started/using-the-radio/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Information is transmitted wirelessly using radio waves. On the ground these signals are collected by radio receivers. Large space agencies have networks of these ground stations stretching all over the globe, tracking, monitoring and receiving telemetry from their satellites.",
+          "profile": {
+            "name": "Andoyaspace",
+            "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/common/getting-started/using-the-radio/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "nb",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› ebook  › the-cansat-book  › common  › getting-started  › using-the-radio"
+          },
+          "extra_snippets": [
+            "CanSat telemetry operations can be broken down into three distinct components: transmitting data, receiving data, and processing data.",
+            "CanSat kit Radio Modules.",
+            "form of sensors or other equipment which measures and generates data about our planet, the space environment, the sun, the stars, or any number of other things depending on the mission. This information is called the “mission data” or “scientific data”. In your CanSat this would be the information from the sensor board.",
+            "Information is transmitted wirelessly using radio waves. On the ground these signals are collected by radio receivers. Large space agencies have networks of these ground stations stretching all over the globe, tracking, monitoring and receiving telemetry from their satellites."
+          ]
+        },
+        {
+          "title": "Testing the radio in the v3 CanSat kit – Learn with Andøya Space",
+          "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/common/getting-started/using-the-radio/testing-the-radio/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "When you are finished programming the v3 CanSat kit you should test that the radio link is working properly. Place jumpers on J2, connect the receiver to the PC via the USB to UART Bridge (USB-converter) and open the Arduino software · Change the COM-port from Arduino Uno R3 (COMxx) to Silicon ...",
+          "profile": {
+            "name": "Andoyaspace",
+            "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/common/getting-started/using-the-radio/testing-the-radio/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "nb",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› ebook  › the-cansat-book  › common  › getting-started  › using-the-radio  › testing-the-radio"
+          }
+        },
+        {
+          "title": "Testing the Cansat kit and start programming – Learn with Andøya Space",
+          "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/testing-the-cansat-kit-and-start-programming/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "When you imported the two Cansat related libraries into the Arduino IDE, some examples was automatically added. We will start be using these now. First, go to Files -&gt; Examples and locate the Cansat_RFM96 sub-menu. There you will find the sketch called «Cansat_DigitalAndAnalog». Select this ...",
+          "profile": {
+            "name": "Andoyaspace",
+            "url": "https://learn.andoyaspace.no/ebook/the-cansat-book/v2018/testing-the-cansat-kit-and-start-programming/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "nb",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› ebook  › the-cansat-book  › v2018  › testing-the-cansat-kit-and-start-programming"
+          },
+          "extra_snippets": [
+            "When you imported the two Cansat related libraries into the Arduino IDE, some examples was automatically added. We will start be using these now. First, go to Files -> Examples and locate the Cansat_RFM96 sub-menu. There you will find the sketch called «Cansat_DigitalAndAnalog». Select this and upload it to the Teensy.",
+            "First, start by connect the Teensy board (which now is mounted to the Cansat PCB) by USB cable. We do not need any more power than USB for now (now battery needed). When plugging in the cable, the LED light on the Cansat PCB should light up. If not, please detach the board and problem-solve why.",
+            "So whatever voltage you set on that pin, that is the voltage that the Teensy will measure. Take a jumper cable which should have been given to you by the tutor and take one line at the header pin marked 3.3V on the Cansat PCB and the other end on digital pin 2 and 3, and on the analog pin A0 and A1.",
+            "What happens when you set 0 V (there is a header pin marked with GND on the Cansat PCB, which means 0V power line) on pin 2 and 3? Try both, and also see what happens when you do the same with analog pin A0 and A1. What happens if you only touch A0 and A1 with your finger without using a cable?"
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

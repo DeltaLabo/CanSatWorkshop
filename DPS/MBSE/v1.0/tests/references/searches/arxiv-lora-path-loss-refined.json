@@ -1,0 +1,264 @@
+{
+  "query": "Path Loss in Urban LoRa Networks",
+  "total": 433480,
+  "pages_retrieved": 1,
+  "results_retrieved": 10,
+  "results": [
+    {
+      "paperId": "2211.00355",
+      "doi": "10.1007/978-3-031-82666-5_4",
+      "title": "Urban Mobility",
+      "authors": [
+        {
+          "name": "Laura Alessandretti"
+        },
+        {
+          "name": "Michael Szell"
+        }
+      ],
+      "year": 2022,
+      "abstract": "In this chapter, we discuss urban mobility from a complexity science perspective. First, we give an overview of the datasets that enable this approach, such as mobile phone records, location-based social network traces, or GPS trajectories from sensors installed on vehicles. We then review the empirical and theoretical understanding of the properties of human movements, including the distribution of travel distances and times, the entropy of trajectories, and the interplay between exploration and exploitation of locations. Next, we explain generative and predictive models of individual mobility, and their limitations due to intrinsic limits of predictability. Finally, we discuss urban transport from a systemic perspective, including system-wide challenges like ridesharing, multimodality, and sustainable transport.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2211.00355v1"
+      }
+    },
+    {
+      "paperId": "2503.14195",
+      "doi": "10.1016/j.compenvurbsys.2025.102282",
+      "title": "Mapping Urban Villages in China: Progress and Challenges",
+      "authors": [
+        {
+          "name": "Rui Cao"
+        },
+        {
+          "name": "Wei Tu"
+        },
+        {
+          "name": "Dongsheng Chen"
+        },
+        {
+          "name": "Wenyu Zhang"
+        }
+      ],
+      "year": 2025,
+      "abstract": "The shift toward high-quality urbanization has brought increased attention to the issue of \"urban villages\", which has become a prominent social problem in China. However, there is a lack of available geospatial data on urban villages, making it crucial to prioritize urban village mapping. In order to assess the current progress in urban village mapping and identify challenges and future directions, we have conducted a comprehensive review, which to the best of our knowledge is the first of its kind in this field. Our review begins by providing a clear context for urban villages and elaborating the method for literature review, then summarizes the study areas, data sources, and approaches used for urban village mapping in China. We also address the challenges and future directions for further research. Through thorough investigation, we find that current studies only cover very limited study areas and periods and lack sufficient investigation into the scalability, transferability, and interpretability of identification approaches due to the challenges in concept fuzziness and variances, spatial heterogeneity and variances of urban villages, and data availability. Future research can complement and further the current research in the following potential directions in order to achieve large-area mapping across the whole nation...",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2503.14195v1"
+      }
+    },
+    {
+      "paperId": "2109.07768",
+      "doi": "",
+      "title": "Path Loss in Urban LoRa Networks: A Large-Scale Measurement Study",
+      "authors": [
+        {
+          "name": "Michael Rademacher"
+        },
+        {
+          "name": "Hendrik Linka"
+        },
+        {
+          "name": "Thorsten Horstmann"
+        },
+        {
+          "name": "Martin Henze"
+        }
+      ],
+      "year": 2021,
+      "abstract": "Urban LoRa networks promise to provide a cost-efficient and scalable communication backbone for smart cities. One core challenge in rolling out and operating these networks is radio network planning, i.e., precise predictions about possible new locations and their impact on network coverage. Path loss models aid in this task, but evaluating and comparing different models requires a sufficiently large set of high-quality received packet power samples. In this paper, we report on a corresponding large-scale measurement study covering an urban area of 200km2 over a period of 230 days using sensors deployed on garbage trucks, resulting in more than 112 thousand high-quality samples for received packet power. Using this data, we compare eleven previously proposed path loss models and additionally provide new coefficients for the Log-distance model. Our results reveal that the Log-distance model and other well-known empirical models such as Okumura or Winner+ provide reasonable estimations in an urban environment, and terrain based models such as ITM or ITWOM have no advantages. In addition, we derive estimations for the needed sample size in similar measurement campaigns. To stimulate further research in this direction, we make all our data publicly available.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2109.07768v1"
+      }
+    },
+    {
+      "paperId": "2304.12840",
+      "doi": "10.1177/23998083231209073",
+      "title": "Spatiotemporal gender differences in urban vibrancy",
+      "authors": [
+        {
+          "name": "Thomas Collins"
+        },
+        {
+          "name": "Riccardo Di Clemente"
+        },
+        {
+          "name": "Mario Gutiérrez-Roig"
+        },
+        {
+          "name": "Federico Botta"
+        }
+      ],
+      "year": 2023,
+      "abstract": "Urban vibrancy is the dynamic activity of humans in urban locations. It can vary with urban features and the opportunities for human interactions, but it might also differ according to the underlying social conditions of city inhabitants across and within social surroundings. Such heterogeneity in how different demographic groups may experience cities has the potential to cause gender segregation because of differences in the preferences of inhabitants, their accessibility and opportunities, and large-scale mobility behaviours. However, traditional studies have failed to capture fully a high-frequency understanding of how urban vibrancy is linked to urban features, how this might differ for different genders, and how this might affect segregation in cities. Our results show that (1) there are differences between males and females in terms of urban vibrancy, (2) the differences relate to `Points of Interest` as well as transportation networks, and (3) that there are both positive and negative `spatial spillovers` existing across each city. To do this, we use a quantitative approach using Call Detail Record data--taking advantage of the near-ubiquitous use of mobile phones--to gain high-frequency observations of spatial behaviours across the seven most prominent cities of Italy. We use a spatial model comparison approach of the direct and `spillover` effects from urban features on male-female differences. Our results increase our understanding of inequality in cities and how we can make future cities fairer.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2304.12840v2"
+      }
+    },
+    {
+      "paperId": "2101.08607",
+      "doi": "10.1109/TCOMM.2022.3193400",
+      "title": "Path Loss Modeling and Measurements for Reconfigurable Intelligent Surfaces in the Millimeter-Wave Frequency Band",
+      "authors": [
+        {
+          "name": "Wankai Tang"
+        },
+        {
+          "name": "Xiangyu Chen"
+        },
+        {
+          "name": "Ming Zheng Chen"
+        },
+        {
+          "name": "Jun Yan Dai"
+        },
+        {
+          "name": "Yu Han"
+        },
+        {
+          "name": "Marco Di Renzo"
+        },
+        {
+          "name": "Shi Jin"
+        },
+        {
+          "name": "Qiang Cheng"
+        },
+        {
+          "name": "Tie Jun Cui"
+        }
+      ],
+      "year": 2021,
+      "abstract": "Reconfigurable intelligent surfaces (RISs) provide an interface between the electromagnetic world of wireless propagation environments and the digital world of information science. Simple yet sufficiently accurate path loss models for RISs are an important basis for theoretical analysis and optimization of RIS-assisted wireless communication systems. In this paper, we refine our previously proposed free-space path loss model for RISs to make it simpler, more applicable, and easier to use. The impact of the antenna's directivity of the transmitter, receiver, and the unit cells of the RIS on the path loss is explicitly formulated as an angle-dependent loss factor. The refined model gives more accurate estimates of the path loss of RISs comprised of unit cells with a deep sub-wavelength size. Based on the proposed model, the properties of a single unit cell are evaluated in terms of scattering performance, power consumption, and area, which allows us to unveil fundamental considerations for deploying RISs in high frequency bands. Two fabricated RISs operating in the millimeter-wave (mmWave) band are utilized to carry out a measurement campaign. The measurement results are shown to be in good agreement with the proposed path loss model. In addition, the experimental results suggest an effective form to characterize the power radiation pattern of the unit cell for path loss modeling.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2101.08607v2"
+      }
+    },
+    {
+      "paperId": "1606.08488",
+      "doi": "",
+      "title": "Curating Transient Population in Urban Dynamics System",
+      "authors": [
+        {
+          "name": "Gautam S. Thakur"
+        },
+        {
+          "name": "Kevin A. Sparks"
+        },
+        {
+          "name": "Robert N. Stewart"
+        },
+        {
+          "name": "Marie L. Urban"
+        },
+        {
+          "name": "Budhendra L. Bhaduri"
+        }
+      ],
+      "year": 2016,
+      "abstract": "For past several decades, research efforts in population modelling has proven its efficacy in understanding the basic information about residential and commercial areas, as well as for the purposes of planning, development and improvement of the community as an eco-system. More or less, such efforts assume static nature of population distribution, in turn limited by the current ability to capture the dynamics of population change at a finer resolution of space and time. Fast forward today, more and more people are becoming mobile, traveling across borders impacting the nuts and bolts of our urban fabric. Unfortunately, our current efforts are being surpassed by the need to capture such transient population. It is becoming imperative to identify and define them, as well as measure their dynamics and interconnectedness. In this work, we intend to research urban population mobility patterns, gauge their transient nature, and extend our knowledge of their visited locations. We plan to achieve this by designing and developing novel methods and using VGI data that models and characterizes transient population dynamics.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/1606.08488v1"
+      }
+    },
+    {
+      "paperId": "1904.02383",
+      "doi": "",
+      "title": "Artificial Neural Network Modeling for Path Loss Prediction in Urban Environments",
+      "authors": [
+        {
+          "name": "Chanshin Park"
+        },
+        {
+          "name": "Daniel K. Tettey"
+        },
+        {
+          "name": "Han-Shin Jo"
+        }
+      ],
+      "year": 2019,
+      "abstract": "Although various linear log-distance path loss models have been developed, advanced models are requiring to more accurately and flexibly represent the path loss for complex environments such as the urban area. This letter proposes an artificial neural network (ANN) based multi-dimensional regression framework for path loss modeling in urban environments at 3 to 6 GHz frequency band. ANN is used to learn the path loss structure from the measured path loss data which is a function of distance and frequency. The effect of the network architecture parameter (activation function, the number of hidden layers and nodes) on the prediction accuracy are analyzed. We observe that the proposed model is more accurate and flexible compared to the conventional linear model.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/1904.02383v1"
+      }
+    },
+    {
+      "paperId": "1904.12300",
+      "doi": "10.1109/ICNC47757.2020.9049729",
+      "title": "Achieving Max-Min Throughput in LoRa Networks",
+      "authors": [
+        {
+          "name": "Jiangbin Lyu"
+        },
+        {
+          "name": "Dan Yu"
+        },
+        {
+          "name": "Liqun Fu"
+        }
+      ],
+      "year": 2019,
+      "abstract": "With growing popularity, LoRa networks are pivotally enabling Long Range connectivity to low-cost and power-constrained user equipments (UEs). Due to its wide coverage area, a critical issue is to effectively allocate wireless resources to support potentially massive UEs in the cell while resolving the prominent near-far fairness problem for cell-edge UEs, which is challenging to address due to the lack of tractable analytical model for the LoRa network and its practical requirement for low-complexity and low-overhead design. To achieve massive connectivity with fairness, we investigate the problem of maximizing the minimum throughput of all UEs in the LoRa network, by jointly designing high-level policies of spreading factor (SF) allocation, power control, and duty cycle adjustment based only on average channel statistics and spatial UE distribution. By leveraging on the Poisson rain model along with tailored modifications to our considered LoRa network, we are able to account for channel fading, aggregate interference and accurate packet overlapping, and still obtain a tractable and yet accurate closed-form formula for the packet success probability and hence throughput. We further propose an iterative balancing (IB) method to allocate the SFs in the cell such that the overall max-min throughput can be achieved within the considered time period and cell area. Numerical results show that the proposed scheme with optimized design greatly alleviates the near-far fairness issue, and significantly improves the cell-edge throughput.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/1904.12300v2"
+      }
+    },
+    {
+      "paperId": "2509.02811",
+      "doi": "10.1109/GLOBECOM59602.2025.11432761",
+      "title": "Performance Evaluation of LoRa for IoT Applications in Non-Terrestrial Networks via ns-3",
+      "authors": [
+        {
+          "name": "Alessandro Traspadini"
+        },
+        {
+          "name": "Michele Zorzi"
+        },
+        {
+          "name": "Marco Giordani"
+        }
+      ],
+      "year": 2025,
+      "abstract": "The integration of Internet of Things (IoT) and Non-Terrestrial Networks (NTNs) has emerged as a key paradigm to provide connectivity for sensors and actuators via satellite gateways in remote areas where terrestrial infrastructure is limited or unavailable. Among other Low-Power Wide-Area Network (LPWAN) technologies for IoT, Long Range (LoRa) holds great potential given its long range, energy efficiency, and flexibility. In this paper, we explore the feasibility and performance of LoRa to support large-scale IoT connectivity through Low Earth Orbit (LEO) satellite gateways. To do so, we developed a new ns3-LoRa-NTN simulation module, which integrates and extends the ns3-LoRa and ns3-NTN modules, to enable full-stack end-to-end simulation of satellite communication in LoRa networks. Our results, given in terms of average data rate and Packet Reception Ratio (PRR), confirm that LoRa can effectively support direct communication from the ground to LEO satellites, but network optimization is required to mitigate collision probability when end nodes use the same Spreading Factors (SFs) over long distances.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2509.02811v1"
+      }
+    },
+    {
+      "paperId": "2411.14961",
+      "doi": "",
+      "title": "LoRA-FAIR: Federated LoRA Fine-Tuning with Aggregation and Initialization Refinement",
+      "authors": [
+        {
+          "name": "Jieming Bian"
+        },
+        {
+          "name": "Lei Wang"
+        },
+        {
+          "name": "Letian Zhang"
+        },
+        {
+          "name": "Jie Xu"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Foundation models (FMs) achieve strong performance across diverse tasks with task-specific fine-tuning, yet full parameter fine-tuning is often computationally prohibitive for large models. Parameter-efficient fine-tuning (PEFT) methods like Low-Rank Adaptation (LoRA) reduce this cost by introducing low-rank matrices for tuning fewer parameters. While LoRA allows for efficient fine-tuning, it requires significant data for adaptation, making Federated Learning (FL) an appealing solution due to its privacy-preserving collaborative framework. However, combining LoRA with FL introduces two key challenges: the \\textbf{Server-Side Aggregation Bias}, where server-side averaging of LoRA matrices diverges from the ideal global update, and the \\textbf{Client-Side Initialization Lag}, emphasizing the need for consistent initialization across rounds. Existing approaches address these challenges individually, limiting their effectiveness. We propose LoRA-FAIR, a novel method that tackles both issues by introducing a correction term on the server, enhancing aggregation efficiency and accuracy. LoRA-FAIR maintains computational and communication efficiency, yielding superior performance over state-of-the-art methods. Experimental results on ViT and MLP-Mixer models across large-scale datasets demonstrate that LoRA-FAIR consistently achieves performance improvements in FL settings.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://arxiv.org/pdf/2411.14961v3"
+      }
+    }
+  ],
+  "output_metadata": {
+    "extracted_at": "2026-06-11T16:22:58.703371"
+  }
+}

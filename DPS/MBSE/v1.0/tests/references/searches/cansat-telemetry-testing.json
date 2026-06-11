@@ -1,0 +1,741 @@
+{
+  "query": "CanSat mission guide ground station telemetry radio test PDF",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "Cansat Competition Guide 2025 Auto Gyro Descender Rev 1.0e Jan 12, 2025 1",
+      "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025e.pdf",
+      "description": "The Cansat shall measure the magnetic field. ... Telemetry shall include mission time with 1 second resolution. ... Each team shall develop their own ground station.",
+      "content": "The Cansat shall measure the magnetic field. ... Telemetry shall include mission time with 1 second resolution. ... Each team shall develop their own ground station.\nEach team is required to assemble a mission operations manual. The mission operations · manual includes five checklists/operations procedures to be created by the team. The · checklists are for configuring the ground station, preparing the Cansat, and integrating the\nThe ground station shall be able to activate all mechanisms on command. ... SIMULATION ENABLE and SIMULATION ACTIVATE commands. ... The flight shall include commands to activate all mechanisms. These · commands shall be documented in the mission manual. ... The ASCII format of the telemetry packets are described below.\nXBEE radios shall be used for telemetry. 2.4 GHz Series radios are ... XBEE radios shall have their NETID/PANID set to their team number. ... XBEE radios shall not use broadcast mode. ... The Cansat shall transmit telemetry once per second.\nThe sensor telemetry shall be transmitted at a 1 Hz rate. ... A second video camera shall point in the north direction during descent. ... Cost of the Cansat shall be under $1000. Ground support and analysis",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025e.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+        "path": "› docs  › CanSat_Mission_Guide_2025e.pdf"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "CanSat Competition Guide 2022 Tethered Payload Mission Rev 1.0a Oct 18, 2021 1",
+      "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2022.pdf",
+      "description": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry ...",
+      "content": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry ...\nAfter activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry is being received.\nCost of the CanSat shall be under $1000. Ground support and analysis · tools are not included in the cost. Equipment from previous years should be · included in this cost, based on current market value. ... XBEE radios shall be used for telemetry.\nCoordinator when the team and their CanSat is ready to be launched. Ground Station Crew - This is one or more persons who is responsible for monitoring the · ground station for telemetry reception and issuing commands to the CanSat.\nThis means the CanSat · must be completed, built and ready to launch at the flight readiness review. A ball of wires and · boards does not constitute flight ready. To emphasize, when presented at the Flight · Readiness Review (FRR), it must be in a state where it can be turned on and placed into a · rocket for immediate launch and be fully operational. Flight Readiness Review will be ... Teams must be prepared to demonstrate the ground station.",
+      "age": "October 18, 2021",
+      "page_age": "2021-10-18T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2022.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "www.cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+        "path": "› docs  › CanSat_Mission_Guide_2022.pdf"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Cansat Competition Guide 2025 Auto Gyro Descender Rev 1.0d Oct 31, 2024 1",
+      "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025d.pdf",
+      "description": "The Cansat shall measure the magnetic field. ... Telemetry shall include mission time with 1 second resolution. ... Each team shall develop their own ground station.",
+      "content": "The Cansat shall measure the magnetic field. ... Telemetry shall include mission time with 1 second resolution. ... Each team shall develop their own ground station.\nEach team is required to assemble a mission operations manual. The mission operations · manual includes five checklists/operations procedures to be created by the team. The · checklists are for configuring the ground station, preparing the Cansat, and integrating the\nThe ground station shall be able to activate all mechanisms on command. ... SIMULATION ENABLE and SIMULATION ACTIVATE commands. ... The flight shall include commands to activate all mechanisms. These · commands shall be documented in the mission manual. ... The ASCII format of the telemetry packets are described below.\nXBEE radios shall be used for telemetry. 2.4 GHz Series radios are ... XBEE radios shall have their NETID/PANID set to their team number. ... XBEE radios shall not use broadcast mode. ... The Cansat shall transmit telemetry once per second.\nThe sensor telemetry shall be transmitted at a 1 Hz rate. ... A second video camera shall point in the north direction during descent. ... Cost of the Cansat shall be under $1000. Ground support and analysis",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025d.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+        "path": "› docs  › CanSat_Mission_Guide_2025d.pdf"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "CanSat Competition Guide 2023 Planetary Probe Lander Mission Rev 1.0c",
+      "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2023c.pdf",
+      "description": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry ...",
+      "content": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry ...\nAfter activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry is being received.\nCost of the CanSat shall be under $1000. Ground support and analysis · tools are not included in the cost. Equipment from previous years shall be · included in this cost, based on current market value. ... XBEE radios shall be used for telemetry.\nCoordinator when the team and their CanSat is ready to be launched. Ground Station Crew - This is one or more persons who is responsible for monitoring the · ground station for telemetry reception and issuing commands to the CanSat.\nThis means the CanSat · must be completed, built and ready to launch at the flight readiness review. A ball of wires and · boards does not constitute flight ready. To emphasize, when presented at the Flight · Readiness Review (FRR), it must be in a state where it can be turned on and placed into a · rocket for immediate launch and be fully operational. Flight Readiness Review will be ... Teams must be prepared to demonstrate the ground station.",
+      "age": "September 21, 2022",
+      "page_age": "2022-09-21T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2023c.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "www.cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+        "path": "› docs  › CanSat_Mission_Guide_2023c.pdf"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "CANSAT Competition Guide 2025 Planetary Probe Instrument Mission Version 1.1",
+      "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+      "description": "The second test will verify communications with the CANSAT and demonstrate the ground · station software. The ground station software operations will be scored at this time.",
+      "content": "The second test will verify communications with the CANSAT and demonstrate the ground · station software. The ground station software operations will be scored at this time.\nThe CANSAT telemetry packet format to be transmitted at one packet every two seconds. ... ROCKET_SEPARATION, DESCENT, HS_RELEASE, LANDED, etc.). Teams may · define their own states. This should be a human readable description as the judges · will review it after the launch in the .csv files. 5. ALTITUDE is the altitude in units of meters and must be relative to ground level at the\nThis means the CANSAT must be completed, built and ready to launch at the · Pre Flight Review (PFR). A ball of wires and boards does not constitute flight ready. To · emphasize, when presented at the Flight Readiness Review (FRR), it must be in a state · where it can be turned on and placed into a rocket for immediate launch and be fully ... Teams must be prepared to demonstrate the ground station.\nhit the ground. The other end is tied to the parachute. A floor mat or pillow may · be placed under the CANSAT for the drop test. The structure must not flex · during the drop test. This test cannot be performed by holding the cord. The cord ... Power on CANSAT. ... Release the CANSAT. ... Verify the CANSAT did not lose power. ... Inspect for any damage, or detached parts. ... Verify telemetry is still being received.",
+      "age": "April 7, 2025",
+      "page_age": "2025-04-07T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "University of Waikato",
+        "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+        "long_name": "waikato.ac.nz",
+        "img": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "waikato.ac.nz",
+        "hostname": "www.waikato.ac.nz",
+        "favicon": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8",
+        "path": "› assets  › Uploads  › About-us  › Faculties-and-schools  › School-of-Engineering  › CanSat_Mission_Guide_2025-1.1.pdf"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Cansat Competition Guide 2024 Planetary Probe Instrument Delivery Mission",
+      "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024a.pdf",
+      "description": "... The probe shall include a video camera pointing horizontally. ... The video camera shall record the flight of the probe from launch to landing. ... Telemetry shall include mission time with 1 second or better resolution. ... Each team shall develop their own ground station...",
+      "content": "... The probe shall include a video camera pointing horizontally. ... The video camera shall record the flight of the probe from launch to landing. ... Telemetry shall include mission time with 1 second or better resolution. ... Each team shall develop their own ground station...\nEach team is required to assemble a mission operations manual. The mission operations · manual includes five checklists/operations procedures to be created by the team. The · checklists are for configuring the ground station, preparing the Cansat, and integrating the\nThe Cansat shall deploy a heat shield after deploying from the rocket. ... Lithium polymer batteries are not allowed. ... Battery source may be alkaline, Ni-Cad, Ni-MH or Lithium. Lithium polymer · batteries are not allowed. Lithium cells must be manufactured with a metal · package similar to 18650 cells. Coin cells are allowed. ... XBEE radios shall be used for telemetry.\nXBEE radios shall not use broadcast mode. ... The probe shall transmit telemetry once per second. ... Cansat shall measure its altitude using air pressure.\nBecause accidental initiation of SIMULATION mode can endanger the flight mission, two · commands, SIM ENABLE and SIM ACTIVATE, must be received by the flight software before · Simulation mode is activated. After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were",
+      "age": "August 10, 2023",
+      "page_age": "2023-08-10T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024a.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "www.cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+        "path": "› docs  › CanSat_Mission_Guide_2024a.pdf"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "Cansat Competition Guide 2026 Paraglider Instrument Delivery Rev 1.0",
+      "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2026.pdf",
+      "description": "The Cansat telemetry operates the same in FLIGHT and SIMULATION mode. So, the values, other than the pressure and altitude (calculated from the pressure values) will be actual · sensor readings (e.g., actual battery, temperature, and GPS). ... Simulation mode is activated. After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were",
+      "content": "The Cansat telemetry operates the same in FLIGHT and SIMULATION mode. So, the values, other than the pressure and altitude (calculated from the pressure values) will be actual · sensor readings (e.g., actual battery, temperature, and GPS). ... Simulation mode is activated. After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were\nEach team is required to assemble a mission operations manual. The mission operations · manual includes five checklists/operations procedures to be created by the team. The · checklists are for configuring the ground station, preparing the Cansat, and integrating the\nThe ground station shall be able to activate all mechanisms on command. ... SIMULATION ENABLE and SIMULATION ACTIVATE commands. ... The flight shall include commands to activate all mechanisms. These · commands shall be documented in the mission manual. ... The ASCII format of the telemetry packets are described below.\nThe mission control operator shall · go to the microphone at the launch site and announce their team and go through their launch · procedure which will include the countdown to the launch. ... All times are local time. The launch will start at 1pm local time. All Cansats are to be submitted by noon. The time · period is from 8am to 12pm local time and is available for launch preparations and check in. This is the time to prepare antennas, ground stations, and final Cansat tests and",
+      "age": "June 2, 2025",
+      "page_age": "2025-06-02T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2026.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+        "path": "› docs  › CanSat_Mission_Guide_2026.pdf"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "CanSat Competition Guide 2023 Planetary Probe Lander Mission Rev 1.0i",
+      "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2023i.pdf",
+      "description": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry ...",
+      "content": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry ...\nAfter activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry is being received.\nCost of the CanSat shall be under $1000. Ground support and analysis · tools are not included in the cost. Equipment from previous years shall be · included in this cost, based on current market value. ... XBEE radios shall be used for telemetry.\nCoordinator when the team and their CanSat is ready to be launched. Ground Station Crew - This is one or more persons who is responsible for monitoring the · ground station for telemetry reception and issuing commands to the CanSat.\nThis means the CanSat · must be completed, built and ready to launch at the flight readiness review. A ball of wires and · boards does not constitute flight ready. To emphasize, when presented at the Flight · Readiness Review (FRR), it must be in a state where it can be turned on and placed into a · rocket for immediate launch and be fully operational. Flight Readiness Review will be ... Teams must be prepared to demonstrate the ground station.",
+      "age": "January 30, 2023",
+      "page_age": "2023-01-30T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2023i.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+        "path": "› docs  › CanSat_Mission_Guide_2023i.pdf"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "CanSat 2022 Preliminary Design Review (PDR) Outline ...",
+      "url": "https://www.cansatcompetition.com/docs/teams/cansat2022_1019_pdr_v1.pdf",
+      "description": "The ground station shall command the Cansat to start transmitting telemetry prior to launch. ... Requirements section. ... Telemetry shall include mission time with one second or better resolution.",
+      "content": "The ground station shall command the Cansat to start transmitting telemetry prior to launch. ... Requirements section. ... Telemetry shall include mission time with one second or better resolution.\nmaintained in the event of a processor reset during the launch and mission. ... Each team shall develop their own ground station. ... All telemetry shall be displayed in real time during descent on the ground station. ... Teams shall plot each telemetry data field in real time during flight. ... A. Parachute Bay · B. Direct control unspooling mech. C. Payload Docking ring · D. Camera Gimbal · E. Active Stability control (Grid ... CanSat descends at rate 15 m/s.\nCost of the CanSat shall be under $1000. Ground support and analysis tools are not included · in the cost. Equipment from previous years should be included in this cost, based on current ... XBEE radios shall be used for telemetry. 2.4 GHz Series radios are allowed.\nThe Cansat shall operate for a minimum of two hours when integrated into the rocket. ... The science payload shall have their NETID/PANID set to their team number plus 5000. If the · team number is 1000, sensor payload NETID is 6000. ... The science payload shall transmit sensor telemetry to the container when polled.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://www.cansatcompetition.com/docs/teams/cansat2022_1019_pdr_v1.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "www.cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+        "path": "› docs  › teams  › cansat2022_1019_pdr_v1.pdf"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "Cansat Competition Guide 2025 Auto Gyro Descender Rev 1.0 Aug 10, 2024 1",
+      "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025.pdf",
+      "description": "The Cansat shall measure the magnetic field. ... Telemetry shall include mission time with 1 second resolution. ... Each team shall develop their own ground station.",
+      "content": "The Cansat shall measure the magnetic field. ... Telemetry shall include mission time with 1 second resolution. ... Each team shall develop their own ground station.\nEach team is required to assemble a mission operations manual. The mission operations · manual includes five checklists/operations procedures to be created by the team. The · checklists are for configuring the ground station, preparing the Cansat, and integrating the\nThe ground station shall be able to activate all mechanisms on command. ... SIMULATION ENABLE and SIMULATION ACTIVATE commands. ... The flight shall include commands to activate all mechanisms. These · commands shall be documented in the mission manual. ... The ASCII format of the telemetry packets are described below.\nXBEE radios shall be used for telemetry. 2.4 GHz Series radios are ... XBEE radios shall have their NETID/PANID set to their team number. ... XBEE radios shall not use broadcast mode. ... The Cansat shall transmit telemetry once per second.\nThe sensor telemetry shall be transmitted at a 1 Hz rate. ... A second video camera shall point in the north direction during descent. ... Cost of the Cansat shall be under $1000. Ground support and analysis",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+        "path": "› docs  › CanSat_Mission_Guide_2025.pdf"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "CanSat mission guide ground station telemetry radio test PDF",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.976,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "CanSat mission guide ground station telemetry radio test PDF",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "Cansat Competition Guide 2025 Auto Gyro Descender Rev 1.0e Jan 12, 2025 1",
+          "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025e.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The Cansat shall measure the magnetic field. ... Telemetry shall include mission time with 1 second resolution. ... Each team shall develop their own ground station.",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025e.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+            "path": "› docs  › CanSat_Mission_Guide_2025e.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Each team is required to assemble a mission operations manual. The mission operations · manual includes five checklists/operations procedures to be created by the team. The · checklists are for configuring the ground station, preparing the Cansat, and integrating the",
+            "The ground station shall be able to activate all mechanisms on command. ... SIMULATION ENABLE and SIMULATION ACTIVATE commands. ... The flight shall include commands to activate all mechanisms. These · commands shall be documented in the mission manual. ... The ASCII format of the telemetry packets are described below.",
+            "XBEE radios shall be used for telemetry. 2.4 GHz Series radios are ... XBEE radios shall have their NETID/PANID set to their team number. ... XBEE radios shall not use broadcast mode. ... The Cansat shall transmit telemetry once per second.",
+            "The sensor telemetry shall be transmitted at a 1 Hz rate. ... A second video camera shall point in the north direction during descent. ... Cost of the Cansat shall be under $1000. Ground support and analysis"
+          ]
+        },
+        {
+          "title": "CanSat Competition Guide 2022 Tethered Payload Mission Rev 1.0a Oct 18, 2021 1",
+          "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2022.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry ...",
+          "page_age": "2021-10-18T00:00:00",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2022.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "www.cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+            "path": "› docs  › CanSat_Mission_Guide_2022.pdf"
+          },
+          "age": "October 18, 2021",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry is being received.",
+            "Cost of the CanSat shall be under $1000. Ground support and analysis · tools are not included in the cost. Equipment from previous years should be · included in this cost, based on current market value. ... XBEE radios shall be used for telemetry.",
+            "Coordinator when the team and their CanSat is ready to be launched. Ground Station Crew - This is one or more persons who is responsible for monitoring the · ground station for telemetry reception and issuing commands to the CanSat.",
+            "This means the CanSat · must be completed, built and ready to launch at the flight readiness review. A ball of wires and · boards does not constitute flight ready. To emphasize, when presented at the Flight · Readiness Review (FRR), it must be in a state where it can be turned on and placed into a · rocket for immediate launch and be fully operational. Flight Readiness Review will be ... Teams must be prepared to demonstrate the ground station."
+          ]
+        },
+        {
+          "title": "Cansat Competition Guide 2025 Auto Gyro Descender Rev 1.0d Oct 31, 2024 1",
+          "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025d.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The Cansat shall measure the magnetic field. ... Telemetry shall include mission time with 1 second resolution. ... Each team shall develop their own ground station.",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025d.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+            "path": "› docs  › CanSat_Mission_Guide_2025d.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Each team is required to assemble a mission operations manual. The mission operations · manual includes five checklists/operations procedures to be created by the team. The · checklists are for configuring the ground station, preparing the Cansat, and integrating the",
+            "The ground station shall be able to activate all mechanisms on command. ... SIMULATION ENABLE and SIMULATION ACTIVATE commands. ... The flight shall include commands to activate all mechanisms. These · commands shall be documented in the mission manual. ... The ASCII format of the telemetry packets are described below.",
+            "XBEE radios shall be used for telemetry. 2.4 GHz Series radios are ... XBEE radios shall have their NETID/PANID set to their team number. ... XBEE radios shall not use broadcast mode. ... The Cansat shall transmit telemetry once per second.",
+            "The sensor telemetry shall be transmitted at a 1 Hz rate. ... A second video camera shall point in the north direction during descent. ... Cost of the Cansat shall be under $1000. Ground support and analysis"
+          ]
+        },
+        {
+          "title": "CanSat Competition Guide 2023 Planetary Probe Lander Mission Rev 1.0c",
+          "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2023c.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry ...",
+          "page_age": "2022-09-21T00:00:00",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2023c.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "www.cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+            "path": "› docs  › CanSat_Mission_Guide_2023c.pdf"
+          },
+          "age": "September 21, 2022",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry is being received.",
+            "Cost of the CanSat shall be under $1000. Ground support and analysis · tools are not included in the cost. Equipment from previous years shall be · included in this cost, based on current market value. ... XBEE radios shall be used for telemetry.",
+            "Coordinator when the team and their CanSat is ready to be launched. Ground Station Crew - This is one or more persons who is responsible for monitoring the · ground station for telemetry reception and issuing commands to the CanSat.",
+            "This means the CanSat · must be completed, built and ready to launch at the flight readiness review. A ball of wires and · boards does not constitute flight ready. To emphasize, when presented at the Flight · Readiness Review (FRR), it must be in a state where it can be turned on and placed into a · rocket for immediate launch and be fully operational. Flight Readiness Review will be ... Teams must be prepared to demonstrate the ground station."
+          ]
+        },
+        {
+          "title": "CANSAT Competition Guide 2025 Planetary Probe Instrument Mission Version 1.1",
+          "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The second test will verify communications with the CANSAT and demonstrate the ground · station software. The ground station software operations will be scored at this time.",
+          "page_age": "2025-04-07T00:00:00",
+          "profile": {
+            "name": "University of Waikato",
+            "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+            "long_name": "waikato.ac.nz",
+            "img": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "waikato.ac.nz",
+            "hostname": "www.waikato.ac.nz",
+            "favicon": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8",
+            "path": "› assets  › Uploads  › About-us  › Faculties-and-schools  › School-of-Engineering  › CanSat_Mission_Guide_2025-1.1.pdf"
+          },
+          "age": "April 7, 2025",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The CANSAT telemetry packet format to be transmitted at one packet every two seconds. ... ROCKET_SEPARATION, DESCENT, HS_RELEASE, LANDED, etc.). Teams may · define their own states. This should be a human readable description as the judges · will review it after the launch in the .csv files. 5. ALTITUDE is the altitude in units of meters and must be relative to ground level at the",
+            "This means the CANSAT must be completed, built and ready to launch at the · Pre Flight Review (PFR). A ball of wires and boards does not constitute flight ready. To · emphasize, when presented at the Flight Readiness Review (FRR), it must be in a state · where it can be turned on and placed into a rocket for immediate launch and be fully ... Teams must be prepared to demonstrate the ground station.",
+            "The second test will verify communications with the CANSAT and demonstrate the ground · station software. The ground station software operations will be scored at this time.",
+            "hit the ground. The other end is tied to the parachute. A floor mat or pillow may · be placed under the CANSAT for the drop test. The structure must not flex · during the drop test. This test cannot be performed by holding the cord. The cord ... Power on CANSAT. ... Release the CANSAT. ... Verify the CANSAT did not lose power. ... Inspect for any damage, or detached parts. ... Verify telemetry is still being received."
+          ]
+        },
+        {
+          "title": "Cansat Competition Guide 2024 Planetary Probe Instrument Delivery Mission",
+          "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024a.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "... The probe shall include a video camera pointing horizontally. ... The video camera shall record the flight of the probe from launch to landing. ... Telemetry shall include mission time with 1 second or better resolution. ... Each team shall develop their own ground station...",
+          "page_age": "2023-08-10T00:00:00",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://www.cansatcompetition.com/docs/CanSat_Mission_Guide_2024a.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "www.cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+            "path": "› docs  › CanSat_Mission_Guide_2024a.pdf"
+          },
+          "age": "August 10, 2023",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Each team is required to assemble a mission operations manual. The mission operations · manual includes five checklists/operations procedures to be created by the team. The · checklists are for configuring the ground station, preparing the Cansat, and integrating the",
+            "The Cansat shall deploy a heat shield after deploying from the rocket. ... Lithium polymer batteries are not allowed. ... Battery source may be alkaline, Ni-Cad, Ni-MH or Lithium. Lithium polymer · batteries are not allowed. Lithium cells must be manufactured with a metal · package similar to 18650 cells. Coin cells are allowed. ... XBEE radios shall be used for telemetry.",
+            "XBEE radios shall not use broadcast mode. ... The probe shall transmit telemetry once per second. ... Cansat shall measure its altitude using air pressure.",
+            "Because accidental initiation of SIMULATION mode can endanger the flight mission, two · commands, SIM ENABLE and SIM ACTIVATE, must be received by the flight software before · Simulation mode is activated. After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were"
+          ]
+        },
+        {
+          "title": "Cansat Competition Guide 2026 Paraglider Instrument Delivery Rev 1.0",
+          "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2026.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The Cansat telemetry operates the same in FLIGHT and SIMULATION mode. So, the values, other than the pressure and altitude (calculated from the pressure values) will be actual · sensor readings (e.g., actual battery, temperature, and GPS). ... Simulation mode is activated. After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were",
+          "page_age": "2025-06-02T00:00:00",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2026.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+            "path": "› docs  › CanSat_Mission_Guide_2026.pdf"
+          },
+          "age": "June 2, 2025",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The Cansat telemetry operates the same in FLIGHT and SIMULATION mode. So, the values, other than the pressure and altitude (calculated from the pressure values) will be actual · sensor readings (e.g., actual battery, temperature, and GPS). ... Simulation mode is activated. After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were",
+            "Each team is required to assemble a mission operations manual. The mission operations · manual includes five checklists/operations procedures to be created by the team. The · checklists are for configuring the ground station, preparing the Cansat, and integrating the",
+            "The ground station shall be able to activate all mechanisms on command. ... SIMULATION ENABLE and SIMULATION ACTIVATE commands. ... The flight shall include commands to activate all mechanisms. These · commands shall be documented in the mission manual. ... The ASCII format of the telemetry packets are described below.",
+            "The mission control operator shall · go to the microphone at the launch site and announce their team and go through their launch · procedure which will include the countdown to the launch. ... All times are local time. The launch will start at 1pm local time. All Cansats are to be submitted by noon. The time · period is from 8am to 12pm local time and is available for launch preparations and check in. This is the time to prepare antennas, ground stations, and final Cansat tests and"
+          ]
+        },
+        {
+          "title": "CanSat Competition Guide 2023 Planetary Probe Lander Mission Rev 1.0i",
+          "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2023i.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry ...",
+          "page_age": "2023-01-30T00:00:00",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2023i.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+            "path": "› docs  › CanSat_Mission_Guide_2023i.pdf"
+          },
+          "age": "January 30, 2023",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were · actual barometric pressure readings in the calculation of altitude, determination software ... Power on CanSat. ... Verify telemetry is being received.",
+            "Cost of the CanSat shall be under $1000. Ground support and analysis · tools are not included in the cost. Equipment from previous years shall be · included in this cost, based on current market value. ... XBEE radios shall be used for telemetry.",
+            "Coordinator when the team and their CanSat is ready to be launched. Ground Station Crew - This is one or more persons who is responsible for monitoring the · ground station for telemetry reception and issuing commands to the CanSat.",
+            "This means the CanSat · must be completed, built and ready to launch at the flight readiness review. A ball of wires and · boards does not constitute flight ready. To emphasize, when presented at the Flight · Readiness Review (FRR), it must be in a state where it can be turned on and placed into a · rocket for immediate launch and be fully operational. Flight Readiness Review will be ... Teams must be prepared to demonstrate the ground station."
+          ]
+        },
+        {
+          "title": "CanSat 2022 Preliminary Design Review (PDR) Outline ...",
+          "url": "https://www.cansatcompetition.com/docs/teams/cansat2022_1019_pdr_v1.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The ground station shall command the Cansat to start transmitting telemetry prior to launch. ... Requirements section. ... Telemetry shall include mission time with one second or better resolution.",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://www.cansatcompetition.com/docs/teams/cansat2022_1019_pdr_v1.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "www.cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+            "path": "› docs  › teams  › cansat2022_1019_pdr_v1.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The ground station shall command the Cansat to start transmitting telemetry prior to launch. ... Requirements section. ... Telemetry shall include mission time with one second or better resolution.",
+            "maintained in the event of a processor reset during the launch and mission. ... Each team shall develop their own ground station. ... All telemetry shall be displayed in real time during descent on the ground station. ... Teams shall plot each telemetry data field in real time during flight. ... A. Parachute Bay · B. Direct control unspooling mech. C. Payload Docking ring · D. Camera Gimbal · E. Active Stability control (Grid ... CanSat descends at rate 15 m/s.",
+            "Cost of the CanSat shall be under $1000. Ground support and analysis tools are not included · in the cost. Equipment from previous years should be included in this cost, based on current ... XBEE radios shall be used for telemetry. 2.4 GHz Series radios are allowed.",
+            "The Cansat shall operate for a minimum of two hours when integrated into the rocket. ... The science payload shall have their NETID/PANID set to their team number plus 5000. If the · team number is 1000, sensor payload NETID is 6000. ... The science payload shall transmit sensor telemetry to the container when polled."
+          ]
+        },
+        {
+          "title": "Cansat Competition Guide 2025 Auto Gyro Descender Rev 1.0 Aug 10, 2024 1",
+          "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The Cansat shall measure the magnetic field. ... Telemetry shall include mission time with 1 second resolution. ... Each team shall develop their own ground station.",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+            "path": "› docs  › CanSat_Mission_Guide_2025.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Each team is required to assemble a mission operations manual. The mission operations · manual includes five checklists/operations procedures to be created by the team. The · checklists are for configuring the ground station, preparing the Cansat, and integrating the",
+            "The ground station shall be able to activate all mechanisms on command. ... SIMULATION ENABLE and SIMULATION ACTIVATE commands. ... The flight shall include commands to activate all mechanisms. These · commands shall be documented in the mission manual. ... The ASCII format of the telemetry packets are described below.",
+            "XBEE radios shall be used for telemetry. 2.4 GHz Series radios are ... XBEE radios shall have their NETID/PANID set to their team number. ... XBEE radios shall not use broadcast mode. ... The Cansat shall transmit telemetry once per second.",
+            "The sensor telemetry shall be transmitted at a 1 Hz rate. ... A second video camera shall point in the north direction during descent. ... Cost of the Cansat shall be under $1000. Ground support and analysis"
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

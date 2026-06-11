@@ -1,0 +1,1002 @@
+{
+  "query": "NIST SEMATECH binomial proportion sample size reliability confidence zero failures",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "NIST/SEMATECH e-Handbook of Statistical Methods",
+      "url": "https://www.itl.nist.gov/div898/handbook/",
+      "description": "NIST/SEMATECH e-Handbook of Statistical Methods · To view this document, you need a frames-compatible browser such as Netscape Navigator or Microsoft Internet Explorer",
+      "content": "NIST/SEMATECH e-Handbook of Statistical Methods · To view this document, you need a frames-compatible browser such as Netscape Navigator or Microsoft Internet Explorer",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NIST",
+        "url": "https://www.itl.nist.gov/div898/handbook/",
+        "long_name": "itl.nist.gov",
+        "img": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "itl.nist.gov",
+        "hostname": "www.itl.nist.gov",
+        "favicon": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw",
+        "path": "› div898  › handbook"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "7.2.4.2. Sample sizes required",
+      "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+      "description": "Define \\(\\delta\\) as the change in the proportion defective that we are interested in detecting \\(\\delta = | p_1 - p_0|\\). Specify the level of statisitical significance and statistical power, respectively, by · The mathematical details of this derivation are given on pages 30-34 of Fleiss, ...",
+      "content": "Define \\(\\delta\\) as the change in the proportion defective that we are interested in detecting \\(\\delta = | p_1 - p_0|\\). Specify the level of statisitical significance and statistical power, respectively, by · The mathematical details of this derivation are given on pages 30-34 of Fleiss, ...",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NIST",
+        "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+        "long_name": "itl.nist.gov",
+        "img": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "itl.nist.gov",
+        "hostname": "www.itl.nist.gov",
+        "favicon": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw",
+        "path": "› div898  › handbook  › prc  › section2  › prc242.htm"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Estimating Instrument Performance: with Confidence Intervals ...",
+      "url": "https://nvlpubs.nist.gov/nistpubs/TechnicalNotes/NIST.TN.2119.pdf",
+      "description": "approximate most of the classical conﬁdence intervals in Section 2, and so the Bayesian · approach may be considered as a more powerful and general approach for binomial proba-",
+      "content": "approximate most of the classical conﬁdence intervals in Section 2, and so the Bayesian · approach may be considered as a more powerful and general approach for binomial proba-\nClopper-Pearson ”Exact” Interval. The Clopper-Pearson [7] ”exact” conﬁdence in- terval for p, based on inverting equal-tailed binomial test of H0 : p = p0 based on the\nFigure 1: Display of Binomial Probabilities and Normal Approximations.\nAssume that we obtained binomial data in two instances, n = 20,s = 2 and n = 20,s = 17.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NIST",
+        "url": "https://nvlpubs.nist.gov/nistpubs/TechnicalNotes/NIST.TN.2119.pdf",
+        "long_name": "nvlpubs.nist.gov",
+        "img": "https://imgs.search.brave.com/MlhRIjS5kkOEzXhVhAamg5Vp_J4KM4OLXCjHHT6TIa4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDRmZWNjYTM0/OWE3NDUzYzQ4MDY4/MzNkMmYyNmRhNzE2/NzcxYWM2MmI3OTNl/ODQwMzdmYTY3NWMy/YjQ3ZmI5Zi9udmxw/dWJzLm5pc3QuZ292/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "nvlpubs.nist.gov",
+        "hostname": "nvlpubs.nist.gov",
+        "favicon": "https://imgs.search.brave.com/MlhRIjS5kkOEzXhVhAamg5Vp_J4KM4OLXCjHHT6TIa4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDRmZWNjYTM0/OWE3NDUzYzQ4MDY4/MzNkMmYyNmRhNzE2/NzcxYWM2MmI3OTNl/ODQwMzdmYTY3NWMy/YjQ3ZmI5Zi9udmxw/dWJzLm5pc3QuZ292/Lw",
+        "path": "› nistpubs  › TechnicalNotes  › NIST.TN.2119.pdf"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression Analysis | Least Squares",
+      "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+      "description": "Are the data consistent with a nominal standard deviation? [7.2.3.] 1. Confidence interval approach [[Link].] 2. Sample sizes required [[Link].] 4. Does the proportion of defectives meet requirements? [7.2.4.] 1. Confidence intervals [[Link].] 2. Sample sizes required [[Link].] 5.",
+      "content": "Are the data consistent with a nominal standard deviation? [7.2.3.] 1. Confidence interval approach [[Link].] 2. Sample sizes required [[Link].] 4. Does the proportion of defectives meet requirements? [7.2.4.] 1. Confidence intervals [[Link].] 2. Sample sizes required [[Link].] 5.\n1.1.5. The Role of Graphics [Link] [Link] PM] 1. Exploratory Data Analysis 1.1. EDA Introduction 1.1.5. The Role of Graphics Quantitative/ Graphical Statistics and data analysis procedures can broadly be split into two parts: quantitative graphical Quantitative Quantitative techniques are the set of statistical procedures that yield numeric or tabular output. Examples of quantitative techniques include: hypothesis testing analysis of variance point estimates and confidence intervals least squares regression These and similar techniques are all valuable and are mainstream in terms of classical analysis.\nDouble Exponential Distribution [[Link].12.] 13. Power Normal Distribution [[Link].13.] 14. Power Lognormal Distribution [[Link].14.] 15. Tukey-Lambda Distribution [[Link].15.] 16. Extreme Value Type I Distribution [[Link].16.] 17. Beta Distribution [[Link].17.] 18. Binomial Distribution [[Link].18.] 19.\n[5.5.2.] 1. D-Optimal designs [[Link].] 2. Repairing a design [[Link].] 3. How do you optimize a process? [5.5.3.] 1. Single response case [[Link].] 1. Single response: Path of steepest ascent [[Link].1.] 2. Single response: Confidence region for search path [[Link].2.] 3.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "faq",
+      "profile": {
+        "name": "Scribd",
+        "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+        "long_name": "scribd.com",
+        "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "scribd.com",
+        "hostname": "www.scribd.com",
+        "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+        "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KCTZfy9B24H8dE3WlIO4fdJKlzTdADH10IwNcLZSOeU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/MjE5ODAyNDYxLzE0/OXgxOTgvMzkyNWEz/ODEyMy8xNzA2NjA2/ODMzP3Y9MQ",
+        "original": "https://imgv2-1-f.scribdassets.com/img/document/219802461/149x198/3925a38123/1706606833?v=1",
+        "logo": false
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Detailed Table of Contents for the Handbook",
+      "url": "https://www.itl.nist.gov/div898/handbook/dtoc.htm",
+      "description": "How can I assess whether the random errors are independent from one to the next? [4.4.4.4.] · How can I test whether any significant terms are missing or misspecified in the functional part of the model? [4.4.4.6.] · How can I test whether all of the terms in the functional part of the model ...",
+      "content": "How can I assess whether the random errors are independent from one to the next? [4.4.4.4.] · How can I test whether any significant terms are missing or misspecified in the functional part of the model? [4.4.4.6.] · How can I test whether all of the terms in the functional part of the model ...",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NIST",
+        "url": "https://www.itl.nist.gov/div898/handbook/dtoc.htm",
+        "long_name": "itl.nist.gov",
+        "img": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "itl.nist.gov",
+        "hostname": "www.itl.nist.gov",
+        "favicon": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw",
+        "path": "› div898  › handbook  › dtoc.htm"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Handbook 151: NIST/SEMATECH e-Handbook of Statistical Methods | NIST",
+      "url": "https://www.nist.gov/publications/handbook-151-nistsematech-e-handbook-statistical-methods",
+      "description": "Heckert, N. , Filliben, J. , Croarkin, C. , Hembree, B. , Guthrie, W. , Tobias, P. and Prinz, J. (2002), Handbook 151: NIST/SEMATECH e-Handbook of Statistical Methods, NIST Interagency/Internal Report (NISTIR), National Institute of Standards and Technology, Gaithersburg, MD (Accessed April 2, 2026)",
+      "content": "Heckert, N. , Filliben, J. , Croarkin, C. , Hembree, B. , Guthrie, W. , Tobias, P. and Prinz, J. (2002), Handbook 151: NIST/SEMATECH e-Handbook of Statistical Methods, NIST Interagency/Internal Report (NISTIR), National Institute of Standards and Technology, Gaithersburg, MD (Accessed April 2, 2026)\nThe URL is http://www.itl.nist.gov/div898/handbook/mpc/mpc.htm.",
+      "age": "October 12, 2021",
+      "page_age": "2021-10-12T15:10:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NIST",
+        "url": "https://www.nist.gov/publications/handbook-151-nistsematech-e-handbook-statistical-methods",
+        "long_name": "nist.gov",
+        "img": "https://imgs.search.brave.com/-ggqMO4lo-qDjseBV5Q7IQV2slP7pLHA2grNsrSaDiQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY0NTIyYjE0/MGE2YzdhYjhhYWVl/YjQwNjI5ZDA0Nzlj/NzRmYzdiZWQ2NWU1/ODgxZTcxMmZhNWEx/ZDk2YjNhMy93d3cu/bmlzdC5nb3Yv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "nist.gov",
+        "hostname": "www.nist.gov",
+        "favicon": "https://imgs.search.brave.com/-ggqMO4lo-qDjseBV5Q7IQV2slP7pLHA2grNsrSaDiQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY0NTIyYjE0/MGE2YzdhYjhhYWVl/YjQwNjI5ZDA0Nzlj/NzRmYzdiZWQ2NWU1/ODgxZTcxMmZhNWEx/ZDk2YjNhMy93d3cu/bmlzdC5nb3Yv",
+        "path": "› publications  › handbook-151-nistsematech-e-handbook-statistical-methods"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/pP3iLSI94IDRMTmWsQA6PXbF5Djo81w5IGvfgIHem_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bmlzdC5nb3YvdGhl/bWVzL2N1c3RvbS9u/aXN0X3d3dy9pbWcv/aG9tZXBhZ2Uvbmlz/dF9tYXJrLnBuZw",
+        "original": "https://www.nist.gov/themes/custom/nist_www/img/homepage/nist_mark.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "A Comparison of Various Methods Used to Determine the ...",
+      "url": "https://apps.dtic.mil/sti/tr/pdf/ADA540716.pdf",
+      "description": "A common rule of thumb used in binomial-outcome reliability studies is that 22 trials with zero failures are needed to conclude · a 90% minimal success rate with 90% confidence.",
+      "content": "A common rule of thumb used in binomial-outcome reliability studies is that 22 trials with zero failures are needed to conclude · a 90% minimal success rate with 90% confidence.\nIn this section, we focus on the coverage probabilities of 90% lower confidence bounds for the · binomial parameter using the three methods outlined in section 2.\nBrown, L. D.; Cai, T. T.; DasGupta, A. Interval Estimation for a Binomial Proportion. Statistical Science 2001, 16 (2), 101–133. Cai, T. T. One-Sided Confidence Intervals in Discrete Distributions.\nBlyth, C. R.; Still, H. A. Binomial Confidence Intervals.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "DTIC",
+        "url": "https://apps.dtic.mil/sti/tr/pdf/ADA540716.pdf",
+        "long_name": "apps.dtic.mil",
+        "img": "https://imgs.search.brave.com/DF0YvD0p3Irtgi3HReEtKjEfCPDgj4fIvnyFxK16fXw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjZkZTc0ZTQ5/Y2UyMjhiOTg1YmQ2/MGNmMGY4ZjZkZTVi/Y2NmYmFjYzcyZjNl/NzgzYmU2YTdjMzgw/MGNjNjUwMi9hcHBz/LmR0aWMubWlsLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "apps.dtic.mil",
+        "hostname": "apps.dtic.mil",
+        "favicon": "https://imgs.search.brave.com/DF0YvD0p3Irtgi3HReEtKjEfCPDgj4fIvnyFxK16fXw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjZkZTc0ZTQ5/Y2UyMjhiOTg1YmQ2/MGNmMGY4ZjZkZTVi/Y2NmYmFjYzcyZjNl/NzgzYmU2YTdjMzgw/MGNjNjUwMi9hcHBz/LmR0aWMubWlsLw",
+        "path": "› sti  › tr  › pdf  › ADA540716.pdf"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "NIST Technical Note 2106 Comparing Instruments James Yen Dennis Leber",
+      "url": "https://nvlpubs.nist.gov/nistpubs/TechnicalNotes/NIST.TN.2106.pdf",
+      "description": "Note that this confidence interval contains zero at the 90% confidence level.",
+      "content": "Note that this confidence interval contains zero at the 90% confidence level.\nNIST Technical Note 2045 [1], the NIST/SEMATECH e-Handbook [2], and Mendenhall and\nHypothesis tests and confidence intervals for instrument differences are demonstrated.\nThe number of successes for an instrument is modeled by a Binomial distribution modeling the",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NIST",
+        "url": "https://nvlpubs.nist.gov/nistpubs/TechnicalNotes/NIST.TN.2106.pdf",
+        "long_name": "nvlpubs.nist.gov",
+        "img": "https://imgs.search.brave.com/MlhRIjS5kkOEzXhVhAamg5Vp_J4KM4OLXCjHHT6TIa4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDRmZWNjYTM0/OWE3NDUzYzQ4MDY4/MzNkMmYyNmRhNzE2/NzcxYWM2MmI3OTNl/ODQwMzdmYTY3NWMy/YjQ3ZmI5Zi9udmxw/dWJzLm5pc3QuZ292/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "nvlpubs.nist.gov",
+        "hostname": "nvlpubs.nist.gov",
+        "favicon": "https://imgs.search.brave.com/MlhRIjS5kkOEzXhVhAamg5Vp_J4KM4OLXCjHHT6TIa4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDRmZWNjYTM0/OWE3NDUzYzQ4MDY4/MzNkMmYyNmRhNzE2/NzcxYWM2MmI3OTNl/ODQwMzdmYTY3NWMy/YjQ3ZmI5Zi9udmxw/dWJzLm5pc3QuZ292/Lw",
+        "path": "› nistpubs  › TechnicalNotes  › NIST.TN.2106.pdf"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "The Student's SEMSTAT Author: Jack Prins",
+      "url": "https://www.itl.nist.gov/div898/handbook/semstat/semstat-doc.pdf",
+      "description": "Difference between 2 proportions (binomial parameters) ... One population mean, large sample size. ( n &gt; 30) Hypothesis testing. H0: µ1 = µ0. Variance is known. Z test for one population. ... Reject the null hypothesis. A two-sided confidence about the population mean is given by:",
+      "content": "Difference between 2 proportions (binomial parameters) ... One population mean, large sample size. ( n &gt; 30) Hypothesis testing. H0: µ1 = µ0. Variance is known. Z test for one population. ... Reject the null hypothesis. A two-sided confidence about the population mean is given by:\nDifference between 2 proportions (binomial parameters) ... One population mean, large sample size. ( n > 30) Hypothesis testing. H0: µ1 = µ0. Variance is known. Z test for one population. ... Reject the null hypothesis. A two-sided confidence about the population mean is given by:\nOne proportion (binomial parameter).\nIn addition a confidence interval can be constructed for λ.\nHazard Rates, Confidence Intervals, OC Curves , more …",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NIST",
+        "url": "https://www.itl.nist.gov/div898/handbook/semstat/semstat-doc.pdf",
+        "long_name": "itl.nist.gov",
+        "img": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "itl.nist.gov",
+        "hostname": "www.itl.nist.gov",
+        "favicon": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw",
+        "path": "› div898  › handbook  › semstat  › semstat-doc.pdf"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "Section 8. Statistical Techniques – 2019 Page 1 of 12",
+      "url": "https://www.nist.gov/document/section-8-statistics-techniques-20190506pdf",
+      "description": "For 95 % confidence z = 1.960; for 99.7 % confidence z = 3.0.",
+      "content": "For 95 % confidence z = 1.960; for 99.7 % confidence z = 3.0.\nSee the NIST/SEMATECH e-Handbook of Statistical Methods, Section 2.3.3.3.4.\nhere, it is recommended that the reader consult NIST/SEMATECH e-Handbook of Statistical\nTable 9.4 contains critical values for F at the 95 % level of confidence.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NIST",
+        "url": "https://www.nist.gov/document/section-8-statistics-techniques-20190506pdf",
+        "long_name": "nist.gov",
+        "img": "https://imgs.search.brave.com/-ggqMO4lo-qDjseBV5Q7IQV2slP7pLHA2grNsrSaDiQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY0NTIyYjE0/MGE2YzdhYjhhYWVl/YjQwNjI5ZDA0Nzlj/NzRmYzdiZWQ2NWU1/ODgxZTcxMmZhNWEx/ZDk2YjNhMy93d3cu/bmlzdC5nb3Yv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "nist.gov",
+        "hostname": "www.nist.gov",
+        "favicon": "https://imgs.search.brave.com/-ggqMO4lo-qDjseBV5Q7IQV2slP7pLHA2grNsrSaDiQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY0NTIyYjE0/MGE2YzdhYjhhYWVl/YjQwNjI5ZDA0Nzlj/NzRmYzdiZWQ2NWU1/ODgxZTcxMmZhNWEx/ZDk2YjNhMy93d3cu/bmlzdC5nb3Yv",
+        "path": "› document  › section-8-statistics-techniques-20190506pdf"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "NIST SEMATECH binomial proportion sample size reliability confidence zero failures",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.994,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "NIST SEMATECH binomial proportion sample size reliability confidence zero failures",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "faq": {
+      "type": "faq",
+      "results": [
+        {
+          "question": "How does the standard deviation calculation in calibration designs reflect on the reliability of measurement results?",
+          "answer": "The standard deviation calculation within calibration designs reflects measurement result reliability by quantifying uncertainty and variability inherent in the measurements. The repeatability standard deviation assesses the consistency of the results under identical conditions, and the inclusion of a check standard aids in capturing day-to-day variations. These factors are crucial in evaluating the precision and accuracy of calibrated values. The calculated standard deviations thus play a fundamental role in assessing and ensuring the reliability of measurement results .",
+          "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+          "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+          }
+        },
+        {
+          "question": "How does the Weibull distribution contribute to reliability analysis, and what role does the parameter estimation play in this context?",
+          "answer": "The Weibull distribution contributes significantly to reliability analysis by modeling failure times of products and systems. Parameter estimation, particularly through maximum likelihood methods, is crucial as it allows for the accurate modeling of failure behavior over time, enabling predictions about product lifespan and maintenance schedules. This distribution is flexible, accommodating data with varying hazard rates, making it indispensable in reliability engineering .",
+          "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+          "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+          }
+        },
+        {
+          "question": "Why is it important to address assumptions in calibration designs, particularly regarding measurement stability and randomness?",
+          "answer": "Addressing assumptions in calibration designs is crucial because violations can lead to biased results and inaccurate measurements. Measurement stability ensures that reference standards and test items do not change during the calibration process, which is vital for achieving consistent and reliable results. Random errors must also be independent, and non-randomness in measurements can indicate systemic errors or biases. Ensuring these assumptions hold true allows the calibration designs to function effectively, providing accurate and credible results .",
+          "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+          "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+          }
+        },
+        {
+          "question": "Discuss how parameter and data size variations influence the distribution shape in context of the lognormal distribution.",
+          "answer": "The shape of the lognormal distribution is influenced by variations in the parameters and data size. The shape parameter (\u0003C3) affects the spread and peakedness, with larger values leading to more spread-out and less peaked distributions. The position and scale parameters (3B) and m also alter the distribution's characteristics, impacting the skewness and the central tendency. As the data size increases, the estimates of these parameters become more stable, which in turn, stabilizes the shape of the distribution, allowing for more reliable statistical modeling .",
+          "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+          "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+          }
+        },
+        {
+          "question": "What insights does the analysis of critical values for F and chi-square distributions provide for hypothesis testing?",
+          "answer": "The critical values for F and chi-square distributions provide the thresholds beyond which the null hypothesis can be rejected in hypothesis testing scenarios. These values are crucial in determining the statistical significance of observed test statistics. The F distribution is often used for comparing variances, especially in ANOVA, while the chi-square distribution is employed in independence tests and goodness-of-fit tests. Understanding these critical values helps researchers decide whether their results are statistically significant, thus contributing to valid conclusions in experimental",
+          "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+          "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+          }
+        },
+        {
+          "question": "In what context are F distributions typically used and why might their parameter estimation be omitted in some scenarios?",
+          "answer": "F distributions are typically used in the context of hypothesis testing, specifically in the analysis of variance (ANOVA), where they compare the variances of two populations having normal distributions. The parameter estimation might be omitted in certain scenarios because the F distribution is generally not used for modeling applications but rather in the determination of critical values for tests. Its primary purpose is in establishing statistical significance rather than estimating parameters .",
+          "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+          "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+          }
+        },
+        {
+          "question": "What are the practical implications of the Cauchy distribution's undefined mean and standard deviation for statistical analysis?",
+          "answer": "The practical implications of the Cauchy distribution's undefined mean and standard deviation are significant. It means that the usual law of large numbers, which holds for distributions with defined means, does not apply. As a result, collecting more data does not improve the estimate of the mean or standard deviation. This characteristic makes the Cauchy distribution a pathological case and is particularly important when exploring the robustness of statistical tests against deviations from normality .",
+          "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+          "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+          }
+        },
+        {
+          "question": "What is the significance of the hazard function and its omission in the context of distribution analyses like the t distribution?",
+          "answer": "The hazard function represents the instantaneous risk of an event occurring at a specific time, given that it has not yet occurred. Its omission in contexts like the t distribution is due to its limited relevance; the t distribution is mostly used for hypothesis testing and constructing confidence intervals rather than survival analysis or risk modeling, where hazard functions play a critical role. Thus, the exclusion reflects the typical applications of the distribution, which do not involve time-to-event data analysis .",
+          "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+          "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+          }
+        },
+        {
+          "question": "How does the t distribution demonstrate the transition from a Cauchy distribution to a normal distribution as the degrees of freedom increase?",
+          "answer": "The t distribution with one degree of freedom is equivalent to the Cauchy distribution . As the degrees of freedom increase, the shape of the t distribution approaches that of the normal distribution. For degrees of freedom greater than 30, the approximation to the normal distribution is sufficiently close for most practical purposes. This demonstrates the transition from a distribution with undefined mean and variance (Cauchy) to one where these parameters become well-defined, akin to the normal distribution .",
+          "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+          "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+          }
+        },
+        {
+          "question": "Explain the role of graphical techniques in detecting issues in data, as illustrated by the analysis of variance and the run sequence plot.",
+          "answer": "Graphical techniques play an essential role in detecting anomalies or unexpected patterns in data, which may not be apparent through quantitative analysis alone. In the context of variance analysis and run sequence plots, these techniques can reveal shifts in location and scale, trends, and non-random patterns. For instance, a run sequence plot can detect significant shifts in data location or scale over time. When such issues are identified, it is crucial to investigate whether they arise from data collection errors, as non-randomness might indicate sampling flaws or unexpected underlying str",
+          "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+          "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+          }
+        }
+      ]
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "faq",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "NIST/SEMATECH e-Handbook of Statistical Methods",
+          "url": "https://www.itl.nist.gov/div898/handbook/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "NIST/SEMATECH e-Handbook of Statistical Methods · To view this document, you need a frames-compatible browser such as Netscape Navigator or Microsoft Internet Explorer",
+          "profile": {
+            "name": "NIST",
+            "url": "https://www.itl.nist.gov/div898/handbook/",
+            "long_name": "itl.nist.gov",
+            "img": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "itl.nist.gov",
+            "hostname": "www.itl.nist.gov",
+            "favicon": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw",
+            "path": "› div898  › handbook"
+          }
+        },
+        {
+          "title": "7.2.4.2. Sample sizes required",
+          "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Define \\(\\delta\\) as the change in the proportion defective that we are interested in detecting \\(\\delta = | p_1 - p_0|\\). Specify the level of statisitical significance and statistical power, respectively, by · The mathematical details of this derivation are given on pages 30-34 of Fleiss, ...",
+          "profile": {
+            "name": "NIST",
+            "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+            "long_name": "itl.nist.gov",
+            "img": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "itl.nist.gov",
+            "hostname": "www.itl.nist.gov",
+            "favicon": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw",
+            "path": "› div898  › handbook  › prc  › section2  › prc242.htm"
+          }
+        },
+        {
+          "title": "Estimating Instrument Performance: with Confidence Intervals ...",
+          "url": "https://nvlpubs.nist.gov/nistpubs/TechnicalNotes/NIST.TN.2119.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "approximate most of the classical conﬁdence intervals in Section 2, and so the Bayesian · approach may be considered as a more powerful and general approach for binomial proba-",
+          "profile": {
+            "name": "NIST",
+            "url": "https://nvlpubs.nist.gov/nistpubs/TechnicalNotes/NIST.TN.2119.pdf",
+            "long_name": "nvlpubs.nist.gov",
+            "img": "https://imgs.search.brave.com/MlhRIjS5kkOEzXhVhAamg5Vp_J4KM4OLXCjHHT6TIa4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDRmZWNjYTM0/OWE3NDUzYzQ4MDY4/MzNkMmYyNmRhNzE2/NzcxYWM2MmI3OTNl/ODQwMzdmYTY3NWMy/YjQ3ZmI5Zi9udmxw/dWJzLm5pc3QuZ292/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nvlpubs.nist.gov",
+            "hostname": "nvlpubs.nist.gov",
+            "favicon": "https://imgs.search.brave.com/MlhRIjS5kkOEzXhVhAamg5Vp_J4KM4OLXCjHHT6TIa4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDRmZWNjYTM0/OWE3NDUzYzQ4MDY4/MzNkMmYyNmRhNzE2/NzcxYWM2MmI3OTNl/ODQwMzdmYTY3NWMy/YjQ3ZmI5Zi9udmxw/dWJzLm5pc3QuZ292/Lw",
+            "path": "› nistpubs  › TechnicalNotes  › NIST.TN.2119.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Clopper-Pearson ”Exact” Interval. The Clopper-Pearson [7] ”exact” conﬁdence in- terval for p, based on inverting equal-tailed binomial test of H0 : p = p0 based on the",
+            "approximate most of the classical conﬁdence intervals in Section 2, and so the Bayesian · approach may be considered as a more powerful and general approach for binomial proba-",
+            "Figure 1: Display of Binomial Probabilities and Normal Approximations.",
+            "Assume that we obtained binomial data in two instances, n = 20,s = 2 and n = 20,s = 17."
+          ]
+        },
+        {
+          "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression Analysis | Least Squares",
+          "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Are the data consistent with a nominal standard deviation? [7.2.3.] 1. Confidence interval approach [[Link].] 2. Sample sizes required [[Link].] 4. Does the proportion of defectives meet requirements? [7.2.4.] 1. Confidence intervals [[Link].] 2. Sample sizes required [[Link].] 5.",
+          "profile": {
+            "name": "Scribd",
+            "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+            "long_name": "scribd.com",
+            "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "faq",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KCTZfy9B24H8dE3WlIO4fdJKlzTdADH10IwNcLZSOeU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/MjE5ODAyNDYxLzE0/OXgxOTgvMzkyNWEz/ODEyMy8xNzA2NjA2/ODMzP3Y9MQ",
+            "original": "https://imgv2-1-f.scribdassets.com/img/document/219802461/149x198/3925a38123/1706606833?v=1",
+            "logo": false
+          },
+          "faq": {
+            "items": [
+              {
+                "question": "What insights does the analysis of critical values for F and chi-square distributions provide for hypothesis testing?",
+                "answer": "The critical values for F and chi-square distributions provide the thresholds beyond which the null hypothesis can be rejected in hypothesis testing scenarios. These values are crucial in determining the statistical significance of observed test statistics. The F distribution is often used for comparing variances, especially in ANOVA, while the chi-square distribution is employed in independence tests and goodness-of-fit tests. Understanding these critical values helps researchers decide whether their results are statistically significant, thus contributing to valid conclusions in experimental research .",
+                "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+                "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "scribd.com",
+                  "hostname": "www.scribd.com",
+                  "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+                  "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+                }
+              },
+              {
+                "question": "Why is it important to address assumptions in calibration designs, particularly regarding measurement stability and randomness?",
+                "answer": "Addressing assumptions in calibration designs is crucial because violations can lead to biased results and inaccurate measurements. Measurement stability ensures that reference standards and test items do not change during the calibration process, which is vital for achieving consistent and reliable results. Random errors must also be independent, and non-randomness in measurements can indicate systemic errors or biases. Ensuring these assumptions hold true allows the calibration designs to function effectively, providing accurate and credible results .",
+                "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+                "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "scribd.com",
+                  "hostname": "www.scribd.com",
+                  "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+                  "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+                }
+              },
+              {
+                "question": "How does the standard deviation calculation in calibration designs reflect on the reliability of measurement results?",
+                "answer": "The standard deviation calculation within calibration designs reflects measurement result reliability by quantifying uncertainty and variability inherent in the measurements. The repeatability standard deviation assesses the consistency of the results under identical conditions, and the inclusion of a check standard aids in capturing day-to-day variations. These factors are crucial in evaluating the precision and accuracy of calibrated values. The calculated standard deviations thus play a fundamental role in assessing and ensuring the reliability of measurement results .",
+                "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+                "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "scribd.com",
+                  "hostname": "www.scribd.com",
+                  "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+                  "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+                }
+              },
+              {
+                "question": "In what context are F distributions typically used and why might their parameter estimation be omitted in some scenarios?",
+                "answer": "F distributions are typically used in the context of hypothesis testing, specifically in the analysis of variance (ANOVA), where they compare the variances of two populations having normal distributions. The parameter estimation might be omitted in certain scenarios because the F distribution is generally not used for modeling applications but rather in the determination of critical values for tests. Its primary purpose is in establishing statistical significance rather than estimating parameters .",
+                "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+                "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "scribd.com",
+                  "hostname": "www.scribd.com",
+                  "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+                  "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+                }
+              },
+              {
+                "question": "How does the t distribution demonstrate the transition from a Cauchy distribution to a normal distribution as the degrees of freedom increase?",
+                "answer": "The t distribution with one degree of freedom is equivalent to the Cauchy distribution . As the degrees of freedom increase, the shape of the t distribution approaches that of the normal distribution. For degrees of freedom greater than 30, the approximation to the normal distribution is sufficiently close for most practical purposes. This demonstrates the transition from a distribution with undefined mean and variance (Cauchy) to one where these parameters become well-defined, akin to the normal distribution .",
+                "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+                "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "scribd.com",
+                  "hostname": "www.scribd.com",
+                  "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+                  "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+                }
+              },
+              {
+                "question": "Discuss how parameter and data size variations influence the distribution shape in context of the lognormal distribution.",
+                "answer": "The shape of the lognormal distribution is influenced by variations in the parameters and data size. The shape parameter (\u0003C3) affects the spread and peakedness, with larger values leading to more spread-out and less peaked distributions. The position and scale parameters (3B) and m also alter the distribution's characteristics, impacting the skewness and the central tendency. As the data size increases, the estimates of these parameters become more stable, which in turn, stabilizes the shape of the distribution, allowing for more reliable statistical modeling .",
+                "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+                "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "scribd.com",
+                  "hostname": "www.scribd.com",
+                  "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+                  "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+                }
+              },
+              {
+                "question": "How does the Weibull distribution contribute to reliability analysis, and what role does the parameter estimation play in this context?",
+                "answer": "The Weibull distribution contributes significantly to reliability analysis by modeling failure times of products and systems. Parameter estimation, particularly through maximum likelihood methods, is crucial as it allows for the accurate modeling of failure behavior over time, enabling predictions about product lifespan and maintenance schedules. This distribution is flexible, accommodating data with varying hazard rates, making it indispensable in reliability engineering .",
+                "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+                "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "scribd.com",
+                  "hostname": "www.scribd.com",
+                  "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+                  "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+                }
+              },
+              {
+                "question": "What is the significance of the hazard function and its omission in the context of distribution analyses like the t distribution?",
+                "answer": "The hazard function represents the instantaneous risk of an event occurring at a specific time, given that it has not yet occurred. Its omission in contexts like the t distribution is due to its limited relevance; the t distribution is mostly used for hypothesis testing and constructing confidence intervals rather than survival analysis or risk modeling, where hazard functions play a critical role. Thus, the exclusion reflects the typical applications of the distribution, which do not involve time-to-event data analysis .",
+                "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+                "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "scribd.com",
+                  "hostname": "www.scribd.com",
+                  "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+                  "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+                }
+              },
+              {
+                "question": "Explain the role of graphical techniques in detecting issues in data, as illustrated by the analysis of variance and the run sequence plot.",
+                "answer": "Graphical techniques play an essential role in detecting anomalies or unexpected patterns in data, which may not be apparent through quantitative analysis alone. In the context of variance analysis and run sequence plots, these techniques can reveal shifts in location and scale, trends, and non-random patterns. For instance, a run sequence plot can detect significant shifts in data location or scale over time. When such issues are identified, it is crucial to investigate whether they arise from data collection errors, as non-randomness might indicate sampling flaws or unexpected underlying structures in the data .",
+                "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+                "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "scribd.com",
+                  "hostname": "www.scribd.com",
+                  "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+                  "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+                }
+              },
+              {
+                "question": "What are the practical implications of the Cauchy distribution's undefined mean and standard deviation for statistical analysis?",
+                "answer": "The practical implications of the Cauchy distribution's undefined mean and standard deviation are significant. It means that the usual law of large numbers, which holds for distributions with defined means, does not apply. As a result, collecting more data does not improve the estimate of the mean or standard deviation. This characteristic makes the Cauchy distribution a pathological case and is particularly important when exploring the robustness of statistical tests against deviations from normality .",
+                "title": "E Handbook of Statistical Methods (NIST SEMATECH) | PDF | Regression ...",
+                "url": "https://www.scribd.com/doc/219802461/e-Handbook-of-Statistical-Methods-NIST-SEMATECH",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "scribd.com",
+                  "hostname": "www.scribd.com",
+                  "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+                  "path": "› doc  › 219802461  › e-Handbook-of-Statistical-Methods-NIST-SEMATECH"
+                }
+              }
+            ]
+          },
+          "creative_work": {
+            "name": "e Handbook of Statistical Methods (NIST SEMATECH)",
+            "rating": {
+              "ratingValue": 5.0,
+              "bestRating": 5.0,
+              "reviewCount": 2,
+              "is_tripadvisor": false
+            },
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/KCTZfy9B24H8dE3WlIO4fdJKlzTdADH10IwNcLZSOeU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/MjE5ODAyNDYxLzE0/OXgxOTgvMzkyNWEz/ODEyMy8xNzA2NjA2/ODMzP3Y9MQ",
+              "original": "https://imgv2-1-f.scribdassets.com/img/document/219802461/149x198/3925a38123/1706606833?v=1"
+            }
+          },
+          "extra_snippets": [
+            "1.1.5. The Role of Graphics [Link] [Link] PM] 1. Exploratory Data Analysis 1.1. EDA Introduction 1.1.5. The Role of Graphics Quantitative/ Graphical Statistics and data analysis procedures can broadly be split into two parts: quantitative graphical Quantitative Quantitative techniques are the set of statistical procedures that yield numeric or tabular output. Examples of quantitative techniques include: hypothesis testing analysis of variance point estimates and confidence intervals least squares regression These and similar techniques are all valuable and are mainstream in terms of classical analysis.",
+            "Double Exponential Distribution [[Link].12.] 13. Power Normal Distribution [[Link].13.] 14. Power Lognormal Distribution [[Link].14.] 15. Tukey-Lambda Distribution [[Link].15.] 16. Extreme Value Type I Distribution [[Link].16.] 17. Beta Distribution [[Link].17.] 18. Binomial Distribution [[Link].18.] 19.",
+            "Are the data consistent with a nominal standard deviation? [7.2.3.] 1. Confidence interval approach [[Link].] 2. Sample sizes required [[Link].] 4. Does the proportion of defectives meet requirements? [7.2.4.] 1. Confidence intervals [[Link].] 2. Sample sizes required [[Link].] 5.",
+            "[5.5.2.] 1. D-Optimal designs [[Link].] 2. Repairing a design [[Link].] 3. How do you optimize a process? [5.5.3.] 1. Single response case [[Link].] 1. Single response: Path of steepest ascent [[Link].1.] 2. Single response: Confidence region for search path [[Link].2.] 3."
+          ]
+        },
+        {
+          "title": "Detailed Table of Contents for the Handbook",
+          "url": "https://www.itl.nist.gov/div898/handbook/dtoc.htm",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "How can I assess whether the random errors are independent from one to the next? [4.4.4.4.] · How can I test whether any significant terms are missing or misspecified in the functional part of the model? [4.4.4.6.] · How can I test whether all of the terms in the functional part of the model ...",
+          "profile": {
+            "name": "NIST",
+            "url": "https://www.itl.nist.gov/div898/handbook/dtoc.htm",
+            "long_name": "itl.nist.gov",
+            "img": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "itl.nist.gov",
+            "hostname": "www.itl.nist.gov",
+            "favicon": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw",
+            "path": "› div898  › handbook  › dtoc.htm"
+          }
+        },
+        {
+          "title": "Handbook 151: NIST/SEMATECH e-Handbook of Statistical Methods | NIST",
+          "url": "https://www.nist.gov/publications/handbook-151-nistsematech-e-handbook-statistical-methods",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Heckert, N. , Filliben, J. , Croarkin, C. , Hembree, B. , Guthrie, W. , Tobias, P. and Prinz, J. (2002), Handbook 151: NIST/SEMATECH e-Handbook of Statistical Methods, NIST Interagency/Internal Report (NISTIR), National Institute of Standards and Technology, Gaithersburg, MD (Accessed April 2, 2026)",
+          "page_age": "2021-10-12T15:10:00",
+          "profile": {
+            "name": "NIST",
+            "url": "https://www.nist.gov/publications/handbook-151-nistsematech-e-handbook-statistical-methods",
+            "long_name": "nist.gov",
+            "img": "https://imgs.search.brave.com/-ggqMO4lo-qDjseBV5Q7IQV2slP7pLHA2grNsrSaDiQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY0NTIyYjE0/MGE2YzdhYjhhYWVl/YjQwNjI5ZDA0Nzlj/NzRmYzdiZWQ2NWU1/ODgxZTcxMmZhNWEx/ZDk2YjNhMy93d3cu/bmlzdC5nb3Yv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nist.gov",
+            "hostname": "www.nist.gov",
+            "favicon": "https://imgs.search.brave.com/-ggqMO4lo-qDjseBV5Q7IQV2slP7pLHA2grNsrSaDiQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY0NTIyYjE0/MGE2YzdhYjhhYWVl/YjQwNjI5ZDA0Nzlj/NzRmYzdiZWQ2NWU1/ODgxZTcxMmZhNWEx/ZDk2YjNhMy93d3cu/bmlzdC5nb3Yv",
+            "path": "› publications  › handbook-151-nistsematech-e-handbook-statistical-methods"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/pP3iLSI94IDRMTmWsQA6PXbF5Djo81w5IGvfgIHem_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bmlzdC5nb3YvdGhl/bWVzL2N1c3RvbS9u/aXN0X3d3dy9pbWcv/aG9tZXBhZ2Uvbmlz/dF9tYXJrLnBuZw",
+            "original": "https://www.nist.gov/themes/custom/nist_www/img/homepage/nist_mark.png",
+            "logo": false
+          },
+          "age": "October 12, 2021",
+          "extra_snippets": [
+            "Heckert, N. , Filliben, J. , Croarkin, C. , Hembree, B. , Guthrie, W. , Tobias, P. and Prinz, J. (2002), Handbook 151: NIST/SEMATECH e-Handbook of Statistical Methods, NIST Interagency/Internal Report (NISTIR), National Institute of Standards and Technology, Gaithersburg, MD (Accessed April 2, 2026)",
+            "The URL is http://www.itl.nist.gov/div898/handbook/mpc/mpc.htm."
+          ]
+        },
+        {
+          "title": "A Comparison of Various Methods Used to Determine the ...",
+          "url": "https://apps.dtic.mil/sti/tr/pdf/ADA540716.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "A common rule of thumb used in binomial-outcome reliability studies is that 22 trials with zero failures are needed to conclude · a 90% minimal success rate with 90% confidence.",
+          "profile": {
+            "name": "DTIC",
+            "url": "https://apps.dtic.mil/sti/tr/pdf/ADA540716.pdf",
+            "long_name": "apps.dtic.mil",
+            "img": "https://imgs.search.brave.com/DF0YvD0p3Irtgi3HReEtKjEfCPDgj4fIvnyFxK16fXw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjZkZTc0ZTQ5/Y2UyMjhiOTg1YmQ2/MGNmMGY4ZjZkZTVi/Y2NmYmFjYzcyZjNl/NzgzYmU2YTdjMzgw/MGNjNjUwMi9hcHBz/LmR0aWMubWlsLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "apps.dtic.mil",
+            "hostname": "apps.dtic.mil",
+            "favicon": "https://imgs.search.brave.com/DF0YvD0p3Irtgi3HReEtKjEfCPDgj4fIvnyFxK16fXw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjZkZTc0ZTQ5/Y2UyMjhiOTg1YmQ2/MGNmMGY4ZjZkZTVi/Y2NmYmFjYzcyZjNl/NzgzYmU2YTdjMzgw/MGNjNjUwMi9hcHBz/LmR0aWMubWlsLw",
+            "path": "› sti  › tr  › pdf  › ADA540716.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "A common rule of thumb used in binomial-outcome reliability studies is that 22 trials with zero failures are needed to conclude · a 90% minimal success rate with 90% confidence.",
+            "In this section, we focus on the coverage probabilities of 90% lower confidence bounds for the · binomial parameter using the three methods outlined in section 2.",
+            "Brown, L. D.; Cai, T. T.; DasGupta, A. Interval Estimation for a Binomial Proportion. Statistical Science 2001, 16 (2), 101–133. Cai, T. T. One-Sided Confidence Intervals in Discrete Distributions.",
+            "Blyth, C. R.; Still, H. A. Binomial Confidence Intervals."
+          ]
+        },
+        {
+          "title": "NIST Technical Note 2106 Comparing Instruments James Yen Dennis Leber",
+          "url": "https://nvlpubs.nist.gov/nistpubs/TechnicalNotes/NIST.TN.2106.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Note that this confidence interval contains zero at the 90% confidence level.",
+          "profile": {
+            "name": "NIST",
+            "url": "https://nvlpubs.nist.gov/nistpubs/TechnicalNotes/NIST.TN.2106.pdf",
+            "long_name": "nvlpubs.nist.gov",
+            "img": "https://imgs.search.brave.com/MlhRIjS5kkOEzXhVhAamg5Vp_J4KM4OLXCjHHT6TIa4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDRmZWNjYTM0/OWE3NDUzYzQ4MDY4/MzNkMmYyNmRhNzE2/NzcxYWM2MmI3OTNl/ODQwMzdmYTY3NWMy/YjQ3ZmI5Zi9udmxw/dWJzLm5pc3QuZ292/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nvlpubs.nist.gov",
+            "hostname": "nvlpubs.nist.gov",
+            "favicon": "https://imgs.search.brave.com/MlhRIjS5kkOEzXhVhAamg5Vp_J4KM4OLXCjHHT6TIa4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDRmZWNjYTM0/OWE3NDUzYzQ4MDY4/MzNkMmYyNmRhNzE2/NzcxYWM2MmI3OTNl/ODQwMzdmYTY3NWMy/YjQ3ZmI5Zi9udmxw/dWJzLm5pc3QuZ292/Lw",
+            "path": "› nistpubs  › TechnicalNotes  › NIST.TN.2106.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "NIST Technical Note 2045 [1], the NIST/SEMATECH e-Handbook [2], and Mendenhall and",
+            "Hypothesis tests and confidence intervals for instrument differences are demonstrated.",
+            "Note that this confidence interval contains zero at the 90% confidence level.",
+            "The number of successes for an instrument is modeled by a Binomial distribution modeling the"
+          ]
+        },
+        {
+          "title": "The Student's SEMSTAT Author: Jack Prins",
+          "url": "https://www.itl.nist.gov/div898/handbook/semstat/semstat-doc.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Difference between 2 proportions (binomial parameters) ... One population mean, large sample size. ( n &gt; 30) Hypothesis testing. H0: µ1 = µ0. Variance is known. Z test for one population. ... Reject the null hypothesis. A two-sided confidence about the population mean is given by:",
+          "profile": {
+            "name": "NIST",
+            "url": "https://www.itl.nist.gov/div898/handbook/semstat/semstat-doc.pdf",
+            "long_name": "itl.nist.gov",
+            "img": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "itl.nist.gov",
+            "hostname": "www.itl.nist.gov",
+            "favicon": "https://imgs.search.brave.com/QsBBuFTyksLIxp5aW5oM0gMXG4jfa_qJMlLr_NMLbuI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjMzNzg1MjJl/MTZjNTcxYTc5NmVj/MTFlN2UxY2ViNzll/MmE2OWY5YjdmZjA4/N2NhZmZhMGI4MDNl/OWY0YzVjZC93d3cu/aXRsLm5pc3QuZ292/Lw",
+            "path": "› div898  › handbook  › semstat  › semstat-doc.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Difference between 2 proportions (binomial parameters) ... One population mean, large sample size. ( n > 30) Hypothesis testing. H0: µ1 = µ0. Variance is known. Z test for one population. ... Reject the null hypothesis. A two-sided confidence about the population mean is given by:",
+            "One proportion (binomial parameter).",
+            "In addition a confidence interval can be constructed for λ.",
+            "Hazard Rates, Confidence Intervals, OC Curves , more …"
+          ]
+        },
+        {
+          "title": "Section 8. Statistical Techniques – 2019 Page 1 of 12",
+          "url": "https://www.nist.gov/document/section-8-statistics-techniques-20190506pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "For 95 % confidence z = 1.960; for 99.7 % confidence z = 3.0.",
+          "profile": {
+            "name": "NIST",
+            "url": "https://www.nist.gov/document/section-8-statistics-techniques-20190506pdf",
+            "long_name": "nist.gov",
+            "img": "https://imgs.search.brave.com/-ggqMO4lo-qDjseBV5Q7IQV2slP7pLHA2grNsrSaDiQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY0NTIyYjE0/MGE2YzdhYjhhYWVl/YjQwNjI5ZDA0Nzlj/NzRmYzdiZWQ2NWU1/ODgxZTcxMmZhNWEx/ZDk2YjNhMy93d3cu/bmlzdC5nb3Yv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nist.gov",
+            "hostname": "www.nist.gov",
+            "favicon": "https://imgs.search.brave.com/-ggqMO4lo-qDjseBV5Q7IQV2slP7pLHA2grNsrSaDiQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY0NTIyYjE0/MGE2YzdhYjhhYWVl/YjQwNjI5ZDA0Nzlj/NzRmYzdiZWQ2NWU1/ODgxZTcxMmZhNWEx/ZDk2YjNhMy93d3cu/bmlzdC5nb3Yv",
+            "path": "› document  › section-8-statistics-techniques-20190506pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "See the NIST/SEMATECH e-Handbook of Statistical Methods, Section 2.3.3.3.4.",
+            "here, it is recommended that the reader consult NIST/SEMATECH e-Handbook of Statistical",
+            "For 95 % confidence z = 1.960; for 99.7 % confidence z = 3.0.",
+            "Table 9.4 contains critical values for F at the 95 % level of confidence."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

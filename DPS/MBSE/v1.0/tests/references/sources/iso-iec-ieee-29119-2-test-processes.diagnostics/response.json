@@ -1,0 +1,39 @@
+{
+  "url": "https://www.iso.org/standard/79428.html",
+  "saved_at": "2026-06-11T22:23:44.759606+00:00",
+  "reason": "confidence_below_0.55",
+  "warnings": [],
+  "final_url": "https://www.iso.org/standard/79428.html",
+  "status_code": 200,
+  "content_type": "text/html;charset=UTF-8",
+  "content_length_header": null,
+  "response_headers": {
+    "Date": "Thu, 11 Jun 2026 22:23:44 GMT",
+    "Content-Type": "text/html;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "expires": "Fri, 12 Jun 2026 02:23:44 GMT",
+    "Cache-Control": "public, max-age=14400",
+    "Pragma": "no-cache",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "vary": "accept-encoding",
+    "Server-Timing": "cfCacheStatus;desc=\"EXPIRED\", cfEdge;dur=58,cfOrigin;dur=613",
+    "set-cookie": "[redacted]",
+    "last-modified": "Thu, 11 Jun 2026 22:23:44 GMT",
+    "cf-cache-status": "EXPIRED",
+    "Content-Encoding": "gzip",
+    "Server": "cloudflare",
+    "CF-RAY": "a0a4059b4e5a4976-MIA"
+  },
+  "extraction": {
+    "parser": "trafilatura-markdown",
+    "title": "ISO/IEC/IEEE 29119-2:2021",
+    "confidence": 0.539,
+    "word_count": 163,
+    "metadata": {
+      "date": "2021-10-28",
+      "description": "Software and systems engineering — Software testing — Part 2: Test processes",
+      "sitename": "ISO"
+    }
+  }
+}

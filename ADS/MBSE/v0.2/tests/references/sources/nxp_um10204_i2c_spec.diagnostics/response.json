@@ -1,0 +1,27 @@
+{
+  "url": "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+  "saved_at": "2026-06-11T20:33:06.043002+00:00",
+  "reason": "http_status_404",
+  "warnings": [],
+  "final_url": "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+  "status_code": 404,
+  "content_type": "text/html",
+  "content_length_header": "746",
+  "response_headers": {
+    "Mime-Version": "1.0",
+    "Content-Length": "746",
+    "Cache-control": "no-cache, no-store, must-revalidate, max-age=1800",
+    "Pragma": "no-cache",
+    "Expires": "0, Thu, 11 Jun 2026 21:03:06 GMT",
+    "Content-Type": "text/html",
+    "Date": "Thu, 11 Jun 2026 20:33:06 GMT",
+    "Connection": "keep-alive",
+    "Set-Cookie": "[redacted]",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Strict-Transport-Security": "max-age=31536000; includeSubdomains;",
+    "X-XSS-Protection": "1; mode=block",
+    "Server-Timing": "ak_p; desc=\"1781209985463_388761272_2301556558_16_10747_85_635_-\";dur=1"
+  }
+}

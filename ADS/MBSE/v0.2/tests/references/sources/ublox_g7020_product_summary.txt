@@ -1,0 +1,144 @@
+UBX-G7020
+                                                                                                                                                                                                                                   Standard                                  Professional                         Automotive
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                               		
+
+u-blox 7 GPS chips
+                                                                                                                                                                                                                                                                                                                                               POSITIONING
+
+
+Versatile GPS chips in different grade variants
+• GNSS engine for GPS/QZSS, GLONASS
+• Minimal board space, <30 mm2
+• Combines low power consumption and high sensitivity
+• Minimal e-BOM, as few as 8 external parts
+• Exceptional jamming immunity
+                                                                                                                                                 UBX-G7020-CT                          UBX-G7020-KT                                                                                     UBX-G7020-KA
+• Pin-compatible to UBX-M8030                                                                                                                  3.0 x 3.4 x 0.36 mm                   5.0 x 5.0 x 0.59 mm                                                                              5.0 x 5.0 x 0.59 mm
+
+
+
+
+Product description
+The high performance UBX-G7020 multi-GNSS chip supports                                                                                          The UBX-G7020 is available in your choice of miniature WL-
+GPS, GLONASS, QZSS and SBAS. It delivers exceptional sensitiv-                                                                                   CSP and QFN packages and features an ultra small solution
+ity and acquisition times.                                                                                                                       footprint of only 30 mm2. The built-in LNA, LDOs and DC/DC
+                                                                                                                                                 converter, and on-chip ROM mean that only the smallest
+u-blox 7 features ultra low power consumption, thanks to                                                                                         possible external BOM is required. By supporting TCXOs or
+innovative single die architecture and enhanced software algo-                                                                                   lower price GNSS oscillators the UBX-G7020 further ensures a
+rithms. This gives the UBX-G7020 best in class power consump-                                                                                    minimal Total-Cost-of-Ownership.
+tion for GLONASS reception.
+                                                                                                                                                 The ultra small UBX-G7020-CT is the perfect choice for
+The extended voltage supply range and 1.8 V and 3.0 V I/O                                                                                        portable consumer applications with demanding size and
+compliance supports a wide variety of user applications. Sophis-                                                                                 cost constraints. With its rigorous Automotive quality and
+ticated RF-architecture and interference suppression using ac-                                                                                   manufacturing standards (AEC-Q100, ISO/TS 16949) the
+tive continuous wave detection ensure maximum performance                                                                                        UBX‑G7020-KA is ideal for automotive applications.
+even in GNSS-hostile environments.
+
+
+
+Product selector
+
+        Model          Package                                         Type                                                                    Supply                   Interfaces                                                            Features                                                        Grade
+
+
+
+
+                                                                                                        Precise Point Positioning                                                     DDC (I2C compliant)   Programmable (Flash)
+                                                                                       Dead Reckoning                                                                                                                                                           Internal oscillator
+                                                                                                                                                                                                                                                                                      Antenna supply
+
+
+                          Package   GPS / QZSS   GLONASS                                                                            Raw Data     1.4 V – 3.6 V                                                                     Data logging   RTC crystal                         and supervisor   Standard    Professional   Automotive
+                                                           Galileo   BeiDou   Timing                                                                             UART    USB   SPI
+
+UBX-G7020-CT          WL-CSP50        •           •                                                                                                 •            •        •    •          •                     S                    S              S           C/T                        S
+
+UBX-G7020-KT/KA         QFN40         •           •                                                                                                 •            •        •    •          •                     S                    S              S           C/T                        S
+
+C/T = Crystal and TCXO supported							                                                                                                                                               S = supported, may require external components
+
+
+
+
+UBX-13003349 - R07                                                            Production Information
+                                                                                                                                                                                             Standard
+                                                                                                                                                                                             Professional
+                                                                                                                                                                                             Automotive
+Features                                                                                                            Packages
+Receiver type                            56-channel u-blox 7 engine                                                 UBX-G7020-CT:            50 Pin WL-CSP,
+		                                       GPS & QZSS L1 C/A, GLONASS L1OF, 		                                        		                       3.4 x 3.0 x 0.36 mm
+                                         SBAS: WAAS, EGNOS, MSAS                                                    		                       11.9 mg
+Navigation update rate up to 10 Hz                                                                                  UBX-G7020-KT/KA:         40 Pin MLF/QFN,
+                                                                                                                                             5.0 x 5.0 x 0.59 mm
+Accuracy			                                                           GPS 		 GLONASS
+                                                                                                                    		                       75 mg
+		        Position		                                                  2.5 m CEP		 4 m CEP
+		        SBAS                                                        2.0 m CEP
+Acquisition                              Cold starts:                 29 s                    30 s
+		                                       Hot starts:                  1s                      3s
+Sensitivity                              Tracking:                    –162 dBm                –158 dBm
+		                                       Cold starts:                 –148 dBm                –140 dBm
+		                                       Reacquisition:               –160 dBm                –156 dBm
+Assistance                               AssistNow Online                                                           Environmental data
+		                                       AssistNow Offline
+		                                       AssistNow Autonomous                                                       Operating temp.          –40° C to 85° C
+		                                       OMA SUPL & 3GPP compliant                                                  Storage temp.               –40° C to 125° C
+LNA                                      Built-In                                                                   Humidity                    JEDEC MSL 1
+Oscillator                               Crystal or TCXO                                                            RoHS compliant (lead-free) and green (no halogens)
+RTC input                                32.768 kHz (optional). Real time clock 		
+                                         can be derived from GPS crystal or TCXO.
+Antenna                                  Short and open circuit detection
+Supervision                              supported with external circuit
+DC/DC converter                          Integrated
+Anti jamming                             Active CW detection and removal
+Memory                                   Optional SQI Flash                                                         Support products
+Data logger        *
+                                         Continuous log of position, velocity & time                                u-blox 7 Evaluation Kits:
+*
+    External FLASH required.
+                                                                                                                    Easy-to-use kits to get familiar with u-blox 7 positioning technology,
+                                                                                                                    evaluate functionality, and visualize GNSS performance.
+                                                                                                                    EVK-7N:                     u-blox 7 GNSS Evaluation Kit,
+Electrical data                                                                                                                                 with TCXO, supports u-blox 7 chips
+
+Supply voltage                           1.4 V to 3.6 V                                                             EVK-7C:                     u-blox 7 GNSS Evaluation Kit,
+                                                                                                                                                with Crystal, supports u-blox 7 chips
+Digital I/O                              1.65 – 3.6 V
+voltage level
+Power Consumption                        41 mW @ 1.4 V (Continuous)
+		                                       9 mW @ 1.4 V Power Save mode (1 Hz)
+Backup Supply                            1.4 to 3.6 V
+
+
+
+Interfaces                                                                                                          Product variants
+Serial interfaces                        1 UART                                                                     UBX-G7020-CT            u-blox 7 GNSS chip, 50 Pin WL-CSP
+		                                       1 USB                                                                      UBX-G7020-KT/KA         u-blox 7 GNSS chip, 40 Pin QFN
+		                                       1 DDC (I2C compliant)
+		                                       1 SPI
+Digital I/O                              2 configurable time pulses
+		                                       2 EXTINT interrupt inputs
+		                                       2 GPIO for antenna supervision
+Memory                                   SQI interface
+
+
+
+Legal Notice
+u-blox reserves all rights to this document and the information contained herein. Products, names, logos            Further information
+and designs described herein may in whole or in part be subject to intellectual property rights. Reproduc-
+tion, use, modification or disclosure to third parties of this document or any part thereof without the
+express permission of u-blox is strictly prohibited.                                                                For contact information, see www.u-blox.com/contact-us.
+The information contained herein is provided “as is”. No warranty of any kind, either express or implied, is        For more product details and ordering information, see the
+made in relation to the accuracy, reliability, fitness for a particular purpose or content of this document. This
+document may be revised by u-blox at any time. For most recent documents, please visit www.u-blox.com.              product data sheet.
+Copyright © 2017, u-blox AG
+
+
+
+
+UBX-13003349 - R07                                                                           Production Information                                                        www.u-blox.com
+

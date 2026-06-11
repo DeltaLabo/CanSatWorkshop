@@ -1,0 +1,45 @@
+{
+  "url": "https://invensense.tdk.com/products/motion-tracking/9-axis/icm-20948/",
+  "saved_at": "2026-06-11T20:38:44.499318+00:00",
+  "reason": "confidence_below_0.55",
+  "warnings": [],
+  "final_url": "https://invensense.tdk.com/en-us/products/9-axis/icm-20948",
+  "status_code": 200,
+  "content_type": "text/html; charset=utf-8",
+  "content_length_header": null,
+  "response_headers": {
+    "Server": "CloudFront",
+    "Content-Type": "text/html; charset=utf-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Date": "Thu, 11 Jun 2026 20:38:43 GMT",
+    "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+    "Link": "</_next/static/media/e94393cb421d275d-s.p.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/f6922b71df644a01-s.p.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/css/53426f4cba0b9ad5.css>; rel=preload; as=\"style\", </_next/static/css/0bbf08508e68ef19.css>; rel=preload; as=\"style\"",
+    "Cache-Control": "no-store, no-cache, must-revalidate",
+    "Content-Encoding": "gzip",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "Content-Security-Policy": "frame-ancestors https://dev.invensense.com/ https://admin-dev.invensense.com/ https://uat.invensense.com/ https://cdnjs.cloudflare.com https://admin-uat.invensense.com/ https://preprod.invensense.com/ https://preprod-admin.invensense.com/ https://apac-uat.invensense.com/ https://apac-admin-uat.invensense.com/ https://apac-preprod-admin.invensense.com/ https://apac-preprod.invensense.com/ https://invensense.tdk.com https://www.invensense.tdk.com https://adm.invensense.tdk.com",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Via": "1.1 2150382fb619bd0099198f3186dd90fa.cloudfront.net (CloudFront)",
+    "Expires": "0",
+    "Permissions-Policy": "geolocation=(), camera=(), microphone=()",
+    "Pragma": "no-cache",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "X-Permitted-Cross-Domain-Policies": "none",
+    "X-Cache": "Miss from cloudfront",
+    "X-Amz-Cf-Pop": "MIA50-P7",
+    "X-Amz-Cf-Id": "DbZBzjREywzxSJFQdhZxdq-_Fbl6L8IDJxoOz8NZCw6rKbhL4c0Yow=="
+  },
+  "extraction": {
+    "parser": "trafilatura-markdown",
+    "title": "Homepage | Intelligent Sensing Solutions",
+    "confidence": 0.542,
+    "word_count": 174,
+    "metadata": {
+      "date": "2024-03-12",
+      "description": "Explore our sensor technologies, developer tools, and global support.",
+      "sitename": "TDK InvenSense"
+    }
+  }
+}

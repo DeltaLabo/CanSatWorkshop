@@ -1,0 +1,23 @@
+{
+  "url": "https://www.mdpi.com/2075-1702/11/7/675",
+  "saved_at": "2026-06-11T20:40:07.205805+00:00",
+  "reason": "http_status_403",
+  "warnings": [],
+  "final_url": "https://www.mdpi.com/2075-1702/11/7/675",
+  "status_code": 403,
+  "content_type": "text/html",
+  "content_length_header": "398",
+  "response_headers": {
+    "Mime-Version": "1.0",
+    "Content-Type": "text/html",
+    "Content-Length": "398",
+    "Expires": "Thu, 11 Jun 2026 20:40:07 GMT",
+    "Cache-Control": "max-age=0, no-cache, no-store",
+    "Pragma": "no-cache",
+    "Date": "Thu, 11 Jun 2026 20:40:07 GMT",
+    "Connection": "close",
+    "Server-Timing": "cdn-cache; desc=HIT, edge; dur=1, ak_p; desc=\"1781210407189_35083656_116938274_57_10104_70_71_-\";dur=1",
+    "Strict-Transport-Security": "max-age=31536000",
+    "Akamai-GRN": "0.88551702.1781210407.6f85622"
+  }
+}

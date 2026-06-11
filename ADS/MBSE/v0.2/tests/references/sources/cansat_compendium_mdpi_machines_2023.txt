@@ -1,0 +1,1679 @@
+            machines
+Review
+The CanSat Compendium: A Review of Scientific CanSats
+Carrington Chun 1, *, M. Hassan Tanveer 1                   and Sumit Chakravarty 2
+
+                                         1   Department of Robotics and Mechatronics Engineering, Kennesaw State University, 1100 South Marietta
+                                             Pkwy SE, Marietta, GA 30060, USA
+                                         2   Department of Electrical Engineering, Kennesaw State University, 1100 South Marietta Pkwy SE,
+                                             Marietta, GA 30060, USA
+                                         *   Correspondence: cchun@students.kennesaw.edu
+
+
+                                         Abstract: In recent years, CubeSats have gained popularity as secondary payloads in space missions
+                                         due to their uniquely small size and minimal weight. This allows for the quick and inexpensive
+                                         development of high-risk, high-reward investigations. The success of cube-shaped CubeSats has led
+                                         to the development of a new class of small-scale and low-cost scientific platforms known as CanSats,
+                                         which maintain a unique cylindrical shape. CanSats offer an even more economical alternative for
+                                         conducting high-risk investigations, although they are typically constrained by having to operate
+                                         within Earth’s atmosphere, which contributes to their reduced costs. However, the ability to test
+                                         and improve space-bound hardware makes the CanSat a potential intermediary technology for
+                                         continued space exploration. This survey paper seeks to provide a technical definition of CanSats
+                                         and summarize the current state of the art in CanSat-based research. This paper covers the history of
+                                         CanSats, their current mainstream applications, and their potential impact on the technology pipeline
+                                         for space exploration. CanSats have proven to be versatile in various applications, including Earth
+                                         science, aeronautics, and educational purposes. The lower cost of CanSats provides a wider range of
+                                         researchers and educational institutions access to near-space science. Therefore, this paper also aims
+                                         to explore the potential future applications of CanSats, particularly as an intermediary technology for
+                                         testing and improving space-bound hardware, with potential benefits for future space missions. The
+                                         findings from this survey could help to guide the further research and development of CanSats, as
+                                         well as help to shape future space exploration efforts.
+
+                                         Keywords: CanSat; near-space; technology pipeline
+Citation: Chun, C.; Tanveer, M.H.;
+Chakravarty, S. The CanSat
+Compendium: A Review of Scientific
+CanSats. Machines 2023, 11, 675.
+https://doi.org/10.3390/                 1. Introduction
+machines11070675                              The exploration of extraplanetary destinations has been greatly advanced through the
+Academic Editor: Fengming Li
+                                         use of robotic systems. Historically, these devices have been expensive to build and operate,
+                                         and therefore have been typically sponsored by the military or other governmental institu-
+Received: 31 May 2023                    tions. With the recent introduction of low-cost nanosatellites, and especially CubeSats, the
+Revised: 16 June 2023                    accessibility of space-based science has drastically improved. However, for organizations of
+Accepted: 21 June 2023                   very limited means and expertise, a CubeSat may still be an infeasible near-term technical
+Published: 22 June 2023
+                                         goal. Enter the CanSat. As a technological tier below the CubeSat, CanSats are far less
+                                         onerous to build and fly. CanSats represent terrestrial satellite analogues, which make them
+                                         inexpensive to construct, they do not need to abide by stringent pre-flight testing, and
+Copyright: © 2023 by the authors.
+                                         are therefore hugely useful as educational tools or intermediary scientific platforms. The
+Licensee MDPI, Basel, Switzerland.
+                                         following review begins with a brief history of the development of CanSats, followed by
+This article is an open access article   a review of current CanSat applications and CanSat-related studies. After decomposing
+distributed under the terms and          the major research areas for CanSats, a working technical definition of these devices is
+conditions of the Creative Commons       developed in the following section, with some potential future directions for this technology
+Attribution (CC BY) license (https://    paradigm further explored in the final section of this review.
+creativecommons.org/licenses/by/
+4.0/).
+
+
+
+
+Machines 2023, 11, 675. https://doi.org/10.3390/machines11070675                                         https://www.mdpi.com/journal/machines
+Machines 2023, 11, x FOR PEER REVIEW                                                                                                                   2 of 19
+
+Machines 2023, 11, 675                                                                                                                                 2 of 18
+
+
+                                2. History
+                                        The history of CanSats is inexorably entwined with the history of CubeSats. Both
+                                2. History
+                                 haveThe origins    in Stanford
+                                              history    of CanSats    University,
+                                                                            is inexorablydating    back as with
+                                                                                                entwined       far asthe1995,  whenofthe
+                                                                                                                           history           graduateBoth
+                                                                                                                                          CubeSats.        pro-
+                                 gram     began    working        on   different     formats     of  small-scale      satellites
+                                have origins in Stanford University, dating back as far as 1995, when the graduate program        known      as  microsatel-
+                                 lites, or
+                                began       microsats
+                                         working            [1]. Modern
+                                                      on different             “medium-sized”
+                                                                         formats     of small-scalesatellites
+                                                                                                         satellitestypically
+                                                                                                                      known as  range    in mass from
+                                                                                                                                  microsatellites,          500
+                                                                                                                                                        or mi-
+                                 to  1000    kg,   while     “micro-satellites”          typically    fall  in  a  range
+                                crosats [1]. Modern “medium-sized” satellites typically range in mass from 500 to 1000 kg,  of 10   to  100  kg,   and    even
+                                 smaller
+                                while        “nano-satellites” are
+                                         “micro-satellites”          typicallyoften   classified
+                                                                                   fall in   a rangein a   mass
+                                                                                                        of 10      range
+                                                                                                                to 100   kg,of 1
+                                                                                                                              andto 10
+                                                                                                                                    evenkg [2].
+                                                                                                                                           smaller As an
+                                                                                                                                                       “nano-in-
+                                satellites”atare
+                                 structor         Stanford      University,
+                                                    often classified              Professor
+                                                                            in a mass            Robert
+                                                                                           range of        Twiggs
+                                                                                                      1 to 10    kg [2].had  beeninstructor
+                                                                                                                          As an      actively atengaged
+                                                                                                                                                    Stanford  in
+                                 creating
+                                University,  theProfessor
+                                                   curriculum  Robertfor the    Aeronautics
+                                                                           Twiggs      had beenand       Astronautics
+                                                                                                    actively    engaged in graduate     program.
+                                                                                                                               creating the           This in-
+                                                                                                                                                curriculum
+                                 cluded
+                                for         the establishment
+                                     the Aeronautics                    of the Space
+                                                              and Astronautics             Systemsprogram.
+                                                                                         graduate       Development        Laboratory
+                                                                                                                    This included      the(SSDL)      at Stan-
+                                                                                                                                            establishment
+                                 ford   University.      As    described       by  Twiggs,      the  goal   of  this  program
+                                of the Space Systems Development Laboratory (SSDL) at Stanford University. As described           was    “to  take   students
+                                 through
+                                by   Twiggs,  thethe
+                                                   full   lifeofcycle
+                                                       goal       this of a
+                                                                         programproject”,
+                                                                                       was “towhichtakeincluded
+                                                                                                          students  “designing,      building,
+                                                                                                                       through the full           launching
+                                                                                                                                             life cycle   of a
+                                 and   operating
+                                project”,              microsatellites
+                                             which included                   in space”
+                                                                      “designing,            [3]. However,
+                                                                                        building,    launching   theand
+                                                                                                                      origins   of the CubeSat
+                                                                                                                          operating                   actually
+                                                                                                                                        microsatellites      in
+                                 started[3].
+                                space”      with   vehiclesthe
+                                                However,         even    smaller
+                                                                     origins         than a
+                                                                                of the         microsatellite.
+                                                                                          CubeSat     actually started with vehicles even smaller
+                                than aDARPA          and the Aerospace Corporation partnered with Stanford University in 1998
+                                          microsatellite.
+                                 to develop
+                                       DARPA and  picosatellites      that would
+                                                          the Aerospace                 be similar in
+                                                                                Corporation                size to
+                                                                                                   partnered     witha Stanford
+                                                                                                                        Klondike ice      cream in 1998
+                                                                                                                                   University      sandwich  to
+                                develop
+                                 [1].        picosatellites
+                                      Picosatellites             that would
+                                                           are much       smallerbethan similar in    size to a and
+                                                                                             microsatellites,     Klondike
+                                                                                                                         are ice    cream
+                                                                                                                             typically       sandwich
+                                                                                                                                          classified        [1].
+                                                                                                                                                        as sat-
+                                Picosatellites
+                                 ellites  with aare  massmuch     smaller
+                                                              of 0.1   to 1 kg than
+                                                                                  [2].microsatellites,
+                                                                                        Importantly, and          are of
+                                                                                                           satellites  typically  classified
+                                                                                                                           this size    must be as satellites
+                                                                                                                                                   launched
+                                with
+                                 fromaamasslargerof 0.1
+                                                     vehicle,to 1sokgthe[2].DARPA
+                                                                               Importantly,       satellites
+                                                                                          picosatellites       of this
+                                                                                                             were        size in
+                                                                                                                    carried    must
+                                                                                                                                  a be
+                                                                                                                                     largerlaunched      from
+                                                                                                                                             microsatellite
+                                athat
+                                   larger
+                                        wasvehicle,
+                                              developed  so theby DARPA
+                                                                    students at  picosatellites
+                                                                                      Stanford. Thiswerelarger
+                                                                                                             carried in      largercarrying
+                                                                                                                    picosatellite     microsatellite      that
+                                                                                                                                                 microsatel-
+                                was   developed
+                                 lite was    namedby       students at
+                                                        OPAL       (Orbiting Stanford.
+                                                                                  Picosat  This   larger picosatellite
+                                                                                              Automated                    carrying
+                                                                                                               Launcher), and          microsatellite
+                                                                                                                                    is featured           was
+                                                                                                                                                    in Figure
+                                named      OPAL     (Orbiting     Picosat      Automated       Launcher),      and
+                                 1 [1]. OPAL was successfully launched, and demonstrated the capability to deploy sixis featured   in  Figure   1 [1].  OPAL
+                                was    successfully
+                                 picosatellites,      butlaunched,        and demonstrated
+                                                            the development            of the larger  themicrosatellite
+                                                                                                           capability totook  deploy
+                                                                                                                                   oversixfour
+                                                                                                                                             picosatellites,
+                                                                                                                                                 years. Fur-
+                                but   the  development           of  the   larger   microsatellite       took   over
+                                 thermore, this long development period did not align with the goals of Stanford’s SSDL four  years.   Furthermore,       this
+                                long   development
+                                 program,                   period did
+                                               as the students          were  notnot
+                                                                                   align
+                                                                                       ablewith
+                                                                                              to the    goals ofthe
+                                                                                                 experience        Stanford’s    SSDL
+                                                                                                                       entire life        program,
+                                                                                                                                     cycle of   the as     the
+                                                                                                                                                      satellite
+                                students were
+                                 before              not able
+                                           graduating.        Theto    experience
+                                                                    program       hadthe beenentire  life cycle
+                                                                                                targeting     the of
+                                                                                                                   fullthe satellite
+                                                                                                                         development   before   graduating.
+                                                                                                                                           of the  microsat-
+                                The   program
+                                 ellite            had been targeting
+                                         to be completed          over a period  the full
+                                                                                        of development
+                                                                                            only a single of      the to
+                                                                                                               year,    microsatellite
+                                                                                                                          ensure that to     be completed
+                                                                                                                                           students     would
+                                over   a  period    of  only   a  single     year,  to  ensure    that  students    would
+                                 be able to have hands-on experience in all areas of satellite development and operation.     be able   to  have   hands-on
+                                experience       in all areasthe
+                                 Therefore, following             of development
+                                                                       satellite development
+                                                                                           of the OPAL  and microsatellite,
+                                                                                                               operation. Therefore,
+                                                                                                                                 the SSDLfollowing
+                                                                                                                                               programthe   de-
+                                development          of the    OPAL      microsatellite,       the  SSDL     program      decided
+                                 cided to change focus to developing smaller picosatellites instead of the larger microsat-           to  change     focus to
+                                developing
+                                 ellites [3]. smaller picosatellites instead of the larger microsatellites [3].
+
+
+
+
+                                Figure1.1.OPAL
+                                Figure    OPALmicrosatellite
+                                               microsatellite[3],
+                                                              [3],reproduced
+                                                                   reproducedwith
+                                                                              withpermission
+                                                                                   permissionfrom
+                                                                                              fromASEE
+                                                                                                   ASEE(2002).
+                                                                                                        (2002).
+
+                                       Thesize
+                                      The  sizeandandshape
+                                                        shapeofofthese
+                                                                   thesepicosatellites
+                                                                          picosatellites
+                                                                                       waswas  largely
+                                                                                            largely     driven
+                                                                                                     driven   by by
+                                                                                                                 thethe
+                                                                                                                     solarsolar
+                                                                                                                            cellscells  avail-
+                                                                                                                                  available
+                                 able
+                                for   for the
+                                    the        project
+                                         project  and theand the  expected
+                                                           expected    power  power   requirements
+                                                                                requirements    of theof the
+                                                                                                       system.system.
+                                                                                                                 InitialInitial experimen-
+                                                                                                                         experimentation
+                                 tation that
+                                found   founda that
+                                               4-incha 4-inch   beaniedisplay
+                                                         beanie baby      baby case
+                                                                                display  case
+                                                                                       was a was
+                                                                                              goodasize
+                                                                                                      goodforsize
+                                                                                                               thefor thecells.
+                                                                                                                   solar   solarThis
+                                                                                                                                  cells.cubic
+                                                                                                                                         This
+                                shape
+                                 cubic was     ventually
+                                        shape was           refined to
+                                                       eventually         a to
+                                                                     refined metric standard
+                                                                                  a metric      that that
+                                                                                           standard   consisted   of a of
+                                                                                                             consisted  10-cm    cube with
+                                                                                                                             a 10-cm     cube
+                                specialspecial
+                                 with    rails torails
+                                                   separate
+                                                       to    a stacka of
+                                                          separate         the of the
+                                                                        stack  CubeSats in   the in the
+                                                                                      CubeSats    launcher.   Since aSince
+                                                                                                          launcher.    10-cma cube
+                                                                                                                                10-cmholds
+                                                                                                                                         cube
+                                a liter of water, and a liter of water weights 1 kg, this became the accepted standard for a
+Machines 2023, 11, 675                                                                                            3 of 18
+
+
+
+
+                         single unit CubeSat: 10-cm cubed with a maximum mass of 1 kg [1]. Further collaboration
+                         between Stanford University and California Polytechnic State University saw the creation
+                         of the first P-POD (Poly Picosat Orbiting Deployer), which allowed three CubeSats to be
+                         stacked inside a specially reinforced enclosure. As CubeSats were still highly experimental
+                         at this time, the container ensured that the CubeSats would not damage the launch vehicle
+                         if they experienced mechanical failures during launch. In 2003, the first CubeSats were
+                         launched into orbit on a Russian rocket [1,3].
+                               During this process of developing both micro and pico-sized satellites, Professor
+                         Twiggs attended the University Space Systems Symposium (USSS) in November 1998. It
+                         was at this conference in Hawaii that Twiggs presented a simple aluminum drinking can
+                         to the crowd and declared that a satellite should be able to be created from this common
+                         cylindrical object. This was the first time in history that the concept of a “CanSat” had ever
+                         been articulated in public. It was further proposed during the symposium that individual
+                         universities would create microsatellites that could fit in the 350 mL soda can and launch
+                         them into orbit before the conference met again next year. Failure to secure orbital launch
+                         opportunities ultimately led to a pivot toward amateur rocket launches that could simulate
+                         much of the launch conditions and environment of space using suborbital trajectories [4].
+                               Following USSS 1998, the CanSat concept was quickly oriented toward an educational
+                         endeavor that was jointly directed by the United States and Japan. An amateur rocketry
+                         organization in the US, known as ARLISS, supplied rockets and expertise to launch the
+                         CanSats in suborbital trajectories that would reach a maximum altitude of 12,000 feet
+                         (~3.7 km). For the first CanSat event in 1999, only six universities had agreed to take part in
+                         the project. The three CanSats developed by the University of Tokyo were heavily focused
+                         on flight-proving hardware that was intended to be used on a future orbital mission. Their
+                         experimental CanSats included scientific goals for testing technologies such as reaction
+                         wheels for attitude control and wireless communication methodologies for telemetry down-
+                         link and uplink, in addition to testing onboard cameras and other sensors [5]. Educational
+                         institutes from the United States, including Arizona State University and Kennedy Middle
+                         School also contributed to the event in 1999 [6].
+                               The following year, 2000, saw an increased interest in the program, with new educa-
+                         tional institutes joining the endeavor. Experimental projects generated by the University
+                         of Tokyo included a CanSat equipped with a landing system, and a GPS experiment that
+                         employed three CanSats that communicated with each other during their descent to the
+                         ground [5]. Notably, during these first two years of CanSat experimentation, the focus of
+                         the program was on education and hardware testing. However, in 2001 Professor Shinichi
+                         Nakasuka from the University of Tokyo suggested a new angle to the CanSat program
+                         that would introduce a competitive aspect between the various educational institutions
+                         participating. The goal of the competition would be to have the CanSats return to some
+                         predetermined landing location that in close proximity to the initial launch site. The first
+                         iteration of this competition in 2001 focused on a “fly-back” architecture, where the CanSats
+                         would employ controllable parafoils or fixed aerodynamic control surfaces to guide the
+                         descent of the vehicle. Terrestrial-based navigational solutions also appeared in these
+                         competitions during the following year in 2002. These “run-back” vehicles employed
+                         wheeled chassis to propel the CanSat across the ground and back to the landing target [6].
+                               In the years to follow, other CanSat competitions continued to be established across
+                         the globe. An annual competition organized by the American Astronautical Society (AAS)
+                         was started in this 2004, with college students challenged to complete a variety of different
+                         space oriented mission objectives [7]. This competition has continued through 2023 and
+                         has become one of the more popular CanSat-related competitions in the US [8]. In 2007,
+                         the European Space Agency (ESA) organized the first pilot program for a national CanSat
+                         competition. Additional expansions of this program took place in the following years as
+                         a means to engage “upper secondary school students” [9]. The ESA CanSat competition
+                         continues to be very popular in Europe through 2023 [10]. Although initially intended
+                         as educational tools, CanSat competitions and their capacity to flight prove space-bound
+Machines 2023, 11, 675                                                                                           4 of 18
+
+
+
+
+                         hardware has demonstrated that these devices have serious scientific merit. The following
+                         section explores the modern literature concerning CanSats, to discern the relevant scientific
+                         frontiers that are applicable to these devices.
+
+                         3. CanSats in Application
+                              Just as real satellites can have applications varying from meteorological to military
+                         surveillance, the scientific goals that motivate the creation of CanSats vary between many
+                         disciplines. The following section can only provide a brief glimpse into some of the fields
+                         of application and CanSat-based research endeavors. However, these examples of CanSat-
+                         based research aim to elucidate the purpose of modern scientific CanSats and to discern
+                         the technical confines of these devices.
+
+                         3.1. Education
+                               The educational significance of CanSats has already been described in part, as their
+                         original inception came from the vision of Professor Twiggs and others to provide real-
+                         world and hands-on experience for students in engineering programs. Over two decades
+                         later, education is still at the core of many CanSat-related endeavors. This is particularly
+                         apparent in the sheer quantity of the analyzed CanSat literature that was directly related to
+                         some form of CanSat competition. Descriptions concerning the first CanSat competition in
+                         Thailand [11], a CanSat design event in Bangladesh [12], and an educational engineering
+                         project from Cairo University in Egypt [13], show how students and educators across the
+                         world are leveraging this technology. José Contente and Cecília Galvão performed an
+                         in-depth analysis [14] of the educational benefit of participating in a CanSat competition
+                         for high-school students. Their conclusions suggest that problem-solving and multi-lateral
+                         thinking are encouraged by the project and can act to “reduce the barrier between school
+                         and real-life” [14]. Students building CanSats for academic competitions can also find
+                         relevant research novelty during this process.
+                               Although most CanSat competitions focus on educational value, and not on research
+                         novelty, the nature of problem solving in the face of diverse engineering challenges can
+                         yield serendipitous results. To provide a few examples, researchers at the University
+                         of Nuevo León participated in a CanSat Leader Training Program (CLTP), held at the
+                         University of Hokkaido-Japan. Following the success of their CanSat in the training
+                         program, the researchers identified a potentially novel application of their device for
+                         localized weather monitoring, to help determine an optimal location for constructing an
+                         astronomical observatory [4]. Students from Telkom University in Bandung, Indonesia
+                         described their mechanical structure and technical design for an Auto-Gyro CanSat [15],
+                         while researchers at the National Technological University of South Lima in El Salvador,
+                         Peru tested the use of CanSats as low-cost environmental monitoring devices, to improve
+                         access to air quality data [16].
+                               The educational benefits of CanSats are also not limited to students. The CanSat
+                         Leaders Training Program (CLTP) is an annual event which engages university instructors.
+                         The goal of this program is to educate the educators on how to start CanSat programs in
+                         their countries or universities. CLTP is organized by UNISEC, a Japanese organization
+                         which supports CanSat research and development. Collectively, CLTP and UNISEC have
+                         been a significant driving force behind the increased interest and advancement of CanSat
+                         programs across the globe [6].
+                               CanSats also represent an important technological gateway for organizations and
+                         countries generally seeking to engage in near-space or space-bound technologies. In
+                         particular, academic programs that compete in CanSat competition or build CanSats for
+                         scientific studies typically do so as a means to train students and educators on how to
+                         operate systems that behave like real satellites [2]. This educational pipeline is viewed as a
+                         crucial mechanism for preparing a workforce of capable technicians and engineers with
+                         “hands-on experience” [9]. In some countries, this educational process begins as early as
+                         secondary school, which emphasizes the importance of CanSats as an educational aids [17].
+                         systems that behave like real satellites [2]. This educational pipeline is viewed as a crucial
+                         mechanism for preparing a workforce of capable technicians and engineers with “hands-
+Machines 2023, 11, 675   on experience” [9]. In some countries, this educational process begins as early as second- 5 of 18
+                         ary school, which emphasizes the importance of CanSats as an educational aids [17]. How-
+                         ever, CanSats also exist beyond the classroom. The next section focuses on Earth studies
+                         andHowever,
+                              the atmosphere
+                                        CanSatsto also
+                                                  outline more
+                                                       exist    of thethe
+                                                             beyond    ways  CanSats are
+                                                                          classroom. Theused.
+                                                                                          next section focuses on Earth
+                            studies and the atmosphere to outline more of the ways CanSats are used.
+                         3.2. Earth and Atmospheric Studies
+                            3.2. Earth
+                               The     and Atmospheric
+                                   investigative        Studies
+                                                 goals of both competition and scientific CanSats commonly include
+                                   The or
+                         atmospheric   investigative  goals of
+                                            environmental       both
+                                                             data      competition
+                                                                   collection.  Many and  scientific
+                                                                                       of these        CanSats
+                                                                                                   CanSats       commonly
+                                                                                                             designed         include
+                                                                                                                        for Earth
+                         Studies also utilize balloons to lift them to a desired altitude, before descending back Earth
+                             atmospheric    or  environmental   data   collection.  Many   of   these CanSats    designed  for   to
+                         theStudies   alsoEarth
+                              surface of    utilize balloons to
+                                                 with the        lift them
+                                                           assistance   of a to a desired[18,19].
+                                                                             parachute      altitude,  before
+                                                                                                    In this     descending
+                                                                                                             way, some        back to
+                                                                                                                         CanSats
+                             the surface
+                         closely  resemble of Earth with the
+                                             commercial       assistance of a parachute
+                                                           meteorological     instrumentation [18,19].
+                                                                                                  known In as
+                                                                                                           this way,  some such
+                                                                                                              radiosondes,  CanSats
+                             closely
+                         as the      resemble
+                                 CanSat          commercial
+                                          featured in         meteorological
+                                                       figure 2 from             instrumentation
+                                                                        [20]. A more                 knownof
+                                                                                       in-depth analysis       assimilarities
+                                                                                                                  radiosondes,   such
+                                                                                                                               and
+                             as the CanSat
+                         differences  between featured in and
+                                                  CanSats Figure 2   from [20].has
+                                                               radiosondes        A been
+                                                                                    morecompiled
+                                                                                           in-depth in the
+                                                                                                       analysis of  similarities
+                                                                                                               Definition sectionand
+                             differences
+                         of this          between here
+                                 paper. Relevant    CanSats
+                                                          are and   radiosondes
+                                                              key sensory          hasthat
+                                                                              choices  beenappear
+                                                                                               compiled    in theCanSat
+                                                                                                      in many     Definition   section
+                                                                                                                         systems
+                             of this paper.  Relevant   here are key   sensory   choices  that   appear   in
+                         and their application for studying phenomenon above Earth and within its atmosphere.many   CanSat  systems
+                             and their application for studying phenomenon above Earth and within its atmosphere.
+
+
+
+
+                            Figure
+                         Figure     2. Rendering
+                                2. Rendering     of Low-cost
+                                             of Low-cost Air Air Quality
+                                                             Quality     Monitoring
+                                                                     Monitoring     CanSat
+                                                                                CanSat     as seen
+                                                                                       as seen fromfrom
+                                                                                                     two two angles,
+                                                                                                         angles,      licensed
+                                                                                                                 licensed
+                            under  Creative Commons   by
+                         under Creative Commons by [20]. [20].
+
+                                   Measurements
+                               Measurements        from
+                                                from    temperature
+                                                      temperature andand pressuresensors
+                                                                       pressure    sensorscan
+                                                                                           canbe
+                                                                                               beuseful
+                                                                                                  usefulfor
+                                                                                                         forextrapolat-
+                                                                                                             extrapolating
+                             altitude, in particular, Commercial off-the-Shelf (COTS)  components,   such
+                         ing altitude, in particular, Commercial off-the-Shelf (COTS) components, such    as  the as
+                                                                                                                  BMP-180
+                                                                                                                     the
+                             or BMP-280, provide an altitude estimation, in addition to atmospheric temperature and
+                         BMP-180 or BMP-280, provide an altitude estimation, in addition to atmospheric temper-
+                            pressure. Therefore, these devices are a common sensor choice for CanSats [19,21]. Tem-
+                         ature and pressure. Therefore, these devices are a common sensor choice for CanSats
+                            perature and pressure provide general indicators of atmospheric conditions, but CanSats
+                         [19,21]. Temperature and pressure provide general indicators of atmospheric conditions,
+                             designed for environmental monitoring also utilize more advanced Air Quality Sensors,
+                         but CanSats designed for environmental monitoring also utilize more advanced Air Qual-
+                             such as the MQ-135 [22], or other gas sensors, such as the MQ-9 [23]. The use of low-cost
+                         ity Sensors, such as the MQ-135 [22], or other gas sensors, such as the MQ-9 [23]. The use
+                             GPS modules in CanSats is also a widely accepted practice. Logging or transmitting GPS
+                             coordinates assists with recovering CanSats, and for devices with meteorological goals,
+                             helps to correlate sensor readings with geographic locations [16,24]. Some additional exam-
+                            ples of Scientific CanSats that leverage these COTS sensors and that have been specially
+                             designed for Earth science investigations include a CanSat for measuring UV radiation
+                            proposed by Bhad et al. [25], a lightweight CanSat for atmospheric measurements [18],
+                             and an environmental monitoring network of multiple CanSats [26]. These devices are
+Machines 2023, 11, 675                                                                                            6 of 18
+
+
+
+
+                         particularly relevant for demonstrating the unique capacity of CanSats to be leveraged in
+                         meteorological and atmospheric studies. Since CanSats must interact with Earth’s atmo-
+                         sphere to perform atmospheric measurements, it may logically follow that CanSats can
+                         also be used for aeronautic investigations. The next section highlights the relevant CanSat
+                         literature related to this field.
+
+                         3.3. Aeronautic
+                              Many CanSat studies related to aeronautics have their origins in various CanSat com-
+                         petitions. Beginning with the 2019 competition, organizers challenged student teams to
+                         design an “Auto-Gyro Probe”, which could be released from the CanSats after deployment
+                         from a rocket [27]. A similar challenge followed in 2021 with the “Autorotating Science
+                         Payload Relay”, which called for entries that took inspiration from the aerodynamics of
+                         a maple seed [28]. These design competitions resulted in a selection of scholarly works
+                         which investigated the general design and integration of the auto-gyro recovery system [15],
+                         the use of Computational Fluid Dynamics (CFD) simulations for validating the CanSat
+                         design [29], and the biomimicry of maple seeds for creating a unique recovery vehicle [30].
+                         Other competitions have focused on the creation of secondary glider vehicles that could
+                         be deployed from the primary CanSat to collect sensor readings in a circular glide path,
+                         with these competitions taking place most recently in 2017 [31] and 2020 [32], respectively.
+                         Relevant research outcomes related to these competitions include compact and collapsi-
+                         ble glider wings [33], a “novel descent control system” [34], and the use of 3D-printed
+                         techniques for creating unique and flexible designs for the glider [35]. Beyond simply
+                         measuring data or flying through the atmosphere, CanSats must also be able to collect
+                         scientific data and send that information back to scientists on the ground. The next section
+                         explores the state of the art in CanSat data transmission and handling.
+
+                         3.4. Data Handling and Wireless Transmision
+                               Just as with orbital satellites, CanSats must be able to internally store and route
+                         data from sensors, while also managing a means for wirelessly communicating this data
+                         to some form of ground station. Typically, data transmission begins after a CanSat has
+                         started its descent back to the surface of the Earth and may, therefore, only last for a few
+                         minutes. Starting in 1999 with the ARLISS events, and continuing with many current
+                         CanSat competitions, the launch altitudes of the devices are calibrated with the purpose of
+                         providing flight times that would be similar to a horizon-to-horizon pass of a satellite in Low
+                         Earth Orbit (LEO). These flight times can vary from as little as 5 min to as long as 20 min,
+                         depending on the ascent vehicle and launch conditions [5,9]. During this short transmission
+                         window, CanSats can employ a wide variety of wireless communication techniques. Many
+                         CanSat competitions suggest or require the use of Zigbee communication standards and
+                         often the use of Xbee radios that operate on frequencies of 2.4 GHz or 900 MHz [8]. It
+                         is therefore common to find CanSats that utilize these radios and standards [6,15,36].
+                         However, CubeSats typically employ longer range Ultra High Frequency (UHF) or Very
+                         High Frequency (VHF) communication standards [1,37–39], which are further utilized by
+                         various scientific CanSats, including the stratospheric CanSat featured in Figure 3 [19,40].
+                               Thus, some CanSat-based research efforts focus on the development of effective and
+                         user-friendly ground stations [41], while other investigations holistically develop both the
+                         ground station receiver and the CanSat transmitter architectures simultaneously [18,42].
+                         CanSats that further feature multiple independent scientific devices can also demonstrate
+                         multi-channel communication experiments. A competition CanSat developed by Songül
+                         et al. provides a convenient point of reference as their CanSat featured a secondary descent
+                         vehicle that would be released from the main CanSat during the competition. Both the
+                         main CanSat “container” and the dropped “payload” were equipped with Xbee radios and
+                         configured to communicate in a “star topology” with the main coordinating radio residing
+                         at the ground station [36]. This communication architecture demonstrates a small-scale
+                         application of an Internet Of Things (IOT) network, which has been further investigated by
+                         multi-channel communication experiments. A competition CanSat developed by Songül
+                         et al. provides a convenient point of reference as their CanSat featured a secondary de-
+                         scent vehicle that would be released from the main CanSat during the competition. Both
+                         the main CanSat “container” and the dropped “payload” were equipped with Xbee radios
+                         and configured to communicate in a “star topology” with the main coordinating radio
+Machines 2023, 11, 675                                                                                               7 of 18
+                         residing at the ground station [36]. This communication architecture demonstrates a
+                         small-scale application of an Internet Of Things (IOT) network, which has been further
+                         investigated by other CanSat-related studies [4,20]. This use case for CanSats also eluci-
+                         other  CanSat-related
+                         dates a general       studies [4,20].
+                                          theme for            This use case
+                                                    CanSat-related           for CanSats
+                                                                      investigations,    also that
+                                                                                      namely  elucidates  general
+                                                                                                   CanSats are     theme
+                                                                                                                 effective
+                         for CanSat-related
+                         tools for           investigations,
+                                   testing new hardware    or namely
+                                                               softwarethat CanSatsThe
+                                                                         solutions.  arefinal
+                                                                                         effective tools for
+                                                                                              application    testinginves-
+                                                                                                           section    new
+                         hardware   or  software solutions.  The  final application section investigates  other
+                         tigates other relevant circumstances where CanSats were leveraged as testing platforms  relevant
+                         circumstances   where CanSats were leveraged as testing platforms for new technologies.
+                         for new technologies.
+
+
+
+
+                         Figure 3.
+                         Figure 3. Stratosphere
+                                   Stratosphere CanSat
+                                                CanSat being
+                                                       being tested
+                                                             tested near
+                                                                    near space,
+                                                                         space, licensed
+                                                                                 licensed under
+                                                                                          under Creative
+                                                                                                CreativeCommons
+                                                                                                         Commonsby
+                                                                                                                by[40].
+                                                                                                                   [40].
+
+                         3.5.
+                         3.5. General
+                              General Hardware
+                                        Hardware and
+                                                   and Software
+                                                        Software Testing
+                                                                   Testing
+                              The   flexible design
+                               The flexible   design characteristics
+                                                        characteristicsofofCanSats
+                                                                              CanSatsmakemake    them
+                                                                                              them      excellent
+                                                                                                     excellent     testbeds
+                                                                                                                testbeds       forva-
+                                                                                                                           for a   a
+                         variety of  scientific and  student  learning   applications.   In particular,  “flyback”
+                         riety of scientific and student learning applications. In particular, “flyback” or “comebackor “comeback
+                         competitions”
+                         competitions” provide
+                                          provideaa unique
+                                                       unique opportunity
+                                                                opportunity forfor student
+                                                                                   student led
+                                                                                             led research
+                                                                                                  research teams
+                                                                                                            teams toto design
+                                                                                                                       design both
+                                                                                                                                both
+                         aerodynamic     and  ground-based     navigational    strategies  for guiding
+                         aerodynamic and ground-based navigational strategies for guiding CanSat-based   CanSat-based     payloads
+                                                                                                                                pay-
+                         to arrive
+                         loads      at a predetermined
+                                to arrive                   terrestrial
+                                           at a predetermined           target target
+                                                                    terrestrial [6,43]. [6,43].
+                                                                                         These These
+                                                                                                 competitions    are of are
+                                                                                                        competitions     particular
+                                                                                                                             of par-
+                         interest, as unconventional
+                         ticular interest,                 hardware
+                                            as unconventional          and software
+                                                                    hardware           solutions
+                                                                                and software        are oftenare
+                                                                                                  solutions    employed     to gain
+                                                                                                                  often employed
+                         an edge   on  competitors.    Some   examples    of scholarly   work   focus  heavily
+                         to gain an edge on competitors. Some examples of scholarly work focus heavily on ana-  on  analyzing    the
+                         hardware,
+                         lyzing the such    as thesuch
+                                      hardware,     research   of research
+                                                          as the  Nuñez-Quispe       concerningconcerning
+                                                                             of Nuñez-Quispe       lightweightlightweight
+                                                                                                                  non-pneumatic non-
+                         wheels  equipped     to a comeback    CanSat    [44]. Other  works
+                         pneumatic wheels equipped to a comeback CanSat [44]. Other works focusfocus  primarily   on primarily
+                                                                                                                      the softwareon
+                         side of the CanSat device, such as a report from Akiyama et al., which describes the use of
+                         the software side of the CanSat device, such as a report from Akiyama et al., which de-
+                         an object identification algorithm to aid in the guidance of a CanSat comeback rover [45].
+                         scribes the use of an object identification algorithm to aid in the guidance of a CanSat
+                         However, a competition-worthy CanSat must necessarily find a way to harmoniously
+                         comeback rover [45]. However, a competition-worthy CanSat must necessarily find a way
+                         integrate both hardware and software elements together into a single device. Examples of
+                         to harmoniously integrate both hardware and software elements together into a single
+                         such work include systems that attempt to use both parachute canopies in conjunction with
+                         device. Examples of such work include systems that attempt to use both parachute cano-
+                         motor driven propellers [46], CanSats that consist of self-navigating ground-based wheeled
+                         pies in conjunction with motor driven propellers [46], CanSats that consist of self-navi-
+                         rovers [47], devices that employ controllable parafoils [6], or systems which deploy fixed
+                         gating ground-based wheeled rovers [47], devices that employ controllable parafoils [6],
+                         wings with control surfaces [48]. These efforts offer a glimpse into the diverse ecosystem of
+                         hardware and autonomous software control mechanisms being tested in conjunction with
+                         CanSat competitions.
+                              Comeback competitions do not represent the sole vector for scholarly work in CanSat
+                         system testing. Investigations that utilize CanSats as a scientific platform for general
+                         engineering methodologies demonstrate the potential utility of these devices [49]. CanSats
+                         are explored as a general scientific tool in a study by Abo-Arais et al., where the potential
+                         development of a small-scale satellite was first investigated through the creation of a
+                         CanSat [50]. Other works show how a CanSat can provide a convenient opportunity for
+Machines 2023, 11, 675                                                                                           8 of 18
+
+
+
+
+                         conducting an electrical power analysis study [51], or for generally integrating complex
+                         electromechanical systems into a single operational device [49,52].
+                              The research of Rodríguez et al. [40] offers a particularly compelling argument that
+                         CanSat architectures can be validated using CubeSat aerospace standards for successful
+                         stratospheric scientific campaigns. The rigorous statistical testing and application of a
+                         Design of Experiment (DoE) strategy, in addition to laboratory and field testing, provides
+                         a clear mechanism for validating a CanSat design. The use of Commercial off-the-Shelf
+                         (COTS) components and an overall modular CanSat design, which would further improve
+                         accessibility to this technology, was also significant in this work [40]. Another important
+                         advantage of CanSat-based experimental studies is the flexibility of the CanSat architecture.
+                         Utilizing the same general system design as [40], Botero et al. were able to create a novel
+                         high-altitude pollution sensor network. While many of the same components and systems
+                         configurations were maintained between the two projects, drastically different scientific
+                         outcomes could be achieved, and new hardware solutions could be rapidly tested [20].
+
+                         4. Definition
+                              Before articulating an in-depth definition of what constitutes a CanSat, it is important
+                         to establish what a CanSat is not. In particular, two well-defined technological frontiers,
+                         namely radiosondes and CubeSats, share significant operational parameters with CanSats,
+                         and must therefore be separated to form a technical definition.
+
+                         4.1. CanSats Are Not Radiosondes
+                              CanSats configured for atmospheric or meteorological investigations often share sig-
+                         nificant operational characteristics with another common weather monitoring instrument
+                         known as a radiosonde [21]. Commercial devices, such as Vaisala’s RS41-SG radiosonde,
+                         provide a means for private or government collectives to conduct high-altitude atmospheric
+                         soundings. This instrument wirelessly transmits temperature, humidity, altitude, and air
+                         pressure, along with wind direction and speed, as it ascends through the atmosphere with
+                         the help of a helium filled balloon [53]. Like CanSats, radiosondes can carry a variety
+                         of sensors. Lower cost radiosonde models, such as the RS41-D, are equipped with only
+                         temperature-, humidity-, and pressure-sensing capabilities [54], while higher end systems,
+                         such as the RS41-SGP, can be connected with ozone sensors or other devices that are
+                         configured to interface with a standard data communication protocol [55]. Importantly,
+                         radiosondes are equipped with highly accurate sensors which are calibrated to global
+                         standards, which is why these devices are accepted broadly as the main technology for
+                         high-altitude meteorological surveys. Figure 4 depicts both a commercial radiosonde and a
+                         scientific CanSat as a point of visual reference.
+                              In addition to containing similar sensor suites, radiosondes and CanSats also share
+                         similar flight experiences and characteristics. During a typical CanSat flight, the device
+                         experiences three major operational phases. The first phase is the ascent, where the vehicle
+                         is subjected to an acceleration which moves it to a higher altitude. The second phase
+                         is the separation or deployment, in which the CanSat is mechanically decoupled from
+                         the device lifting it to the higher altitude. The final flight phase of the CanSat is the
+                         descent. During this phase, the vehicle travels back toward the Earth under the influence of
+                         gravitational acceleration. Many CanSats follow flight characteristics similar to radiosondes,
+                         particularly during the descent flight phase, when parachutes are often deployed to arrest
+                         landing velocities.
+Machines 2023,11,
+Machines2023,     675FOR PEER REVIEW
+               11, x                                                                                                                                     99 of 18
+                                                                                                                                                               19
+
+
+
+
+                                Figure4.
+                                Figure 4. Vaisala
+                                          VaisalaRS92-DL
+                                                  RS92-DLradiosonde
+                                                          radiosonde(Left)
+                                                                     (Left)compared
+                                                                            comparedto
+                                                                                     toaameteorological
+                                                                                         meteorologicalCanSat
+                                                                                                        CanSat(Right).
+                                                                                                               (Right).
+
+                                       In way
+                                       By  addition of to    containing
+                                                       comparison,            similar
+                                                                           most         sensor suites,
+                                                                                   radiosondes                radiosondes
+                                                                                                      are tethered                and CanSats
+                                                                                                                           to weather       balloons, alsowhich
+                                                                                                                                                             share
+                                 similar of
+                                consist     flight   experiences
+                                               flexible    envelopes   andfilled with
+                                                                               characteristics.
+                                                                                            a gas During
+                                                                                                     lighter athan  typical
+                                                                                                                         air to CanSat
+                                                                                                                                   provide flight, the
+                                                                                                                                                buoyancy.  deviceA
+                                 experiences
+                                weather            three or
+                                             balloon,     majorotheroperational
+                                                                        High-Altitudephases. The
+                                                                                              Balloon first(HAB),
+                                                                                                             phase is      the with
+                                                                                                                        filled  ascent,helium
+                                                                                                                                          where the   canvehicle
+                                                                                                                                                            carry
+                                ais subjected
+                                   radiosondetoto     anan
+                                                         acceleration        which moves
+                                                              altitude ranging         from 25  it to
+                                                                                                    toa30higher     altitude.the
+                                                                                                             km, before           Theballoon
+                                                                                                                                        secondburstsphase is orthe
+                                                                                                                                                                 is
+                                 separation or
+                                purposely            deployment,
+                                                deflated     [56]. in       which the
+                                                                     Following       the CanSat
+                                                                                          destructionis mechanically
+                                                                                                             of  the weather  decoupled
+                                                                                                                                     balloon, froma the    device
+                                                                                                                                                     parachute
+                                canopyit to
+                                 lifting   connected      to the
+                                                 the higher         radiosonde’s
+                                                                 altitude.            tether
+                                                                               The final       typically
+                                                                                           flight   phase of inflates
+                                                                                                                  the to     slowis
+                                                                                                                        CanSat       the
+                                                                                                                                       thedevice
+                                                                                                                                             descent.for aDuring
+                                                                                                                                                            softer
+                                terrestrial
+                                 this          landing.
+                                       phase, the          Other
+                                                       vehicle        less back
+                                                                  travels   common       flighthe Earth
+                                                                                    toward        mechanics        for the
+                                                                                                               under    radiosondes
+                                                                                                                               influence of include     variants
+                                                                                                                                                  gravitational
+                                such as    the Many
+                                 acceleration.   “RocketSonde”
+                                                             CanSats[57],       which
+                                                                           follow        simply
+                                                                                     flight         replaces the
+                                                                                             characteristics           slow to
+                                                                                                                     similar    balloon    assisted altitude
+                                                                                                                                     radiosondes,        particu-
+                                climb   with    a  more  rapid     rocket    assisted   ascent,   or  the  “GliderSonde”
+                                 larly during the descent flight phase, when parachutes are often deployed to arrest land-         [58,59],    which    replaces
+                                the
+                                 ingparachute
+                                      velocities. assisted descent with a controlled gliding recovery through the application
+                                of By
+                                    aerodynamic
+                                             way of control
+                                                        comparison,surfaces mostor wings.
+                                                                                    radiosondes are tethered to weather balloons, which
+                                       CanSats
+                                 consist            associated
+                                            of flexible             with most
+                                                            envelopes        filledglobal   competitions
+                                                                                     with a gas                 followair to
+                                                                                                      lighter than          significantly
+                                                                                                                                    providelower         altitude
+                                                                                                                                                  buoyancy.       A
+                                flights
+                                 weather  than    the typical
+                                              balloon,    or otherradiosonde,       with the
+                                                                        High-Altitude            US (HAB),
+                                                                                             Balloon   competition         targeting
+                                                                                                                      filled             altitudes
+                                                                                                                                with helium         canof 670
+                                                                                                                                                          carrytoa
+                                725   m [8], and
+                                 radiosonde       tothe
+                                                      an European        competition
+                                                          altitude ranging         from describing
+                                                                                           25 to 30 km,   a maximum
+                                                                                                               before thedrop         altitude
+                                                                                                                                balloon     bursts of 1orkm   [10].
+                                                                                                                                                           is pur-
+                                However,       scientific    CanSats       can   exceed    the   guidelines       created
+                                 posely deflated [56]. Following the destruction of the weather balloon, a parachute canopy    for  student      competitions
+                                with   flights to
+                                 connected       ontheweather     balloonstether
+                                                         radiosonde’s           or rockets   that reach
+                                                                                       typically     inflates thetostratosphere
+                                                                                                                     slow the device   muchfor  like   radioson-
+                                                                                                                                                    a softer   ter-
+                                des
+                                 restrial landing. Other less common flight mechanics for radiosondes includeby
+                                      [40].    Regardless       of  the   flight   altitude,    the   recovery       techniques        employed             these
+                                                                                                                                                         variants
+                                devices
+                                 such       represent an
+                                        as the    “RocketSonde”important [57],point
+                                                                                 whichofsimply
+                                                                                           commonality.
+                                                                                                     replacesThe  the vast      majority of
+                                                                                                                        slow balloon              radiosondes
+                                                                                                                                             assisted    altitude
+                                employ      passive     parachute       canopies      to  slow    their   descent      from
+                                 climb with a more rapid rocket assisted ascent, or the “GliderSonde” [58,59], which re-        high    altitudes,      which    is
+                                mirrored      by   the  vast  majority      of  both   student     and   scientific    CanSats,
+                                 places the parachute assisted descent with a controlled gliding recovery through the ap-             which     also   favor   the
+                                deployment         of parachutescontrol
+                                 plication of aerodynamic              for recovery      [16,19,23,24].
+                                                                                  surfaces   or wings.
+                                       However,        some    important        distinctions
+                                       CanSats associated with most global competitions           between these  follow   two    scientific vehicles
+                                                                                                                             significantly                   need
+                                                                                                                                                lower altitude
+                                to  be  made.       First, CanSats       appear     to  offer   greater     flexibility
+                                 flights than the typical radiosonde, with the US competition targeting altitudes of 670 to in  their   launch      mechanics.
+                                While radiosondes are typically either intended for balloon launches or designed for
+                                 725 m [8], and the European competition describing a maximum drop altitude of 1 km
+                                rocket-based deployments, a singular CanSat device can be deployed from a rocket, a
+                                 [10]. However, scientific CanSats can exceed the guidelines created for student competi-
+                                balloon, a drone, or by other means [6,10]. Radiosondes are also typically self-contained
+                                 tions with flights on weather balloons or rockets that reach the stratosphere much like
+                                devices that do not mechanically actuate or deploy secondary sensory devices, which
+                                 radiosondes [40]. Regardless of the flight altitude, the recovery techniques employed by
+                                are functionalities that CanSats regularly demonstrate [8,33]. Finally, while commercial
+                                 these devices represent an important point of commonality. The vast majority of radio-
+                                radiosondes nearly universally utilize parachutes for recovery, CanSats offer the flexibility
+                                 sondes employ passive parachute canopies to slow their descent from high altitudes,
+Machines 2023, 11, 675                                                                                          10 of 18
+
+
+
+
+                         to test novel and unconventional recovery techniques, such as auto-gyros [15], deployable
+                         wings [48], powered propellers [60], and many others [5,6].
+                               It should be noted that CanSats designed for studying natural phenomena on Earth
+                         often exceed the typical capabilities of commercially available radiosondes. While many
+                         atmospheric monitoring CanSats utilize simple pressure and temperature sensors, much
+                         like radiosondes, the addition of novel instrumentation, such as cameras [19], magne-
+                         tometers, accelerometers [18], gyroscopes, or luminosity sensors [24], give these devices
+                         far more sensory opportunities than a commercial radiosonde. Although CanSat-based
+                         measurements may not adhere to global calibration standards, a major benefit to CanSats
+                         are their flexible architectures and the ability to utilize Commercial-off-the-Shelf (COTS)
+                         hardware for rapid prototyping. This flexibility of design makes CanSats a potentially
+                         lower-cost option for localized data collection campaigns [22]. While a radiosonde could be
+                         launched to determine local weather conditions, a CanSat might be a significantly cheaper
+                         option that includes the added capability of more customizable sensory abilities for the
+                         desired scientific study. Having discussed the difference between CanSats and radiosondes,
+                         the next section investigates CubeSats in comparison with CanSats.
+
+                         4.2. CanSats Are Not CubeSats
+                               CanSats and their orbital brethren, the CubeSat, have a close history that has been
+                         described at length in a previous section of this review. With this shared history, there also
+                         is some overlap that can occur between these two technical frontiers. In particular, there are
+                         significant examples of CubeSat technologies being tested through stratospheric launches
+                         of High-Altitude Balloons (HABs) and suborbital sounding rockets. These tests are typically
+                         targeted at confirming the “technology readiness” of the system by simulating conditions
+                         that are similar to space in Earth’s upper atmosphere [61]. CubeSat testing programs
+                         organized by the European Space Agency (ESA) that are specifically intended for college
+                         students include BEXUS (Balloon EXperiments for University Students) [62] and REXUS
+                         (Rocket Experiments for University Students) [63] A comprehensive analysis of terrestrial
+                         testing of CubeSat systems is beyond the scope of this review, but a few examples include
+                         testing a Software-Defined Radio (SDR) communication architecture [64], the measurement
+                         of magnetic field disturbances [65], or the creation of a heat transfer experiment [66].
+                               Notably, some of these devices clearly take the form and architecture of a CubeSat [67],
+                         but other HAB-based studies generate devices that might be interpreted as being more sim-
+                         ilar to CanSats [68]. Furthermore, the use of sounding rockets to test CubeSat architectures
+                         is not altogether dissimilar from the use of lower altitude rockets for CanSat competitions.
+                         There are also significant examples of simulated satellite devices being tested with HABs
+                         without any immediate motivation to integrate tested systems into orbital vehicles. Pawar
+                         et al. coin a new term for such devices, calling them “Lower Atmosphere Research Satel-
+                         lites” (LARS) [69]. Functionally, there are very few differences between so called LARS and
+                         the developing definition of CanSats. In terms of form, CanSats are generally cylindrical,
+                         while the LARS described by Pawar et al. took a more rectangular form that harkened to
+                         the standards of a CubeSat. However, from a purely technical perspective, many of these
+                         high-altitude studies could be packaged into a cylindrical chassis as easily as a rectangular
+                         one, further blurring the line between CanSats and CubeSats.
+                               This overlap also goes the other way. Recent developments have been made on a
+                         new standard of orbital picosatellite called the “TubeSat”. Unlike like CubeSats, TubeSats
+                         follow a new dimensional standard that calls for a cylindrical chassis design instead of
+                         the cubic one utilized by CubeSats. These devices closely resemble stratospheric CanSats,
+                         and may therefore represent the logical progression of such devices [70]. Perhaps a CanSat
+                         that passes rigorous terrestrial testing could be launched into space and therefore graduate
+                         to the status of TubeSat, but additional development will be required to fully articulate
+                         any distinction between this new TubeSat standard and the existing standards of CubeSats
+                         and CanSats. Figure 5 provides a quick overview of the major differences noted between
+                         these devices.
+                   may therefore represent the logical progression of such devices [70]. Perhaps a CanSat
+                   that passes rigorous terrestrial testing could be launched into space and therefore gradu-
+                   ate to the status of TubeSat, but additional development will be required to fully articulate
+                   any distinction between this new TubeSat standard and the existing standards of Cu-
+                   beSats and CanSats. Figure 5 provides a quick overview of the major differences noted
+Machines 2023, 11, 675                                                                                                                      11 of 18
+                   between these devices.
+
+
+
+
+                                Figure 5. A broad comparison of CubeSat, CanSat, and TubeSat; images accessed on 17 May 2023.
+                Figure 5. A broad comparison of CubeSat, CanSat, and TubeSat; images accessed on 17 May 2023.
+                                      There are also additional picosatellite designs that are much smaller than even a single
+                     There are unit
+                                also CubeSat.
+                                      additionalDevices
+                                                      picosatellite   designs
+                                                                such as           that are much
+                                                                         PocketQubes         followsmaller
+                                                                                                       a 5-cm than
+                                                                                                                cube even      a sin-at a maximum
+                                                                                                                       standard,
+                gle unit CubeSat.   Devices     such     as PocketQubes       follow    a  5-cm    cube   standard,     at  a
+                               mass of 250 g. Being a quarter the size of a typical CubeSat, these devices are also potentiallymaxi-
+                mum mass of very
+                               250 g.similar
+                                        Being to  a quarter
+                                                     the smallerthe size of aformats,
+                                                                    CanSat       typical CubeSat,
+                                                                                           especiallythese      devices
+                                                                                                         Professor          are also
+                                                                                                                      Twigg’s     original vision of
+                potentially very  similar   to  the    smaller   CanSat   formats,     especially     Professor
+                               the soda-can-sized satellite. Variations on the PocketQube also include so          Twigg’s      orig-
+                                                                                                                                  called “ThinSats”,
+                inal vision of the  soda-can-sized
+                               which are    typically satellite.      Variations
+                                                          picosatellites   consistingon ofthea single
+                                                                                                PocketQube
+                                                                                                         circuitalso   include
+                                                                                                                  board.           so are similar in
+                                                                                                                            ThinSats
+                called “ThinSats”,   which are
+                               mass to    PocketQubes,typically   picosatellites
+                                                               but are flat         consisting
+                                                                            like a slice            of ainstead
+                                                                                            of bread,     single ofcircuit
+                                                                                                                      cubeboard.
+                                                                                                                              shaped. Importantly,
+                ThinSats are similar
+                               low-cost in mass     to
+                                           picosatellitesPocketQubes,
+                                                               like        but are flat
+                                                                    PocketQubes       andlike     a sliceare
+                                                                                            ThinSats       of bread,
+                                                                                                              primarily instead    of for academic
+                                                                                                                            intended
+                cube shaped. Importantly,        low-cost     picosatellites
+                               and educational purposes, much like CanSats [1]. like PocketQubes         and   ThinSats     are  pri-
+                marily intended forHowever,
+                                       academicitand        educational
+                                                        should             purposes,
+                                                                  be abundantly      clearmuch
+                                                                                             fromlike
+                                                                                                    the CanSats
+                                                                                                         shape alone[1]. that CanSats and Cube-
+                     However, it     hould be
+                               Sats are           abundantly
+                                           separate                clear from
+                                                         technological            the shape
+                                                                           entities.    Having  alone
+                                                                                                    beenthat   CanSats at
+                                                                                                            developed      and Cu-
+                                                                                                                               similar times, with
+                beSats are separate    technological
+                               similar names,         andentities.
+                                                            similar Having
+                                                                      scientificbeen    developed
+                                                                                   goals, care          at be
+                                                                                                   should   similar   times,
+                                                                                                                  taken         with both devices
+                                                                                                                           to define
+                similar names, and     similar
+                               separately          scientific
+                                              to avoid          goals, care
+                                                           confusion.          shouldtobemake
+                                                                         Therefore,           taken theto define
+                                                                                                         distinctionboth    devices
+                                                                                                                        clear,  this review defines
+                separately to a
+                              avoid   confusion.
+                                 CubeSat      as anTherefore,
+                                                       “artificial to  make or
+                                                                    satellite  thespace
+                                                                                    distinction
+                                                                                           fairingclear,    thisdevice
+                                                                                                      robotic     reviewthat defines
+                                                                                                                                takes the form of a
+                a CubeSat as anrectangular
+                                  “artificial prism
+                                                satellite with
+                                                            or a   standardized
+                                                                space                shapedevice
+                                                                       fairing robotic        and that
+                                                                                                     dimension”.
+                                                                                                            takes the This    definition
+                                                                                                                         form of    a     was devel-
+                               oped    from    the   standards     and  conventions        described
+                rectangular prism with a standardized shape and dimension”. This definition was devel-   in  [1]. Key    to  this definition is that,
+                oped from thewhile      both and
+                                standards      CanSats and
+                                                      conventions CubeSats    havein
+                                                                       described     an[1]. Key
+                                                                                          abbreviation
+                                                                                                     to thisfor  “satellite”
+                                                                                                              definition     is in their name, only
+                                                                                                                                that,
+                               CubeSats
+                while both CanSats           constitutehave
+                                       and CubeSats          true an
+                                                                   “artificial   satellites”,
+                                                                      abbreviation      for while        CanSats
+                                                                                             “satellite” in          represent
+                                                                                                               their name,         only “simulated
+                                                                                                                                only
+                               satellites”
+                CubeSats constitute     true[22].    This definition
+                                               “artificial              aligns
+                                                              satellites”,  while well with
+                                                                                     CanSats   therepresent
+                                                                                                    historic only
+                                                                                                              application     of CanSats described
+                                                                                                                      “simulated
+                               previously, as well as modern use cases for CubeSats [1]. Furthermore, with this major
+                               difference between CubeSats and CanSats identified, a more formal technical definition can
+                               be articulated.
+
+                                  4.3. Developing a Technical Definition
+                                       The core technical definition for what constitutes a CanSat must start with the vision
+                                  and intents at its creation, namely, when Professor Twiggs declared that a micro-scale
+                                  satellite could be constructed from a soda can. Following the 1998 USSS conference,
+                                  students at the University of Tokyo continued to build and fly CanSats, under the direction
+                                  of Professor Shinici Nakasuka [1]. This process of designing a complex system composed of
+                                  microcontrollers, sensors, batteries, communication systems, and more provided valuable
+                                  hands-on experience for the students. Indeed, the Space Systems Development Laboratory
+                                  at Stanford University, of which Professor Twiggs was a member, maintained a key goal
+                                  of involving students in the process of creating small-scale satellites. Therefore, Twigg’s
+Machines 2023, 11, 675                                                                                         12 of 18
+
+
+
+
+                         vision, and much of the historic application of CanSats, can be described succinctly as
+                         “educational satellite analogues”.
+                               The educational relevance of CanSats represents the first key pillar of any defini-
+                         tion, especially as the use of CanSats as instructional tools continues to be leveraged by
+                         institutions across the globe. Competitions based on the CanSat architecture have been
+                         held in Europe [10,14], Japan [4], and the United States [1], to name a few. These events
+                         continue to challenge students through Science, Technology, Engineering, and Math (STEM)
+                         oriented curriculum, while also encouraging students to engage problem-solving skills
+                         and to demonstrate technical know-how. The CanSat as an educational tool and vector for
+                         student learning must then be a part of its definition.
+                               Another element of the technical definition should reside in the flight characteristics
+                         of CanSats. Some accounts suggest that Twiggs fully intended to have these soda can
+                         satellites launched into orbit [6], while others indicate the payloads were always bound for
+                         suborbital applications [1]. However, the reality was that the CanSats developed following
+                         the 1998 USSS conference were never sent into orbit [6]. Modern student competitions and
+                         the ultimate outcome of that 1998 USSS Conference pivoted toward suborbital launches to
+                         make the competitions affordable and accessible to student organizations. The first launches
+                         of these devices obtained altitudes of 3.6 km, thanks to high-powered amateur rocket [6];
+                         however, many modern competitions maintain less lofty goals with launches aimed at
+                         closer to 700 m [8]. However, while CanSat competitions typically limit launch apogees to
+                         the troposphere, scientific studies have demonstrated the ability to launch CanSats to as
+                         high as the stratosphere using High-Altitude Balloons [26]. In all cases, both competition
+                         and general scientific CanSats maintain suborbital trajectory. Therefore, the non-orbital
+                         nature of a CanSat must be another pillar of the forthcoming technical definition.
+                               For CanSats to distinguish themselves as unique mechatronic devices, they must be
+                         separated clearly from other existing systems with similar operational parameters. As
+                         discussed at the start of this section, there are two devices in particular that present the
+                         greatest areas for comparison, namely CubeSats and radiosondes. The distinction between
+                         CanSats and CubeSats is most clearly described as a function of altitude and trajectory.
+                         CubeSats are launched into space [65] and act as artificial satellites of the Earth or other
+                         celestial bodies [1], while CanSats are most often launched to altitudes below 4 km with no
+                         intent for the vehicle to reach space or maintain an orbit [9]. Furthermore, even the highest
+                         launching CanSats, which can reach the stratosphere, still never reach space or maintain an
+                         orbit [40]. This fact must therefore distinguish CubeSats from modern CanSats: they stay
+                         within Earth’s atmosphere and do not reach orbit.
+                               Another distinct difference between CanSats and CubeSats is their shape. CubeSats
+                         maintain a very strict dimensional standard to ensure compatibility with launchers [3].
+                         Hence the names; CubeSats are cubes, while CanSats generally are cylinders. The size
+                         and shape of CanSats is also not as standardized as CubeSats. The original 350 milliliter
+                         aluminum soda can is a common size standard employed by some researchers [6]; however,
+                         other competitions have created new standards that are much larger than this original
+                         specification [8]. In most cases, the cylindrical shape is maintained to ensure compatibility
+                         with a variety of launching vehicles; however, this shape is often a maximum size envelope,
+                         not a required dimensional characteristic. Since the size and shape of CanSats appears to
+                         be very flexible, this flexibility must be important to a final technical definition.
+                               Next, to distinguish CanSats from radiosondes and other meteorological sounding
+                         instruments, the comparisons made in the previous section will be referred to further. Fore-
+                         most, CanSats are distinct from radiosondes by their flexible scientific goals. Radiosondes
+                         are solely intended for meteorological and atmospheric surveys [55], while CanSats can
+                         engage Earth studies, but can also be developed for subjects as varied as aeronautics to
+                         student education. As a hallmark of this varied scientific capability, CanSats also demon-
+                         strate significantly different flight characteristics than atmospheric sounding systems. Most
+                         radiosondes are carried to the stratosphere below an inflatable balloon before deploying a
+                         parachute for an unguided descent to the ground. While this framework is not dissimilar
+Machines 2023, 11, 675                                                                                           13 of 18
+
+
+
+
+                         from some CanSat flights, the flexible shape and size of CanSat payloads make them equally
+                         capable of being launched from balloons, rockets, aircraft, and many other mechanisms.
+                               Compiling all these characteristics together, the final technical definition follows: a
+                         CanSat is both an educational and scientific tool that is used terrestrially to learn about and
+                         test hardware for space-bound systems; where flexible launch characteristics, size, shape,
+                         and sensory abilities allow CanSats to be leveraged for low-cost studies in a variety of
+                         scientific fields and disciplines.
+
+                         5. Future Directions
+                               Having established common use cases for CanSats in the Application section of this
+                         paper, and having established a technical definition for what constitutes a CanSat in the
+                         previous section, some considerations for the future of this technological frontier will be
+                         articulated in this section. As a starting point, traditional CubeSat architectures have been
+                         explored briefly as a point of comparison for CanSats. However, it is significant to note
+                         that satellites in general can have a plethora of operational parameters and mission profiles.
+                         This further complicates distinguishing between CanSats as satellite simulation tools and
+                         experimental satellites that operate outside of traditional parameters. One such example of
+                         a highly experimental satellite classification that further blurs the line between CanSat and
+                         a satellite would be the orbital vehicles operating in exceptionally low orbits.
+                               There is no clear delineation between Earth’s atmosphere and space. However space
+                         is often said to begin at 100 km above sea level [67]. Many low-cost satellites, such as
+                         CubeSats, are placed in Low Earth Orbits (LEO), which are generally defined as orbital alti-
+                         tudes varying from 200 to 2000 km. Importantly, vehicles in LEO still interact with Earth’s
+                         atmosphere, especially at altitudes below 500 km, where air resistance begins to become a
+                         significant factor in determining orbital duration. This lower orbital altitude, where atmo-
+                         spheric drag is prevalent, is called Very Low Earth Orbit (VLEO), and is typically defined
+                         as orbital altitudes below 450 km. Due to the effects of air resistance, satellites in VLEO
+                         may deorbit in less than 5 years, depending on their area and mass [71]. While this short
+                         orbital lifespan and the lower cost of launching vehicles to VLEO makes it a great altitude
+                         for experimental satellites such as CubeSats, serious interest in making this space more
+                         economically viable for other forms of commercial satellites is also under consideration.
+                               The Super Low Altitude Test Satellite (SLATS), developed by the Japan Aerospace
+                         Exploration Agency (JAXA) is targeting operations in “Super Low Altitudes” between
+                         200 and 300 km. Extended presence in altitudes this low can only be accomplished by
+                         significant changes in the design of the satellite. Foremost, the satellite was designed
+                         to be more aerodynamic in shape, having a smaller cross-sectional area in the forward
+                         direction. Additionally, the SALTS was equipped with an ion engine to provide propulsive
+                         thrust for maintaining its low orbit and countering aerodynamic drag [72]. The United
+                         Kingdom branch of Thales Alenia Space, an aerospace company, has proposed pushing
+                         satellites even lower to altitudes of 160 km with their new “SkimSat” [73]. Unlike traditional
+                         satellites, the SkimSat concept employs an aerodynamic body with a “novel air-breathing
+                         propulsion system”. The design goals of SkimSat were also influenced by a desire to
+                         combine the best characteristics of both orbital Earth Observation (EO) and Unmanned
+                         Aerial Vehicles (UAVs) [74]. This combination of technologies designed to operate within
+                         Earth’s atmosphere, namely UAVs, with systems traditionally operating above Earth’s
+                         atmosphere, namely orbital satellites, has generated a proposed architecture that resembles
+                         a satellite with wings. Figure 6 compares the altitude of traditional satellites and SkimSats
+                         to weather balloons and CanSats.
+                               As the technical definition developed during this review clearly defines CanSats as
+                         devices operating within Earth’s atmosphere, this definition could conceivably encompass
+                         recently developing VLEO satellite architectures, if atmospheric density is considered
+                         instead of international convention. SkimSats might indeed be determined to be a subsect of
+                         CanSats; however, this new field of atmosphere skimming satellites requires additional time
+                         to mature before such categorizations can be made. With SkimSats investigating a scientific
+                         aerodynamic in shape, having a smaller cross-sectional area in the forward direction. Ad-
+                         ditionally, the SALTS was equipped with an ion engine to provide propulsive thrust for
+                         maintaining its low orbit and countering aerodynamic drag [72]. The United Kingdom
+                         branch of Thales Alenia Space, an aerospace company, has proposed pushing satellites
+Machines 2023, 11, 675                                                                                                 14 of 18
+                         even lower to altitudes of 160 km with their new “SkimSat” [73]. Unlike traditional satel-
+                         lites, the SkimSat concept employs an aerodynamic body with a “novel air-breathing pro-
+                         pulsion system”. The design goals of SkimSat were also influenced by a desire to combine
+                         areabest
+                         the   that combines   bothoforbital
+                                    characteristics    both and   atmospheric
+                                                             orbital Earth       technology
+                                                                            Observation    (EO)spaces,
+                                                                                                 and CanSat     architectures
+                                                                                                      Unmanned Aerial      Ve-
+                         could
+                         hicles surely
+                                  (UAVs)offer
+                                          [74].aThis
+                                                 low-cost   architecture
+                                                     combination     of for    testing future
+                                                                        technologies            SkimSat
+                                                                                       designed to        systems.
+                                                                                                     operate   withinCanSats
+                                                                                                                      Earth’s
+                         equipped
+                         atmosphere,  with prototype,
+                                         namely   UAVs, optical
+                                                           with sensors,
+                                                                 systems advanced      aerodynamic
+                                                                           traditionally               material
+                                                                                           operating above       coatings,
+                                                                                                              Earth’s       or
+                                                                                                                       atmos-
+                         even   prototype  air-breathing   engines, could  be very  useful  in SkimSat-related
+                         phere, namely orbital satellites, has generated a proposed architecture that resembles astudies. Just
+                         as CanSats
+                         satellite    were
+                                    with    a critical
+                                         wings.  Figuretechnological
+                                                          6 compares precursor    foroforbital
+                                                                       the altitude            CubeSats,
+                                                                                         traditional       CanSats
+                                                                                                     satellites and may   also
+                                                                                                                    SkimSats
+                         be  an  important  prerequisite
+                         to weather balloons and CanSats.  experimental   platform   for developing   SkimSats.
+
+
+
+
+                         Figure 6.
+                         Figure 6. Visual
+                                   Visual altitude
+                                          altitude comparison
+                                                   comparison of
+                                                              of CanSats
+                                                                 CanSatsand
+                                                                         andsatellites.
+                                                                             satellites.
+
+                               On
+                               As the other    end of the
+                                       technical            continuum
+                                                    definition     developed might  be this
+                                                                                 during satellite-like
+                                                                                               reviewsystems
+                                                                                                         clearly that   operate
+                                                                                                                  defines   CanSatsin the
+                                                                                                                                        as
+                         stratosphere
+                         devices        with within
+                                   operating   High-Altitude
+                                                          Earth’sBalloons      (HABs).
+                                                                     atmosphere,     thisThe use    of could
+                                                                                            definition HAB-based      testing for
+                                                                                                                conceivably          both
+                                                                                                                                 encom-
+                         CubeSat
+                         pass       and CanSat
+                               recently            architecture
+                                          developing     VLEO has         beenarchitectures,
+                                                                    satellite    previously if described    in other
+                                                                                                   atmospheric         sections
+                                                                                                                    density   is of   this
+                                                                                                                                 consid-
+                         review.   However,     the  deployment        of dedicated    satellite-like  devices
+                         ered instead of international convention. SkimSats might indeed be determined to be a   in  the  stratosphere
+                         could
+                         subsectseeof potential
+                                      CanSats; advances
+                                                  however, garnered          fromof
+                                                                this new field      CanSat    architectures.
+                                                                                      atmosphere      skimming  A satellites
+                                                                                                                    well-known       case
+                                                                                                                                requires
+                         study  of such  devices    might   be   the so  called  “Loon   Balloons”    developed
+                         additional time to mature before such categorizations can be made. With SkimSats inves-    by  Google.   These
+                         High-Altitude
+                         tigating          Balloons
+                                   a scientific   areawere
+                                                        that intended
+                                                              combines to      provide
+                                                                             both        low-cost
+                                                                                   orbital and       cellular connectivity
+                                                                                                  atmospheric     technologytospaces,
+                                                                                                                                    areas
+                         that did not
+                         CanSat         have dedicated
+                                  architectures             terrestrial
+                                                   could surely            cellow-cost
+                                                                     offer a    towers [75].    While this
+                                                                                          architecture        project has
+                                                                                                         for testing   futuresince  been
+                                                                                                                                SkimSat
+                         abandoned     by  Google,    future   systems     employing     similar   architectures
+                         systems. CanSats equipped with prototype, optical sensors, advanced aerodynamic ma-        could   also  utilize
+                         CanSats    as partorofeven
+                         terial coatings,        theirprototype
+                                                        research air-breathing
+                                                                     pipeline. At the      start could
+                                                                                     engines,    of suchbeavery
+                                                                                                              research
+                                                                                                                   usefulpipeline,
+                                                                                                                           in SkimSat- the
+                         CanSat   architecture   could   be  a  valuable    tool for varied   duration   testing   of new
+                         related studies. Just as CanSats were a critical technological precursor for orbital CubeSats,     technology
+                         or systems
+                         CanSats      integration.
+                                    may    also be an CanSats
+                                                         importantlaunched    into the stratosphere
+                                                                         prerequisite    experimentalonplatform
+                                                                                                             soundingfor rockets   could
+                                                                                                                            developing
+                         perform
+                         SkimSats. low-cost   and   short  duration     tests, while  CanSats    attached    to HABs    could   conduct
+                         long-duration
+                               On the othervalidation   of future
+                                               end of the   continuumflight systems.
+                                                                             might be satellite-like systems that operate in the
+                               Another    intriguing    area   for  development
+                         stratosphere with High-Altitude Balloons (HABs).            in the
+                                                                                          TheCanSat     paradigm istesting
+                                                                                               use of HAB-based          that offor
+                                                                                                                                  active
+                                                                                                                                     both
+                         aerodynamic guidance and control. Most HAB-based experiments are completely uncon-
+                         trolled during the entire mission duration, leaving the payload’s position at the whims
+                         of atmospheric air currents [56]. Google’s Loon architecture attempted to offer some con-
+                         trollability to their HAB payloads by changing their altitude to correspond with desirable
+                         wind currents, but analysis of this strategy suggest only coverage gains of less than 10%
+                         when compared to purely random deployment of their balloons [75]. Perhaps CanSats
+                         equipped with large aerodynamic surfaces could offer additionally rudimentary control at
+Machines 2023, 11, 675                                                                                                                  15 of 18
+
+
+
+
+                                   high altitudes, or certainly active aerodynamic guidance during the descent stage of the
+                                   mission. As part of the greater research pipeline, the ability for a scientific payload to fly
+                                   itself back to some desired landing site could significantly reduce turnaround time, and all
+                                   but eliminate the need to perform time-consuming recovery efforts for the payload.
+
+                                   6. Conclusions
+                                         As one of the final unexplored frontiers, space remains an important area for continued
+                                   scientific advancement. The advent of low-cost picosatellites and, in particular, CubeSats,
+                                   has significantly reduced barriers for private and academic organizations to access space
+                                   technologies. However, a holistic technology pipeline for future extraplanetary robotic
+                                   exploration may begin with devices that are even easier to design and deploy than CubeSats.
+                                   As educational satellite analogues, the CanSat provides a means for students, educators,
+                                   and industry to test both their comprehension of space-bound technology, and also to
+                                   trial advanced new technologies that have yet to be proven in orbit. Although CanSats
+                                   do not leave Earth’s atmosphere or achieve orbit, they can still be used to simulate many
+                                   of the characteristics and circumstances of an orbital picosatellite. Moreover, their sub-
+                                   orbital flight characteristics makes this technology frontier far more accessible and flexible
+                                   to operate than orbital CubeSats. While some CanSats may share scientific goals with
+                                   meteorological radiosondes, CanSats can also branch into disciplines beyond Earth sciences,
+                                   such as aeronautics, wireless communication, and education, to name just a few. In
+                                   the future, CanSats may also become more relevant as organizations develop fledgling
+                                   aerospace programs, or as additional interest develops for low orbiting satellites. However,
+                                   the educational opportunities for CanSats will likely be their most lingering contribution to
+                                   the exploration of space, as many former and future students who look to stars may do so,
+                                   in part, thanks to CanSats.
+
+                                   Author Contributions: Conceptualization, M.H.T. and C.C.; methodology, C.C.; investigation, C.C.;
+                                   software, C.C.; writing—original draft preparation, C.C.; writing—review and editing, C.C.; super-
+                                   vision, M.H.T.; project administration, M.H.T. and S.C.; All authors have read and agreed to the
+                                   published version of the manuscript.
+                                   Funding: This research received no external funding.
+                                   Data Availability Statement: Not applicable.
+                                   Acknowledgments: This research effort was supported by the Kennesaw State University (KSU)
+                                   Departments of Robotics and Mechatronics in addition to the Graduate College at KSU. The authors
+                                   would also like to thank Sandra Kuhn-Chun for her feedback and review of this work.
+                                   Conflicts of Interest: The authors declare no conflict of interest.
+
+References
+1.    Cappelletti, C.; Battistini, S.; Malphrus, B.K. (Eds.) CubeSat Handbook: From Mission Design to Operations; Academic Press is an
+      imprint of Elsevier: London, UK; San Diego, CA, USA„ 2021; ISBN 978-0-12-817884-3.
+2.    Soyer, S. Small space can: CanSat. In Proceedings of the 5th International Conference on Recent Advances in Space Technologies—
+      RAST2011, Istanbul, Turkey, 9 June 2011; pp. 789–793.
+3.    Twiggs, R. Space engineering—Project based learning by working real space programs. In Proceedings of the American Society of
+      Engineering Educators Annual Conference, American Society of Engineering Educators, Montreal, QC, Canada, 16 June 2002; p. 10.
+4.    Colin, A. A Pico-Satellite Assembled and Tested during the 6th CanSat Leader Training Program. J. Appl. Res. Technol. 2017, 15,
+      83–91. [CrossRef]
+5.    Sako, N.; Tsuda, Y.; Ota, S.; Eishima, T.; Yamamoto, T.; Ikeda, I.; Ii, H.; Yamamoto, H.; Tanaka, H.; Tanaka, A.; et al. Cansat suborbital
+      launch experiment—University educational space program using can sized pico-satellite. Acta Astronaut. 2001, 48, 767–776. [CrossRef]
+6.    Khali, M.; Miyazaki, Y. (Eds.) CanSat Pico Size Artificial Satellite, 4th ed.; University Space Engineering Consortium: St. Gallen,
+      Switzerland, 2017.
+7.    U.S. Naval Research Laboratory. What Is CanSat? U.S. Naval Research Laboratory: Washington, DC, USA, 2011.
+8.    American Astronautical Society. CanSat Competition Guide 2023; American Astronautical Society: Springfield, VA, USA, 2022.
+9.    Walker, R.; Galeone, P.; Page, H.; Castro, A.; Emma, F.; Callens, N.; Ventura-Traveset, J. ESA Hands-on space education project
+      activities for university students: Attracting and training the next generation of space engineers. In Proceedings of the IEEE
+      EDUCON 2010 Conference, Madrid, Spain, 14 April 2010; pp. 1699–1708.
+Machines 2023, 11, 675                                                                                                            16 of 18
+
+
+
+
+10.   European Space Agency. CANSAT: 2022–2023 Guidelines; European Space Agency: Paris, France, 2023.
+11.   Chancharoen, W.; Witoon, S.; Pataranutaporn, P.; Ngamarunchot, B.; Theanthong, P. The national cansat competition: Lessons,
+      challenges and outcomes of the first cansat competition in thailand. In Proceedings of the 69th International Astronautical
+      Congress (IAC), Bremen, Germany, 1–5 October 2018. [CrossRef]
+12.   Hasan Raian, F.M.T.; Islam, H.M.J.; Islam, M.S.; Azam, R.; Islam, H.M.J.; Debnath, S. An Affordable CanSat Design and
+      Implimentation to Study Space Science for Bangladeshi Students. In Proceedings of the 2020 IEEE Region 10 Symposium
+      (TENSYMP), Dhaka, Bangladesh, 5 June 2020; pp. 1205–1208.
+13.   Aly, H.; Sharkawy, O.; Nabil, A.; Yassin, A.; Tarek, M.; Amin, S.M.; Ibrahim, M.K. Project-based space engineering education:
+      Application to autonomous rover-back CanSat. In Proceedings of the 2013 6th International Conference on Recent Advances in
+      Space Technologies (RAST), Istanbul, Turkey, 12 June 2013; pp. 1087–1092.
+14.   Contente, J.; Galvão, C. STEM Education and Problem-Solving in Space Science: A Case Study with CanSat. Educ. Sci. 2022, 12, 251.
+      [CrossRef]
+15.   Ramadhan, R.P.; Ramadhan, A.R.; Putri, S.A.; Latukolan, M.I.C.; Kusmadi, E. Prototype of CanSat with auto-gyro payload for
+      small satellite education. In Proceedings of the 2019 IEEE 13th International Conference on Telecommunication Systems, Services
+      and Applications (TSSA), Bali, Indonesia, 3 October 2019; pp. 243–248.
+16.   Ames-Lizarbe, J.A.; Bala-Romero, B.L.; Cortez-Reategui, R.E.; Espillco-Luicho, M.A.; Leon-Nunez, R.F.; Solis-Alvites, S.G.; Roman-
+      Gonzalez, A. INCAnSat: CanSat for Education and Environmental Monitoring. IEEE Aerosp. Electron. Syst. Mag. 2021, 36, 43–50.
+      [CrossRef]
+17.   Eerkens, R.; Van Breukelen, E.; Verhoeven, C.; Vollebregt, S.; Fitié, A. The dutch cansat competition: How 350 secondary school
+      pupils compete to build the most innovatibe “satellite” in a soda can. In Proceedings of the 59th International Astronautical
+      Congress: IAC 2008, IAF, Glasgow, Scotland, 29 September–3 October 2008; pp. 1–8.
+18.   Ghazanfarinia, S.; Jazebizadeh, H.; Simard, M.; Bakhtiari Mojaz, S.; Ahmadi, G. ARIC-2: Lightest Atmospheric Sounding Cansat;
+      Aerospace Research Institute: Tehran, Iran, 2011.
+19.   Islam, T.; Noureen, A.; Mughal, M.R.; Nadeem, M.A. Design and development of a weather monitoring satellite, CanSat. In Proceedings
+      of the 2019 15th International Conference on Emerging Technologies (ICET), Peshawar, Pakistan, 2 December 2019; pp. 1–6.
+20.   Yarce Botero, A.; Lopez Restrepo, S.; Sebastian Rodriguez, J.; Valle, D.; Galvez-Serna, J.; Montilla, E.; Botero, F.; Henzing, B.;
+      Segers, A.; Heemink, A.; et al. Design and Implementation of a Low-Cost Air Quality Network for the Aburra Valley Surrounding
+      Mountains. Pollutants 2023, 3, 150–165. [CrossRef]
+21.   Chodkaveekityada, P. CanSat design and their applications. In Proceedings of the 2018 SpaceOps Conference, Marseille, France,
+      28 May 2018; American Institute of Aeronautics and Astronautics: Reston, VA, USA, 2018.
+22.   Gopal, G.; Harith, B.; Ritwik, R.; Savyasachi, J.; Chetan, U. Weather Monitoring Using Parachute Satellite-CanSat. Int. J. Eng. Sci.
+      Comput. 2016, 6, 5181–5184. [CrossRef]
+23.   Hasan, M.; Rahman, I.I.; Hossam-E-Haider, M.; Shah Sadman, A.A.M. Design of CanSat for environmental monitoring and object
+      detection. In Proceedings of the 2021 5th International Conference on Electrical Engineering and Information Communication
+      Technology (ICEEICT), Dhaka, Bangladesh, 18 November 2021; pp. 1–6.
+24.   Faroukh, Y.M.; Mohamed Abdelkarim AL-Ali, A.A.; Adwan, A.O.; Alhammadi, A.; Shaikh, M.M.; Faroukh, A.M.; Femini,
+      I. Environmental monitoring using CanSat. In Proceedings of the 2019 6th International Conference on Space Science and
+      Communication (IconSpace), Johor Bahru, Malaysia, 28 July 2019; pp. 239–244.
+25.   Bhad, B.; Akant, K. Experimental cansat for measurment of UV radiation. In Proceedings of the 2019 9th International Conference
+      on Emerging Trends in Engineering and Technology—Signal and Information Processing (ICETET-SIP-19), Nagpur, India,
+      1 November 2019; pp. 1–4.
+26.   Colin, A.; Jimenez-Lizárraga, M. The CanSat technology for climate monitoring in small regions at altitudes below 1 km. In
+      Proceedings of the Designing Solutions: Concepts, Enabling Technologies and Operational Constraints, Mexico City, Mexico;
+      Available online: Researchgate.net (accessed on 1 June 2023).
+27.   American Astronautical Society. CanSat Competition Guide 2019; American Astronautical Society: Springfield, VA, USA, 2018.
+28.   American Astronautical Society. CanSat Competition Guide 2022; American Astronautical Society: Springfield, VA, USA, 2021.
+29.   Ventura, A.; Nuñez-Quispe, J.; Sanchez, G.; Santivañez, J. CanSat Payload with Autogyro for Descent in Experimental Rocket
+      Flights: Development, CFD Analysis and Preliminary Test on Free-Fall. J. Phys. Conf. Ser. 2022, 2235, 012055. [CrossRef]
+30.   Shukla, P.; Mishra, R.; Sardar, U.A.; Mohapatra, B. Satellite design for CANSAT with autorotatig payloads. In Proceedings of the
+      2022 4th International Conference on Advances in Computing, Communication Control and Networking (ICAC3N), Greater
+      Noida, India, 16 December 2022; pp. 2385–2392.
+31.   American Astronautical Society. CanSat Competition Guide 2017; American Astronautical Society: Springfield, VA, USA, 2016.
+32.   American Astronautical Society. CanSat Competition Guide 2020; American Astronautical Society: Springfield, VA, USA, 2019.
+33.   Aliyev, I.; Misirli, C.A.; Ozturk, S.; Mahmurat, E.; Erkek, A.; Kok, S.; Kocyigit, D.; Uzun, S.; Vural, R.A. Design of solar powered
+      subscale glider for CanSat competition. In Proceedings of the 2017 8th International Conference on Recent Advances in Space
+      Technologies (RAST), Istanbul, Turkey, 19 June 2017; pp. 453–457.
+34.   Kizilkaya, M.O.; Oguz, A.E.; Soyer, S. CanSat descent control system design and implementation. In Proceedings of the 2017 8th
+      International Conference on Recent Advances in Space Technologies (RAST), Istanbul, Turkey, 19 June 2017; pp. 241–245.
+Machines 2023, 11, 675                                                                                                              17 of 18
+
+
+
+
+35.   Pradhan, E.; Dadheech, A.; Agarwal, H.; Singh, T.; Singari, R.M. India Design Concept of a Model Can-Sized Sub-Orbital Satellite.
+      J. Eng. Res. 2021, 79, 88. [CrossRef]
+36.   Songul, G.; Yalman, A.; Ilginoglu, A.; Gokce, A.; Koculu, O.E.C.; Kirli, A.; Koru, A.T.; Tufekci, C.S. Model picosatellite design for
+      energy harvesting and telemetry data transmission through RF communication. In Proceedings of the 2015 7th International
+      Conference on Recent Advances in Space Technologies (RAST), Istanbul, Turkey, 16 June 2015; pp. 839–844.
+37.   Cheong, J.W.; Southwell, B.J.; Andrew, W.; Aboutanios, E.; Lam, C.; Croston, T.; Li, L.; Green, S.; Kroh, A.; Glennon, E.P.; et al. A
+      Robust Framework for Low-Cost Cubesat Scientific Missions: In-Orbit Recovery, Results and Lessons Learned from UNSW-EC0.
+      Space Sci. Rev. 2020, 216, 8. [CrossRef]
+38.   Chua, H.C.; Jay Flores, C.; Padilla, A.G.; Dale Ambatali, C. Design and implementation of a low cost amateur radio unit for cube
+      satellites. In Proceedings of the 2019 IEEE Asia-Pacific Conference on Applied Electromagnetics (APACE), Melacca, Malaysia,
+      25 November 2019; pp. 1–6.
+39.   Salvatus, J.; Constante, M.A.; Violan, E.P.; Salces, A.; Paet, L.B.; Talampas, M.C.; Marciano, J.S. Development of deployable
+      antennas for the diwata-2 microsatellite’s amateur radio payload. In Proceedings of the 2017 IEEE International Conference on
+      Communication, Networks and Satellite (Comnetsat), Semarang, Indonesia, 5 October 2017; pp. 26–31.
+40.   Rodríguez, J.S.; Botero, A.Y.; Valle, D.; Serna, J.G.-; Botero, F. Experimental Approach for the Evaluation of the Performance of a
+      Satellite Module in the CanSat Form Factor for In Situ Monitoring and Remote Sensing Applications. Int. J. Aerosp. Eng. 2021,
+      2021, 1–28. [CrossRef]
+41.   Aydemir, M.E.; Dursun, R.C.; Pehlevan, M. Ground station design procedures for CANSAT. In Proceedings of the 2013 6th
+      International Conference on Recent Advances in Space Technologies (RAST), Istanbul, Turkey, 12 June 2013; pp. 909–912.
+42.   Ehikhamenle, M.; Omijeh, B.O. Design and Implementation of CanSat (A Pico–Satellite). Int. J. Sci. Eng. Investig. 2017, 6, 106–111.
+43.   Sreenivasaraja, N.; Raj, J.J.J.; Nandhagobalan, B.; Kavin, S. Design and Fabrication of Advance Level CANSAT Used for Measuring
+      the Atmospheric Parameters and GPS Tracking System. Int. J. Sci. Adv. Res. Technol. 2018, 4, 1264–1269.
+44.   Joseph Nunez-Quispe, J. Design and simulation of a rover cansat non-pneumatic wheel: Preliminary study for a certain test
+      obstacle path. In Proceedings of the 2021 12th International Conference on Mechanical and Aerospace Engineering (ICMAE),
+      Athens, Greece, 16 July 2021; pp. 484–488.
+45.   Akiyama, M.; Ninomiya, H.; Saito, T. Method to Achieve High Speed and High Recognition Rate of Goal from Long Distance for
+      CanSat. J. Robot. Mechatron. 2023, 35, 194–205. [CrossRef]
+46.   Celebi, M.; Ay, S.; Ibrahim, M.K.; Aydemir, M.E.; Bensaada, M.; Fernando, L.; Akiyama, H.; Yamaura, S. Design and navigation
+      control of an advanced level CANSAT. In Proceedings of the 5th International Conference on Recent Advances in Space
+      Technologies—RAST2011, Istanbul, Turkey, 9 June 2011; pp. 752–757.
+47.   Aydemir, M.E.; Celebi, M.; Ay, S.; Vivas, E.V.; Calle Bustinza, F.; Phan, D. Design and implementation of a rover-back CANSAT. In
+      Proceedings of the 5th International Conference on Recent Advances in Space Technologies—RAST2011, Istanbul, Turkey, 9 June
+      2011; pp. 800–803.
+48.   Umit, M.E.; Cabanas, W.; Tetlow, M.; Akiyama, H.; Yamaura, S.; Olaleye, S. Development of a fly-back CANSAT in 3 weeks. In
+      Proceedings of the 5th International Conference on Recent Advances in Space Technologies—RAST2011, Istanbul, Turkey, 9 June
+      2011; pp. 804–807.
+49.   Ostaszewski, M.; Dzierzek, K.; Magnuszewski, L. Analysis of data collected while CanSat mission. In Proceedings of the 2018
+      19th International Carpathian Control Conference (ICCC), Szilvasvarad, Hungary, 28 May 2018; pp. 1–4.
+50.   Abo-Arais, M.; Elfeki, M.; Mohammed, A.; El-Mohr, M.; Abdelmoteleb, B.; Hatem, A.; Mohamed, A.-B.; Ramy, A.; Walid, K.;
+      El-Fiky, M.; et al. Approaching a nano-satellite using CAN-SAT systems. In Proceedings of the 2015 7th International Conference
+      on Recent Advances in Space Technologies (RAST), Istanbul, Turkey, 16 June 2015; pp. 813–817.
+51.   Svensson, A. Atmospheric Measurement Using CanSat; Mid Sweden University: Östersund, Sweden, 2020; p. 43.
+52.   Soltani, M.M.; Khanmirza, E.; Mohammadi, E.; Navid, N.S.H. A new framework for design and development imaginary CanSat.
+      In Proceedings of the 14th International Conference of Iranian Aerospace Society, Tehran, Iran, 25–27 March 2015; Iranian Research
+      Organization for Science and Technology: Tehran, Iran, 2015.
+53.   Radiosonde RS41-SG 2017; Vaisala: Vantaa, Finland, 2017.
+54.   Radiosonde RS41-D 2017; Vaisala: Vantaa, Finland, 2017.
+55.   Radiosonde RS41-SGP 2020; Vaisala: Vantaa, Finland, 2020.
+56.   Gemignani, M.; Marcuccio, S. Dynamic Characterization of a High-Altitude Balloon during a Flight Campaign for the Detection
+      of ISM Radio Background in the Stratosphere. Aerospace 2021, 8, 21. [CrossRef]
+57.   Baynton, H.W. AN/AMQ-15 Rocketsonde Tests at White Sands Proving Ground. Bull. Am. Meteorol. Soc. 1961, 42, 34–41.
+      [CrossRef]
+58.   Lafon, T.; Fowler, J.; Jiménez, J.F.; Cordoba, G.J.T. A Viable Alternative for Conducting Cost-Effective Daily Atmospheric
+      Soundings in Developing Countries. Bull. Am. Meteorol. Soc. 2014, 95, 837–842. [CrossRef]
+59.   Kräuchi, A.; Philipona, R. Return Glider Radiosonde for in Situ Upper-Air Research Measurements. Atmospheric Meas. Tech. 2016,
+      9, 2535–2544. [CrossRef]
+60.   Bulut, S.N.; Gul, M.; Beker, C.; Ipek, I.I.; Koculu, O.E.C.; Topaloglu, C.; Dincer, N.; Kirli, A.; Ertugrul, H.F.; Tufekci, C.S. Model
+      satellite design for CanSat competition. In Proceedings of the 2013 6th International Conference on Recent Advances in Space
+      Technologies (RAST), Istanbul, Turkey, 12 June 2013; pp. 913–917.
+Machines 2023, 11, 675                                                                                                               18 of 18
+
+
+
+
+61.   Ticona Coaquira, F.J.; Richard Diaz Palacios, F.; Vidaurre Torrez, K.W.; Ricardo Conchari Cabrera, C.; Valda Penaranda, J.D.;
+      Alejandro Condori Machaca, J. Main analysis for the disturbance torques over the Altiplano region for 1U CubeSat Nadir earth
+      pointing. In Proceedings of the 2022 IEEE Andescon, Barranquilla, Colombia, 16 November 2022; pp. 1–7.
+62.   Hall, H.; Chamieh, M.; Chu, J.; Daruwala, R.; Duong, V.; Holt, S.; Jeong, D.; Lally, M.; Nguyen, L.; Rafizadeh, R.; et al. Utilizing
+      high altitude balloons as a low-cost CubeSat test platform. In Proceedings of the 2020 IEEE Aerospace Conference, Big Sky, MT,
+      USA, 7 March 2020; pp. 1–11.
+63.   Carreno-Luengo, H.; Camps, A.; Querol, J.; Forte, G.; Onrubia, R.; Diez, R. A stratospheric balloon GNSS-R experiment: The
+      3 Cat-2 project in DLR/SNSB BEXUS. In Proceedings of the 2014 IEEE Geoscience and Remote Sensing Symposium, Quebec City,
+
+      QC, Canada, 13 July 2014; pp. 3626–3629.
+64.   Pont, B.; Beurskens, J.; Dalderup, J.; Dolron, P.; Gubbels, J.; Hörandel, J.R.; Jordans, R.; Pourshaghaghi, H.; Szálas-Motesiczky, D.;
+      Van Vliet, T.; et al. REXUS-25 rocket flight of a CubeSat cosmic-ray detector. In Proceedings of the 36th International Cosmic Ray
+      Conference—PoS (ICRC2019), Madison, WI, USA, 22 July 2019; p. 124.
+65.   Lovdahl, B. Software-Defined Radio Payload Design for Cubesat and X-Band Communications; Naval Postgraduate School: Monterey,
+      CA, USA, 2018.
+66.   González-Bárcena, D.; Peinado-Pérez, L.; Fernández-Soler, A.; Pérez-Muñoz, Á.G.; Álvarez-Romero, J.M.; Ayape, F.; Martín, J.;
+      Bermejo-Ballesteros, J.; Porras-Hermoso, Á.L.; Alfonso-Corcuera, D.; et al. TASEC-Lab: A COTS-Based CubeSat-like University
+      Experiment for Characterizing the Convective Heat Transfer in Stratospheric Balloon Missions. Acta Astronaut. 2022, 196, 244–258.
+      [CrossRef]
+67.   Lay, K.S.; Li, L.; Okutsu, M. High Altitude Balloon Testing of Arduino and Environmental Sensors for CubeSat Prototype.
+      HardwareX 2022, 12, e00329. [CrossRef]
+68.   Wijanto, H.; Syihabuddin, B.; Prasetyo, A.D.; Gautama, Y.; Khrisna, I.; Mardiansyah, G. A Preliminary design and testing of the
+      On Board Data Handling (OBDH) for nano-satellite using an atmospheric balloon. In Proceedings of the 2015 1st International
+      Conference on Wireless and Telematics (ICWT), Manado, Indonesia, 17 November 2015; pp. 1–6.
+69.   Pawar, P.; Pawar, A.; Valvi, A.; Gite, R. Lower Atmosphere Research Satellite (LARS). Int. Res. J. Eng. Technol. 2017, 4, 2133–2138.
+70.   Antunes, S. DIY Satellite Platforms; O’Reilly: Beijing, China; Sebastopol, Ukraine, 2012; ISBN 978-1-4493-1060-8.
+71.   Llop, J.V.; Roberts, P.C.; Hao, Z.; Tomas, L.R.; Beauplet, V. Very Low Earth Orbit Mission Concepts for Earth Observation: Benefits and
+      Challenges; Springer: London, UK, 2014.
+72.   Kawasaki, H.; Konoue, K.; Hoshino, H.; Kaneko, Y.; Sasaki, M. Interim report of super low altitude satellite operation. In
+      Proceedings of the IGARSS 2018—2018 IEEE International Geoscience and Remote Sensing Symposium, Valencia, Spain, 22 July
+      2018; pp. 4066–4069.
+73.   Williamson, M. Aerospace America; AIAA: Reston, VA, USA, 2015; p. 9.
+74.   Bacon, A.; Olivier, B. Skimsats: Bringing down the cost of earth observation. In Proceedings of the 12th Reinventing Space Conference,
+      2017; Hatton, S., Ed.; Springer International Publishing: Cham, Switzerland, 27 December 2016; pp. 1–7. ISBN 978-3-319-34023-4.
+75.   Serrano, P.; Gramaglia, M.; Mancini, F.; Chiaraviglio, L.; Bianchi, G. Balloons in the Sky: Unveiling the Characteristics and
+      Trade-Offs of the Google Loon Service. IEEE Trans. Mob. Comput. 2023, 22, 3165–3178. [CrossRef]
+
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

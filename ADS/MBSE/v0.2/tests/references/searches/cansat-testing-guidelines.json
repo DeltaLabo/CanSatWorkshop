@@ -1,0 +1,1034 @@
+{
+  "query": "CanSat testing guidelines verification GPS IMU subsystem",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "CanSat 2024 Critical Design Review (CDR) Version 1.0 Team 2050 KoNaR Can",
+      "url": "https://www.cansatcompetition.com/docs/teams/cansat2024_2050_cdr_v01.pdf",
+      "description": "CanSat 2024 CDR: Team 2050 – KoNaR Can · 7 · Acronyms (4/4) Acronym · Definition · SO · System Overview · SOIC · Small Outline Integration Circuit · SSD · Sensor Subsystem Design · SPI · Serial Peripherial Interface · T · Test · I · Inspection · I2C · Inter-Integrated Circuit · IMU ·",
+      "content": "CanSat 2024 CDR: Team 2050 – KoNaR Can · 7 · Acronyms (4/4) Acronym · Definition · SO · System Overview · SOIC · Small Outline Integration Circuit · SSD · Sensor Subsystem Design · SPI · Serial Peripherial Interface · T · Test · I · Inspection · I2C · Inter-Integrated Circuit · IMU ·\nThe mission will simulate a space probe (CanSat) entering a planetary atmosphere. It shall contain a · detachable heatshield and a hen's egg, which will simulate a delicate instrument. The integrated electronics · shall include sensors for tracking altitude, internal temperature, battery voltage, GPS position and tilt of the\nstructure of the CanSat and we would like to analyze the parachute release process. Also, the motto „Dare ... MPU-6050 IMU was replaced with BMI270.\nThe CanSat shall land with the egg intact.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://www.cansatcompetition.com/docs/teams/cansat2024_2050_cdr_v01.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "www.cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+        "path": "› docs  › teams  › cansat2024_2050_cdr_v01.pdf"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "A SURVEY OF CANSAT - IRJMETS",
+      "url": "https://www.irjmets.com/upload_newfiles/irjmets80100002696/paper_file/irjmets80100002696.pdf",
+      "description": "This paper surveys mission profiles, subsystem architectures, descent · and communications strategies, educational implementations and emerging research trends. We synthesize · findings from recent CanSat literature, competition guidelines and final-report practices, highlight · environmental/air-quality sensing and autogyro-descent systems and consolidate best-practice design · guidelines for robust telemetry, data quality and verification.",
+      "content": "This paper surveys mission profiles, subsystem architectures, descent · and communications strategies, educational implementations and emerging research trends. We synthesize · findings from recent CanSat literature, competition guidelines and final-report practices, highlight · environmental/air-quality sensing and autogyro-descent systems and consolidate best-practice design · guidelines for robust telemetry, data quality and verification.\nF. Thermal Behavior Study: Tracking changes in temperature within the CanSat to evaluate the efficiency of ... G. Battery Performance Evaluation: Monitoring voltage and current while in flight to assess power efficiency ... H. Landing Impact Analysis: Examining landing acceleration and structural design shock resistance using IMU ... I. Search and Recovery Optimization: Assessing recovery time and tracking efficacy with GPS and an audible\nCanSat mission design and testing depend heavily on simulation since it lowers development costs, speeds up · prototyping, and enables validation prior to hardware implementation. By combining various software tools · that each handle distinct subsystems including trajectory, sensors, onboard electronics, communication, and\nA. Educational Justification CanSats offers real-world, high-agency project-based learning by integrating · mechanical, electrical, RF, software, and data disciplines. Students gain useful lab and field skills while · practicing interface control, requirements traceability, anomaly resolution, and verification planning.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "IRJMETS",
+        "url": "https://www.irjmets.com/upload_newfiles/irjmets80100002696/paper_file/irjmets80100002696.pdf",
+        "long_name": "irjmets.com",
+        "img": "https://imgs.search.brave.com/xu2DUOViurqF6DS3-sJ387zxbO1xH4652csLycLTJvM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUyNWRmZjQw/NDQ4YjJhYzcyM2Ji/ZDkxYjgwZWJkZjk1/YzY2OTEzMDNhNTNk/ZWQ0YTJmZGI2MmRl/YWMxNTAyOS93d3cu/aXJqbWV0cy5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "irjmets.com",
+        "hostname": "www.irjmets.com",
+        "favicon": "https://imgs.search.brave.com/xu2DUOViurqF6DS3-sJ387zxbO1xH4652csLycLTJvM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUyNWRmZjQw/NDQ4YjJhYzcyM2Ji/ZDkxYjgwZWJkZjk1/YzY2OTEzMDNhNTNk/ZWQ0YTJmZGI2MmRl/YWMxNTAyOS93d3cu/aXJqbWV0cy5jb20v",
+        "path": "› upload_newfiles  › irjmets80100002696  › paper_file  › irjmets80100002696.pdf"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need to Know in 2025 - Hex-Star Universe",
+      "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+      "description": "Advanced Telemetry: Measuring acceleration, GPS coordinates, radiation levels, humidity · Telecommand: Ground station sends commands to control CanSat operations during flight",
+      "content": "Advanced Telemetry: Measuring acceleration, GPS coordinates, radiation levels, humidity · Telecommand: Ground station sends commands to control CanSat operations during flight\nComeBack Mission: Using GPS navigation to return autonomously to launch site​ · Environmental Monitoring: Air quality detection, CO2 measurement. Every CanSat includes key subsystems similar to those in professional satellites.\nA complete CanSat kit includes: Arduino or ESP32 microcontroller, pressure and temperature sensors, communication radio module with antenna, GPS, accelerometer, power system (battery and regulators), data storage (microSD), structural frame, parachute recovery system, programming software, and detailed assembly/operation manuals\nA CanSat is a miniature satellite simulation integrated within the volume and shape of a standard soft drink can (typically 330-350ml). The name “CanSat” comes from “Can Satellite,” representing a complete satellite system compressed into a soda can-sized container.",
+      "age": "November 12, 2025",
+      "page_age": "2025-11-12T09:24:33",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "faq",
+      "profile": {
+        "name": "Hex-Star Universe",
+        "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+        "long_name": "hexstaruniverse.com",
+        "img": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "hexstaruniverse.com",
+        "hostname": "hexstaruniverse.com",
+        "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+        "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/ZIke4X6s5Gl8frOu7dNUAZw1oaJ__cQHceAgjmOvA04/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9oZXhz/dGFydW5pdmVyc2Uu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy91/bm5hbWVkLXNjYWxl/ZC53ZWJw",
+        "original": "https://hexstaruniverse.com/wp-content/uploads/unnamed-scaled.webp",
+        "logo": false
+      }
+    },
+    {
+      "rank": 4,
+      "title": "CanSat - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/CanSat",
+      "description": "The best accelerometers made to determine positions are called Inertial Navigation System INS. These are used on some CanSat models. The uncertainty of this system depends on the error when calibrating sensors.",
+      "content": "The best accelerometers made to determine positions are called Inertial Navigation System INS. These are used on some CanSat models. The uncertainty of this system depends on the error when calibrating sensors.\nMost CanSat presented in this category are robots testing new systems or new designs that have not yet been tested (technology demonstrators). The low cost of implementation, short preparation time and simplicity of design compared to other space projects make of this concept an excellent practical opportunity for students to take their first steps in space. Students are responsible for choosing the way the mission is fulfilled, the CanSat design, components integration, correct operation verification, launch preparation, data analysis and team organisation by distributing the workload.\nAt design level, GPS receivers should be located in a place where satellites vision line is as direct as possible in order not to be out of range with these ones during the flight. In a metallic structure CanSat, the receivers should be always located where the structure does not affect this vision line.\nThe best accelerometers made to determine positions are called Inertial Navigation System INS. These are used on some CanSat models. The uncertainty of this system depends on the error when calibrating sensors. The pros of this system go from the fact that GPS is not needed, to immunity to magnetic interference.\nThis angle is transmitted to the microprocessor via a potential difference. The microprocessor interprets the incoming signal and acts accordingly. Thus, if the CanSat was intended to arrive to a target without using a GPS receiver, this sensor would play a crucial role.\nCanSats in this category do not use a steering system since its objective is not to fall at a particular point but to collect data while the descent (which is not usually controlled). Of the systems mentioned in the previous sections the most used are: barometer, thermometer, GPS and camera.",
+      "age": "1 week ago",
+      "page_age": "2026-06-05T16:47:06",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/CanSat",
+        "long_name": "en.wikipedia.org",
+        "img": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "en.wikipedia.org",
+        "hostname": "en.wikipedia.org",
+        "favicon": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw",
+        "path": "› wiki  › CanSat"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/xgbumXgvpS_k2rzyi9d2Y7V3mf2dgiUs-U5P7ssH9OM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9k/L2Q4L0NhblNhdF9D/b21wXyUyODU3JTI5/X2NvcHkuanBn",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/d/d8/CanSat_Comp_%2857%29_copy.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 5,
+      "title": "ESA - What is a CanSat?",
+      "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+      "description": "Inclusion of a retrieval system (beeper, radio beacon, GPS, etc.) is recommended. The CanSat should have a recovery system, such as a parachute, capable of being reused after launch. It is recommended to use bright coloured fabric, which will facilitate recovery of the CanSat after landing. The parachute connection must be able to withstand up to 1000 N of force. The strength of the parachute must be tested to ensure that the system will operate nominally.",
+      "content": "Inclusion of a retrieval system (beeper, radio beacon, GPS, etc.) is recommended. The CanSat should have a recovery system, such as a parachute, capable of being reused after launch. It is recommended to use bright coloured fabric, which will facilitate recovery of the CanSat after landing. The parachute connection must be able to withstand up to 1000 N of force. The strength of the parachute must be tested to ensure that the system will operate nominally.\nA CanSat is a simulation of a real satellite, integrated within the volume and shape of a soft drink can. The challenge for the students is to fit all the major subsystems found in a satellite, such as power, sensors and a communication system, into this minimal volume.\nAll the components of the CanSat must fit inside a standard soda can (115 mm height and 66 mm diameter), with the exception of the parachute. Radio antennas and GPS antennas can be mounted externally (on the top or bottom of the can, but not on the sides), depending on the design.\nCanSats offer a unique opportunity for students to have a first practical experience of a real space project. They are responsible for all aspects: designing the CanSat, selecting its mission, integrating the components, testing, preparing for launch and then analysing the data.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "European Space Agency",
+        "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+        "long_name": "esa.int",
+        "img": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "esa.int",
+        "hostname": "www.esa.int",
+        "favicon": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8",
+        "path": "› Education  › CanSat  › What_is_a_CanSat"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/JnNjwYGRLF8qK7hW28PuCb8wyW_K6sx7K0fBlGXxaKA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXNhLmludC92YXIv/ZXNhL3N0b3JhZ2Uv/aW1hZ2VzL2VzYV9t/dWx0aW1lZGlhL2lt/YWdlcy8yMDEwLzAx/L2FfY2Fuc2F0X2Rl/c2NlbmRpbmcvOTc3/NTEzNi0zLWVuZy1H/Qi9BX0NhblNhdF9k/ZXNjZW5kaW5nX3Bp/bGxhcnMuanBn",
+        "original": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2010/01/a_cansat_descending/9775136-3-eng-GB/A_CanSat_descending_pillars.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Design and development of a CanSat for air pollution monitoring with RSSI based position retrieval system - ScienceDirect",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0273117724001856",
+      "description": "Comprising various subsystems, such as mechanical, electrical power, communication, data handling, and sensor systems, the CanSat aims to emulate larger satellites but with cost-effective and easy launch capabilities. Baker and Worden (2008) highlighted the benefits of small-satellite missions, enabling quicker results and efficient testing.",
+      "content": "Comprising various subsystems, such as mechanical, electrical power, communication, data handling, and sensor systems, the CanSat aims to emulate larger satellites but with cost-effective and easy launch capabilities. Baker and Worden (2008) highlighted the benefits of small-satellite missions, enabling quicker results and efficient testing.\nThe CanSat developed for this work was equipped with temperature/humidity sensors for climate monitoring and an air pollution sensor for testing air quality for this experiment. Using a sounding rocket as a platform, the experiments were conducted at 130 m height near the launch region of Novi Sad, Serbia. In this paper, the obtained results were summarised in the following sequence: Section 2 provides the World CanSat and Rocketry Championship (WCRC) guidelines, Section 3 elaborates on the design of the CanSat subsystems, Section 4 comprises test results and discussion, and Section 5 concludes the significant findings of this investigation.\nIt is advised to have a Position retrieval system such as GPS or beacon. The air pollution data must be recorded at an interval of 2 s and represented in pictorial form at the ground station. The · The satellite major task (primary mission) was to measure temperature and air pollution, and its secondary task (secondary mission) was to implement a special position retrieval system and power-saving techniques. CanSat was designed with a mix of subsystems, including the mechanical subsystem, sensor subsystem, power subsystem, communication and data handling system, ground station, and position retrieval system.\nThe test was · In conclusion, this paper presents a comprehensive exploration of a can-sized sub-orbital satellite system designed for participation in the World CanSat/Rocketry Championship 2022. The structural design of the satellite system adheres to championship constraints and encompasses capabilities for monitoring air pollutants, temperature, pressure, and humidity during its descent phase. The mechanical subsystem, container design, and descent mechanisms closely emulate those of a model satellite.",
+      "age": "February 27, 2024",
+      "page_age": "2024-02-27T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "ScienceDirect",
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S0273117724001856",
+        "long_name": "sciencedirect.com",
+        "img": "https://imgs.search.brave.com/NJbb0P2bwbdnGnD5FijFoBbn5rA0Jwz-yK3fG5QOBng/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc5YWUwYmQ5/YWNmYWRiMDAxZWU5/ODc3NjJmYTVmOTNi/ZjRmYmE2OTk5Zjk2/MTUzZjMwZmE5OTQ5/MWFjY2ZjNS93d3cu/c2NpZW5jZWRpcmVj/dC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "sciencedirect.com",
+        "hostname": "www.sciencedirect.com",
+        "favicon": "https://imgs.search.brave.com/NJbb0P2bwbdnGnD5FijFoBbn5rA0Jwz-yK3fG5QOBng/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc5YWUwYmQ5/YWNmYWRiMDAxZWU5/ODc3NjJmYTVmOTNi/ZjRmYmE2OTk5Zjk2/MTUzZjMwZmE5OTQ5/MWFjY2ZjNS93d3cu/c2NpZW5jZWRpcmVj/dC5jb20v",
+        "path": "› science  › article  › abs  › pii  › S0273117724001856"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/1CqYRB0FpYlCs00QWZ3bsHOj4RsVjdEwNb91uk0Z-SU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9hcnMu/ZWxzLWNkbi5jb20v/Y29udGVudC9pbWFn/ZS8xLXMyLjAtUzAy/NzMxMTc3MjVYMDAw/ODktY292MTUwaC5n/aWY.jpeg",
+        "original": "https://ars.els-cdn.com/content/image/1-s2.0-S0273117725X00089-cov150h.gif",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "design and implementation of an autogyro-CanSat with IoT ...",
+      "url": "https://revistas.utb.edu.co/tesea/article/download/628/461",
+      "description": "The CanSat’s telemetry is vital to know its conditions in real-time as the altitude, velocity, and · acceleration employing the IMU and GPS [7]; and the battery voltage to know the actual state of the",
+      "content": "The CanSat’s telemetry is vital to know its conditions in real-time as the altitude, velocity, and · acceleration employing the IMU and GPS [7]; and the battery voltage to know the actual state of the\nwing axle that provides rigid support to the wing frame and stores a part of the electrical subsystem, and · Transactions on Energy Systems and Engineering Applications, 6(2): 628, 2025 ... a PCB capsule that mimics the heavy part of the seed. It features a hook for a servo at the opposite end, connecting to the payload release mechanism of the container. In [3] an 11-centimeter-high CanSat is presented.\nprotection of an egg. Therefore, three subsystems were considered for the CanSat design and development:\nlayer where the GPS module and antenna are placed. This design is particularly interesting since one of · CanSat’s constraints defined for this application is a height of no more than 22 centimeters to contain the\nAbel; Acosta, Sebastian; Arce, Diego. To eggspace and beyond: design and implementation of an autogyro-CanSat",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Utb",
+        "url": "https://revistas.utb.edu.co/tesea/article/download/628/461",
+        "long_name": "revistas.utb.edu.co",
+        "img": "https://imgs.search.brave.com/avJPgOOhsYh2cRv8dWd7sou-x5Tdk8P-iJ291cZf4t4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjVkYTY2NWYz/YjdjOGJkMGJhNDU1/NGMxYzdiZTBjMDMy/NDA3NzBiMTc4YjMx/YTlhY2E2YzEwMzU0/MDlmMWVkYS9yZXZp/c3Rhcy51dGIuZWR1/LmNvLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "revistas.utb.edu.co",
+        "hostname": "revistas.utb.edu.co",
+        "favicon": "https://imgs.search.brave.com/avJPgOOhsYh2cRv8dWd7sou-x5Tdk8P-iJ291cZf4t4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjVkYTY2NWYz/YjdjOGJkMGJhNDU1/NGMxYzdiZTBjMDMy/NDA3NzBiMTc4YjMx/YTlhY2E2YzEwMzU0/MDlmMWVkYS9yZXZp/c3Rhcy51dGIuZWR1/LmNvLw",
+        "path": "› tesea  › article  › download  › 628  › 461"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "the-CanSat-Book-23-24.pdf",
+      "url": "https://cansat.esa.int/wp-content/uploads/2023/09/the-CanSat-Book-23-24.pdf",
+      "description": "of the CanSat, selecting its missions, integrating the components and subsystems, testing and preparing for",
+      "content": "of the CanSat, selecting its missions, integrating the components and subsystems, testing and preparing for\nThe CanSat book has been created for the Dutch CanSat Competition.\nThis tutorial shows how to build a basic CanSat from scratch, using the ESERO NL CanSat-kit.\nThe CanSat Book has been written by Frank Hagenaars on behalf of ESERO NL.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Esa",
+        "url": "https://cansat.esa.int/wp-content/uploads/2023/09/the-CanSat-Book-23-24.pdf",
+        "long_name": "cansat.esa.int",
+        "img": "https://imgs.search.brave.com/mKVEllVV_KNXm6GM8KKjXomXoHqmzDEcA3YsO8-yWkk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJjMWU4ZTFi/Y2ZhZmMyNWMzNzUz/OTU2ODE2Mzk4NDU2/M2RiNzg4MjBiMGJm/OGY3ZTFkY2FlNWVi/ODQ0MjdjYi9jYW5z/YXQuZXNhLmludC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansat.esa.int",
+        "hostname": "cansat.esa.int",
+        "favicon": "https://imgs.search.brave.com/mKVEllVV_KNXm6GM8KKjXomXoHqmzDEcA3YsO8-yWkk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJjMWU4ZTFi/Y2ZhZmMyNWMzNzUz/OTU2ODE2Mzk4NDU2/M2RiNzg4MjBiMGJm/OGY3ZTFkY2FlNWVi/ODQ0MjdjYi9jYW5z/YXQuZXNhLmludC8",
+        "path": "› wp-content  › uploads  › 2023  › 09  › the-CanSat-Book-23-24.pdf"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "Inertial Measurement Unit (IMU) — Development & Testing | GPS Lab",
+      "url": "https://gps.stanford.edu/research/current-and-continuing-gpspnt-research/inertial-measurement-unit-imu-development-testing",
+      "description": "An inertial measurement unit (IMU) is an electronic device that measures and reports a body&#x27;s specific force, angular rate, and sometimes the magnetic field surrounding the body, using a combination of accelerometers and gyroscopes, and sometimes, magnetometers.",
+      "content": "An inertial measurement unit (IMU) is an electronic device that measures and reports a body&#x27;s specific force, angular rate, and sometimes the magnetic field surrounding the body, using a combination of accelerometers and gyroscopes, and sometimes, magnetometers.\nStanford and SCPNT Professor Mark Kasevich heads one of the world’s leading research labs studying cold atom, interferometry-based IMUs. Cold atom interferometry IMUs could be used as highly accurate gyroscopes for scientific and military purposes. Atomic interferometer gyroscopes (AIG's) and atomic spin gyroscopes (ASG's) are both used to sense rotation.\nIMUs are typically used to maneuver aircraft, including UAVs, and spacecraft, including satellites and landers.\nRecent developments allow for the production of IMU-enabled GPS devices.\nAn IMU allows a GPS receiver to work when GPS-signals are unavailable, such as in tunnels, inside buildings, or when electronic interference is present.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "GPS Lab",
+        "url": "https://gps.stanford.edu/research/current-and-continuing-gpspnt-research/inertial-measurement-unit-imu-development-testing",
+        "long_name": "gps.stanford.edu",
+        "img": "https://imgs.search.brave.com/PdlMri_6iokBlex2gh1mpEet1FmT9FKcxw-Z62tdOoY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQxYTIzYTQ4/YzBmODA4YWM0Mzhh/Mjg0NmQ3MDQ3YmRl/NjkzZGJkNjQzMDNk/MTY2OTE5ZjQ5ODNi/NjU1MGNjMC9ncHMu/c3RhbmZvcmQuZWR1/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "gps.stanford.edu",
+        "hostname": "gps.stanford.edu",
+        "favicon": "https://imgs.search.brave.com/PdlMri_6iokBlex2gh1mpEet1FmT9FKcxw-Z62tdOoY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQxYTIzYTQ4/YzBmODA4YWM0Mzhh/Mjg0NmQ3MDQ3YmRl/NjkzZGJkNjQzMDNk/MTY2OTE5ZjQ5ODNi/NjU1MGNjMC9ncHMu/c3RhbmZvcmQuZWR1/Lw",
+        "path": "› research  › current-and-continuing-gpspnt-research  › inertial-measurement-unit-imu-development-testing"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "CANmod.gps: GPS-to-CAN with 3D Inertial Sensor and UDR – CSS Electronics",
+      "url": "https://www.csselectronics.com/products/gps-to-can-bus-gnss-imu",
+      "description": "This has the advantage that you can directly evaluate the CAN output from the CANmod.gps and use the powerful webCAN GUI to analyze and visualize the GNSS/IMU data - a far more professional experience than SavvyCAN. It is also a great way to evaluate combined setups (e.g. CANmod.gps alongside other CANmod modules), letting you verify that your custom config files do not produce conflicting arbitration IDs - and that your DBC files are set up correctly to decode the resulting messages.",
+      "content": "This has the advantage that you can directly evaluate the CAN output from the CANmod.gps and use the powerful webCAN GUI to analyze and visualize the GNSS/IMU data - a far more professional experience than SavvyCAN. It is also a great way to evaluate combined setups (e.g. CANmod.gps alongside other CANmod modules), letting you verify that your custom config files do not produce conflicting arbitration IDs - and that your DBC files are set up correctly to decode the resulting messages.\nThe GPS-to-CAN module can be used standalone to inject CAN frames with GNSS/IMU into your CAN bus system. The data can be consumed by other CAN nodes on the network - e.g. ECUs, cabin displays, CAN loggers or telematics control units (TCU).\nThe CANmod.gps can be deployed as an 'add-on' module for the CANedge. Simply configure the CANedge to provide a 5V power out via the 2nd port - and connect the CANmod.gps via the optional adapter cable. This lets you log e.g. vehicle CAN bus data via channel 1 and time-synced GNSS/IMU data via channel 2.\nThis is ideal for e.g. heavy-duty fleet telematics where data is auto-pushed to your own server when the vehicle is in range of a WiFi access point. Note: See also our CANedge incl. GNSS/IMU for this use case.",
+      "age": "October 7, 2021",
+      "page_age": "2021-10-07T12:36:44",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "product",
+      "profile": {
+        "name": "CSS Electronics",
+        "url": "https://www.csselectronics.com/products/gps-to-can-bus-gnss-imu",
+        "long_name": "csselectronics.com",
+        "img": "https://imgs.search.brave.com/LKD12wFfQcjnr7WQl-VzBkruxpwK_DpVeA_2EMMhjiU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTM1OWI2ODFk/ODYzZTYyNGIzMTQ2/YzgxYmJkOTVlNmQ3/MWJmZDFhYTBkMDE2/MzkyNTg2ZjkwOWEx/MDA4M2I4YS93d3cu/Y3NzZWxlY3Ryb25p/Y3MuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "csselectronics.com",
+        "hostname": "www.csselectronics.com",
+        "favicon": "https://imgs.search.brave.com/LKD12wFfQcjnr7WQl-VzBkruxpwK_DpVeA_2EMMhjiU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTM1OWI2ODFk/ODYzZTYyNGIzMTQ2/YzgxYmJkOTVlNmQ3/MWJmZDFhYTBkMDE2/MzkyNTg2ZjkwOWEx/MDA4M2I4YS93d3cu/Y3NzZWxlY3Ryb25p/Y3MuY29tLw",
+        "path": "› products  › gps-to-can-bus-gnss-imu"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/YZCPkUofr6GADBoLFmKLnpppdtoPoBJbz2SmDCFXQVs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/Y3NzZWxlY3Ryb25p/Y3MuY29tL2Nkbi9z/aG9wL2ZpbGVzL2Nh/bm1vZC1ncHMtZ25z/cy10by1jYW4tYnVz/LWNvbnZlcnRlci1m/cm9udF8xNjAweC5q/cGc_dj0xNzc3NjM1/MTcx",
+        "original": "https://www.csselectronics.com/cdn/shop/files/canmod-gps-gnss-to-can-bus-converter-front_1600x.jpg?v=1777635171",
+        "logo": false
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "CanSat testing guidelines verification GPS IMU subsystem",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.158,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "CanSat testing guidelines verification GPS IMU subsystem",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "CanSat 2024 Critical Design Review (CDR) Version 1.0 Team 2050 KoNaR Can",
+          "url": "https://www.cansatcompetition.com/docs/teams/cansat2024_2050_cdr_v01.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "CanSat 2024 CDR: Team 2050 – KoNaR Can · 7 · Acronyms (4/4) Acronym · Definition · SO · System Overview · SOIC · Small Outline Integration Circuit · SSD · Sensor Subsystem Design · SPI · Serial Peripherial Interface · T · Test · I · Inspection · I2C · Inter-Integrated Circuit · IMU ·",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://www.cansatcompetition.com/docs/teams/cansat2024_2050_cdr_v01.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "www.cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+            "path": "› docs  › teams  › cansat2024_2050_cdr_v01.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "CanSat 2024 CDR: Team 2050 – KoNaR Can · 7 · Acronyms (4/4) Acronym · Definition · SO · System Overview · SOIC · Small Outline Integration Circuit · SSD · Sensor Subsystem Design · SPI · Serial Peripherial Interface · T · Test · I · Inspection · I2C · Inter-Integrated Circuit · IMU ·",
+            "The mission will simulate a space probe (CanSat) entering a planetary atmosphere. It shall contain a · detachable heatshield and a hen's egg, which will simulate a delicate instrument. The integrated electronics · shall include sensors for tracking altitude, internal temperature, battery voltage, GPS position and tilt of the",
+            "structure of the CanSat and we would like to analyze the parachute release process. Also, the motto „Dare ... MPU-6050 IMU was replaced with BMI270.",
+            "The CanSat shall land with the egg intact."
+          ]
+        },
+        {
+          "title": "A SURVEY OF CANSAT - IRJMETS",
+          "url": "https://www.irjmets.com/upload_newfiles/irjmets80100002696/paper_file/irjmets80100002696.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This paper surveys mission profiles, subsystem architectures, descent · and communications strategies, educational implementations and emerging research trends. We synthesize · findings from recent CanSat literature, competition guidelines and final-report practices, highlight · environmental/air-quality sensing and autogyro-descent systems and consolidate best-practice design · guidelines for robust telemetry, data quality and verification.",
+          "profile": {
+            "name": "IRJMETS",
+            "url": "https://www.irjmets.com/upload_newfiles/irjmets80100002696/paper_file/irjmets80100002696.pdf",
+            "long_name": "irjmets.com",
+            "img": "https://imgs.search.brave.com/xu2DUOViurqF6DS3-sJ387zxbO1xH4652csLycLTJvM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUyNWRmZjQw/NDQ4YjJhYzcyM2Ji/ZDkxYjgwZWJkZjk1/YzY2OTEzMDNhNTNk/ZWQ0YTJmZGI2MmRl/YWMxNTAyOS93d3cu/aXJqbWV0cy5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "irjmets.com",
+            "hostname": "www.irjmets.com",
+            "favicon": "https://imgs.search.brave.com/xu2DUOViurqF6DS3-sJ387zxbO1xH4652csLycLTJvM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUyNWRmZjQw/NDQ4YjJhYzcyM2Ji/ZDkxYjgwZWJkZjk1/YzY2OTEzMDNhNTNk/ZWQ0YTJmZGI2MmRl/YWMxNTAyOS93d3cu/aXJqbWV0cy5jb20v",
+            "path": "› upload_newfiles  › irjmets80100002696  › paper_file  › irjmets80100002696.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "F. Thermal Behavior Study: Tracking changes in temperature within the CanSat to evaluate the efficiency of ... G. Battery Performance Evaluation: Monitoring voltage and current while in flight to assess power efficiency ... H. Landing Impact Analysis: Examining landing acceleration and structural design shock resistance using IMU ... I. Search and Recovery Optimization: Assessing recovery time and tracking efficacy with GPS and an audible",
+            "This paper surveys mission profiles, subsystem architectures, descent · and communications strategies, educational implementations and emerging research trends. We synthesize · findings from recent CanSat literature, competition guidelines and final-report practices, highlight · environmental/air-quality sensing and autogyro-descent systems and consolidate best-practice design · guidelines for robust telemetry, data quality and verification.",
+            "CanSat mission design and testing depend heavily on simulation since it lowers development costs, speeds up · prototyping, and enables validation prior to hardware implementation. By combining various software tools · that each handle distinct subsystems including trajectory, sensors, onboard electronics, communication, and",
+            "A. Educational Justification CanSats offers real-world, high-agency project-based learning by integrating · mechanical, electrical, RF, software, and data disciplines. Students gain useful lab and field skills while · practicing interface control, requirements traceability, anomaly resolution, and verification planning."
+          ]
+        },
+        {
+          "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need to Know in 2025 - Hex-Star Universe",
+          "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Advanced Telemetry: Measuring acceleration, GPS coordinates, radiation levels, humidity · Telecommand: Ground station sends commands to control CanSat operations during flight",
+          "page_age": "2025-11-12T09:24:33",
+          "profile": {
+            "name": "Hex-Star Universe",
+            "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+            "long_name": "hexstaruniverse.com",
+            "img": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "faq",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "hexstaruniverse.com",
+            "hostname": "hexstaruniverse.com",
+            "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+            "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/ZIke4X6s5Gl8frOu7dNUAZw1oaJ__cQHceAgjmOvA04/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9oZXhz/dGFydW5pdmVyc2Uu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy91/bm5hbWVkLXNjYWxl/ZC53ZWJw",
+            "original": "https://hexstaruniverse.com/wp-content/uploads/unnamed-scaled.webp",
+            "logo": false
+          },
+          "age": "November 12, 2025",
+          "faq": {
+            "items": [
+              {
+                "question": "What exactly is a CanSat and how does it work?",
+                "answer": "A CanSat is a miniature satellite simulation built to fit inside a standard soda can (330-350ml). It contains sensors, a microcontroller, communication system, and power supply. After being launched to altitudes of 100m-1km by rocket, drone, or balloon, it descends via parachute while measuring atmospheric data (temperature, pressure) and transmitting telemetry to a ground station in real-time.<br>",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "How much does a CanSat kit cost?",
+                "answer": "CanSats operate at sub-orbital altitudes (under 1km) for minutes in atmospheric conditions and cost $200-$2,600, making them ideal for education. CubeSats are actual satellites launched into space orbit (400-600km), operate for months to years in vacuum/radiation environments, and cost $50,000-$500,000+. CanSats don't require extensive space agency approvals and are recoverable and reusable",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "What comes in a typical CanSat kit?",
+                "answer": "A complete CanSat kit includes: Arduino or ESP32 microcontroller, pressure and temperature sensors, communication radio module with antenna, GPS, accelerometer, power system (battery and regulators), data storage (microSD), structural frame, parachute recovery system, programming software, and detailed assembly/operation manuals",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "Do I need programming knowledge?",
+                "answer": "Basic Arduino or Python knowledge helps, but many kits (like Hexstar Universe’s) come with preloaded code and online tutorials.",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "Can CanSat data be tracked live?",
+                "answer": "Yes. Most modern kits, including Hexstar Universe’s, feature live dashboards for telemetry and real-time flight data visualization.",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "What’s the difference between a CanSat and a CubeSat?",
+                "answer": "A CanSat is a mini prototype launched to low altitudes for educational purposes, while a CubeSat is an orbital satellite launched to space.",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "What is the best CanSat kit for students",
+                "answer": "The best CanSat kit for students in 2025 is the Hexstar Universe CanSat Kit. It features more than 10 data sensors, a state-of-the-art live user interface for real-time data tracking, a durable 3D-printed structure, and a student-friendly design that makes hands-on learning engaging and accessible. This kit brings professional space technology to the classroom, empowering students to understand, build, and analyze real satellite systems with ease. Its comprehensive tutorials and ecosystem make it ideal for both beginners and advanced student projects",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "What is the most affordable CanSat kit available?",
+                "answer": "The Hexstar Universe CanSat Kit stands out as the most affordable choice for students and educators in 2025. Despite its accessible price, it does not compromise on features offering a complete and robust set of sensors, live data interface, and high-quality components. The kit’s value allows more students and institutions to participate in practical satellite education and competitions without breaking the budget, making advanced STEM learning accessible to all.",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "What is Cansat?",
+                "answer": "A CanSat is a miniature satellite, built to fit inside the size of a soda can, used for educational purposes. These simulated satellites are launched on rockets or balloons and must complete a mission before safely returning to Earth, typically using a parachute",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "What are CanSats used for?",
+                "answer": "A CanSat is a type of sounding rocket payload used <strong>to teach space technology</strong>. It is similar to the technology used in miniaturized satellites. CanSats do not go into space, but instead are released at an altitude of about 1 kilometer, using a rocket or a balloon.",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "How high can a CanSat go?",
+                "answer": "About 1 km . Your can use high altitude helium balloons or sounding rockets to launch it .",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "How does cansat work?",
+                "answer": "<strong>Launch:</strong> CanSats are released from rockets or balloons at an altitude of about 1 kilometer.<br><strong>Mission:</strong> Once airborne, the CanSat performs its specific mission, which can include tasks like measuring temperature or light intensity.<br><strong>Descent:</strong> A recovery system, usually a parachute, is deployed to slow the descent and prevent damage.<br><strong>Recovery:</strong> Teams can track and recover their CanSat to analyze the data collected during the mission.",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              },
+              {
+                "question": "Who created the CanSat?",
+                "answer": "CanSat project was proposed by <strong>Prof.</strong> <strong>Twiggs</strong> of Stanford University at University Space Systems Symposium (USSS) in 1998. A launch experiment of CanSat using amateur model rocket named ARLISS is held in Black rock desert in Nevada USA every year.",
+                "title": "The Ultimate Guide to Cansat Kits & CanSat: Everything You Need ...",
+                "url": "https://hexstaruniverse.com/cansat-cansat-kit-complete-guide-students/",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "hexstaruniverse.com",
+                  "hostname": "hexstaruniverse.com",
+                  "favicon": "https://imgs.search.brave.com/b088lyrzJBxfxUDmiCGaleKfLq6J1N6T556W5_77Nv4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDhkZGJiZWYw/ZWY0MWFiMGE4YWM3/ZjNiMDczOGU4OTk2/Y2JmZmFhMjhkMDMw/NWE3YmJhOWU0ZDUw/MTAzYmJjOC9oZXhz/dGFydW5pdmVyc2Uu/Y29tLw",
+                  "path": "  › home  › blog  › the ultimate guide to cansat kits & cansat: everything you need to know in 2025"
+                }
+              }
+            ]
+          },
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Avijit Dutta Gupta"
+              }
+            ],
+            "date": "Nov 10, 2025",
+            "publisher": {
+              "type": "organization",
+              "name": "Hex-Star Universe",
+              "url": "https://hexstaruniverse.com/",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/JFqFY4ZUyJLQI7qDO4bcrF3i3DdzcHNurQ1Cp7FQxnE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9oZXhz/dGFydW5pdmVyc2Uu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy9l/emdpZi00LWI0NmQ2/OGIyNGEtMS5naWY.jpeg",
+                "original": "https://hexstaruniverse.com/wp-content/uploads/ezgif-4-b46d68b24a-1.gif"
+              }
+            }
+          },
+          "extra_snippets": [
+            "ComeBack Mission: Using GPS navigation to return autonomously to launch site​ · Environmental Monitoring: Air quality detection, CO2 measurement. Every CanSat includes key subsystems similar to those in professional satellites.",
+            "A complete CanSat kit includes: Arduino or ESP32 microcontroller, pressure and temperature sensors, communication radio module with antenna, GPS, accelerometer, power system (battery and regulators), data storage (microSD), structural frame, parachute recovery system, programming software, and detailed assembly/operation manuals",
+            "Advanced Telemetry: Measuring acceleration, GPS coordinates, radiation levels, humidity · Telecommand: Ground station sends commands to control CanSat operations during flight",
+            "A CanSat is a miniature satellite simulation integrated within the volume and shape of a standard soft drink can (typically 330-350ml). The name “CanSat” comes from “Can Satellite,” representing a complete satellite system compressed into a soda can-sized container."
+          ]
+        },
+        {
+          "title": "CanSat - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/CanSat",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The best accelerometers made to determine positions are called Inertial Navigation System INS. These are used on some CanSat models. The uncertainty of this system depends on the error when calibrating sensors.",
+          "page_age": "2026-06-05T16:47:06",
+          "profile": {
+            "name": "Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/CanSat",
+            "long_name": "en.wikipedia.org",
+            "img": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "deep_results": {
+            "buttons": [
+              {
+                "type": "button_result",
+                "title": "History",
+                "url": "https://en.wikipedia.org/wiki/CanSat#History"
+              },
+              {
+                "type": "button_result",
+                "title": "Operation",
+                "url": "https://en.wikipedia.org/wiki/CanSat#Operation"
+              },
+              {
+                "type": "button_result",
+                "title": "Types",
+                "url": "https://en.wikipedia.org/wiki/CanSat#Types"
+              },
+              {
+                "type": "button_result",
+                "title": "Educational interest",
+                "url": "https://en.wikipedia.org/wiki/CanSat#Educational_interest"
+              },
+              {
+                "type": "button_result",
+                "title": "Competitions",
+                "url": "https://en.wikipedia.org/wiki/CanSat#Competitions"
+              },
+              {
+                "type": "button_result",
+                "title": "Further reading",
+                "url": "https://en.wikipedia.org/wiki/CanSat#Further_reading"
+              }
+            ]
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "en.wikipedia.org",
+            "hostname": "en.wikipedia.org",
+            "favicon": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw",
+            "path": "› wiki  › CanSat"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/xgbumXgvpS_k2rzyi9d2Y7V3mf2dgiUs-U5P7ssH9OM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9k/L2Q4L0NhblNhdF9D/b21wXyUyODU3JTI5/X2NvcHkuanBn",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/d/d8/CanSat_Comp_%2857%29_copy.jpg",
+            "logo": false
+          },
+          "age": "1 week ago",
+          "extra_snippets": [
+            "Most CanSat presented in this category are robots testing new systems or new designs that have not yet been tested (technology demonstrators). The low cost of implementation, short preparation time and simplicity of design compared to other space projects make of this concept an excellent practical opportunity for students to take their first steps in space. Students are responsible for choosing the way the mission is fulfilled, the CanSat design, components integration, correct operation verification, launch preparation, data analysis and team organisation by distributing the workload.",
+            "At design level, GPS receivers should be located in a place where satellites vision line is as direct as possible in order not to be out of range with these ones during the flight. In a metallic structure CanSat, the receivers should be always located where the structure does not affect this vision line.",
+            "The best accelerometers made to determine positions are called Inertial Navigation System INS. These are used on some CanSat models. The uncertainty of this system depends on the error when calibrating sensors. The pros of this system go from the fact that GPS is not needed, to immunity to magnetic interference.",
+            "This angle is transmitted to the microprocessor via a potential difference. The microprocessor interprets the incoming signal and acts accordingly. Thus, if the CanSat was intended to arrive to a target without using a GPS receiver, this sensor would play a crucial role.",
+            "CanSats in this category do not use a steering system since its objective is not to fall at a particular point but to collect data while the descent (which is not usually controlled). Of the systems mentioned in the previous sections the most used are: barometer, thermometer, GPS and camera."
+          ]
+        },
+        {
+          "title": "ESA - What is a CanSat?",
+          "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Inclusion of a retrieval system (beeper, radio beacon, GPS, etc.) is recommended. The CanSat should have a recovery system, such as a parachute, capable of being reused after launch. It is recommended to use bright coloured fabric, which will facilitate recovery of the CanSat after landing. The parachute connection must be able to withstand up to 1000 N of force. The strength of the parachute must be tested to ensure that the system will operate nominally.",
+          "profile": {
+            "name": "European Space Agency",
+            "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+            "long_name": "esa.int",
+            "img": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "esa.int",
+            "hostname": "www.esa.int",
+            "favicon": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8",
+            "path": "› Education  › CanSat  › What_is_a_CanSat"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/JnNjwYGRLF8qK7hW28PuCb8wyW_K6sx7K0fBlGXxaKA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXNhLmludC92YXIv/ZXNhL3N0b3JhZ2Uv/aW1hZ2VzL2VzYV9t/dWx0aW1lZGlhL2lt/YWdlcy8yMDEwLzAx/L2FfY2Fuc2F0X2Rl/c2NlbmRpbmcvOTc3/NTEzNi0zLWVuZy1H/Qi9BX0NhblNhdF9k/ZXNjZW5kaW5nX3Bp/bGxhcnMuanBn",
+            "original": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2010/01/a_cansat_descending/9775136-3-eng-GB/A_CanSat_descending_pillars.jpg",
+            "logo": false
+          },
+          "extra_snippets": [
+            "Inclusion of a retrieval system (beeper, radio beacon, GPS, etc.) is recommended. The CanSat should have a recovery system, such as a parachute, capable of being reused after launch. It is recommended to use bright coloured fabric, which will facilitate recovery of the CanSat after landing. The parachute connection must be able to withstand up to 1000 N of force. The strength of the parachute must be tested to ensure that the system will operate nominally.",
+            "A CanSat is a simulation of a real satellite, integrated within the volume and shape of a soft drink can. The challenge for the students is to fit all the major subsystems found in a satellite, such as power, sensors and a communication system, into this minimal volume.",
+            "All the components of the CanSat must fit inside a standard soda can (115 mm height and 66 mm diameter), with the exception of the parachute. Radio antennas and GPS antennas can be mounted externally (on the top or bottom of the can, but not on the sides), depending on the design.",
+            "CanSats offer a unique opportunity for students to have a first practical experience of a real space project. They are responsible for all aspects: designing the CanSat, selecting its mission, integrating the components, testing, preparing for launch and then analysing the data."
+          ]
+        },
+        {
+          "title": "Design and development of a CanSat for air pollution monitoring with RSSI based position retrieval system - ScienceDirect",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0273117724001856",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Comprising various subsystems, such as mechanical, electrical power, communication, data handling, and sensor systems, the CanSat aims to emulate larger satellites but with cost-effective and easy launch capabilities. Baker and Worden (2008) highlighted the benefits of small-satellite missions, enabling quicker results and efficient testing.",
+          "page_age": "2024-02-27T00:00:00",
+          "profile": {
+            "name": "ScienceDirect",
+            "url": "https://www.sciencedirect.com/science/article/abs/pii/S0273117724001856",
+            "long_name": "sciencedirect.com",
+            "img": "https://imgs.search.brave.com/NJbb0P2bwbdnGnD5FijFoBbn5rA0Jwz-yK3fG5QOBng/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc5YWUwYmQ5/YWNmYWRiMDAxZWU5/ODc3NjJmYTVmOTNi/ZjRmYmE2OTk5Zjk2/MTUzZjMwZmE5OTQ5/MWFjY2ZjNS93d3cu/c2NpZW5jZWRpcmVj/dC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "sciencedirect.com",
+            "hostname": "www.sciencedirect.com",
+            "favicon": "https://imgs.search.brave.com/NJbb0P2bwbdnGnD5FijFoBbn5rA0Jwz-yK3fG5QOBng/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc5YWUwYmQ5/YWNmYWRiMDAxZWU5/ODc3NjJmYTVmOTNi/ZjRmYmE2OTk5Zjk2/MTUzZjMwZmE5OTQ5/MWFjY2ZjNS93d3cu/c2NpZW5jZWRpcmVj/dC5jb20v",
+            "path": "› science  › article  › abs  › pii  › S0273117724001856"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/1CqYRB0FpYlCs00QWZ3bsHOj4RsVjdEwNb91uk0Z-SU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9hcnMu/ZWxzLWNkbi5jb20v/Y29udGVudC9pbWFn/ZS8xLXMyLjAtUzAy/NzMxMTc3MjVYMDAw/ODktY292MTUwaC5n/aWY.jpeg",
+            "original": "https://ars.els-cdn.com/content/image/1-s2.0-S0273117725X00089-cov150h.gif",
+            "logo": false
+          },
+          "age": "February 27, 2024",
+          "extra_snippets": [
+            "The CanSat developed for this work was equipped with temperature/humidity sensors for climate monitoring and an air pollution sensor for testing air quality for this experiment. Using a sounding rocket as a platform, the experiments were conducted at 130 m height near the launch region of Novi Sad, Serbia. In this paper, the obtained results were summarised in the following sequence: Section 2 provides the World CanSat and Rocketry Championship (WCRC) guidelines, Section 3 elaborates on the design of the CanSat subsystems, Section 4 comprises test results and discussion, and Section 5 concludes the significant findings of this investigation.",
+            "It is advised to have a Position retrieval system such as GPS or beacon. The air pollution data must be recorded at an interval of 2 s and represented in pictorial form at the ground station. The · The satellite major task (primary mission) was to measure temperature and air pollution, and its secondary task (secondary mission) was to implement a special position retrieval system and power-saving techniques. CanSat was designed with a mix of subsystems, including the mechanical subsystem, sensor subsystem, power subsystem, communication and data handling system, ground station, and position retrieval system.",
+            "Comprising various subsystems, such as mechanical, electrical power, communication, data handling, and sensor systems, the CanSat aims to emulate larger satellites but with cost-effective and easy launch capabilities. Baker and Worden (2008) highlighted the benefits of small-satellite missions, enabling quicker results and efficient testing.",
+            "The test was · In conclusion, this paper presents a comprehensive exploration of a can-sized sub-orbital satellite system designed for participation in the World CanSat/Rocketry Championship 2022. The structural design of the satellite system adheres to championship constraints and encompasses capabilities for monitoring air pollutants, temperature, pressure, and humidity during its descent phase. The mechanical subsystem, container design, and descent mechanisms closely emulate those of a model satellite."
+          ]
+        },
+        {
+          "title": "design and implementation of an autogyro-CanSat with IoT ...",
+          "url": "https://revistas.utb.edu.co/tesea/article/download/628/461",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The CanSat’s telemetry is vital to know its conditions in real-time as the altitude, velocity, and · acceleration employing the IMU and GPS [7]; and the battery voltage to know the actual state of the",
+          "profile": {
+            "name": "Utb",
+            "url": "https://revistas.utb.edu.co/tesea/article/download/628/461",
+            "long_name": "revistas.utb.edu.co",
+            "img": "https://imgs.search.brave.com/avJPgOOhsYh2cRv8dWd7sou-x5Tdk8P-iJ291cZf4t4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjVkYTY2NWYz/YjdjOGJkMGJhNDU1/NGMxYzdiZTBjMDMy/NDA3NzBiMTc4YjMx/YTlhY2E2YzEwMzU0/MDlmMWVkYS9yZXZp/c3Rhcy51dGIuZWR1/LmNvLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "revistas.utb.edu.co",
+            "hostname": "revistas.utb.edu.co",
+            "favicon": "https://imgs.search.brave.com/avJPgOOhsYh2cRv8dWd7sou-x5Tdk8P-iJ291cZf4t4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjVkYTY2NWYz/YjdjOGJkMGJhNDU1/NGMxYzdiZTBjMDMy/NDA3NzBiMTc4YjMx/YTlhY2E2YzEwMzU0/MDlmMWVkYS9yZXZp/c3Rhcy51dGIuZWR1/LmNvLw",
+            "path": "› tesea  › article  › download  › 628  › 461"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "wing axle that provides rigid support to the wing frame and stores a part of the electrical subsystem, and · Transactions on Energy Systems and Engineering Applications, 6(2): 628, 2025 ... a PCB capsule that mimics the heavy part of the seed. It features a hook for a servo at the opposite end, connecting to the payload release mechanism of the container. In [3] an 11-centimeter-high CanSat is presented.",
+            "protection of an egg. Therefore, three subsystems were considered for the CanSat design and development:",
+            "layer where the GPS module and antenna are placed. This design is particularly interesting since one of · CanSat’s constraints defined for this application is a height of no more than 22 centimeters to contain the",
+            "Abel; Acosta, Sebastian; Arce, Diego. To eggspace and beyond: design and implementation of an autogyro-CanSat"
+          ]
+        },
+        {
+          "title": "the-CanSat-Book-23-24.pdf",
+          "url": "https://cansat.esa.int/wp-content/uploads/2023/09/the-CanSat-Book-23-24.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "of the CanSat, selecting its missions, integrating the components and subsystems, testing and preparing for",
+          "profile": {
+            "name": "Esa",
+            "url": "https://cansat.esa.int/wp-content/uploads/2023/09/the-CanSat-Book-23-24.pdf",
+            "long_name": "cansat.esa.int",
+            "img": "https://imgs.search.brave.com/mKVEllVV_KNXm6GM8KKjXomXoHqmzDEcA3YsO8-yWkk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJjMWU4ZTFi/Y2ZhZmMyNWMzNzUz/OTU2ODE2Mzk4NDU2/M2RiNzg4MjBiMGJm/OGY3ZTFkY2FlNWVi/ODQ0MjdjYi9jYW5z/YXQuZXNhLmludC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansat.esa.int",
+            "hostname": "cansat.esa.int",
+            "favicon": "https://imgs.search.brave.com/mKVEllVV_KNXm6GM8KKjXomXoHqmzDEcA3YsO8-yWkk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTJjMWU4ZTFi/Y2ZhZmMyNWMzNzUz/OTU2ODE2Mzk4NDU2/M2RiNzg4MjBiMGJm/OGY3ZTFkY2FlNWVi/ODQ0MjdjYi9jYW5z/YXQuZXNhLmludC8",
+            "path": "› wp-content  › uploads  › 2023  › 09  › the-CanSat-Book-23-24.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "of the CanSat, selecting its missions, integrating the components and subsystems, testing and preparing for",
+            "The CanSat book has been created for the Dutch CanSat Competition.",
+            "This tutorial shows how to build a basic CanSat from scratch, using the ESERO NL CanSat-kit.",
+            "The CanSat Book has been written by Frank Hagenaars on behalf of ESERO NL."
+          ]
+        },
+        {
+          "title": "Inertial Measurement Unit (IMU) — Development & Testing | GPS Lab",
+          "url": "https://gps.stanford.edu/research/current-and-continuing-gpspnt-research/inertial-measurement-unit-imu-development-testing",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "An inertial measurement unit (IMU) is an electronic device that measures and reports a body&#x27;s specific force, angular rate, and sometimes the magnetic field surrounding the body, using a combination of accelerometers and gyroscopes, and sometimes, magnetometers.",
+          "profile": {
+            "name": "GPS Lab",
+            "url": "https://gps.stanford.edu/research/current-and-continuing-gpspnt-research/inertial-measurement-unit-imu-development-testing",
+            "long_name": "gps.stanford.edu",
+            "img": "https://imgs.search.brave.com/PdlMri_6iokBlex2gh1mpEet1FmT9FKcxw-Z62tdOoY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQxYTIzYTQ4/YzBmODA4YWM0Mzhh/Mjg0NmQ3MDQ3YmRl/NjkzZGJkNjQzMDNk/MTY2OTE5ZjQ5ODNi/NjU1MGNjMC9ncHMu/c3RhbmZvcmQuZWR1/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "gps.stanford.edu",
+            "hostname": "gps.stanford.edu",
+            "favicon": "https://imgs.search.brave.com/PdlMri_6iokBlex2gh1mpEet1FmT9FKcxw-Z62tdOoY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQxYTIzYTQ4/YzBmODA4YWM0Mzhh/Mjg0NmQ3MDQ3YmRl/NjkzZGJkNjQzMDNk/MTY2OTE5ZjQ5ODNi/NjU1MGNjMC9ncHMu/c3RhbmZvcmQuZWR1/Lw",
+            "path": "› research  › current-and-continuing-gpspnt-research  › inertial-measurement-unit-imu-development-testing"
+          },
+          "extra_snippets": [
+            "Stanford and SCPNT Professor Mark Kasevich heads one of the world’s leading research labs studying cold atom, interferometry-based IMUs. Cold atom interferometry IMUs could be used as highly accurate gyroscopes for scientific and military purposes. Atomic interferometer gyroscopes (AIG's) and atomic spin gyroscopes (ASG's) are both used to sense rotation.",
+            "IMUs are typically used to maneuver aircraft, including UAVs, and spacecraft, including satellites and landers.",
+            "Recent developments allow for the production of IMU-enabled GPS devices.",
+            "An IMU allows a GPS receiver to work when GPS-signals are unavailable, such as in tunnels, inside buildings, or when electronic interference is present."
+          ]
+        },
+        {
+          "title": "CANmod.gps: GPS-to-CAN with 3D Inertial Sensor and UDR – CSS Electronics",
+          "url": "https://www.csselectronics.com/products/gps-to-can-bus-gnss-imu",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This has the advantage that you can directly evaluate the CAN output from the CANmod.gps and use the powerful webCAN GUI to analyze and visualize the GNSS/IMU data - a far more professional experience than SavvyCAN. It is also a great way to evaluate combined setups (e.g. CANmod.gps alongside other CANmod modules), letting you verify that your custom config files do not produce conflicting arbitration IDs - and that your DBC files are set up correctly to decode the resulting messages.",
+          "page_age": "2021-10-07T12:36:44",
+          "profile": {
+            "name": "CSS Electronics",
+            "url": "https://www.csselectronics.com/products/gps-to-can-bus-gnss-imu",
+            "long_name": "csselectronics.com",
+            "img": "https://imgs.search.brave.com/LKD12wFfQcjnr7WQl-VzBkruxpwK_DpVeA_2EMMhjiU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTM1OWI2ODFk/ODYzZTYyNGIzMTQ2/YzgxYmJkOTVlNmQ3/MWJmZDFhYTBkMDE2/MzkyNTg2ZjkwOWEx/MDA4M2I4YS93d3cu/Y3NzZWxlY3Ryb25p/Y3MuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "product",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "csselectronics.com",
+            "hostname": "www.csselectronics.com",
+            "favicon": "https://imgs.search.brave.com/LKD12wFfQcjnr7WQl-VzBkruxpwK_DpVeA_2EMMhjiU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTM1OWI2ODFk/ODYzZTYyNGIzMTQ2/YzgxYmJkOTVlNmQ3/MWJmZDFhYTBkMDE2/MzkyNTg2ZjkwOWEx/MDA4M2I4YS93d3cu/Y3NzZWxlY3Ryb25p/Y3MuY29tLw",
+            "path": "› products  › gps-to-can-bus-gnss-imu"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/YZCPkUofr6GADBoLFmKLnpppdtoPoBJbz2SmDCFXQVs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/Y3NzZWxlY3Ryb25p/Y3MuY29tL2Nkbi9z/aG9wL2ZpbGVzL2Nh/bm1vZC1ncHMtZ25z/cy10by1jYW4tYnVz/LWNvbnZlcnRlci1m/cm9udF8xNjAweC5q/cGc_dj0xNzc3NjM1/MTcx",
+            "original": "https://www.csselectronics.com/cdn/shop/files/canmod-gps-gnss-to-can-bus-converter-front_1600x.jpg?v=1777635171",
+            "logo": false
+          },
+          "age": "October 7, 2021",
+          "video": {
+            "duration": "06:53",
+            "views": "62",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/mtgmYfDSqBiWMeS_DjJynW7EjZxtpGq0L0F3ToFZg-o/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS81/Mmc5dGozOXFzQS9k/ZWZhdWx0LmpwZw",
+              "original": "https://i.ytimg.com/vi/52g9tj39qsA/default.jpg"
+            }
+          },
+          "product": {
+            "type": "Product",
+            "name": "CANmod.gps: GPS-to-CAN with 3D Inertial Sensor and UDR",
+            "url": "https://www.csselectronics.com/products/gps-to-can-bus-gnss-imu",
+            "price": "230.0",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/X7Iju5srEKTwccovM9i_dvvbfh1x-qaryUPAcNQAt7E/rs:fit:360:283:1:0/g:ce/aHR0cHM6Ly93d3cu/Y3NzZWxlY3Ryb25p/Y3MuY29tL2Nkbi9z/aG9wL2ZpbGVzL2Nh/bm1vZC1ncHMtZ25z/cy10by1jYW4tYnVz/LWNvbnZlcnRlci1m/cm9udF8xNjAweC5q/cGc_dj0xNzc3NjM1/MTcx",
+              "original": "https://www.csselectronics.com/cdn/shop/files/canmod-gps-gnss-to-can-bus-converter-front_1600x.jpg?v=1777635171"
+            },
+            "description": "This pro specs GPS-to-CAN module adds GNSS/IMU data to your CAN bus. Ideal as a data logger add-on or standalone tool. Built-in gyro/accelerometer. Learn more!",
+            "offers": [
+              {
+                "url": "https://www.csselectronics.com/products/gps-to-can-bus-gnss-imu?variant=40452971954364",
+                "priceCurrency": "EUR",
+                "price": "230.0"
+              }
+            ]
+          },
+          "organization": {
+            "type": "organization",
+            "name": "CSS Electronics",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "This has the advantage that you can directly evaluate the CAN output from the CANmod.gps and use the powerful webCAN GUI to analyze and visualize the GNSS/IMU data - a far more professional experience than SavvyCAN. It is also a great way to evaluate combined setups (e.g. CANmod.gps alongside other CANmod modules), letting you verify that your custom config files do not produce conflicting arbitration IDs - and that your DBC files are set up correctly to decode the resulting messages.",
+            "The GPS-to-CAN module can be used standalone to inject CAN frames with GNSS/IMU into your CAN bus system. The data can be consumed by other CAN nodes on the network - e.g. ECUs, cabin displays, CAN loggers or telematics control units (TCU).",
+            "The CANmod.gps can be deployed as an 'add-on' module for the CANedge. Simply configure the CANedge to provide a 5V power out via the 2nd port - and connect the CANmod.gps via the optional adapter cable. This lets you log e.g. vehicle CAN bus data via channel 1 and time-synced GNSS/IMU data via channel 2.",
+            "This is ideal for e.g. heavy-duty fleet telematics where data is auto-pushed to your own server when the vehicle is in range of a WiFi access point. Note: See also our CANedge incl. GNSS/IMU for this use case."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

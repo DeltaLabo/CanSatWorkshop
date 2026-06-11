@@ -1,0 +1,472 @@
+{
+  "query": "\"CanSat\" \"testing\" \"telemetry\"",
+  "total": 13190,
+  "pages_retrieved": 1,
+  "results": [
+    {
+      "paperId": "113062b589999fa695c54893c039500c0282b9c0",
+      "doi": "10.1109/ic-ETITE58242.2024.10493250",
+      "title": "Zigbee Communication Protocol for Cansat Telemetry and Control",
+      "authors": [
+        {
+          "name": "Sree Harsha Prada Peesapaty"
+        },
+        {
+          "name": "Ananya Mallik"
+        },
+        {
+          "name": "A. Naik"
+        },
+        {
+          "name": "Raghunath S. Bhadade"
+        },
+        {
+          "name": "Savitri Jadhav"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Communication plays a significant role in the trans- mission of information from one point to another. Usually, to ensure efficient communication between the transmitter and receiver various parameters are considered like power requirements, range, data rate, and so on. For small-range applications and small satellite applications like Cansat, it is often challenging to select a communication protocol for the transmission of information. Zigbee protocol is one such communication protocol that can be implemented as it provides an efficient solution for the project requirements. Zigbee protocol is considered to offer a decent data rate along with minimal power requirements making it a popular choice for IOT applications as well as other small-scale project requirements. This work showcases the implementation of the Zigbee protocol for establishing a telemetry link for Cansat.",
+      "citationCount": 1,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "5152594fdeddc70a10b6630c26ad1d399165f61d",
+      "doi": "10.1109/IES63037.2024.10665774",
+      "title": "Experimental Approach for the Performance of a CanSat Module Based on Environmental Testing",
+      "authors": [
+        {
+          "name": "I. M. N. E. Ariwigangga"
+        },
+        {
+          "name": "Nofria Hanafi"
+        },
+        {
+          "name": "D. Purnomo"
+        },
+        {
+          "name": "Hendhi Hermawan"
+        }
+      ],
+      "year": 2024,
+      "abstract": "The qualification process of a spacecraft generally requires environmental testing for ensuring the CanSat will survive in the expected environment. Experimental approach is conducted due to guarantee a successful mission under extreme space thermal and vibration conditions. This research focused on the experimental approach for the performance of a CanSat module. An experimental approach was conducted based on environmental testing using thermal, vacuum, and vibration testing. The CanSat experiments showed that the CanSat can passed through environmental testing identified from the work performance of CanSat module to carry out mission during and after testing. The result of environmental testing has indicated that the CanSat module and structure can work for two hours in temperature around 60°C. In addition, CanSat module could measure maximum pressure up to 20 inHg. Furthermore, CanSat could survive from vibration up to 90 amplitudes. These findings confirm the CanSat’s robustness and its potential for successful deployment in space missions.",
+      "citationCount": 1,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "99f74c8ad620651c28e1d85ebe95fd59305c163e",
+      "doi": "10.12968/s1478-2774(23)50367-7",
+      "title": "Instrumentation for Telemetry, Testing and Space",
+      "authors": [],
+      "year": 2023,
+      "abstract": null,
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "05db9c384d097b377c1bb970af118005efb4ed3d",
+      "doi": "10.1186/s40317-020-00200-4",
+      "title": "Testing satellite telemetry within narrow ecosystems: nocturnal movements and habitat use of bottlenose dolphins within a convoluted estuarine system",
+      "authors": [
+        {
+          "name": "Elizabeth F. Hartel"
+        },
+        {
+          "name": "Wendy Noke Durden"
+        },
+        {
+          "name": "G. O’Corry-Crowe"
+        }
+      ],
+      "year": 2020,
+      "abstract": "Background While cetaceans have been extensively studied around the world, nocturnal movements and habitat use have been largely unaddressed for most populations. We used satellite telemetry to examine the nocturnal movements and habitat use of four bottlenose dolphins ( Tursiops truncatus ) from a well-studied population in a complex estuary along the east coast of Florida. This also enabled us to explore the utility of satellite tracking on an apex predator within a very narrow and convoluted ecosystem. Our objectives were to evaluate (1) nocturnal home ranges and how individual dolphins moved within them, (2) nocturnal utilization of habitats surrounding ocean inlets, (3) nocturnal movements outside of the population’s known range (i.e., the study area), and (4) nocturnal use of select environmental variables. Results Satellite tags were active between 129 and 140 days (136 ± 4.99) during nocturnal hours (summer/fall 2012), yielding 3.3 ± 1.4 high-quality transmissions per night. Results indicated substantial individual variation among the four tagged dolphins, with home ranges varying in length from 53.9 to 83.6 km ( x̅  = 71.9 ± 12.9). Binomial tests and MaxEnt models revealed some dolphins preferred habitats surrounding inlets, seagrass habitats, and various water depths, while other dolphins avoided these areas. All dolphins, however, showed substantial movement ( x̅  = 5.8 ± 7.4 km) outside of the study area, including travel into rivers/canals and the adjoining ocean (6.0–8.6% and 0.8–2.9% of locations per dolphin, respectively). Conclusions This study was the first to utilize satellite telemetry on Indian River Lagoon dolphins and provided the first detailed insights into the nocturnal movements and habitat use of this population. Our findings suggest that while individual dolphin home ranges may overlap, they use different foraging strategies, feed on different prey, and/or exhibit intraspecific resource partitioning. In contrast with a prior study, all tagged dolphins showed considerable movement into the adjoining ocean and freshwater sources. This suggests this population has a much larger range than previously thought, which is important to consider for future research and conservation efforts.",
+      "citationCount": 9,
+      "openAccess_pdf": {
+        "url": "https://animalbiotelemetry.biomedcentral.com/track/pdf/10.1186/s40317-020-00200-4"
+      }
+    },
+    {
+      "paperId": "b59b5d44b4050f09c12710ee5fcb5226a6fa5d19",
+      "doi": "10.48550/arXiv.2409.03727",
+      "title": "Design of CANSAT for Air Quality Monitoring for an altitude of 900 meters",
+      "authors": [
+        {
+          "name": "Soma Kunal Raj"
+        },
+        {
+          "name": "Y. S. Teja"
+        }
+      ],
+      "year": 2024,
+      "abstract": "This paper presents the design and development of NAMBI-VJ, a CANSAT specifically designed for air quality monitoring and stabilization. The CANSAT's cylindrical structure, measuring 310mm in height and 125mm in diameter, is equipped with a mechanical gyroscope for stabilization and a spill-hole parachute for controlled descent. The primary objective of this research is to create a compact, lightweight satellite capable of monitoring air quality parameters such as particulate matter (PM), carbon dioxide (CO2), longitude, and latitude. To achieve this, the CANSAT utilizes Zigbee communication to transmit data to a ground station. Experimental testing involved dropping the CANSAT from an altitude of 900 meters using a drone. The results demonstrate the CANSAT's ability to successfully gather and transmit air quality data, highlighting its potential for environmental monitoring applications.",
+      "citationCount": 3,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "a7e493c922671b81b38e63ddb348cc81868a704c",
+      "doi": "10.31473/2305-5987-2024-2-36(50)-1",
+      "title": "VALIDATION OF TELEMETRY SYSTEM INDICATORS FOR ASSESSING THE OPERATIONAL PARAMETERS OF MOBILE AGGREGATES",
+      "authors": [
+        {
+          "name": "S. Khalin"
+        },
+        {
+          "name": "V. Pohorilyy"
+        },
+        {
+          "name": "V. Serbiy"
+        },
+        {
+          "name": "V. Maidanovych"
+        }
+      ],
+      "year": 2025,
+      "abstract": "The purpose of the study is to evaluate the use of data from standard telemetry systems (onboard\ncomputers) to determine the operational and technological parameters of machine-tractor aggregates\n(MTAs), specifi cally productivity and fuel consumption, as well as to compare the accuracy of this data\nwith results obtained through classical chronometry.\nMethods. Field studies were conducted with three tractors – a Claas Axion 930, a John Deere\n8345R, and a Fendt 936 Vario – which were aggregated with an 8-furrow reversible plow. The work\nwas performed on deep medium-loam chernozem soil while plowing at a depth of 30 cm and 35 cm.\nOperational parameters were recorded using two methods: 1) using the standard onboard computers\n(CEBIS, CommandCenter, Vario); 2) using a control method of continuous chronometry, which included\ndirect time measurements with a stopwatch and determination of fuel consumption using an external\ncalibrated measuring device.\nResults. A comparative analysis revealed discrepancies between the data from the onboard computers\n(OBCs) and the control measurements. Regarding productivity, the average deviation of the\nOBC data from the chronometry data was approximately ±8%. The largest deviation was recorded\nfor the John Deere system (on average ~17%), while the Fendt system proved to be the most accurate\n(with deviations in the range of 0.4-4.5%). Regarding total fuel consumption, the average deviation\nwas smaller, at approximately ±4.4%. The John Deere system showed the lowest error (1.6%), while the\nClaas system had the highest (6.8%). Conclusions. Standard telemetry systems are an important tool\nfor monitoring MTAs; however, the data obtained can have signifi cant deviations from actual values.\nThe results highlight the critical need for regular calibration and validation of OBC data before it is\nused for precise scientifi c tests, fi nancial accounting, or making critical management decisions. The\nuse of uncalibrated data can lead to erroneous conclusions and a decrease in agricultural production\neffi ciency.\nKeywords: telemetry, telematics, precision agriculture, GPS, ISOBUS, on-board computer, calibration,\noperational and technological indicator, machine-tractor aggregate (MTA).",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "91b8bf2316606d13a9b7ea2571e191096a3cf108",
+      "doi": "10.12968/s1478-2774(25)50035-2",
+      "title": "Developments in Flight Test Telemetry Data Processing",
+      "authors": [
+        {
+          "name": "Mark Roseberry"
+        }
+      ],
+      "year": 2025,
+      "abstract": "New technology and mission requirements present challenges and opportunities for flight and missile test telemetry handling",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "3c28cfaa85eceec7c10f7ebf5064011d5ecee76f",
+      "doi": "10.12968/s1478-2774(24)50062-x",
+      "title": "Revolutionizing Telemetry with Multi-Location Ground Stations Centrally Controlled",
+      "authors": [],
+      "year": 2024,
+      "abstract": "Bringing solutions to the challenges inherent to flight test",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "b52e4c36c0ab945d6fb8761dfce4103544f3b6d3",
+      "doi": "10.1109/ICSME.2016.30",
+      "title": "Customized Regression Testing Using Telemetry Usage Patterns",
+      "authors": [
+        {
+          "name": "Jeff Anderson"
+        },
+        {
+          "name": "Hyunsook Do"
+        },
+        {
+          "name": "Saeed Salem"
+        }
+      ],
+      "year": 2016,
+      "abstract": null,
+      "citationCount": 3,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "579bb09eebbcab4b65f54ad588d2badc0c746d14",
+      "doi": "10.1109/ICCSAT.2015.7362931",
+      "title": "Design of an advanced telemetry mission using CanSat",
+      "authors": [
+        {
+          "name": "Efren Bautista-Linares"
+        },
+        {
+          "name": "Enrique A. Morales-Gonzales"
+        },
+        {
+          "name": "Mario Herrera-Cortez"
+        },
+        {
+          "name": "Esther A. Narvaez-Martinez"
+        },
+        {
+          "name": "J. Martínez-Castillo"
+        }
+      ],
+      "year": 2015,
+      "abstract": null,
+      "citationCount": 6,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "1516ef943a1c05d0899c4d43ced21a46bfa0c368",
+      "doi": "10.1038/s41597-025-05035-3",
+      "title": "The OPS-SAT benchmark for detecting anomalies in satellite telemetry",
+      "authors": [
+        {
+          "name": "Bogdan Ruszczak"
+        },
+        {
+          "name": "Krzysztof Kotowski"
+        },
+        {
+          "name": "David Evans"
+        },
+        {
+          "name": "Jakub Nalepa"
+        }
+      ],
+      "year": 2024,
+      "abstract": "Detecting anomalous events in satellite telemetry is a critical task in space operations. It is time-consuming, error-prone and human dependent, thus automated data-driven algorithms have been emerging at a steady pace. However, there are no available datasets of real satellite telemetry with annotations to verify anomaly detection models. We address this gap and introduce the AI-ready benchmark dataset (OPSSAT-AD) containing the telemetries acquired on board OPS-SAT—a CubeSat mission, operated by the European Space Agency. The dataset is accompanied with the baseline results obtained using 30 supervised and unsupervised classic and deep machine learning algorithms. They were evaluated using the training-test dataset split introduced in this work, and we suggest a set of quality metrics which should be calculated to confront the new algorithms for anomaly detection while exploiting OPSSAT-AD. We believe that this work may become an important step toward building a fair, reproducible and objective validation procedure that can be used to quantify the capabilities of the emerging techniques in an unbiased and fully transparent way.",
+      "citationCount": 26,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "1ce2d383ba9018df868a6a0eaf9a4250f82a51c7",
+      "doi": "10.20944/preprints202201.0449.v1",
+      "title": "STEM Education and Problem-Solving in Space Science: A Case Study with CanSat",
+      "authors": [
+        {
+          "name": "J. Contente"
+        },
+        {
+          "name": "Cecília Galvão"
+        }
+      ],
+      "year": 2022,
+      "abstract": "Research has shown that hands-on projects promote stem education, namely, via problem-solving. CanSat, literally 'satellite in a can', is a stem educational project promoted by the European Space Agency. This paper addresses this issue by researching this STEM project, which demonstrates how problem-solving can be achieved in secondary-level students within the framework of the CanSat. We use qualitative techniques of data collection and analysis. The results showed that students use sophisticated thinking strategies to process information within this interdisciplinary project: (a) cognitive testing, cognitive organization, cognitive regulation, and monitoring, in addition to computer language and physical–mathematical calculations, are cognitive and metacognitive behavior strategies revealed in the CanSat; (b) problem-solving was suggested as a specific model, where students’ higher cognitive and metacognitive ordering processes deepen in project development; (c) computational, lateral, or divergent and convergent thinking were detected as thinking types of students associated with and mobilized in the course of problem-solving, The findings of this research have practical implications for STEM education in space science. Hands-on projects using problem-solving are an essential strategy to promote STEM education. Additionally, they are a starting point to promote meaningful learning and new thinking types.",
+      "citationCount": 24,
+      "openAccess_pdf": {
+        "url": "https://doi.org/10.20944/preprints202201.0449.v1"
+      }
+    },
+    {
+      "paperId": "0a4e0fad7ab84b801df53006d77e70a66077dde6",
+      "doi": "10.1109/AERO.2015.7119305",
+      "title": "A new Checkout-and-Testing-Equipment (CTE) for a satellite Telemetry using LabVIEW",
+      "authors": [
+        {
+          "name": "A. El-Bayoumi"
+        },
+        {
+          "name": "M. Salem"
+        },
+        {
+          "name": "A. Khalil"
+        },
+        {
+          "name": "Eman El-Emam"
+        }
+      ],
+      "year": 2015,
+      "abstract": null,
+      "citationCount": 10,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "210be0ae52362307268e10162af9d26b2a2ff77d",
+      "doi": "10.1007/s11160-013-9328-4",
+      "title": "A review of detection range testing in aquatic passive acoustic telemetry studies",
+      "authors": [
+        {
+          "name": "S. Kessel"
+        },
+        {
+          "name": "S. Cooke"
+        },
+        {
+          "name": "M. Heupel"
+        },
+        {
+          "name": "M. Heupel"
+        },
+        {
+          "name": "N. Hussey"
+        },
+        {
+          "name": "C. Simpfendorfer"
+        },
+        {
+          "name": "S. Vagle"
+        },
+        {
+          "name": "A. Fisk"
+        }
+      ],
+      "year": 2014,
+      "abstract": null,
+      "citationCount": 362,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "3026d1eefebc56db6f06c639ec0229e499e2232d",
+      "doi": "10.3390/machines11070675",
+      "title": "The CanSat Compendium: A Review of Scientific CanSats",
+      "authors": [
+        {
+          "name": "Carrington Chun"
+        },
+        {
+          "name": "M. Tanveer"
+        },
+        {
+          "name": "S. Chakravarty"
+        }
+      ],
+      "year": 2023,
+      "abstract": "In recent years, CubeSats have gained popularity as secondary payloads in space missions due to their uniquely small size and minimal weight. This allows for the quick and inexpensive development of high-risk, high-reward investigations. The success of cube-shaped CubeSats has led to the development of a new class of small-scale and low-cost scientific platforms known as CanSats, which maintain a unique cylindrical shape. CanSats offer an even more economical alternative for conducting high-risk investigations, although they are typically constrained by having to operate within Earth’s atmosphere, which contributes to their reduced costs. However, the ability to test and improve space-bound hardware makes the CanSat a potential intermediary technology for continued space exploration. This survey paper seeks to provide a technical definition of CanSats and summarize the current state of the art in CanSat-based research. This paper covers the history of CanSats, their current mainstream applications, and their potential impact on the technology pipeline for space exploration. CanSats have proven to be versatile in various applications, including Earth science, aeronautics, and educational purposes. The lower cost of CanSats provides a wider range of researchers and educational institutions access to near-space science. Therefore, this paper also aims to explore the potential future applications of CanSats, particularly as an intermediary technology for testing and improving space-bound hardware, with potential benefits for future space missions. The findings from this survey could help to guide the further research and development of CanSats, as well as help to shape future space exploration efforts.",
+      "citationCount": 14,
+      "openAccess_pdf": {
+        "url": "https://www.mdpi.com/2075-1702/11/7/675/pdf?version=1687441751"
+      }
+    },
+    {
+      "paperId": "4500db9b75d8083112dce66123d2bf0f4e247286",
+      "doi": "10.1002/ett.5030",
+      "title": "A hybrid intrusion detection approach based on message queuing telemetry transport (MQTT) protocol in industrial internet of things",
+      "authors": [
+        {
+          "name": "Georg Thamer Francis"
+        },
+        {
+          "name": "Alireza Souri"
+        },
+        {
+          "name": "Nihat Inanç"
+        }
+      ],
+      "year": 2024,
+      "abstract": "The number of attacks against Industrial Internet of Things (IIoT) devices has increased over the past years, particularly on widely used communication protocols like Message Queuing Telemetry Transfer (MQTT). The fast increase in IIoT applications brings both critical challenges and technical gaps in cybersecurity. On the other hand, traditional cyber‐attack detection approaches scrap to address and support the run‐time responsibilities of IIoT environments. This study presents a hybrid Genetic Algorithm and Random Forest (GA_RF) method for detecting cyber‐attacks in Industrial Control Machines (ICS) that use MQTT protocol in the IIoT environment. This architecture integrates ICS with edge devices and cloud servers, using a GA_RF algorithm to detect anomalies in data collected by sensors. Normal data is processed locally and then sent to the cloud for storage and return, ensuring continuous monitoring and security. Also, the MQTT‐IOT‐IDS2020 dataset as a real test case was applied for prediction of the proposed GA_RF method with compare to some other powerful machine and deep learning models. The experimental results show that the proposed GA_RF method has an optimum accuracy of 99.87%–100% for detecting cyber‐attacks. This hybrid algorithm also achieved 0–0.0015 in Mean Absolute Error (MAE) and 100% in Precision, Recall, and F‐score factors. This result led to the proposed architecture, which connects the ICS to a server while running GA_RF on the IIoT environment. In conclusion, this study indicates the effectiveness of GA_RF and aims to improve security by using the MQTT protocol in IIoT.",
+      "citationCount": 12,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "68c8668424107dbf9dc7ead34d060187e14f3673",
+      "doi": "10.1109/ICAC3N56670.2022.10074552",
+      "title": "Satellite Design for CANSAT with Autorotatig payloads",
+      "authors": [
+        {
+          "name": "Prakhar Shukla"
+        },
+        {
+          "name": "Raj Mishra"
+        },
+        {
+          "name": "Uzair Ahmad Sardar"
+        },
+        {
+          "name": "B. Mohapatra"
+        }
+      ],
+      "year": 2022,
+      "abstract": "This research work aims to design a miniature satellite while keeping within the guidelines provided for CANSAT Competition 2021. This model exhibits some of the basic functioning of an actual satellite including the real time telemetry, receiving commands, performing some basic tasks and collect information from its surroundings. The effectiveness of this satellite relies on economical, physical and technical factors. It demonstrates complete working of a man-made satellite including carrying an objective oriented payload and it’s separate functioning. Since it is a model, to ensure its proper functioning and robustness, it will be launched to a height of 725m with the help of a rocket.",
+      "citationCount": 8,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "277ac5e451bd464f36d33ee34628f4fb27b35d2d",
+      "doi": "10.3390/s24165099",
+      "title": "Optimized Radio Frequency Footprint Identification Based on UAV Telemetry Radios",
+      "authors": [
+        {
+          "name": "Yuan Tian"
+        },
+        {
+          "name": "Hong Wen"
+        },
+        {
+          "name": "Jiaxin Zhou"
+        },
+        {
+          "name": "Zhiqiang Duan"
+        },
+        {
+          "name": "Tao Li"
+        }
+      ],
+      "year": 2024,
+      "abstract": "With the widespread use of unmanned aerial vehicles (UAVs), the detection and identification of UAVs is a vital security issue for the safety of airspace and ground facilities in the no-fly zone. Telemetry radios are important wireless communication devices for UAVs, especially in UAVs beyond the visual line of sight (BVLOS) operating mode. This work focuses on the UAV identification approach using transient signals from UAV telemetry radios instead of the signals from UAV controllers that the former research work depended on. In our novel UAV Radio Frequency (RF) identification system framework based on telemetry radio signals, the EC−α algorithm is optimized to detect the starting point of the UAV transient signal and the detection accuracy at different signal-to-noise ratios (SNR) is evaluated. In the training stage, the Convolutional Neural Network (CNN) model is trained to extract features from raw I/Q data of the transient signals with different waveforms. Its architecture and hyperparameters are analyzed and optimized. In the identification stage, the extracted transient signals are clustered through the Self-Organizing Map (SOM) algorithm and the Clustering Signals Joint Identification (CSJI) algorithm is proposed to improve the accuracy of RF fingerprint identification. To evaluate the performance of our proposed approach, we design a testbed, including two UAVs as the flight platform, a Universal Software Radio Peripheral (USRP) as the receiver, and 20 telemetry radios with the same model as targets for identification. Indoor test results show that the optimized identification approach achieves an average accuracy of 92.3% at 30 dB. In comparison, the identification accuracy of SVM and KNN is 69.7% and 74.5%, respectively, at the same SNR condition. Extensive experiments are conducted outdoors to demonstrate the feasibility of this approach.",
+      "citationCount": 7,
+      "openAccess_pdf": {
+        "url": "https://doi.org/10.3390/s24165099"
+      }
+    },
+    {
+      "paperId": "16b014caa6d670b7a28cc5f4bd82ea9784df1d0e",
+      "doi": "10.1002/ece3.997",
+      "title": "Testing the consistency of wildlife data types before combining them: the case of camera traps and telemetry",
+      "authors": [
+        {
+          "name": "V. Popescu"
+        },
+        {
+          "name": "P. Valpine"
+        },
+        {
+          "name": "R. Sweitzer"
+        }
+      ],
+      "year": 2014,
+      "abstract": "Wildlife data gathered by different monitoring techniques are often combined to estimate animal density. However, methods to check whether different types of data provide consistent information (i.e., can information from one data type be used to predict responses in the other?) before combining them are lacking. We used generalized linear models and generalized linear mixed-effects models to relate camera trap probabilities for marked animals to independent space use from telemetry relocations using 2 years of data for fishers (Pekania pennanti) as a case study. We evaluated (1) camera trap efficacy by estimating how camera detection probabilities are related to nearby telemetry relocations and (2) whether home range utilization density estimated from telemetry data adequately predicts camera detection probabilities, which would indicate consistency of the two data types. The number of telemetry relocations within 250 and 500 m from camera traps predicted detection probability well. For the same number of relocations, females were more likely to be detected during the first year. During the second year, all fishers were more likely to be detected during the fall/winter season. Models predicting camera detection probability and photo counts solely from telemetry utilization density had the best or nearly best Akaike Information Criterion (AIC), suggesting that telemetry and camera traps provide consistent information on space use. Given the same utilization density, males were more likely to be photo-captured due to larger home ranges and higher movement rates. Although methods that combine data types (spatially explicit capture–recapture) make simple assumptions about home range shapes, it is reasonable to conclude that in our case, camera trap data do reflect space use in a manner consistent with telemetry data. However, differences between the 2 years of data suggest that camera efficacy is not fully consistent across ecological conditions and make the case for integrating other sources of space-use data.",
+      "citationCount": 39,
+      "openAccess_pdf": {
+        "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/ece3.997"
+      }
+    },
+    {
+      "paperId": "5e00c2eb2c7438137a77e991510022744198a9ab",
+      "doi": "10.1109/JSEN.2024.3475813",
+      "title": "Wireless Telemetry for Characterization and Design of In-Tire Piezoelectric Energy Harvesting Systems",
+      "authors": [
+        {
+          "name": "C. Tamburini"
+        },
+        {
+          "name": "Matteo Pizzotti"
+        },
+        {
+          "name": "Leena Ryynänen"
+        },
+        {
+          "name": "Mika Penttilä"
+        },
+        {
+          "name": "A. Romani"
+        }
+      ],
+      "year": 2024,
+      "abstract": "The design of new generation of smart tire sensors directly powered by tire motion requires accurate information about electrical quantities related to electromechanical energy harvesters in realistic operating conditions. Transducers and circuits are not accessible inside tires, and it is difficult to predict theoretically or numerically their behavior. This article presents a characterization methodology for energy harvesters in tires based on wireless telemetry and on a series of specific measurements performed in an industrial-grade tire test machine. A Wi-Fi modular telemetry platform is designed for acquiring inside tires, at up to 14 kSa/s, open-circuit voltages up to ±160 V, and short-circuit currents up to ±18 mA, from piezoelectric transducers. A power estimation technique is executed locally to extract static power transfer characteristics. Measurements were performed in real-world conditions on commercial tires in an industrial drum test machine operated at controlled speeds up to 40 km/h and axial loads up to 3 kN. Among its contributions, this article analyzes the in-tire behavior of piezoelectric harvesters in terms of voltage, current, and power and reports reference data from a relevant test environment to support power converter circuit design. To characterize joint in-tire and energy-autonomous operation of piezoelectric transducers, power management circuits, and tire sensors, fully functional electronic systems are validated on-field by the proposed telemetry platform. Validated circuits include passive rectifiers (PRs) and synchronous electric charge extractors.",
+      "citationCount": 6,
+      "openAccess_pdf": {
+        "url": "https://doi.org/10.1109/jsen.2024.3475813"
+      }
+    }
+  ],
+  "output_metadata": {
+    "extracted_at": "2026-06-11T14:31:29.724249"
+  }
+}

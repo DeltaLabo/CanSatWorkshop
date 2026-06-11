@@ -1,0 +1,34 @@
+{
+  "url": "https://everyspec.com/MIL-STD/MIL-STD-0800-0899/MIL-STD-810H_55998/",
+  "saved_at": "2026-06-11T20:40:40.788043+00:00",
+  "reason": "confidence_below_0.55",
+  "warnings": [],
+  "final_url": "https://everyspec.com/MIL-STD/MIL-STD-0800-0899/MIL-STD-810H_55998/",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "content_length_header": "9285",
+  "response_headers": {
+    "Content-Type": "text/html; charset=UTF-8",
+    "Content-Length": "9285",
+    "Connection": "keep-alive",
+    "Date": "Thu, 11 Jun 2026 20:40:40 GMT",
+    "Server": "Apache/2.4.18 (Ubuntu)",
+    "Content-Encoding": "gzip",
+    "Vary": "Accept-Encoding",
+    "X-Cache": "Miss from cloudfront",
+    "Via": "1.1 52ae716a40a076f1b26575b846ef3f98.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Pop": "MIA50-P7",
+    "X-Amz-Cf-Id": "Y1a6j4xgqIOiCD6unUtOnP-XdG9Nl8AWzw8ku4cuM1DbLEDB3MAAVw=="
+  },
+  "extraction": {
+    "parser": "trafilatura-markdown",
+    "title": "MIL-STD-810H, DEPARTMENT OF DEFENSE TEST METHOD STANDARD: ENVIRONMENTAL ENGINEERING CONSIDERATIONS AND LABORATORY TESTS (31-JAN-2019) (65 MB)",
+    "confidence": 0.526,
+    "word_count": 109,
+    "metadata": {
+      "date": "2009-01-01",
+      "description": "Title: MIL-STD-810, Version: H, Date: 2019-Jan-31, Status: Active, Desc: ENVIRONMENTAL ENGINEERING CONSIDERATIONS AND LABORATORY TESTS (31-JAN-2019) (65 MB)",
+      "sitename": "everyspec.com"
+    }
+  }
+}

@@ -1,0 +1,1377 @@
+The CanSat book has been created for the Dutch CanSat Competition.
+This tutorial shows how to build a basic CanSat from scratch, using the ESERO NL CanSat-kit.
+First we describe how to get the Arduino board up and running. Then we discuss the primary mission and
+how to make sure that you extract the necessary data.
+
+Together with the Dutch CanSat Competition Guidelines, you now have all the information needed to start
+your CanSat project!
+
+
+
+
+Colofon
+
+The CanSat Book has been written by Frank Hagenaars on behalf of ESERO NL. It is based on the work of
+Thomas Gansmoe, Stian Vik Mathisen and Jøran Grande from NAROM, together with Jens F. Dalsgaard
+Nielsen from Aalborg University and Nils Kristian Rossing from the Norwegian University of Science and
+Technology published at: esero.no/wp-content/uploads/2015/11/The-CanSat-Book-R2.12.compressed.pdf.
+
+The CanSat kit used in this book has been developed by Fun met Electronica and is based on the NAROM
+CanSat Kit.
+
+CanSat is an ESERO NL project, executed by NEMO on the instructions of the Netherlands Space Office
+(NSO).
+
+Photography cover: DigiDaan.
+
+
+
+
+Version: Sept 2023                                                                                    2
+Introduction to CanSat ...................................................................................................................................................5
+    What is a CanSat? ....................................................................................................................................................5
+    The CanSat kit ...........................................................................................................................................................6
+        Contents of the kit .................................................................................................................................................6
+Arduino ............................................................................................................................................................................8
+    Connecting the Arduino ............................................................................................................................................9
+    Programming the Arduino ..................................................................................................................................... 10
+        1.       Blink ............................................................................................................................................................ 10
+        2.       Measuring analog voltage with Arduino................................................................................................. 11
+        3.       Measuring light intensity and temperature ............................................................................................ 13
+        4.       Measuring barometric air pressure and temperature with BMP280 module .................................... 14
+        5.       Gathering data from the serial port ........................................................................................................ 16
+Assembly ...................................................................................................................................................................... 18
+    Tools and requirements ......................................................................................................................................... 18
+    The shield ................................................................................................................................................................ 19
+        1.       Solder the pin headers onto the BMP280 sensor ................................................................................ 19
+        2.       Solder pin headers to the prototyping shield ........................................................................................ 21
+        3.       Solder the power switch to the shield .................................................................................................... 23
+        4.       Attach APC220 and BMP280 to the shield ........................................................................................... 24
+        5.       Soldering the female pinheader to the shield ....................................................................................... 25
+        6.       Solder the battery connector to the shield............................................................................................. 25
+        7.       Powering Arduino ..................................................................................................................................... 26
+        8.       Connecting the BMP280 to the shield ................................................................................................... 26
+        9.       Connecting the APC220 to the shield .................................................................................................... 27
+        10.          Connecting the shield to the Arduino board ..................................................................................... 28
+    Testing Arduino/BMP280 ...................................................................................................................................... 29
+    Setting up the APC220 .......................................................................................................................................... 30
+        Programming the transceivers to work with Arduino .................................................................................... 30
+    Testing APC220...................................................................................................................................................... 32
+        APC220 and CanSat ......................................................................................................................................... 32
+        APC220 on ground station ............................................................................................................................... 34
+        Gathering data at your ground station ............................................................................................................ 34
+    How to make an Arduino code for your missions............................................................................................... 34
+    Back Ground Information ...................................................................................................................................... 35
+    Altitude calculations ............................................................................................................................................... 35
+    Antenna design ....................................................................................................................................................... 37
+
+
+Version: Sept 2023                                                                                                                                                               3
+      Modulation .......................................................................................................................................................... 37
+      APC220 ............................................................................................................................................................... 37
+      Antennas ............................................................................................................................................................. 37
+      CanSat Antenna ................................................................................................................................................. 38
+      Ground station antenna..................................................................................................................................... 38
+  Parachute design.................................................................................................................................................... 39
+      Parachute production ........................................................................................................................................ 39
+      Example assignments ....................................................................................................................................... 39
+      Descent physics ................................................................................................................................................. 39
+      Required descent parameters .......................................................................................................................... 40
+      Semi-spherical parachute design .................................................................................................................... 41
+      Cross parachute design .................................................................................................................................... 41
+      Parapent .............................................................................................................................................................. 41
+      Flat parachute design ........................................................................................................................................ 42
+      Other recovery systems .................................................................................................................................... 42
+  CanSat Competition tips ........................................................................................................................................ 44
+  Outreach programme & communication ............................................................................................................. 45
+      Public relations and free publicity .................................................................................................................... 45
+      Basic information about the project & partners .............................................................................................. 45
+      Social Media ....................................................................................................................................................... 45
+      Website/blog ....................................................................................................................................................... 45
+      Press .................................................................................................................................................................... 45
+
+
+
+
+Version: Sept 2023                                                                                                                                                            4
+Introduction to CanSat
+What is a CanSat?
+A Canned Satellite (CanSat) is designed to simulate a real satellite, integrating all the elements of a real
+satellite into a space the size of a soda can. The challenge for students is to fit all the major subsystems found
+in real satellites into this small volume including a propulsion system, sensors, and a communication system.
+When finished, the CanSat will be launched to an altitude of one kilometer by a delegated rocket to begin its
+mission, concluded with a safe landing. During the flight, the CanSat will use radio communication to transmit
+data to a ground station.
+
+CanSats offer a unique opportunity for first-hand practical experience in space projects and the scientific
+experimentation process. The students will be responsible for all aspects of the project, including the design
+of the CanSat, selecting its missions, integrating the components and subsystems, testing and preparing for
+launch, and data analysis.
+
+
+
+
+Version: Sept 2023                                                                                            5
+The CanSat kit
+The CanSat kit used in the Dutch competition consists of an Arduino Uno R3 board and a universal prototyping
+shield.
+
+Contents of the kit
+The kit contains all the electronic components necessary for the CanSat’s primary mission.
+
+
+
+
+ Arduino Uno R3 (2x)
+ The core of the Arduino system, which contains the
+ microcontroller, I/O ports, etc.
+
+
+
+
+ Universal prototyping shield
+ The prototyping shield serves as the backbone of the system. It
+ connects and holds all the parts together.
+
+
+
+
+ APC220 Radio transmitter/receiver (transceiver)
+ The transceiver is used to transmit/receive radio signals between
+ the ground station and the CanSat.
+
+
+
+
+ BMP 280 Module
+ This sensor module measures Barometric pressure and
+ temperature
+
+
+
+
+ Male header
+
+
+
+
+ Female header
+
+
+
+
+Version: Sept 2023                                                                                       6
+ Battery connector
+
+
+
+
+ Several different colour wires
+
+
+
+
+ CanSat assembly kit
+ This kit contains all the parts required for the structure of the
+ CanSat
+
+
+
+
+The prototyping shield is designed to fit on top of the Arduino board. More information can be found at:
+https://shop.funmetelectronica.nl/product-categorie/cansat/
+
+
+
+
+Version: Sept 2023                                                                                   7
+Arduino
+To carry out its primary mission during descent, the CanSat has to measure barometric air pressure and
+temperature. The relevant sensors must be connected to an Arduino board. The Arduino board processes
+the sensor signals. The data Arduino produces is sent by radio signals to a ground station .
+
+You will use this as the core of the CanSat.
+
+Arduino is an open-source electronics platform based on easy-to-use hardware and software. Arduino boards
+are able to read inputs from a sensor and turn them to output. You can instruct your board on what to do by
+sending a set of instructions to the microcontroller on the board.
+
+To get started with Arduino, follow these next steps.
+
+
+
+First take a close look to the Arduino R3:
+
+USB: The USB connection can do two things.
+Firstly, it can provide power to the Arduino from
+the computer. Secondly, it can communicate
+with the computer.
+
+TX/RX:     If   effective   uploading    and
+communication cannot be achieved through the
+USB port, pins D0 and D1 can also be used.
+
+Power in: If the USB is not used as a power
+supply, the power jack (5.5mm-2.1mm) or the
+power pins Vin and GND can be used. Arduino
+can manage power with a range of 5-20V.
+
+Power out: Powering the external components
+can be done via the power pins 5V and 3.3V.
+The maximum current is 1A.
+
+Analog in: Arduino can read analogue voltage from 0V to 5V.
+
+Digital in/out: These pins can be declared as input pins or output pins. If used as an input pin, it can read
+input voltage: <2.5V is LOW, >2.5V is HIGH. When using it as an output pin, LOW is 0V, HIGH is 5V. Pin 3,
+5, 6, 9, 10 and 11 can provide a PWM signal.
+
+You can program the Arduino with Arduino IDE. You can download Arduino IDE at
+www.arduino.cc/en/Main/Software
+
+
+
+
+Version: Sept 2023                                                                                       8
+Connecting the Arduino
+Make sure you installed Arduino IDE properly. Open Arduino IDE and connect the Arduino UNO by USB. If
+drivers are properly installed, the computer recognises the Arduino board.
+
+Go to ‘Hulpmiddelen’ and connect the COM-port of the Arduino board by following the figure below.
+
+
+
+
+In this example, it is COM3.
+
+
+
+
+Version: Sept 2023                                                                                  9
+Programming the Arduino
+The first sketch in Arduino is ‘Blink’.
+
+You can find ‘Blink’ on ‘Bestand > Voorbeelden > Basic > Blink’.
+
+
+
+
+Read the text from this sketch.
+
+    1. Blink
+Turns on an LED for one second, then off for one second, repeatedly. Most Arduinos have an on-board LED
+you can control. On the Uno, it is attached to digital pin 13.
+
+ // the setup function runs once when you press reset or power the board
+ void setup() {
+   // initialize digital pin 13 as an output.
+   pinMode(13, OUTPUT);
+ }
+ // the loop function runs over and over again forever
+ void loop() {
+   digitalWrite(13, HIGH); // turn the LED on (HIGH is the voltage level)
+   delay(1000);              // wait for a second
+   digitalWrite(13, LOW); // turn the LED off by making the voltage LOW
+   delay(1000);              // wait for a second
+ }
+
+When pressing Upload, you can see the upload progress at the right bottom.
+
+
+
+
+Try to speed up the blinking LED. Each time you make a change to the code, do not forget to upload the new
+code. The new code overwrites the old code in the Arduino.
+
+
+
+Version: Sept 2023                                                                                     10
+    2. Measuring analog voltage with Arduino
+The second sketch is ‘ReadAnalogVoltage’. The illustration shows you how to find this sketch:
+
+
+
+
+For this sketch, you need to apply external components. In an experimental setting, you can use a breadboard
+and jumper wires. Most components can be placed directly on the breadboard. To generate a variable voltage,
+you have to use a 10KΩ potentiometer. See picture below.
+
+
+
+
+Let’s take a look at this sketch:
+
+ReadAnalogVoltage
+
+Reads an analog input on pin 0, converts it into voltage and prints the result to the serial monitor. Graphical
+representation is available using serial plotter (Tools > Serial Plotter menu).
+
+
+
+
+Version: Sept 2023                                                                                         11
+Attach the centre pin of a potentiometer to pin A0 and the outside pins to +5V and ground.
+
+ // the setup routine runs once when you press reset:
+ void setup() {
+   // initialize serial communication at 9600 bits per second:
+   Serial.begin(9600);
+ }
+
+ // the loop routine runs over and over again forever:
+ void loop() {
+   // read the input on analog pin 0:
+   int sensorValue = analogRead(A0);
+   // Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 5V):
+   float voltage = sensorValue * (5.0 / 1023.0);
+   // print out the value you read:
+   Serial.println(voltage);
+ }
+
+Do not forget to turn on the serial monitor (button on the top-right).
+
+
+
+
+When you are running this sketch on the Arduino, you can read the voltage on the serial monitor. Try to
+change the speed of measuring the values on A0. Create a delay of 1000 milliseconds.
+
+You can see the values in the serial monitor.
+
+
+
+
+Using the potentiometer, you can make any voltage on the centre pin between 0 – 5V. The main resistor of
+10KΩ is cut into two pieces, the ratio of these two pieces can be adjusted by turning the potentiometer. In this
+way, you can provide a voltage between 0 – 5 V on the centre pin.
+
+Learn more about a voltage divider at: https://en.wikipedia.org/wiki/Voltage_divider
+
+We can do more with this knowledge.
+
+
+
+
+Version: Sept 2023                                                                                          12
+    3. Measuring light intensity and temperature
+If we use one fixed resistor and one variable resistor, we can make a variable voltage. With a LDR (light
+depending resistor), we can measure light intensity and with a NTC or PTC, we can measure temperature.
+
+Keep the same code (ReadAnalogVoltage) and make a new circuit with the LDR and NTC.
+
+
+
+
+Measure light intensity and temperature. Try to change the code to adapt the values in the serial monitor.
+
+
+
+
+Version: Sept 2023                                                                                           13
+    4.   Measuring barometric air pressure and temperature with BMP280 module
+
+In the primary mission, your job is to measure barometric air pressure and temperature. The CanSat kit
+contains a module, the BMP280. This module can measure pressure and temperature. The working voltage
+of this module is 3.3 V. Check this in the wiring diagram. If you want to use it with the Arduino IDE, you will
+need a library. The Arduino IDE can be extended through the use of libraries to provide extra functionality to
+your sketches. Most libraries come with example sketches. You can find the libraries in the CanSat download
+files. Copy the folder “Adafruit_BMP280” and “Adafruit_Sensor-master” into the “libraries” folder in “Arduino”
+– “My Documents”, Exit and restart Arduino IDE.
+You can now find the example sketch bmp280test:
+
+
+
+
+Wire the BMP280 module:
+
+    1.   VCC              3.3V
+    2.   GND              GND
+    3.   SCK/SCL          D13
+    4.   SDA/SDI          D11
+    5.   CSB              D10
+    6.   SDO              D12
+
+
+
+
+Version: Sept 2023                                                                                         14
+In the sketch, you have to ‘double forward slash’ and ‘unslash’ some lines.
+
+
+ #define BMP_CS 10
+
+ Adafruit_BMP280 bmp; // I2C
+ //Adafruit_BMP280 bmp(BMP_CS); // hardware SPI
+ //Adafruit_BMP280 bmp(BMP_CS, BMP_MOSI, BMP_MISO, BMP_SCK);
+
+ void setup() {
+
+
+To:
+
+
+ #define BMP_CS 10
+
+ //Adafruit_BMP280 bmp; // I2C
+ //Adafruit_BMP280 bmp(BMP_CS); // hardware SPI
+ Adafruit_BMP280 bmp(BMP_CS, BMP_MOSI, BMP_MISO, BMP_SCK);
+
+ void setup() {
+
+
+
+Now you can upload the sketch and open the serial port.
+
+
+
+
+Version: Sept 2023                                                            15
+     5. Gathering data from the serial port
+If you want to use the data from the serial port, you can gather the data by using “CoolTerm”. CoolTerm is a
+simple serial port terminal application that is able to exchange data with hardware connected to serial ports
+such as microcontrollers (Arduino Uno).
+
+You can download it at freeware.the-meiers.org/. You can choose the download file for your operating system.
+
+If you connect the Arduino Uno with the BMP280 sensor and example sketch, you can get the data via
+CoolTerm. First you must set the properties for the connection.
+
+Go to: Connection > Options.
+
+
+
+
+Press the button “Re-Scan Serial Ports”. In the dropdown menu “Port”, choose the com-port of your Arduino
+Uno and click OK. You can now hit the button “Connect” in the main dashboard.
+
+
+
+
+Version: Sept 2023                                                                                       16
+You can save this data to a text file. Go to: Connection > Capture to Textfile > Start. The text file can be
+imported into Excel or other spreadsheet software. If you want to use the data more easily, you can change
+the code in the sketch first.
+
+
+
+
+Note: If you want to use “CoolTerm”, you have to close the serial monitor on the Arduino IDE, because only
+one program can connect to a serial port at one time.
+
+
+
+
+Version: Sept 2023                                                                                       17
+Assembly
+By following these guidelines, you can assemble the prototyping shield. This shield keeps the main
+components together. For your primary mission you will need a:
+
+    1.   External power source
+    2.   Power switch
+    3.   Radio transmitter
+    4.   Temperature sensor
+    5.   Pressure sensor
+
+Tools and requirements
+The tools required to assemble are those required for soldering hobby electronics. We recommend using the
+following equipment during the assembly process:
+
+   Pliers
+   Soldering iron and solder. It is important that the solder
+    contains a flux core (this will facilitate the soldering).
+   Optional but recommended: flux remover (to clean flux
+    residue).
+   Optional: a third hand, which is very convenient if you’d
+    otherwise be alone while doing the assembly.
+   Optional: a solder wick remover in case you make a mistake
+    and want to unsolder the components.
+   Optional: extra flux (e.g. in a pen dispenser). This element is
+                                                                                        Third hand
+    optional but can help soldering the voltage regulator, which is
+    surface mounted.
+
+
+
+Note: The assembly requires basic soldering skills. Be careful though, you are working with pretty delicate
+electronics. If you do not have much experience with soldering microelectronics, you should practice first
+before you start soldering the CanSat components to the prototyping shield. Consult these suggested tutorials
+to familiarise yourself with soldering if needed:
+
+Short but very informative soldering tutorial: www.youtube.com/watch?v=f95i88OSWB4
+
+Extended soldering tutorial:
+
+         Part 1 - Tools: www.youtube.com/watch?v=J5Sb21qbpEQ&feature=youtu.be
+
+         Part 2 - Basic techniques: www.youtube.com/watch?v=fYz5nIHH0iY&feature=youtu.be
+
+         Part 3 - Surface Mount: www.youtube.com/watch?v=b9FC9fAlfQE&feature=youtu.be
+
+
+
+
+Version: Sept 2023                                                                                       18
+The shield
+The final product we will be working towards will look like this:
+
+
+
+
+Figure: The shield is mounted on top of the Arduino UNO board. The battery holder, power switch, the
+transceiver (APC220) and the pressure/temperature sensor (BMP280) are mounted on top of the shield.
+
+     1. Solder the pin headers onto the BMP280 sensor
+We will be soldering the headers to the BMP280 sensor. Use the male pin headers included in the plastic bag
+in your start kit. Place the shorter ends of the headers through the holes.
+
+
+
+
+Version: Sept 2023                                                                                      19
+Place the pin headers and the BMP280 on a breadboard.
+
+
+
+
+ Preheat the two components briefly                Add a small amount of solder
+
+
+
+
+ Done! Next step
+
+
+
+
+Version: Sept 2023                                                                20
+    2. Solder pin headers to the prototyping shield
+Now that you have had some practice in soldering headers, solder the headers of the prototyping shield. Use
+the male headers. These have to be cut apart into 4 blocks; 1 x 6 pins, 2 x 8 pins and 1 x 10 pins.
+
+
+
+
+The long part of the pins needs to be placed through the Arduino UNO board.
+
+
+
+
+Place the shield on top of it. Adjust the top of the pins so that they are aligned with the top of the shield.
+
+Note: the text printed on the shield is on top.
+
+
+
+
+Version: Sept 2023                                                                                               21
+Solder the pins to get something like the shield above.
+
+The pins on the Arduino are now attached to the shield. You can see through the shield which pins are
+connected to which holes. The rest of the holes are not connected to other holes. If you want, you may have
+to wire it yourself.
+
+Take a look at the shield. The holes are placed in a grid of 0.1” (2.45mm).
+
+
+
+
+The red hole is on position (1,1), blue (4,2) and black (C,4).
+
+
+
+
+Version: Sept 2023                                                                                     22
+    3.   Solder the power switch to the shield
+
+
+The next step involves the power switch.
+
+In order to solder the power switch on holes (2,1), (2,2) and (2,3) you must bend the switch’s pins. This will
+allow you to solder the switch onto the top of the shield.
+
+
+
+
+Version: Sept 2023                                                                                         23
+    4.   Attach APC220 and BMP280 to the shield
+
+
+To attach the transceiver APC 220 and the BMP280 to the shield, you need to solder two female pinheaders:
+1 x 6 pins and 1 x 7 pins. First you have to cut/break the pinheaders. Before you can break the pinheaders,
+you have to make a cut, so it breaks at the right place. Note that you’ll lose one pin by breaking the header.
+You can make the cut with a sharp knife. Cut the header on both sides before breaking. Clean the edge with
+the same knife.
+
+
+
+
+Version: Sept 2023                                                                                        24
+    5.   Soldering the female pinheader to the shield
+
+
+The positioning of the headers is very important and the layout of the shield is tight. The 7 pinheader is for
+the APC220. Its position is from (2,6) to (8,6). The 6 pinheader is for the BMP280. Its position is from (3,5) to
+(8,5). You can place the headers on top of the shield and solder it on the bottom side.
+
+
+
+
+     6. Solder the battery connector to the shield
+The next component to be soldered to the board is the battery connector. This is also a tricky step since the
+board hole is bigger than the battery connector metal conductor. Use a third hand (or ask somebody to help
+you) to place everything in the right position and solder. Be careful not to burn your assistant with the soldering
+iron!
+
+The red wire has to be positioned in (3,2). At the bottom side you have to connect the same wire with (2,2)!
+The black wire is positioned in (2,5). At the bottom side you have to connect the same wire with (2,6)!
+
+
+
+
+Version: Sept 2023                                                                                             25
+    7. Powering Arduino
+The power switch on the shield can turn the power from the battery to Arduino on and off. Arduino is powered
+by two pins: Vin and GND. You have to solder two wires: one red wire from the power switch ((3,1) top, (2,1)
+bottom) to Vin ((I,18) top), one black wire from ((2,4) top, (2,5) bottom) to GND ((I,17) top).
+
+
+
+
+    8.   Connecting the BMP280 to the shield
+
+
+You already used the sample code for BMP280. You can wire the BMP280 at the same pins. You can use 6
+different colour wires.
+
+ BMP280       wire colour     top            down           Arduino          top               down
+ VCC          red             (8,4)          (8,5)          3.3V             (I,14)            N/A
+ GND          black           (7,4)          (7,5)          GND              (H,17)            (I,17)
+ SCK/SCL      brown           (6,4)          (6,5)          D13              (3,12)            N/A
+ SDA/SDI      white           (5,4)          (5,5)          D9               (3,16)            N/A
+ CSB          purple          (4,4)          (4,5)          D8               (3,17)            N/A
+ SDO          yellow          (3,4)          (3,5)          D12              (3,13)            N/A
+
+
+
+
+Version: Sept 2023                                                                                      26
+    9.   Connecting the APC220 to the shield
+
+
+The 7 pin female header can only be wired with 4 wires; 3 should be left over. You can use any 4 different
+colour wires.
+
+ APC220      wire colour    top             down           Arduino         top              down
+ SET         xxxx           xxxx            xxxx           xxxx            xxxx             xxxx
+ AUX         xxxx           xxxx            xxxx           xxxx            xxxx             xxxx
+ TXD         brown          (6,7)           (6,6)          RX/D10          (3,15)           N/A
+ RXD         orange         (5,7)           (5,6)          TX/D11          (3,14)           N/A
+ EN          xxxxx          xxxxx           xxxxx          xxxxx           xxxx             xxxxx
+ VCC         red            (3,7)           (3,6)          5V              (I,15)           N/A
+ GND         black          This wiring is combined with black wire battery holder
+
+
+
+
+ The shield is finished! How do you connect it
+ to the Arduino board?
+
+
+
+
+Version: Sept 2023                                                                                     27
+    10. Connecting the shield to the Arduino board
+
+
+Before you can connect the shield to the top of the Arduino board you have to
+check all the connections you’ve made. If you are sure everything is OK, you
+can go ahead and place the shield carefully on the Arduino. Once you’ve done
+this place the BMP280 module on top of it. Do not place the APC220 and/or
+batteries on it! If you place a battery on it, make sure the power switch is
+in the top/off position.
+
+
+
+
+Version: Sept 2023                                                              28
+Testing Arduino/BMP280
+
+Open the file bmp280test in Arduino IDE as shown below
+
+
+
+
+First we make some changes to this sample file. We change the pin connections of D10 to D8 and D11 to
+D9:
+
+
+ #include <Adafruit_Sensor.h>                                            #include <Adafruit_Sensor.h>
+ #include <Adafruit_BMP280.h>                                            #include <Adafruit_BMP280.h>
+
+ #define BMP_SCK 13                                                      #define BMP_SCK 13
+                                                       To:
+ #define BMP_MISO 12                                                     #define BMP_MISO 12
+ #define BMP_MOSI 11                                                     #define BMP_MOSI 9
+ #define BMP_CS 10                                                       #define BMP_CS 8
+
+ Adafruit_BMP280 bmp; // I2C                                             Adafruit_BMP280 bmp; // I2C
+
+In the sketch, you also have to ‘double forward slash’ and ‘unslash’ lines.
+
+
+ #define BMP_CS 10
+
+ Adafruit_BMP280 bmp; // I2C
+ //Adafruit_BMP280 bmp(BMP_CS); // hardware SPI
+ //Adafruit_BMP280 bmp(BMP_CS, BMP_MOSI, BMP_MISO, BMP_SCK);
+
+ void setup() {
+
+To:
+
+
+ #define BMP_CS 10
+
+ //Adafruit_BMP280 bmp; // I2C
+ //Adafruit_BMP280 bmp(BMP_CS); // hardware SPI
+ Adafruit_BMP280 bmp(BMP_CS, BMP_MOSI, BMP_MISO, BMP_SCK);
+
+ void setup() {
+
+With the APC220 disconnected and the power switch in the off position, you can upload the BMP280 sample
+file to test a measurement in the serial monitor. If you close the serial monitor, you can also test the data in
+‘CoolTerm’.
+
+
+
+
+Version: Sept 2023                                                                                          29
+Setting up the APC220
+
+Telemetry is a technology that allows for the transmission of
+data from remote measurement devices. Information is
+transmitted wirelessly using radio waves. On the ground,
+these signals are collected by radio receivers. Telemetry is an
+essential part of satellite technology.
+
+A transceiver is a device comprising both a transmitter and a
+receiver that are combined in a single housing.
+
+In the CanSat program we use APC220, which is a
+transceiver with a highly versatile low power radio solution
+that is easy to set up, integrating seamlessly into any project
+requiring a wireless RF link.
+
+You can connect one of these modules to your microcontroller on the CanSat and can connect your “ground
+station” APC220 module to a second microcontroller; this second microcontroller to be connected with your
+PC/Laptop.
+
+Programming the transceivers to work with Arduino
+To set up the APC220 first connect the Arduino board to the computer and upload the program
+“apc220cfg.ino” onto it. Make sure you upload the program before you try to connect the transceiver to
+the Arduino board. Disconnect the USB cable from the Arduino board and connect the transceiver to the
+Arduino as shown in the figure.
+
+
+
+
+The transceiver will be connected to the pins labelled GND, 8,9,10,11,12 and 13 on the Arduino. Reconnect
+the Arduino board through the USB cable and open the Serial Monitor. In the command tab along the top type
+in ‘m’ and hit enter. This will bring up the menu shown in the figure.
+
+
+
+
+Version: Sept 2023                                                                                     30
+If you type ‘r’ into this search bar and hit enter the program will return to the current configuration for the
+transceiver. To reconfigure the radio, type ‘w’ and the 5 parameters needed, with space between each
+parameter.
+
+The first parameter will be frequency, range 418000 –
+455000. For your CanSat, you will get your team frequency
+from the CanSat organisation. The figure shows an
+example list of frequencies.
+
+The second parameter is RF data rate: 1/2/3/4 equals
+2400/4800/9600/19200bps. The lower RF data rate
+increases the transmission range.
+
+The third parameter is Radio output power. You’ll likely see
+0                           ..                            9.
+ where 9 Equals 13dBm(20mW). 9 is its max power.
+
+The fourth parameter is UART baudrate: the 0/1/2/3/4/5/6
+you    see    there    correlates   with  a   bps     of
+1200/2400/4800/9600/19200/38400/57600bps.           The
+baudrate should ideal be set to 9600 bps.
+
+The last parameter is Byte Chek Parity: here 0/1/2 equals
+NoCheck(8N1) / EvenParity(8E1) / OddParity(8O1).
+
+Note that you have to configure both transceivers with the same settings to be able to use them
+simultaneously.
+
+Example entry: w 433100 3 9 3 0
+
+
+
+
+Version: Sept 2023                                                                                         31
+Testing APC220
+
+Finally, you can test the last electronic component of the CanSat kit: the APC220!!
+
+APC220 and CanSat:
+
+
+Connect the shield to the Arduino and connect the
+APC220 to the shield.
+
+
+
+
+To do this open ‘APC220_test’ sketch. Let’s take a look at this sketch.
+
+
+ #include <SoftwareSerial.h>
+ SoftwareSerial mySerial(10,11);//RX, TX
+ int number = 0;
+
+ void setup() {
+
+ Serial.begin(9600);
+  mySerial.begin(9600);
+
+ }
+
+ void loop() {
+ (number ++);
+ Serial.print ("APC220 test ");
+ Serial.println (number);
+ mySerial.print ("APC220 test ");
+ mySerial.println (number);
+ delay (1000);
+ }
+
+
+Using Software serial, we can make a virtual serial port on pins we can choose. We can now upload and
+check whether the serial monitor works now that the APC220 is connected. Arduino will communicate with
+APC220 through pins 10 and 11. Because of this it will even be possible to display findings in the serial
+monitor information in a non-wireless way. The sketch displays ‘APC220 test’ and an increasing number. This
+data is sent to the serial monitor via USB (Serial), the same data is sent via APC220 (mySerial).
+
+If you now upload the code and open the serial monitor you’ll be able to see your text and numbers displayed
+in the monitor. Close the serial monitor, disconnect the Arduino USB connection and power the Arduino by
+battery. With the power switch in the ‘ON’ position, the sketch will run again on the Arduino and APC220 will
+transmit text and numbers.
+
+
+
+Version: Sept 2023                                                                                       32
+Version: Sept 2023   33
+APC220 on ground station:
+Connect the second APC220 to the second Uno-this will be the
+“ground station-Uno”-and connect it to your computer.
+
+Open the sketch “APC220_groundstation_UNO”. Connect the
+APC220 as described in the sketch. Upload the sketch. If you
+are running the CanSat APC220 on battery, you can receive the
+test-data in the serial monitor of the ground station-Uno.
+
+
+
+Gathering data at your ground station:
+Close the serial monitor in Arduino IDE.
+
+Open CoolTerm, select the right serial port and connect.
+
+If your CanSat is transmitting and your second APC220 is
+connected, your ground station will receive data from it. In this
+case increasing numbers. Note that Coolterm can store data to
+a text file.
+
+If you receive increasing numbers, your test has succeeded!
+
+
+
+
+How to make an Arduino code for your missions
+
+Now that you have completed the electronic components of the CanSat for your base mission, you’re halfway
+done. This handbook does not provide the proper Arduino code for carrying out this mission fully. You have
+to make your own code for this by combining pieces of the code you used earlier. Try to keep the transmitted
+data to a minimum and try to prepare these data to import to Excel or other spreadsheet software. For
+instance: Use ‘comma’ or ‘space’ and ‘new line’ (println) in the data strings.
+
+Finally: Note that several Arduino pins are not connected. If you choose to add more missions, you can use
+these pins. You can add the connections by soldering them to the shield.
+
+
+
+
+Version: Sept 2023                                                                                      34
+Back Ground Information
+
+Altitude calculations
+The atmosphere is all around us. It is a thin gaseous layer surrounding our planet composed primarily of
+nitrogen (78%) and oxygen (21%). The remaining 1% consists of water vapour, CO2 and other trace gasses.
+The Earth’s atmosphere consists of different layers, each one having different properties (temperatures,
+pressure, composition, etc…).
+
+
+
+
+The different layers are represented along with the respective human and weather activities seen in these
+layers.
+
+Unlike our CanSat, most satellites operate in the exosphere. Here, the density of the atmosphere is extremely
+low. The CanSat, however, operates in the troposphere, which is the bottom layer of the atmosphere. This
+layer contains about 80% of the total mass of the atmosphere and stretches to about 10 kilometers altitude.
+A great deal of the “weather” we observe on a day-to-day basis (e.g. wind and clouds) occurs within this layer.
+
+The temperature and pressure of the atmosphere vary with altitude. Although the ambient temperature can
+rise and fall as you move through the different layers of the atmosphere, within the troposphere there is a
+
+
+Version: Sept 2023                                                                                         35
+linear relation between the temperature and altitude. On average, ascending one kilometer from sea level will
+result in a temperature drop of 6.5 degrees Celsius.
+
+The equation below provides the relation between temperature and altitude:
+
+
+                                                 =           1 +      (ℎ − ℎ1)
+
+                 Temperature in Kelvin
+         1       Starting temperature at ℎ1 altitude
+        ℎ        Altitude in metres
+        ℎ1       Starting altitude
+                 Temperature gradient: -0.0065 K/m.
+
+The relation between the pressure and the altitude is somewhat more complicated. The pressure not only
+depends on the altitude but also on the temperature. Let’s start with the relation of pressure to temperature:
+                                                                            g
+                                                                           – 0
+                                                                            αR
+                                                             =( )
+
+                                                         1            1
+
+
+                 Pressure in Pascal
+         1       Start pressure in Pascal
+
+         0
+                 Gravitational acceleration: 9.81m2
+                                                     s
+
+                 Specific gas constant: 287.06 J/kg*K
+
+Inserting this formula into the temperature-altitude relationship, we achieve the following expression for
+altitude as a function of temperature and pressure:
+                                                                      αR
+                                                 1                   –g
+                                            ℎ=       ((          )    0    — 1) + ℎ1
+
+                                                             1
+
+
+
+
+Version: Sept 2023                                                                                         36
+Antenna design
+Modulation
+Radio communication involves sending information from one place to another using electromagnetic waves,
+which are also called radio waves. Electromagnetic waves are generated at an antenna point when an
+alternating electric current is connected to it. The antenna transforms the electric current into electromagnetic
+waves. At the receiving end of the communication, the waves are transformed back into electric current by an
+antenna.
+
+ Using these radio waves to transfer information means that
+information needs to be added to the respective radio frequency
+that you are using. Adding this information is called modulation
+and can be done in several ways. The most basic way is to
+transmit a (carrier) frequency (called continuous wave (CW)
+communication). The most common form of CW is Morse code.
+The biggest drawback is that the information transfer rate-or baud
+rate-is very low.
+
+There are many other forms of modulation, such as AM and FM,
+which are used by radio stations. With AM (amplitude modulation),
+the information is made to change the amplitude of the carrier
+frequency. In FM (frequency modulation), the frequency of the
+carrier is changed. The advantage that FM has over AM is that the
+signal strength does not interfere with reception.
+
+
+
+APC220
+The APC220 transceiver in the CanSat supports various types of
+digital modulation. For this project we’ll be using Gaussian
+Frequency Shift Keying (GFSK) which transmits on a certain
+frequency if a logic 0 is transmitted and a different frequency if a
+logic 1 is transmitted.
+
+The quality of the radio link mainly depends on three aspects: the
+transmission power, the receiver sensitivity and the antennas
+used. The only aspect that can be influenced by the CanSat team
+is the antenna. The other aspects can be influenced, but that
+requires a different transmitter and receiver, which is beyond the
+scope of this project.
+
+
+
+Antennas
+There are two antennas used in receiving information from the CanSat: the first will be the antenna on board
+the CanSat, the second is the antenna used at the ground station. The antennas need to be made with
+different requirements, although the frequency of operation is similar for both antennas. The antenna on board
+the CanSat needs to be isotropic-or as much as you can make it-which means that it transmits the same
+amount of power in all directions. The antenna connected to the ground station can be pointed towards the
+CanSat, and it can therefore be made as a high-gain directional antenna, which receives more
+electromagnetic waves from one direction relative to another.
+
+
+
+
+Version: Sept 2023                                                                                           37
+CanSat Antenna
+The CanSat antenna needs to be robust enough to survive a rocket launch. For the CanSat, a quarter-wave
+wire antenna works very well. The quarter-wave describes the length of the antenna in reference to the
+operation frequency. The CanSat kit transmitter works at around 433 MHz. The precise frequency will depend
+somewhat on what team you are in. You will get your team frequency from the CanSat organisation. This is
+done to protect the teams from interference. The required length of the antenna can be calculated using the
+following equation:
+
+                                                     (3 ∗ 108)
+                                      =       =                     = 0.173
+                                          4       (4 ∗ 433 ∗ 106)
+
+in which
+
+           is the required antenna length (1/4 wavelength) in metres
+
+           is the speed of light (300,000 km/s) in metres per second
+
+           is the operating frequency in Hertz
+
+The formula shows that the length of the antenna for 433 MHz should be around 17.3 cm. The wire antenna
+that came with the CanSat kit should be this length exactly.
+
+
+
+Ground station antenna
+The ground station antenna can be pointed at the CanSat during flight, which means that it can also be a high
+gain directional antenna. The most popular antenna design of this type is the Yagi antenna. These are
+versatile, powerful and can be bought cheaply. For your CanSat, building a Yagi antenna is a good option.
+They can be constructed relative easily, using wood and copper tubes. There is plenty of information on the
+internet on building a Yagi antenna.
+
+
+
+
+Version: Sept 2023                                                                                       38
+Parachute design
+Satellites normally do not return to Earth on a parachute. At the end of its life, a satellite will be put into a
+different orbit. For satellites orbiting at a low altitude, this could result in burning up in the atmosphere.
+Satellites further away will end up in a much more distant “parking” orbit. They will circle our planet forever.
+Sometimes, however, a spacecraft has to return to earth with samples or astronauts. One of the solutions for
+a safe descend is to make use of a parachute.
+
+When the CanSat is deployed it must have a device to slow it down, otherwise it will crash. Using a parachute
+will also help to keep the CanSat in an upright position.This is particularly important because it helps to
+maintain proper antenna orientation, which maximises the chances of receiving telemetry. This section will
+guide you through the different steps needed to design and build your parachute.
+
+Parachute production
+When the design of the parachute is finished, you can start the production process. There are, however, a
+few important issues to keep in mind. Deployment of the parachute will be
+relatively violent, so the fabric and fibres you use need to be strong. You
+can usually reinforced buy nylon cord and ripstop fabric at a kite shop.
+These are not only inexpensive but they may help you immensely in
+strengthening your final parachute.
+
+When cutting the fabric, remember that some of the fabrics need to be
+folded back in order to sew seams.
+
+More handy tips on parachute production can be found at:
+www.nakka-rocketry.net/paracon.html
+
+When your parachute has been successfully completed, the next step will
+be to check if it works is to test it.
+
+Example assignments
+The following tests can be carried while working on your parachute.
+
+       Calculate the impact speed of the can without a parachute (when
+        released from 1 kilometer altitude).
+       Calculate what the minimum required total area for your
+        parachute might have to be to a cross parachute design. What size should the squares be on the
+        chute?
+       Perform the same calculation for a theoretical round parachute. What would its radius have to be?
+       Test the descent velocity of your parachute with a soda can.
+       Try out different solutions for the parachute. A parachute with holes in it or perhaps multiple small
+        parachutes could provide a solution. Both will enhance the stability of the CanSat.
+
+Descent physics
+Before we can start making the parachute, we will have to officially figure out how big it should be. More
+specifically, we need to calculate how much surface area the parachute will need in order to fulfil the
+requirements. This is where your work from the above section will come in handy
+
+Logic suggests that the bigger the parachute, the slower the object’s descent velocity. This principle is shown
+below with some basic equations. Although it would usually be better for a satellite to have a very slow rate
+of descent, a limit for the Cansat project has to be set for this rate to ensure that the CanSat will land near
+the launch area. If the descent rate is too slow, the CanSat may drift kilometers away along in the wind, which
+is neither allowed nor helpful. To truly be able to collect data with your antenna you’ll need to abide by the
+minimum descent rate that has been set:
+
+Version: Sept 2023                                                                                           39
+On lift-off, the launcher will reach an altitude of 900 to 1000 metres within 13 seconds. Here, it will deploy all
+of the CanSats. The whole process-from rift off to touchdown-has to happen within 90 seconds. This only
+leaves 77 seconds for your CanSat to descend 1000 metres. This is the most critical stage for your recovery
+system. If your CanSat cannot meet this limit, it will not be approved foIt is therefore critical that your parachute
+(or whatever you are using) does not fail during these 77 seconds
+
+To design the parachute, we will use some basic physics. We use a simplified equation to estimate the area
+of the parachute, after which we can start its assembly.
+
+During the descent, two forces will be acting on the CanSat. Gravity will pull on the can and accelerate it
+towards the ground and the drag force on the parachute will pull the CanSat in the opposite direction and
+slow down the descent rate.
+
+When the CanSat is deployed, the force of gravity will cause it to accelerate. After a few seconds, the drag
+force from the parachute will reach equilibrium with the force of gravity. From that point on, the acceleration
+will be zero and the CanSat will descend at a constant velocity. This constant velocity has to be greater than
+the minimum descent velocity specified in the requirements section of the project below. For the following
+calculations, we can use this minimum value as the constant velocity of the CanSat.
+
+The gravity force is equal to:
+
+                                                      g=       ∗
+
+In this equation
+
+            is the mass of the CanSat in kilograms
+           is the acceleration of gravity, equal to 9.81 m2
+                                                           s
+
+
+The drag force of the parachute is equal to:
+
+                                               D = 0.5 ∗   D ∗     ∗   ∗   2
+
+
+
+In this equation:
+
+           is the total area of the parachute (not just the frontal area)
+          D is the drag coefficient of the parachute. This value depends on the shape of the parachute.
+           is the local density of the air, assumed to be constant at 1.225 kg3.
+                                                                               m
+           is the descent velocity of the CanSat
+
+Given your desired velocity, you can easily manipulate these equations to calculate the area needed for the
+parachute.
+
+Required descent parameters
+Minimal descent Velocity: 13 m/s
+Maximum allowed mass:     0.350 kilograms
+Drag coefficient:         When designing the size of your parachute, you can assume the drag
+                          coefficient to be 0.4.
+
+To calculate the area of your parachute you have to take the full production area of your parachute into
+account. For instance, if you are making a cross parachute, you have to use the area of the full cross laid
+flat. Not the area seen when a parachute is drawn.
+
+
+
+
+Version: Sept 2023                                                                                               40
+Semi-spherical parachute design
+A semi-spherical appearance is the most common shape for a parachute. Although it is not hard to make one,
+it can be quite time-consuming to get the right shape. The figure below should help.
+
+
+
+
+        n = stands for the number of parts needed
+
+        r = stands for the radius of the parachute.
+
+
+
+Cross parachute design
+Instead of using a semi-spherical-shaped parachute, you can also
+choose a cross shape. The advantage of this shape is that it’s easy to
+make. If you want to know more about cross-shaped parachutes, you
+can check the following link:
+
+www.nakka-rocketry.net/xchute1.html
+
+
+
+
+Parapent
+A parapent shaped parachute acts rather like a wing. Because of its
+shape you can use it to steer. The design of a parapent is more
+complex than that of the other shapes mentioned. You will have to do
+some more research if you wish to use this type of parachute.
+
+
+
+
+Version: Sept 2023                                                                                     41
+Flat parachute design
+The most commonly available parachutes are in fact created from standard two-dimensional flat
+geometric figures, such as hexagons or octagons.
+
+
+
+
+From above, you can see that the parachute consists of 8 equal triangles. Hence, the total area for the
+                                                                                      h
+parachute would be        =8∗          , where the area of one triangle is      = ∗ . By combining these two
+                                                                                      2
+                         8∗s∗h
+equations, we get    =           . You can read more about how to calculate the area of a flat parachute at:
+                           2
+www.sunward1.com/imagespara/The%20Mathematics%20of%20Parachutes%28Rev2%29.pdf
+
+As soon as you know the total area (A) together with the drag coefficient (CD), you can easily determine the
+descent rate for your CanSat. Perform some drop tests to check if your calculations are accurate and to find
+the terminal velocity.
+
+Other recovery systems
+There are also different options when recovering an object. The Mars Exploration Rover, for instance, used
+airbags for its landing on Mars (see below). This was based on the same principle as a parachute, namely
+increasing area to increase drag and therefore slow down the vehicle. Airbags have the additional
+advantage that they soften the landing.
+
+
+
+
+Version: Sept 2023                                                                                             42
+Apart from these systems, there are also recovery systems that use lift-induced drag. This type of drag is
+used in airplanes and helicopters. Auto rotation, a recovery system researched by many including NASA, is
+based on the movement of helicopter blades. One big advantage of this system would be that it is steerable
+to a certain location. An example of these blades is shown in the figure below.
+
+
+
+
+Version: Sept 2023                                                                                     43
+CanSat Competition tips
+Based on experiences of teams competing in CanSat competitions throughout the years we would like to offer
+you some extra tips and tricks to get you well prepared for the CanSat competition.
+
+Our tips for CanSat design:
+
+    -   The temperature sensor for your primary mission must measure the air temperature outside the
+        CanSat. If the sensor is hidden away too much within your CanSat, the measuring results may be
+        impacted sofar as to yield no proper data. Take this into account in your CanSat design.
+    -   During previous launching events, it became clear that CanSats are difficult to trace in the heathland
+        of the testing site; this to make recovering them after launch much harder. As a result many CanSats
+        were never recovered. Using a sound signal (e.g. a beeper) as a recovery system increases the
+        likelihood of recovery. This recovery, however, will be not be done by your team but by military
+        personnel from ASK ‘t Harde, so keep this in mind
+    -   Use a bright colour for your parachute that contrasts sharply with grassland. This will improve your
+        chance of being able to see your CanSat easily during the flight and being able to follow it with your
+        Yagi antenna.
+
+Tips from participants in former competitions:
+
+    -   The most important tip: prepare well, start on time, plan out every step in the process well! Keep in
+        mind that you’ll need a lot of time. Manage your time well. Be organised and work hard.
+    -   Make a good plan for how you’ll devise tasks within your team. Make sure everybody knows his or
+        her tasks and responsibilities.
+    -   Communicate: talk to each other regularly about how things are going and have the courage to talk
+        to each other about how you might improve distinct part of your project.
+    -   Research well before you choose a secondary mission. Check to see if it is realistic and feasible.
+    -   Test, test, test. Test everything thoroughly and often (under different circumstances): test and check
+        your design. Make sure it meets the requirements.
+    -   If you encounter a problem that you cannot solve, ask for help on time (form your teacher for
+        example).
+    -   Bring your tools to the test and launch days in case something does go wrong or needs fixing on site
+        (e.g. last minute soldering of wires).
+    -   Giving up is not an option. If you experience any setbacks, always continue. Think differently about
+        finding solutions instead of focussing problems. Persevere and you will succeed!
+    -   And don’t forget to have fun! We can’t wait to see you on launch day
+
+
+
+
+Version: Sept 2023                                                                                         44
+Outreach programme & communication
+
+During the competition, each team’s efforts will be judged on scientific relevance, technical achievements and
+innovative aspects. The success of a CanSat project, however, relies on more than just technical skills!
+Teamwork and outreach (on social media along with other media coverage) are also important aspects of a
+space project, and will therefore be assessed too.
+
+Some handy info, tips and tricks to use when communicating about the project.
+
+Public relations and free publicity
+What can you do to get some free publicity about the CanSat project and your team?
+
+Basic information about the project & partners
+First things first: get the basics right. Journalists often make mistakes when writing about the CanSat project
+organization and partners. Always provide the following information on the CanSat competition:
+
+        CanSat is an ESERO project executed by NEMO on the instructions of the Netherlands
+        SpaceOffice (NSO). The aim of the competition is to spark young people’s enthusiasm for a career
+        in technology.
+
+        CanSat is een ESERO-project dat NEMO uitvoert in opdracht van het Nederlands
+        ruimtevaartagentschap Netherlands Space Office. Defensie is logistiek partner tijdens de testdag en
+        het lanceerevenement. De competitie is opgezet om scholieren enthousiast te maken om voor een
+        technische opleiding te kiezen
+
+Please note: always use capital letters when mentioning ESERO, NEMO and NSO. Go to
+www.esero.nl/cansat for more information about the project.
+
+Social Media
+Consider creating a team profile on Facebook, Instagram or Twitter, and invite family, friends and classmates
+to follow you and share your posts. Pictures, short movies and personal stories about your team work best.
+
+Select the right hashtags: #cansat, #cansatNL #cansatcompetition #ESERO. Tag on Twitter: @eseroNL,
+@NEMOamsterdam and @NSO. Tag on Facebook and Instagram: @nemosciencemuseum. We will then be
+able to like your posts. And be sure to follow us and to share our posts about the competition!
+
+Website/blog
+You may wish to create your own website or blog where you can provide information about your team’s
+activities and developments during the project.
+
+Press
+You can reach out to the press (local newspapers, websites, radio and TV stations) to promote the CanSat
+project, your team and your mission. We recommend contacting local press outlets, as they are more likely
+to pick up your story than the national press.
+
+You could issue a press release. Some tips:
+
+-       Answer the 5 Ws + H in the headline and the first paragraph of your press release:
+-       who, what, where, why, when and how.
+-       Provide details and background information in the subsequent paragraphs.
+-       Each paragraph should contain no more than one main message.
+-       Give your press release an inviting headline and sub-headings that will intrigue the reader.
+-       Use quotes from your teammates or your teacher to enliven your press release.
+
+Version: Sept 2023                                                                                         45
+-      Restrict your press release to a single A4 sheet: stick to the essence and be prepared to delete.
+-      Do not use jargon; outsiders should be able to understand your text.
+-      Use active verb forms in your press release.
+-      Check carefully for spelling and other language errors.
+-      Ask someone else to give the text a critical read-through, preferably someone who is not familiar with
+       the topic.
+-      Include a ‘note to the editors’ at the end of your press release indicating who the press can contact
+       for more information. Include a telephone number and e-mail address.
+-      Image materials are very important, so be sure to include high-quality photos with your press release,
+       preferably in landscape (horizontal) format.
+-      Try to get the names of journalists to whom you can send your press release. Journalists are more
+       likely to pick up personally addressed press releases. After sending the press release, you can also
+       call a journalist to ask if they have received it and if they can use it.
+-      Don’t forget to send your press release to pers@e-nemo.nl so that we are in the loop.
+
+
+
+
+Version: Sept 2023                                                                                       46
+

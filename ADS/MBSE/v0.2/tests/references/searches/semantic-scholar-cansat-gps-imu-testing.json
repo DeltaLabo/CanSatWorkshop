@@ -1,0 +1,257 @@
+{
+  "query": "CanSat GPS IMU telemetry testing verification",
+  "total": 215,
+  "pages_retrieved": 1,
+  "results": [
+    {
+      "paperId": "6627ef3791bb7af1b914826c6104b924e9ce8a3b",
+      "doi": "10.3390/s25185813",
+      "title": "Verification of Vision-Based Terrain-Referenced Navigation Using the Iterative Closest Point Algorithm Through Flight Testing",
+      "authors": [
+        {
+          "name": "Taeyun Kim"
+        },
+        {
+          "name": "Seongho Nam"
+        },
+        {
+          "name": "Hyungsub Lee"
+        },
+        {
+          "name": "Juhyun Oh"
+        }
+      ],
+      "year": 2025,
+      "abstract": "Terrain-referenced navigation (TRN) provides an alternative navigation method for environments with limited GPS availability. This paper proposes a vision-based TRN framework that employs stereo imagery and a rotation-invariant iterative closest point (ICP) algorithm to align reconstructed elevation maps with a terrain elevation database. In contrast to conventional ICP, which is sensitive to camera intrinsic errors, the proposed approach improves robustness at high altitudes. Its feasibility and effectiveness are demonstrated through full-scale flight tests using a Cessna aircraft equipped with an IMU, camera, and barometric altimeter. The results show that the proposed method consistently enhances positioning accuracy and robustness compared with a filter-based approach, particularly under challenging high-altitude conditions where image resolution is reduced. The algorithm proved capable of maintaining reliable performance across varying flight altitudes, demonstrating its robustness under high-altitude conditions. This study establishes the novelty of integrating rotation-invariant ICP with vision-based TRN and provides real-world validation through actual flight testing. The findings offer valuable implications for future research and potential applications in unmanned aerial vehicles and long-range guided systems, where passive and GPS-independent navigation is critical for mission success.",
+      "citationCount": 2,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "f5242b2b14758559800900d2d964568e44376963",
+      "doi": "10.1177/09544070221103172",
+      "title": "Improve the accuracy of vehicle velocity estimation based on low-cost GPS/IMU by GPS course angle",
+      "authors": [
+        {
+          "name": "Liangxin Yuan"
+        },
+        {
+          "name": "Yuan Wang"
+        },
+        {
+          "name": "Peng Du"
+        },
+        {
+          "name": "X. Lian"
+        }
+      ],
+      "year": 2023,
+      "abstract": null,
+      "citationCount": 6,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "c8e52a99a84620f0fdad09f3b31f087405501d04",
+      "doi": "10.1109/AIPIP66876.2025.11299229",
+      "title": "Visual Recognition-Assisted Precision Landing for UAVs in GPS-Degraded Environments: Approach Guidance, Backup End-Phase Recognition, and Post-Landing Verification",
+      "authors": [
+        {
+          "name": "Meng Xu"
+        }
+      ],
+      "year": 2025,
+      "abstract": "In environments where GPS signals are weak, interfered, or unavailable (e.g., urban canyons, large steel-structured factories, hangars, or multipath-dense zones), unmanned aerial vehicle (UAV) autonomous return-to-home and landing face amplified localization errors, trajectory drift, and end-phase alignment difficulties. To address these issues, this paper proposes a three-stage visual recognition-assisted precision landing system for GPS-degraded conditions: (1) Approach Guidance (AG) employs overhead or rooftop cameras to detect UAV body/markers and estimate pose, enabling early correction of lateral and heading deviations; (2) Backup End-Phase Recognition (BEPR) activates within the final altitude window (≈1 m) when the primary visual pipeline degrades due to occlusion, backlight, overexposure, or blur, leveraging onboard vision fused with IMU and optical flow (CFC-CKF framework) under conservative control laws to ensure safe descent and alignment; (3) Post-Landing Verification (PLV) uses side or ground cameras to read UAV-attached codes/markers, independently measuring landing-point offset, heading error, and attitude stability while logging slip/bounce events. The system integrates sliding-window filtering and systematic bias correction [7], nested (double-layer) marker design, covariance-feedback Cubature Kalman Filter (CFC-CKF) vision–inertial fusion, image-space visual servoing, and real-time latency budgeting. Simulation and flight tests cover frontlight/backlight/low light, varying occlusion levels, GPS error levels, and dynamic platforms. Representative results show mean landing errors of ≈2.0 cm under favorable static scenarios, ≈4.0 cm under complex scenarios, and ≈3.8 cm verified offsets in PLV, with success rates of 90–98%. These results align with recent state-of-the-art systems and demonstrate engineering robustness through backup and verification loops.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "723c8efd23f24203f5a4fec13997c9f6c69842e5",
+      "doi": "10.1007/s13369-020-05144-8",
+      "title": "Improved GPS/IMU Loosely Coupled Integration Scheme Using Two Kalman Filter-based Cascaded Stages",
+      "authors": [
+        {
+          "name": "Nader Nagui"
+        },
+        {
+          "name": "O. Attallah"
+        },
+        {
+          "name": "M. S. Zaghloul"
+        },
+        {
+          "name": "I. Morsi"
+        }
+      ],
+      "year": 2020,
+      "abstract": null,
+      "citationCount": 19,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "6a5b9e45198cbd7661ec6a7a7233bfb82ad5d771",
+      "doi": "10.1007/s00190-018-01227-5",
+      "title": "Robust M–M unscented Kalman filtering for GPS/IMU navigation",
+      "authors": [
+        {
+          "name": "Cheng Yang"
+        },
+        {
+          "name": "Wenzhong Shi"
+        },
+        {
+          "name": "Wu Chen"
+        }
+      ],
+      "year": 2019,
+      "abstract": null,
+      "citationCount": 62,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "37a72f579a72aaba839534e3cb8c31f6352e167e",
+      "doi": "10.1007/s10846-013-9960-1",
+      "title": "Estimating Vehicle State by GPS/IMU Fusion with Vehicle Dynamics",
+      "authors": [
+        {
+          "name": "K. Saadeddin"
+        },
+        {
+          "name": "M. Abdel-Hafez"
+        },
+        {
+          "name": "M. Al-Jarrah"
+        }
+      ],
+      "year": 2013,
+      "abstract": null,
+      "citationCount": 49,
+      "openAccess_pdf": {
+        "url": "https://repository.aus.edu/bitstreams/a4a4e270-b6c2-4d15-be11-e1c904f506b5/download"
+      }
+    },
+    {
+      "paperId": "de26b6713f8f432ba67b96f690abe7c79cf592de",
+      "doi": "10.1109/JSEN.2025.3643740",
+      "title": "Dual-RTK and IMU-Based System for Accurate Drone Payload Pose Estimation With PPS Time Synchronization",
+      "authors": [
+        {
+          "name": "Luca Bigazzi"
+        },
+        {
+          "name": "Enrico Boni"
+        },
+        {
+          "name": "L. Miccinesi"
+        },
+        {
+          "name": "L. Pagnini"
+        },
+        {
+          "name": "A. Cioncolini"
+        },
+        {
+          "name": "A. Beni"
+        },
+        {
+          "name": "M. Pieraccini"
+        }
+      ],
+      "year": 2026,
+      "abstract": "In this work, the authors propose a novel electronic architecture named versatile external synchronization and telemetry architecture (VESTA), capable of independently estimating position and attitude with centimeter-level accuracy, specifically designed to be mounted as a payload for multicopter drones. VESTA integrates GPS-real-time kinematic (RTK) and inertial-sensing technologies to generate a high-precision telemetry data stream, which is transmitted via a dedicated universal asynchronous receiver–transmitter (UART) interface. The key innovation of VESTA lies in its robust temporal synchronization mechanism: by exploiting GPS time signals, including coordinated universal time (UTC) timestamps and pulse per second (PPS) signals, each telemetry sample is uniquely timestamped with millisecond resolution. To the best of our knowledge, current commercial and custom drone navigation systems lack a reliable method for achieving this level of absolute time synchronization between inertial and global navigation satellite system (GNSS) data. This limitation hinders precise data fusion and complicates integration with other systems requiring temporally aligned information. VESTA addresses this gap, enabling accurate and unambiguous time correlation across subsystems. The positioning accuracy and synchronization performance of VESTA were validated through comparative testing with the DJI Matrice 300 RTK, one of the most advanced commercial unmanned aerial system (UAS) platforms, which notably does not support GPS-based timestamping. A Leica total station, providing millimeter-level ground truth, was employed to track the drone’s trajectory and quantitatively assess the estimation errors of both systems.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "39f7078236790120a3365d6341c67d1854c3a6b1",
+      "doi": "10.1109/ICSENS.2011.6127142",
+      "title": "Vehicle state estimation using GPS/IMU integration",
+      "authors": [
+        {
+          "name": "Yuquan Wang"
+        },
+        {
+          "name": "J. Mangnus"
+        },
+        {
+          "name": "D. Kostić"
+        },
+        {
+          "name": "H. Nijmeijer"
+        },
+        {
+          "name": "S. Jansen"
+        }
+      ],
+      "year": 2011,
+      "abstract": "New driver support systems require knowledge of the vehicle position with great accuracy and reliability. Satellite navigation (GNSS) is generally insufficiently accurate for positioning and as an alternative to using a ground station, combinations with high quality motion sensors are used in so-called Inertial Navigation Systems. However the system specifications and related cost are not suitable for Automotive applications. In this article a Vehicle model based concept is presented in a state estimator setup that will use signals that are available on modern vehicles. An extension of a commonly used Bicycle representation of the vehicle is applied with an automated tuning for signal disturbances. For coping with different update frequencies from GNSS and motion sensors a Bezier extrapolation is used. The resulting Adaptive Kalman Filter approach is compared to recorded signals from driving tests with an instrumented vehicle. The comparison shows that with the new setup a clear improvement is achieved for the vehicle motions compared to more commonly used Kalman filtering. This verifies that sensor disturbances can better be compensated with the presented concept, and also better results for positioning can be expected.",
+      "citationCount": 16,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "44af186a56eeb0063a625f6e0b9fbba8cd0426d8",
+      "doi": "10.5081/jgps.18.2.114",
+      "title": "GPS/MEMS IMU/UWB tightly coupled integrated navigation with robust Kalman filter based on bifactor",
+      "authors": [
+        {
+          "name": "Jiaxing Zhao"
+        },
+        {
+          "name": "Jian Wang"
+        }
+      ],
+      "year": 2022,
+      "abstract": "Robust estimation has been extensively employed and developed in the integrated navigation of Global Positioning System (GPS) receivers and Micro-Electro-Mechanical System (MEMS) Inertial Measurement Unit (IMU). To further reduce or even eliminate the influence of abnormal measurements from GPS receivers/MEMS IMU, the range measurements of Ultra-Wideband (UWB) are introduced. This article proposes a GPS/MEMS IMU/UWB tightly coupled integrated navigation with robust Kalman filter based on bifactor. The proposed model consists of two main components: one is the detection of gross errors, which involves constructing an equivalent weight matrix based on bifactor weight elements; and another is estimation, from which the optimal estimation results are obtained. Finally, the simulated test and field test are carried out to verify the proposed model, and the effectively results of the new robust Kalman filter are drawn.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": "https://doi.org/10.5081/jgps.18.2.114"
+      }
+    },
+    {
+      "paperId": "7de6f641bd74c5e3759b9ddc74e1bc1324449201",
+      "doi": "10.5302/J.ICROS.2008.14.5.502",
+      "title": "Development of a UAV Flight Control System Using a Low Cost GPS/IMU",
+      "authors": [
+        {
+          "name": "Wonmo Koo"
+        },
+        {
+          "name": "S. Chun"
+        },
+        {
+          "name": "D. Won"
+        },
+        {
+          "name": "T. Kang"
+        },
+        {
+          "name": "Youngjae Lee"
+        },
+        {
+          "name": "S. Sung"
+        }
+      ],
+      "year": 2008,
+      "abstract": null,
+      "citationCount": 1,
+      "openAccess_pdf": {
+        "url": "https://doi.org/10.5302/j.icros.2008.14.5.502"
+      }
+    }
+  ],
+  "output_metadata": {
+    "extracted_at": "2026-06-11T14:31:24.837535"
+  }
+}

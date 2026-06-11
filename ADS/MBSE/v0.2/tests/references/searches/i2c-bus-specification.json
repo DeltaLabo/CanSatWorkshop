@@ -1,0 +1,773 @@
+{
+  "query": "NXP UM10204 I2C-bus specification user manual PDF",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "UM10204 I2C-Bus Specification and User Manual",
+      "url": "https://www.digikey.com/en/pdf/n/nxp-semiconductors/um10204-i2c-bus-specification-and-user-manual",
+      "description": "NXP Semiconductors developed a simple bidirectional 2-wire bus for efficient inter-IC control. This bus is called the Inter-IC or I2C-bus.",
+      "content": "NXP Semiconductors developed a simple bidirectional 2-wire bus for efficient inter-IC control. This bus is called the Inter-IC or I2C-bus.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "DigiKey",
+        "url": "https://www.digikey.com/en/pdf/n/nxp-semiconductors/um10204-i2c-bus-specification-and-user-manual",
+        "long_name": "digikey.com",
+        "img": "https://imgs.search.brave.com/VM3FqF8JYPPYmeXQOLdtQox2H-mtWIA9PXVYTf9IKBk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQ3YTNmOTZh/NmMyN2IzODE4OWU2/NmEwZWJkNzAxOGVi/MGYxYWQxYWUxMWY2/NTBjMzgzYTZiY2Fh/MGVkZTViNS93d3cu/ZGlnaWtleS5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "digikey.com",
+        "hostname": "www.digikey.com",
+        "favicon": "https://imgs.search.brave.com/VM3FqF8JYPPYmeXQOLdtQox2H-mtWIA9PXVYTf9IKBk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQ3YTNmOTZh/NmMyN2IzODE4OWU2/NmEwZWJkNzAxOGVi/MGYxYWQxYWUxMWY2/NTBjMzgzYTZiY2Fh/MGVkZTViNS93d3cu/ZGlnaWtleS5jb20v",
+        "path": "› en  › pdf  › n  › nxp-semiconductors  › um10204-i2c-bus-specification-and-user-manual"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/nw2AFWMCUk3mToFRXHCH5_meoyIPSVdxWdbibTBY_FQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zYy1h/LmRpZ2lrZXlhc3Nl/dHMuY29tLy0vbWVk/aWEvSW1hZ2VzL0hl/YWRlci9EaWdpS2V5/X3JnYl82MDB4NjAw/LnBuZz9sYT1lbiZh/bXA7dHM9ODhjNjI1/MWMtYmE0NC00Yzg4/LWFjMmQtZDUyZThj/YzRhZjQy",
+        "original": "https://sc-a.digikeyassets.com/-/media/Images/Header/DigiKey_rgb_600x600.png?la=en&amp;ts=88c6251c-ba44-4c88-ac2d-d52e8cc4af42",
+        "logo": false
+      }
+    },
+    {
+      "rank": 2,
+      "title": "UM10204 I2C-bus specification and user manual Rev. 7.0 — 1 October 2021",
+      "url": "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+      "description": "I2C-bus specification and user manual · Rev. 7.0 — 1 October 2021",
+      "content": "I2C-bus specification and user manual · Rev. 7.0 — 1 October 2021\nManagement Bus (PMBus), Intelligent Platform Management Interface (IPMI), Display · Data Channel (DDC) and Advanced Telecom Computing Architecture (ATCA). This document assists device and system designers to understand how the I2C-bus\nHIGH. The output stages of devices connected to the bus must have an open-drain or · open-collector to perform the wired-AND function. Data on the I2C-bus can be transferred\nFigure 3. Devices with various supply voltages sharing the same bus ... The data on the SDA line must be stable during the HIGH period of the clock. The HIGH · or LOW state of the data line can only change when the clock signal on the SCL line is · LOW (see Figure 4). One clock pulse is generated for each data bit transferred. ... All information provided in this document is subject to legal disclaimers. ... Rev. 7.0 — 1 October 2021 ... Figure 4. Bit transfer on the I2C-bus\nMicrocontrollers can be connected to the I2C-bus in two ways. A microcontroller with · an on-chip hardware I2C-bus interface can be programmed to be only interrupted",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NXP Semiconductors",
+        "url": "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+        "long_name": "nxp.com",
+        "img": "https://imgs.search.brave.com/gJEyOJ2xlkEgVgHsn8Vnm2AiteHNyY-S5WKLLf6-9CY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMxZTkzN2I4/NDA3ZTI3MDBiYmQ2/NmM3NDc3ZTUyYTE4/MzVhOWE4Y2UwNTAx/YjU4MzMyYjJjNDI5/N2JkYjIzNy93d3cu/bnhwLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "nxp.com",
+        "hostname": "www.nxp.com",
+        "favicon": "https://imgs.search.brave.com/gJEyOJ2xlkEgVgHsn8Vnm2AiteHNyY-S5WKLLf6-9CY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMxZTkzN2I4/NDA3ZTI3MDBiYmQ2/NmM3NDc3ZTUyYTE4/MzVhOWE4Y2UwNTAx/YjU4MzMyYjJjNDI5/N2JkYjIzNy93d3cu/bnhwLmNvbS8",
+        "path": "› docs  › en  › user-guide  › UM10204.pdf"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "UM10204 I2C-Bus Specification and User Manual | PDF | Bit Rate | Bit",
+      "url": "https://www.scribd.com/document/406306478/UM10204-I2C-Bus-Specification-and-User-Manual",
+      "description": "UM10204 I2C-Bus Specification and User Manual - Free download as PDF File (.pdf), Text File (.txt) or read online for free. I2C",
+      "content": "UM10204 I2C-Bus Specification and User Manual - Free download as PDF File (.pdf), Text File (.txt) or read online for free. I2C\nxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxx xxx User manual UM10204 · NXP Semiconductors Table 10. Characteristics of the SDA and SCL bus lines for Standard, Fast, and Fast-mode Plus I2C-bus devices[1] Symbol Parameter Conditions Standard-mode Fast-mode Fast-mode Plus Unit Min Max Min Max Min Max fSCL SCL clock frequency 0 100 0 400 0 1000 kHz tHD;STA hold time (repeated) START condition After this period, the first 4.0 - 0.6 - 0.26 - μs clock pulse is generated.\n48 of 64 xxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxx x x x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxx xx xx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxx xxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxx x x xxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxx xxx [5] A Fast-mode I2C-bus device can be used in a Standard-mode I2C-bus system, but the requirement tSU;DAT 250 ns must then be met. This will automatically be the case if the User manual UM10204 · NXP Semiconductors device does not stretch the LOW period of the SCL signal.\nUM10204 49 of 64 NXP Semiconductors UM10204 I2C-bus specification and user manual\nTiming parameters are independent for capacitive load up to 100 pF for each bus line allowing the maximum possible bit rate of 3.4 Mbit/s. At a higher capacitive load on the bus lines, the bit rate decreases gradually. The timing parameters for a capacitive bus load of 400 pF are specified in Table 12, allowing a maximum bit rate of 1.7 Mbit/s. For UM10204 All information provided in this document is subject to legal disclaimers. © NXP Semiconductors N.V.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "creative_work",
+      "profile": {
+        "name": "Scribd",
+        "url": "https://www.scribd.com/document/406306478/UM10204-I2C-Bus-Specification-and-User-Manual",
+        "long_name": "scribd.com",
+        "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "scribd.com",
+        "hostname": "www.scribd.com",
+        "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+        "path": "› document  › 406306478  › UM10204-I2C-Bus-Specification-and-User-Manual"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/JpooFLJKfXySNA4fiqR4T2uH6u49SjY7B59lbFtPsQU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDA2MzA2NDc4LzE0/OXgxOTgvMjg2ZTI5/ZjZjZi8xNTU1MzA1/NjMzP3Y9MQ",
+        "original": "https://imgv2-1-f.scribdassets.com/img/document/406306478/149x198/286e29f6cf/1555305633?v=1",
+        "logo": false
+      }
+    },
+    {
+      "rank": 4,
+      "title": "UM10204 datasheet(45/64 Pages) NXP | I2C-bus specification and user manual",
+      "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2694/45/UM10204.html",
+      "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201245 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.8 Timing requirements for the bridge in a mixed-speed bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+      "content": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201245 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.8 Timing requirements for the bridge in a mixed-speed bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2694/45/UM10204.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› html-pdf  › 467563  › NXP  › UM10204  › 2694  › 45  › UM10204.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Dub-Siren/Datasheets/UM10204 I2C-bus specification and user manual Rev. 6 - 4 April 2014.pdf at master · xioTechnologies/Dub-Siren",
+      "url": "https://github.com/xioTechnologies/Dub-Siren/blob/master/Datasheets/UM10204%20I2C-bus%20specification%20and%20user%20manual%20Rev.%206%20-%204%20April%202014.pdf",
+      "description": "Contribute to xioTechnologies/Dub-Siren development by creating an account on GitHub.",
+      "content": "Contribute to xioTechnologies/Dub-Siren development by creating an account on GitHub.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "software",
+      "profile": {
+        "name": "GitHub",
+        "url": "https://github.com/xioTechnologies/Dub-Siren/blob/master/Datasheets/UM10204%20I2C-bus%20specification%20and%20user%20manual%20Rev.%206%20-%204%20April%202014.pdf",
+        "long_name": "github.com",
+        "img": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "github.com",
+        "hostname": "github.com",
+        "favicon": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw",
+        "path": "› xioTechnologies  › Dub-Siren  › blob  › master  › Datasheets  › UM10204 I2C-bus specification and user manual Rev. 6 - 4 April 2014.pdf"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/TRlRwd8ok02gngNYJmgKCqFS50Cz0dOgpozdUIX07wE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9vcGVu/Z3JhcGguZ2l0aHVi/YXNzZXRzLmNvbS8x/MzVlZGM0NTE0YWU2/MmQ1MzBiODA5MjA1/MWM4OTE5MGJmZWU3/YmVhZjUxNTc3Zjcw/Y2Y0YWM5MTA2NWJl/MWRhL3hpb1RlY2hu/b2xvZ2llcy9EdWIt/U2lyZW4",
+        "original": "https://opengraph.githubassets.com/135edc4514ae62d530b8092051c89190bfee7beaf51577f70cf4ac91065be1da/xioTechnologies/Dub-Siren",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "UM10204 Datasheet(PDF) - NXP Semiconductors",
+      "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/467563/NXP/UM10204.html",
+      "description": "Part #: UM10204. Download. File Size: 1MbKbytes. Page: 64 Pages. Description: I2C-bus specification and user manual. Manufacturer: NXP Semiconductors.",
+      "content": "Part #: UM10204. Download. File Size: 1MbKbytes. Page: 64 Pages. Description: I2C-bus specification and user manual. Manufacturer: NXP Semiconductors.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/467563/NXP/UM10204.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› datasheet-pdf  › pdf  › 467563  › NXP  › UM10204.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    },
+    {
+      "rank": 7,
+      "title": "UM10204 datasheet(42/64 Pages) NXP | I2C-bus specification and user manual",
+      "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2514/42/UM10204.html",
+      "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201242 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.5 Mixed speed modes on one serial bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+      "content": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201242 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.5 Mixed speed modes on one serial bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2514/42/UM10204.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› html-pdf  › 467563  › NXP  › UM10204  › 2514  › 42  › UM10204.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    },
+    {
+      "rank": 8,
+      "title": "UM10204 datasheet(3/64 Pages) NXP | I2C-bus specification and user manual",
+      "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/174/3/UM10204.html",
+      "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 20123 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual1. Datasheet search, datasheets, Datasheet search site for Electronic ...",
+      "content": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 20123 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual1. Datasheet search, datasheets, Datasheet search site for Electronic ...\nUM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 20123 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual1. Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/174/3/UM10204.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› html-pdf  › 467563  › NXP  › UM10204  › 174  › 3  › UM10204.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    },
+    {
+      "rank": 9,
+      "title": "UM10204 datasheet(2/64 Pages) NXP | I2C-bus specification and user manual",
+      "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/114/2/UM10204.html",
+      "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 20122 of 64Contact informationFor more information, please visit: http://www.nxp.comFor sales office addresses, please send an email to: salesaddresses@nxp.comNXP Semiconductors Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+      "content": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 20122 of 64Contact informationFor more information, please visit: http://www.nxp.comFor sales office addresses, please send an email to: salesaddresses@nxp.comNXP Semiconductors Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/114/2/UM10204.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› html-pdf  › 467563  › NXP  › UM10204  › 114  › 2  › UM10204.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    },
+    {
+      "rank": 10,
+      "title": "UM10204 I2C-bus specification and user manual / um10204-i2c-bus-specification-and-user-manual.pdf / PDF4PRO",
+      "url": "https://pdf4pro.com/amp/view/um10204-i2c-bus-specification-and-user-manual-5fb143.html",
+      "description": "6 4 April 2014 User manualDocument ... SDA, SCL, USDA, USCLA bstractPhilips Semiconductors (now NXP Semiconductors) developed a simple bidirectional 2-wire bus for efficient inter-IC control....",
+      "content": "6 4 April 2014 User manualDocument ... SDA, SCL, USDA, USCLA bstractPhilips Semiconductors (now NXP Semiconductors) developed a simple bidirectional 2-wire bus for efficient inter-IC control....\nUM10204I2C-bus specification and user manualRev. 6 4 April 2014 User manualDocument informationInfoContentKeywordsI2C, I2C-bus , Standard-mode, Fast-mode, Fast-mode Plus, Fm+, Ultra Fast-mode, UFm, High Speed, Hs, inter-IC, SDA, SCL, USDA, USCLA bstractPhilips Semiconductors (now NXP Semiconductors) developed a simple bidirectional 2-wire bus for efficient inter-IC control.",
+      "age": "October 3, 2019",
+      "page_age": "2019-10-03T07:40:13",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "PDF4PRO",
+        "url": "https://pdf4pro.com/amp/view/um10204-i2c-bus-specification-and-user-manual-5fb143.html",
+        "long_name": "pdf4pro.com",
+        "img": "https://imgs.search.brave.com/v0ldZhzr33TZ9if0tmuZCltvWOwxFDiqjOIOZm5dDm0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2EzMzkwNGY3/OWZkOWJhMDg1ZWZm/MGQ1ZTQ2MDU5MDhm/Yjg4MzNkMmVjYjUz/MGNkMzllMTRmZDE1/MTMzMDJkMi9wZGY0/cHJvLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "pdf4pro.com",
+        "hostname": "pdf4pro.com",
+        "favicon": "https://imgs.search.brave.com/v0ldZhzr33TZ9if0tmuZCltvWOwxFDiqjOIOZm5dDm0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2EzMzkwNGY3/OWZkOWJhMDg1ZWZm/MGQ1ZTQ2MDU5MDhm/Yjg4MzNkMmVjYjUz/MGNkMzllMTRmZDE1/MTMzMDJkMi9wZGY0/cHJvLmNvbS8",
+        "path": "› amp  › view  › um10204-i2c-bus-specification-and-user-manual-5fb143.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/rtsqYb1XJ2U256hDthfh69PF_bDBnqbSPGu5_sRnN1Q/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wZGY0/cHJvLmNvbS9jYWNo/ZS9wcmV2aWV3L2Qv/ZC8zL2IvYy84LzQv/My90aHVtYi1kZDNi/Yzg0MzJmZjNmYTIw/YWM5OTc5ZThiZWJi/MTQ5Ni5qcGc",
+        "original": "https://pdf4pro.com/cache/preview/d/d/3/b/c/8/4/3/thumb-dd3bc8432ff3fa20ac9979e8bebb1496.jpg",
+        "logo": false
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "NXP UM10204 I2C-bus specification user manual PDF",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.936,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "NXP UM10204 I2C-bus specification user manual PDF",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "UM10204 I2C-Bus Specification and User Manual",
+          "url": "https://www.digikey.com/en/pdf/n/nxp-semiconductors/um10204-i2c-bus-specification-and-user-manual",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "NXP Semiconductors developed a simple bidirectional 2-wire bus for efficient inter-IC control. This bus is called the Inter-IC or I2C-bus.",
+          "profile": {
+            "name": "DigiKey",
+            "url": "https://www.digikey.com/en/pdf/n/nxp-semiconductors/um10204-i2c-bus-specification-and-user-manual",
+            "long_name": "digikey.com",
+            "img": "https://imgs.search.brave.com/VM3FqF8JYPPYmeXQOLdtQox2H-mtWIA9PXVYTf9IKBk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQ3YTNmOTZh/NmMyN2IzODE4OWU2/NmEwZWJkNzAxOGVi/MGYxYWQxYWUxMWY2/NTBjMzgzYTZiY2Fh/MGVkZTViNS93d3cu/ZGlnaWtleS5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "digikey.com",
+            "hostname": "www.digikey.com",
+            "favicon": "https://imgs.search.brave.com/VM3FqF8JYPPYmeXQOLdtQox2H-mtWIA9PXVYTf9IKBk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQ3YTNmOTZh/NmMyN2IzODE4OWU2/NmEwZWJkNzAxOGVi/MGYxYWQxYWUxMWY2/NTBjMzgzYTZiY2Fh/MGVkZTViNS93d3cu/ZGlnaWtleS5jb20v",
+            "path": "› en  › pdf  › n  › nxp-semiconductors  › um10204-i2c-bus-specification-and-user-manual"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/nw2AFWMCUk3mToFRXHCH5_meoyIPSVdxWdbibTBY_FQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zYy1h/LmRpZ2lrZXlhc3Nl/dHMuY29tLy0vbWVk/aWEvSW1hZ2VzL0hl/YWRlci9EaWdpS2V5/X3JnYl82MDB4NjAw/LnBuZz9sYT1lbiZh/bXA7dHM9ODhjNjI1/MWMtYmE0NC00Yzg4/LWFjMmQtZDUyZThj/YzRhZjQy",
+            "original": "https://sc-a.digikeyassets.com/-/media/Images/Header/DigiKey_rgb_600x600.png?la=en&amp;ts=88c6251c-ba44-4c88-ac2d-d52e8cc4af42",
+            "logo": false
+          }
+        },
+        {
+          "title": "UM10204 I2C-bus specification and user manual Rev. 7.0 — 1 October 2021",
+          "url": "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "I2C-bus specification and user manual · Rev. 7.0 — 1 October 2021",
+          "profile": {
+            "name": "NXP Semiconductors",
+            "url": "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+            "long_name": "nxp.com",
+            "img": "https://imgs.search.brave.com/gJEyOJ2xlkEgVgHsn8Vnm2AiteHNyY-S5WKLLf6-9CY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMxZTkzN2I4/NDA3ZTI3MDBiYmQ2/NmM3NDc3ZTUyYTE4/MzVhOWE4Y2UwNTAx/YjU4MzMyYjJjNDI5/N2JkYjIzNy93d3cu/bnhwLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nxp.com",
+            "hostname": "www.nxp.com",
+            "favicon": "https://imgs.search.brave.com/gJEyOJ2xlkEgVgHsn8Vnm2AiteHNyY-S5WKLLf6-9CY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMxZTkzN2I4/NDA3ZTI3MDBiYmQ2/NmM3NDc3ZTUyYTE4/MzVhOWE4Y2UwNTAx/YjU4MzMyYjJjNDI5/N2JkYjIzNy93d3cu/bnhwLmNvbS8",
+            "path": "› docs  › en  › user-guide  › UM10204.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Management Bus (PMBus), Intelligent Platform Management Interface (IPMI), Display · Data Channel (DDC) and Advanced Telecom Computing Architecture (ATCA). This document assists device and system designers to understand how the I2C-bus",
+            "HIGH. The output stages of devices connected to the bus must have an open-drain or · open-collector to perform the wired-AND function. Data on the I2C-bus can be transferred",
+            "Figure 3. Devices with various supply voltages sharing the same bus ... The data on the SDA line must be stable during the HIGH period of the clock. The HIGH · or LOW state of the data line can only change when the clock signal on the SCL line is · LOW (see Figure 4). One clock pulse is generated for each data bit transferred. ... All information provided in this document is subject to legal disclaimers. ... Rev. 7.0 — 1 October 2021 ... Figure 4. Bit transfer on the I2C-bus",
+            "Microcontrollers can be connected to the I2C-bus in two ways. A microcontroller with · an on-chip hardware I2C-bus interface can be programmed to be only interrupted"
+          ]
+        },
+        {
+          "title": "UM10204 I2C-Bus Specification and User Manual | PDF | Bit Rate | Bit",
+          "url": "https://www.scribd.com/document/406306478/UM10204-I2C-Bus-Specification-and-User-Manual",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "UM10204 I2C-Bus Specification and User Manual - Free download as PDF File (.pdf), Text File (.txt) or read online for free. I2C",
+          "profile": {
+            "name": "Scribd",
+            "url": "https://www.scribd.com/document/406306478/UM10204-I2C-Bus-Specification-and-User-Manual",
+            "long_name": "scribd.com",
+            "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "creative_work",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› document  › 406306478  › UM10204-I2C-Bus-Specification-and-User-Manual"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/JpooFLJKfXySNA4fiqR4T2uH6u49SjY7B59lbFtPsQU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDA2MzA2NDc4LzE0/OXgxOTgvMjg2ZTI5/ZjZjZi8xNTU1MzA1/NjMzP3Y9MQ",
+            "original": "https://imgv2-1-f.scribdassets.com/img/document/406306478/149x198/286e29f6cf/1555305633?v=1",
+            "logo": false
+          },
+          "creative_work": {
+            "name": "UM10204 I2C-Bus Specification and User Manual",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/JpooFLJKfXySNA4fiqR4T2uH6u49SjY7B59lbFtPsQU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDA2MzA2NDc4LzE0/OXgxOTgvMjg2ZTI5/ZjZjZi8xNTU1MzA1/NjMzP3Y9MQ",
+              "original": "https://imgv2-1-f.scribdassets.com/img/document/406306478/149x198/286e29f6cf/1555305633?v=1"
+            }
+          },
+          "extra_snippets": [
+            "xxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxx xxx User manual UM10204 · NXP Semiconductors Table 10. Characteristics of the SDA and SCL bus lines for Standard, Fast, and Fast-mode Plus I2C-bus devices[1] Symbol Parameter Conditions Standard-mode Fast-mode Fast-mode Plus Unit Min Max Min Max Min Max fSCL SCL clock frequency 0 100 0 400 0 1000 kHz tHD;STA hold time (repeated) START condition After this period, the first 4.0 - 0.6 - 0.26 - μs clock pulse is generated.",
+            "48 of 64 xxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxx x x x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxx xx xx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxx xxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxx x x xxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxx xxx [5] A Fast-mode I2C-bus device can be used in a Standard-mode I2C-bus system, but the requirement tSU;DAT 250 ns must then be met. This will automatically be the case if the User manual UM10204 · NXP Semiconductors device does not stretch the LOW period of the SCL signal.",
+            "UM10204 49 of 64 NXP Semiconductors UM10204 I2C-bus specification and user manual",
+            "Timing parameters are independent for capacitive load up to 100 pF for each bus line allowing the maximum possible bit rate of 3.4 Mbit/s. At a higher capacitive load on the bus lines, the bit rate decreases gradually. The timing parameters for a capacitive bus load of 400 pF are specified in Table 12, allowing a maximum bit rate of 1.7 Mbit/s. For UM10204 All information provided in this document is subject to legal disclaimers. © NXP Semiconductors N.V."
+          ]
+        },
+        {
+          "title": "UM10204 datasheet(45/64 Pages) NXP | I2C-bus specification and user manual",
+          "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2694/45/UM10204.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201245 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.8 Timing requirements for the bridge in a mixed-speed bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2694/45/UM10204.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› html-pdf  › 467563  › NXP  › UM10204  › 2694  › 45  › UM10204.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          },
+          "extra_snippets": [
+            "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201245 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.8 Timing requirements for the bridge in a mixed-speed bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors."
+          ]
+        },
+        {
+          "title": "Dub-Siren/Datasheets/UM10204 I2C-bus specification and user manual Rev. 6 - 4 April 2014.pdf at master · xioTechnologies/Dub-Siren",
+          "url": "https://github.com/xioTechnologies/Dub-Siren/blob/master/Datasheets/UM10204%20I2C-bus%20specification%20and%20user%20manual%20Rev.%206%20-%204%20April%202014.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Contribute to xioTechnologies/Dub-Siren development by creating an account on GitHub.",
+          "profile": {
+            "name": "GitHub",
+            "url": "https://github.com/xioTechnologies/Dub-Siren/blob/master/Datasheets/UM10204%20I2C-bus%20specification%20and%20user%20manual%20Rev.%206%20-%204%20April%202014.pdf",
+            "long_name": "github.com",
+            "img": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "software",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "github.com",
+            "hostname": "github.com",
+            "favicon": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw",
+            "path": "› xioTechnologies  › Dub-Siren  › blob  › master  › Datasheets  › UM10204 I2C-bus specification and user manual Rev. 6 - 4 April 2014.pdf"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/TRlRwd8ok02gngNYJmgKCqFS50Cz0dOgpozdUIX07wE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9vcGVu/Z3JhcGguZ2l0aHVi/YXNzZXRzLmNvbS8x/MzVlZGM0NTE0YWU2/MmQ1MzBiODA5MjA1/MWM4OTE5MGJmZWU3/YmVhZjUxNTc3Zjcw/Y2Y0YWM5MTA2NWJl/MWRhL3hpb1RlY2hu/b2xvZ2llcy9EdWIt/U2lyZW4",
+            "original": "https://opengraph.githubassets.com/135edc4514ae62d530b8092051c89190bfee7beaf51577f70cf4ac91065be1da/xioTechnologies/Dub-Siren",
+            "logo": false
+          },
+          "software": {
+            "name": "Dub-Siren",
+            "author": "xioTechnologies",
+            "is_npm": false,
+            "is_pypi": false,
+            "programmingLanguage": ""
+          }
+        },
+        {
+          "title": "UM10204 Datasheet(PDF) - NXP Semiconductors",
+          "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/467563/NXP/UM10204.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Part #: UM10204. Download. File Size: 1MbKbytes. Page: 64 Pages. Description: I2C-bus specification and user manual. Manufacturer: NXP Semiconductors.",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/datasheet-pdf/pdf/467563/NXP/UM10204.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› datasheet-pdf  › pdf  › 467563  › NXP  › UM10204.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          }
+        },
+        {
+          "title": "UM10204 datasheet(42/64 Pages) NXP | I2C-bus specification and user manual",
+          "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2514/42/UM10204.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201242 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.5 Mixed speed modes on one serial bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2514/42/UM10204.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› html-pdf  › 467563  › NXP  › UM10204  › 2514  › 42  › UM10204.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          },
+          "extra_snippets": [
+            "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201242 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.5 Mixed speed modes on one serial bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors."
+          ]
+        },
+        {
+          "title": "UM10204 datasheet(3/64 Pages) NXP | I2C-bus specification and user manual",
+          "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/174/3/UM10204.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 20123 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual1. Datasheet search, datasheets, Datasheet search site for Electronic ...",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/174/3/UM10204.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› html-pdf  › 467563  › NXP  › UM10204  › 174  › 3  › UM10204.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          },
+          "extra_snippets": [
+            "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 20123 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual1. Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors."
+          ]
+        },
+        {
+          "title": "UM10204 datasheet(2/64 Pages) NXP | I2C-bus specification and user manual",
+          "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/114/2/UM10204.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 20122 of 64Contact informationFor more information, please visit: http://www.nxp.comFor sales office addresses, please send an email to: salesaddresses@nxp.comNXP Semiconductors Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/114/2/UM10204.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› html-pdf  › 467563  › NXP  › UM10204  › 114  › 2  › UM10204.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          },
+          "extra_snippets": [
+            "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 20122 of 64Contact informationFor more information, please visit: http://www.nxp.comFor sales office addresses, please send an email to: salesaddresses@nxp.comNXP Semiconductors Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors."
+          ]
+        },
+        {
+          "title": "UM10204 I2C-bus specification and user manual / um10204-i2c-bus-specification-and-user-manual.pdf / PDF4PRO",
+          "url": "https://pdf4pro.com/amp/view/um10204-i2c-bus-specification-and-user-manual-5fb143.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "6 4 April 2014 User manualDocument ... SDA, SCL, USDA, USCLA bstractPhilips Semiconductors (now NXP Semiconductors) developed a simple bidirectional 2-wire bus for efficient inter-IC control....",
+          "page_age": "2019-10-03T07:40:13",
+          "profile": {
+            "name": "PDF4PRO",
+            "url": "https://pdf4pro.com/amp/view/um10204-i2c-bus-specification-and-user-manual-5fb143.html",
+            "long_name": "pdf4pro.com",
+            "img": "https://imgs.search.brave.com/v0ldZhzr33TZ9if0tmuZCltvWOwxFDiqjOIOZm5dDm0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2EzMzkwNGY3/OWZkOWJhMDg1ZWZm/MGQ1ZTQ2MDU5MDhm/Yjg4MzNkMmVjYjUz/MGNkMzllMTRmZDE1/MTMzMDJkMi9wZGY0/cHJvLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "pdf4pro.com",
+            "hostname": "pdf4pro.com",
+            "favicon": "https://imgs.search.brave.com/v0ldZhzr33TZ9if0tmuZCltvWOwxFDiqjOIOZm5dDm0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2EzMzkwNGY3/OWZkOWJhMDg1ZWZm/MGQ1ZTQ2MDU5MDhm/Yjg4MzNkMmVjYjUz/MGNkMzllMTRmZDE1/MTMzMDJkMi9wZGY0/cHJvLmNvbS8",
+            "path": "› amp  › view  › um10204-i2c-bus-specification-and-user-manual-5fb143.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/rtsqYb1XJ2U256hDthfh69PF_bDBnqbSPGu5_sRnN1Q/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wZGY0/cHJvLmNvbS9jYWNo/ZS9wcmV2aWV3L2Qv/ZC8zL2IvYy84LzQv/My90aHVtYi1kZDNi/Yzg0MzJmZjNmYTIw/YWM5OTc5ZThiZWJi/MTQ5Ni5qcGc",
+            "original": "https://pdf4pro.com/cache/preview/d/d/3/b/c/8/4/3/thumb-dd3bc8432ff3fa20ac9979e8bebb1496.jpg",
+            "logo": false
+          },
+          "age": "October 3, 2019",
+          "extra_snippets": [
+            "UM10204I2C-bus specification and user manualRev. 6 4 April 2014 User manualDocument informationInfoContentKeywordsI2C, I2C-bus , Standard-mode, Fast-mode, Fast-mode Plus, Fm+, Ultra Fast-mode, UFm, High Speed, Hs, inter-IC, SDA, SCL, USDA, USCLA bstractPhilips Semiconductors (now NXP Semiconductors) developed a simple bidirectional 2-wire bus for efficient inter-IC control."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

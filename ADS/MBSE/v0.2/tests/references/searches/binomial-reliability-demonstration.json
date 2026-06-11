@@ -1,0 +1,975 @@
+{
+  "query": "binomial reliability demonstration zero failures confidence rule of three testing",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "Reliability Test Design",
+      "url": "https://help.reliasoft.com/reference/life_data_analysis/lda/reliability_test_design.html",
+      "description": "Non-parametric demonstration test ... time. In this case, can be simply written as . A reliability engineer wants to design a zero-failure demonstration test in order to demonstrate a reliability of 80% at a 90% confidence level....",
+      "content": "Non-parametric demonstration test ... time. In this case, can be simply written as . A reliability engineer wants to design a zero-failure demonstration test in order to demonstrate a reliability of 80% at a 90% confidence level....\nIn other words, in cases where the available test time is equal to the demonstration time, the following non-parametric binomial equation is widely used in practice: where is the confidence level, is the number of failures, is the sample size and is the demonstrated reliability. Given any three of them, the remaining one can be solved for. Non-parametric demonstration test design is also often used for one shot devices where the reliability is not related to time. In this case, can be simply written as . A reliability engineer wants to design a zero-failure demonstration test in order to demonstrate a reliability of 80% at a 90% confidence level.\nIn this case, one knows beforehand the number of units, , the number of allowable failures, , and the confidence level, . With this information, the next step involves solving the binomial equation for . With this value known, one can use the appropriate reliability equation to back out the value of , since , and , and have already been calculated or specified. In this example, we will use the parametric binomial method to design a test to demonstrate a reliability of 90% at hours with a 95% confidence if no failure occur during the test.\nIn this example, we will use the parametric binomial method to design a test that will demonstrate hours with a 95% confidence if no failure occur during the test . We will assume a Weibull distribution with a shape parameter .\nIf those 11 samples are run for the required demonstration time and no failures are observed, then a reliability of 80% with a 90% confidence level has been demonstrated. If the reliability of the system is less than or equal to 80%, the chance of passing this test is 1-CL = 0.1, which is the Type II error. Therefore, the non-parametric binomial equation determines the sample size by controlling for the Type II error.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "ReliaSoft",
+        "url": "https://help.reliasoft.com/reference/life_data_analysis/lda/reliability_test_design.html",
+        "long_name": "help.reliasoft.com",
+        "img": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "help.reliasoft.com",
+        "hostname": "help.reliasoft.com",
+        "favicon": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v",
+        "path": "› reference  › life_data_analysis  › lda  › reliability_test_design.html"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "A Concise Guide to the Statistical Rule of Three",
+      "url": "https://www.statology.org/a-concise-guide-to-the-statistical-rule-of-three/",
+      "description": "Calculate 3 ÷ 100 = 0.03, meaning you can be 95% confident the true adverse event rate is less than 3%. Test 500 products and find zero defects? Then 3 ÷ 500 = 0.006, giving you 95% confidence that the defect rate is less than 0.6%. The rule ...",
+      "content": "Calculate 3 ÷ 100 = 0.03, meaning you can be 95% confident the true adverse event rate is less than 3%. Test 500 products and find zero defects? Then 3 ÷ 500 = 0.006, giving you 95% confidence that the defect rate is less than 0.6%. The rule ...\nThe rule of three states that if you observe zero events in a sample of n independent trials, you can be about 95% confident that the true rate is less than 3/n. This relationship comes from the properties of the binomial distribution and gives you a conservative estimate for rare event probabilities.\nCalculate 3 ÷ 100 = 0.03, meaning you can be 95% confident the true adverse event rate is less than 3%. Test 500 products and find zero defects? Then 3 ÷ 500 = 0.006, giving you 95% confidence that the defect rate is less than 0.6%. The rule comes from the upper bound of a one-sided 95% confidence interval for a binomial proportion when zero events occur.\nThe statistical rule of three lets you estimate confidence intervals when you observe zero events in a sample. This technique helps researchers and analysts make informed statements about rare events, failure rates, and quality control scenarios without complex calculations.\nApply the rule of three when you observe exactly zero events in a fixed number of independent trials and need a quick confidence estimate. It works best with sample sizes above 30, where the approximation becomes reliable and performs well for quality control decisions, preliminary safety assessments, or initial trial evaluations.",
+      "age": "July 29, 2025",
+      "page_age": "2025-07-29T12:00:19",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Statology",
+        "url": "https://www.statology.org/a-concise-guide-to-the-statistical-rule-of-three/",
+        "long_name": "statology.org",
+        "img": "https://imgs.search.brave.com/7ISxtHEEi1N_cyU5BDQmv4qEXuglfuBK4lZddInRIsA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzQxNzM1NzY4/ZDE1YjI1MzM2YmY1/ODNkMDQ2MjFiYzQ5/YzM3MmI1YWI4N2Uy/OGE1MzZiOWNkMTQ2/YTA0NGQ2Yi93d3cu/c3RhdG9sb2d5Lm9y/Zy8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "statology.org",
+        "hostname": "www.statology.org",
+        "favicon": "https://imgs.search.brave.com/7ISxtHEEi1N_cyU5BDQmv4qEXuglfuBK4lZddInRIsA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzQxNzM1NzY4/ZDE1YjI1MzM2YmY1/ODNkMDQ2MjFiYzQ5/YzM3MmI1YWI4N2Uy/OGE1MzZiOWNkMTQ2/YTA0NGQ2Yi93d3cu/c3RhdG9sb2d5Lm9y/Zy8",
+        "path": "  › home  › a concise guide to the statistical rule of three"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/mrNvesltdu3HThclQmwbAm3WrpQEk99UyiEInVOiBfA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c3RhdG9sb2d5Lm9y/Zy93cC1jb250ZW50/L3VwbG9hZHMvMjAy/NS8wNy9zdGEtY2h1/Z2FuaS1jb25jaXNl/LWd1aWRlLXN0YXRp/c3RpY2FsLXJ1bGUt/dGhyZWUtZmVhdHVy/ZS5wbmc",
+        "original": "https://www.statology.org/wp-content/uploads/2025/07/sta-chugani-concise-guide-statistical-rule-three-feature.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Using the Cumulative Binomial Equation for Reliability Demonstration Test Design and for Estimating the Parameters of a Data Set with Zero Failures",
+      "url": "https://help.reliasoft.com/articles/content/hotwire/issue118/relbasics118.htm",
+      "description": "Because there are zero failures in the test, Eqn. (1) becomes: Let us use the Weibull distribution for this example. Given that all five units survived 30 hours, we use the following equation: Using an assumed β value of 1.8 and a confidence level of 0.9 in the above equation:",
+      "content": "Because there are zero failures in the test, Eqn. (1) becomes: Let us use the Weibull distribution for this example. Given that all five units survived 30 hours, we use the following equation: Using an assumed β value of 1.8 and a confidence level of 0.9 in the above equation:\nIn this article, we will introduce the cumulative binomial equation and explore two potential applications for reliability engineering. First, we will explain how the equation can be applied for designing a Reliability Demonstration Test (RDT) that will be effective for demonstrating that a certain product has met or exceeded a given reliability at a given confidence interval. For this application, the equation can be adapted to apply to a situation in which no failures are expected to occur in the test.\nWhen prompted, enter the value for β and the confidence level and click OK. The value of η is automatically calculated, as shown in Figure 3. Figure 3: Data set and the calculated value of eta. In this article, we discussed how the cumulative binomial equation can be used to design an RDT and how it can also be used to estimate the unknown parameter for a data set that contains no failures.\nDistributions commonly used to describe the failure time include the Weibull, lognormal and exponential distributions. For example, suppose that the goal is to demonstrate that the reliability at time t meets the required reliability RL(t) at a specified confidence level, CL.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "ReliaSoft",
+        "url": "https://help.reliasoft.com/articles/content/hotwire/issue118/relbasics118.htm",
+        "long_name": "help.reliasoft.com",
+        "img": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "help.reliasoft.com",
+        "hostname": "help.reliasoft.com",
+        "favicon": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v",
+        "path": "› articles  › content  › hotwire  › issue118  › relbasics118.htm"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "Ensuring CAPA Effectiveness",
+      "url": "https://www.bioprocessintl.com/qa-qc/determining-sample-size-for-demonstrating-zero-failures-ensuring-the-effectiveness-of-corrective-and-preventive-actions",
+      "description": "For zero failures (assuming c = ... C is confidence. Thus, to have C% confidence when the CAPA is R% reliable, a minimum of n samples needs to be tested to ensure zero failure as an acceptance criteria....",
+      "content": "For zero failures (assuming c = ... C is confidence. Thus, to have C% confidence when the CAPA is R% reliable, a minimum of n samples needs to be tested to ensure zero failure as an acceptance criteria....\nFinally, we recommend a risk-assessment methodology for selecting acceptable reliability and statistical confidence levels that may be used in the two RDT methods highlighted. ... This method is also known as the classical reliability demonstration test. When x is the number of observed failures out of i trials, and the probability of each trial p is an independent Bernoulli trial, then the probability of at least c failures can be calculated using a binomial distribution (Equation 1).\nTherefore, herein we detail one such appropriate statistical approach to calculate sample size: “Reliability demonstration tests” (RDTs) can be used to verify whether a product or process has met a certain reliability requirement at a stated statistical confidence level when the underlying data distribution is unknown. A number of different RDT approaches are available for process engineers to choose from, including cumulative binomial, nonparametric binomial, exponential chi-squared, and nonparametric Bayesian methods.\nFor zero failures (assuming c = 0), that formula reduces to Equation 2, which can be rewritten as Equation 3. Now the number of sample sizes can be determined by equating Equation 3 to a significance value (α) type 1 error — in other words, the probability of falsely rejecting a true null hypothesis (Equation 4). Taking logarithms on both sides in that equation and solving for sample size n, you obtain Equation 5, in which the term C is confidence. Thus, to have C% confidence when the CAPA is R% reliable, a minimum of n samples needs to be tested to ensure zero failure as an acceptance criteria.\nBased on the RPN, the risk associated with a given attribute or parameter is classified as high, medium, or low (Table 2). For each risk classification, Table 2 also lists recommendations for confidence (C) and reliability (R). The latter is based on rules of thumb for Cronbach’s alpha coefficient, which measures the reliability or internal consistency of a measurement method (1). ... We recommended documenting the statistical methods and rationality for selecting sample sizes to ensure that a CAPA is effective. For determining sample sizes, both nonparametric binomial and exponential chi-squared methods are widely accepted for practice in industries regulated by the US Food and Drug Administration (FDA).",
+      "age": "February 13, 2026",
+      "page_age": "2026-02-13T00:05:52",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "BioProcess International",
+        "url": "https://www.bioprocessintl.com/qa-qc/determining-sample-size-for-demonstrating-zero-failures-ensuring-the-effectiveness-of-corrective-and-preventive-actions",
+        "long_name": "bioprocessintl.com",
+        "img": "https://imgs.search.brave.com/jKmdKDmRNFq5-OYmSxPrv7eMPIIQQh5wl1YAW5-MKpY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDNjOTYyNWZi/NjFiYzE0YjI1ZmFk/NTk4MThjM2E0Yjc2/MjMzNGRjOWNiMmJh/MzliYzM5NzNiM2Mw/MGVhMDViNC93d3cu/YmlvcHJvY2Vzc2lu/dGwuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "bioprocessintl.com",
+        "hostname": "www.bioprocessintl.com",
+        "favicon": "https://imgs.search.brave.com/jKmdKDmRNFq5-OYmSxPrv7eMPIIQQh5wl1YAW5-MKpY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDNjOTYyNWZi/NjFiYzE0YjI1ZmFk/NTk4MThjM2E0Yjc2/MjMzNGRjOWNiMmJh/MzliYzM5NzNiM2Mw/MGVhMDViNC93d3cu/YmlvcHJvY2Vzc2lu/dGwuY29tLw",
+        "path": "  › home  › qa/qc"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/zhxzzqSUXsQRcLpe3hynkPQ4frRp2My1Daqe5Iq_558/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9ldS1p/bWFnZXMuY29udGVu/dHN0YWNrLmNvbS92/My9hc3NldHMvYmx0/MGE0OGExZjNlZGNh/OWViMC9ibHQwNDNi/YjI1ZmEwOWYyYTA1/LzY1Y2NmZmM4MWFk/NTg3MDQwYTQ2MmI5/Zi9pU3RvY2stMTI4/MjM3MDQ3MC5qcGc",
+        "original": "https://eu-images.contentstack.com/v3/assets/blt0a48a1f3edca9eb0/blt043bb25fa09f2a05/65ccffc81ad587040a462b9f/iStock-1282370470.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Sample Size Calculator - Binomial Reliability Demonstration ...",
+      "url": "https://reliabilityanalyticstoolkit.appspot.com/sample_size",
+      "description": "Threfore, demonstrating Rtest at time Ttest is equivalent to demonstrating Rrqmt, provided that the estimate of &amp;#946 is accurate. Method 2A solves for required sample size. Conversely, given a fixed number of samples, Method 2B solves for test time required. . ... MIL-HDBK-338, Electronic Reliability Design Handbook. http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval",
+      "content": "Threfore, demonstrating Rtest at time Ttest is equivalent to demonstrating Rrqmt, provided that the estimate of &amp;#946 is accurate. Method 2A solves for required sample size. Conversely, given a fixed number of samples, Method 2B solves for test time required. . ... MIL-HDBK-338, Electronic Reliability Design Handbook. http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval\nThe calculation is based on the following binomial equation: where: C is the test confidence level R is the reliability to be demonstrated f is the number of allowable test failures n is the test sample size Given inputs of C, R and f, this tool solves the above equation for sample size, n.\nThrefore, demonstrating Rtest at time Ttest is equivalent to demonstrating Rrqmt, provided that the estimate of &#946 is accurate. Method 2A solves for required sample size. Conversely, given a fixed number of samples, Method 2B solves for test time required. . ... MIL-HDBK-338, Electronic Reliability Design Handbook. http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval\nhttp://reliabilityanalyticstoolkit.appspot.com/binomial_confidence",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Appspot",
+        "url": "https://reliabilityanalyticstoolkit.appspot.com/sample_size",
+        "long_name": "reliabilityanalyticstoolkit.appspot.com",
+        "img": "https://imgs.search.brave.com/XwfvR8wPYLFo1fdad0WT5iZD1tw7J9j-rIUUJAo9jLk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjFjMmI2MjU2/OWE5NjQ5NjdjMjk0/MDVmN2ViZjQwOGQ0/OTcyOTE1NTk5YzQ4/YjgwNzlhNmNhNzcw/MjZiODFkZC9yZWxp/YWJpbGl0eWFuYWx5/dGljc3Rvb2xraXQu/YXBwc3BvdC5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "reliabilityanalyticstoolkit.appspot.com",
+        "hostname": "reliabilityanalyticstoolkit.appspot.com",
+        "favicon": "https://imgs.search.brave.com/XwfvR8wPYLFo1fdad0WT5iZD1tw7J9j-rIUUJAo9jLk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjFjMmI2MjU2/OWE5NjQ5NjdjMjk0/MDVmN2ViZjQwOGQ0/OTcyOTE1NTk5YzQ4/YjgwNzlhNmNhNzcw/MjZiODFkZC9yZWxp/YWJpbGl0eWFuYWx5/dGljc3Rvb2xraXQu/YXBwc3BvdC5jb20v",
+        "path": "› sample_size"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Cumulative Binomial for Test Design and Analysis",
+      "url": "https://www.hbkworld.com/en/knowledge/resource-center/articles/cumulative-binomial-for-test-design-and-analysis",
+      "description": "The engineer knows the number of test units (N), the number of allowable failures (r) and the desired confidence level (C.L.). With this information, the cumulative binomial equation can be solved for R. Once the reliability value (R) has been determined, it can be substituted into the appropriate reliability equation and the test time can be solved for given the distribution parameters and the reliability value. The cumulative binomial can also be used to determine the reliability that has been demonstrated on a test with few or no failures.",
+      "content": "The engineer knows the number of test units (N), the number of allowable failures (r) and the desired confidence level (C.L.). With this information, the cumulative binomial equation can be solved for R. Once the reliability value (R) has been determined, it can be substituted into the appropriate reliability equation and the test time can be solved for given the distribution parameters and the reliability value. The cumulative binomial can also be used to determine the reliability that has been demonstrated on a test with few or no failures.\nIf the engineer has the distribution parameters, he or she can calculate the reliability at the test duration time, otherwise the estimate of the product's reliability can be substituted directly for R. Then, given the desired confidence level (C.L.), the maximum allowable failures (r) and the reliability value (R), the cumulative binomial equation can be solved for the number of units (N). Similarly, if the test is to demonstrate a required MTTF (mean time to failure), at least one of the parameters of the product's life distribution must be known in order to solve for R.\nHowever, if enough failures are encountered on the test, it may be advisable to perform a reliability analysis on the data. In order to determine the demonstrated reliability, you need the number of units on test (N), the number of failures on the test (r) and the desired confidence level (C.L.).\nThe confidence level demonstrated on a test can be calculated based on the test results and reliability characteristics. Given the number of units on test (N), the number of failures (r) and the calculated or estimated reliability (R), the value of the confidence level (C.L.) can easily be calculated with the cumulative binomial equation.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "HBK",
+        "url": "https://www.hbkworld.com/en/knowledge/resource-center/articles/cumulative-binomial-for-test-design-and-analysis",
+        "long_name": "hbkworld.com",
+        "img": "https://imgs.search.brave.com/bXISWN1elidi0ap3Zdo2fPwwLwbTi2V5kfJ_Q0LYJsU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODBiMjY5M2Ex/N2YxOGJiZmY4MjJm/ODQ0NTQ5YTZkOWMw/YmNkMTU1NjljODU0/OWU1NTA0YzU4NDRk/YjY0OGRiYy93d3cu/aGJrd29ybGQuY29t/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "hbkworld.com",
+        "hostname": "www.hbkworld.com",
+        "favicon": "https://imgs.search.brave.com/bXISWN1elidi0ap3Zdo2fPwwLwbTi2V5kfJ_Q0LYJsU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODBiMjY5M2Ex/N2YxOGJiZmY4MjJm/ODQ0NTQ5YTZkOWMw/YmNkMTU1NjljODU0/OWU1NTA0YzU4NDRk/YjY0OGRiYy93d3cu/aGJrd29ybGQuY29t/Lw",
+        "path": "  › home  › knowledge  › resource center  › articles"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/Hg9YniumdmMajj6wcn4bZdmDYwRKkGjyYVefQ9eu4aY/rs:fit:200:200:1:0/g:ce/aHR0cDovL21lZGlh/Lmhia3dvcmxkLmNv/bS90cmFuc2Zvcm0v/NTdiNmJiOWMtMmVl/My00ZTA3LWE0ZGYt/Y2M0YWVjMWM4ZDk1/L0Rlc2lnbi1mb3It/cmVsaWFiaWxpdHk_/aW89dHJhbnNmb3Jt/OmZpbGwsd2lkdGg6/MjU2MCZhbXA7cXVh/bGl0eT04MA",
+        "original": "http://media.hbkworld.com/transform/57b6bb9c-2ee3-4e07-a4df-cc4aec1c8d95/Design-for-reliability?io=transform:fill,width:2560&amp;quality=80",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "Reliability Demonstration Test Design",
+      "url": "https://help.reliasoft.com/weibull21/content/reliability_demonstration_test_design.htm",
+      "description": "In a zero-failure reliability ... given confidence level) by testing a specified number of units for a predetermined time. If no failures occur, then the target metric is demonstrated....",
+      "content": "In a zero-failure reliability ... given confidence level) by testing a specified number of units for a predetermined time. If no failures occur, then the target metric is demonstrated....\nThe table can also display a range of required sample size values as a function of test time and number of allowable failures. After you create this table, you can also create a plot displaying the same information. This provides a quick way to consider many possible test plan scenarios without having to perform each calculation individually. Non-Parametric Binomial solves for the demonstrated reliability, confidence level or sample size that is associated with a specified test design.\nIn a zero-failure reliability demonstration test (RDT), the engineer aims to demonstrate a specified target metric (e.g., reliability at a specific time with a given confidence level) by testing a specified number of units for a predetermined time. If no failures occur, then the target metric is demonstrated.\nIf you wish to estimate whether a failure is likely to occur, one option is to use the Expected Failure Times Plot to estimate the first failure time based on the assumed distribution and parameters. Test Design Method allows you select a test design option. The method you select will determine the required inputs on the RDT sheet. Parametric Binomial determines what test duration or sample size will be required to demonstrate either reliability at a specific time or a specified mean time to failure.\nNote that although mathematically it is possible to design a new test with more allowable failures and a longer duration to demonstrate the same target metric, it is unlikely that the metric will be demonstrated by the new test if the original demonstration test failed.) ReliaSoft's RDT tool can assist the user in designing a demonstration test by solving for various values related to the test, such as sample size, required test time, the demonstrated reliability and the confidence level at which the target reliability will be demonstrated.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "ReliaSoft",
+        "url": "https://help.reliasoft.com/weibull21/content/reliability_demonstration_test_design.htm",
+        "long_name": "help.reliasoft.com",
+        "img": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "help.reliasoft.com",
+        "hostname": "help.reliasoft.com",
+        "favicon": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v",
+        "path": "› weibull21  › content  › reliability_demonstration_test_design.htm"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "Non-Parametric Binomial Test Design Example - ReliaWiki",
+      "url": "https://www.reliawiki.com/index.php/Non-Parametric_Binomial_Test_Design_Example",
+      "description": "Note that the time value shown ... at time&quot; value for the results). If those 11 samples are run for the required demonstration time and no failures are observed, then a reliability of 80% with a 90% confidence level has been demonstrated....",
+      "content": "Note that the time value shown ... at time&quot; value for the results). If those 11 samples are run for the required demonstration time and no failures are observed, then a reliability of 80% with a 90% confidence level has been demonstrated....\nSo now the required sample size can be easily solved for any required reliability and confidence level. The result of this test design was obtained using Weibull++ and is: The result shows that 11 samples are needed. Note that the time value shown in the above figure is chance indicative and not part of the test design (the \"Test time per unit\" that was input will be the same as the \"Demonstrated at time\" value for the results). If those 11 samples are run for the required demonstration time and no failures are observed, then a reliability of 80% with a 90% confidence level has been demonstrated.",
+      "age": "September 18, 2023",
+      "page_age": "2023-09-18T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Reliawiki",
+        "url": "https://www.reliawiki.com/index.php/Non-Parametric_Binomial_Test_Design_Example",
+        "long_name": "reliawiki.com",
+        "img": "https://imgs.search.brave.com/E5X33g5Pw44e3q6EW5xtl2ksnxlW02hjYbr5rwHLF7Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVkM2Q5NzJk/ODc1ODQ2M2M3YzEz/ZWNkNzQ5MWQ3OGQz/MjYwODAxNGY3MGIw/ZDg2ODM3ODU2MTBk/NmMxZjY0ZS93d3cu/cmVsaWF3aWtpLmNv/bS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "reliawiki.com",
+        "hostname": "www.reliawiki.com",
+        "favicon": "https://imgs.search.brave.com/E5X33g5Pw44e3q6EW5xtl2ksnxlW02hjYbr5rwHLF7Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVkM2Q5NzJk/ODc1ODQ2M2M3YzEz/ZWNkNzQ5MWQ3OGQz/MjYwODAxNGY3MGIw/ZDg2ODM3ODU2MTBk/NmMxZjY0ZS93d3cu/cmVsaWF3aWtpLmNv/bS8",
+        "path": "› index.php  › Non-Parametric_Binomial_Test_Design_Example"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "Bayesian Zero-Failure Reliability Demonstration Maha Rahrouh",
+      "url": "https://maths.dur.ac.uk/stats/people/fc/thesis-MR.pdf",
+      "description": "tests to be independent and the number of failures is Binomially distributed, with · a Beta prior distribution for the failure probability. Tal, et al. [56] claim that the · Bayesian estimation method is very useful for safety-critical software as it provides · a point estimate and a variance ...",
+      "content": "tests to be independent and the number of failures is Binomially distributed, with · a Beta prior distribution for the failure probability. Tal, et al. [56] claim that the · Bayesian estimation method is very useful for safety-critical software as it provides · a point estimate and a variance ...\ntests to be independent and the number of failures is Binomially distributed, with · a Beta prior distribution for the failure probability. Tal, et al. [56] claim that the · Bayesian estimation method is very useful for safety-critical software as it provides · a point estimate and a variance for failure probability, and enables one to calculate a ... Table 1.1: Methods for calculating system reliability/testing duration. conﬁdence interval.\nTal, et al. [56] prefer the TRW method [57], from all the ﬁxed duration testing · methods, because it provides an upper conﬁdence bound for the probability of soft-\ntesting, again for the deterministic and the random cases. ... B(α, β) = (α −1)!(β −1)! ... Binomial model for the tests, and a Beta prior distribution with Martz et al.\nthe zero-failure testing assumption, and we discuss this in more detail later. ... Bernoulli random quantities, enabling the use of a simple Binomial model.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Dur",
+        "url": "https://maths.dur.ac.uk/stats/people/fc/thesis-MR.pdf",
+        "long_name": "maths.dur.ac.uk",
+        "img": "https://imgs.search.brave.com/izQOdsLN6aetwSTqIp-7hdbARRX7bOlkuknMIC_C52c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjA1NGU1Mjdi/ZTA3N2M4MTYxNzUy/ZDA4ODBmYzZhNTNm/OTY1ZWFlOTZlY2Mz/M2I5NWJkMDUwNzE5/MjMyNmM4Ny9tYXRo/cy5kdXIuYWMudWsv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "maths.dur.ac.uk",
+        "hostname": "maths.dur.ac.uk",
+        "favicon": "https://imgs.search.brave.com/izQOdsLN6aetwSTqIp-7hdbARRX7bOlkuknMIC_C52c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjA1NGU1Mjdi/ZTA3N2M4MTYxNzUy/ZDA4ODBmYzZhNTNm/OTY1ZWFlOTZlY2Mz/M2I5NWJkMDUwNzE5/MjMyNmM4Ny9tYXRo/cy5kdXIuYWMudWsv",
+        "path": "› stats  › people  › fc  › thesis-MR.pdf"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "(PDF) Binomial Reliability Demonstration Tests with Dependent Data",
+      "url": "https://www.researchgate.net/publication/275467200_Binomial_Reliability_Demonstration_Tests_with_Dependent_Data",
+      "description": "Wilson&#x27;s suggestion of inverting the related score test with null rather than estimated standard error yields coverage probabilities close to nominal confidence levels, even for very small sample sizes. The 95% score interval has similar behavior as the adjusted Wald interval obtained after adding two &quot;successes&quot; and two &quot;failures&quot; to the sample. In elementary courses, with the score and adjusted Wald methods it is unnecessary to provide students with awkward sample size guidelines. ... Michael S. Hamada ... Harry F. Martz ... Colin R. Blyth · Harold A. Still · For X with Binomial (n, p) distribution, Section 1 gives a one-page table of .95 and .99 confidence intervals for p, for n = 1, 2, …, 30.",
+      "content": "Wilson&#x27;s suggestion of inverting the related score test with null rather than estimated standard error yields coverage probabilities close to nominal confidence levels, even for very small sample sizes. The 95% score interval has similar behavior as the adjusted Wald interval obtained after adding two &quot;successes&quot; and two &quot;failures&quot; to the sample. In elementary courses, with the score and adjusted Wald methods it is unnecessary to provide students with awkward sample size guidelines. ... Michael S. Hamada ... Harry F. Martz ... Colin R. Blyth · Harold A. Still · For X with Binomial (n, p) distribution, Section 1 gives a one-page table of .95 and .99 confidence intervals for p, for n = 1, 2, …, 30.\nThus the statement in a BRDT can be thought of as an upper bound conﬁdence interval on · proportion of failures. It should be noted that because of the discreteness in the binomial\nWilson's suggestion of inverting the related score test with null rather than estimated standard error yields coverage probabilities close to nominal confidence levels, even for very small sample sizes. The 95% score interval has similar behavior as the adjusted Wald interval obtained after adding two \"successes\" and two \"failures\" to the sample. In elementary courses, with the score and adjusted Wald methods it is unnecessary to provide students with awkward sample size guidelines. ... Michael S. Hamada ... Harry F. Martz ... Colin R. Blyth · Harold A. Still · For X with Binomial (n, p) distribution, Section 1 gives a one-page table of .95 and .99 confidence intervals for p, for n = 1, 2, …, 30.\nThe plans are developed in such a way that they attain a specified probability of passing the test when the target reliability has been met as well as provide desired confidence that the target reliability has been met given that the test has been passed. ... Michelle L. DePoy Smith ... The start-up demonstration test that requires k consecutive successes for acceptance prior to f total failures and rejection otherwise is examined.\nClopper, C.J. and Pearson, E.S. (1934). The Use of Conﬁdence or Fiducial Limits Illustrated · in the Case of the Binomial.",
+      "age": "April 1, 2015",
+      "page_age": "2015-04-01T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ResearchGate",
+        "url": "https://www.researchgate.net/publication/275467200_Binomial_Reliability_Demonstration_Tests_with_Dependent_Data",
+        "long_name": "researchgate.net",
+        "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "researchgate.net",
+        "hostname": "www.researchgate.net",
+        "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+        "path": "› publication  › 275467200_Binomial_Reliability_Demonstration_Tests_with_Dependent_Data"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/_1qvqTXYyA38_V7yAczj3Yne_nuqR3K3epsSt8RI1HY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/cHVibGljYXRpb24v/Mjc1NDY3MjAwX0Jp/bm9taWFsX1JlbGlh/YmlsaXR5X0RlbW9u/c3RyYXRpb25fVGVz/dHNfd2l0aF9EZXBl/bmRlbnRfRGF0YS9s/aW5rcy81Y2JlMTQ4/ZDQ1ODUxNTZjZDdh/YjUzMTkvbGFyZ2Vw/cmV2aWV3LnBuZw",
+        "original": "https://i1.rgstatic.net/publication/275467200_Binomial_Reliability_Demonstration_Tests_with_Dependent_Data/links/5cbe148d4585156cd7ab5319/largepreview.png",
+        "logo": false
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "binomial reliability demonstration zero failures confidence rule of three testing",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.964,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "binomial reliability demonstration zero failures confidence rule of three testing",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "videos",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "videos": {
+      "type": "videos",
+      "results": [
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=AwuYF6tTWp0",
+          "title": "Relibility Sample Size P3 with failures using Binomial Distribution ...",
+          "description": "Dear friends, we are very happy to release this video on the first day of the World Quality Month 2023! Some of you have asked the question about how the for...",
+          "age": "November 1, 2023",
+          "page_age": "2023-11-01T15:20:04",
+          "fetched_content_timestamp": 1717141680,
+          "video": {
+            "duration": "14:10",
+            "views": 1050,
+            "creator": "Institute of Quality and Reliability",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/E7zEh32FDv2Vg1eXbFXYvkZnKoe6km9g1dWspuyxJT8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9B/d3VZRjZ0VFdwMC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/AwuYF6tTWp0/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=DErzzUWkqEM",
+          "title": "Binomial Calculation using Minitab - YouTube",
+          "description": "A Simple Minitab Tutorial....Here is my buy me a coffee link.https://www.buymeacoffee.com/osId2T0BLDesign of Experiments for 21st Century Engineers – Minitab",
+          "age": "January 19, 2022",
+          "page_age": "2022-01-19T13:10:28",
+          "fetched_content_timestamp": 1713090911,
+          "video": {
+            "duration": "13:14",
+            "views": 407,
+            "creator": "Paul Allen",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Pd-AQ2Fax_MiKJvFlW19sscSoO5mjzDvrYAUTcoPsvE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9E/RXJ6elVXa3FFTS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/DErzzUWkqEM/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=_S2p8VlI-g0",
+          "title": "MATH6038: Reliability Block Diagrams III and Binomial Distribution ...",
+          "description": "AboutPressCopyrightContact usCreatorsAdvertiseDevelopersTermsPrivacyPolicy & SafetyHow YouTube worksTest new featuresNFL Sunday Ticket · © 2024 Google LLC",
+          "age": "April 21, 2016",
+          "page_age": "2016-04-21T07:59:33",
+          "fetched_content_timestamp": 1710254575,
+          "video": {
+            "duration": "21:20",
+            "views": 185,
+            "creator": "J.P. McCarthy",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/v5VaUmcmnksUPCBXRzQnQ0O0hMkbUDgSQUqLCXMN8GU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9f/UzJwOFZsSS1nMC9t/YXhyZXNkZWZhdWx0/LmpwZz9zcXA9LW9h/eW13RW1DSUFLRU5B/RjhxdUtxUU1hOEFF/Qi1BSC1DWUFDMEFX/S0Fnd0lBQkFCR0dV/Z1pTaGxNQTg9JmFt/cDtycz1BT240Q0xD/X01hMlJjb1Q1dkFM/WG9hYU9fb1NDYkxs/QUdR",
+            "original": "https://i.ytimg.com/vi/_S2p8VlI-g0/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgZShlMA8=&amp;rs=AOn4CLC_Ma2RcoT5vALXoaaO_oSCbLlAGQ"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=4XYnfABrhVk",
+          "title": "Binomial Distribution and its applications - YouTube",
+          "description": "Dear friends, we are happy to release this video on Binomial Distribution which is one of the foundations in probability theory! In this video Hemant Urdhwar...",
+          "age": "January 27, 2020",
+          "page_age": "2020-01-27T12:49:04",
+          "fetched_content_timestamp": 1734352987,
+          "video": {
+            "duration": "11:50",
+            "views": 7172,
+            "creator": "Institute of Quality and Reliability",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Bu6W52k8wFT6jQWgCj1KCJ0irG91VgD9kBjClwg2_r8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS80/WFluZkFCcmhWay9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/4XYnfABrhVk/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=HTBfMK7PVQU",
+          "title": "Sample size in Reliability Testing Part-1 (One-shot Devices) - YouTube",
+          "description": "Dear friends, I am happy to release this video about determining sample size in reliability and functional testing! The video discusses determining sample si...",
+          "age": "June 22, 2020",
+          "page_age": "2020-06-22T07:25:59",
+          "fetched_content_timestamp": 1779553069,
+          "video": {
+            "duration": "10:34",
+            "creator": "Institute of Quality and Reliability",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/LncpVY_da4MQOM1qHMhgYazpEFfswtRSD3DOQaJisL4/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9I/VEJmTUs3UFZRVS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/HTBfMK7PVQU/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=J8jNoF-K8E8",
+          "title": "The Binomial Distribution and Test, Clearly Explained!!! - YouTube",
+          "description": "The binomial distribution and the related statistical test look really complicated, but a actually quite simple. Here I walk you through both, one step at a ...",
+          "age": "August 6, 2018",
+          "page_age": "2018-08-06T19:58:36",
+          "fetched_content_timestamp": 1780720356,
+          "video": {
+            "duration": "15:47",
+            "creator": "StatQuest with Josh Starmer",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/lhcDY2GU7VI_JUW85ibzdDJI2sJhRog7gz8_cahUCQo/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9K/OGpOb0YtSzhFOC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/J8jNoF-K8E8/maxresdefault.jpg"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "Reliability Test Design",
+          "url": "https://help.reliasoft.com/reference/life_data_analysis/lda/reliability_test_design.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Non-parametric demonstration test ... time. In this case, can be simply written as . A reliability engineer wants to design a zero-failure demonstration test in order to demonstrate a reliability of 80% at a 90% confidence level....",
+          "profile": {
+            "name": "ReliaSoft",
+            "url": "https://help.reliasoft.com/reference/life_data_analysis/lda/reliability_test_design.html",
+            "long_name": "help.reliasoft.com",
+            "img": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "help.reliasoft.com",
+            "hostname": "help.reliasoft.com",
+            "favicon": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v",
+            "path": "› reference  › life_data_analysis  › lda  › reliability_test_design.html"
+          },
+          "extra_snippets": [
+            "In other words, in cases where the available test time is equal to the demonstration time, the following non-parametric binomial equation is widely used in practice: where is the confidence level, is the number of failures, is the sample size and is the demonstrated reliability. Given any three of them, the remaining one can be solved for. Non-parametric demonstration test design is also often used for one shot devices where the reliability is not related to time. In this case, can be simply written as . A reliability engineer wants to design a zero-failure demonstration test in order to demonstrate a reliability of 80% at a 90% confidence level.",
+            "In this case, one knows beforehand the number of units, , the number of allowable failures, , and the confidence level, . With this information, the next step involves solving the binomial equation for . With this value known, one can use the appropriate reliability equation to back out the value of , since , and , and have already been calculated or specified. In this example, we will use the parametric binomial method to design a test to demonstrate a reliability of 90% at hours with a 95% confidence if no failure occur during the test.",
+            "In this example, we will use the parametric binomial method to design a test that will demonstrate hours with a 95% confidence if no failure occur during the test . We will assume a Weibull distribution with a shape parameter .",
+            "If those 11 samples are run for the required demonstration time and no failures are observed, then a reliability of 80% with a 90% confidence level has been demonstrated. If the reliability of the system is less than or equal to 80%, the chance of passing this test is 1-CL = 0.1, which is the Type II error. Therefore, the non-parametric binomial equation determines the sample size by controlling for the Type II error."
+          ]
+        },
+        {
+          "title": "A Concise Guide to the Statistical Rule of Three",
+          "url": "https://www.statology.org/a-concise-guide-to-the-statistical-rule-of-three/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Calculate 3 ÷ 100 = 0.03, meaning you can be 95% confident the true adverse event rate is less than 3%. Test 500 products and find zero defects? Then 3 ÷ 500 = 0.006, giving you 95% confidence that the defect rate is less than 0.6%. The rule ...",
+          "page_age": "2025-07-29T12:00:19",
+          "profile": {
+            "name": "Statology",
+            "url": "https://www.statology.org/a-concise-guide-to-the-statistical-rule-of-three/",
+            "long_name": "statology.org",
+            "img": "https://imgs.search.brave.com/7ISxtHEEi1N_cyU5BDQmv4qEXuglfuBK4lZddInRIsA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzQxNzM1NzY4/ZDE1YjI1MzM2YmY1/ODNkMDQ2MjFiYzQ5/YzM3MmI1YWI4N2Uy/OGE1MzZiOWNkMTQ2/YTA0NGQ2Yi93d3cu/c3RhdG9sb2d5Lm9y/Zy8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "statology.org",
+            "hostname": "www.statology.org",
+            "favicon": "https://imgs.search.brave.com/7ISxtHEEi1N_cyU5BDQmv4qEXuglfuBK4lZddInRIsA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzQxNzM1NzY4/ZDE1YjI1MzM2YmY1/ODNkMDQ2MjFiYzQ5/YzM3MmI1YWI4N2Uy/OGE1MzZiOWNkMTQ2/YTA0NGQ2Yi93d3cu/c3RhdG9sb2d5Lm9y/Zy8",
+            "path": "  › home  › a concise guide to the statistical rule of three"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/mrNvesltdu3HThclQmwbAm3WrpQEk99UyiEInVOiBfA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c3RhdG9sb2d5Lm9y/Zy93cC1jb250ZW50/L3VwbG9hZHMvMjAy/NS8wNy9zdGEtY2h1/Z2FuaS1jb25jaXNl/LWd1aWRlLXN0YXRp/c3RpY2FsLXJ1bGUt/dGhyZWUtZmVhdHVy/ZS5wbmc",
+            "original": "https://www.statology.org/wp-content/uploads/2025/07/sta-chugani-concise-guide-statistical-rule-three-feature.png",
+            "logo": false
+          },
+          "age": "July 29, 2025",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Vinod Chugani"
+              }
+            ],
+            "date": "Jul 29, 2025",
+            "publisher": {
+              "type": "organization",
+              "name": "Statology",
+              "url": "https://www.statology.org/",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/34XsDHLGx7UOpcmnTFXM8FnZ36PeCgKvuyanALQOWP0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c3RhdG9sb2d5Lm9y/Zy93cC1jb250ZW50/L3VwbG9hZHMvMjAy/NC8wNy9TdGF0b2xv/Z3lMb2dvX09uV2hp/dGUucG5n",
+                "original": "https://www.statology.org/wp-content/uploads/2024/07/StatologyLogo_OnWhite.png"
+              }
+            }
+          },
+          "extra_snippets": [
+            "The rule of three states that if you observe zero events in a sample of n independent trials, you can be about 95% confident that the true rate is less than 3/n. This relationship comes from the properties of the binomial distribution and gives you a conservative estimate for rare event probabilities.",
+            "Calculate 3 ÷ 100 = 0.03, meaning you can be 95% confident the true adverse event rate is less than 3%. Test 500 products and find zero defects? Then 3 ÷ 500 = 0.006, giving you 95% confidence that the defect rate is less than 0.6%. The rule comes from the upper bound of a one-sided 95% confidence interval for a binomial proportion when zero events occur.",
+            "The statistical rule of three lets you estimate confidence intervals when you observe zero events in a sample. This technique helps researchers and analysts make informed statements about rare events, failure rates, and quality control scenarios without complex calculations.",
+            "Apply the rule of three when you observe exactly zero events in a fixed number of independent trials and need a quick confidence estimate. It works best with sample sizes above 30, where the approximation becomes reliable and performs well for quality control decisions, preliminary safety assessments, or initial trial evaluations."
+          ]
+        },
+        {
+          "title": "Using the Cumulative Binomial Equation for Reliability Demonstration Test Design and for Estimating the Parameters of a Data Set with Zero Failures",
+          "url": "https://help.reliasoft.com/articles/content/hotwire/issue118/relbasics118.htm",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Because there are zero failures in the test, Eqn. (1) becomes: Let us use the Weibull distribution for this example. Given that all five units survived 30 hours, we use the following equation: Using an assumed β value of 1.8 and a confidence level of 0.9 in the above equation:",
+          "profile": {
+            "name": "ReliaSoft",
+            "url": "https://help.reliasoft.com/articles/content/hotwire/issue118/relbasics118.htm",
+            "long_name": "help.reliasoft.com",
+            "img": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "help.reliasoft.com",
+            "hostname": "help.reliasoft.com",
+            "favicon": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v",
+            "path": "› articles  › content  › hotwire  › issue118  › relbasics118.htm"
+          },
+          "extra_snippets": [
+            "In this article, we will introduce the cumulative binomial equation and explore two potential applications for reliability engineering. First, we will explain how the equation can be applied for designing a Reliability Demonstration Test (RDT) that will be effective for demonstrating that a certain product has met or exceeded a given reliability at a given confidence interval. For this application, the equation can be adapted to apply to a situation in which no failures are expected to occur in the test.",
+            "Because there are zero failures in the test, Eqn. (1) becomes: Let us use the Weibull distribution for this example. Given that all five units survived 30 hours, we use the following equation: Using an assumed β value of 1.8 and a confidence level of 0.9 in the above equation:",
+            "When prompted, enter the value for β and the confidence level and click OK. The value of η is automatically calculated, as shown in Figure 3. Figure 3: Data set and the calculated value of eta. In this article, we discussed how the cumulative binomial equation can be used to design an RDT and how it can also be used to estimate the unknown parameter for a data set that contains no failures.",
+            "Distributions commonly used to describe the failure time include the Weibull, lognormal and exponential distributions. For example, suppose that the goal is to demonstrate that the reliability at time t meets the required reliability RL(t) at a specified confidence level, CL."
+          ]
+        },
+        {
+          "title": "Ensuring CAPA Effectiveness",
+          "url": "https://www.bioprocessintl.com/qa-qc/determining-sample-size-for-demonstrating-zero-failures-ensuring-the-effectiveness-of-corrective-and-preventive-actions",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "For zero failures (assuming c = ... C is confidence. Thus, to have C% confidence when the CAPA is R% reliable, a minimum of n samples needs to be tested to ensure zero failure as an acceptance criteria....",
+          "page_age": "2026-02-13T00:05:52",
+          "profile": {
+            "name": "BioProcess International",
+            "url": "https://www.bioprocessintl.com/qa-qc/determining-sample-size-for-demonstrating-zero-failures-ensuring-the-effectiveness-of-corrective-and-preventive-actions",
+            "long_name": "bioprocessintl.com",
+            "img": "https://imgs.search.brave.com/jKmdKDmRNFq5-OYmSxPrv7eMPIIQQh5wl1YAW5-MKpY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDNjOTYyNWZi/NjFiYzE0YjI1ZmFk/NTk4MThjM2E0Yjc2/MjMzNGRjOWNiMmJh/MzliYzM5NzNiM2Mw/MGVhMDViNC93d3cu/YmlvcHJvY2Vzc2lu/dGwuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "bioprocessintl.com",
+            "hostname": "www.bioprocessintl.com",
+            "favicon": "https://imgs.search.brave.com/jKmdKDmRNFq5-OYmSxPrv7eMPIIQQh5wl1YAW5-MKpY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDNjOTYyNWZi/NjFiYzE0YjI1ZmFk/NTk4MThjM2E0Yjc2/MjMzNGRjOWNiMmJh/MzliYzM5NzNiM2Mw/MGVhMDViNC93d3cu/YmlvcHJvY2Vzc2lu/dGwuY29tLw",
+            "path": "  › home  › qa/qc"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/zhxzzqSUXsQRcLpe3hynkPQ4frRp2My1Daqe5Iq_558/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9ldS1p/bWFnZXMuY29udGVu/dHN0YWNrLmNvbS92/My9hc3NldHMvYmx0/MGE0OGExZjNlZGNh/OWViMC9ibHQwNDNi/YjI1ZmEwOWYyYTA1/LzY1Y2NmZmM4MWFk/NTg3MDQwYTQ2MmI5/Zi9pU3RvY2stMTI4/MjM3MDQ3MC5qcGc",
+            "original": "https://eu-images.contentstack.com/v3/assets/blt0a48a1f3edca9eb0/blt043bb25fa09f2a05/65ccffc81ad587040a462b9f/iStock-1282370470.jpg",
+            "logo": false
+          },
+          "age": "February 13, 2026",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Naveenganesh Muralidharan",
+                "url": "https://www.bioprocessintl.com/author/naveenganesh-muralidharan"
+              },
+              {
+                "type": "person",
+                "name": "Dan Larson",
+                "url": "https://www.bioprocessintl.com/author/dan-larson"
+              }
+            ],
+            "date": "Feb 06, 2024"
+          },
+          "extra_snippets": [
+            "Finally, we recommend a risk-assessment methodology for selecting acceptable reliability and statistical confidence levels that may be used in the two RDT methods highlighted. ... This method is also known as the classical reliability demonstration test. When x is the number of observed failures out of i trials, and the probability of each trial p is an independent Bernoulli trial, then the probability of at least c failures can be calculated using a binomial distribution (Equation 1).",
+            "Therefore, herein we detail one such appropriate statistical approach to calculate sample size: “Reliability demonstration tests” (RDTs) can be used to verify whether a product or process has met a certain reliability requirement at a stated statistical confidence level when the underlying data distribution is unknown. A number of different RDT approaches are available for process engineers to choose from, including cumulative binomial, nonparametric binomial, exponential chi-squared, and nonparametric Bayesian methods.",
+            "For zero failures (assuming c = 0), that formula reduces to Equation 2, which can be rewritten as Equation 3. Now the number of sample sizes can be determined by equating Equation 3 to a significance value (α) type 1 error — in other words, the probability of falsely rejecting a true null hypothesis (Equation 4). Taking logarithms on both sides in that equation and solving for sample size n, you obtain Equation 5, in which the term C is confidence. Thus, to have C% confidence when the CAPA is R% reliable, a minimum of n samples needs to be tested to ensure zero failure as an acceptance criteria.",
+            "Based on the RPN, the risk associated with a given attribute or parameter is classified as high, medium, or low (Table 2). For each risk classification, Table 2 also lists recommendations for confidence (C) and reliability (R). The latter is based on rules of thumb for Cronbach’s alpha coefficient, which measures the reliability or internal consistency of a measurement method (1). ... We recommended documenting the statistical methods and rationality for selecting sample sizes to ensure that a CAPA is effective. For determining sample sizes, both nonparametric binomial and exponential chi-squared methods are widely accepted for practice in industries regulated by the US Food and Drug Administration (FDA)."
+          ]
+        },
+        {
+          "title": "Sample Size Calculator - Binomial Reliability Demonstration ...",
+          "url": "https://reliabilityanalyticstoolkit.appspot.com/sample_size",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Threfore, demonstrating Rtest at time Ttest is equivalent to demonstrating Rrqmt, provided that the estimate of &amp;#946 is accurate. Method 2A solves for required sample size. Conversely, given a fixed number of samples, Method 2B solves for test time required. . ... MIL-HDBK-338, Electronic Reliability Design Handbook. http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval",
+          "profile": {
+            "name": "Appspot",
+            "url": "https://reliabilityanalyticstoolkit.appspot.com/sample_size",
+            "long_name": "reliabilityanalyticstoolkit.appspot.com",
+            "img": "https://imgs.search.brave.com/XwfvR8wPYLFo1fdad0WT5iZD1tw7J9j-rIUUJAo9jLk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjFjMmI2MjU2/OWE5NjQ5NjdjMjk0/MDVmN2ViZjQwOGQ0/OTcyOTE1NTk5YzQ4/YjgwNzlhNmNhNzcw/MjZiODFkZC9yZWxp/YWJpbGl0eWFuYWx5/dGljc3Rvb2xraXQu/YXBwc3BvdC5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "reliabilityanalyticstoolkit.appspot.com",
+            "hostname": "reliabilityanalyticstoolkit.appspot.com",
+            "favicon": "https://imgs.search.brave.com/XwfvR8wPYLFo1fdad0WT5iZD1tw7J9j-rIUUJAo9jLk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjFjMmI2MjU2/OWE5NjQ5NjdjMjk0/MDVmN2ViZjQwOGQ0/OTcyOTE1NTk5YzQ4/YjgwNzlhNmNhNzcw/MjZiODFkZC9yZWxp/YWJpbGl0eWFuYWx5/dGljc3Rvb2xraXQu/YXBwc3BvdC5jb20v",
+            "path": "› sample_size"
+          },
+          "extra_snippets": [
+            "The calculation is based on the following binomial equation: where: C is the test confidence level R is the reliability to be demonstrated f is the number of allowable test failures n is the test sample size Given inputs of C, R and f, this tool solves the above equation for sample size, n.",
+            "Threfore, demonstrating Rtest at time Ttest is equivalent to demonstrating Rrqmt, provided that the estimate of &#946 is accurate. Method 2A solves for required sample size. Conversely, given a fixed number of samples, Method 2B solves for test time required. . ... MIL-HDBK-338, Electronic Reliability Design Handbook. http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval",
+            "http://reliabilityanalyticstoolkit.appspot.com/binomial_confidence"
+          ]
+        },
+        {
+          "title": "Cumulative Binomial for Test Design and Analysis",
+          "url": "https://www.hbkworld.com/en/knowledge/resource-center/articles/cumulative-binomial-for-test-design-and-analysis",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The engineer knows the number of test units (N), the number of allowable failures (r) and the desired confidence level (C.L.). With this information, the cumulative binomial equation can be solved for R. Once the reliability value (R) has been determined, it can be substituted into the appropriate reliability equation and the test time can be solved for given the distribution parameters and the reliability value. The cumulative binomial can also be used to determine the reliability that has been demonstrated on a test with few or no failures.",
+          "profile": {
+            "name": "HBK",
+            "url": "https://www.hbkworld.com/en/knowledge/resource-center/articles/cumulative-binomial-for-test-design-and-analysis",
+            "long_name": "hbkworld.com",
+            "img": "https://imgs.search.brave.com/bXISWN1elidi0ap3Zdo2fPwwLwbTi2V5kfJ_Q0LYJsU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODBiMjY5M2Ex/N2YxOGJiZmY4MjJm/ODQ0NTQ5YTZkOWMw/YmNkMTU1NjljODU0/OWU1NTA0YzU4NDRk/YjY0OGRiYy93d3cu/aGJrd29ybGQuY29t/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "hbkworld.com",
+            "hostname": "www.hbkworld.com",
+            "favicon": "https://imgs.search.brave.com/bXISWN1elidi0ap3Zdo2fPwwLwbTi2V5kfJ_Q0LYJsU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODBiMjY5M2Ex/N2YxOGJiZmY4MjJm/ODQ0NTQ5YTZkOWMw/YmNkMTU1NjljODU0/OWU1NTA0YzU4NDRk/YjY0OGRiYy93d3cu/aGJrd29ybGQuY29t/Lw",
+            "path": "  › home  › knowledge  › resource center  › articles"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Hg9YniumdmMajj6wcn4bZdmDYwRKkGjyYVefQ9eu4aY/rs:fit:200:200:1:0/g:ce/aHR0cDovL21lZGlh/Lmhia3dvcmxkLmNv/bS90cmFuc2Zvcm0v/NTdiNmJiOWMtMmVl/My00ZTA3LWE0ZGYt/Y2M0YWVjMWM4ZDk1/L0Rlc2lnbi1mb3It/cmVsaWFiaWxpdHk_/aW89dHJhbnNmb3Jt/OmZpbGwsd2lkdGg6/MjU2MCZhbXA7cXVh/bGl0eT04MA",
+            "original": "http://media.hbkworld.com/transform/57b6bb9c-2ee3-4e07-a4df-cc4aec1c8d95/Design-for-reliability?io=transform:fill,width:2560&amp;quality=80",
+            "logo": false
+          },
+          "extra_snippets": [
+            "If the engineer has the distribution parameters, he or she can calculate the reliability at the test duration time, otherwise the estimate of the product's reliability can be substituted directly for R. Then, given the desired confidence level (C.L.), the maximum allowable failures (r) and the reliability value (R), the cumulative binomial equation can be solved for the number of units (N). Similarly, if the test is to demonstrate a required MTTF (mean time to failure), at least one of the parameters of the product's life distribution must be known in order to solve for R.",
+            "The engineer knows the number of test units (N), the number of allowable failures (r) and the desired confidence level (C.L.). With this information, the cumulative binomial equation can be solved for R. Once the reliability value (R) has been determined, it can be substituted into the appropriate reliability equation and the test time can be solved for given the distribution parameters and the reliability value. The cumulative binomial can also be used to determine the reliability that has been demonstrated on a test with few or no failures.",
+            "However, if enough failures are encountered on the test, it may be advisable to perform a reliability analysis on the data. In order to determine the demonstrated reliability, you need the number of units on test (N), the number of failures on the test (r) and the desired confidence level (C.L.).",
+            "The confidence level demonstrated on a test can be calculated based on the test results and reliability characteristics. Given the number of units on test (N), the number of failures (r) and the calculated or estimated reliability (R), the value of the confidence level (C.L.) can easily be calculated with the cumulative binomial equation."
+          ]
+        },
+        {
+          "title": "Reliability Demonstration Test Design",
+          "url": "https://help.reliasoft.com/weibull21/content/reliability_demonstration_test_design.htm",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "In a zero-failure reliability ... given confidence level) by testing a specified number of units for a predetermined time. If no failures occur, then the target metric is demonstrated....",
+          "profile": {
+            "name": "ReliaSoft",
+            "url": "https://help.reliasoft.com/weibull21/content/reliability_demonstration_test_design.htm",
+            "long_name": "help.reliasoft.com",
+            "img": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "help.reliasoft.com",
+            "hostname": "help.reliasoft.com",
+            "favicon": "https://imgs.search.brave.com/jj1erF6QxL5_19D3HS9loOH-K8EjJrhTHxPX_McsdyI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDE1MDQ5MzE5/MjhjZGUyZDM5NjI0/MmQ4ZjQ3MDc1MDZm/MGEwZTI1M2U2Yzk0/ZTYxNjQ1NDE3NmQ5/Yzc4NDkwMC9oZWxw/LnJlbGlhc29mdC5j/b20v",
+            "path": "› weibull21  › content  › reliability_demonstration_test_design.htm"
+          },
+          "extra_snippets": [
+            "The table can also display a range of required sample size values as a function of test time and number of allowable failures. After you create this table, you can also create a plot displaying the same information. This provides a quick way to consider many possible test plan scenarios without having to perform each calculation individually. Non-Parametric Binomial solves for the demonstrated reliability, confidence level or sample size that is associated with a specified test design.",
+            "In a zero-failure reliability demonstration test (RDT), the engineer aims to demonstrate a specified target metric (e.g., reliability at a specific time with a given confidence level) by testing a specified number of units for a predetermined time. If no failures occur, then the target metric is demonstrated.",
+            "If you wish to estimate whether a failure is likely to occur, one option is to use the Expected Failure Times Plot to estimate the first failure time based on the assumed distribution and parameters. Test Design Method allows you select a test design option. The method you select will determine the required inputs on the RDT sheet. Parametric Binomial determines what test duration or sample size will be required to demonstrate either reliability at a specific time or a specified mean time to failure.",
+            "Note that although mathematically it is possible to design a new test with more allowable failures and a longer duration to demonstrate the same target metric, it is unlikely that the metric will be demonstrated by the new test if the original demonstration test failed.) ReliaSoft's RDT tool can assist the user in designing a demonstration test by solving for various values related to the test, such as sample size, required test time, the demonstrated reliability and the confidence level at which the target reliability will be demonstrated."
+          ]
+        },
+        {
+          "title": "Non-Parametric Binomial Test Design Example - ReliaWiki",
+          "url": "https://www.reliawiki.com/index.php/Non-Parametric_Binomial_Test_Design_Example",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Note that the time value shown ... at time&quot; value for the results). If those 11 samples are run for the required demonstration time and no failures are observed, then a reliability of 80% with a 90% confidence level has been demonstrated....",
+          "page_age": "2023-09-18T00:00:00",
+          "profile": {
+            "name": "Reliawiki",
+            "url": "https://www.reliawiki.com/index.php/Non-Parametric_Binomial_Test_Design_Example",
+            "long_name": "reliawiki.com",
+            "img": "https://imgs.search.brave.com/E5X33g5Pw44e3q6EW5xtl2ksnxlW02hjYbr5rwHLF7Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVkM2Q5NzJk/ODc1ODQ2M2M3YzEz/ZWNkNzQ5MWQ3OGQz/MjYwODAxNGY3MGIw/ZDg2ODM3ODU2MTBk/NmMxZjY0ZS93d3cu/cmVsaWF3aWtpLmNv/bS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "reliawiki.com",
+            "hostname": "www.reliawiki.com",
+            "favicon": "https://imgs.search.brave.com/E5X33g5Pw44e3q6EW5xtl2ksnxlW02hjYbr5rwHLF7Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVkM2Q5NzJk/ODc1ODQ2M2M3YzEz/ZWNkNzQ5MWQ3OGQz/MjYwODAxNGY3MGIw/ZDg2ODM3ODU2MTBk/NmMxZjY0ZS93d3cu/cmVsaWF3aWtpLmNv/bS8",
+            "path": "› index.php  › Non-Parametric_Binomial_Test_Design_Example"
+          },
+          "age": "September 18, 2023",
+          "extra_snippets": [
+            "So now the required sample size can be easily solved for any required reliability and confidence level. The result of this test design was obtained using Weibull++ and is: The result shows that 11 samples are needed. Note that the time value shown in the above figure is chance indicative and not part of the test design (the \"Test time per unit\" that was input will be the same as the \"Demonstrated at time\" value for the results). If those 11 samples are run for the required demonstration time and no failures are observed, then a reliability of 80% with a 90% confidence level has been demonstrated."
+          ]
+        },
+        {
+          "title": "Bayesian Zero-Failure Reliability Demonstration Maha Rahrouh",
+          "url": "https://maths.dur.ac.uk/stats/people/fc/thesis-MR.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "tests to be independent and the number of failures is Binomially distributed, with · a Beta prior distribution for the failure probability. Tal, et al. [56] claim that the · Bayesian estimation method is very useful for safety-critical software as it provides · a point estimate and a variance ...",
+          "profile": {
+            "name": "Dur",
+            "url": "https://maths.dur.ac.uk/stats/people/fc/thesis-MR.pdf",
+            "long_name": "maths.dur.ac.uk",
+            "img": "https://imgs.search.brave.com/izQOdsLN6aetwSTqIp-7hdbARRX7bOlkuknMIC_C52c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjA1NGU1Mjdi/ZTA3N2M4MTYxNzUy/ZDA4ODBmYzZhNTNm/OTY1ZWFlOTZlY2Mz/M2I5NWJkMDUwNzE5/MjMyNmM4Ny9tYXRo/cy5kdXIuYWMudWsv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "maths.dur.ac.uk",
+            "hostname": "maths.dur.ac.uk",
+            "favicon": "https://imgs.search.brave.com/izQOdsLN6aetwSTqIp-7hdbARRX7bOlkuknMIC_C52c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjA1NGU1Mjdi/ZTA3N2M4MTYxNzUy/ZDA4ODBmYzZhNTNm/OTY1ZWFlOTZlY2Mz/M2I5NWJkMDUwNzE5/MjMyNmM4Ny9tYXRo/cy5kdXIuYWMudWsv",
+            "path": "› stats  › people  › fc  › thesis-MR.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "tests to be independent and the number of failures is Binomially distributed, with · a Beta prior distribution for the failure probability. Tal, et al. [56] claim that the · Bayesian estimation method is very useful for safety-critical software as it provides · a point estimate and a variance for failure probability, and enables one to calculate a ... Table 1.1: Methods for calculating system reliability/testing duration. conﬁdence interval.",
+            "Tal, et al. [56] prefer the TRW method [57], from all the ﬁxed duration testing · methods, because it provides an upper conﬁdence bound for the probability of soft-",
+            "testing, again for the deterministic and the random cases. ... B(α, β) = (α −1)!(β −1)! ... Binomial model for the tests, and a Beta prior distribution with Martz et al.",
+            "the zero-failure testing assumption, and we discuss this in more detail later. ... Bernoulli random quantities, enabling the use of a simple Binomial model."
+          ]
+        },
+        {
+          "title": "(PDF) Binomial Reliability Demonstration Tests with Dependent Data",
+          "url": "https://www.researchgate.net/publication/275467200_Binomial_Reliability_Demonstration_Tests_with_Dependent_Data",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Wilson&#x27;s suggestion of inverting the related score test with null rather than estimated standard error yields coverage probabilities close to nominal confidence levels, even for very small sample sizes. The 95% score interval has similar behavior as the adjusted Wald interval obtained after adding two &quot;successes&quot; and two &quot;failures&quot; to the sample. In elementary courses, with the score and adjusted Wald methods it is unnecessary to provide students with awkward sample size guidelines. ... Michael S. Hamada ... Harry F. Martz ... Colin R. Blyth · Harold A. Still · For X with Binomial (n, p) distribution, Section 1 gives a one-page table of .95 and .99 confidence intervals for p, for n = 1, 2, …, 30.",
+          "page_age": "2015-04-01T00:00:00",
+          "profile": {
+            "name": "ResearchGate",
+            "url": "https://www.researchgate.net/publication/275467200_Binomial_Reliability_Demonstration_Tests_with_Dependent_Data",
+            "long_name": "researchgate.net",
+            "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "researchgate.net",
+            "hostname": "www.researchgate.net",
+            "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+            "path": "› publication  › 275467200_Binomial_Reliability_Demonstration_Tests_with_Dependent_Data"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/_1qvqTXYyA38_V7yAczj3Yne_nuqR3K3epsSt8RI1HY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/cHVibGljYXRpb24v/Mjc1NDY3MjAwX0Jp/bm9taWFsX1JlbGlh/YmlsaXR5X0RlbW9u/c3RyYXRpb25fVGVz/dHNfd2l0aF9EZXBl/bmRlbnRfRGF0YS9s/aW5rcy81Y2JlMTQ4/ZDQ1ODUxNTZjZDdh/YjUzMTkvbGFyZ2Vw/cmV2aWV3LnBuZw",
+            "original": "https://i1.rgstatic.net/publication/275467200_Binomial_Reliability_Demonstration_Tests_with_Dependent_Data/links/5cbe148d4585156cd7ab5319/largepreview.png",
+            "logo": false
+          },
+          "age": "April 1, 2015",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Willis Jensen",
+                "url": "https://www.researchgate.net/profile/Willis-Jensen-2",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/Rvuj5tyWlvbFDA6s-oziC30WJnfE3jIYSfpGvqsmahw/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS8xMTQzMTI4/MTA4OTA2ODgzMS0x/NjY1NDE2OTg3MDc0/X1E2NC9XaWxsaXMt/SmVuc2VuLTIuanBn",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/11431281089068831-1665416987074_Q64/Willis-Jensen-2.jpg"
+                }
+              }
+            ],
+            "date": "Apr 01, 2015",
+            "publisher": {
+              "type": "organization",
+              "name": "Taylor & Francis",
+              "url": "http://www.informaworld.com/openurl?genre=journal&issn=08982112",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/UjSGsXBrrrqKndxfeOp5EGUdM15aJCsZ_BUDIJcDQhs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC91bmtub3du",
+                "original": "https://www.researchgate.net/unknown"
+              }
+            }
+          },
+          "extra_snippets": [
+            "Thus the statement in a BRDT can be thought of as an upper bound conﬁdence interval on · proportion of failures. It should be noted that because of the discreteness in the binomial",
+            "Wilson's suggestion of inverting the related score test with null rather than estimated standard error yields coverage probabilities close to nominal confidence levels, even for very small sample sizes. The 95% score interval has similar behavior as the adjusted Wald interval obtained after adding two \"successes\" and two \"failures\" to the sample. In elementary courses, with the score and adjusted Wald methods it is unnecessary to provide students with awkward sample size guidelines. ... Michael S. Hamada ... Harry F. Martz ... Colin R. Blyth · Harold A. Still · For X with Binomial (n, p) distribution, Section 1 gives a one-page table of .95 and .99 confidence intervals for p, for n = 1, 2, …, 30.",
+            "The plans are developed in such a way that they attain a specified probability of passing the test when the target reliability has been met as well as provide desired confidence that the target reliability has been met given that the test has been passed. ... Michelle L. DePoy Smith ... The start-up demonstration test that requires k consecutive successes for acceptance prior to f total failures and rejection otherwise is examined.",
+            "Clopper, C.J. and Pearson, E.S. (1934). The Use of Conﬁdence or Fiducial Limits Illustrated · in the Case of the Binomial."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

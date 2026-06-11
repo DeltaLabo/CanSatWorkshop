@@ -1,0 +1,776 @@
+{
+  "query": "\"ds-000189\" \"icm-20948\" pdf",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "ICM-20948 World’s Lowest Power 9-Axis MEMS MotionTracking™ Device",
+      "url": "https://product.tdk.com/system/files/dam/doc/product/sensor/mortion-inertial/imu/data_sheet/ds-000189-icm-20948-v1.5.pdf",
+      "description": "Document Number: DS-000189 · Revision: 1.5 · Release Date: 09/02/2021 · GENERAL DESCRIPTION · The ICM-20948 is the world’s lowest power 9-axis · MotionTracking device that is ideally suited for Smartphones, Tablets, Wearable Sensors, and IoT applications.",
+      "content": "Document Number: DS-000189 · Revision: 1.5 · Release Date: 09/02/2021 · GENERAL DESCRIPTION · The ICM-20948 is the world’s lowest power 9-axis · MotionTracking device that is ideally suited for Smartphones, Tablets, Wearable Sensors, and IoT applications.\nICM-20948 · Document Number: DS-000189 · Page 6 of 89 · Revision: 1.5 · 12 · REGISTER MAP FOR MAGNETOMETER ........................................................................................................... 77 · 12.1 · REGISTER MAP DESCRIPTION ...................................................................................................................................\nIn addition, the ICM-20948 is an I2C master to the · optional external sensor. The ICM-20948 has limited capabilities as an I2C Master, and depends on the system\nThe ICM-20948 has an interface bypass · multiplexer, which connects the system processor I2C bus pins 23 and 24 (SCL and SDA) directly to the auxiliary sensor · I2C bus pins 7 and 21 (AUX_CL and AUX_DA). ... Once the auxiliary sensors have been configured by the system processor, the interface bypass multiplexer should be · disabled so that the ICM-20948 auxiliary I2C master can take control of the sensor I2C bus and gather data from the",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "TDK",
+        "url": "https://product.tdk.com/system/files/dam/doc/product/sensor/mortion-inertial/imu/data_sheet/ds-000189-icm-20948-v1.5.pdf",
+        "long_name": "product.tdk.com",
+        "img": "https://imgs.search.brave.com/9ucuE18NDoYanbU8VY0XDZhtZy1n2IMobeR8qzP66kE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjY2Mzc2NGNj/NmYyZjkwZTY0YjUw/MGQ3ODNmZjY3OWIz/ZjA2MTkwMTJhNTk4/NGVjOGEwNWM2ZGY3/NDFlMDJhMC9wcm9k/dWN0LnRkay5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "product.tdk.com",
+        "hostname": "product.tdk.com",
+        "favicon": "https://imgs.search.brave.com/9ucuE18NDoYanbU8VY0XDZhtZy1n2IMobeR8qzP66kE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjY2Mzc2NGNj/NmYyZjkwZTY0YjUw/MGQ3ODNmZjY3OWIz/ZjA2MTkwMTJhNTk4/NGVjOGEwNWM2ZGY3/NDFlMDJhMC9wcm9k/dWN0LnRkay5jb20v",
+        "path": "› system  › files  › dam  › doc  › product  › sensor  › mortion-inertial  › imu  › data_sheet  › ds-000189-icm-20948-v1.5.pdf"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "DS 000189 ICM 20948 v1.5 | PDF | System On A Chip | Analog To Digital Converter",
+      "url": "https://www.scribd.com/document/703236566/DS-000189-ICM-20948-v1-5",
+      "description": "The ICM-20948 is a 9-axis MEMS motion tracking device that integrates a gyroscope, accelerometer, compass and digital motion processor. It is optimized for low power operation of 2.5mW.",
+      "content": "The ICM-20948 is a 9-axis MEMS motion tracking device that integrates a gyroscope, accelerometer, compass and digital motion processor. It is optimized for low power operation of 2.5mW.\nThe ICM-20948 is a 9-axis MEMS motion tracking device that integrates a gyroscope, accelerometer, compass and digital motion processor. It is optimized for low power operation of 2.5mW. The device measures 3mm x 3mm x 1mm and outputs motion data over I2C or SPI interfaces.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "creative_work",
+      "profile": {
+        "name": "Scribd",
+        "url": "https://www.scribd.com/document/703236566/DS-000189-ICM-20948-v1-5",
+        "long_name": "scribd.com",
+        "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "scribd.com",
+        "hostname": "www.scribd.com",
+        "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+        "path": "› document  › 703236566  › DS-000189-ICM-20948-v1-5"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/ySL52tqEUeBXcfB4ev8BLjbN1pRnWt-2TzDRsoOUgNI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NzAzMjM2NTY2LzE0/OXgxOTgvMGI3NDc1/OWQ5Ny8xNzEwNTU5/MTE2P3Y9MQ",
+        "original": "https://imgv2-1-f.scribdassets.com/img/document/703236566/149x198/0b74759d97/1710559116?v=1",
+        "logo": false
+      }
+    },
+    {
+      "rank": 3,
+      "title": "File:DS-000189-ICM-20948-v1.3.pdf - Waveshare Wiki",
+      "url": "https://www.waveshare.com/wiki/File:DS-000189-ICM-20948-v1.3.pdf",
+      "description": "DS-000189-ICM-20948-v1.3.pdf ‎(0 × 0 pixels, file size: 1.09 MB, MIME type: application/pdf) MsUpload · Click on a date/time to view the file as it appeared at that time. You cannot overwrite this file. The following file is a duplicate of this file (more details): File:ICM-20948-v1.3.pdf ·",
+      "content": "DS-000189-ICM-20948-v1.3.pdf ‎(0 × 0 pixels, file size: 1.09 MB, MIME type: application/pdf) MsUpload · Click on a date/time to view the file as it appeared at that time. You cannot overwrite this file. The following file is a duplicate of this file (more details): File:ICM-20948-v1.3.pdf ·\nRetrieved from \"https://www.waveshare.com/w/index.php?title=File:DS-000189-ICM-20948-v1.3.pdf&oldid=15844\" Login / Create Account",
+      "age": "February 16, 2019",
+      "page_age": "2019-02-16T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Waveshare",
+        "url": "https://www.waveshare.com/wiki/File:DS-000189-ICM-20948-v1.3.pdf",
+        "long_name": "waveshare.com",
+        "img": "https://imgs.search.brave.com/gFqeBbmrzsSrGQSapsWKxAH7BtKu5tX8l6I-zjiXZIw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2QwZGNiNTRl/N2EwZTc1YmVjNDE2/NjA3YzI2OTJjMDUx/NDllMmE3ZWY0ODI0/YWYzNWRmYzgxMDY3/YThiNDdkMi93d3cu/d2F2ZXNoYXJlLmNv/bS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "waveshare.com",
+        "hostname": "www.waveshare.com",
+        "favicon": "https://imgs.search.brave.com/gFqeBbmrzsSrGQSapsWKxAH7BtKu5tX8l6I-zjiXZIw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2QwZGNiNTRl/N2EwZTc1YmVjNDE2/NjA3YzI2OTJjMDUx/NDllMmE3ZWY0ODI0/YWYzNWRmYzgxMDY3/YThiNDdkMi93d3cu/d2F2ZXNoYXJlLmNv/bS8",
+        "path": "› wiki  › File:DS-000189-ICM-20948-v1.3.pdf"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/9s-MDdnt-ZCtWeyX38ywIWjqv08F4gaCXGCWB2Alaso/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/d2F2ZXNoYXJlLmNv/bS93L3Jlc291cmNl/cy9hc3NldHMvZmls/ZS10eXBlLWljb25z/L2ZpbGVpY29uLXBk/Zi5wbmc",
+        "original": "https://www.waveshare.com/w/resources/assets/file-type-icons/fileicon-pdf.png",
+        "logo": true
+      }
+    },
+    {
+      "rank": 4,
+      "title": "ICM-20948 | TDK InvenSense",
+      "url": "https://invensense.tdk.com/products/motion-tracking/9-axis/icm-20948/",
+      "description": "DS-000189 – ICM-20948 Datasheet · Version1.6 · Updated2024-03-12 · Download · 1.6 · 2024-03-12 · Find answers, documentation, and community support you need · Connect with engineers, ask questions, and share insights with the TDK developer community.",
+      "content": "DS-000189 – ICM-20948 Datasheet · Version1.6 · Updated2024-03-12 · Download · 1.6 · 2024-03-12 · Find answers, documentation, and community support you need · Connect with engineers, ask questions, and share insights with the TDK developer community.\nThe ICM-20948 is the world’s lowest power 9-axis MotionTracking device that is ideally suited for Smartphones, Tablets, Wearable Sensors, and IoT applications.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "TDK InvenSense",
+        "url": "https://invensense.tdk.com/products/motion-tracking/9-axis/icm-20948/",
+        "long_name": "invensense.tdk.com",
+        "img": "https://imgs.search.brave.com/yBhErg5o0vMwiaG54NEkjS4b7CWCIUtEXq_NKQxdOyU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjliNTFhMTll/MmUxNzEyMmIwNjYy/NzMwZDc1NzFmZDRj/MjhjMDJjMWU3MWYy/ODYyYzBjZmUxYmZi/ODJhNmEzNS9pbnZl/bnNlbnNlLnRkay5j/b20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "invensense.tdk.com",
+        "hostname": "invensense.tdk.com",
+        "favicon": "https://imgs.search.brave.com/yBhErg5o0vMwiaG54NEkjS4b7CWCIUtEXq_NKQxdOyU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjliNTFhMTll/MmUxNzEyMmIwNjYy/NzMwZDc1NzFmZDRj/MjhjMDJjMWU3MWYy/ODYyYzBjZmUxYmZi/ODJhNmEzNS9pbnZl/bnNlbnNlLnRkay5j/b20v",
+        "path": "› products  › motion-tracking  › 9-axis  › icm-20948"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "ICM-20948/src/ICM20948.h at master · drcpattison/ICM-20948",
+      "url": "https://github.com/drcpattison/ICM-20948/blob/master/src/ICM20948.h",
+      "description": "// See also ICM-20948 Datasheet, Register Map and Descriptions, Revision 1.3, // https://www.invensense.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf · // and AK09916 Datasheet and Register Map · // https://www.akm.com/akm/en/file/datasheet/AK09916C.pdf ·",
+      "content": "// See also ICM-20948 Datasheet, Register Map and Descriptions, Revision 1.3, // https://www.invensense.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf · // and AK09916 Datasheet and Register Map · // https://www.akm.com/akm/en/file/datasheet/AK09916C.pdf ·\nICM-20948 port of the MPU-9250 Kris Winer Arduino library - drcpattison/ICM-20948",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "software",
+      "profile": {
+        "name": "GitHub",
+        "url": "https://github.com/drcpattison/ICM-20948/blob/master/src/ICM20948.h",
+        "long_name": "github.com",
+        "img": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "github.com",
+        "hostname": "github.com",
+        "favicon": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw",
+        "path": "› drcpattison  › ICM-20948  › blob  › master  › src  › ICM20948.h"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/RxAI6kSzXTLnYx1H_Hrn1OrvUUqU5dsfw6MjLhit8XU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9vcGVu/Z3JhcGguZ2l0aHVi/YXNzZXRzLmNvbS81/MjExZmZmOTI3MDU1/OTIwODNhZmI5ODQ0/OWFiOGJjZTM1M2Iw/NmRhZGExOGIyNmFk/NTA4NjhiOWRhNjc0/ZjJjL2RyY3BhdHRp/c29uL0lDTS0yMDk0/OA",
+        "original": "https://opengraph.githubassets.com/5211fff92705592083afb98449ab8bce353b06dada18b26ad50868b9da674f2c/drcpattison/ICM-20948",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "How To Guide ICM 20948",
+      "url": "https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt433/links/files/2024-student-howtos/ICM20948-Guide-9DOF.pdf",
+      "description": "The Adafruit ICM 20948 is an accelerometer, magnetometer, and gyroscope, making it a 9 · Degree of Freedom sensor. This guide will show you how to wire and receive the values being · read by the sensor through the use of i2c on the BeagleBone. Datasheet: https://invensense.tdk.com/wp-con...",
+      "content": "The Adafruit ICM 20948 is an accelerometer, magnetometer, and gyroscope, making it a 9 · Degree of Freedom sensor. This guide will show you how to wire and receive the values being · read by the sensor through the use of i2c on the BeagleBone. Datasheet: https://invensense.tdk.com/wp-con...\nThe Adafruit ICM 20948 is an accelerometer, magnetometer, and gyroscope, making it a 9 · Degree of Freedom sensor. This guide will show you how to wire and receive the values being · read by the sensor through the use of i2c on the BeagleBone. Datasheet: https://invensense.tdk.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf ·",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Sfu",
+        "url": "https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt433/links/files/2024-student-howtos/ICM20948-Guide-9DOF.pdf",
+        "long_name": "opencoursehub.cs.sfu.ca",
+        "img": "https://imgs.search.brave.com/5MWcX700ci-Bh_dkEHdOJcoFoQJKg7RQMb1W9Oo3QSk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZWRjY2I1OGI0/MjUzYzVjZWZjZjdh/OTgxYzI5ZjYwODAx/MDFjZjA3OWJhZDQ4/YWJjMWVmNDE0MTRi/OTBmNWY1Ni9vcGVu/Y291cnNlaHViLmNz/LnNmdS5jYS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "opencoursehub.cs.sfu.ca",
+        "hostname": "opencoursehub.cs.sfu.ca",
+        "favicon": "https://imgs.search.brave.com/5MWcX700ci-Bh_dkEHdOJcoFoQJKg7RQMb1W9Oo3QSk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZWRjY2I1OGI0/MjUzYzVjZWZjZjdh/OTgxYzI5ZjYwODAx/MDFjZjA3OWJhZDQ4/YWJjMWVmNDE0MTRi/OTBmNWY1Ni9vcGVu/Y291cnNlaHViLmNz/LnNmdS5jYS8",
+        "path": "› bfraser  › grav-cms  › cmpt433  › links  › files  › 2024-student-howtos  › ICM20948-Guide-9DOF.pdf"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "File:ICM-20948-v1.3.pdf - Waveshare Wiki",
+      "url": "https://www.waveshare.com/wiki/File:ICM-20948-v1.3.pdf",
+      "description": "ICM-20948-v1.3.pdf ‎(0 × 0 pixels, file size: 1.09 MB, MIME type: application/pdf) MsUpload · Click on a date/time to view the file as it appeared at that time. You cannot overwrite this file. The following file is a duplicate of this file (more details): File:DS-000189-ICM-20948-v1.3.pdf ·",
+      "content": "ICM-20948-v1.3.pdf ‎(0 × 0 pixels, file size: 1.09 MB, MIME type: application/pdf) MsUpload · Click on a date/time to view the file as it appeared at that time. You cannot overwrite this file. The following file is a duplicate of this file (more details): File:DS-000189-ICM-20948-v1.3.pdf ·\nRetrieved from \"https://www.waveshare.com/w/index.php?title=File:ICM-20948-v1.3.pdf&oldid=16909\"",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Waveshare",
+        "url": "https://www.waveshare.com/wiki/File:ICM-20948-v1.3.pdf",
+        "long_name": "waveshare.com",
+        "img": "https://imgs.search.brave.com/gFqeBbmrzsSrGQSapsWKxAH7BtKu5tX8l6I-zjiXZIw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2QwZGNiNTRl/N2EwZTc1YmVjNDE2/NjA3YzI2OTJjMDUx/NDllMmE3ZWY0ODI0/YWYzNWRmYzgxMDY3/YThiNDdkMi93d3cu/d2F2ZXNoYXJlLmNv/bS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "waveshare.com",
+        "hostname": "www.waveshare.com",
+        "favicon": "https://imgs.search.brave.com/gFqeBbmrzsSrGQSapsWKxAH7BtKu5tX8l6I-zjiXZIw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2QwZGNiNTRl/N2EwZTc1YmVjNDE2/NjA3YzI2OTJjMDUx/NDllMmE3ZWY0ODI0/YWYzNWRmYzgxMDY3/YThiNDdkMi93d3cu/d2F2ZXNoYXJlLmNv/bS8",
+        "path": "› wiki  › File:ICM-20948-v1.3.pdf"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/9s-MDdnt-ZCtWeyX38ywIWjqv08F4gaCXGCWB2Alaso/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/d2F2ZXNoYXJlLmNv/bS93L3Jlc291cmNl/cy9hc3NldHMvZmls/ZS10eXBlLWljb25z/L2ZpbGVpY29uLXBk/Zi5wbmc",
+        "original": "https://www.waveshare.com/w/resources/assets/file-type-icons/fileicon-pdf.png",
+        "logo": true
+      }
+    },
+    {
+      "rank": 8,
+      "title": "r/KiCad on Reddit: ESP32/ICM-20948 Circuit",
+      "url": "https://www.reddit.com/r/KiCad/comments/1kw25nm/esp32icm20948_circuit/",
+      "description": "https://invensense.tdk.com/wp-content/uploads/2024/03/DS-000189-ICM-20948-v1.6.pdf · https://invensense.tdk.com/wp-content/uploads/2018/10/AN-000146-v2.0-TDK_Migration_MPU_9250toICM-20948.pdf · Note: ICM-20948 VDDIO range is 1.71V to 1.95V, different than the MPU-9250 9-axis device ·",
+      "content": "https://invensense.tdk.com/wp-content/uploads/2024/03/DS-000189-ICM-20948-v1.6.pdf · https://invensense.tdk.com/wp-content/uploads/2018/10/AN-000146-v2.0-TDK_Migration_MPU_9250toICM-20948.pdf · Note: ICM-20948 VDDIO range is 1.71V to 1.95V, different than the MPU-9250 9-axis device ·\nPosted by u/HourTask7931 - 0 votes and 10 comments\nhttps://invensense.tdk.com/download-pdf/icm-20948-datasheet/",
+      "age": "May 26, 2025",
+      "page_age": "2025-05-26T18:46:15",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "qa",
+      "profile": {
+        "name": "Reddit",
+        "url": "https://www.reddit.com/r/KiCad/comments/1kw25nm/esp32icm20948_circuit/",
+        "long_name": "reddit.com",
+        "img": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "reddit.com",
+        "hostname": "www.reddit.com",
+        "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+        "path": "  › r/kicad  › esp32/icm-20948 circuit"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/IiYycJrtFxQzqoec1fKhGOBFgSiCicqcuTVRcVRG1Kg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/ZXNwMzItaWNtLTIw/OTQ4LWNpcmN1aXQt/djAteWduajQyOXc4/NjNmMS5wbmc_YXV0/bz13ZWJwJnM9MjJh/ZmMwNTA5NWEyODMw/ODIzY2U5ZGQwNzYx/NmRiMzdjNjhkMDQ2/OA",
+        "original": "https://preview.redd.it/esp32-icm-20948-circuit-v0-ygnj429w863f1.png?auto=webp&s=22afc05095a2830823ce9dd07616db37c68d0468",
+        "logo": false
+      }
+    },
+    {
+      "rank": 9,
+      "title": "ICM-20948 | I2C Device Directory",
+      "url": "https://i2cdevices.org/devices/icm-20948",
+      "description": "Datasheet: https://invensense.tdk.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf · Adafruit: https://www.adafruit.com/product/4554 · Sparkfun: https://www.sparkfun.com/products/15335 · Search Amazon for ICM-20948 ·",
+      "content": "Datasheet: https://invensense.tdk.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf · Adafruit: https://www.adafruit.com/product/4554 · Sparkfun: https://www.sparkfun.com/products/15335 · Search Amazon for ICM-20948 ·",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "I2cdevices",
+        "url": "https://i2cdevices.org/devices/icm-20948",
+        "long_name": "i2cdevices.org",
+        "img": "https://imgs.search.brave.com/r71uZ37y81wlj4buxTLuBZGk2PvNQ6TuvvdLGDnftfE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZWY3NGFiYTUw/ZGNiMzFhYTU5MWJi/NjkzOTg5NTFkMmQ5/MmY5ZmFjNzJkNmRh/ODU1Y2EwNDQ0MjY1/ZjU3YjYxYS9pMmNk/ZXZpY2VzLm9yZy8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "i2cdevices.org",
+        "hostname": "i2cdevices.org",
+        "favicon": "https://imgs.search.brave.com/r71uZ37y81wlj4buxTLuBZGk2PvNQ6TuvvdLGDnftfE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZWY3NGFiYTUw/ZGNiMzFhYTU5MWJi/NjkzOTg5NTFkMmQ5/MmY5ZmFjNzJkNmRh/ODU1Y2EwNDQ0MjY1/ZjU3YjYxYS9pMmNk/ZXZpY2VzLm9yZy8",
+        "path": "› devices  › icm-20948"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "ICM-20948 datasheet(7/89 Pages) TDK | Lowest Power 9-Axis MEMS MotionTracking Device",
+      "url": "https://www.alldatasheet.com/html-pdf/1137956/TDK/ICM-20948/490/7/ICM-20948.html",
+      "description": "ICM-20948Document Number: DS-000189Page 7 of 89Revision: 1.3LIST OF FIGURESFigure 1. I2C Bus Timing Diagram......................................................................................................................................",
+      "content": "ICM-20948Document Number: DS-000189Page 7 of 89Revision: 1.3LIST OF FIGURESFigure 1. I2C Bus Timing Diagram......................................................................................................................................\nICM-20948Document Number: DS-000189Page 7 of 89Revision: 1.3LIST OF FIGURESFigure 1. I2C Bus Timing Diagram...................................................................................................................................... 16Figure 2. SPI Bus Timing Diagram .....................................................................................................................................",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/html-pdf/1137956/TDK/ICM-20948/490/7/ICM-20948.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› html-pdf  › 1137956  › TDK  › ICM-20948  › 490  › 7  › ICM-20948.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "\"ds-000189\" \"icm-20948\" pdf",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.072,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "\"ds-000189\" \"icm-20948\" pdf",
+      "show_strict_warning": false,
+      "cleaned": "ds-000189 icm-20948 pdf",
+      "is_navigational": true,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": false,
+      "state": "",
+      "search_operators": {
+        "applied": true,
+        "cleaned_query": "ds-000189 icm-20948 pdf"
+      }
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "ICM-20948 World’s Lowest Power 9-Axis MEMS MotionTracking™ Device",
+          "url": "https://product.tdk.com/system/files/dam/doc/product/sensor/mortion-inertial/imu/data_sheet/ds-000189-icm-20948-v1.5.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Document Number: DS-000189 · Revision: 1.5 · Release Date: 09/02/2021 · GENERAL DESCRIPTION · The ICM-20948 is the world’s lowest power 9-axis · MotionTracking device that is ideally suited for Smartphones, Tablets, Wearable Sensors, and IoT applications.",
+          "profile": {
+            "name": "TDK",
+            "url": "https://product.tdk.com/system/files/dam/doc/product/sensor/mortion-inertial/imu/data_sheet/ds-000189-icm-20948-v1.5.pdf",
+            "long_name": "product.tdk.com",
+            "img": "https://imgs.search.brave.com/9ucuE18NDoYanbU8VY0XDZhtZy1n2IMobeR8qzP66kE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjY2Mzc2NGNj/NmYyZjkwZTY0YjUw/MGQ3ODNmZjY3OWIz/ZjA2MTkwMTJhNTk4/NGVjOGEwNWM2ZGY3/NDFlMDJhMC9wcm9k/dWN0LnRkay5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "product.tdk.com",
+            "hostname": "product.tdk.com",
+            "favicon": "https://imgs.search.brave.com/9ucuE18NDoYanbU8VY0XDZhtZy1n2IMobeR8qzP66kE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjY2Mzc2NGNj/NmYyZjkwZTY0YjUw/MGQ3ODNmZjY3OWIz/ZjA2MTkwMTJhNTk4/NGVjOGEwNWM2ZGY3/NDFlMDJhMC9wcm9k/dWN0LnRkay5jb20v",
+            "path": "› system  › files  › dam  › doc  › product  › sensor  › mortion-inertial  › imu  › data_sheet  › ds-000189-icm-20948-v1.5.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Document Number: DS-000189 · Revision: 1.5 · Release Date: 09/02/2021 · GENERAL DESCRIPTION · The ICM-20948 is the world’s lowest power 9-axis · MotionTracking device that is ideally suited for Smartphones, Tablets, Wearable Sensors, and IoT applications.",
+            "ICM-20948 · Document Number: DS-000189 · Page 6 of 89 · Revision: 1.5 · 12 · REGISTER MAP FOR MAGNETOMETER ........................................................................................................... 77 · 12.1 · REGISTER MAP DESCRIPTION ...................................................................................................................................",
+            "In addition, the ICM-20948 is an I2C master to the · optional external sensor. The ICM-20948 has limited capabilities as an I2C Master, and depends on the system",
+            "The ICM-20948 has an interface bypass · multiplexer, which connects the system processor I2C bus pins 23 and 24 (SCL and SDA) directly to the auxiliary sensor · I2C bus pins 7 and 21 (AUX_CL and AUX_DA). ... Once the auxiliary sensors have been configured by the system processor, the interface bypass multiplexer should be · disabled so that the ICM-20948 auxiliary I2C master can take control of the sensor I2C bus and gather data from the"
+          ]
+        },
+        {
+          "title": "DS 000189 ICM 20948 v1.5 | PDF | System On A Chip | Analog To Digital Converter",
+          "url": "https://www.scribd.com/document/703236566/DS-000189-ICM-20948-v1-5",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The ICM-20948 is a 9-axis MEMS motion tracking device that integrates a gyroscope, accelerometer, compass and digital motion processor. It is optimized for low power operation of 2.5mW.",
+          "profile": {
+            "name": "Scribd",
+            "url": "https://www.scribd.com/document/703236566/DS-000189-ICM-20948-v1-5",
+            "long_name": "scribd.com",
+            "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "creative_work",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› document  › 703236566  › DS-000189-ICM-20948-v1-5"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/ySL52tqEUeBXcfB4ev8BLjbN1pRnWt-2TzDRsoOUgNI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NzAzMjM2NTY2LzE0/OXgxOTgvMGI3NDc1/OWQ5Ny8xNzEwNTU5/MTE2P3Y9MQ",
+            "original": "https://imgv2-1-f.scribdassets.com/img/document/703236566/149x198/0b74759d97/1710559116?v=1",
+            "logo": false
+          },
+          "creative_work": {
+            "name": "DS-000189-ICM-20948-v1.5",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/ySL52tqEUeBXcfB4ev8BLjbN1pRnWt-2TzDRsoOUgNI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NzAzMjM2NTY2LzE0/OXgxOTgvMGI3NDc1/OWQ5Ny8xNzEwNTU5/MTE2P3Y9MQ",
+              "original": "https://imgv2-1-f.scribdassets.com/img/document/703236566/149x198/0b74759d97/1710559116?v=1"
+            }
+          },
+          "extra_snippets": [
+            "The ICM-20948 is a 9-axis MEMS motion tracking device that integrates a gyroscope, accelerometer, compass and digital motion processor. It is optimized for low power operation of 2.5mW. The device measures 3mm x 3mm x 1mm and outputs motion data over I2C or SPI interfaces."
+          ]
+        },
+        {
+          "title": "File:DS-000189-ICM-20948-v1.3.pdf - Waveshare Wiki",
+          "url": "https://www.waveshare.com/wiki/File:DS-000189-ICM-20948-v1.3.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "DS-000189-ICM-20948-v1.3.pdf ‎(0 × 0 pixels, file size: 1.09 MB, MIME type: application/pdf) MsUpload · Click on a date/time to view the file as it appeared at that time. You cannot overwrite this file. The following file is a duplicate of this file (more details): File:ICM-20948-v1.3.pdf ·",
+          "page_age": "2019-02-16T00:00:00",
+          "profile": {
+            "name": "Waveshare",
+            "url": "https://www.waveshare.com/wiki/File:DS-000189-ICM-20948-v1.3.pdf",
+            "long_name": "waveshare.com",
+            "img": "https://imgs.search.brave.com/gFqeBbmrzsSrGQSapsWKxAH7BtKu5tX8l6I-zjiXZIw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2QwZGNiNTRl/N2EwZTc1YmVjNDE2/NjA3YzI2OTJjMDUx/NDllMmE3ZWY0ODI0/YWYzNWRmYzgxMDY3/YThiNDdkMi93d3cu/d2F2ZXNoYXJlLmNv/bS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "waveshare.com",
+            "hostname": "www.waveshare.com",
+            "favicon": "https://imgs.search.brave.com/gFqeBbmrzsSrGQSapsWKxAH7BtKu5tX8l6I-zjiXZIw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2QwZGNiNTRl/N2EwZTc1YmVjNDE2/NjA3YzI2OTJjMDUx/NDllMmE3ZWY0ODI0/YWYzNWRmYzgxMDY3/YThiNDdkMi93d3cu/d2F2ZXNoYXJlLmNv/bS8",
+            "path": "› wiki  › File:DS-000189-ICM-20948-v1.3.pdf"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/9s-MDdnt-ZCtWeyX38ywIWjqv08F4gaCXGCWB2Alaso/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/d2F2ZXNoYXJlLmNv/bS93L3Jlc291cmNl/cy9hc3NldHMvZmls/ZS10eXBlLWljb25z/L2ZpbGVpY29uLXBk/Zi5wbmc",
+            "original": "https://www.waveshare.com/w/resources/assets/file-type-icons/fileicon-pdf.png",
+            "logo": true
+          },
+          "age": "February 16, 2019",
+          "extra_snippets": [
+            "DS-000189-ICM-20948-v1.3.pdf ‎(0 × 0 pixels, file size: 1.09 MB, MIME type: application/pdf) MsUpload · Click on a date/time to view the file as it appeared at that time. You cannot overwrite this file. The following file is a duplicate of this file (more details): File:ICM-20948-v1.3.pdf ·",
+            "Retrieved from \"https://www.waveshare.com/w/index.php?title=File:DS-000189-ICM-20948-v1.3.pdf&oldid=15844\" Login / Create Account"
+          ]
+        },
+        {
+          "title": "ICM-20948 | TDK InvenSense",
+          "url": "https://invensense.tdk.com/products/motion-tracking/9-axis/icm-20948/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "DS-000189 – ICM-20948 Datasheet · Version1.6 · Updated2024-03-12 · Download · 1.6 · 2024-03-12 · Find answers, documentation, and community support you need · Connect with engineers, ask questions, and share insights with the TDK developer community.",
+          "profile": {
+            "name": "TDK InvenSense",
+            "url": "https://invensense.tdk.com/products/motion-tracking/9-axis/icm-20948/",
+            "long_name": "invensense.tdk.com",
+            "img": "https://imgs.search.brave.com/yBhErg5o0vMwiaG54NEkjS4b7CWCIUtEXq_NKQxdOyU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjliNTFhMTll/MmUxNzEyMmIwNjYy/NzMwZDc1NzFmZDRj/MjhjMDJjMWU3MWYy/ODYyYzBjZmUxYmZi/ODJhNmEzNS9pbnZl/bnNlbnNlLnRkay5j/b20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "invensense.tdk.com",
+            "hostname": "invensense.tdk.com",
+            "favicon": "https://imgs.search.brave.com/yBhErg5o0vMwiaG54NEkjS4b7CWCIUtEXq_NKQxdOyU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjliNTFhMTll/MmUxNzEyMmIwNjYy/NzMwZDc1NzFmZDRj/MjhjMDJjMWU3MWYy/ODYyYzBjZmUxYmZi/ODJhNmEzNS9pbnZl/bnNlbnNlLnRkay5j/b20v",
+            "path": "› products  › motion-tracking  › 9-axis  › icm-20948"
+          },
+          "organization": {
+            "type": "organization",
+            "name": "TDK InvenSense",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "DS-000189 – ICM-20948 Datasheet · Version1.6 · Updated2024-03-12 · Download · 1.6 · 2024-03-12 · Find answers, documentation, and community support you need · Connect with engineers, ask questions, and share insights with the TDK developer community.",
+            "The ICM-20948 is the world’s lowest power 9-axis MotionTracking device that is ideally suited for Smartphones, Tablets, Wearable Sensors, and IoT applications."
+          ]
+        },
+        {
+          "title": "ICM-20948/src/ICM20948.h at master · drcpattison/ICM-20948",
+          "url": "https://github.com/drcpattison/ICM-20948/blob/master/src/ICM20948.h",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "// See also ICM-20948 Datasheet, Register Map and Descriptions, Revision 1.3, // https://www.invensense.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf · // and AK09916 Datasheet and Register Map · // https://www.akm.com/akm/en/file/datasheet/AK09916C.pdf ·",
+          "profile": {
+            "name": "GitHub",
+            "url": "https://github.com/drcpattison/ICM-20948/blob/master/src/ICM20948.h",
+            "long_name": "github.com",
+            "img": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "software",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "github.com",
+            "hostname": "github.com",
+            "favicon": "https://imgs.search.brave.com/xxsA4YxzaR0cl-DBsH9-lpv2gsif3KMYgM87p26bs_o/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWQyNWM1NjA5/ZjZmZjNlYzI2MDNk/N2VkNmJhYjE2MzZl/MDY5ZTMxMDUzZmY1/NmU3NWIzNWVmMjk0/NTBjMjJjZi9naXRo/dWIuY29tLw",
+            "path": "› drcpattison  › ICM-20948  › blob  › master  › src  › ICM20948.h"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/RxAI6kSzXTLnYx1H_Hrn1OrvUUqU5dsfw6MjLhit8XU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9vcGVu/Z3JhcGguZ2l0aHVi/YXNzZXRzLmNvbS81/MjExZmZmOTI3MDU1/OTIwODNhZmI5ODQ0/OWFiOGJjZTM1M2Iw/NmRhZGExOGIyNmFk/NTA4NjhiOWRhNjc0/ZjJjL2RyY3BhdHRp/c29uL0lDTS0yMDk0/OA",
+            "original": "https://opengraph.githubassets.com/5211fff92705592083afb98449ab8bce353b06dada18b26ad50868b9da674f2c/drcpattison/ICM-20948",
+            "logo": false
+          },
+          "software": {
+            "name": "ICM-20948",
+            "author": "drcpattison",
+            "is_npm": false,
+            "is_pypi": false,
+            "programmingLanguage": ""
+          },
+          "extra_snippets": [
+            "ICM-20948 port of the MPU-9250 Kris Winer Arduino library - drcpattison/ICM-20948",
+            "// See also ICM-20948 Datasheet, Register Map and Descriptions, Revision 1.3, // https://www.invensense.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf · // and AK09916 Datasheet and Register Map · // https://www.akm.com/akm/en/file/datasheet/AK09916C.pdf ·"
+          ]
+        },
+        {
+          "title": "How To Guide ICM 20948",
+          "url": "https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt433/links/files/2024-student-howtos/ICM20948-Guide-9DOF.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The Adafruit ICM 20948 is an accelerometer, magnetometer, and gyroscope, making it a 9 · Degree of Freedom sensor. This guide will show you how to wire and receive the values being · read by the sensor through the use of i2c on the BeagleBone. Datasheet: https://invensense.tdk.com/wp-con...",
+          "profile": {
+            "name": "Sfu",
+            "url": "https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt433/links/files/2024-student-howtos/ICM20948-Guide-9DOF.pdf",
+            "long_name": "opencoursehub.cs.sfu.ca",
+            "img": "https://imgs.search.brave.com/5MWcX700ci-Bh_dkEHdOJcoFoQJKg7RQMb1W9Oo3QSk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZWRjY2I1OGI0/MjUzYzVjZWZjZjdh/OTgxYzI5ZjYwODAx/MDFjZjA3OWJhZDQ4/YWJjMWVmNDE0MTRi/OTBmNWY1Ni9vcGVu/Y291cnNlaHViLmNz/LnNmdS5jYS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "opencoursehub.cs.sfu.ca",
+            "hostname": "opencoursehub.cs.sfu.ca",
+            "favicon": "https://imgs.search.brave.com/5MWcX700ci-Bh_dkEHdOJcoFoQJKg7RQMb1W9Oo3QSk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZWRjY2I1OGI0/MjUzYzVjZWZjZjdh/OTgxYzI5ZjYwODAx/MDFjZjA3OWJhZDQ4/YWJjMWVmNDE0MTRi/OTBmNWY1Ni9vcGVu/Y291cnNlaHViLmNz/LnNmdS5jYS8",
+            "path": "› bfraser  › grav-cms  › cmpt433  › links  › files  › 2024-student-howtos  › ICM20948-Guide-9DOF.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The Adafruit ICM 20948 is an accelerometer, magnetometer, and gyroscope, making it a 9 · Degree of Freedom sensor. This guide will show you how to wire and receive the values being · read by the sensor through the use of i2c on the BeagleBone. Datasheet: https://invensense.tdk.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf ·"
+          ]
+        },
+        {
+          "title": "File:ICM-20948-v1.3.pdf - Waveshare Wiki",
+          "url": "https://www.waveshare.com/wiki/File:ICM-20948-v1.3.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "ICM-20948-v1.3.pdf ‎(0 × 0 pixels, file size: 1.09 MB, MIME type: application/pdf) MsUpload · Click on a date/time to view the file as it appeared at that time. You cannot overwrite this file. The following file is a duplicate of this file (more details): File:DS-000189-ICM-20948-v1.3.pdf ·",
+          "profile": {
+            "name": "Waveshare",
+            "url": "https://www.waveshare.com/wiki/File:ICM-20948-v1.3.pdf",
+            "long_name": "waveshare.com",
+            "img": "https://imgs.search.brave.com/gFqeBbmrzsSrGQSapsWKxAH7BtKu5tX8l6I-zjiXZIw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2QwZGNiNTRl/N2EwZTc1YmVjNDE2/NjA3YzI2OTJjMDUx/NDllMmE3ZWY0ODI0/YWYzNWRmYzgxMDY3/YThiNDdkMi93d3cu/d2F2ZXNoYXJlLmNv/bS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "waveshare.com",
+            "hostname": "www.waveshare.com",
+            "favicon": "https://imgs.search.brave.com/gFqeBbmrzsSrGQSapsWKxAH7BtKu5tX8l6I-zjiXZIw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2QwZGNiNTRl/N2EwZTc1YmVjNDE2/NjA3YzI2OTJjMDUx/NDllMmE3ZWY0ODI0/YWYzNWRmYzgxMDY3/YThiNDdkMi93d3cu/d2F2ZXNoYXJlLmNv/bS8",
+            "path": "› wiki  › File:ICM-20948-v1.3.pdf"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/9s-MDdnt-ZCtWeyX38ywIWjqv08F4gaCXGCWB2Alaso/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/d2F2ZXNoYXJlLmNv/bS93L3Jlc291cmNl/cy9hc3NldHMvZmls/ZS10eXBlLWljb25z/L2ZpbGVpY29uLXBk/Zi5wbmc",
+            "original": "https://www.waveshare.com/w/resources/assets/file-type-icons/fileicon-pdf.png",
+            "logo": true
+          },
+          "extra_snippets": [
+            "ICM-20948-v1.3.pdf ‎(0 × 0 pixels, file size: 1.09 MB, MIME type: application/pdf) MsUpload · Click on a date/time to view the file as it appeared at that time. You cannot overwrite this file. The following file is a duplicate of this file (more details): File:DS-000189-ICM-20948-v1.3.pdf ·",
+            "Retrieved from \"https://www.waveshare.com/w/index.php?title=File:ICM-20948-v1.3.pdf&oldid=16909\""
+          ]
+        },
+        {
+          "title": "r/KiCad on Reddit: ESP32/ICM-20948 Circuit",
+          "url": "https://www.reddit.com/r/KiCad/comments/1kw25nm/esp32icm20948_circuit/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "https://invensense.tdk.com/wp-content/uploads/2024/03/DS-000189-ICM-20948-v1.6.pdf · https://invensense.tdk.com/wp-content/uploads/2018/10/AN-000146-v2.0-TDK_Migration_MPU_9250toICM-20948.pdf · Note: ICM-20948 VDDIO range is 1.71V to 1.95V, different than the MPU-9250 9-axis device ·",
+          "page_age": "2025-05-26T18:46:15",
+          "profile": {
+            "name": "Reddit",
+            "url": "https://www.reddit.com/r/KiCad/comments/1kw25nm/esp32icm20948_circuit/",
+            "long_name": "reddit.com",
+            "img": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "qa",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "reddit.com",
+            "hostname": "www.reddit.com",
+            "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+            "path": "  › r/kicad  › esp32/icm-20948 circuit"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/IiYycJrtFxQzqoec1fKhGOBFgSiCicqcuTVRcVRG1Kg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/ZXNwMzItaWNtLTIw/OTQ4LWNpcmN1aXQt/djAteWduajQyOXc4/NjNmMS5wbmc_YXV0/bz13ZWJwJnM9MjJh/ZmMwNTA5NWEyODMw/ODIzY2U5ZGQwNzYx/NmRiMzdjNjhkMDQ2/OA",
+            "original": "https://preview.redd.it/esp32-icm-20948-circuit-v0-ygnj429w863f1.png?auto=webp&s=22afc05095a2830823ce9dd07616db37c68d0468",
+            "logo": false
+          },
+          "age": "May 26, 2025",
+          "qa": {
+            "question": "<p dir=\"auto\">\n      Making a simple ESP32 gyro circuit, does this part look correct?\n    </p>",
+            "answer": {
+              "text": "<span>Take a closer look at 3.4 ELECTRICAL SPECIFICATIONS on page 13, Take a closer look at 4.2 TYPICAL OPERATING CIRCUIT on page 20, https://invensense.tdk.com/wp-content/uploads/2024/03/DS-000189-ICM-20948-v1.6.pdf https://invensense.tdk.com/wp-content/uploads/2018/10/AN-000146-v2.0-TDK_Migration_MPU_9250toICM-20948.pdf Note: ICM-20948 VDDIO range is 1.71V to 1.95V, different than the MPU-9250 9-axis device https://invensense.tdk.com/download-pdf/icm-20948-datasheet/</span>\n",
+              "upvoteCount": 1
+            }
+          },
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "HourTask7931",
+                "url": "https://www.reddit.com/user/HourTask7931/"
+              }
+            ],
+            "date": "May 26, 2025",
+            "publisher": {
+              "type": "organization",
+              "name": "Reddit",
+              "url": "https://www.reddit.com",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/vwRCTZCyS3UsCGj7HsYLzWpcOMhAEqq9hhxBK8tt7Dw/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVkZGl0c3RhdGlj/LmNvbS9zaHJlZGRp/dC9hc3NldHMvZmF2/aWNvbi82NHg2NC5w/bmc",
+                "original": "https://www.redditstatic.com/shreddit/assets/favicon/64x64.png"
+              }
+            }
+          },
+          "extra_snippets": [
+            "Posted by u/HourTask7931 - 0 votes and 10 comments",
+            "https://invensense.tdk.com/wp-content/uploads/2024/03/DS-000189-ICM-20948-v1.6.pdf · https://invensense.tdk.com/wp-content/uploads/2018/10/AN-000146-v2.0-TDK_Migration_MPU_9250toICM-20948.pdf · Note: ICM-20948 VDDIO range is 1.71V to 1.95V, different than the MPU-9250 9-axis device ·",
+            "https://invensense.tdk.com/download-pdf/icm-20948-datasheet/"
+          ]
+        },
+        {
+          "title": "ICM-20948 | I2C Device Directory",
+          "url": "https://i2cdevices.org/devices/icm-20948",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Datasheet: https://invensense.tdk.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf · Adafruit: https://www.adafruit.com/product/4554 · Sparkfun: https://www.sparkfun.com/products/15335 · Search Amazon for ICM-20948 ·",
+          "profile": {
+            "name": "I2cdevices",
+            "url": "https://i2cdevices.org/devices/icm-20948",
+            "long_name": "i2cdevices.org",
+            "img": "https://imgs.search.brave.com/r71uZ37y81wlj4buxTLuBZGk2PvNQ6TuvvdLGDnftfE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZWY3NGFiYTUw/ZGNiMzFhYTU5MWJi/NjkzOTg5NTFkMmQ5/MmY5ZmFjNzJkNmRh/ODU1Y2EwNDQ0MjY1/ZjU3YjYxYS9pMmNk/ZXZpY2VzLm9yZy8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "i2cdevices.org",
+            "hostname": "i2cdevices.org",
+            "favicon": "https://imgs.search.brave.com/r71uZ37y81wlj4buxTLuBZGk2PvNQ6TuvvdLGDnftfE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZWY3NGFiYTUw/ZGNiMzFhYTU5MWJi/NjkzOTg5NTFkMmQ5/MmY5ZmFjNzJkNmRh/ODU1Y2EwNDQ0MjY1/ZjU3YjYxYS9pMmNk/ZXZpY2VzLm9yZy8",
+            "path": "› devices  › icm-20948"
+          },
+          "extra_snippets": [
+            "Datasheet: https://invensense.tdk.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf · Adafruit: https://www.adafruit.com/product/4554 · Sparkfun: https://www.sparkfun.com/products/15335 · Search Amazon for ICM-20948 ·"
+          ]
+        },
+        {
+          "title": "ICM-20948 datasheet(7/89 Pages) TDK | Lowest Power 9-Axis MEMS MotionTracking Device",
+          "url": "https://www.alldatasheet.com/html-pdf/1137956/TDK/ICM-20948/490/7/ICM-20948.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "ICM-20948Document Number: DS-000189Page 7 of 89Revision: 1.3LIST OF FIGURESFigure 1. I2C Bus Timing Diagram......................................................................................................................................",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/html-pdf/1137956/TDK/ICM-20948/490/7/ICM-20948.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› html-pdf  › 1137956  › TDK  › ICM-20948  › 490  › 7  › ICM-20948.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          },
+          "extra_snippets": [
+            "ICM-20948Document Number: DS-000189Page 7 of 89Revision: 1.3LIST OF FIGURESFigure 1. I2C Bus Timing Diagram...................................................................................................................................... 16Figure 2. SPI Bus Timing Diagram ....................................................................................................................................."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

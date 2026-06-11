@@ -4,6 +4,22 @@ This subsystem provides a lightweight and modular physical structure for the Can
 
 See [Understanding Capella Physical Diagrams](./../PM&SE/Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
 
+## Diagram Sources
+
+- [`MBSE/v0.1/`](./MBSE/v0.1/) — reusable structural module models with S&A constraints.
+- [`MBSE/v1.0/`](./MBSE/v1.0/) — same module structure with PCBs and integration hardware mounted.
+
+## Integration, Verification, and Validation (IVV) Plan
+
+- **v0.1** — [physical PNG](./MBSE/v0.1/SAA_v0.1_view1_physical.png) · [D2 source](./MBSE/v0.1/SAA_v0.1_view1_physical.d2)
+- **v1.0** — [physical PNG](./MBSE/v1.0/SAA_v1.0_view1_physical.png) · [D2 source](./MBSE/v1.0/SAA_v1.0_view1_physical.d2)
+
+![S&A v0.1 physical view](./MBSE/v0.1/SAA_v0.1_view1_physical.png)
+View 1 — v0.1 physical structure model and constraints.
+
+![S&A v1.0 physical view](./MBSE/v1.0/SAA_v1.0_view1_physical.png)
+View 1 — v1.0 integrated physical assembly with PCBs mounted.
+
 ## Requirements
 
 | Requirement | Verification method |

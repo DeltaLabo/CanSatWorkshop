@@ -1,0 +1,616 @@
+                                 INTERNATIONAL                               ISO/ASTM
+                                 STANDARD                                       52902
+
+                                                                                        Second edition
+                                                                                             2023-08
+
+
+
+
+                                 Additive manufacturing — Test
+                                 artefacts — Geometric capability
+                                 assessment of additive manufacturing
+                                 systems
+                                 Fabrication additive — Pièces types d'essai — Évaluation de la
+                                 capacité géométrique des systèmes de fabrication additive
+             iTeh STANDARD PREVIEW
+                   (standards.iteh.ai)
+                                    ISO/ASTM 52902:2023
+https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+                                       astm-52902-2023
+
+
+
+
+                                                                                    Reference number
+                                                                             ISO/ASTM 52902:2023(E)
+
+
+                                                                       © ISO/ASTM International 2023
+ISO/ASTM 52902:2023(E)
+
+
+
+
+                             iTeh STANDARD PREVIEW
+                                   (standards.iteh.ai)
+                                              ISO/ASTM 52902:2023
+          https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+                                                 astm-52902-2023
+
+
+
+
+               COPYRIGHT PROTECTED DOCUMENT
+© ISO/ASTM International 2023
+All rights reserved. Unless otherwise specified, or required in the context of its implementation, no part of this publication may
+be reproduced or utilized otherwise in any form or by any means, electronic or mechanical, including photocopying, or posting on
+the internet or an intranet, without prior written permission. Permission can be requested from either ISO at the address below
+or ISO’s member body in the country of the requester. In the United States, such requests should be sent to ASTM International.
+    ISO copyright office                                         ASTM International
+    CP 401 • Ch. de Blandonnet 8                                 100 Barr Harbor Drive, PO Box C700
+    CH-1214 Vernier, Geneva                                      West Conshohocken, PA 19428-2959, USA
+    Phone: +41 22 749 01 11                                      Phone: +610 832 9634
+                                                                 Fax: +610 832 9635
+    Email: copyright@iso.org                                     Email: khooper@astm.org
+    Website: www.iso.org                                         Website: www.astm.org
+Published in Switzerland
+
+ii                                                               ﻿       © ISO/ASTM International 2023 – All rights reserved
+          
+                                                                                                                                                                                 ISO/ASTM 52902:2023(E)
+
+
+
+Contents                                                                                                                                                                                                                                      Page
+
+Foreword. .........................................................................................................................................................................................................................................v
+1                Scope.................................................................................................................................................................................................................................. 1
+2                Normative references...................................................................................................................................................................................... 1
+3                Terms and definitions..................................................................................................................................................................................... 1
+4                Significance and use. ........................................................................................................................................................................................ 1
+                 4.1    General. .......................................................................................................................................................................................................... 1
+                 4.2    Comparing results from one machine................................................................................................................................ 2
+5                General principles for producing test artefacts.................................................................................................................. 2
+                 5.1   General. .......................................................................................................................................................................................................... 2
+                 5.2   Need to use feedstock conforming to a material specification. .................................................................. 2
+                 5.3   Need to undertake artefact building according to a documented process
+                       specification. ............................................................................................................................................................................................. 2
+                 5.4   File formats and preparation. .................................................................................................................................................... 3
+                 5.5   Download files......................................................................................................................................................................................... 3
+                 5.6   Discussion of file conversion. ..................................................................................................................................................... 3
+                 5.7   AMF preferred (with conversion instructions/ resolutions)......................................................................... 3
+                 5.8   Need for test specification and test process................................................................................................................. 3
+                 5.9   Quantity of test artefacts............................................................................................................................................................... 3
+                 5.10 Position and orientation of test artefacts. ...................................................................................................................... 4
+                                      iTeh STANDARD PREVIEW
+                 5.11 Considerations for orientation.................................................................................................................................................. 4
+                 5.12 Labelling. ...................................................................................................................................................................................................... 4
+                                            (standards.iteh.ai)
+                 5.13 Coverage. ...................................................................................................................................................................................................... 4
+                 5.14 Arrays.............................................................................................................................................................................................................. 4
+                 5.15 Part consolidation. ............................................................................................................................................................................... 4
+                 5.16 Supports and post processing               ISO/ASTM              . .................................................................................................................................................. 5
+                                                                                                  52902:2023
+6https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+       General principles for measuring artefacts............................................................................................................................ 5
+       6.1    General.                                           astm-52902-2023
+                       .......................................................................................................................................................................................................... 5
+       6.2    Measure parts as built...................................................................................................................................................................... 5
+       6.3    Measurement strategy..................................................................................................................................................................... 5
+       6.4    Measurement uncertainty. ........................................................................................................................................................... 6
+7                Artefact geometries. ......................................................................................................................................................................................... 6
+                 7.1    General. .......................................................................................................................................................................................................... 6
+                 7.2    Accuracy........................................................................................................................................................................................................ 6
+                       7.2.1 Linear artefact. ..................................................................................................................................................................... 6
+                       7.2.2 Circular artefact. ................................................................................................................................................................. 8
+                       7.2.3 Z-axis artefact. ................................................................................................................................................................... 10
+                 7.3    Resolution................................................................................................................................................................................................. 13
+                       7.3.1 Resolution pins.................................................................................................................................................................. 13
+                       7.3.2 Resolution holes................................................................................................................................................................ 14
+                       7.3.3 Resolution rib. .................................................................................................................................................................... 16
+                       7.3.4 Resolution slot.................................................................................................................................................................... 18
+                 7.4    Surface texture. ................................................................................................................................................................................... 20
+                       7.4.1 Purpose. ................................................................................................................................................................................... 20
+                       7.4.2 Geometry. ............................................................................................................................................................................... 20
+                       7.4.3 Measurement. ..................................................................................................................................................................... 21
+                       7.4.4 Reporting................................................................................................................................................................................ 22
+                       7.4.5 Considerations. .................................................................................................................................................................. 22
+                 7.5    Labelling. ................................................................................................................................................................................................... 23
+                       7.5.1 Purpose. ................................................................................................................................................................................... 23
+                       7.5.2 Geometry. ............................................................................................................................................................................... 23
+                       7.5.3 Considerations. .................................................................................................................................................................. 24
+Annex A (informative)  Example artefact configurations........................................................................................................... 25
+
+© ISO/ASTM International 2023 – All rights reserved                                                                         ﻿                                                                                                                        iii
+ISO/ASTM 52902:2023(E)
+
+
+
+Annex B (informative) Measurement techniques.............................................................................................................................. 27
+Annex C (informative) Measurement procedures. ............................................................................................................................ 31
+Annex D (informative) List of specimen names and sizes......................................................................................................... 38
+Bibliography. ............................................................................................................................................................................................................................40
+
+
+
+
+                                                    iTeh STANDARD PREVIEW
+                                                          (standards.iteh.ai)
+                                                       ISO/ASTM 52902:2023
+                   https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+                                                          astm-52902-2023
+
+
+
+
+iv                                                                                                                    ﻿              © ISO/ASTM International 2023 – All rights reserved
+                  
+                                                                           ISO/ASTM 52902:2023(E)
+
+
+
+Foreword
+ISO (the International Organization for Standardization) is a worldwide federation of national standards
+bodies (ISO member bodies). The work of preparing International Standards is normally carried out
+through ISO technical committees. Each member body interested in a subject for which a technical
+committee has been established has the right to be represented on that committee. International
+organizations, governmental and non-governmental, in liaison with ISO, also take part in the work.
+ISO collaborates closely with the International Electrotechnical Commission (IEC) on all matters of
+electrotechnical standardization.
+The procedures used to develop this document and those intended for its further maintenance are
+described in the ISO/IEC Directives, Part 1. In particular, the different approval criteria needed for the
+different types of ISO documents should be noted. This document was drafted in accordance with the
+editorial rules of the ISO/IEC Directives, Part 2 (see www.iso.org/directives).
+Attention is drawn to the possibility that some of the elements of this document may be the subject of
+patent rights. ISO shall not be held responsible for identifying any or all such patent rights. Details of
+any patent rights identified during the development of the document will be in the Introduction and/or
+on the ISO list of patent declarations received (see www.iso.org/patents).
+Any trade name used in this document is information given for the convenience of users and does not
+constitute an endorsement.
+For an explanation of the voluntary nature of standards, the meaning of ISO specific terms and
+                  iTeh STANDARD PREVIEW
+expressions related to conformity assessment, as well as information about ISO's adherence to
+the World Trade Organization (WTO) principles in the Technical Barriers to Trade (TBT), see
+                        (standards.iteh.ai)
+www.iso.org/iso/foreword.html.
+This document was prepared by ISO/TC 261, Additive manufacturing, in cooperation with ASTM
+Committee F42, Additive Manufacturing Technologies, on the basis of a partnership agreement between
+ISO and ASTM International with the   ISO/ASTM     52902:2023
+                                         aim to create  a common set of ISO/ASTM standards on Additive
+  https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+manufacturing, and in collaboration with the European Committee for Standardization (CEN) Technical
+                                         astm-52902-2023
+Committee CEN/TC 438, Additive manufacturing,          in accordance with the Agreement on technical
+cooperation between ISO and CEN (Vienna Agreement).
+This second edition cancels and replaces the first edition (ISO/ASTM 52902:2019), which has been
+technically revised.
+The main changes are as follows:
+— addition of a test artefact for testing the performance of the Z-axis in an AM system.
+— changed dimensions in text and in drawing (see Figure 3) of medium circular artefact such that the
+  description in the text matches the dimensions in the downloadable STEP file; Figure 3 was also re-
+  drawn to better depict the circular artefact geometry.
+Any feedback or questions on this document should be directed to the user’s national standards body. A
+complete listing of these bodies can be found at www.iso.org/members.html.
+
+
+
+
+© ISO/ASTM International 2023 – All rights reserved   ﻿                                                 v
+             iTeh STANDARD PREVIEW
+                   (standards.iteh.ai)
+                                    ISO/ASTM 52902:2023
+https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+                                       astm-52902-2023
+INTERNATIONAL STANDARD                                                      ISO/ASTM 52902:2023(E)
+
+
+
+
+Additive manufacturing — Test artefacts — Geometric
+capability assessment of additive manufacturing systems
+
+1 Scope
+This document covers the general description of benchmarking test piece geometries, i.e. artefacts,
+along with quantitative and qualitative measurements to be taken on the benchmarking test piece(s) to
+assess the performance of additive manufacturing (AM) systems.
+This performance assessment can serve the following two purposes:
+— AM system capability evaluation;
+— AM system calibration.
+The benchmarking test piece(s) is (are) primarily used to quantitatively assess the geometric
+performance of an AM system. This document describes a suite of test geometries, each designed
+to investigate one or more specific performance metrics and several example configurations of
+these geometries into test build(s). It prescribes quantities and qualities of the test geometries to be
+measured but does not dictate specific measurement methods. Various user applications can require
+                  iTeh STANDARD PREVIEW
+various grades of performance. This document discusses examples of feature configurations, as
+well as measurement uncertainty requirements, to demonstrate low- and high-grade examination
+                        (standards.iteh.ai)
+and performance. This document does not discuss a specific procedure or machine settings for
+manufacturing a test piece.
+
+
+2 Normative references               ISO/ASTM 52902:2023
+ https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+The following documents are referred to in the     text in such a way that some or all of their content
+                                        astm-52902-2023
+constitutes requirements of this document. For dated references, only the edition cited applies. For
+undated references, the latest edition of the referenced document (including any amendments) applies.
+ISO/ASTM 52900, Additive manufacturing — General principles — Fundamentals and vocabulary
+ASME B46.1, Surface Texture (Surface Roughness, Waviness and Lay)
+
+
+3 Terms and definitions
+For the purposes of this document, the terms and definitions given in ISO/ASTM 52900 apply.
+ISO and IEC maintain terminological databases for use in standardization at the following addresses:
+— ISO Online browsing platform: available at https://​w ww​.iso​.org/​obp
+— IEC Electropedia: available at https://​w ww​.electropedia​.org/​
+
+
+4 Significance and use
+
+4.1 General
+Measurements and observations described in this document are used to assess the performance of an
+AM system with a given system set-up and process parameters, in combination with a specific feedstock
+material.
+
+
+
+© ISO/ASTM International 2023 – All rights reserved   ﻿                                                1
+ISO/ASTM 52902:2023(E)
+
+
+
+The primary characterization of the AM system obtained by applying this document is via geometric
+accuracy, surface finish, and minimum feature sizes of the benchmarking test piece(s).
+
+4.2 Comparing results from one machine
+The test piece(s) can be built and measured for example when the new machine is installed. The test
+piece(s) can be used to periodically evaluate the performance or diagnose a fault in one AM system, for
+example, after system maintenance or as specified by the requirements of a quality system.
+The test piece(s) described in this test method can be used as a demonstration of capabilities for a
+contract between a buyer and seller of AM parts or AM systems.
+Data from the measurements described in this document can be used to gauge the impact of new
+process parameters or material on the AM system performance.
+Certain test geometries can be included with every build on a particular AM system to help establish
+performance traceability. Depending on the needs of the user, not all test artefacts need to be built, and
+individual test artefacts can be built separately if required.
+
+
+5 General principles for producing test artefacts
+
+5.1 General
+
+                        iTeh STANDARD PREVIEW
+This clause outlines principles applicable for producing all of the test artefact geometries in this
+document. Reporting requirements are previewed in connection with the production steps in this
+clause, but more details about recording and reporting can be found with the individual artefact
+                              (standards.iteh.ai)
+descriptions given in Clause 7.
+
+5.2 Need to use feedstock conforming to a material
+                                  ISO/ASTM         specification
+                                             52902:2023
+In order https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+         to ensure repeatable results, the use of a quality feedstock material is needed. Clear definition
+                                                astm-52902-2023
+of the material specification is important. Often a standard  specification is preferred, but specifications
+do not need to be limited to standards and can be defined by the user. A feedstock material specification
+should be selected or required by the user and the feedstock used for test artefact trials should match
+said specification. For example, the specification can include the particulate properties (particle size,
+size distribution, morphology) for powder feedstock, bulk properties (such as flow) and chemical
+properties (such as chemical composition and level of contamination). Although the details of the
+material specification shall not be disclosed (unless otherwise agreed between buyer and seller),
+it should be documented by the producer and reported with a unique alphanumeric designation as
+specified by ASTM F2971​-13:​2021, Annex A1, element “B”. For powder-based processes, the material
+specification should specifically address limitations of powder re-use and percent of virgin/re-used
+powder.
+
+5.3 Need to undertake artefact building according to a documented process
+specification
+The processing of the material in the AM system should be undertaken according to a documented
+process specification/manufacturing plan, as specified by ASTM F2971​-13:​2021, Annex A1, element “C”.
+This can be a proprietary internal standard or external standard (subject to buyer/seller negotiations),
+but the producer should document the exact values of user-specifiable settings and conditions
+surrounding the building of parts. For example, it should document the layer thickness, build strategies
+(e.g. scan path, tool path, and/or scan parameters), temperatures, etc. used during the build. This
+process should be consistent for all test artefacts produced within one build. These recommendations
+can be different for each use, so the parameters in the process specification should be agreed between
+the buyer and seller.
+
+
+
+
+2       ﻿ © ISO/ASTM International 2023 – All rights reserved
+        ﻿
+                                                                               ISO/ASTM 52902:2023(E)
+
+
+
+5.4 File formats and preparation
+The file formats used and steps of the digital file preparation including slice parameters should be
+included in the process specification. Care shall be taken during the creation and transfer of data files
+to avoid degradation of the model. Any discrepancy between these affects the outcome of tests on
+the artefacts and for this reason, good practice for the control of the file formats and preparation is
+discussed here.
+
+5.5 Download files
+The 3D digital models for standard test artefact geometries can be downloaded in *.step format at
+https://​standards​.iso​.org/​iso/​52902/​ed​-2/​en. For a complete list of available files, please see Annex D.
+
+5.6 Discussion of file conversion
+When a CAD model is converted to AMF, STL, or any intermediate file format, sufficient fidelity shall
+be maintained to ensure that the test artefact produced from it fairly reflects the capabilities of the
+AM system under assessment. The file conversion tolerance selected should ensure that the maximum
+deviation of the data from the nominal CAD model is less than one quarter and ideally less than one
+tenth of the expected accuracy of the AM system being assessed. Currently, most additive manufacturing
+equipment cannot produce features with a resolution better than 10 µm, therefore CAD models are
+saved to STL/AMF ensuring at least a 2,5 µm accuracy or better. This is only general guidance and
+should be confirmed for the specific output system. It is recommended that users check the maximum
+deviation and record the conversion parameters used, as well as any maximum deviation (chord height
+                  iTeh STANDARD PREVIEW
+and angular tolerance).
+
+                               (standards.iteh.ai)
+Files should not be scaled up or down either during conversion or afterward. Machine correction
+factors (e.g. offsets, axis scaling, etc.) may be used and should be documented as part of the process
+specification.
+                                     ISO/ASTM 52902:2023
+5.7 AMF preferred (with conversion           instructions/ resolutions)
+ https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+                                        astm-52902-2023
+The AMF file format as specified by ISO/ASTM 52915 is the preferred model format for test artefact
+geometry representation due to its ability to store high fidelity geometry with embedded units in an
+intermediate file format, and for its ability to accurately orient an array of parts within a single AMF
+file.
+
+5.8 Need for test specification and test process
+This document forms the basis for the general Test Plan/Specification described in ASTM F2971​-13:​2021,
+Annex A1, element “D”, but specifics about its implementation need recording to accurately document
+the test process (element “E” in Annex A1), used for producing the parts as discussed in Clause 7.
+
+5.9 Quantity of test artefacts
+For a complete test of machine performance, at least two things dictate the quantity of the test artefacts
+produced. First, the test specification/test process shall ensure a quantity of samples, typically no
+less than five per build, so that statistically significant measurements can be made. Second, sufficient
+coverage (see 5.13) of the build platform needs to be made to account for variations in performance
+between build locations. Repeated builds can also be completed to test the repeatability of the process.
+Fewer test artefacts with less complete coverage may be used for spot checks or limited demonstrations,
+such as the example detailed in Annex A. The number of artefacts shall be agreed upon between the
+buyer and seller and shall permit to perform at least 5 measurements.
+
+
+
+
+© ISO/ASTM International 2023 – All rights reserved     ﻿                                                     3
+﻿
+ISO/ASTM 52902:2023(E)
+
+
+
+5.10 Position and orientation of test artefacts
+As per ASTM F2971​-13:​2021, Annex A1, element “F”, it is recommended to report results in combination
+with the test artefacts’ build position and orientations according to the convention set forth in
+ISO 17295.
+
+5.11 Considerations for orientation
+Since these test artefacts are intended to reveal the strengths and weaknesses of additive building
+techniques, there will be failed build geometries. It is worth considering which features are likely to fail
+and place them in positions or orient them at angles that minimize the risk that this leads to an outright
+failure of the features/parts/artefacts in the rest of the build. For example, in a powder bed process,
+it can be advisable to position parts that are more likely to fail at a higher level in the overall build to
+reduce the risk that failed parts or sections of parts impinge on other components in the build or the
+AM machine mechanism.
+
+5.12 Labelling
+It can be useful to add labels to parts to identify respective artefact orientations and positions in the
+build. Labelling is summarized in 7.5.
+
+5.13 Coverage
+
+                        iTeh STANDARD PREVIEW
+It is important that test artefacts be made with sufficient coverage of the build volume to get
+representative data for where real parts are made. Coverage evaluates variability throughout the
+build volume. This is good practice for all AM processes and is especially critical for processes that
+                              (standards.iteh.ai)
+have a “sweet spot” (for example, some galvanometric laser beam steering systems give more
+repeatable results in the centre of the platform). The artefact distribution should span at least 80 %
+of the machine’s build platform area, with the intent that the artefacts are built at different locations
+                                             ISO/ASTM
+based on the applications of the user and where           52902:2023
+                                                  components   will be built on the machine in production.
+         https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+For machines with large build platform areas, artefacts could be placed at the outer ends of the build
+platform area and at the centre of the build platform   area to provide some coverage of the entire build
+                                                astm-52902-2023
+area. If build location effects are known or deemed irrelevant for the trial being performed, then a
+single build location may be selected and used, as agreed between buyer and seller.
+Long artefacts, which reach across the extents of the build volume, can be necessary to detect
+corrections that are not linear or are periodic in nature.
+
+5.14 Arrays
+Geometry should not be scaled to accommodate different sizes of build volumes (since this affects the
+measurement outputs) but can be patterned in an array to give larger coverage areas. See an example in
+Figure 2. Scaling of artefact geometry to accommodate shrinkage, such as in applications using binder
+jetting AM, should be clearly documented by users.
+
+5.15 Part consolidation
+When arrays of parts are needed for better coverage, it can be most practical to build a single combined
+part instead of trying to build arrays of adjacent individual parts. This can be achieved by consolidating
+adjacent AMF or STL files prior to slicing and other file preparation steps. Arrays of parts can be
+accurately positioned relative to each other in a single AMF file by use the “constellation” element.
+As AM most commonly is a layered process (in Z-direction) and often based on pixels (in X/Y-direction),
+the exact position of the part in the build can affect the test significantly. This is especially true of
+artefacts testing machine resolution. A minor translation of the part can influence rounding off issues
+influencing whether a specific layer or pixel will build or not. This can be caused during preparation of
+the slice file and during orienting the slice file into the working area in the machine. Results should be
+
+
+4       ﻿ © ISO/ASTM International 2023 – All rights reserved
+        ﻿
+                                                                              ISO/ASTM 52902:2023(E)
+
+
+
+reported in combination with the test artefacts’ build orientations according to the convention set forth
+in ISO 17295.
+With certain AM processes (especially with metals), heat build-up from processing large cross-sectional
+areas near the test artefacts can affect their geometrical accuracy. Therefore, it is advised that the
+manufacturer ensure compliance with specified distances between parts.
+
+5.16 Supports and post processing
+Where possible, supports should be avoided or supports which do not impede or affect in any way the
+intended measurement should be employed. Supporting strategy, including, but not limited to material,
+geometry, removal technique, etc., shall be fully documented in the process specification.
+Data reported from this document shall be in the as-built condition prior to any surface or downstream
+processing. In the case of unavoidable post-processing undertaken prior to measurement (e.g. removal of
+necessary support material), details of the process shall be reported as part of the process specification.
+The reporting should include a description of any used abrasive media and how it was applied to the
+surface of the artefacts. In addition, data after additional post-processing treatments (such as sand
+blasting of metal parts for example) may be obtained but only if clearly noted and presented together
+with as-built measurements. In the case of sinter-based processes, users shall report the condition of
+the part used for testing, such as stating “measurements were taken on the sintered body with scaling
+applied to account for shrinkage,” “measurements were taken on the green body with (or without)
+scaling applied.”
+
+            iTeh STANDARD PREVIEW
+6 General principles for measuring artefacts
+
+6.1 General       (standards.iteh.ai)
+This clause outlines principles applicable for measuring all the test artefact geometries in this document.
+                                     ISO/ASTM 52902:2023
+The specific measurements are specified in Clause 7 describing the individual artefact geometries. This
+ https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+document does not prescribe any specific measurement methods; the measurements described below
+                                        astm-52902-2023
+can be accomplished by a variety of techniques   and devices (e.g. coordinate measuring machine, optical
+scanner, dial indicators with calibrated motion devices, surface profilometers, etc.). ISO/ASTM 52927
+can be used to improve communication between stakeholders concerning test methods. Reporting
+requirements are previewed in connection with the measurement steps in this clause but more details
+about recording and reporting can be found in Annexes B and C.
+
+6.2 Measure parts as built
+The test artefact should be allowed to cool to room temperature and then measured directly after it
+is removed from the system used to build it, before any post-processing is performed. The user can
+require that parts be held at a set temperature and humidity prior to measurement. If the parts are
+built by a powder bed-based process, the parts should be completely separated from the surrounding
+powder before measurement. If the parts are built on a build platform, first perform the measurements
+without removing the part from the platform. (Removal from a build platform can affect the shapes of
+the artefacts, thereby influencing the results. If measurement is not possible on the platform, this shall
+be explicitly stated in the report.) If post-processing is desired, report all details of each post-processing
+step and measure the part before and after each post-processing steps (reporting all measurement
+results).
+
+6.3 Measurement strategy
+Measurement strategy affects the overall measurement uncertainty; this is true for dimensional
+measurements and surface measurements alike. Measurement strategy, here, involves the device
+chosen to perform the measurement along with the number of points selected to represent the feature
+or surface and the distribution of points along the feature or surface. For roughness measurements,
+the measurement strategy includes any applied filters (e.g. the cut-off length). Measurement strategy
+
+© ISO/ASTM International 2023 – All rights reserved    ﻿                                                    5
+﻿
+ISO/ASTM 52902:2023(E)
+
+
+
+is a complicated subject and is often very specific to the part or feature being measured. As such,
+there is no general “good practice” for performing these measurements. However, some tips are
+provided in Annexes B and C. The measurement uncertainty is ultimately the important concept, and,
+with consideration given to the available measurement devices, using a measurement strategy that
+minimizes the measurement uncertainty within any given constraints should be the primary focus.
+
+6.4 Measurement uncertainty
+The standard uncertainty of each measurement should be reported along with the measurement.
+Guidance on determining measurement uncertainty can be found in the following references:
+— ASME B89.7.3.2 for uncertainty in dimensional measurements;
+— ASME B46.1 for surface texture measurements;
+— JCGM 100 and JCGM 101 for measurement uncertainty in general (commonly referred to as the Guide
+  to the expression of uncertainty in measurement, or GUM);
+— ISO/IEC Guide 98-1 and related documents.
+Users should document any calibration and/or quality maintenance system for the measurement
+processes and equipment used. Measurement device and resolution shall be disclosed in the report.
+Measurement system analysis (MSA) and Gage Repeatability and Reproducibility (R&R) are also
+acceptable approaches to perform measurement uncertainty evaluation. See ASTM E2782.
+                iTeh STANDARD PREVIEW
+7 Artefact geometries
+                      (standards.iteh.ai)
+7.1 General
+                                            ISO/ASTM 52902:2023
+Eight types of artefacts are described in the following subclauses. Each artefact is intended to test a
+differenthttps://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+          aspect of a system’s performance or capability.
+                                               astm-52902-2023
+7.2 Accuracy
+
+7.2.1     Linear artefact
+
+7.2.1.1    Purpose
+
+This artefact tests the linear positioning accuracy along a specific machine direction. Depending on
+artefact orientation and machine configuration, errors in the artefact can provide a basis for positioning
+compensation or diagnosing specific error motions in the system’s positioning system.
+
+7.2.1.2    Geometry
+
+Figure 1 depicts the geometry of the linear artefact. The artefact comprises prismatic protrusions
+atop a rectangular solid base. A bounding box for the entire feature is 55 mm × 5 mm × 8 mm. The
+end protrusions are 2,5 mm × 5 mm × 5 mm. The central protrusions are 5 mm cubes. Spacing of the
+protrusions increases along the length of the artefact from 5 mm to 7,5 mm, 10 mm, and 12,5 mm.
+
+
+
+
+6         ﻿ © ISO/ASTM International 2023 – All rights reserved
+          ﻿
+                                                                              ISO/ASTM 52902:2023(E)
+
+
+
+                                                                                    Dimensions in millimetres
+
+
+
+
+                         Figure 1 — Engineering drawing of linear test artefacts
+
+If a longer test of linear accuracy is desired, multiple linear artefacts can be appended to one another.
+The 2,5 mm length of the end protrusions means that when two or more linear artefacts are appended,
+the central protrusions will all be 5 mm cubes. Figure 2 shows an example. If this option is chosen, see
+5.15.
+
+
+                  iTeh STANDARD PREVIEW
+                        (standards.iteh.ai)
+                                     ISO/ASTM 52902:2023
+ https://standards.iteh.ai/catalog/standards/sist/9017972c-c2eb-4b1a-8eeb-8b0f6fa7f001/iso-
+                                        astm-52902-2023
+
+
+
+
+                Figure 2 — Two linear accuracy test artefacts appended to each other
+
+If a shorter test of linear accuracy is required, the geometry of an alternative test artefact shall be agreed
+upon by the buyer and seller and shall follow similar design principles to the part shown in Figure 1.
+The alternative artefact should have non-equally spaced features and should test both protrusions and
+gaps (i.e. distances with material in between features and distances with space in between features).
+
+7.2.1.3    Measurement
+
+The primary measurement for the linear artefact is the position of the cube faces relative to the
+primary datum at the end of the artefact (see Figure 1). Alternatively, the lengths of each protrusion
+can be measured and the spacing between each protrusion can be measured. Optional measurements
+available are the straightness of the base along the length of the artefact, parallelism of each side of the
+base along the length of the artefact and the heights of each protrusion.
+
+7.2.1.4    Considerations
+
+Default orientations for a thorough overview of linear accuracy should include at least one test
+artefact aligned parallel to each axis (X, Y, and Z) in the machine coordinate system. When this is done,
+orthogonal orientation notation should be used to document the orientation as per ISO 17295. An
+alternative can be to align one linear artefact with the motion of one of the machine’s positioning axes
+
+© ISO/ASTM International 2023 – All rights reserved    ﻿                                                    7
+﻿
+

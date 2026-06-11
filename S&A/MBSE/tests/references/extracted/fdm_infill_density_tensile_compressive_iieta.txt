@@ -1,0 +1,410 @@
+                                               Revue des Composites et des Matériaux Avancés-Journal
+                                                       of Composite and Advanced Materials
+                                                                         Vol. 35, No. 1, February, 2025, pp. 97-103
+                                                                      Journal homepage: http://iieta.org/journals/rcma
+
+
+
+ Experimental Study of Effect of Infill Density on Tensile and Compressive Behaviors of Poly
+ Lactic Acid (PLA) Prepered by 3D Printed (FDM)
+ Zainab H. Obaide* , Najim A. Saad
+
+ College of Materials Engineering, Babylon University, Hilla 51002, Iraq
+
+ Corresponding Author Email: mat122.zainab.haider@student.uobabylon.edu.iq
+
+ Copyright: ©2025 The authors. This article is published by IIETA and is licensed under the CC BY 4.0 license
+ (http://creativecommons.org/licenses/by/4.0/).
+
+ https://doi.org/10.18280/rcma.350112              ABSTRACT
+
+ Received: 10 January 2025                         One of the most advanced production techniques in the manufacturing sector is the
+ Revised: 10 February 2025                         Additive Manufacturing Process (AMP), commonly known as 3D printing. Among its
+ Accepted: 20 February 2025                        various methods, Fused Deposition Modeling (FDM) is widely used for fabricating
+ Available online: 28 February 2025                intricate geometries. Unlike CNC machining, injection molding, and sculpting
+                                                   techniques, which typically generate 70%-90% material waste, FDM is a more efficient
+                                                   process that significantly minimizes material loss. This study examines the impact of
+ Keywords:                                         infill density on the tensile and compressive behavior of Poly Lactic Acid (PLA), as well
+ Infill density, FDM, 3D printing, PLA,            as its mechanical and fracture properties. The research focuses on a hexagonal infill
+ hexagonal                                         pattern with varying infill percentages of 25%, 50%, 75%, and 100%. In additive
+                                                   manufacturing (AM), prismatic closed-cell structures, commonly known as honeycomb
+                                                   infill, are frequently used to enhance the mechanical integrity of printed parts due to their
+                                                   uniform density and periodic nature. Additionally, the study evaluates the effect of print
+                                                   orientation at 0°, 45°, and 90°. The ASTM D638 standard was followed in designing the
+                                                   tensile test specimens. The findings indicate that tensile strength and elastic modulus
+                                                   increase with higher infill density. While variations in print orientation (0°, 45°, and 90°)
+                                                   result in only slight changes in tensile strength and elastic modulus, an increase in infill
+                                                   density reduces elongation at break. Furthermore, increasing the infill density also leads
+                                                   to higher compressive strength, demonstrating a direct correlation between structural
+                                                   integrity and material distribution in FDM-printed PLA components.
+
+
+1. INTRODUCTION                                                         materials [6]. Three groups of specimens were created using
+                                                                        PLA printing. The first group produced at 40 mm/s with an
+   In the industrial sector, additive manufacturing sometimes           infill ratio of 50, 75, and 100. Additionally, the second group
+known as 3D printing, is a fast-expanding technology. Main              produced at 50 mm/s with an infill ratio of 50, 75, and 100.
+benefit of AM is its ability to quickly and easily fabricate            The third group produced at 60 mm/min with an infill ratio of
+intricate designs from CAD models to fully working products             50, 75, and 100. The tensile test specimens were printed in
+[1]. It is being utilized more and more in engineering                  compliance with ASTM D638. With an infill ratio of 100%
+applications these days, including bespoke goods, the                   and a print speed of 40 mm/min, specimen 3 from the first
+automobile sector, aviation, medical engineering, and more              group produced the best results out of all the specimens [7].
+[2]. In AM, the entire product or individual components are             Four distinct pore geometries for PLA bone scaffolds were
+produced and utilized as the final product [3]. Although it has         created, and their mechanical characteristics were simulated.
+been around since the 1980s, Fused Deposition Modeling                  Four different pore geometries for PLA bone scaffolds were
+(FDM™) is the most popular of the various AM techniques,                created, and their mechanical characteristics were simulated.
+including stereolithography, selective laser melting , selective        The results demonstrate that, as a result of the stress
+laser sintering ,and laminated object manufacturing, to name a          distributions on the scaffold models, pore shape significantly
+few [4]. A popular additive manufacturing technique for                 influences mechanical characteristics [8]. The 3D-printed
+creating intricate geometric components for a range of                  samples were created using the Fused Deposition Modeling
+engineering uses is FDM. To create a specific 3D structure,             process. Three specimens of each type were evaluated using
+printers employ the FDM technology, which involves melting              specific infill patterns (trihexagon, gyroid, and line) and infill
+and extruding thermoplastic filament through a nozzle that              ratios (30, 50, and 70%).According to the ASTM D695
+follows a predetermined route. Polyamide (PA), polylactic               standard, an experimental research was conducted to calculate
+acid , polycarbonate , acrylonitrile butadiene styrene , and            how infill pattern and ratio affected the 3D printed PLA's
+thermoplastic [5]. PLA and ABS have a lower factor of                   compressive strength. The compressive strength varies
+thermal expansion and higher mechanical strength in FDM                 according on the infill design and ratio. According to findings
+
+
+
+                                                                   97
+of the investigation, the compressive strength increasing as the         have a higher compressive strength with the same infill
+infill ratio increased. Interestingly, the maximum compressive           pattern. Compared to samples with rectangular and gyroid
+strength was at 70% infill ratio with line pattern [9]. The              fillings, those with triangular fills have a greater compressive
+purpose of this study is to use a low infill density to examine          strength with the like mass [18]. The Fused Deposition
+how the independent infill pattern affects the mechanical                Modeling (FDM) technique constructs parts layer by layer by
+qualities and surface features of PLA, PETG, and PLA+                    melting a thermoplastic filament and feeding it through a
+printed materials Printing with cubic, gyroid, and concentric            liquefier head. The material is then extruded through a
+patterns increased the ultimate tensile strengths of PLA,                computer-controlled nozzle, deposited onto the platform, and
+PETG, and PLA+, yielding maximum σu of 15.6, 20.8, and                   solidified [19].
+16.5 MPa, respectively [10]. The tensile and fire                           In this study, Polylactic Acid (PLA) was used to fabricate
+characteristics of 3D-printed polylactide acid pieces with               tensile and compressive test samples with a hexagonal infill
+different infill levels were examined. According to the fire test        pattern at varying infill densities of 100%, 75%, 50%, and
+results, a higher infill density resulted in a higher fuel load,         25%, and with build orientations of 0°, 45°, and 90°. The
+which maintained combustion [11]. Both samples used zigzag               objective of this research is to investigate the influence of infill
+patterns, and the three infill densities were adjusted by 30%,           density and build angle on the tensile and compressive
+60%, and 100%. The raster angles used were 0 and 90 degrees.             behavior of FDM-printed samples.
+Lastly, the research was performed using varying infill rates
+and raster angles. The tensile strength of pure PLA can be
+affected by the raster angle and infill density. Among the               2. MATERIAL AND METHOD
+various infill densities and raster angles, PLA 0°100% exhibits
+the highest tensile strength and young moduli. In contrast to            2.1 Material
+other parameters, the 90°30% pure PLA exhibits the
+maximum elongation of break. A higher infill density will                   The material is utilized in this work is polylactic acid (PLA)
+result in less break elongation, which indicates more tightly            filament, the general characterization revealed in Table 1.
+packed clustered strands, limiting the polymer structure's
+ability to move The 0°raster angle, which was attained by                             Table 1. Standard properties of PLA
+aligning the raster with the printing direction, has the highest
+tensile strength and Young's moduli [12]. Utlizing Fused                        Characteristic          Testing Criteria      Value
+Deposition Modeling technology, 3D additive printing is                             Density              ASTM D792          1.25 g/cm3
+utilized to examine the fatigue behavior of polylactic acid                    Tensile strength          ASTM D638           31 Mpa
+material with bamboo filler at various print nozzle diameters             Glass transition temperture    DSC,10 C/min          61℃
+                                                                             Elongation at break         ASTM D638             7.3%
+and infill densities The research findings indicate that infill
+density significantly affects the studied materials' fatigue
+characteristics. The examined material was strengthened as a             2.2 Methods
+consequence of the effect of cyclic testing, and its viscoelastic
+nature was also demonstrated [13]. To investigate the                       Tensile and compressive test samples were fabricated using
+influance of build orientation on the material's tensile                 an Ender 3 V2 3D printer equipped with a Sonic Pad Klipper,
+characteristics and build time, FDM 3D-printed PLA pieces                employing the Fused Deposition Modeling (FDM) method, as
+were manufactured at various build orientations. Three                   illustrated in Figure 1.
+construction orientations and three print angles were
+investigated in this context When the pieces' construction
+orientation was shifted from a flat to an upright printing angle,
+the tensile strength dropped [14]. Several common printing
+materials, such as Acrylonitrile Butadiene Styrene , Polylactic
+Acid ,and carbon fiber reinforced PLA composites (PLA-CF),
+have been used to study the effects of infill density and
+printing pattern on the mechanical characteristics of FDM 3D
+printing structures, The influance of infill density and printing
+patterns on the strength of the 3D printed structure [15].
+Anisotropy is still a major worry despite additive
+manufacturing's (AM) numerous advantages, which include
+significant design flexibility for 3D-printed items. It was
+discovered that the construction orientation and material
+composition of the printed functional item had a significant
+impact on its mechanical performance [16]. Honeycomb infill
+pattern samples are produced using different infill densities of
+20, 40, 60, and 80% to examine the mechanical and fracture                                Figure 1. 3D printing machine
+behavior of MEX ABS/CF-ABS components. Significant
+gains in tensile strength, moduli, yield strength, and elongation           The tensile specimens were manufactured following the
+are shown by CF-ABS samples with an 80% infill density and               ASTM D638 standard, as shown in Figure 2, which details the
+honeycomb fill pattern [17]. Using a nylon material reinforced           specimen dimensions. Samples were printed with four
+with carbon fiber, the impact of infill pattern and density              different infill densities (25%, 50%, 75%, and 100%), with
+which are imparted to the mass of the standard sample on                 each infill percentage tested at three build orientations (0°,
+compressive strength is examined. Specimens with more mass               45°, and 90°).
+
+
+
+                                                                    98
+                                                                           The FDM method creates two-dimensional patterns known
+                                                                        as "slicing layers," which, when stacked on top of one another,
+                                                                        roughly mimic the original three-dimensional component. The
+                                                                        printing process is illustrated in Figure 4. According to a set of
+                                                                        parameters that are constant for all samples as revealed in
+                                                                        Table 2.
+
+                                                                                        Table 2. The printing parameter
+       Figure 2. Diminution of specimen tensile [20]
+                                                                                      Parameter                   Value
+   Various infill patterns can be selected for FDM printing,                          Nozzle size                0.4 mm
+including Hilbert curves, rectilinear, concentric, honeycomb,                     Temperture Extruder             200℃
+and Archimedean chords. This study specifically employs a                          Room temperature                37℃
+hexagonal (honeycomb) infill pattern due to its ability to                          Printing Speed              50 mm/s
+enhance mechanical performance while minimizing material                              Layer high                 0.2 mm
+usage.                                                                              First layer high             0.2 mm
+   Tensile tests were conducted using a Universal Testing                         Percentages of infill   100%, 75%, 50%, 25%
+Machine (UTM).                                                                      Wall thickness               1.4 mm
+   The compressive test specimens were designed in
+accordance with ASTM D695, as illustrated in Figure 3. The
+samples were fabricated using Fused Deposition Modeling                 3. RESULTS AND DISCUSSION
+(FDM) technology with infill densities of 100%, 75%, 50%,
+and 25%, utilizing a honeycomb infill pattern.                          3.1 Tensile test
+
+                                                                           As shown in Figure 5, the fracture patterns of the samples
+                                                                        are presented for all infill densities and different raster angles.
+
+
+
+
+    Figure 3. Diminution of specimen compressive [21]
+
+2.2.1 The principle work of Fused Deposition Modeling
+   The first stage is to create a solid three-dimensional model.
+Numerous CAD applications allow for this to be
+accomplished. The 3D CAD model is exported to the FDM
+printer program in the stereolithography (STL) format. The
+STL file is exported to the printer software, where it is                          Figure 5. Specimen tensile after fracture
+horizontally divided into numerous thin parts and process
+settings are adjusted. The slicing program then usages this
+information to generate a procedure plan, or G-code file, that
+governs the FDM machine's hardware.
+
+
+
+
+                                                                          Figure 6. Dimensions of the hexagonal honeycombs [22]
+
+                                                                           According to Eq. (1) (illustrated in Figure 6), this
+                                                                        phenomenon demonstrates crack propagation through the
+                                                                        honeycomb structure, where the applied load is distributed as
+                                                                        a combination of distinct forces and moments acting on each
+                                                                        cell wall. As a result, the material behavior transitions from
+                                                                        ductile to brittle.
+
+                                                                                                  2 𝑡 2
+                                                                                             𝜎=    ⋅ ( ) ⋅ 𝜎Y                          (1)
+                 Figure 4. FDM technology                                                         3 𝑙
+
+
+                                                                   99
+   As shown in Figure 7(a)-(c), the load-deformation
+relationship is presented. An increasing trend from 25% to
+100% infill density indicates a greater tolerance to applied
+load.
+   The findings suggest that samples with higher infill
+densities exhibit stronger interlayer bonding and greater
+resistance to deformation due to a reduction in air gaps.
+Additionally, the increase in tensile strength can be attributed
+to the greater number of honeycomb structures, which provide
+more hexagonal walls interconnected with faces, enhancing
+resistance to applied forces. This is also influenced by the
+higher material content relative to the cross-sectional area.
+   However, as shown in Figure 7(a)-(c), elongation increases
+as infill density decreases, reaching a peak at 25% infill
+density, before decreasing. This is because a lower infill
+density results in fewer honeycomb cells, reducing the                            Figure 8. Infill density vs. tensile strength
+material available to sustain deformation.
+                                                                            As shown in Figure 8, the histograms of the maximum
+                                                                         tensile strengths clearly indicate that the strength depends on
+                                                                         the density of the samples and the orientation of the hexagonal
+                                                                         cells relative to the load direction. Tensile strength refers to
+                                                                         the maximum stress a material can resist while being stretched
+                                                                         or pulled before failing. The orientation of the printed layers
+                                                                         (0°, 45°, 90°). Although the effect is slight, these differences
+                                                                         are a result of 0°Orientation. The highest tensile strength is
+                                                                         usually obtained when printing along the loading direction.
+                                                                         Inter-layer adhesion is maximized when the layers are in line
+                                                                         with the applied force.
+                                                                            45-degree orientation Strength and flexibility can be
+                                                                         balanced at this angle. In comparison to the 0°orientation, it
+                                                                         permits some load distribution across layers, which may
+                                                                         improve toughness but may also lower tensile strength.
+                              (a)                                           90-degree orientation Because inter-layer adhesion is less
+                                                                         when printing perpendicular to the load direction, the tensile
+                                                                         strength is often lower. Failure at the layer lines could result
+                                                                         from the layers' ineffective stress transfer.
+                                                                            Inertia Across Sections Layer orientation affects the
+                                                                         moment of inertia. The additional material can increase
+                                                                         strength and stiffness at high densities, especially in the 90°
+                                                                         form, which could offset the orientation's inherent drawbacks.
+                                                                            90-degree orientation Because of the reduced inter-layer
+                                                                         adhesion, printing perpendicular to the load direction typically
+                                                                         results in poorer tensile strength.
+
+                                                                         3.2 Microstructural analysis
+
+                              (b)                                           The fracture surfaces of the samples were examined using a
+                                                                         scanning electron microscope (SEM) to analyze the
+                                                                         differences in mechanical properties. The validity of these
+                                                                         differences was assessed by observing the fracture
+                                                                         morphology in the SEM micrographs.
+
+
+
+
+                              (c)
+
+  Figure 7. Load-deform curves of tensile test for all infill
+             densities for a) 0°, (b) 90°, (c) 45°
+
+
+
+                                                                   100
+                                                                                                       2 𝑡 2
+                                                                                                  𝜎=    ⋅ ( ) ⋅ 𝜎𝑌
+                                                                                                       3 𝑙
+
+                                                                          where, 𝜎𝑌 represents the flow stress of the material forming
+                                                                          the cell walls. When the maximum stress in each face reaches
+                                                                          𝜎𝑌 , a critical strain occurs, causing the cells to collapse through
+                                                                          elastic buckling, brittle fracture, creep, or plastic yielding,
+                                                                          depending on the material properties. At high strain levels, the
+                                                                          contacting cell walls begin to fail, and further deformation
+                                                                          leads to the compression of the cell wall material. Once the
+                                                                          opposing cell walls completely touch, cell failure is complete,
+                                                                          resulting in densification and a rapid increase in stiffness.
+                               (a)                                           As shown in Figure 11, the maximum compressive strength
+                                                                          was observed at a 100% infill ratio. The infill ratio is defined
+                                                                          as the proportion of printed material to total volume, and
+                                                                          increasing this ratio enhances compressive strength.
+
+
+
+
+                                                                           Figure 10. Structures subjected to two opposing forces [23]
+
+
+
+
+                              (b)
+
+   Figure 9. Fracture surfaces for (a) brittle 100% and (b)
+                    ductile 50% sample
+
+   Among all the infill densities, the most brittle (100%) and
+most ductile (50%) samples exhibited distinct fracture                          Figure 11. Relationship between infill density and
+surfaces, as shown in Figure 9. For optimal mechanical                                        compressive strength
+performance, strong bonding at the polymer bead interfaces is
+crucial.
+   A detailed analysis revealed that a decrease in porosity
+levels was closely associated with an increase in infill density.
+SEM micrographs showed fewer voids in the 75% and 100%
+infill samples, which explains their superior mechanical
+properties at higher filling percentages. In contrast, the 50%
+infill specimens exhibited larger voids, resulting in lower
+strength compared to the 100% infill samples.
+
+3.3 compressive test
+
+   As shown in Figure 10, the failure mechanism of the
+honeycomb structure is influenced by infill density. When the
+infill density increases, the size of the honeycomb cells also
+increases, leading to a change in the t/l ratio as described in
+following equation. The applied stress, σ, is given by:                   Figure 12. Stress-strain curves from compressive tests for all
+                                                                                                  infill densities
+
+
+                                                                    101
+   From the stress-strain or load-deformation relationships                       experiment analysis on tensile properties of PLA samples
+presented in Figure 12, it is evident that stress (load) decreases                produced by fused filament fabrication. The International
+as infill density decreases. This is due to the higher polymer                    Journal of Advanced Manufacturing Technology, 18:
+content in specimens with greater infill density, leading to a                    4123-4137. https://doi.org/10.1007/s00170-021-08216-7
+smaller volume of empty space inside the printed structure.                  [5] Muhamedagic, K., Berus, L., Potočnik, D., Cekic, A.,
+Smaller pores improve load-bearing capacity, resulting in a                       Begic-Hajdarevic, D., Cohodar Husic, M., Ficko, M.
+stronger material. In most cases, compressive strength is                         (2022). Effect of process parameters on tensile strength
+directly correlated with infill ratio, with specimens at 25%,                     of FDM printed carbon fiber reinforced polyamide parts.
+50%, 75%, and 100% infill densities demonstrating increasing                      Applied           Sciences,           12(12):         6028.
+compressive strength as the infill density increases.                             https://doi.org/10.3390/app12126028
+                                                                             [6] Thesiya, D., Lepsik, P. (2023). An effective development
+                                                                                  of residual stresses in fused deposit modelling (FDM):
+4. CONCLUSION                                                                     An overview. In 61st International Conference of
+                                                                                  Machine Design Departments (ICMD 2020), pp. 245-
+   The ability to build things with varying infill densities is one               258. https://doi.org/10.2991/978-94-6463-182-1_26
+benefit of 3D printing FDM technology. Time, material, and                   [7] Mehdi, M.K., Owed, B. (2023). The influence of infill
+final product costs can all be decreased with this advantage.                     density and speed of printing on the tensile properties of
+This study investigated how a shift in the percentage of infill                   the three dimension printing polylactic acid parts. Journal
+density affected the tensile and compressive proprieties for                      of Engineering and Sustainable Development, 27(1): 95-
+part FDM 3D printing made from poly lactic acid. The                              103. https://doi.org/10.31272/jeasd.27.1.8
+following conclusions:                                                       [8] Jahir-Hussain, M.J., Maaruf, N.A., Esa, N.E.F., Jusoh, N.
+   •Increasing the infill density increases the tensile strength                  (2021). The effect of pore geometry on the mechanical
+increases with a reduction in deformation magnitude                               properties of 3D-printed bone scaffold due to
+(elongation) up to infill density to 25% Where the elongation                     compressive loading. IOP Conference Series: Materials
+or deformation will be reduced.                                                   Science      and    Engineering,        1051(1):   012016.
+   •In addition, increasing the infill density due A higher                       https://doi.org/10.1088/1757-899X/1051/1/012016
+density and ultimately a smaller volume of empty space inside                [9] Dakhil, G.Y., Salih, R.M., Hameed, A.M. (2023).
+the printed specimen might result from the increased amount                       Influence of infill pattern, infill ratio on compressive
+of polymer used in the printing process leads to increase                         strength and hardness of 3D printed polylactic acid
+compressive strength.                                                             (PLA) based polymer. Journal of Applied Sciences and
+   •Depends the tensile strength on the density of samples and                    Nanotechnology,                     3(1):              1-7.
+orientation of hexagonal cells with load direction. Tensile                       https://doi.org/10.53293/jasn.2022.4745.1141
+strength refers to the maximum stress a material can resist                  [10] Kadhum, A.H., Al-Zubaidi, S., Abdulkareem, S.S.
+while being stretched or pulled before failing. The orientation                   (2023). Effect of the infill patterns on the mechanical and
+of the printed layers (0°, 45°, 90°), although the effect is slight.              surface characteristics of 3D Printing of PLA, PLA+ and
+0°Orientation Printing along the loading direction typically                      PETG materials. ChemEngineering, 7(3): 46.
+results in the highest tensile strength. 45° Orientation This                     https://doi.org/10.3390/chemengineering7030046
+angle can provide a balance between strength and flexibility.                [11] Mensah, R.A., Edström, D.A., Lundberg, O.,
+90°Orientation Printing perpendicular to the load direction                       Shanmugam, V., et al. (2022). The effect of infill density
+generally results in lower tensile strength due to weaker inter-                  on the fire properties of polylactic acid 3D printed parts:
+layer adhesion.                                                                   A short communication. Polymer Testing, 111: 107594.
+   Finally, increasing the infill density increases the strength                  https://doi.org/10.1016/j.polymertesting.2022.107594
+of part to withstand deformation and stress. The minimum                     [12] Tan, M.A., Yeoh, C.K., Teh, P.L., Rahim, N.A., Song,
+strength is 25% infill, while the maximum strength is 100 %.                      C.C., Mansor, N.S.S. (2021). Effect of infill density and
+                                                                                  raster angle on the mechanical properties of PLA. Journal
+                                                                                  of Physics: Conference Series, 2080(1): 012002.
+REFERENCES                                                                        https://doi.org/10.1088/1742-6596/2080/1/012002
+                                                                             [13] Müller, M., Jirků, P., Šleger, V., Mishra, R.K.,
+[1] Hiremath, V.S., Dhilipkumar, T., Reddy, D.M.,                                 Hromasová, M., Novotný, J. (2022). Effect of infill
+    Bagewadi, S. (2023). Effect of print orientation on tensile                   density in FDM 3D printing on low-cycle stress of
+    and shear properties of 3D printed lap joints. Materials                      bamboo-filled PLA-based material. Polymers, 14(22):
+    Today:                                        Proceedings.                    4930. https://doi.org/10.3390/polym14224930
+    https://doi.org/10.1016/j.matpr.2023.06.362                              [14] Eryıldız, M. (2021). Effect of build orientation on
+[2] Pandžić, A., Hodžić, D., Kadrić, E. (2021). Experimental                      mechanical behaviour and build time of FDM 3D-printed
+    investigation on influence of infill density on tensile                       PLA parts: An experimental investigation. European
+    mechanical properties of different FDM 3D printed                             Mechanical          Science,           5(3):      116-120.
+    materials.     TEM     Journal,     10(3):     1195-1201.                     https://doi.org/10.26701/ems.881254
+    https://doi.org/10.18421/TEM103-25                                       [15] Do, T.D., Le, M.C., Nguyen, T.A., Le, T.H. (2022).
+[3] Srinivasan, R., Ruban, W., Deepanraj, A., Bhuvanesh,                          Effect of infill density and printing patterns on
+    R., Bhuvanesh, T. (2020). Effect on infill density on                         compressive strength of ABS, PLA, PLA-CF materials
+    mechanical properties of PETG part fabricated by fused                        for FDM 3D printing. Materials Science Forum, 1068:
+    deposition modelling. Materials Today: Proceedings, 27:                       19-27. https://doi.org/10.4028/p-zhm1ra
+    1838-1842. https://doi.org/10.1016/j.matpr.2020.03.797                   [16] Somireddy, M., Czekanski, A. (2020). Anisotropic
+[4] Auffray, L., Gouge, P.A., Hattali, L. (2022). Design of                       material behavior of 3D printed composite structures–
+
+
+
+                                                                       102
+     Material extrusion additive manufacturing. Materials &            [20] Lalegani Dezaki, M., Mohd Ariffin, M.K.A. (2020). The
+     Design,                   195:                  108953.                effects of combined infill patterns on mechanical
+     https://doi.org/10.1016/j.matdes.2020.108953                           properties in fdm process. Polymers, 12(12): 2792.
+[17] Turaka, S., Jagannati, V., Pappula, B., Makgato, S.                    https://doi.org/10.3390/polym12122792
+     (2024). Impact of infill density on morphology and                [21] Prajapati, A.R., Rajpurohit, S.R., Patadiya, N.H., Dave,
+     mechanical properties of 3D printed ABS/CF-ABS                         H.K. (2020). Analysis of compressive strength of 3D
+     composites using design of experiments. Heliyon, 10(9):                printed PLA part. In Advances in Manufacturing
+     e29920. https://doi.org/10.1016/j.heliyon.2024.e29920                  Processes: Select Proceedings of RAM 2020, pp. 295-
+[18] Liu, J., Naeem, M.A., Al Kouzbary, M., Al Kouzbary,                    304. https://doi.org/10.1007/978-981-15-9117-4_22
+     H., et al. (2023). Effect of infill parameters on the             [22] Goldmann, T., Huang, W.C., Rzepa, S., Džugan, J.,
+     compressive strength of 3D-printed nylon-based                         Sedláček, R., Daniel, M. (2022). Additive manufacturing
+     material.          Polymers,          15(2):        255.               of honeycomb lattice structure—From theoretical
+     https://doi.org/10.3390/polym15020255                                  models to polymer and metal products. Materials, 15(5):
+[19] Wang, X., Zhao, L., Fuh, J.Y.H., Lee, H.P. (2019). Effect              1838. https://doi.org/10.3390/ma15051838
+     of porosity on mechanical properties of 3D printed                [23] Somnic, J., Jo, B.W. (2022). Status and challenges in
+     polymers: Experiments and micromechanical modeling                     homogenization methods for lattice materials. Materials,
+     based on X-ray computed tomography analysis.                           15(2): 605. https://doi.org/10.3390/ma15020605
+     Polymers,                   11(7):                 1154.
+     https://doi.org/10.3390/polym11071154
+
+
+
+
+                                                                 103
+

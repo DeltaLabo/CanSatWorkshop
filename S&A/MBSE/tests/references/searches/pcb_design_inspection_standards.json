@@ -1,0 +1,1190 @@
+{
+  "query": "IPC-A-600 IPC-2221 PCB design rules inspection standard DRC ERC",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "Design for Excellence - PCBA F(PUR-002)007 Revision A PLM Reference: QMS-00507",
+      "url": "https://www.vergentproducts.com/wp-content/uploads/2021/04/FPUR-002007_PCB_Layout_and_Design_Manual.pdf",
+      "description": "The goal is to zero errors and zero warnings in ERC, DRC, and fab DRC checks. ... The following design standards are expected to be implemented on designs for Vergent Products. It is · understood that some of these requirements may be impossible for certain designs.",
+      "content": "The goal is to zero errors and zero warnings in ERC, DRC, and fab DRC checks. ... The following design standards are expected to be implemented on designs for Vergent Products. It is · understood that some of these requirements may be impossible for certain designs.\nThe goal is to zero errors and zero warnings in ERC, DRC, and fab DRC checks. ... The following design standards are expected to be implemented on designs for Vergent Products. It is · understood that some of these requirements may be impossible for certain designs. Omission should by · exception with mutual agreement during the design process. ... IPC class for the fabrication of the PCB per IPC-6012 current rev. ... IPC class for the acceptability of the PCB per IPC-A-600 current rev.\nDesigns shall use IPC libraries. Exceptions shall be reviewed and approved on a case-by-case basis. EDA tools are required to have minimal Electrical Rule Checking (ERC) and Design Rule Checking (DRC).\nIPC-2221: It is the standard that is used for designing the PCBs, this standard addresses the topics\nIPC-A-600 covers the raw PCB.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Vergentproducts",
+        "url": "https://www.vergentproducts.com/wp-content/uploads/2021/04/FPUR-002007_PCB_Layout_and_Design_Manual.pdf",
+        "long_name": "vergentproducts.com",
+        "img": "https://imgs.search.brave.com/5WUhem-UaE686300EjdbNR4M-twmoavB-OM2geayHBg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGVmNmE4MDc5/YTYyNzlkZjYzYzBl/ZGNjZDc0ZWEyOTk5/MTdiMGY3M2IxOWE1/ODNlNzM1MWYwZjgx/NWE0NTZiYi93d3cu/dmVyZ2VudHByb2R1/Y3RzLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "vergentproducts.com",
+        "hostname": "www.vergentproducts.com",
+        "favicon": "https://imgs.search.brave.com/5WUhem-UaE686300EjdbNR4M-twmoavB-OM2geayHBg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGVmNmE4MDc5/YTYyNzlkZjYzYzBl/ZGNjZDc0ZWEyOTk5/MTdiMGY3M2IxOWE1/ODNlNzM1MWYwZjgx/NWE0NTZiYi93d3cu/dmVyZ2VudHByb2R1/Y3RzLmNvbS8",
+        "path": "› wp-content  › uploads  › 2021  › 04  › FPUR-002007_PCB_Layout_and_Design_Manual.pdf"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "IPC-2221C PCB Design Standard: Materials, Trace Width, Via Design & DFM Compliance",
+      "url": "https://www.nextpcb.com/blog/ipc-2221",
+      "description": "A specific complication in 2026 is that most EDA tools and DFM check utilities still ship IPC-2221B-derived rule sets; the IPC-2221C updates to altitude clearance, impedance tolerances, and back-drill requirements will not be captured in those tools until vendors update their templates. EDA tools run design rule checks (DRC) against user-defined constraints—not against IPC-2221C directly.",
+      "content": "A specific complication in 2026 is that most EDA tools and DFM check utilities still ship IPC-2221B-derived rule sets; the IPC-2221C updates to altitude clearance, impedance tolerances, and back-drill requirements will not be captured in those tools until vendors update their templates. EDA tools run design rule checks (DRC) against user-defined constraints—not against IPC-2221C directly.\nClass 3 applies to high-reliability products (medical, aerospace, defense) where product failure cannot be tolerated. The class selected drives acceptance criteria in IPC-A-600 (bare board) and IPC-A-610 (assembled board) and affects fabrication cost: Class 3 boards require more process controls, documentation, and inspection steps. IPC-2221C is rarely applied in isolation.\nMapping IPC-2221C requirements to DRC rules requires understanding which constraints are absolute (e.g., minimum annular ring for a given product class) and which are conditional (e.g., minimum spacing as a function of voltage, altitude, and CTI material group).\nPolarized components (electrolytic capacitors, diodes, ICs) have orientation requirements driven by electrical correctness, not IPC-2221C. Where the standard is relevant is in specifying that component orientation should minimize electrical path length for high-frequency signals and allow consistent visual inspection after assembly.",
+      "age": "April 23, 2023",
+      "page_age": "2023-04-23T03:37:29",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "faq",
+      "profile": {
+        "name": "NextPCB",
+        "url": "https://www.nextpcb.com/blog/ipc-2221",
+        "long_name": "nextpcb.com",
+        "img": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "nextpcb.com",
+        "hostname": "www.nextpcb.com",
+        "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+        "path": "  › home  › blog  › ipc-2221c design guide"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/pFKsOvSTJm0dXrfqL5X53-tier4xMYixEmWnMDA3E1M/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bmV4dHBjYi5jb20v/dXBsb2Fkcy9pbWFn/ZXMvMjAyNTA5LzI4/LzE3NTkwNDMwNzUt/OTg1OC13cWhydUgu/d2VicA",
+        "original": "https://www.nextpcb.com/uploads/images/202509/28/1759043075-9858-wqhruH.webp",
+        "logo": false
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Understanding the IPC-2221 Standard: A Foundation for Reliable PCB Design - Arshon Inc. Blog",
+      "url": "https://arshon.com/blog/understanding-the-ipc-2221-standard-a-foundation-for-reliable-pcb-design/",
+      "description": "IPC-2221 assists in defining the ideal layer sequence for multi-layer PCBs. Addresses issues such as crosstalk, EMI, and power distribution. IPC-2221 doesn’t exist in a vacuum—it supports the overall electronic design process. From schematic capture to layout and eventually manufacturing, ...",
+      "content": "IPC-2221 assists in defining the ideal layer sequence for multi-layer PCBs. Addresses issues such as crosstalk, EMI, and power distribution. IPC-2221 doesn’t exist in a vacuum—it supports the overall electronic design process. From schematic capture to layout and eventually manufacturing, ...\nIPC-2221 assists in defining the ideal layer sequence for multi-layer PCBs. Addresses issues such as crosstalk, EMI, and power distribution. IPC-2221 doesn’t exist in a vacuum—it supports the overall electronic design process. From schematic capture to layout and eventually manufacturing, applying IPC-2221 ensures a smoother transition between phases. In modern electronic design, where tools like Altium Designer, KiCad, or OrCAD are used, adhering to IPC-2221 can help leverage built-in design rule checks (DRC) for automatic compliance validation.\nAt the heart of this precision lies the IPC-2221 standard—a pivotal document issued by IPC, the global trade association for electronics manufacturing. This standard outlines essential design principles for Printed Circuit Boards (PCBs), specifically addressing sectional design requirements for rigid organic PCBs.\nThe IPC-2221 standard is a part of the IPC-2220 family of documents, which provide generic requirements for designing printed boards and other forms of component mounting or interconnecting structures. IPC-2221, specifically, is concerned with the sectional design standard for rigid organic PCBs.\nThis standard serves as a blueprint for designers to create PCBs that meet specific performance classes defined by IPC: ... Each of these classes has different tolerances and performance expectations, and IPC-2221 helps designers meet the required targets for their specific applications.",
+      "age": "April 11, 2025",
+      "page_age": "2025-04-11T01:09:08",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Arshon",
+        "url": "https://arshon.com/blog/understanding-the-ipc-2221-standard-a-foundation-for-reliable-pcb-design/",
+        "long_name": "arshon.com",
+        "img": "https://imgs.search.brave.com/e4N4C9rAt-s4jiewvJdCU23S_lgQwz4Ys-bUedaOrxE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODVmNTY2MzNm/OGNjNTAyNTY4OGJh/NzM1MjkwZTM3YmQ2/ODMxOWE4NTUyNmZl/NmY1NmM0Nzg4ZmNk/MzFiYTBmZi9hcnNo/b24uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "arshon.com",
+        "hostname": "arshon.com",
+        "favicon": "https://imgs.search.brave.com/e4N4C9rAt-s4jiewvJdCU23S_lgQwz4Ys-bUedaOrxE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODVmNTY2MzNm/OGNjNTAyNTY4OGJh/NzM1MjkwZTM3YmQ2/ODMxOWE4NTUyNmZl/NmY1NmM0Nzg4ZmNk/MzFiYTBmZi9hcnNo/b24uY29tLw",
+        "path": "  › home  › electronic design  › understanding the ipc-2221 standard: a foundation for reliable pcb design"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "IPC Classes and Complying with IPC Standards for PCB Design",
+      "url": "https://resources.altium.com/p/complying-with-ipc-standards-for-pcb-design",
+      "description": "IPC 2221: Establishes some generic design and performance requirements in PCBs and other forms of component mounting or interconnecting structures.",
+      "content": "IPC 2221: Establishes some generic design and performance requirements in PCBs and other forms of component mounting or interconnecting structures.\nNo matter which IPC class your board falls in, Altium Designer can help you comply with all IPC standards for PCB design.\nIPC 6012: Defines generic performance requirements as compiled from IPC 2221, IPC 4101, and other quality requirements. The related IPC 6013 standard applies the same ideas to flex circuit boards. IPC-A-600 series: Defines acceptance metrics for printed circuit boards, as well as the three standard IPC Classes for various printed circuit board assemblies.\nAltium’s online DRC engine ensures your PCB layout adheres to design rules as you work. Continuously checking features against standard and customized design rules, helps maintain compliance with IPC standards while streamlining circuit board creation.",
+      "age": "March 13, 2026",
+      "page_age": "2026-03-13T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Altium",
+        "url": "https://resources.altium.com/p/complying-with-ipc-standards-for-pcb-design",
+        "long_name": "resources.altium.com",
+        "img": "https://imgs.search.brave.com/3twZ63-Swi42-mMopNC4sX2DyrPtdunWkWj35C2Wzs8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzM0NjMzYmVh/MjU1ZWExOWJlNDA4/NTk3YzE4OTg2ZDZl/Yzg3Y2QzNmEyZmJi/OTMxYTRiYjIzZDQ0/MDU3YTVkZi9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "resources.altium.com",
+        "hostname": "resources.altium.com",
+        "favicon": "https://imgs.search.brave.com/3twZ63-Swi42-mMopNC4sX2DyrPtdunWkWj35C2Wzs8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzM0NjMzYmVh/MjU1ZWExOWJlNDA4/NTk3YzE4OTg2ZDZl/Yzg3Y2QzNmEyZmJi/OTMxYTRiYjIzZDQ0/MDU3YTVkZi9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS8",
+        "path": "› p  › complying-with-ipc-standards-for-pcb-design"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/vJBvG-kAKNQPgYcVe1enLUy3bp_DnvpEhivQDBc_6us/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS9zaXRlcy9k/ZWZhdWx0L2ZpbGVz/L2Jsb2dzL0lQQyUy/MENsYXNzZXMlMjBh/bmQlMjBDb21wbHlp/bmclMjB3aXRoJTIw/SVBDJTIwU3RhbmRh/cmRzJTIwZm9yJTIw/UENCJTIwRGVzaWdu/LTk1NjY2LmpwZw",
+        "original": "https://resources.altium.com/sites/default/files/blogs/IPC%20Classes%20and%20Complying%20with%20IPC%20Standards%20for%20PCB%20Design-95666.jpg"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "IPC Standards: The Definitive Guide for Electronics Engineers and PCB Designers",
+      "url": "https://www.wevolver.com/article/mastering-ipc-standards-the-definitive-guide-for-electronics-engineers-and-pcb-designers",
+      "description": "In practical application, many PCB design software tools integrate IPC-2221 rules into their Design Rule Check (DRC) engines.",
+      "content": "In practical application, many PCB design software tools integrate IPC-2221 rules into their Design Rule Check (DRC) engines.\nGiven its importance, there are over 3,600 certified trainers worldwide qualified to teach IPC-A-610’s criteria. In most electronics assembly facilities, you’ll find dog-eared copies of IPC-A-610 at inspection stations, helping guide quality control. Recommended reading: IPC Class 2 vs Class 3: Understanding the Critical Differences in Electronics Manufacturing Standards · IPC-2221 is a cornerstone standard for design engineers, laying the foundation for the entire realm of PCB design.\nFor design engineers, IPC standards like IPC-2221 and IPC-7351 should be woven into the PCB layout process from the beginning. In practical terms, this means using the design rules and libraries that align with IPC guidelines: PCB CAD Rules: Start your board design by setting up design rule checks (DRCs) according to IPC-2221 (or more specific sectional standards if applicable).\nAdhering to IPC-2221 during the PCB layout phase helps engineers meet baseline standards that ensure their boards are suitable for fabrication and perform as expected. For example, IPC-2221 includes tables specifying minimum electrical clearances based on voltage levels, helping prevent arcing.",
+      "age": "March 31, 2025",
+      "page_age": "2025-03-31T07:17:51",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Wevolver",
+        "url": "https://www.wevolver.com/article/mastering-ipc-standards-the-definitive-guide-for-electronics-engineers-and-pcb-designers",
+        "long_name": "wevolver.com",
+        "img": "https://imgs.search.brave.com/51GkFaE9cYjMjFphB5c00YcDYbbpn7mTVOqYLV3IrHE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmJiODA5NDAz/NjNiMzkzZTUxYzk2/ZGE5NzA2ZGFkZjli/MTk0NjFiNjlmMGI1/ZDU1MDRmM2RhYmZj/ZGMwYzIzZS93d3cu/d2V2b2x2ZXIuY29t/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "wevolver.com",
+        "hostname": "www.wevolver.com",
+        "favicon": "https://imgs.search.brave.com/51GkFaE9cYjMjFphB5c00YcDYbbpn7mTVOqYLV3IrHE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmJiODA5NDAz/NjNiMzkzZTUxYzk2/ZGE5NzA2ZGFkZjli/MTk0NjFiNjlmMGI1/ZDU1MDRmM2RhYmZj/ZGMwYzIzZS93d3cu/d2V2b2x2ZXIuY29t/Lw",
+        "path": "› article  › mastering-ipc-standards-the-definitive-guide-for-electronics-engineers-and-pcb-designers"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/LjnjfEUzwQTMjjeMsmzOFyE-xvCMlDi579vFHNk4U9o/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93ZXZv/bHZlci1wcm9qZWN0/LWltYWdlcy5zMy51/cy13ZXN0LTEuYW1h/em9uYXdzLmNvbS8w/LnJhMmpyZDdndnRm/ZWxlY3Ryb25pY3Nf/dGVzdGluZ19jaXJj/dWl0X2RpYWdyYW0u/anBn",
+        "original": "https://wevolver-project-images.s3.us-west-1.amazonaws.com/0.ra2jrd7gvtfelectronics_testing_circuit_diagram.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "A Full Guide of the IPC Standards for Printed Circuit Boards",
+      "url": "https://www.mclpcb.com/blog/ipc-standards-for-pcbs/",
+      "description": "This standard focuses on the quality of electronic assemblies, including PCBs. Readers can refer to this standard and follow guidelines for assembly cleanliness, soldering, and component placement.",
+      "content": "This standard focuses on the quality of electronic assemblies, including PCBs. Readers can refer to this standard and follow guidelines for assembly cleanliness, soldering, and component placement.\nThis standard focuses on the quality of electronic assemblies, including PCBs. Readers can refer to this standard and follow guidelines for assembly cleanliness, soldering, and component placement. It’s critical information for OEMs since it provides guidance for assembling products and checking their function. With this reference guiding production, you can catch common issues like misalignments. IPC-2221 establishes best practices for PCB designers.\nIt covers design aspects that affect performance and manufacturing. Following IPC-2221 during the design phase can reduce errors and production challenges. This standard covers: ... Following careful design guides ensures consistency across the board while maximizing PCB efficiency and quality.\nFollowing IPC standards in PCB design and manufacturing aids in creating the high-quality, reliable products consumers need. If you want to boost durability and consistency in your operation, you should work within the right IPC standards. The design phase is where you should start with your IPC standards. Look to IPC-2221 and other similar standards to find rules on layout and spacing.\nThis standard provides criteria for the visual quality and acceptability of PCBs. Readers can use this standard to create uniform guidelines around PCB quality. Inspectors and manufacturers should reference this standard to confirm only high-quality boards make it through.",
+      "age": "April 8, 2026",
+      "page_age": "2026-04-08T14:32:46",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "MCL PCB",
+        "url": "https://www.mclpcb.com/blog/ipc-standards-for-pcbs/",
+        "long_name": "mclpcb.com",
+        "img": "https://imgs.search.brave.com/K61pQb5-y7uRK1GrqZiSLqCPEs6RFISP1X5qdMSeSek/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDY5ZDJkYjQ5/MTU0MzI5YTNiNmNi/ZWFmODA4NjZlMmJk/YTY2ZTA1M2UzYjk4/OGZiYWNlY2VmMzMz/YWRmNTQzNC93d3cu/bWNscGNiLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "mclpcb.com",
+        "hostname": "www.mclpcb.com",
+        "favicon": "https://imgs.search.brave.com/K61pQb5-y7uRK1GrqZiSLqCPEs6RFISP1X5qdMSeSek/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDY5ZDJkYjQ5/MTU0MzI5YTNiNmNi/ZWFmODA4NjZlMmJk/YTY2ZTA1M2UzYjk4/OGZiYWNlY2VmMzMz/YWRmNTQzNC93d3cu/bWNscGNiLmNvbS8",
+        "path": "  › home  › guide to ipc standards for pcbs"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/1U_rkSRb-1KJtiX7n9pmZ6o-yFULp4pBTRGLIXwELBc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bWNscGNiLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAxOS8w/NC8wMS1HdWlkZS10/by1JUEMtU3RhbmRh/cmRzLWZvci1QQ0Jz/LXJldjMuanBn",
+        "original": "https://www.mclpcb.com/wp-content/uploads/2019/04/01-Guide-to-IPC-Standards-for-PCBs-rev3.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "IPC Class 2 vs Class 3: The Different Design Rules | Sierra Circuits",
+      "url": "https://www.protoexpress.com/blog/ipc-class-2-vs-class-3-different-design-rules/",
+      "description": "The IPC-2221 A/B test coupon examines the internal defects, and the IPC-2221 D coupon inspects the thermal stress on the class 3 boards. IPC class 3 PCB design and manufacturing focus on the highest reliability requirements, with stricter tolerances, robust materials, and enhanced inspection controls for mission-critical electronics.",
+      "content": "The IPC-2221 A/B test coupon examines the internal defects, and the IPC-2221 D coupon inspects the thermal stress on the class 3 boards. IPC class 3 PCB design and manufacturing focus on the highest reliability requirements, with stricter tolerances, robust materials, and enhanced inspection controls for mission-critical electronics.\nHowever, the specs will be more stringent for class 3 PCBs. Additional testing, such as micro-section analysis, and environmental tests, such as stress, pressure, vibration, and burn-in tests, are also conducted. On Circuitnet, Leo Lambert, Vice President of EPTAC, made a list of the most significant documents: the IPC 2220 series for circuit board design and fabrication, the IPC 6010 series documents for board performance and quality, IPC-A 600 for board acceptance requirements, J-STD-001 for soldering requirements, and IPC-A-610 for acceptability requirements.\nAnother critical factor is the CNC drill wander. It occurs when the drill does not hit the center of the pad. This results in an insufficient annular ring or causes a breakout. So, selecting the right land size is crucial. Here is the formula to calculate the pad size using IPC-6012 and IPC-2221 standards.\nThe fabrication allowance mainly depends on the drill wander. As per IPC-2221, class C is the highest classification, with an allowance limit of 8 mils.",
+      "age": "July 17, 2025",
+      "page_age": "2025-07-17T06:41:53",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ProtoExpress",
+        "url": "https://www.protoexpress.com/blog/ipc-class-2-vs-class-3-different-design-rules/",
+        "long_name": "protoexpress.com",
+        "img": "https://imgs.search.brave.com/gl-nNLmWXqD4kQ7rMHkOQKc9wRYHTDuIBEaPr66ZVoA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VkNjM0MTdk/OGUwZjg3NTFjYzM3/ODNiYWExOGU3MGQx/NzQwNTdlOGQ3OWVl/M2FiMjNkODM5ODMy/M2E2ZWMyZi93d3cu/cHJvdG9leHByZXNz/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "protoexpress.com",
+        "hostname": "www.protoexpress.com",
+        "favicon": "https://imgs.search.brave.com/gl-nNLmWXqD4kQ7rMHkOQKc9wRYHTDuIBEaPr66ZVoA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VkNjM0MTdk/OGUwZjg3NTFjYzM3/ODNiYWExOGU3MGQx/NzQwNTdlOGQ3OWVl/M2FiMjNkODM5ODMy/M2E2ZWMyZi93d3cu/cHJvdG9leHByZXNz/LmNvbS8",
+        "path": "› blog  › ipc-class-2-vs-class-3-different-design-rules"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/WfHqRDoXrw6Rhbr6eG0H1uUeG6Zdazt2bv-jt-j0y3U/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cHJvdG9leHByZXNz/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyNS8wNy9pcGMt/Y2xhc3MtMi12cy1j/bGFzcy0zLndlYnA",
+        "original": "https://www.protoexpress.com/wp-content/uploads/2025/07/ipc-class-2-vs-class-3.webp",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "IPC-2221 Standard Overview: The Foundation of PCB Design | PCBInsider",
+      "url": "https://pcbinsider.com/blog/ipc-2221-standard-overview",
+      "description": "IPC-2221 references three end-product classes inherited from IPC-A-600 and IPC-A-610: Class 1 – General electronic products (consumer, disposable) Class 2 – Dedicated service electronic products (industrial, telecom) Class 3 – High-performance electronic products (aerospace, medical, automotive) The class you target determines annular ring sizes, conductor spacing tolerances, hole plating thickness requirements, and inspection criteria.",
+      "content": "IPC-2221 references three end-product classes inherited from IPC-A-600 and IPC-A-610: Class 1 – General electronic products (consumer, disposable) Class 2 – Dedicated service electronic products (industrial, telecom) Class 3 – High-performance electronic products (aerospace, medical, automotive) The class you target determines annular ring sizes, conductor spacing tolerances, hole plating thickness requirements, and inspection criteria.\nA comprehensive guide to the IPC-2221 generic standard for printed board design, covering electrical clearance, creepage, via requirements, and best practices for compliance.\nExpert guides, tutorials, and insights on PCB assembly, circuit board design, and electronics manufacturing.\nAutomated design rule checking (DRC) tools can verify many IPC-2221 requirements, but they are only as good as the constraints you enter.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "location",
+      "profile": {
+        "name": "WellPCB",
+        "url": "https://pcbinsider.com/blog/ipc-2221-standard-overview",
+        "long_name": "pcbinsider.com",
+        "img": "https://imgs.search.brave.com/q5FZrzgXtPKLCQZDTs19uRGvvOuy0-HlKGdjzL4sol8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjNlOTM2ZjIz/NDcyODI0YTQ5NWE2/NDZmZmE3NjEyZDlj/MjQwYjc2MWNjNDYw/NzM0Zjg1ZDU0NjU0/ZGE4MWJjNS9wY2Jp/bnNpZGVyLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "pcbinsider.com",
+        "hostname": "pcbinsider.com",
+        "favicon": "https://imgs.search.brave.com/q5FZrzgXtPKLCQZDTs19uRGvvOuy0-HlKGdjzL4sol8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjNlOTM2ZjIz/NDcyODI0YTQ5NWE2/NDZmZmE3NjEyZDlj/MjQwYjc2MWNjNDYw/NzM0Zjg1ZDU0NjU0/ZGE4MWJjNS9wY2Jp/bnNpZGVyLmNvbS8",
+        "path": "› blog  › ipc-2221-standard-overview"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/CO5AV10WZZuJV1XQurI9y_0Dg3nI0LCvXhYSrdvo4rM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGNiaW5zaWRl/ci5jb20vd2VsbFBD/Qi1sb2dvLndlYnA",
+        "original": "https://images.pcbinsider.com/wellPCB-logo.webp",
+        "logo": true
+      }
+    },
+    {
+      "rank": 9,
+      "title": "Applying The IPC 2221 Standard To Printed Circuit Board Design. - Jhdpcb",
+      "url": "https://jhdpcb.com/blog/ipc-2221-pcb-design-standard/",
+      "description": "IPC 2221 voltage spacing covers various aspects of PCB design, including board thickness, layer count, trace width and spacing, hole size, placement, creepage clearance, voltage clearance, insulation requirements and solder mask requirements. The standard also includes guidelines for designing boards that are compatible with automated assembly equipment, as well as recommendations for testing and inspecting finished boards.",
+      "content": "IPC 2221 voltage spacing covers various aspects of PCB design, including board thickness, layer count, trace width and spacing, hole size, placement, creepage clearance, voltage clearance, insulation requirements and solder mask requirements. The standard also includes guidelines for designing boards that are compatible with automated assembly equipment, as well as recommendations for testing and inspecting finished boards.\nAs technology advances, so does the complexity of PCB design. It is essential to adhere to industry standards in order to produce reliable and safe PCBs. One of the most important standards in PCB design is the IPC-2221 standard.\nThe IPC-2221 standard provides guidelines for the minimum insulation resistance required for PCBs, based on the operating voltage and environmental conditions of the application. The standard divides applications into different IPC PCB classes, based on factors such as operating voltage, pollution degree, and ambient temperature. Each class has a different minimum insulation resistance requirement. For example, for Class 1 and IPC 600 Class 2 applications (low voltage, clean environments), the minimum insulation resistance requirement is 1 megohm at room temperature and 500 kilohms at elevated temperatures.\nIPC-2221 covers various aspects of PCB design. The standard also includes guidelines for designing boards that are compatible with automated assembly equipment, as well as recommendations for testing and inspecting finished boards.",
+      "age": "April 20, 2024",
+      "page_age": "2024-04-20T09:03:07",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "JHDPCB",
+        "url": "https://jhdpcb.com/blog/ipc-2221-pcb-design-standard/",
+        "long_name": "jhdpcb.com",
+        "img": "https://imgs.search.brave.com/EGKny5EWR0hndHzUls0wLQmJx8RlXwU5Re4wpZOuomE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjIzYTJhMmQw/OTQxMzMxMTVmNmEx/ZDEyMDAzMjVlZjIw/MjdhMWNmYmY4NTRm/ZWMyNDE2ZDUwODU4/OTNkMGRmOS9qaGRw/Y2IuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "jhdpcb.com",
+        "hostname": "jhdpcb.com",
+        "favicon": "https://imgs.search.brave.com/EGKny5EWR0hndHzUls0wLQmJx8RlXwU5Re4wpZOuomE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjIzYTJhMmQw/OTQxMzMxMTVmNmEx/ZDEyMDAzMjVlZjIw/MjdhMWNmYmY4NTRm/ZWMyNDE2ZDUwODU4/OTNkMGRmOS9qaGRw/Y2IuY29tLw",
+        "path": "  › home  › pcb basics  › applying the ipc 2221 standard to printed circuit board design."
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/eeNwc2LkntSFz6I0XqwSNQByCuJ7OU9URiwIHkiSHx8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9qaGRw/Y2IuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIzLzAzL0lQ/Qy0yMjIxLWhpZXJh/cmNoaWNhbC1zdHJ1/Y3R1cmUud2VicA",
+        "original": "https://jhdpcb.com/wp-content/uploads/2023/03/IPC-2221-hierarchical-structure.webp",
+        "logo": false
+      }
+    },
+    {
+      "rank": 10,
+      "title": "AllElectroHub | Electronics News & Technical Insights",
+      "url": "https://www.allpcb.com/allelectrohub/ipc-2221-demystified-a-beginners-guide-to-pcb-design-standards",
+      "description": "Get the latest electronics news, PCB insights, and tutorials on AllElectroHub. Stay ahead in design and development.",
+      "content": "Get the latest electronics news, PCB insights, and tutorials on AllElectroHub. Stay ahead in design and development.",
+      "age": "October 21, 2025",
+      "page_age": "2025-10-21T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "ALLPCB",
+        "url": "https://www.allpcb.com/allelectrohub/ipc-2221-demystified-a-beginners-guide-to-pcb-design-standards",
+        "long_name": "allpcb.com",
+        "img": "https://imgs.search.brave.com/BRraUVl6w_VcR1NWW-IvMRXQ57iqziPCXLR-qdF39fg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDliMDdhMDUx/N2E1Mzc2YTgzYTM2/ZGE5ZjAyZDMzMTVh/YzJiN2NlZGJlZmQx/NzkzOWYwYjU3ODUw/ZWMxNTMwYS93d3cu/YWxscGNiLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "allpcb.com",
+        "hostname": "www.allpcb.com",
+        "favicon": "https://imgs.search.brave.com/BRraUVl6w_VcR1NWW-IvMRXQ57iqziPCXLR-qdF39fg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDliMDdhMDUx/N2E1Mzc2YTgzYTM2/ZGE5ZjAyZDMzMTVh/YzJiN2NlZGJlZmQx/NzkzOWYwYjU3ODUw/ZWMxNTMwYS93d3cu/YWxscGNiLmNvbS8",
+        "path": "  › home  › allelectrohub"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "IPC-A-600 IPC-2221 PCB design rules inspection standard DRC ERC",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.937,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "IPC-A-600 IPC-2221 PCB design rules inspection standard DRC ERC",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "faq": {
+      "type": "faq",
+      "results": [
+        {
+          "question": "What is the difference between IPC-2221B and IPC-2221C?",
+          "answer": "IPC-2221C (Dec 2023) introduces back-drilling, compliant pin (press-fit) guidance, and plated edge requirements, while updating altitude-dependent conductor spacing and CTI classifications[cite: 166, 167, 168].",
+          "title": "IPC-2221C PCB Design Standard: Materials, Trace Width, Via Design ...",
+          "url": "https://www.nextpcb.com/blog/ipc-2221",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nextpcb.com",
+            "hostname": "www.nextpcb.com",
+            "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+            "path": "  › home  › blog  › ipc-2221c design guide"
+          }
+        },
+        {
+          "question": "How do I calculate minimum trace width per IPC-2221C?",
+          "answer": "While IPC-2221C retains legacy empirical charts, it explicitly defers to IPC-2152 for more accurate current-carrying capacity calculations based on modern geometries and thermal conditions[cite: 170, 171, 172].",
+          "title": "IPC-2221C PCB Design Standard: Materials, Trace Width, Via Design ...",
+          "url": "https://www.nextpcb.com/blog/ipc-2221",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nextpcb.com",
+            "hostname": "www.nextpcb.com",
+            "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+            "path": "  › home  › blog  › ipc-2221c design guide"
+          }
+        },
+        {
+          "question": "What is back-drilling and when does IPC-2221C require it?",
+          "answer": "Back-drilling is a counter-bore operation to remove unused via stubs that cause signal resonance. It is typically used for high-speed digital designs exceeding 5 Gbps[cite: 178, 179].",
+          "title": "IPC-2221C PCB Design Standard: Materials, Trace Width, Via Design ...",
+          "url": "https://www.nextpcb.com/blog/ipc-2221",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nextpcb.com",
+            "hostname": "www.nextpcb.com",
+            "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+            "path": "  › home  › blog  › ipc-2221c design guide"
+          }
+        },
+        {
+          "question": "What is the minimum annular ring per IPC-2221C?",
+          "answer": "For Class 2, the minimum external annular ring is 0.05 mm; for Class 3, it is 0.075 mm. Internal layers require 0.025 mm for Class 2 and 0.05 mm for Class 3[cite: 173].",
+          "title": "IPC-2221C PCB Design Standard: Materials, Trace Width, Via Design ...",
+          "url": "https://www.nextpcb.com/blog/ipc-2221",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nextpcb.com",
+            "hostname": "www.nextpcb.com",
+            "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+            "path": "  › home  › blog  › ipc-2221c design guide"
+          }
+        }
+      ]
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "videos",
+          "all": true
+        },
+        {
+          "type": "faq",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "videos": {
+      "type": "videos",
+      "results": [
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/shorts/3W2e5e3rY6U",
+          "title": "IPC 2221: Clearance Standards for High Voltage PCB Design - YouTube",
+          "description": "Multidisciplinary product creation powered by your unconstrained network. Work concurrently across design, sourcing, and manufacturing with real-time insight...",
+          "age": "November 14, 2025",
+          "page_age": "2025-11-14T16:00:08",
+          "fetched_content_timestamp": 1781153948,
+          "video": {
+            "duration": "02:37",
+            "creator": "Altium Academy",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› shorts  › 3W2e5e3rY6U"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/tbXDzRnTRo61uY9NTp96Q1z5vsCM2Fh13uXslSWh2jA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS8z/VzJlNWUzclk2VS9v/YXJkZWZhdWx0Lmpw/Zz9zcXA9LW9heW13/RW9DSlVERU5BRlNG/cVFBZ0h5cTRxcEF4/Y0lBUlVBQUloQzJB/RUI0Z0VLQ0JnUUFo/Z0dPQUZBQVE9PSZh/bXA7cnM9QU9uNENM/QzVjWFJLSFBzZU0w/WFhTWVlYNk9kaGtF/U3RwdyZhbXA7dXNx/cD1DQ2s",
+            "original": "https://i.ytimg.com/vi/3W2e5e3rY6U/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&amp;rs=AOn4CLC5cXRKHPseM0XXSYYX6OdhkEStpw&amp;usqp=CCk"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=nMW_m8etl-Q",
+          "title": "PCB Design: Defining Electrical Clearances in High Voltage PCBs ...",
+          "description": "Multidisciplinary product creation powered by your unconstrained network. Work concurrently across design, sourcing, and manufacturing with real-time insight...",
+          "age": "November 13, 2025",
+          "page_age": "2025-11-13T16:00:06",
+          "fetched_content_timestamp": 1780666181,
+          "video": {
+            "duration": "16:10",
+            "creator": "Altium Academy",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/3b_3Ngz0hJya0hZMLLl-7K0VNSX7Gemkg98CKBOWrLc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9u/TVdfbThldGwtUS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/nMW_m8etl-Q/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=emb373frI1I",
+          "title": "PCB Basics: How WIDE Should Traces Be? (IPC-2221 Circuit Design ...",
+          "description": "This video is sponsored by PCBWay! Head to https://www.pcbway.com to order custom circuit boards for all of your project needs!I'm currently designing an ope...",
+          "age": "June 3, 2021",
+          "page_age": "2021-06-03T07:00:14",
+          "fetched_content_timestamp": 1780039300,
+          "video": {
+            "duration": "10:27",
+            "creator": "Super Make Something",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/sHPKqyroWscKyxUHpOZ1ccBPj1PhVXl-oUKFb8RQBpc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9l/bWIzNzNmckkxSS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/emb373frI1I/maxresdefault.jpg"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "Design for Excellence - PCBA F(PUR-002)007 Revision A PLM Reference: QMS-00507",
+          "url": "https://www.vergentproducts.com/wp-content/uploads/2021/04/FPUR-002007_PCB_Layout_and_Design_Manual.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The goal is to zero errors and zero warnings in ERC, DRC, and fab DRC checks. ... The following design standards are expected to be implemented on designs for Vergent Products. It is · understood that some of these requirements may be impossible for certain designs.",
+          "profile": {
+            "name": "Vergentproducts",
+            "url": "https://www.vergentproducts.com/wp-content/uploads/2021/04/FPUR-002007_PCB_Layout_and_Design_Manual.pdf",
+            "long_name": "vergentproducts.com",
+            "img": "https://imgs.search.brave.com/5WUhem-UaE686300EjdbNR4M-twmoavB-OM2geayHBg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGVmNmE4MDc5/YTYyNzlkZjYzYzBl/ZGNjZDc0ZWEyOTk5/MTdiMGY3M2IxOWE1/ODNlNzM1MWYwZjgx/NWE0NTZiYi93d3cu/dmVyZ2VudHByb2R1/Y3RzLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "vergentproducts.com",
+            "hostname": "www.vergentproducts.com",
+            "favicon": "https://imgs.search.brave.com/5WUhem-UaE686300EjdbNR4M-twmoavB-OM2geayHBg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGVmNmE4MDc5/YTYyNzlkZjYzYzBl/ZGNjZDc0ZWEyOTk5/MTdiMGY3M2IxOWE1/ODNlNzM1MWYwZjgx/NWE0NTZiYi93d3cu/dmVyZ2VudHByb2R1/Y3RzLmNvbS8",
+            "path": "› wp-content  › uploads  › 2021  › 04  › FPUR-002007_PCB_Layout_and_Design_Manual.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The goal is to zero errors and zero warnings in ERC, DRC, and fab DRC checks. ... The following design standards are expected to be implemented on designs for Vergent Products. It is · understood that some of these requirements may be impossible for certain designs. Omission should by · exception with mutual agreement during the design process. ... IPC class for the fabrication of the PCB per IPC-6012 current rev. ... IPC class for the acceptability of the PCB per IPC-A-600 current rev.",
+            "Designs shall use IPC libraries. Exceptions shall be reviewed and approved on a case-by-case basis. EDA tools are required to have minimal Electrical Rule Checking (ERC) and Design Rule Checking (DRC).",
+            "IPC-2221: It is the standard that is used for designing the PCBs, this standard addresses the topics",
+            "IPC-A-600 covers the raw PCB."
+          ]
+        },
+        {
+          "title": "IPC-2221C PCB Design Standard: Materials, Trace Width, Via Design & DFM Compliance",
+          "url": "https://www.nextpcb.com/blog/ipc-2221",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "A specific complication in 2026 is that most EDA tools and DFM check utilities still ship IPC-2221B-derived rule sets; the IPC-2221C updates to altitude clearance, impedance tolerances, and back-drill requirements will not be captured in those tools until vendors update their templates. EDA tools run design rule checks (DRC) against user-defined constraints—not against IPC-2221C directly.",
+          "page_age": "2023-04-23T03:37:29",
+          "profile": {
+            "name": "NextPCB",
+            "url": "https://www.nextpcb.com/blog/ipc-2221",
+            "long_name": "nextpcb.com",
+            "img": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "faq",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nextpcb.com",
+            "hostname": "www.nextpcb.com",
+            "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+            "path": "  › home  › blog  › ipc-2221c design guide"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/pFKsOvSTJm0dXrfqL5X53-tier4xMYixEmWnMDA3E1M/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bmV4dHBjYi5jb20v/dXBsb2Fkcy9pbWFn/ZXMvMjAyNTA5LzI4/LzE3NTkwNDMwNzUt/OTg1OC13cWhydUgu/d2VicA",
+            "original": "https://www.nextpcb.com/uploads/images/202509/28/1759043075-9858-wqhruH.webp",
+            "logo": false
+          },
+          "age": "April 23, 2023",
+          "faq": {
+            "items": [
+              {
+                "question": "What is the difference between IPC-2221B and IPC-2221C?",
+                "answer": "IPC-2221C (Dec 2023) introduces back-drilling, compliant pin (press-fit) guidance, and plated edge requirements, while updating altitude-dependent conductor spacing and CTI classifications[cite: 166, 167, 168].",
+                "title": "IPC-2221C PCB Design Standard: Materials, Trace Width, Via Design ...",
+                "url": "https://www.nextpcb.com/blog/ipc-2221",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "nextpcb.com",
+                  "hostname": "www.nextpcb.com",
+                  "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+                  "path": "  › home  › blog  › ipc-2221c design guide"
+                }
+              },
+              {
+                "question": "How do I calculate minimum trace width per IPC-2221C?",
+                "answer": "While IPC-2221C retains legacy empirical charts, it explicitly defers to IPC-2152 for more accurate current-carrying capacity calculations based on modern geometries and thermal conditions[cite: 170, 171, 172].",
+                "title": "IPC-2221C PCB Design Standard: Materials, Trace Width, Via Design ...",
+                "url": "https://www.nextpcb.com/blog/ipc-2221",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "nextpcb.com",
+                  "hostname": "www.nextpcb.com",
+                  "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+                  "path": "  › home  › blog  › ipc-2221c design guide"
+                }
+              },
+              {
+                "question": "What is the minimum annular ring per IPC-2221C?",
+                "answer": "For Class 2, the minimum external annular ring is 0.05 mm; for Class 3, it is 0.075 mm. Internal layers require 0.025 mm for Class 2 and 0.05 mm for Class 3[cite: 173].",
+                "title": "IPC-2221C PCB Design Standard: Materials, Trace Width, Via Design ...",
+                "url": "https://www.nextpcb.com/blog/ipc-2221",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "nextpcb.com",
+                  "hostname": "www.nextpcb.com",
+                  "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+                  "path": "  › home  › blog  › ipc-2221c design guide"
+                }
+              },
+              {
+                "question": "What is back-drilling and when does IPC-2221C require it?",
+                "answer": "Back-drilling is a counter-bore operation to remove unused via stubs that cause signal resonance. It is typically used for high-speed digital designs exceeding 5 Gbps[cite: 178, 179].",
+                "title": "IPC-2221C PCB Design Standard: Materials, Trace Width, Via Design ...",
+                "url": "https://www.nextpcb.com/blog/ipc-2221",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "nextpcb.com",
+                  "hostname": "www.nextpcb.com",
+                  "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+                  "path": "  › home  › blog  › ipc-2221c design guide"
+                }
+              }
+            ]
+          },
+          "organization": {
+            "type": "organization",
+            "name": "NextPCB",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "Class 3 applies to high-reliability products (medical, aerospace, defense) where product failure cannot be tolerated. The class selected drives acceptance criteria in IPC-A-600 (bare board) and IPC-A-610 (assembled board) and affects fabrication cost: Class 3 boards require more process controls, documentation, and inspection steps. IPC-2221C is rarely applied in isolation.",
+            "A specific complication in 2026 is that most EDA tools and DFM check utilities still ship IPC-2221B-derived rule sets; the IPC-2221C updates to altitude clearance, impedance tolerances, and back-drill requirements will not be captured in those tools until vendors update their templates. EDA tools run design rule checks (DRC) against user-defined constraints—not against IPC-2221C directly.",
+            "Mapping IPC-2221C requirements to DRC rules requires understanding which constraints are absolute (e.g., minimum annular ring for a given product class) and which are conditional (e.g., minimum spacing as a function of voltage, altitude, and CTI material group).",
+            "Polarized components (electrolytic capacitors, diodes, ICs) have orientation requirements driven by electrical correctness, not IPC-2221C. Where the standard is relevant is in specifying that component orientation should minimize electrical path length for high-frequency signals and allow consistent visual inspection after assembly."
+          ]
+        },
+        {
+          "title": "Understanding the IPC-2221 Standard: A Foundation for Reliable PCB Design - Arshon Inc. Blog",
+          "url": "https://arshon.com/blog/understanding-the-ipc-2221-standard-a-foundation-for-reliable-pcb-design/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "IPC-2221 assists in defining the ideal layer sequence for multi-layer PCBs. Addresses issues such as crosstalk, EMI, and power distribution. IPC-2221 doesn’t exist in a vacuum—it supports the overall electronic design process. From schematic capture to layout and eventually manufacturing, ...",
+          "page_age": "2025-04-11T01:09:08",
+          "profile": {
+            "name": "Arshon",
+            "url": "https://arshon.com/blog/understanding-the-ipc-2221-standard-a-foundation-for-reliable-pcb-design/",
+            "long_name": "arshon.com",
+            "img": "https://imgs.search.brave.com/e4N4C9rAt-s4jiewvJdCU23S_lgQwz4Ys-bUedaOrxE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODVmNTY2MzNm/OGNjNTAyNTY4OGJh/NzM1MjkwZTM3YmQ2/ODMxOWE4NTUyNmZl/NmY1NmM0Nzg4ZmNk/MzFiYTBmZi9hcnNo/b24uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "arshon.com",
+            "hostname": "arshon.com",
+            "favicon": "https://imgs.search.brave.com/e4N4C9rAt-s4jiewvJdCU23S_lgQwz4Ys-bUedaOrxE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODVmNTY2MzNm/OGNjNTAyNTY4OGJh/NzM1MjkwZTM3YmQ2/ODMxOWE4NTUyNmZl/NmY1NmM0Nzg4ZmNk/MzFiYTBmZi9hcnNo/b24uY29tLw",
+            "path": "  › home  › electronic design  › understanding the ipc-2221 standard: a foundation for reliable pcb design"
+          },
+          "age": "April 11, 2025",
+          "organization": {
+            "type": "organization",
+            "name": "Arshon Inc. Blog",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "IPC-2221 assists in defining the ideal layer sequence for multi-layer PCBs. Addresses issues such as crosstalk, EMI, and power distribution. IPC-2221 doesn’t exist in a vacuum—it supports the overall electronic design process. From schematic capture to layout and eventually manufacturing, applying IPC-2221 ensures a smoother transition between phases. In modern electronic design, where tools like Altium Designer, KiCad, or OrCAD are used, adhering to IPC-2221 can help leverage built-in design rule checks (DRC) for automatic compliance validation.",
+            "At the heart of this precision lies the IPC-2221 standard—a pivotal document issued by IPC, the global trade association for electronics manufacturing. This standard outlines essential design principles for Printed Circuit Boards (PCBs), specifically addressing sectional design requirements for rigid organic PCBs.",
+            "The IPC-2221 standard is a part of the IPC-2220 family of documents, which provide generic requirements for designing printed boards and other forms of component mounting or interconnecting structures. IPC-2221, specifically, is concerned with the sectional design standard for rigid organic PCBs.",
+            "This standard serves as a blueprint for designers to create PCBs that meet specific performance classes defined by IPC: ... Each of these classes has different tolerances and performance expectations, and IPC-2221 helps designers meet the required targets for their specific applications."
+          ]
+        },
+        {
+          "title": "IPC Classes and Complying with IPC Standards for PCB Design",
+          "url": "https://resources.altium.com/p/complying-with-ipc-standards-for-pcb-design",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "IPC 2221: Establishes some generic design and performance requirements in PCBs and other forms of component mounting or interconnecting structures.",
+          "page_age": "2026-03-13T00:00:00",
+          "profile": {
+            "name": "Altium",
+            "url": "https://resources.altium.com/p/complying-with-ipc-standards-for-pcb-design",
+            "long_name": "resources.altium.com",
+            "img": "https://imgs.search.brave.com/3twZ63-Swi42-mMopNC4sX2DyrPtdunWkWj35C2Wzs8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzM0NjMzYmVh/MjU1ZWExOWJlNDA4/NTk3YzE4OTg2ZDZl/Yzg3Y2QzNmEyZmJi/OTMxYTRiYjIzZDQ0/MDU3YTVkZi9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "resources.altium.com",
+            "hostname": "resources.altium.com",
+            "favicon": "https://imgs.search.brave.com/3twZ63-Swi42-mMopNC4sX2DyrPtdunWkWj35C2Wzs8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzM0NjMzYmVh/MjU1ZWExOWJlNDA4/NTk3YzE4OTg2ZDZl/Yzg3Y2QzNmEyZmJi/OTMxYTRiYjIzZDQ0/MDU3YTVkZi9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS8",
+            "path": "› p  › complying-with-ipc-standards-for-pcb-design"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/vJBvG-kAKNQPgYcVe1enLUy3bp_DnvpEhivQDBc_6us/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9yZXNv/dXJjZXMuYWx0aXVt/LmNvbS9zaXRlcy9k/ZWZhdWx0L2ZpbGVz/L2Jsb2dzL0lQQyUy/MENsYXNzZXMlMjBh/bmQlMjBDb21wbHlp/bmclMjB3aXRoJTIw/SVBDJTIwU3RhbmRh/cmRzJTIwZm9yJTIw/UENCJTIwRGVzaWdu/LTk1NjY2LmpwZw",
+            "original": "https://resources.altium.com/sites/default/files/blogs/IPC%20Classes%20and%20Complying%20with%20IPC%20Standards%20for%20PCB%20Design-95666.jpg"
+          },
+          "age": "March 13, 2026",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Zachariah Peterson",
+                "url": "https://resources.altium.com/experts/zachariah-peterson"
+              }
+            ],
+            "date": "Jun 04, 2021",
+            "publisher": {
+              "type": "organization",
+              "name": "Altium Limited",
+              "url": "https://www.altium.com",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/oHt_V38P9hIwjpFwB0zOpG5wanWTDTlko3lOyIqg64A/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWx0aXVtLmNvbS9z/aXRlcy9hbGwvdGhl/bWVzL2FsdGl1bS9s/b2dvLnBuZw",
+                "original": "https://www.altium.com/sites/all/themes/altium/logo.png"
+              }
+            },
+            "isAccessibleForFree": true
+          },
+          "extra_snippets": [
+            "No matter which IPC class your board falls in, Altium Designer can help you comply with all IPC standards for PCB design.",
+            "IPC 6012: Defines generic performance requirements as compiled from IPC 2221, IPC 4101, and other quality requirements. The related IPC 6013 standard applies the same ideas to flex circuit boards. IPC-A-600 series: Defines acceptance metrics for printed circuit boards, as well as the three standard IPC Classes for various printed circuit board assemblies.",
+            "IPC 2221: Establishes some generic design and performance requirements in PCBs and other forms of component mounting or interconnecting structures.",
+            "Altium’s online DRC engine ensures your PCB layout adheres to design rules as you work. Continuously checking features against standard and customized design rules, helps maintain compliance with IPC standards while streamlining circuit board creation."
+          ]
+        },
+        {
+          "title": "IPC Standards: The Definitive Guide for Electronics Engineers and PCB Designers",
+          "url": "https://www.wevolver.com/article/mastering-ipc-standards-the-definitive-guide-for-electronics-engineers-and-pcb-designers",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "In practical application, many PCB design software tools integrate IPC-2221 rules into their Design Rule Check (DRC) engines.",
+          "page_age": "2025-03-31T07:17:51",
+          "profile": {
+            "name": "Wevolver",
+            "url": "https://www.wevolver.com/article/mastering-ipc-standards-the-definitive-guide-for-electronics-engineers-and-pcb-designers",
+            "long_name": "wevolver.com",
+            "img": "https://imgs.search.brave.com/51GkFaE9cYjMjFphB5c00YcDYbbpn7mTVOqYLV3IrHE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmJiODA5NDAz/NjNiMzkzZTUxYzk2/ZGE5NzA2ZGFkZjli/MTk0NjFiNjlmMGI1/ZDU1MDRmM2RhYmZj/ZGMwYzIzZS93d3cu/d2V2b2x2ZXIuY29t/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "wevolver.com",
+            "hostname": "www.wevolver.com",
+            "favicon": "https://imgs.search.brave.com/51GkFaE9cYjMjFphB5c00YcDYbbpn7mTVOqYLV3IrHE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmJiODA5NDAz/NjNiMzkzZTUxYzk2/ZGE5NzA2ZGFkZjli/MTk0NjFiNjlmMGI1/ZDU1MDRmM2RhYmZj/ZGMwYzIzZS93d3cu/d2V2b2x2ZXIuY29t/Lw",
+            "path": "› article  › mastering-ipc-standards-the-definitive-guide-for-electronics-engineers-and-pcb-designers"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/LjnjfEUzwQTMjjeMsmzOFyE-xvCMlDi579vFHNk4U9o/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93ZXZv/bHZlci1wcm9qZWN0/LWltYWdlcy5zMy51/cy13ZXN0LTEuYW1h/em9uYXdzLmNvbS8w/LnJhMmpyZDdndnRm/ZWxlY3Ryb25pY3Nf/dGVzdGluZ19jaXJj/dWl0X2RpYWdyYW0u/anBn",
+            "original": "https://wevolver-project-images.s3.us-west-1.amazonaws.com/0.ra2jrd7gvtfelectronics_testing_circuit_diagram.jpg",
+            "logo": false
+          },
+          "age": "March 31, 2025",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Abiola Ayodele",
+                "url": "https://www.wevolver.com/profile/abiola.ayodele"
+              }
+            ],
+            "date": "Mar 31, 2025",
+            "publisher": {
+              "type": "organization",
+              "name": "Wevolver",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/ydpr5ZCLMd2REyB8LW34_gYD_4RdNL4_8Y5LQTr4CzQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93ZXZv/bHZlci5jb20vbG9n/by1uYW1lLnBuZw",
+                "original": "https://wevolver.com/logo-name.png"
+              }
+            }
+          },
+          "extra_snippets": [
+            "Given its importance, there are over 3,600 certified trainers worldwide qualified to teach IPC-A-610’s criteria. In most electronics assembly facilities, you’ll find dog-eared copies of IPC-A-610 at inspection stations, helping guide quality control. Recommended reading: IPC Class 2 vs Class 3: Understanding the Critical Differences in Electronics Manufacturing Standards · IPC-2221 is a cornerstone standard for design engineers, laying the foundation for the entire realm of PCB design.",
+            "For design engineers, IPC standards like IPC-2221 and IPC-7351 should be woven into the PCB layout process from the beginning. In practical terms, this means using the design rules and libraries that align with IPC guidelines: PCB CAD Rules: Start your board design by setting up design rule checks (DRCs) according to IPC-2221 (or more specific sectional standards if applicable).",
+            "In practical application, many PCB design software tools integrate IPC-2221 rules into their Design Rule Check (DRC) engines.",
+            "Adhering to IPC-2221 during the PCB layout phase helps engineers meet baseline standards that ensure their boards are suitable for fabrication and perform as expected. For example, IPC-2221 includes tables specifying minimum electrical clearances based on voltage levels, helping prevent arcing."
+          ]
+        },
+        {
+          "title": "A Full Guide of the IPC Standards for Printed Circuit Boards",
+          "url": "https://www.mclpcb.com/blog/ipc-standards-for-pcbs/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This standard focuses on the quality of electronic assemblies, including PCBs. Readers can refer to this standard and follow guidelines for assembly cleanliness, soldering, and component placement.",
+          "page_age": "2026-04-08T14:32:46",
+          "profile": {
+            "name": "MCL PCB",
+            "url": "https://www.mclpcb.com/blog/ipc-standards-for-pcbs/",
+            "long_name": "mclpcb.com",
+            "img": "https://imgs.search.brave.com/K61pQb5-y7uRK1GrqZiSLqCPEs6RFISP1X5qdMSeSek/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDY5ZDJkYjQ5/MTU0MzI5YTNiNmNi/ZWFmODA4NjZlMmJk/YTY2ZTA1M2UzYjk4/OGZiYWNlY2VmMzMz/YWRmNTQzNC93d3cu/bWNscGNiLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "mclpcb.com",
+            "hostname": "www.mclpcb.com",
+            "favicon": "https://imgs.search.brave.com/K61pQb5-y7uRK1GrqZiSLqCPEs6RFISP1X5qdMSeSek/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDY5ZDJkYjQ5/MTU0MzI5YTNiNmNi/ZWFmODA4NjZlMmJk/YTY2ZTA1M2UzYjk4/OGZiYWNlY2VmMzMz/YWRmNTQzNC93d3cu/bWNscGNiLmNvbS8",
+            "path": "  › home  › guide to ipc standards for pcbs"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/1U_rkSRb-1KJtiX7n9pmZ6o-yFULp4pBTRGLIXwELBc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bWNscGNiLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAxOS8w/NC8wMS1HdWlkZS10/by1JUEMtU3RhbmRh/cmRzLWZvci1QQ0Jz/LXJldjMuanBn",
+            "original": "https://www.mclpcb.com/wp-content/uploads/2019/04/01-Guide-to-IPC-Standards-for-PCBs-rev3.jpg",
+            "logo": false
+          },
+          "age": "April 8, 2026",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "MCL"
+              }
+            ],
+            "date": "Dec 31, 2024"
+          },
+          "extra_snippets": [
+            "This standard focuses on the quality of electronic assemblies, including PCBs. Readers can refer to this standard and follow guidelines for assembly cleanliness, soldering, and component placement. It’s critical information for OEMs since it provides guidance for assembling products and checking their function. With this reference guiding production, you can catch common issues like misalignments. IPC-2221 establishes best practices for PCB designers.",
+            "It covers design aspects that affect performance and manufacturing. Following IPC-2221 during the design phase can reduce errors and production challenges. This standard covers: ... Following careful design guides ensures consistency across the board while maximizing PCB efficiency and quality.",
+            "Following IPC standards in PCB design and manufacturing aids in creating the high-quality, reliable products consumers need. If you want to boost durability and consistency in your operation, you should work within the right IPC standards. The design phase is where you should start with your IPC standards. Look to IPC-2221 and other similar standards to find rules on layout and spacing.",
+            "This standard provides criteria for the visual quality and acceptability of PCBs. Readers can use this standard to create uniform guidelines around PCB quality. Inspectors and manufacturers should reference this standard to confirm only high-quality boards make it through."
+          ]
+        },
+        {
+          "title": "IPC Class 2 vs Class 3: The Different Design Rules | Sierra Circuits",
+          "url": "https://www.protoexpress.com/blog/ipc-class-2-vs-class-3-different-design-rules/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The IPC-2221 A/B test coupon examines the internal defects, and the IPC-2221 D coupon inspects the thermal stress on the class 3 boards. IPC class 3 PCB design and manufacturing focus on the highest reliability requirements, with stricter tolerances, robust materials, and enhanced inspection controls for mission-critical electronics.",
+          "page_age": "2025-07-17T06:41:53",
+          "profile": {
+            "name": "ProtoExpress",
+            "url": "https://www.protoexpress.com/blog/ipc-class-2-vs-class-3-different-design-rules/",
+            "long_name": "protoexpress.com",
+            "img": "https://imgs.search.brave.com/gl-nNLmWXqD4kQ7rMHkOQKc9wRYHTDuIBEaPr66ZVoA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VkNjM0MTdk/OGUwZjg3NTFjYzM3/ODNiYWExOGU3MGQx/NzQwNTdlOGQ3OWVl/M2FiMjNkODM5ODMy/M2E2ZWMyZi93d3cu/cHJvdG9leHByZXNz/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "protoexpress.com",
+            "hostname": "www.protoexpress.com",
+            "favicon": "https://imgs.search.brave.com/gl-nNLmWXqD4kQ7rMHkOQKc9wRYHTDuIBEaPr66ZVoA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VkNjM0MTdk/OGUwZjg3NTFjYzM3/ODNiYWExOGU3MGQx/NzQwNTdlOGQ3OWVl/M2FiMjNkODM5ODMy/M2E2ZWMyZi93d3cu/cHJvdG9leHByZXNz/LmNvbS8",
+            "path": "› blog  › ipc-class-2-vs-class-3-different-design-rules"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/WfHqRDoXrw6Rhbr6eG0H1uUeG6Zdazt2bv-jt-j0y3U/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cHJvdG9leHByZXNz/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyNS8wNy9pcGMt/Y2xhc3MtMi12cy1j/bGFzcy0zLndlYnA",
+            "original": "https://www.protoexpress.com/wp-content/uploads/2025/07/ipc-class-2-vs-class-3.webp",
+            "logo": false
+          },
+          "age": "July 17, 2025",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Lucy Iantosca"
+              }
+            ],
+            "date": "Jul 17, 2025",
+            "publisher": {
+              "type": "organization",
+              "name": "Sierra Circuits, Inc.",
+              "url": "https://www.protoexpress.com/",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/T54b0OmtLAk54btrU2kMktVX0pcwrk85YynnfHEO6j4/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cHJvdG9leHByZXNz/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyMi8wMS9sb2dv/LnN2Zw",
+                "original": "https://www.protoexpress.com/wp-content/uploads/2022/01/logo.svg"
+              }
+            }
+          },
+          "extra_snippets": [
+            "The IPC-2221 A/B test coupon examines the internal defects, and the IPC-2221 D coupon inspects the thermal stress on the class 3 boards. IPC class 3 PCB design and manufacturing focus on the highest reliability requirements, with stricter tolerances, robust materials, and enhanced inspection controls for mission-critical electronics.",
+            "However, the specs will be more stringent for class 3 PCBs. Additional testing, such as micro-section analysis, and environmental tests, such as stress, pressure, vibration, and burn-in tests, are also conducted. On Circuitnet, Leo Lambert, Vice President of EPTAC, made a list of the most significant documents: the IPC 2220 series for circuit board design and fabrication, the IPC 6010 series documents for board performance and quality, IPC-A 600 for board acceptance requirements, J-STD-001 for soldering requirements, and IPC-A-610 for acceptability requirements.",
+            "Another critical factor is the CNC drill wander. It occurs when the drill does not hit the center of the pad. This results in an insufficient annular ring or causes a breakout. So, selecting the right land size is crucial. Here is the formula to calculate the pad size using IPC-6012 and IPC-2221 standards.",
+            "The fabrication allowance mainly depends on the drill wander. As per IPC-2221, class C is the highest classification, with an allowance limit of 8 mils."
+          ]
+        },
+        {
+          "title": "IPC-2221 Standard Overview: The Foundation of PCB Design | PCBInsider",
+          "url": "https://pcbinsider.com/blog/ipc-2221-standard-overview",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "IPC-2221 references three end-product classes inherited from IPC-A-600 and IPC-A-610: Class 1 – General electronic products (consumer, disposable) Class 2 – Dedicated service electronic products (industrial, telecom) Class 3 – High-performance electronic products (aerospace, medical, automotive) The class you target determines annular ring sizes, conductor spacing tolerances, hole plating thickness requirements, and inspection criteria.",
+          "profile": {
+            "name": "WellPCB",
+            "url": "https://pcbinsider.com/blog/ipc-2221-standard-overview",
+            "long_name": "pcbinsider.com",
+            "img": "https://imgs.search.brave.com/q5FZrzgXtPKLCQZDTs19uRGvvOuy0-HlKGdjzL4sol8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjNlOTM2ZjIz/NDcyODI0YTQ5NWE2/NDZmZmE3NjEyZDlj/MjQwYjc2MWNjNDYw/NzM0Zjg1ZDU0NjU0/ZGE4MWJjNS9wY2Jp/bnNpZGVyLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "location",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "pcbinsider.com",
+            "hostname": "pcbinsider.com",
+            "favicon": "https://imgs.search.brave.com/q5FZrzgXtPKLCQZDTs19uRGvvOuy0-HlKGdjzL4sol8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjNlOTM2ZjIz/NDcyODI0YTQ5NWE2/NDZmZmE3NjEyZDlj/MjQwYjc2MWNjNDYw/NzM0Zjg1ZDU0NjU0/ZGE4MWJjNS9wY2Jp/bnNpZGVyLmNvbS8",
+            "path": "› blog  › ipc-2221-standard-overview"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/CO5AV10WZZuJV1XQurI9y_0Dg3nI0LCvXhYSrdvo4rM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGNiaW5zaWRl/ci5jb20vd2VsbFBD/Qi1sb2dvLndlYnA",
+            "original": "https://images.pcbinsider.com/wellPCB-logo.webp",
+            "logo": true
+          },
+          "location": {
+            "title": "WellPCB - PCB Manufacturing",
+            "url": "https://pcbinsider.com",
+            "is_source_local": false,
+            "is_source_both": false,
+            "family_friendly": true,
+            "type": "location_result",
+            "provider_url": "https://pcbinsider.com/blog/ipc-2221-standard-overview",
+            "coordinates": [
+              38.0428,
+              114.4892
+            ],
+            "zoom_level": 7,
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/HLh4QEIUPH3WBvC2-CQw1iRphGo12QLtbRxzJZuBVjc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGNiaW5zaWRl/ci5jb20vd2VsbFBD/Qi1sb2dvLndlYnA",
+              "original": "https://images.pcbinsider.com/wellPCB-logo.webp"
+            },
+            "postal_address": {
+              "type": "PostalAddress",
+              "country": "CN",
+              "postalCode": "050051",
+              "streetAddress": "3rd Floor, Nanhai Plaza, No. 505 Xinhua Road",
+              "addressRegion": "Hebei",
+              "addressLocality": "Shijiazhuang",
+              "displayAddress": "3rd Floor, Nanhai Plaza, No. 505 Xinhua Road, 050051, Shijiazhuang"
+            },
+            "opening_hours": {
+              "current_day": [
+                {
+                  "abbr_name": "Thu",
+                  "full_name": "Thursday",
+                  "opens": "09:00",
+                  "closes": "18:00"
+                }
+              ],
+              "days": [
+                [
+                  {
+                    "abbr_name": "Mon",
+                    "full_name": "Monday",
+                    "opens": "09:00",
+                    "closes": "18:00"
+                  }
+                ],
+                [
+                  {
+                    "abbr_name": "Tue",
+                    "full_name": "Tuesday",
+                    "opens": "09:00",
+                    "closes": "18:00"
+                  }
+                ],
+                [
+                  {
+                    "abbr_name": "Wed",
+                    "full_name": "Wednesday",
+                    "opens": "09:00",
+                    "closes": "18:00"
+                  }
+                ],
+                [
+                  {
+                    "abbr_name": "Fri",
+                    "full_name": "Friday",
+                    "opens": "09:00",
+                    "closes": "18:00"
+                  }
+                ],
+                [
+                  {
+                    "abbr_name": "Sat",
+                    "full_name": "Saturday",
+                    "opens": "09:00",
+                    "closes": "18:00"
+                  }
+                ]
+              ]
+            },
+            "contact": {
+              "email": "sales@wellpcb.net",
+              "telephone": "+86-311-8693-5221"
+            },
+            "price_range": "$$",
+            "profiles": [
+              {
+                "type": "external",
+                "name": "pcbinsider.com",
+                "url": "https://pcbinsider.com/blog/ipc-2221-standard-overview",
+                "img": "https://imgs.search.brave.com/q5FZrzgXtPKLCQZDTs19uRGvvOuy0-HlKGdjzL4sol8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjNlOTM2ZjIz/NDcyODI0YTQ5NWE2/NDZmZmE3NjEyZDlj/MjQwYjc2MWNjNDYw/NzM0Zjg1ZDU0NjU0/ZGE4MWJjNS9wY2Jp/bnNpZGVyLmNvbS8"
+              }
+            ],
+            "pictures": {
+              "results": [
+                {
+                  "src": "https://imgs.search.brave.com/HLh4QEIUPH3WBvC2-CQw1iRphGo12QLtbRxzJZuBVjc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGNiaW5zaWRl/ci5jb20vd2VsbFBD/Qi1sb2dvLndlYnA",
+                  "original": "https://images.pcbinsider.com/wellPCB-logo.webp"
+                }
+              ]
+            },
+            "categories": []
+          },
+          "organization": {
+            "type": "organization",
+            "name": "WellPCB",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "A comprehensive guide to the IPC-2221 generic standard for printed board design, covering electrical clearance, creepage, via requirements, and best practices for compliance.",
+            "Expert guides, tutorials, and insights on PCB assembly, circuit board design, and electronics manufacturing.",
+            "IPC-2221 references three end-product classes inherited from IPC-A-600 and IPC-A-610: Class 1 – General electronic products (consumer, disposable) Class 2 – Dedicated service electronic products (industrial, telecom) Class 3 – High-performance electronic products (aerospace, medical, automotive) The class you target determines annular ring sizes, conductor spacing tolerances, hole plating thickness requirements, and inspection criteria.",
+            "Automated design rule checking (DRC) tools can verify many IPC-2221 requirements, but they are only as good as the constraints you enter."
+          ]
+        },
+        {
+          "title": "Applying The IPC 2221 Standard To Printed Circuit Board Design. - Jhdpcb",
+          "url": "https://jhdpcb.com/blog/ipc-2221-pcb-design-standard/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "IPC 2221 voltage spacing covers various aspects of PCB design, including board thickness, layer count, trace width and spacing, hole size, placement, creepage clearance, voltage clearance, insulation requirements and solder mask requirements. The standard also includes guidelines for designing boards that are compatible with automated assembly equipment, as well as recommendations for testing and inspecting finished boards.",
+          "page_age": "2024-04-20T09:03:07",
+          "profile": {
+            "name": "JHDPCB",
+            "url": "https://jhdpcb.com/blog/ipc-2221-pcb-design-standard/",
+            "long_name": "jhdpcb.com",
+            "img": "https://imgs.search.brave.com/EGKny5EWR0hndHzUls0wLQmJx8RlXwU5Re4wpZOuomE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjIzYTJhMmQw/OTQxMzMxMTVmNmEx/ZDEyMDAzMjVlZjIw/MjdhMWNmYmY4NTRm/ZWMyNDE2ZDUwODU4/OTNkMGRmOS9qaGRw/Y2IuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "jhdpcb.com",
+            "hostname": "jhdpcb.com",
+            "favicon": "https://imgs.search.brave.com/EGKny5EWR0hndHzUls0wLQmJx8RlXwU5Re4wpZOuomE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjIzYTJhMmQw/OTQxMzMxMTVmNmEx/ZDEyMDAzMjVlZjIw/MjdhMWNmYmY4NTRm/ZWMyNDE2ZDUwODU4/OTNkMGRmOS9qaGRw/Y2IuY29tLw",
+            "path": "  › home  › pcb basics  › applying the ipc 2221 standard to printed circuit board design."
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/eeNwc2LkntSFz6I0XqwSNQByCuJ7OU9URiwIHkiSHx8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9qaGRw/Y2IuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIzLzAzL0lQ/Qy0yMjIxLWhpZXJh/cmNoaWNhbC1zdHJ1/Y3R1cmUud2VicA",
+            "original": "https://jhdpcb.com/wp-content/uploads/2023/03/IPC-2221-hierarchical-structure.webp",
+            "logo": false
+          },
+          "age": "April 20, 2024",
+          "organization": {
+            "type": "organization",
+            "name": "jhdpcb",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "As technology advances, so does the complexity of PCB design. It is essential to adhere to industry standards in order to produce reliable and safe PCBs. One of the most important standards in PCB design is the IPC-2221 standard.",
+            "The IPC-2221 standard provides guidelines for the minimum insulation resistance required for PCBs, based on the operating voltage and environmental conditions of the application. The standard divides applications into different IPC PCB classes, based on factors such as operating voltage, pollution degree, and ambient temperature. Each class has a different minimum insulation resistance requirement. For example, for Class 1 and IPC 600 Class 2 applications (low voltage, clean environments), the minimum insulation resistance requirement is 1 megohm at room temperature and 500 kilohms at elevated temperatures.",
+            "IPC 2221 voltage spacing covers various aspects of PCB design, including board thickness, layer count, trace width and spacing, hole size, placement, creepage clearance, voltage clearance, insulation requirements and solder mask requirements. The standard also includes guidelines for designing boards that are compatible with automated assembly equipment, as well as recommendations for testing and inspecting finished boards.",
+            "IPC-2221 covers various aspects of PCB design. The standard also includes guidelines for designing boards that are compatible with automated assembly equipment, as well as recommendations for testing and inspecting finished boards."
+          ]
+        },
+        {
+          "title": "AllElectroHub | Electronics News & Technical Insights",
+          "url": "https://www.allpcb.com/allelectrohub/ipc-2221-demystified-a-beginners-guide-to-pcb-design-standards",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Get the latest electronics news, PCB insights, and tutorials on AllElectroHub. Stay ahead in design and development.",
+          "page_age": "2025-10-21T00:00:00",
+          "profile": {
+            "name": "ALLPCB",
+            "url": "https://www.allpcb.com/allelectrohub/ipc-2221-demystified-a-beginners-guide-to-pcb-design-standards",
+            "long_name": "allpcb.com",
+            "img": "https://imgs.search.brave.com/BRraUVl6w_VcR1NWW-IvMRXQ57iqziPCXLR-qdF39fg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDliMDdhMDUx/N2E1Mzc2YTgzYTM2/ZGE5ZjAyZDMzMTVh/YzJiN2NlZGJlZmQx/NzkzOWYwYjU3ODUw/ZWMxNTMwYS93d3cu/YWxscGNiLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "allpcb.com",
+            "hostname": "www.allpcb.com",
+            "favicon": "https://imgs.search.brave.com/BRraUVl6w_VcR1NWW-IvMRXQ57iqziPCXLR-qdF39fg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDliMDdhMDUx/N2E1Mzc2YTgzYTM2/ZGE5ZjAyZDMzMTVh/YzJiN2NlZGJlZmQx/NzkzOWYwYjU3ODUw/ZWMxNTMwYS93d3cu/YWxscGNiLmNvbS8",
+            "path": "  › home  › allelectrohub"
+          },
+          "age": "October 21, 2025"
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

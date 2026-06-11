@@ -1,0 +1,560 @@
+            Vibration Testing of Small Satellites
+This series of papers provides a tutorial along with guidelines and recommendations for vibration testing of small
+satellites. Our aim with these papers is to help you (a) ensure the test meets its objectives in demonstrating flight
+worthiness and (b) avoid test failures, whether associated with a design deficiency or with excessive loading during
+test. Addressed are sine-burst testing, random vibration testing, and low-level diagnostic sine sweeps. Although
+much of the guidance provided in this series applies to CubeSats, the series is primarily aimed at satellites in the 50
+– 500 lb (23 – 230 kg) range. Most of the guidance applies to larger satellites as well if they will be tested on a
+shaker.
+
+The plan is for this series to include seven parts, each of which will be released when completed:
+
+    1.   Introduction to Vibration Testing                      (released April 11, 2014; last revised July 19, 2017)
+    2.   Test Configuration, Fixtures, and Instrumentation      (released April 11, 2014; last revised July 19, 2017)
+    3.   Low-level Sine-Sweep Testing                            (released May 13, 2015; last revised July 19, 2017)
+    4.   Sine-Burst Testing                                     (released April 28, 2017; last revised July 19, 2017)
+    5.   Random Vibration Testing                                 (released April 7, 2016; last revised July 19, 2017)
+    6.   Notching and Force Limiting                             (released May 13, 2015; last revised July 19, 2017)
+    7.   Designing a Small Satellite to Pass the Vibration Test                                    (yet to be released)
+
+The most recent versions of these papers are available for free download at
+                         http://instarengineering.com/vibration_testing_of_small_satellites.html.
+
+
+
+
+                       Part 1: Introduction to Vibration Testing
+                       Tom Sarafin, Poti Doukas, Lenny Demchak, and Mike Browning
+                                   Instar Engineering and Consulting, Inc.
+                              Submit comments to tom.sarafin@instarengineering.com
+
+                                               Rev. B, July 19, 2017
+
+Most satellites weighing less than about 500 lb (227 kg of mass) are tested on electrodynamic shakers in
+each of three orthogonal directions, as shown in Fig. 1-1. Some larger spacecraft are tested on shakers as
+well, depending on stakeholder preference.
+
+
+
+
+ Copyright 2017 Instar Engineering and Consulting, Inc., instarengineering.com. You are free to copy this material
+ in full or in part, but only in its unaltered form, complete with copyright statement, and with proper credit given.
+Vibration Testing of Small Satellites—Part 1                                                     Rev. B, July 19, 2017
+
+
+Part 1 of this series explores some important aspects of testing in general and vibration testing on a shaker
+in particular.
+
+
+
+
+Fig. 1-1. Test Configuration on a Shaker. The armature moves relative to the fixed base to a controlled
+          acceleration and frequency or to random acceleration and frequencies. The test fixture adapts the
+          mounting interface of the test article (small satellite in this case) to the grid of threaded inserts in the slip
+          table and the head expander.
+
+
+
+Two Things All Tests Need
+
+Every test needs two things: (1) clearly defined objectives and (2) criteria for judging whether the test
+met the objectives.
+
+The reason we test a small satellite on a shaker is not that there is a requirement to do so. There may be
+such a requirement, but the test won’t mean much if that’s the only reason we do it. Most often, we do a
+vibration test to establish confidence that the satellite can withstand the launch environment and still
+function afterwards. The process of establishing confidence—our own and that of other stakeholders—is
+called verification. In the space industry, verification seldom entails proof, at least not when random
+variables—such as those associated with launch environments—are involved. When they are, we use a
+combination of analyses and tests to establish confidence that the mission will be successful.
+
+In other words, the main objective of vibration testing on a shaker is to verify compliance with certain
+structural and mechanical requirements, specifically to establish confidence that
+
+        the spacecraft structure, payload(s), equipment, and other hardware can withstand—and function
+         as needed after exposure to—the highest load during the mission (strength verification and
+         verification that relative alignment of critical components or interfaces is maintained);
+
+
+
+
+Copyright 2017 Instar Engineering and Consulting, Inc. See first page for terms of copy permission.                       2
+Vibration Testing of Small Satellites—Part 1                                              Rev. B, July 19, 2017
+
+
+       the above spacecraft hardware can withstand—and function as needed after (and during, for any
+        equipment that must operate during launch) exposure to—cyclic loading associated with launch
+        vibration and, to some extent, verify fatigue life of the materials;
+
+       electrical connectors will remain seated during the launch environment;
+
+       the satellite will maintain general integrity, e.g., no bolted joints loosening because of lost
+        fastener preload and no parts coming loose or free from containment;
+
+       and the satellite meets any specified constraints on natural frequencies (typically applies to the
+        launch configuration in order to avoid dynamic coupling with the launch vehicle and subsequent
+        high loads).
+
+An additional objective of vibration testing often is to acquire data that will enable correlation of the finite
+element model for use in coupled loads analysis and any other important analyses.
+
+When planning and designing a test, always start with a clear definition of test objectives. Then design a
+test that satisfies the objectives.
+
+To simulate and envelop the effects of launch environments, we test small satellites most commonly with
+sine burst and random vibration, which are described later in this paper. Some larger spacecraft are tested
+for sinusoidal vibration (a.k.a. “sine vibe”) on a shaker, and nearly all large spacecraft are tested for
+acoustics in an acoustic chamber instead of shaker-driven random vibration. But sine-vibe testing is
+omitted for most small satellites, as any sine environment that may apply is typically encompassed by the
+combination of sine-burst and random vibration environments. Instead, for a small satellite we may do
+low-level sine-sweep tests to characterize dynamic behavior rather than to stress the hardware.
+
+Shock testing, most often with the intent of encompassing the effects of high-frequency, low-energy
+shock caused by separation explosives (pyrotechnic shock), is less commonly done on shakers and is not
+addressed further in this series of papers. The force rating of the shaker limits acceleration levels such
+that the test could be done only if the shock environment is relatively low, and when levels are low, there
+is little risk of failure.
+
+The second thing all tests need is pre-defined criteria for judging whether the test article passed the test
+(pass/fail criteria) or whether the test otherwise met its objectives (success criteria). If the test objective
+is to establish confidence in some aspect of the test article, we define pass/fail criteria; if the test is for the
+purpose of acquiring data, we define success criteria. There is no point in doing a test if we have no way
+of knowing afterwards whether the objectives were satisfied. Criteria specific to sine-sweep, sine-burst,
+and random vibration testing are addressed in parts 3, 4, and 5, respectively.
+
+Before taking a closer look at types and classes of vibration tests, let’s take time to understand
+transmissibility.
+
+
+
+Transmissibility
+
+To understand how a structure responds to vibration introduced at its base, consider a mass on a spring,
+which we refer to as a single-degree-of-freedom (SDOF) system, with unit (1 g) sinusoidal acceleration
+introduced at the base of the spring. The transmissibility function, TR(fratio), gives the peak response
+
+
+Copyright 2017 Instar Engineering and Consulting, Inc. See first page for terms of copy permission.               3
+Vibration Testing of Small Satellites—Part 1                                                              Rev. B, July 19, 2017
+
+
+acceleration of the mass as a function of fratio, which is the ratio of input frequency, f, to natural frequency,
+fn, of the SDOF system.
+
+                                                                 1  2f ratio 
+                                                                                2
+                                         TR ( f ratio ) 
+                                                            1  f   2f
+                                                                                                                           (1.1)
+                                                                   2
+                                                                  ratio
+                                                                        2
+                                                                                    ratio   2
+where  is the damping ratio (damping factor divided by the critical damping factor). Figure 1-2 shows
+the transmissibility function for several damping ratios.
+
+                                                              Amplification
+                                                                                                 Attenuation (isolation)
+                                                            Resonance
+
+                                                                                                      = 0.01
+                     Transmissibility, TR                                                             = 0.05
+                        (ratio of peak
+                   response acceleration                                                              = 0.1
+                        to peak base
+                                                                                                      = 0.2
+                        acceleration)
+                                                                                                      = 0.5
+            Response
+           acceleration
+
+                             Mass
+
+
+                    spring
+
+              Base                  damper
+           acceleration
+
+
+                             Base
+                                                                                            2
+                                                            Ratio of forcing frequency to natural
+                                                                     frequency, fratio = f/fn
+
+                                                  Fig. 1-2. Transmissibility.
+
+
+
+Resonance, which occurs when a maintained sinusoidal forcing frequency is the same as the system’s
+natural frequency, is an equilibrium condition in which the energy added by the next cycle of input is
+balanced by the energy lost from damping. Thus, at resonance, the peak response is limited by the
+damping in the system. The quality factor, Q, is the transmissibility at resonance and is approximated by
+
+                                                                   1
+                                                            Q                                                             (1.2)
+                                                                  2
+At forcing frequencies well below the system’s natural frequency, the mass moves very nearly with the
+mounting base, with little dynamic amplification. If the forcing frequency exceeds about 1.41 (square
+root of two) times the natural frequency, the mass responds with less acceleration than that of the base, a
+situation referred to as isolation.
+
+
+
+Copyright 2017 Instar Engineering and Consulting, Inc. See first page for terms of copy permission.                                4
+Vibration Testing of Small Satellites—Part 1                                              Rev. B, July 19, 2017
+
+
+Understanding transmissibility is key to understanding how a structural assembly responds to testing on a
+shaker, regardless of whether the shaker imparts sinusoidal acceleration at a single frequency (sine-burst,
+sine-sweep, sine-vibe, or sine-dwell test) or at multiple, simultaneous frequencies at random amplitude
+and phase (random vibration test). A sine burst is at low frequency, well below the test article’s
+fundamental frequency, to avoid dynamic response, and a random vibration test excites all modes within
+the test spectrum simultaneously at random amplitudes. When damping is relatively low—say, below
+10% of critical—response of any mode of vibration, as characterized by acceleration measured at a
+particular location, is essentially sinusoidal, just like the mass on the spring.
+
+
+
+Common Types of Tests on a Shaker
+
+In a sine-burst test, the shaker introduces a sinusoidal acceleration at the base of the test article, with
+gradually increasing, then maintained, and finally decreasing amplitudes, all at constant frequency. The
+sinusoidal frequency is selected to be significantly lower than the fundamental vibration frequency of the
+test article in order to minimize dynamic response or amplification of the acceleration. In this way, we
+subject the test article to near-uniform acceleration, analogous to a quasi-static load, which is often used
+for structural design.
+
+The objective of a sine-burst test is to verify that the satellite’s primary structure—the body structure and
+the launch vehicle (LV) interface—has enough strength to withstand the maximum expected loads during
+launch, which we refer to as limit loads. The test may be run to some factor above limit loads, depending
+on the test philosophy or criteria, as discussed below.
+
+In a random vibration test, an electro-dynamic shaker is controlled to introduce vibration at frequencies
+typically between 20 and 2000 Hz in the space industry. All frequencies within the applicable range are
+introduced simultaneously at random amplitude and phase.
+
+One of the objectives of a random vibration test is to verify strength of secondary structures, which
+include equipment housings, mounting brackets, and electronics boards. Because the test is not truly
+flight-like, we must be careful to avoid unrealistic and excessive loading, i.e., loads significantly higher
+than the maximum expected mission loads, which is of most concern for the primary structure. When
+properly justified, force limiting, which is discussed in Part 6 of this series, is an accepted method of
+notching (reducing the input environment at certain response frequencies) to avoid excessive loading.
+
+Random vibration testing also builds confidence in general structural integrity for structures as small as
+solder joints, whose materials are stressed by a vibration environment. In a random vibration test, we are
+trying to confirm that fasteners won’t loosen and electrical connectors won’t separate during the vibration
+of launch. Because it causes cyclic stress in materials, random vibration testing also establishes
+confidence in material fatigue life, although the extent of this confidence depends on whether the test is
+on the flight hardware or on test-dedicated hardware, as discussed in the section below on class of test.
+
+In a sine sweep or a sine-vibe test, the shaker imparts a sinusoidal input at gradually increasing or
+decreasing frequency, most often as a logarithmic function of time. If the test is done to envelop any
+
+
+
+
+Copyright 2017 Instar Engineering and Consulting, Inc. See first page for terms of copy permission.            5
+Vibration Testing of Small Satellites—Part 1                                                   Rev. B, July 19, 2017
+
+
+sinusoidal vibration during launch1 and thus be a test for structural integrity, it is traditionally referred to
+as a sine-vibe test, and the input acceleration may vary with frequency. A low-level sine sweep refers to a
+test done at a low, constant acceleration in order to obtain response data that indicate natural frequencies
+and damping. With accelerometers to measure response at multiple locations, we can acquire data on
+mode shape as well.
+
+A random vibration test also can be conducted at a low, constant level across a frequency spectrum in
+place of a sine sweep to acquire information on natural frequencies, mode shapes, and damping.
+
+A sine sweep or a low-level random vibration test is typically done before any other tests in each axis in
+order to establish a baseline response plot over the frequency range of interest. We repeat the low-level
+test after each of the full-level sine-burst and random vibration tests. We then compare pretest and post-
+test response plots to see if anything has changed in the structure as a result of the full-level test.
+
+A sine-dwell test is one in which sinusoidal vibration is input at constant frequency, same as for a sine-
+burst test, but in this case the frequency is intended to coincide with the natural frequency of a target
+mode, and the input is maintained until resonance is achieved. Such tests are used to acquire data
+typically for the purpose of correlating a model or investigating an anomaly.
+
+Most small satellites are tested for sine burst and random vibration, with either sine sweep or low-level
+random for diagnostic purposes. Large satellites, on the other hand—if tested on a shaker at all—are
+typically tested only to specified levels of sine vibe along with low-level diagnostic tests. In place of
+random vibration testing on a shaker, a large spacecraft is tested in an acoustic chamber because, during
+launch, most of the random vibration in the spacecraft will be driven by acoustic response of the
+spacecraft’s low-mass panels and shells rather than by vibration at the mounting interface. In place of
+sine-burst testing, the structure of a large spacecraft is typically tested with static loads. Such loads are
+commonly introduced with hydraulic jacks, with a computerized system to control pressure to make the
+load in each jack, as measured by calibrated load cells, equal to the target value per the test design.
+
+A static loads test is generally a better strength test than a sine burst if the bulk of the launch loading
+environment on the primary structure is from steady-state acceleration rather than from vibration. This is
+the case for most large spacecraft as well as the primary structure of the launch vehicle. Part 4 of this
+series addresses limitations in the types of structural failures that can occur in a sine-burst test.
+
+Spacecraft in the 500 – 1000 lb (227 – 454 kg) class are in the gray area in that it may not be obvious
+whether we should test them as small satellites, with sine burst and random vibration on a shaker, or as
+large spacecraft, with static loads and acoustic testing (and perhaps sine-vibe testing as well). Whether
+acoustic testing is more appropriate than random vibration testing depends on the spacecraft
+configuration, i.e., whether there are large-surface, low-mass panels and shells that respond highly to
+acoustic pressure. Analytical predictions2 should guide us into the proper test.
+
+
+
+
+1
+  If the launch services provider (LSP) specifies a sine-vibe environment, ask to find out whether the LSP requires
+the test or is providing the environment as a service in case you want to test for it. If the test is required, find out
+if it simulates an actual environment, and you have to achieve certain levels of response, or if the test is required
+only as a workmanship screen without trying to envelop any actual sine environment during launch.
+2
+  Section 7.7 of Ref. 3 demonstrates a relatively simple method of vibro-acoustic response analysis.
+
+
+
+Copyright 2017 Instar Engineering and Consulting, Inc. See first page for terms of copy permission.                        6
+Vibration Testing of Small Satellites—Part 1                                              Rev. B, July 19, 2017
+
+
+Class of Test
+
+A structural or environmental test can be classified as a qualification test, a protoqualification or
+protoflight test, or an acceptance test.
+
+A qualification (or simply qual) test is done on dedicated hardware that is not intended to fly, with the
+objective of establishing confidence in a design; if the hardware passes the test, we say the design is
+qualified. The qualification hardware is built to the same design and with the same manufacturing
+processes as the flight hardware, and it’s tested to environments that are more severe than anything the
+flight hardware will see.
+
+A successful qualification random vibration test establishes a qualification margin—the difference
+between the qual environment and the maximum predicted environment (MPE) for the mission, which is
+the most severe environment the flight hardware should ever see. The qualification margin is intended to
+account for build-to-build variation between the qual hardware and the flight hardware. To some extent,
+it also accounts for the possibility that the actual launch environment exceeds MPE, which is statistically
+based.
+
+For ductile materials, most failures occurring in a random vibration environment are fatigue failures, so
+duration is an important parameter for qualification random vibration testing in order to ensure adequate
+margin is demonstrated for fatigue life. For qualification random vibration testing, the military standard,
+SMC-S-016 (Ref. 1), calls for levels that are 6 dB higher than MPE and a test duration up to three
+minutes per axis. The NASA standard, per NASA-STD-7001A (Ref. 2), is 3 dB higher than MPE, two
+minutes per axis. (See Part 5 for a tutorial on random vibration environments, as they are traditionally
+defined, as well as decibels and other terminology.)
+
+An acceptance test is a test done on flight hardware, typically to MPE. If the design has already been
+qualified by successful qualification testing, the purpose of acceptance testing is to confirm process
+control, including workmanship. In other words, although the qualification margin accounts for some
+degree of build-to-build variation, we test each build for acceptance to screen out defects that are outside
+the demonstrated qualification margin. Military and NASA standards (Refs. 1 and 2) agree on one minute
+of random vibration testing per axis for acceptance.
+
+A protoqualification (a.k.a. protoqual) test (military term) and a protoflight test (NASA term) are very
+nearly the same thing—a test of the flight hardware to levels that are more severe than MPE in absence of
+a previously qualified design—although there are subtle differences that we won’t explore here. This test
+approach may be selected in lieu of separate qualification and acceptance tests when production volume is
+low and building and testing dedicated test hardware is not affordable. It’s a common approach for one-
+of-a-kind spacecraft that are to be launched without a flight crew. With this approach, if multiple
+spacecraft of the same design are built, the first-built vehicle is tested for protoqual or protoflight levels
+and durations, and subsequent builds are tested for acceptance to MPE levels. If only one spacecraft is
+built, it is tested the same as would the first-built spacecraft of a fleet.
+
+There is more mission risk with the protoqual approach because there is no practical way of knowing
+whether the flight hardware has enough fatigue life after testing to make it through the mission. Testing
+flight hardware for random vibration is effective at screening out failures that occur within the first few
+high-level loading cycles—failures referred to as infant mortality failures—but, without reliable post-test
+inspections for cracks, there’s no sure way of knowing whether the test caused fatigue cracks that may
+
+
+Copyright 2017 Instar Engineering and Consulting, Inc. See first page for terms of copy permission.           7
+Vibration Testing of Small Satellites—Part 1                                              Rev. B, July 19, 2017
+
+
+propagate to failure during the mission. Accordingly, the protoqual or protoflight approach may not be
+acceptable to stakeholders for missions that have high consequence of failure, such as manned missions.
+When the protoqual or protoflight approach is adopted, it makes sense to put more emphasis on fatigue
+analysis as a supplement to the test program.
+
+
+
+Structural Qualification Testing Prior to Vehicle Integration
+
+Even when a program selects protoqualification or protoflight testing of the flight structure in lieu of
+traditional qualification testing of nonflight hardware, the spacecraft structure should be tested before the
+flight payloads and equipment are installed. Doing so avoids risk of structural failure late in the program,
+when recovery may not be viable and when such a failure could damage flight payloads and equipment.
+In addition, performing a sine-burst test of the structure prior to vehicle integration allows that test to be
+omitted at the vehicle level of assembly. From our experience, a sine burst is the most difficult
+environment for a shaker to control; we’ve seen several instances in which inability to control a pure
+sinusoidal input led to dynamic loads in the test article that significantly exceeded the intended loads.
+
+When testing the spacecraft structure on a shaker before the payloads, equipment, electrical harness, and
+other items are integrated, it’s important to include mass simulators that represent all sizable payloads and
+equipment, mount the simulators in a flight-like manner, and make the overall mass properties of the test
+article representative of those predicted for the flight vehicle. Total mass should be at least as high as the
+integrated satellite’s design mass (or mature mass), which is the predicted mass plus applicable growth
+allowance. To ensure the test is adequate given uncertainty in the final mass of the vehicle, it may be
+wise to add additional mass to the test structure, over and above the design mass, thus demonstrating
+margin. Doing so, however, is a viable option only if analysis shows (a) the structure can withstand the
+associated extra load and (b) the additional mass does not cause modes of vibration to change in a way
+that would lead to some of the structure being under-tested. Note that the second consideration (b) should
+be expanded to ensure any measured environments to be used for component testing are not understated.
+
+Center of gravity (CG) of the test article is also a consideration when designing mass simulators. The CG
+of the fully assembled structural qualification article, including mass simulators, should match that
+predicted for the flight vehicle within a reasonable tolerance. A suggested target tolerance is 1% of the
+satellite’s dimension in the corresponding axis (e.g., lateral location of CG within 0.20 inch of the flight-
+vehicle prediction for a satellite with a lateral dimension of 20 inches).
+
+
+
+Dry-running the Test
+
+Shakers are electromechanical devices with many parts that can fail. The consequence of such a failure
+can be a harsh loading environment that can damage the test article. In addition, the closed-loop control
+system, working off of measured acceleration at the base of the test article, may have difficulty keeping
+the environment within acceptable tolerance (error) from the specified environment. Sine-burst testing in
+particular is subject to such control difficulty. See Part 4 of this series for further discussion.
+
+To reduce risk of damaging expensive flight hardware, plan to dry run the test ahead of time with the test
+fixture installed on the shaker and, preferably, with dead weights representing the mass of the test article.
+Run through each planned test to full levels of acceleration. Doing such a dry run doesn’t guarantee that
+
+
+Copyright 2017 Instar Engineering and Consulting, Inc. See first page for terms of copy permission.          8
+Vibration Testing of Small Satellites—Part 1                                              Rev. B, July 19, 2017
+
+
+problems won’t show up during the test, as sometimes it’s the test article’s modes of vibration that cause
+difficulty with the control system, but it can screen out many potential problems that may occur.
+
+
+
+Limitations of Testing on a Shaker
+
+Two types of limitations should be considered when planning a vibration test on a shaker: the limitations
+of the shaker itself and the limited effectiveness of base-driven vibration tests regarding the simulation of
+launch loading environments.
+
+
+
+Every shaker has two important limitations: force rating and stroke. The force rating is the maximum
+force, F, the shaker can exert to move a mass, m. Recall that F = mA, where A is acceleration, so the
+maximum acceleration achievable in test is proportional to the shaker’s force rating. The mass, here, is
+not just the mass of the test article; it includes everything that is moving: the test fixture, the slip table or
+head expander, and the armature. Stroke is the maximum range of displacement for the shaker, typically
+in terms of peak-to-peak (plus/minus) motion. The stroke limits the achievable acceleration at any given
+frequency. (See Part 4 of this series.) To address both of these shaker limitations, be sure to coordinate
+early with the test lab, and ask the lab personnel to confirm that the shaker can achieve the needed test
+environment for the test configuration.
+
+Although testing small satellites on shakers is standard practice (and usually required by mission
+stakeholders), doing so does not give absolute assurance that failure won’t occur during launch. For the
+most part, a random vibration test on a shaker to properly specified levels is more severe than flight
+random vibration, but that’s not always the case. Let’s take time to understand some important
+limitations related to test effectiveness:
+
+       A shaker introduces acceleration uniformly across the interface with the test article, whereas, in
+        flight configuration, the interface with the mounting structure can distort, meaning acceleration
+        can vary from one location to the next at any point in time. As a result of this aspect of a shaker,
+        most of the test article tends to be over-tested, but the interface itself tends to be under-tested
+        because it is typically over-constrained. (See Part 2 for discussion of boundary conditions.)
+
+       A traditional shaker imparts acceleration in a single translational axis, whereas acceleration
+        during flight can be in all six degrees of freedom simultaneously. (Multi-axis shakers exist but
+        are mostly used for research, as engineers attempt to learn how to best use them.) This aspect of
+        vibration tests suggests the satellite will be under-tested. However, for random vibration testing,
+        other aspects of the test, such as uniformity of input acceleration and the manner in which the test
+        environment envelops the flight environment, normally ensure that testing in each of three
+        orthogonal axes is more stressful than flight vibration. For sine-burst testing, we should design
+        the test levels to ensure the primary structure is stressed at least as much as it will be stressed in
+        launch. (See Part 4 for a detailed look at sine-burst testing.)
+
+       Random vibration testing on a shaker simulates only the flight random vibration that is introduced
+        at the mounting (LV) interface, whereas flight random vibration also includes the effects of
+        random acoustic pressure impinging directly on the satellite. For small satellites, acoustic
+
+
+
+Copyright 2017 Instar Engineering and Consulting, Inc. See first page for terms of copy permission.                 9
+Vibration Testing of Small Satellites—Part 1                                              Rev. B, July 19, 2017
+
+
+        response is often assumed to be negligible, but, as the satellite’s surface area increases, this
+        assumption becomes less accurate. Part 5 of this series addresses this issue.
+
+       Vibration testing is most effective at detecting strength deficiencies (“single-passage failures”)
+        for brittle materials and fatigue-life deficiencies for ductile materials. Part 4 addresses the
+        effectiveness of sine burst as a strength test.
+
+       Not all modes of vibration can be excited by single-axis translational input. (See discussion
+        below.)
+
+The extent to which a mode of vibration can be excited on a single-axis shaker depends on the modal
+effective mass for the test article when grounded at its base, as it is in test configuration. Modal effective
+mass essentially tells us two things: (1) how much of the system’s mass is moving simultaneously in a
+given direction for that mode and (2) how easily the mode can be driven by motion in a particular
+direction. For example, if a mode has a high percentage of effective mass in a horizontal direction (say,
+the Y axis) and also in rotation about the other lateral axis (X), that mode can easily be excited in a Y-axis
+test, and exciting that mode causes high force in Y and moment about X at the mounting interface. Figure
+1-3 shows an example of the first two bending modes of a cantilevered beam, with the first having much
+higher modal effective mass in lateral translation and rotation (moment) about the orthogonal axis than
+the second. The mathematics behind modal effective mass are outside the scope of this paper, but it is
+easily calculated with a finite element model.
+
+
+
+
+Fig. 1-3. Qualitative Comparison of Modal Effective Mass for Two Modes. Mode 1 can be more easily excited by
+          lateral base motion than mode 2 because mode 1 has more effective mass in lateral translation. As the
+          mode shapes show, all of the mass of the beam other than that right at the base is moving in the same
+          direction at any point in time, whereas mass is moving in opposite directions for mode 2.
+
+
+
+A torsion mode is a good example of a mode that single-axis base motion may not be able to excite. Such
+a mode has little or no effective mass in translation, depending on lateral offset of the CG relative to the
+mounting interface and on asymmetry of the structure’s cross section.
+
+If you must excite a particular mode in order to meet the test objectives, and if that mode can’t be excited
+by base input, you need to design a different test!
+
+
+
+
+Copyright 2017 Instar Engineering and Consulting, Inc. See first page for terms of copy permission.          10
+Vibration Testing of Small Satellites—Part 1                                              Rev. B, July 19, 2017
+
+
+As stated at the beginning of this paper, we’re not doing a vibration test for the sake of doing a vibration
+test, so that we can check off a requirement that says we have to do it. To establish appropriate
+confidence, we must design the test to meet the objectives.
+
+                                        Remember the test objective:
+  The objective is not to do a test; it’s either to verify compliance with mission requirements or to
+                                      obtain information—or both.
+To verify compliance with the applicable requirement (e.g., ability to withstand flight environments
+              and function afterwards), we may have to design a nonstandard test.
+
+
+Part 2 of this series addresses test configuration, fixtures, and instrumentation.
+
+
+
+References
+
+    1. SMC Standard SMC-S-016. “Test Requirements for Launch, Upper-Stage, and Space Vehicles.”
+       13 June 2008. Air Force Space Command, Space and Missile Systems Center. (replacement for
+       MIL-STD-1540)
+
+    2. NASA-STD-7001A. “Payload Vibroacoustic Test Criteria.” January 20, 2011. National
+       Aeronautics and Space Administration.
+
+    3. Sarafin, Thomas P., ed. Spacecraft Structures and Mechanisms: From Concept to Launch.
+       Microcosm Press. 1995.
+
+
+
+
+Copyright 2017 Instar Engineering and Consulting, Inc. See first page for terms of copy permission.         11
+

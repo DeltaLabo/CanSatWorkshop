@@ -8,7 +8,9 @@ vars: {
 # Source label: "Parachute deployment test (3 reps)".
 # Release dummy is visible in the raster but has no visible exchange into this
 # chain; it is omitted here to avoid inventing one.
-direction: right
+# This revision explicitly includes the pre-flight BLE connection; no
+# IMU/altitude fallback is modeled in v0.2.
+direction: down
 
 classes: {
   func: {
@@ -49,18 +51,25 @@ classes: {
 
 chain: "PDM v0.2 — Parachute deployment test (3 reps)" {
   class: chain
-  direction: right
+  direction: down
 
+  note_preflight_ble: "[C] BLE connection\nestablished pre-flight" { class: note; shape: page }
   note_airborne: "[C] While CanSat\nis airborne" { class: note; shape: page }
 
-  trigger_pwm_signal: "[F] Trigger PWM\nSignal" { class: func }
+  establish_ble_connection: "[F] Establish BLE\nconnection" { class: func }
+  maintain_ble_connection: "[F] Maintain BLE\nconnection" { class: func }
+  send_ble_open_command: "[F] Send BLE open\ncommand" { class: func }
   set_pwm_open_position: "[F] Set PWM to open\nposition" { class: func }
   open_parachute: "[F] Open parachute" { class: func }
   limit_terminal_speed: "[F] Limit terminal speed" { class: func }
 }
 
-chain.trigger_pwm_signal -> chain.set_pwm_open_position: "[FE] Trigger enable []" { class: fe }
-chain.set_pwm_open_position -> chain.open_parachute: "[FE] Parachute open\nsignal []" { class: fe }
+chain.establish_ble_connection -> chain.maintain_ble_connection: "[FE] Connection\nrequest [BLE]" { class: fe }
+chain.maintain_ble_connection -> chain.send_ble_open_command: "[FE] BLE ready []" { class: fe }
+chain.send_ble_open_command -> chain.set_pwm_open_position: "[FE] Open command\n[BLE]" { class: fe }
+chain.set_pwm_open_position -> chain.open_parachute: "[FE] Parachute open\nsignal [PWM]" { class: fe }
 chain.open_parachute -> chain.limit_terminal_speed: "[FE] Parachute opened []" { class: fe }
 
-chain.note_airborne -> chain.trigger_pwm_signal { class: cstr }
+chain.note_preflight_ble -> chain.establish_ble_connection { class: cstr }
+chain.note_preflight_ble -> chain.maintain_ble_connection { class: cstr }
+chain.note_airborne -> chain.send_ble_open_command { class: cstr }

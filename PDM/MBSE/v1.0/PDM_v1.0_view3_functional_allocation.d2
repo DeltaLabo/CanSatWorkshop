@@ -1,0 +1,231 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDM v1.0 functional allocation view.
+# The parachute deployment trigger is derived from ADS v1.0 IMU data instead
+# of a manual/BLE command. ADS context is included only for the IMU-trigger path.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+user: "[EA] User" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  place_cap: "[F] Place cap" { class: func }
+  reintroduce_parachute: "[F] Reintroduce\nparachute" { class: func }
+}
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ads_module: "[PC] ADS Module" {
+      class: pc
+      direction: down
+
+      ads_pcb: "[PC] ADS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        imu: "[PC] ICM20948 IMU" {
+          class: pc
+          direction: down
+
+          ads_kinematic_sensing: "[LC] ADS Kinematic Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+
+            measure_angular_velocities: "[F] Measure angular\nvelocities" { class: func }
+            measure_accelerations: "[F] Measure\naccelerations" { class: func }
+            measure_magnetic_field_intensities: "[F] Measure magnetic\nfield intensities" { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+          }
+
+          note_accuracy_angular_rate: "[C] Accuracy\n< 30 deg/s" { class: note; shape: page }
+        }
+
+        ads_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+          grid-columns: 1
+
+          ads_processing: "[LC] ADS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+
+            read_angular_velocities: "[F] Read angular\nvelocities" { class: func }
+            process_angular_velocities: "[F] Process angular\nvelocities" { class: func }
+            read_accelerations: "[F] Read\naccelerations" { class: func }
+            process_accelerations: "[F] Process\naccelerations" { class: func }
+            read_field_intensities: "[F] Read field\nintensities" { class: func }
+            calculate_pitch_roll_yaw: "[F] Calculate\npitch, roll, yaw" { class: func }
+          }
+
+          obcc: "[LC] OBCC" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            collect_measurements: "[F] Collect\nmeasurements" { class: func }
+            collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+          }
+
+          pdm_processing: "[LC] PDM Processing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+
+            set_servo_init_state: "[F] Set Servo\ninit state" { class: func }
+            evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+            send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
+            send_close_signal_to_servo: "[F] Send close signal\nto Servo" { class: func }
+            note_servo_initial_position: "[C] Initial servo\nposition = 0 degrees" { class: note; shape: page }
+          }
+        }
+
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+        note_imu_trigger: "[C] No manual trigger:\ndeploy from ADS\nIMU data" { class: note; shape: page }
+        note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" { class: note; shape: page }
+        note_process_time: "[C] All Process or\nCalculate functions\nmust take < 5 ms" { class: note; shape: page }
+        note_no_blocking: "[C] No blocking\noperations besides\nI2C comms" { class: note; shape: page }
+      }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: down
+      grid-columns: 3
+
+      cap: "[PC] Cap" {
+        class: pc
+        direction: down
+
+        parachute_holder: "[LC] Parachute Holder" {
+          class: lc
+          direction: down
+          grid-columns: 1
+
+          stay_shut: "[F] Stay shut" { class: func }
+          separate_from_module: "[F] Separate from\nModule" { class: func }
+        }
+      }
+
+      parachute: "[PC] Parachute" {
+        class: pc
+        direction: down
+
+        descent_speed_control: "[LC] Descent speed control" {
+          class: lc
+          direction: down
+          grid-columns: 1
+
+          fold: "[F] Fold" { class: func }
+          unfold: "[F] Unfold" { class: func }
+          limit_terminal_speed: "[F] Limit terminal\nspeed" { class: func }
+        }
+      }
+
+      servo: "[PC] Servo" {
+        class: pc
+        direction: down
+
+        trigger: "[LC] Trigger" {
+          class: lc
+          direction: down
+          grid-columns: 1
+
+          reach_closed_position: "[F] Reach closed\nposition" { class: func }
+          reach_open_position: "[F] Reach open\nposition" { class: func }
+          retain_position: "[F] Retain position" { class: func }
+        }
+      }
+
+      max_diameter_30cm: "[C] Max. diameter\n30 cm" { class: note; shape: page }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: right
+
+      ads_headers: "[PC] 2mm 2x6 ADS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+      pdm_jst_connector: "[PC] 1x3 PDM JST Connector" { class: pc }
+    }
+  }
+}
+
+system.cansat.parachute_module.max_diameter_30cm -> system.cansat.parachute_module.parachute { class: cstr }
+
+system.cansat.ads_module.ads_pcb.imu.note_accuracy_angular_rate -> system.cansat.ads_module.ads_pcb.imu.ads_kinematic_sensing.measure_angular_velocities { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_imu_trigger -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing.evaluate_deployment_condition { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing.note_servo_initial_position -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing.set_servo_init_state { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_i2c_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_process_time -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }
+
+# Layout-only edge keeps the user preparation functions near the parachute context.
+# It carries no Capella semantics.
+user -> system.cansat.parachute_module { style: { opacity: 0 } }

@@ -24,6 +24,17 @@ The legacy raster exports may contain physical, logical, functional-allocation, 
 | Functional allocation | `PDM/PDM_v0.2_S.png`, `PDM/PDM_v0.2_FC.jpg` | `PDM/MBSE/v0.2/PDM_v0.2_view3_functional_allocation.d2` |
 | Parachute deployment functional chain | `PDM/PDM_v0.2_FC.jpg` | `PDM/MBSE/v0.2/PDM_v0.2_view4_parachute_deployment_chain.d2` |
 
+### PDM v1.0
+
+PDM v1.0 is based on the Capella `PDM v1.0` extraction and is extended with the ADS v1.0 IMU trigger path from `ADS/MBSE/v1.0`. Unlike PDM v0.2, parachute deployment is triggered by processed IMU data instead of a manual/BLE open command.
+
+| View | Primary context | Target D2 path |
+| --- | --- | --- |
+| Physical | `PDM v1.0` Capella extraction, `ADS/MBSE/v1.0` IMU path | `PDM/MBSE/v1.0/PDM_v1.0_view1_physical.d2` |
+| Logical | `PDM v1.0` Capella extraction, `ADS/MBSE/v1.0` IMU path | `PDM/MBSE/v1.0/PDM_v1.0_view2_logical.d2` |
+| Functional allocation | `PDM v1.0` Capella extraction, `ADS/MBSE/v1.0` IMU path | `PDM/MBSE/v1.0/PDM_v1.0_view3_functional_allocation.d2` |
+| IMU-triggered deployment functional chain | `PDM v1.0` Capella extraction, `ADS/MBSE/v1.0` IMU chains | `PDM/MBSE/v1.0/PDM_v1.0_view4_imu_triggered_deployment_chain.d2` |
+
 Render each D2 file to a `.png` next to it with ELK tight spacing:
 
 ```sh

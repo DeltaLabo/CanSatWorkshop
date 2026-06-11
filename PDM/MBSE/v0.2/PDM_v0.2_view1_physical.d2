@@ -12,7 +12,9 @@ vars: {
 # BLE is drawn in the raster with the same red styling as cable links. It is
 # kept as a physical/wireless link endpoint here, although it is semantically
 # borderline and appears as communication in the logical view.
-direction: right
+# The BLE wireless link terminates at the explicit 2.4 GHz antenna added inside
+# the OBCC module for the airborne remote deployment test.
+direction: down
 
 classes: {
   func: {
@@ -55,17 +57,19 @@ human_tester: "[EA] Human Tester" { class: ea }
 
 system: "[System] Physical System" {
   class: sys
-  direction: right
+  direction: down
 
   cansat: "[PC] CanSat" {
     class: pc
-    direction: right
+    direction: down
 
     obcc_module: "[PC] OBCC Module" {
       class: pc
       direction: down
 
       xiao_esp32_c3: "[PC] XIAO ESP32-C3" { class: pc }
+      antenna_2_4ghz: "[PC] 2.4 GHz Antenna" { class: pc }
+      note_ble_range: "[C] BLE command link\n>= 20 m LOS" { class: note; shape: page }
     }
 
     parachute_module: "[PC] Parachute Module" {
@@ -87,11 +91,15 @@ system: "[System] Physical System" {
   }
 }
 
-human_tester -- system.cansat.obcc_module.xiao_esp32_c3: "[PL] BLE" { class: pl }
+human_tester -- system.cansat.obcc_module.antenna_2_4ghz: "[PL] BLE 2.4 GHz\nwireless link" { class: pl }
+
+system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.obcc_module.antenna_2_4ghz: "[PL] 2.4 GHz\nantenna feed" { class: pl }
+system.cansat.obcc_module.note_ble_range -> system.cansat.obcc_module.antenna_2_4ghz { class: cstr }
 
 system.cansat.parachute_module.parachute -- system.cansat.parachute_module.servo: "[PL] Deployment\nmechanism" { class: pl }
 system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.parachute_module.servo: "[PL] Soldered\ncables (3x)" { class: pl }
 system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.power_module.boost_converter: "[PL] 5V Power\nCable Pair" { class: pl }
+system.cansat.power_module.boost_converter -- system.cansat.parachute_module.servo: "[PL] 5V Servo\nPower" { class: pl }
 system.cansat.power_module.battery -- system.cansat.power_module.boost_converter: "[PL] Soldered Power\nCables (2x)" { class: pl }
 
 system.cansat.power_module.note_pds_v0_1 -> system.cansat.power_module { class: cstr }

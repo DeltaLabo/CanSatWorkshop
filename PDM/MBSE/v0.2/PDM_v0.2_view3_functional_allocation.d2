@@ -10,6 +10,8 @@ vars: {
 # view contains no communication, flow, or physical-link exchange labels.
 # Historical drift: the raster labels the MCU XIAO ESP32-C3, while current PDM
 # v1.0 XML uses XIAO ESP32-S3. The historical v0.2 label is preserved here.
+# v0.2 intentionally models manual BLE deployment only; no IMU/altitude
+# fallback is present in this version.
 direction: right
 
 classes: {
@@ -54,10 +56,12 @@ human_tester: "[EA] Human Tester" {
   direction: down
   grid-columns: 1
 
+  establish_ble_connection: "[F] Establish BLE\nconnection" { class: func }
   release_dummy: "[F] Release\ndummy" { class: func }
-  trigger_pwm_signal: "[F] Trigger PWM\nSignal" { class: func }
+  send_ble_open_command: "[F] Send BLE open\ncommand" { class: func }
 }
 
+note_preflight_ble: "[C] BLE connection\nestablished pre-flight" { class: note; shape: page }
 note_airborne: "[C] While CanSat\nis airborne" { class: note; shape: page }
 
 system: "[System] Physical System" {
@@ -110,9 +114,12 @@ system: "[System] Physical System" {
           class: lc
           direction: down
 
+          maintain_ble_connection: "[F] Maintain BLE\nconnection" { class: func }
           set_pwm_open_position: "[F] Set PWM to open\nposition" { class: func }
         }
       }
+
+      antenna_2_4ghz: "[PC] 2.4 GHz Antenna" { class: pc }
     }
 
     power_module: "[PC] Power Module" {
@@ -148,9 +155,11 @@ system: "[System] Physical System" {
   }
 }
 
-note_airborne -> human_tester.trigger_pwm_signal { class: cstr }
+note_preflight_ble -> human_tester.establish_ble_connection { class: cstr }
+note_airborne -> human_tester.send_ble_open_command { class: cstr }
 system.cansat.note_pds_v0_1 -> system.cansat.power_module { class: cstr }
 
-# Layout-only edge keeps the airborne note close to its constrained function.
-# This carries no Capella semantics.
+# Layout-only edges keep the pre-flight and airborne notes close to their
+# constrained human functions. They carry no Capella semantics.
+note_preflight_ble -> human_tester { style: { opacity: 0 } }
 note_airborne -> human_tester { style: { opacity: 0 } }

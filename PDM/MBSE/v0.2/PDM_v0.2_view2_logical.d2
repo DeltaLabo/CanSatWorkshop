@@ -10,7 +10,8 @@ vars: {
 # Historical drift: the raster labels the MCU XIAO ESP32-C3, while current PDM
 # v1.0 XML uses XIAO ESP32-S3. The historical v0.2 label is preserved here.
 # BLE is connected to the OBCC logical component because this view represents
-# communication, not the raster's red physical/wireless styling.
+# communication, not the raster's red physical/wireless styling. The explicit
+# 2.4 GHz antenna remains physical deployment context only.
 direction: right
 
 classes: {
@@ -70,6 +71,9 @@ system: "[System] Physical System" {
 
         obcc: "[LC] OBCC" { class: lc }
       }
+
+      antenna_2_4ghz: "[PC] 2.4 GHz Antenna" { class: pc }
+      note_preflight_ble: "[C] BLE connection\nestablished pre-flight" { class: note; shape: page }
     }
 
     parachute_module: "[PC] Parachute Module" {
@@ -112,5 +116,6 @@ system: "[System] Physical System" {
   }
 }
 
-human_tester -> system.cansat.obcc_module.xiao_esp32_c3.obcc: "[CE] BLE" { class: ce }
+human_tester -> system.cansat.obcc_module.xiao_esp32_c3.obcc: "[CE] BLE\ncommand/control" { class: ce }
+system.cansat.obcc_module.note_preflight_ble -> system.cansat.obcc_module.xiao_esp32_c3.obcc { class: cstr }
 system.cansat.obcc_module.xiao_esp32_c3.obcc -> system.cansat.parachute_module.servo.parachute_trigger: "[CE] PWM" { class: ce }

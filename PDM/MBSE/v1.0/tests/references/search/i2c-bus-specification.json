@@ -1,0 +1,865 @@
+{
+  "query": "NXP UM10204 I2C bus specification timeout clock stretching",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "UM10204 I2C-bus specification and user manual Rev. 7.0 — 1 October 2021",
+      "url": "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+      "description": "There is an undefined condition ... still sending data. In other words, the following combinations result in ... Clock stretching pauses a transaction by holding the SCL line LOW....",
+      "content": "There is an undefined condition ... still sending data. In other words, the following combinations result in ... Clock stretching pauses a transaction by holding the SCL line LOW....\nIf no targets in a system can stretch the clock (hold SCL LOW), the · controller need not be designed to handle this procedure. ... ‘Bit banging’ (software emulation) multi-controller systems should consider a START byte. See Section 3.1.15. ... HIGH. The output stages of devices connected to the bus must have an open-drain or · open-collector to perform the wired-AND function. Data on the I2C-bus can be transferred\nSince control of the I2C-bus is decided solely on the address and data sent by competing · controllers, there is no central controller, nor any order of priority on the bus. There is an undefined condition if the arbitration procedure is still in progress at the · moment when one controller sends a repeated START or a STOP condition while the · other controller is still sending data. In other words, the following combinations result in ... Clock stretching pauses a transaction by holding the SCL line LOW.\nLOW (see Figure 4). One clock pulse is generated for each data bit transferred. ... All information provided in this document is subject to legal disclaimers. ... Rev. 7.0 — 1 October 2021 ... Figure 4. Bit transfer on the I2C-bus\nI2C-bus. Note that these relationships are permanent, as data transfer is only permitted in · one direction. The transfer of data would proceed as follows: Suppose that the controller ASIC wants to send information to the LED controller 2: • ASIC A (controller-transmitter), addresses LED controller 2 (target-receiver) by sending · the address on the USDA and generating the clock on USCL.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NXP Semiconductors",
+        "url": "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+        "long_name": "nxp.com",
+        "img": "https://imgs.search.brave.com/gJEyOJ2xlkEgVgHsn8Vnm2AiteHNyY-S5WKLLf6-9CY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMxZTkzN2I4/NDA3ZTI3MDBiYmQ2/NmM3NDc3ZTUyYTE4/MzVhOWE4Y2UwNTAx/YjU4MzMyYjJjNDI5/N2JkYjIzNy93d3cu/bnhwLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "nxp.com",
+        "hostname": "www.nxp.com",
+        "favicon": "https://imgs.search.brave.com/gJEyOJ2xlkEgVgHsn8Vnm2AiteHNyY-S5WKLLf6-9CY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMxZTkzN2I4/NDA3ZTI3MDBiYmQ2/NmM3NDc3ZTUyYTE4/MzVhOWE4Y2UwNTAx/YjU4MzMyYjJjNDI5/N2JkYjIzNy93d3cu/bnhwLmNvbS8",
+        "path": "› docs  › en  › user-guide  › UM10204.pdf"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "Solved: Undefined conditions on the I2C-bus - NXP Community",
+      "url": "https://community.nxp.com/t5/Other-NXP-Products/Undefined-conditions-on-the-I2C-bus/m-p/1969744?profile.language=en",
+      "description": "2. Clock Stretching (SCL Held Low) If the bus gets stuck, such as SCL being held low (a form of clock stretching), masters that attempt to take control of the bus will notice this, because they will be unable to initiate their communication. This situation can serve as an indirect indication ...",
+      "content": "2. Clock Stretching (SCL Held Low) If the bus gets stuck, such as SCL being held low (a form of clock stretching), masters that attempt to take control of the bus will notice this, because they will be unable to initiate their communication. This situation can serve as an indirect indication ...\nSolved: In the Section 3.1.8 of the UM10204 (I2C-bus specification and user manual(Rev7.0)), it is written that the undefined conditions occur on the\nIn summary, while the master that is currently using the bus will likely notice an undefined condition due to a failure to complete the expected communication sequence (acknowledgments, clocking, etc.), other masters may not notice immediately unless they try to take control of the bus and experience errors like clock stretching or bus being held in a faulty state.\n2. Clock Stretching (SCL Held Low) If the bus gets stuck, such as SCL being held low (a form of clock stretching), masters that attempt to take control of the bus will notice this, because they will be unable to initiate their communication. This situation can serve as an indirect indication that something has gone wrong, allowing the master to attempt recovery (e.g.\n3. Timeout Mechanisms in Masters Some I2C masters have built-in timeout mechanisms where if they do not see expected signals (like acknowledgment or the next clock cycle) within a certain time, they can assume there is an issue on the bus. Masters using this mechanism can stop their current operation and potentially signal an error condition, but it is only based on the master’s own activity and perspective.",
+      "age": "October 11, 2024",
+      "page_age": "2024-10-11T07:11:53",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NXP",
+        "url": "https://community.nxp.com/t5/Other-NXP-Products/Undefined-conditions-on-the-I2C-bus/m-p/1969744?profile.language=en",
+        "long_name": "community.nxp.com",
+        "img": "https://imgs.search.brave.com/IgXu6jckBe_D7VzNJFaiqxqEwXxVlO77ZTT8ooYcizU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2I0OGE1YWVk/MTA3ZDZmYTUxMDQ2/MjJlZjE1ODg5YTll/YjFlYzYzMTc5MjI2/NTBiYTM0YjRhYzE2/ZDkzNWNmNy9jb21t/dW5pdHkubnhwLmNv/bS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "community.nxp.com",
+        "hostname": "community.nxp.com",
+        "favicon": "https://imgs.search.brave.com/IgXu6jckBe_D7VzNJFaiqxqEwXxVlO77ZTT8ooYcizU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2I0OGE1YWVk/MTA3ZDZmYTUxMDQ2/MjJlZjE1ODg5YTll/YjFlYzYzMTc5MjI2/NTBiYTM0YjRhYzE2/ZDkzNWNmNy9jb21t/dW5pdHkubnhwLmNv/bS8",
+        "path": "› t5  › Other-NXP-Products  › Undefined-conditions-on-the-I2C-bus  › m-p  › 1969744"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "r/embedded on Reddit: I2C pullup resistor on clock line always required?",
+      "url": "https://www.reddit.com/r/embedded/comments/1qsahqb/i2c_pullup_resistor_on_clock_line_always_required/",
+      "description": "Every internet search seems to indicate both lines ALWAYS need pullup resistors, but I don&#x27;t see why that&#x27;s required for the CLK line if you have a single MPU that can operate the CLK line as push-pull and the slave device never holds the clock pin low for time stretching, interrupt servicing, or anything? Of course the SDA line would still need a pullup. Do all I2C slave devices have the ability to pull CLK low, or is that only implemented in some ICs for things like timing and interrupt considerations? ... In fact, SCL can be implemented as a push-pull driver. Take a look at the official I2C",
+      "content": "Every internet search seems to indicate both lines ALWAYS need pullup resistors, but I don&#x27;t see why that&#x27;s required for the CLK line if you have a single MPU that can operate the CLK line as push-pull and the slave device never holds the clock pin low for time stretching, interrupt servicing, or anything? Of course the SDA line would still need a pullup. Do all I2C slave devices have the ability to pull CLK low, or is that only implemented in some ICs for things like timing and interrupt considerations? ... In fact, SCL can be implemented as a push-pull driver. Take a look at the official I2C\nPosted by u/Consistent-Pickle - 12 votes and 11 comments\nEvery internet search seems to indicate both lines ALWAYS need pullup resistors, but I don't see why that's required for the CLK line if you have a single MPU that can operate the CLK line as push-pull and the slave device never holds the clock pin low for time stretching, interrupt servicing, or anything? Of course the SDA line would still need a pullup. Do all I2C slave devices have the ability to pull CLK low, or is that only implemented in some ICs for things like timing and interrupt considerations? ... In fact, SCL can be implemented as a push-pull driver. Take a look at the official I2C\nBut in the latest official I2C specification they changed \"master/slave\" to \"controller/target\", see NXP UM10204 \"I2C-bus specification and user manual\" (https://www.nxp.com/docs/en/user-guide/UM10204.pdf) Table 1 and Table 2.\nThe more common reason you don’t want to have the leader drive CLK as push pull is that a lot of,follower devices support clock stretching. Let’s say the leader needs to send several bytes worth of data or commands to the follower and the follower needs some amount of time to process the data or commands it received.",
+      "age": "January 31, 2026",
+      "page_age": "2026-01-31T18:42:46",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "qa",
+      "profile": {
+        "name": "Reddit",
+        "url": "https://www.reddit.com/r/embedded/comments/1qsahqb/i2c_pullup_resistor_on_clock_line_always_required/",
+        "long_name": "reddit.com",
+        "img": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "reddit.com",
+        "hostname": "www.reddit.com",
+        "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+        "path": "  › r/embedded  › i2c pullup resistor on clock line always required?"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/qEteAC9fcoPidStiLo4reu2DE15UI7bP27-q9d3wjCg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zaGFy/ZS5yZWRkLml0L3By/ZXZpZXcvcG9zdC8x/cXNhaHFi",
+        "original": "https://share.redd.it/preview/post/1qsahqb",
+        "logo": false
+      }
+    },
+    {
+      "rank": 4,
+      "title": "UM10204 I2C-bus specification and user manual Rev. 03 — 19 June 2007",
+      "url": "https://web.eecs.umich.edu/~prabal/teaching/resources/eecs373/NXP-I2C-Specification.pdf",
+      "description": "NXP Semiconductors · UM10204 · I2C-bus specification and user manual · 3.9 · Clock stretching · Clock stretching pauses a transaction by holding the SCL line LOW. The transaction · cannot continue until the line is released HIGH again. Clock stretching is optional and in ·",
+      "content": "NXP Semiconductors · UM10204 · I2C-bus specification and user manual · 3.9 · Clock stretching · Clock stretching pauses a transaction by holding the SCL line LOW. The transaction · cannot continue until the line is released HIGH again. Clock stretching is optional and in ·\nNXP Semiconductors · UM10204 · I2C-bus specification and user manual · Table 2 summarizes the use of mandatory and optional portions of the I2C-bus · specification and which system configurations use them. [1] Also refers to a master acting as a slave. [2] Clock stretching is a feature of some slaves.\nIf no slaves in a system can stretch the clock (hold SCL LOW), the master need not be designed to handle this procedure. ... ‘Bit banging’ (software emulation) multi-master systems should consider a START byte. See Section 3.15. ... HIGH. The output stages of devices connected to the bus must have an open-drain or · open-collector to perform the wired-AND function. Data on the I2C-bus can be transferred\nThis explains the minimum clock frequency of 10 kHz to prevent locking up the bus. I2C · can be a ‘DC’ bus, meaning that a slave device stretches the master clock when",
+      "age": "June 19, 2007",
+      "page_age": "2007-06-19T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "University of Michigan",
+        "url": "https://web.eecs.umich.edu/~prabal/teaching/resources/eecs373/NXP-I2C-Specification.pdf",
+        "long_name": "web.eecs.umich.edu",
+        "img": "https://imgs.search.brave.com/93IsdCKsJX-Zy1Jz--2GqtsSvbSUsBKDD9P6DOgPV1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTQ5MzA5NTRm/OTdjMjY1NTUwY2Qx/NjRiOTI1NDE0YzJh/MWU1YjM2YjdjYThm/MTg5M2QxN2FmM2Uz/MWM4ZjIwNi93ZWIu/ZWVjcy51bWljaC5l/ZHUv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "web.eecs.umich.edu",
+        "hostname": "web.eecs.umich.edu",
+        "favicon": "https://imgs.search.brave.com/93IsdCKsJX-Zy1Jz--2GqtsSvbSUsBKDD9P6DOgPV1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTQ5MzA5NTRm/OTdjMjY1NTUwY2Qx/NjRiOTI1NDE0YzJh/MWU1YjM2YjdjYThm/MTg5M2QxN2FmM2Uz/MWM4ZjIwNi93ZWIu/ZWVjcy51bWljaC5l/ZHUv",
+        "path": "› ~prabal  › teaching  › resources  › eecs373  › NXP-I2C-Specification.pdf"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "I2C-bus Specification & User Manual | NXP Semiconductors",
+      "url": "https://studylib.net/doc/18619960/um10204-i2c-bus-specification-and-user-manual",
+      "description": "For a single master application, the master’s SCL output can be a push-pull driver design provided that there are no devices on the bus which would stretch the clock. VDD1 = 5 V &amp;plusmn; 10 % CMOS Rp CMOS VDD2 VDD3 NMOS BIPOLAR Rp SDA SCL 002aac860 VDD2, VDD3 are device dependent (e.g., 12 V). Fig 3. Devices with a variety of supply voltages sharing the same bus UM10204_3 User manual &amp;copy; NXP B.V.",
+      "content": "For a single master application, the master’s SCL output can be a push-pull driver design provided that there are no devices on the bus which would stretch the clock. VDD1 = 5 V &amp;plusmn; 10 % CMOS Rp CMOS VDD2 VDD3 NMOS BIPOLAR Rp SDA SCL 002aac860 VDD2, VDD3 are device dependent (e.g., 12 V). Fig 3. Devices with a variety of supply voltages sharing the same bus UM10204_3 User manual &amp;copy; NXP B.V.\nThe clock signals during arbitration are a synchronized combination of the clocks generated by the masters using the wired-AND connection to the SCL line (for more detailed information concerning arbitration see Section 3.8). Generation of clock signals on the I2C-bus is always the responsibility of master devices; each master generates its own clock signals when transferring data on the bus. Bus clock signals from a master can only be altered when they are stretched by a slow slave device holding down the clock line or by another master when arbitration occurs. UM10204_3 User manual &copy; NXP B.V.\nFor a single master application, the master’s SCL output can be a push-pull driver design provided that there are no devices on the bus which would stretch the clock. VDD1 = 5 V &plusmn; 10 % CMOS Rp CMOS VDD2 VDD3 NMOS BIPOLAR Rp SDA SCL 002aac860 VDD2, VDD3 are device dependent (e.g., 12 V). Fig 3. Devices with a variety of supply voltages sharing the same bus UM10204_3 User manual &copy; NXP B.V.\nThe device that held the bus LOW should release it sometime within those 9 clocks. If not, then use the HW reset or cycle power to clear the bus. 3.17 Device ID The Device ID field (see Figure 20) is an optional 3 byte read-only (24 bits) word giving the following information: • 12 bits with the manufacturer name, unique per manufacturer (e.g., NXP) • 9 bits with the part identification, assigned by manufacturer (e.g., PCA9698) • 3 bits with the die revision, assigned by manufacturer (e.g., RevX) UM10204_3 User manual &copy; NXP B.V.\nThe SMBus clock is defined from 10 kHz to 100 kHz while I2C can be 0 Hz to 100 kHz, 0 Hz to 400 kHz, 0 Hz to 1 MHz and 0 Hz to 3.4 MHz, depending on the mode. This means that an I2C-bus running at less than 10 kHz will not be SMBus compliant since the SMBus devices may time out. UM10204_3 User manual &copy; NXP B.V.",
+      "age": "May 6, 2025",
+      "page_age": "2025-05-06T12:03:14",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "StudyLib",
+        "url": "https://studylib.net/doc/18619960/um10204-i2c-bus-specification-and-user-manual",
+        "long_name": "studylib.net",
+        "img": "https://imgs.search.brave.com/JWPVLhxdy1hGJE6Lt10ki_lgwoOQq6RsxVfh8WiLVD4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjA4ZTE1MDgw/OGU4ZmNhMWRhNTVi/ZWE2MTlmZDZkNjc2/MTAxZjhkNWNiNjc0/N2QyN2ZhZGQzNjRk/OTc1NjE2My9zdHVk/eWxpYi5uZXQv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "studylib.net",
+        "hostname": "studylib.net",
+        "favicon": "https://imgs.search.brave.com/JWPVLhxdy1hGJE6Lt10ki_lgwoOQq6RsxVfh8WiLVD4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjA4ZTE1MDgw/OGU4ZmNhMWRhNTVi/ZWE2MTlmZDZkNjc2/MTAxZjhkNWNiNjc0/N2QyN2ZhZGQzNjRk/OTc1NjE2My9zdHVk/eWxpYi5uZXQv",
+        "path": "  › engineering & technology  › electrical engineering"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/FzZ2bHL7RiksPlbd-4o-Ec4KsX3pJu8rccWJknGwtk0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zMi5z/dHVkeWxpYi5uZXQv/c3RvcmUvZGF0YS8w/MTg2MTk5NjBfMS1k/MThkMmNlMWRhNzFj/MzQ1N2E2ZGIwMTc0/NWI1OGY1OC5wbmc",
+        "original": "https://s2.studylib.net/store/data/018619960_1-d18d2ce1da71c3457a6db01745b58f58.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "UM10204 I2C-Bus Specification and User Manual | PDF | Bit Rate | Bit",
+      "url": "https://www.scribd.com/document/406306478/UM10204-I2C-Bus-Specification-and-User-Manual",
+      "description": "48 of 64 xxxxxxxxxxxxxxxxxxxxx ... I2C-bus device can be used in a Standard-mode I2C-bus system, but the requirement tSU;DAT 250 ns must then be met....",
+      "content": "48 of 64 xxxxxxxxxxxxxxxxxxxxx ... I2C-bus device can be used in a Standard-mode I2C-bus system, but the requirement tSU;DAT 250 ns must then be met....\nUM10204 49 of 64 NXP Semiconductors UM10204 I2C-bus specification and user manual ... 70 % 70 % SDA 30 % 30 % cont. tHD;DAT tVD;DAT tf tHIGH tr 70 % 70 % 70 % 70 % SCL 30 % 30 % 30 % 30 % cont. tHD;STA tLOW 9th clock S 1 / fSCL 1st clock cycle\n48 of 64 xxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxx x x x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxx xx xx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxx xxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxx x x xxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxx xxx [5] A Fast-mode I2C-bus device can be used in a Standard-mode I2C-bus system, but the requirement tSU;DAT 250 ns must then be met. This will automatically be the case if the User manual UM10204 · NXP Semiconductors device does not stretch the LOW period of the SCL signal.\nxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxx xxx User manual UM10204 · NXP Semiconductors Table 10. Characteristics of the SDA and SCL bus lines for Standard, Fast, and Fast-mode Plus I2C-bus devices[1] Symbol Parameter Conditions Standard-mode Fast-mode Fast-mode Plus Unit Min Max Min Max Min Max fSCL SCL clock frequency 0 100 0 400 0 1000 kHz tHD;STA hold time (repeated) START condition After this period, the first 4.0 - 0.6 - 0.26 - μs clock pulse is generated.\nTiming parameters are independent for capacitive load up to 100 pF for each bus line allowing the maximum possible bit rate of 3.4 Mbit/s. At a higher capacitive load on the bus lines, the bit rate decreases gradually. The timing parameters for a capacitive bus load of 400 pF are specified in Table 12, allowing a maximum bit rate of 1.7 Mbit/s. For UM10204 All information provided in this document is subject to legal disclaimers. © NXP Semiconductors N.V.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "creative_work",
+      "profile": {
+        "name": "Scribd",
+        "url": "https://www.scribd.com/document/406306478/UM10204-I2C-Bus-Specification-and-User-Manual",
+        "long_name": "scribd.com",
+        "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "scribd.com",
+        "hostname": "www.scribd.com",
+        "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+        "path": "› document  › 406306478  › UM10204-I2C-Bus-Specification-and-User-Manual"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/JpooFLJKfXySNA4fiqR4T2uH6u49SjY7B59lbFtPsQU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDA2MzA2NDc4LzE0/OXgxOTgvMjg2ZTI5/ZjZjZi8xNTU1MzA1/NjMzP3Y9MQ",
+        "original": "https://imgv2-1-f.scribdassets.com/img/document/406306478/149x198/286e29f6cf/1555305633?v=1",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "UM10204 I2C-Bus Specification and User Manual",
+      "url": "https://www.digikey.com/en/pdf/n/nxp-semiconductors/um10204-i2c-bus-specification-and-user-manual",
+      "description": "NXP Semiconductors developed a simple bidirectional 2-wire bus for efficient inter-IC control. This bus is called the Inter-IC or I2C-bus.",
+      "content": "NXP Semiconductors developed a simple bidirectional 2-wire bus for efficient inter-IC control. This bus is called the Inter-IC or I2C-bus.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "DigiKey",
+        "url": "https://www.digikey.com/en/pdf/n/nxp-semiconductors/um10204-i2c-bus-specification-and-user-manual",
+        "long_name": "digikey.com",
+        "img": "https://imgs.search.brave.com/VM3FqF8JYPPYmeXQOLdtQox2H-mtWIA9PXVYTf9IKBk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQ3YTNmOTZh/NmMyN2IzODE4OWU2/NmEwZWJkNzAxOGVi/MGYxYWQxYWUxMWY2/NTBjMzgzYTZiY2Fh/MGVkZTViNS93d3cu/ZGlnaWtleS5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "digikey.com",
+        "hostname": "www.digikey.com",
+        "favicon": "https://imgs.search.brave.com/VM3FqF8JYPPYmeXQOLdtQox2H-mtWIA9PXVYTf9IKBk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQ3YTNmOTZh/NmMyN2IzODE4OWU2/NmEwZWJkNzAxOGVi/MGYxYWQxYWUxMWY2/NTBjMzgzYTZiY2Fh/MGVkZTViNS93d3cu/ZGlnaWtleS5jb20v",
+        "path": "› en  › pdf  › n  › nxp-semiconductors  › um10204-i2c-bus-specification-and-user-manual"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/nw2AFWMCUk3mToFRXHCH5_meoyIPSVdxWdbibTBY_FQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zYy1h/LmRpZ2lrZXlhc3Nl/dHMuY29tLy0vbWVk/aWEvSW1hZ2VzL0hl/YWRlci9EaWdpS2V5/X3JnYl82MDB4NjAw/LnBuZz9sYT1lbiZh/bXA7dHM9ODhjNjI1/MWMtYmE0NC00Yzg4/LWFjMmQtZDUyZThj/YzRhZjQy",
+        "original": "https://sc-a.digikeyassets.com/-/media/Images/Header/DigiKey_rgb_600x600.png?la=en&amp;ts=88c6251c-ba44-4c88-ac2d-d52e8cc4af42",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "AN13107 PF series PMIC I2C-bus communication overview Rev. 1 — 23 February 2021",
+      "url": "https://community.nxp.com/pwmxy87654/attachments/pwmxy87654/Power-Management/2303/1/AN13107.pdf",
+      "description": "the exception that arbitration and clock synchronization is not performed during the · Hs mode transfer, the same serial bus protocol and data format are maintained as with ... SDA and SCL lines are used to operate at either speed. ... Before time t1 in Figure 5, each connected device operates in F/S mode. Between · times t1 and tH (this time interval can be stretched by any device) the master sends",
+      "content": "the exception that arbitration and clock synchronization is not performed during the · Hs mode transfer, the same serial bus protocol and data format are maintained as with ... SDA and SCL lines are used to operate at either speed. ... Before time t1 in Figure 5, each connected device operates in F/S mode. Between · times t1 and tH (this time interval can be stretched by any device) the master sends\nservicing an internal interrupt, it can hold the clock line SCL LOW to force the master into\nsent. The master generates all clock pulses, including the acknowledge ninth clock pulse.\nduring the acknowledge clock pulse so the receiver can pull the SDA line LOW and",
+      "age": "February 23, 2021",
+      "page_age": "2021-02-23T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "NXP Community",
+        "url": "https://community.nxp.com/pwmxy87654/attachments/pwmxy87654/Power-Management/2303/1/AN13107.pdf",
+        "long_name": "community.nxp.com",
+        "img": "https://imgs.search.brave.com/IgXu6jckBe_D7VzNJFaiqxqEwXxVlO77ZTT8ooYcizU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2I0OGE1YWVk/MTA3ZDZmYTUxMDQ2/MjJlZjE1ODg5YTll/YjFlYzYzMTc5MjI2/NTBiYTM0YjRhYzE2/ZDkzNWNmNy9jb21t/dW5pdHkubnhwLmNv/bS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "community.nxp.com",
+        "hostname": "community.nxp.com",
+        "favicon": "https://imgs.search.brave.com/IgXu6jckBe_D7VzNJFaiqxqEwXxVlO77ZTT8ooYcizU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2I0OGE1YWVk/MTA3ZDZmYTUxMDQ2/MjJlZjE1ODg5YTll/YjFlYzYzMTc5MjI2/NTBiYTM0YjRhYzE2/ZDkzNWNmNy9jb21t/dW5pdHkubnhwLmNv/bS8",
+        "path": "› pwmxy87654  › attachments  › pwmxy87654  › Power-Management  › 2303  › 1  › AN13107.pdf"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "UM10204 datasheet(45/64 Pages) NXP | I2C-bus specification and user manual",
+      "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2694/45/UM10204.html",
+      "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201245 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.8 Timing requirements for the bridge in a mixed-speed bus system ...",
+      "content": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201245 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.8 Timing requirements for the bridge in a mixed-speed bus system ...\nUM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201245 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.8 Timing requirements for the bridge in a mixed-speed bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2694/45/UM10204.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› html-pdf  › 467563  › NXP  › UM10204  › 2694  › 45  › UM10204.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    },
+    {
+      "rank": 10,
+      "title": "UM10204 datasheet(42/64 Pages) NXP | I2C-bus specification and user manual",
+      "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2514/42/UM10204.html",
+      "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201242 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.5 Mixed speed modes on one serial bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+      "content": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201242 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.5 Mixed speed modes on one serial bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "AllDataSheet",
+        "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2514/42/UM10204.html",
+        "long_name": "alldatasheet.com",
+        "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "alldatasheet.com",
+        "hostname": "www.alldatasheet.com",
+        "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+        "path": "› html-pdf  › 467563  › NXP  › UM10204  › 2514  › 42  › UM10204.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+        "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+        "logo": true
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "NXP UM10204 I2C bus specification timeout clock stretching",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.081,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "NXP UM10204 I2C bus specification timeout clock stretching",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "discussions": {
+      "type": "search",
+      "results": [
+        {
+          "title": "i2c pull-up resistors calculation (design check)",
+          "url": "https://www.reddit.com/r/AskElectronics/comments/8jy707/i2c_pullup_resistors_calculation_design_check/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "400kHz is the usual maximum baud rate for I2C, if you want to go much faster then your resistor is going to have to be much smaller to get a quick enough rise time at the expense of more wasted power when the line is pulled down by a device on the bus",
+          "fetched_content_timestamp": 1781086583,
+          "language": "en",
+          "family_friendly": true,
+          "type": "discussion",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "reddit.com",
+            "hostname": "www.reddit.com",
+            "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+            "path": "› r  › AskElectronics  › comments  › 8jy707  › i2c_pullup_resistors_calculation_design_check"
+          },
+          "age": "May 16, 2018",
+          "data": {
+            "forum_name": "r/AskElectronics",
+            "num_answers": 14,
+            "score": "2",
+            "title": "i2c pull-up resistors calculation (design check)",
+            "question": "<p>\n      Hey everyone,\n    </p><p>\n      I just want someone to please double check this calculation as the range seems very small for the pull-up resistors.\n    </p><p>\n      <a rpl class=\"relative pointer-events-auto a\n  \n  \n  \n  \n  underline\n  \n  cursor-pointer\" href=\"http://www.ti.com/lit/an/slva689/slva689.pdf\" rel=\"noopener nofollow ugc\" target=\"_blank\">I&#39;m following this document by TI</a>\n    </p><p>\n      and I&#39;m using this <a rpl class=\"relative pointer-events-auto a\n  \n  \n  \n  \n  underline\n  \n  cursor-pointer\" href=\"http://www.ti.com/lit/ds/symlink/adc121c021.pdf\" rel=\"noopener nofollow ugc\" target=\"_blank\">ADC</a>.\n    </p><p>\n      <strong>So the calculation of the minimum value is as follows:</strong>\n    </p><ul>\n        <li>\n      <pre>\nRp(min)= (Vcc - Vol(max)) ÷ Iol </pre>\n    </li><li>\n      <p>\n      So my Vcc line will be a 3.3V line(although I wish it could&#39;ve been 5!) From the data sheet(page 6) the <a rpl class=\"relative pointer-events-auto a\n  \n  \n  \n  \n  underline\n  \n  cursor-pointer\" href=\"https://imgur.com/a/3FCkxD6\" rel=\"noopener nofollow ugc\" target=\"_blank\">VOL(max) and Iol is found here</a>\n    </p>\n    </li><li>\n      <p>\n      Vol(max) = 0.6V and Iol = 6ma\n    </p>\n    </li><li>\n      <pre>\nRp(min) = (3.3-0.6) ÷  0.006 = 450 Ω</pre>\n    </li>\n      </ul><p>\n      <strong>The calculation of the maximum value is as follows:</strong>\n    </p><ul>\n        <li>\n      <pre>\nRp(max) = tr ÷  (0.8473 x Cb)</pre>\n    </li><li>\n      <p>\n      Where tr is the maximum rise time.\n    </p>\n    </li><li>\n      <p>\n      <a rpl class=\"relative pointer-events-auto a\n  \n  \n  \n  \n  underline\n  \n  cursor-pointer\" href=\"https://imgur.com/a/vp1GVym\" rel=\"noopener nofollow ugc\" target=\"_blank\">I plan on using the device with a conversion rate of 1.7 MHz</a>\n    </p>\n    </li><li>\n      <p>\n      At 1.7 MHz the maximum rise time is 160ns and the bus capacitance is 400pF\n    </p>\n    </li><li>\n      <p>\n      This would give me a maximum resistance of :\n    </p>\n    </li><li>\n      <pre>\nRp(max) =160nS ÷ (0.8473 x 400pF) = 472.0878083 Ω</pre>\n    </li>\n      </ul><p>\n      So my resistance range is:\n    </p><p>\n      450 Ω &lt; Rp &lt; 472.09 Ω\n    </p><p>\n      Is this right? It seems quite small for the range of resistance values..\n    </p>",
+            "top_comment": "400kHz is the usual maximum baud rate for I2C, if you want to go much faster then your resistor is going to have to be much smaller to get a quick enough rise time at the expense of more wasted power when the line is pulled down by a device on the bus"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "infobox": {
+      "type": "graph",
+      "results": [
+        {
+          "title": "I2C pullup resistor on clock line always required?",
+          "url": "https://www.reddit.com/r/embedded/comments/1qsahqb/i2c_pullup_resistor_on_clock_line_always_required/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "",
+          "family_friendly": true,
+          "type": "infobox",
+          "position": 2,
+          "attributes": [],
+          "providers": [
+            {
+              "type": "external",
+              "name": "reddit.com",
+              "url": "https://www.reddit.com/r/embedded/comments/1qsahqb/i2c_pullup_resistor_on_clock_line_always_required/",
+              "img": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8"
+            }
+          ],
+          "subtype": "code",
+          "data": {
+            "question": "I2C pullup resistor on clock line always required?",
+            "answer": {
+              "text": "In fact, SCL can be implemented as a push-pull driver. Take a look at the official I2C specification, NXP UM10204 \"I2C-bus specification and user manual\" ( https://www.nxp.com/docs/en/user-guide/UM10204.pdf ) chapter 3.1.1: \"For a single controller application, the controller’s SCL output can be a push-pull driver design if there are no devices on the bus which would stretch the clock.\" According to Table 3 clock stretching is optional. Therefore, not all devices have clock stretching, but you need to check each device on the bus. More details about clock stretching is in chapter 3.1.9",
+              "author": "TheMM94",
+              "upvoteCount": 18
+            }
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "reddit.com",
+            "hostname": "www.reddit.com",
+            "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+            "path": "› r  › embedded  › comments  › 1qsahqb  › i2c_pullup_resistor_on_clock_line_always_required"
+          }
+        }
+      ]
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "infobox",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "discussions",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "UM10204 I2C-bus specification and user manual Rev. 7.0 — 1 October 2021",
+          "url": "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "There is an undefined condition ... still sending data. In other words, the following combinations result in ... Clock stretching pauses a transaction by holding the SCL line LOW....",
+          "profile": {
+            "name": "NXP Semiconductors",
+            "url": "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+            "long_name": "nxp.com",
+            "img": "https://imgs.search.brave.com/gJEyOJ2xlkEgVgHsn8Vnm2AiteHNyY-S5WKLLf6-9CY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMxZTkzN2I4/NDA3ZTI3MDBiYmQ2/NmM3NDc3ZTUyYTE4/MzVhOWE4Y2UwNTAx/YjU4MzMyYjJjNDI5/N2JkYjIzNy93d3cu/bnhwLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nxp.com",
+            "hostname": "www.nxp.com",
+            "favicon": "https://imgs.search.brave.com/gJEyOJ2xlkEgVgHsn8Vnm2AiteHNyY-S5WKLLf6-9CY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGMxZTkzN2I4/NDA3ZTI3MDBiYmQ2/NmM3NDc3ZTUyYTE4/MzVhOWE4Y2UwNTAx/YjU4MzMyYjJjNDI5/N2JkYjIzNy93d3cu/bnhwLmNvbS8",
+            "path": "› docs  › en  › user-guide  › UM10204.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "If no targets in a system can stretch the clock (hold SCL LOW), the · controller need not be designed to handle this procedure. ... ‘Bit banging’ (software emulation) multi-controller systems should consider a START byte. See Section 3.1.15. ... HIGH. The output stages of devices connected to the bus must have an open-drain or · open-collector to perform the wired-AND function. Data on the I2C-bus can be transferred",
+            "Since control of the I2C-bus is decided solely on the address and data sent by competing · controllers, there is no central controller, nor any order of priority on the bus. There is an undefined condition if the arbitration procedure is still in progress at the · moment when one controller sends a repeated START or a STOP condition while the · other controller is still sending data. In other words, the following combinations result in ... Clock stretching pauses a transaction by holding the SCL line LOW.",
+            "LOW (see Figure 4). One clock pulse is generated for each data bit transferred. ... All information provided in this document is subject to legal disclaimers. ... Rev. 7.0 — 1 October 2021 ... Figure 4. Bit transfer on the I2C-bus",
+            "I2C-bus. Note that these relationships are permanent, as data transfer is only permitted in · one direction. The transfer of data would proceed as follows: Suppose that the controller ASIC wants to send information to the LED controller 2: • ASIC A (controller-transmitter), addresses LED controller 2 (target-receiver) by sending · the address on the USDA and generating the clock on USCL."
+          ]
+        },
+        {
+          "title": "Solved: Undefined conditions on the I2C-bus - NXP Community",
+          "url": "https://community.nxp.com/t5/Other-NXP-Products/Undefined-conditions-on-the-I2C-bus/m-p/1969744?profile.language=en",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "2. Clock Stretching (SCL Held Low) If the bus gets stuck, such as SCL being held low (a form of clock stretching), masters that attempt to take control of the bus will notice this, because they will be unable to initiate their communication. This situation can serve as an indirect indication ...",
+          "page_age": "2024-10-11T07:11:53",
+          "profile": {
+            "name": "NXP",
+            "url": "https://community.nxp.com/t5/Other-NXP-Products/Undefined-conditions-on-the-I2C-bus/m-p/1969744?profile.language=en",
+            "long_name": "community.nxp.com",
+            "img": "https://imgs.search.brave.com/IgXu6jckBe_D7VzNJFaiqxqEwXxVlO77ZTT8ooYcizU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2I0OGE1YWVk/MTA3ZDZmYTUxMDQ2/MjJlZjE1ODg5YTll/YjFlYzYzMTc5MjI2/NTBiYTM0YjRhYzE2/ZDkzNWNmNy9jb21t/dW5pdHkubnhwLmNv/bS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "community.nxp.com",
+            "hostname": "community.nxp.com",
+            "favicon": "https://imgs.search.brave.com/IgXu6jckBe_D7VzNJFaiqxqEwXxVlO77ZTT8ooYcizU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2I0OGE1YWVk/MTA3ZDZmYTUxMDQ2/MjJlZjE1ODg5YTll/YjFlYzYzMTc5MjI2/NTBiYTM0YjRhYzE2/ZDkzNWNmNy9jb21t/dW5pdHkubnhwLmNv/bS8",
+            "path": "› t5  › Other-NXP-Products  › Undefined-conditions-on-the-I2C-bus  › m-p  › 1969744"
+          },
+          "age": "October 11, 2024",
+          "extra_snippets": [
+            "Solved: In the Section 3.1.8 of the UM10204 (I2C-bus specification and user manual(Rev7.0)), it is written that the undefined conditions occur on the",
+            "In summary, while the master that is currently using the bus will likely notice an undefined condition due to a failure to complete the expected communication sequence (acknowledgments, clocking, etc.), other masters may not notice immediately unless they try to take control of the bus and experience errors like clock stretching or bus being held in a faulty state.",
+            "2. Clock Stretching (SCL Held Low) If the bus gets stuck, such as SCL being held low (a form of clock stretching), masters that attempt to take control of the bus will notice this, because they will be unable to initiate their communication. This situation can serve as an indirect indication that something has gone wrong, allowing the master to attempt recovery (e.g.",
+            "3. Timeout Mechanisms in Masters Some I2C masters have built-in timeout mechanisms where if they do not see expected signals (like acknowledgment or the next clock cycle) within a certain time, they can assume there is an issue on the bus. Masters using this mechanism can stop their current operation and potentially signal an error condition, but it is only based on the master’s own activity and perspective."
+          ]
+        },
+        {
+          "title": "r/embedded on Reddit: I2C pullup resistor on clock line always required?",
+          "url": "https://www.reddit.com/r/embedded/comments/1qsahqb/i2c_pullup_resistor_on_clock_line_always_required/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Every internet search seems to indicate both lines ALWAYS need pullup resistors, but I don&#x27;t see why that&#x27;s required for the CLK line if you have a single MPU that can operate the CLK line as push-pull and the slave device never holds the clock pin low for time stretching, interrupt servicing, or anything? Of course the SDA line would still need a pullup. Do all I2C slave devices have the ability to pull CLK low, or is that only implemented in some ICs for things like timing and interrupt considerations? ... In fact, SCL can be implemented as a push-pull driver. Take a look at the official I2C",
+          "page_age": "2026-01-31T18:42:46",
+          "profile": {
+            "name": "Reddit",
+            "url": "https://www.reddit.com/r/embedded/comments/1qsahqb/i2c_pullup_resistor_on_clock_line_always_required/",
+            "long_name": "reddit.com",
+            "img": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "qa",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "reddit.com",
+            "hostname": "www.reddit.com",
+            "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+            "path": "  › r/embedded  › i2c pullup resistor on clock line always required?"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/qEteAC9fcoPidStiLo4reu2DE15UI7bP27-q9d3wjCg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zaGFy/ZS5yZWRkLml0L3By/ZXZpZXcvcG9zdC8x/cXNhaHFi",
+            "original": "https://share.redd.it/preview/post/1qsahqb",
+            "logo": false
+          },
+          "age": "January 31, 2026",
+          "qa": {
+            "question": "<p dir=\"auto\">\n      I&#39;m interested in writing an I2C function to communicate between a single MPU and a single I2C sensor.  Every internet search seems to indicate both lines ALWAYS need pullup resistors, but I don&#39;t see why that&#39;s required for the CLK line if you have a single MPU that can operate the CLK line as push-pull and the slave device never holds the clock pin low for time stretching, interrupt servicing, or anything?  Of course the SDA line would still need a pullup.  Do all I2C slave devices have the ability to pull CLK low, or is that only implemented in some ICs for things like timing and interrupt considerations?\n    </p>",
+            "answer": {
+              "text": "<span>In fact, SCL can be implemented as a push-pull driver. Take a look at the official I2C specification, NXP UM10204 \"I2C-bus specification and user manual\" ( https://www.nxp.com/docs/en/user-guide/UM10204.pdf ) chapter 3.1.1: \"For a single controller application, the controller’s SCL output can be a push-pull driver design if there are no devices on the bus which would stretch the clock.\" According to Table 3 clock stretching is optional. Therefore, not all devices have clock stretching, but you need to check each device on the bus. More details about clock stretching is in chapter 3.1.9</span>\n",
+              "upvoteCount": 18
+            }
+          },
+          "extra_snippets": [
+            "Posted by u/Consistent-Pickle - 12 votes and 11 comments",
+            "Every internet search seems to indicate both lines ALWAYS need pullup resistors, but I don't see why that's required for the CLK line if you have a single MPU that can operate the CLK line as push-pull and the slave device never holds the clock pin low for time stretching, interrupt servicing, or anything? Of course the SDA line would still need a pullup. Do all I2C slave devices have the ability to pull CLK low, or is that only implemented in some ICs for things like timing and interrupt considerations? ... In fact, SCL can be implemented as a push-pull driver. Take a look at the official I2C",
+            "But in the latest official I2C specification they changed \"master/slave\" to \"controller/target\", see NXP UM10204 \"I2C-bus specification and user manual\" (https://www.nxp.com/docs/en/user-guide/UM10204.pdf) Table 1 and Table 2.",
+            "The more common reason you don’t want to have the leader drive CLK as push pull is that a lot of,follower devices support clock stretching. Let’s say the leader needs to send several bytes worth of data or commands to the follower and the follower needs some amount of time to process the data or commands it received."
+          ]
+        },
+        {
+          "title": "UM10204 I2C-bus specification and user manual Rev. 03 — 19 June 2007",
+          "url": "https://web.eecs.umich.edu/~prabal/teaching/resources/eecs373/NXP-I2C-Specification.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "NXP Semiconductors · UM10204 · I2C-bus specification and user manual · 3.9 · Clock stretching · Clock stretching pauses a transaction by holding the SCL line LOW. The transaction · cannot continue until the line is released HIGH again. Clock stretching is optional and in ·",
+          "page_age": "2007-06-19T00:00:00",
+          "profile": {
+            "name": "University of Michigan",
+            "url": "https://web.eecs.umich.edu/~prabal/teaching/resources/eecs373/NXP-I2C-Specification.pdf",
+            "long_name": "web.eecs.umich.edu",
+            "img": "https://imgs.search.brave.com/93IsdCKsJX-Zy1Jz--2GqtsSvbSUsBKDD9P6DOgPV1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTQ5MzA5NTRm/OTdjMjY1NTUwY2Qx/NjRiOTI1NDE0YzJh/MWU1YjM2YjdjYThm/MTg5M2QxN2FmM2Uz/MWM4ZjIwNi93ZWIu/ZWVjcy51bWljaC5l/ZHUv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "web.eecs.umich.edu",
+            "hostname": "web.eecs.umich.edu",
+            "favicon": "https://imgs.search.brave.com/93IsdCKsJX-Zy1Jz--2GqtsSvbSUsBKDD9P6DOgPV1Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTQ5MzA5NTRm/OTdjMjY1NTUwY2Qx/NjRiOTI1NDE0YzJh/MWU1YjM2YjdjYThm/MTg5M2QxN2FmM2Uz/MWM4ZjIwNi93ZWIu/ZWVjcy51bWljaC5l/ZHUv",
+            "path": "› ~prabal  › teaching  › resources  › eecs373  › NXP-I2C-Specification.pdf"
+          },
+          "age": "June 19, 2007",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "NXP Semiconductors · UM10204 · I2C-bus specification and user manual · Table 2 summarizes the use of mandatory and optional portions of the I2C-bus · specification and which system configurations use them. [1] Also refers to a master acting as a slave. [2] Clock stretching is a feature of some slaves.",
+            "NXP Semiconductors · UM10204 · I2C-bus specification and user manual · 3.9 · Clock stretching · Clock stretching pauses a transaction by holding the SCL line LOW. The transaction · cannot continue until the line is released HIGH again. Clock stretching is optional and in ·",
+            "If no slaves in a system can stretch the clock (hold SCL LOW), the master need not be designed to handle this procedure. ... ‘Bit banging’ (software emulation) multi-master systems should consider a START byte. See Section 3.15. ... HIGH. The output stages of devices connected to the bus must have an open-drain or · open-collector to perform the wired-AND function. Data on the I2C-bus can be transferred",
+            "This explains the minimum clock frequency of 10 kHz to prevent locking up the bus. I2C · can be a ‘DC’ bus, meaning that a slave device stretches the master clock when"
+          ]
+        },
+        {
+          "title": "I2C-bus Specification & User Manual | NXP Semiconductors",
+          "url": "https://studylib.net/doc/18619960/um10204-i2c-bus-specification-and-user-manual",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "For a single master application, the master’s SCL output can be a push-pull driver design provided that there are no devices on the bus which would stretch the clock. VDD1 = 5 V &amp;plusmn; 10 % CMOS Rp CMOS VDD2 VDD3 NMOS BIPOLAR Rp SDA SCL 002aac860 VDD2, VDD3 are device dependent (e.g., 12 V). Fig 3. Devices with a variety of supply voltages sharing the same bus UM10204_3 User manual &amp;copy; NXP B.V.",
+          "page_age": "2025-05-06T12:03:14",
+          "profile": {
+            "name": "StudyLib",
+            "url": "https://studylib.net/doc/18619960/um10204-i2c-bus-specification-and-user-manual",
+            "long_name": "studylib.net",
+            "img": "https://imgs.search.brave.com/JWPVLhxdy1hGJE6Lt10ki_lgwoOQq6RsxVfh8WiLVD4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjA4ZTE1MDgw/OGU4ZmNhMWRhNTVi/ZWE2MTlmZDZkNjc2/MTAxZjhkNWNiNjc0/N2QyN2ZhZGQzNjRk/OTc1NjE2My9zdHVk/eWxpYi5uZXQv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "studylib.net",
+            "hostname": "studylib.net",
+            "favicon": "https://imgs.search.brave.com/JWPVLhxdy1hGJE6Lt10ki_lgwoOQq6RsxVfh8WiLVD4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjA4ZTE1MDgw/OGU4ZmNhMWRhNTVi/ZWE2MTlmZDZkNjc2/MTAxZjhkNWNiNjc0/N2QyN2ZhZGQzNjRk/OTc1NjE2My9zdHVk/eWxpYi5uZXQv",
+            "path": "  › engineering & technology  › electrical engineering"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/FzZ2bHL7RiksPlbd-4o-Ec4KsX3pJu8rccWJknGwtk0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zMi5z/dHVkeWxpYi5uZXQv/c3RvcmUvZGF0YS8w/MTg2MTk5NjBfMS1k/MThkMmNlMWRhNzFj/MzQ1N2E2ZGIwMTc0/NWI1OGY1OC5wbmc",
+            "original": "https://s2.studylib.net/store/data/018619960_1-d18d2ce1da71c3457a6db01745b58f58.png",
+            "logo": false
+          },
+          "age": "May 6, 2025",
+          "article": {
+            "author": [],
+            "date": "Sep 30, 2016"
+          },
+          "extra_snippets": [
+            "The clock signals during arbitration are a synchronized combination of the clocks generated by the masters using the wired-AND connection to the SCL line (for more detailed information concerning arbitration see Section 3.8). Generation of clock signals on the I2C-bus is always the responsibility of master devices; each master generates its own clock signals when transferring data on the bus. Bus clock signals from a master can only be altered when they are stretched by a slow slave device holding down the clock line or by another master when arbitration occurs. UM10204_3 User manual &copy; NXP B.V.",
+            "For a single master application, the master’s SCL output can be a push-pull driver design provided that there are no devices on the bus which would stretch the clock. VDD1 = 5 V &plusmn; 10 % CMOS Rp CMOS VDD2 VDD3 NMOS BIPOLAR Rp SDA SCL 002aac860 VDD2, VDD3 are device dependent (e.g., 12 V). Fig 3. Devices with a variety of supply voltages sharing the same bus UM10204_3 User manual &copy; NXP B.V.",
+            "The device that held the bus LOW should release it sometime within those 9 clocks. If not, then use the HW reset or cycle power to clear the bus. 3.17 Device ID The Device ID field (see Figure 20) is an optional 3 byte read-only (24 bits) word giving the following information: • 12 bits with the manufacturer name, unique per manufacturer (e.g., NXP) • 9 bits with the part identification, assigned by manufacturer (e.g., PCA9698) • 3 bits with the die revision, assigned by manufacturer (e.g., RevX) UM10204_3 User manual &copy; NXP B.V.",
+            "The SMBus clock is defined from 10 kHz to 100 kHz while I2C can be 0 Hz to 100 kHz, 0 Hz to 400 kHz, 0 Hz to 1 MHz and 0 Hz to 3.4 MHz, depending on the mode. This means that an I2C-bus running at less than 10 kHz will not be SMBus compliant since the SMBus devices may time out. UM10204_3 User manual &copy; NXP B.V."
+          ]
+        },
+        {
+          "title": "UM10204 I2C-Bus Specification and User Manual | PDF | Bit Rate | Bit",
+          "url": "https://www.scribd.com/document/406306478/UM10204-I2C-Bus-Specification-and-User-Manual",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "48 of 64 xxxxxxxxxxxxxxxxxxxxx ... I2C-bus device can be used in a Standard-mode I2C-bus system, but the requirement tSU;DAT 250 ns must then be met....",
+          "profile": {
+            "name": "Scribd",
+            "url": "https://www.scribd.com/document/406306478/UM10204-I2C-Bus-Specification-and-User-Manual",
+            "long_name": "scribd.com",
+            "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "creative_work",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› document  › 406306478  › UM10204-I2C-Bus-Specification-and-User-Manual"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/JpooFLJKfXySNA4fiqR4T2uH6u49SjY7B59lbFtPsQU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDA2MzA2NDc4LzE0/OXgxOTgvMjg2ZTI5/ZjZjZi8xNTU1MzA1/NjMzP3Y9MQ",
+            "original": "https://imgv2-1-f.scribdassets.com/img/document/406306478/149x198/286e29f6cf/1555305633?v=1",
+            "logo": false
+          },
+          "creative_work": {
+            "name": "UM10204 I2C-Bus Specification and User Manual",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/JpooFLJKfXySNA4fiqR4T2uH6u49SjY7B59lbFtPsQU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0xLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NDA2MzA2NDc4LzE0/OXgxOTgvMjg2ZTI5/ZjZjZi8xNTU1MzA1/NjMzP3Y9MQ",
+              "original": "https://imgv2-1-f.scribdassets.com/img/document/406306478/149x198/286e29f6cf/1555305633?v=1"
+            }
+          },
+          "extra_snippets": [
+            "UM10204 49 of 64 NXP Semiconductors UM10204 I2C-bus specification and user manual ... 70 % 70 % SDA 30 % 30 % cont. tHD;DAT tVD;DAT tf tHIGH tr 70 % 70 % 70 % 70 % SCL 30 % 30 % 30 % 30 % cont. tHD;STA tLOW 9th clock S 1 / fSCL 1st clock cycle",
+            "48 of 64 xxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxx x x x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxx xx xx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxx xxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxx x x xxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxx xxx [5] A Fast-mode I2C-bus device can be used in a Standard-mode I2C-bus system, but the requirement tSU;DAT 250 ns must then be met. This will automatically be the case if the User manual UM10204 · NXP Semiconductors device does not stretch the LOW period of the SCL signal.",
+            "xxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxx xxx User manual UM10204 · NXP Semiconductors Table 10. Characteristics of the SDA and SCL bus lines for Standard, Fast, and Fast-mode Plus I2C-bus devices[1] Symbol Parameter Conditions Standard-mode Fast-mode Fast-mode Plus Unit Min Max Min Max Min Max fSCL SCL clock frequency 0 100 0 400 0 1000 kHz tHD;STA hold time (repeated) START condition After this period, the first 4.0 - 0.6 - 0.26 - μs clock pulse is generated.",
+            "Timing parameters are independent for capacitive load up to 100 pF for each bus line allowing the maximum possible bit rate of 3.4 Mbit/s. At a higher capacitive load on the bus lines, the bit rate decreases gradually. The timing parameters for a capacitive bus load of 400 pF are specified in Table 12, allowing a maximum bit rate of 1.7 Mbit/s. For UM10204 All information provided in this document is subject to legal disclaimers. © NXP Semiconductors N.V."
+          ]
+        },
+        {
+          "title": "UM10204 I2C-Bus Specification and User Manual",
+          "url": "https://www.digikey.com/en/pdf/n/nxp-semiconductors/um10204-i2c-bus-specification-and-user-manual",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "NXP Semiconductors developed a simple bidirectional 2-wire bus for efficient inter-IC control. This bus is called the Inter-IC or I2C-bus.",
+          "profile": {
+            "name": "DigiKey",
+            "url": "https://www.digikey.com/en/pdf/n/nxp-semiconductors/um10204-i2c-bus-specification-and-user-manual",
+            "long_name": "digikey.com",
+            "img": "https://imgs.search.brave.com/VM3FqF8JYPPYmeXQOLdtQox2H-mtWIA9PXVYTf9IKBk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQ3YTNmOTZh/NmMyN2IzODE4OWU2/NmEwZWJkNzAxOGVi/MGYxYWQxYWUxMWY2/NTBjMzgzYTZiY2Fh/MGVkZTViNS93d3cu/ZGlnaWtleS5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "digikey.com",
+            "hostname": "www.digikey.com",
+            "favicon": "https://imgs.search.brave.com/VM3FqF8JYPPYmeXQOLdtQox2H-mtWIA9PXVYTf9IKBk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODQ3YTNmOTZh/NmMyN2IzODE4OWU2/NmEwZWJkNzAxOGVi/MGYxYWQxYWUxMWY2/NTBjMzgzYTZiY2Fh/MGVkZTViNS93d3cu/ZGlnaWtleS5jb20v",
+            "path": "› en  › pdf  › n  › nxp-semiconductors  › um10204-i2c-bus-specification-and-user-manual"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/nw2AFWMCUk3mToFRXHCH5_meoyIPSVdxWdbibTBY_FQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zYy1h/LmRpZ2lrZXlhc3Nl/dHMuY29tLy0vbWVk/aWEvSW1hZ2VzL0hl/YWRlci9EaWdpS2V5/X3JnYl82MDB4NjAw/LnBuZz9sYT1lbiZh/bXA7dHM9ODhjNjI1/MWMtYmE0NC00Yzg4/LWFjMmQtZDUyZThj/YzRhZjQy",
+            "original": "https://sc-a.digikeyassets.com/-/media/Images/Header/DigiKey_rgb_600x600.png?la=en&amp;ts=88c6251c-ba44-4c88-ac2d-d52e8cc4af42",
+            "logo": false
+          }
+        },
+        {
+          "title": "AN13107 PF series PMIC I2C-bus communication overview Rev. 1 — 23 February 2021",
+          "url": "https://community.nxp.com/pwmxy87654/attachments/pwmxy87654/Power-Management/2303/1/AN13107.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "the exception that arbitration and clock synchronization is not performed during the · Hs mode transfer, the same serial bus protocol and data format are maintained as with ... SDA and SCL lines are used to operate at either speed. ... Before time t1 in Figure 5, each connected device operates in F/S mode. Between · times t1 and tH (this time interval can be stretched by any device) the master sends",
+          "page_age": "2021-02-23T00:00:00",
+          "profile": {
+            "name": "NXP Community",
+            "url": "https://community.nxp.com/pwmxy87654/attachments/pwmxy87654/Power-Management/2303/1/AN13107.pdf",
+            "long_name": "community.nxp.com",
+            "img": "https://imgs.search.brave.com/IgXu6jckBe_D7VzNJFaiqxqEwXxVlO77ZTT8ooYcizU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2I0OGE1YWVk/MTA3ZDZmYTUxMDQ2/MjJlZjE1ODg5YTll/YjFlYzYzMTc5MjI2/NTBiYTM0YjRhYzE2/ZDkzNWNmNy9jb21t/dW5pdHkubnhwLmNv/bS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "community.nxp.com",
+            "hostname": "community.nxp.com",
+            "favicon": "https://imgs.search.brave.com/IgXu6jckBe_D7VzNJFaiqxqEwXxVlO77ZTT8ooYcizU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2I0OGE1YWVk/MTA3ZDZmYTUxMDQ2/MjJlZjE1ODg5YTll/YjFlYzYzMTc5MjI2/NTBiYTM0YjRhYzE2/ZDkzNWNmNy9jb21t/dW5pdHkubnhwLmNv/bS8",
+            "path": "› pwmxy87654  › attachments  › pwmxy87654  › Power-Management  › 2303  › 1  › AN13107.pdf"
+          },
+          "age": "February 23, 2021",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "the exception that arbitration and clock synchronization is not performed during the · Hs mode transfer, the same serial bus protocol and data format are maintained as with ... SDA and SCL lines are used to operate at either speed. ... Before time t1 in Figure 5, each connected device operates in F/S mode. Between · times t1 and tH (this time interval can be stretched by any device) the master sends",
+            "servicing an internal interrupt, it can hold the clock line SCL LOW to force the master into",
+            "sent. The master generates all clock pulses, including the acknowledge ninth clock pulse.",
+            "during the acknowledge clock pulse so the receiver can pull the SDA line LOW and"
+          ]
+        },
+        {
+          "title": "UM10204 datasheet(45/64 Pages) NXP | I2C-bus specification and user manual",
+          "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2694/45/UM10204.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201245 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.8 Timing requirements for the bridge in a mixed-speed bus system ...",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2694/45/UM10204.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› html-pdf  › 467563  › NXP  › UM10204  › 2694  › 45  › UM10204.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          },
+          "extra_snippets": [
+            "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201245 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.8 Timing requirements for the bridge in a mixed-speed bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors."
+          ]
+        },
+        {
+          "title": "UM10204 datasheet(42/64 Pages) NXP | I2C-bus specification and user manual",
+          "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2514/42/UM10204.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201242 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.5 Mixed speed modes on one serial bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors.",
+          "profile": {
+            "name": "AllDataSheet",
+            "url": "https://www.alldatasheet.com/html-pdf/467563/NXP/UM10204/2514/42/UM10204.html",
+            "long_name": "alldatasheet.com",
+            "img": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "alldatasheet.com",
+            "hostname": "www.alldatasheet.com",
+            "favicon": "https://imgs.search.brave.com/4w52ZICqYrt1d_dQnPJW42PLwHyJt6o6GNV4emqzK8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjc3NDk2NDc3/ZGU1MzcwYWI1NTc0/MDVkYTgzY2IwYWRl/YThiZTBiZTYxNWYw/OWFmMWVlZmNhNDM4/NGE0YzFlZC93d3cu/YWxsZGF0YXNoZWV0/LmNvbS8",
+            "path": "› html-pdf  › 467563  › NXP  › UM10204  › 2514  › 42  › UM10204.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KlhENQURVPrNIT1pe0FoKLZg2Xxgj7DZjk8UNdttVOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxsZGF0YXNoZWV0/LmNvbS9pbWcvYWxs/ZGF0YXNoZWV0X290/aGVyL2V0Yy9vZ2xv/Z28uanBn",
+            "original": "https://www.alldatasheet.com/img/alldatasheet_other/etc/oglogo.jpg",
+            "logo": true
+          },
+          "extra_snippets": [
+            "UM10204All information provided in this document is subject to legal disclaimers.© NXP B.V. 2012. All rights reserved.User manualRev. 4 — 13 February 201242 of 64NXP SemiconductorsUM10204I2C-bus specification and user manual5.3.5 Mixed speed modes on one serial bus system Datasheet search, datasheets, Datasheet search site for Electronic Components and Semiconductors, integrated circuits, diodes, triacs and other semiconductors."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

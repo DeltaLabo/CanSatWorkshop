@@ -1,0 +1,1089 @@
+{
+  "query": "hobby servo PWM 50 Hz pulse width control signal specification",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "PWM Signal Control for Servo Motors: A Complete Programming Guide_Servo_Industry Insights_Kpower",
+      "url": "https://www.kpower.com/insight_servo/7306.html",
+      "description": "By following the step‑by‑step ... Signal period: 20 ms (milliseconds), which equals a frequency of50 Hz. Pulse width (high time): varies between1.0 msand2.0 ms....",
+      "content": "By following the step‑by‑step ... Signal period: 20 ms (milliseconds), which equals a frequency of50 Hz. Pulse width (high time): varies between1.0 msand2.0 ms....\nThe instructions are based on widely available microcontroller platforms and have been verified with common 50Hz analog and digitalservos used in hobby robotics. By following the step‑by‑step code examples and calibration methods, you can reliably position a servo without jitter or drift. A standard servo motor expects a PWM signal with the following fixed characteristics: Signal period: 20 ms (milliseconds), which equals a frequency of50 Hz. Pulse width (high time): varies between1.0 msand2.0 ms.\nCore takeaway: Controlling a servo with PWM is straightforward once you fix the frequency at 50 Hz and map the angle to a 1.0–2.0 ms pulse width. However, real‑world reliability comes from proper calibration, adequate power, and using measured limits rather than theoretical values.\nDuty cycle= (pulse width / 20 ms) × 100%. Note: Some servos may accept 0.5 ms to 2.5 ms for extended range, but the standard 1.0–2.0 ms works for nearly all common servos. The following code structure works on any platform that provides hardware PWM (e.g., Arduino, STM32, ESP32, Raspberry Pi with hardware PWM). We use generic pseudocode so you can adapt it to your specific microcontroller. Choose a PWM‑capable pin. Set PWM frequency to50 Hz(period = 20 ms).\nCommon case: A typical Tower Pro SG90 micro servo requiredmin_pulse = 0.9 msandmax_pulse = 2.1 msfor a true 0–180° range. Always calibrate per servo model. // Servo control using PWM – no external libraries required // Works on any board with hardware PWM (e.g., Uno, Nano, Mega, ESP32) const int servoPin = 9; // PWM pin const int freq = 50; // 50 Hz const int resolution = 8; // 8-bit (0-255) // Pre‑calibrated pulse limits (in microseconds) const int minPulseUs = 1000; // 1.0 ms = 1000 µs const int maxPulseUs = 2000; // 2.0 ms = 2000 µs void setup() { // Configure PWM ledcSetup(0, freq",
+      "age": "April 2, 2026",
+      "page_age": "2026-04-02T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Kpower",
+        "url": "https://www.kpower.com/insight_servo/7306.html",
+        "long_name": "kpower.com",
+        "img": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "kpower.com",
+        "hostname": "www.kpower.com",
+        "favicon": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8",
+        "path": "› insight_servo  › 7306.html"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "Servo PWM: Why 20 ms period? - Electrical Engineering Stack Exchange",
+      "url": "https://electronics.stackexchange.com/questions/397715/servo-pwm-why-20-ms-period",
+      "description": "Each control channel takes a maximum of about 2ms. There are several control channels - the most that I&#x27;ve ever seen is 6 channels which can occupy a maximum of 12ms to 13ms. The remaining time is used as a sync pulse that synchronizes the receiving ...",
+      "content": "Each control channel takes a maximum of about 2ms. There are several control channels - the most that I&#x27;ve ever seen is 6 channels which can occupy a maximum of 12ms to 13ms. The remaining time is used as a sync pulse that synchronizes the receiving ...\nI'm working with ESC controllers which receive PWM signals that are very similar to those that control a standard servo motor, i.e. a 50 Hz PWM signal (20 ms period) with duty cycle of 5-10% (1-2 ms on-time.)\nAs mentioned by Dan Mills, the standard RC hobby servo control signal dates from many years ago. The signal period of 20ms (50 Hz) was chosen simply because it was a convenient number that fit the technical requirements. Each control channel takes a maximum of about 2ms. There are several control channels - the most that I've ever seen is 6 channels which can occupy a maximum of 12ms to 13ms. The remaining time is used as a sync pulse that synchronizes the receiving decoder to the transmitter multiplexer.\nYou keep referring to \"50ms\" in your answer - standard RC servo pulse train has a period of approximately 20ms (50 Hz). This period has absolutely NOTHING to do with the actual PWM (if any) driving the motor - it simply contains the control signal pulse that controls the servo.\nWhy do servo motors ... use 50 Hz? vbl. duty cycle pulse @ 50Hz PWM rate",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "qa",
+      "profile": {
+        "name": "Stack Exchange",
+        "url": "https://electronics.stackexchange.com/questions/397715/servo-pwm-why-20-ms-period",
+        "long_name": "electronics.stackexchange.com",
+        "img": "https://imgs.search.brave.com/Himjpu8ns6KHZfCzmSv6q35SvaX-OCqmLdiCOdrjwBY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc3ODkyNTVk/YzdlN2VmNGNiZjJi/YzkzYzc1MWE3NDAx/ZWQzMjgwODA3MDcw/NWVlYzhjMGVhNDMw/MTQzZTlmNC9lbGVj/dHJvbmljcy5zdGFj/a2V4Y2hhbmdlLmNv/bS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "electronics.stackexchange.com",
+        "hostname": "electronics.stackexchange.com",
+        "favicon": "https://imgs.search.brave.com/Himjpu8ns6KHZfCzmSv6q35SvaX-OCqmLdiCOdrjwBY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc3ODkyNTVk/YzdlN2VmNGNiZjJi/YzkzYzc1MWE3NDAx/ZWQzMjgwODA3MDcw/NWVlYzhjMGVhNDMw/MTQzZTlmNC9lbGVj/dHJvbmljcy5zdGFj/a2V4Y2hhbmdlLmNv/bS8",
+        "path": "› questions  › 397715  › servo-pwm-why-20-ms-period"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/sRFGDZPsY8i6_XmVj7DJEvdGkrZFo4130WY1bNAUAug/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9lbGVj/dHJvbmljcy5zdGFj/a2V4Y2hhbmdlLmNv/bS9Db250ZW50L1Np/dGVzL2VsZWN0cm9u/aWNzL0ltZy9hcHBs/ZS10b3VjaC1pY29u/QDIucG5nP3Y9N2I4/OWZkZGFhNjZi",
+        "original": "https://electronics.stackexchange.com/Content/Sites/electronics/Img/apple-touch-icon@2.png?v=7b89fddaa66b",
+        "logo": true
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Project 7 Working with Servomotors",
+      "url": "https://www.realdigital.org/doc/f3d22b093e544b3821b8bcddeea64abf",
+      "description": "Before connecting the servo, you can/should examine the PWM signal with an oscilloscope to verify it is correct (or, some multimeters can measure frequency and duty cycle as well - you should verify a frequency of 50Hz and a duty cycle of 7.5% high). Rotate the servo continuously from its minimum angle to its maximum angle and back, taking about 5 seconds to go from one extreme to the other. Note that if you simply change the pulse ...",
+      "content": "Before connecting the servo, you can/should examine the PWM signal with an oscilloscope to verify it is correct (or, some multimeters can measure frequency and duty cycle as well - you should verify a frequency of 50Hz and a duty cycle of 7.5% high). Rotate the servo continuously from its minimum angle to its maximum angle and back, taking about 5 seconds to go from one extreme to the other. Note that if you simply change the pulse ...\nBefore connecting the servo, you can/should examine the PWM signal with an oscilloscope to verify it is correct (or, some multimeters can measure frequency and duty cycle as well - you should verify a frequency of 50Hz and a duty cycle of 7.5% high). Rotate the servo continuously from its minimum angle to its maximum angle and back, taking about 5 seconds to go from one extreme to the other. Note that if you simply change the pulse length from 1ms to 2ms (i.e., change the control from “all the way left” to “all the way right”), the servo will rotate from one side to the other at it’s maximum speed, which is much faster than 5 seconds.\nTherefore, if you change between a 1ms and a 2ms pulse in steps of 4us (1ms / 250 is 4us), you will fully rotate the servo over 5 seconds. You can setup TTC0 to not only create the required output waveform, but to also generate interrupts at the same 20ms (50Hz) interval that is used to define the PWM waveform.\nA standard servo motor control signal is a PWM signal with particlar timing characteristics. This project will use the Triple Timer Counter (TTC) module to generate a suitable PWM. ... Have access to a hobby servomotor.\nMost hobby servos have a fixed range of rotation, most typically over a range of 0 to 180 degrees. Hobby servos use a single data input signal, and the servo’s angular position is controlled by sending a constant stream of periodic pulses on the input signal.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Real Digital",
+        "url": "https://www.realdigital.org/doc/f3d22b093e544b3821b8bcddeea64abf",
+        "long_name": "realdigital.org",
+        "img": "https://imgs.search.brave.com/d-TZpcMDtXNKu1X5mGvXzPvYLkVcP86DLuiS90YRg4Y/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE4Mzg1YmZj/YzJlNzVjZTE0MjRk/NzZhYjYxOTdkMTMy/MjMzNDk2NWVjZTMw/MGE5YzZhOTVhYjZl/ZjkyYTk5NS93d3cu/cmVhbGRpZ2l0YWwu/b3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "realdigital.org",
+        "hostname": "www.realdigital.org",
+        "favicon": "https://imgs.search.brave.com/d-TZpcMDtXNKu1X5mGvXzPvYLkVcP86DLuiS90YRg4Y/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE4Mzg1YmZj/YzJlNzVjZTE0MjRk/NzZhYjYxOTdkMTMy/MjMzNDk2NWVjZTMw/MGE5YzZhOTVhYjZl/ZjkyYTk5NS93d3cu/cmVhbGRpZ2l0YWwu/b3JnLw",
+        "path": "› doc  › f3d22b093e544b3821b8bcddeea64abf"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "Standard PWM Frequency for Servo Motors: What You Need to Know in Hz_Servo_Industry Insights_Kpower",
+      "url": "https://www.kpower.com/insight_servo/7312.html",
+      "description": "For a first-time servo user:Set your PWM generator to 50 Hz, pulse widths 1–2 ms. This will work with any servo you buy from a hobby store.",
+      "content": "For a first-time servo user:Set your PWM generator to 50 Hz, pulse widths 1–2 ms. This will work with any servo you buy from a hobby store.\nMost standard hobbyservomotors operate at a PWM frequency of50 Hz(50 pulses per second), which corresponds to a pulse period of 20 milliseconds (ms). This 50 Hz signal is the industry norm for position control in analog and most digitalservos. However, some high-speed or specializedservos (e.g., for robotics or drone flight surfaces) may use frequencies from 100 Hz to 330 Hz or even higher.\nThe servo interprets the pulse width (typically between 1 ms and 2 ms) to determine the target angle: ... This timing works reliably for the vast majority of servos found in educational kits, robotic arms, RC cars, and model aircraft. For example, a typical 9g micro servo used in a small robotic claw will respond perfectly to a 50 Hz signal from an Arduino or Raspberry Pi.\nIf you feed it a 50 Hz signal, it will still work but may feel sluggish. Conversely, feeding a standard analog servo a 200 Hz signal can cause overheating, buzzing, or erratic movement because the servo’s internal circuitry cannot process pulses that quickly.",
+      "age": "April 3, 2026",
+      "page_age": "2026-04-03T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Kpower",
+        "url": "https://www.kpower.com/insight_servo/7312.html",
+        "long_name": "kpower.com",
+        "img": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "kpower.com",
+        "hostname": "www.kpower.com",
+        "favicon": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8",
+        "path": "› insight_servo  › 7312.html"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Learn to Control Servo motor using PWM - Wokwi Style",
+      "url": "https://blog.wokwi.com/learn-servo-motor-using-wokwi-logic-analyzer/",
+      "description": "Let’s now observe the pulse width of the PWM signal using the logic analyzer data that corresponds to the center position of the motor. The ON width is about 1.5 ms. The frequency is still 50 Hz (20 ms). The frequency never change.",
+      "content": "Let’s now observe the pulse width of the PWM signal using the logic analyzer data that corresponds to the center position of the motor. The ON width is about 1.5 ms. The frequency is still 50 Hz (20 ms). The frequency never change.\nIn the image below, you see a very common hobby servo motor. It has three pins: To control the servo motor, you send a PWM signal with a frequency of 50 Hz.\nObserving the pulse width of the PWM signal using the logic analyzer data shows that the ON width is about 0.5 ms. The frequency is about 50 Hz.\nYou might have heard PWM and PPM terminologies associated with the Servo motor. PPM stands for Pulse Position Modulation. Did you notice that the servo motor angle only depends on the ON time of the signal? Even if you change the frequency from 50 Hz to 100 Hz, the servo motor angle will remain the same.",
+      "age": "March 5, 2023",
+      "page_age": "2023-03-05T16:25:34",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Wokwi Makers Blog",
+        "url": "https://blog.wokwi.com/learn-servo-motor-using-wokwi-logic-analyzer/",
+        "long_name": "blog.wokwi.com",
+        "img": "https://imgs.search.brave.com/X0Wf3TGfNUkH8gnJHJnWjz9iCb_9HOp3BOUVWHjpPqU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmVjYzI3M2I0/YjU2NTc3MDRiOTIy/YWEyMWUzNmJjMTkx/ODM1MDg0OWUxYjE0/NDI3ZmNhOTAzZWI5/OGNjOGE5OS9ibG9n/Lndva3dpLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "blog.wokwi.com",
+        "hostname": "blog.wokwi.com",
+        "favicon": "https://imgs.search.brave.com/X0Wf3TGfNUkH8gnJHJnWjz9iCb_9HOp3BOUVWHjpPqU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmVjYzI3M2I0/YjU2NTc3MDRiOTIy/YWEyMWUzNmJjMTkx/ODM1MDg0OWUxYjE0/NDI3ZmNhOTAzZWI5/OGNjOGE5OS9ibG9n/Lndva3dpLmNvbS8",
+        "path": "› learn-servo-motor-using-wokwi-logic-analyzer"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/-KNKvxhfa-KMYQah3ONGdhfT3o8LG2OMRoZnylduc_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jZG4u/Z2V0bWlkbmlnaHQu/Y29tLzg0ZjdiMDJh/ODEyOGY1ZjU3NzU2/MTEyNDRjMjRiOTQx/LzIwMjMvMDEvU2Vy/dm8tbW90b3ItY292/ZXItLTEtLnBuZw",
+        "original": "https://cdn.getmidnight.com/84f7b02a8128f5f5775611244c24b941/2023/01/Servo-motor-cover--1-.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Controlling Servos | Onion Omega2 Maker Kit",
+      "url": "https://docs.onion.io/omega2-maker-kit/maker-kit-servo-controlling-servo.html",
+      "description": "The Time On, Ton in the diagram ... time corresponds to the overall period of the PWM, or Ton + Toff. ... For example, a PWM signal with a total cycle time of 20ms has a frequency of 50 Hz....",
+      "content": "The Time On, Ton in the diagram ... time corresponds to the overall period of the PWM, or Ton + Toff. ... For example, a PWM signal with a total cycle time of 20ms has a frequency of 50 Hz....\nThe Time On, Ton in the diagram above is the time the signal is high. This is also known as pulse width. Similarly, Time Off, or Toff is the time the signal is low. The Cycle time corresponds to the overall period of the PWM, or Ton + Toff. ... For example, a PWM signal with a total cycle time of 20ms has a frequency of 50 Hz.\nNote that the minimum and maximum shaft positions correspond to minimum and maximum pulse widths, these can vary between servos, so make sure to look at your servo’s datasheet. The recommended PWM frequency for servos is typically in the range of 40-200 Hz, with most servos using 50 Hz.\nServo motors are controlled by via a pulse width modulated (PWM) signal. Servo motors usually have three wires: power, ground and the control signal. Most servos fixedly rotate between 0° and 180° - starting and ending at fixed points relative to the motor. They accept pulses within a fixed range commonly between 500 and 2500us. To put it all together, say we send a 500us width pulse to a servo accepting pulses between 500us and 2500us.\nAs we’ve mentioned in the Starter Kit experiments, the Omega has a microprocessor which executes code extremely quickly (500MHz), while on the other hand servos are mechanical devices and can only react to command changes up to a certain point (50Hz ~ 1kHz). If a program like ours runs on the Omega with no time delays built in, the Omega will change the servos’ PWM signals faster than they can interpret them.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Onion",
+        "url": "https://docs.onion.io/omega2-maker-kit/maker-kit-servo-controlling-servo.html",
+        "long_name": "docs.onion.io",
+        "img": "https://imgs.search.brave.com/rtWwMsMs342ip6DpnijThll4A8FfhoxRz5wUfyzUCvA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDU4NGRlMGFi/OWQ0ZTcxY2UyMzI2/Y2JkMmY4ZWU4MTQw/ODhkZTAwY2UxZDFi/ZDRjNzAyYzlhNDky/MGRhOGNjOS9kb2Nz/Lm9uaW9uLmlvLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "docs.onion.io",
+        "hostname": "docs.onion.io",
+        "favicon": "https://imgs.search.brave.com/rtWwMsMs342ip6DpnijThll4A8FfhoxRz5wUfyzUCvA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDU4NGRlMGFi/OWQ0ZTcxY2UyMzI2/Y2JkMmY4ZWU4MTQw/ODhkZTAwY2UxZDFi/ZDRjNzAyYzlhNDky/MGRhOGNjOS9kb2Nz/Lm9uaW9uLmlvLw",
+        "path": "› omega2-maker-kit  › maker-kit-servo-controlling-servo.html"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "Pololu - Advanced hobby servo control pulse generation using hardware PWM",
+      "url": "https://www.pololu.com/blog/20/advanced-hobby-servo-control-pulse-generation-using-hardware-pwm",
+      "description": "16-bit PWM modules that can operate at around 50 Hz are certainly not rare in the sense that many microcontrollers have them, but unfortunately, they are rare in the sense that there might not be very many of them on one microcontroller.",
+      "content": "16-bit PWM modules that can operate at around 50 Hz are certainly not rare in the sense that many microcontrollers have them, but unfortunately, they are rare in the sense that there might not be very many of them on one microcontroller.\nSo far, I have discussed a very simple circuit and a very simple microcontroller approach to generate the control pulses needed to control hobby servos. For some applications, those methods are sufficient, but we often want either to control many servos or to do something in addition to controlling servos, and that is when the limitations of the simple approaches and the demands of the servo interface become more apparent.\nThe second requirement that takes some PWM peripherals out of contention is that we need a relatively slow frequency of under 100 Hz, whereas most PWM modules are operated at much higher frequencies. 16-bit PWM modules that can operate at around 50 Hz are certainly not rare in the sense that many microcontrollers have them, but unfortunately, they are rare in the sense that there might not be very many of them on one microcontroller.\nIn many cases, though, we have fewer 16-bit PWM outputs than we have servos to control. In such a case, we can take advantage of the low duty cycle of the servo interface signal to use an external demultiplexer to distribute the signals from one PWM output pin to several servos.\nHello. This article is about using one PWM source to get multiple servo control signals. As I said in the post, I think it is not helpful to think of servo control pulses as general PWM signals. You cannot get four arbitrary PWM signals out of one PWM signal.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Pololu",
+        "url": "https://www.pololu.com/blog/20/advanced-hobby-servo-control-pulse-generation-using-hardware-pwm",
+        "long_name": "pololu.com",
+        "img": "https://imgs.search.brave.com/N-Q8BI9ER9Uv_CJRlbrA-VCg15tjDSpUt-PfyH32DVE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGE5ODVlN2Rj/YjAwYTRmZjEzZTA5/NDNkMzgyOWY0ZWFj/Zjk3M2JhNzFhY2M3/NDZhYmIzMmJjMWMx/YjQ1ZDRiYy93d3cu/cG9sb2x1LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "pololu.com",
+        "hostname": "www.pololu.com",
+        "favicon": "https://imgs.search.brave.com/N-Q8BI9ER9Uv_CJRlbrA-VCg15tjDSpUt-PfyH32DVE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGE5ODVlN2Rj/YjAwYTRmZjEzZTA5/NDNkMzgyOWY0ZWFj/Zjk3M2JhNzFhY2M3/NDZhYmIzMmJjMWMx/YjQ1ZDRiYy93d3cu/cG9sb2x1LmNvbS8",
+        "path": "  › pololu blog  › engage your brain"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/harb6gc1b71sdx8A2-9hEHQ0tKzOLwzJBqGpesO8xKs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9hLnBv/bG9sdS1maWxlcy5j/b20vcGljdHVyZS8w/SjM0NTEuMTIwMHg2/MjcuanBnPzhmMDAx/YzkyMjlmOGU2NGJl/N2NmMzYxNDUzMmMx/MWE4",
+        "original": "https://a.pololu-files.com/picture/0J3451.1200x627.jpg?8f001c9229f8e64be7cf3614532c11a8",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "Servo control - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Servo_control",
+      "description": "The period of 20 ms (50 Hz) comes from the days where the signal was encoded in PPM (pulse-position modulation) format to be sent over the air. The PPM period was around 22.5 ms, and the conversion to PWM was trivial: the time of the PWM high ...",
+      "content": "The period of 20 ms (50 Hz) comes from the days where the signal was encoded in PPM (pulse-position modulation) format to be sent over the air. The PPM period was around 22.5 ms, and the conversion to PWM was trivial: the time of the PWM high ...\nThe period of 20 ms (50 Hz) comes from the days where the signal was encoded in PPM (pulse-position modulation) format to be sent over the air. The PPM period was around 22.5 ms, and the conversion to PWM was trivial: the time of the PWM high state was the time position of the PPM pulse for that servo.\nServo control is a method of controlling many types of RC/hobbyist servos by sending the servo a PWM (pulse-width modulation) signal, a series of repeating pulses of variable width where either the width of the pulse (most common modern hobby servos) or the duty cycle of a pulse train (less common today) determines the position to be achieved by the servo.\nThe PWM signal might come from a radio control receiver to the servo or from common microcontrollers such as the Arduino. Small hobby servos (often called radio control, or RC servos) are connected through a standard three-wire connection: two wires for a DC power supply and one for control, carrying the control pulses.\nFor example, in many RC servos a 1.5 ms pulse will make the motor turn to the 90° position (neutral position). The low time (and the total period) can vary over a wide range, and vary from one pulse to the next, without any effect on the position of the servo motor. Modern RC servo position is not defined by the PWM duty cycle (i.e., ON vs.\nIf an external force pushes against the servo while the servo is holding a position, the servo will resist from moving out of that position. The maximal amount of force the servo can exert is the torque rating of the servo. Servos will only hold their position for their timeout duration, though; the position pulse must be repeated, usually within 20ms, to instruct the servo to stay in position.",
+      "age": "January 28, 2026",
+      "page_age": "2026-01-28T06:05:21",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Servo_control",
+        "long_name": "en.wikipedia.org",
+        "img": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "en.wikipedia.org",
+        "hostname": "en.wikipedia.org",
+        "favicon": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw",
+        "path": "› wiki  › Servo_control"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/rGcNWLz-NWi27z8nkz_jNOrhDY5BXaB2QDOJCNTXYtE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy85/LzllL1JjLXJlY2Vp/dmVyLXNlcnZvLWJh/dHRlcnlfYi5qcGc",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rc-receiver-servo-battery_b.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 9,
+      "title": "Pulse Width Modulation (PWM) for Servo Motor Control: The Complete Beginners Guide to the Fundamental Principle_Servo_Industry Insights_Kpower",
+      "url": "https://www.kpower.com/insight_servo/7511.html",
+      "description": "For servo control, theperiodis almost always 20 milliseconds (ms), which means 50 pulses per second (50 Hz). Within each 20 ms period, the signal is HIGH for a short “pulse width” and LOW for the remaining time. The servo’s internal electronics measure that exact HIGH time and compare ...",
+      "content": "For servo control, theperiodis almost always 20 milliseconds (ms), which means 50 pulses per second (50 Hz). Within each 20 ms period, the signal is HIGH for a short “pulse width” and LOW for the remaining time. The servo’s internal electronics measure that exact HIGH time and compare ...\nFor servo control, theperiodis almost always 20 milliseconds (ms), which means 50 pulses per second (50 Hz). Within each 20 ms period, the signal is HIGH for a short “pulse width” and LOW for the remaining time. The servo’s internal electronics measure that exact HIGH time and compare it to a target position. The fundamental principle is a linear mapping between the pulse width (the “on” time) and the servo’s output angle. Here are the universally accepted values for standard hobby servos (common in everyday projects like robot arms, RC planes, and pan-tilt cameras):\nIf you pause for several seconds, the servo may lose holding torque.Maintain a steady 50 Hz refresh rate. Because the PWM-to-angle mapping is a de facto standard (established decades ago by hobby servo manufacturers), it works across all generic servos you will encounter – whether you buy a low-cost servo for a school project or a high-torque servo for a robot.\nWhile some digital servos accept a wider range, standard analog servos will jitter or overheat.Always start with 20 ms (50 Hz).\n1. Test with a known good setup:Use an oscilloscope or a logic analyzer to verify your PWM signal’s pulse width and period before connecting a servo. This prevents accidental damage. 2. Start with the center position:Always initialize your servo at 1.5 ms (90°) to avoid sudden jumps that could break linkages. 3. Add a small delay after each position change:When moving from 0° to 180°, send incremental pulse widths (e.g., 0.5 ms → 0.7 ms → 0.9 ms …) with 20–50 ms delays to allow the servo to physically move.",
+      "age": "April 21, 2026",
+      "page_age": "2026-04-21T02:53:35",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Kpower",
+        "url": "https://www.kpower.com/insight_servo/7511.html",
+        "long_name": "kpower.com",
+        "img": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "kpower.com",
+        "hostname": "www.kpower.com",
+        "favicon": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8",
+        "path": "› insight_servo  › 7511.html"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "How to Calculate the PWM Signal Period for a Servo Motor (Standard RC Servo Example)_Gear Motor_Industry Insights_Kpower",
+      "url": "https://www.kpower.com/insight_gearbox/7399.html",
+      "description": "For almost all hobby and industrial RCservomotors, the PWM signal period is fixed at20 milliseconds (ms), which corresponds to a frequency of50 Hertz (Hz). The key takeaway: the period is constant; only the pulse width within that period changes to control theservo&#x27;s position.",
+      "content": "For almost all hobby and industrial RCservomotors, the PWM signal period is fixed at20 milliseconds (ms), which corresponds to a frequency of50 Hertz (Hz). The key takeaway: the period is constant; only the pulse width within that period changes to control theservo&#x27;s position.\nFor almost all hobby and industrial RCservomotors, the PWM signal period is fixed at20 milliseconds (ms), which corresponds to a frequency of50 Hertz (Hz). The key takeaway: the period is constant; only the pulse width within that period changes to control theservo's position.\nThis is a critical distinction: you never change the period; you change the pulse width. Note: Always verify your specific servo's datasheet, as some models may use 0.7 ms to 2.3 ms or other ranges. While 50 Hz is the standard, some digital servos or continuous rotation servos may accept other frequencies (e.g., 100 Hz, 200 Hz, or 333 Hz).\nIf not listed, assume 50 Hz (20 ms). Measure the actual PWM signal from your controller (e.g., microcontroller, servo driver). Set the time base to 10 ms/division. You should see a repeating cycle of exactly 20 ms. Measure the high pulse width separately to verify it matches your desired angle.\nThe PWM signal period for a standard servo motor is fixed at 20 milliseconds, derived from the 50 Hz control frequency. You calculate the period as 1 divided by the frequency. For reliable operation, always keep the period constant and only modulate the high pulse width to control position.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Kpower",
+        "url": "https://www.kpower.com/insight_gearbox/7399.html",
+        "long_name": "kpower.com",
+        "img": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "kpower.com",
+        "hostname": "www.kpower.com",
+        "favicon": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8",
+        "path": "› insight_gearbox  › 7399.html"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "hobby servo PWM 50 Hz pulse width control signal specification",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.081,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "hobby servo PWM 50 Hz pulse width control signal specification",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "discussions": {
+      "type": "search",
+      "results": [
+        {
+          "title": "atmega - How to get the PWM frequency and duration of each pulse? - Electrical Engineering Stack Exchange",
+          "url": "https://electronics.stackexchange.com/questions/129961/how-to-get-the-pwm-frequency-and-duration-of-each-pulse",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "I have an ATmega8 and I started working on servo motor HS-645MG. What frequency works with the HS-645MG? How do I get the frequency of PWM and the duration/length of each pulse? Is there a calculat...",
+          "fetched_content_timestamp": 1757041179,
+          "language": "en",
+          "family_friendly": true,
+          "type": "discussion",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "electronics.stackexchange.com",
+            "hostname": "electronics.stackexchange.com",
+            "favicon": "https://imgs.search.brave.com/Himjpu8ns6KHZfCzmSv6q35SvaX-OCqmLdiCOdrjwBY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc3ODkyNTVk/YzdlN2VmNGNiZjJi/YzkzYzc1MWE3NDAx/ZWQzMjgwODA3MDcw/NWVlYzhjMGVhNDMw/MTQzZTlmNC9lbGVj/dHJvbmljcy5zdGFj/a2V4Y2hhbmdlLmNv/bS8",
+            "path": "› questions  › 129961  › how-to-get-the-pwm-frequency-and-duration-of-each-pulse"
+          },
+          "age": "September 19, 2014",
+          "data": {
+            "forum_name": "electronics.stackexchange.com"
+          }
+        },
+        {
+          "title": "signal - Control a servo motor - Electrical Engineering Stack Exchange",
+          "url": "https://electronics.stackexchange.com/questions/103014/control-a-servo-motor",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "However, a safe bet is a 50Hz signal with varying duty cycle to match the correct pulse widths. \\$\\endgroup\\$ ... The SG90 appears to be a standard servo motor included in most hobbyist kits these days (2017). While the following information mentions the Raspberry Pi specifically, the explanation is good for a variety of micro-controllers. Different software libraries expose the PWM ...",
+          "fetched_content_timestamp": 1780945241,
+          "language": "en",
+          "family_friendly": true,
+          "type": "discussion",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "electronics.stackexchange.com",
+            "hostname": "electronics.stackexchange.com",
+            "favicon": "https://imgs.search.brave.com/Himjpu8ns6KHZfCzmSv6q35SvaX-OCqmLdiCOdrjwBY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc3ODkyNTVk/YzdlN2VmNGNiZjJi/YzkzYzc1MWE3NDAx/ZWQzMjgwODA3MDcw/NWVlYzhjMGVhNDMw/MTQzZTlmNC9lbGVj/dHJvbmljcy5zdGFj/a2V4Y2hhbmdlLmNv/bS8",
+            "path": "› questions  › 103014  › control-a-servo-motor"
+          },
+          "age": "March 15, 2014",
+          "data": {
+            "forum_name": "electronics.stackexchange.com"
+          }
+        },
+        {
+          "title": "I don’t understand PWM servos",
+          "url": "https://www.reddit.com/r/arduino/comments/137sdle/i_dont_understand_pwm_servos/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "I know for stepper motors PWM changes the average voltage applied Nope, the average is irrelevant, they only care about 1) the pulse width and 2) their ability to detect and stretch the pulse width which is used to change the speed Nope, the pulse width sets the target position for their feedback loop, not a speed. even though servos are motors Nope, a \"servo\" is a closed-loop control system that typically includes a motor of some sort. The statement \"servos are motors\" is equally as accurate as the statement \"cars are butterfly valves\" - they typically contain one, but there's a lot more to it than that. it seems that PWM duty cycles like 1ms - 2ms are used to control the angle Yep rather than the speed of the servo. Why is this different? An angle and a speed are two entirely different and incomparable things. How can the same voltage signal applied to the servo result in different relative position increments at different times It has a control circuit and feedback potentiometer inside. On the rising edge of the input pulse, it also separately starts a pulse controlled by the potentiometer. If the input pulse goes low before the pulse generator driven by the potentiometer, the motor receives a drive signal that makes it turn left. If the input pulse goes low after the pulse generator driven by the potentiometer, the motor receives a drive signal that makes it turn right. The motor (through a gearbox) turns the potentiometer, and when the pulses line up, the motor is not commanded to turn at all. Thus, we end up with a primitive proportional controller - which is why servos \"hunt\" if they don't have enough load on their output shaft. PS: you have a lot of confidence in a large pile of radically inaccurate statements, some of which are trivally googleable - might want to have a careful think about that.",
+          "fetched_content_timestamp": 1781057719,
+          "language": "en",
+          "family_friendly": true,
+          "type": "discussion",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "reddit.com",
+            "hostname": "www.reddit.com",
+            "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+            "path": "› r  › arduino  › comments  › 137sdle  › i_dont_understand_pwm_servos"
+          },
+          "age": "May 4, 2023",
+          "data": {
+            "forum_name": "r/arduino",
+            "num_answers": 6,
+            "score": "2",
+            "title": "I don’t understand PWM servos",
+            "question": "<p>\n      I know for stepper motors PWM changes the average voltage applied, which is used to change the speed. But even though servos are motors, it seems that PWM duty cycles like 1ms - 2ms are used to control the angle rather than the speed of the servo. Why is this different? How can the same voltage signal applied to the servo result in different relative position increments at different times (since the absolute position change is always the same regardless of current position?)\n    </p>",
+            "top_comment": "I know for stepper motors PWM changes the average voltage applied Nope, the average is irrelevant, they only care about 1) the pulse width and 2) their ability to detect and stretch the pulse width which is used to change the speed Nope, the pulse width sets the target position for their feedback loop, not a speed. even though servos are motors Nope, a \"servo\" is a closed-loop control system that typically includes a motor of some sort. The statement \"servos are motors\" is equally as accurate as the statement \"cars are butterfly valves\" - they typically contain one, but there's a lot more to it than that. it seems that PWM duty cycles like 1ms - 2ms are used to control the angle Yep rather than the speed of the servo. Why is this different? An angle and a speed are two entirely different and incomparable things. How can the same voltage signal applied to the servo result in different relative position increments at different times It has a control circuit and feedback potentiometer inside. On the rising edge of the input pulse, it also separately starts a pulse controlled by the potentiometer. If the input pulse goes low before the pulse generator driven by the potentiometer, the motor receives a drive signal that makes it turn left. If the input pulse goes low after the pulse generator driven by the potentiometer, the motor receives a drive signal that makes it turn right. The motor (through a gearbox) turns the potentiometer, and when the pulses line up, the motor is not commanded to turn at all. Thus, we end up with a primitive proportional controller - which is why servos \"hunt\" if they don't have enough load on their output shaft. PS: you have a lot of confidence in a large pile of radically inaccurate statements, some of which are trivally googleable - might want to have a careful think about that."
+          }
+        },
+        {
+          "title": "If motors receive PWM commands at only 50Hz, how do they work with PID loops of 2KHz and more?",
+          "url": "https://www.reddit.com/r/Multicopter/comments/86cwh1/if_motors_receive_pwm_commands_at_only_50hz_how/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "50hz is from 2012 dude.That is the speed analog servos work at. All the protocols we use such as dshot(even 150) , oneshot125(old) , oneshot42 , multishot are way above 1khz.Even pwm can support 400hz if the escs can handle",
+          "fetched_content_timestamp": 1777995979,
+          "language": "en",
+          "family_friendly": true,
+          "type": "discussion",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "reddit.com",
+            "hostname": "www.reddit.com",
+            "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+            "path": "› r  › Multicopter  › comments  › 86cwh1  › if_motors_receive_pwm_commands_at_only_50hz_how"
+          },
+          "age": "March 22, 2018",
+          "data": {
+            "forum_name": "r/Multicopter",
+            "num_answers": 23,
+            "score": "5",
+            "title": "If motors receive PWM commands at only 50Hz, how do they work with PID loops of 2KHz and more?",
+            "question": "<p dir=\"auto\">\n      Question in title.  Basically, I was reading and found that the brushless motors we use only receive PWM commands at 50Hz.  I&#39;m very confused by this as it doesn&#39;t seem like enough resolution to make adjustments every 1ms or more.  50Hz would mean the greatest update speed is once every 20ms.  How do you reconcile these numbers?\n    </p>",
+            "top_comment": "50hz is from 2012 dude.That is the speed analog servos work at. All the protocols we use such as dshot(even 150) , oneshot125(old) , oneshot42 , multishot are way above 1khz.Even pwm can support 400hz if the escs can handle"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "infobox": {
+      "type": "graph",
+      "results": [
+        {
+          "title": "Servo PWM: Why 20 ms period?",
+          "url": "https://electronics.stackexchange.com/questions/397715/servo-pwm-why-20-ms-period",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "",
+          "family_friendly": true,
+          "type": "infobox",
+          "position": 1,
+          "attributes": [],
+          "providers": [
+            {
+              "type": "external",
+              "name": "Stack Exchange",
+              "url": "https://electronics.stackexchange.com/questions/397715/servo-pwm-why-20-ms-period",
+              "img": "https://imgs.search.brave.com/Himjpu8ns6KHZfCzmSv6q35SvaX-OCqmLdiCOdrjwBY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc3ODkyNTVk/YzdlN2VmNGNiZjJi/YzkzYzc1MWE3NDAx/ZWQzMjgwODA3MDcw/NWVlYzhjMGVhNDMw/MTQzZTlmNC9lbGVj/dHJvbmljcy5zdGFj/a2V4Y2hhbmdlLmNv/bS8"
+            }
+          ],
+          "subtype": "code",
+          "data": {
+            "question": "Servo PWM: Why 20 ms period?",
+            "answer": {
+              "text": "<blockquote>\n  <p>I can send some pretty fast and crazy looking signals,</p>\n</blockquote>\n\n<p><strong>It would not help. Send smart slow signals</strong>.</p>\n\n<blockquote>\n  <p>Why do servo motors ... use 50 Hz?  vbl. duty cycle pulse  @ 50Hz PWM rate</p>\n</blockquote>\n\n<ul>\n<li><em>it's an old standard</em> </li>\n</ul>\n\n<p><strong>The surge load current depends on the rotary position seek, step momentum load and rate.</strong>  The inductance L/R rate is much faster, <em>so it's not inductance.</em></p>\n\n<ul>\n<li>mechanical inertia extends the seek time and surge current considerably up to 10x a rated linear or rotary motor load but then only for short durations. </li>\n<li>20ms is a good short duration for small servos, but maybe much less for low-mass-servos and much more, for heavy, servo-loads.</li>\n</ul>\n\n<p>Reducing the step rate to 50Hz reduces;</p>\n\n<ul>\n<li>the overhead on the uC to change pulse duration commands to set position</li>\n<li>increases the duration for surge currents to provide torque to seek and settle quickly</li>\n<li>allows the internal compensation filter to regulate arrival stability and better than the host.</li>\n<li>20 ms is a fast as a hobby servo can seek \n\n<ul>\n<li>so there is no benefit to executing PWM  seek rates any faster.</li>\n</ul></li>\n<li>if you wanted the servo to be &lt;20ms instead, you may have to modify the deadtime inside the servo.</li>\n<li>if you wanted the servo to be FM wireless, &lt; 20ms may exceed the FM sidebands limited for Servo channels and adjacent channel interference so that violates the FCC specs on servo FM channels for remote control.</li>\n</ul>\n\n<h2>- send shorter seeks every 20ms to reduce surge current for a long robotic move, so it takes longer.</h2>\n\n<ul>\n<li>everything is a tradeoff between seek time and surge current. \n\n<ul>\n<li>This includes peak acceleration and braking, peak velocity, seek torque and seek time.</li>\n</ul></li>\n</ul>\n\n\n\n<p><img src=\"https://i.sstatic.net/OouPx.png\" alt=\"schematic\"></p>\n\n\n\n<p><sup>simulate this circuit – Schematic created using CircuitLab</sup></p>\n\n<p>Since the early 1990's servos have\nused a de-facto standard pulse width\nmodulation technique to control the\nposition of the output shaft.  Although the invention may have been much earlier.  Small Floppy and HDD's used a serial pulse Step count and direction interface for servo starting in the 70's which required 2 signals and a seek_complete response.</p>",
+              "author": "Tony Stewart EE since 1975",
+              "upvoteCount": 6
+            }
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "electronics.stackexchange.com",
+            "hostname": "electronics.stackexchange.com",
+            "favicon": "https://imgs.search.brave.com/Himjpu8ns6KHZfCzmSv6q35SvaX-OCqmLdiCOdrjwBY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc3ODkyNTVk/YzdlN2VmNGNiZjJi/YzkzYzc1MWE3NDAx/ZWQzMjgwODA3MDcw/NWVlYzhjMGVhNDMw/MTQzZTlmNC9lbGVj/dHJvbmljcy5zdGFj/a2V4Y2hhbmdlLmNv/bS8",
+            "path": "› questions  › 397715  › servo-pwm-why-20-ms-period"
+          }
+        }
+      ]
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "infobox",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "discussions",
+          "all": true
+        },
+        {
+          "type": "videos",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "videos": {
+      "type": "videos",
+      "results": [
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=XrEN1oszq_Y",
+          "title": "Positional vs Continuous Rotation Servo Motors",
+          "description": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
+          "fetched_content_timestamp": 1722565012,
+          "video": {},
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/AtlWOMgKFJRCnVlS9uZt_2jR3XSpnWssMxJKeSWKpCY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9Y/ckVOMW9zenFfWS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/XrEN1oszq_Y/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=GXHQemuRtWU",
+          "title": "What is a PWM signal? - The Secret Life of Servos: Ep3 - YouTube",
+          "description": "PWM Meter: https://www.servocity.com/pwm-meterServos: https://www.servocity.com/servos",
+          "age": "January 22, 2018",
+          "page_age": "2018-01-22T22:09:22",
+          "fetched_content_timestamp": 1780619344,
+          "video": {
+            "duration": "06:09",
+            "creator": "ServoCity",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/wuxCEjmvguycssPpskXtNTn2CdBaNqMPppHbDseLPO4/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9H/WEhRZW11UnRXVS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/GXHQemuRtWU/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=aRstYcbsCO0",
+          "title": "RC Servo PWM and Frequency Demonstration - YouTube",
+          "description": "Demonstration of standard RC servo PWM (pulse width modulation), refresh frequency rate and how the width of the pulse is used to position the servo. Full R...",
+          "age": "August 4, 2017",
+          "page_age": "2017-08-04T18:11:31",
+          "fetched_content_timestamp": 1780705901,
+          "video": {
+            "duration": "09:16",
+            "creator": "John Salt",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/3d-A0NMtwGSQgaCYijx7KRdq-ZzjH7L6udvIOl7whT4/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9h/UnN0WWNic0NPMC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/aRstYcbsCO0/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=bNagtymu6Vg",
+          "title": "RC Servo FBL PWM Refresh Rate Demonstration - YouTube",
+          "description": "See how the PWM frequency can be much higher with FBL systems and why you have to be careful to select the correct frequency rate for they type of servo you ...",
+          "age": "August 4, 2017",
+          "page_age": "2017-08-04T18:12:31",
+          "fetched_content_timestamp": 1717132297,
+          "video": {
+            "duration": "11:54",
+            "views": 3466,
+            "creator": "John Salt",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/stm2cItIx5DaHv53tRMhW09ldgLWPLlKKIVHcZ5w4L8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9i/TmFndHltdTZWZy9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/bNagtymu6Vg/maxresdefault.jpg"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "PWM Signal Control for Servo Motors: A Complete Programming Guide_Servo_Industry Insights_Kpower",
+          "url": "https://www.kpower.com/insight_servo/7306.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "By following the step‑by‑step ... Signal period: 20 ms (milliseconds), which equals a frequency of50 Hz. Pulse width (high time): varies between1.0 msand2.0 ms....",
+          "page_age": "2026-04-02T00:00:00",
+          "profile": {
+            "name": "Kpower",
+            "url": "https://www.kpower.com/insight_servo/7306.html",
+            "long_name": "kpower.com",
+            "img": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "kpower.com",
+            "hostname": "www.kpower.com",
+            "favicon": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8",
+            "path": "› insight_servo  › 7306.html"
+          },
+          "age": "April 2, 2026",
+          "extra_snippets": [
+            "The instructions are based on widely available microcontroller platforms and have been verified with common 50Hz analog and digitalservos used in hobby robotics. By following the step‑by‑step code examples and calibration methods, you can reliably position a servo without jitter or drift. A standard servo motor expects a PWM signal with the following fixed characteristics: Signal period: 20 ms (milliseconds), which equals a frequency of50 Hz. Pulse width (high time): varies between1.0 msand2.0 ms.",
+            "Core takeaway: Controlling a servo with PWM is straightforward once you fix the frequency at 50 Hz and map the angle to a 1.0–2.0 ms pulse width. However, real‑world reliability comes from proper calibration, adequate power, and using measured limits rather than theoretical values.",
+            "Duty cycle= (pulse width / 20 ms) × 100%. Note: Some servos may accept 0.5 ms to 2.5 ms for extended range, but the standard 1.0–2.0 ms works for nearly all common servos. The following code structure works on any platform that provides hardware PWM (e.g., Arduino, STM32, ESP32, Raspberry Pi with hardware PWM). We use generic pseudocode so you can adapt it to your specific microcontroller. Choose a PWM‑capable pin. Set PWM frequency to50 Hz(period = 20 ms).",
+            "Common case: A typical Tower Pro SG90 micro servo requiredmin_pulse = 0.9 msandmax_pulse = 2.1 msfor a true 0–180° range. Always calibrate per servo model. // Servo control using PWM – no external libraries required // Works on any board with hardware PWM (e.g., Uno, Nano, Mega, ESP32) const int servoPin = 9; // PWM pin const int freq = 50; // 50 Hz const int resolution = 8; // 8-bit (0-255) // Pre‑calibrated pulse limits (in microseconds) const int minPulseUs = 1000; // 1.0 ms = 1000 µs const int maxPulseUs = 2000; // 2.0 ms = 2000 µs void setup() { // Configure PWM ledcSetup(0, freq"
+          ]
+        },
+        {
+          "title": "Servo PWM: Why 20 ms period? - Electrical Engineering Stack Exchange",
+          "url": "https://electronics.stackexchange.com/questions/397715/servo-pwm-why-20-ms-period",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Each control channel takes a maximum of about 2ms. There are several control channels - the most that I&#x27;ve ever seen is 6 channels which can occupy a maximum of 12ms to 13ms. The remaining time is used as a sync pulse that synchronizes the receiving ...",
+          "profile": {
+            "name": "Stack Exchange",
+            "url": "https://electronics.stackexchange.com/questions/397715/servo-pwm-why-20-ms-period",
+            "long_name": "electronics.stackexchange.com",
+            "img": "https://imgs.search.brave.com/Himjpu8ns6KHZfCzmSv6q35SvaX-OCqmLdiCOdrjwBY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc3ODkyNTVk/YzdlN2VmNGNiZjJi/YzkzYzc1MWE3NDAx/ZWQzMjgwODA3MDcw/NWVlYzhjMGVhNDMw/MTQzZTlmNC9lbGVj/dHJvbmljcy5zdGFj/a2V4Y2hhbmdlLmNv/bS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "qa",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "electronics.stackexchange.com",
+            "hostname": "electronics.stackexchange.com",
+            "favicon": "https://imgs.search.brave.com/Himjpu8ns6KHZfCzmSv6q35SvaX-OCqmLdiCOdrjwBY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjc3ODkyNTVk/YzdlN2VmNGNiZjJi/YzkzYzc1MWE3NDAx/ZWQzMjgwODA3MDcw/NWVlYzhjMGVhNDMw/MTQzZTlmNC9lbGVj/dHJvbmljcy5zdGFj/a2V4Y2hhbmdlLmNv/bS8",
+            "path": "› questions  › 397715  › servo-pwm-why-20-ms-period"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/sRFGDZPsY8i6_XmVj7DJEvdGkrZFo4130WY1bNAUAug/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9lbGVj/dHJvbmljcy5zdGFj/a2V4Y2hhbmdlLmNv/bS9Db250ZW50L1Np/dGVzL2VsZWN0cm9u/aWNzL0ltZy9hcHBs/ZS10b3VjaC1pY29u/QDIucG5nP3Y9N2I4/OWZkZGFhNjZi",
+            "original": "https://electronics.stackexchange.com/Content/Sites/electronics/Img/apple-touch-icon@2.png?v=7b89fddaa66b",
+            "logo": true
+          },
+          "qa": {
+            "question": "Servo PWM: Why 20 ms period?",
+            "answer": {
+              "text": "<blockquote>\n  <p>I can send some pretty fast and crazy looking signals,</p>\n</blockquote>\n\n<p><strong>It would not help. Send smart slow signals</strong>.</p>\n\n<blockquote>\n  <p>Why do servo motors ... use 50 Hz?  vbl. duty cycle pulse  @ 50Hz PWM rate</p>\n</blockquote>\n\n<ul>\n<li><em>it's an old standard</em> </li>\n</ul>\n\n<p><strong>The surge load current depends on the rotary position seek, step momentum load and rate.</strong>  The inductance L/R rate is much faster, <em>so it's not inductance.</em></p>\n\n<ul>\n<li>mechanical inertia extends the seek time and surge current considerably up to 10x a rated linear or rotary motor load but then only for short durations. </li>\n<li>20ms is a good short duration for small servos, but maybe much less for low-mass-servos and much more, for heavy, servo-loads.</li>\n</ul>\n\n<p>Reducing the step rate to 50Hz reduces;</p>\n\n<ul>\n<li>the overhead on the uC to change pulse duration commands to set position</li>\n<li>increases the duration for surge currents to provide torque to seek and settle quickly</li>\n<li>allows the internal compensation filter to regulate arrival stability and better than the host.</li>\n<li>20 ms is a fast as a hobby servo can seek \n\n<ul>\n<li>so there is no benefit to executing PWM  seek rates any faster.</li>\n</ul></li>\n<li>if you wanted the servo to be &lt;20ms instead, you may have to modify the deadtime inside the servo.</li>\n<li>if you wanted the servo to be FM wireless, &lt; 20ms may exceed the FM sidebands limited for Servo channels and adjacent channel interference so that violates the FCC specs on servo FM channels for remote control.</li>\n</ul>\n\n<h2>- send shorter seeks every 20ms to reduce surge current for a long robotic move, so it takes longer.</h2>\n\n<ul>\n<li>everything is a tradeoff between seek time and surge current. \n\n<ul>\n<li>This includes peak acceleration and braking, peak velocity, seek torque and seek time.</li>\n</ul></li>\n</ul>\n\n\n\n<p><img src=\"https://i.sstatic.net/OouPx.png\" alt=\"schematic\"></p>\n\n\n\n<p><sup>simulate this circuit – Schematic created using CircuitLab</sup></p>\n\n<p>Since the early 1990's servos have\nused a de-facto standard pulse width\nmodulation technique to control the\nposition of the output shaft.  Although the invention may have been much earlier.  Small Floppy and HDD's used a serial pulse Step count and direction interface for servo starting in the 70's which required 2 signals and a seek_complete response.</p>",
+              "author": "Tony Stewart EE since 1975",
+              "upvoteCount": 6
+            }
+          },
+          "organization": {
+            "type": "organization",
+            "name": "Stack Overflow",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "I'm working with ESC controllers which receive PWM signals that are very similar to those that control a standard servo motor, i.e. a 50 Hz PWM signal (20 ms period) with duty cycle of 5-10% (1-2 ms on-time.)",
+            "As mentioned by Dan Mills, the standard RC hobby servo control signal dates from many years ago. The signal period of 20ms (50 Hz) was chosen simply because it was a convenient number that fit the technical requirements. Each control channel takes a maximum of about 2ms. There are several control channels - the most that I've ever seen is 6 channels which can occupy a maximum of 12ms to 13ms. The remaining time is used as a sync pulse that synchronizes the receiving decoder to the transmitter multiplexer.",
+            "You keep referring to \"50ms\" in your answer - standard RC servo pulse train has a period of approximately 20ms (50 Hz). This period has absolutely NOTHING to do with the actual PWM (if any) driving the motor - it simply contains the control signal pulse that controls the servo.",
+            "Why do servo motors ... use 50 Hz? vbl. duty cycle pulse @ 50Hz PWM rate"
+          ]
+        },
+        {
+          "title": "Project 7 Working with Servomotors",
+          "url": "https://www.realdigital.org/doc/f3d22b093e544b3821b8bcddeea64abf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Before connecting the servo, you can/should examine the PWM signal with an oscilloscope to verify it is correct (or, some multimeters can measure frequency and duty cycle as well - you should verify a frequency of 50Hz and a duty cycle of 7.5% high). Rotate the servo continuously from its minimum angle to its maximum angle and back, taking about 5 seconds to go from one extreme to the other. Note that if you simply change the pulse ...",
+          "profile": {
+            "name": "Real Digital",
+            "url": "https://www.realdigital.org/doc/f3d22b093e544b3821b8bcddeea64abf",
+            "long_name": "realdigital.org",
+            "img": "https://imgs.search.brave.com/d-TZpcMDtXNKu1X5mGvXzPvYLkVcP86DLuiS90YRg4Y/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE4Mzg1YmZj/YzJlNzVjZTE0MjRk/NzZhYjYxOTdkMTMy/MjMzNDk2NWVjZTMw/MGE5YzZhOTVhYjZl/ZjkyYTk5NS93d3cu/cmVhbGRpZ2l0YWwu/b3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "realdigital.org",
+            "hostname": "www.realdigital.org",
+            "favicon": "https://imgs.search.brave.com/d-TZpcMDtXNKu1X5mGvXzPvYLkVcP86DLuiS90YRg4Y/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGE4Mzg1YmZj/YzJlNzVjZTE0MjRk/NzZhYjYxOTdkMTMy/MjMzNDk2NWVjZTMw/MGE5YzZhOTVhYjZl/ZjkyYTk5NS93d3cu/cmVhbGRpZ2l0YWwu/b3JnLw",
+            "path": "› doc  › f3d22b093e544b3821b8bcddeea64abf"
+          },
+          "extra_snippets": [
+            "Before connecting the servo, you can/should examine the PWM signal with an oscilloscope to verify it is correct (or, some multimeters can measure frequency and duty cycle as well - you should verify a frequency of 50Hz and a duty cycle of 7.5% high). Rotate the servo continuously from its minimum angle to its maximum angle and back, taking about 5 seconds to go from one extreme to the other. Note that if you simply change the pulse length from 1ms to 2ms (i.e., change the control from “all the way left” to “all the way right”), the servo will rotate from one side to the other at it’s maximum speed, which is much faster than 5 seconds.",
+            "Therefore, if you change between a 1ms and a 2ms pulse in steps of 4us (1ms / 250 is 4us), you will fully rotate the servo over 5 seconds. You can setup TTC0 to not only create the required output waveform, but to also generate interrupts at the same 20ms (50Hz) interval that is used to define the PWM waveform.",
+            "A standard servo motor control signal is a PWM signal with particlar timing characteristics. This project will use the Triple Timer Counter (TTC) module to generate a suitable PWM. ... Have access to a hobby servomotor.",
+            "Most hobby servos have a fixed range of rotation, most typically over a range of 0 to 180 degrees. Hobby servos use a single data input signal, and the servo’s angular position is controlled by sending a constant stream of periodic pulses on the input signal."
+          ]
+        },
+        {
+          "title": "Standard PWM Frequency for Servo Motors: What You Need to Know in Hz_Servo_Industry Insights_Kpower",
+          "url": "https://www.kpower.com/insight_servo/7312.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "For a first-time servo user:Set your PWM generator to 50 Hz, pulse widths 1–2 ms. This will work with any servo you buy from a hobby store.",
+          "page_age": "2026-04-03T00:00:00",
+          "profile": {
+            "name": "Kpower",
+            "url": "https://www.kpower.com/insight_servo/7312.html",
+            "long_name": "kpower.com",
+            "img": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "kpower.com",
+            "hostname": "www.kpower.com",
+            "favicon": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8",
+            "path": "› insight_servo  › 7312.html"
+          },
+          "age": "April 3, 2026",
+          "extra_snippets": [
+            "Most standard hobbyservomotors operate at a PWM frequency of50 Hz(50 pulses per second), which corresponds to a pulse period of 20 milliseconds (ms). This 50 Hz signal is the industry norm for position control in analog and most digitalservos. However, some high-speed or specializedservos (e.g., for robotics or drone flight surfaces) may use frequencies from 100 Hz to 330 Hz or even higher.",
+            "For a first-time servo user:Set your PWM generator to 50 Hz, pulse widths 1–2 ms. This will work with any servo you buy from a hobby store.",
+            "The servo interprets the pulse width (typically between 1 ms and 2 ms) to determine the target angle: ... This timing works reliably for the vast majority of servos found in educational kits, robotic arms, RC cars, and model aircraft. For example, a typical 9g micro servo used in a small robotic claw will respond perfectly to a 50 Hz signal from an Arduino or Raspberry Pi.",
+            "If you feed it a 50 Hz signal, it will still work but may feel sluggish. Conversely, feeding a standard analog servo a 200 Hz signal can cause overheating, buzzing, or erratic movement because the servo’s internal circuitry cannot process pulses that quickly."
+          ]
+        },
+        {
+          "title": "Learn to Control Servo motor using PWM - Wokwi Style",
+          "url": "https://blog.wokwi.com/learn-servo-motor-using-wokwi-logic-analyzer/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Let’s now observe the pulse width of the PWM signal using the logic analyzer data that corresponds to the center position of the motor. The ON width is about 1.5 ms. The frequency is still 50 Hz (20 ms). The frequency never change.",
+          "page_age": "2023-03-05T16:25:34",
+          "profile": {
+            "name": "Wokwi Makers Blog",
+            "url": "https://blog.wokwi.com/learn-servo-motor-using-wokwi-logic-analyzer/",
+            "long_name": "blog.wokwi.com",
+            "img": "https://imgs.search.brave.com/X0Wf3TGfNUkH8gnJHJnWjz9iCb_9HOp3BOUVWHjpPqU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmVjYzI3M2I0/YjU2NTc3MDRiOTIy/YWEyMWUzNmJjMTkx/ODM1MDg0OWUxYjE0/NDI3ZmNhOTAzZWI5/OGNjOGE5OS9ibG9n/Lndva3dpLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "blog.wokwi.com",
+            "hostname": "blog.wokwi.com",
+            "favicon": "https://imgs.search.brave.com/X0Wf3TGfNUkH8gnJHJnWjz9iCb_9HOp3BOUVWHjpPqU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmVjYzI3M2I0/YjU2NTc3MDRiOTIy/YWEyMWUzNmJjMTkx/ODM1MDg0OWUxYjE0/NDI3ZmNhOTAzZWI5/OGNjOGE5OS9ibG9n/Lndva3dpLmNvbS8",
+            "path": "› learn-servo-motor-using-wokwi-logic-analyzer"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/-KNKvxhfa-KMYQah3ONGdhfT3o8LG2OMRoZnylduc_w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jZG4u/Z2V0bWlkbmlnaHQu/Y29tLzg0ZjdiMDJh/ODEyOGY1ZjU3NzU2/MTEyNDRjMjRiOTQx/LzIwMjMvMDEvU2Vy/dm8tbW90b3ItY292/ZXItLTEtLnBuZw",
+            "original": "https://cdn.getmidnight.com/84f7b02a8128f5f5775611244c24b941/2023/01/Servo-motor-cover--1-.png",
+            "logo": false
+          },
+          "age": "March 5, 2023",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Puneeth",
+                "url": "https://blog.wokwi.com/author/puneeth/",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/vKZQnGqJGho2sPPl2poOoOpIytIaZsUTG42YFM80qMA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jZG4u/Z2V0bWlkbmlnaHQu/Y29tLzg0ZjdiMDJh/ODEyOGY1ZjU3NzU2/MTEyNDRjMjRiOTQx/LzIwMjMvMDEvMjAy/My0wMS0wOV8yMGg1/MV8wNi5wbmc",
+                  "original": "https://cdn.getmidnight.com/84f7b02a8128f5f5775611244c24b941/2023/01/2023-01-09_20h51_06.png"
+                }
+              }
+            ],
+            "date": "Mar 05, 2023",
+            "publisher": {
+              "type": "organization",
+              "name": "Wokwi Makers Blog",
+              "url": "https://blog.wokwi.com/",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/m1LIhgXFsXAZVATnoKqLPbtvMqjpd_1jN0vw1WWHjyE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jZG4u/Z2V0bWlkbmlnaHQu/Y29tLzg0ZjdiMDJh/ODEyOGY1ZjU3NzU2/MTEyNDRjMjRiOTQx/LzIwMjEvMDMvbG9n/by0xLnN2Zw",
+                "original": "https://cdn.getmidnight.com/84f7b02a8128f5f5775611244c24b941/2021/03/logo-1.svg"
+              }
+            }
+          },
+          "extra_snippets": [
+            "In the image below, you see a very common hobby servo motor. It has three pins: To control the servo motor, you send a PWM signal with a frequency of 50 Hz.",
+            "Observing the pulse width of the PWM signal using the logic analyzer data shows that the ON width is about 0.5 ms. The frequency is about 50 Hz.",
+            "You might have heard PWM and PPM terminologies associated with the Servo motor. PPM stands for Pulse Position Modulation. Did you notice that the servo motor angle only depends on the ON time of the signal? Even if you change the frequency from 50 Hz to 100 Hz, the servo motor angle will remain the same.",
+            "Let’s now observe the pulse width of the PWM signal using the logic analyzer data that corresponds to the center position of the motor. The ON width is about 1.5 ms. The frequency is still 50 Hz (20 ms). The frequency never change."
+          ]
+        },
+        {
+          "title": "Controlling Servos | Onion Omega2 Maker Kit",
+          "url": "https://docs.onion.io/omega2-maker-kit/maker-kit-servo-controlling-servo.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The Time On, Ton in the diagram ... time corresponds to the overall period of the PWM, or Ton + Toff. ... For example, a PWM signal with a total cycle time of 20ms has a frequency of 50 Hz....",
+          "profile": {
+            "name": "Onion",
+            "url": "https://docs.onion.io/omega2-maker-kit/maker-kit-servo-controlling-servo.html",
+            "long_name": "docs.onion.io",
+            "img": "https://imgs.search.brave.com/rtWwMsMs342ip6DpnijThll4A8FfhoxRz5wUfyzUCvA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDU4NGRlMGFi/OWQ0ZTcxY2UyMzI2/Y2JkMmY4ZWU4MTQw/ODhkZTAwY2UxZDFi/ZDRjNzAyYzlhNDky/MGRhOGNjOS9kb2Nz/Lm9uaW9uLmlvLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "docs.onion.io",
+            "hostname": "docs.onion.io",
+            "favicon": "https://imgs.search.brave.com/rtWwMsMs342ip6DpnijThll4A8FfhoxRz5wUfyzUCvA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDU4NGRlMGFi/OWQ0ZTcxY2UyMzI2/Y2JkMmY4ZWU4MTQw/ODhkZTAwY2UxZDFi/ZDRjNzAyYzlhNDky/MGRhOGNjOS9kb2Nz/Lm9uaW9uLmlvLw",
+            "path": "› omega2-maker-kit  › maker-kit-servo-controlling-servo.html"
+          },
+          "extra_snippets": [
+            "The Time On, Ton in the diagram above is the time the signal is high. This is also known as pulse width. Similarly, Time Off, or Toff is the time the signal is low. The Cycle time corresponds to the overall period of the PWM, or Ton + Toff. ... For example, a PWM signal with a total cycle time of 20ms has a frequency of 50 Hz.",
+            "Note that the minimum and maximum shaft positions correspond to minimum and maximum pulse widths, these can vary between servos, so make sure to look at your servo’s datasheet. The recommended PWM frequency for servos is typically in the range of 40-200 Hz, with most servos using 50 Hz.",
+            "Servo motors are controlled by via a pulse width modulated (PWM) signal. Servo motors usually have three wires: power, ground and the control signal. Most servos fixedly rotate between 0° and 180° - starting and ending at fixed points relative to the motor. They accept pulses within a fixed range commonly between 500 and 2500us. To put it all together, say we send a 500us width pulse to a servo accepting pulses between 500us and 2500us.",
+            "As we’ve mentioned in the Starter Kit experiments, the Omega has a microprocessor which executes code extremely quickly (500MHz), while on the other hand servos are mechanical devices and can only react to command changes up to a certain point (50Hz ~ 1kHz). If a program like ours runs on the Omega with no time delays built in, the Omega will change the servos’ PWM signals faster than they can interpret them."
+          ]
+        },
+        {
+          "title": "Pololu - Advanced hobby servo control pulse generation using hardware PWM",
+          "url": "https://www.pololu.com/blog/20/advanced-hobby-servo-control-pulse-generation-using-hardware-pwm",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "16-bit PWM modules that can operate at around 50 Hz are certainly not rare in the sense that many microcontrollers have them, but unfortunately, they are rare in the sense that there might not be very many of them on one microcontroller.",
+          "profile": {
+            "name": "Pololu",
+            "url": "https://www.pololu.com/blog/20/advanced-hobby-servo-control-pulse-generation-using-hardware-pwm",
+            "long_name": "pololu.com",
+            "img": "https://imgs.search.brave.com/N-Q8BI9ER9Uv_CJRlbrA-VCg15tjDSpUt-PfyH32DVE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGE5ODVlN2Rj/YjAwYTRmZjEzZTA5/NDNkMzgyOWY0ZWFj/Zjk3M2JhNzFhY2M3/NDZhYmIzMmJjMWMx/YjQ1ZDRiYy93d3cu/cG9sb2x1LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "pololu.com",
+            "hostname": "www.pololu.com",
+            "favicon": "https://imgs.search.brave.com/N-Q8BI9ER9Uv_CJRlbrA-VCg15tjDSpUt-PfyH32DVE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGE5ODVlN2Rj/YjAwYTRmZjEzZTA5/NDNkMzgyOWY0ZWFj/Zjk3M2JhNzFhY2M3/NDZhYmIzMmJjMWMx/YjQ1ZDRiYy93d3cu/cG9sb2x1LmNvbS8",
+            "path": "  › pololu blog  › engage your brain"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/harb6gc1b71sdx8A2-9hEHQ0tKzOLwzJBqGpesO8xKs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9hLnBv/bG9sdS1maWxlcy5j/b20vcGljdHVyZS8w/SjM0NTEuMTIwMHg2/MjcuanBnPzhmMDAx/YzkyMjlmOGU2NGJl/N2NmMzYxNDUzMmMx/MWE4",
+            "original": "https://a.pololu-files.com/picture/0J3451.1200x627.jpg?8f001c9229f8e64be7cf3614532c11a8",
+            "logo": false
+          },
+          "extra_snippets": [
+            "So far, I have discussed a very simple circuit and a very simple microcontroller approach to generate the control pulses needed to control hobby servos. For some applications, those methods are sufficient, but we often want either to control many servos or to do something in addition to controlling servos, and that is when the limitations of the simple approaches and the demands of the servo interface become more apparent.",
+            "The second requirement that takes some PWM peripherals out of contention is that we need a relatively slow frequency of under 100 Hz, whereas most PWM modules are operated at much higher frequencies. 16-bit PWM modules that can operate at around 50 Hz are certainly not rare in the sense that many microcontrollers have them, but unfortunately, they are rare in the sense that there might not be very many of them on one microcontroller.",
+            "In many cases, though, we have fewer 16-bit PWM outputs than we have servos to control. In such a case, we can take advantage of the low duty cycle of the servo interface signal to use an external demultiplexer to distribute the signals from one PWM output pin to several servos.",
+            "Hello. This article is about using one PWM source to get multiple servo control signals. As I said in the post, I think it is not helpful to think of servo control pulses as general PWM signals. You cannot get four arbitrary PWM signals out of one PWM signal."
+          ]
+        },
+        {
+          "title": "Servo control - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Servo_control",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The period of 20 ms (50 Hz) comes from the days where the signal was encoded in PPM (pulse-position modulation) format to be sent over the air. The PPM period was around 22.5 ms, and the conversion to PWM was trivial: the time of the PWM high ...",
+          "page_age": "2026-01-28T06:05:21",
+          "profile": {
+            "name": "Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Servo_control",
+            "long_name": "en.wikipedia.org",
+            "img": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "deep_results": {
+            "buttons": [
+              {
+                "type": "button_result",
+                "title": "Pulse duration",
+                "url": "https://en.wikipedia.org/wiki/Servo_control#Pulse_duration"
+              },
+              {
+                "type": "button_result",
+                "title": "Force",
+                "url": "https://en.wikipedia.org/wiki/Servo_control#Force"
+              },
+              {
+                "type": "button_result",
+                "title": "Variations",
+                "url": "https://en.wikipedia.org/wiki/Servo_control#Variations"
+              }
+            ]
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "en.wikipedia.org",
+            "hostname": "en.wikipedia.org",
+            "favicon": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw",
+            "path": "› wiki  › Servo_control"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/rGcNWLz-NWi27z8nkz_jNOrhDY5BXaB2QDOJCNTXYtE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy85/LzllL1JjLXJlY2Vp/dmVyLXNlcnZvLWJh/dHRlcnlfYi5qcGc",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rc-receiver-servo-battery_b.jpg",
+            "logo": false
+          },
+          "age": "January 28, 2026",
+          "extra_snippets": [
+            "The period of 20 ms (50 Hz) comes from the days where the signal was encoded in PPM (pulse-position modulation) format to be sent over the air. The PPM period was around 22.5 ms, and the conversion to PWM was trivial: the time of the PWM high state was the time position of the PPM pulse for that servo.",
+            "Servo control is a method of controlling many types of RC/hobbyist servos by sending the servo a PWM (pulse-width modulation) signal, a series of repeating pulses of variable width where either the width of the pulse (most common modern hobby servos) or the duty cycle of a pulse train (less common today) determines the position to be achieved by the servo.",
+            "The PWM signal might come from a radio control receiver to the servo or from common microcontrollers such as the Arduino. Small hobby servos (often called radio control, or RC servos) are connected through a standard three-wire connection: two wires for a DC power supply and one for control, carrying the control pulses.",
+            "For example, in many RC servos a 1.5 ms pulse will make the motor turn to the 90° position (neutral position). The low time (and the total period) can vary over a wide range, and vary from one pulse to the next, without any effect on the position of the servo motor. Modern RC servo position is not defined by the PWM duty cycle (i.e., ON vs.",
+            "If an external force pushes against the servo while the servo is holding a position, the servo will resist from moving out of that position. The maximal amount of force the servo can exert is the torque rating of the servo. Servos will only hold their position for their timeout duration, though; the position pulse must be repeated, usually within 20ms, to instruct the servo to stay in position."
+          ]
+        },
+        {
+          "title": "Pulse Width Modulation (PWM) for Servo Motor Control: The Complete Beginners Guide to the Fundamental Principle_Servo_Industry Insights_Kpower",
+          "url": "https://www.kpower.com/insight_servo/7511.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "For servo control, theperiodis almost always 20 milliseconds (ms), which means 50 pulses per second (50 Hz). Within each 20 ms period, the signal is HIGH for a short “pulse width” and LOW for the remaining time. The servo’s internal electronics measure that exact HIGH time and compare ...",
+          "page_age": "2026-04-21T02:53:35",
+          "profile": {
+            "name": "Kpower",
+            "url": "https://www.kpower.com/insight_servo/7511.html",
+            "long_name": "kpower.com",
+            "img": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "kpower.com",
+            "hostname": "www.kpower.com",
+            "favicon": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8",
+            "path": "› insight_servo  › 7511.html"
+          },
+          "age": "April 21, 2026",
+          "extra_snippets": [
+            "For servo control, theperiodis almost always 20 milliseconds (ms), which means 50 pulses per second (50 Hz). Within each 20 ms period, the signal is HIGH for a short “pulse width” and LOW for the remaining time. The servo’s internal electronics measure that exact HIGH time and compare it to a target position. The fundamental principle is a linear mapping between the pulse width (the “on” time) and the servo’s output angle. Here are the universally accepted values for standard hobby servos (common in everyday projects like robot arms, RC planes, and pan-tilt cameras):",
+            "If you pause for several seconds, the servo may lose holding torque.Maintain a steady 50 Hz refresh rate. Because the PWM-to-angle mapping is a de facto standard (established decades ago by hobby servo manufacturers), it works across all generic servos you will encounter – whether you buy a low-cost servo for a school project or a high-torque servo for a robot.",
+            "While some digital servos accept a wider range, standard analog servos will jitter or overheat.Always start with 20 ms (50 Hz).",
+            "1. Test with a known good setup:Use an oscilloscope or a logic analyzer to verify your PWM signal’s pulse width and period before connecting a servo. This prevents accidental damage. 2. Start with the center position:Always initialize your servo at 1.5 ms (90°) to avoid sudden jumps that could break linkages. 3. Add a small delay after each position change:When moving from 0° to 180°, send incremental pulse widths (e.g., 0.5 ms → 0.7 ms → 0.9 ms …) with 20–50 ms delays to allow the servo to physically move."
+          ]
+        },
+        {
+          "title": "How to Calculate the PWM Signal Period for a Servo Motor (Standard RC Servo Example)_Gear Motor_Industry Insights_Kpower",
+          "url": "https://www.kpower.com/insight_gearbox/7399.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "For almost all hobby and industrial RCservomotors, the PWM signal period is fixed at20 milliseconds (ms), which corresponds to a frequency of50 Hertz (Hz). The key takeaway: the period is constant; only the pulse width within that period changes to control theservo&#x27;s position.",
+          "profile": {
+            "name": "Kpower",
+            "url": "https://www.kpower.com/insight_gearbox/7399.html",
+            "long_name": "kpower.com",
+            "img": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "kpower.com",
+            "hostname": "www.kpower.com",
+            "favicon": "https://imgs.search.brave.com/R-T4JjAZE6qbsYV4Hh1CjjgXMU2tO0rxW_kLMZVoytg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmI2YTkxNmQy/Y2Q4MWE3ZjY0ZDAw/ZTFjOWJmZGMyN2Nj/MTMwM2NlNGFlNTIy/ODVhMzAyMDk0NWIz/MGJkMGI5Ni93d3cu/a3Bvd2VyLmNvbS8",
+            "path": "› insight_gearbox  › 7399.html"
+          },
+          "extra_snippets": [
+            "For almost all hobby and industrial RCservomotors, the PWM signal period is fixed at20 milliseconds (ms), which corresponds to a frequency of50 Hertz (Hz). The key takeaway: the period is constant; only the pulse width within that period changes to control theservo's position.",
+            "This is a critical distinction: you never change the period; you change the pulse width. Note: Always verify your specific servo's datasheet, as some models may use 0.7 ms to 2.3 ms or other ranges. While 50 Hz is the standard, some digital servos or continuous rotation servos may accept other frequencies (e.g., 100 Hz, 200 Hz, or 333 Hz).",
+            "If not listed, assume 50 Hz (20 ms). Measure the actual PWM signal from your controller (e.g., microcontroller, servo driver). Set the time base to 10 ms/division. You should see a repeating cycle of exactly 20 ms. Measure the high pulse width separately to verify it matches your desired angle.",
+            "The PWM signal period for a standard servo motor is fixed at 20 milliseconds, derived from the 50 Hz control frequency. You calculate the period as 1 divided by the frequency. For reliable operation, always keep the period constant and only modulate the high pulse width to control position."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

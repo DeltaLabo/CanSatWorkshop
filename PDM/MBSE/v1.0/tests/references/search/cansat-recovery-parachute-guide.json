@@ -1,0 +1,847 @@
+{
+  "query": "CanSat recovery system descent speed 8 11 m/s parachute guide",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "Parachute design - The CanSat book",
+      "url": "https://learn.andoyaspace.no/docs/cansat/recovery_system/parachute/",
+      "description": "The figure to the right shows a sketch of a plat parachute which consists of 8 equal triangles. ... You can read more about how to calculate the area of a flat parachute here: https://www.sunward1.com/imagespara/The Mathematics of Parachutes(Rev2).pdf · As soon as you know the total area (\\(A\\)) together with the drag coefficient (\\(C_D\\)) you can easily determine the descent rate for your CanSat.",
+      "content": "The figure to the right shows a sketch of a plat parachute which consists of 8 equal triangles. ... You can read more about how to calculate the area of a flat parachute here: https://www.sunward1.com/imagespara/The Mathematics of Parachutes(Rev2).pdf · As soon as you know the total area (\\(A\\)) together with the drag coefficient (\\(C_D\\)) you can easily determine the descent rate for your CanSat.\nThese pages will guide you through the different steps needed to design and built your parachute. The values listed below are preliminary and can change in advance of a CanSat competition and launch campaign. However, they can be used as a temporary guideline. Uncertainties in the Launch Campaign could lead to a different value for the eventual descent velocities.\nBoth will enhance the stability of the CanSat. Before we can start making the parachute we will have to figure out how big it should be. More specifically, we need to calculate how much surface area the parachute will need in order to fulfil the requirements. Logic suggests that the bigger the parachute the slower the object’s descent velocity.\nAlthough it would be very beneficial for the CanSat to have a very low descent rate, a limit has been set to ensure that the CanSat will land near the launch area. If the descent rate is too slow the CanSat may drift kilometres away along with the wind, which is neither allowed nor desired. For safety reasons there has also been set a maximum descent rate. To design the parachute we’ll use some simple physics.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Andoyaspace",
+        "url": "https://learn.andoyaspace.no/docs/cansat/recovery_system/parachute/",
+        "long_name": "learn.andoyaspace.no",
+        "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.andoyaspace.no",
+        "hostname": "learn.andoyaspace.no",
+        "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+        "path": "› docs  › cansat  › recovery_system  › parachute"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "Cansat - Technické parametre - Slovak Space Office",
+      "url": "https://spaceoffice.sk/cansat-tech/",
+      "description": "The strength of the parachute must ... a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons....",
+      "content": "The strength of the parachute must ... a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons....\nIt is recommended to use bright coloured fabric, which will facilitate recovery of the CanSat after landing. The parachute connection must be able to withstand up to 50 N of force. The strength of the parachute must be tested to ensure that the system will operate nominally. For recovery reasons, a maximum flight time of 120 seconds is recommended. If attempting a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons.\nAll the components of the CanSat must fit inside a standard soft drinks can (115 mm height and 66 mm diameter), with the exception of the parachute. Radio antennas and GPS antennas can be mounted externally on the top or bottom of the can, depending on the design, but not on the sides.\nNote: The rocket payload area usually has 4.5 cm of space per CanSat available, along the can’s axial dimension (i.e. height), which must accommodate all external elements including: parachute, parachute attachment hardware, and any antennas.\nThe range of allowed frequencies changes depending on the country where the event is hosted and will be communicated in due time. It is recommended that teams pay attention to the design of the CanSat in terms of hardware integration and interconnection, so the radio frequency can be easily modified if necessary.",
+      "age": "January 29, 2025",
+      "page_age": "2025-01-29T12:16:43",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Slovak Space Office",
+        "url": "https://spaceoffice.sk/cansat-tech/",
+        "long_name": "spaceoffice.sk",
+        "img": "https://imgs.search.brave.com/dn9u4wiVndySXmhyLTvo9kopMLlIIdVVlxlAzQAbeuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGEzNTRjNzhi/OGE5MDcwN2Y5OTYz/OGViNzU2NzQ4OTAx/MzY3YmY5ODg2ODVk/OTE1NjNlOGU2MGNl/NWM5N2YwYi9zcGFj/ZW9mZmljZS5zay8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "spaceoffice.sk",
+        "hostname": "spaceoffice.sk",
+        "favicon": "https://imgs.search.brave.com/dn9u4wiVndySXmhyLTvo9kopMLlIIdVVlxlAzQAbeuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGEzNTRjNzhi/OGE5MDcwN2Y5OTYz/OGViNzU2NzQ4OTAx/MzY3YmY5ODg2ODVk/OTE1NjNlOGU2MGNl/NWM5N2YwYi9zcGFj/ZW9mZmljZS5zay8",
+        "path": "  › home  › cansat - technické parametre - slovak space office"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Parachute Design and Material – CanSat Athena",
+      "url": "https://cansatathena.com/2024/02/03/parachute-design-and-material/",
+      "description": "To ensure the highest chance of our CanSat not taking damage and having a smooth landing, we have opted for our CanSat to descend at a terminal speed of 8.0m/s. Our final parachute design will be a flat-pack hexagon design. We have chosen this design for a few reasons.",
+      "content": "To ensure the highest chance of our CanSat not taking damage and having a smooth landing, we have opted for our CanSat to descend at a terminal speed of 8.0m/s. Our final parachute design will be a flat-pack hexagon design. We have chosen this design for a few reasons.\nTo ensure the highest chance of our CanSat not taking damage and having a smooth landing, we have opted for our CanSat to descend at a terminal speed of 8.0m/s. Our final parachute design will be a flat-pack hexagon design. We have chosen this design for a few reasons. Firstly, it is simple and relatively easy to make which allows us to focus our attention on more vital parts of the mission. Even though it is easy to make, it has a relatively high drag-coefficient which, after testing, we found to be 0.8. This is useful since our descent speed is quite low, a high drag coefficient allows us to achieve that speed with less material\\area, a vital advantage when dealing with space/weight limitations.\nFor our parachute cord material, we chose a paracord made from Nylon with a diameter of 4mm. Due to its 11-threaded core it can withstand 3000+ Newtons , which is plenty enough for the CanSat. ... To ensure the highest chance our CanSat is recoverable, we have opted for two systems in place.\nWe used the drag and weight formulae to calculate the required area of the parachute: Where m is the mass of the Cansat, g is the gravitational constant, p is the local air density, v is the velocity and Cd is the drag coefficient. Assume the mass of the CanSat is 0.35kg, p is 1.225g\\m3 , the velocity is 8.5m/s and the drag coefficient is 0.8.\nFirstly we will use GPS to know exactly where our CanSat is, this almost guarantees the CanSat doesn’t get lost and has the added advantage we can track its flight path which is useful during testing. However, just in-case the GPS fails or for some reason the data is inaccurate, we have made our parachute and the cord a fluorescent orange colour, so it does not blend into the nature/sky, again with the added benefit of being able to easily track our flight path · Published under: Athena Decoded Parachutes/Landing",
+      "age": "February 4, 2024",
+      "page_age": "2024-02-04T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatathena",
+        "url": "https://cansatathena.com/2024/02/03/parachute-design-and-material/",
+        "long_name": "cansatathena.com",
+        "img": "https://imgs.search.brave.com/cKH3hTpSIXbHqMuqM2w77-_nBfGCVavM6hyet5reeWM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2JkNTQ1YTQ2/YWM0ZjVkOTQwZjc0/MWVmZTY3NzkzODNh/MDJjYTk0ODEyYzA1/OGJmYjlkYzE2NmRj/MDRkYzA2MC9jYW5z/YXRhdGhlbmEuY29t/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatathena.com",
+        "hostname": "cansatathena.com",
+        "favicon": "https://imgs.search.brave.com/cKH3hTpSIXbHqMuqM2w77-_nBfGCVavM6hyet5reeWM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2JkNTQ1YTQ2/YWM0ZjVkOTQwZjc0/MWVmZTY3NzkzODNh/MDJjYTk0ODEyYzA1/OGJmYjlkYzE2NmRj/MDRkYzA2MC9jYW5z/YXRhdGhlbmEuY29t/Lw",
+        "path": "› 2024  › 02  › 03  › parachute-design-and-material"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "ESA - What is a CanSat?",
+      "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+      "description": "For recovery reasons, a maximum flight time of 120 seconds is recommended. If attempting a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons.",
+      "content": "For recovery reasons, a maximum flight time of 120 seconds is recommended. If attempting a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons.\nIt is recommended to use bright coloured fabric, which will facilitate recovery of the CanSat after landing. The parachute connection must be able to withstand up to 1000 N of force. The strength of the parachute must be tested to ensure that the system will operate nominally. For recovery reasons, a maximum flight time of 120 seconds is recommended. If attempting a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons.\nN.B. The rocket payload area has 4.5 cm of space per CanSat available, along the can’s axial dimension (i.e. height), which must accommodate all external elements including: parachute, parachute attachment hardware, and any antennas.\nAll the components of the CanSat must fit inside a standard soda can (115 mm height and 66 mm diameter), with the exception of the parachute.\nA CanSat is a simulation of a real satellite, integrated within the volume and shape of a soft drink can. The challenge for the students is to fit all the major subsystems found in a satellite, such as power, sensors and a communication system, into this minimal volume.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "European Space Agency",
+        "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+        "long_name": "esa.int",
+        "img": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "esa.int",
+        "hostname": "www.esa.int",
+        "favicon": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8",
+        "path": "› Education  › CanSat  › What_is_a_CanSat"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/JnNjwYGRLF8qK7hW28PuCb8wyW_K6sx7K0fBlGXxaKA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXNhLmludC92YXIv/ZXNhL3N0b3JhZ2Uv/aW1hZ2VzL2VzYV9t/dWx0aW1lZGlhL2lt/YWdlcy8yMDEwLzAx/L2FfY2Fuc2F0X2Rl/c2NlbmRpbmcvOTc3/NTEzNi0zLWVuZy1H/Qi9BX0NhblNhdF9k/ZXNjZW5kaW5nX3Bp/bGxhcnMuanBn",
+        "original": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2010/01/a_cansat_descending/9775136-3-eng-GB/A_CanSat_descending_pillars.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 5,
+      "title": "The recovery system – KrakSat",
+      "url": "https://cansat.kraksat.pl/recovery-system/",
+      "description": "The expected descent speed at the weight of 350 g will be about 9 m/s, giving the estimated flight time of about 360 seconds. To integrate the CanSat with the carrier rocket the parachute has to be folded.",
+      "content": "The expected descent speed at the weight of 350 g will be about 9 m/s, giving the estimated flight time of about 360 seconds. To integrate the CanSat with the carrier rocket the parachute has to be folded.\nHow to fold a parachute.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "KrakSat",
+        "url": "https://cansat.kraksat.pl/recovery-system/",
+        "long_name": "cansat.kraksat.pl",
+        "img": "https://imgs.search.brave.com/Sc0f56GjkLIfZKIcfoKJ0D3FVKfwVK2Vk-8UOBtDjfE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmExMWZlM2Vl/ZDQ1Mzg5ZmRkNjg5/YWFlNTE5ZjNjN2Ji/ZGYzZDQzMTE0MWMz/ZjIyZDk5OTMyYmEz/ZjQ4YzAyZS9jYW5z/YXQua3Jha3NhdC5w/bC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansat.kraksat.pl",
+        "hostname": "cansat.kraksat.pl",
+        "favicon": "https://imgs.search.brave.com/Sc0f56GjkLIfZKIcfoKJ0D3FVKfwVK2Vk-8UOBtDjfE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmExMWZlM2Vl/ZDQ1Mzg5ZmRkNjg5/YWFlNTE5ZjNjN2Ji/ZGYzZDQzMTE0MWMz/ZjIyZDk5OTMyYmEz/ZjQ4YzAyZS9jYW5z/YXQua3Jha3NhdC5w/bC8",
+        "path": "› recovery-system"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Nordic CanSat Competition Guidelines | Nordic ESERO | Using Space in Education",
+      "url": "https://www.esero.no/prosjekter/cansat/nordic-cansat-competition-guidelines/",
+      "description": "The deployable subsystems and recovery ... time is limited to 120 sec (If not other agreements have been made). The descent rate must be between 8 m/s and 11m/s (If not other agreements have been made)....",
+      "content": "The deployable subsystems and recovery ... time is limited to 120 sec (If not other agreements have been made). The descent rate must be between 8 m/s and 11m/s (If not other agreements have been made)....\nThe deployable subsystems and recovery system can exceed the length of the primary structure, but can’t be deployed before the CanSat is fully ejected from the rocket. Flight time is limited to 120 sec (If not other agreements have been made). The descent rate must be between 8 m/s and 11m/s (If not other agreements have been made).\nIn addition to the space theme, there is a list of technical requirements for the CanSat which has to be passed before flight (for example weight and size) and also some requirements during flight (for example decent speed). All the components (with the exception of parachute, antenna and GPS) of the CanSat must fit inside a European soda can: 115 mm height and 66 mm diameter.\nDuring the CanSat operation, each team will get their CanSats launched up to an altitude of approximately 1 000 meter by a rocket. At this altitude the CanSats will be ejected from the rocket. During the descent, the CanSats will perform their missions and send data to the ground trough a radio transmitter.\nThe CanSat must be able to withstand an acceleration of up to 20G.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Esero",
+        "url": "https://www.esero.no/prosjekter/cansat/nordic-cansat-competition-guidelines/",
+        "long_name": "esero.no",
+        "img": "https://imgs.search.brave.com/myo705rDJRFdq8XX9qNE_5H-z3R4nSG_4-27O7Dz4MI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWRkMDMzYmI1/ODE1YmE3ODZmNDQ0/MjdjYzA0YmU4MjVk/NjkzOTcxZDU4Y2U0/OWJmZjhiMTY0YTdj/M2VjN2Y5OC93d3cu/ZXNlcm8ubm8v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "esero.no",
+        "hostname": "www.esero.no",
+        "favicon": "https://imgs.search.brave.com/myo705rDJRFdq8XX9qNE_5H-z3R4nSG_4-27O7Dz4MI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWRkMDMzYmI1/ODE1YmE3ODZmNDQ0/MjdjYzA0YmU4MjVk/NjkzOTcxZDU4Y2U0/OWJmZjhiMTY0YTdj/M2VjN2Y5OC93d3cu/ZXNlcm8ubm8v",
+        "path": "› prosjekter  › cansat  › nordic-cansat-competition-guidelines"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "CanSat 2021 - Herotech",
+      "url": "https://herotech.ro/cansat.html",
+      "description": "The printed parts are secured to the rest of the CanSat in 4 points: 2 by the M2 rod and 2 by pressing the sides in the outer walls, providing a tight fit and ease of removal. To each one of the motors, 3D printed pulleys are attached that allow the length of the strings of the parachute to be completely controlled. With this in mind, we can completely steer the parachute, which is a paraglider, by pulling on the side strings, or even slowing the descent rate by pulling all the strings simultaneously.",
+      "content": "The printed parts are secured to the rest of the CanSat in 4 points: 2 by the M2 rod and 2 by pressing the sides in the outer walls, providing a tight fit and ease of removal. To each one of the motors, 3D printed pulleys are attached that allow the length of the strings of the parachute to be completely controlled. With this in mind, we can completely steer the parachute, which is a paraglider, by pulling on the side strings, or even slowing the descent rate by pulling all the strings simultaneously.\nWe are Herotech, a team of 4 passionate and young students that believe that things can be done differently. We dream for a better future, a more efficient way to use everyday objects, a method to make life just a little bit different. We strive for robotic assistance, for a future in which our human barriers can be overcome.\nThe printed parts are secured to the rest of the CanSat in 4 points :2 by the M2 rod and 2 by pressing the sides in the outer walls, providing a tight fit and ease of removal. To each one of the motors, 3D printed pulleys are attached that allow the length of the strings of the parachute to be completely controlled. With this in minde, we can completely steer the parachute, which is a paraglider, by pulling on the side strings, or even slowing the descent rate by pulling all the strings simultaneously.\nThe mission we have chosen consists in a guided airdrop system. The CanSat should be able to guide itself during the fall by pulling the strings attached to the parachute with the target of landing in a nearby area relative to the dropping point. This presents a great potential in the development of an air drop package delivering system for faster and more convenient delivery which does not require human interaction.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Herotech",
+        "url": "https://herotech.ro/cansat.html",
+        "long_name": "herotech.ro",
+        "img": "https://imgs.search.brave.com/N_yOlsy-cZ_bOwMmO_HgM4yQHkg1SjaTBnAIl0ZdU78/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODlmODk2YmZk/N2M1ZDkwMGE5ZTY4/MzZlZWUwZjhjOTRl/ZWEzNGM1Yjk1MTVj/NTUwMWJmNGJjOTlh/MWE3ZjQxZi9oZXJv/dGVjaC5yby8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "herotech.ro",
+        "hostname": "herotech.ro",
+        "favicon": "https://imgs.search.brave.com/N_yOlsy-cZ_bOwMmO_HgM4yQHkg1SjaTBnAIl0ZdU78/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODlmODk2YmZk/N2M1ZDkwMGE5ZTY4/MzZlZWUwZjhjOTRl/ZWEzNGM1Yjk1MTVj/NTUwMWJmNGJjOTlh/MWE3ZjQxZi9oZXJv/dGVjaC5yby8",
+        "path": "› cansat.html"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "Technology | T10 teach with space teacher guide & student worksheets",
+      "url": "https://esero.es/wp-content/uploads/2019/10/T10_Parachute_Design.pdf",
+      "description": "According to the competition guidelines for CanSat, a few seconds after deploying its parachute (i.e. after launch), it should have a descent rate (terminal velocity) between 8 – 11 m/s.",
+      "content": "According to the competition guidelines for CanSat, a few seconds after deploying its parachute (i.e. after launch), it should have a descent rate (terminal velocity) between 8 – 11 m/s.\nAs the CanSat falls vertically, a horizontal wind can blow the CanSat in the · horizontal direction. Moreover, take into account that even with no wind some parachute types · (e.g. cruciform) might get a large lateral velocity due to its stability. Depending on the speed of the descent, and the wind speed, this can mean that the CanSat lands\nRemember: In the European CanSat competition, CanSats are launched to a height of 1000m! The most important part of the launch for us right now, is the descent from the highest point to · hitting the ground, as this is when the parachute comes into play.\nneed for their parachute. This can be calculated by considering Newton’s second law and balancing · the forces acting in a steady-state. It is important to note the simplifications that are made in this ... CanSat guidelines (8-11ms-1) students are able to calculate a range of expected descent times.\nproportional to the velocity, that is the higher the drag coefficient the lower the descent ... In this activity, students are introduced to the main different types of parachute that are commonly · used in CanSat projects.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "ESERO Spain",
+        "url": "https://esero.es/wp-content/uploads/2019/10/T10_Parachute_Design.pdf",
+        "long_name": "esero.es",
+        "img": "https://imgs.search.brave.com/4yEkacVwVwGVPhZLPwVTSp7VyZu2MLWi_7GR8o6zP8c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTJjODIwYjJh/NTVmMDVhZTc4NDlj/MjIyNDFiZjdhOGU3/ZTVlMDA1ZjdiZWY2/MmQ5NGJhZTMzOGU0/NTVjMzQ4OC9lc2Vy/by5lcy8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "esero.es",
+        "hostname": "esero.es",
+        "favicon": "https://imgs.search.brave.com/4yEkacVwVwGVPhZLPwVTSp7VyZu2MLWi_7GR8o6zP8c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTJjODIwYjJh/NTVmMDVhZTc4NDlj/MjIyNDFiZjdhOGU3/ZTVlMDA1ZjdiZWY2/MmQ5NGJhZTMzOGU0/NTVjMzQ4OC9lc2Vy/by5lcy8",
+        "path": "› wp-content  › uploads  › 2019  › 10  › T10_Parachute_Design.pdf"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "ESA - Design your parachute – A Guide to Landing Your CanSat Safely | Teach with Space T10",
+      "url": "https://www.esa.int/Education/CanSat/Design_your_parachute_A_Guide_to_Landing_Your_CanSat_Safely_Teach_with_Space_T10",
+      "description": "Students will learn about the underlying physics of parachutes and their design and how to control the speed of their CanSat.",
+      "content": "Students will learn about the underlying physics of parachutes and their design and how to control the speed of their CanSat.\nAppreciate why it is important to test a parachute. Understand the concept of terminal velocity. Represent graphs with corrects units and labels. This classroom resource is part of a set of resources developed by ESA’s Education Office in collaboration with the European Space Education Resource Offices (ESEROs) to support the European CanSat Competition.\nLanguages: English, French, German, Italian, Portuguese Subjects: Physics, Mathematics, Design Age range: 14-20 years old Keywords: Parachute, Drag, Air Resistance, Gravity, Weight, CanSat Learning objectives:",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "European Space Agency",
+        "url": "https://www.esa.int/Education/CanSat/Design_your_parachute_A_Guide_to_Landing_Your_CanSat_Safely_Teach_with_Space_T10",
+        "long_name": "esa.int",
+        "img": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "esa.int",
+        "hostname": "www.esa.int",
+        "favicon": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8",
+        "path": "› Education  › CanSat  › Design_your_parachute_A_Guide_to_Landing_Your_CanSat_Safely_Teach_with_Space_T10"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/9ZJQqGZEPjELf78fXW4K6OfWXVFJhGvuVy_4TgLJ9_s/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXNhLmludC92YXIv/ZXNhL3N0b3JhZ2Uv/aW1hZ2VzL2VzYV9t/dWx0aW1lZGlhL2lt/YWdlcy8yMDE4LzEy/L3BhcmFjaHV0ZV9k/ZXNpZ24vMTg5Mzkx/OTgtMi1lbmctR0Iv/UGFyYWNodXRlX2Rl/c2lnbl9waWxsYXJz/LnBuZw",
+        "original": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/12/parachute_design/18939198-2-eng-GB/Parachute_design_pillars.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 10,
+      "title": "CANSAT Competition Guide 2025 Planetary Probe Instrument Mission Version 1.1",
+      "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+      "description": "CANSAT shall measure its speed duringg ascent and descent.",
+      "content": "CANSAT shall measure its speed duringg ascent and descent.\nwas developed with a 1/8 thick kevlar cord. One end is secured to an eyebolt · attached to a fixed point, such as ceiling or rigid structure with enough clearance · to accommodate the cord, CANSAT, and free space so the CANSAT does not · hit the ground. The other end is tied to the parachute.\nWhat are the various phases of flight. What operations will your CANSAT perform · in each phase? When will you be deploying parachutes, etc?\nThe CANSAT telemetry packet format to be transmitted at one packet every two seconds. ... ROCKET_SEPARATION, DESCENT, HS_RELEASE, LANDED, etc.).",
+      "age": "April 7, 2025",
+      "page_age": "2025-04-07T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "University of Waikato",
+        "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+        "long_name": "waikato.ac.nz",
+        "img": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "waikato.ac.nz",
+        "hostname": "www.waikato.ac.nz",
+        "favicon": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8",
+        "path": "› assets  › Uploads  › About-us  › Faculties-and-schools  › School-of-Engineering  › CanSat_Mission_Guide_2025-1.1.pdf"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "CanSat recovery system descent speed 8 11 m/s parachute guide",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.08,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "CanSat recovery system descent speed 8 11 m/s parachute guide",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "videos",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "videos": {
+      "type": "videos",
+      "results": [
+        {
+          "type": "video_result",
+          "url": "https://www.esa.int/ESA_Multimedia/Videos/2022/11/Meet_the_Experts_CanSat_Edition_Episode_4_Parachute_design/(lang)/en",
+          "title": "ESA - Meet the Experts: CanSat Edition | Episode 4 | Parachute design",
+          "description": "Thank you for liking · You have already liked this page, you can only like it once",
+          "fetched_content_timestamp": 1745655699,
+          "video": {},
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "esa.int",
+            "hostname": "www.esa.int",
+            "favicon": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8",
+            "path": "› ESA_Multimedia  › Videos  › 2022  › 11  › Meet_the_Experts_CanSat_Edition_Episode_4_Parachute_design  › (lang)  › en"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Bo6DoNyzCG7F4VY0Kw6pIsTg25c8zLNWZFIjv7mJ0pE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXNhLmludC92YXIv/ZXNhL3N0b3JhZ2Uv/aW1hZ2VzL2VzYV9t/dWx0aW1lZGlhL3Zp/ZGVvcy8yMDIyLzEx/L21lZXRfdGhlX2V4/cGVydHNfY2Fuc2F0/X2VkaXRpb25fZXBp/c29kZV80X3BhcmFj/aHV0ZV9kZXNpZ24v/MjQ2MTUzODEtMi1l/bmctR0IvTWVldF90/aGVfRXhwZXJ0c19D/YW5TYXRfRWRpdGlv/bl9FcGlzb2RlXzRf/UGFyYWNodXRlX2Rl/c2lnbl9waWxsYXJz/LnBuZw",
+            "original": "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2022/11/meet_the_experts_cansat_edition_episode_4_parachute_design/24615381-2-eng-GB/Meet_the_Experts_CanSat_Edition_Episode_4_Parachute_design_pillars.png"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.esa.int/esatv/Videos/2022/11/Meet_the_Experts_CanSat_Edition_Episode_4_Parachute_design",
+          "title": "ESA Television - Videos - 2022 - 11 - Meet the Experts: CanSat ...",
+          "description": "How to land your CanSat safely back on Earth? ESA aerodynamics engineer Luca Ferracina discussses some things to keep in mind when designing a parachute system · Please note that this video was filmed before the suspension of Exomars activities followed by the termination of cooperation with ...",
+          "fetched_content_timestamp": 1757922779,
+          "video": {},
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "esa.int",
+            "hostname": "www.esa.int",
+            "favicon": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8",
+            "path": "› esatv  › Videos  › 2022  › 11  › Meet_the_Experts_CanSat_Edition_Episode_4_Parachute_design"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=lEOqrg5gM9Q",
+          "title": "CanSat Training Video Part 8 - About Parachutes - YouTube",
+          "description": "In this video, Emer discusses different aspects to designing a successful parachute for the CanSat. To see more videos like this check out our channel and su...",
+          "age": "October 12, 2015",
+          "page_age": "2015-10-12T00:00:00",
+          "fetched_content_timestamp": 1603294258,
+          "video": {
+            "duration": "04:52",
+            "views": 19111,
+            "creator": "SFIDiscover",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Egn11Ay_AGQ3D9cnqVaIPBm3qLtbZKA-YTXEPupH4yY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9s/RU9xcmc1Z005US9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/lEOqrg5gM9Q/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=4iuFtKm2MaA",
+          "title": "CanSat Competition Overview - YouTube",
+          "description": "The American Astronautical Society (AAS) has organized an annual student design-build-launch competition for space-related topics. Although similar competiti...",
+          "age": "January 18, 2019",
+          "page_age": "2019-01-18T20:10:47",
+          "fetched_content_timestamp": 1780763560,
+          "video": {
+            "duration": "03:29",
+            "creator": "USNRL",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/HEIPRLUOJ55dd2SUFCuBmh9_H6Sh3_NvMRcTYd7PgZk/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS80/aXVGdEttMk1hQS9o/cWRlZmF1bHQuanBn",
+            "original": "https://i.ytimg.com/vi/4iuFtKm2MaA/hqdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=WwRJvtqTXFA",
+          "title": "Dark Shadow Parachute Deployment Mechanism",
+          "description": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
+          "fetched_content_timestamp": 1721856928,
+          "video": {},
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/uy1l4AB7qOKrZVOBsYZ8E3e4hBHMacLsiIeMjdmKjWU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9X/d1JKdnRxVFhGQS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/WwRJvtqTXFA/maxresdefault.jpg"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "Parachute design - The CanSat book",
+          "url": "https://learn.andoyaspace.no/docs/cansat/recovery_system/parachute/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The figure to the right shows a sketch of a plat parachute which consists of 8 equal triangles. ... You can read more about how to calculate the area of a flat parachute here: https://www.sunward1.com/imagespara/The Mathematics of Parachutes(Rev2).pdf · As soon as you know the total area (\\(A\\)) together with the drag coefficient (\\(C_D\\)) you can easily determine the descent rate for your CanSat.",
+          "profile": {
+            "name": "Andoyaspace",
+            "url": "https://learn.andoyaspace.no/docs/cansat/recovery_system/parachute/",
+            "long_name": "learn.andoyaspace.no",
+            "img": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.andoyaspace.no",
+            "hostname": "learn.andoyaspace.no",
+            "favicon": "https://imgs.search.brave.com/bqnEJ4kzND_rlqeRz_akUxF1xuiBDJFGKG1O34JjOH0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTg0YmJhNDI3/ZDkyODc5ZjQxZDg4/MjRiMDY1YWQ0NjAw/YmMyMzQyMDM4NDAz/MzUzNjhkOWE2NmE4/OWQzY2I1My9sZWFy/bi5hbmRveWFzcGFj/ZS5uby8",
+            "path": "› docs  › cansat  › recovery_system  › parachute"
+          },
+          "extra_snippets": [
+            "The figure to the right shows a sketch of a plat parachute which consists of 8 equal triangles. ... You can read more about how to calculate the area of a flat parachute here: https://www.sunward1.com/imagespara/The Mathematics of Parachutes(Rev2).pdf · As soon as you know the total area (\\(A\\)) together with the drag coefficient (\\(C_D\\)) you can easily determine the descent rate for your CanSat.",
+            "These pages will guide you through the different steps needed to design and built your parachute. The values listed below are preliminary and can change in advance of a CanSat competition and launch campaign. However, they can be used as a temporary guideline. Uncertainties in the Launch Campaign could lead to a different value for the eventual descent velocities.",
+            "Both will enhance the stability of the CanSat. Before we can start making the parachute we will have to figure out how big it should be. More specifically, we need to calculate how much surface area the parachute will need in order to fulfil the requirements. Logic suggests that the bigger the parachute the slower the object’s descent velocity.",
+            "Although it would be very beneficial for the CanSat to have a very low descent rate, a limit has been set to ensure that the CanSat will land near the launch area. If the descent rate is too slow the CanSat may drift kilometres away along with the wind, which is neither allowed nor desired. For safety reasons there has also been set a maximum descent rate. To design the parachute we’ll use some simple physics."
+          ]
+        },
+        {
+          "title": "Cansat - Technické parametre - Slovak Space Office",
+          "url": "https://spaceoffice.sk/cansat-tech/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The strength of the parachute must ... a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons....",
+          "page_age": "2025-01-29T12:16:43",
+          "profile": {
+            "name": "Slovak Space Office",
+            "url": "https://spaceoffice.sk/cansat-tech/",
+            "long_name": "spaceoffice.sk",
+            "img": "https://imgs.search.brave.com/dn9u4wiVndySXmhyLTvo9kopMLlIIdVVlxlAzQAbeuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGEzNTRjNzhi/OGE5MDcwN2Y5OTYz/OGViNzU2NzQ4OTAx/MzY3YmY5ODg2ODVk/OTE1NjNlOGU2MGNl/NWM5N2YwYi9zcGFj/ZW9mZmljZS5zay8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "spaceoffice.sk",
+            "hostname": "spaceoffice.sk",
+            "favicon": "https://imgs.search.brave.com/dn9u4wiVndySXmhyLTvo9kopMLlIIdVVlxlAzQAbeuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGEzNTRjNzhi/OGE5MDcwN2Y5OTYz/OGViNzU2NzQ4OTAx/MzY3YmY5ODg2ODVk/OTE1NjNlOGU2MGNl/NWM5N2YwYi9zcGFj/ZW9mZmljZS5zay8",
+            "path": "  › home  › cansat - technické parametre - slovak space office"
+          },
+          "age": "January 29, 2025",
+          "extra_snippets": [
+            "It is recommended to use bright coloured fabric, which will facilitate recovery of the CanSat after landing. The parachute connection must be able to withstand up to 50 N of force. The strength of the parachute must be tested to ensure that the system will operate nominally. For recovery reasons, a maximum flight time of 120 seconds is recommended. If attempting a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons.",
+            "All the components of the CanSat must fit inside a standard soft drinks can (115 mm height and 66 mm diameter), with the exception of the parachute. Radio antennas and GPS antennas can be mounted externally on the top or bottom of the can, depending on the design, but not on the sides.",
+            "Note: The rocket payload area usually has 4.5 cm of space per CanSat available, along the can’s axial dimension (i.e. height), which must accommodate all external elements including: parachute, parachute attachment hardware, and any antennas.",
+            "The range of allowed frequencies changes depending on the country where the event is hosted and will be communicated in due time. It is recommended that teams pay attention to the design of the CanSat in terms of hardware integration and interconnection, so the radio frequency can be easily modified if necessary."
+          ]
+        },
+        {
+          "title": "Parachute Design and Material – CanSat Athena",
+          "url": "https://cansatathena.com/2024/02/03/parachute-design-and-material/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "To ensure the highest chance of our CanSat not taking damage and having a smooth landing, we have opted for our CanSat to descend at a terminal speed of 8.0m/s. Our final parachute design will be a flat-pack hexagon design. We have chosen this design for a few reasons.",
+          "page_age": "2024-02-04T00:00:00",
+          "profile": {
+            "name": "Cansatathena",
+            "url": "https://cansatathena.com/2024/02/03/parachute-design-and-material/",
+            "long_name": "cansatathena.com",
+            "img": "https://imgs.search.brave.com/cKH3hTpSIXbHqMuqM2w77-_nBfGCVavM6hyet5reeWM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2JkNTQ1YTQ2/YWM0ZjVkOTQwZjc0/MWVmZTY3NzkzODNh/MDJjYTk0ODEyYzA1/OGJmYjlkYzE2NmRj/MDRkYzA2MC9jYW5z/YXRhdGhlbmEuY29t/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatathena.com",
+            "hostname": "cansatathena.com",
+            "favicon": "https://imgs.search.brave.com/cKH3hTpSIXbHqMuqM2w77-_nBfGCVavM6hyet5reeWM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2JkNTQ1YTQ2/YWM0ZjVkOTQwZjc0/MWVmZTY3NzkzODNh/MDJjYTk0ODEyYzA1/OGJmYjlkYzE2NmRj/MDRkYzA2MC9jYW5z/YXRhdGhlbmEuY29t/Lw",
+            "path": "› 2024  › 02  › 03  › parachute-design-and-material"
+          },
+          "age": "February 4, 2024",
+          "extra_snippets": [
+            "To ensure the highest chance of our CanSat not taking damage and having a smooth landing, we have opted for our CanSat to descend at a terminal speed of 8.0m/s. Our final parachute design will be a flat-pack hexagon design. We have chosen this design for a few reasons. Firstly, it is simple and relatively easy to make which allows us to focus our attention on more vital parts of the mission. Even though it is easy to make, it has a relatively high drag-coefficient which, after testing, we found to be 0.8. This is useful since our descent speed is quite low, a high drag coefficient allows us to achieve that speed with less material\\area, a vital advantage when dealing with space/weight limitations.",
+            "For our parachute cord material, we chose a paracord made from Nylon with a diameter of 4mm. Due to its 11-threaded core it can withstand 3000+ Newtons , which is plenty enough for the CanSat. ... To ensure the highest chance our CanSat is recoverable, we have opted for two systems in place.",
+            "We used the drag and weight formulae to calculate the required area of the parachute: Where m is the mass of the Cansat, g is the gravitational constant, p is the local air density, v is the velocity and Cd is the drag coefficient. Assume the mass of the CanSat is 0.35kg, p is 1.225g\\m3 , the velocity is 8.5m/s and the drag coefficient is 0.8.",
+            "Firstly we will use GPS to know exactly where our CanSat is, this almost guarantees the CanSat doesn’t get lost and has the added advantage we can track its flight path which is useful during testing. However, just in-case the GPS fails or for some reason the data is inaccurate, we have made our parachute and the cord a fluorescent orange colour, so it does not blend into the nature/sky, again with the added benefit of being able to easily track our flight path · Published under: Athena Decoded Parachutes/Landing"
+          ]
+        },
+        {
+          "title": "ESA - What is a CanSat?",
+          "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "For recovery reasons, a maximum flight time of 120 seconds is recommended. If attempting a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons.",
+          "profile": {
+            "name": "European Space Agency",
+            "url": "https://www.esa.int/Education/CanSat/What_is_a_CanSat",
+            "long_name": "esa.int",
+            "img": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "esa.int",
+            "hostname": "www.esa.int",
+            "favicon": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8",
+            "path": "› Education  › CanSat  › What_is_a_CanSat"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/JnNjwYGRLF8qK7hW28PuCb8wyW_K6sx7K0fBlGXxaKA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXNhLmludC92YXIv/ZXNhL3N0b3JhZ2Uv/aW1hZ2VzL2VzYV9t/dWx0aW1lZGlhL2lt/YWdlcy8yMDEwLzAx/L2FfY2Fuc2F0X2Rl/c2NlbmRpbmcvOTc3/NTEzNi0zLWVuZy1H/Qi9BX0NhblNhdF9k/ZXNjZW5kaW5nX3Bp/bGxhcnMuanBn",
+            "original": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2010/01/a_cansat_descending/9775136-3-eng-GB/A_CanSat_descending_pillars.jpg",
+            "logo": false
+          },
+          "extra_snippets": [
+            "It is recommended to use bright coloured fabric, which will facilitate recovery of the CanSat after landing. The parachute connection must be able to withstand up to 1000 N of force. The strength of the parachute must be tested to ensure that the system will operate nominally. For recovery reasons, a maximum flight time of 120 seconds is recommended. If attempting a directed landing, then a maximum of 170 seconds flight time is recommended. A descent rate between 8 and 11 m/s is recommended for recovery reasons.",
+            "N.B. The rocket payload area has 4.5 cm of space per CanSat available, along the can’s axial dimension (i.e. height), which must accommodate all external elements including: parachute, parachute attachment hardware, and any antennas.",
+            "All the components of the CanSat must fit inside a standard soda can (115 mm height and 66 mm diameter), with the exception of the parachute.",
+            "A CanSat is a simulation of a real satellite, integrated within the volume and shape of a soft drink can. The challenge for the students is to fit all the major subsystems found in a satellite, such as power, sensors and a communication system, into this minimal volume."
+          ]
+        },
+        {
+          "title": "The recovery system – KrakSat",
+          "url": "https://cansat.kraksat.pl/recovery-system/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The expected descent speed at the weight of 350 g will be about 9 m/s, giving the estimated flight time of about 360 seconds. To integrate the CanSat with the carrier rocket the parachute has to be folded.",
+          "profile": {
+            "name": "KrakSat",
+            "url": "https://cansat.kraksat.pl/recovery-system/",
+            "long_name": "cansat.kraksat.pl",
+            "img": "https://imgs.search.brave.com/Sc0f56GjkLIfZKIcfoKJ0D3FVKfwVK2Vk-8UOBtDjfE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmExMWZlM2Vl/ZDQ1Mzg5ZmRkNjg5/YWFlNTE5ZjNjN2Ji/ZGYzZDQzMTE0MWMz/ZjIyZDk5OTMyYmEz/ZjQ4YzAyZS9jYW5z/YXQua3Jha3NhdC5w/bC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansat.kraksat.pl",
+            "hostname": "cansat.kraksat.pl",
+            "favicon": "https://imgs.search.brave.com/Sc0f56GjkLIfZKIcfoKJ0D3FVKfwVK2Vk-8UOBtDjfE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmExMWZlM2Vl/ZDQ1Mzg5ZmRkNjg5/YWFlNTE5ZjNjN2Ji/ZGYzZDQzMTE0MWMz/ZjIyZDk5OTMyYmEz/ZjQ4YzAyZS9jYW5z/YXQua3Jha3NhdC5w/bC8",
+            "path": "› recovery-system"
+          },
+          "extra_snippets": [
+            "The expected descent speed at the weight of 350 g will be about 9 m/s, giving the estimated flight time of about 360 seconds. To integrate the CanSat with the carrier rocket the parachute has to be folded.",
+            "How to fold a parachute."
+          ]
+        },
+        {
+          "title": "Nordic CanSat Competition Guidelines | Nordic ESERO | Using Space in Education",
+          "url": "https://www.esero.no/prosjekter/cansat/nordic-cansat-competition-guidelines/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The deployable subsystems and recovery ... time is limited to 120 sec (If not other agreements have been made). The descent rate must be between 8 m/s and 11m/s (If not other agreements have been made)....",
+          "profile": {
+            "name": "Esero",
+            "url": "https://www.esero.no/prosjekter/cansat/nordic-cansat-competition-guidelines/",
+            "long_name": "esero.no",
+            "img": "https://imgs.search.brave.com/myo705rDJRFdq8XX9qNE_5H-z3R4nSG_4-27O7Dz4MI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWRkMDMzYmI1/ODE1YmE3ODZmNDQ0/MjdjYzA0YmU4MjVk/NjkzOTcxZDU4Y2U0/OWJmZjhiMTY0YTdj/M2VjN2Y5OC93d3cu/ZXNlcm8ubm8v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "esero.no",
+            "hostname": "www.esero.no",
+            "favicon": "https://imgs.search.brave.com/myo705rDJRFdq8XX9qNE_5H-z3R4nSG_4-27O7Dz4MI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWRkMDMzYmI1/ODE1YmE3ODZmNDQ0/MjdjYzA0YmU4MjVk/NjkzOTcxZDU4Y2U0/OWJmZjhiMTY0YTdj/M2VjN2Y5OC93d3cu/ZXNlcm8ubm8v",
+            "path": "› prosjekter  › cansat  › nordic-cansat-competition-guidelines"
+          },
+          "extra_snippets": [
+            "The deployable subsystems and recovery system can exceed the length of the primary structure, but can’t be deployed before the CanSat is fully ejected from the rocket. Flight time is limited to 120 sec (If not other agreements have been made). The descent rate must be between 8 m/s and 11m/s (If not other agreements have been made).",
+            "In addition to the space theme, there is a list of technical requirements for the CanSat which has to be passed before flight (for example weight and size) and also some requirements during flight (for example decent speed). All the components (with the exception of parachute, antenna and GPS) of the CanSat must fit inside a European soda can: 115 mm height and 66 mm diameter.",
+            "During the CanSat operation, each team will get their CanSats launched up to an altitude of approximately 1 000 meter by a rocket. At this altitude the CanSats will be ejected from the rocket. During the descent, the CanSats will perform their missions and send data to the ground trough a radio transmitter.",
+            "The CanSat must be able to withstand an acceleration of up to 20G."
+          ]
+        },
+        {
+          "title": "CanSat 2021 - Herotech",
+          "url": "https://herotech.ro/cansat.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The printed parts are secured to the rest of the CanSat in 4 points: 2 by the M2 rod and 2 by pressing the sides in the outer walls, providing a tight fit and ease of removal. To each one of the motors, 3D printed pulleys are attached that allow the length of the strings of the parachute to be completely controlled. With this in mind, we can completely steer the parachute, which is a paraglider, by pulling on the side strings, or even slowing the descent rate by pulling all the strings simultaneously.",
+          "profile": {
+            "name": "Herotech",
+            "url": "https://herotech.ro/cansat.html",
+            "long_name": "herotech.ro",
+            "img": "https://imgs.search.brave.com/N_yOlsy-cZ_bOwMmO_HgM4yQHkg1SjaTBnAIl0ZdU78/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODlmODk2YmZk/N2M1ZDkwMGE5ZTY4/MzZlZWUwZjhjOTRl/ZWEzNGM1Yjk1MTVj/NTUwMWJmNGJjOTlh/MWE3ZjQxZi9oZXJv/dGVjaC5yby8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "herotech.ro",
+            "hostname": "herotech.ro",
+            "favicon": "https://imgs.search.brave.com/N_yOlsy-cZ_bOwMmO_HgM4yQHkg1SjaTBnAIl0ZdU78/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODlmODk2YmZk/N2M1ZDkwMGE5ZTY4/MzZlZWUwZjhjOTRl/ZWEzNGM1Yjk1MTVj/NTUwMWJmNGJjOTlh/MWE3ZjQxZi9oZXJv/dGVjaC5yby8",
+            "path": "› cansat.html"
+          },
+          "extra_snippets": [
+            "We are Herotech, a team of 4 passionate and young students that believe that things can be done differently. We dream for a better future, a more efficient way to use everyday objects, a method to make life just a little bit different. We strive for robotic assistance, for a future in which our human barriers can be overcome.",
+            "The printed parts are secured to the rest of the CanSat in 4 points: 2 by the M2 rod and 2 by pressing the sides in the outer walls, providing a tight fit and ease of removal. To each one of the motors, 3D printed pulleys are attached that allow the length of the strings of the parachute to be completely controlled. With this in mind, we can completely steer the parachute, which is a paraglider, by pulling on the side strings, or even slowing the descent rate by pulling all the strings simultaneously.",
+            "The printed parts are secured to the rest of the CanSat in 4 points :2 by the M2 rod and 2 by pressing the sides in the outer walls, providing a tight fit and ease of removal. To each one of the motors, 3D printed pulleys are attached that allow the length of the strings of the parachute to be completely controlled. With this in minde, we can completely steer the parachute, which is a paraglider, by pulling on the side strings, or even slowing the descent rate by pulling all the strings simultaneously.",
+            "The mission we have chosen consists in a guided airdrop system. The CanSat should be able to guide itself during the fall by pulling the strings attached to the parachute with the target of landing in a nearby area relative to the dropping point. This presents a great potential in the development of an air drop package delivering system for faster and more convenient delivery which does not require human interaction."
+          ]
+        },
+        {
+          "title": "Technology | T10 teach with space teacher guide & student worksheets",
+          "url": "https://esero.es/wp-content/uploads/2019/10/T10_Parachute_Design.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "According to the competition guidelines for CanSat, a few seconds after deploying its parachute (i.e. after launch), it should have a descent rate (terminal velocity) between 8 – 11 m/s.",
+          "profile": {
+            "name": "ESERO Spain",
+            "url": "https://esero.es/wp-content/uploads/2019/10/T10_Parachute_Design.pdf",
+            "long_name": "esero.es",
+            "img": "https://imgs.search.brave.com/4yEkacVwVwGVPhZLPwVTSp7VyZu2MLWi_7GR8o6zP8c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTJjODIwYjJh/NTVmMDVhZTc4NDlj/MjIyNDFiZjdhOGU3/ZTVlMDA1ZjdiZWY2/MmQ5NGJhZTMzOGU0/NTVjMzQ4OC9lc2Vy/by5lcy8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "esero.es",
+            "hostname": "esero.es",
+            "favicon": "https://imgs.search.brave.com/4yEkacVwVwGVPhZLPwVTSp7VyZu2MLWi_7GR8o6zP8c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTJjODIwYjJh/NTVmMDVhZTc4NDlj/MjIyNDFiZjdhOGU3/ZTVlMDA1ZjdiZWY2/MmQ5NGJhZTMzOGU0/NTVjMzQ4OC9lc2Vy/by5lcy8",
+            "path": "› wp-content  › uploads  › 2019  › 10  › T10_Parachute_Design.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "As the CanSat falls vertically, a horizontal wind can blow the CanSat in the · horizontal direction. Moreover, take into account that even with no wind some parachute types · (e.g. cruciform) might get a large lateral velocity due to its stability. Depending on the speed of the descent, and the wind speed, this can mean that the CanSat lands",
+            "Remember: In the European CanSat competition, CanSats are launched to a height of 1000m! The most important part of the launch for us right now, is the descent from the highest point to · hitting the ground, as this is when the parachute comes into play.",
+            "need for their parachute. This can be calculated by considering Newton’s second law and balancing · the forces acting in a steady-state. It is important to note the simplifications that are made in this ... CanSat guidelines (8-11ms-1) students are able to calculate a range of expected descent times.",
+            "proportional to the velocity, that is the higher the drag coefficient the lower the descent ... In this activity, students are introduced to the main different types of parachute that are commonly · used in CanSat projects."
+          ]
+        },
+        {
+          "title": "ESA - Design your parachute – A Guide to Landing Your CanSat Safely | Teach with Space T10",
+          "url": "https://www.esa.int/Education/CanSat/Design_your_parachute_A_Guide_to_Landing_Your_CanSat_Safely_Teach_with_Space_T10",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Students will learn about the underlying physics of parachutes and their design and how to control the speed of their CanSat.",
+          "profile": {
+            "name": "European Space Agency",
+            "url": "https://www.esa.int/Education/CanSat/Design_your_parachute_A_Guide_to_Landing_Your_CanSat_Safely_Teach_with_Space_T10",
+            "long_name": "esa.int",
+            "img": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "esa.int",
+            "hostname": "www.esa.int",
+            "favicon": "https://imgs.search.brave.com/N7-ExSQiugqqIBRMMrGU-p51XsvjXMNwJ7679FEfN34/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmQ1ZDJmNWJi/Y2FhNmQ0M2FlNzgy/YjQ3ZThmYmY3Yzk0/YzIxYmI0YjU2NWMy/ZjVjNzUwM2FjYWRi/OWM4NmM5OC93d3cu/ZXNhLmludC8",
+            "path": "› Education  › CanSat  › Design_your_parachute_A_Guide_to_Landing_Your_CanSat_Safely_Teach_with_Space_T10"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/9ZJQqGZEPjELf78fXW4K6OfWXVFJhGvuVy_4TgLJ9_s/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXNhLmludC92YXIv/ZXNhL3N0b3JhZ2Uv/aW1hZ2VzL2VzYV9t/dWx0aW1lZGlhL2lt/YWdlcy8yMDE4LzEy/L3BhcmFjaHV0ZV9k/ZXNpZ24vMTg5Mzkx/OTgtMi1lbmctR0Iv/UGFyYWNodXRlX2Rl/c2lnbl9waWxsYXJz/LnBuZw",
+            "original": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/12/parachute_design/18939198-2-eng-GB/Parachute_design_pillars.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "Appreciate why it is important to test a parachute. Understand the concept of terminal velocity. Represent graphs with corrects units and labels. This classroom resource is part of a set of resources developed by ESA’s Education Office in collaboration with the European Space Education Resource Offices (ESEROs) to support the European CanSat Competition.",
+            "Students will learn about the underlying physics of parachutes and their design and how to control the speed of their CanSat.",
+            "Languages: English, French, German, Italian, Portuguese Subjects: Physics, Mathematics, Design Age range: 14-20 years old Keywords: Parachute, Drag, Air Resistance, Gravity, Weight, CanSat Learning objectives:"
+          ]
+        },
+        {
+          "title": "CANSAT Competition Guide 2025 Planetary Probe Instrument Mission Version 1.1",
+          "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "CANSAT shall measure its speed duringg ascent and descent.",
+          "page_age": "2025-04-07T00:00:00",
+          "profile": {
+            "name": "University of Waikato",
+            "url": "https://www.waikato.ac.nz/assets/Uploads/About-us/Faculties-and-schools/School-of-Engineering/CanSat_Mission_Guide_2025-1.1.pdf",
+            "long_name": "waikato.ac.nz",
+            "img": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "waikato.ac.nz",
+            "hostname": "www.waikato.ac.nz",
+            "favicon": "https://imgs.search.brave.com/GvUqdkKMEhlCtyx1LjdoIL20oM-Wa7VPPqeCJEstxdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWMxM2Y3MTI0/MTZlOGNmMGI3Njhl/MTJiMWNiYTQyODc2/ZmQ5MTczMWMyYmRi/ODU1ZDk1MGJhZTM1/Yjk4OWVkYi93d3cu/d2Fpa2F0by5hYy5u/ei8",
+            "path": "› assets  › Uploads  › About-us  › Faculties-and-schools  › School-of-Engineering  › CanSat_Mission_Guide_2025-1.1.pdf"
+          },
+          "age": "April 7, 2025",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "was developed with a 1/8 thick kevlar cord. One end is secured to an eyebolt · attached to a fixed point, such as ceiling or rigid structure with enough clearance · to accommodate the cord, CANSAT, and free space so the CANSAT does not · hit the ground. The other end is tied to the parachute.",
+            "What are the various phases of flight. What operations will your CANSAT perform · in each phase? When will you be deploying parachutes, etc?",
+            "The CANSAT telemetry packet format to be transmitted at one packet every two seconds. ... ROCKET_SEPARATION, DESCENT, HS_RELEASE, LANDED, etc.).",
+            "CANSAT shall measure its speed duringg ascent and descent."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

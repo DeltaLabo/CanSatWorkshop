@@ -1,0 +1,4371 @@
+                      NASA TECHNICAL              NASA-STD 8739.4A
+                         STANDARD                   with Change 2
+
+
+                                                     Approved: 2016-06-30
+National Aeronautics and Space Administration
+                                                 Superseding NASA-STD-8739.4
+Washington, DC 20546
+                                                         With Change 6
+
+
+
+ WORKMANSHIP STANDARD FOR CRIMPING,
+INTERCONNECTING CABLES, HARNESSES, AND
+               WIRING
+
+
+
+
+                       Measurement System Identification:
+                               Metric (English)
+                       NASA-STD-8739.4A – 2016-06-30
+
+                        DOCUMENT HISTORY LOG
+
+           Document      Approval
+ Status                                                   Description
+            Revision       Date
+Baseline                1998-02-08                       Initial Release
+                                     - Page iii: Update URL for accessing NASA
+                                     Technical Standards. The correct URL is
+                                     http://standards.nasa.gov/
+                                     - Page iii: Update references to NASA 5300.4(3J-1)
+                                     and NASA 5300.4(3M) to NASA-STD- 8739.1 and
+                                     NASA-STD-8739.2 respectively.
+                                     - Page iv: Insert Revisions page and renumber
+                                     Table of Contents accordingly.
+                                     - Para 2.1 Change citation for NHB 8060.1 to NASA-
+                                     STD-6001 and change citation for NHB 1700.1(V1)
+                                     to NPR 8715.3.
+                                     - Para 3.2 Delete NHB from Acronym List and Add
+                                     NPR to acronym list
+                                     - Para 4.3 No. 4: Change sentence to “Crimping.
+                                     Stranded wire shall be used for crimping. Crimping
+                                     of solid wire is prohibited. Crimping of solder tinned
+                                     stranded wire is prohibited.”
+                                     - Para 5.7: Change address for training center to:
+                                     GSFC, Training Center, Code 300.1, 7000 Columbia
+                                     Gateway Dr., Columbia, MD. 21046
+Change        1         2006-01-27   - Para 6.8: Change sentence to read: “All materials
+                                     used in vacuum or low pressure shall not release
+                                     greater than 1.0 percent total mass loss (TML) and
+                                     0.1 percent collected volatile condensable material
+                                     (CVCM) when tested in accordance with ASTM-E-
+                                     595.”
+                                     - Para 6.8: Change NHB 8060.1” to “NASA-STD-
+                                     6001” in the second sentence.
+                                     - Para 7.3 No. 11 Change NHB 8060.1 to NASA-
+                                     STD-6001
+                                     - Para 9.7: Change tape “may be applied to bundle”
+                                     to “shall be applied to bundle”.
+                                     - Para 14.1 Change NHB 1700.1 to NPR 8715.3
+                                     - Para 18.2 No. 6.c: For the Insulation Resistance
+                                     (IR) Test, change “for a minimum of 1 minute, or as
+                                     specified in the test procedure” to “until a stabilized
+                                     reading is attained not to exceed 1 minute, or as
+                                     specified in the test procedure.”
+                                     - Appendix C Update the address for submitting
+                                     changes to NASA Technical Standards
+                                                                                    (WHBIII)
+
+
+
+
+                                     2 of 101
+                       NASA-STD-8739.4A – 2016-06-30
+
+           Document      Approval
+ Status                                                   Description
+            Revision       Date
+                                     - Page v: Insert Revisions page entries
+                                     - Page ix: Revise Table of Contents to reflect
+                                     insertion of new Chapter 19 and renumbering of
+                                     existing Chapter 19 to Chapter 20
+                                     - Page xi and xii: Revise list of Figures to reflect
+                                     insertion of new figures as a part of the new Chapter
+                                     19
+Change        2         2006-08-23   - Page xii: Revise List of Tables to reflect insertion
+                                     of new tables as a part of the new Chapter 19
+                                     - Pages 19-1 through 19-14: Inserted new Chapter
+                                     on Splicing
+                                     - Pages 20-1 through 20-10: Renumbered original
+                                     Quality Assurance Provisions Chapter to
+                                     accommodate the new Splicing Chapter
+                                                                                    (WHBIII)
+                                       Correct page number formatting problem and add
+Change        3         2006-09-05           page numbers (no content changes)
+                                                                                    (WBHIII)
+                                        Update references, add ‘requirement’ tags, and
+Change        4         2008-07-25                       revalidate
+                                                                                     (JWL4)
+                                       Editorial corrections to paragraphs 6.4, 12.3.4.c,
+                                        13.7.3, 18.2.6.b, and footnote #1 to Table 12-1.
+Change        5         2009-11-24     Addition of SMA TA note on cover and VCS note
+                                                              below.
+                                                                                     (JWL4)
+                                     Editorial corrections to Foreword and paragraphs 9.5
+                                     and 15.1. Format Page numbers. Add reference to
+Change        6         2011-03-29
+                                      NASA-STD 8709.22 in paragraphs 2.1.2 and 3.2.
+                                                                                     (JWL4)
+                                     - Editorial corrections to adopt current NASA
+                                       Standard format.
+                                     - Synchronized requirements with NASA-STD-
+                                       8739.6
+                                     - Added and removed documents from reference
+                                       lists.
+                                     - Unused acronyms deleted.
+Revision      A         2016-06-30
+                                     - Corrected applicability statement.
+                                     - Supersede the training chapter with the current
+                                       requirements found in NASA-STD-8739.6.
+                                     - Update definitions for Accessory, Connector and
+                                       Backshell.
+                                     - Defer to NASA-STD 8709.22 for definitions for
+                                       Repair and Rework.
+
+
+
+
+                                     3 of 101
+                     NASA-STD-8739.4A – 2016-06-30
+
+         Document      Approval
+Status                                                  Description
+          Revision       Date
+                                  - Remove definitions for Solder Cup Terminal and
+                                    Tab Terminal.
+                                  - Defined high voltage applications as those
+                                    supporting voltage in excess of 200VACRMS or
+                                    300VDC.
+                                  - Removed requirement for magnetic survey for uses
+                                    of high strength copper alloy wire.
+                                  - Added a requirement to specify wire dress and lay
+                                    in drawings.
+                                  - Include launch vehicles in applications where spiral
+                                    wrapped sleeving is prohibited.
+                                  - Remove contradictory rules regarding pull test
+                                    failures.
+                                  - Remove ambiguous, duplicate information from
+                                    Table 12-1 for crimp pull acceptance criteria.
+                                  - Remove requirements related to crimp process
+                                    development and include only pre-production
+                                    process verification pull testing requirements.
+                                  - Require that instructions are provided to operators
+                                    when outgassing connector subcomponents (e.g.
+                                    grommets and gaskets) are to be removed during
+                                    cable assembly.
+                                  - Synchronized requirements with adoption of J-
+                                    STD-001FS
+                                  - Remove requirement to record break type for
+                                    passing crimp test samples for contacts and crimp
+                                    ring quality control testing.
+                                  - Remove limitation of requirement to inspect
+                                    captured solder cup interconnects to hermetic
+                                    connector and extend it to all connectors with
+                                    captured solder cup contacts.
+                                  - Require process controls to ensure full solder fill of
+                                    solder contacts.
+                                  - Defer to engineering documentation for required
+                                    torque values.
+                                  - Added requirement to bake expanded foam
+                                    insulated cable following cleaning.
+                                  - Prohibit use of aqueous cleaning on silver-plated
+                                    copper wire.
+                                  - Removed requirement to protect finished
+                                    harnesses with bubble wrap.
+                                  - Require venting of packaging used to store
+                                    assemblies containing fluoropolymer insulation.
+                                  - Added metric units to splice pull values
+                                                                                    (JFP)
+
+
+
+                                  4 of 101
+                     NASA-STD-8739.4A – 2016-06-30
+
+         Document      Approval
+Status                                                  Description
+          Revision       Date
+                                   - Corrected referencing in paragraphs: 9.9.2 and
+                                     11.3.3. Deleted first sentence “(Figure 11-6D)” and
+                                     second sentence “(Figure 11-6E)” in paragraph
+                                     11.4.2. Changed “in advance in accordance with
+                                     1.4.3 or 1.4.4” to “in advance in accordance with
+                                     Chapter 4 of NASA-STD-8739.6” in paragraph
+                                     12.3.5.d and “handled in accordance with
+                                     paragraph 4.4.” to “handled in accordance with
+                                     paragraph 6.8 of NASA-STD-8739.6” in paragraph
+                                     19.2.1. Deleted paragraph 19.6.1.d, changed “shall
+                                     be used based on 19.11.1.c below” to “shall be
+                                     selected per the requirements of Chapter 12
+                                     herein” in paragraph 19.10.1. Corrected format for
+                                     Figure 19-26 and 19-27, changed “requirements
+                                     specified in 10.1.11.b for each” to “requirements
+Change      1         2016-10-07     specified in 10.1.4.b for each” in paragraph
+                                     19.12.1.e. Added letters after 20.1.8 instead of
+                                     numbers and “Use” to the beinning of the 20.1.8.c.
+                                     Changed “approve in accordance with 1.4 by the
+                                     procuring” to “approved in accordance with Chapter
+                                     4 or NASA-STD-8739.6 by the procuring” in
+                                     paragraph 20.3.1 and “found in paragraphs 6.3,
+                                     6.6, and 12.3” to “found in paragraphs 6.2 and 12.3
+                                     in paragraph 20.4.1.” Changed “the requirements
+                                     of paragraphs 6.8 and 6.9 and that material” to “the
+                                     requirements of paragraphs 6.5 and 6.6 and that
+                                     material” in paragraph 20.4.3 and “described in
+                                     Chapters 1 through 18, Appendix” to “described in
+                                     Chapters 1 through 19, Appendix” in paragraph
+                                     20.5.1.
+                                                                                    (JFP)
+                                   - Editorial correction to paragraph 20.4.3: deleted the
+Change      2         2016-12-22     additional “shall.”
+                                                                                     (JFP)
+
+
+
+
+                                   5 of 101
+NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+           6 of 101
+                                        NASA-STD-8739.4A – 2016-06-30
+
+                                                 TABLE OF CONTENTS
+DOCUMENT HISTORY LOG ................................................................................................... 2
+TABLE OF CONTENTS ............................................................................................................. 7
+LIST OF APPENDICES .............................................................................................................. 9
+LIST OF FIGURES .................................................................................................................... 10
+LIST OF TABLES ...................................................................................................................... 12
+
+1.           SCOPE .......................................................................................................................... 13
+1.1          Purpose........................................................................................................................... 13
+1.2          Applicability .................................................................................................................. 13
+
+2.           APPLICABLE DOCUMENTS ................................................................................... 13
+2.1          General ........................................................................................................................... 13
+2.2          Government Documents ................................................................................................ 13
+2.3          Non-Government Documents ........................................................................................ 14
+2.4          Order of Precedence ....................................................................................................... 14
+
+3.           ACRONYMS AND DEFINITIONS ........................................................................... 14
+3.1          Acronyms and Abbreviations ........................................................................................ 14
+3.2          Definitions...................................................................................................................... 16
+
+4.           REQUIREMENT ......................................................................................................... 20
+4.1          General ........................................................................................................................... 20
+
+5.           TRAINING AND CERTIFICATION PROGRAM.................................................. 20
+5.1          General ........................................................................................................................... 20
+
+6.           FACILITIES, EQUIPMENT, MATERIALS, AND PARTS ................................... 20
+6.1          Environmental Conditions ............................................................................................. 20
+6.2          Tool and Equipment Control ......................................................................................... 20
+6.3          Electrostatic Discharge Control Requirements .............................................................. 21
+6.4          Inspection Optics ........................................................................................................... 21
+6.5          Parts and Materials Selection ......................................................................................... 21
+6.6          Solvents and Cleaners .................................................................................................... 21
+
+7.           DESIGN PRACTICES ................................................................................................ 22
+7.1          General ........................................................................................................................... 22
+7.2          Design Considerations ................................................................................................... 22
+
+8.           INTERCONNECTING CABLE/HARNESS FIXTURING..................................... 25
+8.1          General ........................................................................................................................... 25
+8.2          Mockup and Wiring Board Design Parameter ............................................................... 26
+8.3          Temporary Identification ............................................................................................... 26
+8.4          Interconnecting Cable and Harness Protection .............................................................. 26
+
+9.           FORMING WIRES INTO CABLES AND HARNESSES ....................................... 28
+9.1          General ........................................................................................................................... 28
+
+
+                                                                  7 of 101
+                                  NASA-STD-8739.4A – 2016-06-30
+
+9.2    Lacing for Trunk, Branches, and Breakouts .................................................................. 29
+9.3    Fabric Braid Sleeving (Prewoven) ................................................................................. 32
+9.4    Fabric Braid Directly Woven on Interconnecting Harness or Cable ............................. 33
+9.5    Spiral Wrap Sleeving ..................................................................................................... 35
+9.6    Plastic Straps .................................................................................................................. 36
+9.7    Metal Braid Shielding .................................................................................................... 37
+9.8    Insulation Sleeving/Tubing ............................................................................................ 37
+9.9    Installation of Heat-Shrinkable Sleeving ....................................................................... 39
+9.10   Long Lengths of Shrinkable Sleeving............................................................................ 40
+9.11   Shrinkable Part Requirements and Installation .............................................................. 41
+
+10.    STRIPPING INSULATION FROM CONDUCTORS AND CABLE .................... 42
+10.1   Stripping Round Conductors.......................................................................................... 42
+10.2   Stripping Jackets Over Shields ...................................................................................... 44
+10.3   Stripping Flat Conductor Cable ..................................................................................... 44
+
+11.    CABLE SHIELDING AND SHIELD TERMINATION .......................................... 44
+11.1   General ........................................................................................................................... 44
+11.2   Individual Shield Termination Using Two-Piece Crimp Rings ..................................... 45
+11.3   Group-Grounding of Individual Shield Terminations ................................................... 46
+11.4   Large Compression Ring Grounding ............................................................................. 48
+11.5   Floating Shield Terminations ......................................................................................... 49
+11.6   Unshielded Wire Exposure and Total Length of Grounding Wires .............................. 50
+
+12.    CRIMP CONNECTIONS ........................................................................................... 51
+12.1   General ........................................................................................................................... 51
+12.2   Examination of Crimp Contact ...................................................................................... 51
+12.3   Process Controls............................................................................................................. 52
+
+13.    CONNECTOR ASSEMBLY ...................................................................................... 55
+13.1   General ........................................................................................................................... 55
+13.2   Assembly of Crimp-Type Connectors (Including Terminal Junctions) ........................ 55
+13.3   Assembly of Solder-Type Connectors ........................................................................... 55
+13.4   Assembly of Connectors with Non-Removable Solder Cups Including Hermetic and
+       Environmental Types ..................................................................................................... 55
+13.5   Assembly (Torquing) of Adapters and Cable Clamps to Connectors............................ 56
+13.6   Assembly of RF Connectors and Coaxial Contacts ....................................................... 56
+13.7   Process Controls for Two-Piece Crimp Rings and Stub-Type Splicing Devices .......... 57
+13.8   Inspection and Verification Testing ............................................................................... 57
+
+14.    HARNESS IDENTIFICATION ................................................................................. 60
+14.1   General ........................................................................................................................... 60
+
+15.    INTERCONNECTING HARNESS AND CABLE CLEANING ............................ 61
+15.1   General ........................................................................................................................... 61
+15.2   Cleaning the Harness Assembly .................................................................................... 61
+15.3   Cleaning Harness Connectors ........................................................................................ 62
+
+
+
+                                                            8 of 101
+                                   NASA-STD-8739.4A – 2016-06-30
+
+15.4    Cleaning Coaxial Connectors (Assembled) ................................................................... 62
+
+16.     INTERCONNECTING HARNESS AND CABLE HANDLING AND
+        PROTECTION ............................................................................................................. 63
+16.1    General ........................................................................................................................... 63
+
+17.     CONNECTOR MATING ............................................................................................ 63
+17.1    General ........................................................................................................................... 63
+17.2    Connector Mating and Demating ................................................................................... 63
+17.3    Coaxial Connector Mating ............................................................................................. 64
+
+18.     TESTING AND INSPECTION .................................................................................. 65
+18.1    General ........................................................................................................................... 65
+18.2    Testing............................................................................................................................ 65
+18.3    Test Methods .................................................................................................................. 65
+
+19.     SPLICING .................................................................................................................... 67
+19.1    General ........................................................................................................................... 67
+19.2    General Information ....................................................................................................... 67
+19.3    Soldered Splices ............................................................................................................. 68
+19.4    Lap Splice ...................................................................................................................... 68
+19.5    Lash Splice ..................................................................................................................... 69
+19.6    Solder Sleeve ................................................................................................................. 70
+19.7    Soldered Western Union/Lineman Splice ...................................................................... 71
+19.8    Solder Ferrule................................................................................................................. 72
+19.9    Crimped Splices ............................................................................................................. 74
+19.10   Modified Crimp Contact ................................................................................................ 74
+19.11   Crimp Ferrule Splice ...................................................................................................... 75
+19.12   Butt Splice...................................................................................................................... 76
+19.13   Wire In-Line Junction Devices (Jiffy Junctions) ........................................................... 78
+
+20.     QUALITY ASSURANCE PROVISIONS.................................................................. 80
+20.1    General ........................................................................................................................... 80
+20.2    Documentation Verification........................................................................................... 81
+20.3    Documentation Authorization. ....................................................................................... 82
+20.4    Verification of Tools, Equipment, and Materials .......................................................... 82
+20.5    Inspection Criteria .......................................................................................................... 83
+
+
+
+                                            LIST OF APPENDICES
+                 WIRE VISUAL AIDS AND ILLUSTRATIONS ............................................... 89
+                 CRITICAL PROBLEMS IN COAXIAL CABLE ASSEMBLY ........................ 99
+
+
+
+
+                                                             9 of 101
+                                           NASA-STD-8739.4A – 2016-06-30
+
+                                                         LIST OF FIGURES
+Figure 8-1. Line Drawing of Typical Harness Layout .................................................................. 27
+Figure 8-2. Typical Harness Board Hardware and Fixtures ......................................................... 28
+Figure 9-1. Starting Stitch ............................................................................................................. 30
+Figure 9-2. Spot Tie (Typical) ...................................................................................................... 30
+Figure 9-3. Closing Stitch and Single Tape—Illustration ............................................................ 31
+Figure 9-4. Alternate Closing Stitch and Single Tape—Illustration............................................. 31
+Figure 9-5. Running Lockstitch .................................................................................................... 31
+Figure 9-6. Flat Lacing Stitches .................................................................................................... 32
+Figure 9-7. Securing Fabric Braid Sleeving ................................................................................. 33
+Figure 9-8. Starting Lock .............................................................................................................. 34
+Figure 9-9. Forming Ending Pigtail .............................................................................................. 34
+Figure 9-10. Braiding at a Breakout or Y Intersection ................................................................. 35
+Figure 9-11. Spiral Wrap Sleeving ............................................................................................... 36
+Figure 9-12. Plastic Strap Orientation .......................................................................................... 37
+Figure 9-13. Illustration of Shrink Sleeve Installation (Typical) .................................................. 40
+Figure 9-14. Installation of Long Lengths of Sleeving to Achieve Controlled Dimensions ........ 41
+Figure 9-15. Sleeving Installation (Typical) ................................................................................. 42
+Figure 11-1. Terminating Overall Shield in RFI Adapter (Typical) ............................................. 45
+Figure 11-2. Example of Individual Shield Termination Using a Heat Shrinkable Solder Sleeve
+....................................................................................................................................................... 45
+Figure 11-3. Individual Shield Termination Using a Two-Piece Crimp Ring .............................. 46
+Figure 11-4. Example of Group Grounding of Staggered Shields................................................ 47
+Figure 11-5. Group-Grounding of Individual Shield Terminations.............................................. 48
+Figure 11-6. Large Compression Ring Grounding (Typical Applications) .................................. 49
+Figure 11-7. Floating Shield Termination .................................................................................... 50
+Figure 11-8. Conductor Exposure for Individual Shield Termination Types ............................... 51
+Figure 12-1. Crimp Joint Tensile Failure Categories.................................................................... 54
+Figure 13-1. Typical Push Test Tool ............................................................................................ 59
+Figure 13-2. Application of Retention Tool for Gripping Wire (Typical) ................................... 59
+Figure 15-1. Visual Examination Inside the Socket Contact for Flux Residue ............................ 62
+Figure 19-1. Pre-Tinned Conductors ............................................................................................ 68
+Figure 19-2. Soldered Conductors ................................................................................................ 68
+Figure 19-3. Individual Shield Termination with a Lap Splice and Solder Sleeve ...................... 68
+Figure 19-4. Sleeving over Soldered Connection ......................................................................... 69
+Figure 19-5. Double Sleeving over Soldered Connection ............................................................ 69
+Figure 19-6. Pre-Tinned Conductors ............................................................................................ 69
+Figure 19-7. Lashing of Pre-Tinned Conductors .......................................................................... 69
+Figure 19-8. Soldered Connection ................................................................................................ 69
+Figure 19-9. Pre-Lash End Type Splice ........................................................................................ 70
+Figure 19-10. Lash End Type Splice ............................................................................................ 70
+Figure 19-11. Soldered Lash Splice .............................................................................................. 70
+Figure 19-12 Sleeved Lash Splice ................................................................................................ 70
+Figure 19-13. Solder Sleeve Prior to Flow ................................................................................... 71
+Figure 19-14. Fully Melted Solder Sleeve .................................................................................... 71
+
+
+
+                                                                     10 of 101
+                                         NASA-STD-8739.4A – 2016-06-30
+
+Figure 19-15. Western Union/Lineman Splice ............................................................................. 71
+Figure 19-16. Initial Wrap for Western Union/Lineman Splice ................................................... 72
+Figure 19-17. Completed Wrap for Western Union/Lineman Splice ........................................... 72
+Figure 19-18. Soldered Western Union/Lineman Splice .............................................................. 72
+Figure 19-19. Solder Ferrule ......................................................................................................... 73
+Figure 19-20. Solder Ferrule ......................................................................................................... 73
+Figure 19-21. Stripped Wires Prior to Insertion ........................................................................... 74
+Figure 19-22. Stripped Wire Bundle Prior to Insertion ................................................................ 75
+Figure 19-23. Wires Crimped Within Contact .............................................................................. 75
+Figure 19-24. Contact Trimmed and Deburred............................................................................. 75
+Figure 19-25. Contact Covered With Shrink Sleeving ................................................................. 75
+Figure 19-26. End Type Splice ..................................................................................................... 75
+Figure 19-28. Butt Splice .............................................................................................................. 76
+Figure 19-29. Butt Splice Prior to Wire Insertion......................................................................... 77
+Figure 19-30. Butt Splice Prior to Crimp...................................................................................... 77
+Figure 19-31. Properly Crimped Butt Splice ................................................................................ 77
+Figure 19-32. Butt Splice with Shrink Sleeving ........................................................................... 77
+Figure 19-33. Crimped Contact Outside Junction Device ............................................................ 78
+Figure 19-34. Crimped Contacts Inserted Into Junction Device................................................... 78
+Figure A-1 ..................................................................................................................................... 89
+Figure A-2 ..................................................................................................................................... 89
+Figure A-3 ..................................................................................................................................... 90
+Figure A-4 ..................................................................................................................................... 90
+Figure A-5 ..................................................................................................................................... 90
+Figure A-6 ..................................................................................................................................... 90
+Figure A-7 ..................................................................................................................................... 91
+Figure A-8 ..................................................................................................................................... 91
+Figure A-9 ..................................................................................................................................... 91
+Figure A-10 ................................................................................................................................... 91
+Figure A-11 ................................................................................................................................... 92
+Figure A-12 ................................................................................................................................... 92
+Figure A-13 ................................................................................................................................... 92
+Figure A-14 ................................................................................................................................... 92
+Figure A-15 ................................................................................................................................... 93
+Figure A-16 ................................................................................................................................... 93
+Figure A-17 ................................................................................................................................... 93
+Figure A-18 ................................................................................................................................... 93
+Figure A-19 ................................................................................................................................... 94
+Figure A-20 ................................................................................................................................... 94
+Figure A-21 ................................................................................................................................... 94
+Figure A-22 ................................................................................................................................... 95
+Figure A-23 ................................................................................................................................... 95
+Figure A-24 ................................................................................................................................... 95
+Figure A-25 ................................................................................................................................... 96
+Figure A-26 ................................................................................................................................... 96
+Figure A-27 ................................................................................................................................... 97
+
+
+
+                                                                  11 of 101
+                                          NASA-STD-8739.4A – 2016-06-30
+
+Figure A-28 ................................................................................................................................... 97
+Figure A-29 ................................................................................................................................... 98
+Figure A-30 ................................................................................................................................... 98
+Figure A-31 ................................................................................................................................... 98
+Figure B-1. Illustration of Proper Trimback of Jacket to Isolate it from the Clamping System 100
+Figure B-2. Broken Solder Joint Caused by Insufficient Solder Fill .......................................... 101
+Figure B-3. Problem Point for Kynar Stress Relief Sleeving ..................................................... 101
+
+
+
+                                                        LIST OF TABLES
+Table 7-1. Bend Radii for Completed Interconnecting Cable or Harness .................................... 25
+Table 9-1. Spot Tie, Plastic Strap, and Stitch Spacing Dimensions ............................................. 30
+Table 9-2. Distances from Connectors or Connector Accessories to Beginning of Harness Ties 32
+Table 9-3. Selection Guide for Use of Polyolefin and Polyvinylidene Fluoride Sleeving [in mm
+(inches)] ........................................................................................................................................ 39
+Table 11-1. Shield Termination Control for Group Grounding .................................................... 47
+Table 11-2. Shield Termination Control (Refer to Figure 11-8) .................................................. 50
+Table 12-1. Crimp Tensile Strength 1 ........................................................................................... 54
+Table 13-1. Pull Force 1 ................................................................................................................ 57
+Table 13-2. Contact Retention Test Forces................................................................................... 58
+Table 19-1. Crimp Tensile Strength Values for Wire-in-Line Junction (i.e., Jiffy Junction)
+Devices .......................................................................................................................................... 79
+Table 19-2. Splice Body Retention Values for Wire-in-Line Junction (i.e., Jiffy Junction)
+Devices .......................................................................................................................................... 80
+
+
+
+
+                                                                   12 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+               CRIMPING, INTERCONNECTING CABLES,
+                     HARNESSES, AND WIRING
+1.       SCOPE
+1.1      Purpose
+
+The purpose of this NASA Technical Standard is to set forth requirements for interconnecting
+cable and harness assemblies that connect electrical, electronic or electromechanical
+components.
+
+1.2      Applicability
+
+1.2.1     This standard is approved for use by NASA Headquarters and NASA Centers,
+including Component Facilities, and Technical and Service Support Centers, and may be cited in
+contract, program, and other Agency documents as a technical requirement. This Standard may
+also apply to the Jet Propulsion Laboratory, other contractors, grant recipients, or parties to
+agreements to the extent specified or referenced in their contracts, grants, or agreements.
+
+1.2.2      This standard applies to critical work, as defined by NPD 8730.5. Critical work is any
+task that if performed incorrectly or in violation of prescribed requirements poses a credible risk
+of loss of human life; serious injury; loss of a Class A, B, or C payload (see NPR 8705.4); loss of
+a Category 1 or Category 2 mission (see NPR 7120.5); or loss of a mission resource valued at
+greater than $2M (e.g., NASA space flight hardware, Government test or launch facility).
+
+1.2.3   Use of the term “supplier” applies to any entity that is manufacturing hardware in
+accordance with the requirements herein including NASA Centers and NASA contractors.
+
+2.       APPLICABLE DOCUMENTS
+2.1      General
+
+The documents listed in this section contain provisions that constitute requirements of this
+Standard as cited in the text. Use of more recent issues of cited documents may be authorized by
+the responsible Technical Authority. The applicable documents are accessible via the NASA
+Standards and Technical Assistance Resource Tool at http://standards.nasa.gov or may be
+obtained directly from the Standards Developing Organizations or other document distributors.
+
+2.2      Government Documents
+
+2.2.1    National Aeronautics and Space Administration
+
+         NPD 8730.5             NASA Quality Assurance Program Policy
+
+         NPR 7120.5             NASA Space Flight Program and Project Management
+                                Requirements
+
+
+
+
+                                            13 of 101
+                          NASA-STD-8739.4A – 2016-06-30
+
+         NPR 8705.4            Risk Classification for NASA Payloads
+
+         NASA-STD-8739.6 Implementation Requirements for NASA Workmanship
+                         Standards
+
+2.3      Non-Government Documents
+
+         AMS-DTL-23053/5 Insulation Sleeving, Electrical, Heat Shrinkable, Polyolefin,
+                         Flexible, Crosslinked
+
+         AMS-DTL-23053/6 Insulation Sleeving, Electrical, Heat Shrinkable, Polyolefin,
+                         Semi-Rigid, Crosslinked
+
+         AMS-DTL-23053/7 Insulation Sleeving, Electrical, Heat Shrinkable, Polyethylene
+                         Terephthalate, Non-Crosslinked
+
+         AMS-DTL-23053/8 Insulation Sleeving, Electrical, Heat Shrinkable, Polyvinylidene
+                         Fluoride, Semi-Rigid, Crosslinked
+
+         AMS-DTL-23053/11 Insulation Sleeving, Electrical, Heat Shrinkable, Fluorinated
+                          Ethylene Propylene, Non-Crosslinked
+
+         AMS-DTL-23053/12 Insulation Sleeving, Electrical, Heat Shrinkable,
+                          Polytetrafluoroethylene
+
+         J-STD-001F            Requirements for Soldered Electrical and Electronic Assemblies
+
+         J-STD-001FS           Space Applications Electronic Hardware Addendum to J-STD-
+                               001F Requirements for Soldered Electrical and Electronic
+                               Assemblies
+
+2.4      Order of Precedence
+
+This Standard establishes requirements for (enter specific purpose from Scope) but does not
+supersede nor waive established Agency requirements found in other documentation. Conflicts
+between this Standard and other requirements documents shall be resolved by the responsible
+Technical Authority.
+
+3.       ACRONYMS AND DEFINITIONS
+3.1      Acronyms and Abbreviations
+
+The following acronyms apply to terms used in this Standard.
+
+         AC                    Alternating Current
+
+         ASTM                  American Society for Testing and Materials
+
+
+
+
+                                          14 of 101
+           NASA-STD-8739.4A – 2016-06-30
+
+AWG          American Wire Gage
+
+CVCM         Collected Volatile Condensable Material
+
+DC           Direct Current
+
+DWV          Dielectric Withstanding Voltage
+
+EMI          Electromagnetic Interference
+
+ESD          Electrostatic Discharge
+
+ESDS         Electrostatic Discharge Sensitive
+
+FEP          Fluorinated Ethylene Propylene
+
+GHz          Gigahertz
+
+GSFC         Goddard Space Flight Center
+
+IR           Insulation Resistance
+
+JPL          Jet Propulsion Laboratory
+
+NASA         National Aeronautic and Space Administration
+
+NASA-STD     NASA Standard
+
+NPR          NASA Procedural Requirements
+
+OD           Outside Diameter
+
+PET          Polyethylene Terephthalate
+
+PTFE         Polytetrafluoroethylene
+
+PVDF         Polyvinylidene Fluoride
+
+RF           Radio Frequency
+
+RFI          Radio Frequency Interference
+
+RH           Relative Humidity
+
+RMS          Root Mean Square
+
+SDS          Safety Data Sheet
+
+
+
+
+                         15 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+3.2      Definitions
+
+The definitions listed below are in addition to those listed in NASA-STD-8709.22, Safety and
+Mission Assurance Acronyms, Abbreviations, and Definitions.
+
+         Accessories, Connector: Removable mechanical hardware, such as cable clamps,
+         backshells, and screws, that are parts of the connector assembly in a harness.
+         Removable mechanical hardware, such as cable clamps, backshells, and screws, that are
+         parts of the connector assembly in a harness.
+
+         Adapter: An intermediate device to provide for attaching special accessories or to
+         provide special mounting means.
+
+         Backshell: Are a connector accessory that are installed onto the rear connector
+         accessory threads of plug or receptacle connectors to provide mechanical protection to
+         the individual harness wires entering the back of the connector.
+
+         Barrel (Contact Wire Barrel): The section of contact that accommodates the stripped
+         conductor.
+
+         Birdcaging: The radial expansion of individual strands in a stranded conductor
+         (bowing outward) that can occur in the exposed portion of the conductor between the
+         insulation strip and termination point.
+
+         Braid: A fibrous or metallic group of filaments interwoven to form a protective
+         covering over one or more wires.
+
+         Breakout: The separation of a conductor or group of conductors from the main body of
+         wires in a harness.
+
+         Bubble Pack: A laminated plastic sheet that is formed with patterned air entrapment
+         ("bubbles"). The bubbles provide excellent cushioning for anything enclosed between
+         layers of the material.
+
+         Cable: A shielded single conductor or a combination of conductors insulated from one
+         another (multiple conductor).
+
+         Cable, Coaxial: A cable in which an insulated conductor is centered inside another.
+         The outer conductor is usually a metal braid or metal sheath. Braided cables usually
+         have an outer insulating jacket over the braid. Coaxial cables are used primarily for
+         transmission of RF signals.
+
+         Cable, Shielded: One or more insulated conductors covered with a metallic outer
+         covering, usually a metal braid.
+
+         Cable Clamp: A mechanical clamp attached to the wire entrance of a connector to
+         support the cable or wire bundle, provide stress relief, and absorb vibration and shock.
+
+
+
+
+                                            16 of 101
+                  NASA-STD-8739.4A – 2016-06-30
+
+Certification: The act of verifying and documenting that personnel have completed
+required training, have demonstrated specified proficiency, and have met other
+specified requirements.
+
+Cold Flow: Movement of insulation (e.g., Teflon) caused by pressure.
+
+Conductor: A lead or wire, solid, stranded, or printed wiring path serving as an
+electrical connection.
+
+Connector, Body: The main portion of a connector to which contacts and other
+accessories are attached.
+
+Connector, Grommet: An elastomeric seal used on the cable side of a connector body
+to seal the connector against contamination and to provide stress relief.
+
+Connector, Insert: The part of a connector that holds the contacts in position and
+electrically insulates them from each other and the connector body.
+
+Contact: The conductive element in a connector or other terminal device that mates
+with a corresponding element for the purpose of transferring electrical energy.
+
+Contact, Crimp: A contact whose crimp barrel is a hollow cylinder that accepts the
+conductor. After a conductor has been inserted, a tool is used to crimp the contact
+metal firmly onto the conductor.
+
+Contact, Insertable/Removable: A contact that can be mechanically joined to or
+removed from an insert. Usually, special tools are used to insert (lock) the contact into
+place or to remove it.
+
+Contact, Pin: Male-type contact designed to slip inside a socket contact.
+
+Contact Retention: The axial load in either direction that a contact can withstand
+without being dislodged from its normal position within an insert or body.
+
+Contact, Socket: A female-type contact designed to slip over a pin contact.
+
+Contaminant: An impurity or foreign substance present in a material that affects one or
+more properties of the material. A contaminant may be either ionic or nonionic. An
+ionic, or polar compound, forms free ions when dissolved in water, making the water a
+more conductive path. A nonionic substance does not form free ions, nor increase the
+water's conductivity. Ionic contaminants are usually processing residue such as flux
+activators, finger prints, and etching or plating salts.
+
+Crimp: The physical compression (deformation) of a contact barrel around a conductor
+to make an electrical and mechanical connection to the conductor.
+
+Crimping: A method of mechanically compressing or securing a terminal, splice, or
+contact to a conductor.
+
+
+
+                                   17 of 101
+                  NASA-STD-8739.4A – 2016-06-30
+
+Drain Wire: A wire that runs linearly along a foil shield wire or cable and is used to
+make contact with the shield. Grounding of foil shields is done with drain wires.
+
+Electromagnetic Interference: The unwanted intrusion of electromagnetic radiation
+energy whose frequency spectrum extends from subsonic frequency to X-rays.
+
+Ferrule: A short metal tube used to make crimp connections to shielded or coaxial
+cables.
+
+Fillet: A smooth concave buildup of material between two surfaces; e.g., a fillet of
+solder between a conductor and a solder terminal.
+
+Grommet: An insulator that covers sharp edges of holes through panels and partitions
+to protect wire insulation from cut-through damage.
+
+Harness: One or more insulated wires or cables, with or without helical twist; with or
+without common covering, jacket, or braid; with or without breakouts; assembled with
+two or more electrical termination devices; and so arranged that as a unit it can be
+assembled and handled as one assembly.
+
+Insertion Tool: A device used to install contacts into a contact cavity in a connector
+insert.
+
+Interfacial Seal: A sealing of mated connectors over the whole area of the interface to
+provide sealing around each contact.
+
+Jacket: The outermost layer of insulating material of a cable or harness.
+
+Joint: A termination.
+
+Mate: The joining of two connectors.
+
+Molding: The sealing of a connector backshell area or a cable breakout with a
+compound or material that excludes moisture and provides stress relief. The material is
+injected into molds that control its configuration.
+
+Outgassing: The release of a volatile part(s) from a substance when placed in a vacuum
+environment.
+
+Radio Frequency: The frequency spectrum from 15 kHz to 100 GHz. Cables are
+seldom used above 18 GHz.
+
+Radio Frequency Interference: Electromagnetic radiation in the radio frequency
+spectrum from 15 kHz to 100 GHz.
+
+Repair: The action on a nonconforming product to make it acceptable for the intended
+use.
+
+
+
+
+                                   18 of 101
+                   NASA-STD-8739.4A – 2016-06-30
+
+Rework: The action on a nonconforming product to make it conform to the
+requirements.
+
+Sealing Plug: A plug that is inserted to fill an unoccupied contact aperture in a
+connector. Its function is to seal an unoccupied aperture in the assembly, especially in
+environmental connectors.
+
+Shielded Cable: Cable surrounded by a metallic covering intended to minimize the
+effects of electrical crosstalk interference or signal radiation.
+
+Shielding: The metal covering surrounding one or more conductors in a circuit to
+prevent interference or signal radiation.
+
+Solder: A nonferrous, fusible metallic alloy used to join metallic surfaces.
+
+Soldering: The process of joining clean metallic surfaces through the use of solder
+without direct fusion of the base metals.
+
+Solder Sleeve: A heat-shrinkable solder termination device with meltable sealing
+preforms at ends.
+
+Splice: The joining of two or more conductors to each other.
+
+Spacecraft: Devices, manned or unmanned, which are designed to be placed into a
+suborbital trajectory, an orbit about the earth, or into a trajectory to another celestial
+body.
+
+Strain Relief: A connector device that prevents the disturbance of the contact and cable
+terminations.
+
+Stranded Conductor: A conductor composed of a group of smaller wires.
+
+Stress Relief: The formed portion of a conductor that provides sufficient length to
+minimize stress between terminations.
+
+Strip: To remove insulation from a conductor.
+
+Supplier: In-house NASA, NASA contractors, and subtier contractors.
+
+Tang (Connector Backshell): A backshell tang is a tapering metal projection (straight,
+45°, or 90° to the axis of the connector) designed to accommodate cable-tie
+attachments. The cable-ties grip and hold harness wires exiting from the connector,
+thus providing stress relief for the wires.
+
+Tines: Tines are the members of a contact retention system that capture or "lock"
+removable crimp contacts into the contact cavities.
+
+Wicking: A flow of molten solder, flux, or cleaning solution by capillary action.
+
+
+
+                                     19 of 101
+                              NASA-STD-8739.4A – 2016-06-30
+
+           Wire: A single metallic conductor of solid, stranded, or tinsel construction, designed to
+           carry currents in an electrical circuit. It may be bare or insulated.
+
+           Wire Dress: The arrangement of wires and laced harnesses in an orderly manner.
+
+4.         REQUIREMENT
+4.1        General
+
+4.1.1     When there is a conflict between the requirements of NASA-STD-8739.6 and those
+herein, the requirements in NASA-STD-8739.6 shall take precedence.
+
+4.1.2      A program shall be established to assure continuing process capability.
+
+4.1.3    Special controls shall be developed for process parameters and equipment settings that
+influence product compliance with critical performance and quality requirements.
+
+5.         TRAINING AND CERTIFICATION PROGRAM
+5.1        General
+
+This section has been superseded by NASA-STD-8739.6. Refer to NASA-STD-8739.6, Chapter
+5 and Appendix A therein for applicable training and certification requirements.
+
+6.         FACILITIES, EQUIPMENT, MATERIALS, AND PARTS
+6.1        Environmental Conditions
+
+6.1.1      The environmental control requirements of NASA-STD-8739.6 shall apply.
+
+6.1.2    Lighting. Light intensity shall be no less than 1077 lumens per square meter (lm/m2)
+(100 foot-candles) on the surface where cabling and wiring are being assembled, inspected, or
+tested.
+
+6.2        Tool and Equipment Control
+
+6.2.1     The tool and equipment selection, use and control requirements of NASA-STD-8739.6
+shall apply. See NASA-STD-8739.6 for metrology and calibration requirements.
+
+6.2.2     The supplier’s process documentation for tool and equipment use and control shall be
+available for review and approval prior to processing mission hardware.
+
+6.2.3      The following requirements apply for wire strippers:
+
+      a. Either precision mechanical tools or thermal strippers shall be used for insulation
+      stripping.
+
+      b. Thermal strippers shall have variable temperature control.
+
+
+
+                                              20 of 101
+                             NASA-STD-8739.4A – 2016-06-30
+
+      c. The tools shall not nick, ring, gouge, or stretch conductors or remove plating so that the
+      base metal shows. Superficial scraping of conductors is acceptable providing conductor base
+      material is not exposed.
+
+      d. The cutting edges of wire trimming tools shall be maintained sharp and free from nicks
+      and indentations.
+
+6.3        Electrostatic Discharge Control Requirements
+
+When Electrostatic Discharge (ESD) control is required during workmanship operations defined
+herein, ESD Control shall be in accordance with Chapter 7 of NASA-STD-8739.6.
+
+6.4        Inspection Optics
+
+6.4.1      The inspection optics shall be in accordance with Chapter 6 of NASA-STD-8739.6.
+
+6.4.2      Visual inspection shall be aided by magnification between 4X and 10X.
+
+6.5        Parts and Materials Selection
+
+6.5.1    Specifications used to order connectors may require special instructions to ensure
+grommets and gaskets are a non-outgassing type. When connectors cannot be special-ordered to
+exclude grommets and gaskets which do not meet project outgassing requirements in their as-
+delivered condition, instructions shall be provided to the Workmanship operator for removing or
+replacing those connector subcomponents.
+
+6.5.2      Materials used shall be subjected to NASA approval.
+
+6.5.3      In order to satisfy the crimp contact pull and crimp ring testing requirements in
+paragraph 12.3 and 13.7, respectively, for connector types which are sold without sufficient
+spare contacts or crimp rings, suppliers will need to purchase extra contacts or crimp rings. The
+number of extra parts will be determined by the number of shifts or production periods in which
+a given type of contact or crimp ring is used. Lot traceability for contacts obtained for crimp
+testing shall be maintained between the contacts used in the connector and the contacts used for
+pull testing.
+
+6.5.4    For nickel-plated wire, or silver-plated wire in applications above 150º C, nickel-plated
+crimp barrels are preferred.
+
+6.5.5    Materials not conforming or not required for the operations involved for the processes
+described herein shall be removed from the work area or tagged non-usable.
+
+6.6        Solvents and Cleaners
+
+6.6.1      The requirements of 6.7 of NASA-STD-8739.6 apply for the selection of solvents.
+
+
+
+
+                                              21 of 101
+                                 NASA-STD-8739.4A – 2016-06-30
+
+7.          DESIGN PRACTICES
+7.1         General
+
+7.1.1     Harness design shall make provision for all Project performance requirements as they
+apply to each harness section as well as the following:
+
+      a. Installation stress and final lay (e.g., ease of bending, flexibility in twisting, stress relief).
+
+      b. Electrical isolation.
+
+      c. Ability to fit into confined spaces or near or around mechanical edges.
+
+      d. Thermal management.
+
+      e. Current and voltage derating.
+
+      f. Voltage drop.
+
+      g. Repairability and reliability (e.g. redundancy, not using connector contact locations, spare
+      pin requirements, arc tracking).
+
+      h. Identification of connectors and cable and harness segments.
+
+7.1.2    Precautions shall be taken to prevent the mismating of connectors, caused by
+interchanging or by reversing, through one of the following techniques:
+
+      a. Use of constraints that locate similar connectors built into interconnecting cables and
+      harnesses so they cannot be interchanged.
+
+      b. Selection of different sizes for connectors to be located adjacent to each other.
+
+      c. Polarization or dissimilar keying of adjacent, similar connectors.
+
+      d. Ensure clarity in marking and coding connectors.
+
+      e. Use of confidence loop circuits to check out proper mated positions.
+
+7.2         Design Considerations
+
+The following considerations shall be taken in any interconnecting cable or harness design and
+incorporated into the design as applicable:
+
+7.2.1     Properties of wire insulation, electrical contacts, lacing tape, braid sleeving, plastic
+strap, wrap sleeving, and plastic tubing (processibility, flammability, arc tracking resistance,
+vacuum stability, resistance to heat, cold flow, etc.) shall be appropriate for the application.
+
+7.2.2      Plastic straps should have metal tangs that lock securely into the "ribbed" portion of
+the straps when appropriate for the application.
+
+
+                                                 22 of 101
+                             NASA-STD-8739.4A – 2016-06-30
+
+7.2.3     Tin-plated parts (e.g., terminals, crimp barrels, etc.) shall be fused or alloyed with tin-
+lead plating. See NASA-STD-8739.6 for lead-free (Pb-free) control requirements.
+
+7.2.4    Methods for identifying cables, connectors, and wires shall be provided.
+
+7.2.5  Design features shall address radio frequency interference/electromagnetic interference
+(RFI/EMI) shielding performance requirements.
+
+7.2.6    High Voltage (HV) circuits carrying potentials in excess of 200VACRMS, or 300VDC
+through environments that support arcing shall be terminated in single-contact, high voltage
+connectors.
+
+7.2.7    Electrical wiring of redundant systems, redundant subsystems, or redundant major
+elements of subsystems shall not be routed in the same bundle or through the same connector
+with wiring of the other system, subsystem, or subsystem element.
+
+7.2.8    American wire gage (AWG) 24 wire size and larger is preferred for conductors in
+interconnecting cable and harness assemblies, including coaxial or triaxial cables.
+
+7.2.9    High strength copper alloy shall be used for AWG 24 and smaller conductors.
+
+7.2.10 Torque values applicable for connectors, backshells, and other hardware shall be
+defined.
+
+7.2.11 Harness designs and routing shall provide support and protection to harnesses and
+cables so that they are protected from abrasion, cold flow, cut through, vibration, chafing,
+flexing, and sharp edges.
+
+7.2.12   Designs shall minimize splicing.
+
+7.2.13 Semi-rigid coaxial cable shall be preconditioned using thermal cycling prior to
+preparation for connectorization. This procedure should also be considered for longer runs of
+flexible coaxial cable.
+
+7.2.14 Line voltages shall be confined to connectors with sockets to preclude exposing voltage
+points when connectors are disconnected.
+
+7.2.15   Specifying the use of sealing plugs and unused contacts in environmental connectors.
+
+7.2.16 When necessary to support electrical performance or mechanical flexibility around
+routing angles, wire dress and lay configurations shall be specified in the manufacturing
+instructions. Fabricate cables containing discrete wires in one or more layers by winding the
+wires together uniformly.
+
+7.2.17 Whether successive twisted layers are twisted contrahelically or unidirectionally is
+optional. Winding shall prevent the introduction of residual twist into individual conductors.
+
+
+
+
+                                              23 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+7.2.18 The length of lay for each twisted layer shall be between 8 and 16 times the outer
+diameter of the harness.
+
+7.2.19 The bend radius data given in Table 7-1 shall apply for bending that occurs in the
+installed interconnecting harness or cable.
+
+7.2.20    Wires exiting from connectors shall be stress relieved.
+
+7.2.21 The use of solder sleeves (where wire insulation temperatures permit), hand soldering,
+or crimp rings are acceptable for terminating individual shields.
+
+7.2.22    Concern for placement of power and ground lines in contact assignments for system
+safety.
+
+7.2.23    Materials for potting connectors suited for applications.
+
+7.2.24    Selection of metal braid shielding should be sized as appropriate per application.
+
+7.2.25    Splicing. Damaged or broken conductors shall not be spliced.
+
+7.2.26    The following requirements apply for crimped connections.
+
+   a. Crimped contacts shall be used with stranded wire only.
+
+   b. Solid wire shall not be used with crimped contacts.
+
+   c. Solid, tinned wire shall not be used in crimped contacts.
+
+7.2.27 Associated materials, parts, and hardware shall be selected to enable the cable and
+harness to meet performance requirements.
+
+7.2.28 Provision shall be made for stress relief in wires entering connectors from harnesses
+(e.g. connector backshells, encapsulation, and stress relief boots).
+
+7.2.29 Support of wiring, wire bundles, and harnesses shall be used to minimize shock and
+vibration induced stress.
+
+7.2.30 Excessive flexing or pressure on the harness over sharp or rough edges shall be
+prevented.
+
+7.2.31 Harness and cable protection shall be added in areas where sharp or rough edges are
+present and abrasion could occur.
+
+7.2.32 The use of splices in a harness design should be minimized as much as possible. The
+simplest and most reliable wiring design is one that results in the routing of a dedicated,
+continuous, and unbroken conductor from point to point. The following shall be incorporated
+into any splice design:
+
+7.2.33    Shrink sleeving over the splice area shall be protected from cold flow and abrasion.
+
+
+
+                                             24 of 101
+                               NASA-STD-8739.4A – 2016-06-30
+
+7.2.34 Splices shall be covered with a single layer of heat-shrinkable tubing or insulation
+material that meets or exceeds the minimum electrical isolation specified in the engineering
+documentation. Additional layers of tubing and insulation may be added to splices to increase
+electrical isolation or to provide additional environmental or mechanical protection.
+
+7.2.35     Splices shall be staggered to minimize buildup of the wire bundle diameter.
+
+7.2.36 Splices shall not be located in areas of the cable where flexing may occur or in bend
+radii where the primary insulation may be compromised.
+
+7.2.37     Splices shall be prohibited within two harness diameters of a breakout.
+
+7.2.38 Splices shall be identified and fully defined on the associated drawings including type
+and location.
+
+7.2.39 Heat shrinkable soldering devices shall not be used in the vicinity of sensors, optics, or
+other devices whose performance can be degraded by surface contamination.
+
+7.2.40 The solder alloy and the flux type in heat shrinkable soldering devices shall be selected
+for the type of wire being spliced.
+
+7.2.41 Splices shall not be installed where adjacent components, wires, solder joints,
+structures, etc. cannot be adequately shielded or otherwise protected from a heat source during
+the splice installation.
+
+               Table 7-1. Bend Radii for Completed Interconnecting Cable or Harness
+
+                                                         Optimum Bend           Minimum
+                  Wire or Harness Type
+                                                             Radius            Bend Radius
+                 Individual coaxial cable.                 10 x OD 1/                6 x OD
+              Polyimide (Kapton) insulated                 15 x OD               10 x OD
+         Overall harness (with coaxial cable or
+                                                           10 x OD                   6 x OD
+                 AWG size 8 or larger).
+         Overall harness (with AWG size 10 or
+                                                           10 x OD                   3 x OD
+            smaller without coaxial cable).
+      Overall harness (with polyimide insulated
+                                                           15 x OD               10 x OD
+                  wires included).
+         1/ Outside Diameter
+
+8.         INTERCONNECTING CABLE/HARNESS FIXTURING
+8.1        General
+
+8.1.1    Layout and fixturing shall be provided for all complex interconnecting cables and
+harnesses.
+
+
+
+
+                                             25 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+8.1.2     Permanent bends and offsets shall be built into harnesses so that the final wire dress
+will not be under continuous stress and tension after installation.
+
+8.1.3    Connector backshells shall accommodate bends and offsets in wire harnesses, as
+appropriate, to avoid continuous stress.
+
+8.1.4    The layout shall be designed to limit the amount of bending, pulling, and other handling
+a harness will receive during installation.
+
+8.2      Mockup and Wiring Board Design Parameter
+
+8.2.1     A full-sized, three-dimensional (3-D) form layout fixture shall be provided for all
+complex interconnecting cables and harnesses to ensure proper routing, wire lengths, connector
+configurations, support requirements, and access requirements of the wiring harnesses. The form
+layout fixture may be limited to partial installations which contain the complex wiring harnesses.
+Typical harness board layout and typical hardware and fixtures are shown in Figures 8-1 and 8-2,
+respectively.
+
+8.3      Temporary Identification
+
+8.3.1     Temporary identification markers may be used for in-process identification
+requirements. All temporary markers shall be removed from completed cabling and harnessing
+and shall not leave a contaminating residue.
+
+8.4      Interconnecting Cable and Harness Protection
+
+8.4.1    The supplier shall establish and implement procedures to protect interconnecting cables
+and harnesses from damage and degradation.
+
+8.4.2    Connectors not being actively assembled shall be individually protected by wrapping
+them in bubble pack or other physical covering.
+
+8.4.3     At the end of the work shift, protective covering shall be spread over the harnesses in
+fabrication.
+
+8.4.4    Harnesses not in active fabrication (those in temporary storage) shall be covered by
+protective covering.
+
+
+
+
+                                             26 of 101
+     NASA-STD-8739.4A – 2016-06-30
+
+
+        "T" BRANCH
+                                             CONNECTOR (TYP)
+                                             BREAKOUT (TYP)
+
+
+
+
+                   TERMINAL
+                   STRIP POINTS
+                   (TYPICAL
+                   FOR GROUND                  "Y" BRANCH
+                   EQUIPMENT
+                   ONLY)
+
+
+
+
+                                HOLE TO
+                                OTHER
+                                SIDE OF
+                                BOARD
+
+
+
+Figure 8-1. Line Drawing of Typical Harness Layout
+
+
+
+
+                    27 of 101
+                          NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+                  Figure 8-2. Typical Harness Board Hardware and Fixtures
+
+9.      FORMING WIRES INTO CABLES AND HARNESSES
+9.1     General
+
+9.1.1   Wiring shall be assembled in interconnecting cables or harnesses as described herein.
+
+
+
+
+                                          28 of 101
+                               NASA-STD-8739.4A – 2016-06-30
+
+9.1.2    Fabrication methods and assembly techniques that assure the production of high quality
+interconnecting cables and harnesses shall be used.
+
+9.2        Lacing for Trunk, Branches, and Breakouts
+
+9.2.1   When engineering documents specify the use and type of lacing, the following
+requirements shall apply.
+
+9.2.2      Lacing tie-ends shall be trimmed.
+
+9.2.3     When knots are staked (see Figure 9-7), the necessary compounds, as well as any
+special design requirements, shall be specified.
+
+9.2.4      The following requirements apply for the starting stitch:
+
+      a. Harnesses laced with single tape shall initially be tied with a starting stitch.
+
+      b. Single-tape starting stitches shall be the same as a spot tie with a running end or as shown
+      in Figure 9-1 View A.
+
+      c. Starting stitches for double lacing shall be as shown in Figure 9-1 View B.
+
+      d. Starting stitches shall not place stress on wire terminations.
+
+9.2.5    Spot Ties. Spot ties shall consist of a clove hitch followed by a square knot as shown in
+Figure 9-2 or other non-slip knots. See Table 9-1 for spot tie spacing.
+
+9.2.6      The following requirements apply for the closing stitch:
+
+      a. Single or double lacing tape shall be terminated with a closing stitch as shown in Figure
+      9-3.
+
+      b. Lacing shall be terminated at every major breakout or branch and at the extremity of the
+      harness (Major breakouts normally contain a large percentage of the wire volume, such as 25
+      to 30 percent or more).
+
+      c. The stitching shall terminate close to the extremity of the harness but shall not stress the
+      wire terminations.
+
+      d. Closing and starting stitches at branches and breakouts shall be next to the breakout. An
+      alternate closing stitch method is shown in Figure 9-4.
+
+      e. Single or small multiple breakouts of two or three wires need not have closing and
+      starting stitches, but may have running lockstitches on each side (Figure 9-5).
+
+
+
+
+                                                29 of 101
+           NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+                   Figure 9-1. Starting Stitch
+
+
+
+
+                 Figure 9-2. Spot Tie (Typical)
+
+Table 9-1. Spot Tie, Plastic Strap, and Stitch Spacing Dimensions
+
+                                  Maximum Distance
+       Harness Diameter
+                                 Between Harness Ties
+         mm (Inches)
+                                     mm (Inches)
+        6.4 (0.25) or less              19.1 (0.75)
+           12.7 (0.50)                  38.1 (1.50)
+           25.4 (1.00)                  50.8 (2.00)
+     Larger than 25.4 (1.00)            76.2 (3.00)
+
+
+
+
+                           30 of 101
+                          NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+                   Figure 9-3. Closing Stitch and Single Tape—Illustration
+
+
+
+
+               Figure 9-4. Alternate Closing Stitch and Single Tape—Illustration
+
+
+
+
+                                Figure 9-5. Running Lockstitch
+
+9.2.7   Running Lockstitch. Continuous lacing shall be achieved using running lockstitches as
+shown in Figure 9-5.
+
+
+
+
+                                          31 of 101
+                              NASA-STD-8739.4A – 2016-06-30
+
+9.2.8      The following requirements apply for the stitch spacing:
+
+      a. Lacing stitches and spot ties shall be placed as detailed in Table 9-1.
+
+      b. A tie or stitch shall be placed immediately before and immediately after any breakout of
+      the wire or cable from the harness. Dimensions from the connector or connector accessories
+      to start of harness tie are given in Table 9-2.
+
+ Table 9-2. Distances from Connectors or Connector Accessories to Beginning of Harness Ties
+
+                                                       Distance From Connector or
+                   Harness-Bundle Diameter
+                                                       Connector Accessory to Start
+                         mm (inches)
+                                                         of First Tie mm (inches)
+                       Less than 12.7 (.5)                    25.4 - 50.8 (1 - 2)
+                    12.7 to 25.4 (.5) (.5 to 1)               50.8 - 76.2 (2 - 3)
+                        25.4 (1) or larger                    76.2 - 101.6 (3 - 4)
+
+9.2.9      Flat Stitching. Flat stitching shall utilize either of the stitches pictured in Figure 9-6.
+
+
+
+
+                                    Figure 9-6. Flat Lacing Stitches
+
+9.2.10     The following requirements apply for the large breakouts:
+
+      a. Lockstitching shall terminate with a closing stitch before each large breakout or branch of
+      the harness.
+
+      b. The lacing shall start anew with a starting stitch on the opposite side of the breakout on
+      each branch.
+
+9.3        Fabric Braid Sleeving (Prewoven)
+
+9.3.1     Prewoven fabric (unvarnished) braid sleeving to be installed over the wire harness shall
+be slightly oversized so that it can be slid over the bundle.
+
+
+
+
+                                                  32 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+9.3.2    Braided sleeving shall be snugly dressed down over the wire bundle.
+
+9.3.3    Continuous braid sleeving shall be secured at the ends by plastic cable straps, spot ties,
+clamps, heat shrinkable sleeving, or a potting material.
+
+9.3.4    When secured, the covering shall not slide freely.
+
+9.3.5      Sleeving shall be trimmed and terminated at a breakout but shall not be punctured or
+slit to provide openings for breakout.
+
+9.3.6    After installation, braided sleeving shall be secured or treated in one of the following
+ways to eliminate fraying or unraveling.
+
+
+
+
+                           Figure 9-7. Securing Fabric Braid Sleeving
+
+9.3.7     Braided sleeving may be secured by a spot tie or plastic cable strap. The end of the
+braid shall be tucked under and secured with a spot tie or plastic strap (Figure 9-7). The end of
+the braid may be secured by connector clamps, other hardware, or potting.
+
+9.3.8    The ends of glass braids may be bonded using an adhesive. Excessively frayed glass
+braid material shall be trimmed away prior to application of the adhesive.
+
+9.3.9    When the adhesive used to bond the ends of glass braid is dry, the braid shall be
+secured by spot tying or other means so that it does not slip on the wire bundle.
+
+9.3.10 Polyamide (nylon) braids (for use on ground service equipment) may have their ends
+sealed by use of a "hot knife" or similar instrument.
+
+9.4      Fabric Braid Directly Woven on Interconnecting Harness or Cable
+
+9.4.1      Fabric braids woven directly on interconnecting harnesses or cables may be loose or
+tight, as necessary to produce the degree of flexibility required. The braid shall be smooth and
+shall provide coverage that leaves no gaps through which the wires can be seen.
+
+
+
+                                             33 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+9.4.2    No frayed ends of fabric braids shall be visible.
+
+9.4.3    All pigtails shall be secured.
+
+9.4.4     Braids applied tightly shall not terminate so close to connectors that they stress wires
+attached to solder cups.
+
+9.4.5    Spot ties, plastic straps, lacing, and other temporary holding means shall be removed
+from wire bundles prior to braid application.
+
+9.4.6    Flat tapes may be left under braid if the tape has a low profile. Typical braiding
+techniques are shown in Figures 9-8, 9-9, and 9-10.
+
+
+
+
+                                     Figure 9-8. Starting Lock
+
+
+
+
+                                Figure 9-9. Forming Ending Pigtail
+
+
+
+
+                                             34 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+                                TRIM OFF
+                                PIGTAIL
+
+
+
+                      Figure 9-10. Braiding at a Breakout or Y Intersection
+
+9.5      Spiral Wrap Sleeving
+
+9.5.1    Spiral wrap sleeving shall be installed to make firm contact with the wire bundle.
+
+9.5.2   The ends of the spiral wrap shall be trimmed to eliminate sharp edges or points that
+might damage the insulation.
+
+9.5.3    The sleeving may be butted or applied as an open spiral, but shall not be overlapped
+(Figure 9-11).
+
+9.5.4    When spiral sleeving is applied, the ends of the wire bundle shall be secured by the tie
+wraps or by other means (see paragraphs 9.2 and 9.3).
+
+9.5.5    Spiral wrap sleeving shall not be used on mission critical or flight hardware including
+launch vehicles.
+
+
+
+
+                                            35 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+                                Figure 9-11. Spiral Wrap Sleeving
+
+9.6      Plastic Straps
+
+9.6.1    Installed straps shall be locked to prevent them from loosening or opening.
+
+9.6.2     Straps shall be placed on both sides of a breakout; otherwise, spacing between straps
+shall be as required by Table 9-1.
+
+9.6.3    The "ribbed" side of a strap shall always be placed against the wires.
+
+9.6.4    Straps shall be tightened so that they do not slide back and forth on the assembly;
+however, they shall not be so tight as to cause noticeable indentation or distortion of the wires in
+the harness. Proper strap orientation is shown in Figure 9-12.
+
+9.6.5    Plastic straps are usually installed by tooling. Tooling shall be tension-controlled to
+meet the strap-tightening requirements previously stated.
+
+9.6.6    Surplus strap ends shall be trimmed flush at the back end of the strap head (this is done
+automatically by most tooling).
+
+
+
+
+                                             36 of 101
+                               NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+                                 Figure 9-12. Plastic Strap Orientation
+
+9.7        Metal Braid Shielding
+
+9.7.1    Metal braid shielding can either be woven directly over a core or obtained in prebraided
+form and installed by sliding it over the wire bundle. To prevent potential damage (cold flow) of
+the underlying wire insulation, a separator (e.g., a tape) shall be applied over the wire bundle to
+give the wire continuous protection.
+
+9.7.2      Prewoven braiding shall be tightened down to contact the wire bundle.
+
+9.7.3      Braids shall be terminated as specified by the engineering documentation.
+
+9.7.4      Prewoven metallic braid shall be cleaned in a suitable solvent to remove contamination
+prior to installation over the harness (see Chapter 15).
+
+9.8        Insulation Sleeving/Tubing
+
+9.8.1     Insulation sleeving shall be installed on all terminations that are not otherwise insulated
+or potted, except those at ground potential (e.g., overall shield and coaxial cable terminations).
+
+9.8.2    Insulation sleeving shall be installed to meet the dimensional requirements of the
+applicable drawing or specification.
+
+9.8.3      The following requirements apply to heat-shrinkable sleeving:
+
+      a. The heat-shrinkable sleeving selected shall be larger than the maximum diameter of the
+      object being covered, and after shrinking it shall provide a tight fit over the object in the area
+      of maximum diameter. This will cause the sleeving to have a tight mechanical grip on the
+      item it covers. A guide for selecting sleeving sizes is given in Table 9-3.
+
+
+
+
+                                                37 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+   b. There shall be no partially or incompletely shrunken areas.
+
+   c. Sleeving may have a slight surface crazing, but it shall be free of cracks, punctures, and
+   charred or burned areas.
+
+9.8.4    Tubing. Tubing shall be secured by spot ties or otherwise restrained to prevent them
+from sliding back and forth over the wire bundle.
+
+9.8.5     Insulation tubing shall extend beyond the wire or cable insulation or jacket,
+respectively, a minimum of two times (2X) the diameter of the larger of the two. See 19.2.6 for
+this requirement as applied to splices.
+
+
+
+
+                                           38 of 101
+                             NASA-STD-8739.4A – 2016-06-30
+
+ Table 9-3. Selection Guide for Use of Polyolefin and Polyvinylidene Fluoride Sleeving [in mm
+                                           (inches)]
+
+                                    I.D.
+               I.D.                                       Cable                 Sleeving
+                                Recovered
+           As Supplied                                   Diameter                 Size
+                              (After Heating)
+                                                       0.30 to 0.70
+           1.2     (0.046)     0.6     (0.023)                                1.2      (3/64)
+                                                      (0.01 to 0.026)
+                                                         0.71 to 1
+           1.6     (0.063)     0.8     (0.031)                                1.6      (1/16)
+                                                     (0.028 to 0.038)
+                                                       1.01 to 1.40
+           2.4     (0.093)     1.2     (0.046)                                2.4      (3/32)
+                                                      (0.039 to 0.54)
+                                                       1.41 to 2.00
+           3.2     (0.125)     1.5     (0.061)                                 3.2      (1/8)
+                                                     (0.055 to 0.077)
+                                                       2.01 to 2.80
+           4.7     (0.187)     2.4     (0.093)                                4.8      (3/16)
+                                                     (0.078 to 1.109)
+                                                       2.81 to 4.00
+           6.4     (0.250)     3.2     (0.125)                                 6.4      (1/4)
+                                                     (0.110 to 0.156)
+                                                       4.01 to 5.50
+           9.5     (0.375)     4.7     (0.187)                                 9.5      (3/8)
+                                                     (0.157 to 0.218)
+                                                       5.51 to 7.90
+           12.7    (0.500)     6.4     (0.250)                                 12.7     (1/2)
+                                                     (0.219 to 0.312)
+                                                      7.91 to 11.10
+           19.1    (0.750)     9.5     (0.275)                                 19.1     (3/4)
+                                                     (0.313 to 0.437)
+                                                      11.11 to 15.90
+           25.4    (1.000)     12.7    (0.500)                                  25.4     (1)
+                                                     (0.438 to 0.625)
+                                                      15.91 to 22.2
+           38.1    (1.500)     19.1    (0.750)                                38.1     (1-1/2)
+                                                     (0.626 to 0.875)
+                                                      22.21 to 31.80
+           50.8    (2.000)     25.4    (1.000)                                  50.8     (2)
+                                                     (0.876 to 1.250)
+                                                      31.81 to 44.50
+           76.2    (3.000)     38.1    (1.500)                                  76.2     (3)
+                                                     (1.251 to 1.750)
+                                                      44.51 to 63.5
+           101.6 (4.000)       50.8    (2.000)                                  101.6 (4)
+                                                     (1.751 to 2.500)
+       1/ The 2:1 shrink ratios shown apply to commonly used polyolefin sleeving (AMS DTL-23053/5
+       and /6) and polyvinylidene fluoride sleeving (PVDF) (AMS DTL 23053/8). Other shrink sleeving
+       such as fluorinated ethylene propylene (FEP) (AMS-DTL-23053/11), polyethylene terephthalate
+       (PET) (AMS-DTL-23053/7), and extruded polytetrafluoroethylene (PTFE) (AMS-DTL-23053/12)
+       have different shrink ratios, and the applicable specification should be consulted.
+
+9.9      Installation of Heat-Shrinkable Sleeving
+
+9.9.1    After the sleeving has been placed over the object to be covered, it shall be heated and
+shrunk using a hot air gun, an oven, or radiant heating.
+
+
+
+                                               39 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+9.9.2    The degree of heat used and the exposure time will depend on the size and type of
+sleeving. A typical shield termination is shown in Figure 9-13. Sleeving coverage dimensions
+are given in this figure. If a tight fit is required for the minimum diameter, additional sleeving
+may be required.
+
+       Note: CAUTION: EXTREME CARE SHOULD BE EXERCISED TO ASSURE THAT THE
+       AMOUNT OF HEAT APPLIED IS NOT DETRIMENTAL TO THE OBJECT BEING
+       COVERED. WHEN OTHER TEMPERATURE-SENSITIVE MATERIALS AND PARTS
+       ARE IN THE VICINITY, THEY SHOULD BE PROTECTED FROM EXPOSURE TO
+       DIRECT HEAT.
+
+
+
+
+                 Figure 9-13. Illustration of Shrink Sleeve Installation (Typical)
+
+9.10     Long Lengths of Shrinkable Sleeving
+
+9.10.1 Long lengths of shrinkable sleeving installed over interconnecting harnesses and cables
+shall provide protective coverage of the designated area without leaving residual stress in the
+material.
+
+9.10.2 The sleeving shall be in contact with the interconnecting harness or cable along its
+length. One method of controlling endwise shrinkage (reduction in length) of the sleeving
+during installation is shown in Figure 9-14.
+
+       Note: Medium to long lengths of harnesses/cables with shrink sleeving are extremely
+       difficult to bend and coil without damage.
+
+
+
+
+                                             40 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+    Figure 9-14. Installation of Long Lengths of Sleeving to Achieve Controlled Dimensions
+
+9.11     Shrinkable Part Requirements and Installation
+
+9.11.1 Shrinkable parts shall meet the following requirements (see Figure 9-15 for typical
+sleeving installation):
+
+   a. They shall be uniformly shrunk to assure a tight fit where required.
+
+   b. The part shall be positioned according to drawing or specification requirements.
+
+   c. The shrinkable sleeving shall firmly grip the item over which it has been installed.
+
+   d. The shrinkable part shall be free of cracks, punctures, blisters, and burned areas.
+
+9.11.2 When shrinkable parts are installed, the gripping section of the part is shrunk first (For
+example, the gripping-end section of a connector backshell boot is shrunk over the connector
+before the smaller cable-gripping end is heated).
+
+
+
+
+                                            41 of 101
+                              NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+                              Figure 9-15. Sleeving Installation (Typical)
+
+10.        STRIPPING INSULATION FROM CONDUCTORS AND CABLE
+10.1       Stripping Round Conductors
+
+10.1.1     Insulated wires shall be prepared in accordance with the following requirements:
+
+      a. After removal of the insulation segment, the remaining conductor insulation shall not
+      exhibit any damage such as nicks, cuts, crushing, or charring.
+
+      b. Conductors with damaged insulation shall not be used.
+
+      c. Scuffing from mechanical stripping or slight discoloration from thermal stripping is
+      acceptable.
+
+      d. After removal of the conductor insulation, the conductor shall not be nicked, cut, or
+      scraped to the point that base metal is exposed.
+
+      e. Conductors that were reduced in the cross-sectional area shall not be used.
+
+      f. The lay of wire strands shall be restored as nearly as possible to the original lay if
+      disturbed.
+
+      g. The conductor shall be cleaned following restoration to the original lay.
+
+10.1.2     The following requirements apply to tinning of conductors for solder cups:
+
+
+
+
+                                               42 of 101
+                             NASA-STD-8739.4A – 2016-06-30
+
+   a. The portion of stranded wires that will eventually become a part of the finished solder
+   connection shall be coated with tin-lead solder and cleaned prior to attachment. Additional
+   flux may be used.
+
+   b. The flux shall be applied so that it does not flow under the insulation except for traces
+   carried by solder wicking.
+
+   c. Flux shall be removed with cleaning solvent applied so that its flow under the conductor
+   insulation is minimal.
+
+   d. Wire strands shall be discernible after tinning.
+
+   e. Solder wicking shall not extend to a portion of the wire which is required to remain
+   flexible.
+
+   f. Solder build-up or icicles within the tinned wire area shall not affect subsequent assembly
+   steps.
+
+   g. The length of untinned strands measured from the end of the tinned portion to the
+   beginning of the wire insulation shall not be greater than 1 wire diameter.
+
+10.1.3 Insulation Irregularity. Mechanical or thermal stripped insulation irregularity is
+acceptable if it does not exceed 1/4 of the outside diameter of the wire, including the insulation.
+
+10.1.4    Insulation Clearance. The following requirements apply:
+
+   a. Soldered Connections.
+
+         (1) The insulation shall not be imbedded in the solder joint.
+
+         (2) The contour of the conductor shall not be obscured at the termination end of the
+         insulation.
+
+         (3) The insulation clearance shall be less than two wire diameters, including insulation,
+         but in no case shall permit shorting between adjacent non-electrically common
+         conductors.
+
+         (4) Insulation clearance shall be referenced from the first point of contact of the
+         conductor to the terminal.
+
+   b. Crimped Connections.
+
+         (1) The minimum insulation clearance for all crimped connections shall be 0.25mm
+         (0.01in.).
+
+         (2) The maximum insulation clearance for conductors 20AWG and smaller shall be
+         0.75mm (0.03in.).
+
+
+
+
+                                              43 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+         (3) The maximum insulation clearance for conductors 18AWG and larger shall be
+         1.25mm (0.05in.).
+
+10.2      Stripping Jackets Over Shields
+
+10.2.1    Jackets over shields may be stripped by either thermal or mechanical means.
+
+10.2.2    Nicked shield strands shall not exceed 10 percent of the total number of strands.
+
+10.2.3    There shall be no severed strands in the shield.
+
+10.3      Stripping Flat Conductor Cable
+
+10.3.1    Flat conductor cable shall be stripped by mechanical means.
+
+10.3.2    Conductors shall not be nicked, gouged, necked down, or severed during stripping.
+
+10.3.3 After removal of the insulation segment, the remaining conductor insulation shall not
+exhibit any damage such as nicks, cuts, or crushing. Scuffing from mechanical stripping is
+acceptable.
+
+11.       CABLE SHIELDING AND SHIELD TERMINATION
+11.1      General
+
+11.1.1 Interconnecting cables and harnesses shall be designed and constructed to minimize
+electromagnetic couplings between wires within the assembly that are sensitive to induced
+interference. The following cable styles are listed in order of increasing RFI/EMI control:
+twisted pair, shielded wire, single-braid coaxial cable, double-braid coaxial cable, triaxial cable,
+twisted-shielded quadrax cable. For harnesses, grounded copper braid is the most effective RF
+shielding.
+
+11.1.2 On RF signal cables, both the inner conductor and outer conductor braid shall be
+electrically continuous.
+
+11.1.3 Cable and harness shields shall be mechanically terminated (e.g. crimp rings,
+compression band).
+
+11.1.4 Cable and harness shields shall be electrically grounded in accordance with the
+manufacturing instructions (e.g. pigtail, conductive backshell).
+
+
+
+
+                                             44 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+               Figure 11-1. Terminating Overall Shield in RFI Adapter (Typical)
+
+
+                 GROUNDING WIRE
+                                                                  Strip 6.4 - 8.3
+                                                                        (.250-.325)
+
+
+             SHIELDED BRAID
+                                                        Strip 6.4 - 8.3
+                                                              (.250-.325)
+
+
+              WIRE GROUNDING
+
+
+
+
+                      DI MENSIO NS IN MILLI METE RS (INCHES)
+
+
+
+ Figure 11-2. Example of Individual Shield Termination Using a Heat Shrinkable Solder Sleeve
+
+11.2     Individual Shield Termination Using Two-Piece Crimp Rings
+
+11.2.1 An individual shield that is terminated using two-piece crimp rings (ferrules) to attach
+grounding wires to the shield braid is shown in Figure 11-3. The inner crimp ring (ferrule) shall
+be sized so that any inward distortion caused by crimping will not affect the insulated wires it
+contains.
+
+11.2.2 The end of the grounding wire shall be flush with the outer ferrule, and shall not
+overhang the inner ferrule.
+
+
+
+
+                                            45 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+11.2.3 The grounding wire detachment force from the crimped sleeve shall meet the
+requirements of paragraph 13.7.
+
+
+
+
+          Figure 11-3. Individual Shield Termination Using a Two-Piece Crimp Ring
+
+11.3     Group-Grounding of Individual Shield Terminations
+
+11.3.1 When grounding wires of individual cable shields are grounded to one point, they shall
+be spliced to a common grounding wire.
+
+11.3.2 No more than four conductors plus a drain wire shall be terminated in one splice (see
+Figure 11-4 and Figure 11-5).
+
+11.3.3 For ordinary RFI/EMI protection, the shield shall be terminated within 100mm (4
+inches) of the center conductor termination for the x-distance, and the combined length of shield
+grounding wires shall not exceed 190mm (7.5 inches) for the y-distance. For interference
+sensitive circuits, preferred lengths are 20 and 115mm (.75 inches and 4.5 inches). See Table 11-
+1 for the x and y distances. When this does not provide adequate isolation, RFI/EMI connector
+backshells may be necessary.
+
+
+
+
+                                           46 of 101
+                         NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+           Figure 11-4. Example of Group Grounding of Staggered Shields
+
+            Table 11-1. Shield Termination Control for Group Grounding
+
+                            X-Distance             X-Distance     Y-Distance
+  Name of Circuit              Max.                   Min.           Max.
+                            mm (Inches)            mm (Inches)    mm (Inches)
+Interference sensitive       20.0 (0.75)             13 (.50)       115.0 (4.5)
+Ordinary interference
+                             100.0 (4.0)             13 (.50)       190.0 (7.5)
+     protection
+
+
+
+
+                                       47 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+               Figure 11-5. Group-Grounding of Individual Shield Terminations
+
+11.4     Large Compression Ring Grounding
+
+11.4.1 Individual shields and overall shields may be grounded using large compression rings.
+Shields should be dressed across the inner collector ring either forward towards the connector
+(Figure 11-6B) or backwards away from the connector (Figure 11-6C). Grounding wires shall
+exit the front or rear of the compression ring as required by design, and shall be formed in
+accordance with Figure 11-6A.
+
+11.4.2 Grounding exiting the side of the compression ring away from the rear of the connector
+shall be dressed beneath the compression ring when terminating to a connector pin. The outer
+compression ring shall be crimped securely over the shields and inner collector ring.
+
+11.4.3 The grounding wire detachment force from the crimped sleeve shall meet the
+requirements of paragraph 13.7.
+
+
+
+
+                                           48 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+            Figure 11-6. Large Compression Ring Grounding (Typical Applications)
+
+11.5     Floating Shield Terminations
+
+11.5.1   The outer jacket shall be trimmed to expose the shielding braid.
+
+11.5.2   The braid shall be folded back over the outer jacket as illustrated in Figure 11-7.
+
+11.5.3   Combing the braid is optional. Heat-shrinkable sleeving shall be installed over the trim
+point.
+
+
+
+                                            49 of 101
+                               NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+                                Figure 11-7. Floating Shield Termination
+
+11.6     Unshielded Wire Exposure and Total Length of Grounding Wires
+
+Exposed wire beyond a shield termination is subject to induced RFI/EMI interference. Any
+excessive length of grounding wire may act as an antenna in picking up interference. Distances
+to terminations and maximum lengths of grounding wires attached directly to an individual
+shield are given in Table 11-2 and illustrated in Figure 11-8. Shield terminations shall be
+staggered behind the connector/accessory 13mm (0.5 inch) minimum and 100mm (4 inches)
+maximum to assure minimum buildup of the wire bundle diameter in the shield termination area
+(see Figure 11-5).
+
+                   Table 11-2. Shield Termination Control (Refer to Figure 11-8)
+
+                                                    X-Distance
+                                                                                 Y-Distance
+                  Nature of Circuit             Recommended Max
+                                                                                 mm (Inches)
+                                                Length mm (Inches)
+              Interference sensitive1/                 20 (0.75)                    40 (1.5)
+               Ordinary interference
+                                                       100 (4.0)                   150 (6.0)
+                    protection
+       1/ It may be necessary to use conductive adapter backshells that provide full isolation to secure
+       better RFI/EMI protection for extremely sensitive circuits.
+
+
+
+
+                                                   50 of 101
+                              NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+             Figure 11-8. Conductor Exposure for Individual Shield Termination Types
+
+12.        CRIMP CONNECTIONS
+12.1       General
+
+12.1.1 Crimped connections shall be inspected 100 percent in order to verify compliance with
+this standard.
+
+12.1.2     Insulation clearances shall be as specified in paragraph 10.1.4.b.
+
+12.2       Examination of Crimp Contact
+
+12.2.1 For manual crimping operations prior to wire insertion, the assembler shall examine the
+crimp contacts for the conditions in 12.2.2.
+
+12.2.2     Contacts that show the following conditions shall be prohibited:
+
+      a. Cracks in the plating or base metal.
+
+      b. Tarnishing or discoloration of the plating.
+
+      c. Plating removal or flaking.
+
+      d. Out-of-roundness of the wire well entrance.
+
+      e. Exposed base metal.
+
+
+
+
+                                                51 of 101
+                              NASA-STD-8739.4A – 2016-06-30
+
+12.3      Process Controls
+
+12.3.1    Tool and Equipment Control.
+
+   a. Full-Cycle Ratcheting. Crimp tools shall contain a full-cycle ratcheting mechanism
+   which shall prevent the indenters from releasing before the crimp cycle has been completed.
+
+   b. Number of Indenters. Each crimp tool shall have four or more indenter blades
+   (preferably double-indenter blades).
+
+   c. Calibration Adjustments. The calibration adjustments shall be accessible only when the
+   tool is disassembled.
+
+   d. Calibration adjustments shall be made only by the manufacturer of the tool or by a
+   calibration laboratory.
+
+   e. Sealing of Adjustable Tools. All adjustable crimp tools shall be set, sealed or locked, and
+   verified prior to use.
+
+12.3.2    Examination of Crimp Tools.
+
+   a. If the tool is broken or damaged, it shall be removed from service.
+
+   b. Tools with a sealed setting and sealed locator or position. If the tool is broken or
+   damaged, or if the seal is broken, the tool shall be removed from service.
+
+   c. Records of examination shall be maintained for hand tools.
+
+12.3.3 Allowable Contact-Conductor Combinations. The contact-conductor combinations
+shall be in accordance with manufacturer's recommendations.
+
+12.3.4    Contacts or conductors shall not be modified.
+
+12.3.5    Integrity of Crimped Connections.
+
+   a. The following requirements apply for crimp process development when there is no
+   recommended tool setting for the contact-conductor combination:
+
+         (1) For each new crimp process where a crimp tool setting must be determined for a
+         contact-conductor pair (or a crimp ferrule-conductor combination), a three-sample pull
+         test at each of the different crimp tool settings considered for use are required using the
+         force and pull strength criteria in Table 12-1.
+
+         (2) The crimp tool setting that produces the maximum number of fray breaks and breaks
+         outside the contact or crimp ferrule shall be used for assembly (see Figure 12-1).
+
+         (3) If multiple settings provide identical tensile strengths for a crimp joint, the setting
+         selected shall be the one that provides more wire breaks than wire pullouts.
+
+
+
+                                               52 of 101
+                        NASA-STD-8739.4A – 2016-06-30
+
+b. The following requirements apply for the production quality control test:
+
+   (1) The crimp tools and each contact-conductor, or crimp ferrule-conductor, combination
+   to be used in a production run shall be tested at the start and at the end of each work shift
+   or production run, whichever is shorter, using crimp pull testing. The test prior to a shift
+   or production run can be skipped if the test had been done at the end of the prior shift or
+   production run and no change to the tools has occurred since the last pull test. The test at
+   the end of the shift may be skipped if it will be done at the start of the next shift or
+   production run and no change to the tools will occur prior to the next test.
+
+   (2) The record of successful pull testing shall be traceable to the contact or ferrule, wire,
+   crimp tool, crimp setting used and the production run or shift.
+
+   (3) Hardware produced prior to the failed pull test shall be identified as suspect and
+   evaluated prior to use to assure it is defect-free.
+
+   (4) Production shall not proceed until there are zero failures out of three samples tested.
+
+c. The following requirements apply for the Test Method and Failure Categories:
+
+   (1) The crimp contacts or ferrules shall be placed in a tensile-testing device with
+   appropriate fixtures, and sufficient force shall be applied to pull the wire out of the
+   assembly or to break the wire or crimped item.
+
+   (2) The head travel speed of the tensile device shall be 25.4 ± 6.3 mm (1.0 ± .25 in) per
+   minute. The holding surfaces of the tensile device clamp may be serrated to provide
+   sufficient gripping and holding ability.
+
+   (3) Crimp pull strengths shall meet the values in Table 12-1. Wire pull out, wire breaks
+   at the crimp, and contact rupture which occur below the minimum pull strength value are
+   considered test failures.
+
+   (4) For those contact-conductor crimp connections not contained in Table 12-1, the
+   tensile strength of the crimp connection shall be no less than 60 percent of the tensile
+   strength of the wire. Reference the manufacturer’s datasheet for wire tensile strength.
+
+   (5) For crimp ferrule-conductor combinations the wire pulled shall meet the tensile
+   requirement for a single wire of the same gauge being tested in its “properly sized”
+   contact.
+
+   (6) Examination of Test Samples. Each individual test sample shall be inspected to the
+   requirements of 12.3.5.c(3) and the observations should be recorded and maintained for
+   passing units and shall be recorded for failing units.
+
+   (7) The pull strength and break or release condition for test failures shall be recorded.
+
+d. Alternative quality control systems may be used for assuring crimp production lots when
+they are approved in advance in accordance with Chapter 4 of NASA-STD-8739.6.
+
+
+
+                                         53 of 101
+                        NASA-STD-8739.4A – 2016-06-30
+
+                           Table 12-1. Crimp Tensile Strength 1
+
+                        Copper,                        Tensile Strength, Newtons
+                                                          (Pounds), Minimum
+              Conductor Size, AWG 2/
+                            28                                      22 (5)
+                            26                                      36 (8)
+                            24                                      36 (8)
+                            22                                     57 (13)
+                            20                                     92 (21)
+                            18                                     142 (32)
+                            16                                     183(41)
+                            14                                     290 (65)
+                            12                                    459 (103)
+                            10                                    707 (159)
+                            8                                     1281 (288)
+1/ For contact-conductor combinations not listed in the table, the requirements of12.3.5.c(4) shall
+apply.
+2/ Refers to copper and high strength copper alloy stranded conductors.
+
+
+
+
+                  Figure 12-1. Crimp Joint Tensile Failure Categories
+
+Note: All categories are acceptable if separation occurs above minimum tensile strength
+per 12.3.5.c.(3).
+
+
+
+
+                                            54 of 101
+                             NASA-STD-8739.4A – 2016-06-30
+
+         Note: Breaks at the entrance of the contact wire barrel, caused by conductor cutting
+         because the contact is not held squarely in the tester jaws, shall not be preferred breaks.
+
+13.        CONNECTOR ASSEMBLY
+13.1      General
+
+13.1.1    Contact insertion and removal tools shall be non-metal.
+
+13.1.2 During contact insertion operations, should part of the tip of a contact insertion tool
+break off, all pieces of the tip shall be accounted for.
+
+13.1.3 The mating surfaces of all unmated connectors shall be protected by covers during
+storage, handling, and installation of interconnecting cables and harnesses.
+
+13.2      Assembly of Crimp-Type Connectors (Including Terminal Junctions)
+
+13.2.1 Crimp contacts are assembled to conductors outside of the connector and are
+subsequently installed into the connector body. When a connector is properly assembled,
+contacts are captured inside the connector. Retaining clips are one means of securing contacts in
+place inside connector cavities. When retaining clips are present, contacts shall be fully seated
+and locked into place by the clip.
+
+13.2.2    Terminal junctions shall not have unwired contacts installed in unused cavities.
+
+13.3      Assembly of Solder-Type Connectors
+
+13.3.1 Wire shall be bent only in flexible, unwicked parts of the conductor to maintain stress
+relief for solder dipped conductors. In all instances, stranded conductors will experience solder-
+wicking during attachment. The conductor will be rigid up to the point where the wicking stops
+and flexible beyond it. Wire movement concentrates stress at the point where wicking stops and
+normal harness handling can produce conductor fatigue and failure.
+
+13.3.2 Solid conductors shall be assembled in contacts by soldering, and cleaned and inspected
+in accordance with the latest revision of IPC J-STD-001FS.
+
+13.3.3 Contact mating surfaces and solder joints shall be cleaned to remove flux residue
+following the soldering operation.
+
+         Note: CAUTION: WHERE SOLDER CONTACTS HAVE FLOAT, FLUX MAY RUN
+         DOWN ONTO THE MATING SURFACE OF THE CONTACT DURING SOLDERING
+         AND CAUSE INTERMITTENT AND OPEN CIRCUITS.
+
+13.4    Assembly of Connectors with Non-Removable Solder Cups Including Hermetic
+and Environmental Types
+
+13.4.1 Connectors with Non-Removable Solder Cups. When solder connections cannot be
+visually inspected due to their position out of the line of sight, alternative quality control
+
+
+                                              55 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+measures shall be taken to ensure that the solder joints are defect-free in accordance with the
+defect and inspection criteria of J-STD-001FS. Examples are interim visual inspection, x-ray
+inspection and process controls that drive minimum conductor insertion into the cup and solder
+fill and fillet conditions.
+
+13.4.2 For environmental and hermetic connectors that have unremovable soldered contacts,
+solder joints, contact surfaces and the rear of the connector shall be cleaned to remove flux
+residue following soldering.
+
+13.4.3 Plastic sealing plugs shall be used in all unwired contact cavities of environmental
+connectors for high humidity and moisture environments.
+
+13.4.4    Sealing plugs shall be fully seated.
+
+13.4.5 Grommet Sealing. When an insulated wire diameter is smaller than the grommet hole,
+the wire insulation diameter shall be increased by using heat shrinkable sleeving.
+
+         Note: Care should be used when using shrink sleeving. The outer diameter of the sleeving
+         should be small enough to allow use of extraction/insertion tools.
+
+13.5      Assembly (Torquing) of Adapters and Cable Clamps to Connectors
+
+13.5.1 During assembly (torquing backshells, securing cable clamps/tongs, etc.), strain relief
+members shall not be stressed or forced to rotate.
+
+13.5.2    Torque requirements shall be stated on the engineering documentation.
+
+         Note: CAUTION: CARE SHOULD BE EXERCISED WHEN POSITIONING AND
+         TORQUING CONNECTOR BACKSHELL TONGS, STRAIN RELIEF CLAMPS AND
+         OTHER STRAIN RELIEF MEMBERS. THE PROPER POSITIONING OF THESE
+         DEVICES WILL PREVENT THE SHARP BENDING OF AND SUBSEQUENT DAMAGE
+         TO HARNESSES DURING THEIR INSTALLATION OR OPERATIONAL USE.
+
+13.6      Assembly of RF Connectors and Coaxial Contacts
+
+Many types of RF connectors and coaxial contacts are available. Electrical performance,
+together with other considerations, affects the selection of the connector and coaxial cable.
+Depending on the requirements, assembly procedures vary from normal shop practice for cables
+operating at less than 1 gigahertz (GHz) to precision techniques for those operating up to 18
+GHz. See Appendix B for a discussion of frequently encountered workmanship problems related
+to the assembly of RF connectors and coaxial contacts. The following practices shall be
+observed:
+
+   a. Connectors shall not be modified.
+
+   b. Special tools necessary for the fabrication shall be specified on the assembly procedures.
+
+   c. Torque values, when applicable, shall be specified on the engineering documentation.
+
+
+
+                                             56 of 101
+                               NASA-STD-8739.4A – 2016-06-30
+
+13.7     Process Controls for Two-Piece Crimp Rings and Stub-Type Splicing Devices
+
+13.7.1 The crimp tools and crimped ring conductor(s) combination to be used in a production
+run shall be tested at the start and at the end of each work shift or production run, whichever is
+shorter.
+
+13.7.2 Test results shall be recorded and maintained for each applicable crimp tool, crimped
+ring conductor(s) combination, and production period or shift.
+
+13.7.3 Number of Test Samples. Three or more test samples shall be prepared and tested for
+each crimp tool and crimped ring conductor(s) combination, at the intervals specified in 13.7.1.
+
+13.7.4 Test Method. The sample crimp rings and stub-type splicing devices shall be placed in
+a tensile-testing device with appropriate fixtures, and sufficient force shall be applied to pull
+each individual wire to the value specified in Table 13-1 without movement or pulling of the
+wire from the crimped ring or breaking of the wire or the crimped ring. The head travel speed of
+the tensile device shall be 25.4 ± 6.3 mm (1.0 ± .25 in) per minute. The holding surfaces of the
+tensile device clamp may be serrated to provide sufficient gripping and holding ability.
+
+13.7.5 The tensile strength of the crimp test sample connections shall be in accordance with
+Table 13-1.
+
+13.7.6 For those crimped ring conductor(s) combinations not contained in Table 13-1, the
+tensile strength of the crimp connection shall be no less than 60 percent of the tensile strength of
+the wire.
+
+13.7.7 Records of the observations of the passing test samples should be recorded and
+maintained and for failing samples shall be recorded and maintained.
+
+                                           Table 13-1. Pull Force 1
+
+                          Grounding Lead                        Applied Force
+                             Wire Size                    Minimum Newtons (Pounds)
+                       AWG 24            Copper                       36                 (8)
+                       AWG 22            Copper                       57                (13)
+       1/ For wire sizes not listed, the minimum applied force shall be 60 percent of the tensile strength
+       of the wire being pulled.
+
+13.8     Inspection and Verification Testing
+
+The following inspections and verifications of assembled connectors are required:
+
+13.8.1 Visual Examination. One hundred percent visual inspection shall be conducted for
+acceptable soldering, proper identification, and freedom from damage.
+
+13.8.2 Contact Seating. Each contact in connectors utilizing retention clips or tines shall be
+push or pull tested 100 percent for seating.
+
+
+
+                                                   57 of 101
+                                NASA-STD-8739.4A – 2016-06-30
+
+13.8.3     Contact seating testing shall be limited to one push or pull test per contact insertion.
+
+13.8.4     The contact seating test results shall be recorded.
+
+13.8.5     The following requirements apply for push testing:
+
+   a. In applications in which the engaging (mating) ends of the pins or socket contacts are
+   accessible, contact retention testing to the requirements of Table 13-2 shall be performed.
+
+   b. Push testing shall utilize a tool that minimizes chafing, scraping and bending of contacts
+   and applies a controlled, preset pressure to the contact before releasing the force. A typical
+   tool design is shown in Figure 13-1.
+
+   c. Socket testing probes shall be undersized compared to mating-pin diameters and shall not
+   cause a mating cycle to take place.
+
+                                Table 13-2. Contact Retention Test Forces
+
+                                         Push Test Force             Pull Test Force
+                   Contact sizes            (Newtons               Newtons (Pounds) 1/,
+                                            (Pounds)                        2/
+                     22, 22D and             17.8 to 26.7                 13.3 to 22.2
+                         22M                   (4 to 6)                     (3 to 5)
+                          20                 22.2 to 31.1                 13.3 to 22.2
+                                               (5 to 7)                     (3 to 5)
+                          16                 35.6 to 44.5                 17.8 to 31.1
+                                              (8 to 10)                     (4 to 7)
+                          12                 44.5 to 53.4                 17.8 to 31.1
+                                              (10 to 12)                    (4 to 7)
+         1/ Wire shall not be pulled to a force in excess of 80 percent of the specified minimum crimp
+         tensile requirement. This requirement shall be met to avoid damage to the wire/contact crimp
+         joint.
+         2/ These forces are based on wire size AWG 24. If smaller wire is used these values should be
+         adjusted accordingly.
+
+
+
+
+                                                   58 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+                              Figure 13-1. Typical Push Test Tool
+
+
+
+
+            Figure 13-2. Application of Retention Tool for Gripping Wire (Typical)
+
+13.8.6   The following requirements apply for pull testing:
+
+   a. On terminal junctions and certain insertable crimp-contact connectors, contacts are not
+   exposed for push testing. Pull force contact retention testing to the requirements of Table 13-
+   1 shall be performed only on devices in which the contact engaging (mating) ends are not
+   accessible.
+
+   b. Pull force testing shall be performed by pulling on the wire terminated in the contact as
+   illustrated in Figure 13-2.
+
+   c. The wires to be pulled (except for shielded wire) shall be free of ties, cable clamps, or
+   any wire-harness shielding devices within 127 mm (5 inches) of the terminal junction sealing
+   grommet surface (see Figure 13-2).
+
+
+
+
+                                           59 of 101
+                              NASA-STD-8739.4A – 2016-06-30
+
+      d. When the wire breakout to the terminal junction is less than 127 mm (5 inches) in length,
+      then ties and clamps may be removed only to the point where the wires leave the main
+      bundle.
+
+      e. The wire shall be pulled perpendicular to the wire exit face of the connector device.
+
+         Note: When the wire is pulled at any angle exceeding 5° from the perpendicular, the
+         contact may bind inside the connector and give a false reading.
+
+      f. The wire shall not be pulled to a force in excess of 80 percent of the specified minimum
+      crimp tensile requirement in order to avoid damage to the wire/contact crimp joint.
+
+      g. When a shielded wire is being pulled, the wire shall be gripped between the rear of the
+      connector and the shield termination.
+
+13.8.7 Solder Contacts. All solder contacts that have float shall be free of flux and other
+contamination and should be checked to assure they have normal float characteristics after
+soldering and cleaning.
+
+13.8.8 Coaxial Cable Requirements. Coaxial cables shall pass electrical requirements (e.g.,
+voltage standing wave ratio (VSWR), insertion loss, and other performance tests specified on the
+engineering documentation).
+
+13.8.9 Prior to assembly or installation, the following inspections shall be conducted, as
+appropriate:
+
+      a. Verify proper strip length and assembly of center conductor into contact.
+
+      b. Verify proper securing of the outer conductor.
+
+      c. Verify that the center contact location meets requirements for proper mating.
+
+      d. Visually verify undamaged condition of mating surfaces and coupling means.
+
+13.8.10 Torque applied to connector backshells, strain relief clamps, etc., shall be as specified
+in the engineering documentation.
+
+14.        HARNESS IDENTIFICATION
+14.1       General
+
+14.1.1     Each cable and each harness shall be permanently identified.
+
+      a. The identification marking shall be capable of passing all environmental testing that may
+      be required for the projected use and remain legible.
+
+      b. Each connector shall be identified.
+
+
+
+
+                                               60 of 101
+                               NASA-STD-8739.4A – 2016-06-30
+
+      c. Connector identification may be placed directly on the connector or on the cable near the
+      connector.
+
+      d. In all cases, identification shall resist abrasion, either as applied or with the aid of an
+      overcoat.
+
+      e. All temporary identification shall be removed from each completed harness by the end of
+      the fabrication process.
+
+      f. Marking tape used to position and locate harnesses and cables may be either permanent
+      or temporary in nature.
+
+      g. Permanent type marking tapes shall meet environmental requirements.
+
+      h. Identification shall be verified visually by the responsible Quality Representative or
+      designee for correctness, legibility, size, and proper location.
+
+15.         INTERCONNECTING HARNESS AND CABLE CLEANING
+15.1       General
+
+15.1.1 Interconnecting cable and harness assemblies shall be clean and free of contamination
+prior to installation in the mission hardware system (e.g. aircraft, instrument, spacecraft).
+
+      a. Assurance of cleanliness shall be an ongoing effort.
+
+      b. Practices for mission assemblies shall include assembly in a clean environment and the
+      use of protective plastic sheeting or other coverings over harnesses not undergoing active
+      assembly.
+
+15.2       Cleaning the Harness Assembly
+
+15.2.1 Particles and debris shall be cleaned from the harness or cable assembly by vacuum-
+removal methods.
+
+15.2.2 Selection and use of solvents for cleaning harnesses shall comply with the requirements
+of NASA-STD-8739.6.
+
+15.2.3 Brushing with solvent shall be used as required to remove other contamination.
+Aqueous solvents should be avoided when cleaning assemblies containing silver-coated copper
+wire to reduce the risk of corrosion (i.e. cuprous oxide formation at silver/copper interfaces in
+the presence of moisture known as red-plague).
+
+15.2.4 Cable and harnesses that contain foamed or expanded structure insulation shall be
+baked after cleaning with alcohol to ensure entrapped volatile substances are liberated before
+electrical testing is performed. Use of 60°C in air for 2.0 hours minimum is recommended.
+
+15.2.5     Only solvents as per paragraph 6.6.1 shall be used.
+
+
+
+                                                61 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+15.3     Cleaning Harness Connectors
+
+15.3.1   The following cleaning procedures shall be used with connectors:
+
+   a. Solvent cleaning by brushing or vacuum methods may be used
+
+   b. Flux residue, solder splash, metal flakes, moisture, and other contaminants that may
+   jeopardize the integrity of the connector system shall be cleaned from contact surfaces of
+   pins, sockets, and connector bodies (see Figure 15-1).
+
+   c. Crimp-type multipin and coaxial electrical connectors shall be solvent-cleaned by
+   brushing before assembly to the harness or unit cable.
+
+   d. The internal surfaces of dust covers and connector covers shall be cleaned by solvent
+   brushing before the covers are fitted onto cleaned connectors.
+
+   e. If necessary, connectors that were subjected to frequent mating and demating operations
+   during fabrication and test shall receive additional cleaning prior to the final mating.
+
+   f. Visual examination of the contact surfaces of connectors shall not reveal the presence of
+   contaminants such as metal flakes or large dust particles.
+
+15.4     Cleaning Coaxial Connectors (Assembled)
+
+15.4.1 Coaxial connectors shall not have accumulated contaminants such as metal flakes, dirt,
+moisture, and other foreign materials.
+
+15.4.2 The connector interface shall be cleaned by brushing with solvent, vacuum procedures,
+or a combination thereof until the contaminants have been removed.
+
+
+
+
+          Figure 15-1. Visual Examination Inside the Socket Contact for Flux Residue
+
+
+
+
+                                           62 of 101
+                              NASA-STD-8739.4A – 2016-06-30
+
+16.  INTERCONNECTING HARNESS AND CABLE HANDLING AND
+PROTECTION
+16.1       General
+
+16.1.1 Interconnecting harnesses and cables often receive their maximum stresses when they
+are moved, handled, or installed in their permanent locations. Harnesses should be handled with
+considerable care and attention.
+
+16.1.2 Prior to installation, large harnesses shall be kept on their own wiring board or
+otherwise protected from damage or misuse.
+
+16.1.3 After the cleanliness of the connector has been verified visually, it shall be protected
+with a clean dust cover until it is ready for final mating.
+
+16.1.4 All unmated connectors shall be protected with clean dust covers (connector caps).Bags
+or containers used to store assembled harnesses containing fluoropolymer insulated wire (e.g.
+Polytetrafluoroethylene (PTFE), Fluorinated Ethylene Propylene (FEP)) shall be vented to
+prevent corrosion of metal surfaces from fluorine outgassing.
+
+16.1.5 Overstressing and excessive flexing of wires shall be avoided during connector
+cleaning and mating and demating operations. This is especially important for solder-type
+connectors.
+
+17.        CONNECTOR MATING
+17.1       General
+
+Although most electrical connectors are considered to be durable, each of them has a finite life.
+During testing and system checkout, certain connectors may be subject to frequent mating and
+demating. When this situation exists, wear and potential damage can be reduced by the use of
+“connector-savers”. Connector-savers transfer the wear from the flight connector to non-flight
+jumper harness connectors. It also prevents uncontrolled (and possibly damaged) test equipment
+connectors from mating directly with the mission hardware.
+
+17.1.1 Any connector, including connector savers, mating with flight hardware shall be in
+accordance with engineering documentation.
+
+17.2       Connector Mating and Demating
+
+17.2.1 The following practices and precautions shall be exercised in mating and demating
+connectors:
+
+      a. Verification that the circuit has been de-energized shall be performed prior to connector
+      mate and demate operations (not applicable to circuits containing batteries).
+
+
+
+
+                                              63 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+   b. Prior to mating, connectors shall be examined for contamination, and pin, socket,
+   grommet and connector body damage.
+
+   c. All flight qualified, AC/DC power interface and test equipment connectors that mate with
+   flight and support equipment connectors shall be protected against damage and
+   contamination during mating and demating operations, and when they are in a demated
+   condition.
+
+   d. Caution shall be applied to mating and demating operations to preclude damage to
+   connectors. In some cases a demating tool may be utilized.
+
+   e. Harness connectors mated to test tees or breakout boxes shall be provided with stress
+   relief to restrict flexing of connectors and cables.
+
+   f. Mate and demate operations between the flight hardware, support equipment connectors,
+   system test equipment, and also in final assembly shall be performed by authorized personnel
+   only.
+
+   g. The use of connector savers is recommended (see 17.1). A connector saver can be a short
+   harness jumper that has a mating interface connector to engage the unit. The other end of the
+   harness has the same interface as the unit. Connector savers shall be clearly marked.
+
+   h. Connector savers shall meet the same requirements as a flight connector.
+
+17.2.2 Interfacial seals, which are not bonded to the connector shall be examined and, if
+necessary, replaced with new, clean seals prior to final mating.
+
+17.2.3 Use of a log of mate and demate operations and of occurrences of bent pins is
+recommended for all connectors that are part of mission hardware.
+
+17.2.4    Flight connectors shall be torqued as specified on engineering documentation.
+
+17.2.5 Electrostatic discharge (ESD) protective caps shall be installed on exposed connectors
+of harnesses that are attached to ESDS hardware.
+
+17.3      Coaxial Connector Mating
+
+17.3.1 The torque value use when mating coaxial connectors shall be defined in the
+engineering documentation. The connector datasheet or manufacturer’s application notes are the
+recommended primary source for this torque value.
+
+17.3.2 When mating coaxial connectors, the cable assemblies shall be held such that only the
+connector coupling is rotated.
+
+         Note: CAUTION: THERE SHOULD BE NO RELATIVE MOTION OF THE CABLES OR
+         THE CONNECTOR BODIES WHILE THE CONNECTOR IS BEING TORQUED.
+
+
+
+
+                                            64 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+18.      TESTING AND INSPECTION
+18.1     General
+
+18.1.1 Completed interconnecting harnesses and cables shall be verified as meeting all
+applicable functional, electrical, and design requirements.
+
+18.2     Testing
+
+18.2.1 All cable assemblies shall meet the Continuity, Dielectric Withstanding Voltage
+(DWV) and Insulation Resistance (IR) test requirements in this chapter as a precondition for
+their acceptance and installation in mission hardware. See paragraph 18.2.3 for exceptions
+applicable to coaxial cable.
+
+18.2.2 Acceptance testing procedures shall be made available to the procuring Agency for
+review and approval prior to use.
+
+18.2.3 Coaxial cable assemblies shall be given continuity, isolation, dielectric withstanding
+voltage (DWV), insertion loss, Voltage Standing Wave Ratio (VSWR), and time domain
+reflectometry (TDR) testing in accordance with and as specified in the engineering
+documentation.
+
+18.2.4 Post-installation testing, consisting of continuity, DWV and IR unless otherwise
+specified, shall be performed after installing the cables or harness in place, but before mating
+connectors to assure that individual wire conditions have not been degraded by installation
+operations.
+
+18.2.5 Records of all acceptance testing shall be complete and traceable to the cable or harness
+assembly being tested.
+
+18.2.6 At a minimum, the electrical acceptance tests on potted-type connectors shall be
+performed immediately before the potting operation and after final assembly.
+
+18.3     Test Methods
+
+18.3.1   Hand test probes shall not be used directly in the cable or harness connectors.
+
+18.3.2 When performing acceptance or post-installation testing the order of the tests shall be
+continuity, DWV and IR to mitigate the risk of overstress due to continuity defects and to detect
+latent defects that may have been excited to near-failure by the DWV test.
+
+18.3.3 Continuity. Interconnecting cable and harness assemblies shall be tested for point-to-
+point electrical continuity.
+
+18.3.4   Dielectric Withstanding Voltage (DWV). The following procedures and parameters
+apply:
+
+
+
+
+                                             65 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+   a. The interconnecting cable or harness assembly shall withstand the application of a 1050 ±
+   50 Root Mean Square (RMS) voltage, a 60 Hz 1500 ± 75 DC voltage, or the DWV or high
+   potential (Hi-Pot) voltage defined by the connector, cable or wire datasheet, whichever is the
+   least, applied as follows.
+
+   b. The test potential shall be applied for at least 5 seconds at a rate of no less than 500V per
+   second until the desired test potential is reached.
+
+   c. For the dc test, the time of application of the test potential may be reduced to the time
+   required for steady state current to be established. There shall be no evidence of electrical
+   breakdown or arc-over.
+
+   d. The test potential shall be applied between:
+
+       (1) Each conductor and all other conductors in the cable or harness assembly.
+
+       (2) Each conductor and each connector body.
+
+       (3) Each conductor and shield.
+
+       (4) Between shields.
+
+       (5) Between the shield and the connector body, except when the two are connected to
+       each other.
+
+   e. Leakage current shall not exceed 1 milliampere when applied voltage is maintained for
+   not more than 1 minute.
+
+   f. Following the testing, the connectors shall be visually inspected for degradation due to
+   the test.
+
+       Note: Cable or harness assemblies with a large capacitance, (e.g., long runs generally
+       over six feet, a long cable, or a harness incorporating shielding) should be tested using
+       the dc potential option to avoid erroneous indications of failure.
+
+18.3.5 Insulation Resistance (IR). The insulation resistance shall be measured using a voltage
+of 500 + 50/-0Vdc until a stabilized reading is attained not to exceed 1 minute, or as specified in
+the test procedure and in accordance with the following:
+
+   a. IR shall be measured:
+
+       (1) Between each conductor and all other conductors.
+
+       (2) Between each conductor and the shield.
+
+       (3) Between each conductor and each connector body.
+
+       (4) Between shields.
+
+
+
+
+                                             66 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+         (5) Between shields and connector body except when the two are connected to each
+         other.
+
+      b. The IR for any measurement made shall be greater than 100 megohms.
+
+         Note: WARNING: OPERATORS SHALL USE APPROPRIATE SAFETY PRECAUTIONS
+         WHEN WORKING WITH HIGH VOLTAGES.
+
+19.        SPLICING
+19.1       General
+
+Splices may be configured as a simple splice, having one conductor joined to another conductor,
+or as a complex splice with one or more conductors joined to one or more other conductors.
+Splices may be completed using crimping or soldering processes.
+
+19.2       General Information
+
+19.2.1 Unless identified as part of the design in the manufacturing/engineering documentation,
+splices shall be considered repairs and shall be handled in accordance with paragraph 6.8 of
+NASA-STD-8739.6.
+
+19.2.2 Soldered splice terminations shall comply with the solder joint quality requirements of
+IPC J-STD-001FS in the Solder Connection Defects paragraph.
+
+19.2.3 When the design of the splice piece parts allow it, the solder connections shall be
+inspected prior to and after shrink tube heat application.
+
+19.2.4 Following soldering and prior to installing insulation sleeving, all areas that will be
+under insulation sleeving shall be cleaned with an approved solvent. Heat shrinkable soldering
+splices are exempt from this requirement.
+
+19.2.5 Cleaning solution application shall be controlled to minimize propagation to other areas
+of the harness or cable being spliced.
+
+19.2.6 The tubing or insulation used for splices shall completely encapsulate the splice body
+and extend over the wires’ insulation a minimum of two times (2X) the diameter of the largest
+wire in the splice. When multiple layers of tubing or insulation are used, each additional layer
+shall overlap the underlying layer by no less than two (2) diameters of the largest wire in the
+splice at each end.
+
+19.2.7 The types of splices in this section are considered standard. The requirements of
+NASA-STD-8739.6 for non-standard configurations apply for uses of other approaches for
+splicing.
+
+
+
+
+                                            67 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+19.3     Soldered Splices
+
+Solder-style splices are primarily designed for the termination of a single conductor to a single
+conductor, but may be used for the termination of multiple conductors (i.e., a branch or fan-out
+circuit), providing the splice design is appropriately configured/sized to accommodate all the
+conductors without modifications. Solder-style splices produce a smaller, more compact splice
+termination, with significant weight reductions over crimp-style splices.
+
+19.4     Lap Splice
+
+A lap splice is where the conductor ends are laid parallel to, and overlap each other, and are
+terminated with a solder joint (see Figures 19-1 and 19-2). This configuration can be used to join
+two wires or to electrically terminate a cable or harness RFI/EMI shield.
+
+
+
+
+    Figure 19-1. Pre-Tinned Conductors                     Figure 19-2. Soldered Conductors
+
+
+
+
+         Figure 19-3. Individual Shield Termination with a Lap Splice and Solder Sleeve
+
+19.4.1   The following requirements apply for lap splices:
+
+   a. For spliced wires, the conductors shall be pre-tinned.
+
+   b. For terminated shields the drain wire conductor shall be pretinned and the shield shall not
+   be pretinned.
+
+   c. The conductors shall be parallel to, and in contact with each other at least three (3) wire
+   diameters, but not more than six (6) wire diameters.
+
+
+
+
+                                            68 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+   d. The conductors to be spliced shall not be twisted together.
+
+   e. Conductors shall not overlap the insulation of the other wire.
+
+   f. There shall be no protruding wire strands.
+
+   g. A solder fillet shall be formed on both sides of the conductors for the entire length of the
+   area where they overlap.
+
+   h. After soldering, the conductors’ contours shall be discernible (see Figures 19-4 and 19-5).
+
+
+
+
+    Figure 19-4. Sleeving over Soldered                Figure 19-5. Double Sleeving over Soldered
+                Connection                                            Connection
+
+
+19.5     Lash Splice
+
+A lash splice (see Figure 19-7) is a soldered splice identical to the lap splice (see Figure 19-2)
+except for the addition of a single strand wire winding (overlash) that binds the conductors
+together.
+
+19.5.1   The following requirements apply for lash splices:
+
+   a. The conductors to be spliced shall be pre-tinned, parallel to, and in contact with each
+   other at least three (3) wire diameters, but not more than six (6) wire diameters (see Figures
+   19-6, 19-7 and 19-8).
+
+   b. The conductors to be spliced shall not be twisted together.
+
+   c. Conductors shall not overlap the insulation of the other wire.
+
+   d. There shall be no protruding wire strands.
+
+
+
+
+ Figure 19-6. Pre-Tinned              Figure 19-7. Lashing of               Figure 19-8. Soldered
+       Conductors                     Pre-Tinned Conductors                      Connection
+
+
+   e. The wire used to lash the conductors together shall be a solid wire.
+
+
+
+                                             69 of 101
+                             NASA-STD-8739.4A – 2016-06-30
+
+   f. The wire used to lash the conductors together shall be wrapped a minimum of 6 turns and
+   the wraps shall not extend past the end of either conductor (see Figure 19-7). An alternative
+   configuration for the lash splice is the Lash End Type Splice (see Figures 19-9 and 19-10).
+
+   g. The wire lash shall be either an open spiral (no more than 2 lashing wire diameters
+   between turns) or closed (each wrap is in contact with its adjacent wrap).
+
+   h. The wraps shall not overlap and the ends of the wrap shall be trimmed flush prior to
+   soldering to prevent the ends from protruding through insulation.
+
+
+
+
+  Figure 19-9. Pre-Lash End Type Splice                   Figure 19-10. Lash End Type Splice
+
+
+   i. A solder fillet shall be formed on both sides of the conductors for the entire length of the
+   area where they overlap and all turns of the wire used to lash the conductors together (see
+   Figure 19-8).
+
+   j. After soldering, the conductors’ contour need not be discernible, however the ends of the
+   conductors and the contour of the wire used to lash the conductors together shall be
+   discernable (see Figure 19-11 and Figure 19-12).
+
+
+
+
+       Figure 19-11. Soldered Lash Splice                  Figure 19-12 Sleeved Lash Splice
+
+
+19.6       Solder Sleeve
+
+19.6.1     The following requirements apply for solder sleeve splices:
+
+   a. The solder ring shall be centered over the stripped conductors to be spliced and the
+   sealing rings are over the wires’ insulation prior to heating (see Figure 19-13).
+
+   b. The equipment (e.g., heat gun) used shall be capable of providing uniform heat of the
+   type (e.g., IR, convection) and temperature range recommended by the manufacturer of the
+   solder sleeve.
+
+   c. The heat application process (i.e. soldering process) shall ensure:
+
+
+
+                                             70 of 101
+                             NASA-STD-8739.4A – 2016-06-30
+
+         (1) That the solder ring is fully wetted to the conductors.
+
+         (2) That outline of the ring is no longer discernible (see Figure 19-14).
+
+         (3) That the insulation sleeving conforms to the profile of the wires being spliced.
+
+         (4) That the sealing rings are in intimate contact with the outer circumference of the
+         insulation of the wires being spliced.
+
+
+
+
+ Figure 19-13. Solder Sleeve Prior to Flow                 Figure 19-14. Fully Melted Solder Sleeve
+
+
+19.7      Soldered Western Union/Lineman Splice
+
+The soldered western union/lineman splice is a splice where each conductor is wrapped around
+the other conductor prior to soldering (see Figure 19-15).
+
+
+
+
+                            Figure 19-15. Western Union/Lineman Splice
+
+19.7.1    The following requirements apply for Western Union/Lineman splices:
+
+   a.    The conductors shall be pre-tinned.
+
+   b. There shall be at least 3 turns around each conductor and the wraps shall be tight with no
+   gaps between adjacent turns (see Figure 19-17).
+
+   c. The wraps shall not overlap and the ends of the wrap shall be trimmed flush prior to
+   soldering to prevent protruding ends.
+
+   d. The conductors shall not overlap the insulation of the other wire (see Figure 19-17).
+
+
+
+
+                                               71 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+   Figure 19-16. Initial Wrap for Western             Figure 19-17. Completed Wrap for Western
+           Union/Lineman Splice                                 Union/Lineman Splice
+
+
+   e. The solder quality shall comply with all the requirements of IPC J-STD-001FS for a
+   solder termination.
+
+   f. Solder shall wet all elements of the connection.
+
+   g. The solder shall fillet between connection elements over the complete periphery of the
+   connection (see Figure 19-18).
+
+
+
+
+                     Figure 19-18. Soldered Western Union/Lineman Splice
+
+19.8     Solder Ferrule
+
+The solder ferrule splice (see Figure 19-20) is fabricated using a crimp ferrule.
+
+19.8.1   The following requirements apply for solder ferrule splices:
+
+   a. Solder ferrule splices shall only be fabricated as an end splice.
+
+   b. The ferrule selected for use shall fit over the inserted tinned wires, but not over the wire
+   insulation with a maximum insulation clearance equal to the diameter of the ferrule.
+
+   c. The minimum insulation clearance shall ensure that insulation does not interfere with the
+   natural formation of the solder fillet.
+
+   d. The maximum protrusion from the end of the ferrule shall be one wire diameter of the
+   largest wire in the wire bundle.
+
+
+
+                                             72 of 101
+                         NASA-STD-8739.4A – 2016-06-30
+
+e. The minimum protrusion from the end of the ferrule is even with the end of the ferrule
+and visible after soldering.
+
+f. The solder shall fill the ferrule and be visible at both ends.
+
+g. The ferrule shall be cleaned prior to use.
+
+h. The conductors shall be pre-tinned, parallel to, and in contact with each other as indicated
+in figure 19-19.
+
+i. The conductors to be spliced shall not be twisted together.
+
+j.   The ferrule to be used shall be pre-tinned using a solder pot or solder iron.
+
+k. The wires shall be secured (i.e. with a spot tie or similar means) to prevent movement
+during soldering.
+
+
+
+
+                                Figure 19-19. Solder Ferrule
+
+l. When applying heat to solder the splice it shall be done away from the wire insulation.
+
+m. Solder shall be applied at the insulation end of the ferrule.
+
+n. The ferrule shall be filled completely with solder.
+
+
+
+
+                                Figure 19-20. Solder Ferrule
+
+
+
+
+                                          73 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+19.9     Crimped Splices
+
+Crimping wires into contacts or crimp ferrules is a method for splicing wires together without
+soldering. When crimping multiple wires into a contact or ferrule, the total circular-mil-area
+(CMA) of all the wires must be calculated into an Equivalent Wire Size (EWS) in order to select
+the properly sized contact or ferrule.
+
+19.9.1   The following requirements apply for crimped splices:
+
+   a. The tooling verification process and the completed termination shall comply with all the
+   requirements of this document for a crimp termination except as specified herein for jiffy
+   junction devices.
+
+   b. The contact/wires size and crimp tool setting combination shall be developed and verified
+   using the same requirements as for any machined contact (see 12.3.5).
+
+   c. The crimp ferrule or contact shall be sized equivalently with the calculated Equivalent
+   Wire Size (EWS) or the next larger EWS if the calculated value does not exactly match a
+   single wire size.
+
+
+
+
+                         Figure 19-21. Stripped Wires Prior to Insertion
+
+19.10    Modified Crimp Contact
+
+19.10.1 The following requirements apply for crimped splices of the modified contact type:
+
+   a. The appropriate crimping tool and positioner shall be selected per the requirements of
+   Chapter 12 herein.
+
+   b. The wires being spliced shall not be twisted.
+
+   c. The wires being spliced shall be inserted into the barrel parallel to each other (see Figures
+   19-21 and 19-22).
+
+   d. All wires being spliced together shall be seated against the bottom of the barrel (see
+   Figure 19-23.
+
+   e. The pin section of the contact shall be removed at its base and be free of burrs (see Figure
+   19-24).
+
+   f. Cuts extending into the crimp barrel body or distortions of the crimp barrel body shall be
+   cause for rejection.
+
+
+                                            74 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+   g. Shrink sleeving shall be installed over the termination and shall extend at least 2 crimp
+   barrel diameters beyond the end of the contact and beyond the insulation of the wire that has
+   the greatest insulation gap (see Figure 19-25).
+
+
+
+
+Figure 19-22. Stripped Wire Bundle Prior to             Figure 19-23. Wires Crimped Within
+                  Insertion                                           Contact
+
+
+
+
+    Figure 19-24. Contact Trimmed and               Figure 19-25. Contact Covered With Shrink
+                 Deburred                                           Sleeving
+
+
+19.11     Crimp Ferrule Splice
+
+The crimp ferrule splicing method is used for splicing wires together without soldering. Splices
+using the crimp ferrule method may be of the end-type or parallel type. End type splices (see
+Figure 19-26) are used to terminate two or more conductors in a “pig-tail” configuration.
+Parallel splices (see Figure 19-27) are used to dress and terminate multiple conductors, of the
+same or different gauges, in a parallel configuration.
+
+19.11.1 The following requirements apply for crimped ferrule splices:
+
+   a. The tooling verification process shall comply with all the requirements of this document
+   for a crimp termination.
+
+
+
+
+        Figure 19-26. End Type Splice                    Figure 19-27. Parallel Type Splice
+
+
+
+                                           75 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+   b. The size of the crimp barrel shall be based on the manufacturer’s specifications.
+
+   c. For the end type splice the wires being spliced shall be inserted into the barrel parallel to
+   each other and all wires shall be seated against the bottom of the barrel.
+
+   d. For the parallel type splice the wires shall be inserted into the ferrule parallel to each
+   other.
+
+   e. The wire ends shall be at least flush with the ends of the ferrule and shall not extend more
+   than two wire diameters beyond the end of the ferrule.
+
+   f. Proper insulation spacing shall be maintained to prevent insulation from being crimped.
+
+   g. Inspection criteria specified by the crimp ferrule manufacturer shall be applied.
+
+   h. The contact shall be deformed only by tool indenters.
+
+   i. Crimp tool indenters shall be symmetrical and centered on the crimp barrel.
+
+   j. There shall be no exposed base metal or other damage.
+
+        Note: This type of crimped connection will typically be installed with a crimp tool with 2
+        indenter blades instead of the normal 4 indenter blades.
+
+19.12    Butt Splice
+
+The butt splice (see Figure 19-28) is one of the simplest and most often used of the crimp splices,
+and obtains its name from the alignment of the conductors in the crimp barrel. The crimp is
+available in both an insulated and uninsulated version. The splice provides a very small diameter
+profile when installed in a harness.
+
+
+
+
+                                    Figure 19-27. Butt Splice
+
+19.12.1 The following requirements apply for butt splices:
+
+   a. The conductor(s) shall be stripped per 10.1 and trimmed to length to allow full insertion
+   into the crimp barrel, such that the conductor ends are visible in the wire inspection hole.
+
+   b. For single conductor configurations the butt splice contact shall be sized and selected
+   according to the conductor-crimp combinations listed in MIL-DTL-22520G [Table III], or as
+   specified by the crimp contact manufacturer.
+
+
+
+
+                                             76 of 101
+                         NASA-STD-8739.4A – 2016-06-30
+
+ c. For multiple conductor configurations involving the crimping of multiple conductors in
+ one or both ends of the contact (see Figure 19-29), crimp ferrule selected shall be based on
+ the calculated equivalent wire size (EWS). EWS is the sum of the circular mill area (CMA)
+ of the wires to be spliced, multiplied by 1.25.
+
+
+
+
+                      Figure 19-28. Butt Splice Prior to Wire Insertion
+
+
+
+
+Figure 19-29. Butt Splice Prior to Crimp           Figure 19-30. Properly Crimped Butt Splice
+
+
+ d. The conductor(s) shall be fully inserted in the crimp barrel, parallel to each other, and
+ without modification to the conductor(s) or crimp barrel (see Figure 19-30).
+
+ e. Conductor insulation gap(s) should be approximately equal, and shall comply with the
+ insulation gap requirements specified in 10.1.4.b for each conductor size.
+
+ f. The contact shall be crimped to the conductor per the contact manufacturer’s
+ recommendations or engineering documentation.
+
+ g. Indentions shall be symmetrical and centered along the longitudinal axis of the crimp
+ barrel.
+
+ h. Single crimp indents shall be located opposite of the barrel weld (see Figure 19-31).
+
+ i. Pre-insulated contacts shall be assembled and crimped per the contact manufacturer’s
+ recommendations or engineering documentation.
+
+
+
+
+                       Figure 19-31. Butt Splice with Shrink Sleeving
+
+
+
+
+                                           77 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+   j. Crimp indentions shall be symmetrical and properly located within each crimp zone (as
+   specified in the crimp manufacturer’s data sheet or engineering documentation).
+
+   k. Insulated crimps with integral strain relief shall exhibit proper crimping of the strain
+   relief feature.
+
+19.13    Wire In-Line Junction Devices (Jiffy Junctions)
+
+Wire In-Line Junction Device splices apply crimp contacts to conductors that are installed in a
+common splice tube (Jiffy Junction) (see Figures 19-33 and 19-34). The following requirements
+apply for in-line Jiffy Junction type splices:
+
+   a. The tooling verification process and the completed termination shall comply with all the
+   requirements of this document for a crimp termination.
+
+
+
+
+  Figure 19-32. Crimped Contact Outside                 Figure 19-33. Crimped Contacts Inserted
+             Junction Device                                      Into Junction Device
+
+
+   b. The quality inspection criteria define by the manufacturer’s instructions applies.
+
+   c. The crimp tensile strength (i.e., pull test) values shall be in accordance with Table (19-1).
+
+   d. The contacts shall be deformed only by the tool indenters.
+
+   e. Indents shall be symmetrical and centered on the crimp barrel.
+
+   f. There shall be no exposed base metal or other damage.
+
+   g. On terminal junctions and certain insertable crimp-contact connectors, contacts are not
+   exposed for push testing. Contacts shall be properly installed and retained (i.e., locked-
+   in/seated) within the cavities and withstand the axial (i.e., contact retention) loads specified
+   in Table (19-2), without dislodging or damaging the contact, wire sealing grommet, cavity, or
+   the contact retention mechanism. Note: pull test is performed between the bodies of the
+   junction, and not the wires.
+
+
+
+
+                                            78 of 101
+                        NASA-STD-8739.4A – 2016-06-30
+
+ Table 19-1. Crimp Tensile Strength Values for Wire-in-Line Junction (i.e., Jiffy Junction)
+                                        Devices
+
+                                                                Tensile Strength
+Contact                                                    (Newtons) Pounds, Minimum
+            Wire Size     Base Conductor Material
+ Barrel
+             (AWG)           w/Nickel Plating                                    Socket
+  Size
+                                                          Pin Contacts          Contacts
+  22            26                  Copper                   (13.5) 3            (13.5) 3
+                26               Copper Alloy                (13.5) 3                -
+                24                  Copper                   (22.3) 5                -
+                24               Copper Alloy                (22.3) 5                -
+                22                  Copper                   (35.6) 8            (35.6) 8
+                22               Copper Alloy                (35.6) 8                -
+
+
+  20            24                  Copper                   (35.6) 8            (26.7) 6
+                24               Copper Alloy               (64.0) 14.4              -
+                22                  Copper                  (56.9) 12.8              -
+                22               Copper Alloy               (98.8) 22.2              -
+                20                  Copper                  (91.6) 20.6         (44.5) 10
+
+
+  16            20                  Copper                  (91.6) 20.6         (44.5) 10
+                16                  Copper                 (183.3) 41.2         (129.0) 29
+
+
+  12            14                  Copper                 (289.6) 65.1         (151.3) 34
+                12                  Copper                (459.0) 103.2         (289.1) 65
+
+
+   8             8                  Copper                 (1281.1) 288              -
+
+
+
+
+                                         79 of 101
+                              NASA-STD-8739.4A – 2016-06-30
+
+      Table 19-2. Splice Body Retention Values for Wire-in-Line Junction (i.e., Jiffy Junction)
+                                            Devices
+
+                                                 Axial Load (Newton) pounds
+                   Contact Size
+                                              Pin Contacts            Socket Contacts
+                        22               (13.4 to 22.3) 3.0 to 5.0   (13.4 to 22.3) 3.0 to
+                                                                              5.0
+                        20               (13.4 to 22.3) 3.0 to 5.0   (13.4 to 22.3) 3.0 to
+                                                                              5.0
+                        16               (17.8 to 31.2) 4.0 to 7.0   (17.8 to 31.2) 4.0 to
+                                                                              7.0
+                        12               (17.8 to 31.2) 4.0 to 7.0   (17.8 to 31.2) 4.0 to
+                                                                              7.0
+
+
+20.        QUALITY ASSURANCE PROVISIONS
+20.1       General
+
+20.1.1 Workmanship. Workmanship shall be of a level of quality adequate to assure that the
+processed products meet the performance requirements of the engineering documentation and
+criteria delineated herein.
+
+20.1.2 Inspection for acceptability of assemblies manufactured in accordance with the
+requirements herein shall be performed.
+
+20.1.3     Conductors shall not be physically disturbed to aid inspection.
+
+20.1.4 Inspections shall be made at appropriate points during assembly, at the completion of
+assembly, and after installation to establish that the appropriate requirements have been met.
+
+20.1.5 Inspection may include visual inspection, mechanical measurements, electrical testing,
+and other methods as deemed necessary.
+
+20.1.6     Inspection and testing points shall be specified on the applicable planning documents.
+
+20.1.7 Visual inspection of all connections shall be performed in-process and after final
+assembly, as appropriate.
+
+20.1.8 Quality Assurance has the responsibility to verify compliance with all requirements of
+this document. Specific functions are as follows:
+
+      a. Verify that all tests, inspections, and measurements, including contact retention tests,
+      specified by this document have been performed.
+
+      b. Verify that all personnel who assemble or inspect hardware in accordance with this
+      document have been trained and certified to the applicable requirements herein.
+
+
+
+                                               80 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+   c. Use in-process surveillance of all assembly operations to verify that all processes and
+   procedures implementing the requirements of this document are current, approved, adequate,
+   and being properly implemented.
+
+   d. Verify that contacts, connectors, and conductors have been inspected prior to being
+   assembled.
+
+   e. Verify and monitor that the facility cleanliness, environmental conditions, and lighting
+   requirements of Chapter 6 of this Standard are being met.
+
+   f. Verify and monitor that fabrication of assemblies is accomplished in a contamination
+   controlled area conforming to the requirements approved by the procuring activity.
+
+   g. Verify and monitor that procedures defining cleaning, drying, handling, and packaging
+   are approved and their requirements are followed.
+
+   h. Verify that all torque requirements are met.
+
+   i. Inspect that crimp terminations are in accordance with Chapter 12 of this Standard.
+
+   j. Inspect that soldering processes and soldered interconnects are in accordance with IPC J-
+   STD-001FS.
+
+   k. Inspect that solder sleeve terminations were fabricated and installed as directed by
+   engineering documentation.
+
+   l. Verify installation processes and acceptance/rejection criteria for solder sleeve
+   termination devices were defined and approved.
+
+   m. Verify that other processes such as potting and molding, necessary to fabricate a cable or
+   harness, are defined by the engineering documentation and approved including accept/reject
+   criteria for non-standard configurations.
+
+20.2     Documentation Verification
+
+20.2.1 Quality assurance representatives shall verify that all required documentation is current
+and approved.
+
+20.2.2   The required documentation shall include the following records:
+
+   a. Results of the visual examination.
+
+   b. Evidence of operator and inspector certification.
+
+   c. Production and inspection tool calibration when applicable.
+
+   d. Crimp testing results.
+
+   e. Torque requirements.
+
+
+                                            81 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+   f. Contact retention test records.
+
+   g. Connector mate and demate log and bent pin log when applicable.
+
+   h. Results of all acceptance testing.
+
+20.2.3   The required documentation shall include the following procedures:
+
+   a. Cabling and harnessing program.
+
+   b. Training and certification program.
+
+   c. Tooling and equipment operation procedures.
+
+   d. Calibration system.
+
+   e. Electrostatic Discharge Control program when applicable.
+
+   f. In-process storage and handling procedures.
+
+   g. Compounds and special design requirements used for staking of lacing knots.
+
+   h. Acceptance testing results for cable and harness assemblies.
+
+20.3     Documentation Authorization.
+
+20.3.1 The Quality assurance representative shall verify that the following documentation has
+been approved in accordance with Chapter 4 or NASA-STD-8739.6 by the procuring NASA
+Center prior to implementation:
+
+   a. Special engineering requirements.
+
+   b. Nonstandard processes, materials, or parts.
+
+   c. Departures from this Standard.
+
+   d. Repair records.
+
+   e. Engineering documentation for special tools.
+
+   f. Approved solvents.
+
+   g. Acceptance test procedures.
+
+20.4     Verification of Tools, Equipment, and Materials
+
+20.4.1 Tools and Equipment. Tools and equipment shall be verified for conformance to the
+applicable requirements found in paragraphs 6.2 and 12.3.
+
+
+
+
+                                            82 of 101
+                            NASA-STD-8739.4A – 2016-06-30
+
+20.4.2 The Quality assurance personnel shall verify that special tooling is identified on
+assembly procedures.
+
+20.4.3 The Quality Representative shall verify that all materials conform to the requirements
+of paragraphs 6.5 and 6.6 and that material controls are implemented to ensure that only
+conforming materials are used.
+
+20.5     Inspection Criteria
+
+20.5.1 Acceptance Criteria. Acceptance criteria are described in Chapters 1 through 19,
+Appendix A and the following:
+
+   a. Stripped Conductor:
+
+       (1) The insulation shall be uniform and shall exhibit no damage except slight
+       discoloration when thermal strippers have been used.
+
+       (2) The conductor shall be clean and free from damage.
+
+       (3) Strands shall be twisted together in the original lay, or as nearly as possible to the
+       original lay.
+
+       (4) Shield strands shall be clean. The number of nicked shield strands shall not exceed
+       10 percent of the total number of strands.
+
+       (5) Flat conductors shall be clean and free of damage.
+
+   b. Shield Terminations:
+
+       (1) Shield terminations shall be free of projecting strands.
+
+       (2) The wire insulation and shrink sleeving shall be free of punctures, cuts, and nicks.
+
+       (3) Metal crimp rings/ferrules are tightly and symmetrically crimped.
+
+       (4) The solder inside the solder sleeve shall show evidence of proper flow and fillet to the
+       ground wire and shield braid.
+
+       (5) The solder sleeve may exhibit discoloration.
+
+       (6) The insulation sleeving shall be uniformly shrunk and provide proper covering of the
+       termination.
+
+       (7) Solder sleeves are as specified in the engineering documentation.
+
+       (8) The solder fillets along the interfaces shall have a smooth, concave appearance.
+
+   c. Crimped Connections:
+
+
+
+
+                                             83 of 101
+                       NASA-STD-8739.4A – 2016-06-30
+
+   (1) Contact deformed only by tool indentations.
+
+   (2) Crimp indents properly located in the correct area of the contact.
+
+   (3) Wire strands visible in inspection hole of barrel.
+
+   (4) Metal ferrules tightly and symmetrically crimped.
+
+   (5) The clearance between the wire insulation termination and the crimp contact barrel is
+   between .25mm (.01 in) to .75mm (.03 in) for wire sizes AWG 20 and smaller, and
+   .25mm (.01 in) to 1.25mm (.05 in) for wire sizes AWG 18 and larger.
+
+d. Cable and Harness Ties:
+
+   (1) Properly tied clove hitch and square or other non-slip knot.
+
+   (2) Correct and uniform spacing of ties for bundle size.
+
+   (3) Correct material as specified on the engineering documentation.
+
+   (4) Lacing terminated with a closing stitch and ends trimmed.
+
+   (5) No damage to or contaminants on the tie or adjacent wiring.
+
+   (6) Strap or tie properly secures wire bundle.
+
+e. Cable and Harness Assemblies:
+
+   (1) Connectors are not damaged.
+
+   (2) Pin/sockets meet retention force requirements and are not damaged.
+
+   (3) Even distribution of tension throughout cable and harness.
+
+   (4) Length of wire twist is between 8 and 16 times the outer diameter of the harness.
+
+   (5) Cable and harness ties are properly spaced.
+
+   (6) Clamps are properly placed.
+
+   (7) Cable and harness are not distorted by ties or clamps.
+
+   (8) Minimum crossover.
+
+   (9) Proper bend radius of breakouts.
+
+   (10)   Proper identification.
+
+   (11)   All exposed metal is covered as defined on the applicable drawing.
+
+
+
+                                          84 of 101
+                       NASA-STD-8739.4A – 2016-06-30
+
+   (12) Heat shrinkable sleeving or nonconductive tape extends at least 5.1 mm (0.2 inch)
+   beyond exposed metal.
+
+   (13)   Sleeving is uniformly shrunk.
+
+   (14)   Sleeving is free of cracks, punctures, and charred or burned areas.
+
+   (15)   Location of shield terminations on wire as per engineering documentation.
+
+   (16)   Braid is terminated properly.
+
+   (17) Cable or harness dimensions and configurations are in accordance with
+   engineering documentation.
+
+   (18)   Cable or harness is clean.
+
+   (19)   Unused wires properly terminated.
+
+   (20) Routing does not expose cables and harnesses to abrasion, cold flow, or cut-
+   through.
+
+   (21)   Spiral sleeving with plastic straps are installed correctly.
+
+   (22) Protective separator applied over wire bundle beneath metal braid shielding, if
+   required.
+
+   (23) Connector backshells and strain relief clamps are tightened as specified by
+   engineering documentation.
+
+   (24)   High strength copper alloy is used for AWG 24 and smaller conductors.
+
+   (25)   Proper handling and protection.
+
+f. Coaxial Cables:
+
+   (1) Proper strip length and assembly of center conductor into contact.
+
+   (2) Proper securing of outer conductor.
+
+   (3) Center contact location meets requirements for proper mating.
+
+   (4) Mating surfaces and coupling means are undamaged.
+
+   (5) Connector backshells and strain relief clamps are tightened as specified by the
+   engineering documentation.
+
+g. Solder Sleeves:
+
+   (1) The solder shall be visible through the insulation sleeving.
+
+
+
+                                          85 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+       (2) The solder fillets along the interfaces shall have a smooth, concave appearance.
+
+       (3) Solder sleeves shall not be damaged. Slight discoloration resulting from the heating
+       process is permissible.
+
+       (4) Solder sleeves shall cover all exposed metal in the spliced area.
+
+       (5) There shall be no protruding wire strands from under or through solder sleeves.
+
+20.5.2 Rejection Criteria. The following are unsatisfactory conditions and shall be cause for
+rejection:
+
+   a. Stripped Conductor:
+
+       (1) Damaged, crushed, cut, or charred insulation.
+
+       (2) Nicked, gouged, damaged, or severed conductors.
+
+       (3) Frayed conductor strands.
+
+       (4) Severed shield braid strands.
+
+   b. Shield Terminations:
+
+       (1) Loose or projecting strands.
+
+       (2) Nicked shield strands exceeding 10% of the total number of strands.
+
+       (3) Wire insulation with cuts, punctures, or crushing.
+
+       (4) Metal ferrules crimped with improper alignment.
+
+       (5) Cracked, charred, or split insulation sleeving.
+
+       (6) Cracked or fractured solder.
+
+       (7) Insufficient solder or poor wetting.
+
+       (8) Improper sleeving coverage.
+
+   c. Crimped Connections:
+
+       (1) Metal ferrules crimped with improper alignment.
+
+       (2) Cracks in crimp barrel.
+
+       (3) Birdcaging of conductor.
+
+       (4) Wire strands not visible in inspection hole.
+
+
+
+                                            86 of 101
+                        NASA-STD-8739.4A – 2016-06-30
+
+   (5) Peeling or flaking of plating on contact.
+
+   (6) Damaged or deformed crimp contact.
+
+   (7) Crimp indents not located in the correct area on the contact.
+
+   (8) Tarnished, corroded, or contaminated crimp contact.
+
+   (9) Improper insulation clearance.
+
+   (10)   Insulation whiskers that extend into the crimp barrel.
+
+d. Cable and Harness Ties:
+
+   (1) Improperly laced ties.
+
+   (2) Incorrect material.
+
+   (3) Wire bundle damaged or deformed by tie.
+
+   (4) Loose ties.
+
+   (5) Ends not trimmed.
+
+   (6) Damaged or contaminated ties or wiring.
+
+   (7) Incorrect spacing of ties for bundle size.
+
+   (8) Improper handling or protection.
+
+e. Cable and Harness Assemblies:
+
+   (1) Projecting strands on shield terminations.
+
+   (2) Wire insulation with cuts, punctures, or crushing.
+
+   (3) Metal ferrules crimped with improper alignment.
+
+   (4) Cracked, charred, or split insulation sleeving.
+
+   (5) Improper sleeving coverage.
+
+   (6) Birdcaging of conductor.
+
+   (7) Peeling or flaking of plating on connectors or pins/sockets.
+
+   (8) Damaged or deformed contacts.
+
+   (9) Damaged insulation in excess of slight discoloration.
+
+
+
+
+                                         87 of 101
+                        NASA-STD-8739.4A – 2016-06-30
+
+   (10)    Tarnished, corroded, or contaminated contact.
+
+f. Coaxial Cables:
+
+   (1) Improper strip length and incorrect assembly of center conductor into contact.
+
+   (2) Improper securing of outer conductor.
+
+   (3) Center contact location does not meet requirements for proper mating.
+
+   (4) Damaged mating surfaces and coupling means.
+
+   (5) Connector backshells and strain relief clamps are not tightened as specified by the
+   engineering documentation.
+
+g. Solder Sleeves:
+
+   (1) The solder connection is not visible through the insulation sleeving.
+
+   (2) Solder fillet(s) having an uneven and broken flow and/or a convex appearance.
+
+   (3) Solder fillet not visible at the interfaces of the stranded wire to shield braid, or
+   stranded wire to stranded wire.
+
+   (4) Solder fillet is along only one side of the stranded wire to shield braid, or stranded
+   wire to stranded wire interface.
+
+   (5) Solder sleeves do not cover all the metal exposed by the splice installation.
+
+   (6) Solder sleeves are split, burned, or damaged.
+
+   (7) Wire strands protrude from under or through solder sleeves.
+
+
+
+
+                                          88 of 101
+                      NASA-STD-8739.4A – 2016-06-30
+
+                         WIRE VISUAL AIDS AND ILLUSTRATIONS
+A.1   Wiring: Connectors, Cabling, and Harnessing – Wire Dress to Connect
+
+
+
+
+                                                            PREFERRED
+                                                All wires dressed with even bends to
+                                                       terminate in solder cups.
+
+
+
+
+            Figure A-1
+
+
+
+
+                                                     NONCONFORMING
+                                           End wire on the right is taut with no stress
+                                                             relief.
+
+
+
+
+            Figure A-2
+
+
+
+
+                                    89 of 101
+                         NASA-STD-8739.4A – 2016-06-30
+
+A.2     Wiring: Connectors, Cabling, and Harnessing – Stress Relief Shrinkable Sleeving
+On Solder Cups
+                                                              PREFERRED
+                                                Sleeving on wire covers solder cup and
+                                                 provides support over wire insulation
+                                                     (see controlling specification)
+                                              Sleeving is fully shrunk over the insulation,
+                                                         wire, and solder cup.
+                                             Sleeving is sufficiently rigid to provide stress
+                                             relief and prevent wire bending at the solder
+               Figure A-3                                         joint.
+
+
+
+                                                        NONCONFORMING
+                                             The sleeving is not fully shrunk and permits
+                                                wire bending and flexing at the joint.
+
+
+               Figure A-4
+
+
+
+                                                         NONCONFORMING
+                                                    The sleeving is not fully shrunk.
+
+
+
+               Figure A-5
+
+
+                                                        NONCONFORMING
+                                             Sleeving does not grip at least half of the cup
+                                                      barrel below the opening.
+
+
+               Figure A-6
+
+
+
+
+                                       90 of 101
+                        NASA-STD-8739.4A – 2016-06-30
+
+A.3     Wiring: Connectors, Cabling, and Harnessing, Wire Preparation, Thermal
+Stripping
+
+
+                                                           PREFERRED
+                                             1. Insulation has been removed from the
+                                           conductor with no visible damage to the wire
+                                                               strands.
+                                            2. Normal lay of wire, if disturbed, shall be
+                                                  retwisted to the original wire lay.
+              Figure A-7
+
+
+
+                                                          ACCEPTABLE
+                                           Minor burnishing and indentation; base metal
+                                                           not exposed.
+
+
+              Figure A-8
+
+
+                                                       NONCONFORMING
+                                             1. Wire strands are gouged and scraped
+                                                       exposing base metal.
+                                               2. Original lay of stranding has been
+                                                    straightened and distorted.
+
+              Figure A-9
+
+
+
+                                                       NONCONFORMING
+                                              Wire strands show evidence of a nicked
+                                               condition caused by stripper blades.
+
+
+              Figure A-10
+
+
+
+
+                                      91 of 101
+                      NASA-STD-8739.4A – 2016-06-30
+
+A.4   Wire Preparation: Mechanical Stripping
+
+
+
+                                                       ACCEPTABLE
+                                          Wire lay undisturbed; no visible damage to
+                                                         wire strands.
+
+
+            Figure A-11
+
+
+
+                                                      UNACCEPTABLE
+                                         Wire strands combed straight. If retwisted to
+                                               original lay, may be acceptable.
+
+
+            Figure A-12
+
+
+
+                                                     UNACCEPTABLE
+                                                     Excessive retwist.
+
+
+
+            Figure A-13
+
+
+
+                                                      UNACCEPTABLE
+                                          Wire strands retwisted in excess of normal
+                                                     lay and overlapped.
+
+
+            Figure A-14
+
+
+
+
+                                    92 of 101
+                        NASA-STD-8739.4A – 2016-06-30
+
+A.5     Wiring: Connectors, Cabling, and Harnessing, Wire Preparation, Thermal
+Stripping
+
+
+                                                            PREFERRED
+                                           Insulation stripped by thermal stripping shall
+                                           have minimum edge flash with no damage to
+                                                          the wire strands.
+
+
+              Figure A-15
+
+
+                                                            ACCEPTABLE
+                                              Mechanical or thermal stripped insulation
+                                           irregularity is acceptable if it does not exceed
+                                             1/4 of the outside diameter of the wire with
+                                                              insulation.
+
+              Figure A-16
+
+
+                                                    ACCEPTABLE MINIMUM
+                                           Edge flash, due to improper stripping, should
+                                           not exceed 1/4 of the outside diameter of the
+                                                        wire with insulation.
+
+
+              Figure A-17
+
+
+
+                                                       NONCONFORMING
+                                            Burned or charred insulation, as shown, is
+                                            the result of improper application of heat.
+
+
+              Figure A-18
+
+
+
+
+                                      93 of 101
+                        NASA-STD-8739.4A – 2016-06-30
+
+A.6     Wiring: Connectors, Cabling, and Harnessing, Wire Preparation, Tinning
+Stranded Conductors
+
+
+                                                            PREFERRED
+                                             1. Complete wetting of the tinned area has
+                                            resulted in a bright, thin, and even tinning of
+                                                              the strands
+                                           2. Tinning has reached insulation, but wicking
+                                                              is minimal.
+
+
+              Figure A-19
+
+
+
+                                                           ACCEPTABLE
+                                            Traces of solder wicking under insulation, but
+                                                the contour of the stranding is easily
+                                                             discernible.
+
+
+
+              Figure A-20
+
+
+
+                                                           ACCEPTABLE
+                                              Length of tinning is determined by type of
+                                             termination; however, it should be sufficient
+                                            to prevent separation of strands when wire is
+                                                     wrapped around a terminal.
+
+
+              Figure A-21
+
+
+
+
+                                      94 of 101
+                      NASA-STD-8739.4A – 2016-06-30
+
+A.7   Wiring: Connectors, Cabling, and Harnessing – Installation of Straps
+
+
+
+                                                          ACCEPTABLE
+                                            1. Conductors secured with a plastic strap.
+                                             2. When tightened correctly, strap will not
+                                           move laterally along the bundle under normal
+                                                handling but can be rotated in place.
+
+
+
+            Figure A-22
+
+
+
+
+                                                           UNACCEPTABLE
+                                                 Strap is too tight and is deforming the
+                                                         insulation on the wire.
+
+
+
+
+            Figure A-23
+
+
+
+
+                                                        UNACCEPTABLE
+                                            Strap is too loose and will slip easily along
+                                                 the bundle with normal handling.
+
+
+
+
+            Figure A-24
+
+
+
+
+                                     95 of 101
+                      NASA-STD-8739.4A – 2016-06-30
+
+A.8   Crimps: Insulation Clearance
+
+
+
+
+                                             MINIMUM CONDUCTOR EXPOSURE
+                                          Insulation terminates 0.010 in. minimum from
+                                                       contact crimp barrel.
+
+
+
+
+            Figure A-25
+
+
+
+                                             MAXIMUM CONDUCTOR EXPOSURE
+                                            Amount of exposed bare wire between the
+                                           insulation and the contact crimp barrel does
+                                            not exceed 0.03 inch maximum for No. 20
+                                              AWG wire and smaller, and 0.05 inch
+                                            maximum for No. 18 AWG wire and larger.
+
+
+
+            Figure A-26
+
+
+
+
+                                     96 of 101
+                     NASA-STD-8739.4A – 2016-06-30
+
+A.9   Crimps: Acceptable and Unacceptable
+
+
+
+
+                                                        ACCEPTABLE
+                                         Care should be taken when seating contacts
+                                            in the crimping tool. The tool indentors
+                                          should crimp the contact midway between
+                                        the shoulder of the insulation support and the
+                                           inspection hole. The wire is visible in the
+                                                        inspection hole.
+
+
+
+
+           Figure A-27
+
+
+
+
+                                                        UNACCEPTABLE
+                                         If the wire is not stripped back far enough or
+                                        incorrectly seated in the contact, the wire will
+                                             not be visible in the inspection hole, as
+                                                              shown.
+
+
+
+
+           Figure A-28
+
+
+
+
+                                   97 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+A.10    Crimps: Unacceptable
+
+
+
+
+                Figure A-29                                           Figure A-30
+
+
+
+ Failure to properly seat contact in crimping die, or use of incorrect crimping tool will result in
+improperly crimped contacts. Crimping over the inspection hole or on the radius of the shoulder
+                      as shown in Figures A-29 and A-30 is unacceptable.
+                                      UNACCEPTABLE PIN
+
+
+
+
+                                           Figure A-31
+
+
+
+
+                                            98 of 101
+                           NASA-STD-8739.4A – 2016-06-30
+
+                   CRITICAL PROBLEMS IN COAXIAL CABLE ASSEMBLY
+B.1      Scope
+
+This appendix provides information about problem areas and failures that result from poor
+connector design, faulty assembly instructions, or wrong choice of materials for certain types of
+coaxial cable assemblies.
+
+B.1.1     Plastic Jacket Layer in the Compression System. Certain manufacturers' RF-connector
+designs or assembly instructions allow the jacket to be in the clamping system. For example, the
+metal clamp nut presses against the teflon cable jacket, which presses against the metal braid,
+which presses against the metal cable barrel of the connector. The problem encountered with
+this arrangement is that after torquing, the teflon jacket cold-flows, and the connection becomes
+loose. Intermittent circuits and system failure can result. Either this type of connector should
+not be used, or the plastic jacket should be trimmed back so that only metal-to-metal
+compression exists (see Figure B-1). If the connector design is such that satisfactory metal-to-
+metal compression cannot be achieved after torquing, the connector should not be used.
+
+B.1.2     Inadequate Center Conductor to Center Contact Solder Joint. Certain manufacturers
+recommend that the center conductor be tinned, and that this tinned conductor be placed in the
+center contact. Then, the solder joint between the center conductor and center contact is made by
+reflowing the tinning in the center contact. Invariably, this makes an insufficient solder joint
+(see Figure B-2). A sufficient solder joint is made by placing a small length of rosin core solder
+in the contact wire well, e.g., 3.17mm (0.125 inch) length, 0.38 mm (0.015 inch) diameter. The
+center conductor is inserted into the wire well and the contact is heated to melt the solder and
+position the contact on the center conductor.
+
+B.1.3     Breakage of Stress-Relief Sleeving. In assemblies where shrinkable sleeving is used to
+provide stress relief from a connector ferrule to the cable, there is often a major transition in
+diameter as shown in Figure B-3. If MIL-I-23053/8 sleeving is used for stress relief, it often
+cracks at the large diameter of the transition. The use of MIL-I-23053/8 sleeving for these
+applications should be avoided.
+
+
+
+
+                                            99 of 101
+                         NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+Figure B-1. Illustration of Proper Trimback of Jacket to Isolate it from the Clamping System
+
+
+
+
+                                        100 of 101
+            NASA-STD-8739.4A – 2016-06-30
+
+
+
+
+Figure B-2. Broken Solder Joint Caused by Insufficient Solder Fill
+
+
+
+
+   Figure B-3. Problem Point for Kynar Stress Relief Sleeving
+
+
+
+
+                           101 of 101
+

@@ -1,0 +1,36 @@
+{
+  "url": "https://shop.ipc.org/ipc-a-610/ipc-a-610-standard-only/Revision-j/english",
+  "saved_at": "2026-06-11T22:19:58.873733+00:00",
+  "reason": "access_shell_detected",
+  "warnings": [],
+  "final_url": "https://shop.ipc.org/ipc-a-610/ipc-a-610-standard-only/Revision-j/english",
+  "status_code": 202,
+  "content_type": "text/html; charset=UTF-8",
+  "content_length_header": "2403",
+  "response_headers": {
+    "Server": "CloudFront",
+    "Date": "Thu, 11 Jun 2026 22:19:58 GMT",
+    "Content-Length": "2403",
+    "Connection": "keep-alive",
+    "x-amzn-waf-action": "challenge",
+    "Cache-Control": "no-store, max-age=0",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Max-Age": "86400",
+    "Access-Control-Allow-Methods": "OPTIONS,GET,POST",
+    "Access-Control-Expose-Headers": "x-amzn-waf-action",
+    "X-Cache": "Error from cloudfront",
+    "Via": "1.1 ccacd494408408c101c27d29759e4e26.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Pop": "MIA3-P4",
+    "X-Amz-Cf-Id": "9Bc_3_KuuO-1Q6VZxnLJCdFpz-8VL07SFBPVzvUfrwn-n5170v1gnA=="
+  },
+  "extraction": {
+    "parser": "trafilatura-markdown",
+    "title": "JavaScript is disabled",
+    "confidence": 0.506,
+    "word_count": 27,
+    "metadata": {
+      "sitename": "shop.ipc.org"
+    }
+  }
+}

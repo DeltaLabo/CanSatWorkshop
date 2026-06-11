@@ -1,0 +1,1192 @@
+{
+  "query": "IPC-A-610 acceptability electronic assemblies overview PCB solder inspection",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly Acceptability",
+      "url": "https://www.nextpcb.com/blog/ipc-a-610",
+      "description": "For through-hole components, the acceptance criteria include the following: Standard through-hole mounting: IPC-A-610 specifies strict requirements for lead protrusion, solder wetting, and component alignment.",
+      "content": "For through-hole components, the acceptance criteria include the following: Standard through-hole mounting: IPC-A-610 specifies strict requirements for lead protrusion, solder wetting, and component alignment.\nFor through-hole components, the acceptance criteria include the following: Standard through-hole mounting: IPC-A-610 specifies strict requirements for lead protrusion, solder wetting, and component alignment. Proper component orientation, spacing, and alignment on the PCB substrate · Secure mounting of components to the PCB to withstand operation strains ... Surface Mount inspection focuses on critical parameters such as fillet height, toe/heel overhang, and solder paste coverage.\nNo damage to the component, PCB, or solder joint during assembly · Proper solder joint formation, including wetting and fillet formation · No visible voids, excessive solder, or solder bridging ... For mixed-technology assemblies, the acceptance criteria combine the requirements for through-hole and surface-mount components. Furthermore, this includes ensuring that the through-hole components are properly mounted and soldered.\nSolder voids (air bubbles) are a common concern in X-ray inspections. According to IPC-A-610: Generally, a void is considered acceptable if it occupies less than 25% of the total solder ball area in a BGA joint.\nThe Golden Rule: As long as the minimum electrical clearance is maintained and the solder joint remains robust, a slight misalignment is often \"Acceptable.\" This is a frequent debate in the engineering community. Under IPC-A-610: No-Clean Flux residues are acceptable as long as they are non-corrosive, non-conductive, and do not interfere with visual inspection or testing.",
+      "age": "April 23, 2023",
+      "page_age": "2023-04-23T02:55:28",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "faq",
+      "profile": {
+        "name": "NextPCB",
+        "url": "https://www.nextpcb.com/blog/ipc-a-610",
+        "long_name": "nextpcb.com",
+        "img": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "nextpcb.com",
+        "hostname": "www.nextpcb.com",
+        "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+        "path": "› blog  › ipc-a-610"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/fKnZhZoBEWyAvs96msAniMjgYX0VRuQinA6L3_g9uSg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bmV4dHBjYi5jb20v/dXBsb2Fkcy9pbWFn/ZXMvMjAyNjAzLzEz/LzE3NzMzOTAyMTIt/MTgyOS1oWkpxT0Eu/d2VicA",
+        "original": "https://www.nextpcb.com/uploads/images/202603/13/1773390212-1829-hZJqOA.webp",
+        "logo": false
+      }
+    },
+    {
+      "rank": 2,
+      "title": "IPC-A-610: Acceptability of Electronic Assemblies",
+      "url": "https://www.wevolver.com/article/ipc-a-610-acceptability-of-electronic-assemblies",
+      "description": "Rather than defining manufacturing processes, IPC-A-610 provides detailed visual inspection guidelines and acceptance criteria to classify conditions as acceptable, process indicators, or defects across a wide range of electronic products.",
+      "content": "Rather than defining manufacturing processes, IPC-A-610 provides detailed visual inspection guidelines and acceptance criteria to classify conditions as acceptable, process indicators, or defects across a wide range of electronic products.\nThe IPC (Association Connecting Electronics Industries) standard, IPC-A-610, serves as the globally recognized guideline for evaluating the acceptability of assembled printed circuit boards (PCBs). From consumer electronics to aerospace systems, IPC-A-610 provides detailed visual and written criteria for solder joints, component placement, cleanliness, and overall workmanship. Unlike process-focused standards, IPC-A-610 emphasizes inspection and final product quality, enabling engineers, inspectors, and manufacturers to maintain consistent acceptance criteria.\nThe IPC-A-610 standard, formally titled Acceptability of Electronic Assemblies, is the most widely adopted acceptance standard in the electronics industry for evaluating the quality of a PCB assembly. Rather than defining manufacturing processes, IPC-A-610 provides detailed visual inspection guidelines and acceptance criteria to classify conditions as acceptable, process indicators, or defects across a wide range of electronic products. It applies to both surface-mount assemblies and through-hole technology (THT), covering critical aspects such as solder joints, component mounting, terminal connections, fillet formation, wetting behaviour, and flux residues.\nThe IPC-A-610 standard defines clear condition categories to guide visual inspection and ensure consistent evaluation of PCB assembly quality across the electronics industry. In IPC-A-610J, these conditions are simplified into three categories — Acceptable, Process Indicator, and Defect. ... Acceptable condition meets the defined acceptance criteria and ensures reliable performance of the printed circuit board without requiring correction. While the appearance of solder joints or surface-mount components may not be visually perfect, they satisfy the required workmanship standards and pose no risk to product quality.\nIPC-2221 provides design guidance for conductor spacing, current capacity, thermal management, and mechanical considerations on PCBs. It defines design classes (1, 2, 3) and establishes rules for trace widths, spacing, via design, and material selection. Designers use IPC-2221, along with IPC-A-610, to ensure that boards meet acceptability criteria after assembly. IPC-7093 offers guidance for bottom-termination components. It covers stencil design, solder paste deposition, component placement, reflow profile, cleaning, and inspection for BTCs.",
+      "age": "April 22, 2026",
+      "page_age": "2026-04-22T09:03:09",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Wevolver",
+        "url": "https://www.wevolver.com/article/ipc-a-610-acceptability-of-electronic-assemblies",
+        "long_name": "wevolver.com",
+        "img": "https://imgs.search.brave.com/51GkFaE9cYjMjFphB5c00YcDYbbpn7mTVOqYLV3IrHE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmJiODA5NDAz/NjNiMzkzZTUxYzk2/ZGE5NzA2ZGFkZjli/MTk0NjFiNjlmMGI1/ZDU1MDRmM2RhYmZj/ZGMwYzIzZS93d3cu/d2V2b2x2ZXIuY29t/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "wevolver.com",
+        "hostname": "www.wevolver.com",
+        "favicon": "https://imgs.search.brave.com/51GkFaE9cYjMjFphB5c00YcDYbbpn7mTVOqYLV3IrHE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmJiODA5NDAz/NjNiMzkzZTUxYzk2/ZGE5NzA2ZGFkZjli/MTk0NjFiNjlmMGI1/ZDU1MDRmM2RhYmZj/ZGMwYzIzZS93d3cu/d2V2b2x2ZXIuY29t/Lw",
+        "path": "› article  › ipc-a-610-acceptability-of-electronic-assemblies"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/Xigy-L3p3bWeXDjlkBNEAyQ2ZVeOhBCn11XmoBXShBI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93ZXZv/bHZlci1wcm9qZWN0/LWltYWdlcy5zMy51/cy13ZXN0LTEuYW1h/em9uYXdzLmNvbS8w/LjZwMjVnbHZueHN2/QW4tSW50cm9kdWN0/aW9uLXRvLUlQQy1B/LTYxMC1mb3ItRWxl/Y3Ryb25pY3MtUHJv/Y3VyZW1lbnQtUHJv/ZmVzc2lvbmFscy5q/cGc",
+        "original": "https://wevolver-project-images.s3.us-west-1.amazonaws.com/0.6p25glvnxsvAn-Introduction-to-IPC-A-610-for-Electronics-Procurement-Professionals.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 3,
+      "title": "IPC A-610, Acceptability of Electronics Assemblies - Solder.net",
+      "url": "https://www.solder.net/ipc-a-610-acceptability-of-electronics-assemblies/",
+      "description": "IPC A-610, Acceptability of Electronics Assemblies, is the most widely used inspection standard in the electronics industry and has earned an international reputation as the source for end-product acceptance criteria for consumer and high reliability printed circuit assemblies.",
+      "content": "IPC A-610, Acceptability of Electronics Assemblies, is the most widely used inspection standard in the electronics industry and has earned an international reputation as the source for end-product acceptance criteria for consumer and high reliability printed circuit assemblies.\nHowever, this course does include a hands-on section as part of the inspection module training related to the inspection of wires and terminals, as well as printed circuit boards. Please see the \"Assembly Courses\" for hand-on training. - Be able to make correct “accept/reject” decisions for the appropriate class/classes of production based on the acceptability requirements of IPC-A-610\nThe IPC-A-610 Operator/Inspector Training & Certification course provides individuals with a portable credential that represents their understanding of IPC-A-610. When completed and meeting the requirements the students become a certified IPC specialist. This IPC 610 Class course of designed for those associates involved in many facets of the electronics assembly business.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Solder",
+        "url": "https://www.solder.net/ipc-a-610-acceptability-of-electronics-assemblies/",
+        "long_name": "solder.net",
+        "img": "https://imgs.search.brave.com/FaIU2rwGgmgXf2IQ-QxbOyyexCdKuQOWCF_NAgICiMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODJiODI1ODlj/ZDNkYTM1YTM1N2Iw/M2YzNDFlYjlkOWZl/NmVkNWQ4YmRjMzky/NzFjODNkYzg3Yzlm/ZjUzMDc3Zi93d3cu/c29sZGVyLm5ldC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "solder.net",
+        "hostname": "www.solder.net",
+        "favicon": "https://imgs.search.brave.com/FaIU2rwGgmgXf2IQ-QxbOyyexCdKuQOWCF_NAgICiMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODJiODI1ODlj/ZDNkYTM1YTM1N2Iw/M2YzNDFlYjlkOWZl/NmVkNWQ4YmRjMzky/NzFjODNkYzg3Yzlm/ZjUzMDc3Zi93d3cu/c29sZGVyLm5ldC8",
+        "path": "› ipc-a-610-acceptability-of-electronics-assemblies"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "IPC-A-610 Acceptability of Electronic Assemblies",
+      "url": "https://www.superengineer.net/blog/ipc-a-610",
+      "description": "Developed by IPC, it provides consistent quality requirements and inspection criteria that can be applied across the global supply chain. IPC-A-610 covers various aspects of assembled electronics, including soldering anomalies (e.g., nonwetting and dewetting), mechanical assembly, wiring, THT, SMT, component damage, and PCB appearance issues...",
+      "content": "Developed by IPC, it provides consistent quality requirements and inspection criteria that can be applied across the global supply chain. IPC-A-610 covers various aspects of assembled electronics, including soldering anomalies (e.g., nonwetting and dewetting), mechanical assembly, wiring, THT, SMT, component damage, and PCB appearance issues...\nThe IPC standard defines visual inspection criteria for electronic assemblies. Electronic assemblies refer to PCBs with soldered components. Sometimes terms like electronic modules or packets are also used, and the acronym PCBA (Printed Circuit Board Assembly) is common. Inspection criteria include conditions (acceptable, process indicator, defect), which cover various observations that may arise during the inspection of assembled electronics.\nFor unusual PCB designs, non-standard manufacturing processes, or specific soldering methods, custom criteria should be developed.[2] IPC-A-610 provides key principles for inspecting assembled PCBs.\nDeveloped by IPC, it provides consistent quality requirements and inspection criteria that can be applied across the global supply chain. IPC-A-610 covers various aspects of assembled electronics, including soldering anomalies (e.g., nonwetting and dewetting), mechanical assembly, wiring, THT, SMT, component damage, and PCB appearance issues.\nIt also does not define SMT reflow profiles or wave soldering profiles. IPC-A-610 is one of many standards for electronic assemblies. The second chapter of this document references numerous related standards from IPC, JEDEC, and IEC. IPC-A-610 may be used when the following conditions are met: The PCB design adheres to established standards, like the IPC-2220 series or similar.",
+      "age": "August 17, 2025",
+      "page_age": "2025-08-17T22:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Superengineer",
+        "url": "https://www.superengineer.net/blog/ipc-a-610",
+        "long_name": "superengineer.net",
+        "img": "https://imgs.search.brave.com/zJ2BbtwLx8B7jozFsiEJDJVegpVsxfCT2C5iO71WCJ0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJlZWQ4MjM4/ZjY5ZmM4NzVmNjhk/YzIxMTk5MzcyYWFk/NDBkNzkyZWFhZjUy/ZWUwMjJjOGNmNzI3/OTU3YTdmMS93d3cu/c3VwZXJlbmdpbmVl/ci5uZXQv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "superengineer.net",
+        "hostname": "www.superengineer.net",
+        "favicon": "https://imgs.search.brave.com/zJ2BbtwLx8B7jozFsiEJDJVegpVsxfCT2C5iO71WCJ0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJlZWQ4MjM4/ZjY5ZmM4NzVmNjhk/YzIxMTk5MzcyYWFk/NDBkNzkyZWFhZjUy/ZWUwMjJjOGNmNzI3/OTU3YTdmMS93d3cu/c3VwZXJlbmdpbmVl/ci5uZXQv",
+        "path": "› blog  › ipc-a-610"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/oQj4qH3oW_hfOlWkURA3viGOdFoXdL9qmsru6Y7nr28/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c3VwZXJlbmdpbmVl/ci5uZXQvX2VuL2Js/b2cvaXBjLWEtNjEw/L2lwYy1hLTYxMC5q/cGc",
+        "original": "https://www.superengineer.net/_en/blog/ipc-a-610/ipc-a-610.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Decoding IPC A 610: A Beginner's Guide to Electronic Assembly Acceptability",
+      "url": "https://www.allpcb.com/allelectrohub/decoding-ipc-a-610-a-beginners-guide-to-electronic-assembly-acceptability",
+      "description": "Whether you&#x27;re hand-soldering ... IPC-A-610, titled Acceptability of Electronic Assemblies, outlines visual inspection criteria for completed electronic assemblies....",
+      "content": "Whether you&#x27;re hand-soldering ... IPC-A-610, titled Acceptability of Electronic Assemblies, outlines visual inspection criteria for completed electronic assemblies....\nElectronic hobbyists often dive into assembling printed circuit boards (PCBs) for fun projects like custom gadgets, Arduino shields, or Raspberry Pi expansions. Ensuring your assembly meets basic quality standards can make the difference between a reliable build and one that fails prematurely. This is where IPC-A-610 comes in, serving as a foundational guide for electronic assembly acceptability. In this IPC-A-610 introduction, we break down the basics for beginners, explaining how it helps you inspect solder joints, component placement, and more.\nWhether you're hand-soldering through-hole parts or experimenting with surface-mount components, grasping IPC-A-610 basics empowers confident builds. IPC-A-610, titled Acceptability of Electronic Assemblies, outlines visual inspection criteria for completed electronic assemblies.\nBy referencing these classes, you align your work with industry-accepted norms right from your workbench. In the world of DIY electronics, a shaky solder joint or misaligned component can turn an exciting project into a frustrating debug session. IPC-A-610 provides a clear benchmark, explaining electronic assembly standards in a way that prevents common pitfalls and enhances reliability. For beginners, it demystifies what \"good enough\" looks like, reducing guesswork during inspections.\nChoosing the right class upfront guides your soldering technique and inspection focus. This classification system ensures your efforts scale with ambition, from simple LED blinkers to robust sensor arrays. Solder joints form the backbone of any assembly, and IPC-A-610 details their ideal shape, coverage, and anomalies. Acceptable joints show smooth concave fillets with full wetting on leads and pads, free from cracks or excessive voids.",
+      "age": "April 27, 2026",
+      "page_age": "2026-04-27T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ALLPCB",
+        "url": "https://www.allpcb.com/allelectrohub/decoding-ipc-a-610-a-beginners-guide-to-electronic-assembly-acceptability",
+        "long_name": "allpcb.com",
+        "img": "https://imgs.search.brave.com/BRraUVl6w_VcR1NWW-IvMRXQ57iqziPCXLR-qdF39fg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDliMDdhMDUx/N2E1Mzc2YTgzYTM2/ZGE5ZjAyZDMzMTVh/YzJiN2NlZGJlZmQx/NzkzOWYwYjU3ODUw/ZWMxNTMwYS93d3cu/YWxscGNiLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "allpcb.com",
+        "hostname": "www.allpcb.com",
+        "favicon": "https://imgs.search.brave.com/BRraUVl6w_VcR1NWW-IvMRXQ57iqziPCXLR-qdF39fg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDliMDdhMDUx/N2E1Mzc2YTgzYTM2/ZGE5ZjAyZDMzMTVh/YzJiN2NlZGJlZmQx/NzkzOWYwYjU3ODUw/ZWMxNTMwYS93d3cu/YWxscGNiLmNvbS8",
+        "path": "  › allelectrohub  › pcb assembly  › decoding ipc a 610: a beginner's guide to electronic assembly acceptability"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/pbxqr0ZOAie_x_4FKQjLEV88MEoqK42HQKDJoRSOanI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9qcGZp/bGUxLm9zcy1hY2Nl/bGVyYXRlLmFsaXl1/bmNzLmNvbS9hbGxw/Y2IvYXJ0aWNsZWNv/dmVyLzIwMjYvNC8y/NS8yMDI2MDQyNTAx/MjAyMjkxMTg2NzI4/X2hvYmJ5aXN0c29s/ZGVyaW5ncGNiX3Qu/d2VicA",
+        "original": "https://jpfile1.oss-accelerate.aliyuncs.com/allpcb/articlecover/2026/4/25/2026042501202291186728_hobbyistsolderingpcb_t.webp",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "IPC-A-610 Standard: A Guide to Electronics Assembly Quality",
+      "url": "https://www.a2zems.com/post/ipc-a-610-standard",
+      "description": "The standard outlines detailed requirements for solder joints, component placement, cleanliness, marking, and conformal coating. IPC-A-610 is often required for aerospace, medical, defense, and industrial electronics, where failure is not an option.",
+      "content": "The standard outlines detailed requirements for solder joints, component placement, cleanliness, marking, and conformal coating. IPC-A-610 is often required for aerospace, medical, defense, and industrial electronics, where failure is not an option.\nIn electronic contract manufacturing, product quality sets the foundation for performance, safety, and long-term reliability. As electronic devices become more complex, the demand for consistent and dependable PCB assemblies continues to grow. The IPC-A-610 standard provides a widely accepted framework for evaluating the quality of electronic assemblies.For OEMs and contract manufacturers, IPC-A-610 helps create a shared language around workmanship standards.\nDiscover the IPC-A-610 standard and how it sets the benchmark for electronic assembly quality, workmanship classes, and reliable PCB production.\nThe standard outlines detailed requirements for solder joints, component placement, cleanliness, marking, and conformal coating. IPC-A-610 is often required for aerospace, medical, defense, and industrial electronics, where failure is not an option. ... IPC-A-610, also titled Acceptability of Electronic Assemblies, is an industry-developed standard created by IPC (Association Connecting Electronics Industries). It defines inspection criteria for finished electronic PCB assemblies\nThe IPC-A-610 standard defines multiple inspection and quality requirements for PCB assemblies. These include: ... By setting clear boundaries between acceptable and defective conditions, the standard helps reduce ambiguity and improve inspection accuracy. Soldering plays a major role in the performance and lifespan of electronic assemblies.",
+      "age": "December 11, 2025",
+      "page_age": "2025-12-11T11:00:22",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "A2Z EMS",
+        "url": "https://www.a2zems.com/post/ipc-a-610-standard",
+        "long_name": "a2zems.com",
+        "img": "https://imgs.search.brave.com/iGWOWUjz0M3EMAcaghYmvZCN5nUibh7nMqtdtKKS_-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWFhNzQ0YWIy/NjUwYTdmZGZlNzlh/ZGI4M2EzMmQ4NTFm/OWY0MTlhNTk1MGYw/M2JlMGJhN2RjY2Nh/N2YzMTEwZi93d3cu/YTJ6ZW1zLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "a2zems.com",
+        "hostname": "www.a2zems.com",
+        "favicon": "https://imgs.search.brave.com/iGWOWUjz0M3EMAcaghYmvZCN5nUibh7nMqtdtKKS_-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWFhNzQ0YWIy/NjUwYTdmZGZlNzlh/ZGI4M2EzMmQ4NTFm/OWY0MTlhNTk1MGYw/M2JlMGJhN2RjY2Nh/N2YzMTEwZi93d3cu/YTJ6ZW1zLmNvbS8",
+        "path": "  › home  › parent page  › current page"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/HvCXkLceS_BssLlWEXafAX7tcNQYNjbn8b2bctM8fNI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMud2l4c3RhdGlj/LmNvbS9tZWRpYS9h/NzMyNTRfNTlhNTRl/NTdhMzk1NGNhZTg0/ZmIzYzZlZjlhYmYz/NDV-bXYyLndlYnAv/djEvZmlsbC93XzEw/MDAsaF81NjMsYWxf/YyxxXzg1LHVzbV8w/LjY2XzEuMDBfMC4w/MS9hNzMyNTRfNTlh/NTRlNTdhMzk1NGNh/ZTg0ZmIzYzZlZjlh/YmYzNDV-bXYyLndl/YnA",
+        "original": "https://static.wixstatic.com/media/a73254_59a54e57a3954cae84fb3c6ef9abf345~mv2.webp/v1/fill/w_1000,h_563,al_c,q_85,usm_0.66_1.00_0.01/a73254_59a54e57a3954cae84fb3c6ef9abf345~mv2.webp",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "IPC-A-610 PCB Assembly Standards: Acceptability Requirements for Electronic Assemblies - HilPCB",
+      "url": "https://hilpcb.com/en/blog/ipc-a610-pcb/",
+      "description": "IPC-A-610 PCB assembly standards establish the definitive criteria for determining whether electronic assemblies meet acceptable quality levels, providing detailed visual and measurable requirements for solder joints, component placement, and ...",
+      "content": "IPC-A-610 PCB assembly standards establish the definitive criteria for determining whether electronic assemblies meet acceptable quality levels, providing detailed visual and measurable requirements for solder joints, component placement, and ...\nIPC-A-610 PCBPCB Assembly StandardsSolder Joint QualityElectronic AssemblyQuality InspectionAssembly Acceptance Criteria · The difference between a reliable electronic product and a field failure often lies in the quality of PCB assembly processes and inspection procedures. When solder joints fail, components shift during operation, or assembly defects cause intermittent faults, the resulting warranty claims, customer dissatisfaction, and brand damage can far exceed the cost of proper quality control.\nIPC-A-610 PCB assembly standards establish the definitive criteria for determining whether electronic assemblies meet acceptable quality levels, providing detailed visual and measurable requirements for solder joints, component placement, and overall assembly quality. Our IPC-A-610 PCB assembly processes implement comprehensive quality inspection procedures and acceptance criteria that ensure every assembled board meets the stringent requirements for reliable electronic products, minimizing field failures and maximizing customer satisfaction.\nThe standard defines three distinct quality classes—Class 1 for general electronic products, Class 2 for dedicated service electronics, and Class 3 for high-performance applications—each with progressively stricter acceptance criteria that match reliability requirements with appropriate quality levels. Our implementation incorporates automated inspection systems that verify component placement accuracy, solder joint quality, and overall assembly integrity against IPC-A-610 criteria.\nSolder joint quality represents the most critical aspect of IPC-A-610 compliance, directly affecting both electrical performance and mechanical reliability. The standard provides detailed criteria for evaluating solder joint shape, wetting characteristics, and dimensional requirements that ensure reliable connections throughout the product's operational lifetime. Our inspection procedures incorporate both automated optical inspection (AOI) and skilled human inspectors trained to IPC-A-610 standards, ensuring comprehensive evaluation of solder joint quality for multilayer PCB assemblies and complex backplane PCB configurations.",
+      "age": "July 3, 2025",
+      "page_age": "2025-07-03T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "HilPCB",
+        "url": "https://hilpcb.com/en/blog/ipc-a610-pcb/",
+        "long_name": "hilpcb.com",
+        "img": "https://imgs.search.brave.com/hYBH53FHXuVvYvoB2PlFvGGWlpu7Rk8Z3-d_iHOLZCM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjRhMjVhOTky/Njk0NGY2YWVhYWY3/N2FmY2IyMTdiNDk3/YjM1MDEyMzQ0Yzg2/ZDU3ZDA0NDZiNWRk/MmIzMzYxYi9oaWxw/Y2IuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "hilpcb.com",
+        "hostname": "hilpcb.com",
+        "favicon": "https://imgs.search.brave.com/hYBH53FHXuVvYvoB2PlFvGGWlpu7Rk8Z3-d_iHOLZCM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjRhMjVhOTky/Njk0NGY2YWVhYWY3/N2FmY2IyMTdiNDk3/YjM1MDEyMzQ0Yzg2/ZDU3ZDA0NDZiNWRk/MmIzMzYxYi9oaWxw/Y2IuY29tLw",
+        "path": "  › home  › blog  › ipc-a-610 pcb assembly standards: acceptability requirements for electronic assemblies"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/jEZ7qCnlJEcKobrGPtMdHPqStUbOa2fRMEru4-e119A/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9oaWxw/Y2IuY29tL2Fzc2V0/cy9pbWcvYmxvZ3Mv/MjAyNS8wNy9pcGMt/YTYxMC1wY2Iud2Vi/cA",
+        "original": "https://hilpcb.com/assets/img/blogs/2025/07/ipc-a610-pcb.webp",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "Complete Guide to IPC A-610 Standards for Electronics Manufacturing",
+      "url": "https://www.ourpcb.com/blog/ipc-a-610",
+      "description": "While IPC-A-610 covers the visual ... stress, etc.). Visual acceptability primarily looks at features like the shape, size, and workmanship of the solder joints, component placement, and PCB cleanliness....",
+      "content": "While IPC-A-610 covers the visual ... stress, etc.). Visual acceptability primarily looks at features like the shape, size, and workmanship of the solder joints, component placement, and PCB cleanliness....\nThe IPC-A-610 standard outlines the specific requirements for evaluating factors like component placement, soldering, marking, and PCBA cleaning. Therefore, its purpose is to establish globally acceptable criteria for electronic assemblies. When PCB manufacturers and assemblers follow these outlined approaches for inspection and evaluation, they can ensure their products meet acceptable levels of appearance and functionality.\nWhile IPC-A-610 covers the visual acceptability of electronic assemblies, it does not address aspects like design rules and testing (functional, environmental stress, etc.). Visual acceptability primarily looks at features like the shape, size, and workmanship of the solder joints, component placement, and PCB cleanliness.\nThis revision is a must-have for operators, inspectors, and all other technicians with an interest in the acceptance criteria for electronic assemblies. After training its staff, a company can implement and use IPC-A-610 by setting clear workmanship, component mounting, soldering, and inspection criteria.\nOur team ensures that all assemblies meet IPC-A-610 criteria, guaranteeing reliability and performance for applications in industries such as aerospace and medical. The IPC-A-610 standard is synonymous with quality. Its widespread use in various industries like consumer electronics, medicine, and aerospace has made it the de facto end-product acceptance criteria for highly reliable PCBAs. Since it is the most widely used inspection standard in the electronics industry, IPC-A-610 has earned a reputation internationally, and we want to analyze why most industries use it.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "OurPCB",
+        "url": "https://www.ourpcb.com/blog/ipc-a-610",
+        "long_name": "ourpcb.com",
+        "img": "https://imgs.search.brave.com/xseud9KzR_MEP92ZSqpPZ4kPglMghxUL-RlFJu6Alv0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWRlZTRmZmU3/NDczYjc4ZDEzMzM3/MWRhZmE1YmQ3ZTUw/MzM4NzJmYzcyZjll/YzU4ZWY2YzE1Nzlk/MDYyYmU1NS93d3cu/b3VycGNiLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "ourpcb.com",
+        "hostname": "www.ourpcb.com",
+        "favicon": "https://imgs.search.brave.com/xseud9KzR_MEP92ZSqpPZ4kPglMghxUL-RlFJu6Alv0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWRlZTRmZmU3/NDczYjc4ZDEzMzM3/MWRhZmE1YmQ3ZTUw/MzM4NzJmYzcyZjll/YzU4ZWY2YzE1Nzlk/MDYyYmU1NS93d3cu/b3VycGNiLmNvbS8",
+        "path": "› blog  › ipc-a-610"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/Z_NDAbYqAcMFVJwdxV1MzemFZ-r70hD8bj57ZYbKSJE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/b3VycGNiLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMC8w/Mi9jcm9wcGVkLWNy/b3BwZWQtcGNiLW1h/bnVmYWN0dXJlci1s/b2dvLnBuZw",
+        "original": "https://www.ourpcb.com/wp-content/uploads/2020/02/cropped-cropped-pcb-manufacturer-logo.png",
+        "logo": true
+      }
+    },
+    {
+      "rank": 9,
+      "title": "IPC-A-610 Standard: Acceptance Classes, Inspection Methods & Compliance Guide",
+      "url": "https://www.digi-electronics.com/en/blogs/ipc-a-610-standard-acceptance-classes-inspection-methods-compliance-guide/409.html",
+      "description": "IPC-A-610 defines the acceptability requirements for electronic assemblies. It establishes visual and workmanship criteria for evaluating solder joints, component placement, PCB condition, cleanliness, labeling, and protective coatings.",
+      "content": "IPC-A-610 defines the acceptability requirements for electronic assemblies. It establishes visual and workmanship criteria for evaluating solder joints, component placement, PCB condition, cleanliness, labeling, and protective coatings.\nIPC-A-610 serves as a globally recognized standard for evaluating the quality and acceptability of electronic assemblies. By defining clear visual and workmanship criteria, it helps standardize inspection across industries and product types. From solder joints and component placement to cleanliness and labeling, the standard establishes measurable requirements that support reliability, performance, and consistent manufacturing outcomes in PCB assembly production.\nMisalignment affecting solder integrity or mechanical stability is not acceptable. Structural elements are evaluated for durability and stability, including: ... These criteria support long-term mechanical performance. While IPC/WHMA-A-620 addresses cable assemblies, IPC-A-610 covers wire terminations within PCB assemblies.\nIt reduces inspection variability by setting clear thresholds for soldering, placement, cleanliness, marking, and mechanical conditions. Since acceptability depends on Class 1, 2, or 3, the target class should be defined early and reflected in inspection procedures. When paired with J-STD-001 process controls, IPC-A-610 supports repeatable manufacturing and reliable PCB assembly outcomes.",
+      "age": "February 24, 2026",
+      "page_age": "2026-02-24T02:38:32",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Digi-electronics",
+        "url": "https://www.digi-electronics.com/en/blogs/ipc-a-610-standard-acceptance-classes-inspection-methods-compliance-guide/409.html",
+        "long_name": "digi-electronics.com",
+        "img": "https://imgs.search.brave.com/ZneGDNHt3i2MRMK8KREXuBwq9mrYRIeonOKOoMU3s6k/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDNjMDdlMDBi/OWY3ZjAwOTIxY2Rj/OTJhNzJkNTM1YTVk/MzhkNjMyMzYxNjk5/Mjg2YTQzYTNiODhm/YTJkYjUxOS93d3cu/ZGlnaS1lbGVjdHJv/bmljcy5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "digi-electronics.com",
+        "hostname": "www.digi-electronics.com",
+        "favicon": "https://imgs.search.brave.com/ZneGDNHt3i2MRMK8KREXuBwq9mrYRIeonOKOoMU3s6k/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDNjMDdlMDBi/OWY3ZjAwOTIxY2Rj/OTJhNzJkNTM1YTVk/MzhkNjMyMzYxNjk5/Mjg2YTQzYTNiODhm/YTJkYjUxOS93d3cu/ZGlnaS1lbGVjdHJv/bmljcy5jb20v",
+        "path": "› en  › blogs  › ipc-a-610-standard-acceptance-classes-inspection-methods-compliance-guide  › 409.html"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/Qbn8rG56hFEx6-s-H-0LlTIEPLmd2ZcBtMxkIAuhSIk/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9tZWRp/YXMuZGlnaS1lbGVj/dHJvbmljcy5jb20v/YmxvZ3MvOTgyOTU5/OGUtNzYyNi00ZDRj/LTk3YzAtMGRlM2Zk/Yzg5YTU0LnBuZw",
+        "original": "https://medias.digi-electronics.com/blogs/9829598e-7626-4d4c-97c0-0de3fdc89a54.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 10,
+      "title": "IPC-A-610 Class 1, 2, & 3 explained: Choosing the right standard for your PCBA",
+      "url": "https://www.escatec.com/blog/which-ipc-a-610-class-is-best-for-your-printed-circuit-board-assembly",
+      "description": "It covers solder joints, component placement, cleanliness, conformal coating, and mechanical integrity, and is used by EMS providers and OEMs worldwide to agree on what constitutes an acceptable assembly.",
+      "content": "It covers solder joints, component placement, cleanliness, conformal coating, and mechanical integrity, and is used by EMS providers and OEMs worldwide to agree on what constitutes an acceptable assembly.\nIt is used on production lines by inspectors, quality engineers, and EMS providers as the objective reference for accepting or rejecting a finished assembly. IPC-A-610 works in conjunction with related standards, including J-STD-001 (soldering requirements), IPC-A-600 (PCB acceptability), and IPC-6012 (rigid PCB qualification).\nIPC-A-610, titled 'Acceptability of Electronic Assemblies', is the globally recognised standard developed by IPC that defines visual inspection criteria, workmanship standards, and acceptance requirements for · PCBAs. It covers solder joints, component placement, cleanliness, conformal coating, and mechanical integrity, and is used by EMS providers and OEMs worldwide to agree on what constitutes an acceptable assembly.\nThe class strikes a practical balance between quality assurance and manufacturing throughput, making it the default choice for most PCBA programmes. Class 3 is the most stringent classification, reserved for assemblies where failure could result in severe consequences like loss of life, serious injury, mission failure, or system-level catastrophe. There is zero tolerance for workmanship defects that might pass under Class 2. ... To achieve Class 3, every aspect of production must meet the IPC-A-610J acceptance criteria: laminate selection, plating thickness, solder joint geometry, cleanliness, conformal coating, and inspection processes.\nIPC-A-610, formally titled 'Acceptability of Electronic Assemblies', is published by the · IPC (Association Connecting Electronics Industries). It is the most widely used acceptance standard in the electronics manufacturing industry, covering visual inspection criteria, workmanship standards, and quality assurance requirements for ... Divided into three classes—Class 1, Class 2, and Class 3—the standard spans solder joint quality, component placement and orientation, cleanliness, conformal coating, mechanical integrity, and marking.",
+      "age": "3 weeks ago",
+      "page_age": "2026-05-21T11:04:24",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Escatec",
+        "url": "https://www.escatec.com/blog/which-ipc-a-610-class-is-best-for-your-printed-circuit-board-assembly",
+        "long_name": "escatec.com",
+        "img": "https://imgs.search.brave.com/vwAJ2vHW3uMHPpIdUh_PpKC8nluo5kOj3nKrQP6lbwk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDkyMjkzZWJm/NWI0ZWY3YWYzZGE1/NGNhMDA4ZGU5MDBi/NzkyYjY1ZWYwYzdi/MzA3NjhlZDZjMWNm/MzM5YmI0MC93d3cu/ZXNjYXRlYy5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "escatec.com",
+        "hostname": "www.escatec.com",
+        "favicon": "https://imgs.search.brave.com/vwAJ2vHW3uMHPpIdUh_PpKC8nluo5kOj3nKrQP6lbwk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDkyMjkzZWJm/NWI0ZWY3YWYzZGE1/NGNhMDA4ZGU5MDBi/NzkyYjY1ZWYwYzdi/MzA3NjhlZDZjMWNm/MzM5YmI0MC93d3cu/ZXNjYXRlYy5jb20v",
+        "path": "› blog  › which-ipc-a-610-class-is-best-for-your-printed-circuit-board-assembly"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/HvUdufo5ybXZpiGIgENP-wYD0NWcs2tdQPdcnkkSujg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXNjYXRlYy5jb20v/aHViZnMvSVBDLUEt/NjEwX2Jsb2cuanBl/Zw",
+        "original": "https://www.escatec.com/hubfs/IPC-A-610_blog.jpeg",
+        "logo": false
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "IPC-A-610 acceptability electronic assemblies overview PCB solder inspection",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.066,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "IPC-A-610 acceptability electronic assemblies overview PCB solder inspection",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "discussions": {
+      "type": "search",
+      "results": [
+        {
+          "title": "IPC-A 610 Textbook",
+          "url": "https://www.reddit.com/r/soldering/comments/1e48wg6/ipca_610_textbook/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Think of IPC more like a textbook if you've ever had to deal with textbook stores in college.  A PDF copy of IPC A-610H-2020 is $260.00 on their website.  However, the book is only about acceptability criteria, it doesn't actually teach you how to solder.  If you are not actively trying to prove your soldering is certifiable to that standard, then it would be a waste of money.  If you are still curious, you are much better off tracking down an old revision as the content is 95% the same, but it has lost the majority of its value to someone who actively has to keep certified. https://webstore.ansi.org/sdo/IPC ?",
+          "fetched_content_timestamp": 1780767278,
+          "language": "en",
+          "family_friendly": true,
+          "type": "discussion",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "reddit.com",
+            "hostname": "www.reddit.com",
+            "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+            "path": "› r  › soldering  › comments  › 1e48wg6  › ipca_610_textbook"
+          },
+          "age": "July 15, 2024",
+          "data": {
+            "forum_name": "r/soldering",
+            "num_answers": 6,
+            "score": "2",
+            "title": "IPC-A 610 Textbook",
+            "question": "<p>\n      Greetings, I’ve been wanting to get into the world of soldering and I’ve been looking for this book. I’m having trouble finding it. Does anybody have a link or a website they could refer me to I would really appreciate it. Thank you so much.\n    </p>",
+            "top_comment": "Think of IPC more like a textbook if you've ever had to deal with textbook stores in college.  A PDF copy of IPC A-610H-2020 is $260.00 on their website.  However, the book is only about acceptability criteria, it doesn't actually teach you how to solder.  If you are not actively trying to prove your soldering is certifiable to that standard, then it would be a waste of money.  If you are still curious, you are much better off tracking down an old revision as the content is 95% the same, but it has lost the majority of its value to someone who actively has to keep certified. https://webstore.ansi.org/sdo/IPC ?"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "faq": {
+      "type": "faq",
+      "results": [
+        {
+          "question": "How much 'Solder Voiding' is acceptable in BGA and QFN packages?",
+          "answer": "According to IPC-A-610, a void is generally acceptable if it occupies less than 25% of the total solder ball area in a BGA joint. For QFN thermal pads, while 25% is a rule of thumb, high-power applications may require stricter limits.",
+          "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly ...",
+          "url": "https://www.nextpcb.com/blog/ipc-a-610",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nextpcb.com",
+            "hostname": "www.nextpcb.com",
+            "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+            "path": "› blog  › ipc-a-610"
+          }
+        },
+        {
+          "question": "Do I need to clean 'No-Clean' flux residues to meet IPC standards?",
+          "answer": "No-clean flux residues are acceptable if they are non-corrosive and non-conductive. However, in high-humidity environments, they can lead to Electrochemical Migration (ECM), so professional cleaning is recommended for harsh conditions.",
+          "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly ...",
+          "url": "https://www.nextpcb.com/blog/ipc-a-610",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nextpcb.com",
+            "hostname": "www.nextpcb.com",
+            "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+            "path": "› blog  › ipc-a-610"
+          }
+        },
+        {
+          "question": "Why does IPC-A-610 prioritize 'Visual Acceptance' over process control?",
+          "answer": "IPC-A-610 is specifically a visual acceptance standard that defines what the final product should look like, acting as a quality checklist. Process control (how to build it) is covered by IPC-J-STD-001.",
+          "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly ...",
+          "url": "https://www.nextpcb.com/blog/ipc-a-610",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nextpcb.com",
+            "hostname": "www.nextpcb.com",
+            "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+            "path": "› blog  › ipc-a-610"
+          }
+        },
+        {
+          "question": "What is the main difference between IPC Class 2 and Class 3?",
+          "answer": "The primary difference lies in the reliability and environment. Class 2 is for dedicated service products like computers where uninterrupted service is not critical. Class 3 is for high-performance/harsh environments like medical life support and aerospace, requiring stricter tolerances (e.g., 75% vertical solder fill vs 50% for Class 2).",
+          "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly ...",
+          "url": "https://www.nextpcb.com/blog/ipc-a-610",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nextpcb.com",
+            "hostname": "www.nextpcb.com",
+            "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+            "path": "› blog  › ipc-a-610"
+          }
+        },
+        {
+          "question": "Is component misalignment (overhang) always a defect?",
+          "answer": "Not necessarily. A component can hang off the side of the pad by up to 25% or 50% of its width depending on the class. As long as minimum electrical clearance is maintained and the joint is robust, it is often considered 'Acceptable'.",
+          "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly ...",
+          "url": "https://www.nextpcb.com/blog/ipc-a-610",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nextpcb.com",
+            "hostname": "www.nextpcb.com",
+            "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+            "path": "› blog  › ipc-a-610"
+          }
+        }
+      ]
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "discussions",
+          "all": true
+        },
+        {
+          "type": "faq",
+          "all": true
+        },
+        {
+          "type": "videos",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "videos": {
+      "type": "videos",
+      "results": [
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=LACU1bOaZYo",
+          "title": "Uncover the Secret to Flawless Electronics: IPC-A-610 Explained ...",
+          "description": "Master IPC-A-610 Operational Excellence. Get answers, advanced guidance, how-to's & workflows. Includes customized assessment, critical capability analysis ...",
+          "age": "August 31, 2024",
+          "page_age": "2024-08-31T04:16:45",
+          "fetched_content_timestamp": 1742293139,
+          "video": {
+            "duration": "05:41",
+            "views": 6,
+            "creator": "Operational Excellence Mastery",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/bvRyvUamPntVR3kFXu7xtcPv0RpBWPovMMIAYAolQ38/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9M/QUNVMWJPYVpZby9t/YXhyZXNkZWZhdWx0/LmpwZz9zcXA9LW9h/eW13RW1DSUFLRU5B/RjhxdUtxUU1hOEFF/Qi1BSC1DWUFDMEFX/S0Fnd0lBQkFCR0hJ/Z1NTZ3VNQTg9JmFt/cDtycz1BT240Q0xC/aWx5cG5mYU1nQk01/VUwxc0s1X0dVdmk2/ZUVn",
+            "original": "https://i.ytimg.com/vi/LACU1bOaZYo/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgSSguMA8=&amp;rs=AOn4CLBilypnfaMgBM5UL1sK5_GUvi6eEg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=2NlRwcPJEg0",
+          "title": "What is the IPC A 610? - YouTube",
+          "description": "This video explains the purpose of the IPC-A-610 \"Acceptability of Electronic Assemblies\". Kris Roberson, an IPC master instructor from BEST explains the pro...",
+          "age": "April 9, 2021",
+          "page_age": "2021-04-09T15:18:35",
+          "fetched_content_timestamp": 1727365434,
+          "video": {
+            "duration": "04:25",
+            "views": 8139,
+            "creator": "SolderingGeek",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/T2OrtcHkB3NOZo_rYfVwaO54oM8jrSm2sNYuQXVqV28/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS8y/TmxSd2NQSkVnMC9t/YXhyZXNkZWZhdWx0/LmpwZz9zcXA9LW9h/eW13RW1DSUFLRU5B/RjhxdUtxUU1hOEFF/Qi1BSFVCb0FDNEFP/S0Fnd0lBQkFCR0dV/Z1pTaGxNQTg9JmFt/cDtycz1BT240Q0xC/ekxPTmdmX3hnc29K/VXkxM2s4azBQZnMz/NVF3",
+            "original": "https://i.ytimg.com/vi/2NlRwcPJEg0/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGGUgZShlMA8=&amp;rs=AOn4CLBzLONgf_xgsoJUy13k8k0Pfs35Qw"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=lZl6ojf5Hb8",
+          "title": "The IPC-A-610 training & certification program - YouTube",
+          "description": "Learn more about the IPC training & certification Programs! In this episode of the IPC-A-610 training & certification Program, Ramon Essers, MIT at ETECH-tra...",
+          "age": "April 10, 2020",
+          "page_age": "2020-04-10T08:53:01",
+          "fetched_content_timestamp": 1780691588,
+          "video": {
+            "duration": "04:58",
+            "creator": "ETECH-training",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/1OpgsPfStlYvT39UrZrq9xFdo798aOyG_vdZZRe9tH0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9s/Wmw2b2pmNUhiOC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/lZl6ojf5Hb8/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=2NlRwcPJEg0&pp=ygUGI2lwNjEw",
+          "title": "What is the IPC A 610?",
+          "description": "To learn more, please visit the YouTube Help Center: https://www.youtube.com/help",
+          "fetched_content_timestamp": 1780594247,
+          "video": {},
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/KgiSity1W7w-Ae5byEJzlVdBeoDr5Xn35-mcvSR8JYw/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS85/eHAxWFdtSl9Xby9t/YXhyZXNkZWZhdWx0/LmpwZz9zcXA9LW9h/eW13RW1DSUFLRU5B/RjhxdUtxUU1hOEFF/Qi1BSC1DWUFDMEFX/S0Fnd0lBQkFCR0dV/Z1pTaGxNQTg9JmFt/cDtycz1BT240Q0xB/czlZdW5obUNadk5D/VVhZX2x4U293TFZm/dlZB",
+            "original": "https://i.ytimg.com/vi/9xp1XWmJ_Wo/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgZShlMA8=&amp;rs=AOn4CLAs9YunhmCZvNCUXY_lxSowLVfvVA"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly Acceptability",
+          "url": "https://www.nextpcb.com/blog/ipc-a-610",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "For through-hole components, the acceptance criteria include the following: Standard through-hole mounting: IPC-A-610 specifies strict requirements for lead protrusion, solder wetting, and component alignment.",
+          "page_age": "2023-04-23T02:55:28",
+          "profile": {
+            "name": "NextPCB",
+            "url": "https://www.nextpcb.com/blog/ipc-a-610",
+            "long_name": "nextpcb.com",
+            "img": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "faq",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nextpcb.com",
+            "hostname": "www.nextpcb.com",
+            "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+            "path": "› blog  › ipc-a-610"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/fKnZhZoBEWyAvs96msAniMjgYX0VRuQinA6L3_g9uSg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bmV4dHBjYi5jb20v/dXBsb2Fkcy9pbWFn/ZXMvMjAyNjAzLzEz/LzE3NzMzOTAyMTIt/MTgyOS1oWkpxT0Eu/d2VicA",
+            "original": "https://www.nextpcb.com/uploads/images/202603/13/1773390212-1829-hZJqOA.webp",
+            "logo": false
+          },
+          "age": "April 23, 2023",
+          "faq": {
+            "items": [
+              {
+                "question": "What is the main difference between IPC Class 2 and Class 3?",
+                "answer": "The primary difference lies in the reliability and environment. Class 2 is for dedicated service products like computers where uninterrupted service is not critical. Class 3 is for high-performance/harsh environments like medical life support and aerospace, requiring stricter tolerances (e.g., 75% vertical solder fill vs 50% for Class 2).",
+                "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly ...",
+                "url": "https://www.nextpcb.com/blog/ipc-a-610",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "nextpcb.com",
+                  "hostname": "www.nextpcb.com",
+                  "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+                  "path": "› blog  › ipc-a-610"
+                }
+              },
+              {
+                "question": "How much 'Solder Voiding' is acceptable in BGA and QFN packages?",
+                "answer": "According to IPC-A-610, a void is generally acceptable if it occupies less than 25% of the total solder ball area in a BGA joint. For QFN thermal pads, while 25% is a rule of thumb, high-power applications may require stricter limits.",
+                "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly ...",
+                "url": "https://www.nextpcb.com/blog/ipc-a-610",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "nextpcb.com",
+                  "hostname": "www.nextpcb.com",
+                  "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+                  "path": "› blog  › ipc-a-610"
+                }
+              },
+              {
+                "question": "Is component misalignment (overhang) always a defect?",
+                "answer": "Not necessarily. A component can hang off the side of the pad by up to 25% or 50% of its width depending on the class. As long as minimum electrical clearance is maintained and the joint is robust, it is often considered 'Acceptable'.",
+                "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly ...",
+                "url": "https://www.nextpcb.com/blog/ipc-a-610",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "nextpcb.com",
+                  "hostname": "www.nextpcb.com",
+                  "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+                  "path": "› blog  › ipc-a-610"
+                }
+              },
+              {
+                "question": "Do I need to clean 'No-Clean' flux residues to meet IPC standards?",
+                "answer": "No-clean flux residues are acceptable if they are non-corrosive and non-conductive. However, in high-humidity environments, they can lead to Electrochemical Migration (ECM), so professional cleaning is recommended for harsh conditions.",
+                "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly ...",
+                "url": "https://www.nextpcb.com/blog/ipc-a-610",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "nextpcb.com",
+                  "hostname": "www.nextpcb.com",
+                  "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+                  "path": "› blog  › ipc-a-610"
+                }
+              },
+              {
+                "question": "Why does IPC-A-610 prioritize 'Visual Acceptance' over process control?",
+                "answer": "IPC-A-610 is specifically a visual acceptance standard that defines what the final product should look like, acting as a quality checklist. Process control (how to build it) is covered by IPC-J-STD-001.",
+                "title": "IPC-A-610 Standard: Ultimate Guide to Electronic Assembly ...",
+                "url": "https://www.nextpcb.com/blog/ipc-a-610",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "nextpcb.com",
+                  "hostname": "www.nextpcb.com",
+                  "favicon": "https://imgs.search.brave.com/z8FpEsuPy48NYZxT97yCyAOhrXGOqr5pq5gv-YuRjIs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWM5OTRiZmJm/MmY0YjQwM2I1NzEz/ZjA2OTk4MmRjOWE4/OWVhYWQ5OTY4MGU0/YzNiOWY3MjUwNDA2/NTJkYjgxMS93d3cu/bmV4dHBjYi5jb20v",
+                  "path": "› blog  › ipc-a-610"
+                }
+              }
+            ]
+          },
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "​NextPCB Content Team"
+              }
+            ],
+            "date": "Apr 23, 2023",
+            "publisher": {
+              "type": "organization",
+              "name": "NEXTPCB",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/5n3HKzpqETpOwClkLkMNO9Qf6Ry7wxmZiB-rQHWhyFA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMubmV4dHBjYi5j/b20vaW1hZ2VzL25l/d05hdkljb24vbG9n/bzIwMjUuc3Zn",
+                "original": "https://static.nextpcb.com/images/newNavIcon/logo2025.svg"
+              }
+            }
+          },
+          "organization": {
+            "type": "organization",
+            "name": "NextPCB",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "For through-hole components, the acceptance criteria include the following: Standard through-hole mounting: IPC-A-610 specifies strict requirements for lead protrusion, solder wetting, and component alignment. Proper component orientation, spacing, and alignment on the PCB substrate · Secure mounting of components to the PCB to withstand operation strains ... Surface Mount inspection focuses on critical parameters such as fillet height, toe/heel overhang, and solder paste coverage.",
+            "No damage to the component, PCB, or solder joint during assembly · Proper solder joint formation, including wetting and fillet formation · No visible voids, excessive solder, or solder bridging ... For mixed-technology assemblies, the acceptance criteria combine the requirements for through-hole and surface-mount components. Furthermore, this includes ensuring that the through-hole components are properly mounted and soldered.",
+            "Solder voids (air bubbles) are a common concern in X-ray inspections. According to IPC-A-610: Generally, a void is considered acceptable if it occupies less than 25% of the total solder ball area in a BGA joint.",
+            "The Golden Rule: As long as the minimum electrical clearance is maintained and the solder joint remains robust, a slight misalignment is often \"Acceptable.\" This is a frequent debate in the engineering community. Under IPC-A-610: No-Clean Flux residues are acceptable as long as they are non-corrosive, non-conductive, and do not interfere with visual inspection or testing."
+          ]
+        },
+        {
+          "title": "IPC-A-610: Acceptability of Electronic Assemblies",
+          "url": "https://www.wevolver.com/article/ipc-a-610-acceptability-of-electronic-assemblies",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Rather than defining manufacturing processes, IPC-A-610 provides detailed visual inspection guidelines and acceptance criteria to classify conditions as acceptable, process indicators, or defects across a wide range of electronic products.",
+          "page_age": "2026-04-22T09:03:09",
+          "profile": {
+            "name": "Wevolver",
+            "url": "https://www.wevolver.com/article/ipc-a-610-acceptability-of-electronic-assemblies",
+            "long_name": "wevolver.com",
+            "img": "https://imgs.search.brave.com/51GkFaE9cYjMjFphB5c00YcDYbbpn7mTVOqYLV3IrHE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmJiODA5NDAz/NjNiMzkzZTUxYzk2/ZGE5NzA2ZGFkZjli/MTk0NjFiNjlmMGI1/ZDU1MDRmM2RhYmZj/ZGMwYzIzZS93d3cu/d2V2b2x2ZXIuY29t/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "wevolver.com",
+            "hostname": "www.wevolver.com",
+            "favicon": "https://imgs.search.brave.com/51GkFaE9cYjMjFphB5c00YcDYbbpn7mTVOqYLV3IrHE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmJiODA5NDAz/NjNiMzkzZTUxYzk2/ZGE5NzA2ZGFkZjli/MTk0NjFiNjlmMGI1/ZDU1MDRmM2RhYmZj/ZGMwYzIzZS93d3cu/d2V2b2x2ZXIuY29t/Lw",
+            "path": "› article  › ipc-a-610-acceptability-of-electronic-assemblies"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Xigy-L3p3bWeXDjlkBNEAyQ2ZVeOhBCn11XmoBXShBI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93ZXZv/bHZlci1wcm9qZWN0/LWltYWdlcy5zMy51/cy13ZXN0LTEuYW1h/em9uYXdzLmNvbS8w/LjZwMjVnbHZueHN2/QW4tSW50cm9kdWN0/aW9uLXRvLUlQQy1B/LTYxMC1mb3ItRWxl/Y3Ryb25pY3MtUHJv/Y3VyZW1lbnQtUHJv/ZmVzc2lvbmFscy5q/cGc",
+            "original": "https://wevolver-project-images.s3.us-west-1.amazonaws.com/0.6p25glvnxsvAn-Introduction-to-IPC-A-610-for-Electronics-Procurement-Professionals.jpg",
+            "logo": false
+          },
+          "age": "April 22, 2026",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Umar Waseem",
+                "url": "https://www.wevolver.com/profile/umar.waseem"
+              }
+            ],
+            "date": "Apr 22, 2026",
+            "publisher": {
+              "type": "organization",
+              "name": "Wevolver",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/ydpr5ZCLMd2REyB8LW34_gYD_4RdNL4_8Y5LQTr4CzQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93ZXZv/bHZlci5jb20vbG9n/by1uYW1lLnBuZw",
+                "original": "https://wevolver.com/logo-name.png"
+              }
+            }
+          },
+          "extra_snippets": [
+            "The IPC (Association Connecting Electronics Industries) standard, IPC-A-610, serves as the globally recognized guideline for evaluating the acceptability of assembled printed circuit boards (PCBs). From consumer electronics to aerospace systems, IPC-A-610 provides detailed visual and written criteria for solder joints, component placement, cleanliness, and overall workmanship. Unlike process-focused standards, IPC-A-610 emphasizes inspection and final product quality, enabling engineers, inspectors, and manufacturers to maintain consistent acceptance criteria.",
+            "The IPC-A-610 standard, formally titled Acceptability of Electronic Assemblies, is the most widely adopted acceptance standard in the electronics industry for evaluating the quality of a PCB assembly. Rather than defining manufacturing processes, IPC-A-610 provides detailed visual inspection guidelines and acceptance criteria to classify conditions as acceptable, process indicators, or defects across a wide range of electronic products. It applies to both surface-mount assemblies and through-hole technology (THT), covering critical aspects such as solder joints, component mounting, terminal connections, fillet formation, wetting behaviour, and flux residues.",
+            "The IPC-A-610 standard defines clear condition categories to guide visual inspection and ensure consistent evaluation of PCB assembly quality across the electronics industry. In IPC-A-610J, these conditions are simplified into three categories — Acceptable, Process Indicator, and Defect. ... Acceptable condition meets the defined acceptance criteria and ensures reliable performance of the printed circuit board without requiring correction. While the appearance of solder joints or surface-mount components may not be visually perfect, they satisfy the required workmanship standards and pose no risk to product quality.",
+            "IPC-2221 provides design guidance for conductor spacing, current capacity, thermal management, and mechanical considerations on PCBs. It defines design classes (1, 2, 3) and establishes rules for trace widths, spacing, via design, and material selection. Designers use IPC-2221, along with IPC-A-610, to ensure that boards meet acceptability criteria after assembly. IPC-7093 offers guidance for bottom-termination components. It covers stencil design, solder paste deposition, component placement, reflow profile, cleaning, and inspection for BTCs."
+          ]
+        },
+        {
+          "title": "IPC A-610, Acceptability of Electronics Assemblies - Solder.net",
+          "url": "https://www.solder.net/ipc-a-610-acceptability-of-electronics-assemblies/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "IPC A-610, Acceptability of Electronics Assemblies, is the most widely used inspection standard in the electronics industry and has earned an international reputation as the source for end-product acceptance criteria for consumer and high reliability printed circuit assemblies.",
+          "profile": {
+            "name": "Solder",
+            "url": "https://www.solder.net/ipc-a-610-acceptability-of-electronics-assemblies/",
+            "long_name": "solder.net",
+            "img": "https://imgs.search.brave.com/FaIU2rwGgmgXf2IQ-QxbOyyexCdKuQOWCF_NAgICiMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODJiODI1ODlj/ZDNkYTM1YTM1N2Iw/M2YzNDFlYjlkOWZl/NmVkNWQ4YmRjMzky/NzFjODNkYzg3Yzlm/ZjUzMDc3Zi93d3cu/c29sZGVyLm5ldC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "solder.net",
+            "hostname": "www.solder.net",
+            "favicon": "https://imgs.search.brave.com/FaIU2rwGgmgXf2IQ-QxbOyyexCdKuQOWCF_NAgICiMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvODJiODI1ODlj/ZDNkYTM1YTM1N2Iw/M2YzNDFlYjlkOWZl/NmVkNWQ4YmRjMzky/NzFjODNkYzg3Yzlm/ZjUzMDc3Zi93d3cu/c29sZGVyLm5ldC8",
+            "path": "› ipc-a-610-acceptability-of-electronics-assemblies"
+          },
+          "extra_snippets": [
+            "IPC A-610, Acceptability of Electronics Assemblies, is the most widely used inspection standard in the electronics industry and has earned an international reputation as the source for end-product acceptance criteria for consumer and high reliability printed circuit assemblies.",
+            "However, this course does include a hands-on section as part of the inspection module training related to the inspection of wires and terminals, as well as printed circuit boards. Please see the \"Assembly Courses\" for hand-on training. - Be able to make correct “accept/reject” decisions for the appropriate class/classes of production based on the acceptability requirements of IPC-A-610",
+            "The IPC-A-610 Operator/Inspector Training & Certification course provides individuals with a portable credential that represents their understanding of IPC-A-610. When completed and meeting the requirements the students become a certified IPC specialist. This IPC 610 Class course of designed for those associates involved in many facets of the electronics assembly business."
+          ]
+        },
+        {
+          "title": "IPC-A-610 Acceptability of Electronic Assemblies",
+          "url": "https://www.superengineer.net/blog/ipc-a-610",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Developed by IPC, it provides consistent quality requirements and inspection criteria that can be applied across the global supply chain. IPC-A-610 covers various aspects of assembled electronics, including soldering anomalies (e.g., nonwetting and dewetting), mechanical assembly, wiring, THT, SMT, component damage, and PCB appearance issues...",
+          "page_age": "2025-08-17T22:00:00",
+          "profile": {
+            "name": "Superengineer",
+            "url": "https://www.superengineer.net/blog/ipc-a-610",
+            "long_name": "superengineer.net",
+            "img": "https://imgs.search.brave.com/zJ2BbtwLx8B7jozFsiEJDJVegpVsxfCT2C5iO71WCJ0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJlZWQ4MjM4/ZjY5ZmM4NzVmNjhk/YzIxMTk5MzcyYWFk/NDBkNzkyZWFhZjUy/ZWUwMjJjOGNmNzI3/OTU3YTdmMS93d3cu/c3VwZXJlbmdpbmVl/ci5uZXQv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "superengineer.net",
+            "hostname": "www.superengineer.net",
+            "favicon": "https://imgs.search.brave.com/zJ2BbtwLx8B7jozFsiEJDJVegpVsxfCT2C5iO71WCJ0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJlZWQ4MjM4/ZjY5ZmM4NzVmNjhk/YzIxMTk5MzcyYWFk/NDBkNzkyZWFhZjUy/ZWUwMjJjOGNmNzI3/OTU3YTdmMS93d3cu/c3VwZXJlbmdpbmVl/ci5uZXQv",
+            "path": "› blog  › ipc-a-610"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/oQj4qH3oW_hfOlWkURA3viGOdFoXdL9qmsru6Y7nr28/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/c3VwZXJlbmdpbmVl/ci5uZXQvX2VuL2Js/b2cvaXBjLWEtNjEw/L2lwYy1hLTYxMC5q/cGc",
+            "original": "https://www.superengineer.net/_en/blog/ipc-a-610/ipc-a-610.jpg",
+            "logo": false
+          },
+          "age": "August 17, 2025",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Zbigniew Huber"
+              }
+            ],
+            "date": "Nov 04, 2024"
+          },
+          "extra_snippets": [
+            "The IPC standard defines visual inspection criteria for electronic assemblies. Electronic assemblies refer to PCBs with soldered components. Sometimes terms like electronic modules or packets are also used, and the acronym PCBA (Printed Circuit Board Assembly) is common. Inspection criteria include conditions (acceptable, process indicator, defect), which cover various observations that may arise during the inspection of assembled electronics.",
+            "For unusual PCB designs, non-standard manufacturing processes, or specific soldering methods, custom criteria should be developed.[2] IPC-A-610 provides key principles for inspecting assembled PCBs.",
+            "Developed by IPC, it provides consistent quality requirements and inspection criteria that can be applied across the global supply chain. IPC-A-610 covers various aspects of assembled electronics, including soldering anomalies (e.g., nonwetting and dewetting), mechanical assembly, wiring, THT, SMT, component damage, and PCB appearance issues.",
+            "It also does not define SMT reflow profiles or wave soldering profiles. IPC-A-610 is one of many standards for electronic assemblies. The second chapter of this document references numerous related standards from IPC, JEDEC, and IEC. IPC-A-610 may be used when the following conditions are met: The PCB design adheres to established standards, like the IPC-2220 series or similar."
+          ]
+        },
+        {
+          "title": "Decoding IPC A 610: A Beginner's Guide to Electronic Assembly Acceptability",
+          "url": "https://www.allpcb.com/allelectrohub/decoding-ipc-a-610-a-beginners-guide-to-electronic-assembly-acceptability",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Whether you&#x27;re hand-soldering ... IPC-A-610, titled Acceptability of Electronic Assemblies, outlines visual inspection criteria for completed electronic assemblies....",
+          "page_age": "2026-04-27T00:00:00",
+          "profile": {
+            "name": "ALLPCB",
+            "url": "https://www.allpcb.com/allelectrohub/decoding-ipc-a-610-a-beginners-guide-to-electronic-assembly-acceptability",
+            "long_name": "allpcb.com",
+            "img": "https://imgs.search.brave.com/BRraUVl6w_VcR1NWW-IvMRXQ57iqziPCXLR-qdF39fg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDliMDdhMDUx/N2E1Mzc2YTgzYTM2/ZGE5ZjAyZDMzMTVh/YzJiN2NlZGJlZmQx/NzkzOWYwYjU3ODUw/ZWMxNTMwYS93d3cu/YWxscGNiLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "allpcb.com",
+            "hostname": "www.allpcb.com",
+            "favicon": "https://imgs.search.brave.com/BRraUVl6w_VcR1NWW-IvMRXQ57iqziPCXLR-qdF39fg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDliMDdhMDUx/N2E1Mzc2YTgzYTM2/ZGE5ZjAyZDMzMTVh/YzJiN2NlZGJlZmQx/NzkzOWYwYjU3ODUw/ZWMxNTMwYS93d3cu/YWxscGNiLmNvbS8",
+            "path": "  › allelectrohub  › pcb assembly  › decoding ipc a 610: a beginner's guide to electronic assembly acceptability"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/pbxqr0ZOAie_x_4FKQjLEV88MEoqK42HQKDJoRSOanI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9qcGZp/bGUxLm9zcy1hY2Nl/bGVyYXRlLmFsaXl1/bmNzLmNvbS9hbGxw/Y2IvYXJ0aWNsZWNv/dmVyLzIwMjYvNC8y/NS8yMDI2MDQyNTAx/MjAyMjkxMTg2NzI4/X2hvYmJ5aXN0c29s/ZGVyaW5ncGNiX3Qu/d2VicA",
+            "original": "https://jpfile1.oss-accelerate.aliyuncs.com/allpcb/articlecover/2026/4/25/2026042501202291186728_hobbyistsolderingpcb_t.webp",
+            "logo": false
+          },
+          "age": "April 27, 2026",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Adrian"
+              }
+            ],
+            "date": "Apr 27, 2026",
+            "publisher": {
+              "type": "organization",
+              "name": "ALLPCB",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/Cu8vfZ1n4a930Romip-CPXyaS_NoHLlciFJwdaHcw6Y/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/YWxscGNiLmNvbS9p/bWcvaW1nL2xvZ28u/cG5n",
+                "original": "https://www.allpcb.com/img/img/logo.png"
+              }
+            }
+          },
+          "extra_snippets": [
+            "Electronic hobbyists often dive into assembling printed circuit boards (PCBs) for fun projects like custom gadgets, Arduino shields, or Raspberry Pi expansions. Ensuring your assembly meets basic quality standards can make the difference between a reliable build and one that fails prematurely. This is where IPC-A-610 comes in, serving as a foundational guide for electronic assembly acceptability. In this IPC-A-610 introduction, we break down the basics for beginners, explaining how it helps you inspect solder joints, component placement, and more.",
+            "Whether you're hand-soldering through-hole parts or experimenting with surface-mount components, grasping IPC-A-610 basics empowers confident builds. IPC-A-610, titled Acceptability of Electronic Assemblies, outlines visual inspection criteria for completed electronic assemblies.",
+            "By referencing these classes, you align your work with industry-accepted norms right from your workbench. In the world of DIY electronics, a shaky solder joint or misaligned component can turn an exciting project into a frustrating debug session. IPC-A-610 provides a clear benchmark, explaining electronic assembly standards in a way that prevents common pitfalls and enhances reliability. For beginners, it demystifies what \"good enough\" looks like, reducing guesswork during inspections.",
+            "Choosing the right class upfront guides your soldering technique and inspection focus. This classification system ensures your efforts scale with ambition, from simple LED blinkers to robust sensor arrays. Solder joints form the backbone of any assembly, and IPC-A-610 details their ideal shape, coverage, and anomalies. Acceptable joints show smooth concave fillets with full wetting on leads and pads, free from cracks or excessive voids."
+          ]
+        },
+        {
+          "title": "IPC-A-610 Standard: A Guide to Electronics Assembly Quality",
+          "url": "https://www.a2zems.com/post/ipc-a-610-standard",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The standard outlines detailed requirements for solder joints, component placement, cleanliness, marking, and conformal coating. IPC-A-610 is often required for aerospace, medical, defense, and industrial electronics, where failure is not an option.",
+          "page_age": "2025-12-11T11:00:22",
+          "profile": {
+            "name": "A2Z EMS",
+            "url": "https://www.a2zems.com/post/ipc-a-610-standard",
+            "long_name": "a2zems.com",
+            "img": "https://imgs.search.brave.com/iGWOWUjz0M3EMAcaghYmvZCN5nUibh7nMqtdtKKS_-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWFhNzQ0YWIy/NjUwYTdmZGZlNzlh/ZGI4M2EzMmQ4NTFm/OWY0MTlhNTk1MGYw/M2JlMGJhN2RjY2Nh/N2YzMTEwZi93d3cu/YTJ6ZW1zLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "a2zems.com",
+            "hostname": "www.a2zems.com",
+            "favicon": "https://imgs.search.brave.com/iGWOWUjz0M3EMAcaghYmvZCN5nUibh7nMqtdtKKS_-U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWFhNzQ0YWIy/NjUwYTdmZGZlNzlh/ZGI4M2EzMmQ4NTFm/OWY0MTlhNTk1MGYw/M2JlMGJhN2RjY2Nh/N2YzMTEwZi93d3cu/YTJ6ZW1zLmNvbS8",
+            "path": "  › home  › parent page  › current page"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/HvCXkLceS_BssLlWEXafAX7tcNQYNjbn8b2bctM8fNI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMud2l4c3RhdGlj/LmNvbS9tZWRpYS9h/NzMyNTRfNTlhNTRl/NTdhMzk1NGNhZTg0/ZmIzYzZlZjlhYmYz/NDV-bXYyLndlYnAv/djEvZmlsbC93XzEw/MDAsaF81NjMsYWxf/YyxxXzg1LHVzbV8w/LjY2XzEuMDBfMC4w/MS9hNzMyNTRfNTlh/NTRlNTdhMzk1NGNh/ZTg0ZmIzYzZlZjlh/YmYzNDV-bXYyLndl/YnA",
+            "original": "https://static.wixstatic.com/media/a73254_59a54e57a3954cae84fb3c6ef9abf345~mv2.webp/v1/fill/w_1000,h_563,al_c,q_85,usm_0.66_1.00_0.01/a73254_59a54e57a3954cae84fb3c6ef9abf345~mv2.webp",
+            "logo": false
+          },
+          "age": "December 11, 2025",
+          "extra_snippets": [
+            "In electronic contract manufacturing, product quality sets the foundation for performance, safety, and long-term reliability. As electronic devices become more complex, the demand for consistent and dependable PCB assemblies continues to grow. The IPC-A-610 standard provides a widely accepted framework for evaluating the quality of electronic assemblies.For OEMs and contract manufacturers, IPC-A-610 helps create a shared language around workmanship standards.",
+            "Discover the IPC-A-610 standard and how it sets the benchmark for electronic assembly quality, workmanship classes, and reliable PCB production.",
+            "The standard outlines detailed requirements for solder joints, component placement, cleanliness, marking, and conformal coating. IPC-A-610 is often required for aerospace, medical, defense, and industrial electronics, where failure is not an option. ... IPC-A-610, also titled Acceptability of Electronic Assemblies, is an industry-developed standard created by IPC (Association Connecting Electronics Industries). It defines inspection criteria for finished electronic PCB assemblies",
+            "The IPC-A-610 standard defines multiple inspection and quality requirements for PCB assemblies. These include: ... By setting clear boundaries between acceptable and defective conditions, the standard helps reduce ambiguity and improve inspection accuracy. Soldering plays a major role in the performance and lifespan of electronic assemblies."
+          ]
+        },
+        {
+          "title": "IPC-A-610 PCB Assembly Standards: Acceptability Requirements for Electronic Assemblies - HilPCB",
+          "url": "https://hilpcb.com/en/blog/ipc-a610-pcb/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "IPC-A-610 PCB assembly standards establish the definitive criteria for determining whether electronic assemblies meet acceptable quality levels, providing detailed visual and measurable requirements for solder joints, component placement, and ...",
+          "page_age": "2025-07-03T00:00:00",
+          "profile": {
+            "name": "HilPCB",
+            "url": "https://hilpcb.com/en/blog/ipc-a610-pcb/",
+            "long_name": "hilpcb.com",
+            "img": "https://imgs.search.brave.com/hYBH53FHXuVvYvoB2PlFvGGWlpu7Rk8Z3-d_iHOLZCM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjRhMjVhOTky/Njk0NGY2YWVhYWY3/N2FmY2IyMTdiNDk3/YjM1MDEyMzQ0Yzg2/ZDU3ZDA0NDZiNWRk/MmIzMzYxYi9oaWxw/Y2IuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "hilpcb.com",
+            "hostname": "hilpcb.com",
+            "favicon": "https://imgs.search.brave.com/hYBH53FHXuVvYvoB2PlFvGGWlpu7Rk8Z3-d_iHOLZCM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjRhMjVhOTky/Njk0NGY2YWVhYWY3/N2FmY2IyMTdiNDk3/YjM1MDEyMzQ0Yzg2/ZDU3ZDA0NDZiNWRk/MmIzMzYxYi9oaWxw/Y2IuY29tLw",
+            "path": "  › home  › blog  › ipc-a-610 pcb assembly standards: acceptability requirements for electronic assemblies"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/jEZ7qCnlJEcKobrGPtMdHPqStUbOa2fRMEru4-e119A/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9oaWxw/Y2IuY29tL2Fzc2V0/cy9pbWcvYmxvZ3Mv/MjAyNS8wNy9pcGMt/YTYxMC1wY2Iud2Vi/cA",
+            "original": "https://hilpcb.com/assets/img/blogs/2025/07/ipc-a610-pcb.webp",
+            "logo": false
+          },
+          "age": "July 3, 2025",
+          "organization": {
+            "type": "organization",
+            "name": "HilPCB",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "IPC-A-610 PCBPCB Assembly StandardsSolder Joint QualityElectronic AssemblyQuality InspectionAssembly Acceptance Criteria · The difference between a reliable electronic product and a field failure often lies in the quality of PCB assembly processes and inspection procedures. When solder joints fail, components shift during operation, or assembly defects cause intermittent faults, the resulting warranty claims, customer dissatisfaction, and brand damage can far exceed the cost of proper quality control.",
+            "IPC-A-610 PCB assembly standards establish the definitive criteria for determining whether electronic assemblies meet acceptable quality levels, providing detailed visual and measurable requirements for solder joints, component placement, and overall assembly quality. Our IPC-A-610 PCB assembly processes implement comprehensive quality inspection procedures and acceptance criteria that ensure every assembled board meets the stringent requirements for reliable electronic products, minimizing field failures and maximizing customer satisfaction.",
+            "The standard defines three distinct quality classes—Class 1 for general electronic products, Class 2 for dedicated service electronics, and Class 3 for high-performance applications—each with progressively stricter acceptance criteria that match reliability requirements with appropriate quality levels. Our implementation incorporates automated inspection systems that verify component placement accuracy, solder joint quality, and overall assembly integrity against IPC-A-610 criteria.",
+            "Solder joint quality represents the most critical aspect of IPC-A-610 compliance, directly affecting both electrical performance and mechanical reliability. The standard provides detailed criteria for evaluating solder joint shape, wetting characteristics, and dimensional requirements that ensure reliable connections throughout the product's operational lifetime. Our inspection procedures incorporate both automated optical inspection (AOI) and skilled human inspectors trained to IPC-A-610 standards, ensuring comprehensive evaluation of solder joint quality for multilayer PCB assemblies and complex backplane PCB configurations."
+          ]
+        },
+        {
+          "title": "Complete Guide to IPC A-610 Standards for Electronics Manufacturing",
+          "url": "https://www.ourpcb.com/blog/ipc-a-610",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "While IPC-A-610 covers the visual ... stress, etc.). Visual acceptability primarily looks at features like the shape, size, and workmanship of the solder joints, component placement, and PCB cleanliness....",
+          "profile": {
+            "name": "OurPCB",
+            "url": "https://www.ourpcb.com/blog/ipc-a-610",
+            "long_name": "ourpcb.com",
+            "img": "https://imgs.search.brave.com/xseud9KzR_MEP92ZSqpPZ4kPglMghxUL-RlFJu6Alv0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWRlZTRmZmU3/NDczYjc4ZDEzMzM3/MWRhZmE1YmQ3ZTUw/MzM4NzJmYzcyZjll/YzU4ZWY2YzE1Nzlk/MDYyYmU1NS93d3cu/b3VycGNiLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "ourpcb.com",
+            "hostname": "www.ourpcb.com",
+            "favicon": "https://imgs.search.brave.com/xseud9KzR_MEP92ZSqpPZ4kPglMghxUL-RlFJu6Alv0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWRlZTRmZmU3/NDczYjc4ZDEzMzM3/MWRhZmE1YmQ3ZTUw/MzM4NzJmYzcyZjll/YzU4ZWY2YzE1Nzlk/MDYyYmU1NS93d3cu/b3VycGNiLmNvbS8",
+            "path": "› blog  › ipc-a-610"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Z_NDAbYqAcMFVJwdxV1MzemFZ-r70hD8bj57ZYbKSJE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/b3VycGNiLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMC8w/Mi9jcm9wcGVkLWNy/b3BwZWQtcGNiLW1h/bnVmYWN0dXJlci1s/b2dvLnBuZw",
+            "original": "https://www.ourpcb.com/wp-content/uploads/2020/02/cropped-cropped-pcb-manufacturer-logo.png",
+            "logo": true
+          },
+          "organization": {
+            "type": "organization",
+            "name": "OurPCB",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "The IPC-A-610 standard outlines the specific requirements for evaluating factors like component placement, soldering, marking, and PCBA cleaning. Therefore, its purpose is to establish globally acceptable criteria for electronic assemblies. When PCB manufacturers and assemblers follow these outlined approaches for inspection and evaluation, they can ensure their products meet acceptable levels of appearance and functionality.",
+            "While IPC-A-610 covers the visual acceptability of electronic assemblies, it does not address aspects like design rules and testing (functional, environmental stress, etc.). Visual acceptability primarily looks at features like the shape, size, and workmanship of the solder joints, component placement, and PCB cleanliness.",
+            "This revision is a must-have for operators, inspectors, and all other technicians with an interest in the acceptance criteria for electronic assemblies. After training its staff, a company can implement and use IPC-A-610 by setting clear workmanship, component mounting, soldering, and inspection criteria.",
+            "Our team ensures that all assemblies meet IPC-A-610 criteria, guaranteeing reliability and performance for applications in industries such as aerospace and medical. The IPC-A-610 standard is synonymous with quality. Its widespread use in various industries like consumer electronics, medicine, and aerospace has made it the de facto end-product acceptance criteria for highly reliable PCBAs. Since it is the most widely used inspection standard in the electronics industry, IPC-A-610 has earned a reputation internationally, and we want to analyze why most industries use it."
+          ]
+        },
+        {
+          "title": "IPC-A-610 Standard: Acceptance Classes, Inspection Methods & Compliance Guide",
+          "url": "https://www.digi-electronics.com/en/blogs/ipc-a-610-standard-acceptance-classes-inspection-methods-compliance-guide/409.html",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "IPC-A-610 defines the acceptability requirements for electronic assemblies. It establishes visual and workmanship criteria for evaluating solder joints, component placement, PCB condition, cleanliness, labeling, and protective coatings.",
+          "page_age": "2026-02-24T02:38:32",
+          "profile": {
+            "name": "Digi-electronics",
+            "url": "https://www.digi-electronics.com/en/blogs/ipc-a-610-standard-acceptance-classes-inspection-methods-compliance-guide/409.html",
+            "long_name": "digi-electronics.com",
+            "img": "https://imgs.search.brave.com/ZneGDNHt3i2MRMK8KREXuBwq9mrYRIeonOKOoMU3s6k/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDNjMDdlMDBi/OWY3ZjAwOTIxY2Rj/OTJhNzJkNTM1YTVk/MzhkNjMyMzYxNjk5/Mjg2YTQzYTNiODhm/YTJkYjUxOS93d3cu/ZGlnaS1lbGVjdHJv/bmljcy5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "digi-electronics.com",
+            "hostname": "www.digi-electronics.com",
+            "favicon": "https://imgs.search.brave.com/ZneGDNHt3i2MRMK8KREXuBwq9mrYRIeonOKOoMU3s6k/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDNjMDdlMDBi/OWY3ZjAwOTIxY2Rj/OTJhNzJkNTM1YTVk/MzhkNjMyMzYxNjk5/Mjg2YTQzYTNiODhm/YTJkYjUxOS93d3cu/ZGlnaS1lbGVjdHJv/bmljcy5jb20v",
+            "path": "› en  › blogs  › ipc-a-610-standard-acceptance-classes-inspection-methods-compliance-guide  › 409.html"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Qbn8rG56hFEx6-s-H-0LlTIEPLmd2ZcBtMxkIAuhSIk/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9tZWRp/YXMuZGlnaS1lbGVj/dHJvbmljcy5jb20v/YmxvZ3MvOTgyOTU5/OGUtNzYyNi00ZDRj/LTk3YzAtMGRlM2Zk/Yzg5YTU0LnBuZw",
+            "original": "https://medias.digi-electronics.com/blogs/9829598e-7626-4d4c-97c0-0de3fdc89a54.png",
+            "logo": false
+          },
+          "age": "February 24, 2026",
+          "extra_snippets": [
+            "IPC-A-610 serves as a globally recognized standard for evaluating the quality and acceptability of electronic assemblies. By defining clear visual and workmanship criteria, it helps standardize inspection across industries and product types. From solder joints and component placement to cleanliness and labeling, the standard establishes measurable requirements that support reliability, performance, and consistent manufacturing outcomes in PCB assembly production.",
+            "IPC-A-610 defines the acceptability requirements for electronic assemblies. It establishes visual and workmanship criteria for evaluating solder joints, component placement, PCB condition, cleanliness, labeling, and protective coatings.",
+            "Misalignment affecting solder integrity or mechanical stability is not acceptable. Structural elements are evaluated for durability and stability, including: ... These criteria support long-term mechanical performance. While IPC/WHMA-A-620 addresses cable assemblies, IPC-A-610 covers wire terminations within PCB assemblies.",
+            "It reduces inspection variability by setting clear thresholds for soldering, placement, cleanliness, marking, and mechanical conditions. Since acceptability depends on Class 1, 2, or 3, the target class should be defined early and reflected in inspection procedures. When paired with J-STD-001 process controls, IPC-A-610 supports repeatable manufacturing and reliable PCB assembly outcomes."
+          ]
+        },
+        {
+          "title": "IPC-A-610 Class 1, 2, & 3 explained: Choosing the right standard for your PCBA",
+          "url": "https://www.escatec.com/blog/which-ipc-a-610-class-is-best-for-your-printed-circuit-board-assembly",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "It covers solder joints, component placement, cleanliness, conformal coating, and mechanical integrity, and is used by EMS providers and OEMs worldwide to agree on what constitutes an acceptable assembly.",
+          "page_age": "2026-05-21T11:04:24",
+          "profile": {
+            "name": "Escatec",
+            "url": "https://www.escatec.com/blog/which-ipc-a-610-class-is-best-for-your-printed-circuit-board-assembly",
+            "long_name": "escatec.com",
+            "img": "https://imgs.search.brave.com/vwAJ2vHW3uMHPpIdUh_PpKC8nluo5kOj3nKrQP6lbwk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDkyMjkzZWJm/NWI0ZWY3YWYzZGE1/NGNhMDA4ZGU5MDBi/NzkyYjY1ZWYwYzdi/MzA3NjhlZDZjMWNm/MzM5YmI0MC93d3cu/ZXNjYXRlYy5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "escatec.com",
+            "hostname": "www.escatec.com",
+            "favicon": "https://imgs.search.brave.com/vwAJ2vHW3uMHPpIdUh_PpKC8nluo5kOj3nKrQP6lbwk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDkyMjkzZWJm/NWI0ZWY3YWYzZGE1/NGNhMDA4ZGU5MDBi/NzkyYjY1ZWYwYzdi/MzA3NjhlZDZjMWNm/MzM5YmI0MC93d3cu/ZXNjYXRlYy5jb20v",
+            "path": "› blog  › which-ipc-a-610-class-is-best-for-your-printed-circuit-board-assembly"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/HvUdufo5ybXZpiGIgENP-wYD0NWcs2tdQPdcnkkSujg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXNjYXRlYy5jb20v/aHViZnMvSVBDLUEt/NjEwX2Jsb2cuanBl/Zw",
+            "original": "https://www.escatec.com/hubfs/IPC-A-610_blog.jpeg",
+            "logo": false
+          },
+          "age": "3 weeks ago",
+          "extra_snippets": [
+            "It is used on production lines by inspectors, quality engineers, and EMS providers as the objective reference for accepting or rejecting a finished assembly. IPC-A-610 works in conjunction with related standards, including J-STD-001 (soldering requirements), IPC-A-600 (PCB acceptability), and IPC-6012 (rigid PCB qualification).",
+            "IPC-A-610, titled 'Acceptability of Electronic Assemblies', is the globally recognised standard developed by IPC that defines visual inspection criteria, workmanship standards, and acceptance requirements for · PCBAs. It covers solder joints, component placement, cleanliness, conformal coating, and mechanical integrity, and is used by EMS providers and OEMs worldwide to agree on what constitutes an acceptable assembly.",
+            "The class strikes a practical balance between quality assurance and manufacturing throughput, making it the default choice for most PCBA programmes. Class 3 is the most stringent classification, reserved for assemblies where failure could result in severe consequences like loss of life, serious injury, mission failure, or system-level catastrophe. There is zero tolerance for workmanship defects that might pass under Class 2. ... To achieve Class 3, every aspect of production must meet the IPC-A-610J acceptance criteria: laminate selection, plating thickness, solder joint geometry, cleanliness, conformal coating, and inspection processes.",
+            "IPC-A-610, formally titled 'Acceptability of Electronic Assemblies', is published by the · IPC (Association Connecting Electronics Industries). It is the most widely used acceptance standard in the electronics manufacturing industry, covering visual inspection criteria, workmanship standards, and quality assurance requirements for ... Divided into three classes—Class 1, Class 2, and Class 3—the standard spans solder joint quality, component placement and orientation, cleanliness, conformal coating, mechanical integrity, and marking."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

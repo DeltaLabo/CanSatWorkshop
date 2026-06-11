@@ -1,0 +1,46 @@
+{
+  "url": "https://standards.nasa.gov/standard/NASA/NASA-STD-87394",
+  "saved_at": "2026-06-11T22:20:24.582697+00:00",
+  "reason": "confidence_below_0.55",
+  "warnings": [],
+  "final_url": "https://standards.nasa.gov/standard/NASA/NASA-STD-87394",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "content_length_header": null,
+  "response_headers": {
+    "Content-Type": "text/html; charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Date": "Thu, 11 Jun 2026 22:20:23 GMT",
+    "x-real-client-ip": "201.206.80.145",
+    "Content-Encoding": "gzip",
+    "Server": "nginx",
+    "Vary": "Accept-Encoding",
+    "Cache-Control": "must-revalidate, no-cache, private",
+    "X-Drupal-Dynamic-Cache": "MISS",
+    "X-UA-Compatible": "IE=edge",
+    "Content-language": "en",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+    "X-Generator": "Drupal 9 (https://www.drupal.org)",
+    "X-Drupal-Cache": "HIT",
+    "Via": "1.1 4c86fe809fd871f18a3eb753dceb970c.cloudfront.net (CloudFront)",
+    "Referrer-Policy": "same-origin",
+    "Strict-Transport-Security": "max-age=31536000",
+    "X-XSS-Protection": "1; mode=block",
+    "X-Cache": "Miss from cloudfront",
+    "X-Amz-Cf-Pop": "MIA50-P6",
+    "X-Amz-Cf-Id": "2ZymQzAk88nc7Xb0IDBbnWlwNT5chYxPPpfMsUyUHjlDaJ5p9kdGOw=="
+  },
+  "extraction": {
+    "parser": "trafilatura-markdown",
+    "title": "Workmanship Standard for Crimping, Interconnecting Cables, Harnesses, and Wiring",
+    "confidence": 0.522,
+    "word_count": 92,
+    "metadata": {
+      "date": "2022-04-13",
+      "sitename": "standards.nasa.gov"
+    }
+  }
+}

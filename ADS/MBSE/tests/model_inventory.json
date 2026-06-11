@@ -1,0 +1,274 @@
+{
+  "corpus": "ADS MBSE-wide verification corpus",
+  "root": "ADS/MBSE",
+  "generated_from": "D2 views under ADS/MBSE/v0.1, v0.2, v0.3, v1.0",
+  "versions": {
+    "v0.1": {
+      "summary": "GPS-only ADS prototype on XIAO ESP32 with Serial0 logging to PC.",
+      "views": [
+        "ADS/MBSE/v0.1/ADS_v0.1_view1_physical.d2",
+        "ADS/MBSE/v0.1/ADS_v0.1_view2_logical.d2",
+        "ADS/MBSE/v0.1/ADS_v0.1_view3_functional_allocation.d2",
+        "ADS/MBSE/v0.1/ADS_v0.1_view4_gps_position_chain.d2",
+        "ADS/MBSE/v0.1/ADS_v0.1_view5_serial_logging_chain.d2"
+      ],
+      "physical_components": [
+        "UBX-G7020-KT GPS",
+        "XIAO ESP32",
+        "PC"
+      ],
+      "physical_links": [
+        "GPS-XIAO UART cables",
+        "GPS-XIAO 3V3",
+        "GPS-XIAO GND",
+        "XIAO-PC USB-C cable"
+      ],
+      "logical_components": [
+        "ADS GPS Sensing",
+        "Setup",
+        "Loop"
+      ],
+      "functions": [
+        "Measure longitude",
+        "Measure latitude",
+        "Send payload",
+        "Get UBX-G7020-KT init state",
+        "Collect peripheral init states",
+        "Init Serial0 and Serial1",
+        "Read and store lat, lon",
+        "Get lat",
+        "Get lon",
+        "Collect measurements",
+        "Log via Serial0",
+        "Monitor serial port"
+      ],
+      "constraints": [
+        "Position accuracy < 5 m",
+        "Collect measurements at 5 Hz",
+        "No blocking operations besides I2C or UART comms",
+        "Read/process or read/calculate pairs use Variable Getter template",
+        "Process/calculate functions < 5 ms",
+        "UART read functions timeout <= 5 ms"
+      ],
+      "chains": [
+        "GPS position chain",
+        "Serial logging chain"
+      ]
+    },
+    "v0.2": {
+      "summary": "GPS + ICM20948 IMU prototype on XIAO ESP32 with GPS, IMU, attitude, init, and Serial0 logging chains.",
+      "views": [
+        "ADS/MBSE/v0.2/ADS_v0.2_view1_physical.d2",
+        "ADS/MBSE/v0.2/ADS_v0.2_view2_logical.d2",
+        "ADS/MBSE/v0.2/ADS_v0.2_view3_functional_allocation.d2",
+        "ADS/MBSE/v0.2/ADS_v0.2_view4_gps_position_chain.d2",
+        "ADS/MBSE/v0.2/ADS_v0.2_view5_angular_velocity_chain.d2",
+        "ADS/MBSE/v0.2/ADS_v0.2_view6_attitude_estimation_chain.d2",
+        "ADS/MBSE/v0.2/ADS_v0.2_view7_peripheral_initialisation_chain.d2",
+        "ADS/MBSE/v0.2/ADS_v0.2_view8_serial_logging_chain.d2"
+      ],
+      "physical_components": [
+        "UBX-G7020-KT GPS",
+        "XIAO ESP32",
+        "ICM20948 IMU",
+        "PC"
+      ],
+      "physical_links": [
+        "GPS-XIAO UART cables",
+        "GPS-XIAO 3V3",
+        "GPS-XIAO GND",
+        "IMU-XIAO I2C cables",
+        "IMU-XIAO 3V3",
+        "IMU-XIAO GND",
+        "XIAO-PC USB-C cable"
+      ],
+      "logical_components": [
+        "ADS GPS Sensing",
+        "ADS Kinematic Sensing",
+        "Setup",
+        "Loop"
+      ],
+      "functions": [
+        "Measure longitude",
+        "Measure latitude",
+        "Send payload",
+        "Measure angular velocities",
+        "Measure accelerations",
+        "Measure magnetic field intensities",
+        "Respond to I2C Requests",
+        "Get ICM20948 init state",
+        "Get UBX-G7020-KT init state",
+        "Collect peripheral init states",
+        "Init Serial0 and Serial1",
+        "Read and store lat, lon",
+        "Read angular velocities",
+        "Read accelerations",
+        "Read field intensities",
+        "Get lat",
+        "Get lon",
+        "Process angular velocities",
+        "Process accelerations",
+        "Calculate pitch, roll, yaw",
+        "Collect measurements",
+        "Log via Serial0",
+        "Monitor serial port"
+      ],
+      "constraints": [
+        "Position accuracy < 5 m",
+        "Collect measurements at 5 Hz",
+        "Angular-rate accuracy < 30 deg/s",
+        "No blocking operations besides I2C or UART comms",
+        "Read/process or read/calculate pairs use Variable Getter template",
+        "Process/calculate functions < 5 ms",
+        "UART read functions timeout <= 5 ms"
+      ],
+      "chains": [
+        "GPS position chain",
+        "Angular velocity chain",
+        "Attitude estimation chain",
+        "Peripheral initialisation chain",
+        "Serial logging chain"
+      ]
+    },
+    "v0.3": {
+      "summary": "ADS PCB delivery containing GPS, ICM20948 IMU, and backplane connector.",
+      "views": [
+        "ADS/MBSE/v0.3/ADS_v0.3_view1_physical.d2"
+      ],
+      "physical_components": [
+        "ADS PCB",
+        "UBX-G7020-KT GPS",
+        "ICM20948 IMU",
+        "Backplane Connector"
+      ],
+      "physical_links": [
+        "GPS footprint",
+        "ICM20948 footprint",
+        "Connector footprint",
+        "UART traces",
+        "I2C traces",
+        "3V3 power traces"
+      ],
+      "logical_components": [],
+      "functions": [],
+      "constraints": [
+        "Can be manufactured in a Carvera Air CNC and soldered via reflow or manually"
+      ],
+      "chains": []
+    },
+    "v1.0": {
+      "summary": "Integrated CanSat architecture: ADS sensor PCB through Backplane PCB to OBCC XIAO ESP32-S3 running ADS Processing and OBCC collection.",
+      "views": [
+        "ADS/MBSE/v1.0/ADS_v1.0_view1_physical.d2",
+        "ADS/MBSE/v1.0/ADS_v1.0_view2_logical.d2",
+        "ADS/MBSE/v1.0/ADS_v1.0_view3_functional_allocation.d2",
+        "ADS/MBSE/v1.0/ADS_v1.0_view4_gps_position_chain.d2",
+        "ADS/MBSE/v1.0/ADS_v1.0_view5_angular_velocity_chain.d2",
+        "ADS/MBSE/v1.0/ADS_v1.0_view6_attitude_estimation_chain.d2",
+        "ADS/MBSE/v1.0/ADS_v1.0_view7_peripheral_initialisation_chain.d2"
+      ],
+      "physical_components": [
+        "CanSat",
+        "ADS Module",
+        "ADS PCB",
+        "UBX-G7020-KT GPS",
+        "ICM20948 IMU",
+        "ADS Backplane Connector",
+        "Backplane PCB",
+        "2mm 2x6 ADS Headers",
+        "Spine",
+        "2mm 2x6 OBCC Headers",
+        "OBCC Module",
+        "OBCC PCB",
+        "XIAO ESP32-S3",
+        "OBCC Backplane Connector"
+      ],
+      "physical_links": [
+        "ADS PCB screws",
+        "OBCC PCB screws",
+        "ADS module-backplane fixture",
+        "OBCC module-backplane fixture",
+        "GPS footprint",
+        "ICM20948 footprint",
+        "ADS connector footprint",
+        "GPS UART traces",
+        "GPS 3V3 traces",
+        "IMU I2C traces",
+        "IMU 3V3 traces",
+        "ADS backplane parallel cable",
+        "XIAO footprint",
+        "OBCC connector footprint",
+        "OBCC UART traces",
+        "OBCC I2C traces",
+        "OBCC 3V3 traces",
+        "OBCC backplane parallel cable",
+        "ADS header footprint",
+        "OBCC header footprint"
+      ],
+      "logical_components": [
+        "ADS GPS Sensing",
+        "ADS Kinematic Sensing",
+        "ADS Processing",
+        "OBCC"
+      ],
+      "component_exchanges": [
+        "GPS sensing to ADS Processing over UART",
+        "IMU sensing to ADS Processing over I2C",
+        "ADS Processing to OBCC via Pointers",
+        "ADS Processing to OBCC via Returns"
+      ],
+      "functions": [
+        "Measure longitude",
+        "Measure latitude",
+        "Send payload",
+        "Measure angular velocities",
+        "Measure accelerations",
+        "Measure magnetic field intensities",
+        "Respond to I2C Requests",
+        "Get UBX-G7020-KT init state",
+        "Read and store lat, lon",
+        "Read angular velocities",
+        "Read accelerations",
+        "Read field intensities",
+        "Get ICM20948 init state",
+        "Get lat",
+        "Get lon",
+        "Process angular velocities",
+        "Process accelerations",
+        "Calculate pitch, roll, yaw",
+        "Collect peripheral init states",
+        "Collect measurements"
+      ],
+      "constraints": [
+        "Position accuracy < 5 m",
+        "Angular-rate accuracy < 30 deg/s",
+        "No blocking operations besides I2C or UART comms",
+        "Read/process or read/calculate pairs use Variable Getter template",
+        "Process/calculate functions < 5 ms",
+        "UART read functions timeout <= 5 ms",
+        "I2C read functions timeout <= 5 ms"
+      ],
+      "chains": [
+        "GPS position chain",
+        "Angular velocity chain",
+        "Attitude estimation chain",
+        "Peripheral initialisation chain"
+      ]
+    }
+  },
+  "cross_version_test_scenarios": [
+    "ADS-GEN-T01 Model inventory and version-delta inspection",
+    "ADS-GEN-T02 Breadboard/prototype physical electrical integration",
+    "ADS-GEN-T03 PCB/backplane physical integration and workmanship",
+    "ADS-GEN-T04 GPS UART protocol and valid lat/lon storage",
+    "ADS-GEN-T05 GPS position accuracy and collection rate",
+    "ADS-GEN-T06 IMU I2C communication integrity",
+    "ADS-GEN-T07 Angular velocity accuracy",
+    "ADS-GEN-T08 Attitude estimation plausibility",
+    "ADS-GEN-T09 Peripheral initialization-state collection",
+    "ADS-GEN-T10 Software timing, timeout, and Variable Getter behavior",
+    "ADS-GEN-T11 Measurement delivery to consumer",
+    "ADS-GEN-T12 End-to-end CanSat mission-window run",
+    "ADS-GEN-T13 Tailored environmental/workmanship regression"
+  ]
+}

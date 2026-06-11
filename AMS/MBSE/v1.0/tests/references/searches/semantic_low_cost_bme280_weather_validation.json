@@ -1,0 +1,290 @@
+{
+  "query": "low cost weather station BME280 validation temperature pressure",
+  "total": 299,
+  "pages_retrieved": 1,
+  "results": [
+    {
+      "paperId": "331a177ddf5fb70b8ba68b1e68154a790a56dc39",
+      "doi": "10.1109/CONCAPAN66820.2025.11512349",
+      "title": "A Low-Cost LoRa-Enabled IoT Weather Station: A Case Study in an Aquaculture Field in El Salvador",
+      "authors": [
+        {
+          "name": "Werner David Meléndez Valle"
+        },
+        {
+          "name": "Carlos Pocasangre Jimenez"
+        },
+        {
+          "name": "O. O. Flores-Cortez"
+        },
+        {
+          "name": "Fernando Arévalo"
+        },
+        {
+          "name": "Jorge Alberto Angulo Díaz"
+        },
+        {
+          "name": "Gustavo Barahona Cerna"
+        },
+        {
+          "name": "Oswaldo Morales"
+        },
+        {
+          "name": "Carlos Silva Luna"
+        }
+      ],
+      "year": 2025,
+      "abstract": "This paper presents the design, implementation, and field validation of a low-cost meteorological station based on the Internet of Things (IoT) paradigm and LoRa (Long Range) communication technology. The system was installed at a rural tilapia aquaculture research site in El Salvador and designed to monitor atmospheric parameters, including ambient temperature, relative humidity, solar radiation, and wind speed. The development process followed a nine-stage layered IoT design methodology tailored to academic and low-resource environments. The architecture integrates a solar-powered ESP32-based sensor node with LoRa transmission capabilities, connected to a secure gateway and a cloud-based visualization platform using ThingsBoard. The results of a seven-day pilot deployment demonstrate consistent sensor behavior, a strong correlation with NASA POWER and WeatherAPI reference data, and a packet delivery rate exceeding $98 \\%$ in semi-obstructed rural conditions. The proposed system demonstrates that reliable, scalable environmental monitoring is achievable using open-source tools and affordable components, even under limited infrastructure. This work contributes to a replicable IoT framework with high potential for adaptation in agricultural and educational contexts throughout Latin America.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "9213fd4cede371a7041e16768a3d00f257172c92",
+      "doi": "10.1097/HP.0000000000001855",
+      "title": "Design of a Low-cost Radiation Weather Station",
+      "authors": [
+        {
+          "name": "Ryan A. Kim"
+        },
+        {
+          "name": "Andrew Kent"
+        },
+        {
+          "name": "Jordan D. Noey"
+        },
+        {
+          "name": "K. Kearfott"
+        }
+      ],
+      "year": 2025,
+      "abstract": "Abstract Combining a traditional weather station with radiation monitors draws the public’s attention to the magnitude of background radiation and its typical variation while providing early indications of unplanned radiological releases, such as nuclear power plant accidents or terrorist acts. Several networks of combined weather and radiation monitoring sensors exist, but these fail to be affordable for broad distribution. This work involves creating an affordable system to accumulate data from multiple locations into a single open-source database. The data collected should thus serve as a friendly database for high school students. The system is designed around an inexpensive sensor package featuring a cup anemometer, wind direction vane, and tip bucket rain gauge. A Raspberry Pi 4 microcomputer interfaces through RJ11 and RJ45 connectors to these and other sensors. Custom-designed circuits were implemented on printed circuit boards supporting sensor chips for temperature, pressure, humidity, and air electrical resistance. The outdoor board communicates with ultraviolet light, soil moisture, and temperature sensors, relaying data using wired connections indoors where a Raspberry Pi 4 and indoor circuit board are located. The indoor board employs wireless internet protocol to communicate with a homemade Geiger-Mueller counter and a consumer-grade temporal radon monitor. The system employs an internet connection to transfer data to a cloud-based storage system. This enables a website with continuously updated pages dedicated to each established system to display collected data. Weatherproofed fused filament fabricated indoor and outdoor cases were designed. Sensor functions were tested for functionality and accuracy.",
+      "citationCount": 1,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "0c9408d36aea59481d07ec641715397a71917d55",
+      "doi": "10.1109/ICATEEE68170.2025.11406417",
+      "title": "A Low-Cost IoT-Based Smart Weather Station for Real-Time Environmental Monitoring",
+      "authors": [
+        {
+          "name": "Abou-Bekr Nabil"
+        },
+        {
+          "name": "Benmiloud Mohammed"
+        },
+        {
+          "name": "Ameur Khaled"
+        },
+        {
+          "name": "Hadjaissa Abobakeur"
+        },
+        {
+          "name": "Zorig Abdelmalik"
+        },
+        {
+          "name": "Benfarhat Sara"
+        }
+      ],
+      "year": 2025,
+      "abstract": "This paper presents the design and implementation of a smart weather station using an ESP32 microcontroller and Internet of Things (IoT) technology. The system is designed to monitor key environmental parameters including temperature, humidity, pressure, altitude, solar irradiance, wind speed, and rainfall using dedicated sensors. Sensor data is transmitted to the IoT cloud platform for real-time monitoring and visualization on smartphones and computers. Moreover, the system is configured to trigger automated email alerts when predefined thresholds are exceeded (e.g., onset of rainfall or abnormal temperature rise), providing timely notifications to the user. This paper describes the system architecture, hardware integration, cloud-based connectivity, and alert mechanisms. This shows how low-cost microcontrollers and IoT platforms enable reliable and scalable environmental monitoring solutions.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "62e207ed398f03cf1234f863f6d89348c4c9b4b7",
+      "doi": "10.24857/rgsa.v19n10-035",
+      "title": "Design of a Low-Cost Mini-Weather Station Implementation in a Public University for Teaching and Research Purposes",
+      "authors": [
+        {
+          "name": "Lindomar Matias Gonçalves"
+        },
+        {
+          "name": "A. C. Freitas"
+        },
+        {
+          "name": "Juliano de Almeida Monte-Mor"
+        },
+        {
+          "name": "Ericson Silva"
+        },
+        {
+          "name": "Giovanni Verly Minarrine"
+        },
+        {
+          "name": "V. T. Signoretti"
+        }
+      ],
+      "year": 2025,
+      "abstract": "Introduction: Conventional stations become obsolete, compromising data collection for teaching and research. The proposed solution is an automated station with open-source hardware (Arduino, Raspberry Pi) and temperature, humidity, atmospheric pressure and precipitation sensors. Performance tests showed that the DHT22 sensor had average deviations of ±1.5 °C for temperature and ±5% for relative humidity, and BMP280 maintained deviations below 2 hPa. The digital rain gauge was effective in long-term measurements but limited in low-intensity rainfall. The system operated continuously and autonomously, powered by solar energy. The mean square error (RMSE) ranged between 1.5 and 5.0 for the main variables, validating its use in educational applications and non-critical monitoring. The total cost of the prototype was approximately R$ 4,259.04, but the project is modular and scalable, allowing replicability and integration of additional sensors (wind, solar radiation, air quality). In addition to resuming the systematic collection of meteorological data, the initiative promotes the practical application of interdisciplinary concepts and contributes to the teaching, research and development of sustainable technological solutions. \n  \nTheoretical Framework: The meteorological ministration is extremely important to act in a preventive way in climate variations, to reduce the impacts on society. \n  \nMethod: The methodology adopted for the development of the meteorological ministration was divided into four main stages: (1) diagnosis of the current station, (2) requirements gathering, (3) development and assembly of the system and (4) testing and validation of the data. \n  \nResults and Discussion: The proposed station is a flexible, scalable, and replicable platform that contributes to both teaching and applied research in climate monitoring. \n  \nResearch Implications: The research provides subsidies for the construction of a meteorological ministration with the appropriate instrumentation for the necessary surveys of weather variations. \n  \nOriginality/Value: The study contributes to the understanding of temporal variables and their interrelation, helping to determine the most relevant variables.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "750fb6f56b0c66e0e93380529ab4f538efeac46a",
+      "doi": "10.1109/JSTARS.2026.3683813",
+      "title": "Real-Time Estimation of Tropospheric Delay Measurements Using a Low-Cost Weather Station Integrated With the Hopfield Model",
+      "authors": [
+        {
+          "name": "Vitor S. Tavares"
+        },
+        {
+          "name": "L. P. Damaceno"
+        },
+        {
+          "name": "L. Tarelho"
+        },
+        {
+          "name": "D. V. Magalhães"
+        }
+      ],
+      "year": 2026,
+      "abstract": "This study presents preliminary results of the development of a meteorological microstation that calculates and can correct the tropospheric delay in the precise point positioning method with a global navigation satellite system (GNSS). Using the Hopfield model fed with atmospheric data collected by a BME280 sensor, zenith tropospheric delay (ZTD) was estimated based on temperature and pressure, and this ZTD was compared with the ZTD measured by GNSS signals processed on the UTC(LRTE) time scale. The tests were conducted over a period of 38 days using both the GPS and GLONASS satellite constellations. Time-series analysis confirms that models based on locally collected data reduced the noise amplitude associated with the GPS constellation by 98.74% and 99.67% for the GLONASS constellation, significantly improving the accuracy of applications that require high-precision positioning, as well as time and frequency synchronization.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "6b53a4fce1b5308a254bcf24bd91863e186a1bd3",
+      "doi": "10.62050/ljsir2025.v3n2.666",
+      "title": "Low-Cost Weather Station Assessment of Urban Heat Island Compared with ERA5 Reanalysis Data",
+      "authors": [
+        {
+          "name": "Abubakar Musa"
+        },
+        {
+          "name": "Taiwo Adewumi"
+        },
+        {
+          "name": "S. Muhammad"
+        },
+        {
+          "name": "O. J. Abimbola"
+        }
+      ],
+      "year": 2025,
+      "abstract": "Rapidly urbanizing regions usually experience urban heat islands with the attendant environmental and public health challenges. This study has used a low-cost LILYGO T-SIM7000G board with BME280 as a sensor to assess the UHI Index and compare such results with those obtained from the Copernicus ERA5-Land reanalysis data. The result shows a bias of about 1.36 in the UHI Index against the ERA5-Land data; this bias can be mitigated by applying a corrective offset. It was also observed that the ambient temperature in Lafia city has been consistently increasing between the years 1980 and 2024 by about 0.017 oC per year, with the highest increase recorded in the year 2024. The highest diurnal value of the UHI Index was observed around 1500 hours, while the lowest nighttime value was observed at around 0600 hours; this finding agrees with results as observed in other studies. This study has shown the importance of adopting low-cost components in monitoring environmental variables such as the UHI Index in low-income areas of the world, where funding may pose problems.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "0af493b5406dbd5d90f46657150df31888302a43",
+      "doi": "10.1109/iSES63344.2024.00043",
+      "title": "Open Source SoC Design for Low-Cost Micro Weather Station",
+      "authors": [
+        {
+          "name": "Namit Gupta"
+        },
+        {
+          "name": "Pravar Pathania"
+        },
+        {
+          "name": "Keshav Goel"
+        },
+        {
+          "name": "Tarun Sharma"
+        },
+        {
+          "name": "Sujay Deb"
+        }
+      ],
+      "year": 2024,
+      "abstract": "This paper proposes a modular SoC, allowing for the dynamic addition or removal of peripherals such as I2C, UART, and other interfaces. Our current implementation targets a remote weather station as a case study, utilizing an Ibex core to interface with a BMP280 pressure sensor, an AHT10 temperature and humidity sensor, and an ESP8266 module for Wi-Fi connectivity to upload data to ThingSpeak for real-time monitoring. It also provides a contrast between collected data and regional data. The proposed SoC design enhances flexibility and cost-effectiveness by leveraging the open-source Ibex core, eliminating the need for paid licenses and toolchains. FPGA-based prototyping ensures robust verification and functional correctness of the designed SoC. The results demonstrate the potential of the proposed SoC platform for a wide range of embedded applications beyond environmental monitoring.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "df36a8f29be3af1c67abe5fe67776a0b04edab46",
+      "doi": "10.4028/p-J80vYP",
+      "title": "METEORO: Low-Cost IoT Weather Station",
+      "authors": [
+        {
+          "name": "Douglas Adalberto Aguilar"
+        },
+        {
+          "name": "Max Gabriel Sánchez Flores"
+        },
+        {
+          "name": "Jhoan Daniel Martínez Marroquín"
+        },
+        {
+          "name": "Oscar Eduardo Díaz Gómez"
+        }
+      ],
+      "year": 2026,
+      "abstract": "The development of low-cost, autonomous scientific instrumentation is crucial for enhancing environmental education and research, particularly in settings with limited resources. This paper presents METEORO v2, a low-cost Internet of Things (IoT) weather station designed to address the need for accessible scientific instrumentation in educational settings. The system overcomes common durability and energy autonomy challenges by integrating a robust physical structure with an optimized power management system. Architected around an ESP32 microcontroller utilizing a deep-sleep strategy and a 6W solar panel, the station provides continuous monitoring of precipitation, wind speed, UV radiation, air quality, temperature, humidity, and pressure. Data is transmitted via Wi-Fi to a Firebase cloud database and visualized through a responsive web interface. This work provides a replicable and affordable model for a sensing platform that serves as both an effective pedagogical tool and a reliable scientific instrument.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "a93dd74ca8751bf60d4111f5fb443060ad7f63bd",
+      "doi": "10.4028/p-X0oD4Y",
+      "title": "A Study on Environmental Sensors for Low-Cost Weather Stations",
+      "authors": [
+        {
+          "name": "Irvan Budiawan"
+        },
+        {
+          "name": "Naufal Ananda"
+        },
+        {
+          "name": "H. Wicaksana"
+        },
+        {
+          "name": "A. Burohman"
+        },
+        {
+          "name": "F. Mukhlish"
+        },
+        {
+          "name": "E. Ekawati"
+        },
+        {
+          "name": "Deddy Kurniadi"
+        }
+      ],
+      "year": 2026,
+      "abstract": "Designing a low-cost weather station requires careful consideration of the selection of sensors used. The use of inappropriate or poorly calibrated sensors can result in inaccurate data acquisition, which ultimately affects the quality of weather observations. This paper conducts a literature study related to sensors that are often used in low-cost weather stations. Based on the study results, the most frequently monitored quantities are temperature, humidity, and atmospheric pressure. To demonstrate the calibration analysis of weather sensors, tests were conducted on the BME280 sensor, which is widely used to measure these three parameters. This test was conducted at a meteorological calibration laboratory that has been certified by the National Accreditation Committee (KAN). The test was carried out by building a sensor node equipped with a reference sensor, so that the test could be carried out simultaneously and at the same time. This aims to ensure that the BME280 sensor readings can be compared directly with the calibrated reference sensor, so that the accuracy and precision of the sensor can be evaluated more comprehensively. In this test, the BME280 sensor was tested before and after adjustment. The initial calibration results showed a deviation in pressure and temperature readings that exceeded the specified tolerance limits. After the adjustment process, the BME280 sensor showed a significant improvement in accuracy, with readings that were more consistent and closer to recognized measurement standards.",
+      "citationCount": 0,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    },
+    {
+      "paperId": "dfdac67605305182e0e9812e1ea6ea23bdec35f9",
+      "doi": "",
+      "title": "Design and construction of a low-cost weather station",
+      "authors": [
+        {
+          "name": "Engr B. O. A Ozigi"
+        },
+        {
+          "name": "Dr S. O. Amiebenomo"
+        }
+      ],
+      "year": 2023,
+      "abstract": null,
+      "citationCount": 1,
+      "openAccess_pdf": {
+        "url": ""
+      }
+    }
+  ],
+  "output_metadata": {
+    "extracted_at": "2026-06-11T16:20:34.928336"
+  }
+}

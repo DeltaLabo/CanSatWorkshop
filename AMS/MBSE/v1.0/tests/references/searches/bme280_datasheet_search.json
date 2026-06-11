@@ -1,0 +1,1234 @@
+{
+  "query": "BME280 temperature pressure accuracy datasheet Bosch",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "BME280 – Data sheet Document revision 1.24 Document release date February 2024",
+      "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf",
+      "description": "The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.",
+      "content": "The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.\nThe BME280 is register and performance compatible to the Bosch Sensortec BMP280 digital ... The humidity sensor provides an extremely fast response time for fast context awareness applications · and high overall accuracy over a wide temperature range. The pressure sensor is an absolute barometric pressure sensor with extremely high accuracy and\nThe variable t_fine (signed 32 bit) carries a fine resolution temperature value over to the pressure and · humidity compensation formula and could be implemented as a global variable. The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.\nHowever, the environmental pressure is subject to many short-term changes, caused e.g. by · slamming of a door or window, or wind blowing into the sensor. To suppress these disturbances in the · output data without causing additional interface traffic and processor work load, the BME280 features · an internal IIR filter. It effectively reduces the bandwidth of the temperature and pressure output\nThe BME280 output consists of the ADC output values. However, each sensing element behaves · differently. Therefore, the actual pressure and temperature must be calculated using a set of",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Bosch Sensortec",
+        "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf",
+        "long_name": "bosch-sensortec.com",
+        "img": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "bosch-sensortec.com",
+        "hostname": "www.bosch-sensortec.com",
+        "favicon": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8",
+        "path": "› media  › boschsensortec  › downloads  › datasheets  › bst-bme280-ds002.pdf"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "BME280 Datasheet: Explained - Free Online PCB CAD Library",
+      "url": "https://www.ultralibrarian.com/2023/11/30/bme280-datasheet-explained-ulc",
+      "description": "As shown above, the BME280 has accuracy in the range of ±1.0 to ±1.7 hPa over its approximate pressure measurability temperature range (-25 to 65 °C) and has a yearly stability rating of ±1.0 hPa.",
+      "content": "As shown above, the BME280 has accuracy in the range of ±1.0 to ±1.7 hPa over its approximate pressure measurability temperature range (-25 to 65 °C) and has a yearly stability rating of ±1.0 hPa.\nThe component has great accuracy ratings across all three measured parameters, covers a wide operational range, and lends itself to stable and reliable performance over its lifecycle. The Bosch BME280 is a multi-functional high-performance sensor system. There are sensors that combine measurements; such as heart rate and blood pressure; however, the BME280 component combines the ability to measure temperature, humidity and pressure in a single component package.\nAs shown above, the BME280 has accuracy in the range of ±1.0 to ±1.7 hPa over its approximate pressure measurability temperature range (-25 to 65 °C) and has a yearly stability rating of ±1.0 hPa. For humidity, as shown in the table below, the yearly stability rating is 0.5 %RH (relative humidity). ... The operational temperature range of the BME280 is -40 to 85 °C. For temperature measurements, the range is (-20 to 65 °C) and accuracy is between ±1.0 to ±1.5 °C as shown below. ... The BME280 datasheet also provides detailed information about the sensor’s structure and operation.\nDesigning PCBAs with the BME280 datasheet requires that you also have a reliable source for CAD data.\nThe BME280 datasheet provides much needed information; however, it is equally important that you utilize a reliable component CAD source for your board design.",
+      "age": "May 10, 2024",
+      "page_age": "2024-05-10T18:52:45",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Ultra Librarian",
+        "url": "https://www.ultralibrarian.com/2023/11/30/bme280-datasheet-explained-ulc",
+        "long_name": "ultralibrarian.com",
+        "img": "https://imgs.search.brave.com/QgYzE7BRu7Pb1ziF771mgf3SZZHrvtndgw8vTEOh0hg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWE5YzQwMzc2/MzYzZGFlZjY3MGZl/ZDZiOTYzNTlkZjZh/NTA1ZGU2ZTMwM2Vk/NmRhYjcwNzZiNDBi/NjE1OTJlNS93d3cu/dWx0cmFsaWJyYXJp/YW4uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "ultralibrarian.com",
+        "hostname": "www.ultralibrarian.com",
+        "favicon": "https://imgs.search.brave.com/QgYzE7BRu7Pb1ziF771mgf3SZZHrvtndgw8vTEOh0hg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWE5YzQwMzc2/MzYzZGFlZjY3MGZl/ZDZiOTYzNTlkZjZh/NTA1ZGU2ZTMwM2Vk/NmRhYjcwNzZiNDBi/NjE1OTJlNS93d3cu/dWx0cmFsaWJyYXJp/YW4uY29tLw",
+        "path": "  › home  › bme280 datasheet: explained"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/TDyBTXx5NUqWKknsB1Y5RzGxkq9Wwwl7bJluO_-IVxI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dWx0cmFsaWJyYXJp/YW4uY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIyLzAyL0JN/RTI4MC5qcGc",
+        "original": "https://www.ultralibrarian.com/wp-content/uploads/2022/02/BME280.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 3,
+      "title": "BME280 – Data sheet Document revision 1.6 Document release date September 2018",
+      "url": "https://www.mouser.com/datasheet/2/783/BST-BME280-DS002-1509607.pdf",
+      "description": "The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.",
+      "content": "The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.\nThe BME280 is register and performance compatible to the Bosch Sensortec BMP280 digital ... The humidity sensor provides an extremely fast response time for fast context awareness applications · and high overall accuracy over a wide temperature range. The pressure sensor is an absolute barometric pressure sensor with extremely high accuracy and\nThe variable t_fine (signed 32 bit) carries a fine resolution temperature value over to the pressure and · humidity compensation formula and could be implemented as a global variable. The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.\nHowever, the environmental pressure is subject to many short-term changes, caused e.g. by · slamming of a door or window, or wind blowing into the sensor. To suppress these disturbances in the · output data without causing additional interface traffic and processor work load, the BME280 features · an internal IIR filter. It effectively reduces the bandwidth of the temperature and pressure output\nThe BME280 output consists of the ADC output values. However, each sensing element behaves · differently. Therefore, the actual pressure and temperature must be calculated using a set of",
+      "age": "September 17, 2018",
+      "page_age": "2018-09-17T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Mouser",
+        "url": "https://www.mouser.com/datasheet/2/783/BST-BME280-DS002-1509607.pdf",
+        "long_name": "mouser.com",
+        "img": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "mouser.com",
+        "hostname": "www.mouser.com",
+        "favicon": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8",
+        "path": "› datasheet  › 2  › 783  › BST-BME280-DS002-1509607.pdf"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "GY-BME280 Pressure Humidity Temperature Sensor Module - ProtoSupplies",
+      "url": "https://protosupplies.com/product/gy-bme280-pressure-humidity-temperature-sensor-module/",
+      "description": "The BME280 can measure humidity ... BME280 can measure pressure over the range of 300 to 1100 hPa with excellent accuracy of ±1.0 hPa....",
+      "content": "The BME280 can measure humidity ... BME280 can measure pressure over the range of 300 to 1100 hPa with excellent accuracy of ±1.0 hPa....\nThe BME280 can measure humidity over the range of 0 to 100% with an accuracy of ±3%. The sensor can measure up to 100% humidity over the temperature range of 0 to 60°C. At very high or low temperatures, the maximum measurable humidity decreases per the graph on page 10 of the datasheet. The BME280 can measure pressure over the range of 300 to 1100 hPa with excellent accuracy of ±1.0 hPa.\nSKU: MOD-104 Categories: Breakout Modules, Sensors, Temperature & Humidity Tags: Humidity, pressure, Temperature ... The GY-BME280 is a high precision combined digital pressure, humidity and temperature sensor module with I2C and SPI interfaces.\nGY-BME280 Pressure Humidity Temperature Sensor Module ... The BME280 is a precision Bosch sensor that can be used in many applications from weather monitoring to gaming controls to altitude measurements with enough precision to know if an object has been lifted a couple of feet.\nFull accuracy is obtained over the temperature range of 0 to 65°C. This gives an elevation measurement accuracy of approximately ±1 meter. Outside that range the accuracy can decrease to ±1.7 hPa · The BME280 does not measure altitude directly, but it can be calculated using the pressure reading. Most libraries for this device include altitude calculation routines. Since the device does a very good job of measuring pressure, it can do a very good job of calculating relative altitude.",
+      "age": "March 29, 2026",
+      "page_age": "2026-03-29T03:50:49",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "ProtoSupplies",
+        "url": "https://protosupplies.com/product/gy-bme280-pressure-humidity-temperature-sensor-module/",
+        "long_name": "protosupplies.com",
+        "img": "https://imgs.search.brave.com/HZi9iliXFcMOReEg-1J5pa4hurbMgYM6NIGRizQBi28/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVhODhlOGU2/ZDhhYWY3OWM4Yjdl/YWE2N2JiMDg2MDI0/MjMxMWJhZjI2ZjMw/YTU5NzQ3MzdkNGMz/NzNkYzY5ZC9wcm90/b3N1cHBsaWVzLmNv/bS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "protosupplies.com",
+        "hostname": "protosupplies.com",
+        "favicon": "https://imgs.search.brave.com/HZi9iliXFcMOReEg-1J5pa4hurbMgYM6NIGRizQBi28/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVhODhlOGU2/ZDhhYWY3OWM4Yjdl/YWE2N2JiMDg2MDI0/MjMxMWJhZjI2ZjMw/YTU5NzQ3MzdkNGMz/NzNkYzY5ZC9wcm90/b3N1cHBsaWVzLmNv/bS8",
+        "path": "  › home  › shop  › breakout modules  › gy-bme280 pressure humidity temperature sensor module"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/O4jM7z_-PAfnZsX5yuPDY0OS87xNFdcPFaEhtX_z9u8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wcm90/b3N1cHBsaWVzLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAx/OS8wMi9HWS1CTUUy/ODAtSHVtaWRpdHkt/UHJlc3N1cmUtVGVt/cGVyYXR1cmUtU2Vu/c29yLU1vZHVsZS0x/LmpwZw",
+        "original": "https://protosupplies.com/wp-content/uploads/2019/02/GY-BME280-Humidity-Pressure-Temperature-Sensor-Module-1.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Humidity Sensor BME280 | Bosch Sensortec",
+      "url": "https://www.bosch-sensortec.com/en/products/environmental-sensors/humidity-sensors-bme280",
+      "description": "Humidity sensor Response time (τ63%) ... coefficient offset · 0.2Pa (equiv. to 1.7cm) ±0.25% (equiv. to 1m at 400m height change) ±1.5Pa/K (equiv. to ±12.6cm at 1 °C temperature change) RoHS compliant, halogen-free, MSL1 ...",
+      "content": "Humidity sensor Response time (τ63%) ... coefficient offset · 0.2Pa (equiv. to 1.7cm) ±0.25% (equiv. to 1m at 400m height change) ±1.5Pa/K (equiv. to ±12.6cm at 1 °C temperature change) RoHS compliant, halogen-free, MSL1 ...\nHumidity sensor Response time (τ63%) Accuracy tolerance Hysteresis · 1 s ±3% relative humidity ≤2% relative humidity · Pressure sensor RMS Noise Sensitivity Error Temperature coefficient offset · 0.2Pa (equiv. to 1.7cm) ±0.25% (equiv. to 1m at 400m height change) ±1.5Pa/K (equiv. to ±12.6cm at 1 °C temperature change) RoHS compliant, halogen-free, MSL1 · Package dimensions · 8-Pin LGA with metal 2.5 x 2.5 x 0.93 mm³ Read more Read less · BST-BME280-FL000 ·\nThe BME280 is a humidity sensor especially developed for mobile applications and wearables where size and low power consumption are key design parameters. The unit combines high linearity and high accuracy sensors and is perfectly feasible for low current consumption, long-term stability and high EMC robustness.\nThe humidity sensor offers an extremely fast response time and therefore supports performance requirements for emerging applications such as context awareness, and high accuracy over a wide temperature range.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Bosch Sensortec",
+        "url": "https://www.bosch-sensortec.com/en/products/environmental-sensors/humidity-sensors-bme280",
+        "long_name": "bosch-sensortec.com",
+        "img": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "bosch-sensortec.com",
+        "hostname": "www.bosch-sensortec.com",
+        "favicon": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8",
+        "path": "› en  › products  › environmental-sensors  › humidity-sensors-bme280"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/-_NluMCnG6FgZBaXtRStf2E8wg2kNEwVBz35ATBR4ZE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS9tZWRp/YS9ib3NjaHNlbnNv/cnRlYy9wcm9kdWN0/cy9lbnZpcm9ubWVu/dGFsX3NlbnNvcnMv/aHVtaWRpdHlfc2Vu/c29ycy9ibWUyODAv/Ym9zY2gtc2Vuc29y/dGVjX3dlYnNpdGUt/cmVsYXVuY2hfc3Rh/Z2VfYm1lMjgwLmpw/Zw",
+        "original": "https://www.bosch-sensortec.com/media/boschsensortec/products/environmental_sensors/humidity_sensors/bme280/bosch-sensortec_website-relaunch_stage_bme280.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "GENERAL DESCRIPTION The BME280 is an integrated environmental sensor developed",
+      "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/product_flyer/bst-bme280-fl000.pdf",
+      "description": "Pressure: 300 ...",
+      "content": "Pressure: 300 ...\nThe BME280 is an integrated environmental sensor developed · specifically for mobile applications where size and low power · consumption are key design constraints. The unit combines · individual high linearity, and high accuracy sensors for pressure, humidity and temperature in an 8-pin metal-lid 2.5 x 2.5 x 0.93 ·\nThe BME280 designed for low current · consumption (3.6 µA @1Hz), long term stability, and high EMC · robustness. The humidity sensor features an extremely fast · response time which supports performance requirements for · emerging applications such as: context awareness, and high · accuracy over a wide temperature range. The pressure sensor is ·\nBME280 from Bosch Sensortec combines extensive experience",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Bosch Sensortec",
+        "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/product_flyer/bst-bme280-fl000.pdf",
+        "long_name": "bosch-sensortec.com",
+        "img": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "bosch-sensortec.com",
+        "hostname": "www.bosch-sensortec.com",
+        "favicon": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8",
+        "path": "› media  › boschsensortec  › downloads  › product_flyer  › bst-bme280-fl000.pdf"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "BME280 Bosch Sensortec | Mouser",
+      "url": "https://www.mouser.com/ProductDetail/Bosch-Sensortec/BME280?qs=2OnyuXx6vpj2fK9HX7qb3g%3D%3D",
+      "description": "BME280 Bosch Sensortec Air Quality Sensors MEMS humidity, pressure and temperature sensor datasheet, inventory, &amp; pricing.",
+      "content": "BME280 Bosch Sensortec Air Quality Sensors MEMS humidity, pressure and temperature sensor datasheet, inventory, &amp; pricing.\nBosch BME280 Humidity and Pressure Sensor is an integrated environmental sensor developed specifically for mobile applications where size and low power consumption are key requirements. The unit combines individual high linearity, high accuracy sensors for pressure, humidity, and temperature in an 8-pin metal-lid LGA package.\nBosch BME280 Humidity and Pressure Sensor is designed for low current consumption (3.6μA at 1Hz), long-term stability, and high EMC robustness. Bosch Sensortec Environmental Sensors include barometric pressure sensors enabling, for example, indoor navigation and altitude stabilization. The Sensortec family also includes humidity sensors that measure air pressure, ambient temperature, and relative humidity for climate control in smart homes.\nLearn More about BME280 Humidity & Pressure Sensor",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Mouser",
+        "url": "https://www.mouser.com/ProductDetail/Bosch-Sensortec/BME280?qs=2OnyuXx6vpj2fK9HX7qb3g%3D%3D",
+        "long_name": "mouser.com",
+        "img": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "mouser.com",
+        "hostname": "www.mouser.com",
+        "favicon": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8",
+        "path": "› ProductDetail  › Bosch-Sensortec  › BME280"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/hZBeOMPzt8KPVrmwXV_kb80n-RFQ95h7mdvyndj7XPQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bW91c2VyLmNvbS9p/bWFnZXMvYm9zY2hz/ZW5zb3J0ZWMvbHJn/L0JNRTI4MF90Lmpw/Zw",
+        "original": "https://www.mouser.com/images/boschsensortec/lrg/BME280_t.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec - Utmel",
+      "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+      "description": "... Description: The Bosch Sensortec BME280 is a digital output pressure, temperature, and humidity sensor based on a 1.8V 8-pin LGA T/R package. It is designed to measure pressure, temperature, and humidity with high accuracy ...",
+      "content": "... Description: The Bosch Sensortec BME280 is a digital output pressure, temperature, and humidity sensor based on a 1.8V 8-pin LGA T/R package. It is designed to measure pressure, temperature, and humidity with high accuracy ...\nDownload datasheets and manufacturer documentation for Bosch Sensortec BME280. ... Description: The Bosch Sensortec BME280 is a digital output pressure, temperature, and humidity sensor based on a 1.8V 8-pin LGA T/R package. It is designed to measure pressure, temperature, and humidity with high accuracy and resolution.\nBME280 datasheet PDF download, Bosch Sensortec Humidity, Moisture Sensors BME280 Specifications: Pressure, Temperature and Humidity Sensor Digital Output 1.8V 8-Pin LGA T/R.\nFeatures: • Pressure, temperature, and humidity sensing • High accuracy and resolution • Digital output • 1.8V 8-pin LGA T/R package • Low power consumption • Robust design Applications: The Bosch Sensortec BME280 is suitable for a wide range of applications, including weather forecasting, climate control, air quality monitoring, and industrial process control.\nIn electronic components, the parameter \"Sensor Type\" refers to the specific type of sensor technology used in a particular component to detect and measure physical phenomena such as light, temperature, pressure, motion, or proximity. Different sensor types utilize various principles and mechanisms to convert the detected input into an electrical signal that can be processed by the electronic component.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "product",
+      "profile": {
+        "name": "Utmel",
+        "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+        "long_name": "utmel.com",
+        "img": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "utmel.com",
+        "hostname": "www.utmel.com",
+        "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+        "path": "  › sensors, transducers  › humidity, moisture sensors"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/jTAz_8xkjiaJQaTkAeSh29u21XIcMriU9KPlJMIAmSs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudXRtZWwuY29t/LzIwMGRpbWcvYm9z/Y2hzZW5zb3J0ZWMt/Ym1lMjgwLTMxNTUu/anBn",
+        "original": "https://static.utmel.com/200dimg/boschsensortec-bme280-3155.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 9,
+      "title": "BME280 I2C Pressure Humidity Temperature Sensor Module - ProtoSupplies",
+      "url": "https://protosupplies.com/product/bme280-i2c-pressure-humidity-temperature-sensor-module/",
+      "description": "The BME280 can measure humidity ... BME280 can measure pressure over the range of 300 to 1100 hPa with excellent accuracy of ±1.0 hPa....",
+      "content": "The BME280 can measure humidity ... BME280 can measure pressure over the range of 300 to 1100 hPa with excellent accuracy of ±1.0 hPa....\nThe BME280 can measure humidity over the range of 0 to 100% with an accuracy of ±3%. The sensor can measure up to 100% humidity over the temperature range of 0 to 60°C. At very high or low temperatures, the maximum measurable humidity decreases per the graph on page 10 of the datasheet. The BME280 can measure pressure over the range of 300 to 1100 hPa with excellent accuracy of ±1.0 hPa.\nThe BME280 I2C is a high precision digital pressure, humidity and temperature sensor module with I2C interface and 3.3 or 5V operation.\nBME280 I2C Pressure Humidity Temperature Sensor Module ... The BME280 is a precision Bosch sensor that can be used in many applications from weather monitoring to gaming controls to altitude measurements with enough precision to know if an object has been lifted a couple of feet.\nThe temperature measurement is used internally to compensate the pressure and humidity sensors and is also available to estimate the ambient temperature as well. The device has numerous sampling and filtering options that can be employed to optimize the device for specific applications. The BME280 can measure temperature over the range of -40 to 80°C. Full accuracy of ±1.0°C is obtained over the range of 0 to 65°C.",
+      "age": "August 22, 2019",
+      "page_age": "2019-08-22T15:16:47",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "ProtoSupplies",
+        "url": "https://protosupplies.com/product/bme280-i2c-pressure-humidity-temperature-sensor-module/",
+        "long_name": "protosupplies.com",
+        "img": "https://imgs.search.brave.com/HZi9iliXFcMOReEg-1J5pa4hurbMgYM6NIGRizQBi28/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVhODhlOGU2/ZDhhYWY3OWM4Yjdl/YWE2N2JiMDg2MDI0/MjMxMWJhZjI2ZjMw/YTU5NzQ3MzdkNGMz/NzNkYzY5ZC9wcm90/b3N1cHBsaWVzLmNv/bS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "protosupplies.com",
+        "hostname": "protosupplies.com",
+        "favicon": "https://imgs.search.brave.com/HZi9iliXFcMOReEg-1J5pa4hurbMgYM6NIGRizQBi28/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVhODhlOGU2/ZDhhYWY3OWM4Yjdl/YWE2N2JiMDg2MDI0/MjMxMWJhZjI2ZjMw/YTU5NzQ3MzdkNGMz/NzNkYzY5ZC9wcm90/b3N1cHBsaWVzLmNv/bS8",
+        "path": "  › home  › shop  › breakout modules  › bme280 i2c pressure humidity temperature sensor module"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/hvIZXEYVmUrjVdgGler5j0s-9VV-dsrmBthKVvCCbeE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wcm90/b3N1cHBsaWVzLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAx/OS8wOC9CTUUyODAt/STJDLUh1bWlkaXR5/LVByZXNzdXJlLVRl/bXBlcmF0dXJlLVNl/bnNvci1Nb2R1bGUu/anBn",
+        "original": "https://protosupplies.com/wp-content/uploads/2019/08/BME280-I2C-Humidity-Pressure-Temperature-Sensor-Module.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 10,
+      "title": "BME280 – Data sheet Document revision 1.22 Document release date October 2021",
+      "url": "https://www.mouser.com/datasheet/2/783/bst_bme280_ds002-2238172.pdf",
+      "description": "The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.",
+      "content": "The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.\nThe BME280 is register and performance compatible to the Bosch Sensortec BMP280 digital ... The humidity sensor provides an extremely fast response time for fast context awareness applications · and high overall accuracy over a wide temperature range. The pressure sensor is an absolute barometric pressure sensor with extremely high accuracy and\nThe variable t_fine (signed 32 bit) carries a fine resolution temperature value over to the pressure and · humidity compensation formula and could be implemented as a global variable. The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.\nHowever, the environmental pressure is subject to many short-term changes, caused e.g. by · slamming of a door or window, or wind blowing into the sensor. To suppress these disturbances in the · output data without causing additional interface traffic and processor work load, the BME280 features · an internal IIR filter. It effectively reduces the bandwidth of the temperature and pressure output\nThe BME280 output consists of the ADC output values. However, each sensing element behaves · differently. Therefore, the actual pressure and temperature must be calculated using a set of",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Mouser",
+        "url": "https://www.mouser.com/datasheet/2/783/bst_bme280_ds002-2238172.pdf",
+        "long_name": "mouser.com",
+        "img": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "mouser.com",
+        "hostname": "www.mouser.com",
+        "favicon": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8",
+        "path": "› datasheet  › 2  › 783  › bst_bme280_ds002-2238172.pdf"
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "BME280 temperature pressure accuracy datasheet Bosch",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.95,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "BME280 temperature pressure accuracy datasheet Bosch",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "faq": {
+      "type": "faq",
+      "results": [
+        {
+          "question": "What is the Peak Reflow Temperature (Cel)",
+          "answer": "Peak Reflow Temperature (Cel) is a parameter that specifies the maximum temperature at which an electronic component can be exposed during the reflow soldering process. Reflow soldering is a common method used to attach electronic components to a circuit board. The Peak Reflow Temperature is crucial because it ensures that the component is not damaged or degraded during the soldering process. Exceeding the specified Peak Reflow Temperature can lead to issues such as component failure, reduced performance, or even permanent damage to the component. It is important for manufacturers and assemble",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Time@Peak Reflow Temperature-Max (s)",
+          "answer": "Time@Peak Reflow Temperature-Max (s) refers to the maximum duration that an electronic component can be exposed to the peak reflow temperature during the soldering process, which is crucial for ensuring reliable solder joint formation without damaging the component.",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Operating Temperature",
+          "answer": "The operating temperature is the range of ambient temperature within which a power supply, or any other electrical equipment, operate in. This ranges from a minimum operating temperature, to a peak or maximum operating temperature, outside which, the power supply may fail.",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Voltage - Supply",
+          "answer": "Voltage - Supply refers to the range of voltage levels that an electronic component or circuit is designed to operate with. It indicates the minimum and maximum supply voltage that can be applied for the device to function properly. Providing supply voltages outside this range can lead to malfunction, damage, or reduced performance. This parameter is critical for ensuring compatibility between different components in a circuit.",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Supply Voltage-Max (Vsup)",
+          "answer": "The parameter \"Supply Voltage-Max (Vsup)\" in electronic components refers to the maximum voltage that can be safely applied to the component without causing damage. It is an important specification to consider when designing or using electronic circuits to ensure the component operates within its safe operating limits. Exceeding the maximum supply voltage can lead to overheating, component failure, or even permanent damage. It is crucial to adhere to the specified maximum supply voltage to ensure the reliable and safe operation of the electronic component.",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Moisture Sensitivity Level (MSL)",
+          "answer": "Moisture Sensitivity Level (MSL) is a standardized rating that indicates the susceptibility of electronic components, particularly semiconductors, to moisture-induced damage during storage and the soldering process, defining the allowable exposure time to ambient conditions before they require special handling or baking to prevent failures",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Terminal Position",
+          "answer": "In electronic components, the term \"Terminal Position\" refers to the physical location of the connection points on the component where external electrical connections can be made. These connection points, known as terminals, are typically used to attach wires, leads, or other components to the main body of the electronic component. The terminal position is important for ensuring proper connectivity and functionality of the component within a circuit. It is often specified in technical datasheets or component specifications to help designers and engineers understand how to properly integrate th",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Output Type",
+          "answer": "The \"Output Type\" parameter in electronic components refers to the type of signal or data that is produced by the component as an output. This parameter specifies the nature of the output signal, such as analog or digital, and can also include details about the voltage levels, current levels, frequency, and other characteristics of the output signal. Understanding the output type of a component is crucial for ensuring compatibility with other components in a circuit or system, as well as for determining how the output signal can be utilized or processed further. In summary, the output type par",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Part Status",
+          "answer": "Parts can have many statuses as they progress through the configuration, analysis, review, and approval stages.",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Mounting Type",
+          "answer": "The \"Mounting Type\" in electronic components refers to the method used to attach or connect a component to a circuit board or other substrate, such as through-hole, surface-mount, or panel mount.",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Output",
+          "answer": "In electronic components, the parameter \"Output\" typically refers to the signal or data that is produced by the component and sent to another part of the circuit or system. The output can be in the form of voltage, current, frequency, or any other measurable quantity depending on the specific component. The output of a component is often crucial in determining its functionality and how it interacts with other components in the circuit. Understanding the output characteristics of electronic components is essential for designing and troubleshooting electronic circuits effectively.",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Terminal Form",
+          "answer": "Occurring at or forming the end of a series, succession, or the like; closing; concluding.",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Surface Mount",
+          "answer": "having leads that are designed to be soldered on the side of a circuit board that the body of the component is mounted on.",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Packaging",
+          "answer": "Semiconductor package is a carrier / shell used to contain and cover one or more semiconductor components or integrated circuits. The material of the shell can be metal, plastic, glass or ceramic.",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        },
+        {
+          "question": "What is the Package / Case",
+          "answer": "refers to the protective housing that encases an electronic component, providing mechanical support, electrical connections, and thermal management.",
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          }
+        }
+      ]
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "faq",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "BME280 – Data sheet Document revision 1.24 Document release date February 2024",
+          "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.",
+          "profile": {
+            "name": "Bosch Sensortec",
+            "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf",
+            "long_name": "bosch-sensortec.com",
+            "img": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "bosch-sensortec.com",
+            "hostname": "www.bosch-sensortec.com",
+            "favicon": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8",
+            "path": "› media  › boschsensortec  › downloads  › datasheets  › bst-bme280-ds002.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The BME280 is register and performance compatible to the Bosch Sensortec BMP280 digital ... The humidity sensor provides an extremely fast response time for fast context awareness applications · and high overall accuracy over a wide temperature range. The pressure sensor is an absolute barometric pressure sensor with extremely high accuracy and",
+            "The variable t_fine (signed 32 bit) carries a fine resolution temperature value over to the pressure and · humidity compensation formula and could be implemented as a global variable. The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.",
+            "However, the environmental pressure is subject to many short-term changes, caused e.g. by · slamming of a door or window, or wind blowing into the sensor. To suppress these disturbances in the · output data without causing additional interface traffic and processor work load, the BME280 features · an internal IIR filter. It effectively reduces the bandwidth of the temperature and pressure output",
+            "The BME280 output consists of the ADC output values. However, each sensing element behaves · differently. Therefore, the actual pressure and temperature must be calculated using a set of"
+          ]
+        },
+        {
+          "title": "BME280 Datasheet: Explained - Free Online PCB CAD Library",
+          "url": "https://www.ultralibrarian.com/2023/11/30/bme280-datasheet-explained-ulc",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "As shown above, the BME280 has accuracy in the range of ±1.0 to ±1.7 hPa over its approximate pressure measurability temperature range (-25 to 65 °C) and has a yearly stability rating of ±1.0 hPa.",
+          "page_age": "2024-05-10T18:52:45",
+          "profile": {
+            "name": "Ultra Librarian",
+            "url": "https://www.ultralibrarian.com/2023/11/30/bme280-datasheet-explained-ulc",
+            "long_name": "ultralibrarian.com",
+            "img": "https://imgs.search.brave.com/QgYzE7BRu7Pb1ziF771mgf3SZZHrvtndgw8vTEOh0hg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWE5YzQwMzc2/MzYzZGFlZjY3MGZl/ZDZiOTYzNTlkZjZh/NTA1ZGU2ZTMwM2Vk/NmRhYjcwNzZiNDBi/NjE1OTJlNS93d3cu/dWx0cmFsaWJyYXJp/YW4uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "ultralibrarian.com",
+            "hostname": "www.ultralibrarian.com",
+            "favicon": "https://imgs.search.brave.com/QgYzE7BRu7Pb1ziF771mgf3SZZHrvtndgw8vTEOh0hg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNWE5YzQwMzc2/MzYzZGFlZjY3MGZl/ZDZiOTYzNTlkZjZh/NTA1ZGU2ZTMwM2Vk/NmRhYjcwNzZiNDBi/NjE1OTJlNS93d3cu/dWx0cmFsaWJyYXJp/YW4uY29tLw",
+            "path": "  › home  › bme280 datasheet: explained"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/TDyBTXx5NUqWKknsB1Y5RzGxkq9Wwwl7bJluO_-IVxI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/dWx0cmFsaWJyYXJp/YW4uY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIyLzAyL0JN/RTI4MC5qcGc",
+            "original": "https://www.ultralibrarian.com/wp-content/uploads/2022/02/BME280.jpg",
+            "logo": false
+          },
+          "age": "May 10, 2024",
+          "extra_snippets": [
+            "The component has great accuracy ratings across all three measured parameters, covers a wide operational range, and lends itself to stable and reliable performance over its lifecycle. The Bosch BME280 is a multi-functional high-performance sensor system. There are sensors that combine measurements; such as heart rate and blood pressure; however, the BME280 component combines the ability to measure temperature, humidity and pressure in a single component package.",
+            "As shown above, the BME280 has accuracy in the range of ±1.0 to ±1.7 hPa over its approximate pressure measurability temperature range (-25 to 65 °C) and has a yearly stability rating of ±1.0 hPa. For humidity, as shown in the table below, the yearly stability rating is 0.5 %RH (relative humidity). ... The operational temperature range of the BME280 is -40 to 85 °C. For temperature measurements, the range is (-20 to 65 °C) and accuracy is between ±1.0 to ±1.5 °C as shown below. ... The BME280 datasheet also provides detailed information about the sensor’s structure and operation.",
+            "Designing PCBAs with the BME280 datasheet requires that you also have a reliable source for CAD data.",
+            "The BME280 datasheet provides much needed information; however, it is equally important that you utilize a reliable component CAD source for your board design."
+          ]
+        },
+        {
+          "title": "BME280 – Data sheet Document revision 1.6 Document release date September 2018",
+          "url": "https://www.mouser.com/datasheet/2/783/BST-BME280-DS002-1509607.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.",
+          "page_age": "2018-09-17T00:00:00",
+          "profile": {
+            "name": "Mouser",
+            "url": "https://www.mouser.com/datasheet/2/783/BST-BME280-DS002-1509607.pdf",
+            "long_name": "mouser.com",
+            "img": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "mouser.com",
+            "hostname": "www.mouser.com",
+            "favicon": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8",
+            "path": "› datasheet  › 2  › 783  › BST-BME280-DS002-1509607.pdf"
+          },
+          "age": "September 17, 2018",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The BME280 is register and performance compatible to the Bosch Sensortec BMP280 digital ... The humidity sensor provides an extremely fast response time for fast context awareness applications · and high overall accuracy over a wide temperature range. The pressure sensor is an absolute barometric pressure sensor with extremely high accuracy and",
+            "The variable t_fine (signed 32 bit) carries a fine resolution temperature value over to the pressure and · humidity compensation formula and could be implemented as a global variable. The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.",
+            "However, the environmental pressure is subject to many short-term changes, caused e.g. by · slamming of a door or window, or wind blowing into the sensor. To suppress these disturbances in the · output data without causing additional interface traffic and processor work load, the BME280 features · an internal IIR filter. It effectively reduces the bandwidth of the temperature and pressure output",
+            "The BME280 output consists of the ADC output values. However, each sensing element behaves · differently. Therefore, the actual pressure and temperature must be calculated using a set of"
+          ]
+        },
+        {
+          "title": "GY-BME280 Pressure Humidity Temperature Sensor Module - ProtoSupplies",
+          "url": "https://protosupplies.com/product/gy-bme280-pressure-humidity-temperature-sensor-module/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The BME280 can measure humidity ... BME280 can measure pressure over the range of 300 to 1100 hPa with excellent accuracy of ±1.0 hPa....",
+          "page_age": "2026-03-29T03:50:49",
+          "profile": {
+            "name": "ProtoSupplies",
+            "url": "https://protosupplies.com/product/gy-bme280-pressure-humidity-temperature-sensor-module/",
+            "long_name": "protosupplies.com",
+            "img": "https://imgs.search.brave.com/HZi9iliXFcMOReEg-1J5pa4hurbMgYM6NIGRizQBi28/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVhODhlOGU2/ZDhhYWY3OWM4Yjdl/YWE2N2JiMDg2MDI0/MjMxMWJhZjI2ZjMw/YTU5NzQ3MzdkNGMz/NzNkYzY5ZC9wcm90/b3N1cHBsaWVzLmNv/bS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "protosupplies.com",
+            "hostname": "protosupplies.com",
+            "favicon": "https://imgs.search.brave.com/HZi9iliXFcMOReEg-1J5pa4hurbMgYM6NIGRizQBi28/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVhODhlOGU2/ZDhhYWY3OWM4Yjdl/YWE2N2JiMDg2MDI0/MjMxMWJhZjI2ZjMw/YTU5NzQ3MzdkNGMz/NzNkYzY5ZC9wcm90/b3N1cHBsaWVzLmNv/bS8",
+            "path": "  › home  › shop  › breakout modules  › gy-bme280 pressure humidity temperature sensor module"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/O4jM7z_-PAfnZsX5yuPDY0OS87xNFdcPFaEhtX_z9u8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wcm90/b3N1cHBsaWVzLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAx/OS8wMi9HWS1CTUUy/ODAtSHVtaWRpdHkt/UHJlc3N1cmUtVGVt/cGVyYXR1cmUtU2Vu/c29yLU1vZHVsZS0x/LmpwZw",
+            "original": "https://protosupplies.com/wp-content/uploads/2019/02/GY-BME280-Humidity-Pressure-Temperature-Sensor-Module-1.jpg",
+            "logo": false
+          },
+          "age": "March 29, 2026",
+          "organization": {
+            "type": "organization",
+            "name": "ProtoSupplies.com",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "The BME280 can measure humidity over the range of 0 to 100% with an accuracy of ±3%. The sensor can measure up to 100% humidity over the temperature range of 0 to 60°C. At very high or low temperatures, the maximum measurable humidity decreases per the graph on page 10 of the datasheet. The BME280 can measure pressure over the range of 300 to 1100 hPa with excellent accuracy of ±1.0 hPa.",
+            "SKU: MOD-104 Categories: Breakout Modules, Sensors, Temperature & Humidity Tags: Humidity, pressure, Temperature ... The GY-BME280 is a high precision combined digital pressure, humidity and temperature sensor module with I2C and SPI interfaces.",
+            "GY-BME280 Pressure Humidity Temperature Sensor Module ... The BME280 is a precision Bosch sensor that can be used in many applications from weather monitoring to gaming controls to altitude measurements with enough precision to know if an object has been lifted a couple of feet.",
+            "Full accuracy is obtained over the temperature range of 0 to 65°C. This gives an elevation measurement accuracy of approximately ±1 meter. Outside that range the accuracy can decrease to ±1.7 hPa · The BME280 does not measure altitude directly, but it can be calculated using the pressure reading. Most libraries for this device include altitude calculation routines. Since the device does a very good job of measuring pressure, it can do a very good job of calculating relative altitude."
+          ]
+        },
+        {
+          "title": "Humidity Sensor BME280 | Bosch Sensortec",
+          "url": "https://www.bosch-sensortec.com/en/products/environmental-sensors/humidity-sensors-bme280",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Humidity sensor Response time (τ63%) ... coefficient offset · 0.2Pa (equiv. to 1.7cm) ±0.25% (equiv. to 1m at 400m height change) ±1.5Pa/K (equiv. to ±12.6cm at 1 °C temperature change) RoHS compliant, halogen-free, MSL1 ...",
+          "profile": {
+            "name": "Bosch Sensortec",
+            "url": "https://www.bosch-sensortec.com/en/products/environmental-sensors/humidity-sensors-bme280",
+            "long_name": "bosch-sensortec.com",
+            "img": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "bosch-sensortec.com",
+            "hostname": "www.bosch-sensortec.com",
+            "favicon": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8",
+            "path": "› en  › products  › environmental-sensors  › humidity-sensors-bme280"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/-_NluMCnG6FgZBaXtRStf2E8wg2kNEwVBz35ATBR4ZE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS9tZWRp/YS9ib3NjaHNlbnNv/cnRlYy9wcm9kdWN0/cy9lbnZpcm9ubWVu/dGFsX3NlbnNvcnMv/aHVtaWRpdHlfc2Vu/c29ycy9ibWUyODAv/Ym9zY2gtc2Vuc29y/dGVjX3dlYnNpdGUt/cmVsYXVuY2hfc3Rh/Z2VfYm1lMjgwLmpw/Zw",
+            "original": "https://www.bosch-sensortec.com/media/boschsensortec/products/environmental_sensors/humidity_sensors/bme280/bosch-sensortec_website-relaunch_stage_bme280.jpg",
+            "logo": false
+          },
+          "organization": {
+            "type": "organization",
+            "name": "humidity sensors bme280",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "Humidity sensor Response time (τ63%) Accuracy tolerance Hysteresis · 1 s ±3% relative humidity ≤2% relative humidity · Pressure sensor RMS Noise Sensitivity Error Temperature coefficient offset · 0.2Pa (equiv. to 1.7cm) ±0.25% (equiv. to 1m at 400m height change) ±1.5Pa/K (equiv. to ±12.6cm at 1 °C temperature change) RoHS compliant, halogen-free, MSL1 · Package dimensions · 8-Pin LGA with metal 2.5 x 2.5 x 0.93 mm³ Read more Read less · BST-BME280-FL000 ·",
+            "The BME280 is a humidity sensor especially developed for mobile applications and wearables where size and low power consumption are key design parameters. The unit combines high linearity and high accuracy sensors and is perfectly feasible for low current consumption, long-term stability and high EMC robustness.",
+            "The humidity sensor offers an extremely fast response time and therefore supports performance requirements for emerging applications such as context awareness, and high accuracy over a wide temperature range."
+          ]
+        },
+        {
+          "title": "GENERAL DESCRIPTION The BME280 is an integrated environmental sensor developed",
+          "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/product_flyer/bst-bme280-fl000.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Pressure: 300 ...",
+          "profile": {
+            "name": "Bosch Sensortec",
+            "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/product_flyer/bst-bme280-fl000.pdf",
+            "long_name": "bosch-sensortec.com",
+            "img": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "bosch-sensortec.com",
+            "hostname": "www.bosch-sensortec.com",
+            "favicon": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8",
+            "path": "› media  › boschsensortec  › downloads  › product_flyer  › bst-bme280-fl000.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The BME280 is an integrated environmental sensor developed · specifically for mobile applications where size and low power · consumption are key design constraints. The unit combines · individual high linearity, and high accuracy sensors for pressure, humidity and temperature in an 8-pin metal-lid 2.5 x 2.5 x 0.93 ·",
+            "The BME280 designed for low current · consumption (3.6 µA @1Hz), long term stability, and high EMC · robustness. The humidity sensor features an extremely fast · response time which supports performance requirements for · emerging applications such as: context awareness, and high · accuracy over a wide temperature range. The pressure sensor is ·",
+            "Pressure: 300 ...",
+            "BME280 from Bosch Sensortec combines extensive experience"
+          ]
+        },
+        {
+          "title": "BME280 Bosch Sensortec | Mouser",
+          "url": "https://www.mouser.com/ProductDetail/Bosch-Sensortec/BME280?qs=2OnyuXx6vpj2fK9HX7qb3g%3D%3D",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "BME280 Bosch Sensortec Air Quality Sensors MEMS humidity, pressure and temperature sensor datasheet, inventory, &amp; pricing.",
+          "profile": {
+            "name": "Mouser",
+            "url": "https://www.mouser.com/ProductDetail/Bosch-Sensortec/BME280?qs=2OnyuXx6vpj2fK9HX7qb3g%3D%3D",
+            "long_name": "mouser.com",
+            "img": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "mouser.com",
+            "hostname": "www.mouser.com",
+            "favicon": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8",
+            "path": "› ProductDetail  › Bosch-Sensortec  › BME280"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/hZBeOMPzt8KPVrmwXV_kb80n-RFQ95h7mdvyndj7XPQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bW91c2VyLmNvbS9p/bWFnZXMvYm9zY2hz/ZW5zb3J0ZWMvbHJn/L0JNRTI4MF90Lmpw/Zw",
+            "original": "https://www.mouser.com/images/boschsensortec/lrg/BME280_t.jpg",
+            "logo": false
+          },
+          "organization": {
+            "type": "organization",
+            "name": "bosch",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "Bosch BME280 Humidity and Pressure Sensor is an integrated environmental sensor developed specifically for mobile applications where size and low power consumption are key requirements. The unit combines individual high linearity, high accuracy sensors for pressure, humidity, and temperature in an 8-pin metal-lid LGA package.",
+            "Bosch BME280 Humidity and Pressure Sensor is designed for low current consumption (3.6μA at 1Hz), long-term stability, and high EMC robustness. Bosch Sensortec Environmental Sensors include barometric pressure sensors enabling, for example, indoor navigation and altitude stabilization. The Sensortec family also includes humidity sensors that measure air pressure, ambient temperature, and relative humidity for climate control in smart homes.",
+            "Learn More about BME280 Humidity & Pressure Sensor"
+          ]
+        },
+        {
+          "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec - Utmel",
+          "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "... Description: The Bosch Sensortec BME280 is a digital output pressure, temperature, and humidity sensor based on a 1.8V 8-pin LGA T/R package. It is designed to measure pressure, temperature, and humidity with high accuracy ...",
+          "profile": {
+            "name": "Utmel",
+            "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+            "long_name": "utmel.com",
+            "img": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "product",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "utmel.com",
+            "hostname": "www.utmel.com",
+            "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+            "path": "  › sensors, transducers  › humidity, moisture sensors"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/jTAz_8xkjiaJQaTkAeSh29u21XIcMriU9KPlJMIAmSs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudXRtZWwuY29t/LzIwMGRpbWcvYm9z/Y2hzZW5zb3J0ZWMt/Ym1lMjgwLTMxNTUu/anBn",
+            "original": "https://static.utmel.com/200dimg/boschsensortec-bme280-3155.jpg",
+            "logo": false
+          },
+          "faq": {
+            "items": [
+              {
+                "question": "What is the Mounting Type",
+                "answer": "The \"Mounting Type\" in electronic components refers to the method used to attach or connect a component to a circuit board or other substrate, such as through-hole, surface-mount, or panel mount.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Package / Case",
+                "answer": "refers to the protective housing that encases an electronic component, providing mechanical support, electrical connections, and thermal management.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Surface Mount",
+                "answer": "having leads that are designed to be soldered on the side of a circuit board that the body of the component is mounted on.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Operating Temperature",
+                "answer": "The operating temperature is the range of ambient temperature within which a power supply, or any other electrical equipment, operate in. This ranges from a minimum operating temperature, to a peak or maximum operating temperature, outside which, the power supply may fail.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Packaging",
+                "answer": "Semiconductor package is a carrier / shell used to contain and cover one or more semiconductor components or integrated circuits. The material of the shell can be metal, plastic, glass or ceramic.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Part Status",
+                "answer": "Parts can have many statuses as they progress through the configuration, analysis, review, and approval stages.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Moisture Sensitivity Level (MSL)",
+                "answer": "Moisture Sensitivity Level (MSL) is a standardized rating that indicates the susceptibility of electronic components, particularly semiconductors, to moisture-induced damage during storage and the soldering process, defining the allowable exposure time to ambient conditions before they require special handling or baking to prevent failures",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Voltage - Supply",
+                "answer": "Voltage - Supply refers to the range of voltage levels that an electronic component or circuit is designed to operate with. It indicates the minimum and maximum supply voltage that can be applied for the device to function properly. Providing supply voltages outside this range can lead to malfunction, damage, or reduced performance. This parameter is critical for ensuring compatibility between different components in a circuit.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Terminal Position",
+                "answer": "In electronic components, the term \"Terminal Position\" refers to the physical location of the connection points on the component where external electrical connections can be made. These connection points, known as terminals, are typically used to attach wires, leads, or other components to the main body of the electronic component. The terminal position is important for ensuring proper connectivity and functionality of the component within a circuit. It is often specified in technical datasheets or component specifications to help designers and engineers understand how to properly integrate the component into their circuit designs.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Terminal Form",
+                "answer": "Occurring at or forming the end of a series, succession, or the like; closing; concluding.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Peak Reflow Temperature (Cel)",
+                "answer": "Peak Reflow Temperature (Cel) is a parameter that specifies the maximum temperature at which an electronic component can be exposed during the reflow soldering process. Reflow soldering is a common method used to attach electronic components to a circuit board. The Peak Reflow Temperature is crucial because it ensures that the component is not damaged or degraded during the soldering process. Exceeding the specified Peak Reflow Temperature can lead to issues such as component failure, reduced performance, or even permanent damage to the component. It is important for manufacturers and assemblers to adhere to the recommended Peak Reflow Temperature to ensure the reliability and functionality of the electronic components.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Time@Peak Reflow Temperature-Max (s)",
+                "answer": "Time@Peak Reflow Temperature-Max (s) refers to the maximum duration that an electronic component can be exposed to the peak reflow temperature during the soldering process, which is crucial for ensuring reliable solder joint formation without damaging the component.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Output",
+                "answer": "In electronic components, the parameter \"Output\" typically refers to the signal or data that is produced by the component and sent to another part of the circuit or system. The output can be in the form of voltage, current, frequency, or any other measurable quantity depending on the specific component. The output of a component is often crucial in determining its functionality and how it interacts with other components in the circuit. Understanding the output characteristics of electronic components is essential for designing and troubleshooting electronic circuits effectively.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Output Type",
+                "answer": "The \"Output Type\" parameter in electronic components refers to the type of signal or data that is produced by the component as an output. This parameter specifies the nature of the output signal, such as analog or digital, and can also include details about the voltage levels, current levels, frequency, and other characteristics of the output signal. Understanding the output type of a component is crucial for ensuring compatibility with other components in a circuit or system, as well as for determining how the output signal can be utilized or processed further. In summary, the output type parameter provides essential information about the nature of the signal that is generated by the electronic component as its output.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              },
+              {
+                "question": "What is the Supply Voltage-Max (Vsup)",
+                "answer": "The parameter \"Supply Voltage-Max (Vsup)\" in electronic components refers to the maximum voltage that can be safely applied to the component without causing damage. It is an important specification to consider when designing or using electronic circuits to ensure the component operates within its safe operating limits. Exceeding the maximum supply voltage can lead to overheating, component failure, or even permanent damage. It is crucial to adhere to the specified maximum supply voltage to ensure the reliable and safe operation of the electronic component.",
+                "title": "BME280 - Datasheet PDF - Humidity, Moisture Sensors - Bosch Sensortec ...",
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "meta_url": {
+                  "scheme": "https",
+                  "netloc": "utmel.com",
+                  "hostname": "www.utmel.com",
+                  "favicon": "https://imgs.search.brave.com/yAtns5LeATvyUPI8QdCGnHT67YJ6MAJAok0WwMDfE8Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzcwNWU1ZTk5/MWIxZWI0NTMyOWUw/ZDhhN2UyYTcxMTU5/ODFlNmE0MzUwOThi/NjA1OTdkMTgzYWU2/NDc5Y2Q5MS93d3cu/dXRtZWwuY29tLw",
+                  "path": "  › sensors, transducers  › humidity, moisture sensors"
+                }
+              }
+            ]
+          },
+          "product": {
+            "type": "Product",
+            "name": "BME280",
+            "price": "4.13",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/yy5fdPFo1plK9XAWPJy0bD3t8PmkeFu-uTIhVrLm0Ik/rs:fit:360:283:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudXRtZWwuY29t/LzIwMGRpbWcvYm9z/Y2hzZW5zb3J0ZWMt/Ym1lMjgwLTMxNTUu/anBn",
+              "original": "https://static.utmel.com/200dimg/boschsensortec-bme280-3155.jpg"
+            },
+            "description": "Pressure, Temperature and Humidity Sensor Digital Output 1.8V 8-Pin LGA T/R",
+            "offers": [
+              {
+                "url": "https://www.utmel.com/productdetail/boschsensortec-bme280-3668760",
+                "priceCurrency": "USD",
+                "price": "4.13"
+              }
+            ]
+          },
+          "review": {
+            "type": "Review",
+            "name": "BME280",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/yy5fdPFo1plK9XAWPJy0bD3t8PmkeFu-uTIhVrLm0Ik/rs:fit:360:283:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudXRtZWwuY29t/LzIwMGRpbWcvYm9z/Y2hzZW5zb3J0ZWMt/Ym1lMjgwLTMxNTUu/anBn",
+              "original": "https://static.utmel.com/200dimg/boschsensortec-bme280-3155.jpg"
+            },
+            "description": "Download datasheets and manufacturer documentation for Bosch Sensortec BME280. ... Description: The Bosch Sensortec BME280 is a digital output pressure, temperature, and humidity sensor based on a 1.8V 8-pin LGA T/R package. It is designed to measure pressure, temperature, and humidity with high accuracy ... Pressure, Temperature and Humidity Sensor Digital Output 1.8V 8-Pin LGA T/R",
+            "rating": {
+              "ratingValue": 5.0,
+              "bestRating": 5.0,
+              "is_tripadvisor": false
+            }
+          },
+          "extra_snippets": [
+            "Download datasheets and manufacturer documentation for Bosch Sensortec BME280. ... Description: The Bosch Sensortec BME280 is a digital output pressure, temperature, and humidity sensor based on a 1.8V 8-pin LGA T/R package. It is designed to measure pressure, temperature, and humidity with high accuracy and resolution.",
+            "BME280 datasheet PDF download, Bosch Sensortec Humidity, Moisture Sensors BME280 Specifications: Pressure, Temperature and Humidity Sensor Digital Output 1.8V 8-Pin LGA T/R.",
+            "Features: • Pressure, temperature, and humidity sensing • High accuracy and resolution • Digital output • 1.8V 8-pin LGA T/R package • Low power consumption • Robust design Applications: The Bosch Sensortec BME280 is suitable for a wide range of applications, including weather forecasting, climate control, air quality monitoring, and industrial process control.",
+            "In electronic components, the parameter \"Sensor Type\" refers to the specific type of sensor technology used in a particular component to detect and measure physical phenomena such as light, temperature, pressure, motion, or proximity. Different sensor types utilize various principles and mechanisms to convert the detected input into an electrical signal that can be processed by the electronic component."
+          ]
+        },
+        {
+          "title": "BME280 I2C Pressure Humidity Temperature Sensor Module - ProtoSupplies",
+          "url": "https://protosupplies.com/product/bme280-i2c-pressure-humidity-temperature-sensor-module/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The BME280 can measure humidity ... BME280 can measure pressure over the range of 300 to 1100 hPa with excellent accuracy of ±1.0 hPa....",
+          "page_age": "2019-08-22T15:16:47",
+          "profile": {
+            "name": "ProtoSupplies",
+            "url": "https://protosupplies.com/product/bme280-i2c-pressure-humidity-temperature-sensor-module/",
+            "long_name": "protosupplies.com",
+            "img": "https://imgs.search.brave.com/HZi9iliXFcMOReEg-1J5pa4hurbMgYM6NIGRizQBi28/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVhODhlOGU2/ZDhhYWY3OWM4Yjdl/YWE2N2JiMDg2MDI0/MjMxMWJhZjI2ZjMw/YTU5NzQ3MzdkNGMz/NzNkYzY5ZC9wcm90/b3N1cHBsaWVzLmNv/bS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "protosupplies.com",
+            "hostname": "protosupplies.com",
+            "favicon": "https://imgs.search.brave.com/HZi9iliXFcMOReEg-1J5pa4hurbMgYM6NIGRizQBi28/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVhODhlOGU2/ZDhhYWY3OWM4Yjdl/YWE2N2JiMDg2MDI0/MjMxMWJhZjI2ZjMw/YTU5NzQ3MzdkNGMz/NzNkYzY5ZC9wcm90/b3N1cHBsaWVzLmNv/bS8",
+            "path": "  › home  › shop  › breakout modules  › bme280 i2c pressure humidity temperature sensor module"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/hvIZXEYVmUrjVdgGler5j0s-9VV-dsrmBthKVvCCbeE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wcm90/b3N1cHBsaWVzLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAx/OS8wOC9CTUUyODAt/STJDLUh1bWlkaXR5/LVByZXNzdXJlLVRl/bXBlcmF0dXJlLVNl/bnNvci1Nb2R1bGUu/anBn",
+            "original": "https://protosupplies.com/wp-content/uploads/2019/08/BME280-I2C-Humidity-Pressure-Temperature-Sensor-Module.jpg",
+            "logo": false
+          },
+          "age": "August 22, 2019",
+          "organization": {
+            "type": "organization",
+            "name": "ProtoSupplies.com",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "The BME280 can measure humidity over the range of 0 to 100% with an accuracy of ±3%. The sensor can measure up to 100% humidity over the temperature range of 0 to 60°C. At very high or low temperatures, the maximum measurable humidity decreases per the graph on page 10 of the datasheet. The BME280 can measure pressure over the range of 300 to 1100 hPa with excellent accuracy of ±1.0 hPa.",
+            "The BME280 I2C is a high precision digital pressure, humidity and temperature sensor module with I2C interface and 3.3 or 5V operation.",
+            "BME280 I2C Pressure Humidity Temperature Sensor Module ... The BME280 is a precision Bosch sensor that can be used in many applications from weather monitoring to gaming controls to altitude measurements with enough precision to know if an object has been lifted a couple of feet.",
+            "The temperature measurement is used internally to compensate the pressure and humidity sensors and is also available to estimate the ambient temperature as well. The device has numerous sampling and filtering options that can be employed to optimize the device for specific applications. The BME280 can measure temperature over the range of -40 to 80°C. Full accuracy of ±1.0°C is obtained over the range of 0 to 65°C."
+          ]
+        },
+        {
+          "title": "BME280 – Data sheet Document revision 1.22 Document release date October 2021",
+          "url": "https://www.mouser.com/datasheet/2/783/bst_bme280_ds002-2238172.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.",
+          "profile": {
+            "name": "Mouser",
+            "url": "https://www.mouser.com/datasheet/2/783/bst_bme280_ds002-2238172.pdf",
+            "long_name": "mouser.com",
+            "img": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "mouser.com",
+            "hostname": "www.mouser.com",
+            "favicon": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8",
+            "path": "› datasheet  › 2  › 783  › bst_bme280_ds002-2238172.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "The BME280 is register and performance compatible to the Bosch Sensortec BMP280 digital ... The humidity sensor provides an extremely fast response time for fast context awareness applications · and high overall accuracy over a wide temperature range. The pressure sensor is an absolute barometric pressure sensor with extremely high accuracy and",
+            "The variable t_fine (signed 32 bit) carries a fine resolution temperature value over to the pressure and · humidity compensation formula and could be implemented as a global variable. The data type “BME280_S32_t” should define a 32 bit signed integer variable type and can usually be ... The data type “BME280_U32_t” should define a 32 bit unsigned integer variable type and can usually ... For best possible calculation accuracy in pressure, 64 bit integer support is needed.",
+            "However, the environmental pressure is subject to many short-term changes, caused e.g. by · slamming of a door or window, or wind blowing into the sensor. To suppress these disturbances in the · output data without causing additional interface traffic and processor work load, the BME280 features · an internal IIR filter. It effectively reduces the bandwidth of the temperature and pressure output",
+            "The BME280 output consists of the ADC output values. However, each sensing element behaves · differently. Therefore, the actual pressure and temperature must be calculated using a set of"
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

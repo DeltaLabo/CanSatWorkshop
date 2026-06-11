@@ -1,0 +1,39 @@
+{
+  "url": "https://www.bosch-sensortec.com/en/products/environmental-sensors/humidity-sensors-bme280",
+  "saved_at": "2026-06-11T22:21:23.916709+00:00",
+  "reason": "confidence_below_0.55",
+  "warnings": [],
+  "final_url": "https://www.bosch-sensortec.com/en/products/environmental-sensors/humidity-sensors-bme280",
+  "status_code": 200,
+  "content_type": "text/html;charset=UTF-8",
+  "content_length_header": null,
+  "response_headers": {
+    "Date": "Thu, 11 Jun 2026 22:21:22 GMT",
+    "Content-Type": "text/html;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Vary": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+    "X-Content-Type-Options": "nosniff",
+    "X-XSS-Protection": "1",
+    "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "0",
+    "Strict-Transport-Security": "max-age=315360000 ; includeSubDomains",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Content-Security-Policy": "script-src 'self' 'unsafe-inline' 'unsafe-eval' *",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Set-Cookie": "[redacted]",
+    "Content-Language": "en"
+  },
+  "extraction": {
+    "parser": "trafilatura-markdown",
+    "title": "Humidity Sensor BME280",
+    "confidence": 0.525,
+    "word_count": 104,
+    "metadata": {
+      "date": "2026-01-01",
+      "description": "The BME280 humidity sensor for mobile applications includes a high accuracy pressure sensor for humidity, temperature, long-term stability and EMC ruggedness.",
+      "sitename": "Bosch Sensortec"
+    }
+  }
+}

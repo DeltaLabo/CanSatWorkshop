@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" />
+<noscript><style>form.antibot * :not(.antibot-message) { display: none !important; }</style>
+</noscript><meta name="description" content="PROCESS FOR UPDATING THE WMO-No. 8Procedure for updating the Guide to Instruments and Methods of Observation (WMO-No. 8)Guidelines for drafting updates/new editions of the WMO-No. 8(to obtain the MS-Word version of specific chapters of the WMO-No.8 to propose updates, please contact: iruedi@wmo.int )Found a typo/error in the WMO-No. 8?Inform the Secretariat by sending an e-mail describing the error to: iruedi@wmo.int LATEST VERSION OF THE WMO-No. 8GUIDE TO INSTRUMENTS AND METHODS OF OBSERVATION(WMO-No. 8), 2024 editionTranslated versions in Arabic, Chinese, French, Spanish and Russian are available from the WMO Library.(Note: Previous editions of the WMO-No. 8 are available from WMO Library by sending a request to library(at)wmo.int.) VOLUME IMEASUREMENT OF METEOROLOGICAL VARIABLESChapter 1GeneralChapter 2Measurement of temperatureChapter 3Measurement of atmospheric pressureChapter 4Measurement of humidityChapter 5Measurement of surface windChapter 6Measurement of precipitationChapter 7Measurement of radiationChapter 8Measurement of sunshine durationChapter 9Measurement of visibilityChapter 10Measurement of evaporationChapter 11Measurement of soil moistureChapter 12Measurement of upper-air pressure, temperature and humidityChapter 13Measurement of upper windChapter 14Observation of present and past weather; state of the groundChapter 15Observation and measurement of cloudsChapter 16Measurement of atmospheric compositionVOLUME IIMEASUREMENT OF CRYOSPHERIC VARIABLESChapter 1GeneralChapter 2Measurement of snowChapter 3Measurement of glaciersChapter 4Measurement of permafrostVOLUME IIIOBSERVING SYSTEMSChapter 1Measurements at automatic weather stationsChapter 2Measurements and observations at aeronautical meteorological stations Chapter 3Aircraft based observationsChapter 4Marine observationChapter 5Special profiling techniques for the boundary layer and the troposphereChapter 6Electromagnetic methods of lightning detectionChapter 7Radar measurementsChapter 8Balloon techniquesChapter 9Urban observationsChapter 10Road meteorological measurementVOLUME IVSPACE-BASED OBSERVATIONSChapter 1IntroductionChapter 2Principles of Earth observation from spaceChapter 3Remote-sensing instrumentsChapter 4Satellite programmesChapter 5Space-based observation of geophysical variablesChapter 6Calibration and validationChapter 7Cross-cutting issuesVOLUME VQUALITY ASSURANCE AND MANAGEMENT OF OBSERVING SYSTEMSChapter 1Quality ManagementChapter 2Sampling meteorological variablesChapter 3Data reductionChapter 4Testing, calibration and intercomparisonChapter 5Training of instrument specialists" />
+<link rel="canonical" href="https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop/guide-instruments-and-methods-of-observation-wmo-no-8-0" />
+<link rel="shortlink" href="https://community.wmo.int/node/37733" />
+<meta property="og:site_name" content="World Meteorological Organization" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop/guide-instruments-and-methods-of-observation-wmo-no-8-0" />
+<meta property="og:title" content="Guide to Instruments and Methods of Observation (WMO-No. 8)" />
+<meta property="og:description" content="PROCESS FOR UPDATING THE WMO-No. 8Procedure for updating the Guide to Instruments and Methods of Observation (WMO-No. 8)Guidelines for drafting updates/new editions of the WMO-No. 8(to obtain the MS-Word version of specific chapters of the WMO-No.8 to propose updates, please contact: iruedi@wmo.int )Found a typo/error in the WMO-No. 8?Inform the Secretariat by sending an e-mail describing the error to: iruedi@wmo.int LATEST VERSION OF THE WMO-No. 8GUIDE TO INSTRUMENTS AND METHODS OF OBSERVATION(WMO-No. 8), 2024 editionTranslated versions in Arabic, Chinese, French, Spanish and Russian are available from the WMO Library.(Note: Previous editions of the WMO-No. 8 are available from WMO Library by sending a request to library(at)wmo.int.) VOLUME IMEASUREMENT OF METEOROLOGICAL VARIABLESChapter 1GeneralChapter 2Measurement of temperatureChapter 3Measurement of atmospheric pressureChapter 4Measurement of humidityChapter 5Measurement of surface windChapter 6Measurement of precipitationChapter 7Measurement of radiationChapter 8Measurement of sunshine durationChapter 9Measurement of visibilityChapter 10Measurement of evaporationChapter 11Measurement of soil moistureChapter 12Measurement of upper-air pressure, temperature and humidityChapter 13Measurement of upper windChapter 14Observation of present and past weather; state of the groundChapter 15Observation and measurement of cloudsChapter 16Measurement of atmospheric compositionVOLUME IIMEASUREMENT OF CRYOSPHERIC VARIABLESChapter 1GeneralChapter 2Measurement of snowChapter 3Measurement of glaciersChapter 4Measurement of permafrostVOLUME IIIOBSERVING SYSTEMSChapter 1Measurements at automatic weather stationsChapter 2Measurements and observations at aeronautical meteorological stations Chapter 3Aircraft based observationsChapter 4Marine observationChapter 5Special profiling techniques for the boundary layer and the troposphereChapter 6Electromagnetic methods of lightning detectionChapter 7Radar measurementsChapter 8Balloon techniquesChapter 9Urban observationsChapter 10Road meteorological measurementVOLUME IVSPACE-BASED OBSERVATIONSChapter 1IntroductionChapter 2Principles of Earth observation from spaceChapter 3Remote-sensing instrumentsChapter 4Satellite programmesChapter 5Space-based observation of geophysical variablesChapter 6Calibration and validationChapter 7Cross-cutting issuesVOLUME VQUALITY ASSURANCE AND MANAGEMENT OF OBSERVING SYSTEMSChapter 1Quality ManagementChapter 2Sampling meteorological variablesChapter 3Data reductionChapter 4Testing, calibration and intercomparisonChapter 5Training of instrument specialists" />
+<meta property="og:updated_time" content="2026-06-09T10:23:09+02:00" />
+<meta property="article:published_time" content="2025-11-05T04:43:25+01:00" />
+<meta property="article:modified_time" content="2026-06-09T10:23:09+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@Wmo" />
+<meta name="twitter:title" content="Guide to Instruments and Methods of Observation (WMO-No. 8)" />
+<meta name="twitter:site:id" content="113062227" />
+<link rel="image_src" content="https://community.wmo.int/themes/custom/server_theme/dist/images/rainbow.jpg" />
+<meta property="og:image" content="https://community.wmo.int/themes/custom/server_theme/dist/images/rainbow.jpg" />
+<meta property="og:image:alt" content="World Meteorological Organization" />
+<meta name="twitter:image" content="https://community.wmo.int/themes/custom/server_theme/dist/images/rainbow.jpg" />
+<meta name="twitter:image:alt" content="World Meteorological Organization" />
+<meta name="msapplication-TileColor" content="#204e96" />
+<meta name="theme-color" content="#204e96" />
+<meta name="Generator" content="Drupal 11 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="apple-touch-icon" sizes="180x180" href="/themes/custom/server_theme/dist/images/favicons//apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/themes/custom/server_theme/dist/images/favicons//favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/themes/custom/server_theme/dist/images/favicons//favicon-16x16.png" />
+<link rel="manifest" href="/themes/custom/server_theme/dist/images/favicons//site.webmanifest" />
+<link rel="mask-icon" href="/themes/custom/server_theme/dist/images/favicons//safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" hreflang="en" href="https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop/guide-instruments-and-methods-of-observation-wmo-no-8-0" />
+
+    <title>Guide to Instruments and Methods of Observation (WMO-No. 8)</title>
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_l648i6QNRJSy1jhpGUz3WLzBGg9biLZgnWJAvh60-Es.css?delta=0&amp;language=en&amp;theme=server_theme&amp;include=eJxVj-EOwjAIhF-otY_U4IpdlcICzDmf3pqpiT9I7r7jSJgIzPZ0BsMwHZqlDC2Kqei6AJ3gCo8DsGgHak8M-HBqfPuufGwg4JqLylJk4_R28eviZZSDod5Rs8_YMV2EPcKGJh3_k0pyBorm-zhb_7M-WgMoeLDmuLWCGQjVU-M22AJ9DCdwa5WD7ebYjw9XLjUbEk7ehLPNoKjpTeOPxoO-AFuPbjI" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_ns5aJ0uhZjJ2-xP5JkiKtW-TCfMC4byGl54ugA4XP2g.css?delta=1&amp;language=en&amp;theme=server_theme&amp;include=eJxVj-EOwjAIhF-otY_U4IpdlcICzDmf3pqpiT9I7r7jSJgIzPZ0BsMwHZqlDC2Kqei6AJ3gCo8DsGgHak8M-HBqfPuufGwg4JqLylJk4_R28eviZZSDod5Rs8_YMV2EPcKGJh3_k0pyBorm-zhb_7M-WgMoeLDmuLWCGQjVU-M22AJ9DCdwa5WD7ebYjw9XLjUbEk7ehLPNoKjpTeOPxoO-AFuPbjI" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css2?family=Montserrat:wght@200..700&amp;display=swap" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_xbx0PJnaD3WDiLErGRYuNd0gre4-_ailxxyFnmJwFjg.css?delta=3&amp;language=en&amp;theme=server_theme&amp;include=eJxVj-EOwjAIhF-otY_U4IpdlcICzDmf3pqpiT9I7r7jSJgIzPZ0BsMwHZqlDC2Kqei6AJ3gCo8DsGgHak8M-HBqfPuufGwg4JqLylJk4_R28eviZZSDod5Rs8_YMV2EPcKGJh3_k0pyBorm-zhb_7M-WgMoeLDmuLWCGQjVU-M22AJ9DCdwa5WD7ebYjw9XLjUbEk7ehLPNoKjpTeOPxoO-AFuPbjI" />
+<link rel="stylesheet" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_YKvl3uSdgNwrsOzd9NatTROI3zi4l1hsjPVSCbGmawg.css?delta=5&amp;language=en&amp;theme=server_theme&amp;include=eJxVj-EOwjAIhF-otY_U4IpdlcICzDmf3pqpiT9I7r7jSJgIzPZ0BsMwHZqlDC2Kqei6AJ3gCo8DsGgHak8M-HBqfPuufGwg4JqLylJk4_R28eviZZSDod5Rs8_YMV2EPcKGJh3_k0pyBorm-zhb_7M-WgMoeLDmuLWCGQjVU-M22AJ9DCdwa5WD7ebYjw9XLjUbEk7ehLPNoKjpTeOPxoO-AFuPbjI" />
+
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPath":"node\/37733","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"gtag":{"tagId":"","consentMode":false,"otherIds":[],"events":[],"additionalConfigInfo":[]},"ajaxPageState":{"libraries":"eJxtkGFuwyAMRi8E5UjIAYeyGhzZztLu9CNKsynTfoB470O2IRGovsIEii4d54aqUFBP7pxHxoLjJA2ofqHDp1Htj5BlXYBub3SFuRBGgxLK2P7yDT7geZXNEfQSs_CSeethJ3-Sn0dDJ0w0gYRCPAE5RflEiQU7ClBoNQlrNYyJu41BolpNj_Oa3bFhmEfkYUPlhtfkKOo1SV1M_8_sNR5XrlkbFYcQMLc332rGCIRiofY63AJtrB7AtJb-yzzNqyawMcZLDdvx82vPJSoSJqvco95BUMJu_Y_1h_0GV2Cp7A","theme":"server_theme","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"gtm":{"tagId":null,"settings":{"data_layer":"dataLayer","include_classes":false,"allowlist_classes":"google\nnonGooglePixels\nnonGoogleScripts\nnonGoogleIframes","blocklist_classes":"customScripts\ncustomPixels","include_environment":false,"environment_id":"","environment_token":""},"tagIds":["GTM-MWXW8B2"]},"undg_selection_sharer":{"undg_selection_sharer_jquery_selectors":["article \u003E div","article \u003E h1","article \u003E h2","article \u003E h3","article \u003E h4","article \u003E h5","article \u003E h6","article \u003E p"],"undg_selection_sharer_facebook":0,"undg_selection_sharer_twitter":1,"undg_selection_sharer_reddit":0,"undg_selection_sharer_linkedin":1,"undg_selection_sharer_whatsapp":1,"undg_selection_sharer_email":0},"data":{"extlink":{"extTarget":true,"extTargetAppendNewWindowDisplay":true,"extTargetAppendNewWindowLabel":"(opens in a new window)","extTargetNoOverride":false,"extNofollow":false,"extTitleNoOverride":false,"extNoreferrer":true,"extFollowNoOverride":false,"extClass":"0","extLabel":"(link is external)","extImgClass":false,"extSubdomains":true,"extExclude":"","extInclude":"","extCssExclude":"","extCssInclude":"","extCssExplicit":"","extAlert":false,"extAlertText":"This link will take you to an external web site. We are not responsible for their content.","extHideIcons":false,"mailtoClass":"0","telClass":"","mailtoLabel":"(link sends email)","telLabel":"(link is a phone number)","extUseFontAwesome":false,"extIconPlacement":"append","extPreventOrphan":false,"extFaLinkClasses":"fa fa-external-link","extFaMailtoClasses":"fa fa-envelope-o","extAdditionalLinkClasses":"","extAdditionalMailtoClasses":"","extAdditionalTelClasses":"","extFaTelClasses":"fa fa-phone","allowedDomains":[],"extExcludeNoreferrer":""}},"rollbar":{"accessToken":"07a26c993ccc43e788210d07ccd8c936","captureUncaught":false,"captureUnhandledRejections":false,"payload":{"environment":"wmo-public.live"},"rollbarJsUrl":"https:\/\/cdn.rollbar.com\/rollbarjs\/refs\/tags\/v2.26.3\/rollbar.min.js","ignoredMessages":[],"scrubFields":["passwd","password","secret","confirm_password","password_confirmation","auth_token","csrf_token"]},"lang_dropdown":{"lang-dropdown-form":{"key":"lang-dropdown-form"}},"microsite_context_stick":{"bookId":31259,"domain":"https:\/\/wmo.int"},"language":{"direction":"ltr"},"sitewideAlert":{"refreshInterval":15000,"automaticRefresh":true,"showCount":false,"serverSideRender":false},"user":{"uid":0,"permissionsHash":"4c4204b538bf37416be604244ceb54fff5170a02256e2d974471295207449283"}}</script>
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=4.0.0"></script>
+<script src="/sites/default/files/js/js_SxlpPuAubVwVvJB9cw6BzY7MBcJMhQ5aaTFPi6aMkxg.js?scope=header&amp;delta=1&amp;language=en&amp;theme=server_theme&amp;include=eJxdjlGOwzAIRC9k10eyiE1dWgwRkG2P30RpV9r9YKT3NCOBr2CSR-m2rcAXPDEN1cFYA0YZe_znC9zh9VfOxCCjdtO161PKQflL-ao2kynzAlYG6wKcHO0HrQ4UNOAyqZk6BdamEvsj1YPa41uLG078TLM3ozU8HfUndazAaFFIKJKvMPeTost18waBaZM-qiNjC1KpfgNDK4fNvzaf9g24DGrp"></script>
+<script src="/modules/contrib/google_tag/js/gtag.js?tgfaem"></script>
+<script src="/modules/contrib/google_tag/js/gtm.js?tgfaem"></script>
+<script src="/sites/default/files/js/js_zym0RAG-HjBlPT7_jL1HCQURG83jczs0z36NHTunUUI.js?scope=header&amp;delta=4&amp;language=en&amp;theme=server_theme&amp;include=eJxdjlGOwzAIRC9k10eyiE1dWgwRkG2P30RpV9r9YKT3NCOBr2CSR-m2rcAXPDEN1cFYA0YZe_znC9zh9VfOxCCjdtO161PKQflL-ao2kynzAlYG6wKcHO0HrQ4UNOAyqZk6BdamEvsj1YPa41uLG078TLM3ozU8HfUndazAaFFIKJKvMPeTost18waBaZM-qiNjC1KpfgNDK4fNvzaf9g24DGrp"></script>
+
+  </head>
+  <body class="path-node page-node-type-landing-page font-body">
+        <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWXW8B2"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div data-sitewide-alert aria-live="polite"></div>
+
+        <div class="dialog-off-canvas-main-canvas flex flex-col min-h-screen" data-off-canvas-main-canvas>
+    <div class="layout-container text-wmo-blue-gray-900   flex flex-col gap-6 md:gap-8 lg:gap-10">
+
+  <header role="banner" class="w-full z-50">
+      
+                    
+
+<div class="relative microsite-header ">
+
+  
+  <div class="max-w-[1440px] mx-auto w-full px-4 md:px-10 xl:px-20 overflow-x-clip  grid grid-cols-[1fr_fit-content(10%)_fit-content(10%)] xl:grid-cols-[250px_1fr_fit-content(5%)] gap-x-8 gap-y-3 md:gap-x-10 md:gap-y-5 lg:gap-y-3 grid-rows-[auto_1fr]">
+          <div class="col-start-1 row-start-1 col-span-3 flex items-center justify-between py-4 md:py-5 text-xs xl:text-sm text-white" style="background-color:#204E96;padding-inline:999rem;margin-inline:-999rem;">
+        <div class="text-start pr-4 flex flex-col md:flex-row md:items-stretch gap-2 xl:gap-5">
+          <a href="https://wmo.int" class="font-semibold underline" rel="home">To WMO website</a>
+        </div>
+      </div>
+    
+    <div class="col-start-1 row-start-2 col-span-2 flex items-start" id="main-logo">
+      <div class="grid xl:grid-cols-[auto_1fr] items-center gap-x-4 gap-y-3 md:gap-x-10 md:gap-y-5">
+                <div class="flex flex-row items-center gap-x-4 gap-y-3 md:gap-x-10 md:gap-y-5">
+                      <a class="h-[3.125rem] md:h-20 lg:h-[6.25rem]" href="/" rel="home">
+                              <img class="h-full" src="/themes/custom/server_theme/dist/images/logo_microsite_en.svg" alt="World Meteorological Organization">
+                          </a>
+          
+                                  <a href="/site/knowledge-hub" class="block child-object-contain max-w-[7rem] md:max-w-[8.375rem] xl:max-w-[10.75rem] h-[3.125rem] md:h-[3.75rem] xl:h-20 ltr:border-l rtl:border-r border-wmo-blue-gray-400 ltr:pl-4 rtl:pr-4 md:ltr:pl-8 md:rtl:pr-8 xl:ltr:pl-10 xl:rtl:pr-10">
+                <img srcset="/sites/default/files/styles/microsite_logo_1x/public/2025-11/Community%20logo%20light%20bg_1.png?itok=RyQYAK6P 1x, /sites/default/files/styles/microsite_logo_2x/public/2025-11/Community%20logo%20light%20bg_1.png?itok=quVFayU- 2x" width="180" height="42" src="/sites/default/files/styles/microsite_logo_1x/public/2025-11/Community%20logo%20light%20bg_1.png?itok=RyQYAK6P" alt="Knowledge Hub" typeof="foaf:Image" />
+
+
+            </a>
+                  </div>
+
+                  <div class="flex items-center text-wmo-blue-gray-900 text-sm md:text-base xl:text-2xl ">
+            Knowledge Hub
+          </div>
+              </div>
+    </div>
+
+    <div class="col-start-2 row-start-1 flex justify-end items-center text-white">
+      <div class="language-block-dropdown block xl:hidden w-fit"><div id="block-language-dropdown-blocklanguage-interface" class="block block-lang-dropdown block-language-dropdown-blocklanguage-interface">
+  
+    
+      <form class="lang-dropdown-form lang_dropdown_form clearfix language_interface" id="lang_dropdown_form_lang-dropdown-form" data-drupal-selector="lang-dropdown-form-2" action="/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop/guide-instruments-and-methods-of-observation-wmo-no-8-0" method="post" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-select form-type-select js-form-item-lang-dropdown-select form-item-lang-dropdown-select form-no-label">
+      <label for="edit-lang-dropdown-select" class="visually-hidden">Select your language</label>
+        <select style="width:autopx" class="lang-dropdown-select-element form-select" data-lang-dropdown-id="lang-dropdown-form" data-drupal-selector="edit-lang-dropdown-select" id="edit-lang-dropdown-select" name="lang_dropdown_select"><option value="en" selected="selected">English</option><option value="ar">عربي</option><option value="zh-hans">中文</option><option value="fr">Français</option><option value="ru">Русский</option><option value="es">Español</option></select>
+
+        </div>
+<input data-drupal-selector="edit-ar" type="hidden" name="ar" value="/ar/node/37733" aria-label="search key input form field"/>
+<input data-drupal-selector="edit-zh-hans" type="hidden" name="zh-hans" value="/zh-hans/node/37733" aria-label="search key input form field"/>
+<input data-drupal-selector="edit-en" type="hidden" name="en" value="/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop/guide-instruments-and-methods-of-observation-wmo-no-8-0" aria-label="search key input form field"/>
+<input data-drupal-selector="edit-fr" type="hidden" name="fr" value="/fr/node/37733" aria-label="search key input form field"/>
+<input data-drupal-selector="edit-ru" type="hidden" name="ru" value="/ru/node/37733" aria-label="search key input form field"/>
+<input data-drupal-selector="edit-es" type="hidden" name="es" value="/es/node/37733" aria-label="search key input form field"/>
+<noscript><div><input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Go" class="button js-form-submit form-submit" aria-label="search key input form field"/>
+</div></noscript><input autocomplete="off" data-drupal-selector="form-uyktoy6ddbkxfaqieaikdrcr1d5pgju4ykx6tzpa7mg" type="hidden" name="form_build_id" value="form-uykToY6DdBKxFaqiEaikDrcr1d5Pgju4YKX6tZPA7mg" aria-label="search key input form field"/>
+<input data-drupal-selector="edit-lang-dropdown-form" type="hidden" name="form_id" value="lang_dropdown_form" aria-label="search key input form field"/>
+
+</form>
+
+  </div>
+</div>
+      <div class="language-block-links hidden xl:block"><div class="language-switcher-language-url block block-language block-language-blocklanguage-interface" id="block-language-blocklanguage-interface" role="navigation">
+  
+    
+      
+<div id="language-switcher-desktop">
+  <div class="flex flex-row justify-end">
+    <ul class="language-switcher-language-url bg-transparent flex flex-row items-start gap-4 text-sm"><li class="whitespace-nowrap"><a href="/ar/node/37733" class="language-link" rel="nofollow" lang="ar" hreflang="ar" data-drupal-link-system-path="node/37733">عربي</a></li><li class="whitespace-nowrap"><a href="/zh-hans/node/37733" class="language-link" rel="nofollow" lang="zh-hans" hreflang="zh-hans" data-drupal-link-system-path="node/37733">中文</a></li><li class="whitespace-nowrap"><a href="/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop/guide-instruments-and-methods-of-observation-wmo-no-8-0" class="language-link is-active" rel="nofollow" lang="en" hreflang="en" data-drupal-link-system-path="node/37733" aria-current="page">English</a></li><li class="whitespace-nowrap"><a href="/fr/node/37733" class="language-link" rel="nofollow" lang="fr" hreflang="fr" data-drupal-link-system-path="node/37733">Français</a></li><li class="whitespace-nowrap"><a href="/ru/node/37733" class="language-link" rel="nofollow" lang="ru" hreflang="ru" data-drupal-link-system-path="node/37733">Русский</a></li><li class="whitespace-nowrap"><a href="/es/node/37733" class="language-link" rel="nofollow" lang="es" hreflang="es" data-drupal-link-system-path="node/37733">Español</a></li></ul>
+  </div>
+</div>
+  </div>
+</div>
+    </div>
+
+    <div class="col-start-3 row-start-1 flex items-start justify-center xl:justify-end items-center">
+      <button class="js-search-toggle flex items-center gap-2 font-medium text-base xl:text-lg sm:px-2 sm:py-2 sm:border border-wmo-blue-gray-300 sm:hover:border-wmo-dark-blue sm:focus-visible:border-wmo-dark-blue sm:hover:bg-wmo-dark-blue sm:hover:text-white sm:focus-visible:bg-wmo-dark-blue sm:focus-visible:text-white transition-colors duration-300 whitespace-nowrap border-white text-white" aria-label="Open the search form" title="Open the search form">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.0008 21.0008L15.8038 15.8038M15.8038 15.8038C17.2104 14.3972 18.0006 12.4895 18.0006 10.5003C18.0006 8.51108 17.2104 6.60336 15.8038 5.19678C14.3972 3.79021 12.4895 3 10.5003 3C8.51108 3 6.60336 3.79021 5.19678 5.19678C3.79021 6.60336 3 8.51108 3 10.5003C3 12.4895 3.79021 14.3972 5.19678 15.8038C6.60336 17.2104 8.51108 18.0006 10.5003 18.0006C12.4895 18.0006 14.3972 17.2104 15.8038 15.8038Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <span class="hidden sm:block">Search</span>
+      </button>
+    </div>
+
+    <div class="col-start-2 row-start-2 col-span-2 xl:col-start-1 xl:col-span-3 xl:row-start-3 flex items-start justify-end xl:justify-start">
+              <button type="button" name="open_menu" class="js-open-menu flex items-center gap-2 font-medium text-base xl:text-lg text-wmo-dark-blue transition-colors duration-300 whitespace-nowrap xl:hidden"  aria-label="Open the menu" title="Open the menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.75 6.75H20.25M3.75 12H20.25M3.75 17.25H20.25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span id="header-menu">Menu</span>
+        </button>
+            <nav class="main-menu-wrapper flex flex-col gap-4 md:gap-5 absolute left-0 top-[35%] z-[999] xl:static items-stretch w-full py-4 md:py-5 xl:py-0 shadow-menu xl:shadow-none bg-white xl:bg-transparent text-wmo-dark-blue xl:text-inherit transition-all duration-300 xl:!bg-transparent" role="navigation" style="">
+  <div class="px-4 md:px-10 xl:px-20 flex flex-row gap-4 md:gap-5 justify-end items-center xl:hidden">
+        <button name="close_menu" class="js-close-menu w-6 h-6 hover:text-slate-500 focus-visible:text-slate-500 transition duration-300 text-wmo-dark-blue">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_11743_33122)">
+          <path d="M0 24L24 0M0 0L24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </svg>
+      <span class="sr-only">Close menu</span>
+    </button>
+  </div>
+  <div class="flex px-4 md:px-10 xl:px-0 xl:py-0 grow xl:justify-end">
+    
+
+<div class="xl:hidden overflow-auto w-full">
+                                  <ul class="menu main-menu m-0 flex flex-col gap-4 md:gap-5">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <button  class="menu-root-item pb-2 flex items-center font-medium text-base md:text-lg w-full text-left [&.active]:text-wmo-blue-hover [&.active]:font-semibold ">Governance</button>
+                                                      
+                                                                                                              <ul class="sub-menu flex flex-col gap-4 md:gap-6 ps-10 text-lg">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Governance</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/congress" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Congress</a>
+                                                      
+                                                                    <ul class="sub-menu flex flex-col gap-4 md:gap-6 ps-10 text-lg">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/congress" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Congress</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/congress/flash-flood-guidance-system-ffgs-programme-management-committee" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Flash Flood Guidance System (FFGS) Programme Management Committee</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/congress/joint-wmo-ioc-collaborative-board" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Joint WMO-IOC Collaborative Board</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/congress/scientific-advisory-panel" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Scientific Advisory Panel</a>
+                              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/executive-council" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Executive Council</a>
+                                                      
+                                                                                                                                                        <ul class="sub-menu flex flex-col gap-4 md:gap-6 ps-10 text-lg">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/executive-council" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Executive Council</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/executive-council/capacity-development-panel" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Capacity Development Panel</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/executive-council/disciplinary-committee" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Disciplinary Committee</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/executive-council/hydrological-coordination-panel" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Hydrological Coordination Panel</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/executive-council/panel-polar-and-high-mountain-observations-research-and-services-phors" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Panel on Polar and High-mountain Observations, Research and Services (PHORS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/executive-council/policy-advisory-committee" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Policy Advisory Committee</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/executive-council/selection-committee-imo-prize" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Selection Committee IMO Prize</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/executive-council/technical-coordination-committee" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Technical Coordination Committee</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/executive-council/task-force-recommended-modifications-strategic-and-operating-plans-2026-2027" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Task Force on Recommended Modifications to the Strategic and Operating Plans 2026-2027</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/executive-council/wmo-audit-and-oversight-committee" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO Audit and Oversight Committee</a>
+                              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/regional-association" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Regional Associations</a>
+                                                      
+                                                                                                              <ul class="sub-menu flex flex-col gap-4 md:gap-6 ps-10 text-lg">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/regional-association" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Regional Associations</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/regional-association/RA-I" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Regional Association I</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/regional-association/RA-II" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Regional Association II</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/regional-association/RA-III" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Regional Association III</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/regional-association/RA-IV" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Regional Association IV</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/regional-association/regional-association-v" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Regional Association V</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/regional-association/RA-VI" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Regional Association VI</a>
+                              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/infcom" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">INFCOM</a>
+                                                      
+                                                                                                <ul class="sub-menu flex flex-col gap-4 md:gap-6 ps-10 text-lg">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/infcom" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">INFCOM</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/infcom/infcom-management-group" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">INFCOM Management Group</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/infcom/standing-committee-earth-observing-systems-and-monitoring-networks-sc" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Standing Committee on Earth Observing Systems and Monitoring Networks (SC-ON)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/infcom/standing-committee-information-management-and-technology-sc-imt" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Standing Committee on Information Management and Technology (SC-IMT)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/infcom/standing-committee-measurements-instrumentation-and-traceability-sc-mint" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Standing Committee on Measurements, Instrumentation and Traceability (SC-MINT)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/infcom/standing-committee-wmo-integrated-processing-and-prediction-system-sc-wipps" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Standing Committee on WMO Integrated Processing and Prediction System (SC-WIPPS)</a>
+                              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/sercom" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">SERCOM</a>
+                                                      
+                                                                                                                                          <ul class="sub-menu flex flex-col gap-4 md:gap-6 ps-10 text-lg">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/sercom" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">SERCOM</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/sercom/sercom-management-group" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">SERCOM Management Group</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/sercom/standing-committee-climate-services" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Standing Committee on Climate Services</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/sercom/standing-committee-disaster-risk-reduction-and-early-warning-services" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Standing Committee on Disaster Risk Reduction and Early Warning Services</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/sercom/standing-committee-hydrological-services" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Standing Committee on Hydrological Services</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/sercom/standing-committee-marine-meteorological-and-oceanographic-services-sc-mmo" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Standing Committee on Marine Meteorological and Oceanographic Services (SC-MMO)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/sercom/standing-committee-services-agriculture" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Standing Committee on Services for Agriculture</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/sercom/standing-committee-services-aviation" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Standing Committee on Services for Aviation</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/sercom/sercom-gender-actions" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">SERCOM Gender Actions</a>
+                              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/research-board" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Research Board</a>
+                                                      
+                                                                                                                                                        <ul class="sub-menu flex flex-col gap-4 md:gap-6 ps-10 text-lg">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/research-board" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Research Board</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/research-board/environmental-pollution-and-atmospheric-chemistry-scientific-steering-committee-ssc-epac" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">The Environmental Pollution and Atmospheric Chemistry Scientific Steering Committee (SSC-EPAC)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/research-board/research-board-management-group" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Research Board Management Group</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/research-board/scientific-steering-committee-ssc" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Scientific Steering Committee (SSC)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/research-board/task-team-artificial-intelligence-weather" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Task Team on Artificial Intelligence for Weather</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/research-board/task-team-data-exchange-research-sector" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Task Team on Data Exchange with the Research Sector</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/research-board/task-team-early-warnings-all" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Task Team on Early Warnings for All</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/research-board/task-team-hydrology-research-2023-2025" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Task Team on Hydrology Research (2023-2025)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/research-board/task-team-plan-of-action-hydrology-research" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Task Team on Plan of Action for Hydrology Research</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/governance/research-board/task-team-social-science-and-geophysical-science-integration-2025" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Task Team on Social Science and Geophysical Science Integration (2025)</a>
+                              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <button  class="menu-root-item pb-2 flex items-center font-medium text-base md:text-lg w-full text-left [&.active]:text-wmo-blue-hover [&.active]:font-semibold active">Programmes and Initiatives</button>
+                                                      
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <ul class="sub-menu flex flex-col gap-4 md:gap-6 ps-10 text-lg active active-trail">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Programmes and Initiatives</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/africa-partner-coordination-mechanism" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Africa Partner Coordination Mechanism</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/agricultural-meteorology" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Agricultural Meteorology</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/aircraft-based-observations" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Aircraft-Based Observations</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/associated-programme-flood-management-apfm" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Associated Programme on Flood Management (APFM)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/climate-services" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Climate Services</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/disaster-risk-reduction-drr" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Disaster Risk Reduction (DRR)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/early-warnings-all-ew4all" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Early Warnings for All (EW4All)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/education-and-training-programme-etrp" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Education and Training Programme (ETRP)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/energy" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Energy Services</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/emergency-response-activities-era" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Emergency Response Activities (ERA)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/global-atmosphere-watch-gaw-programme" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Global Atmosphere Watch (GAW) Programme</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/global-climate-observing-system-gcos-0" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Global Climate Observing System (GCOS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/global-cryosphere-watch-gcw" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Global Cryosphere Watch (GCW)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/global-hydrological-status-and-outlook-system-hydrosos" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Global Hydrological Status and Outlook System (HydroSOS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/global-maritime-distress-and-safety-system-services-gmdss" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Global Maritime Distress and Safety System Services (GMDSS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/global-observing-system-gos" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Global Observing System (GOS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/global-ocean-observing-system-goos" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Global Ocean Observing System (GOOS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/global-telecommunication-system-gts" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Global Telecommunication System (GTS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/health-services" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Health Services</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/hydrology-and-water-resources" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Hydrology and Water Resources</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover active">Instruments and Methods of Observation Programme (IMOP)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/integrated-drought-management-programme-idmp" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Integrated Drought Management Programme (IDMP)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/marine-services" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Marine Services</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/ocean-infrastructure" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Ocean Infrastructure</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/operational-information-service-ois" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Operational Information Service (OIS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/public-private-partnerships" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Public &amp; Private Partnerships</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/public-weather-services-programme-pws" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Public Weather Services Programme (PWS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/satcom" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Satcom</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/aviation" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Services for Aviation</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/severe-weather-forecasting-programme-swfp" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Severe Weather Forecasting Programme (SWFP)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/technical-coordination-initiative" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Technical Coordination Initiative</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/tropical-cyclone-programme-tcp" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Tropical Cyclone Programme (TCP)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/urban" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Urban Services</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/voluntary-cooperation-programme-vcp" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Voluntary Cooperation Programme (VCP)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/water-and-climate-coalition" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Water and Climate Coalition</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/water-resources-assessment" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Water Resources Assessment</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/weather-radar-observations" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Weather Radar Observations</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/world-climate-research-programme" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">World Climate Research Programme</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/world-weather-research-programme-wwrp" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">World Weather Research Programme (WWRP)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-hydrological-observing-system-whos" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO Hydrological Observing System (WHOS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-iata-collaborative-amdar-programme-2020-2024" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO-IATA Collaborative AMDAR Programme (2020-2024)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-coordination-mechanism-wcm-support-humanitarian-activities" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO Coordination Mechanism (WCM) to support humanitarian activities</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-information-system-wis" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO Information System (WIS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-integrated-global-observing-system-wigos" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO Integrated Global Observing System (WIGOS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-integrated-processing-and-prediction-system-wipps" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO Integrated Processing and Prediction System (WIPPS)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-space-programme-wsp" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO Space Programme (WSP)</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-uncrewed-aircraft-systems-demonstration-campaign" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO Uncrewed Aircraft Systems Demonstration Campaign</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-youth-network" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO Youth Network</a>
+                              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/community-events" class="menu-root-item pb-2 flex items-center font-medium text-base md:text-lg w-full text-left [&.active]:text-wmo-blue-hover [&.active]:font-semibold ">Community Events</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/community-news" class="menu-root-item pb-2 flex items-center font-medium text-base md:text-lg w-full text-left [&.active]:text-wmo-blue-hover [&.active]:font-semibold ">Community News</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <button  class="menu-root-item pb-2 flex items-center font-medium text-base md:text-lg w-full text-left [&.active]:text-wmo-blue-hover [&.active]:font-semibold ">Planning and Monitoring</button>
+                                                      
+                                                      <ul class="sub-menu flex flex-col gap-4 md:gap-6 ps-10 text-lg">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/planning-and-monitoring" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Planning and Monitoring</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/planning-and-budgeting" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Planning and Budgeting</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/monitoring-hub" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Monitoring</a>
+                                                      
+                                                                                                              <ul class="sub-menu flex flex-col gap-4 md:gap-6 ps-10 text-lg">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/monitoring-hub" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Monitoring</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/monitoring-hub/wmo-data-collection-campaign" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO Data Collection Campaign</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/node/37901" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Campagne de l’OMM – Collecte de données de suivi</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/node/37903" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Campaña de la OMM para la recopilación de datos de seguimiento</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/node/37900" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO 监测数据收集活动</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/node/37902" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Кампания ВМО по сбору данных мониторинга</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/node/37899" class="menu-sub-item pb-2 block text-sm md:text-base font-normal [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">حملة المنظمة العالمية للأرصاد الجوية لجمع البيانات لأغراض المراقبة</a>
+                              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <button  class="menu-root-item pb-2 flex items-center font-medium text-base md:text-lg w-full text-left [&.active]:text-wmo-blue-hover [&.active]:font-semibold ">Resources</button>
+                                                      
+                                        <ul class="sub-menu flex flex-col gap-4 md:gap-6 ps-10 text-lg">
+                    <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/resources" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">Resources</a>
+                              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/resources/wmo-language-resources" class="menu-sub-item pb-2 block text-sm md:text-base font-medium [&.active]:font-semibold [&amp;.active]:text-wmo-blue-hover [&amp;.active-trail]:text-wmo-blue-hover hover:text-wmo-blue-hover focus-visible:text-wmo-blue-hover ">WMO Language Resources</a>
+                              </li>
+        </ul>
+  
+              </li>
+                <li class="menu-item flex flex-col gap-4 md:gap-6">
+                          <a href="/site/knowledge-hub/about" class="menu-root-item pb-2 flex items-center font-medium text-base md:text-lg w-full text-left [&.active]:text-wmo-blue-hover [&.active]:font-semibold ">About</a>
+                              </li>
+        </ul>
+  
+</div>
+
+<div class="menu_level_0 hidden xl:block menu main-menu relative w-full xl:ps-[12.5rem] 2xl:ps-[18.75rem]">
+              
+  <ul class="m-0 flex flex-row justify-between items-center gap-x-8 md:gap-x-10">
+          <li class="menu-root-item-wrapper relative" data-menu-key="1">
+                        <button            class="menu-root-item appearance-none border-0 bg-transparent p-0 pb-2 !leading-none  font-medium font-header text-base md:text-lg text-wmo-dark-blue "
+           aria-haspopup="true" aria-expanded="false">
+          Governance
+        </button>
+      </li>
+          <li class="menu-root-item-wrapper relative" data-menu-key="2">
+                        <button            class="menu-root-item appearance-none border-0 bg-transparent p-0 pb-2 !leading-none  font-medium font-header text-base md:text-lg text-wmo-dark-blue active-trail"
+           aria-haspopup="true" aria-expanded="false">
+          Programmes and Initiatives
+        </button>
+      </li>
+          <li class="menu-root-item-wrapper relative" data-menu-key="3">
+                        <a href="/site/knowledge-hub/community-events"           class="menu-root-item appearance-none border-0 bg-transparent p-0 pb-2 !leading-none block font-medium font-header text-base md:text-lg text-wmo-dark-blue "
+           >
+          Community Events
+        </a>
+      </li>
+          <li class="menu-root-item-wrapper relative" data-menu-key="4">
+                        <a href="/site/knowledge-hub/community-news"           class="menu-root-item appearance-none border-0 bg-transparent p-0 pb-2 !leading-none block font-medium font-header text-base md:text-lg text-wmo-dark-blue "
+           >
+          Community News
+        </a>
+      </li>
+          <li class="menu-root-item-wrapper relative" data-menu-key="5">
+                        <button            class="menu-root-item appearance-none border-0 bg-transparent p-0 pb-2 !leading-none  font-medium font-header text-base md:text-lg text-wmo-dark-blue "
+           aria-haspopup="true" aria-expanded="false">
+          Planning and Monitoring
+        </button>
+      </li>
+          <li class="menu-root-item-wrapper relative" data-menu-key="6">
+                        <button            class="menu-root-item appearance-none border-0 bg-transparent p-0 pb-2 !leading-none  font-medium font-header text-base md:text-lg text-wmo-dark-blue "
+           aria-haspopup="true" aria-expanded="false">
+          Resources
+        </button>
+      </li>
+          <li class="menu-root-item-wrapper relative" data-menu-key="7">
+                        <a href="/site/knowledge-hub/about"           class="menu-root-item appearance-none border-0 bg-transparent p-0 pb-2 !leading-none block font-medium font-header text-base md:text-lg text-wmo-dark-blue "
+           >
+          About
+        </a>
+      </li>
+      </ul>
+
+            <div class="menu-panel hidden absolute top-full left-[calc(50%-50vw)] z-50 w-screen"
+           role="region"
+           aria-label="Governance submenu"
+           data-menu-panel="1">
+        <div class="max-w-[1440px] mx-auto w-full px-4 md:px-10 xl:px-20">
+          <div class="max-w-[1280px] mx-auto bg-white shadow-menu py-4 md:py-5 grid grid-cols-3 gap-10 xl:ps-[350px] xl:pe-5"
+               >
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/governance" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Governance
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/governance/congress" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Congress
+              </a>
+                              <ul class="flex flex-col gap-6 ps-5">
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/congress" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Congress
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/congress/flash-flood-guidance-system-ffgs-programme-management-committee" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Flash Flood Guidance System (FFGS) Programme Management Committee
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/congress/joint-wmo-ioc-collaborative-board" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Joint WMO-IOC Collaborative Board
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/congress/scientific-advisory-panel" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Scientific Advisory Panel
+                      </a>
+                    </li>
+                                  </ul>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/governance/executive-council" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Executive Council
+              </a>
+                              <ul class="flex flex-col gap-6 ps-5">
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/executive-council" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Executive Council
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/executive-council/capacity-development-panel" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Capacity Development Panel
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/executive-council/disciplinary-committee" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Disciplinary Committee
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/executive-council/hydrological-coordination-panel" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Hydrological Coordination Panel
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/executive-council/panel-polar-and-high-mountain-observations-research-and-services-phors" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Panel on Polar and High-mountain Observations, Research and Services (PHORS)
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/executive-council/policy-advisory-committee" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Policy Advisory Committee
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/executive-council/selection-committee-imo-prize" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Selection Committee IMO Prize
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/executive-council/technical-coordination-committee" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Technical Coordination Committee
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/executive-council/task-force-recommended-modifications-strategic-and-operating-plans-2026-2027" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Task Force on Recommended Modifications to the Strategic and Operating Plans 2026-2027
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/executive-council/wmo-audit-and-oversight-committee" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        WMO Audit and Oversight Committee
+                      </a>
+                    </li>
+                                  </ul>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/governance/regional-association" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Regional Associations
+              </a>
+                              <ul class="flex flex-col gap-6 ps-5">
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/regional-association" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Regional Associations
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/regional-association/RA-I" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Regional Association I
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/regional-association/RA-II" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Regional Association II
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/regional-association/RA-III" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Regional Association III
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/regional-association/RA-IV" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Regional Association IV
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/regional-association/regional-association-v" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Regional Association V
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/regional-association/RA-VI" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Regional Association VI
+                      </a>
+                    </li>
+                                  </ul>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/governance/infcom" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                INFCOM
+              </a>
+                              <ul class="flex flex-col gap-6 ps-5">
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/infcom" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        INFCOM
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/infcom/infcom-management-group" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        INFCOM Management Group
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/infcom/standing-committee-earth-observing-systems-and-monitoring-networks-sc" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Standing Committee on Earth Observing Systems and Monitoring Networks (SC-ON)
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/infcom/standing-committee-information-management-and-technology-sc-imt" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Standing Committee on Information Management and Technology (SC-IMT)
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/infcom/standing-committee-measurements-instrumentation-and-traceability-sc-mint" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Standing Committee on Measurements, Instrumentation and Traceability (SC-MINT)
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/infcom/standing-committee-wmo-integrated-processing-and-prediction-system-sc-wipps" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Standing Committee on WMO Integrated Processing and Prediction System (SC-WIPPS)
+                      </a>
+                    </li>
+                                  </ul>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/governance/sercom" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                SERCOM
+              </a>
+                              <ul class="flex flex-col gap-6 ps-5">
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/sercom" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        SERCOM
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/sercom/sercom-management-group" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        SERCOM Management Group
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/sercom/standing-committee-climate-services" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Standing Committee on Climate Services
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/sercom/standing-committee-disaster-risk-reduction-and-early-warning-services" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Standing Committee on Disaster Risk Reduction and Early Warning Services
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/sercom/standing-committee-hydrological-services" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Standing Committee on Hydrological Services
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/sercom/standing-committee-marine-meteorological-and-oceanographic-services-sc-mmo" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Standing Committee on Marine Meteorological and Oceanographic Services (SC-MMO)
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/sercom/standing-committee-services-agriculture" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Standing Committee on Services for Agriculture
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/sercom/standing-committee-services-aviation" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Standing Committee on Services for Aviation
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/sercom/sercom-gender-actions" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        SERCOM Gender Actions
+                      </a>
+                    </li>
+                                  </ul>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/governance/research-board" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Research Board
+              </a>
+                              <ul class="flex flex-col gap-6 ps-5">
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/research-board" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Research Board
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/research-board/environmental-pollution-and-atmospheric-chemistry-scientific-steering-committee-ssc-epac" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        The Environmental Pollution and Atmospheric Chemistry Scientific Steering Committee (SSC-EPAC)
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/research-board/research-board-management-group" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Research Board Management Group
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/research-board/scientific-steering-committee-ssc" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Scientific Steering Committee (SSC)
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/research-board/task-team-artificial-intelligence-weather" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Task Team on Artificial Intelligence for Weather
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/research-board/task-team-data-exchange-research-sector" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Task Team on Data Exchange with the Research Sector
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/research-board/task-team-early-warnings-all" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Task Team on Early Warnings for All
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/research-board/task-team-hydrology-research-2023-2025" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Task Team on Hydrology Research (2023-2025)
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/research-board/task-team-plan-of-action-hydrology-research" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Task Team on Plan of Action for Hydrology Research
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/governance/research-board/task-team-social-science-and-geophysical-science-integration-2025" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Task Team on Social Science and Geophysical Science Integration (2025)
+                      </a>
+                    </li>
+                                  </ul>
+                          </div>
+                    </div>
+        </div>
+      </div>
+                <div class="menu-panel hidden absolute top-full left-[calc(50%-50vw)] z-50 w-screen"
+           role="region"
+           aria-label="Programmes and Initiatives submenu"
+           data-menu-panel="2">
+        <div class="max-w-[1440px] mx-auto w-full px-4 md:px-10 xl:px-20">
+          <div class="max-w-[1280px] mx-auto bg-white shadow-menu py-4 md:py-5 grid grid-cols-3 gap-10 xl:ps-[350px] xl:pe-5"
+               >
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Programmes and Initiatives
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/africa-partner-coordination-mechanism" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Africa Partner Coordination Mechanism
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/agricultural-meteorology" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Agricultural Meteorology
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/aircraft-based-observations" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Aircraft-Based Observations
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/associated-programme-flood-management-apfm" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Associated Programme on Flood Management (APFM)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/climate-services" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Climate Services
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/disaster-risk-reduction-drr" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Disaster Risk Reduction (DRR)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/early-warnings-all-ew4all" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Early Warnings for All (EW4All)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/education-and-training-programme-etrp" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Education and Training Programme (ETRP)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/energy" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Energy Services
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/emergency-response-activities-era" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Emergency Response Activities (ERA)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/global-atmosphere-watch-gaw-programme" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Global Atmosphere Watch (GAW) Programme
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/global-climate-observing-system-gcos-0" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Global Climate Observing System (GCOS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/global-cryosphere-watch-gcw" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Global Cryosphere Watch (GCW)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/global-hydrological-status-and-outlook-system-hydrosos" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Global Hydrological Status and Outlook System (HydroSOS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/global-maritime-distress-and-safety-system-services-gmdss" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Global Maritime Distress and Safety System Services (GMDSS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/global-observing-system-gos" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Global Observing System (GOS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/global-ocean-observing-system-goos" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Global Ocean Observing System (GOOS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/global-telecommunication-system-gts" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Global Telecommunication System (GTS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/health-services" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Health Services
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/hydrology-and-water-resources" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Hydrology and Water Resources
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold active-trail">
+                Instruments and Methods of Observation Programme (IMOP)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/integrated-drought-management-programme-idmp" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Integrated Drought Management Programme (IDMP)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/marine-services" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Marine Services
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/ocean-infrastructure" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Ocean Infrastructure
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/operational-information-service-ois" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Operational Information Service (OIS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/public-private-partnerships" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Public &amp; Private Partnerships
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/public-weather-services-programme-pws" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Public Weather Services Programme (PWS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/satcom" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Satcom
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/aviation" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Services for Aviation
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/severe-weather-forecasting-programme-swfp" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Severe Weather Forecasting Programme (SWFP)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/technical-coordination-initiative" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Technical Coordination Initiative
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/tropical-cyclone-programme-tcp" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Tropical Cyclone Programme (TCP)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/urban" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Urban Services
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/voluntary-cooperation-programme-vcp" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Voluntary Cooperation Programme (VCP)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/water-and-climate-coalition" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Water and Climate Coalition
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/water-resources-assessment" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Water Resources Assessment
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/weather-radar-observations" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Weather Radar Observations
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/world-climate-research-programme" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                World Climate Research Programme
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/world-weather-research-programme-wwrp" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                World Weather Research Programme (WWRP)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-hydrological-observing-system-whos" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                WMO Hydrological Observing System (WHOS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-iata-collaborative-amdar-programme-2020-2024" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                WMO-IATA Collaborative AMDAR Programme (2020-2024)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-coordination-mechanism-wcm-support-humanitarian-activities" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                WMO Coordination Mechanism (WCM) to support humanitarian activities
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-information-system-wis" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                WMO Information System (WIS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-integrated-global-observing-system-wigos" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                WMO Integrated Global Observing System (WIGOS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-integrated-processing-and-prediction-system-wipps" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                WMO Integrated Processing and Prediction System (WIPPS)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-space-programme-wsp" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                WMO Space Programme (WSP)
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-uncrewed-aircraft-systems-demonstration-campaign" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                WMO Uncrewed Aircraft Systems Demonstration Campaign
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/programmes-and-initiatives/wmo-youth-network" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                WMO Youth Network
+              </a>
+                          </div>
+                    </div>
+        </div>
+      </div>
+                            <div class="menu-panel hidden absolute top-full left-[calc(50%-50vw)] z-50 w-screen"
+           role="region"
+           aria-label="Planning and Monitoring submenu"
+           data-menu-panel="5">
+        <div class="max-w-[1440px] mx-auto w-full px-4 md:px-10 xl:px-20">
+          <div class="max-w-[1280px] mx-auto bg-white shadow-menu py-4 md:py-5 grid grid-cols-3 gap-10 xl:ps-[350px] xl:pe-5"
+               >
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/planning-and-monitoring" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Planning and Monitoring
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/planning-and-budgeting" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Planning and Budgeting
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/monitoring-hub" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Monitoring
+              </a>
+                              <ul class="flex flex-col gap-6 ps-5">
+                                      <li>
+                      <a href="/site/knowledge-hub/monitoring-hub" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Monitoring
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/site/knowledge-hub/monitoring-hub/wmo-data-collection-campaign" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        WMO Data Collection Campaign
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/node/37901" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Campagne de l’OMM – Collecte de données de suivi
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/node/37903" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Campaña de la OMM para la recopilación de datos de seguimiento
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/node/37900" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        WMO 监测数据收集活动
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/node/37902" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        Кампания ВМО по сбору данных мониторинга
+                      </a>
+                    </li>
+                                      <li>
+                      <a href="/node/37899" class="block font-normal text-sm md:text-base lg:text-lg text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                        حملة المنظمة العالمية للأرصاد الجوية لجمع البيانات لأغراض المراقبة
+                      </a>
+                    </li>
+                                  </ul>
+                          </div>
+                    </div>
+        </div>
+      </div>
+                <div class="menu-panel hidden absolute top-full left-[calc(50%-50vw)] z-50 w-screen"
+           role="region"
+           aria-label="Resources submenu"
+           data-menu-panel="6">
+        <div class="max-w-[1440px] mx-auto w-full px-4 md:px-10 xl:px-20">
+          <div class="max-w-[1280px] mx-auto bg-white shadow-menu py-4 md:py-5 grid grid-cols-3 gap-10 xl:ps-[350px] xl:pe-5"
+               >
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/resources" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                Resources
+              </a>
+                          </div>
+                      <div class="menu-panel-col">
+              <a href="/site/knowledge-hub/resources/wmo-language-resources" class="block font-medium font-header text-sm md:text-base lg:text-lg mb-6 text-wmo-dark-blue hover:underline focus-visible:underline [&.active-trail]:text-wmo-blue-hover [&.active-trail]:font-semibold ">
+                WMO Language Resources
+              </a>
+                          </div>
+                    </div>
+        </div>
+      </div>
+            
+</div>
+
+  </div>
+</nav>
+
+    </div>
+
+    <div class="col-start-1 col-span-3 row-start-1 row-span-2 xl:col-start-2 xl:row-start-1 xl:col-span-2 pointer-events-none [.js-search-form-open_&]:pointer-events-auto xl:flex xl:w-full justify-end">
+      <div class="xl:w-[460px] h-fit">
+        <form action="/search" method="get" id="main-search-form" accept-charset="UTF-8" class="main-search-form js-main-search-form js-search-form bg-white p-2 lg:px-5">
+  <div class="main-search-form-inner flex gap-4 items-center">
+    <div class="main-search-form-elements w-full h-full border-wmo-dark-blue border-b-2 flex flex-row items-center gap-2">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
+        <path d="M21.0008 21.0008L15.8038 15.8038M15.8038 15.8038C17.2104 14.3972 18.0006 12.4895 18.0006 10.5003C18.0006 8.51108 17.2104 6.60336 15.8038 5.19678C14.3972 3.79021 12.4895 3 10.5003 3C8.51108 3 6.60336 3.79021 5.19678 5.19678C3.79021 6.60336 3 8.51108 3 10.5003C3 12.4895 3.79021 14.3972 5.19678 15.8038C6.60336 17.2104 8.51108 18.0006 10.5003 18.0006C12.4895 18.0006 14.3972 17.2104 15.8038 15.8038Z" stroke="#204E96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <label class="sr-only" for="search-input">Search</label>
+      <input class="text-ellipsis text-base w-full text-gray-900 border-0 rounded-none" id="search-input" placeholder="Search" type="text" name="key" value="">
+    </div>
+    <button type="button" class="w-5 h-5 flex-none js-main-search-form-toggle main-search-form-close js-main-search-form-close" aria-label="Close the search form" title="Close the search form">
+      <span class="sr-only">Close the search form</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.13601 3.86321C4.78453 3.51174 4.21469 3.51174 3.86321 3.86321C3.51174 4.21469 3.51174 4.78453 3.86321 5.13601L10.7268 11.9996L3.86321 18.8632C3.51174 19.2147 3.51174 19.7845 3.86321 20.136C4.21469 20.4875 4.78453 20.4875 5.13601 20.136L11.9996 13.2724L18.8632 20.136C19.2147 20.4875 19.7845 20.4875 20.136 20.136C20.4875 19.7845 20.4875 19.2147 20.136 18.8632L13.2724 11.9996L20.136 5.13601C20.4875 4.78453 20.4875 4.21469 20.136 3.86321C19.7845 3.51174 19.2147 3.51174 18.8632 3.86321L11.9996 10.7268L5.13601 3.86321Z" fill="#204E96"/>
+      </svg>
+    </button>
+
+    <input type="submit" id="hidden-submit" class="hidden" value="Search" />
+  </div>
+
+      <input type="hidden" name="book" value="31259">
+  </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </header>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+    <main role="main" id="main-content">
+      <div class="region region-content   flex flex-col gap-6 md:gap-8 lg:gap-10 items-stretch">
+    <div id="block-server-theme-breadcrumbs" class="block block-system block-system-breadcrumb-block container-wide w-full">
+  
+    
+      <div class="flex items-start">
+        <nav class="breadcrumb flex flex-row items-start py-2 md:py-3" role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
+                <ol class="flex items-center flex-row gap-2 md:gap-4">
+                      
+                                    
+        
+                  <li class="hidden xl:flex">
+            <div class="text-sm text-wmo-blue-gray-600 font-normal line-clamp-1 md:text-base lg:text-lg lg:font-regular">…</div>
+          </li>
+                              
+                          
+                                                                                                            <li class="hidden 2xl:flex items-center" aria-hidden="true">
+            <span class="flex items-center justify-center text-sm font-normal text-wmo-blue-gray-900 md:text-lg">
+              <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.66737 0.147999L1.87937 13H0.331367L5.11937 0.147999H6.66737Z" fill="currentColor"/>
+              </svg>
+            </span>
+          </li>
+        
+                  <li class="hidden 2xl:flex items-center text-start">
+            <a class="flex items-center text-start text-sm text-wmo-blue-gray-900 font-semibold underline hover:text-wmo-dark-blue md:text-base lg:text-lg" href="/site/knowledge-hub/programmes-and-initiatives">Programmes and Initiatives</a>
+          </li>
+                              
+                          
+                                                                      <li class="hidden xl:flex items-center" aria-hidden="true">
+            <span class="flex items-center justify-center text-sm font-normal text-wmo-blue-gray-900 md:text-lg">
+              <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.66737 0.147999L1.87937 13H0.331367L5.11937 0.147999H6.66737Z" fill="currentColor"/>
+              </svg>
+            </span>
+          </li>
+        
+                  <li class="flex items-start text-start">
+            <a class="flex items-start text-start text-sm text-wmo-blue-gray-900 font-semibold underline hover:text-wmo-dark-blue md:text-base lg:text-lg" href="/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop">
+              <img class="rtl-flip inline-block xl:hidden ltr:mr-2 rtl:ml-2 mt-1" src="/themes/custom/server_theme/dist/images/back-arrow.svg" alt="">
+              Instruments and Methods of Observation Programme (IMOP)
+            </a>
+          </li>
+                              
+                                    
+                                                                      <li class="hidden xl:flex items-center" aria-hidden="true">
+            <span class="flex items-center justify-center text-sm font-normal text-wmo-blue-gray-900 md:text-lg">
+              <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.66737 0.147999L1.87937 13H0.331367L5.11937 0.147999H6.66737Z" fill="currentColor"/>
+              </svg>
+            </span>
+          </li>
+        
+                  <li class="hidden xl:flex">
+            <div class="text-sm text-wmo-blue-gray-600 font-normal line-clamp-1 md:text-base lg:text-lg lg:font-regular">Guide to Instruments and Methods of Observation (WMO-No. 8)</div>
+          </li>
+                  </ol>
+  </nav>
+
+    </div>
+  </div>
+<div id="block-server-theme-content" class="block block-system block-system-main-block">
+  
+    
+      
+<article about="/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop/guide-instruments-and-methods-of-observation-wmo-no-8-0" class="node node--type-landing-page node--promoted node--view-mode-full">
+
+  
+    
+
+  
+  <div class="node__content">
+    <div class="  flex flex-col gap-6 md:gap-8 lg:gap-10">
+  <div class="container-wide w-full">
+  
+  <h1 class="page-title text-3xl md:text-4xl lg:text-5xl text-center text-wmo-blue-gray-900 font-semibold">Guide to Instruments and Methods of Observation (WMO-No. 8)</h1>
+
+
+</div>
+  <div class="paragraph paragraph--type--text paragraph--view-mode--full">
+          <div class="container-medium w-full">
+  <div class="prose text-wmo-blue-gray-900 max-w-5xl ">
+      
+            <div class="clearfix text-formatted field field--name-field-text field--type-text-long field--label-hidden field__item"><table><tbody><tr><td><p><span lang="en-CH"><strong>PROCESS FOR UPDATING THE WMO-No. 8</strong></span></p></td></tr><tr><td><p><a href="https://wmoomm.sharepoint.com/:b:/s/wmocpdb/EebB18kJTXlDjrDDLP-5PyEBXDx3qoGScw-LsPN5HAG5Jw?e=pmgYOO"><span lang="en-CH"><strong>Procedure for updating the Guide to Instruments and Methods of Observation (WMO-No. 8)</strong></span></a></p><p><a href="https://wmoomm.sharepoint.com/:b:/s/wmocpdb/EWLk84ynpT1JqAf8xFcvXzQB7vuzvaIbQQWvvzhGtsgMaw?e=XywsAi"><span lang="en-CH"><strong>Guidelines for drafting updates/new editions of the WMO-No. 8</strong></span></a></p><p><span lang="en-CH">(to obtain the MS-Word version of specific chapters of the WMO-No.8 to propose updates, please contact: </span><span class="spamspan"><span class="u">iruedi</span><img class="spamspan-image" alt="at" src="/modules/contrib/spamspan/image.gif"><span class="d">wmo<span class="o"> [dot] </span>int</span><span class="t"> (<span lang="en-CH">iruedi[at]wmo[dot]int</span>)</span></span><span lang="en-CH"> )</span></p><p><span lang="en-CH"><strong>Found a typo/error in the WMO-No. 8?</strong></span></p><p><span lang="en-CH">Inform the Secretariat by sending an e-mail describing the error to: <span class="spamspan"><span class="u">iruedi</span><img class="spamspan-image" alt="at" src="/modules/contrib/spamspan/image.gif"><span class="d">wmo<span class="o"> [dot] </span>int</span><span class="t"> (iruedi[at]wmo[dot]int)</span></span></span></p></td></tr><tr><td> </td></tr><tr><td><p><span lang="en-CH"><strong>LATEST VERSION OF THE WMO-No. 8</strong></span></p></td></tr><tr><td><p><a href="https://library.wmo.int/records/item/41650-guide-to-instruments-and-methods-of-observation?offset=4"><span lang="en-CH"><strong>GUIDE TO INSTRUMENTS AND METHODS OF OBSERVATION</strong></span></a><br><a href="https://library.wmo.int/records/item/41650-guide-to-instruments-and-methods-of-observation?offset=4"><span lang="en-CH"><strong>(WMO-No. 8), 2024 edition</strong></span></a></p><p><span lang="en-CH">Translated versions in </span><a href="https://library.wmo.int/records/item/36058----?language_id=&amp;offset=3"><span lang="en-CH">Arabic</span></a><span lang="en-CH">, </span><a href="https://library.wmo.int/records/item/36288-n-a?language_id=&amp;offset=1"><span lang="en-CH">Chinese</span></a><span lang="en-CH">, </span><a href="https://library.wmo.int/records/item/32158-guide-des-instruments-et-des-methodes-d-observation?language_id=&amp;offset=2"><span lang="en-CH">French</span></a><span lang="en-CH">, </span><a href="https://library.wmo.int/records/item/41613-guia-de-instrumentos-y-metodos-de-observacion?language_id=&amp;offset=5"><span lang="en-CH">Spanish  </span></a><span lang="en-CH">and </span><a href="https://library.wmo.int/records/item/57961------?language_id=13&amp;back=&amp;offset=4"><span lang="en-CH">Russian</span></a><span lang="en-CH"> are available from the WMO Library.</span></p><p><span lang="en-CH">(Note: Previous editions of the WMO-No. 8 are available from WMO Library by sending a request to </span><em><span lang="en-CH">library(at)wmo.int</span></em><span lang="en-CH">.)</span></p><div><table><tbody><tr><td><p><span lang="en-CH"><strong>VOLUME I</strong></span></p></td><td><p><a href="https://library.wmo.int/records/item/68695-guide-to-instruments-and-methods-of-observation?offset=3"><span lang="en-CH">MEASUREMENT OF METEOROLOGICAL VARIABLES</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 1</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=23&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">General</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 2</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=112&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of temperature</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 3</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=147&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of atmospheric pressure</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 4</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=181&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of humidity</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 5</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=228&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of surface wind</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 6</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=245&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of precipitation</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 7</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=278&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of radiation</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 8</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=331&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of sunshine duration</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 9</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=347&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of visibility</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 10</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=370&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of evaporation</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 11</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=382&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of soil moisture</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 12</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=404&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of upper-air pressure, temperature and humidity</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 13</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=467&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of upper wind</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 14</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=495&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Observation of present and past weather; state of the ground</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 15</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=512&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Observation and measurement of clouds</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 16</span></p></td><td><p><a href="https://library.wmo.int/viewer/68695/?offset=3#page=531&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of atmospheric composition</span></a></p></td></tr><tr><td><p><span lang="en-CH"><strong>VOLUME II</strong></span></p></td><td><p><a href="https://library.wmo.int/records/item/68660-guide-to-instruments-and-methods-of-observation?offset=1"><span lang="en-CH">MEASUREMENT OF CRYOSPHERIC VARIABLES</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 1</span></p></td><td><p><a href="https://library.wmo.int/viewer/68660/?offset=1#page=9&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">General</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 2</span></p></td><td><p><a href="https://library.wmo.int/viewer/68660/?offset=1#page=21&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of snow</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 3</span></p></td><td><p><a href="https://library.wmo.int/viewer/68660/?offset=#page=53&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurement of glaciers</span></a></p></td></tr><tr><td><span lang="en-CH">Chapter 4</span></td><td><a href="https://library.wmo.int/viewer/68660/?offset=5#page=109&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q=">Measurement of permafrost</a></td></tr><tr><td><p><span lang="en-CH"><strong>VOLUME III</strong></span></p></td><td><p><a href="https://library.wmo.int/records/item/68661-guide-to-instruments-and-methods-of-observation?offset=4"><span lang="en-CH">OBSERVING SYSTEMS</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 1</span></p></td><td><p><a href="https://library.wmo.int/viewer/68661/?offset=31#page=17&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurements at automatic weather stations</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 2</span></p></td><td><p><a href="https://library.wmo.int/viewer/68661/?offset=31#page=52&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Measurements and observations at aeronautical meteorological stations </span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 3</span></p></td><td><p><a href="https://library.wmo.int/viewer/68661/?offset=31#page=73&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Aircraft based observations</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 4</span></p></td><td><p><a href="https://library.wmo.int/viewer/68661/?offset=31#page=96&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Marine observation</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 5</span></p></td><td><p><a href="https://library.wmo.int/viewer/68661/?offset=31#page=144&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Special profiling techniques for the boundary layer and the troposphere</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 6</span></p></td><td><p><a href="https://library.wmo.int/viewer/68661/?offset=31#page=291&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Electromagnetic methods of lightning detection</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 7</span></p></td><td><p><a href="https://library.wmo.int/viewer/68661/?offset=31#page=317&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Radar measurements</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 8</span></p></td><td><p><a href="https://library.wmo.int/viewer/68661/?offset=31#page=477&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Balloon techniques</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 9</span></p></td><td><p><a href="https://library.wmo.int/viewer/68661/?offset=31#page=490&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Urban observations</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 10</span></p></td><td><p><a href="https://library.wmo.int/viewer/68661/?offset=31#page=519&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Road meteorological measurement</span></a></p></td></tr><tr><td><p><span lang="en-CH"><strong>VOLUME IV</strong></span></p></td><td><p><a href="https://library.wmo.int/records/item/68662-guide-to-instruments-and-methods-of-observation?offset=3"><span lang="en-CH">SPACE-BASED OBSERVATIONS</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 1</span></p></td><td><p><a href="https://library.wmo.int/viewer/68662/?offset=3#page=13&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Introduction</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 2</span></p></td><td><p><a href="https://library.wmo.int/viewer/68662/?offset=3#page=17&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Principles of Earth observation from space</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 3</span></p></td><td><p><a href="https://library.wmo.int/viewer/68662/?offset=3#page=65&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Remote-sensing instruments</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 4</span></p></td><td><p><a href="https://library.wmo.int/viewer/68662/?offset=3#page=103&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Satellite programmes</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 5</span></p></td><td><p><a href="https://library.wmo.int/viewer/68662/?offset=3#page=127&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Space-based observation of geophysical variables</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 6</span></p></td><td><p><a href="https://library.wmo.int/viewer/68662/?offset=3#page=173&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Calibration and validation</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 7</span></p></td><td><p><a href="https://library.wmo.int/viewer/68662/?offset=3#page=184&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Cross-cutting issues</span></a></p></td></tr><tr><td><p><span lang="en-CH"><strong>VOLUME V</strong></span></p></td><td><p><a href="https://library.wmo.int/records/item/68663-guide-to-instruments-and-methods-of-observation?offset=2"><span lang="en-CH">QUALITY ASSURANCE AND MANAGEMENT OF OBSERVING SYSTEMS</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 1</span></p></td><td><p><a href="https://library.wmo.int/viewer/68663/?offset=2#page=11&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Quality Management</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 2</span></p></td><td><p><a href="https://library.wmo.int/viewer/68663/?offset=2#page=35&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Sampling meteorological variables</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 3</span></p></td><td><p><a href="https://library.wmo.int/viewer/68663/?offset=2#page=53&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Data reduction</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 4</span></p></td><td><p><a href="https://library.wmo.int/viewer/68663/?offset=6#page=60&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Testing, calibration and intercomparison</span></a></p></td></tr><tr><td><p><span lang="en-CH">Chapter 5</span></p></td><td><p><a href="https://library.wmo.int/viewer/68663/?offset=2#page=87&amp;viewer=picture&amp;o=bookmark&amp;n=0&amp;q="><span lang="en-CH">Training of instrument specialists</span></a></p></td></tr></tbody></table></div></td></tr></tbody></table></div>
+      
+  </div>
+
+</div>
+
+      </div>
+
+</div>
+
+  </div>
+
+</article>
+
+  </div>
+
+  </div>
+
+
+    
+    
+  </main>
+
+  
+      
+
+  
+
+
+<footer class="text-wmo-blue-gray-900 text-sm md:text-base" style="background-color:#D9E2F0">
+  <div class="container-wide flex flex-col-reverse md:flex-row flex-wrap py-4 md:py-5 lg:py-10 justify-between items-center">
+    <div class="flex flex-col gap-y-4 md:gap-y-5">
+
+              <div class="flex flex-col lg:flex-row gap-y-5 gap-x-28 pb-5 border-b-2 border-wmo-blue-gray-400">
+          <div class="flex flex-col gap-y-5">
+            <div class="flex flex-row gap-1.5 items-end">
+              <div class="flex w-10 md:w-14 lg:w-[4.375rem]">
+                <img src="/themes/custom/server_theme/dist/images/logo.svg" alt="">
+              </div>
+              <div class="flex h-10 md:h-14 lg:h-20 w-24 md:w-32 lg:w-36 items-end pb-1">
+                <img src="/themes/custom/server_theme/dist/images/logo_en.svg" alt="World Meteorological Organization">
+              </div>
+            </div>
+            <div>Welcome to the World Meteorological Organization</div>
+            <div class="hidden lg:flex flex-row gap-x-8 md:gap-x-10 items-center">
+                  <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://twitter.com/WMO" target="_blank" title="WMO on twitter">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_9948_29678)">
+        <path d="M18.6253 13.5429L30.2759 0H27.515L17.3988 11.7591L9.31907 0H0L12.2182 17.7818L0 31.9836H2.76097L13.4439 19.5656L21.9768 31.9836H31.2958L18.6246 13.5429H18.6253ZM14.8437 17.9385L13.6058 16.1678L3.75579 2.07842H7.99648L15.9455 13.449L17.1835 15.2197L27.5163 29.9997H23.2757L14.8437 17.9391V17.9385Z" fill="currentColor"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_9948_29678">
+          <rect width="31.2958" height="32" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+  
+  </a>
+
+    <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://www.linkedin.com/company/world-meteorological-organization/" target="_blank" title="WMO on linkedin">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <mask id="mask0_3111_21481" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+        <path d="M0 0H32V32H0V0Z" fill="white"/>
+      </mask>
+      <g mask="url(#mask0_3111_21481)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5002 32.3332V21.0991C17.5002 19.8975 17.8219 18.9731 18.4671 18.3258C19.1122 17.6786 19.9215 17.3549 20.8949 17.3549C21.8903 17.3549 22.6947 17.7134 23.3057 18.4296C23.9159 19.1457 24.2214 20.2444 24.2214 21.7231V32.3332H30.3333V21.0991C30.3333 18.3482 29.6597 16.2048 28.3134 14.6672C26.9662 13.1303 25.1957 12.3619 23.0002 12.3619C20.7592 12.3619 18.9262 13.4598 17.5002 15.6555L17.2962 12.9859H11.2875L11.3891 17.3549V32.3332H17.5002ZM1.61103 32.3332H7.7221V12.9859H1.61103V32.3332ZM4.63284 9.86498H4.59872C3.53511 9.86498 2.66895 9.53555 2.00186 8.87667C1.33395 8.21779 1 7.40374 1 6.43285C1 5.43872 1.33964 4.61886 2.01811 3.97077C2.69739 3.32434 3.59199 2.99988 4.70029 2.99988C5.78746 2.99988 6.65768 3.32434 7.31502 3.97077C7.97074 4.61886 8.31038 5.43872 8.33394 6.43285C8.33394 7.40374 7.9943 8.21779 7.31502 8.87667C6.63574 9.53555 5.74114 9.86498 4.63284 9.86498Z" fill="currentColor"/>
+      </g>
+    </svg>
+  
+  </a>
+
+    <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://www.facebook.com/WorldMeteorologicalOrganization" target="_blank" title="WMO on facebook">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <mask id="mask0_3111_21486" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="8" y="0" width="16" height="32">
+        <path d="M8 0H23.1579V32H8V0Z" fill="white"/>
+      </mask>
+      <g mask="url(#mask0_3111_21486)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7891 32V17.3336H8V12.0001H11.7891V7.3332C11.7891 5.25991 12.4264 3.51902 13.7012 2.11141C14.976 0.703803 16.8646 0 19.368 0C19.9995 0 20.6319 0.0248193 21.2634 0.0744578C21.8949 0.124096 22.3626 0.172848 22.6666 0.222487L23.1579 0.296058L22.9471 5.33348H19.6838C18.7944 5.33348 18.2041 5.55597 17.9127 6.00006C17.6196 6.44414 17.4735 7.11072 17.4735 7.99978V12.0001H23.1579L22.7724 17.3336H17.4735V32H11.7891Z" fill="currentColor"/>
+      </g>
+    </svg>
+  
+  </a>
+
+    <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://www.instagram.com/wmo_omm/" target="_blank" title="WMO on instagram">
+          <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18.1201 3.24331C22.9263 3.24331 23.4956 3.2616 25.3936 3.3482C27.1486 3.4283 28.1017 3.72153 28.736 3.96797C29.5761 4.2945 30.1758 4.68462 30.8057 5.31446C31.4355 5.9443 31.8256 6.54399 32.1521 7.38412C32.3986 8.01846 32.6918 8.97154 32.7719 10.7265C32.8585 12.6246 32.8768 13.1938 32.8768 18C32.8768 22.8063 32.8585 23.3755 32.7719 25.2735C32.6918 27.0285 32.3986 27.9816 32.1521 28.616C31.8256 29.4561 31.4355 30.0558 30.8057 30.6856C30.1758 31.3155 29.5761 31.7056 28.736 32.032C28.1017 32.2785 27.1486 32.5718 25.3936 32.6519C23.4958 32.7385 22.9266 32.7568 18.1201 32.7568C13.3136 32.7568 12.7443 32.7385 10.8466 32.6519C9.09159 32.5718 8.1385 32.2785 7.50423 32.032C6.66404 31.7056 6.06435 31.3155 5.43451 30.6856C4.80467 30.0558 4.41454 29.4561 4.08808 28.616C3.84158 27.9816 3.54834 27.0285 3.46825 25.2736C3.38165 23.3755 3.36335 22.8063 3.36335 18C3.36335 13.1938 3.38165 12.6246 3.46825 10.7265C3.54834 8.97155 3.84158 8.01846 4.08808 7.38412C4.41454 6.54399 4.80467 5.9443 5.43451 5.31446C6.06435 4.68462 6.66404 4.2945 7.50423 3.96797C8.1385 3.72153 9.09159 3.4283 10.8465 3.3482C12.7446 3.2616 13.3139 3.24331 18.1201 3.24331ZM18.1201 0C13.2315 0 12.6186 0.0207208 10.6987 0.10832C8.78278 0.195776 7.47437 0.500015 6.32936 0.945012C5.1457 1.40501 4.14189 2.02049 3.14121 3.02117C2.14054 4.02184 1.52506 5.02566 1.06506 6.20932C0.620061 7.35432 0.315822 8.66273 0.228366 10.5787C0.140767 12.4985 0.120117 13.1115 0.120117 18C0.120117 22.8886 0.140767 23.5016 0.228366 25.4214C0.315822 27.3373 0.620061 28.6458 1.06506 29.7908C1.52506 30.9743 2.14054 31.9782 3.14121 32.9789C4.14189 33.9796 5.1457 34.5951 6.32936 35.0551C7.47437 35.5001 8.78278 35.8043 10.6987 35.8918C12.6186 35.9794 13.2315 36 18.1201 36C23.0086 36 23.6216 35.9794 25.5414 35.8918C27.4574 35.8043 28.7658 35.5001 29.9108 35.0551C31.0945 34.5951 32.0983 33.9796 33.0989 32.9789C34.0996 31.9782 34.7151 30.9744 35.1751 29.7908C35.6201 28.6458 35.9243 27.3373 36.0118 25.4214C36.0994 23.5016 36.1201 22.8886 36.1201 18C36.1201 13.1115 36.0994 12.4985 36.0118 10.5787C35.9243 8.66273 35.6201 7.35432 35.1751 6.20932C34.7151 5.02566 34.0996 4.02184 33.0989 3.02117C32.0983 2.02049 31.0945 1.40501 29.9108 0.945012C28.7658 0.500015 27.4574 0.195776 25.5414 0.10832C23.6216 0.0207208 23.0086 0 18.1201 0ZM18.1201 8.75676C13.0152 8.75676 8.87681 12.8951 8.87681 18C8.87681 23.1049 13.0152 27.2433 18.1201 27.2433C23.225 27.2433 27.3634 23.1049 27.3634 18C27.3634 12.8951 23.225 8.75676 18.1201 8.75676ZM18.1201 24.0001C14.8064 24.0001 12.12 21.3137 12.12 18C12.12 14.6863 14.8064 12 18.1201 12C21.4338 12 24.1201 14.6863 24.1201 18C24.1201 21.3137 21.4338 24.0001 18.1201 24.0001ZM29.8885 8.39158C29.8885 9.58452 28.9215 10.5516 27.7285 10.5516C26.5356 10.5516 25.5685 9.58452 25.5685 8.39158C25.5685 7.19863 26.5356 6.23161 27.7285 6.23161C28.9215 6.23161 29.8885 7.19863 29.8885 8.39158Z" fill="currentColor"/>
+    </svg>
+  
+  </a>
+
+    <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://www.flickr.com/photos/worldmeteorologicalorganization/" target="_blank" title="WMO on flickr">
+          <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M29.255 0C31.0969 0 32.6876 0.669767 34.0271 2.0093C35.3666 3.34884 36.0364 4.93953 36.0364 6.78139V29.2186C36.0364 31.0605 35.3666 32.6512 34.0271 33.9907C32.6876 35.3302 31.0969 36 29.255 36H6.90151C5.05965 36 3.46895 35.3302 2.12942 33.9907C0.789885 32.6512 0.120117 31.0605 0.120117 29.2186V6.78139C0.120117 4.93953 0.789885 3.34884 2.12942 2.0093C3.46895 0.669767 5.05965 0 6.90151 0H29.255ZM15.0224 21.4326C16.0271 20.4279 16.4457 19.3395 16.4457 17.9163C16.4457 16.493 15.9434 15.4047 15.0224 14.4C14.0178 13.3953 12.9294 12.9767 11.5062 12.9767C10.0829 12.9767 8.99454 13.4791 7.98988 14.4C6.98523 15.4047 6.56663 16.493 6.56663 17.9163C6.56663 19.3395 7.06895 20.4279 7.98988 21.4326C8.91081 22.4372 10.0829 22.8558 11.5062 22.8558C12.9294 22.8558 14.0178 22.4372 15.0224 21.4326ZM28.1666 21.4326C29.1713 20.4279 29.5899 19.3395 29.5899 17.9163C29.5899 16.493 29.0876 15.4047 28.1666 14.4C27.162 13.3953 26.0736 12.9767 24.6503 12.9767C23.3108 12.9767 22.1387 13.4791 21.1341 14.4C20.1294 15.4047 19.7108 16.493 19.7108 17.9163C19.7108 19.3395 20.2131 20.4279 21.1341 21.4326C22.1387 22.4372 23.2271 22.8558 24.6503 22.8558C25.9899 22.9395 27.162 22.4372 28.1666 21.4326Z" fill="currentColor"/>
+    </svg>
+  
+  </a>
+
+    <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://www.youtube.com/c/worldmetorg" target="_blank" title="WMO on youtube">
+          <svg width="37" height="30" viewBox="0 0 37 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M35.4645 5.05402C36.2871 8.26162 36.2871 14.9576 36.2871 14.9576C36.2871 14.9576 36.2871 21.6536 35.4645 24.8612C35.0073 26.6342 33.6699 28.0292 31.9761 28.5008C28.8999 29.3576 18.2871 29.3576 18.2871 29.3576C18.2871 29.3576 7.67971 29.3576 4.59811 28.5008C2.89711 28.022 1.56151 26.6288 1.10971 24.8612C0.287109 21.6536 0.287109 14.9576 0.287109 14.9576C0.287109 14.9576 0.287109 8.26162 1.10971 5.05402C1.56691 3.28102 2.90431 1.88602 4.59811 1.41442C7.67971 0.557617 18.2871 0.557617 18.2871 0.557617C18.2871 0.557617 28.8999 0.557617 31.9761 1.41442C33.6771 1.89322 35.0127 3.28642 35.4645 5.05402ZM14.6871 21.2576L25.4871 14.9576L14.6871 8.65762V21.2576Z" fill="currentColor"/>
+    </svg>
+  
+  </a>
+
+
+            </div>
+          </div>
+                    <div class="flex flex-col py-5 items-center items-baseline">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 md:gap-y-5 lg:gap-y-10">
+                              <div class="flex flex-col gap-y-2">
+                  <div class="flex flex-row gap-x-2 items-center">
+                      <a href="/jobs" class="hover:underline ">
+    Jobs at WMO
+  </a>
+
+                    <svg class="rtl-flip" width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 0.292893C8.68342 -0.0976311 9.31658 -0.0976311 9.70711 0.292893L15.7071 6.29289C16.0976 6.68342 16.0976 7.31658 15.7071 7.70711L9.70711 13.7071C9.31658 14.0976 8.68342 14.0976 8.29289 13.7071C7.90237 13.3166 7.90237 12.6834 8.29289 12.2929L12.5858 8L1 8C0.447716 8 0 7.55229 0 7C0 6.44772 0.447716 6 1 6H12.5858L8.29289 1.70711C7.90237 1.31658 7.90237 0.683418 8.29289 0.292893Z" fill="#0F172A"/>
+                    </svg>
+                  </div>
+                  <div class="max-w-fit">
+                    Find out about employment opportunities at the WMO
+                  </div>
+                </div>
+                              <div class="flex flex-col gap-y-2">
+                  <div class="flex flex-row gap-x-2 items-center">
+                      <a href="/about-wmo/wmo-building" class="hover:underline ">
+    The WMO Building
+  </a>
+
+                    <svg class="rtl-flip" width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 0.292893C8.68342 -0.0976311 9.31658 -0.0976311 9.70711 0.292893L15.7071 6.29289C16.0976 6.68342 16.0976 7.31658 15.7071 7.70711L9.70711 13.7071C9.31658 14.0976 8.68342 14.0976 8.29289 13.7071C7.90237 13.3166 7.90237 12.6834 8.29289 12.2929L12.5858 8L1 8C0.447716 8 0 7.55229 0 7C0 6.44772 0.447716 6 1 6H12.5858L8.29289 1.70711C7.90237 1.31658 7.90237 0.683418 8.29289 0.292893Z" fill="#0F172A"/>
+                    </svg>
+                  </div>
+                  <div class="max-w-fit">
+                    The story of how our HQ came to be
+                  </div>
+                </div>
+                              <div class="flex flex-col gap-y-2">
+                  <div class="flex flex-row gap-x-2 items-center">
+                      <a href="/procurement" class="hover:underline ">
+    Procurement
+  </a>
+
+                    <svg class="rtl-flip" width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 0.292893C8.68342 -0.0976311 9.31658 -0.0976311 9.70711 0.292893L15.7071 6.29289C16.0976 6.68342 16.0976 7.31658 15.7071 7.70711L9.70711 13.7071C9.31658 14.0976 8.68342 14.0976 8.29289 13.7071C7.90237 13.3166 7.90237 12.6834 8.29289 12.2929L12.5858 8L1 8C0.447716 8 0 7.55229 0 7C0 6.44772 0.447716 6 1 6H12.5858L8.29289 1.70711C7.90237 1.31658 7.90237 0.683418 8.29289 0.292893Z" fill="#0F172A"/>
+                    </svg>
+                  </div>
+                  <div class="max-w-fit">
+                    View the latest tenders
+                  </div>
+                </div>
+                              <div class="flex flex-col gap-y-2">
+                  <div class="flex flex-row gap-x-2 items-center">
+                      <a href="/about-wmo/awards" class="hover:underline ">
+    Awards
+  </a>
+
+                    <svg class="rtl-flip" width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 0.292893C8.68342 -0.0976311 9.31658 -0.0976311 9.70711 0.292893L15.7071 6.29289C16.0976 6.68342 16.0976 7.31658 15.7071 7.70711L9.70711 13.7071C9.31658 14.0976 8.68342 14.0976 8.29289 13.7071C7.90237 13.3166 7.90237 12.6834 8.29289 12.2929L12.5858 8L1 8C0.447716 8 0 7.55229 0 7C0 6.44772 0.447716 6 1 6H12.5858L8.29289 1.70711C7.90237 1.31658 7.90237 0.683418 8.29289 0.292893Z" fill="#0F172A"/>
+                    </svg>
+                  </div>
+                  <div class="max-w-fit">
+                    WMO Awards recognize outstanding contributions
+                  </div>
+                </div>
+                              <div class="flex flex-col gap-y-2">
+                  <div class="flex flex-row gap-x-2 items-center">
+                      <a href="/contact-us" class="hover:underline ">
+    Contact Us
+  </a>
+
+                    <svg class="rtl-flip" width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 0.292893C8.68342 -0.0976311 9.31658 -0.0976311 9.70711 0.292893L15.7071 6.29289C16.0976 6.68342 16.0976 7.31658 15.7071 7.70711L9.70711 13.7071C9.31658 14.0976 8.68342 14.0976 8.29289 13.7071C7.90237 13.3166 7.90237 12.6834 8.29289 12.2929L12.5858 8L1 8C0.447716 8 0 7.55229 0 7C0 6.44772 0.447716 6 1 6H12.5858L8.29289 1.70711C7.90237 1.31658 7.90237 0.683418 8.29289 0.292893Z" fill="#0F172A"/>
+                    </svg>
+                  </div>
+                  <div class="max-w-fit">
+                    How to contact WMO
+                  </div>
+                </div>
+                          </div>
+          </div>
+        </div>
+      
+      <div class="flex flex-col lg:flex-row gap-y-10 gap-x-10 py-4 md:py-5 lg:py-0 justify-between items-start lg:items-center max-w-fit">
+                  <div class="flex lg:hidden flex-row gap-x-6 md:gap-x-10 gap-y-4 flex-wrap items-center">
+                <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://twitter.com/WMO" target="_blank" title="WMO on twitter">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_9948_29678)">
+        <path d="M18.6253 13.5429L30.2759 0H27.515L17.3988 11.7591L9.31907 0H0L12.2182 17.7818L0 31.9836H2.76097L13.4439 19.5656L21.9768 31.9836H31.2958L18.6246 13.5429H18.6253ZM14.8437 17.9385L13.6058 16.1678L3.75579 2.07842H7.99648L15.9455 13.449L17.1835 15.2197L27.5163 29.9997H23.2757L14.8437 17.9391V17.9385Z" fill="currentColor"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_9948_29678">
+          <rect width="31.2958" height="32" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+  
+  </a>
+
+    <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://www.linkedin.com/company/world-meteorological-organization/" target="_blank" title="WMO on linkedin">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <mask id="mask0_3111_21481" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+        <path d="M0 0H32V32H0V0Z" fill="white"/>
+      </mask>
+      <g mask="url(#mask0_3111_21481)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5002 32.3332V21.0991C17.5002 19.8975 17.8219 18.9731 18.4671 18.3258C19.1122 17.6786 19.9215 17.3549 20.8949 17.3549C21.8903 17.3549 22.6947 17.7134 23.3057 18.4296C23.9159 19.1457 24.2214 20.2444 24.2214 21.7231V32.3332H30.3333V21.0991C30.3333 18.3482 29.6597 16.2048 28.3134 14.6672C26.9662 13.1303 25.1957 12.3619 23.0002 12.3619C20.7592 12.3619 18.9262 13.4598 17.5002 15.6555L17.2962 12.9859H11.2875L11.3891 17.3549V32.3332H17.5002ZM1.61103 32.3332H7.7221V12.9859H1.61103V32.3332ZM4.63284 9.86498H4.59872C3.53511 9.86498 2.66895 9.53555 2.00186 8.87667C1.33395 8.21779 1 7.40374 1 6.43285C1 5.43872 1.33964 4.61886 2.01811 3.97077C2.69739 3.32434 3.59199 2.99988 4.70029 2.99988C5.78746 2.99988 6.65768 3.32434 7.31502 3.97077C7.97074 4.61886 8.31038 5.43872 8.33394 6.43285C8.33394 7.40374 7.9943 8.21779 7.31502 8.87667C6.63574 9.53555 5.74114 9.86498 4.63284 9.86498Z" fill="currentColor"/>
+      </g>
+    </svg>
+  
+  </a>
+
+    <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://www.facebook.com/WorldMeteorologicalOrganization" target="_blank" title="WMO on facebook">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <mask id="mask0_3111_21486" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="8" y="0" width="16" height="32">
+        <path d="M8 0H23.1579V32H8V0Z" fill="white"/>
+      </mask>
+      <g mask="url(#mask0_3111_21486)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7891 32V17.3336H8V12.0001H11.7891V7.3332C11.7891 5.25991 12.4264 3.51902 13.7012 2.11141C14.976 0.703803 16.8646 0 19.368 0C19.9995 0 20.6319 0.0248193 21.2634 0.0744578C21.8949 0.124096 22.3626 0.172848 22.6666 0.222487L23.1579 0.296058L22.9471 5.33348H19.6838C18.7944 5.33348 18.2041 5.55597 17.9127 6.00006C17.6196 6.44414 17.4735 7.11072 17.4735 7.99978V12.0001H23.1579L22.7724 17.3336H17.4735V32H11.7891Z" fill="currentColor"/>
+      </g>
+    </svg>
+  
+  </a>
+
+    <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://www.instagram.com/wmo_omm/" target="_blank" title="WMO on instagram">
+          <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18.1201 3.24331C22.9263 3.24331 23.4956 3.2616 25.3936 3.3482C27.1486 3.4283 28.1017 3.72153 28.736 3.96797C29.5761 4.2945 30.1758 4.68462 30.8057 5.31446C31.4355 5.9443 31.8256 6.54399 32.1521 7.38412C32.3986 8.01846 32.6918 8.97154 32.7719 10.7265C32.8585 12.6246 32.8768 13.1938 32.8768 18C32.8768 22.8063 32.8585 23.3755 32.7719 25.2735C32.6918 27.0285 32.3986 27.9816 32.1521 28.616C31.8256 29.4561 31.4355 30.0558 30.8057 30.6856C30.1758 31.3155 29.5761 31.7056 28.736 32.032C28.1017 32.2785 27.1486 32.5718 25.3936 32.6519C23.4958 32.7385 22.9266 32.7568 18.1201 32.7568C13.3136 32.7568 12.7443 32.7385 10.8466 32.6519C9.09159 32.5718 8.1385 32.2785 7.50423 32.032C6.66404 31.7056 6.06435 31.3155 5.43451 30.6856C4.80467 30.0558 4.41454 29.4561 4.08808 28.616C3.84158 27.9816 3.54834 27.0285 3.46825 25.2736C3.38165 23.3755 3.36335 22.8063 3.36335 18C3.36335 13.1938 3.38165 12.6246 3.46825 10.7265C3.54834 8.97155 3.84158 8.01846 4.08808 7.38412C4.41454 6.54399 4.80467 5.9443 5.43451 5.31446C6.06435 4.68462 6.66404 4.2945 7.50423 3.96797C8.1385 3.72153 9.09159 3.4283 10.8465 3.3482C12.7446 3.2616 13.3139 3.24331 18.1201 3.24331ZM18.1201 0C13.2315 0 12.6186 0.0207208 10.6987 0.10832C8.78278 0.195776 7.47437 0.500015 6.32936 0.945012C5.1457 1.40501 4.14189 2.02049 3.14121 3.02117C2.14054 4.02184 1.52506 5.02566 1.06506 6.20932C0.620061 7.35432 0.315822 8.66273 0.228366 10.5787C0.140767 12.4985 0.120117 13.1115 0.120117 18C0.120117 22.8886 0.140767 23.5016 0.228366 25.4214C0.315822 27.3373 0.620061 28.6458 1.06506 29.7908C1.52506 30.9743 2.14054 31.9782 3.14121 32.9789C4.14189 33.9796 5.1457 34.5951 6.32936 35.0551C7.47437 35.5001 8.78278 35.8043 10.6987 35.8918C12.6186 35.9794 13.2315 36 18.1201 36C23.0086 36 23.6216 35.9794 25.5414 35.8918C27.4574 35.8043 28.7658 35.5001 29.9108 35.0551C31.0945 34.5951 32.0983 33.9796 33.0989 32.9789C34.0996 31.9782 34.7151 30.9744 35.1751 29.7908C35.6201 28.6458 35.9243 27.3373 36.0118 25.4214C36.0994 23.5016 36.1201 22.8886 36.1201 18C36.1201 13.1115 36.0994 12.4985 36.0118 10.5787C35.9243 8.66273 35.6201 7.35432 35.1751 6.20932C34.7151 5.02566 34.0996 4.02184 33.0989 3.02117C32.0983 2.02049 31.0945 1.40501 29.9108 0.945012C28.7658 0.500015 27.4574 0.195776 25.5414 0.10832C23.6216 0.0207208 23.0086 0 18.1201 0ZM18.1201 8.75676C13.0152 8.75676 8.87681 12.8951 8.87681 18C8.87681 23.1049 13.0152 27.2433 18.1201 27.2433C23.225 27.2433 27.3634 23.1049 27.3634 18C27.3634 12.8951 23.225 8.75676 18.1201 8.75676ZM18.1201 24.0001C14.8064 24.0001 12.12 21.3137 12.12 18C12.12 14.6863 14.8064 12 18.1201 12C21.4338 12 24.1201 14.6863 24.1201 18C24.1201 21.3137 21.4338 24.0001 18.1201 24.0001ZM29.8885 8.39158C29.8885 9.58452 28.9215 10.5516 27.7285 10.5516C26.5356 10.5516 25.5685 9.58452 25.5685 8.39158C25.5685 7.19863 26.5356 6.23161 27.7285 6.23161C28.9215 6.23161 29.8885 7.19863 29.8885 8.39158Z" fill="currentColor"/>
+    </svg>
+  
+  </a>
+
+    <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://www.flickr.com/photos/worldmeteorologicalorganization/" target="_blank" title="WMO on flickr">
+          <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M29.255 0C31.0969 0 32.6876 0.669767 34.0271 2.0093C35.3666 3.34884 36.0364 4.93953 36.0364 6.78139V29.2186C36.0364 31.0605 35.3666 32.6512 34.0271 33.9907C32.6876 35.3302 31.0969 36 29.255 36H6.90151C5.05965 36 3.46895 35.3302 2.12942 33.9907C0.789885 32.6512 0.120117 31.0605 0.120117 29.2186V6.78139C0.120117 4.93953 0.789885 3.34884 2.12942 2.0093C3.46895 0.669767 5.05965 0 6.90151 0H29.255ZM15.0224 21.4326C16.0271 20.4279 16.4457 19.3395 16.4457 17.9163C16.4457 16.493 15.9434 15.4047 15.0224 14.4C14.0178 13.3953 12.9294 12.9767 11.5062 12.9767C10.0829 12.9767 8.99454 13.4791 7.98988 14.4C6.98523 15.4047 6.56663 16.493 6.56663 17.9163C6.56663 19.3395 7.06895 20.4279 7.98988 21.4326C8.91081 22.4372 10.0829 22.8558 11.5062 22.8558C12.9294 22.8558 14.0178 22.4372 15.0224 21.4326ZM28.1666 21.4326C29.1713 20.4279 29.5899 19.3395 29.5899 17.9163C29.5899 16.493 29.0876 15.4047 28.1666 14.4C27.162 13.3953 26.0736 12.9767 24.6503 12.9767C23.3108 12.9767 22.1387 13.4791 21.1341 14.4C20.1294 15.4047 19.7108 16.493 19.7108 17.9163C19.7108 19.3395 20.2131 20.4279 21.1341 21.4326C22.1387 22.4372 23.2271 22.8558 24.6503 22.8558C25.9899 22.9395 27.162 22.4372 28.1666 21.4326Z" fill="currentColor"/>
+    </svg>
+  
+  </a>
+
+    <a class="text-3xl md:text-4xl text-wmo-blue-gray-600 hover:text-wmo-blue-gray-900 focus-visible:text-wmo-blue-gray-900 transition-colors duration-300" href="https://www.youtube.com/c/worldmetorg" target="_blank" title="WMO on youtube">
+          <svg width="37" height="30" viewBox="0 0 37 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M35.4645 5.05402C36.2871 8.26162 36.2871 14.9576 36.2871 14.9576C36.2871 14.9576 36.2871 21.6536 35.4645 24.8612C35.0073 26.6342 33.6699 28.0292 31.9761 28.5008C28.8999 29.3576 18.2871 29.3576 18.2871 29.3576C18.2871 29.3576 7.67971 29.3576 4.59811 28.5008C2.89711 28.022 1.56151 26.6288 1.10971 24.8612C0.287109 21.6536 0.287109 14.9576 0.287109 14.9576C0.287109 14.9576 0.287109 8.26162 1.10971 5.05402C1.56691 3.28102 2.90431 1.88602 4.59811 1.41442C7.67971 0.557617 18.2871 0.557617 18.2871 0.557617C18.2871 0.557617 28.8999 0.557617 31.9761 1.41442C33.6771 1.89322 35.0127 3.28642 35.4645 5.05402ZM14.6871 21.2576L25.4871 14.9576L14.6871 8.65762V21.2576Z" fill="currentColor"/>
+    </svg>
+  
+  </a>
+
+
+          </div>
+                          <div>
+            © 2026
+          World Meteorological Organization (WMO)          </div>
+          <div class="flex flex-row gap-y-4 md:gap-y-5 gap-x-10 flex-wrap">
+                          <div>  <a href="/copyright" class="hover:underline ">
+    Copyright
+  </a>
+</div>
+                          <div>  <a href="/disclaimers" class="hover:underline ">
+    Disclaimer
+  </a>
+</div>
+                          <div>  <a href="/privacy-policy" class="hover:underline ">
+    Privacy Policy
+  </a>
+</div>
+                          <div>  <a href="https://wmo.hintbox.ch/" class="hover:underline ">
+    Report fraud, corruption or abuse
+  </a>
+</div>
+                      </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+</div>
+  </div>
+
+    
+    <script src="/sites/default/files/js/js_XlLQS1vppZxSmuUfprNPOPpV5aFlcKWAkh9Br3uZAGs.js?scope=footer&amp;delta=0&amp;language=en&amp;theme=server_theme&amp;include=eJxdjlGOwzAIRC9k10eyiE1dWgwRkG2P30RpV9r9YKT3NCOBr2CSR-m2rcAXPDEN1cFYA0YZe_znC9zh9VfOxCCjdtO161PKQflL-ao2kynzAlYG6wKcHO0HrQ4UNOAyqZk6BdamEvsj1YPa41uLG078TLM3ozU8HfUndazAaFFIKJKvMPeTost18waBaZM-qiNjC1KpfgNDK4fNvzaf9g24DGrp"></script>
+<script src="/themes/custom/server_theme/dist/js/gtm-opt-out.js?tgfaem" defer></script>
+<script src="/sites/default/files/js/js_OyU-739UB3dGsl1DOlPF-W2DQpsGVziIOLQ-rzCTjio.js?scope=footer&amp;delta=2&amp;language=en&amp;theme=server_theme&amp;include=eJxdjlGOwzAIRC9k10eyiE1dWgwRkG2P30RpV9r9YKT3NCOBr2CSR-m2rcAXPDEN1cFYA0YZe_znC9zh9VfOxCCjdtO161PKQflL-ao2kynzAlYG6wKcHO0HrQ4UNOAyqZk6BdamEvsj1YPa41uLG078TLM3ozU8HfUndazAaFFIKJKvMPeTost18waBaZM-qiNjC1KpfgNDK4fNvzaf9g24DGrp"></script>
+
+  </body>
+</html>

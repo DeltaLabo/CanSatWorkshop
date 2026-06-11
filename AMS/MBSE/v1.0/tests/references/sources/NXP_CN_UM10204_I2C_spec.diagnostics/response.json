@@ -1,0 +1,27 @@
+{
+  "url": "https://www.nxp.com.cn/webapp/Download?colCode=UM10204",
+  "saved_at": "2026-06-11T22:21:32.131018+00:00",
+  "reason": "http_status_404",
+  "warnings": [],
+  "final_url": "https://www.nxp.com.cn/webapp/Download?colCode=UM10204",
+  "status_code": 404,
+  "content_type": "text/html",
+  "content_length_header": "746",
+  "response_headers": {
+    "Mime-Version": "1.0",
+    "Content-Length": "746",
+    "Cache-control": "no-cache, no-store, must-revalidate, max-age=0, no-cache, no-store",
+    "Pragma": "no-cache, no-cache",
+    "Expires": "0, Thu, 11 Jun 2026 22:21:32 GMT",
+    "Content-Type": "text/html",
+    "Date": "Thu, 11 Jun 2026 22:21:32 GMT",
+    "Connection": "keep-alive",
+    "Set-Cookie": "[redacted]",
+    "Server-Timing": "cdn-cache; desc=HIT, edge; dur=1, ak_p; desc=\"1781216491467_399944530_3311463016_15_11745_86_686_-\";dur=1",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Strict-Transport-Security": "max-age=31536000; includeSubdomains;",
+    "X-XSS-Protection": "1; mode=block"
+  }
+}

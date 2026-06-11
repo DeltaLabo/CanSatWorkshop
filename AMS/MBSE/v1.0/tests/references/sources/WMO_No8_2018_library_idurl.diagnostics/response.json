@@ -1,0 +1,27 @@
+{
+  "url": "https://library.wmo.int/idurl/4/68695",
+  "saved_at": "2026-06-11T22:21:41.071618+00:00",
+  "reason": "no_extractable_content",
+  "warnings": [],
+  "final_url": "https://library.wmo.int/idurl/4/68695",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "content_length_header": null,
+  "response_headers": {
+    "Server": "nginx",
+    "Date": "Thu, 11 Jun 2026 22:21:40 GMT",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Set-Cookie": "[redacted]",
+    "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+    "Cache-Control": "no-store, no-cache, must-revalidate",
+    "Pragma": "no-cache",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "X-Frame-Options": "SAMEORIGIN",
+    "X-Content-Type-Options": "nosniff",
+    "X-XSS-Protection": "1; mode=block",
+    "Referrer-Policy": "origin",
+    "Content-Encoding": "gzip"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "url": "https://wmo.int/guide-instruments-and-methods-of-observation-wmo-no-8-0",
+  "saved_at": "2026-06-11T22:21:41.450527+00:00",
+  "reason": "confidence_below_0.55",
+  "warnings": [],
+  "final_url": "https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/instruments-and-methods-of-observation-programme-imop/guide-instruments-and-methods-of-observation-wmo-no-8-0",
+  "status_code": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "content_length_header": "28197",
+  "response_headers": {
+    "Connection": "keep-alive",
+    "Content-Length": "28197",
+    "Cache-Control": "max-age=1800, public",
+    "Content-Encoding": "gzip",
+    "Content-Language": "en",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Etag": "W/\"1781213160\"",
+    "Expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+    "Last-Modified": "Thu, 11 Jun 2026 21:26:00 GMT",
+    "Link": "</themes/custom/server_theme/dist/images/favicons//apple-touch-icon.png>; rel=\"apple-touch-icon\"; sizes=\"180x180\", </themes/custom/server_theme/dist/images/favicons//favicon-32x32.png>; rel=\"icon\"; type=\"image/png\"; sizes=\"32x32\", </themes/custom/server_theme/dist/images/favicons//favicon-16x16.png>; rel=\"icon\"; type=\"image/png\"; sizes=\"16x16\", </themes/custom/server_theme/dist/images/favicons//site.webmanifest>; rel=\"manifest\", </themes/custom/server_theme/dist/images/favicons//safari-pinned-tab.svg>; rel=\"mask-icon\"; color=\"#5bbad5\"",
+    "Server": "nginx",
+    "Strict-Transport-Security": "max-age=31622400; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "X-Drupal-Cache": "HIT",
+    "X-Drupal-Dynamic-Cache": "MISS",
+    "X-Frame-Options": "SAMEORIGIN",
+    "X-Generator": "Drupal 11 (https://www.drupal.org)",
+    "X-Pantheon-Styx-Hostname": "styx-eu-a-6b58b5b545-vqj52",
+    "X-Styx-Req-Id": "599d2374-65e0-11f1-9beb-2aa60a6633ce",
+    "Date": "Thu, 11 Jun 2026 22:21:41 GMT",
+    "X-Served-By": "cache-ams2100089-AMS, cache-jax2030029-JAX",
+    "X-Cache": "HIT, MISS",
+    "X-Cache-Hits": "2, 0",
+    "X-Timer": "S1781216501.122759,VS0,VE121",
+    "Vary": "Accept-Encoding, Cookie, Cookie, Cookie",
+    "Age": "1534",
+    "Accept-Ranges": "bytes",
+    "Via": "1.1 varnish, 1.1 varnish"
+  },
+  "extraction": {
+    "parser": "trafilatura-markdown",
+    "title": "Guide to Instruments and Methods of Observation (WMO-No. 8)",
+    "confidence": 0.529,
+    "word_count": 122,
+    "metadata": {
+      "date": "2025-11-05",
+      "description": "PROCESS FOR UPDATING THE WMO-No. 8Procedure for updating the Guide to Instruments and Methods of Observation (WMO-No. 8)Guidelines for drafting updates/new editions of the WMO-No. 8(to obtain the MS-Word version of specific chapters of the WMO-No.8 to propose updates, please contact: iruedi@wmo.int )Found a typo/error in the WMO-No. 8?Inform the Secretariat by sending an e-mail describing the error to: iruedi@wmo.int LATEST VERSION OF THE WMO-No. 8GUIDE TO INSTRUMENTS AND METHODS OF OBSERVATION(WMO-No. 8), 2024 editionTranslated versions in Arabic, Chinese, French, Spanish and Russian are available from the WMO Library.(Note: Previous editions of the WMO-No. 8 are available from WMO Library by sending a request to library(at)wmo.int.) VOLUME IMEASUREMENT OF METEOROLOGICAL VARIABLESChapter 1GeneralChapter 2Measurement of temperatureChapter 3Measurement of atmospheric pressureChapter 4Measurement of humidityChapter 5Measurement of surface windChapter 6Measurement of precipitationChapter 7Measurement of radiationChapter 8Measurement of sunshine durationChapter 9Measurement of visibilityChapter 10Measurement of evaporationChapter 11Measurement of soil moistureChapter 12Measurement of upper-air pressure, temperature and humidityChapter 13Measurement of upper windChapter 14Observation of present and past weather; state of the groundChapter 15Observation and measurement of cloudsChapter 16Measurement of atmospheric compositionVOLUME IIMEASUREMENT OF CRYOSPHERIC VARIABLESChapter 1GeneralChapter 2Measurement of snowChapter 3Measurement of glaciersChapter 4Measurement of permafrostVOLUME IIIOBSERVING SYSTEMSChapter 1Measurements at automatic weather stationsChapter 2Measurements and observations at aeronautical meteorological stations Chapter 3Aircraft based observationsChapter 4Marine observationChapter 5Special profiling techniques for the boundary layer and the troposphereChapter 6Electromagnetic methods of lightning detectionChapter 7Radar measurementsChapter 8Balloon techniquesChapter 9Urban observationsChapter 10Road meteorological measurementVOLUME IVSPACE-BASED OBSERVATIONSChapter 1IntroductionChapter 2Principles of Earth observation from spaceChapter 3Remote-sensing instrumentsChapter 4Satellite programmesChapter 5Space-based observation of geophysical variablesChapter 6Calibration and validationChapter 7Cross-cutting issuesVOLUME VQUALITY ASSURANCE AND MANAGEMENT OF OBSERVING SYSTEMSChapter 1Quality ManagementChapter 2Sampling meteorological variablesChapter 3Data reductionChapter 4Testing, calibration and intercomparisonChapter 5Training of instrument specialists",
+      "sitename": "World Meteorological Organization"
+    }
+  }
+}

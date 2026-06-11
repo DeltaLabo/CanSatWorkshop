@@ -1,0 +1,955 @@
+{
+  "query": "CanSat environmental sensor testing temperature pressure data rate requirements",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "Cansat Competition Guide 2025 Auto Gyro Descender Rev 1.0d Oct 31, 2024 1",
+      "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025d.pdf",
+      "description": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were ... Four tests are to be conducted to test the construction quality and material performance. To · verify test results, teams should provide: 1) Environmental Test Document based on the",
+      "content": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were ... Four tests are to be conducted to test the construction quality and material performance. To · verify test results, teams should provide: 1) Environmental Test Document based on the\nSimulation Mode, the telemetered pressure sensor data should reflect the commanded · simulation values, not the actual sensor readings. The purpose of Simulation Mode is to provide a mechanism for testing the Cansat as well as\nCansat payload shall measure its altitude using air pressure. ... Cansat payload shall measure its internal temperature.\nThe Cansat container shall meet the mechanical requirements in section F. ... The sensor telemetry shall be transmitted at a 1 Hz rate.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025d.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+        "path": "› docs  › CanSat_Mission_Guide_2025d.pdf"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "Cansat 2016 Environmental Testing Requirements Version 1.2 8/5/2015 1",
+      "url": "https://cansatcompetition.com/docs/Cansat_environmental_tests_r1.3.pdf",
+      "description": "This test is to verify the CanSat and container can operate in a hot environment. When the CanSat is · integrated into the rocket and sitting on the launch pad, the sun can heat up the payload section of the · rocket. Temperatures in the mid to upper 30C have been recorded.",
+      "content": "This test is to verify the CanSat and container can operate in a hot environment. When the CanSat is · integrated into the rocket and sitting on the launch pad, the sun can heat up the payload section of the · rocket. Temperatures in the mid to upper 30C have been recorded.\nsure the CanSat does reach the peak temperature. The air will reach the peak temperature long before · the CanSat does. Multiple sensors can be placed on various parts of the CanSat.\nenvironmental testing on the CanSat.\nPlace the CanSat, hair dryer(s) and thermometer in the cooler. Try to seal any openings.\nIt is highly suggested the thermistor or thermocouple be attached to the CanSat.",
+      "age": "May 8, 2015",
+      "page_age": "2015-05-08T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://cansatcompetition.com/docs/Cansat_environmental_tests_r1.3.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+        "path": "› docs  › Cansat_environmental_tests_r1.3.pdf"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Experimental Approach for the Performance of a CanSat Module Based on Environmental Testing | IEEE Conference Publication | IEEE Xplore",
+      "url": "https://ieeexplore.ieee.org/document/10665774/",
+      "description": "The qualification process of a spacecraft generally requires environmental testing for ensuring the CanSat will survive in the expected environment. Experimental approach is conducted due to guarantee a successful mission under extreme space thermal and vibration conditions.",
+      "content": "The qualification process of a spacecraft generally requires environmental testing for ensuring the CanSat will survive in the expected environment. Experimental approach is conducted due to guarantee a successful mission under extreme space thermal and vibration conditions.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "IEEE Xplore",
+        "url": "https://ieeexplore.ieee.org/document/10665774/",
+        "long_name": "ieeexplore.ieee.org",
+        "img": "https://imgs.search.brave.com/Pr3gNu-kVf-oded6UAgVYC0mXlyfwEL8yNiKsplOmlY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQyMTA0Y2Fk/OWI3Mzc5ODMwOGM5/MjM0ODJjZTBiNzQx/ZDE4OWI0YTAxMmE4/NmYwZWI5NjUwZjhj/MGRlY2MzOS9pZWVl/eHBsb3JlLmllZWUu/b3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "ieeexplore.ieee.org",
+        "hostname": "ieeexplore.ieee.org",
+        "favicon": "https://imgs.search.brave.com/Pr3gNu-kVf-oded6UAgVYC0mXlyfwEL8yNiKsplOmlY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQyMTA0Y2Fk/OWI3Mzc5ODMwOGM5/MjM0ODJjZTBiNzQx/ZDE4OWI0YTAxMmE4/NmYwZWI5NjUwZjhj/MGRlY2MzOS9pZWVl/eHBsb3JlLmllZWUu/b3JnLw",
+        "path": "› document  › 10665774"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/1Yj1c8K5zP1AWFtkhZFjcosmrsRFLx0OY2nEczMxSmA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pZWVl/eHBsb3JlLmllZWUu/b3JnL2Fzc2V0cy9p/bWcvaWVlZV9sb2dv/X3NtZWRpYV8yMDBY/MjAwLnBuZw",
+        "original": "https://ieeexplore.ieee.org/assets/img/ieee_logo_smedia_200X200.png",
+        "logo": true
+      }
+    },
+    {
+      "rank": 4,
+      "title": "Team Logo Here (If You Want) Environmental Test Document Team Number Team Name",
+      "url": "https://www.cansatcompetition.com/docs/Environmental%20Test%20Document%20Template.pdf",
+      "description": "Environmental Test Document · List all tests that were performed",
+      "content": "Environmental Test Document · List all tests that were performed",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Cansatcompetition",
+        "url": "https://www.cansatcompetition.com/docs/Environmental%20Test%20Document%20Template.pdf",
+        "long_name": "cansatcompetition.com",
+        "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cansatcompetition.com",
+        "hostname": "www.cansatcompetition.com",
+        "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+        "path": "› docs  › Environmental Test Document Template.pdf"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "CanSat prototype, equipped with temperature/humidity sensors. | Download Scientific Diagram",
+      "url": "https://www.researchgate.net/figure/CanSat-prototype-equipped-with-temperature-humidity-sensors_fig5_317840722",
+      "description": "The design effectiveness and functional performance of the proposed mechanisms were demonstrated through an actual flight test of the DHRM CanSat launched by a model rocket. ... ... The CanSat relies on very small aerial probes, with the hardware built inside small cylinders (cans or bottles) to collect data during low-altitude launches by rockets or balloons [10,11]. These devices often carry connected low-cost environmental sensors inside, such as temperature, humidity and atmospheric pressure sensors commonly used in Internet of Things environmental instrumentation",
+      "content": "The design effectiveness and functional performance of the proposed mechanisms were demonstrated through an actual flight test of the DHRM CanSat launched by a model rocket. ... ... The CanSat relies on very small aerial probes, with the hardware built inside small cylinders (cans or bottles) to collect data during low-altitude launches by rockets or balloons [10,11]. These devices often carry connected low-cost environmental sensors inside, such as temperature, humidity and atmospheric pressure sensors commonly used in Internet of Things environmental instrumentation\nDownload scientific diagram | CanSat prototype, equipped with temperature/humidity sensors. from publication: The cansat technology for climate monitoring in small regions at altitudes below 1km | In this paper, we propose a concept test, using pico-satellites CanSat for climate monitoring in a small region of around 4 km 2 , immersed in an Ecological Campus dedicated to research in wildlife, forest and agricultural sciences.\nA CanSat prototype's development also can help extract data from the environment, such as pressure, temperature, and air quality. Due to the pollution in Peru, which affects human health and global warming, as there is not environmental monitoring equipment in certain Lima districts, it is not easy to have ecological record data. A place was chosen for the data collection or test section where the population and vehicles commonly transit.\nTherefore, this paper also aims to explore the potential future applications of CanSats, particularly as an intermediary technology for testing and improving space-bound hardware, with potential benefits for future space missions. The findings from this survey could help to guide the further research and development of CanSats, as well as help to shape future space exploration efforts. ... ... Introduction An environmental satellite is a simulation of a real satellite with a mass of less than a thousand grams and integrated with subsystems such as on-board computers, microcontrollers, sensors, and communication systems",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ResearchGate",
+        "url": "https://www.researchgate.net/figure/CanSat-prototype-equipped-with-temperature-humidity-sensors_fig5_317840722",
+        "long_name": "researchgate.net",
+        "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "researchgate.net",
+        "hostname": "www.researchgate.net",
+        "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+        "path": "› figure  › CanSat-prototype-equipped-with-temperature-humidity-sensors_fig5_317840722"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/9n81xLlYqrAF2iPVf0KtEXtU5HyfVcCPxvTrAhiuxlY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC9wdWJsaWNh/dGlvbi8zMTc4NDA3/MjIvZmlndXJlL2Zp/ZzUvQVM6NTA4NTEx/NTk5NzIyNTAwQDE0/OTgyNTAwMjEzMDMv/Q2FuU2F0LXByb3Rv/dHlwZS1lcXVpcHBl/ZC13aXRoLXRlbXBl/cmF0dXJlLWh1bWlk/aXR5LXNlbnNvcnMu/cG5n",
+        "original": "https://www.researchgate.net/publication/317840722/figure/fig5/AS:508511599722500@1498250021303/CanSat-prototype-equipped-with-temperature-humidity-sensors.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "CanSat-Competition-Guidelines-2025-2026.pdf",
+      "url": "https://esero.nl/wp-content/uploads/2025/09/CanSat-Competition-Guidelines-2025-2026.pdf",
+      "description": "A CanSat can simulate an exploration flight to a new planet, taking measurements on the ground after · landing. Teams should define their exploration mission and identify the parameters necessary to · accomplish it (e.g. pressure, temperature, samples of the terrain, humidity, etc.).",
+      "content": "A CanSat can simulate an exploration flight to a new planet, taking measurements on the ground after · landing. Teams should define their exploration mission and identify the parameters necessary to · accomplish it (e.g. pressure, temperature, samples of the terrain, humidity, etc.).\nsensors and a communication system. But CanSats are different - they fit into a 330ml soft drinks can! CanSats do not go into space but are launched with a rocket and then released at an altitude of about 1 · kilometer. CanSats have to perform two missions on their way back to the ground, and land safely. The primary mission is the same for all participating teams: to measure the air temperature and air · pressure on their return journey to Earth.\nCanSats that are lighter must · take additional ballast with them to reach the 300 grams minimum mass limit required. The rocket is · designed to launch a payload with a specific mass. If the payload mass is too high or too low, it will ... Explosives, flammable or other hazardous materials are strictly forbidden. All materials used must be · safe for the personnel, the equipment and the environment.\nDuring descent, commands are sent from the ground to the CanSat to perform an action, such as switching · a sensor on and off, changing the frequency of measurements, etc.",
+      "age": "September 10, 2025",
+      "page_age": "2025-09-10T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Esero",
+        "url": "https://esero.nl/wp-content/uploads/2025/09/CanSat-Competition-Guidelines-2025-2026.pdf",
+        "long_name": "esero.nl",
+        "img": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "esero.nl",
+        "hostname": "esero.nl",
+        "favicon": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8",
+        "path": "› wp-content  › uploads  › 2025  › 09  › CanSat-Competition-Guidelines-2025-2026.pdf"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "(PDF) Design of CanSat for Environmental Monitoring and Object Detection",
+      "url": "https://www.researchgate.net/publication/357724799_Design_of_CanSat_for_Environmental_Monitoring_and_Object_Detection",
+      "description": "for object detection in the CanSat is given below: i. When a picture is imported, each pixel is provided as · input to each neuron in the ﬁrst layer, and all of the · neurons are connected in the appropriate way through ... III. EXP ER IM EN TAL RES ULT · AQI values have been taken from the MQ-9 sensor, carbon · monoxide gas (CO) from the MQ-135 sensor, temperature · from the DHT11 sensor, humidity from DHT11, and air · pressure from the BMP280 sensor.",
+      "content": "for object detection in the CanSat is given below: i. When a picture is imported, each pixel is provided as · input to each neuron in the ﬁrst layer, and all of the · neurons are connected in the appropriate way through ... III. EXP ER IM EN TAL RES ULT · AQI values have been taken from the MQ-9 sensor, carbon · monoxide gas (CO) from the MQ-135 sensor, temperature · from the DHT11 sensor, humidity from DHT11, and air · pressure from the BMP280 sensor.\nReduction of air pollution, the capability of imme�diate response in natural calamities, and the overall development of complex aerospace projects are the main inspiration behind the concept of designing the CanSat. A First Person View (FPV) camera, flight sensors that provide information about tempera�ture, pressure, humidity, air quality, and network interfaces for data transmission are used in this system.\n[23]. The use Measurements from temperature and pressure sensors can be useful for extrapolating altitude, in particular, Commercial off-the-Shelf (COTS) components, such as the BMP-180 or BMP-280, provide an altitude estimation, in addition to atmospheric temperature and pressure. ... ... Therefore, these devices are a common sensor choice for CanSats [19,21]. Temperature and pressure provide general indicators of atmospheric conditions, but CanSats designed for environmental monitoring also utilize more advanced Air Quality Sensors, such as the MQ-135 [22], or other gas sensors, such as the MQ-9\nThis CanSat can be launched by water rocket and different ... [Show full abstract] parameters like temperature, barometric pressure, altitude, latitude, longitude, GPS time, probe orientation, mission states are sent to the ground station right after the launch.",
+      "age": "November 18, 2021",
+      "page_age": "2021-11-18T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ResearchGate",
+        "url": "https://www.researchgate.net/publication/357724799_Design_of_CanSat_for_Environmental_Monitoring_and_Object_Detection",
+        "long_name": "researchgate.net",
+        "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "researchgate.net",
+        "hostname": "www.researchgate.net",
+        "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+        "path": "› publication  › 357724799_Design_of_CanSat_for_Environmental_Monitoring_and_Object_Detection"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/TQnbQGWSAI38xzpfXUfwwEv8BierjYgqjGi0lgFU9fc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/cHVibGljYXRpb24v/MzU3NzI0Nzk5X0Rl/c2lnbl9vZl9DYW5T/YXRfZm9yX0Vudmly/b25tZW50YWxfTW9u/aXRvcmluZ19hbmRf/T2JqZWN0X0RldGVj/dGlvbi9saW5rcy82/MzVkODVhNThkNDQ4/NDE1NGE0NTcxM2Mv/bGFyZ2VwcmV2aWV3/LnBuZw",
+        "original": "https://i1.rgstatic.net/publication/357724799_Design_of_CanSat_for_Environmental_Monitoring_and_Object_Detection/links/635d85a58d4484154a45713c/largepreview.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 8,
+      "title": "CanSat 2022 Environmental Test Report | PDF | Vacuum | Thermocouple",
+      "url": "https://www.scribd.com/document/576167497/cansat2022-1095-env-v01",
+      "description": "Team Garuda conducted environmental tests on their CanSat project including drop tests, thermal tests, vibration tests, and vacuum tests. The drop test subjected the CanSat to a simulated 30G shock to test the parachute and component mounts. The thermal test heated the CanSat to 60°C for 2 ...",
+      "content": "Team Garuda conducted environmental tests on their CanSat project including drop tests, thermal tests, vibration tests, and vacuum tests. The drop test subjected the CanSat to a simulated 30G shock to test the parachute and component mounts. The thermal test heated the CanSat to 60°C for 2 ...\nTeam Garuda conducted environmental tests on their CanSat project including drop tests, thermal tests, vibration tests, and vacuum tests. The drop test subjected the CanSat to a simulated 30G shock to test the parachute and component mounts. The thermal test heated the CanSat to 60°C for 2 hours to ensure it could operate in hot conditions.\ncansat2022_1095_env_v01 - Free download as PDF File (.pdf), Text File (.txt) or read online for free. Team Garuda conducted environmental tests on their CanSat project including drop tests, thermal tests, vibration tests, and vacuum tests. The drop test subjected the CanSat to a simulated 30G shock to test the parachute and component mounts.\nThe drop test subjected the CanSat to a simulated 30…Full description\nFunctional tests were performed after each test to verify the CanSat still operated as intended.Read more",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "creative_work",
+      "profile": {
+        "name": "Scribd",
+        "url": "https://www.scribd.com/document/576167497/cansat2022-1095-env-v01",
+        "long_name": "scribd.com",
+        "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "scribd.com",
+        "hostname": "www.scribd.com",
+        "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+        "path": "› document  › 576167497  › cansat2022-1095-env-v01"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/g76FQOXVIWB6OW0plGXYGSQhZbJ6FzTkIPmgEoOz85M/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NTc2MTY3NDk3LzE0/OXgxOTgvMjYwYmEw/ZTMyYS8xNzEwNTM4/OTU5P3Y9MQ",
+        "original": "https://imgv2-2-f.scribdassets.com/img/document/576167497/149x198/260ba0e32a/1710538959?v=1",
+        "logo": false
+      }
+    },
+    {
+      "rank": 9,
+      "title": "CanSat Final Report LC Sat Team Team Name: LC sat Country: France",
+      "url": "https://www.planete-sciences.org/espace/IMG/pdf/teamlcsat_final_reportv3.pdf",
+      "description": "parameters (relation between atmospheric pressure and air temperature for instance). We also wanted to convey the message that it is possible to create tiny scientific · satellites, which can be sent into space along with bigger satellites, for students to allow · them to undertake scientific research. Thomas in 11th grade started a research project · for the physics Olympiads. He needed space “data” and the CanSat ...",
+      "content": "parameters (relation between atmospheric pressure and air temperature for instance). We also wanted to convey the message that it is possible to create tiny scientific · satellites, which can be sent into space along with bigger satellites, for students to allow · them to undertake scientific research. Thomas in 11th grade started a research project · for the physics Olympiads. He needed space “data” and the CanSat ...\nparameters (relation between atmospheric pressure and air temperature for instance). We also wanted to convey the message that it is possible to create tiny scientific · satellites, which can be sent into space along with bigger satellites, for students to allow · them to undertake scientific research. Thomas in 11th grade started a research project · for the physics Olympiads. He needed space “data” and the CanSat is the perfect\nOur CanSat can immediately take off · but without the possibility to start a new recording. For a fresh recording, you must wait · a maximum of 20 minutes of data transfer (less if the encryption option wasn’t selected) if the previous recording lasted a maximum 17 min with all sensors turned on.\nparticipated several times in the CANSAT competition. He worked on the · hardware, the search of sponsorship and the communication (contacted ... We choose a scientific secondary mission. We installed several sensors to record\nWe created dedicated software to process the data received from the CanSat.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Planete-sciences",
+        "url": "https://www.planete-sciences.org/espace/IMG/pdf/teamlcsat_final_reportv3.pdf",
+        "long_name": "planete-sciences.org",
+        "img": "https://imgs.search.brave.com/-MDpj5q8fHrm4w0VZiraqbnmTy8r6t1xKVmJyH233rY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDdiNDA1Nzhh/NmFmMDczMzYxOTlm/NGE1MzFmZjdiMzg0/NGFhYmU3ODUyY2Fj/YjhhMjZhNzdhODNm/NzU1ZjU2Zi93d3cu/cGxhbmV0ZS1zY2ll/bmNlcy5vcmcv"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "planete-sciences.org",
+        "hostname": "www.planete-sciences.org",
+        "favicon": "https://imgs.search.brave.com/-MDpj5q8fHrm4w0VZiraqbnmTy8r6t1xKVmJyH233rY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDdiNDA1Nzhh/NmFmMDczMzYxOTlm/NGE1MzFmZjdiMzg0/NGFhYmU3ODUyY2Fj/YjhhMjZhNzdhODNm/NzU1ZjU2Zi93d3cu/cGxhbmV0ZS1zY2ll/bmNlcy5vcmcv",
+        "path": "› espace  › IMG  › pdf  › teamlcsat_final_reportv3.pdf"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "Environmental Monitoring using CanSat | Request PDF",
+      "url": "https://www.researchgate.net/publication/338258615_Environmental_Monitoring_using_CanSat",
+      "description": "This work will apply the electrical engineering techniques as well as environmental engineering knowledge by using wireless sensor networks to measure Air Quality Parameters such as Carbon Monoxide (CO) and Liquid Petroleum Gas (LPG). peer-review under responsibility of [name organizer] ... This paper presents design and navigation control of an advanced level comeback CanSat which is going to be launched to an altitude of about 400 m using an amateur rocket from ground level. The CanSat uses advanced and ultra-light microcontroller, pressure and temperature sensors, 3-axis accelerometer, 3-axis gyro, camera, GPS, IR distance measuring sensor, and RF communication module to communicate with the ground station PC.",
+      "content": "This work will apply the electrical engineering techniques as well as environmental engineering knowledge by using wireless sensor networks to measure Air Quality Parameters such as Carbon Monoxide (CO) and Liquid Petroleum Gas (LPG). peer-review under responsibility of [name organizer] ... This paper presents design and navigation control of an advanced level comeback CanSat which is going to be launched to an altitude of about 400 m using an amateur rocket from ground level. The CanSat uses advanced and ultra-light microcontroller, pressure and temperature sensors, 3-axis accelerometer, 3-axis gyro, camera, GPS, IR distance measuring sensor, and RF communication module to communicate with the ground station PC.\nIn this paper, we propose a concept test, using pico-satellites CanSat for climate monitoring in a small region of around 4 km 2 , immersed in an Ecological Campus dedicated to research in wildlife, forest and agricultural sciences. This region is being monitored since the beginning of 2012 up to today, but only with three temperature/humidity sensors.\nThe assembly and tests were made during the 6th CanSat Leader Training Program (CLTP-6) at University Hokkaido-Japan in the summer 2015. The pico-satellite was launched in the facilities of Uematsu Electric Co. Ltd. in Akabira-Japan by a paper model rocket, which achieved a height of approximately 100 m. The mission was designed to measure physical variables, such as temperature and humidity using electronic sensors.\nReduction of air pollution, the capability of imme�diate response in natural calamities, and the overall development of complex aerospace projects are the main inspiration behind the concept of designing the CanSat. A First Person View (FPV) camera, flight sensors that provide information about tempera�ture, pressure, humidity, air quality, and network interfaces for data transmission are used in this system.",
+      "age": "July 28, 2019",
+      "page_age": "2019-07-28T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ResearchGate",
+        "url": "https://www.researchgate.net/publication/338258615_Environmental_Monitoring_using_CanSat",
+        "long_name": "researchgate.net",
+        "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "researchgate.net",
+        "hostname": "www.researchgate.net",
+        "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+        "path": "› publication  › 338258615_Environmental_Monitoring_using_CanSat"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/NA3UWQdok5rp6uI2kyF0cHLVZy0QBikNBsFv8yDMrrc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC9pbWFnZXMv/dGVtcGxhdGUvZGVm/YXVsdF9wdWJsaWNh/dGlvbl9wcmV2aWV3/X2xhcmdlLnBuZw",
+        "original": "https://www.researchgate.net/images/template/default_publication_preview_large.png",
+        "logo": false
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "CanSat environmental sensor testing temperature pressure data rate requirements",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 0.994,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "CanSat environmental sensor testing temperature pressure data rate requirements",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "videos",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "videos": {
+      "type": "videos",
+      "results": [
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=sf95DobHqNg",
+          "title": "Environmental Test. Team 3207. Cansat Competition 2025",
+          "description": "",
+          "video": {},
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/c0ZyCr0DDiU5VQSvzu9oMpEs80El44CsflYHSokzF3U/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9z/Zjk1RG9iSHFOZy9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/sf95DobHqNg/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=atYmTqMyfj0",
+          "title": "CanSat Environmental Thermal Test 2024-2025",
+          "description": "",
+          "video": {},
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/5wU3l0sFnt3M7ntFsIjz7neZhmZ3AV_Y9L6JjyhsKOI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9h/dFltVHFNeWZqMC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/atYmTqMyfj0/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=oDcP_b1aiaw",
+          "title": "CanSat Environmental Vacuum Test 2025-2026",
+          "description": "",
+          "video": {},
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/DDUk5p-WTopTXRVdVF2-uYwSq7gQnGtd-pRFDfVts_Y/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9v/RGNQX2IxYWlhdy9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/oDcP_b1aiaw/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=U0vXuC5_OOw",
+          "title": "CanSat Environmental Thermal Test 2025-2026",
+          "description": "",
+          "video": {},
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/WYCV-N5PvSnCmwnfwKMDKYYIQT8Aco5mmnr-amrzqBk/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9V/MHZYdUM1X09Pdy9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/U0vXuC5_OOw/maxresdefault.jpg"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "Cansat Competition Guide 2025 Auto Gyro Descender Rev 1.0d Oct 31, 2024 1",
+          "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025d.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were ... Four tests are to be conducted to test the construction quality and material performance. To · verify test results, teams should provide: 1) Environmental Test Document based on the",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://cansatcompetition.com/docs/CanSat_Mission_Guide_2025d.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+            "path": "› docs  › CanSat_Mission_Guide_2025d.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Simulation Mode, the telemetered pressure sensor data should reflect the commanded · simulation values, not the actual sensor readings. The purpose of Simulation Mode is to provide a mechanism for testing the Cansat as well as",
+            "Cansat payload shall measure its altitude using air pressure. ... Cansat payload shall measure its internal temperature.",
+            "After activation, the flight software monitors the radio link for barometric pressure sensor · commands (SIMP) from the Ground Station and uses the received values as if they were ... Four tests are to be conducted to test the construction quality and material performance. To · verify test results, teams should provide: 1) Environmental Test Document based on the",
+            "The Cansat container shall meet the mechanical requirements in section F. ... The sensor telemetry shall be transmitted at a 1 Hz rate."
+          ]
+        },
+        {
+          "title": "Cansat 2016 Environmental Testing Requirements Version 1.2 8/5/2015 1",
+          "url": "https://cansatcompetition.com/docs/Cansat_environmental_tests_r1.3.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This test is to verify the CanSat and container can operate in a hot environment. When the CanSat is · integrated into the rocket and sitting on the launch pad, the sun can heat up the payload section of the · rocket. Temperatures in the mid to upper 30C have been recorded.",
+          "page_age": "2015-05-08T00:00:00",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://cansatcompetition.com/docs/Cansat_environmental_tests_r1.3.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/yTCa4gN1QW8CMfQbg1vc9kdBTySxEl01wxNyb4CiNtU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGJiODZkNDRj/ZDhiOGZmYjQwYWEx/YTA1ZDdmNmFmMjU0/OTc0Yjk4MjM0MTk0/NTI4ZDYwYzEwYmIw/OTg0ZjkyMS9jYW5z/YXRjb21wZXRpdGlv/bi5jb20v",
+            "path": "› docs  › Cansat_environmental_tests_r1.3.pdf"
+          },
+          "age": "May 8, 2015",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "sure the CanSat does reach the peak temperature. The air will reach the peak temperature long before · the CanSat does. Multiple sensors can be placed on various parts of the CanSat.",
+            "environmental testing on the CanSat.",
+            "Place the CanSat, hair dryer(s) and thermometer in the cooler. Try to seal any openings.",
+            "It is highly suggested the thermistor or thermocouple be attached to the CanSat."
+          ]
+        },
+        {
+          "title": "Experimental Approach for the Performance of a CanSat Module Based on Environmental Testing | IEEE Conference Publication | IEEE Xplore",
+          "url": "https://ieeexplore.ieee.org/document/10665774/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The qualification process of a spacecraft generally requires environmental testing for ensuring the CanSat will survive in the expected environment. Experimental approach is conducted due to guarantee a successful mission under extreme space thermal and vibration conditions.",
+          "profile": {
+            "name": "IEEE Xplore",
+            "url": "https://ieeexplore.ieee.org/document/10665774/",
+            "long_name": "ieeexplore.ieee.org",
+            "img": "https://imgs.search.brave.com/Pr3gNu-kVf-oded6UAgVYC0mXlyfwEL8yNiKsplOmlY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQyMTA0Y2Fk/OWI3Mzc5ODMwOGM5/MjM0ODJjZTBiNzQx/ZDE4OWI0YTAxMmE4/NmYwZWI5NjUwZjhj/MGRlY2MzOS9pZWVl/eHBsb3JlLmllZWUu/b3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "ieeexplore.ieee.org",
+            "hostname": "ieeexplore.ieee.org",
+            "favicon": "https://imgs.search.brave.com/Pr3gNu-kVf-oded6UAgVYC0mXlyfwEL8yNiKsplOmlY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWQyMTA0Y2Fk/OWI3Mzc5ODMwOGM5/MjM0ODJjZTBiNzQx/ZDE4OWI0YTAxMmE4/NmYwZWI5NjUwZjhj/MGRlY2MzOS9pZWVl/eHBsb3JlLmllZWUu/b3JnLw",
+            "path": "› document  › 10665774"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/1Yj1c8K5zP1AWFtkhZFjcosmrsRFLx0OY2nEczMxSmA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pZWVl/eHBsb3JlLmllZWUu/b3JnL2Fzc2V0cy9p/bWcvaWVlZV9sb2dv/X3NtZWRpYV8yMDBY/MjAwLnBuZw",
+            "original": "https://ieeexplore.ieee.org/assets/img/ieee_logo_smedia_200X200.png",
+            "logo": true
+          }
+        },
+        {
+          "title": "Team Logo Here (If You Want) Environmental Test Document Team Number Team Name",
+          "url": "https://www.cansatcompetition.com/docs/Environmental%20Test%20Document%20Template.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Environmental Test Document · List all tests that were performed",
+          "profile": {
+            "name": "Cansatcompetition",
+            "url": "https://www.cansatcompetition.com/docs/Environmental%20Test%20Document%20Template.pdf",
+            "long_name": "cansatcompetition.com",
+            "img": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cansatcompetition.com",
+            "hostname": "www.cansatcompetition.com",
+            "favicon": "https://imgs.search.brave.com/jzZIWS1I7i2M7wSXGjecrGFOtSQqb1LmjfAIifdm7hU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvM2E2ZDkxNmUx/NWJiNDVkMDIzOWRl/NTEyM2FiZWIzMDI0/Yzk4NjYwYzUwY2U5/OWJhOWI2NmJkOGM5/OTI0MGI0OS93d3cu/Y2Fuc2F0Y29tcGV0/aXRpb24uY29tLw",
+            "path": "› docs  › Environmental Test Document Template.pdf"
+          },
+          "content_type": "pdf"
+        },
+        {
+          "title": "CanSat prototype, equipped with temperature/humidity sensors. | Download Scientific Diagram",
+          "url": "https://www.researchgate.net/figure/CanSat-prototype-equipped-with-temperature-humidity-sensors_fig5_317840722",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The design effectiveness and functional performance of the proposed mechanisms were demonstrated through an actual flight test of the DHRM CanSat launched by a model rocket. ... ... The CanSat relies on very small aerial probes, with the hardware built inside small cylinders (cans or bottles) to collect data during low-altitude launches by rockets or balloons [10,11]. These devices often carry connected low-cost environmental sensors inside, such as temperature, humidity and atmospheric pressure sensors commonly used in Internet of Things environmental instrumentation",
+          "profile": {
+            "name": "ResearchGate",
+            "url": "https://www.researchgate.net/figure/CanSat-prototype-equipped-with-temperature-humidity-sensors_fig5_317840722",
+            "long_name": "researchgate.net",
+            "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "researchgate.net",
+            "hostname": "www.researchgate.net",
+            "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+            "path": "› figure  › CanSat-prototype-equipped-with-temperature-humidity-sensors_fig5_317840722"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/9n81xLlYqrAF2iPVf0KtEXtU5HyfVcCPxvTrAhiuxlY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC9wdWJsaWNh/dGlvbi8zMTc4NDA3/MjIvZmlndXJlL2Zp/ZzUvQVM6NTA4NTEx/NTk5NzIyNTAwQDE0/OTgyNTAwMjEzMDMv/Q2FuU2F0LXByb3Rv/dHlwZS1lcXVpcHBl/ZC13aXRoLXRlbXBl/cmF0dXJlLWh1bWlk/aXR5LXNlbnNvcnMu/cG5n",
+            "original": "https://www.researchgate.net/publication/317840722/figure/fig5/AS:508511599722500@1498250021303/CanSat-prototype-equipped-with-temperature-humidity-sensors.png",
+            "logo": false
+          },
+          "extra_snippets": [
+            "Download scientific diagram | CanSat prototype, equipped with temperature/humidity sensors. from publication: The cansat technology for climate monitoring in small regions at altitudes below 1km | In this paper, we propose a concept test, using pico-satellites CanSat for climate monitoring in a small region of around 4 km 2 , immersed in an Ecological Campus dedicated to research in wildlife, forest and agricultural sciences.",
+            "A CanSat prototype's development also can help extract data from the environment, such as pressure, temperature, and air quality. Due to the pollution in Peru, which affects human health and global warming, as there is not environmental monitoring equipment in certain Lima districts, it is not easy to have ecological record data. A place was chosen for the data collection or test section where the population and vehicles commonly transit.",
+            "The design effectiveness and functional performance of the proposed mechanisms were demonstrated through an actual flight test of the DHRM CanSat launched by a model rocket. ... ... The CanSat relies on very small aerial probes, with the hardware built inside small cylinders (cans or bottles) to collect data during low-altitude launches by rockets or balloons [10,11]. These devices often carry connected low-cost environmental sensors inside, such as temperature, humidity and atmospheric pressure sensors commonly used in Internet of Things environmental instrumentation",
+            "Therefore, this paper also aims to explore the potential future applications of CanSats, particularly as an intermediary technology for testing and improving space-bound hardware, with potential benefits for future space missions. The findings from this survey could help to guide the further research and development of CanSats, as well as help to shape future space exploration efforts. ... ... Introduction An environmental satellite is a simulation of a real satellite with a mass of less than a thousand grams and integrated with subsystems such as on-board computers, microcontrollers, sensors, and communication systems"
+          ]
+        },
+        {
+          "title": "CanSat-Competition-Guidelines-2025-2026.pdf",
+          "url": "https://esero.nl/wp-content/uploads/2025/09/CanSat-Competition-Guidelines-2025-2026.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "A CanSat can simulate an exploration flight to a new planet, taking measurements on the ground after · landing. Teams should define their exploration mission and identify the parameters necessary to · accomplish it (e.g. pressure, temperature, samples of the terrain, humidity, etc.).",
+          "page_age": "2025-09-10T00:00:00",
+          "profile": {
+            "name": "Esero",
+            "url": "https://esero.nl/wp-content/uploads/2025/09/CanSat-Competition-Guidelines-2025-2026.pdf",
+            "long_name": "esero.nl",
+            "img": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "esero.nl",
+            "hostname": "esero.nl",
+            "favicon": "https://imgs.search.brave.com/i1qkaXTk7848O5PpYq9DbnyWECBK7RDhQiySfuUbtMw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlNDFiM2Mz/Zjg2Y2Y1ZmIyNTQ0/MGZiZDM1NGZmZTU4/Nzc2ZTAwNGI5ZTE5/ZDkxMjk5NDExMmE1/ZGQ1NjUwZS9lc2Vy/by5ubC8",
+            "path": "› wp-content  › uploads  › 2025  › 09  › CanSat-Competition-Guidelines-2025-2026.pdf"
+          },
+          "age": "September 10, 2025",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "sensors and a communication system. But CanSats are different - they fit into a 330ml soft drinks can! CanSats do not go into space but are launched with a rocket and then released at an altitude of about 1 · kilometer. CanSats have to perform two missions on their way back to the ground, and land safely. The primary mission is the same for all participating teams: to measure the air temperature and air · pressure on their return journey to Earth.",
+            "CanSats that are lighter must · take additional ballast with them to reach the 300 grams minimum mass limit required. The rocket is · designed to launch a payload with a specific mass. If the payload mass is too high or too low, it will ... Explosives, flammable or other hazardous materials are strictly forbidden. All materials used must be · safe for the personnel, the equipment and the environment.",
+            "A CanSat can simulate an exploration flight to a new planet, taking measurements on the ground after · landing. Teams should define their exploration mission and identify the parameters necessary to · accomplish it (e.g. pressure, temperature, samples of the terrain, humidity, etc.).",
+            "During descent, commands are sent from the ground to the CanSat to perform an action, such as switching · a sensor on and off, changing the frequency of measurements, etc."
+          ]
+        },
+        {
+          "title": "(PDF) Design of CanSat for Environmental Monitoring and Object Detection",
+          "url": "https://www.researchgate.net/publication/357724799_Design_of_CanSat_for_Environmental_Monitoring_and_Object_Detection",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "for object detection in the CanSat is given below: i. When a picture is imported, each pixel is provided as · input to each neuron in the ﬁrst layer, and all of the · neurons are connected in the appropriate way through ... III. EXP ER IM EN TAL RES ULT · AQI values have been taken from the MQ-9 sensor, carbon · monoxide gas (CO) from the MQ-135 sensor, temperature · from the DHT11 sensor, humidity from DHT11, and air · pressure from the BMP280 sensor.",
+          "page_age": "2021-11-18T00:00:00",
+          "profile": {
+            "name": "ResearchGate",
+            "url": "https://www.researchgate.net/publication/357724799_Design_of_CanSat_for_Environmental_Monitoring_and_Object_Detection",
+            "long_name": "researchgate.net",
+            "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "researchgate.net",
+            "hostname": "www.researchgate.net",
+            "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+            "path": "› publication  › 357724799_Design_of_CanSat_for_Environmental_Monitoring_and_Object_Detection"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/TQnbQGWSAI38xzpfXUfwwEv8BierjYgqjGi0lgFU9fc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/cHVibGljYXRpb24v/MzU3NzI0Nzk5X0Rl/c2lnbl9vZl9DYW5T/YXRfZm9yX0Vudmly/b25tZW50YWxfTW9u/aXRvcmluZ19hbmRf/T2JqZWN0X0RldGVj/dGlvbi9saW5rcy82/MzVkODVhNThkNDQ4/NDE1NGE0NTcxM2Mv/bGFyZ2VwcmV2aWV3/LnBuZw",
+            "original": "https://i1.rgstatic.net/publication/357724799_Design_of_CanSat_for_Environmental_Monitoring_and_Object_Detection/links/635d85a58d4484154a45713c/largepreview.png",
+            "logo": false
+          },
+          "age": "November 18, 2021",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Mahmudul Hasan",
+                "url": "https://www.researchgate.net/profile/Mahmudul-Hasan-120",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/dDmwygwCrM6QidbYyeqvlqwIL7yRDiQuX9Gnl-ivajk/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS8xMDA4NTUw/MjI2NjkwMDUwLTE2/MTc0Njg1MjA4Njdf/UTY0L01haG11ZHVs/LUhhc2FuLTEyMC5q/cGc",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/1008550226690050-1617468520867_Q64/Mahmudul-Hasan-120.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Intesar Ihsas Rahman",
+                "url": "https://www.researchgate.net/scientific-contributions/Intesar-Ihsas-Rahman-2212042700",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/dMtHr8-Qesx_n1eD_yC484AdHx5Mu-SKRnED6CeBoes/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jNS5y/Z3N0YXRpYy5uZXQv/bS80MzU5ODIzMDk0/ODEwMTAvaW1hZ2Vz/L3RlbXBsYXRlL2Rl/ZmF1bHQvYXV0aG9y/L2F1dGhvcl9kZWZh/dWx0X20uanBn",
+                  "original": "https://c5.rgstatic.net/m/435982309481010/images/template/default/author/author_default_m.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Mohammed Hossam -E- Haider",
+                "url": "https://www.researchgate.net/profile/Mohammed-Hossam-Haider",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/kbxmeq-J2YthDtzKQYbNYd2GO0Rm65gmuIIGH94JmYE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS8xMDgzNDAy/MjQ1NjY4ODcyLTE2/MzUzMTQ2MzI0NjRf/UTY0L01vaGFtbWVk/LUhvc3NhbS1IYWlk/ZXIuanBn",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/1083402245668872-1635314632464_Q64/Mohammed-Hossam-Haider.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "A. A. M. Shah Sadman",
+                "url": "https://www.researchgate.net/profile/A-Sadman",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/C87-1GqFs8TEYLW6PR1xPUNIOg066Pdxj7LbBVRcIyk/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS8xMTQzMTI4/MTEzMTIzMDQ5Mi0x/NjgwMDc0MTE5ODg2/X1E2NC9BLVNhZG1h/bi5qcGc",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/11431281131230492-1680074119886_Q64/A-Sadman.jpg"
+                }
+              }
+            ],
+            "date": "Nov 18, 2021",
+            "publisher": {
+              "type": "organization",
+              "name": "unknown",
+              "url": "https://www.researchgate.net/unknown",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/UjSGsXBrrrqKndxfeOp5EGUdM15aJCsZ_BUDIJcDQhs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC91bmtub3du",
+                "original": "https://www.researchgate.net/unknown"
+              }
+            }
+          },
+          "extra_snippets": [
+            "Reduction of air pollution, the capability of imme�diate response in natural calamities, and the overall development of complex aerospace projects are the main inspiration behind the concept of designing the CanSat. A First Person View (FPV) camera, flight sensors that provide information about tempera�ture, pressure, humidity, air quality, and network interfaces for data transmission are used in this system.",
+            "for object detection in the CanSat is given below: i. When a picture is imported, each pixel is provided as · input to each neuron in the ﬁrst layer, and all of the · neurons are connected in the appropriate way through ... III. EXP ER IM EN TAL RES ULT · AQI values have been taken from the MQ-9 sensor, carbon · monoxide gas (CO) from the MQ-135 sensor, temperature · from the DHT11 sensor, humidity from DHT11, and air · pressure from the BMP280 sensor.",
+            "[23]. The use Measurements from temperature and pressure sensors can be useful for extrapolating altitude, in particular, Commercial off-the-Shelf (COTS) components, such as the BMP-180 or BMP-280, provide an altitude estimation, in addition to atmospheric temperature and pressure. ... ... Therefore, these devices are a common sensor choice for CanSats [19,21]. Temperature and pressure provide general indicators of atmospheric conditions, but CanSats designed for environmental monitoring also utilize more advanced Air Quality Sensors, such as the MQ-135 [22], or other gas sensors, such as the MQ-9",
+            "This CanSat can be launched by water rocket and different ... [Show full abstract] parameters like temperature, barometric pressure, altitude, latitude, longitude, GPS time, probe orientation, mission states are sent to the ground station right after the launch."
+          ]
+        },
+        {
+          "title": "CanSat 2022 Environmental Test Report | PDF | Vacuum | Thermocouple",
+          "url": "https://www.scribd.com/document/576167497/cansat2022-1095-env-v01",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Team Garuda conducted environmental tests on their CanSat project including drop tests, thermal tests, vibration tests, and vacuum tests. The drop test subjected the CanSat to a simulated 30G shock to test the parachute and component mounts. The thermal test heated the CanSat to 60°C for 2 ...",
+          "profile": {
+            "name": "Scribd",
+            "url": "https://www.scribd.com/document/576167497/cansat2022-1095-env-v01",
+            "long_name": "scribd.com",
+            "img": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "creative_work",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "scribd.com",
+            "hostname": "www.scribd.com",
+            "favicon": "https://imgs.search.brave.com/9IgLdijfiTwUiUS_1mFeVeLirFGp4PtQHAEVt2FZuYU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjNmNjliOTYz/MDA2NDAyYTkyM2Jm/YTY2YWQ3ZTNjMzY0/NGQyZjQ4NDJjNmI5/MTc2ZDQ0ZDJhYTc0/NjYwNTVkZC93d3cu/c2NyaWJkLmNvbS8",
+            "path": "› document  › 576167497  › cansat2022-1095-env-v01"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/g76FQOXVIWB6OW0plGXYGSQhZbJ6FzTkIPmgEoOz85M/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NTc2MTY3NDk3LzE0/OXgxOTgvMjYwYmEw/ZTMyYS8xNzEwNTM4/OTU5P3Y9MQ",
+            "original": "https://imgv2-2-f.scribdassets.com/img/document/576167497/149x198/260ba0e32a/1710538959?v=1",
+            "logo": false
+          },
+          "creative_work": {
+            "name": "cansat2022_1095_env_v01",
+            "thumbnail": {
+              "src": "https://imgs.search.brave.com/g76FQOXVIWB6OW0plGXYGSQhZbJ6FzTkIPmgEoOz85M/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWd2/Mi0yLWYuc2NyaWJk/YXNzZXRzLmNvbS9p/bWcvZG9jdW1lbnQv/NTc2MTY3NDk3LzE0/OXgxOTgvMjYwYmEw/ZTMyYS8xNzEwNTM4/OTU5P3Y9MQ",
+              "original": "https://imgv2-2-f.scribdassets.com/img/document/576167497/149x198/260ba0e32a/1710538959?v=1"
+            }
+          },
+          "extra_snippets": [
+            "Team Garuda conducted environmental tests on their CanSat project including drop tests, thermal tests, vibration tests, and vacuum tests. The drop test subjected the CanSat to a simulated 30G shock to test the parachute and component mounts. The thermal test heated the CanSat to 60°C for 2 hours to ensure it could operate in hot conditions.",
+            "cansat2022_1095_env_v01 - Free download as PDF File (.pdf), Text File (.txt) or read online for free. Team Garuda conducted environmental tests on their CanSat project including drop tests, thermal tests, vibration tests, and vacuum tests. The drop test subjected the CanSat to a simulated 30G shock to test the parachute and component mounts.",
+            "The drop test subjected the CanSat to a simulated 30…Full description",
+            "Functional tests were performed after each test to verify the CanSat still operated as intended.Read more"
+          ]
+        },
+        {
+          "title": "CanSat Final Report LC Sat Team Team Name: LC sat Country: France",
+          "url": "https://www.planete-sciences.org/espace/IMG/pdf/teamlcsat_final_reportv3.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "parameters (relation between atmospheric pressure and air temperature for instance). We also wanted to convey the message that it is possible to create tiny scientific · satellites, which can be sent into space along with bigger satellites, for students to allow · them to undertake scientific research. Thomas in 11th grade started a research project · for the physics Olympiads. He needed space “data” and the CanSat ...",
+          "profile": {
+            "name": "Planete-sciences",
+            "url": "https://www.planete-sciences.org/espace/IMG/pdf/teamlcsat_final_reportv3.pdf",
+            "long_name": "planete-sciences.org",
+            "img": "https://imgs.search.brave.com/-MDpj5q8fHrm4w0VZiraqbnmTy8r6t1xKVmJyH233rY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDdiNDA1Nzhh/NmFmMDczMzYxOTlm/NGE1MzFmZjdiMzg0/NGFhYmU3ODUyY2Fj/YjhhMjZhNzdhODNm/NzU1ZjU2Zi93d3cu/cGxhbmV0ZS1zY2ll/bmNlcy5vcmcv"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "planete-sciences.org",
+            "hostname": "www.planete-sciences.org",
+            "favicon": "https://imgs.search.brave.com/-MDpj5q8fHrm4w0VZiraqbnmTy8r6t1xKVmJyH233rY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDdiNDA1Nzhh/NmFmMDczMzYxOTlm/NGE1MzFmZjdiMzg0/NGFhYmU3ODUyY2Fj/YjhhMjZhNzdhODNm/NzU1ZjU2Zi93d3cu/cGxhbmV0ZS1zY2ll/bmNlcy5vcmcv",
+            "path": "› espace  › IMG  › pdf  › teamlcsat_final_reportv3.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "parameters (relation between atmospheric pressure and air temperature for instance). We also wanted to convey the message that it is possible to create tiny scientific · satellites, which can be sent into space along with bigger satellites, for students to allow · them to undertake scientific research. Thomas in 11th grade started a research project · for the physics Olympiads. He needed space “data” and the CanSat is the perfect",
+            "Our CanSat can immediately take off · but without the possibility to start a new recording. For a fresh recording, you must wait · a maximum of 20 minutes of data transfer (less if the encryption option wasn’t selected) if the previous recording lasted a maximum 17 min with all sensors turned on.",
+            "participated several times in the CANSAT competition. He worked on the · hardware, the search of sponsorship and the communication (contacted ... We choose a scientific secondary mission. We installed several sensors to record",
+            "We created dedicated software to process the data received from the CanSat."
+          ]
+        },
+        {
+          "title": "Environmental Monitoring using CanSat | Request PDF",
+          "url": "https://www.researchgate.net/publication/338258615_Environmental_Monitoring_using_CanSat",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "This work will apply the electrical engineering techniques as well as environmental engineering knowledge by using wireless sensor networks to measure Air Quality Parameters such as Carbon Monoxide (CO) and Liquid Petroleum Gas (LPG). peer-review under responsibility of [name organizer] ... This paper presents design and navigation control of an advanced level comeback CanSat which is going to be launched to an altitude of about 400 m using an amateur rocket from ground level. The CanSat uses advanced and ultra-light microcontroller, pressure and temperature sensors, 3-axis accelerometer, 3-axis gyro, camera, GPS, IR distance measuring sensor, and RF communication module to communicate with the ground station PC.",
+          "page_age": "2019-07-28T00:00:00",
+          "profile": {
+            "name": "ResearchGate",
+            "url": "https://www.researchgate.net/publication/338258615_Environmental_Monitoring_using_CanSat",
+            "long_name": "researchgate.net",
+            "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "researchgate.net",
+            "hostname": "www.researchgate.net",
+            "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+            "path": "› publication  › 338258615_Environmental_Monitoring_using_CanSat"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/NA3UWQdok5rp6uI2kyF0cHLVZy0QBikNBsFv8yDMrrc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC9pbWFnZXMv/dGVtcGxhdGUvZGVm/YXVsdF9wdWJsaWNh/dGlvbl9wcmV2aWV3/X2xhcmdlLnBuZw",
+            "original": "https://www.researchgate.net/images/template/default_publication_preview_large.png",
+            "logo": false
+          },
+          "age": "July 28, 2019",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Yousuf Faroukh",
+                "url": "https://www.researchgate.net/profile/Yousuf-Faroukh",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/iIUnvygagV0ogoc4ynEcRYZFCrx5ZZwsBM7N7fevOu4/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS82MDc4MjQx/NjYwMDI2ODktMTUy/MTkyNzk4MjgxOV9R/NjQvWW91c3VmLUZh/cm91a2guanBn",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/607824166002689-1521927982819_Q64/Yousuf-Faroukh.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Aisha Abdalla Mohamed Abdelkarim AL-Ali",
+                "url": "https://www.researchgate.net/scientific-contributions/Aisha-Abdalla-Mohamed-Abdelkarim-AL-Ali-2168582138",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/dMtHr8-Qesx_n1eD_yC484AdHx5Mu-SKRnED6CeBoes/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jNS5y/Z3N0YXRpYy5uZXQv/bS80MzU5ODIzMDk0/ODEwMTAvaW1hZ2Vz/L3RlbXBsYXRlL2Rl/ZmF1bHQvYXV0aG9y/L2F1dGhvcl9kZWZh/dWx0X20uanBn",
+                  "original": "https://c5.rgstatic.net/m/435982309481010/images/template/default/author/author_default_m.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Anas Omar Adwan",
+                "url": "https://www.researchgate.net/scientific-contributions/Anas-Omar-Adwan-2168590539",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/dMtHr8-Qesx_n1eD_yC484AdHx5Mu-SKRnED6CeBoes/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jNS5y/Z3N0YXRpYy5uZXQv/bS80MzU5ODIzMDk0/ODEwMTAvaW1hZ2Vz/L3RlbXBsYXRlL2Rl/ZmF1bHQvYXV0aG9y/L2F1dGhvcl9kZWZh/dWx0X20uanBn",
+                  "original": "https://c5.rgstatic.net/m/435982309481010/images/template/default/author/author_default_m.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Ilias Fernini",
+                "url": "https://www.researchgate.net/profile/Ilias-Fernini",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/S0T1uBV2NiE-9xMLzNrpDVoTFNu8Obgnc_29Z1ne39A/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS8xMTQzMTI4/MTY5NDg2NzQ1NC0x/NzYxNDY4MDAyNTc1/X1E2NC9JbGlhcy1G/ZXJuaW5pLmpwZw",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/11431281694867454-1761468002575_Q64/Ilias-Fernini.jpg"
+                }
+              }
+            ],
+            "date": "Jul 28, 2019",
+            "publisher": {
+              "type": "organization",
+              "name": "unknown",
+              "url": "https://www.researchgate.net/unknown",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/UjSGsXBrrrqKndxfeOp5EGUdM15aJCsZ_BUDIJcDQhs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC91bmtub3du",
+                "original": "https://www.researchgate.net/unknown"
+              }
+            }
+          },
+          "extra_snippets": [
+            "This work will apply the electrical engineering techniques as well as environmental engineering knowledge by using wireless sensor networks to measure Air Quality Parameters such as Carbon Monoxide (CO) and Liquid Petroleum Gas (LPG). peer-review under responsibility of [name organizer] ... This paper presents design and navigation control of an advanced level comeback CanSat which is going to be launched to an altitude of about 400 m using an amateur rocket from ground level. The CanSat uses advanced and ultra-light microcontroller, pressure and temperature sensors, 3-axis accelerometer, 3-axis gyro, camera, GPS, IR distance measuring sensor, and RF communication module to communicate with the ground station PC.",
+            "In this paper, we propose a concept test, using pico-satellites CanSat for climate monitoring in a small region of around 4 km 2 , immersed in an Ecological Campus dedicated to research in wildlife, forest and agricultural sciences. This region is being monitored since the beginning of 2012 up to today, but only with three temperature/humidity sensors.",
+            "The assembly and tests were made during the 6th CanSat Leader Training Program (CLTP-6) at University Hokkaido-Japan in the summer 2015. The pico-satellite was launched in the facilities of Uematsu Electric Co. Ltd. in Akabira-Japan by a paper model rocket, which achieved a height of approximately 100 m. The mission was designed to measure physical variables, such as temperature and humidity using electronic sensors.",
+            "Reduction of air pollution, the capability of imme�diate response in natural calamities, and the overall development of complex aerospace projects are the main inspiration behind the concept of designing the CanSat. A First Person View (FPV) camera, flight sensors that provide information about tempera�ture, pressure, humidity, air quality, and network interfaces for data transmission are used in this system."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

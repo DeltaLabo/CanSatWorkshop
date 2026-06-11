@@ -1,0 +1,39 @@
+{
+  "url": "https://www.iso.org/standard/78238.html",
+  "saved_at": "2026-06-11T22:21:13.274689+00:00",
+  "reason": "confidence_below_0.55",
+  "warnings": [],
+  "final_url": "https://www.iso.org/standard/78238.html",
+  "status_code": 200,
+  "content_type": "text/html;charset=UTF-8",
+  "content_length_header": null,
+  "response_headers": {
+    "Date": "Thu, 11 Jun 2026 22:21:13 GMT",
+    "Content-Type": "text/html;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "expires": "Fri, 12 Jun 2026 02:21:12 GMT",
+    "Cache-Control": "public, max-age=14400",
+    "Pragma": "no-cache",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "vary": "accept-encoding",
+    "Server-Timing": "cfCacheStatus;desc=\"EXPIRED\", cfEdge;dur=53,cfOrigin;dur=839",
+    "set-cookie": "[redacted]",
+    "last-modified": "Thu, 11 Jun 2026 22:21:12 GMT",
+    "cf-cache-status": "EXPIRED",
+    "Content-Encoding": "gzip",
+    "Server": "cloudflare",
+    "CF-RAY": "a0a401e6acb823ca-MIA"
+  },
+  "extraction": {
+    "parser": "trafilatura-markdown",
+    "title": "ISO 7726:2025",
+    "confidence": 0.525,
+    "word_count": 105,
+    "metadata": {
+      "date": "2025-10-17",
+      "description": "Ergonomics of the thermal environment — Instruments for measuring and monitoring physical quantities",
+      "sitename": "ISO"
+    }
+  }
+}

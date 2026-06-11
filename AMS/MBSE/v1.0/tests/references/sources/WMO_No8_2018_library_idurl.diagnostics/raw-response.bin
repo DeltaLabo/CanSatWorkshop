@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WMO e-Library</title>
+        <style>
+            body {
+                margin:0;
+                font-family: 'Segoe UI', sans-serif;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                height:100vh;
+                background:#f0f4f8;
+                color:#333333;
+                flex-direction:column;
+            }
+            .card {
+                background:#ffffff;
+                padding:30px;
+                border-radius:15px;
+                box-shadow:0 8px 25px rgba(0,0,0,0.1);
+                text-align:center;
+                max-width:550px;
+                width:calc(100% - 80px);
+            }
+            h1 {
+                font-size:1.5rem;
+                margin-bottom:15px;
+            }
+            p {
+                font-size:1rem;
+                margin-bottom:25px;
+            }
+            #slider-container {
+                width:100%;
+                height:50px;
+                background:#dddddd;
+                border-radius:25px;
+                position:relative;
+                overflow:hidden;
+                user-select:none;
+                touch-action:none;
+            }
+            #slider {
+                width:50px;
+                height:50px;
+                background:#3498db;
+                border-radius:50%;
+                position:absolute;
+                left:0;
+                top:0;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                color:#ffffff;
+                font-weight:bold;
+                cursor:pointer;
+                transition:background 0.3s;
+            }
+            #slider.success {
+                background:#2ecc71;
+            }
+            #instructions {
+                margin-bottom:10px;
+                font-size:0.95rem;
+            }
+            #site-logo {
+                max-width:100%;
+                height:auto;
+                margin-bottom:20px;
+            }
+            h1.bot{
+                margin-top:0;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class="card">
+                            <img src="/themes/WMO/images/logo.svg" alt="WMO e-Library" id="site-logo">
+                        <h1 id="challenge-title"></h1>
+            <p id="challenge-text"></p>
+            <div id="instructions"></div>
+            <div id="slider-container">
+                <div id="slider">→</div>
+            </div>
+        </div>
+        <div style="display:none;">
+            <input type="text" name="hp_name" id="hp_name" value="">
+        </div>
+
+        <script>
+            const lang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+            const messages = {
+en: {name: "English", title: "Verification in progress", text: "Please complete the slider below to prove you are human.", instructions: "Slide the button to the right", detection_movement_too_fast: "You were too fast.<br>Refresh the page and slowly drag the button to the right.", bot: "Bot detected"},
+fr: {name: "French", title: "Vérification en cours", text: "Merci de compléter le slider ci-dessous pour prouver que vous êtes humain.", instructions: "Faites glisser le bouton vers la droite", detection_movement_too_fast: "Vous avez été trop rapide.<br>Actualisez la page et faites glisser lentement le bouton vers la droite.", bot: "Bot détecté"},
+es: {name: "Spanish", title: "Verificación en curso", text: "Complete el control deslizante a continuación para demostrar que es humano.", instructions: "Deslice el botón hacia la derecha", detection_movement_too_fast: "Fue demasiado rápido.<br>Actualice la página y deslice lentamente el botón hacia la derecha.", bot: "Bot detectado"},
+it: {name: "Italian", title: "Verifica in corso", text: "Completa il cursore qui sotto per dimostrare che sei umano.", instructions: "Fai scorrere il pulsante verso destra", detection_movement_too_fast: "Sei stato troppo veloce.<br>Aggiorna la pagina e trascina lentamente il pulsante verso destra.", bot: "Bot rilevato"},
+de: {name: "German", title: "Überprüfung läuft", text: "Bitte bewegen Sie den Schieberegler, um zu bestätigen, dass Sie ein Mensch sind.", instructions: "Schieben Sie den Knopf nach rechts", detection_movement_too_fast: "Sie waren zu schnell.<br>Aktualisieren Sie die Seite und ziehen Sie den Knopf langsam nach rechts.", bot: "Bot erkannt"},
+pt: {name: "Portuguese", title: "Verificação em andamento", text: "Por favor, complete o controle deslizante abaixo para provar que você é humano.", instructions: "Arraste o botão para a direita", detection_movement_too_fast: "Você foi rápido demais.<br>Atualize a página e arraste lentamente o botão para a direita.", bot: "Bot detectado"},
+nl: {name: "Dutch", title: "Verificatie in uitvoering", text: "Voltooi de schuifregelaar hieronder om te bewijzen dat u een mens bent.", instructions: "Sleep de knop naar rechts", detection_movement_too_fast: "U was te snel.<br>Vernieuw de pagina en sleep de knop langzaam naar rechts.", bot: "Bot gedetecteerd"},
+zh: {name: "Chinese", title: "正在验证", text: "请完成下面的滑块以证明您是人类。", instructions: "将按钮滑到右边", detection_movement_too_fast: "您移动得太快了。<br>请刷新页面并慢慢将按钮滑到右边。", bot: "检测到机器人"},
+ru: {name: "Russian", title: "Идёт проверка", text: "Пожалуйста, передвиньте ползунок, чтобы доказать, что вы человек.", instructions: "Перетащите кнопку вправо", detection_movement_too_fast: "Вы двигались слишком быстро.<br>Обновите страницу и медленно перетащите кнопку вправо.", bot: "Обнаружен бот"},
+ar: {name: "Arabic", title: "جارٍ التحقق", text: "يرجى إكمال شريط التمرير أدناه لإثبات أنك إنسان.", instructions: "اسحب الزر إلى اليمين", detection_movement_too_fast: "كنت سريعًا جدًا.<br>حدّث الصفحة واسحب الزر ببطء إلى اليمين.", bot: "تم اكتشاف روبوت", rtl: true}            };
+            const msg = messages[lang] || messages['en'];
+            document.getElementById('challenge-title').innerHTML = msg.title;
+            document.getElementById('challenge-text').innerHTML = msg.text;
+            document.getElementById('instructions').innerHTML = msg.instructions;
+            if (msg.rtl)
+                document.body.setAttribute('dir', 'rtl');
+            // Slider logic
+            const slider = document.getElementById('slider');
+            const container = document.getElementById('slider-container');
+            let isDragging = false;
+            let startX = 0;
+            let movements = [];
+            let startTime = Date.now();
+            const pageLoad = Date.now();
+
+
+            async function endDrag(success = false) {
+                const elapsed = Date.now() - pageLoad;
+                if (elapsed < 500)
+                    return; // minimum 0.5s pour interagir
+                if (success) {
+                    slider.style.left = container.offsetWidth - slider.offsetWidth + 'px';
+                    slider.classList.add('success');
+                    try {
+                        const response = await fetch("/api/is_human_challenge", {
+                            method: "POST",
+                            headers: {"Content-Type": "application/json"},
+                            body: JSON.stringify({token: "a5834bebd3b55c0b68edda8a4a56c643", ua: navigator.userAgent, time: Date.now(), moves: movements, hp: document.getElementById('hp_name').value})
+                        });
+                        if (response.ok) {
+                            window.location.reload();
+                        } else {
+                            const result = await response.json();
+                            let result_msg = result.message;
+                            if (result_msg == 'Movement Too fast') {
+                                result_msg = msg.detection_movement_too_fast;
+                            }
+                            // Affichage de l'erreur retournée par PHP
+                            document.body.innerHTML = '<div class="card"><h1 class="bot">' + msg.bot + '</h1><i>' + result_msg + '</i></div>';
+                        }
+
+
+                    } catch (err) {
+                        console.error("Error:", err);
+                    }
+
+                } else {
+                    slider.style.left = '0px';
+                }
+                isDragging = false;
+            }
+
+            function pointerDown(e) {
+                isDragging = true;
+                startX = e.clientX || e.touches[0].clientX;
+                slider.setPointerCapture?.(e.pointerId);
+            }
+            function pointerMove(e) {
+                if (!isDragging)
+                    return;
+                // On enregistre les coordonnées X, Y et le temps
+                movements.push({
+                    x: Math.round(e.clientX || e.touches[0].clientX),
+                    y: Math.round(e.clientY || e.touches[0].clientY),
+                    t: Date.now() - startTime
+                });
+                let currentX = e.clientX || e.touches[0].clientX;
+                let dx = currentX - startX;
+                dx = Math.max(0, Math.min(dx, container.offsetWidth - slider.offsetWidth));
+                slider.style.left = dx + 'px';
+            }
+            function pointerUp(e) {
+                if (!isDragging)
+                    return;
+                let pos = parseInt(slider.style.left);
+                if (pos > container.offsetWidth - slider.offsetWidth - 5)
+                    endDrag(true);
+                else
+                    endDrag(false);
+            }
+
+            slider.addEventListener('pointerdown', pointerDown);
+            window.addEventListener('pointermove', pointerMove);
+            window.addEventListener('pointerup', pointerUp);
+        </script>
+    </body>
+</html>

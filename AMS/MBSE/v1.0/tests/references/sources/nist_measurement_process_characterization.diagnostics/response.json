@@ -1,0 +1,42 @@
+{
+  "url": "https://www.itl.nist.gov/div898/handbook/mpc/mpc.htm",
+  "saved_at": "2026-06-11T22:22:31.905740+00:00",
+  "reason": "access_shell_detected",
+  "warnings": [],
+  "final_url": "https://www.itl.nist.gov/div898/handbook/mpc/mpc.htm",
+  "status_code": 200,
+  "content_type": "text/html; charset=utf-8",
+  "content_length_header": null,
+  "response_headers": {
+    "Date": "Thu, 11 Jun 2026 22:22:31 GMT",
+    "Content-Type": "text/html; charset=utf-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Server": "cloudflare",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "content-security-policy": "default-src 'self'; connect-src 'self' https://*.nist.gov https://dap.digitalgov.gov https://www.google-analytics.com https://stats.g.doubleclick.net https://*.cloudflare.com; script-src 'self' 'unsafe-inline' https://*.nist.gov https://dap.digitalgov.gov https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://*.cloudflare.com https://www.googletagmanager.com https://www.youtube.com https://cdn.mathjax.org; style-src 'self' 'unsafe-inline' https://*.nist.gov https://cdn.jsdelivr.net; img-src 'self' data: https://*.nist.gov https://www.googletagmanager.com https://www.google-analytics.com; font-src 'self' data: https://cdn.jsdelivr.net; frame-src 'self' https://*.nist.gov https://www.youtube.com",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "SAMEORIGIN",
+    "x-xss-protection": "1; mode=block",
+    "x-running-as": "non-root-user-2000-ubi9-ssl",
+    "last-modified": "Thu, 11 Sep 2025 02:10:31 GMT",
+    "set-cookie": "[redacted]",
+    "Cache-Control": "max-age=3600",
+    "expires": "Thu, 11 Jun 2026 23:22:31 GMT",
+    "vary": "Accept-Encoding",
+    "Server-Timing": "cfCacheStatus;desc=\"DYNAMIC\", cfEdge;dur=30,cfOrigin;dur=171",
+    "cf-cache-status": "DYNAMIC",
+    "Content-Encoding": "gzip",
+    "CF-RAY": "a0a403d6bbf7cc71-TPA"
+  },
+  "extraction": {
+    "parser": "trafilatura-markdown",
+    "title": "2.",
+    "confidence": 0.521,
+    "word_count": 86,
+    "metadata": {
+      "date": "2024-11-01",
+      "sitename": "itl.nist.gov"
+    }
+  }
+}

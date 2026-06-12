@@ -1,0 +1,954 @@
+{
+  "query": "LoRa performance measurement packet delivery ratio distance outdoor",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "(IJACSA) International Journal of Advanced Computer Science and Applications,",
+      "url": "https://thesai.org/Downloads/Volume10No10/Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf",
+      "description": "Semtech SX1278 LoRa RF 430MHz ... Vol. 10, No. 10, 2019 ... V USB adapter. This system achieves an average packet ... RSSI value of -80dBm is in 20m distance....",
+      "content": "Semtech SX1278 LoRa RF 430MHz ... Vol. 10, No. 10, 2019 ... V USB adapter. This system achieves an average packet ... RSSI value of -80dBm is in 20m distance....\nnetwork based on Zigbee in the different distance is shown. V. CONCLUSION · LoRa technology has become one of the most preferred · wireless technology comparing to Zigbee, WiFi, and · Bluetooth due to longer transmission range and low cost. However, data transmission during rain causes attenuation to · radio signals. In this research, we proposed the LoRa-based · mesh network to improve the packet delivery ratio in tropical\nand 4) to measure maximum distance with the highest · successful data transmission in mesh and star network. 1) PDR in Non-line-of-sight: We have tested our proposed · LoRa based network by sending 38 data packet and a duration\nSemtech SX1278 LoRa RF 430MHz transceiver with a 1.9dBi · gain helical antenna. Nodes and gateways are powered by a 5- (IJACSA) International Journal of Advanced Computer Science and Applications, Vol. 10, No. 10, 2019 ... V USB adapter. This system achieves an average packet ... RSSI value of -80dBm is in 20m distance.\nLPWAN to deliver data. LoRa offers to compile features for",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "IJACSA",
+        "url": "https://thesai.org/Downloads/Volume10No10/Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf",
+        "long_name": "thesai.org",
+        "img": "https://imgs.search.brave.com/qz83RLthXBioUexyxbwuZ_khk7aJpgq_oVXUQqP0HmE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMTIxOTBjM2Zk/OTc3NjNkZTIwNjg1/NzZjNTdlYjRiZTNl/ODIxN2MyNWZhMjM5/M2IzMjllYjQwYmI5/MDg5MmQ5YS90aGVz/YWkub3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "thesai.org",
+        "hostname": "thesai.org",
+        "favicon": "https://imgs.search.brave.com/qz83RLthXBioUexyxbwuZ_khk7aJpgq_oVXUQqP0HmE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMTIxOTBjM2Zk/OTc3NjNkZTIwNjg1/NzZjNTdlYjRiZTNl/ODIxN2MyNWZhMjM5/M2IzMjllYjQwYmI5/MDg5MmQ5YS90aGVz/YWkub3JnLw",
+        "path": "› Downloads  › Volume10No10  › Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "Experimental Evaluation of the Packet Reception Performance of LoRa - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7916015/",
+      "description": "The paper [23] answered some common questions faced by system users and researchers regarding LoRa, and verified Semtech’s commitments in terms of the transmission distance, node life, and capacity. We also noticed that some experimental results on the performance of LoRa are not as good as Semtech claims. Yim et al. [16] measured the communication distance of LoRa on a forest farm and found that the actual communication range of LoRa was shorter than the theoretical communication range, and the reliability of the actual data was inconsistent with the report when employing different distances and physical layer parameter configurations.",
+      "content": "The paper [23] answered some common questions faced by system users and researchers regarding LoRa, and verified Semtech’s commitments in terms of the transmission distance, node life, and capacity. We also noticed that some experimental results on the performance of LoRa are not as good as Semtech claims. Yim et al. [16] measured the communication distance of LoRa on a forest farm and found that the actual communication range of LoRa was shorter than the theoretical communication range, and the reliability of the actual data was inconsistent with the report when employing different distances and physical layer parameter configurations.\nA higher SF has more time-on-air, which means a higher chance of being received, which will increase the receiving sensitivity and thus achieve a longer transmission distance. Because of the orthogonal relationship between different SFs, the SF of the sender and receiver of the link must be known in advance. In addition, the Signal to Noise Ratio (SNR) at the input of the receiver must also be known. Signals can be received normally under negative SNR conditions, which improves the sensitivity, link budget, and coverage of the LoRa receiver.\nExperiments changed the noise amplitude and the SF, BW, and CR of the LoRa signal to evaluate the packet reception performance of the LoRa according to the obtained Packet Error Ratio (PER) and SNR. We also measured the impact of different packet lengths on the packet reception performance of LoRa.\nThe noise intensity of the experiment was increased by 1 dB until the Packet Error Ratio was 1. Therefore, all the measurement parameters in the experiment consisted of three settings for ... USRP B200 software radios were used to generate signals, which were superimposed by the LoRa signal and noise signal.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "PubMed Central",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7916015/",
+        "long_name": "pmc.ncbi.nlm.nih.gov",
+        "img": "https://imgs.search.brave.com/ijTTilvQEc3Szfx0cXONsFmJ4lXSgpFslJywgJ4L93Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWE2NGUwNWIy/YjA3YTM4MjEwOWU5/MWUxNzY2NjVjOTdk/YWQ2YTFiNTgxYTcz/YTIxMTVjNzQzMWNi/ZWE2NmZhNC9wbWMu/bmNiaS5ubG0ubmlo/Lmdvdi8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "pmc.ncbi.nlm.nih.gov",
+        "hostname": "pmc.ncbi.nlm.nih.gov",
+        "favicon": "https://imgs.search.brave.com/ijTTilvQEc3Szfx0cXONsFmJ4lXSgpFslJywgJ4L93Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWE2NGUwNWIy/YjA3YTM4MjEwOWU5/MWUxNzY2NjVjOTdk/YWQ2YTFiNTgxYTcz/YTIxMTVjNzQzMWNi/ZWE2NmZhNC9wbWMu/bmNiaS5ubG0ubmlo/Lmdvdi8",
+        "path": "› articles  › PMC7916015"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Measurement of LoRa signal propagation in urban areas utilizing aerial gateway and ground gateway | Scientific Data",
+      "url": "https://www.nature.com/articles/s41597-025-05802-2",
+      "description": "To validate the dataset, the Packet Delivery Ratio (PDR) of 28 LoRaWAN end-devices across different gateways was calculated, providing a preliminary evaluation of the LoRaWAN network in urban environments.",
+      "content": "To validate the dataset, the Packet Delivery Ratio (PDR) of 28 LoRaWAN end-devices across different gateways was calculated, providing a preliminary evaluation of the LoRaWAN network in urban environments.\nThe distances between end-devices and gateways are also provided in the “Distance” folder in the form of PNG images. The EUI of the outdoor end-device is used for file naming, making it easier for users to quickly locate the files. In addition, a simple Python script example for handling JSON files is located in the ‘Example code’ folder and will be used in the next section. To validate the dataset, the Packet Delivery Ratio (PDR) of 28 LoRaWAN end-devices across different gateways was calculated, providing a preliminary evaluation of the LoRaWAN network in urban environments.\nLoRaWAN, as a leading technology of LPWAN, has become a crucial driver of smart cities. Meanwhile, drones have become a key tool for enhancing LoRaWAN network performance. In this study, a comprehensive measurement of a large-scale LoRaWAN network in an urban environment was conducted.\nScientific Data - Measurement of LoRa signal propagation in urban areas utilizing aerial gateway and ground gateway\nFinally, to validate the dataset, a preliminary evaluation of the LoRaWAN network was conducted using the indicators of Packet Delivery Ratio (PDR), Received Signal Strength Indicator (RSSI) and Signal-to-Noise Ratio (SNR). In conclusion, this dataset has great potential in the following research areas: ... Performance evaluation and prediction of LoRaWAN network in urban environments.",
+      "age": "August 22, 2025",
+      "page_age": "2025-08-22T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Nature",
+        "url": "https://www.nature.com/articles/s41597-025-05802-2",
+        "long_name": "nature.com",
+        "img": "https://imgs.search.brave.com/0fL1osa7ifHN59zuJ6uJJLU7Z-L3ioVavMKYltv4AFQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTRhOGIyNjMw/Y2Y5NTYwZWIxNjNl/MDlkYjQ3Y2FiOWVh/MThhOTUyZDIwYWZj/NGRkMDk2MzZjZGRi/MzI1YTkxOC93d3cu/bmF0dXJlLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "nature.com",
+        "hostname": "www.nature.com",
+        "favicon": "https://imgs.search.brave.com/0fL1osa7ifHN59zuJ6uJJLU7Z-L3ioVavMKYltv4AFQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTRhOGIyNjMw/Y2Y5NTYwZWIxNjNl/MDlkYjQ3Y2FiOWVh/MThhOTUyZDIwYWZj/NGRkMDk2MzZjZGRi/MzI1YTkxOC93d3cu/bmF0dXJlLmNvbS8",
+        "path": "  › scientific data  › data descriptors  › article"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/XijDmmsMX0wDp7-hncZXJGcn9XnvnR-z-sf6ZoKEmrQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5zcHJpbmdlcm5h/dHVyZS5jb20vbTY4/NS9zcHJpbmdlci1z/dGF0aWMvaW1hZ2Uv/YXJ0JTNBMTAuMTAz/OCUyRnM0MTU5Ny0w/MjUtMDU4MDItMi9N/ZWRpYU9iamVjdHMv/NDE1OTdfMjAyNV81/ODAyX0ZpZzFfSFRN/TC5wbmc",
+        "original": "https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41597-025-05802-2/MediaObjects/41597_2025_5802_Fig1_HTML.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 4,
+      "title": "Range and Capacity of LoRa 2.4 GHz",
+      "url": "https://hal.science/hal-03868942/document",
+      "description": "Measurements from this study show that the existence of walls can drastically · reduce the delivery rate. However, with a lower bandwidth, a higher success rate ... Wolf et al. explored the use of LoRa 2.4 GHz for two-way Time-of-Flight · ranging with the Semtech SX1280 chip [7]. In this context, the authors concluded · that two-way ranging exchanges fail for ranges greater than 500 m. In LOS · conditions (straight road at the distance of 550 m), the ranging errors were",
+      "content": "Measurements from this study show that the existence of walls can drastically · reduce the delivery rate. However, with a lower bandwidth, a higher success rate ... Wolf et al. explored the use of LoRa 2.4 GHz for two-way Time-of-Flight · ranging with the Semtech SX1280 chip [7]. In this context, the authors concluded · that two-way ranging exchanges fail for ranges greater than 500 m. In LOS · conditions (straight road at the distance of 550 m), the ranging errors were\nThe objective of this paper is to analyze the performance of LoRa 2.4 GHz · networks in terms of the Packet Delivery Ratio (PDR), coverage, and capacity\nwhich each node in the network benefits from a minimum 60% Packet · Delivery Ratio (PDR). This range drops to 700 m when the target PDR · increases to 90%, accommodating 120 nodes. Under the assumption of · Rayleigh fading and for the target PDR of 60 % and heavy load, the · range attains 350 m with capacity of 30 nodes, and it drops to 120 m for ... R. Falanji et al. an increased bandwidth, which becomes of the order of 1 km compared to 5-10 · km of the standard LoRa variant.\nThere are only a few studies of the LoRa 2.4 GHz performance. Zhang et al. measured PDR in device-to-device communication experiments",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "HAL",
+        "url": "https://hal.science/hal-03868942/document",
+        "long_name": "hal.science",
+        "img": "https://imgs.search.brave.com/8Kf_r47pqzVSrb1mKgXwnVCzF_YMKVz3nNmYUsIRTx4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGI2ZmFkZTZi/NTJmMGE3MzcxZmUw/Y2FlYTEzYWRhOTc4/NjYzOTAyMDgzNWJl/MWE3ZWFjNzgwMjM4/ZTRkN2I4Yi9oYWwu/c2NpZW5jZS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "hal.science",
+        "hostname": "hal.science",
+        "favicon": "https://imgs.search.brave.com/8Kf_r47pqzVSrb1mKgXwnVCzF_YMKVz3nNmYUsIRTx4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGI2ZmFkZTZi/NTJmMGE3MzcxZmUw/Y2FlYTEzYWRhOTc4/NjYzOTAyMDgzNWJl/MWE3ZWFjNzgwMjM4/ZTRkN2I4Yi9oYWwu/c2NpZW5jZS8",
+        "path": "› hal-03868942  › document"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Secure LoRa-Based Transmission System: An IoT Solution for Smart Homes and Industries",
+      "url": "https://www.mdpi.com/2079-9292/14/24/4977",
+      "description": "The design and implementation of ... are presented. The system achieves 100% packet delivery ratio (PDR) for 20 kB images over distances exceeding 2 km under line-of-sight conditions, with functional transmission up to 4.1 ...",
+      "content": "The design and implementation of ... are presented. The system achieves 100% packet delivery ratio (PDR) for 20 kB images over distances exceeding 2 km under line-of-sight conditions, with functional transmission up to 4.1 ...\nThis article addresses the lack of low-cost, secure image-transmission solutions for IoT systems in remote environments. The design and implementation of a complete LoRa-based transmission system using ESP32 microcontrollers and Ebyte E220 modules, featuring AES-CBC encryption, HMAC integrity protection, and a custom retransmission protocol, are presented.\nThe design and implementation of a complete LoRa-based transmission system using ESP32 microcontrollers and Ebyte E220 modules, featuring AES-CBC encryption, HMAC integrity protection, and a custom retransmission protocol, are presented. The system achieves 100% packet delivery ratio (PDR) for 20 kB images over distances exceeding 2 km under line-of-sight conditions, with functional transmission up to 4.1 km.\nThis gain was the minimum necessary to overcome the estimated path loss in the target outdoor environment and achieve the desired packet delivery ratio (PDR) while operating at the highest required data rate (SF = 7), thereby excluding lower-gain (e.g., 2 dBi) alternatives. Moreover, given the computational limitations of LoRa communication, a distributed receiver architecture can be implemented.\nThe retransmission efficacy is characterized by two key metrics: the number of packets that must be resent (Retransmitted column) and the final packet delivery ratio (PDR), which indicates the percentage of image data successfully reconstructed after all retransmission rounds (Table 7). This study focuses on measuring the transmission time of an image with a predefined resolution (800 × 600 pixels) between a transmitter and a receiver using a custom-designed communication protocol implemented over LoRa technology.",
+      "age": "December 18, 2025",
+      "page_age": "2025-12-18T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "MDPI",
+        "url": "https://www.mdpi.com/2079-9292/14/24/4977",
+        "long_name": "mdpi.com",
+        "img": "https://imgs.search.brave.com/IDkOdEuGDr9XA4H-36Lnou8wMT1nsDEHneEyTFddFmg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWQ5OGNkM2Uz/YWZhNTljYjhhZGVh/MTQyMzUxYTFmMjY3/NzhjMjEzMmI2M2Nm/YzllOTI4YmYwZDcw/MmE0NDY5MC93d3cu/bWRwaS5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "mdpi.com",
+        "hostname": "www.mdpi.com",
+        "favicon": "https://imgs.search.brave.com/IDkOdEuGDr9XA4H-36Lnou8wMT1nsDEHneEyTFddFmg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWQ5OGNkM2Uz/YWZhNTljYjhhZGVh/MTQyMzUxYTFmMjY3/NzhjMjEzMmI2M2Nm/YzllOTI4YmYwZDcw/MmE0NDY5MC93d3cu/bWRwaS5jb20v",
+        "path": "› 2079-9292  › 14  › 24  › 4977"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/EsEm1i8LXcrWStbFd4IJhwDCE6kpIkdZ0vn0lkMWwMU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wdWIu/bWRwaS1yZXMuY29t/L2VsZWN0cm9uaWNz/L2VsZWN0cm9uaWNz/LTE0LTA0OTc3L2Fy/dGljbGVfZGVwbG95/L2h0bWwvaW1hZ2Vz/L2VsZWN0cm9uaWNz/LTE0LTA0OTc3LWcw/MDEtNTUwLmpwZz8x/NzY2NDczMDkw",
+        "original": "https://pub.mdpi-res.com/electronics/electronics-14-04977/article_deploy/html/images/electronics-14-04977-g001-550.jpg?1766473090",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Packet Delivery Ratio vs water height measured for LoRa, Bluetooth and... | Download Scientific Diagram",
+      "url": "https://www.researchgate.net/figure/Packet-Delivery-Ratio-vs-water-height-measured-for-LoRa-Bluetooth-and-Wi-Fi-For-the_fig4_344630935",
+      "description": "Packets were transmitted between LoRa32 nodes using different spreading factor (SF) configurations. Key performance metrics, including packet error rate, received signal strength indicator (RSSI), and signal-to-noise ratio (SNR), were measured across outdoor and indoor scenarios.",
+      "content": "Packets were transmitted between LoRa32 nodes using different spreading factor (SF) configurations. Key performance metrics, including packet error rate, received signal strength indicator (RSSI), and signal-to-noise ratio (SNR), were measured across outdoor and indoor scenarios.\nDownload scientific diagram | Packet Delivery Ratio vs water height measured for LoRa, Bluetooth and Wi-Fi. For the ARVA the Pulse Detection Ratio was considered. from publication: Performance evaluation of LoRa LPWAN technology for mountain Search and Rescue | Search and Rescue (SaR) operations in mountain environments are common events.\nThe radio range, the packet delivery ratio (PDR), and the large- and small-scale fading of body-UAV LoRa links at 868 MHz when the radio wearer is in a Mediterranean forest are here characterized for the first time with a near-ground UAV having a maximum flying height of 30 m. A log-distance model accounting for the body shadowing and the wearer’s movements is derived.\nThe radio range, the packet delivery ratio (PDR), and the large- and small-scale fading of body-UAV LoRa links at 868 MHz when the radio wearer is in a Mediterranean forest are here characterized for the first time with a near-ground UAV having a maximum flying height of 30 m. A log-distance model accounting for the body shadowing and the wearer's movements is derived.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ResearchGate",
+        "url": "https://www.researchgate.net/figure/Packet-Delivery-Ratio-vs-water-height-measured-for-LoRa-Bluetooth-and-Wi-Fi-For-the_fig4_344630935",
+        "long_name": "researchgate.net",
+        "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "researchgate.net",
+        "hostname": "www.researchgate.net",
+        "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+        "path": "› figure  › Packet-Delivery-Ratio-vs-water-height-measured-for-LoRa-Bluetooth-and-Wi-Fi-For-the_fig4_344630935"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/QZTkwYMc0i1Y2BV7xDixQs1jCYC999GxppCrVAGYxNU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC9wdWJsaWNh/dGlvbi8zNDQ2MzA5/MzUvZmlndXJlL2Zp/ZzQvQVM6OTQ2MTU2/OTkzNTQwMDk2QDE2/MDI1OTI4MTQxNDEv/UGFja2V0LURlbGl2/ZXJ5LVJhdGlvLXZz/LXdhdGVyLWhlaWdo/dC1tZWFzdXJlZC1m/b3ItTG9SYS1CbHVl/dG9vdGgtYW5kLVdp/LUZpLUZvci10aGUu/anBn",
+        "original": "https://www.researchgate.net/publication/344630935/figure/fig4/AS:946156993540096@1602592814141/Packet-Delivery-Ratio-vs-water-height-measured-for-LoRa-Bluetooth-and-Wi-Fi-For-the.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "Performance Evaluations of LoRa Wireless Communication in Building Environments - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7412434/",
+      "description": "Hosseinzadeh [35] and Gregora [36], researched the effects of distance and location distribution on RSSI, respectively. In [37], as a unique research, the LoRa propagation characteristics for both the 434 MHz and 868 MHz ISM bands were discussed. The measurement confirmed that, the 434 MHz had a superiority performance compared to 868 MHz. Most of the previous literatures analyzed the LoRa performance in buildings based on the RSSI and PDR parameters. For end-users, besides the PDR (packet delivery ratio), time delay is also an important parameter that deserves close attention.",
+      "content": "Hosseinzadeh [35] and Gregora [36], researched the effects of distance and location distribution on RSSI, respectively. In [37], as a unique research, the LoRa propagation characteristics for both the 434 MHz and 868 MHz ISM bands were discussed. The measurement confirmed that, the 434 MHz had a superiority performance compared to 868 MHz. Most of the previous literatures analyzed the LoRa performance in buildings based on the RSSI and PDR parameters. For end-users, besides the PDR (packet delivery ratio), time delay is also an important parameter that deserves close attention.\nThe Internet of things presents tremendous opportunities for the energy management and occupant comfort improvement in smart buildings by making data of environmental and equipment parameters more readily and continuously available. Long-range ...\nThe effects of different distances and locations in buildings on LoRa RTT delay and packet delivery rate are studied. The remainder of this study is organized as follows. The related studies about smart building and LoRa technology are introduced in Section 2. The measurement setup is presented in Section 3 in detail, which discusses test scenarios, LoRa module and distribution of data acquisition terminal and data response terminals, which are acted by air quality detectors (AQDs) with LoRa wireless module in them.\nThe measured data showed that the packet loss rate in the outdoor under line-of-sight environment was much smaller than that in the indoor environment. In [29], Haxhibeqiri et al. discussed the performance of indoor LoRa in an industrial environment with 250,000 m2 cover area. The RSSI (received signal strength indication), SNR (signal noise ratio) and PLR (packet loss ratio) parameters of LoRa were evaluated in detail, and the measurement results showed that the total coverage area of LoRa would be larger with an increase of spreading factor (SF).",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "PubMed Central",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7412434/",
+        "long_name": "pmc.ncbi.nlm.nih.gov",
+        "img": "https://imgs.search.brave.com/ijTTilvQEc3Szfx0cXONsFmJ4lXSgpFslJywgJ4L93Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWE2NGUwNWIy/YjA3YTM4MjEwOWU5/MWUxNzY2NjVjOTdk/YWQ2YTFiNTgxYTcz/YTIxMTVjNzQzMWNi/ZWE2NmZhNC9wbWMu/bmNiaS5ubG0ubmlo/Lmdvdi8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "pmc.ncbi.nlm.nih.gov",
+        "hostname": "pmc.ncbi.nlm.nih.gov",
+        "favicon": "https://imgs.search.brave.com/ijTTilvQEc3Szfx0cXONsFmJ4lXSgpFslJywgJ4L93Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWE2NGUwNWIy/YjA3YTM4MjEwOWU5/MWUxNzY2NjVjOTdk/YWQ2YTFiNTgxYTcz/YTIxMTVjNzQzMWNi/ZWE2NmZhNC9wbWMu/bmNiaS5ubG0ubmlo/Lmdvdi8",
+        "path": "› articles  › PMC7412434"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "LoRaWAN LoRa and LR-FHSS: outdoor PDR and RSSI measurements",
+      "url": "https://zenodo.org/records/17201713",
+      "description": "Measurements were collected along ... and DR5 quickly lost connectivity beyond 1.5–2 km, LR-FHSS, particularly at DR8 and DR10, kept reliable links at 3–4 km....",
+      "content": "Measurements were collected along ... and DR5 quickly lost connectivity beyond 1.5–2 km, LR-FHSS, particularly at DR8 and DR10, kept reliable links at 3–4 km....\nOverview: This is the raw data of an outdoor coverage measurement campaign of an end-device implementing the novel LoRaWAN LR-FHSS mechanism. The measurements have been made implementing a complete network, which includes a gateway, end-device and network server all implementing the LoRaWAN LR-FHSS technology.\nThe manuscript provides experimental Received Signal Strength Indicator (RSSI) and Packet Delivery Ratio (PDR) measurements collected around the Castelldefels city surroundings. Apart from the data representation, the article also provides a path loss analysis and an open issues discussion. Long-Range Frequency Hopping Spread Spectrum (LR-FHSS) is the newest modulation in LoRaWAN, designed to overcome the scalability and coverage limits of conventional LoRa. This study provides a real-world evaluation of LR-FHSS performance, benchmarking it directly against LoRa.\nMeasurements were collected along four diverse paths, capturing key metrics such as Received Signal Strength Indicator (RSSI) and Packet Delivery Ratio (PDR). The results clearly underline the advantages of LR-FHSS; while LoRa at DR0 and DR5 quickly lost connectivity beyond 1.5–2 km, LR-FHSS, particularly at DR8 and DR10, kept reliable links at 3–4 km.\nThe provided files are for uplink (ED to GW) transmissions without confirmation with different LoRa and LR-FHSS DR configurations (DR0, DR5, and DR8-11).",
+      "age": "November 26, 2025",
+      "page_age": "2025-11-26T10:35:23",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Zenodo",
+        "url": "https://zenodo.org/records/17201713",
+        "long_name": "zenodo.org",
+        "img": "https://imgs.search.brave.com/TPjptHmupRgxDAa0WHYEZqvs4vrQbcdVghMEYbBGTfc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTFjMDcyMjI1/MmNhNDk1OGYzNDBm/ODExMTkxOGU2YzNk/NzFhODhjNjIzN2Rj/MTRiN2M5M2U0MDkz/NTI2OWRkNi96ZW5v/ZG8ub3JnLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "zenodo.org",
+        "hostname": "zenodo.org",
+        "favicon": "https://imgs.search.brave.com/TPjptHmupRgxDAa0WHYEZqvs4vrQbcdVghMEYbBGTfc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTFjMDcyMjI1/MmNhNDk1OGYzNDBm/ODExMTkxOGU2YzNk/NzFhODhjNjIzN2Rj/MTRiN2M5M2U0MDkz/NTI2OWRkNi96ZW5v/ZG8ub3JnLw",
+        "path": "› records  › 17201713"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "Modelling of the packet delivery rate in an actual LoRaWAN network - Abdelghany - 2021 - Electronics Letters - Wiley Online Library",
+      "url": "https://ietresearch.onlinelibrary.wiley.com/doi/full/10.1049/ell2.12165",
+      "description": "Thus, it is critical to understand the packet transmission performance in Low Power Wide Area Network (LPWAN), especially LoRaWAN. Packet delivery rate (PDR) is considered as a dominant factor of the network performance and its dependency on the signal power. However, previous works do not model the PDR as a function of the received signal power. An in-depth investigation of the PDR is done by performing an outdoor measurement campaign in the area of the Campus Beaulieu in Rennes.",
+      "content": "Thus, it is critical to understand the packet transmission performance in Low Power Wide Area Network (LPWAN), especially LoRaWAN. Packet delivery rate (PDR) is considered as a dominant factor of the network performance and its dependency on the signal power. However, previous works do not model the PDR as a function of the received signal power. An in-depth investigation of the PDR is done by performing an outdoor measurement campaign in the area of the Campus Beaulieu in Rennes.\nThe Internet of things (IoT) paradigm is paving the way to ensure connectivity and monitoring within different market fields. Thus, it is critical to understand the packet transmission performance in...\nAccordingly, the typical LoRa devices can compromise between low energy consumption with their long battery lifetimes at the scale of up to several years, while covering distances of more than 10 km in the unlicensed industrial, scientific and medical (ISM) spectrum [2]. LoRa Alliance standardizes LoRaWAN network protocol at the MAC layer [3], while LoRa modulation, that is, patented by Semtech Corporation, is utilized at the physical layer. The performance of this long-range star network is affected by the rate of data packet loss [4]. Thus, the packet loss between the end node and the gateway degrades the reliability of connections in the network.\nOn the other hand, the packet delivery rate (PDR) and coverage of LoRa technology are evaluated for outdoor cases in [6-8]. Based on studies on the impact of environmental factors on the performance of LoRa in [9], authors show that higher temperatures decrease the Received Signal Strength Indicator (RSSI) and evidently affect PDR.",
+      "age": "April 16, 2021",
+      "page_age": "2021-04-16T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Wiley Online Library",
+        "url": "https://ietresearch.onlinelibrary.wiley.com/doi/full/10.1049/ell2.12165",
+        "long_name": "ietresearch.onlinelibrary.wiley.com",
+        "img": "https://imgs.search.brave.com/6lwsaqimE2_cloZRsj7A2k8zSeX4zENGSmsvew-9nBc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlZDZjY2I2/MDA5NTUyYzBmZjQ5/NTFkMGQxZjk2NGRl/NWFlYzk4ZjdlYWQ2/MDA4ZWM2MzhhM2Q4/YzRjYjk3Yi9pZXRy/ZXNlYXJjaC5vbmxp/bmVsaWJyYXJ5Lndp/bGV5LmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "ietresearch.onlinelibrary.wiley.com",
+        "hostname": "ietresearch.onlinelibrary.wiley.com",
+        "favicon": "https://imgs.search.brave.com/6lwsaqimE2_cloZRsj7A2k8zSeX4zENGSmsvew-9nBc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlZDZjY2I2/MDA5NTUyYzBmZjQ5/NTFkMGQxZjk2NGRl/NWFlYzk4ZjdlYWQ2/MDA4ZWM2MzhhM2Q4/YzRjYjk3Yi9pZXRy/ZXNlYXJjaC5vbmxp/bmVsaWJyYXJ5Lndp/bGV5LmNvbS8",
+        "path": "› doi  › full  › 10.1049  › ell2.12165"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/Vpc1LvHsCAaaCGSOGyFjc_U5tB1vP8dtJ-OsqI6bjtM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pZXRy/ZXNlYXJjaC5vbmxp/bmVsaWJyYXJ5Lndp/bGV5LmNvbS9jbXMv/YXNzZXQvODhjNzM1/MDctZTU3Zi00Mjdj/LWFkMjgtZDc3ZTM5/NTNlODkyL2VsbDIu/djU3LjExLmNvdmVy/LmpwZz90cmljaz0x/NzcyNDg1OTkwNTQ0",
+        "original": "https://ietresearch.onlinelibrary.wiley.com/cms/asset/88c73507-e57f-427c-ad28-d77e3953e892/ell2.v57.11.cover.jpg?trick=1772485990544",
+        "logo": false
+      }
+    },
+    {
+      "rank": 10,
+      "title": "LoRa - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/LoRa",
+      "description": "Higher transmit power results in higher signal power at the receiver and hence a higher link budget, but at the cost of consuming more energy. There are measurement studies of LoRa performance with regard to energy consumption, communication distances, and medium access efficiency.",
+      "content": "Higher transmit power results in higher signal power at the receiver and hence a higher link budget, but at the cost of consuming more energy. There are measurement studies of LoRa performance with regard to energy consumption, communication distances, and medium access efficiency.\nLoRa uses license-free sub-gigahertz radio frequency bands EU433 (433.050-434.790 MHz) or EU868 (863–870/873 MHz) in Europe; AU915/AS923-1 (915–928 MHz) in South America; US915 (902–928 MHz) in North America; IN865 (865–867 MHz) in India; and AS923 (915–928 MHz) in Asia; LoRa enables long-range transmissions with low power consumption.\nLoRa (from \"long range\") is a physical proprietary radio communication technique based on spread spectrum modulation. LoRa can be thought of as the radio signal technology (similar to Wi-Fi or cellular). The technology is primarily used for applications where small amounts of data need to be ...\nLoRa can be thought of as the radio signal technology (similar to Wi-Fi or cellular).\nThe technology covers the physical layer, while other technologies and protocols such as LoRaWAN cover the upper layers.",
+      "age": "2 weeks ago",
+      "page_age": "2026-05-30T18:13:56",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/LoRa",
+        "long_name": "en.wikipedia.org",
+        "img": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "en.wikipedia.org",
+        "hostname": "en.wikipedia.org",
+        "favicon": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw",
+        "path": "› wiki  › LoRa"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/8zFq4KSISWuUUehhQF90_hJsCKLgg16Rvxaw89i5MLQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy81/LzVhL0xvUmFfTW9k/dWxlX3dpdGhfYW50/ZW5uYV9hbmRfU1BJ/X3dpcmVzX2F0dGFj/aGVkLmpwZw",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/5/5a/LoRa_Module_with_antenna_and_SPI_wires_attached.jpg",
+        "logo": false
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "LoRa performance measurement packet delivery ratio distance outdoor",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.189,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "LoRa performance measurement packet delivery ratio distance outdoor",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "videos",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "videos": {
+      "type": "videos",
+      "results": [
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=IEmlHATj-Qc",
+          "title": "Testing the RYLR993 LoRa module communication range with open line ...",
+          "description": "Get your Altium free trial at: https://www.altium.com/yt/taste_the_codeA typical LoRa communication is expected to have at least several kilometers of range",
+          "age": "March 21, 2023",
+          "page_age": "2023-03-21T07:39:07",
+          "fetched_content_timestamp": 1781131234,
+          "video": {
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/t2NQUot9QrW_9-cVwDz2Ei_e4Nk8sU1bBKnUR-8IpI4/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9J/RW1sSEFUai1RYy9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/IEmlHATj-Qc/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=jHWepP1ZWTk",
+          "title": "How LoRa Modulation really works - long range communication using ...",
+          "description": "Courses: https://www.udemy.com/course/introduction-to-power-system-analysis/?couponCode=KELVIN✅If you want to support me to make more frequent videos, consid",
+          "age": "July 24, 2021",
+          "page_age": "2021-07-24T17:04:07",
+          "fetched_content_timestamp": 1780973270,
+          "video": {
+            "duration": "27:38",
+            "creator": "Visual Electric",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/dZi4KDorbwCR88h7b9ABGVJR2NVUKUJ-9qsKs-5fsMQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9q/SFdlcFAxWldUay9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/jHWepP1ZWTk/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=7n8t62anxIQ",
+          "title": "LoraWAN: Extremely long range, low power wireless communication ...",
+          "description": "Hardware by https://matchx.io/Video by https://www.patreon.com/marcorepsLoRa ESP32 Module 433 MHz: http://bit.ly/2E25vf5LoRa ESP32 Module 868 Mhz: http://bit",
+          "age": "December 29, 2017",
+          "page_age": "2017-12-29T18:19:17",
+          "fetched_content_timestamp": 1778200992,
+          "video": {
+            "duration": "06:28",
+            "creator": "Marco Reps",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/tC7qWfQa_wFL1JBafYBFEG_CZekTNp9v8v00IS4aLq0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS83/bjh0NjJhbnhJUS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/7n8t62anxIQ/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=adhWIo-7gr4",
+          "title": "#120 LoRa / LoRaWAN Range World Record Attempt. Will I succeed? ...",
+          "description": "I want to get two range world records:1. Longest connection to a TTN gateway2. Longest Low Power Wide Area Network (LPWAN) ground to ground connectionCome wi...",
+          "age": "February 16, 2017",
+          "page_age": "2017-02-16T17:00:01",
+          "fetched_content_timestamp": 1780633380,
+          "video": {
+            "duration": "20:30",
+            "creator": "Andreas Spiess",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/pkxwCPvCAh-bIzv-pQIvUvUjgIrjP6CdM5nKQyg52QA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9h/ZGhXSW8tN2dyNC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/adhWIo-7gr4/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=Fcyqq4jqC4A",
+          "title": "New LoRaWAN distance world record - 766km (476 miles) - YouTube",
+          "description": "After almost 2 years, the world record of 702 km (436 miles) has been broken. Not once but twice! On 13th of July 2019, the record was broken by 39 km, setti...",
+          "age": "July 30, 2019",
+          "page_age": "2019-07-30T08:18:40",
+          "fetched_content_timestamp": 1753828928,
+          "video": {
+            "duration": "00:26",
+            "creator": "The Things Industries",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/rAKWLLUHwlOzYYuGRvrBeOcJf9skTgIFpsNHr3c9qwE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9G/Y3lxcTRqcUM0QS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/Fcyqq4jqC4A/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=9qcghiz246E",
+          "title": "#118 LoRa / LoraWAN: How far does it really reach? How far the ...",
+          "description": "In this video I drive my car and test the range of LoRa and a RFM69HW module. How far do they reach? Dragino Shield: http://s.click.aliexpress.com/e/bfJigmbm",
+          "age": "February 9, 2017",
+          "page_age": "2017-02-09T17:00:02",
+          "fetched_content_timestamp": 1780633405,
+          "video": {
+            "duration": "24:30",
+            "creator": "Andreas Spiess",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/3nSss-kZm7p8X2iAn1vv9q1FQEqGF1u717ARi3-80Z0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS85/cWNnaGl6MjQ2RS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/9qcghiz246E/maxresdefault.jpg"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "(IJACSA) International Journal of Advanced Computer Science and Applications,",
+          "url": "https://thesai.org/Downloads/Volume10No10/Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Semtech SX1278 LoRa RF 430MHz ... Vol. 10, No. 10, 2019 ... V USB adapter. This system achieves an average packet ... RSSI value of -80dBm is in 20m distance....",
+          "profile": {
+            "name": "IJACSA",
+            "url": "https://thesai.org/Downloads/Volume10No10/Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf",
+            "long_name": "thesai.org",
+            "img": "https://imgs.search.brave.com/qz83RLthXBioUexyxbwuZ_khk7aJpgq_oVXUQqP0HmE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMTIxOTBjM2Zk/OTc3NjNkZTIwNjg1/NzZjNTdlYjRiZTNl/ODIxN2MyNWZhMjM5/M2IzMjllYjQwYmI5/MDg5MmQ5YS90aGVz/YWkub3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "thesai.org",
+            "hostname": "thesai.org",
+            "favicon": "https://imgs.search.brave.com/qz83RLthXBioUexyxbwuZ_khk7aJpgq_oVXUQqP0HmE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMTIxOTBjM2Zk/OTc3NjNkZTIwNjg1/NzZjNTdlYjRiZTNl/ODIxN2MyNWZhMjM5/M2IzMjllYjQwYmI5/MDg5MmQ5YS90aGVz/YWkub3JnLw",
+            "path": "› Downloads  › Volume10No10  › Paper_31-Enhancement_of_Packet_Delivery_Ratio.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "network based on Zigbee in the different distance is shown. V. CONCLUSION · LoRa technology has become one of the most preferred · wireless technology comparing to Zigbee, WiFi, and · Bluetooth due to longer transmission range and low cost. However, data transmission during rain causes attenuation to · radio signals. In this research, we proposed the LoRa-based · mesh network to improve the packet delivery ratio in tropical",
+            "and 4) to measure maximum distance with the highest · successful data transmission in mesh and star network. 1) PDR in Non-line-of-sight: We have tested our proposed · LoRa based network by sending 38 data packet and a duration",
+            "Semtech SX1278 LoRa RF 430MHz transceiver with a 1.9dBi · gain helical antenna. Nodes and gateways are powered by a 5- (IJACSA) International Journal of Advanced Computer Science and Applications, Vol. 10, No. 10, 2019 ... V USB adapter. This system achieves an average packet ... RSSI value of -80dBm is in 20m distance.",
+            "LPWAN to deliver data. LoRa offers to compile features for"
+          ]
+        },
+        {
+          "title": "Experimental Evaluation of the Packet Reception Performance of LoRa - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7916015/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The paper [23] answered some common questions faced by system users and researchers regarding LoRa, and verified Semtech’s commitments in terms of the transmission distance, node life, and capacity. We also noticed that some experimental results on the performance of LoRa are not as good as Semtech claims. Yim et al. [16] measured the communication distance of LoRa on a forest farm and found that the actual communication range of LoRa was shorter than the theoretical communication range, and the reliability of the actual data was inconsistent with the report when employing different distances and physical layer parameter configurations.",
+          "profile": {
+            "name": "PubMed Central",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7916015/",
+            "long_name": "pmc.ncbi.nlm.nih.gov",
+            "img": "https://imgs.search.brave.com/ijTTilvQEc3Szfx0cXONsFmJ4lXSgpFslJywgJ4L93Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWE2NGUwNWIy/YjA3YTM4MjEwOWU5/MWUxNzY2NjVjOTdk/YWQ2YTFiNTgxYTcz/YTIxMTVjNzQzMWNi/ZWE2NmZhNC9wbWMu/bmNiaS5ubG0ubmlo/Lmdvdi8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "pmc.ncbi.nlm.nih.gov",
+            "hostname": "pmc.ncbi.nlm.nih.gov",
+            "favicon": "https://imgs.search.brave.com/ijTTilvQEc3Szfx0cXONsFmJ4lXSgpFslJywgJ4L93Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWE2NGUwNWIy/YjA3YTM4MjEwOWU5/MWUxNzY2NjVjOTdk/YWQ2YTFiNTgxYTcz/YTIxMTVjNzQzMWNi/ZWE2NmZhNC9wbWMu/bmNiaS5ubG0ubmlo/Lmdvdi8",
+            "path": "› articles  › PMC7916015"
+          },
+          "extra_snippets": [
+            "The paper [23] answered some common questions faced by system users and researchers regarding LoRa, and verified Semtech’s commitments in terms of the transmission distance, node life, and capacity. We also noticed that some experimental results on the performance of LoRa are not as good as Semtech claims. Yim et al. [16] measured the communication distance of LoRa on a forest farm and found that the actual communication range of LoRa was shorter than the theoretical communication range, and the reliability of the actual data was inconsistent with the report when employing different distances and physical layer parameter configurations.",
+            "A higher SF has more time-on-air, which means a higher chance of being received, which will increase the receiving sensitivity and thus achieve a longer transmission distance. Because of the orthogonal relationship between different SFs, the SF of the sender and receiver of the link must be known in advance. In addition, the Signal to Noise Ratio (SNR) at the input of the receiver must also be known. Signals can be received normally under negative SNR conditions, which improves the sensitivity, link budget, and coverage of the LoRa receiver.",
+            "Experiments changed the noise amplitude and the SF, BW, and CR of the LoRa signal to evaluate the packet reception performance of the LoRa according to the obtained Packet Error Ratio (PER) and SNR. We also measured the impact of different packet lengths on the packet reception performance of LoRa.",
+            "The noise intensity of the experiment was increased by 1 dB until the Packet Error Ratio was 1. Therefore, all the measurement parameters in the experiment consisted of three settings for ... USRP B200 software radios were used to generate signals, which were superimposed by the LoRa signal and noise signal."
+          ]
+        },
+        {
+          "title": "Measurement of LoRa signal propagation in urban areas utilizing aerial gateway and ground gateway | Scientific Data",
+          "url": "https://www.nature.com/articles/s41597-025-05802-2",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "To validate the dataset, the Packet Delivery Ratio (PDR) of 28 LoRaWAN end-devices across different gateways was calculated, providing a preliminary evaluation of the LoRaWAN network in urban environments.",
+          "page_age": "2025-08-22T00:00:00",
+          "profile": {
+            "name": "Nature",
+            "url": "https://www.nature.com/articles/s41597-025-05802-2",
+            "long_name": "nature.com",
+            "img": "https://imgs.search.brave.com/0fL1osa7ifHN59zuJ6uJJLU7Z-L3ioVavMKYltv4AFQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTRhOGIyNjMw/Y2Y5NTYwZWIxNjNl/MDlkYjQ3Y2FiOWVh/MThhOTUyZDIwYWZj/NGRkMDk2MzZjZGRi/MzI1YTkxOC93d3cu/bmF0dXJlLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "nature.com",
+            "hostname": "www.nature.com",
+            "favicon": "https://imgs.search.brave.com/0fL1osa7ifHN59zuJ6uJJLU7Z-L3ioVavMKYltv4AFQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTRhOGIyNjMw/Y2Y5NTYwZWIxNjNl/MDlkYjQ3Y2FiOWVh/MThhOTUyZDIwYWZj/NGRkMDk2MzZjZGRi/MzI1YTkxOC93d3cu/bmF0dXJlLmNvbS8",
+            "path": "  › scientific data  › data descriptors  › article"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/XijDmmsMX0wDp7-hncZXJGcn9XnvnR-z-sf6ZoKEmrQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5zcHJpbmdlcm5h/dHVyZS5jb20vbTY4/NS9zcHJpbmdlci1z/dGF0aWMvaW1hZ2Uv/YXJ0JTNBMTAuMTAz/OCUyRnM0MTU5Ny0w/MjUtMDU4MDItMi9N/ZWRpYU9iamVjdHMv/NDE1OTdfMjAyNV81/ODAyX0ZpZzFfSFRN/TC5wbmc",
+            "original": "https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41597-025-05802-2/MediaObjects/41597_2025_5802_Fig1_HTML.png",
+            "logo": false
+          },
+          "age": "August 22, 2025",
+          "extra_snippets": [
+            "The distances between end-devices and gateways are also provided in the “Distance” folder in the form of PNG images. The EUI of the outdoor end-device is used for file naming, making it easier for users to quickly locate the files. In addition, a simple Python script example for handling JSON files is located in the ‘Example code’ folder and will be used in the next section. To validate the dataset, the Packet Delivery Ratio (PDR) of 28 LoRaWAN end-devices across different gateways was calculated, providing a preliminary evaluation of the LoRaWAN network in urban environments.",
+            "LoRaWAN, as a leading technology of LPWAN, has become a crucial driver of smart cities. Meanwhile, drones have become a key tool for enhancing LoRaWAN network performance. In this study, a comprehensive measurement of a large-scale LoRaWAN network in an urban environment was conducted.",
+            "Scientific Data - Measurement of LoRa signal propagation in urban areas utilizing aerial gateway and ground gateway",
+            "Finally, to validate the dataset, a preliminary evaluation of the LoRaWAN network was conducted using the indicators of Packet Delivery Ratio (PDR), Received Signal Strength Indicator (RSSI) and Signal-to-Noise Ratio (SNR). In conclusion, this dataset has great potential in the following research areas: ... Performance evaluation and prediction of LoRaWAN network in urban environments."
+          ]
+        },
+        {
+          "title": "Range and Capacity of LoRa 2.4 GHz",
+          "url": "https://hal.science/hal-03868942/document",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Measurements from this study show that the existence of walls can drastically · reduce the delivery rate. However, with a lower bandwidth, a higher success rate ... Wolf et al. explored the use of LoRa 2.4 GHz for two-way Time-of-Flight · ranging with the Semtech SX1280 chip [7]. In this context, the authors concluded · that two-way ranging exchanges fail for ranges greater than 500 m. In LOS · conditions (straight road at the distance of 550 m), the ranging errors were",
+          "profile": {
+            "name": "HAL",
+            "url": "https://hal.science/hal-03868942/document",
+            "long_name": "hal.science",
+            "img": "https://imgs.search.brave.com/8Kf_r47pqzVSrb1mKgXwnVCzF_YMKVz3nNmYUsIRTx4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGI2ZmFkZTZi/NTJmMGE3MzcxZmUw/Y2FlYTEzYWRhOTc4/NjYzOTAyMDgzNWJl/MWE3ZWFjNzgwMjM4/ZTRkN2I4Yi9oYWwu/c2NpZW5jZS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "hal.science",
+            "hostname": "hal.science",
+            "favicon": "https://imgs.search.brave.com/8Kf_r47pqzVSrb1mKgXwnVCzF_YMKVz3nNmYUsIRTx4/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZGI2ZmFkZTZi/NTJmMGE3MzcxZmUw/Y2FlYTEzYWRhOTc4/NjYzOTAyMDgzNWJl/MWE3ZWFjNzgwMjM4/ZTRkN2I4Yi9oYWwu/c2NpZW5jZS8",
+            "path": "› hal-03868942  › document"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "Measurements from this study show that the existence of walls can drastically · reduce the delivery rate. However, with a lower bandwidth, a higher success rate ... Wolf et al. explored the use of LoRa 2.4 GHz for two-way Time-of-Flight · ranging with the Semtech SX1280 chip [7]. In this context, the authors concluded · that two-way ranging exchanges fail for ranges greater than 500 m. In LOS · conditions (straight road at the distance of 550 m), the ranging errors were",
+            "The objective of this paper is to analyze the performance of LoRa 2.4 GHz · networks in terms of the Packet Delivery Ratio (PDR), coverage, and capacity",
+            "which each node in the network benefits from a minimum 60% Packet · Delivery Ratio (PDR). This range drops to 700 m when the target PDR · increases to 90%, accommodating 120 nodes. Under the assumption of · Rayleigh fading and for the target PDR of 60 % and heavy load, the · range attains 350 m with capacity of 30 nodes, and it drops to 120 m for ... R. Falanji et al. an increased bandwidth, which becomes of the order of 1 km compared to 5-10 · km of the standard LoRa variant.",
+            "There are only a few studies of the LoRa 2.4 GHz performance. Zhang et al. measured PDR in device-to-device communication experiments"
+          ]
+        },
+        {
+          "title": "Secure LoRa-Based Transmission System: An IoT Solution for Smart Homes and Industries",
+          "url": "https://www.mdpi.com/2079-9292/14/24/4977",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The design and implementation of ... are presented. The system achieves 100% packet delivery ratio (PDR) for 20 kB images over distances exceeding 2 km under line-of-sight conditions, with functional transmission up to 4.1 ...",
+          "page_age": "2025-12-18T00:00:00",
+          "profile": {
+            "name": "MDPI",
+            "url": "https://www.mdpi.com/2079-9292/14/24/4977",
+            "long_name": "mdpi.com",
+            "img": "https://imgs.search.brave.com/IDkOdEuGDr9XA4H-36Lnou8wMT1nsDEHneEyTFddFmg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWQ5OGNkM2Uz/YWZhNTljYjhhZGVh/MTQyMzUxYTFmMjY3/NzhjMjEzMmI2M2Nm/YzllOTI4YmYwZDcw/MmE0NDY5MC93d3cu/bWRwaS5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "mdpi.com",
+            "hostname": "www.mdpi.com",
+            "favicon": "https://imgs.search.brave.com/IDkOdEuGDr9XA4H-36Lnou8wMT1nsDEHneEyTFddFmg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWQ5OGNkM2Uz/YWZhNTljYjhhZGVh/MTQyMzUxYTFmMjY3/NzhjMjEzMmI2M2Nm/YzllOTI4YmYwZDcw/MmE0NDY5MC93d3cu/bWRwaS5jb20v",
+            "path": "› 2079-9292  › 14  › 24  › 4977"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/EsEm1i8LXcrWStbFd4IJhwDCE6kpIkdZ0vn0lkMWwMU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9wdWIu/bWRwaS1yZXMuY29t/L2VsZWN0cm9uaWNz/L2VsZWN0cm9uaWNz/LTE0LTA0OTc3L2Fy/dGljbGVfZGVwbG95/L2h0bWwvaW1hZ2Vz/L2VsZWN0cm9uaWNz/LTE0LTA0OTc3LWcw/MDEtNTUwLmpwZz8x/NzY2NDczMDkw",
+            "original": "https://pub.mdpi-res.com/electronics/electronics-14-04977/article_deploy/html/images/electronics-14-04977-g001-550.jpg?1766473090",
+            "logo": false
+          },
+          "age": "December 18, 2025",
+          "article": {
+            "author": []
+          },
+          "extra_snippets": [
+            "This article addresses the lack of low-cost, secure image-transmission solutions for IoT systems in remote environments. The design and implementation of a complete LoRa-based transmission system using ESP32 microcontrollers and Ebyte E220 modules, featuring AES-CBC encryption, HMAC integrity protection, and a custom retransmission protocol, are presented.",
+            "The design and implementation of a complete LoRa-based transmission system using ESP32 microcontrollers and Ebyte E220 modules, featuring AES-CBC encryption, HMAC integrity protection, and a custom retransmission protocol, are presented. The system achieves 100% packet delivery ratio (PDR) for 20 kB images over distances exceeding 2 km under line-of-sight conditions, with functional transmission up to 4.1 km.",
+            "This gain was the minimum necessary to overcome the estimated path loss in the target outdoor environment and achieve the desired packet delivery ratio (PDR) while operating at the highest required data rate (SF = 7), thereby excluding lower-gain (e.g., 2 dBi) alternatives. Moreover, given the computational limitations of LoRa communication, a distributed receiver architecture can be implemented.",
+            "The retransmission efficacy is characterized by two key metrics: the number of packets that must be resent (Retransmitted column) and the final packet delivery ratio (PDR), which indicates the percentage of image data successfully reconstructed after all retransmission rounds (Table 7). This study focuses on measuring the transmission time of an image with a predefined resolution (800 × 600 pixels) between a transmitter and a receiver using a custom-designed communication protocol implemented over LoRa technology."
+          ]
+        },
+        {
+          "title": "Packet Delivery Ratio vs water height measured for LoRa, Bluetooth and... | Download Scientific Diagram",
+          "url": "https://www.researchgate.net/figure/Packet-Delivery-Ratio-vs-water-height-measured-for-LoRa-Bluetooth-and-Wi-Fi-For-the_fig4_344630935",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Packets were transmitted between LoRa32 nodes using different spreading factor (SF) configurations. Key performance metrics, including packet error rate, received signal strength indicator (RSSI), and signal-to-noise ratio (SNR), were measured across outdoor and indoor scenarios.",
+          "profile": {
+            "name": "ResearchGate",
+            "url": "https://www.researchgate.net/figure/Packet-Delivery-Ratio-vs-water-height-measured-for-LoRa-Bluetooth-and-Wi-Fi-For-the_fig4_344630935",
+            "long_name": "researchgate.net",
+            "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "researchgate.net",
+            "hostname": "www.researchgate.net",
+            "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+            "path": "› figure  › Packet-Delivery-Ratio-vs-water-height-measured-for-LoRa-Bluetooth-and-Wi-Fi-For-the_fig4_344630935"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/QZTkwYMc0i1Y2BV7xDixQs1jCYC999GxppCrVAGYxNU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC9wdWJsaWNh/dGlvbi8zNDQ2MzA5/MzUvZmlndXJlL2Zp/ZzQvQVM6OTQ2MTU2/OTkzNTQwMDk2QDE2/MDI1OTI4MTQxNDEv/UGFja2V0LURlbGl2/ZXJ5LVJhdGlvLXZz/LXdhdGVyLWhlaWdo/dC1tZWFzdXJlZC1m/b3ItTG9SYS1CbHVl/dG9vdGgtYW5kLVdp/LUZpLUZvci10aGUu/anBn",
+            "original": "https://www.researchgate.net/publication/344630935/figure/fig4/AS:946156993540096@1602592814141/Packet-Delivery-Ratio-vs-water-height-measured-for-LoRa-Bluetooth-and-Wi-Fi-For-the.jpg",
+            "logo": false
+          },
+          "extra_snippets": [
+            "Download scientific diagram | Packet Delivery Ratio vs water height measured for LoRa, Bluetooth and Wi-Fi. For the ARVA the Pulse Detection Ratio was considered. from publication: Performance evaluation of LoRa LPWAN technology for mountain Search and Rescue | Search and Rescue (SaR) operations in mountain environments are common events.",
+            "Packets were transmitted between LoRa32 nodes using different spreading factor (SF) configurations. Key performance metrics, including packet error rate, received signal strength indicator (RSSI), and signal-to-noise ratio (SNR), were measured across outdoor and indoor scenarios.",
+            "The radio range, the packet delivery ratio (PDR), and the large- and small-scale fading of body-UAV LoRa links at 868 MHz when the radio wearer is in a Mediterranean forest are here characterized for the first time with a near-ground UAV having a maximum flying height of 30 m. A log-distance model accounting for the body shadowing and the wearer’s movements is derived.",
+            "The radio range, the packet delivery ratio (PDR), and the large- and small-scale fading of body-UAV LoRa links at 868 MHz when the radio wearer is in a Mediterranean forest are here characterized for the first time with a near-ground UAV having a maximum flying height of 30 m. A log-distance model accounting for the body shadowing and the wearer's movements is derived."
+          ]
+        },
+        {
+          "title": "Performance Evaluations of LoRa Wireless Communication in Building Environments - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7412434/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Hosseinzadeh [35] and Gregora [36], researched the effects of distance and location distribution on RSSI, respectively. In [37], as a unique research, the LoRa propagation characteristics for both the 434 MHz and 868 MHz ISM bands were discussed. The measurement confirmed that, the 434 MHz had a superiority performance compared to 868 MHz. Most of the previous literatures analyzed the LoRa performance in buildings based on the RSSI and PDR parameters. For end-users, besides the PDR (packet delivery ratio), time delay is also an important parameter that deserves close attention.",
+          "profile": {
+            "name": "PubMed Central",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7412434/",
+            "long_name": "pmc.ncbi.nlm.nih.gov",
+            "img": "https://imgs.search.brave.com/ijTTilvQEc3Szfx0cXONsFmJ4lXSgpFslJywgJ4L93Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWE2NGUwNWIy/YjA3YTM4MjEwOWU5/MWUxNzY2NjVjOTdk/YWQ2YTFiNTgxYTcz/YTIxMTVjNzQzMWNi/ZWE2NmZhNC9wbWMu/bmNiaS5ubG0ubmlo/Lmdvdi8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "pmc.ncbi.nlm.nih.gov",
+            "hostname": "pmc.ncbi.nlm.nih.gov",
+            "favicon": "https://imgs.search.brave.com/ijTTilvQEc3Szfx0cXONsFmJ4lXSgpFslJywgJ4L93Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYWE2NGUwNWIy/YjA3YTM4MjEwOWU5/MWUxNzY2NjVjOTdk/YWQ2YTFiNTgxYTcz/YTIxMTVjNzQzMWNi/ZWE2NmZhNC9wbWMu/bmNiaS5ubG0ubmlo/Lmdvdi8",
+            "path": "› articles  › PMC7412434"
+          },
+          "extra_snippets": [
+            "Hosseinzadeh [35] and Gregora [36], researched the effects of distance and location distribution on RSSI, respectively. In [37], as a unique research, the LoRa propagation characteristics for both the 434 MHz and 868 MHz ISM bands were discussed. The measurement confirmed that, the 434 MHz had a superiority performance compared to 868 MHz. Most of the previous literatures analyzed the LoRa performance in buildings based on the RSSI and PDR parameters. For end-users, besides the PDR (packet delivery ratio), time delay is also an important parameter that deserves close attention.",
+            "The Internet of things presents tremendous opportunities for the energy management and occupant comfort improvement in smart buildings by making data of environmental and equipment parameters more readily and continuously available. Long-range ...",
+            "The effects of different distances and locations in buildings on LoRa RTT delay and packet delivery rate are studied. The remainder of this study is organized as follows. The related studies about smart building and LoRa technology are introduced in Section 2. The measurement setup is presented in Section 3 in detail, which discusses test scenarios, LoRa module and distribution of data acquisition terminal and data response terminals, which are acted by air quality detectors (AQDs) with LoRa wireless module in them.",
+            "The measured data showed that the packet loss rate in the outdoor under line-of-sight environment was much smaller than that in the indoor environment. In [29], Haxhibeqiri et al. discussed the performance of indoor LoRa in an industrial environment with 250,000 m2 cover area. The RSSI (received signal strength indication), SNR (signal noise ratio) and PLR (packet loss ratio) parameters of LoRa were evaluated in detail, and the measurement results showed that the total coverage area of LoRa would be larger with an increase of spreading factor (SF)."
+          ]
+        },
+        {
+          "title": "LoRaWAN LoRa and LR-FHSS: outdoor PDR and RSSI measurements",
+          "url": "https://zenodo.org/records/17201713",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Measurements were collected along ... and DR5 quickly lost connectivity beyond 1.5–2 km, LR-FHSS, particularly at DR8 and DR10, kept reliable links at 3–4 km....",
+          "page_age": "2025-11-26T10:35:23",
+          "profile": {
+            "name": "Zenodo",
+            "url": "https://zenodo.org/records/17201713",
+            "long_name": "zenodo.org",
+            "img": "https://imgs.search.brave.com/TPjptHmupRgxDAa0WHYEZqvs4vrQbcdVghMEYbBGTfc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTFjMDcyMjI1/MmNhNDk1OGYzNDBm/ODExMTkxOGU2YzNk/NzFhODhjNjIzN2Rj/MTRiN2M5M2U0MDkz/NTI2OWRkNi96ZW5v/ZG8ub3JnLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "zenodo.org",
+            "hostname": "zenodo.org",
+            "favicon": "https://imgs.search.brave.com/TPjptHmupRgxDAa0WHYEZqvs4vrQbcdVghMEYbBGTfc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTFjMDcyMjI1/MmNhNDk1OGYzNDBm/ODExMTkxOGU2YzNk/NzFhODhjNjIzN2Rj/MTRiN2M5M2U0MDkz/NTI2OWRkNi96ZW5v/ZG8ub3JnLw",
+            "path": "› records  › 17201713"
+          },
+          "age": "November 26, 2025",
+          "extra_snippets": [
+            "Overview: This is the raw data of an outdoor coverage measurement campaign of an end-device implementing the novel LoRaWAN LR-FHSS mechanism. The measurements have been made implementing a complete network, which includes a gateway, end-device and network server all implementing the LoRaWAN LR-FHSS technology.",
+            "The manuscript provides experimental Received Signal Strength Indicator (RSSI) and Packet Delivery Ratio (PDR) measurements collected around the Castelldefels city surroundings. Apart from the data representation, the article also provides a path loss analysis and an open issues discussion. Long-Range Frequency Hopping Spread Spectrum (LR-FHSS) is the newest modulation in LoRaWAN, designed to overcome the scalability and coverage limits of conventional LoRa. This study provides a real-world evaluation of LR-FHSS performance, benchmarking it directly against LoRa.",
+            "Measurements were collected along four diverse paths, capturing key metrics such as Received Signal Strength Indicator (RSSI) and Packet Delivery Ratio (PDR). The results clearly underline the advantages of LR-FHSS; while LoRa at DR0 and DR5 quickly lost connectivity beyond 1.5–2 km, LR-FHSS, particularly at DR8 and DR10, kept reliable links at 3–4 km.",
+            "The provided files are for uplink (ED to GW) transmissions without confirmation with different LoRa and LR-FHSS DR configurations (DR0, DR5, and DR8-11)."
+          ]
+        },
+        {
+          "title": "Modelling of the packet delivery rate in an actual LoRaWAN network - Abdelghany - 2021 - Electronics Letters - Wiley Online Library",
+          "url": "https://ietresearch.onlinelibrary.wiley.com/doi/full/10.1049/ell2.12165",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Thus, it is critical to understand the packet transmission performance in Low Power Wide Area Network (LPWAN), especially LoRaWAN. Packet delivery rate (PDR) is considered as a dominant factor of the network performance and its dependency on the signal power. However, previous works do not model the PDR as a function of the received signal power. An in-depth investigation of the PDR is done by performing an outdoor measurement campaign in the area of the Campus Beaulieu in Rennes.",
+          "page_age": "2021-04-16T00:00:00",
+          "profile": {
+            "name": "Wiley Online Library",
+            "url": "https://ietresearch.onlinelibrary.wiley.com/doi/full/10.1049/ell2.12165",
+            "long_name": "ietresearch.onlinelibrary.wiley.com",
+            "img": "https://imgs.search.brave.com/6lwsaqimE2_cloZRsj7A2k8zSeX4zENGSmsvew-9nBc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlZDZjY2I2/MDA5NTUyYzBmZjQ5/NTFkMGQxZjk2NGRl/NWFlYzk4ZjdlYWQ2/MDA4ZWM2MzhhM2Q4/YzRjYjk3Yi9pZXRy/ZXNlYXJjaC5vbmxp/bmVsaWJyYXJ5Lndp/bGV5LmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "ietresearch.onlinelibrary.wiley.com",
+            "hostname": "ietresearch.onlinelibrary.wiley.com",
+            "favicon": "https://imgs.search.brave.com/6lwsaqimE2_cloZRsj7A2k8zSeX4zENGSmsvew-9nBc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmRlZDZjY2I2/MDA5NTUyYzBmZjQ5/NTFkMGQxZjk2NGRl/NWFlYzk4ZjdlYWQ2/MDA4ZWM2MzhhM2Q4/YzRjYjk3Yi9pZXRy/ZXNlYXJjaC5vbmxp/bmVsaWJyYXJ5Lndp/bGV5LmNvbS8",
+            "path": "› doi  › full  › 10.1049  › ell2.12165"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Vpc1LvHsCAaaCGSOGyFjc_U5tB1vP8dtJ-OsqI6bjtM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pZXRy/ZXNlYXJjaC5vbmxp/bmVsaWJyYXJ5Lndp/bGV5LmNvbS9jbXMv/YXNzZXQvODhjNzM1/MDctZTU3Zi00Mjdj/LWFkMjgtZDc3ZTM5/NTNlODkyL2VsbDIu/djU3LjExLmNvdmVy/LmpwZz90cmljaz0x/NzcyNDg1OTkwNTQ0",
+            "original": "https://ietresearch.onlinelibrary.wiley.com/cms/asset/88c73507-e57f-427c-ad28-d77e3953e892/ell2.v57.11.cover.jpg?trick=1772485990544",
+            "logo": false
+          },
+          "age": "April 16, 2021",
+          "extra_snippets": [
+            "The Internet of things (IoT) paradigm is paving the way to ensure connectivity and monitoring within different market fields. Thus, it is critical to understand the packet transmission performance in...",
+            "Thus, it is critical to understand the packet transmission performance in Low Power Wide Area Network (LPWAN), especially LoRaWAN. Packet delivery rate (PDR) is considered as a dominant factor of the network performance and its dependency on the signal power. However, previous works do not model the PDR as a function of the received signal power. An in-depth investigation of the PDR is done by performing an outdoor measurement campaign in the area of the Campus Beaulieu in Rennes.",
+            "Accordingly, the typical LoRa devices can compromise between low energy consumption with their long battery lifetimes at the scale of up to several years, while covering distances of more than 10 km in the unlicensed industrial, scientific and medical (ISM) spectrum [2]. LoRa Alliance standardizes LoRaWAN network protocol at the MAC layer [3], while LoRa modulation, that is, patented by Semtech Corporation, is utilized at the physical layer. The performance of this long-range star network is affected by the rate of data packet loss [4]. Thus, the packet loss between the end node and the gateway degrades the reliability of connections in the network.",
+            "On the other hand, the packet delivery rate (PDR) and coverage of LoRa technology are evaluated for outdoor cases in [6-8]. Based on studies on the impact of environmental factors on the performance of LoRa in [9], authors show that higher temperatures decrease the Received Signal Strength Indicator (RSSI) and evidently affect PDR."
+          ]
+        },
+        {
+          "title": "LoRa - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/LoRa",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Higher transmit power results in higher signal power at the receiver and hence a higher link budget, but at the cost of consuming more energy. There are measurement studies of LoRa performance with regard to energy consumption, communication distances, and medium access efficiency.",
+          "page_age": "2026-05-30T18:13:56",
+          "profile": {
+            "name": "Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/LoRa",
+            "long_name": "en.wikipedia.org",
+            "img": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "deep_results": {
+            "buttons": [
+              {
+                "type": "button_result",
+                "title": "Features",
+                "url": "https://en.wikipedia.org/wiki/LoRa#Features"
+              },
+              {
+                "type": "button_result",
+                "title": "Description",
+                "url": "https://en.wikipedia.org/wiki/LoRa#Description"
+              },
+              {
+                "type": "button_result",
+                "title": "Applications",
+                "url": "https://en.wikipedia.org/wiki/LoRa#Applications"
+              },
+              {
+                "type": "button_result",
+                "title": "Further reading",
+                "url": "https://en.wikipedia.org/wiki/LoRa#Further_reading"
+              }
+            ]
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "en.wikipedia.org",
+            "hostname": "en.wikipedia.org",
+            "favicon": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw",
+            "path": "› wiki  › LoRa"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/8zFq4KSISWuUUehhQF90_hJsCKLgg16Rvxaw89i5MLQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy81/LzVhL0xvUmFfTW9k/dWxlX3dpdGhfYW50/ZW5uYV9hbmRfU1BJ/X3dpcmVzX2F0dGFj/aGVkLmpwZw",
+            "original": "https://upload.wikimedia.org/wikipedia/commons/5/5a/LoRa_Module_with_antenna_and_SPI_wires_attached.jpg",
+            "logo": false
+          },
+          "age": "2 weeks ago",
+          "extra_snippets": [
+            "LoRa uses license-free sub-gigahertz radio frequency bands EU433 (433.050-434.790 MHz) or EU868 (863–870/873 MHz) in Europe; AU915/AS923-1 (915–928 MHz) in South America; US915 (902–928 MHz) in North America; IN865 (865–867 MHz) in India; and AS923 (915–928 MHz) in Asia; LoRa enables long-range transmissions with low power consumption.",
+            "LoRa (from \"long range\") is a physical proprietary radio communication technique based on spread spectrum modulation. LoRa can be thought of as the radio signal technology (similar to Wi-Fi or cellular). The technology is primarily used for applications where small amounts of data need to be ...",
+            "LoRa can be thought of as the radio signal technology (similar to Wi-Fi or cellular).",
+            "The technology covers the physical layer, while other technologies and protocols such as LoRaWAN cover the upper layers."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

@@ -1,0 +1,1030 @@
+{
+  "query": "Ranđelović 2021 low-cost altitude sensors BME280 PDF",
+  "provider": "brave",
+  "type": "web",
+  "results": [
+    {
+      "rank": 1,
+      "title": "(PDF) Quadcopter altitude estimation using low-cost barometric, infrared, ultrasonic and LIDAR sensors",
+      "url": "https://www.researchgate.net/publication/348130910_Quadcopter_altitude_estimation_using_low-cost_barometric_infrared_ultrasonic_and_LIDAR_sensors",
+      "description": "Quadcopter altitude estimation using low-cost barometric, infrared, ultrasonic and LIDAR sensors.pdf ... Content may be subject to copyright. © Faculty of Mechanical Engineering, Belgrade. All rights reserved FME Transactions (2021) 49, 21-28 21 ... Dušan M. Ranđelović",
+      "content": "Quadcopter altitude estimation using low-cost barometric, infrared, ultrasonic and LIDAR sensors.pdf ... Content may be subject to copyright. © Faculty of Mechanical Engineering, Belgrade. All rights reserved FME Transactions (2021) 49, 21-28 21 ... Dušan M. Ranđelović\nFME Transactions VOL. 49, No 1, 2021 ▪ 23 ... Sensortec BME280”. This digital sensor can measure\nFME Transactions VOL. 49, No 1, 2021 ▪ 25 ... BME280 sensor before each altitude measurement.\nOn the basis of the results of the study, it was possible to determine the choice of the adequate sensor for this specific use. The study showed that the best characteristics for this experiment conditions had the Garmin LIDAR-Lite V3HP sensor and the Bosch Sensortech BME280 that combined air humidity, atmospheric pressure, and air temperature sensor.",
+      "age": "January 1, 2021",
+      "page_age": "2021-01-01T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "ResearchGate",
+        "url": "https://www.researchgate.net/publication/348130910_Quadcopter_altitude_estimation_using_low-cost_barometric_infrared_ultrasonic_and_LIDAR_sensors",
+        "long_name": "researchgate.net",
+        "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "researchgate.net",
+        "hostname": "www.researchgate.net",
+        "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+        "path": "› publication  › 348130910_Quadcopter_altitude_estimation_using_low-cost_barometric_infrared_ultrasonic_and_LIDAR_sensors"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/rRvQaK92JNP8JCLbnQFHBWlnXYsikj7C5ygFSDIPDcA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/cHVibGljYXRpb24v/MzQ4MTMwOTEwX1F1/YWRjb3B0ZXJfYWx0/aXR1ZGVfZXN0aW1h/dGlvbl91c2luZ19s/b3ctY29zdF9iYXJv/bWV0cmljX2luZnJh/cmVkX3VsdHJhc29u/aWNfYW5kX0xJREFS/X3NlbnNvcnMvbGlu/a3MvNjliNDM5YzM4/YzUzMjE2YzAxMWI0/Njc5L2xhcmdlcHJl/dmlldy5wbmc",
+        "original": "https://i1.rgstatic.net/publication/348130910_Quadcopter_altitude_estimation_using_low-cost_barometric_infrared_ultrasonic_and_LIDAR_sensors/links/69b439c38c53216c011b4679/largepreview.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 2,
+      "title": "BME280 – Data sheet Document revision 1.24 Document release date February 2024",
+      "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf",
+      "description": "Low altitude noise is needed. The required bandwidth is ~2 Hz in order to respond quickly to altitude · changes (e.g. be able to dodge a flying monster in a game). Increased power consumption is · tolerated. Humidity sensor is disabled.",
+      "content": "Low altitude noise is needed. The required bandwidth is ~2 Hz in order to respond quickly to altitude · changes (e.g. be able to dodge a flying monster in a game). Increased power consumption is · tolerated. Humidity sensor is disabled.\nAfter powering up, the sensor settles in sleep mode (described in chapter ... It is prohibited to keep any interface pin (SDI, SDO, SCK or CSB) at a logical high level when VDDIO is · switched off. Such a configuration can permanently damage the device due an excessive current flow ... If VDDIO is supplied, but VDD is not, the interface pins are kept at a high-Z level. The bus can therefore · already be used freely before the BME280 VDD supply is established.\nResetting the sensor is possible by cycling VDD level or by writing a soft reset command. Cycling the · VDDIO level will not cause a reset. ... The BME280 offers three sensor modes: sleep mode, forced mode and normal mode.\nLowest possible altitude noise is needed. A very low bandwidth is preferred. Increased power · consumption is tolerated. Humidity is measured to help detect room changes. This setting is · suggested for the Android settings ‘SENSOR_DELAY_NORMAL’ and ‘SENSOR_DELAY_UI’.",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Bosch Sensortec",
+        "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf",
+        "long_name": "bosch-sensortec.com",
+        "img": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "bosch-sensortec.com",
+        "hostname": "www.bosch-sensortec.com",
+        "favicon": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8",
+        "path": "› media  › boschsensortec  › downloads  › datasheets  › bst-bme280-ds002.pdf"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Adafruit BME280 Humidity + Barometric Pressure + Temperature Sensor Breakout",
+      "url": "https://cdn-learn.adafruit.com/downloads/pdf/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout.pdf",
+      "description": "Adafruit BME280 Humidity + Barometric · Pressure + Temperature Sensor Breakout",
+      "content": "Adafruit BME280 Humidity + Barometric · Pressure + Temperature Sensor Breakout",
+      "age": "June 3, 2024",
+      "page_age": "2024-06-03T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Adafruit",
+        "url": "https://cdn-learn.adafruit.com/downloads/pdf/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout.pdf",
+        "long_name": "cdn-learn.adafruit.com",
+        "img": "https://imgs.search.brave.com/YrJ5b9laz9pYSDUtB96sSsrvteoACfEFY-C4aB7hgOI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjFlMzNiNzE1/OGFlOGVlYjEzZmIy/ZTRlZjJmNzIxNTEz/YmZjYWExOTk0YTE4/ZWIzYzMwMGIyZWYz/N2Q1ZmM5OS9jZG4t/bGVhcm4uYWRhZnJ1/aXQuY29tLw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "cdn-learn.adafruit.com",
+        "hostname": "cdn-learn.adafruit.com",
+        "favicon": "https://imgs.search.brave.com/YrJ5b9laz9pYSDUtB96sSsrvteoACfEFY-C4aB7hgOI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjFlMzNiNzE1/OGFlOGVlYjEzZmIy/ZTRlZjJmNzIxNTEz/YmZjYWExOTk0YTE4/ZWIzYzMwMGIyZWYz/N2Q1ZmM5OS9jZG4t/bGVhcm4uYWRhZnJ1/aXQuY29tLw",
+        "path": "› downloads  › pdf  › adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout.pdf"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "GENERAL DESCRIPTION The BME280 is an integrated environmental sensor developed",
+      "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/product_flyer/bst-bme280-fl000.pdf",
+      "description": "The BME280 is an integrated environmental sensor developed · specifically for mobile applications where size and low power",
+      "content": "The BME280 is an integrated environmental sensor developed · specifically for mobile applications where size and low power\nBME280 from Bosch Sensortec combines extensive experience",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Bosch Sensortec",
+        "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/product_flyer/bst-bme280-fl000.pdf",
+        "long_name": "bosch-sensortec.com",
+        "img": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "bosch-sensortec.com",
+        "hostname": "www.bosch-sensortec.com",
+        "favicon": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8",
+        "path": "› media  › boschsensortec  › downloads  › product_flyer  › bst-bme280-fl000.pdf"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "Adafruit BME280 I2C or SPI Temperature Humidity Pressure Sensor [STEMMA QT] : Adafruit Industries, Unique & fun DIY electronics and kits",
+      "url": "https://www.adafruit.com/product/2652",
+      "description": "The BME280 is the next-generation of sensors from Bosch, and is the upgrade to the BMP085/BMP180/BMP183 - with a low altitude noise of 0.25m and the same fast conversion time. It has the same specifications, but can use either I2C or SPI.",
+      "content": "The BME280 is the next-generation of sensors from Bosch, and is the upgrade to the BMP085/BMP180/BMP183 - with a low altitude noise of 0.25m and the same fast conversion time. It has the same specifications, but can use either I2C or SPI.\nBosch has stepped up their game with their new BME280 sensor, an environmental sensor with temperature, barometric pressure and humidity! This sensor is great for all sorts of indoor environmental sensing and can even be used in both I2C and SPI! This precision sensor from Bosch is the best low-cost sensing solution for measuring humidity with ±3% accuracy, barometric pressure with ±1 hPa absolute accuraccy, and temperature with ±1.0°C accuracy. Because pressure changes with altitude, and the pressure measurements are so good, you can also use it as an altimeter with ±1 meter or better accuracy!\nThe BME280 is the next-generation of sensors from Bosch, and is the upgrade to the BMP085/BMP180/BMP183 - with a low altitude noise of 0.25m and the same fast conversion time. It has the same specifications, but can use either I2C or SPI. For simple easy wiring, go with I2C.\nThe STEMMA QT connectors on either side are compatible with the SparkFun Qwiic I2C connectors. This allows you to make solderless connections between your development board and the BME280 or to chain it with a wide range of other sensors and accessories using a compatible cable.\nAdafruit DPS310 Precision Barometric Pressure / Altitude Sensor - STEMMA QT / Qwiic - STEMMA QT / Qwiic",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Adafruit",
+        "url": "https://www.adafruit.com/product/2652",
+        "long_name": "adafruit.com",
+        "img": "https://imgs.search.brave.com/RKfQUjAZZJUZp7Q-1AUFC6ChXRGCrOSayK7eQFxagD8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDUyNWQ0ZDBi/ZGZlNDc4ODExMDQx/NTU5MzJiNWZkNDYz/ZWM1ZDdiMjE1MzNl/NzMxNjc4NGNkNjUw/NmIzMDY0Zi93d3cu/YWRhZnJ1aXQuY29t/Lw"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "adafruit.com",
+        "hostname": "www.adafruit.com",
+        "favicon": "https://imgs.search.brave.com/RKfQUjAZZJUZp7Q-1AUFC6ChXRGCrOSayK7eQFxagD8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDUyNWQ0ZDBi/ZGZlNDc4ODExMDQx/NTU5MzJiNWZkNDYz/ZWM1ZDdiMjE1MzNl/NzMxNjc4NGNkNjUw/NmIzMDY0Zi93d3cu/YWRhZnJ1aXQuY29t/Lw",
+        "path": "› product  › 2652"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/LtLjuZmTwTqijM_oFQyMXmyD9UhpWb4JOu4P2WznaIE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jZG4t/c2hvcC5hZGFmcnVp/dC5jb20vLzk3MHg3/MjgvMjY1Mi0wNC5q/cGc",
+        "original": "https://cdn-shop.adafruit.com//970x728/2652-04.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 6,
+      "title": "Overview | Adafruit BME280 Humidity + Barometric Pressure + Temperature Sensor Breakout | Adafruit Learning System",
+      "url": "https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/overview",
+      "description": "The BME280 is the next-generation of sensors from Bosch, and is the upgrade to the BMP085/BMP180/BMP183 - with a low altitude noise of 0.25m and the same fast conversion time. It has the same specifications, but can use either I2C or SPI.",
+      "content": "The BME280 is the next-generation of sensors from Bosch, and is the upgrade to the BMP085/BMP180/BMP183 - with a low altitude noise of 0.25m and the same fast conversion time. It has the same specifications, but can use either I2C or SPI.\nBosch has stepped up their game with their new BME280 sensor, an environmental sensor with temperature, barometric pressure and humidity! This sensor is great for all sorts of weather/environmental sensing and can even be used in both I2C and SPI! This precision sensor from Bosch is the best low-cost sensing solution for measuring humidity with ±3% accuracy, barometric pressure with ±1 hPa absolute accuraccy, and temperature with ±1.0°C accuracy. Because pressure changes with altitude, and the pressure measurements are so good, you can also use it as an altimeter with ±1 meter accuracy!\nBuild your next weather and enviromental sensing system\nThe BME280 is the next-generation of sensors from Bosch, and is the upgrade to the BMP085/BMP180/BMP183 - with a low altitude noise of 0.25m and the same fast conversion time. It has the same specifications, but can use either I2C or SPI. For simple easy wiring, go with I2C.\nThe surface-mount sensor is soldered onto a PCB and comes with a 3.3V regulator and level shifting so you can use it with a 3V or 5V logic microcontroller without worry. The breakout is made in the STEMMA QT form factor, making them easy to interface with. The STEMMA QT connectors on either side are compatible with the SparkFun Qwiic I2C connectors. This allows you to make solderless connections between your development board and the BME280 or to chain it with a wide range of other sensors and accessories using a compatible cable.",
+      "age": "July 24, 2015",
+      "page_age": "2015-07-24T22:07:39",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Adafruit",
+        "url": "https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/overview",
+        "long_name": "learn.adafruit.com",
+        "img": "https://imgs.search.brave.com/U9A_YyI2dpm3rjmEckxEGa_imXONtWJXiA9P-WuRrt8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGVmMTQ2ODM1/OWU0NjIxMTc1NDQx/MDkyNTkyMGM2YzVj/ZTM1ZDZjNDE4YzJj/ZGNlY2YxOTc2MTQ3/NjIwODIxOC9sZWFy/bi5hZGFmcnVpdC5j/b20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "learn.adafruit.com",
+        "hostname": "learn.adafruit.com",
+        "favicon": "https://imgs.search.brave.com/U9A_YyI2dpm3rjmEckxEGa_imXONtWJXiA9P-WuRrt8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGVmMTQ2ODM1/OWU0NjIxMTc1NDQx/MDkyNTkyMGM2YzVj/ZTM1ZDZjNDE4YzJj/ZGNlY2YxOTc2MTQ3/NjIwODIxOC9sZWFy/bi5hZGFmcnVpdC5j/b20v",
+        "path": "› adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout  › overview"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/qVyKVt2QMcBmEieFKH4F1G_tZ22RTvpCaFF99sbUQ_Q/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jZG4t/bGVhcm4uYWRhZnJ1/aXQuY29tL2d1aWRl/cy9pbWFnZXMvMDAw/LzAwMS8wODkvbWVk/aXVtODAwL0JNRTI4/MF90b3BfYW5nbGUu/anBn",
+        "original": "https://cdn-learn.adafruit.com/guides/images/000/001/089/medium800/BME280_top_angle.jpg",
+        "logo": false
+      }
+    },
+    {
+      "rank": 7,
+      "title": "BME280 – Data sheet Document revision 1.6 Document release date September 2018",
+      "url": "https://www.mouser.com/datasheet/2/783/BST-BME280-DS002-1509607.pdf",
+      "description": "Low altitude noise is needed. The required bandwidth is ~2 Hz in order to respond quickly to altitude · changes (e.g. be able to dodge a flying monster in a game). Increased power consumption is · tolerated. Humidity sensor is disabled.",
+      "content": "Low altitude noise is needed. The required bandwidth is ~2 Hz in order to respond quickly to altitude · changes (e.g. be able to dodge a flying monster in a game). Increased power consumption is · tolerated. Humidity sensor is disabled.\nAfter powering up, the sensor settles in sleep mode (described in chapter ... It is prohibited to keep any interface pin (SDI, SDO, SCK or CSB) at a logical high level when VDDIO is · switched off. Such a configuration can permanently damage the device due an excessive current flow ... If VDDIO is supplied, but VDD is not, the interface pins are kept at a high-Z level. The bus can therefore · already be used freely before the BME280 VDD supply is established.\nResetting the sensor is possible by cycling VDD level or by writing a soft reset command. Cycling the · VDDIO level will not cause a reset. ... The BME280 offers three sensor modes: sleep mode, forced mode and normal mode.\nLowest possible altitude noise is needed. A very low bandwidth is preferred. Increased power · consumption is tolerated. Humidity is measured to help detect room changes. This setting is · suggested for the Android settings ‘SENSOR_DELAY_NORMAL’ and ‘SENSOR_DELAY_UI’.",
+      "age": "September 17, 2018",
+      "page_age": "2018-09-17T00:00:00",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Mouser",
+        "url": "https://www.mouser.com/datasheet/2/783/BST-BME280-DS002-1509607.pdf",
+        "long_name": "mouser.com",
+        "img": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "mouser.com",
+        "hostname": "www.mouser.com",
+        "favicon": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8",
+        "path": "› datasheet  › 2  › 783  › BST-BME280-DS002-1509607.pdf"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "Interface BME280 Temperature, Humidity & Pressure Sensor with Arduino",
+      "url": "https://lastminuteengineers.com/bme280-arduino-tutorial/",
+      "description": "Learn about BME280 Module along with its Specifications, Pinout, Wiring &amp; Arduino Code for reading Temperature, Humidity, Barometric Pressure &amp; Altitude",
+      "content": "Learn about BME280 Module along with its Specifications, Pinout, Wiring &amp; Arduino Code for reading Temperature, Humidity, Barometric Pressure &amp; Altitude\nThis sensor is simple to use, comes pre-calibrated, and requires no additional components, so you can start measuring relative humidity, temperature, barometric pressure, and altitude in no time. So, let’s get acquainted with the BME280, which we have heard a lot about.\nThe BME280 can measure pressure between 300Pa to 1100 hPa with an absolute accuracy of ±1 hPa. Over the temperature range of 0 to 65°C, full accuracy is obtained, resulting in an altitude measurement accuracy of approximately ±1 meter.\nBefore proceeding, it is important to understand the distinction between Absolute and Relative Altitude. The term “absolute altitude” refers to the height above sea level (MSL), whereas “relative altitude” refers to the height above ground level (AGL). Note that the BME280 cannot directly measure altitude but can estimate it using pressure readings.\nSo, to get an accurate absolute altitude measurement, the SEA_LEVEL_PRESSURE constant is provided in the example code below, which you should update with the current sea level pressure at your location. At the core of the module is the next-generation digital temperature, humidity, and pressure sensor from Bosch – BME280.",
+      "age": "January 20, 2026",
+      "page_age": "2026-01-20T15:10:09",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "Last Minute Engineers",
+        "url": "https://lastminuteengineers.com/bme280-arduino-tutorial/",
+        "long_name": "lastminuteengineers.com",
+        "img": "https://imgs.search.brave.com/k-6C00f_efmO12qWAkeinNrdYpI8_B4VBq19dgxMP6I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWY1YzA4MjNl/ODllYWM1ZDIxMzNj/YmIyMzI2NDVhYTBl/MzljMjdjZWM0OTYz/MGNkNzAwYzUyNjEz/MWIyNDFkNy9sYXN0/bWludXRlZW5naW5l/ZXJzLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "lastminuteengineers.com",
+        "hostname": "lastminuteengineers.com",
+        "favicon": "https://imgs.search.brave.com/k-6C00f_efmO12qWAkeinNrdYpI8_B4VBq19dgxMP6I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWY1YzA4MjNl/ODllYWM1ZDIxMzNj/YmIyMzI2NDVhYTBl/MzljMjdjZWM0OTYz/MGNkNzAwYzUyNjEz/MWIyNDFkNy9sYXN0/bWludXRlZW5naW5l/ZXJzLmNvbS8",
+        "path": "› bme280-arduino-tutorial"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/Yr9wmZh-JiEv3Xyf2K-AWkoJpzWESrR3GGfkE45Qbhg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9sYXN0/bWludXRlZW5naW5l/ZXJzLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvZmVhdHVyZWRp/bWFnZXMvQXJkdWlu/by1UdXRvcmlhbC1G/b3ItSW50ZXJmYWNp/bmctQk1FMjgwLVRl/bXBlcmF0dXJlLUh1/bWlkaXR5LUJhcm9t/ZXRyaWMtUHJlc3N1/cmUtU2Vuc29yLndl/YnA",
+        "original": "https://lastminuteengineers.com/wp-content/uploads/featuredimages/Arduino-Tutorial-For-Interfacing-BME280-Temperature-Humidity-Barometric-Pressure-Sensor.webp",
+        "logo": false
+      }
+    },
+    {
+      "rank": 9,
+      "title": "Guide for BME280 Sensor with Arduino (Pressure, Temperature, Humidity) | Random Nerd Tutorials",
+      "url": "https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/",
+      "description": "The BME280 sensor module reads barometric pressure, temperature, and humidity. Because pressure changes with altitude, you can also estimate altitude. There are several versions of this sensor module.",
+      "content": "The BME280 sensor module reads barometric pressure, temperature, and humidity. Because pressure changes with altitude, you can also estimate altitude. There are several versions of this sensor module.\nThis guide shows how to use the BME280 sensor module with Arduino to read pressure, temperature, humidity and estimate altitude.\n#include <Wire.h> #include <Adafruit_Sensor.h> #include <Adafruit_BME280.h> As we’re going to use I2C communication, the following lines that define the SPI pins are commented: /*#define BME_SCK 13 #define BME_MISO 12 #define BME_MOSI 11 #define BME_CS 10*/ A variable called SEALEVELPRESSURE_HPA is created. ... This variable saves the pressure at the sea level in hectopascal (is equivalent to milibar). This variable is used to estimate the altitude for a given pressure by comparing it with the sea level pressure.\nWire the BME280 sensor to your Arduino board as shown in the following schematic diagram.",
+      "age": "July 30, 2020",
+      "page_age": "2020-07-30T14:11:54",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "article",
+      "profile": {
+        "name": "Random Nerd Tutorials",
+        "url": "https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/",
+        "long_name": "randomnerdtutorials.com",
+        "img": "https://imgs.search.brave.com/ySDmJwC-xu1NxSdJBdwm415nZdU4tmLNPM8ueJ2iqbQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzAyODIyMjRi/YWFkMjYwYTdhYzdk/MDMxN2FkZjJhYjJh/YjlkNzgyODEwN2Rl/ZTU5ZjhlYjZmZDdm/NzM0NjZiYS9yYW5k/b21uZXJkdHV0b3Jp/YWxzLmNvbS8"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "randomnerdtutorials.com",
+        "hostname": "randomnerdtutorials.com",
+        "favicon": "https://imgs.search.brave.com/ySDmJwC-xu1NxSdJBdwm415nZdU4tmLNPM8ueJ2iqbQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzAyODIyMjRi/YWFkMjYwYTdhYzdk/MDMxN2FkZjJhYjJh/YjlkNzgyODEwN2Rl/ZTU5ZjhlYjZmZDdm/NzM0NjZiYS9yYW5k/b21uZXJkdHV0b3Jp/YWxzLmNvbS8",
+        "path": "  › home  › arduino  › guide for bme280 sensor with arduino (pressure, temperature, humidity)"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/K1zDvYiXFol7NKQZw29E6GAPBx9cwewIKgr2ekbIWFI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9yYW5k/b21uZXJkdHV0b3Jp/YWxzLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAxOS8wNy9C/TUUyODAtYXJkdWlu/by10aHVtYm5haWwu/cG5n",
+        "original": "https://randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-arduino-thumbnail.png",
+        "logo": false
+      }
+    },
+    {
+      "rank": 10,
+      "title": "Comprehensive Guide to the BMP280 Barometric Pressure and Altitude Sensor",
+      "url": "https://techknowlab.com/bmp280-sensor-for-barometric-pressure-and-altitude/",
+      "description": "Learn all about the BMP280 barometric pressure and altitude sensor—features, applications, and an Arduino tutorial for beginners.",
+      "content": "Learn all about the BMP280 barometric pressure and altitude sensor—features, applications, and an Arduino tutorial for beginners.\nTo understand the BMP280’s place in the market, let’s compare it with similar sensors like the BME280, BMP180, and DPS310.\nThe BME280 is an upgraded version of the BMP280, adding humidity sensing to the mix. If your project requires humidity data (e.g., for a complete weather station), the BME280 might be a better choice.",
+      "age": "January 31, 2026",
+      "page_age": "2026-01-31T15:08:44",
+      "language": "en",
+      "family_friendly": true,
+      "type": "search_result",
+      "subtype": "generic",
+      "profile": {
+        "name": "TechKnowLab",
+        "url": "https://techknowlab.com/bmp280-sensor-for-barometric-pressure-and-altitude/",
+        "long_name": "techknowlab.com",
+        "img": "https://imgs.search.brave.com/WgTAwl9PQZy3I8AvM4vPTLqb7ZQI35tRVGP4LcqHMfw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTVlZmRiNDli/OWQyMzQwODEyNWY0/MzJhNGI4ODFlNTdh/NmU1YzJhYjJhZjdi/ZDg1NmFmMzU4MTNk/YjFiMTAzZi90ZWNo/a25vd2xhYi5jb20v"
+      },
+      "meta_url": {
+        "scheme": "https",
+        "netloc": "techknowlab.com",
+        "hostname": "techknowlab.com",
+        "favicon": "https://imgs.search.brave.com/WgTAwl9PQZy3I8AvM4vPTLqb7ZQI35tRVGP4LcqHMfw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTVlZmRiNDli/OWQyMzQwODEyNWY0/MzJhNGI4ODFlNTdh/NmU1YzJhYjJhZjdi/ZDg1NmFmMzU4MTNk/YjFiMTAzZi90ZWNo/a25vd2xhYi5jb20v",
+        "path": "  › home  › bmp280 sensor for barometric pressure and altitude"
+      },
+      "thumbnail": {
+        "src": "https://imgs.search.brave.com/lIz9jbIqCRuyfWhze8T48WCJIbqI2hv92UgdjD8XWwo/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly90ZWNo/a25vd2xhYi5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjUv/MDMvYm1wMjgwLTIu/anBlZw",
+        "original": "https://techknowlab.com/wp-content/uploads/2025/03/bmp280-2.jpeg",
+        "logo": false
+      }
+    }
+  ],
+  "metadata": {
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "sent_query": "Ranđelović 2021 low-cost altitude sensors BME280 PDF",
+    "count": 10,
+    "offset": 0,
+    "returned_results": 10,
+    "latency_seconds": 1.044,
+    "params": {
+      "count": 10,
+      "offset": 0,
+      "spellcheck": "true",
+      "text_decorations": "false"
+    },
+    "site_filters": {
+      "include": [],
+      "exclude": [],
+      "note": "site/exclude-site are implemented as Brave query operators, not native API parameters."
+    }
+  },
+  "raw_provider_response": {
+    "type": "search",
+    "query": {
+      "original": "Ranđelović 2021 low-cost altitude sensors BME280 PDF",
+      "show_strict_warning": false,
+      "is_navigational": false,
+      "is_news_breaking": false,
+      "spellcheck_off": false,
+      "country": "us",
+      "bad_results": false,
+      "should_fallback": false,
+      "postal_code": "",
+      "city": "",
+      "header_country": "",
+      "more_results_available": true,
+      "state": ""
+    },
+    "mixed": {
+      "type": "mixed",
+      "main": [
+        {
+          "type": "web",
+          "index": 0,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 1,
+          "all": false
+        },
+        {
+          "type": "videos",
+          "all": true
+        },
+        {
+          "type": "web",
+          "index": 2,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 3,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 4,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 5,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 6,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 7,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 8,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 9,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 10,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 11,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 12,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 13,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 14,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 15,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 16,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 17,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 18,
+          "all": false
+        },
+        {
+          "type": "web",
+          "index": 19,
+          "all": false
+        }
+      ],
+      "top": [],
+      "side": []
+    },
+    "videos": {
+      "type": "videos",
+      "results": [
+        {
+          "type": "video_result",
+          "url": "https://www.facebook.com/ElectroBuddy/videos/822744371395087/",
+          "title": "BME280 - Temp, Pressure, Humidity Sensor (3-in1) | Introducing ...",
+          "description": "121 views, 2 likes, 0 loves, 0 comments, 2 shares, Facebook Watch Videos from Investigatory Project/Research/Thesis Community: Introducing BME280 - Temperature, Pressure, Humidity Sensor. All you...",
+          "fetched_content_timestamp": 1683570565,
+          "video": {},
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "facebook.com",
+            "hostname": "www.facebook.com",
+            "favicon": "https://imgs.search.brave.com/UPSLokJBKWPdNzHbqH5o3CgD13zMvR3pUTn8bk7hmPM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWM3NjZkMmE4/MTU1MTk4ZDU5YzU3/NjUxY2ExZTdjNWQx/NjJlNTY1Y2VlODM4/MmRmMDgzZDBiMmI3/YzU4NmU4ZS93d3cu/ZmFjZWJvb2suY29t/Lw",
+            "path": "› ElectroBuddy  › videos  › 822744371395087"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/JxhwRjgvbtbATEJEiPLN8Q6UCyulqPrrnX-x3Ek5W0s/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zY29u/dGVudC1sZ2EzLTIu/eHguZmJjZG4ubmV0/L3YvdDE1LjUyNTYt/MTAvNTI0OTg4ODhf/ODIyNzQ2NjU0NzI4/MTkyXzQ5NTc3MTc3/MDM2NzE0MTQ3ODRf/bi5qcGc_X25jX2Nh/dD0xMDAmYW1wO2Nj/Yj0xLTcmYW1wO19u/Y19zaWQ9Nzc2MjM5/JmFtcDtfbmNfb2hj/PW56N0pYVEVPNDN3/QVg4dDg4N2cmYW1w/O19uY19odD1zY29u/dGVudC1sZ2EzLTIu/eHgmYW1wO29oPTAw/X0FmQU1zMzB3b1g3/ODV1VUZwYXFXTVM5/enlzWTZuVmEyQVM5/VV93NUVwYlpNTWcm/YW1wO29lPTY0NUVG/NTI0",
+            "original": "https://scontent-lga3-2.xx.fbcdn.net/v/t15.5256-10/52498888_822746654728192_4957717703671414784_n.jpg?_nc_cat=100&amp;ccb=1-7&amp;_nc_sid=776239&amp;_nc_ohc=nz7JXTEO43wAX8t887g&amp;_nc_ht=scontent-lga3-2.xx&amp;oh=00_AfAMs30woX785uUFpaqWMS9zysY6nVa2AS9U_w5EpbZMMg&amp;oe=645EF524"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=0aL1PxK3rkE",
+          "title": "What's the difference between the BMP280 and the BME280 atmospheric ...",
+          "description": "What's the difference between the BMP280 and the BME280 atmospheric sensorsI've been wanting to build an outdoor atmospheric sensor to track temperature, hum...",
+          "age": "March 2, 2017",
+          "page_age": "2017-03-02T22:00:01",
+          "fetched_content_timestamp": 1780878968,
+          "video": {
+            "duration": "07:21",
+            "creator": "learnelectronics",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/xBw_7I_7yGYwyu1E1OPdfAzu9eNB63YLhCWFKu-stiU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS8w/YUwxUHhLM3JrRS9o/cWRlZmF1bHQuanBn",
+            "original": "https://i.ytimg.com/vi/0aL1PxK3rkE/hqdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=NjgvLA5ABy8",
+          "title": "How to Measure Temperature, Pressure, Humidity, and Altitude with ...",
+          "description": "Learn how to easily get sensor readings and accurate altitude values with your BME280 sensor and the Arduino Nano Every!Where to Buy BME280 in this video:htt...",
+          "age": "July 6, 2023",
+          "page_age": "2023-07-06T00:57:34",
+          "fetched_content_timestamp": 1780706754,
+          "video": {
+            "duration": "05:16",
+            "creator": "Shilleh",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/SHjdLfwfPz_oTiDmNfK653_uiNbCnz_Rk6MDZTsq0lc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9O/amd2TEE1QUJ5OC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/NjgvLA5ABy8/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=Wnu63Yz4aBw",
+          "title": "How to use BME280 sensor with Arduino (Humidity, Temperature, ...",
+          "description": "BME/BMP280 sensor is a complete sensor with the ability to read Humidity, Temperature, Barometric Pressure, and Altimeter.In this video, we examine how to us...",
+          "age": "November 11, 2021",
+          "page_age": "2021-11-11T13:00:28",
+          "fetched_content_timestamp": 1725013962,
+          "video": {
+            "duration": "06:25",
+            "views": 13255,
+            "creator": "miliohm",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/B-wg1wGopI3E677fYN1Wtki5eM58w4iSuZzHVZh7dvM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9X/bnU2M1l6NGFCdy9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/Wnu63Yz4aBw/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=dwewIsXnW_4",
+          "title": "BME280 Sensor Tutorial using Arduino - YouTube",
+          "description": "BME280 is a widely used temperature sensor which measures temperature, humidity, barometric pressure and altitudewe are going to see how to read data from th...",
+          "age": "October 11, 2020",
+          "page_age": "2020-10-11T14:10:38",
+          "fetched_content_timestamp": 1780664994,
+          "video": {
+            "duration": "02:39",
+            "creator": "Superb Tech",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/b_zvKGSDLTTRHd8Ea17skSc5tVyxru3_B3EhbgcORJE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9k/d2V3SXNYbldfNC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/dwewIsXnW_4/maxresdefault.jpg"
+          }
+        },
+        {
+          "type": "video_result",
+          "url": "https://www.youtube.com/watch?v=InNHrtnZgUQ",
+          "title": "BMP280 Barometric pressure and temperature sensor with Arduino ...",
+          "description": "In this video BMP280 hardware explained, wiring, code explained with demonstration of change in temperatureRelated videos:Introduction to LCD https://youtu.b",
+          "age": "June 27, 2019",
+          "page_age": "2019-06-27T00:30:00",
+          "fetched_content_timestamp": 1780383567,
+          "video": {
+            "duration": "12:02",
+            "creator": "Robojax",
+            "publisher": "YouTube"
+          },
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "youtube.com",
+            "hostname": "www.youtube.com",
+            "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+            "path": "› watch"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/BwmyLLwDgfe9T1RWs5tq0t88YGU5jVj-4pszUWgiZs8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9J/bk5IcnRuWmdVUS9t/YXhyZXNkZWZhdWx0/LmpwZw",
+            "original": "https://i.ytimg.com/vi/InNHrtnZgUQ/maxresdefault.jpg"
+          }
+        }
+      ],
+      "mutated_by_goggles": false
+    },
+    "web": {
+      "type": "search",
+      "results": [
+        {
+          "title": "(PDF) Quadcopter altitude estimation using low-cost barometric, infrared, ultrasonic and LIDAR sensors",
+          "url": "https://www.researchgate.net/publication/348130910_Quadcopter_altitude_estimation_using_low-cost_barometric_infrared_ultrasonic_and_LIDAR_sensors",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Quadcopter altitude estimation using low-cost barometric, infrared, ultrasonic and LIDAR sensors.pdf ... Content may be subject to copyright. © Faculty of Mechanical Engineering, Belgrade. All rights reserved FME Transactions (2021) 49, 21-28 21 ... Dušan M. Ranđelović",
+          "page_age": "2021-01-01T00:00:00",
+          "profile": {
+            "name": "ResearchGate",
+            "url": "https://www.researchgate.net/publication/348130910_Quadcopter_altitude_estimation_using_low-cost_barometric_infrared_ultrasonic_and_LIDAR_sensors",
+            "long_name": "researchgate.net",
+            "img": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "researchgate.net",
+            "hostname": "www.researchgate.net",
+            "favicon": "https://imgs.search.brave.com/WJ25-tL-91vp8kSoF0YS7d8CZVivP1cG-EjlGvrmxOc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjE0MDk0Yzli/MWQ3NGQ2ZTNjODVh/YWVmMDNkM2NkZWI5/NGEzNjdhMmEyY2E2/N2EzN2Y0OThlZjdi/YWU3MjkwMi93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC8",
+            "path": "› publication  › 348130910_Quadcopter_altitude_estimation_using_low-cost_barometric_infrared_ultrasonic_and_LIDAR_sensors"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/rRvQaK92JNP8JCLbnQFHBWlnXYsikj7C5ygFSDIPDcA/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/cHVibGljYXRpb24v/MzQ4MTMwOTEwX1F1/YWRjb3B0ZXJfYWx0/aXR1ZGVfZXN0aW1h/dGlvbl91c2luZ19s/b3ctY29zdF9iYXJv/bWV0cmljX2luZnJh/cmVkX3VsdHJhc29u/aWNfYW5kX0xJREFS/X3NlbnNvcnMvbGlu/a3MvNjliNDM5YzM4/YzUzMjE2YzAxMWI0/Njc5L2xhcmdlcHJl/dmlldy5wbmc",
+            "original": "https://i1.rgstatic.net/publication/348130910_Quadcopter_altitude_estimation_using_low-cost_barometric_infrared_ultrasonic_and_LIDAR_sensors/links/69b439c38c53216c011b4679/largepreview.png",
+            "logo": false
+          },
+          "age": "January 1, 2021",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Dusan Randjelovic",
+                "url": "https://www.researchgate.net/profile/Dusan-Randjelovic-2",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/gej3G6hY2F70WuP5AeWlEmgQ-Q0CmkgrwMqw5YrbbU0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5y/Z3N0YXRpYy5uZXQv/aWkvcHJvZmlsZS5p/bWFnZS82OTQ3NDc3/MzU3ODU0NzctMTU0/MjY1MjE3Njk0NF9R/NjQvRHVzYW4tUmFu/ZGplbG92aWMtMi5q/cGc",
+                  "original": "https://i1.rgstatic.net/ii/profile.image/694747735785477-1542652176944_Q64/Dusan-Randjelovic-2.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Goran Vorotović",
+                "url": "https://www.researchgate.net/profile/Goran-Vorotovic",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/Ypf7e8KR1e2Z0LUnVkeBTVnLifkahSqELb4zFJy0Tpc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jNS5y/Z3N0YXRpYy5uZXQv/bS80NjcxODcyMjIw/NzY0L2ltYWdlcy90/ZW1wbGF0ZS9kZWZh/dWx0L3Byb2ZpbGUv/cHJvZmlsZV9kZWZh/dWx0X20uanBn",
+                  "original": "https://c5.rgstatic.net/m/4671872220764/images/template/default/profile/profile_default_m.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Aleksandar Bengin",
+                "url": "https://www.researchgate.net/profile/Aleksandar-Bengin",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/Ypf7e8KR1e2Z0LUnVkeBTVnLifkahSqELb4zFJy0Tpc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jNS5y/Z3N0YXRpYy5uZXQv/bS80NjcxODcyMjIw/NzY0L2ltYWdlcy90/ZW1wbGF0ZS9kZWZh/dWx0L3Byb2ZpbGUv/cHJvZmlsZV9kZWZh/dWx0X20uanBn",
+                  "original": "https://c5.rgstatic.net/m/4671872220764/images/template/default/profile/profile_default_m.jpg"
+                }
+              },
+              {
+                "type": "person",
+                "name": "Pavle Petrović",
+                "url": "https://www.researchgate.net/scientific-contributions/Pavle-Petrovic-2182658888",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/dMtHr8-Qesx_n1eD_yC484AdHx5Mu-SKRnED6CeBoes/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jNS5y/Z3N0YXRpYy5uZXQv/bS80MzU5ODIzMDk0/ODEwMTAvaW1hZ2Vz/L3RlbXBsYXRlL2Rl/ZmF1bHQvYXV0aG9y/L2F1dGhvcl9kZWZh/dWx0X20uanBn",
+                  "original": "https://c5.rgstatic.net/m/435982309481010/images/template/default/author/author_default_m.jpg"
+                }
+              }
+            ],
+            "date": "Jan 01, 2021",
+            "publisher": {
+              "type": "organization",
+              "name": "Centre for Evaluation in Education and Science (CEON/CEES)",
+              "url": "https://www.researchgate.net/unknown",
+              "thumbnail": {
+                "src": "https://imgs.search.brave.com/UjSGsXBrrrqKndxfeOp5EGUdM15aJCsZ_BUDIJcDQhs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC91bmtub3du",
+                "original": "https://www.researchgate.net/unknown"
+              }
+            }
+          },
+          "extra_snippets": [
+            "Quadcopter altitude estimation using low-cost barometric, infrared, ultrasonic and LIDAR sensors.pdf ... Content may be subject to copyright. © Faculty of Mechanical Engineering, Belgrade. All rights reserved FME Transactions (2021) 49, 21-28 21 ... Dušan M. Ranđelović",
+            "FME Transactions VOL. 49, No 1, 2021 ▪ 23 ... Sensortec BME280”. This digital sensor can measure",
+            "FME Transactions VOL. 49, No 1, 2021 ▪ 25 ... BME280 sensor before each altitude measurement.",
+            "On the basis of the results of the study, it was possible to determine the choice of the adequate sensor for this specific use. The study showed that the best characteristics for this experiment conditions had the Garmin LIDAR-Lite V3HP sensor and the Bosch Sensortech BME280 that combined air humidity, atmospheric pressure, and air temperature sensor."
+          ]
+        },
+        {
+          "title": "BME280 – Data sheet Document revision 1.24 Document release date February 2024",
+          "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Low altitude noise is needed. The required bandwidth is ~2 Hz in order to respond quickly to altitude · changes (e.g. be able to dodge a flying monster in a game). Increased power consumption is · tolerated. Humidity sensor is disabled.",
+          "profile": {
+            "name": "Bosch Sensortec",
+            "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf",
+            "long_name": "bosch-sensortec.com",
+            "img": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "bosch-sensortec.com",
+            "hostname": "www.bosch-sensortec.com",
+            "favicon": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8",
+            "path": "› media  › boschsensortec  › downloads  › datasheets  › bst-bme280-ds002.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "After powering up, the sensor settles in sleep mode (described in chapter ... It is prohibited to keep any interface pin (SDI, SDO, SCK or CSB) at a logical high level when VDDIO is · switched off. Such a configuration can permanently damage the device due an excessive current flow ... If VDDIO is supplied, but VDD is not, the interface pins are kept at a high-Z level. The bus can therefore · already be used freely before the BME280 VDD supply is established.",
+            "Resetting the sensor is possible by cycling VDD level or by writing a soft reset command. Cycling the · VDDIO level will not cause a reset. ... The BME280 offers three sensor modes: sleep mode, forced mode and normal mode.",
+            "Lowest possible altitude noise is needed. A very low bandwidth is preferred. Increased power · consumption is tolerated. Humidity is measured to help detect room changes. This setting is · suggested for the Android settings ‘SENSOR_DELAY_NORMAL’ and ‘SENSOR_DELAY_UI’.",
+            "Low altitude noise is needed. The required bandwidth is ~2 Hz in order to respond quickly to altitude · changes (e.g. be able to dodge a flying monster in a game). Increased power consumption is · tolerated. Humidity sensor is disabled."
+          ]
+        },
+        {
+          "title": "Adafruit BME280 Humidity + Barometric Pressure + Temperature Sensor Breakout",
+          "url": "https://cdn-learn.adafruit.com/downloads/pdf/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Adafruit BME280 Humidity + Barometric · Pressure + Temperature Sensor Breakout",
+          "page_age": "2024-06-03T00:00:00",
+          "profile": {
+            "name": "Adafruit",
+            "url": "https://cdn-learn.adafruit.com/downloads/pdf/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout.pdf",
+            "long_name": "cdn-learn.adafruit.com",
+            "img": "https://imgs.search.brave.com/YrJ5b9laz9pYSDUtB96sSsrvteoACfEFY-C4aB7hgOI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjFlMzNiNzE1/OGFlOGVlYjEzZmIy/ZTRlZjJmNzIxNTEz/YmZjYWExOTk0YTE4/ZWIzYzMwMGIyZWYz/N2Q1ZmM5OS9jZG4t/bGVhcm4uYWRhZnJ1/aXQuY29tLw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "cdn-learn.adafruit.com",
+            "hostname": "cdn-learn.adafruit.com",
+            "favicon": "https://imgs.search.brave.com/YrJ5b9laz9pYSDUtB96sSsrvteoACfEFY-C4aB7hgOI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjFlMzNiNzE1/OGFlOGVlYjEzZmIy/ZTRlZjJmNzIxNTEz/YmZjYWExOTk0YTE4/ZWIzYzMwMGIyZWYz/N2Q1ZmM5OS9jZG4t/bGVhcm4uYWRhZnJ1/aXQuY29tLw",
+            "path": "› downloads  › pdf  › adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout.pdf"
+          },
+          "age": "June 3, 2024",
+          "content_type": "pdf"
+        },
+        {
+          "title": "GENERAL DESCRIPTION The BME280 is an integrated environmental sensor developed",
+          "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/product_flyer/bst-bme280-fl000.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The BME280 is an integrated environmental sensor developed · specifically for mobile applications where size and low power",
+          "profile": {
+            "name": "Bosch Sensortec",
+            "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/product_flyer/bst-bme280-fl000.pdf",
+            "long_name": "bosch-sensortec.com",
+            "img": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "bosch-sensortec.com",
+            "hostname": "www.bosch-sensortec.com",
+            "favicon": "https://imgs.search.brave.com/0rYchKlfyuNK50L7MFGUHATt0F6bkwyKp5PeLYqbp3Q/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmEyZDJiYzcw/NjllM2I5ZmE0OWVk/YzBmZDAzZjJhODhi/MDgwMTViZDliNThk/Nzg4OTJkYjQzZDQz/ODA0YzhjYi93d3cu/Ym9zY2gtc2Vuc29y/dGVjLmNvbS8",
+            "path": "› media  › boschsensortec  › downloads  › product_flyer  › bst-bme280-fl000.pdf"
+          },
+          "content_type": "pdf",
+          "extra_snippets": [
+            "BME280 from Bosch Sensortec combines extensive experience"
+          ]
+        },
+        {
+          "title": "Adafruit BME280 I2C or SPI Temperature Humidity Pressure Sensor [STEMMA QT] : Adafruit Industries, Unique & fun DIY electronics and kits",
+          "url": "https://www.adafruit.com/product/2652",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The BME280 is the next-generation of sensors from Bosch, and is the upgrade to the BMP085/BMP180/BMP183 - with a low altitude noise of 0.25m and the same fast conversion time. It has the same specifications, but can use either I2C or SPI.",
+          "profile": {
+            "name": "Adafruit",
+            "url": "https://www.adafruit.com/product/2652",
+            "long_name": "adafruit.com",
+            "img": "https://imgs.search.brave.com/RKfQUjAZZJUZp7Q-1AUFC6ChXRGCrOSayK7eQFxagD8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDUyNWQ0ZDBi/ZGZlNDc4ODExMDQx/NTU5MzJiNWZkNDYz/ZWM1ZDdiMjE1MzNl/NzMxNjc4NGNkNjUw/NmIzMDY0Zi93d3cu/YWRhZnJ1aXQuY29t/Lw"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "adafruit.com",
+            "hostname": "www.adafruit.com",
+            "favicon": "https://imgs.search.brave.com/RKfQUjAZZJUZp7Q-1AUFC6ChXRGCrOSayK7eQFxagD8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDUyNWQ0ZDBi/ZGZlNDc4ODExMDQx/NTU5MzJiNWZkNDYz/ZWM1ZDdiMjE1MzNl/NzMxNjc4NGNkNjUw/NmIzMDY0Zi93d3cu/YWRhZnJ1aXQuY29t/Lw",
+            "path": "› product  › 2652"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/LtLjuZmTwTqijM_oFQyMXmyD9UhpWb4JOu4P2WznaIE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jZG4t/c2hvcC5hZGFmcnVp/dC5jb20vLzk3MHg3/MjgvMjY1Mi0wNC5q/cGc",
+            "original": "https://cdn-shop.adafruit.com//970x728/2652-04.jpg",
+            "logo": false
+          },
+          "extra_snippets": [
+            "Bosch has stepped up their game with their new BME280 sensor, an environmental sensor with temperature, barometric pressure and humidity! This sensor is great for all sorts of indoor environmental sensing and can even be used in both I2C and SPI! This precision sensor from Bosch is the best low-cost sensing solution for measuring humidity with ±3% accuracy, barometric pressure with ±1 hPa absolute accuraccy, and temperature with ±1.0°C accuracy. Because pressure changes with altitude, and the pressure measurements are so good, you can also use it as an altimeter with ±1 meter or better accuracy!",
+            "The BME280 is the next-generation of sensors from Bosch, and is the upgrade to the BMP085/BMP180/BMP183 - with a low altitude noise of 0.25m and the same fast conversion time. It has the same specifications, but can use either I2C or SPI. For simple easy wiring, go with I2C.",
+            "The STEMMA QT connectors on either side are compatible with the SparkFun Qwiic I2C connectors. This allows you to make solderless connections between your development board and the BME280 or to chain it with a wide range of other sensors and accessories using a compatible cable.",
+            "Adafruit DPS310 Precision Barometric Pressure / Altitude Sensor - STEMMA QT / Qwiic - STEMMA QT / Qwiic"
+          ]
+        },
+        {
+          "title": "Overview | Adafruit BME280 Humidity + Barometric Pressure + Temperature Sensor Breakout | Adafruit Learning System",
+          "url": "https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/overview",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The BME280 is the next-generation of sensors from Bosch, and is the upgrade to the BMP085/BMP180/BMP183 - with a low altitude noise of 0.25m and the same fast conversion time. It has the same specifications, but can use either I2C or SPI.",
+          "page_age": "2015-07-24T22:07:39",
+          "profile": {
+            "name": "Adafruit",
+            "url": "https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/overview",
+            "long_name": "learn.adafruit.com",
+            "img": "https://imgs.search.brave.com/U9A_YyI2dpm3rjmEckxEGa_imXONtWJXiA9P-WuRrt8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGVmMTQ2ODM1/OWU0NjIxMTc1NDQx/MDkyNTkyMGM2YzVj/ZTM1ZDZjNDE4YzJj/ZGNlY2YxOTc2MTQ3/NjIwODIxOC9sZWFy/bi5hZGFmcnVpdC5j/b20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "learn.adafruit.com",
+            "hostname": "learn.adafruit.com",
+            "favicon": "https://imgs.search.brave.com/U9A_YyI2dpm3rjmEckxEGa_imXONtWJXiA9P-WuRrt8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGVmMTQ2ODM1/OWU0NjIxMTc1NDQx/MDkyNTkyMGM2YzVj/ZTM1ZDZjNDE4YzJj/ZGNlY2YxOTc2MTQ3/NjIwODIxOC9sZWFy/bi5hZGFmcnVpdC5j/b20v",
+            "path": "› adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout  › overview"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/qVyKVt2QMcBmEieFKH4F1G_tZ22RTvpCaFF99sbUQ_Q/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jZG4t/bGVhcm4uYWRhZnJ1/aXQuY29tL2d1aWRl/cy9pbWFnZXMvMDAw/LzAwMS8wODkvbWVk/aXVtODAwL0JNRTI4/MF90b3BfYW5nbGUu/anBn",
+            "original": "https://cdn-learn.adafruit.com/guides/images/000/001/089/medium800/BME280_top_angle.jpg",
+            "logo": false
+          },
+          "age": "July 24, 2015",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "lady ada"
+              }
+            ],
+            "date": "Jul 24, 2015",
+            "publisher": {
+              "type": "organization",
+              "name": "Adafruit"
+            }
+          },
+          "extra_snippets": [
+            "Bosch has stepped up their game with their new BME280 sensor, an environmental sensor with temperature, barometric pressure and humidity! This sensor is great for all sorts of weather/environmental sensing and can even be used in both I2C and SPI! This precision sensor from Bosch is the best low-cost sensing solution for measuring humidity with ±3% accuracy, barometric pressure with ±1 hPa absolute accuraccy, and temperature with ±1.0°C accuracy. Because pressure changes with altitude, and the pressure measurements are so good, you can also use it as an altimeter with ±1 meter accuracy!",
+            "Build your next weather and enviromental sensing system",
+            "The BME280 is the next-generation of sensors from Bosch, and is the upgrade to the BMP085/BMP180/BMP183 - with a low altitude noise of 0.25m and the same fast conversion time. It has the same specifications, but can use either I2C or SPI. For simple easy wiring, go with I2C.",
+            "The surface-mount sensor is soldered onto a PCB and comes with a 3.3V regulator and level shifting so you can use it with a 3V or 5V logic microcontroller without worry. The breakout is made in the STEMMA QT form factor, making them easy to interface with. The STEMMA QT connectors on either side are compatible with the SparkFun Qwiic I2C connectors. This allows you to make solderless connections between your development board and the BME280 or to chain it with a wide range of other sensors and accessories using a compatible cable."
+          ]
+        },
+        {
+          "title": "BME280 – Data sheet Document revision 1.6 Document release date September 2018",
+          "url": "https://www.mouser.com/datasheet/2/783/BST-BME280-DS002-1509607.pdf",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Low altitude noise is needed. The required bandwidth is ~2 Hz in order to respond quickly to altitude · changes (e.g. be able to dodge a flying monster in a game). Increased power consumption is · tolerated. Humidity sensor is disabled.",
+          "page_age": "2018-09-17T00:00:00",
+          "profile": {
+            "name": "Mouser",
+            "url": "https://www.mouser.com/datasheet/2/783/BST-BME280-DS002-1509607.pdf",
+            "long_name": "mouser.com",
+            "img": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "mouser.com",
+            "hostname": "www.mouser.com",
+            "favicon": "https://imgs.search.brave.com/NaCDacdsyV6MuYYuqZGqgN6S1fQE89GdpDxgVRXngMo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTUxMzZhNDYz/YzBhZWQ5MWJjNTg0/YjlmZWM5ZWI0NGI2/MGNmODliY2Y2MzVj/M2I1OGY1MGE3Mzg2/MDZjYzIwMC93d3cu/bW91c2VyLmNvbS8",
+            "path": "› datasheet  › 2  › 783  › BST-BME280-DS002-1509607.pdf"
+          },
+          "age": "September 17, 2018",
+          "content_type": "pdf",
+          "extra_snippets": [
+            "After powering up, the sensor settles in sleep mode (described in chapter ... It is prohibited to keep any interface pin (SDI, SDO, SCK or CSB) at a logical high level when VDDIO is · switched off. Such a configuration can permanently damage the device due an excessive current flow ... If VDDIO is supplied, but VDD is not, the interface pins are kept at a high-Z level. The bus can therefore · already be used freely before the BME280 VDD supply is established.",
+            "Resetting the sensor is possible by cycling VDD level or by writing a soft reset command. Cycling the · VDDIO level will not cause a reset. ... The BME280 offers three sensor modes: sleep mode, forced mode and normal mode.",
+            "Lowest possible altitude noise is needed. A very low bandwidth is preferred. Increased power · consumption is tolerated. Humidity is measured to help detect room changes. This setting is · suggested for the Android settings ‘SENSOR_DELAY_NORMAL’ and ‘SENSOR_DELAY_UI’.",
+            "Low altitude noise is needed. The required bandwidth is ~2 Hz in order to respond quickly to altitude · changes (e.g. be able to dodge a flying monster in a game). Increased power consumption is · tolerated. Humidity sensor is disabled."
+          ]
+        },
+        {
+          "title": "Interface BME280 Temperature, Humidity & Pressure Sensor with Arduino",
+          "url": "https://lastminuteengineers.com/bme280-arduino-tutorial/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Learn about BME280 Module along with its Specifications, Pinout, Wiring &amp; Arduino Code for reading Temperature, Humidity, Barometric Pressure &amp; Altitude",
+          "page_age": "2026-01-20T15:10:09",
+          "profile": {
+            "name": "Last Minute Engineers",
+            "url": "https://lastminuteengineers.com/bme280-arduino-tutorial/",
+            "long_name": "lastminuteengineers.com",
+            "img": "https://imgs.search.brave.com/k-6C00f_efmO12qWAkeinNrdYpI8_B4VBq19dgxMP6I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWY1YzA4MjNl/ODllYWM1ZDIxMzNj/YmIyMzI2NDVhYTBl/MzljMjdjZWM0OTYz/MGNkNzAwYzUyNjEz/MWIyNDFkNy9sYXN0/bWludXRlZW5naW5l/ZXJzLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "lastminuteengineers.com",
+            "hostname": "lastminuteengineers.com",
+            "favicon": "https://imgs.search.brave.com/k-6C00f_efmO12qWAkeinNrdYpI8_B4VBq19dgxMP6I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWY1YzA4MjNl/ODllYWM1ZDIxMzNj/YmIyMzI2NDVhYTBl/MzljMjdjZWM0OTYz/MGNkNzAwYzUyNjEz/MWIyNDFkNy9sYXN0/bWludXRlZW5naW5l/ZXJzLmNvbS8",
+            "path": "› bme280-arduino-tutorial"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/Yr9wmZh-JiEv3Xyf2K-AWkoJpzWESrR3GGfkE45Qbhg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9sYXN0/bWludXRlZW5naW5l/ZXJzLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvZmVhdHVyZWRp/bWFnZXMvQXJkdWlu/by1UdXRvcmlhbC1G/b3ItSW50ZXJmYWNp/bmctQk1FMjgwLVRl/bXBlcmF0dXJlLUh1/bWlkaXR5LUJhcm9t/ZXRyaWMtUHJlc3N1/cmUtU2Vuc29yLndl/YnA",
+            "original": "https://lastminuteengineers.com/wp-content/uploads/featuredimages/Arduino-Tutorial-For-Interfacing-BME280-Temperature-Humidity-Barometric-Pressure-Sensor.webp",
+            "logo": false
+          },
+          "age": "January 20, 2026",
+          "extra_snippets": [
+            "This sensor is simple to use, comes pre-calibrated, and requires no additional components, so you can start measuring relative humidity, temperature, barometric pressure, and altitude in no time. So, let’s get acquainted with the BME280, which we have heard a lot about.",
+            "The BME280 can measure pressure between 300Pa to 1100 hPa with an absolute accuracy of ±1 hPa. Over the temperature range of 0 to 65°C, full accuracy is obtained, resulting in an altitude measurement accuracy of approximately ±1 meter.",
+            "Before proceeding, it is important to understand the distinction between Absolute and Relative Altitude. The term “absolute altitude” refers to the height above sea level (MSL), whereas “relative altitude” refers to the height above ground level (AGL). Note that the BME280 cannot directly measure altitude but can estimate it using pressure readings.",
+            "So, to get an accurate absolute altitude measurement, the SEA_LEVEL_PRESSURE constant is provided in the example code below, which you should update with the current sea level pressure at your location. At the core of the module is the next-generation digital temperature, humidity, and pressure sensor from Bosch – BME280."
+          ]
+        },
+        {
+          "title": "Guide for BME280 Sensor with Arduino (Pressure, Temperature, Humidity) | Random Nerd Tutorials",
+          "url": "https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "The BME280 sensor module reads barometric pressure, temperature, and humidity. Because pressure changes with altitude, you can also estimate altitude. There are several versions of this sensor module.",
+          "page_age": "2020-07-30T14:11:54",
+          "profile": {
+            "name": "Random Nerd Tutorials",
+            "url": "https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/",
+            "long_name": "randomnerdtutorials.com",
+            "img": "https://imgs.search.brave.com/ySDmJwC-xu1NxSdJBdwm415nZdU4tmLNPM8ueJ2iqbQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzAyODIyMjRi/YWFkMjYwYTdhYzdk/MDMxN2FkZjJhYjJh/YjlkNzgyODEwN2Rl/ZTU5ZjhlYjZmZDdm/NzM0NjZiYS9yYW5k/b21uZXJkdHV0b3Jp/YWxzLmNvbS8"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "article",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "randomnerdtutorials.com",
+            "hostname": "randomnerdtutorials.com",
+            "favicon": "https://imgs.search.brave.com/ySDmJwC-xu1NxSdJBdwm415nZdU4tmLNPM8ueJ2iqbQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzAyODIyMjRi/YWFkMjYwYTdhYzdk/MDMxN2FkZjJhYjJh/YjlkNzgyODEwN2Rl/ZTU5ZjhlYjZmZDdm/NzM0NjZiYS9yYW5k/b21uZXJkdHV0b3Jp/YWxzLmNvbS8",
+            "path": "  › home  › arduino  › guide for bme280 sensor with arduino (pressure, temperature, humidity)"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/K1zDvYiXFol7NKQZw29E6GAPBx9cwewIKgr2ekbIWFI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9yYW5k/b21uZXJkdHV0b3Jp/YWxzLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAxOS8wNy9C/TUUyODAtYXJkdWlu/by10aHVtYm5haWwu/cG5n",
+            "original": "https://randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-arduino-thumbnail.png",
+            "logo": false
+          },
+          "age": "July 30, 2020",
+          "article": {
+            "author": [
+              {
+                "type": "person",
+                "name": "Sara Santos",
+                "url": "https://randomnerdtutorials.com/author/sara-santos/",
+                "thumbnail": {
+                  "src": "https://imgs.search.brave.com/3BgtfaLSVp4CMyxtcU_yPER7HQZhp2M89UCX0ZlQqAo/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zZWN1/cmUuZ3JhdmF0YXIu/Y29tL2F2YXRhci9i/MDFmNTUyYTA3ZTI1/MzNhNDk4NjljNGM4/YTQwOWFjZWFkOTBk/NDc5NGZkNTc5MTky/NDVjNGRkNTRmZmQx/MTg4P3M9OTYmZD1t/bSZyPWc",
+                  "original": "https://secure.gravatar.com/avatar/b01f552a07e2533a49869c4c8a409acead90d4794fd57919245c4dd54ffd1188?s=96&d=mm&r=g"
+                }
+              }
+            ],
+            "date": "Jul 02, 2019",
+            "publisher": {
+              "type": "organization",
+              "name": "Random Nerd Tutorials",
+              "url": "https://randomnerdtutorials.com/"
+            }
+          },
+          "organization": {
+            "type": "organization",
+            "name": "Random Nerd Tutorials",
+            "contact_points": []
+          },
+          "extra_snippets": [
+            "This guide shows how to use the BME280 sensor module with Arduino to read pressure, temperature, humidity and estimate altitude.",
+            "The BME280 sensor module reads barometric pressure, temperature, and humidity. Because pressure changes with altitude, you can also estimate altitude. There are several versions of this sensor module.",
+            "#include <Wire.h> #include <Adafruit_Sensor.h> #include <Adafruit_BME280.h> As we’re going to use I2C communication, the following lines that define the SPI pins are commented: /*#define BME_SCK 13 #define BME_MISO 12 #define BME_MOSI 11 #define BME_CS 10*/ A variable called SEALEVELPRESSURE_HPA is created. ... This variable saves the pressure at the sea level in hectopascal (is equivalent to milibar). This variable is used to estimate the altitude for a given pressure by comparing it with the sea level pressure.",
+            "Wire the BME280 sensor to your Arduino board as shown in the following schematic diagram."
+          ]
+        },
+        {
+          "title": "Comprehensive Guide to the BMP280 Barometric Pressure and Altitude Sensor",
+          "url": "https://techknowlab.com/bmp280-sensor-for-barometric-pressure-and-altitude/",
+          "is_source_local": false,
+          "is_source_both": false,
+          "description": "Learn all about the BMP280 barometric pressure and altitude sensor—features, applications, and an Arduino tutorial for beginners.",
+          "page_age": "2026-01-31T15:08:44",
+          "profile": {
+            "name": "TechKnowLab",
+            "url": "https://techknowlab.com/bmp280-sensor-for-barometric-pressure-and-altitude/",
+            "long_name": "techknowlab.com",
+            "img": "https://imgs.search.brave.com/WgTAwl9PQZy3I8AvM4vPTLqb7ZQI35tRVGP4LcqHMfw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTVlZmRiNDli/OWQyMzQwODEyNWY0/MzJhNGI4ODFlNTdh/NmU1YzJhYjJhZjdi/ZDg1NmFmMzU4MTNk/YjFiMTAzZi90ZWNo/a25vd2xhYi5jb20v"
+          },
+          "language": "en",
+          "family_friendly": true,
+          "type": "search_result",
+          "subtype": "generic",
+          "is_live": false,
+          "meta_url": {
+            "scheme": "https",
+            "netloc": "techknowlab.com",
+            "hostname": "techknowlab.com",
+            "favicon": "https://imgs.search.brave.com/WgTAwl9PQZy3I8AvM4vPTLqb7ZQI35tRVGP4LcqHMfw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNTVlZmRiNDli/OWQyMzQwODEyNWY0/MzJhNGI4ODFlNTdh/NmU1YzJhYjJhZjdi/ZDg1NmFmMzU4MTNk/YjFiMTAzZi90ZWNo/a25vd2xhYi5jb20v",
+            "path": "  › home  › bmp280 sensor for barometric pressure and altitude"
+          },
+          "thumbnail": {
+            "src": "https://imgs.search.brave.com/lIz9jbIqCRuyfWhze8T48WCJIbqI2hv92UgdjD8XWwo/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly90ZWNo/a25vd2xhYi5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjUv/MDMvYm1wMjgwLTIu/anBlZw",
+            "original": "https://techknowlab.com/wp-content/uploads/2025/03/bmp280-2.jpeg",
+            "logo": false
+          },
+          "age": "January 31, 2026",
+          "extra_snippets": [
+            "To understand the BMP280’s place in the market, let’s compare it with similar sensors like the BME280, BMP180, and DPS310.",
+            "The BME280 is an upgraded version of the BMP280, adding humidity sensing to the mix. If your project requires humidity data (e.g., for a complete weather station), the BME280 might be a better choice."
+          ]
+        }
+      ],
+      "family_friendly": true
+    }
+  }
+}

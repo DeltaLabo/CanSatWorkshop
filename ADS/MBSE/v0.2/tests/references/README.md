@@ -1,6 +1,6 @@
 # ADS v0.2 test-reference corpus
 
-This directory contains the saved search results and source documents used to derive the ADS subsystem test plan in `../READNE.md`. Sources were selected for CanSat mission context, NASA-style verification planning, GNSS performance, I2C/IMU/GPS device behavior, software-test process guidance, and statistical acceptance methods.
+This directory contains the saved search results and source documents used to derive the ADS subsystem test plan in `../README.md`. Sources were selected for CanSat mission context, NASA-style verification planning, GNSS performance, I2C/IMU/GPS device behavior, software-test process guidance, and statistical acceptance methods.
 
 ## Search records
 

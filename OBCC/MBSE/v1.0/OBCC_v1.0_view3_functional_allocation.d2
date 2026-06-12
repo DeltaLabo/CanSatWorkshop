@@ -182,10 +182,11 @@ system: "[System] Physical System" {
             check_critical_peripherals: "[F] Check critical\nperipherals" { class: func }
             check_noncritical_peripherals: "[F] Check non-critical\nperipherals" { class: func }
             collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
-            disable_failed_noncritical_getters: "[F] Disable failed\nnon-critical getters" { class: func }
-            enter_error_state: "[F] Enter error\nstate" { class: func }
+            disable_failed_sensor_getters: "[F] Disable failed\nsensor getters" { class: func }
+            enter_error_state: "[F] Enter safe/error\nstate" { class: func }
             count_timeouts: "[F] Count\ntimeouts" { class: func }
             reset_timeouts: "[F] Reset\ntimeouts" { class: func }
+            classify_runtime_faults: "[F] Classify runtime\nfaults" { class: func }
             publish_health_flags: "[F] Publish\nhealth flags" { class: func }
           }
 
@@ -268,6 +269,7 @@ system: "[System] Physical System" {
             grid-columns: 2
             set_servo_init_state: "[F] Set Servo\ninit state" { class: func }
             evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+            evaluate_emergency_deploy_need: "[F] Evaluate emergency\ndeploy need" { class: func }
             inhibit_deployment_in_standby: "[F] Inhibit deployment\nin Stand-by" { class: func }
             send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
             send_close_signal_to_servo: "[F] Send close signal\nto Servo" { class: func }
@@ -357,7 +359,7 @@ note_freertos: "[C] Multiple FreeRTOS tasks are allowed\non the dual-core XIAO E
   shape: page
 }
 
-note_health: "[C] Startup policy:\ncritical failure prevents runtime;\nnon-critical failure disables\ndependent getters" {
+note_health: "[C] Startup policy:\ncritical failure prevents runtime.\nRuntime sensor faults use bounded\nerror codes and may request\nemergency deploy if needed." {
   class: note
   shape: page
 }
@@ -372,7 +374,7 @@ note_payload: "[C] v1.0 telemetry excludes\nrelative humidity; keep Pitch, Roll,
   shape: page
 }
 
-note_deploy_deadline: "[C] In On mode, open parachute\n≤5 s after trigger conditions\nare met" {
+note_deploy_deadline: "[C] In On mode, open parachute\n≤5 s after trigger conditions\nor emergency request are met" {
   class: note
   shape: page
 }

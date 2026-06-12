@@ -1,6 +1,8 @@
 # OBCC MBSE v1.0 scenario-based test plan
 
-This folder is a test/reference corpus for the Capella-style D2 Physical Architecture model in `OBCC/MBSE/v1.0`. It was prepared from the diagrams only; the D2/PNG views are not modified.
+This folder is a test/reference corpus for the Capella-style D2 Physical Architecture model in `OBCC/MBSE/v1.0`. It was prepared from the diagrams only.
+
+Project-wide IVV conventions, statistics, rate terminology, fault semantics, and artifact paths are defined in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md). In this plan, subsystem modules shown around the OBCC are integration context, not OBCC ownership. Internal sensor/control collection may run at `≥5 Hz`, while v1.0 LoRa heartbeat/status/measurement telemetry is modeled as a `2 s` downlink cadence. Startup critical-component checks gate flight readiness; mid-flight sensor/getter faults must return bounded error codes, appear in telemetry, and let OBCC/PDM command emergency deployment when required instead of blocking the scheduler.
 
 ## Model views read
 
@@ -13,7 +15,7 @@ This folder is a test/reference corpus for the Capella-style D2 Physical Archite
 | Telemetry chain | `OBCC_v1.0_view5_telemetry_downlink_chain.d2` | Sensor sampling, payload encoding, 2 s LoRa heartbeat/status/measurement downlink, ground decode/display/store. |
 | Command/state chain | `OBCC_v1.0_view6_command_state_chain.d2` | Wireless On/Standby command path; no serial-console operator for v1.0. |
 | Deployment gate chain | `OBCC_v1.0_view7_deployment_gating_chain.d2` | Deployment inhibited in Standby; in On, trigger must actuate servo within 5 s; telemetry continues. |
-| Runtime fault chain | `OBCC_v1.0_view8_runtime_fault_handling_chain.d2` | Getter timeouts, bus protection, error flags, safe/degraded behavior, telemetry of health/status. |
+| Runtime fault chain | `OBCC_v1.0_view8_runtime_fault_handling_chain.d2` | Getter timeouts, bus protection, error flags, non-blocking runtime sensor-fault disclosure, emergency-deploy request path when needed, and telemetry of health/status. |
 
 ## Reference basis
 
@@ -32,6 +34,8 @@ Primary sources used to shape the plan:
 - LoRa outdoor PDR literature: packet-delivery ratio depends on range, environment, antenna orientation/weather; PDR must be measured in the final test geometry.
 
 ## Test philosophy and statistics
+
+This section applies the common policy in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md).
 
 1. **Trace every scenario to a model chain.** Each test below cites the view(s) it verifies and produces evidence that can close a verification matrix row.
 2. **Use ECSS-style tailoring.** For this educational CanSat, the environmental levels are tailored from CanSat/GEVS practice; they are not a substitute for launcher-required qualification unless a launch provider accepts the tailoring.
@@ -107,9 +111,9 @@ Method codes: **I** inspection, **A** analysis, **D** demonstration, **T** test.
 
 | ID | Scenario | Views | Method | Evidence and pass criteria |
 |---|---|---:|---|---|
-| OBCC-T19 | Sensor getter timeout/error does not block the scheduler. | Runtime fault, telemetry, logical | T | Force I2C/UART/SPI NACK, timeout, stuck-bus, malformed sensor data and radio-busy conditions. Pass: getter returns within its configured timeout, error counters/health flags update, queues do not overflow, watchdog does not reset, and the next healthy sample clears or ages the fault as specified. For timeout limits, use 59 in-limit samples for 95/95. |
-| OBCC-T20 | Runtime critical fault transitions to safe/error behavior. | Runtime fault, startup, telemetry | T | Induce runtime RFM95W, BME280 or servo critical faults after nominal startup. Pass: critical-fault state/status is emitted if the radio path remains available; unsafe deployment is prevented; recovery or latch behavior matches the model. Use 29/29 per critical fault class for >=90%/95% event success. |
-| OBCC-T21 | Runtime non-critical faults produce degraded telemetry without losing core functions. | Runtime fault, telemetry | T | Induce GPS/ICM/INA transient and persistent failures. Pass: invalid fields/health flags are visible; heartbeat and command handling continue; no reset loop. Use 29/29 per fault class for >=90%/95% event success. |
+| OBCC-T19 | Sensor getter timeout/error does not block the scheduler. | Runtime fault, telemetry, logical | T | Force I2C/UART/SPI NACK, timeout, stuck-bus, malformed sensor data and radio-busy conditions. Pass: getter returns within its configured timeout, error/result code is inserted in the affected field, health flags update, queues do not overflow, watchdog does not reset, and the next healthy sample clears or ages the fault as specified. For timeout limits, use 59 in-limit samples for 95/95. |
+| OBCC-T20 | Runtime critical actuator/radio fault transitions to safe/error behavior. | Runtime fault, startup, telemetry | T | Induce runtime RFM95W radio-path and servo/deployment-path faults after nominal startup. Pass: critical-fault state/status is emitted if the radio path remains available; unsafe deployment is prevented; recovery or latch behavior matches the model. Use 29/29 per critical fault class for >=90%/95% event success. |
+| OBCC-T21 | Runtime sensor faults produce error-coded telemetry and emergency-safe behavior without losing core scheduling. | Runtime fault, telemetry, deployment gate | T | Induce BME280, GPS, ICM20948 and INA219 transient and persistent failures after nominal startup. Pass: invalid/error-coded fields and health flags are visible; heartbeat and command handling continue; no reset loop; if the modeled safety policy requires emergency deployment in On mode, an emergency deploy request reaches the deployment gate while Standby inhibition remains active. Use 29/29 per fault class for >=90%/95% event success, plus 59 in-limit samples for any timeout claim. |
 | OBCC-T22 | End-to-end mission-window operation is stable. | All chains | T | Run a flight-like sequence: boot, health, Standby telemetry, command On, acquisition, >=500 m or RF-emulated downlink, trigger/no-trigger cases, command Standby, fault injection if safe. Duration: expected mission duration plus 20%; if unknown, use at least 30 min. Pass: no unexplained reset/deadlock, telemetry PDR meets OBCC-T09 criterion for the run, command/deployment timing criteria are met. |
 
 ### Environmental and readiness scenarios
@@ -124,7 +128,7 @@ Method codes: **I** inspection, **A** analysis, **D** demonstration, **T** test.
 
 ## Minimum artifacts per executed test
 
-For each scenario, save:
+For each scenario, save evidence under `results/<test-id>/` inside this `tests/` folder:
 
 1. Test procedure or checklist version.
 2. Hardware/software configuration and model view revision.

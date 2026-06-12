@@ -12,9 +12,11 @@ The test scope is the CanSat Power Distribution Subsystem and Energy Storage Sub
 
 References and saved source files are in `references/`.
 
+Project-wide IVV conventions, statistics, rate terminology, fault semantics, and artifact paths are defined in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md). PDS/ESS tests may impose stricter safety or protection-demonstration sample sizes than the common defaults.
+
 ## Statistical policy
 
-Use these rules for all tests unless a stricter standard or component datasheet applies.
+Use the project-wide policy in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md) for all tests unless a stricter standard, component datasheet, or modeled safety constraint applies.
 
 - Binary success/failure trials: if zero failures are observed in `n` independent trials, the one-sided 95% upper confidence bound on failure probability is `1 - 0.05^(1/n)`.
   - To support the model constraint `Probability < 1%` at 95% confidence: `n = 299` failure-free demanded protection trials are required.
@@ -54,3 +56,7 @@ Use these rules for all tests unless a stricter standard or component datasheet 
 - Software timing constraints (`Process < 5 ms`, `I2C timeout ≤ 5 ms`, no blocking except comms): T06, T07, T08.
 - Physical/environmental survivability: T12, T13, T14.
 - PCB manufacturability: T16.
+
+## Evidence to archive per test
+
+For each test run, save evidence under `results/<test-id>/` inside this `tests/` folder: procedure/checklist version, model baseline, as-tested hardware/software configuration, raw voltage/current/temperature/log files, photos where applicable, pass/fail calculations including exact confidence bounds, deviations, anomalies, and retest evidence.

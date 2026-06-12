@@ -11,6 +11,8 @@ This corpus targets all ADS Capella/D2 views under `ADS/MBSE/`:
 
 It is an umbrella corpus: it normalizes what persists across versions, identifies version-specific deltas, and defines verification scenarios that can be applied to any ADS version where the relevant model element exists.
 
+Project-wide IVV conventions, statistics, rate terminology, fault semantics, and artifact paths are defined in [`../../../PM&SE/IVV.md`](../../../PM&SE/IVV.md). Serial0 logging is a development interface for pre-v1.0 baselines; `5 Hz` is an internal ADS acquisition/collection rate, not the v1.0 LoRa downlink telemetry cadence.
+
 ## 2. Source views
 
 | Version | D2 views read into the corpus |
@@ -70,12 +72,12 @@ It is an umbrella corpus: it normalizes what persists across versions, identifie
 
 ## 6. Statistical acceptance rules
 
-Use these common acceptance rules unless a project-specific requirement supersedes them.
+Use the project-wide policy in [`../../../PM&SE/IVV.md`](../../../PM&SE/IVV.md) unless a project-specific requirement supersedes it.
 
-1. **Continuous upper-bound limits** (`<5 m`, `<30 deg/s`, `<5 ms`, `<=5 ms`): collect at least `n=59` independent samples per test condition. Passing all 59 samples below the limit is a non-parametric one-sided 95/95 tolerance demonstration.
-2. **Boolean pass/fail checks**: `n=59` successes with zero failures demonstrates at least 95% reliability at 95% confidence under a non-parametric zero-failure binomial rule.
-3. **Rate checks**: for a 5 Hz target, nominal period is 200 ms. Evaluate mean rate, per-sample periods, and worst gaps.
-4. **Characterization vs verification**: if fewer than 59 samples are collected, report the achieved confidence and mark the result as characterization unless an exact statistical calculation is included.
+1. **Measurement accuracy** (`<5 m`, `<30 deg/s`): collect at least `n ≥ 30` stable samples per test condition, report uncertainty, and guard-band pass/fail decisions.
+2. **Timing/deadline limits** (`<5 ms`, `<=5 ms`) and 95/95 tolerance claims: collect `n = 59` representative samples with every sample inside the limit.
+3. **Boolean pass/fail checks:** use exact one-sided binomial / Clopper-Pearson bounds; `29/29` supports R90/C95 and `59/59` supports about R95/C95.
+4. **Rate checks:** for an internal 5 Hz target, nominal period is 200 ms. Evaluate mean rate, per-sample periods, stale/dropped values, and worst gaps.
 
 ## 7. Cross-version scenario catalogue
 

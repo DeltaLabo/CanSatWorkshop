@@ -1,6 +1,6 @@
 # ADS v0.2 test plan and reference corpus
 
-> File name intentionally follows the requested `READNE.md` spelling. No D2/Capella diagrams were edited while preparing this plan.
+> No D2/Capella diagrams were edited while preparing this plan.
 
 ## 1. Scope
 
@@ -16,6 +16,8 @@ This test plan covers the ADS subsystem modelled in `ADS/MBSE/v0.2/`:
 - `ADS_v0.2_view8_serial_logging_chain.d2`: init states and measurements logged via Serial0.
 
 Primary verification method is **test**, supported by **inspection** and **analysis** where noted.
+
+Project-wide IVV conventions, statistics, rate terminology, fault semantics, and artifact paths are defined in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md). ADS v0.2 is an incremental-delivery baseline: Serial0 logging is a development verification interface, while `5 Hz` means the internal ADS collection rate used by downstream flight logic.
 
 ## 2. Reference corpus
 
@@ -69,12 +71,12 @@ Recommended data to log for every runtime test:
 
 ## 5. Statistical acceptance rules
 
-Use these rules unless a scenario gives a stricter criterion.
+Use the project-wide policy in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md) unless a scenario gives a stricter criterion.
 
-1. **Continuous upper-bound requirements** (`<5 m`, `<30 deg/s`, `<5 ms`, `<=5 ms`): collect at least `n=59` independent samples per condition. Passing all 59 samples below the limit is a non-parametric one-sided 95/95 tolerance demonstration: at 95% confidence, at least 95% of the population is below the observed maximum.
-2. **Boolean success/failure requirements**: `n=59` successes with zero failures demonstrates at least 95% reliability at 95% confidence for that scenario using the non-parametric binomial zero-failure rule.
-3. **Rate requirements**: evaluate both average rate and worst inter-sample gaps. The ADS target is `5 Hz`, so nominal period is `200 ms`.
-4. **If fewer than 59 samples are feasible**, record the achieved confidence and mark the result as characterization unless an exact binomial/tolerance-interval calculation is supplied with the report.
+1. **Continuous measurement accuracy** (`<5 m`, `<30 deg/s`): collect at least `n ≥ 30` stable samples per condition, report bias/dispersion/expanded uncertainty, and guard-band the pass/fail decision.
+2. **Timing/deadline requirements** (`<5 ms`, `<=5 ms`) and 95/95 tolerance claims: collect `n = 59` representative samples with every sample inside the limit.
+3. **Boolean success/failure requirements:** use exact one-sided binomial / Clopper-Pearson bounds; `29/29` supports R90/C95 and `59/59` supports about R95/C95.
+4. **Rate requirements:** evaluate mean rate and worst inter-sample gaps. The ADS target is internal `5 Hz`, so nominal period is `200 ms`.
 
 ## 6. Scenario tests
 
@@ -258,7 +260,7 @@ For each executed scenario, record:
 - Diagram/view requirements covered.
 - Date, operator, location, and equipment calibration/source.
 - Procedure deviations.
-- Raw data path and analysis script path.
+- Raw data path under `results/<test-id>/` and analysis script path.
 - Pass/fail result against each acceptance criterion.
 - Anomalies, suspected cause, corrective action, and retest status.
 

@@ -60,11 +60,11 @@ ADS v0.3 — PCB-only delivery physical view ([D2 source](./MBSE/v0.3/ADS_v0.3_v
 | The ADS must determine the angles of rotation in 3 axes with an accuracy of 30 deg/s. | Communication Test |
 | The ADS must determine the acceleration in 3 axes with an accuracy of 30 deg/s^2. | Communication Test |
 | The ADS  must determine the orientation  to the north. | Integration Test |
-| All ADS data must be transmitted to the OBCC with a rate of 5 Hz. | Communication Test |
+| All ADS data needed by flight logic must be delivered internally to the OBCC with an update rate of at least 5 Hz; this is separate from the v1.0 LoRa telemetry cadence. | Communication Test |
 
 ### Success Criteria
 
-The ADS presents a functional design capable of determining the CanSat’s position, orientation, acceleration, and rotation with the required accuracy, ensuring data transmission to the OBCC
+The ADS presents a functional design capable of determining the CanSat’s position, orientation, acceleration, and rotation with the required accuracy, ensuring internal data delivery to the OBCC.
 
 ## Components
 

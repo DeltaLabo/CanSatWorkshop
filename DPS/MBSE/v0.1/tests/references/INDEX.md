@@ -1,6 +1,6 @@
 # DPS v0.1 test reference corpus
 
-This folder contains the search outputs and fetched source artifacts used to prepare `../READNE.md`.
+This folder contains the search outputs and fetched source artifacts used to prepare `../README.md`.
 
 ## Search records
 

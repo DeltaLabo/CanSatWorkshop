@@ -4,7 +4,7 @@ vars: {
   }
 }
 
-# Functional chain: OBCC deployment decision, Stand-by inhibition, and servo command.
+# Functional chain: OBCC normal/emergency deployment decision, Stand-by inhibition, and servo command.
 direction: right
 
 classes: {
@@ -57,6 +57,7 @@ chain: "OBCC v1.0 — Deployment gating chain" {
   calculate_altitude: "[F] Calculate\naltitude" { class: func }
   publish_state_metadata: "[F] Publish state\nmetadata" { class: func }
   evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+  evaluate_emergency_deploy_need: "[F] Evaluate emergency\ndeploy need" { class: func }
   inhibit_deployment_in_standby: "[F] Inhibit deployment\nin Stand-by" { class: func }
   send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
   reach_open_position: "[F] Reach open\nposition" { class: func }
@@ -67,12 +68,17 @@ chain: "OBCC v1.0 — Deployment gating chain" {
     shape: page
   }
 
-  note_standby: "[C] Stand-by state shall never\nproduce an open-servo command." {
+  note_standby: "[C] Stand-by state shall never\nproduce an open-servo command,\nincluding emergency-deploy\nrequests." {
     class: note
     shape: page
   }
 
-  note_deadline: "[C] In On mode, open parachute\n≤5 s after trigger conditions\nare met." {
+  note_emergency: "[C] Runtime sensor faults do\nnot block. If descent-state\nobservability is lost in On,\nrequest emergency deploy." {
+    class: note
+    shape: page
+  }
+
+  note_deadline: "[C] In On mode, open parachute\n≤5 s after trigger conditions\nor emergency request are met." {
     class: note
     shape: page
   }
@@ -85,18 +91,23 @@ chain.collect_measurements -> chain.calculate_pitch_roll_yaw: "[FE] Accels + fie
 chain.collect_measurements -> chain.process_accelerations: "[FE] Accels []" { class: fe }
 chain.collect_measurements -> chain.process_angular_velocities: "[FE] Angular\nvelocities []" { class: fe }
 chain.collect_measurements -> chain.calculate_altitude: "[FE] Pressure []" { class: fe }
+chain.collect_measurements -> chain.evaluate_emergency_deploy_need: "[FE] Getter result\ncodes []" { class: fe }
 chain.calculate_pitch_roll_yaw -> chain.evaluate_deployment_condition: "[FE] Pitch, roll, yaw []" { class: fe }
 chain.process_accelerations -> chain.evaluate_deployment_condition: "[FE] Accelerations []" { class: fe }
 chain.process_angular_velocities -> chain.evaluate_deployment_condition: "[FE] Angular\nvelocities []" { class: fe }
 chain.calculate_altitude -> chain.evaluate_deployment_condition: "[FE] Altitude []" { class: fe }
 chain.publish_state_metadata -> chain.evaluate_deployment_condition: "[FE] State\n[On / Stand-by]" { class: fe }
+chain.publish_state_metadata -> chain.evaluate_emergency_deploy_need: "[FE] State\n[On / Stand-by]" { class: fe }
 chain.evaluate_deployment_condition -> chain.inhibit_deployment_in_standby: "[FE] Trigger met\n+ Stand-by []" { class: fe }
+chain.evaluate_emergency_deploy_need -> chain.inhibit_deployment_in_standby: "[FE] Emergency needed\n+ Stand-by []" { class: fe }
 chain.inhibit_deployment_in_standby -> chain.retain_position: "[FE] Keep closed []" { class: fe }
 chain.evaluate_deployment_condition -> chain.send_open_signal_to_servo: "[FE] Trigger met\n+ On []" { class: fe }
+chain.evaluate_emergency_deploy_need -> chain.send_open_signal_to_servo: "[FE] Emergency needed\n+ On []" { class: fe }
 chain.evaluate_deployment_condition -> chain.retain_position: "[FE] Trigger not\nmet []" { class: fe }
 chain.send_open_signal_to_servo -> chain.reach_open_position: "[FE] Open signal\n[PWM]" { class: fe }
 chain.reach_open_position -> chain.retain_position: "[FE] Servo reached\nopen position []" { class: fe }
 
 chain.note_trigger -> chain.evaluate_deployment_condition { class: cstr }
 chain.note_standby -> chain.inhibit_deployment_in_standby { class: cstr }
+chain.note_emergency -> chain.evaluate_emergency_deploy_need { class: cstr }
 chain.note_deadline -> chain.send_open_signal_to_servo { class: cstr }

@@ -84,7 +84,7 @@ The AMS has established a preliminary design capable of accurately measuring tem
 | --- | --- |
 | The Atmosferic Measurement System must be capable of collecting temperature data in the immediate environment of the CanSat with an accuracy of ±10°C. | Temperature Test |
 | The Atmosferic Measurement System must be capable of collecting the atmospheric pressure at an accuracy sufficient to detect changes equivalent to a minimum altitude variation of 10 meters, corresponding to a pressure change of 130 Pa, based on a lapse rate of 13 Pa per meter. | Flight Test |
-| The Atmospheric Measurement System data must be transmitted in real-time to the On Board Computer & Communication System (OBCC) with an update rate of at least 5 Hz. | Communication Test |
+| The Atmospheric Measurement System data needed by flight logic must be delivered internally to the On Board Computer & Communication System (OBCC) with an update rate of at least 5 Hz; this is separate from the v1.0 LoRa telemetry cadence. | Communication Test |
 
 ## Components
 

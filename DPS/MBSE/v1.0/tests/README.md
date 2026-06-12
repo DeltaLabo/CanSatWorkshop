@@ -2,6 +2,8 @@
 
 Planning artifact for the Capella/D2 Physical Architecture views in `DPS/MBSE/v1.0/`. The diagrams were read for traceability only and were not modified.
 
+Project-wide IVV conventions, statistics, rate terminology, fault semantics, and artifact paths are defined in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md). For v1.0 flight operations, `2 s` is the OBCC LoRa heartbeat/status/measurement telemetry cadence; 5 Hz DPS tests are lab/performance stress cases unless a modeled chain explicitly requires a 5 Hz payload path.
+
 ## 1. Model views read
 
 Current test scope is **DPS v1.0**, because `DPS/README.md` identifies it as the full Capella XML-to-D2 architecture. The older v0.1 and v0.2 folders are hardware-downgraded/development variants; v0.1 already has its own test plan.
@@ -30,25 +32,15 @@ Reference IDs used below:
 
 ## 3. Statistical policy
 
+Apply the project-wide policy in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md) unless a scenario states a stricter criterion.
+
 For binary scenario outcomes such as received frames, decoded frames, accepted commands, rejected corrupt frames, and successful restarts:
 
-- Record `N`, successes, failures, and the one-sided lower confidence bound for success probability.
-- Use exact binomial/Clopper-Pearson intervals where possible.
-- If all `N` trials succeed, the one-sided lower confidence bound at confidence `C` is:
+- Record `N`, successes, failures, and the one-sided 95% exact binomial / Clopper-Pearson lower confidence bound for success probability.
+- Useful zero-failure planning points at 95% confidence: `29/29` supports R90/C95, `59/59` supports about R95/C95, `300/300` supports about R99/C95.
+- For PDR claims, pass only when the exact lower bound meets the required PDR.
 
-```text
-p_lower = (1 - C)^(1/N)
-```
-
-Useful planning points for zero failures at 95% confidence:
-
-| Trials `N` | Demonstrated lower bound |
-| ---: | ---: |
-| 60 | about 95% |
-| 300 | about 99% |
-| 6000 | about 99.95% if trials are independent |
-
-For continuous outcomes such as latency, inter-arrival time, RSSI, SNR, CPU load, memory use, queue depth, and voltage: retain raw logs and report min/mean/median/p95/max. Do not assume all high-rate frame samples are statistically independent; use them for performance evidence and use independent restarts/fault injections for reliability claims.
+For continuous outcomes such as latency, inter-arrival time, RSSI, SNR, CPU load, memory use, queue depth, and voltage: retain raw logs and report min/mean/median/p95/max. Use 59 representative in-limit samples for 95/95 deadline claims. Do not assume all high-rate frame samples are statistically independent; use them for performance evidence and use independent restarts/fault injections for reliability claims.
 
 ## 4. Scenario-based test list
 
@@ -59,7 +51,7 @@ For continuous outcomes such as latency, inter-arrival time, RSSI, SNR, CPU load
 | DPS-T-003 | Ground forwarder initializes Serial0 and SPI successfully. | Expected use case | View 9: `Init Serial0 with interrupts` -> `Init SPI with interrupts` | Restart ground station and verify Serial0 IRQ, SPI IRQ, and LoRa register access. | 60 independent restarts with zero init failures demonstrates about 95% init success lower bound at 95% confidence. | R1-R5, R8 |
 | DPS-T-004 | Ground forwarder reports initialization faults instead of silently operating. | Feared event | View 9: `Init SPI with interrupts` -> `Log error` | Inject missing/miswired radio, SPI fault, and UART unavailable cases. | 20 trials per fault class; 100% produce an error log and no false ready state. | R1-R3, R8 |
 | DPS-T-005 | CanSat transmit path emits valid LoRa frames when OBCC provides a packet. | Expected use case | View 7: `Send LoRa packet` -> `Transmit outgoing data` | Unit/integration test with timestamped payloads and near-field receiver; include radio-ready checks. | 60 transmissions, zero missing sequence numbers at receiver; no buffer overrun; no TX while radio not ready. | R8-R12 |
-| DPS-T-006 | DPS receives, decodes, stores, and timestamps OBCC telemetry at the required 5 Hz rate. | Expected use case / performance | Views 4 and 7; `Forward to PC`, `Read and decode frame`, `Append to CSV`; DPS requirement >= 5 Hz | Send timestamped payload frames at 5 Hz for 60 s from CanSat to ground station to PC. | `N=300`; decoded+stored success lower 95% bound >= 0.95; CSV row count equals accepted decoded frames; p95 end-to-end latency < 1 s. | R1-R5, R8-R15 |
+| DPS-T-006 | DPS receives, decodes, stores, and timestamps OBCC telemetry at the v1.0 flight cadence. | Expected use case / performance | Views 4 and 7; `Forward to PC`, `Read and decode frame`, `Append to CSV`; OBCC telemetry cadence = 2 s | Send timestamped payload frames at 2 s cadence from CanSat to ground station to PC for at least 10 min; optionally repeat at 5 Hz as a lab stress/performance margin test. | Flight-cadence run: `N≥300`; decoded+stored success lower 95% bound >= 0.95; CSV row count equals accepted decoded frames; p95 end-to-end latency < 1 s. Optional 5 Hz stress is reported separately. | R1-R5, R8-R15 |
 | DPS-T-007 | 500 m CanSat-to-DPS separation is achievable under legal radio settings. | Expected use case / boundary | Views 1-3 constraint: max separation 500 m | Field test at 500 m line-of-sight or controlled RF equivalent path loss; log RSSI/SNR, packet sequence, antennas, frequency, bandwidth, SF, coding rate, TX power. | `N=300`; PDR lower 95% bound >= 0.95; no sustained outage > 1 s in nominal conditions; radio settings comply with local regulations. | R6-R15 |
 | DPS-T-008 | Corrupt or unreadable downlink frames are rejected and logged. | Feared event | View 4: `Read payload` -> `Log error`; `Read and decode frame` | Inject bad CRC, truncated payload, invalid field count, bad timestamp, non-numeric/out-of-range values, and wrong sync/frequency frames. | 60 corrupt frames per class; zero corrupt frames enter payload queue, CSV, or dashboard; every rejection logged with reason. | R1-R5, R8-R11 |
 | DPS-T-009 | CSV files are uniquely named and preserve all accepted payloads. | Expected use case | Views 3-4: `Append to CSV`; constraint unique name based on initial timestamp | Start 10 logging sessions, including rapid back-to-back starts; feed known payload sequences. | Zero overwritten files; filenames unique; row order monotonic by receive timestamp; row count/checksum matches accepted payloads. | R1-R3 |
@@ -69,10 +61,10 @@ For continuous outcomes such as latency, inter-arrival time, RSSI, SNR, CPU load
 | DPS-T-013 | Toggle cooldown prevents command spam. | Feared event | View 5: `Disable toggle` -> `Cooldown` -> `Enable toggle`; constraint 5 s | Rapid-click/toggle during cooldown; repeat after exactly 5 s. | 30 bursts; only first toggle in each burst enqueues a command; UI disabled during cooldown; re-enabled at `5.0 s ± 0.5 s`. | R1-R3 |
 | DPS-T-014 | CanSat receive path extracts command frames only after valid LoRa RX indication. | Expected use case / feared stale command | View 6: `Receive incoming data` -> `Receive LoRa RX Interrupt` -> `Read command` | Send valid command frames; separately spoof/no-frame interrupts and old-buffer conditions. | 60 valid commands accepted; 60 spoof/no-frame cases rejected; no stale command is re-read. | R1-R5, R8-R12 |
 | DPS-T-015 | Decoder, CSV writer, and dashboard remain stable under concurrent sustained load. | Expected use case / stress | Views 2-4 and 8: concurrent decoder/CSV/dashboard execution | Replay or generate a 5 Hz payload stream for 20 min while dashboard is open and CSV is writing. | `N=6000` frames; no process crash; queue backlog returns to zero; p95 pipeline latency < 1 s; memory growth bounded and explained. | R1-R5 |
-| DPS-T-016 | USB/UART interruption is handled without corrupting state. | Feared event | Views 1-5: USB-C cable, UART CE, `Check if data is available`, `Forward to PC` | Disconnect USB/UART for 10 s during a 5 Hz stream, reconnect, and continue. | 10 interruptions; decoder does not crash; CSV remains parseable; dashboard indicates stale/no data; stream resumes without duplicate timestamps. | R1-R3, R11-R13 |
+| DPS-T-016 | USB/UART interruption is handled without corrupting state. | Feared event | Views 1-5: USB-C cable, UART CE, `Check if data is available`, `Forward to PC` | Disconnect USB/UART for 10 s during a 2 s flight-cadence telemetry stream; optionally repeat during 5 Hz lab stress, reconnect, and continue. | 10 interruptions; decoder does not crash; CSV remains parseable; dashboard indicates stale/no data; stream resumes without duplicate timestamps. | R1-R3, R11-R13 |
 | DPS-T-017 | Co-channel and near-channel RF traffic does not create accepted false payloads or commands. | Feared event | LoRa transceiver functions and 500 m/radio constraints | Operate a second LoRa transmitter with wrong sync word and at frequencies separated by at least 100 kHz; then test deliberate same-channel interference. | 300 foreign frames; zero false accepted payloads/commands. Same-channel interference may reduce PDR but must be measured and reported, not silently misdecoded. | R6-R15 |
-| DPS-T-018 | Radio configuration is legal and compatible with payload rate. | Feared event / compliance | Views 1-7 LoRa links; 5 Hz requirement; regional radio references | Compute time-on-air, payload size, frequency/channel, EIRP/ERP, antenna gain, bandwidth/SF/coding rate, and duty cycle for the selected local band. | Configuration complies with applicable regional regulation before over-the-air tests. If 5 Hz LoRa airtime exceeds legal duty cycle, run 5 Hz performance tests in cabled/attenuated/shielded lab setup and field tests at legal airtime. | R6-R10 |
-| DPS-T-019 | Shared CanSat XIAO processing does not starve DPS LoRa handling. | Feared event / integration | View 2: OBCC plus ESS/ADS/PDM/AMS processing allocated to XIAO ESP32-S3; Views 4/7 LoRa chains | Run telemetry while representative ESS/ADS/PDM/AMS tasks execute at expected rates; log CPU time, ISR latency, queue depth, and dropped frames. | `N=300` minimum at 5 Hz; no missed LoRa IRQ due to processing load; p95 transmit/receive service latency within budget for <1 s end-to-end pipeline. | R1-R5, R8-R13 |
+| DPS-T-018 | Radio configuration is legal and compatible with flight cadence and any lab stress rate. | Feared event / compliance | Views 1-7 LoRa links; 2 s OBCC telemetry cadence; regional radio references | Compute time-on-air, payload size, frequency/channel, EIRP/ERP, antenna gain, bandwidth/SF/coding rate, and duty cycle for the selected local band. | Configuration complies with applicable regional regulation before over-the-air tests at the 2 s flight cadence. If 5 Hz stress airtime exceeds legal duty cycle, run 5 Hz performance tests only in cabled/attenuated/shielded lab setup. | R6-R10 |
+| DPS-T-019 | Shared CanSat XIAO processing does not starve DPS LoRa handling. | Feared event / integration | View 2: OBCC plus ESS/ADS/PDM/AMS processing allocated to XIAO ESP32-S3; Views 4/7 LoRa chains | Run 2 s flight-cadence telemetry while representative ESS/ADS/PDM/AMS internal tasks execute at expected rates; log CPU time, ISR latency, queue depth, and dropped frames. Optionally repeat with 5 Hz lab stress. | Flight-cadence run: `N≥300`; no missed LoRa IRQ due to processing load; p95 transmit/receive service latency within budget for <1 s end-to-end pipeline. Optional 5 Hz stress is reported separately. | R1-R5, R8-R13 |
 | DPS-T-020 | Power loss and recovery leaves the system in a defined safe state. | Feared event | View 3: USB power, PC/ground/CanSat functions; all chains | Remove/reapply PC USB power and CanSat power during idle, downlink, and command-uplink operations. | 10 trials per operating state; no partial command falsely executed; CSV remains parseable; software restarts to a known state and resumes after reinitialization. | R1-R3, R11-R13 |
 
 ## 5. Recommended execution order
@@ -86,7 +78,7 @@ For continuous outcomes such as latency, inter-arrival time, RSSI, SNR, CPU load
 
 ## 6. Evidence to archive per test
 
-For each test run, save:
+For each test run, save evidence under `results/<test-id>/` inside this `tests/` folder:
 
 - test ID, diagram version (`DPS v1.0`), hardware serial/configuration, software/firmware commit or hashes, date, operator;
 - radio settings: frequency, bandwidth, spreading factor, coding rate, sync word, TX power, antenna type/gain, cable/attenuator losses;

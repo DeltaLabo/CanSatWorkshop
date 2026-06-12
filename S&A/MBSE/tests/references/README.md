@@ -1,6 +1,6 @@
 # Reference corpus for S&A MBSE tests
 
-This folder contains the external standards/literature corpus used to define the S&A Physical Architecture test plan in `../READNE.md`.
+This folder contains the external standards/literature corpus used to define the S&A Physical Architecture test plan in `../README.md`.
 
 ## Search result archives
 

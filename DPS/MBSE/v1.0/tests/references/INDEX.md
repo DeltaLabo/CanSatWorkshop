@@ -1,6 +1,6 @@
 # DPS v1.0 test reference corpus
 
-This folder contains the search outputs and fetched source artifacts used to prepare `../READNE.md` for the Capella/D2 Physical Architecture views in `DPS/MBSE/v1.0/`.
+This folder contains the search outputs and fetched source artifacts used to prepare `../README.md` for the Capella/D2 Physical Architecture views in `DPS/MBSE/v1.0/`.
 
 ## Search records
 

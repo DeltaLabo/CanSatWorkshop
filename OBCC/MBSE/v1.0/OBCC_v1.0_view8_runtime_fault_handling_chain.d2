@@ -5,7 +5,8 @@ vars: {
 }
 
 # Functional chain: runtime getter result-code handling, timeout policy,
-# degraded operation, and critical-fault safe state.
+# non-blocking sensor-fault disclosure, emergency-deploy request policy,
+# degraded operation, and critical-fault safe/error state.
 direction: down
 
 classes: {
@@ -53,9 +54,11 @@ chain: "OBCC v1.0 — Runtime fault-handling chain" {
   call_variable_getters: "[F] Call variable\ngetters" { class: func }
   count_timeouts: "[F] Count\ntimeouts" { class: func }
   reset_timeouts: "[F] Reset\ntimeouts" { class: func }
-  disable_failed_noncritical_getters: "[F] Disable failed\nnon-critical getters" { class: func }
+  classify_runtime_faults: "[F] Classify runtime\nfaults" { class: func }
+  disable_failed_sensor_getters: "[F] Disable failed\nsensor getters" { class: func }
   replace_missing_value_with_error_code: "[F] Replace missing value\nwith error code" { class: func }
-  enter_error_state: "[F] Enter error\nstate" { class: func }
+  evaluate_emergency_deploy_need: "[F] Evaluate emergency\ndeploy need" { class: func }
+  enter_error_state: "[F] Enter safe/error\nstate" { class: func }
   publish_health_flags: "[F] Publish\nhealth flags" { class: func }
   add_heartbeat_status: "[F] Add heartbeat\nstatus" { class: func }
 
@@ -69,7 +72,17 @@ chain: "OBCC v1.0 — Runtime fault-handling chain" {
     shape: page
   }
 
-  note_policy: "[C] Critical runtime failure enters\nerror/safe state. Non-critical\nfailure degrades telemetry by\nusing error/null values." {
+  note_sensor_policy: "[C] Runtime sensor/getter faults\nreturn bounded error codes;\nthey shall not block or brick\nthe CanSat scheduler." {
+    class: note
+    shape: page
+  }
+
+  note_emergency_deploy: "[C] If a runtime sensor fault\nremoves safe descent-state\nobservability, OBCC/PDM may\nrequest emergency deploy." {
+    class: note
+    shape: page
+  }
+
+  note_critical_policy: "[C] Runtime radio, deployment-path,\nor power critical faults may\nenter safe/error behavior." {
     class: note
     shape: page
   }
@@ -78,11 +91,20 @@ chain: "OBCC v1.0 — Runtime fault-handling chain" {
 chain.collect_measurements -> chain.call_variable_getters: "[FE] Getter calls []" { class: fe }
 chain.call_variable_getters -> chain.reset_timeouts: "[FE] Successful\nresults []" { class: fe }
 chain.call_variable_getters -> chain.count_timeouts: "[FE] Timeout or\nerror result []" { class: fe }
-chain.count_timeouts -> chain.disable_failed_noncritical_getters: "[FE] Non-critical\nfault threshold []" { class: fe }
-chain.disable_failed_noncritical_getters -> chain.replace_missing_value_with_error_code: "[FE] Disabled getter\nmask []" { class: fe }
-chain.count_timeouts -> chain.enter_error_state: "[FE] Critical fault\nthreshold []" { class: fe }
+chain.count_timeouts -> chain.classify_runtime_faults: "[FE] Fault evidence\n+ counters []" { class: fe }
+chain.classify_runtime_faults -> chain.disable_failed_sensor_getters: "[FE] Sensor getter\nfault []" { class: fe }
+chain.disable_failed_sensor_getters -> chain.replace_missing_value_with_error_code: "[FE] Disabled getter\nmask []" { class: fe }
+chain.classify_runtime_faults -> chain.evaluate_emergency_deploy_need: "[FE] Descent-state\nuncertain []" { class: fe }
+chain.evaluate_emergency_deploy_need -> chain.publish_health_flags: "[FE] Emergency deploy\nrequest + reason []" { class: fe }
+chain.classify_runtime_faults -> chain.enter_error_state: "[FE] Radio/deployment/power\ncritical fault []" { class: fe }
 chain.reset_timeouts -> chain.replace_missing_value_with_error_code: "[FE] Valid\nvalues []" { class: fe }
 chain.replace_missing_value_with_error_code -> chain.publish_health_flags: "[FE] Corrected values\n+ result codes []" { class: fe }
-chain.enter_error_state -> chain.publish_health_flags: "[FE] Error state []" { class: fe }
+chain.enter_error_state -> chain.publish_health_flags: "[FE] Safe/error state []" { class: fe }
 chain.publish_health_flags -> chain.add_heartbeat_status: "[FE] Health flags []" { class: fe }
+
+chain.note_getters -> chain.call_variable_getters { class: cstr }
+chain.note_timeout -> chain.count_timeouts { class: cstr }
+chain.note_sensor_policy -> chain.disable_failed_sensor_getters { class: cstr }
+chain.note_emergency_deploy -> chain.evaluate_emergency_deploy_need { class: cstr }
+chain.note_critical_policy -> chain.enter_error_state { class: cstr }
 

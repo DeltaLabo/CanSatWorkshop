@@ -1,6 +1,6 @@
 # Reference corpus for PDS & ESS tests
 
-This folder contains the reproducible search records and retrieved reference sources used to draft `../READNE.md`.
+This folder contains the reproducible search records and retrieved reference sources used to draft `../README.md`.
 
 ## Search records
 

@@ -44,3 +44,4 @@ This directory contains the search records and locally saved source artifacts us
 - The model requires **wireless On/Standby commands** and explicitly removes a serial-console operator path for flight operations.
 - LoRa downlink performance is environment-sensitive, so the plan requires packet-delivery testing in the final antenna geometry at the modeled **>=500 m** range rather than relying on data-sheet range claims.
 - Repeated pass/fail events are evaluated with exact one-sided binomial confidence; timing/deadline limits use distribution-free one-sided tolerance logic when a 95/95 claim is needed.
+- Startup critical-component failures block operational mode, but runtime sensor/getter failures are expected to be bounded, error-coded, telemetry-visible, and non-blocking; emergency deployment is handled by the modeled deployment gate when needed.

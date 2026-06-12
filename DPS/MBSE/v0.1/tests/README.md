@@ -2,6 +2,8 @@
 
 This plan is derived from the Capella/D2 Physical Architecture views in `DPS/MBSE/v0.1/`. The diagrams themselves were not modified.
 
+Project-wide IVV conventions, statistics, rate terminology, fault semantics, and artifact paths are defined in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md). DPS v0.1 is an incremental-delivery baseline; its 5 Hz radio/PC stream tests are development performance checks and do not change the v1.0 OBCC `2 s` flight telemetry cadence.
+
 ## Scope read from the MBSE views
 
 - **Physical links:** datalogger circuitboard (`XIAO ESP32-S3` + `RFM95W LoRa`), ground-station circuitboard (`XIAO ESP32` + `RFM95W LoRa`), and PC connected through USB-C; maximum datalogger-to-ground-station separation is **500 m**.
@@ -29,16 +31,15 @@ The retrieved reference corpus is in [`references/`](./references/):
 
 ## Statistical treatment
 
+Apply the project-wide policy in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md) unless a scenario states a stricter criterion.
+
 For binary outcomes such as received frames, decoded frames, accepted commands, and rejected corrupt frames:
 
-- Record `N`, successes, failures, and the one-sided 95% lower confidence bound for success probability.
-- Prefer exact binomial/Clopper-Pearson intervals; if no failures occur, use `p_lower = 0.05^(1/N)`.
-- Useful planning points:
-  - `N = 60`, zero failures demonstrates `p >= 0.95` at 95% confidence.
-  - `N = 300`, zero failures demonstrates `p >= 0.99` at 95% confidence.
-  - `N = 300`, up to 8 failures still keeps the one-sided exact lower bound approximately at or above `0.95`.
+- Record `N`, successes, failures, and the one-sided 95% exact binomial / Clopper-Pearson lower confidence bound for success probability.
+- Useful zero-failure planning points at 95% confidence: `29/29` supports R90/C95, `59/59` supports about R95/C95, and `300/300` supports about R99/C95.
+- For PDR claims, pass only when the exact lower bound meets the required PDR.
 
-For continuous outcomes such as latency, inter-arrival time, RSSI/SNR, CPU/memory, and queue depth, report min/mean/median/p95/max and retain raw logs.
+For continuous outcomes such as latency, inter-arrival time, RSSI/SNR, CPU/memory, and queue depth, retain raw logs and report min/mean/median/p95/max; use 59 representative in-limit samples for 95/95 deadline claims.
 
 ## Planned tests, one per scenario
 
@@ -64,7 +65,7 @@ For continuous outcomes such as latency, inter-arrival time, RSSI/SNR, CPU/memor
 
 ## Evidence to archive per test
 
-For each test run, save:
+For each test run, save evidence under `results/<test-id>/` inside this `tests/` folder:
 
 - diagram version (`DPS v0.1`) and test ID,
 - firmware/software commit or file hashes,

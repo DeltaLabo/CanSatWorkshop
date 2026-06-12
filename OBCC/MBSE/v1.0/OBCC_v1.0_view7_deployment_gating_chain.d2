@@ -1,0 +1,102 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain: OBCC deployment decision, Stand-by inhibition, and servo command.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC v1.0 — Deployment gating chain" {
+  class: chain
+  direction: right
+
+  set_servo_init_state: "[F] Set Servo\ninit state" { class: func }
+  reach_closed_position: "[F] Reach closed\nposition" { class: func }
+  collect_measurements: "[F] Collect\nmeasurements" { class: func }
+  calculate_pitch_roll_yaw: "[F] Calculate\npitch, roll, yaw" { class: func }
+  process_accelerations: "[F] Process\naccelerations" { class: func }
+  process_angular_velocities: "[F] Process angular\nvelocities" { class: func }
+  calculate_altitude: "[F] Calculate\naltitude" { class: func }
+  publish_state_metadata: "[F] Publish state\nmetadata" { class: func }
+  evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+  inhibit_deployment_in_standby: "[F] Inhibit deployment\nin Stand-by" { class: func }
+  send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
+  reach_open_position: "[F] Reach open\nposition" { class: func }
+  retain_position: "[F] Retain\nposition" { class: func }
+
+  note_trigger: "[C] Deployment trigger uses\nADS ICM20948-derived IMU data\nand altitude state available\nto OBCC." {
+    class: note
+    shape: page
+  }
+
+  note_standby: "[C] Stand-by state shall never\nproduce an open-servo command." {
+    class: note
+    shape: page
+  }
+
+  note_deadline: "[C] In On mode, open parachute\n≤5 s after trigger conditions\nare met." {
+    class: note
+    shape: page
+  }
+}
+
+chain.set_servo_init_state -> chain.reach_closed_position: "[FE] Close signal\n[PWM]" { class: fe }
+chain.reach_closed_position -> chain.retain_position: "[FE] Servo closed []" { class: fe }
+
+chain.collect_measurements -> chain.calculate_pitch_roll_yaw: "[FE] Accels + field\nintensities []" { class: fe }
+chain.collect_measurements -> chain.process_accelerations: "[FE] Accels []" { class: fe }
+chain.collect_measurements -> chain.process_angular_velocities: "[FE] Angular\nvelocities []" { class: fe }
+chain.collect_measurements -> chain.calculate_altitude: "[FE] Pressure []" { class: fe }
+chain.calculate_pitch_roll_yaw -> chain.evaluate_deployment_condition: "[FE] Pitch, roll, yaw []" { class: fe }
+chain.process_accelerations -> chain.evaluate_deployment_condition: "[FE] Accelerations []" { class: fe }
+chain.process_angular_velocities -> chain.evaluate_deployment_condition: "[FE] Angular\nvelocities []" { class: fe }
+chain.calculate_altitude -> chain.evaluate_deployment_condition: "[FE] Altitude []" { class: fe }
+chain.publish_state_metadata -> chain.evaluate_deployment_condition: "[FE] State\n[On / Stand-by]" { class: fe }
+chain.evaluate_deployment_condition -> chain.inhibit_deployment_in_standby: "[FE] Trigger met\n+ Stand-by []" { class: fe }
+chain.inhibit_deployment_in_standby -> chain.retain_position: "[FE] Keep closed []" { class: fe }
+chain.evaluate_deployment_condition -> chain.send_open_signal_to_servo: "[FE] Trigger met\n+ On []" { class: fe }
+chain.evaluate_deployment_condition -> chain.retain_position: "[FE] Trigger not\nmet []" { class: fe }
+chain.send_open_signal_to_servo -> chain.reach_open_position: "[FE] Open signal\n[PWM]" { class: fe }
+chain.reach_open_position -> chain.retain_position: "[FE] Servo reached\nopen position []" { class: fe }
+
+chain.note_trigger -> chain.evaluate_deployment_condition { class: cstr }
+chain.note_standby -> chain.inhibit_deployment_in_standby { class: cstr }
+chain.note_deadline -> chain.send_open_signal_to_servo { class: cstr }

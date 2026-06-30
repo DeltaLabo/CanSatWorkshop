@@ -1,0 +1,85 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain view: inspection sequence definition for ADS-IVV-I-PCPL-ALL.
+# Although the IADT method is Inspection, this chain captures the verification sequence and pass/fail constraints.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-I-PCPL-ALL — PC/PL inspection sequence\nRefs: IVV; NASA-SE; Workmanship; ADS MBSE plan" {
+  class: chain
+  direction: down
+
+  read_environment: "[F] Read and record\nambient conditions" { class: func }
+  select_version: "[F] Select version\nand article ID" { class: func }
+  generate_checklist: "[F] Generate modeled\nPC/PL checklist" { class: func }
+  inspect_pcs: "[F] Inspect PC presence,\nidentity, orientation,\nsecurity, damage" { class: func }
+  inspect_pls: "[F] Inspect PL presence,\nrouting, mating,\nworkmanship" { class: func }
+  measure_links: "[F] Measure continuity\nand isolation" { class: func }
+  measure_power: "[F] Check current-limited\n3V3 power paths" { class: func }
+  compare_model: "[F] Compare evidence\nto selected model\nbaseline" { class: func }
+  record_result: "[F] Record pass/fail,\nanomalies, waivers,\nretest status" { class: func }
+
+  note_environment: "[C] Environmental condition\nAmbient temperature/humidity recorded\nbefore the article or batch; defer if\ncondensation or unsafe ESD condition exists." { class: note; shape: page }
+  note_coverage: "[C] Coverage constraint\n100% of selected version PC/PL inventory\nshall be inspected and evidenced.\nNo sampling credit unless a future lot\nsampling plan is approved." { class: note; shape: page }
+  note_pass_pcs: "[C] PC pass/fail\nPass if every modeled PC/EA endpoint\nis present, correct, identifiable, secure,\nproperly oriented/mated, and undamaged." { class: note; shape: page }
+  note_pass_pls: "[C] PL pass/fail\nPass if every modeled PL is present,\nconnected to modeled endpoints, continuous\nwhere electrical, isolated from unintended\nshorts, and free of reversal or mis-route." { class: note; shape: page }
+  note_fault_hardening: "[C] Fault-hardening viewpoint\nExplicitly check open/short, swapped UART\nTX/RX, swapped I2C SDA/SCL, weak 3V3/GND,\nmis-mated headers, loose screws/fixtures,\nand solder/cable workmanship defects." { class: note; shape: page }
+}
+
+chain.read_environment -> chain.select_version: "[FE] Recorded\nconditions" { class: fe }
+chain.select_version -> chain.generate_checklist: "[FE] Version and\narticle ID" { class: fe }
+chain.generate_checklist -> chain.inspect_pcs: "[FE] Modeled PCs" { class: fe }
+chain.generate_checklist -> chain.inspect_pls: "[FE] Modeled PLs" { class: fe }
+chain.inspect_pcs -> chain.compare_model: "[FE] PC observations" { class: fe }
+chain.inspect_pls -> chain.measure_links: "[FE] PL endpoints\nto probe" { class: fe }
+chain.measure_links -> chain.measure_power: "[FE] Continuity /\nisolation results" { class: fe }
+chain.measure_power -> chain.compare_model: "[FE] Power-path\nreadings" { class: fe }
+chain.compare_model -> chain.record_result: "[FE] Pass/fail\nrationale" { class: fe }
+
+chain.note_environment -> chain.read_environment { class: cstr }
+chain.note_coverage -> chain.generate_checklist { class: cstr }
+chain.note_pass_pcs -> chain.inspect_pcs { class: cstr }
+chain.note_pass_pls -> chain.inspect_pls { class: cstr }
+chain.note_pass_pls -> chain.measure_links { class: cstr }
+chain.note_fault_hardening -> chain.measure_links { class: cstr }
+chain.note_fault_hardening -> chain.record_result { class: cstr }

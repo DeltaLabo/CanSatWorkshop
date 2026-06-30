@@ -1,6 +1,6 @@
 # Data Processing System
 
-Owners: @anthonyarguedas, @abimonge, @ItsMaxXs, @JLPL1503
+Owners: @anthonyarguedas, @ItsMaxXs, @JLPL1503
 
 The data processing system manages the reception, storage, and analysis of data collected by the CanSat’s sensors. It organizes and prioritizes information for transmission, enabling real-time reporting and providing positional and orientation data for mission analysis.
 

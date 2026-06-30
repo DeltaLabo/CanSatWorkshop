@@ -1,0 +1,143 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-T-001B functional chain: corrupt-frame rejection / fault-hardening test sequence.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 32 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 28 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 34
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 26 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 24 } }
+}
+
+chain: "DPS-V10-T-001B — Corrupt-frame rejection hardening test\nIADT: Testing; Refs: P0,R1-R5,R8-R15; Trace: FC01, feared corrupt accepted frame; Report: tests/results/DPS-V10-T-001/" {
+  class: chain
+  direction: down
+
+  display_ambient_temperature: "[F] Display ambient\ntemperature" { class: func }
+  op_read_ambient: "[F] Operator reads\nambient thermometer" { class: func }
+  op_verify_setup: "[F] Operator verifies\nRF path and antennas" { class: func }
+  tx_configure_faults: "[F] Configure corrupt, short,\nCRC-bad and wrong-type frames" { class: func }
+  op_start_capture: "[F] Start DPS capture\nand evidence logging" { class: func }
+  tx_inject_corrupt: "[F] Inject corrupt\nLoRa frames" { class: func }
+  tx_log_fault_sequence: "[F] Log injected fault\nsequence and timestamps" { class: func }
+
+  store_corrupt_data: "[F] Store incoming data\n(corrupt frame)" { class: func }
+  receive_lora_rx_interrupt: "[F] Receive LoRa\nRX Interrupt" { class: func }
+  read_payload: "[F] Read payload" { class: func }
+  forward_to_pc: "[F] Forward to PC" { class: func }
+  check_if_data_is_available: "[F] Check if data\nis available" { class: func }
+  read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+  record_rejection: "[F] Record decoder\nrejection or error" { class: func }
+  assert_no_csv_append: "[F] Assert no CSV append\nand no stale queue entry" { class: func }
+
+  tx_generate_followup: "[F] Generate valid\nfollow-up frame" { class: func }
+  store_followup_data: "[F] Store incoming data\n(valid follow-up)" { class: func }
+  decode_followup: "[F] Decode follow-up\nframe" { class: func }
+  append_followup_to_csv: "[F] Append follow-up\nframe to CSV" { class: func }
+
+  capture_tx_log: "[F] Capture transmitter\nfault/follow-up log" { class: func }
+  capture_decoder_log: "[F] Capture decoder\nand error logs" { class: func }
+  compare_evidence: "[F] Compare CSV and logs\nto fault sequence" { class: func }
+  compute_fault_verdict: "[F] Compute fault-hardening\npass/fail verdict" { class: func }
+  archive_evidence: "[F] Archive evidence\nin results folder" { class: func }
+
+  note_trace: "[C] Traceability target: feared event\n'corrupt or stale RF/UART frame is accepted as valid telemetry';\nsource model FC01 downlink chain and decoder/csv allocations." {
+    class: note
+    shape: page
+  }
+
+  note_environment: "[C] Environment constraint: same controlled lab/RF setup as valid-frame sequence;\nambient thermometer read before fault repetitions; LoRa transmitter, antennas,\nand receiver configuration recorded." {
+    class: note
+    shape: page
+  }
+
+  note_fault_set: "[C] Fault stimulus constraint: at least 30 injected invalid frames spanning\nCRC-bad, truncated/short, wrong payload type, and stale/duplicate sequence cases;\na valid follow-up frame is sent after the invalid set to check recovery." {
+    class: note
+    shape: page
+  }
+
+  note_pass: "[C] Pass constraints: zero injected invalid frames are appended to CSV\nor pushed as timestamped payloads; every invalid frame is rejected or logged;\nvalid follow-up frame is accepted once; no stale payload remains after rejection." {
+    class: note
+    shape: page
+  }
+
+  note_statistics: "[C] Statistical viewpoint: fault injection is counted as binary trials;\n30/30 clean rejections is screening evidence, not a high-confidence reliability claim.\nReport k/n by fault class and document any anomaly or waiver." {
+    class: note
+    shape: page
+  }
+}
+
+chain.display_ambient_temperature -> chain.op_read_ambient: "[FE] Ambient temperature\n[°C]" { class: fe }
+chain.op_read_ambient -> chain.op_verify_setup: "[FE] Ambient OK\n[Test condition]" { class: fe }
+chain.op_verify_setup -> chain.tx_configure_faults: "[FE] RF setup OK\n[Test condition]" { class: fe }
+chain.tx_configure_faults -> chain.op_start_capture: "[FE] Fault set configured\n[Test settings]" { class: fe }
+chain.op_start_capture -> chain.tx_inject_corrupt: "[FE] Start trigger\n[Test control]" { class: fe }
+chain.tx_inject_corrupt -> chain.store_corrupt_data: "[FE] Invalid LoRa frame\n[Fault stimulus]" { class: fe }
+chain.tx_inject_corrupt -> chain.tx_log_fault_sequence: "[FE] Fault sequence\n[TX log]" { class: fe }
+
+chain.store_corrupt_data -> chain.receive_lora_rx_interrupt: "[FE] Interrupt []" { class: fe }
+chain.store_corrupt_data -> chain.read_payload: "[FE] LoRa Data\n[Invalid frame]" { class: fe }
+chain.receive_lora_rx_interrupt -> chain.read_payload: "[FE] Flag []" { class: fe }
+chain.read_payload -> chain.forward_to_pc: "[FE] Payload\n[Invalid frame]" { class: fe }
+chain.forward_to_pc -> chain.check_if_data_is_available: "[FE] Payload\n[Invalid frame]" { class: fe }
+chain.check_if_data_is_available -> chain.read_and_decode_frame: "[FE] UART bytes []" { class: fe }
+chain.read_and_decode_frame -> chain.record_rejection: "[FE] Decode failure\n[Reject/log]" { class: fe }
+chain.record_rejection -> chain.assert_no_csv_append: "[FE] Rejection evidence\n[No payload]" { class: fe }
+
+chain.assert_no_csv_append -> chain.tx_generate_followup: "[FE] Recovery trigger\n[Test control]" { class: fe }
+chain.tx_generate_followup -> chain.store_followup_data: "[FE] Valid LoRa frame\n[Known payload]" { class: fe }
+chain.store_followup_data -> chain.decode_followup: "[FE] Follow-up payload\n[LoRa frame]" { class: fe }
+chain.decode_followup -> chain.append_followup_to_csv: "[FE] Timestamped payload\n[Accepted]" { class: fe }
+
+chain.tx_log_fault_sequence -> chain.capture_tx_log: "[FE] Fault/follow-up log\n[Reference]" { class: fe }
+chain.record_rejection -> chain.capture_decoder_log: "[FE] Rejection log\n[Evidence]" { class: fe }
+chain.append_followup_to_csv -> chain.compare_evidence: "[FE] Follow-up CSV row\n[Evidence]" { class: fe }
+chain.assert_no_csv_append -> chain.compare_evidence: "[FE] No invalid CSV rows\n[Evidence]" { class: fe }
+chain.capture_tx_log -> chain.compare_evidence: "[FE] Reference faults\n[Evidence]" { class: fe }
+chain.capture_decoder_log -> chain.compute_fault_verdict: "[FE] Decoder errors\n[Evidence]" { class: fe }
+chain.compare_evidence -> chain.compute_fault_verdict: "[FE] Fault comparison\n[Counts/verdict]" { class: fe }
+chain.compute_fault_verdict -> chain.archive_evidence: "[FE] Verdict and evidence\n[Test report input]" { class: fe }
+
+chain.note_environment -> chain.op_read_ambient { class: cstr }
+chain.note_fault_set -> chain.tx_inject_corrupt { class: cstr }
+chain.note_pass -> chain.assert_no_csv_append { class: cstr }
+chain.note_pass -> chain.append_followup_to_csv { class: cstr }
+chain.note_statistics -> chain.compute_fault_verdict { class: cstr }
+
+# Layout-only edge: keep traceability note near the pass constraints without adding verification semantics.
+chain.note_trace -> chain.note_pass { style: { opacity: 0 } }

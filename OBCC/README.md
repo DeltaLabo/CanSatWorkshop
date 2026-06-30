@@ -1,5 +1,7 @@
 # On-board Computer and Communications
 
+Owners: @anthonyarguedas
+
 This subsystem is the “brain” of the CanSat, coordinating all sensors and actuators to work in sync. Its communication system transmits vital information to the ground station over long distances, ensuring real-time telemetry and status data transmission.
 
 ## Requirements

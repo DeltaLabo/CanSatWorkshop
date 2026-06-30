@@ -1,0 +1,57 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain view: component-exchange analysis sequence for ADS-IVV-A-CE-ALL.
+# IADT method is Analysis; this chain is the modeled analysis procedure.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-A-CE-ALL — CE presence/consistency analysis sequence\nRefs: IVV; NASA-SE; GPS/UBX; IMU/I2C; SW/stats; Workmanship" {
+  class: chain
+  direction: down
+
+  select_version: "[F] Select ADS version\nand model baseline" { class: func }
+  enumerate_views: "[F] Enumerate copied\nD2 source views" { class: func }
+  extract_ces: "[F] Extract modeled CEs,\nendpoint LCs, protocols" { class: func }
+  map_to_functions: "[F] Map CEs to chains,\nconstraints, and data" { class: func }
+  inspect_implementation: "[F] Inspect firmware,\ninterface contracts,\nand configuration" { class: func }
+  review_runtime_evidence: "[F] Review captures,\nlogs, or N/A rationale" { class: func }
+  analyze_fault_cases: "[F] Analyze fault cases\nand bounded error behavior" { class: func }
+  decide_consistency: "[F] Decide CE presence\nand consistency" { class: func }
+  record_result: "[F] Record pass/fail,\nN/A rationale, anomalies,\nwaivers, retest status" { class: func }
+
+  note_ce_coverage: "[C] Coverage\nv0.1: 1 UART CE. v0.2: UART and I2C.\nv0.3: 0 CEs after 1/1 view reviewed.\nv1.0: UART, I2C, Pointers, Returns.\nAll selected-version CEs must be analyzed." { class: note; shape: page }
+  note_consistency: "[C] Consistency rationale\nEndpoint LCs, implementation endpoints,\nprotocol/interface type, direction or\nrequest/response semantics, carried data,\nand linked constraints must match model intent." { class: note; shape: page }
+  note_timeout: "[C] Bounded behavior\nUART reads timeout <=5 ms where modeled;\nv1.0 I2C reads timeout <=5 ms; v0.2 I2C\ntimeout is a modeling gap to record; no\nnon-I2C/non-UART blocking is permitted." { class: note; shape: page }
+  note_faults: "[C] Fault hardening\nMalformed/silent GPS, I2C NACK/stuck bus,\nwrong address, stale/corrupt data, and\nunsafe pointer/return semantics shall be\nreviewed where applicable." { class: note; shape: page }
+  note_stats: "[C] Statistical significance\nThis analysis is complete enumeration, not\na sample-based performance test. Runtime\nsamples support evidence only unless a\nseparate test defines statistical criteria." { class: note; shape: page }
+}
+
+chain.select_version -> chain.enumerate_views: "[FE] Selected\nversion/baseline" { class: fe }
+chain.enumerate_views -> chain.extract_ces: "[FE] Source view set" { class: fe }
+chain.extract_ces -> chain.map_to_functions: "[FE] CE inventory" { class: fe }
+chain.map_to_functions -> chain.inspect_implementation: "[FE] Endpoint/data\nexpectations" { class: fe }
+chain.inspect_implementation -> chain.review_runtime_evidence: "[FE] Implementation\nmap" { class: fe }
+chain.review_runtime_evidence -> chain.analyze_fault_cases: "[FE] Evidence or\nN/A rationale" { class: fe }
+chain.analyze_fault_cases -> chain.decide_consistency: "[FE] Fault analysis" { class: fe }
+chain.decide_consistency -> chain.record_result: "[FE] Pass/fail\nrationale" { class: fe }
+
+chain.note_consistency -> chain.inspect_implementation { class: cstr }
+chain.note_timeout -> chain.analyze_fault_cases { class: cstr }
+chain.note_faults -> chain.analyze_fault_cases { class: cstr }

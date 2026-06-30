@@ -1,0 +1,59 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Logical view: allocation-analysis interfaces for ADS-IVV-A-ALLOC-ALL.
+# References: IVV allocation analysis rule; ADS MBSE plan; copied all-version ADS source views.
+direction: right
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+analyst: "[EA] IVV allocation analyst" { class: ea }
+firmware_owner: "[EA] Firmware / OBCC owner" { class: ea }
+quality_authority: "[EA] Quality / configuration\nauthority" { class: ea }
+
+system: "[System] ADS-IVV-A-ALLOC-ALL\nAllocation analysis record interfaces\nRefs: IVV; NASA-SE; GPS/UBX; IMU/I2C; SW/stats" {
+  class: sys
+  direction: down
+
+  selected_version: "[PC] Selected ADS version\n(v0.1 / v0.2 / v0.3 / v1.0)" {
+    class: pc
+    direction: down
+
+    allocation_checklist: "[LC] LC/function\nallocation checklist" { class: lc }
+    implementation_map: "[LC] Implementation\nownership map" { class: lc }
+    boundary_record: "[LC] Boundary-flow\nand constraint rationale" { class: lc }
+    anomaly_control: "[LC] Allocation anomaly /\nwaiver control" { class: lc }
+
+    note_scope: "[C] Analysis scope\nFor every modeled LC, identify intended\nfunctions, allocated PC, implementation owner,\nlinked constraints, and LC-boundary data/resource\nflows. v0.3 records explicit 0/0 N/A." {
+      class: note
+      shape: page
+    }
+    note_pass_fail: "[C] Pass/fail\nPass only if every selected-version function is\nallocated to the modeled LC/PC, no foreign function\nis allocated, and boundary flows are supported by\nmodeled CEs or dispositioned." {
+      class: note
+      shape: page
+    }
+  }
+}
+
+analyst -> system.selected_version.allocation_checklist: "[CE] Version and checklist" { class: ce }
+firmware_owner -> system.selected_version.implementation_map: "[CE] Ownership evidence" { class: ce }
+analyst -> system.selected_version.boundary_record: "[CE] Boundary rationale" { class: ce }
+system.selected_version.anomaly_control -> quality_authority: "[CE] Deviation / disposition" { class: ce }
+
+system.selected_version.note_scope -> system.selected_version.allocation_checklist { class: cstr }
+system.selected_version.note_pass_fail -> system.selected_version.boundary_record { class: cstr }

@@ -1,273 +1,81 @@
-# ADS v0.2 test plan and reference corpus
+# ADS v0.2 IVV verification plan
 
-> No D2/Capella diagrams were edited while preparing this plan.
+> No D2/Capella diagrams were edited. No new external research was performed; this plan uses the saved `tests/references/` corpus and [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md).
 
-## 1. Scope
+This README is the ADS v0.2 planning entry point. Detailed test-definition diagrams are out of scope here; activities marked **Candidate** should be refined later with `capella-pa-tests-definition.md` before execution.
 
-This test plan covers the ADS subsystem modelled in `ADS/MBSE/v0.2/`:
+## 1. SSIV / development-version assumptions
 
-- `ADS_v0.2_view1_physical.d2`: UBX-G7020-KT GPS, XIAO ESP32, ICM20948 IMU, external PC, UART/I2C/power/USB-C links.
-- `ADS_v0.2_view2_logical.d2`: ADS GPS Sensing, ADS Kinematic Sensing, Setup, Loop, UART/I2C CEs, implementation constraints.
-- `ADS_v0.2_view3_functional_allocation.d2`: allocated functions and constraints.
-- `ADS_v0.2_view4_gps_position_chain.d2`: longitude/latitude, UART payload, getters, `Collect measurements`, `<5 m`, `5 Hz`.
-- `ADS_v0.2_view5_angular_velocity_chain.d2`: angular velocity acquisition and processing, `<30 deg/s`.
-- `ADS_v0.2_view6_attitude_estimation_chain.d2`: acceleration and magnetic-field acquisition to pitch/roll/yaw.
-- `ADS_v0.2_view7_peripheral_initialisation_chain.d2`: UBX/IMU init-state collection and software constraints.
-- `ADS_v0.2_view8_serial_logging_chain.d2`: init states and measurements logged via Serial0.
+- **Inferred baseline:** `ADS-v0.2` incremental/development SSIV, inferred from `ADS/MBSE/v0.2/` and the model label `ADS v0.1-0.2 Subsystem`.
+- **Operational interpretation:** Serial0-to-PC logging is a development verification interface; `5 Hz` is the internal ADS collection rate.
+- **Ambiguities:** exact hardware revision/BOM, firmware commit, GPS truth source, angular-rate truth source, Serial0 schema, environmental levels, and explicit mission/capability/use-case/feared-event IDs are not modeled.
+- **Traceability assumption:** until upstream traceability exists, activities trace to candidate capabilities/constraints in this README.
 
-Primary verification method is **test**, supported by **inspection** and **analysis** where noted.
+## 2. Reference legend
 
-Project-wide IVV conventions, statistics, rate terminology, fault semantics, and artifact paths are defined in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md). ADS v0.2 is an incremental-delivery baseline: Serial0 logging is a development verification interface, while `5 Hz` means the internal ADS collection rate used by downstream flight logic.
-
-## 2. Reference corpus
-
-The reference corpus is saved under `tests/references/`:
-
-- Search records: `tests/references/searches/*.json`.
-- Saved sources and PDF text extracts: `tests/references/sources/`.
-- Corpus index: `tests/references/README.md`.
-
-Most relevant sources used here:
-
-| Source | Test use |
+| Code | Saved source |
 |---|---|
-| NASA Systems Engineering Handbook | Verification vs validation; methods include test, analysis, inspection, demonstration. |
-| NASA GEVS GSFC-STD-7000B | Tailored environmental/workmanship verification; monitor powered hardware during tests where practicable. |
-| ESA CanSat page/book and MDPI CanSat compendium | CanSat operational context, recovery/GPS relevance, short flight window; 120 s recommended max flight time. |
-| GPS SPS Performance Standard 2020 | GNSS 95% accuracy/statistical framing; SPS horizontal accuracy context. |
-| u-blox G7020 product summary and u-blox receiver protocol spec | Update-rate capability, UART/DDC interfaces, valid-fix/message handling. |
-| TDK ICM-20948 datasheet | IMU ranges, gyro characteristics, I2C Fast-mode timing. |
-| NXP UM10204 I2C-bus specification | I2C START/STOP/ACK/NACK and 100/400 kbit/s mode references. |
-| ISO/IEC/IEEE 29119 overview | Test-process and documentation framing. |
-| NIST tolerance interval pages; ReliaSoft binomial RDT page | Continuous and pass/fail acceptance statistics. |
-
-## 3. Model-derived verification targets
-
-| ID | Model target | Source view(s) | Verified by |
-|---|---|---|---|
-| ADS-PHY-01 | GPS-XIAO UART/3V3/GND, IMU-XIAO I2C/3V3/GND, XIAO-PC USB-C physical links exist and are correctly connected. | View 1 | ADS-T01 |
-| ADS-INIT-01 | Setup collects UBX-G7020-KT and ICM20948 IMU init states. | Views 3, 7, 8 | ADS-T02, ADS-T09 |
-| ADS-GPS-01 | GPS chain returns stored latitude/longitude to `Collect measurements`. | Views 3, 4 | ADS-T03, ADS-T04, ADS-T11 |
-| ADS-GPS-02 | Position accuracy `< 5 m` and collection at `5 Hz`. | Views 3, 4 | ADS-T04, ADS-T08, ADS-T11 |
-| ADS-IMU-01 | Angular velocities are read over I2C, processed, and collected. | Views 3, 5 | ADS-T05, ADS-T06, ADS-T11 |
-| ADS-IMU-02 | Angular-rate accuracy `< 30 deg/s`. | Views 3, 5 | ADS-T06 |
-| ADS-ATT-01 | Accelerations and magnetic-field intensities feed pitch/roll/yaw calculation and collection. | Views 3, 6 | ADS-T07, ADS-T11 |
-| ADS-SW-01 | No blocking operations except I2C/UART; process/calculate functions `< 5 ms`; UART reads timeout `<= 5 ms`. | Views 2, 3, 7 | ADS-T08 |
-| ADS-SW-02 | Read/process or read/calculate pairs follow the Variable Getter pattern. | Views 2, 3, 7 | ADS-T10 |
-| ADS-LOG-01 | Init states and measurement frames are logged through Serial0 to PC. | Views 1, 3, 8 | ADS-T09, ADS-T11 |
-
-## 4. Common test instrumentation
-
-Recommended data to log for every runtime test:
-
-- Monotonic timestamp in microseconds or milliseconds.
-- Loop sequence counter.
-- Function start/end durations for read, process, calculate, collect, and log functions.
-- UART read duration, timeout flag, bytes read, parsed message type, GPS valid-fix flag.
-- I2C transaction status, bytes read, ACK/NACK/error status.
-- Raw and processed GPS/IMU values.
-- Serial0 line emitted to the PC, including any init-state fields.
-- Reset/brownout markers if available.
-
-## 5. Statistical acceptance rules
-
-Use the project-wide policy in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md) unless a scenario gives a stricter criterion.
-
-1. **Continuous measurement accuracy** (`<5 m`, `<30 deg/s`): collect at least `n ≥ 30` stable samples per condition, report bias/dispersion/expanded uncertainty, and guard-band the pass/fail decision.
-2. **Timing/deadline requirements** (`<5 ms`, `<=5 ms`) and 95/95 tolerance claims: collect `n = 59` representative samples with every sample inside the limit.
-3. **Boolean success/failure requirements:** use exact one-sided binomial / Clopper-Pearson bounds; `29/29` supports R90/C95 and `59/59` supports about R95/C95.
-4. **Rate requirements:** evaluate mean rate and worst inter-sample gaps. The ADS target is internal `5 Hz`, so nominal period is `200 ms`.
-
-## 6. Scenario tests
-
-### ADS-T01 — Physical integration and electrical continuity
-
-**Scenario:** Assemble the ADS hardware exactly as modelled: UBX-G7020-KT GPS to XIAO ESP32 over UART/3V3/GND, ICM20948 IMU to XIAO over I2C/3V3/GND, and XIAO to PC over USB-C.
-
-**Procedure:**
-1. Inspect wiring, connector orientation, pin labels, and strain relief.
-2. Verify continuity for UART TX/RX, I2C SDA/SCL, 3V3, GND, and USB-C connection.
-3. Power the XIAO from the intended source and measure 3V3 at GPS and IMU under idle and active polling.
-4. Confirm no unintended shorts between 3V3/GND or signal lines.
-
-**Acceptance:** all physical links match View 1; supply remains within component limits; no shorts/open circuits; PC enumerates the XIAO serial device.
-
-**References:** TDK ICM-20948 datasheet; u-blox G7020 product summary; NASA SE verification by inspection/test.
-
-### ADS-T02 — Peripheral initialization-state collection
-
-**Scenario:** On boot, Setup initializes Serial0/Serial1 and collects both UBX-G7020-KT and IMU init states.
-
-**Procedure:**
-1. Boot the ADS with GPS and IMU connected.
-2. Capture Serial0 output and internal test logs from reset through first measurement cycle.
-3. Repeat for fault injections: GPS UART disconnected, IMU I2C disconnected, GPS no-fix/open-sky unavailable.
-4. Run at least 59 nominal boots if using the zero-failure confidence rule.
-
-**Acceptance:** nominal boot reports both init states as valid/available before measurement logging starts; each injected fault is reported as the correct degraded init state without firmware hang or reset.
-
-**References:** Views 3, 7, 8; u-blox protocol valid/status guidance; I2C ACK/NACK behavior; ReliaSoft binomial RDT.
-
-### ADS-T03 — GPS UART protocol, valid fix, and stored lat/lon getters
-
-**Scenario:** The XIAO requests/receives GPS payloads over UART, stores latitude/longitude, and `Get lat`/`Get lon` return the latest valid stored values.
-
-**Procedure:**
-1. Run outdoors with open-sky GNSS reception or use a GNSS simulator/replay fixture.
-2. Record UART bytes, parsed GPS message type, valid-fix flag, stored lat/lon, and getter outputs.
-3. Inject malformed/truncated UART frames and periods with no UART data.
-4. Confirm read timeout behavior is also checked in ADS-T08.
-
-**Acceptance:** valid GPS frames update stored lat/lon once per accepted fix; invalid/no-fix/malformed frames do not overwrite the last valid value unless the implementation explicitly marks the value stale; getters return the same stored value used by `Collect measurements`.
-
-**References:** View 4; u-blox receiver protocol spec; GPS SPS valid position context.
-
-### ADS-T04 — GPS 5 Hz collection and `<5 m` static position accuracy
-
-**Scenario:** At a surveyed open-sky reference point, ADS collects latitude/longitude at 5 Hz and meets the modelled `<5 m` position accuracy target.
-
-**Procedure:**
-1. Place ADS antenna at a known surveyed point or a reference point measured with a higher-grade receiver.
-2. Wait for stable valid fix.
-3. Log at least 59 valid position samples at the ADS output, preferably 5 minutes or more.
-4. Convert each lat/lon sample to horizontal error in metres from the reference point.
-5. Compute sample count, mean rate, inter-sample periods, maximum horizontal error, and 95th percentile.
-
-**Acceptance:** output rate is `5 Hz` with mean period `200 ms ± 20 ms`; no inter-sample gap exceeds `400 ms` during the test window; the one-sided 95/95 upper bound for horizontal error is `<5 m` (with `n=59`, all samples below 5 m satisfies this non-parametrically).
-
-**References:** Views 3, 4; u-blox G7020 update-rate/accuracy summary; GPS SPS Performance Standard 2020; NIST tolerance intervals.
-
-### ADS-T05 — IMU I2C communication and ICM20948 data integrity
-
-**Scenario:** The XIAO reads angular velocity, acceleration, and magnetic-field data from the ICM20948 over I2C without bus errors.
-
-**Procedure:**
-1. Configure I2C in a mode compatible with the ICM20948, preferably Fast-mode `<=400 kHz`.
-2. Capture I2C address, register reads, ACK/NACK, error codes, and transaction duration.
-3. Collect at least 59 read cycles for each sensor group: gyro, accelerometer, magnetometer.
-4. Fault-inject by temporarily disconnecting SDA/SCL or using an invalid address in a bench build.
-
-**Acceptance:** nominal reads complete with ACK and expected byte counts; no stuck bus; fault injection produces bounded error handling and recovery on the next valid cycle.
-
-**References:** View 6; NXP UM10204 I2C spec; TDK ICM-20948 I2C timing (`400 kHz` Fast-mode, bus capacitance/timing constraints).
-
-### ADS-T06 — Angular velocity processing and `<30 deg/s` accuracy
-
-**Scenario:** ADS reads and processes IMU angular velocities and meets the modelled `<30 deg/s` accuracy target.
-
-**Procedure:**
-1. Calibrate gyro bias with the ADS held stationary.
-2. Test per axis at known rates: stationary `0 deg/s` and at least one controlled rotation rate within the selected gyro range.
-3. Use a rate table, calibrated reference IMU, or repeatable turn fixture.
-4. Record raw gyro, processed angular velocity, reference angular velocity, and error.
-5. Collect at least 59 samples per axis per rate condition.
-
-**Acceptance:** for each axis and rate condition, the one-sided 95/95 upper bound of absolute angular-rate error is `<30 deg/s`; processed values remain finite and within the configured ICM20948 full-scale range.
-
-**References:** Views 3, 5; TDK ICM-20948 gyro range/sensitivity/noise data; NIST tolerance intervals.
-
-### ADS-T07 — Attitude estimation chain plausibility
-
-**Scenario:** Acceleration and magnetic-field readings feed `Calculate pitch, roll, yaw`, then `Collect measurements` receives finite PRY outputs.
-
-**Procedure:**
-1. Place ADS in six static orientations: +X, -X, +Y, -Y, +Z, -Z up.
-2. For each orientation, log accelerations, field intensities, pitch/roll/yaw, calculation duration, and collected measurement frame.
-3. Rotate yaw slowly through at least 180 degrees in a low-magnetic-disturbance area.
-4. Repeat after a power cycle to check repeatability.
-
-**Acceptance:** pitch/roll/yaw values are finite, bounded to the implementation's documented angle convention, and update from fresh acceleration/magnetic-field samples; static pitch/roll signs match the known orientation; yaw changes monotonically in the expected direction during the controlled yaw rotation. Calculation duration is checked against ADS-T08.
-
-**References:** View 6; TDK ICM-20948 accelerometer/magnetometer ranges; NASA SE validation under realistic/simulated conditions.
-
-### ADS-T08 — Loop timing, no unintended blocking, and UART timeout
-
-**Scenario:** Runtime functions obey the implementation constraints: no blocking except I2C/UART, all process/calculate functions `<5 ms`, and all UART reads timeout `<=5 ms`.
-
-**Procedure:**
-1. Instrument every read, process, calculate, collect, and log function with monotonic timestamps.
-2. Run nominal end-to-end operation for at least 120 s.
-3. Repeat with GPS UART silent, malformed UART stream, and IMU I2C delayed/unavailable.
-4. Record maximum duration and distribution for each function.
-
-**Acceptance:** every process/calculate invocation is `<5 ms`; every UART read returns or times out in `<=5 ms`; no non-I2C/non-UART function blocks waiting for external data; `Collect measurements` remains at 5 Hz under nominal conditions.
-
-**References:** Views 2, 3, 7; ISO/IEC/IEEE 29119 test-process context; NIST tolerance intervals.
-
-### ADS-T09 — Serial0 logging contract to PC
-
-**Scenario:** The XIAO logs peripheral init states and measurement frames through Serial0 over USB-C to the external PC.
-
-**Procedure:**
-1. Connect the PC to the XIAO USB-C serial port and capture raw Serial0 output.
-2. Boot ADS and record initialization lines.
-3. Run nominal 5 Hz measurement logging for at least 120 s.
-4. Parse every line/frame for timestamp/sequence, init-state fields, lat/lon, angular velocities, accelerations, pitch/roll/yaw, and any declared LoRa-frame payload.
-
-**Acceptance:** PC receives parseable init-state output and measurement frames; nominal logging rate is 5 Hz; no malformed frame in 59 consecutive frames; fields required by the modelled chains are present or explicitly marked unavailable/stale.
-
-**References:** Views 1, 8; ESA CanSat 120 s flight-time context; CanSat compendium telemetry context.
-
-### ADS-T10 — Variable Getter freshness and single-writer behavior
-
-**Scenario:** Each modelled read/process or read/calculate pair behaves as a Variable Getter pattern: reads update stored variables, getters/calculators consume stored values without hidden blocking side effects.
-
-**Procedure:**
-1. Use a software test build or hardware-in-loop fixture with deterministic GPS and IMU input sequences.
-2. Step inputs one sample at a time and call getters/calculators multiple times between reads.
-3. Verify repeated getter calls return the same value until a new read succeeds.
-4. Verify failed reads do not silently corrupt stored values.
-
-**Acceptance:** each variable has one update path; getter/calculator calls are side-effect-light and non-blocking; stale/invalid data is detectable by timestamp, sequence, validity flag, or documented equivalent.
-
-**References:** Views 2, 3, 7; ISO/IEC/IEEE 29119 static/dynamic test-process framing.
-
-### ADS-T11 — End-to-end CanSat mission-duration run
-
-**Scenario:** ADS operates as a complete subsystem through a representative CanSat descent/mission window and produces usable logged data.
-
-**Procedure:**
-1. Assemble ADS in its flight-like mechanical/electrical configuration.
-2. Start serial capture on the PC.
-3. Run a 120 s mission script: boot, wait for valid GPS, nominal 5 Hz collection, manual rotations/tilts, and continued logging.
-4. Optionally perform the same run during a tethered outdoor walk/drop-safe test where GPS movement is observable.
-5. Check all scenario-specific metrics after the run.
-
-**Acceptance:** no firmware reset or unrecovered peripheral failure; GPS, IMU, attitude, init-state, and logging chains all produce time-correlated data; at least 95% of expected 5 Hz frames are present over 120 s; no gap exceeds 2 s; ADS-T04/T06/T08/T09 metrics remain within limits for the portions of the run where their preconditions are met.
-
-**References:** All D2 views; ESA CanSat operational context; NASA SE validation under realistic conditions.
-
-### ADS-T12 — Tailored environmental/workmanship regression
-
-**Scenario:** ADS remains functional after realistic CanSat handling, transport, and launch/descent workmanship stresses.
-
-**Procedure:**
-1. Define environment levels from the actual launcher/competition rules. If unavailable, use safe educational screening levels and document them.
-2. Run ADS-T02, ADS-T05, ADS-T08, and ADS-T09 as a pre-test baseline.
-3. Subject the assembled ADS to tailored vibration/shake, connector tug, thermal hot/cold soak within component limits, and landing/handling shock screening.
-4. Monitor powered hardware during exposures where safe and practicable.
-5. Repeat the baseline tests after exposure.
-
-**Acceptance:** no loose connectors, cracked solder joints, or damaged cables; post-exposure baseline tests pass; GPS UART, IMU I2C, and Serial0 logging remain functional.
-
-**References:** NASA GEVS tailoring/workmanship approach; MIL-STD-810H source page for environmental-method discovery; ESA CanSat hardware-testing context; component datasheets for absolute limits.
-
-## 7. Reporting template
-
-For each executed scenario, record:
-
-- Test ID and version of ADS hardware/software.
-- Diagram/view requirements covered.
-- Date, operator, location, and equipment calibration/source.
-- Procedure deviations.
-- Raw data path under `results/<test-id>/` and analysis script path.
-- Pass/fail result against each acceptance criterion.
-- Anomalies, suspected cause, corrective action, and retest status.
-
-## 8. Open items before execution
-
-- Identify the exact XIAO ESP32 firmware repository and add automated test hooks/scripts there.
-- Define the Serial0 frame schema if not already fixed in code.
-- Select GPS truth source: surveyed point, high-grade receiver, or GNSS simulator.
-- Select angular-rate truth source: rate table, calibrated reference IMU, or approved fixture.
-- Define tailored environmental levels from the actual CanSat launch/competition provider.
+| IVV | `../../../../PM&SE/IVV.md` |
+| NASA-SE | `tests/references/sources/nasa_systems_engineering_handbook_2016.txt` |
+| GEVS | `tests/references/sources/nasa_gevs_gsfc_std_7000b.txt` |
+| ESA-CANSAT | `tests/references/sources/esa_cansat_what_is.md`, `esa_cansat_book_23_24.txt` |
+| GPS-SPS | `tests/references/sources/gps_sps_performance_standard_2020.txt` |
+| UBX / UBX-PROT | `ublox_g7020_product_summary.txt`, `ublox_m8_receiver_protocol_spec.txt` |
+| ICM20948 | `tests/references/sources/tdk_icm_20948_datasheet.txt` |
+| I2C | `tests/references/sources/nxp_um10204_i2c_spec.txt` |
+| ISO29119 | `tests/references/sources/iso_iec_ieee_29119_overview.md` |
+| NIST-TI | `tests/references/sources/nist_tolerance_intervals.md`, `nist_normal_tolerance_intervals.md` |
+| BINOM | `tests/references/sources/reliability_test_design_binomial_reliasoft.md` |
+
+## 3. Planning inventory from ADS v0.2 views
+
+| Inventory item | Model content |
+|---|---|
+| Views read | physical, logical, functional allocation, GPS position chain, angular velocity chain, attitude estimation chain, peripheral initialisation chain, Serial0 logging chain. |
+| Physical components / actor | `[PC] UBX-G7020-KT GPS`, `[PC] XIAO ESP32`, `[PC] ICM20948 IMU`; `[EA] PC` as verification/logging means. |
+| Physical links | GPS-XIAO `UART Cables`, `3V3`, `GND`; IMU-XIAO `I2C Cables`, `3V3`, `GND`; XIAO-PC `USB-C Cable`. |
+| Component exchanges | ADS GPS Sensing -> Loop via `UART`; ADS Kinematic Sensing -> Loop via `I2C`. |
+| Logical allocations | GPS Sensing on GPS: Measure longitude, Measure latitude, Send payload. Kinematic Sensing on IMU: Measure angular velocities, Measure accelerations, Measure magnetic field intensities, Respond to I2C Requests. Setup on XIAO: Get ICM20948/UBX init states, Collect peripheral init states, Init Serial0/Serial1. Loop on XIAO: read/process/get/calculate/collect/log functions. PC actor: Monitor serial port. |
+| Functional chains / scenarios | GPS position; Angular velocity; Attitude estimation; Peripheral initialisation; Serial logging. |
+| Constraints | `ADS-v0.2-CSTR-POS-5M`: GPS accuracy `<5 m`; `ADS-v0.2-CSTR-RATE-5HZ`: collection `5 Hz`; `ADS-v0.2-CSTR-GYRO-30DPS`: angular-rate accuracy `<30 deg/s`; `ADS-v0.2-CSTR-NOBLOCK`: no blocking except I2C/UART; `ADS-v0.2-CSTR-GETTER`: Variable Getter template; `ADS-v0.2-CSTR-PROC-5MS`: Process/Calculate `<5 ms`; `ADS-v0.2-CSTR-UART-5MS`: UART reads timeout `<=5 ms`. |
+| Candidate traceability targets | `ADS-v0.2-CAP-PHY`, `CAP-GPS`, `CAP-IMU`, `CAP-ATT`, `CAP-INIT`, `CAP-LOG`; candidate feared events `FE-SILENT-SENSOR-FAIL`, `FE-STUCK-LOOP`, `FE-CORRUPT-MEASUREMENT`. Explicit mission/capability/use-case/feared-event model elements are missing. |
+
+## 4. Candidate IVV activities
+
+Every row includes: verification activity ID, SSIV/version, covered model element(s), IVV source category, IADT method, traceability target, references, viewpoints including statistics/fault hardening where applicable, preliminary pass/fail criteria, expected diagram/report location, and status.
+
+| ID | SSIV/version | Model element(s) covered | IVV category | IADT | Traceability target | References | Relevant viewpoints | Preliminary pass/fail criteria | Expected diagram/report location | Status |
+|---|---|---|---|---|---|---|---|---|---|---|
+| ADS-v0.2-I-PC-01 | ADS-v0.2 assumed | PCs UBX-G7020-KT GPS, XIAO ESP32, ICM20948 IMU; EA/test means PC. | component/link | Inspection | `CAP-PHY` | IVV, NASA-SE, UBX, ICM20948 | All items inspected; fault hardening: wrong/missing/damaged component, wrong orientation. | Pass if every modeled item is present, identified, correctly oriented, and matches BOM; fail on missing/substitute/damaged item. | View 1; `tests/results/ADS-v0.2-I-PC-01/` | Candidate |
+| ADS-v0.2-I-PL-01 | ADS-v0.2 assumed | PLs GPS-XIAO UART/3V3/GND; IMU-XIAO I2C/3V3/GND; XIAO-PC USB-C. | component/link | Inspection + supporting continuity/power test | `CAP-PHY`, `FE-CORRUPT-MEASUREMENT` | IVV, NASA-SE, UBX, ICM20948, I2C | All links inspected/tested; fault hardening: open/short, swapped TX/RX or SDA/SCL, weak power/ground. | Pass if all links are present, correctly pinned, continuous, no unintended shorts, 3V3 within component limits, PC serial enumerates. | View 1; `tests/results/ADS-v0.2-I-PL-01/` | Candidate |
+| ADS-v0.2-A-CE-UART-01 | ADS-v0.2 assumed | CE `UART`: ADS GPS Sensing -> Loop; GPS request/response FEs. | component exchange | Analysis | `CAP-GPS`, `CSTR-UART-5MS` | IVV, NASA-SE, UBX, UBX-PROT | Interface/protocol consistency; runtime stats in chain tests; fault hardening: no-fix/malformed/silent UART. | Pass if UART configuration/framing can carry modeled payloads and valid/invalid/no-data handling including timeout is defined. | Views 2, 4, 7; `tests/results/ADS-v0.2-A-CE-UART-01/` | Candidate |
+| ADS-v0.2-A-CE-I2C-01 | ADS-v0.2 assumed | CE `I2C`: ADS Kinematic Sensing -> Loop; IMU data/init FEs. | component exchange | Analysis | `CAP-IMU`, `FE-STUCK-LOOP` | IVV, NASA-SE, ICM20948, I2C | Interface/protocol consistency; bus error evidence in chain tests; fault hardening: NACK, stuck bus, partial reads. | Pass if I2C timing/addressing/register use matches ICM20948 and modeled data, with bounded recoverable errors. | Views 2, 5, 6, 7; `tests/results/ADS-v0.2-A-CE-I2C-01/` | Candidate; no explicit v0.2 I2C timeout constraint |
+| ADS-v0.2-A-ALLOC-GPS-01 | ADS-v0.2 assumed | LC ADS GPS Sensing on GPS; Measure longitude/latitude, Send payload. | allocation | Analysis | `CAP-GPS` | IVV, NASA-SE, UBX, UBX-PROT | Allocation correctness; stats N/A; fault hardening: no-fix/invalid payload not fresh valid data. | Pass if GPS is the source of modeled position measurements/payload and no foreign functions are allocated. | View 3; `tests/results/ADS-v0.2-A-ALLOC-GPS-01/` | Candidate |
+| ADS-v0.2-A-ALLOC-KIN-01 | ADS-v0.2 assumed | LC ADS Kinematic Sensing on IMU; gyro/accel/mag measurement and I2C response. | allocation | Analysis | `CAP-IMU`, `CSTR-GYRO-30DPS` | IVV, NASA-SE, ICM20948, I2C | Allocation correctness; measurement stats covered separately; fault hardening: IMU errors visible to processing. | Pass if IMU is the modeled source of gyro/accel/mag data and I2C responses, with no foreign functions. | View 3; `tests/results/ADS-v0.2-A-ALLOC-KIN-01/` | Candidate |
+| ADS-v0.2-A-ALLOC-SETUP-01 | ADS-v0.2 assumed | LC Setup on XIAO; init state collection and Serial0/Serial1 init. | allocation | Analysis | `CAP-INIT` | IVV, NASA-SE, ISO29119 | Startup responsibility; boot statistics in init chain; fault hardening: missing peripheral reports degraded state. | Pass if XIAO owns serial initialization and collects UBX/ICM init states before/with first reporting. | Views 3, 7, 8; `tests/results/ADS-v0.2-A-ALLOC-SETUP-01/` | Candidate |
+| ADS-v0.2-A-ALLOC-LOOP-01 | ADS-v0.2 assumed | LC Loop on XIAO; read/process/get/calculate/collect/log functions. | allocation | Analysis | `CAP-GPS`, `CAP-IMU`, `CAP-ATT`, `CAP-LOG` | IVV, NASA-SE, ISO29119 | Runtime responsibility and resource flow; timing stats in constraint tests; fault hardening: no hidden blocking/side effects. | Pass if all Loop functions are implemented on XIAO and consume only modeled UART/I2C/stored-data flows. | Views 3-8; `tests/results/ADS-v0.2-A-ALLOC-LOOP-01/` | Candidate |
+| ADS-v0.2-FC-GPS-01 | ADS-v0.2 assumed | GPS position chain; UART request/response, stored lat/lon, getters, collect, `<5 m`, `5 Hz`. | functional chain/scenario | Testing + analysis | `CAP-GPS`, `CSTR-POS-5M`, `CSTR-RATE-5HZ` | IVV, NASA-SE, GPS-SPS, UBX, UBX-PROT, NIST-TI | Accuracy `n>=30` and 95/95 where claimed; rate/gap stats; fault hardening: invalid/no-fix/malformed/silent GPS. | Pass if valid GPS updates stored lat/lon, getters feed collection, guarded error `<5 m`, nominal collection 5 Hz, stale/invalid data detectable. | View 4; `tests/results/ADS-v0.2-FC-GPS-01/` | Candidate; truth source required |
+| ADS-v0.2-FC-ANG-01 | ADS-v0.2 assumed | Angular velocity chain; I2C request/response, processing, collect, `<30 deg/s`. | functional chain/scenario | Testing + analysis | `CAP-IMU`, `CSTR-GYRO-30DPS` | IVV, NASA-SE, ICM20948, I2C, NIST-TI | Per-axis/rate samples; fault hardening: NACK/stuck bus/invalid reads. | Pass if angular-rate error is `<30 deg/s` with uncertainty guard band, outputs finite/in range, bus faults bounded. | View 5; `tests/results/ADS-v0.2-FC-ANG-01/` | Candidate; rate reference required |
+| ADS-v0.2-FC-ATT-01 | ADS-v0.2 assumed | Attitude estimation chain; accel/mag to process/calculate PRY and collect. | functional chain/scenario | Demonstration/testing | `CAP-ATT` | IVV, NASA-SE, ICM20948, I2C, ESA-CANSAT | Repeatability characterization; no accuracy claim unless constraint added; fault hardening: magnetic disturbance/invalid IMU flagged. | Pass if PRY finite, bounded to documented convention, plausible for known orientations/yaw rotation, and collected. | View 6; `tests/results/ADS-v0.2-FC-ATT-01/` | Candidate; attitude accuracy not modeled |
+| ADS-v0.2-FC-INIT-01 | ADS-v0.2 assumed | Peripheral initialisation chain; UBX/ICM init states and software constraints. | functional chain/scenario | Testing/demonstration | `CAP-INIT`, `FE-SILENT-SENSOR-FAIL` | IVV, NASA-SE, UBX-PROT, ICM20948, I2C, BINOM | Boot campaign can use 29/29 or 59/59 zero-failure rules; fault hardening: disconnected/no-fix peripherals. | Pass if nominal boot reports expected states and injected faults report degraded states without reset/hang. | View 7; `tests/results/ADS-v0.2-FC-INIT-01/` | Candidate |
+| ADS-v0.2-FC-LOG-01 | ADS-v0.2 assumed | Serial logging chain; init states and measurements to `Log via Serial0`; PC via USB-C. | functional chain/scenario | Demonstration/testing | `CAP-LOG` | IVV, NASA-SE, ISO29119, ESA-CANSAT, BINOM | Frame/PDR statistics by exact binomial if claimed; fault hardening: malformed/stale/unavailable fields explicit. | Pass if PC receives parseable init/measurement frames with modeled fields or explicit stale/unavailable markers. | View 8 + View 1; `tests/results/ADS-v0.2-FC-LOG-01/` | Candidate; Serial0 schema required |
+| ADS-v0.2-C-POS-5M-01 | ADS-v0.2 assumed | Constraint `Accuracy <5 m` on Get lat/lon. | constraint | Testing + analysis | `CSTR-POS-5M`, `CAP-GPS` | IVV, GPS-SPS, UBX, NIST-TI | Continuous error `n>=30`; 95/95 upper bound for formal claim; fault hardening: invalid/no-fix excluded/flagged. | Pass if horizontal position error plus uncertainty/tolerance bound is `<5 m`. | View 4; `tests/results/ADS-v0.2-C-POS-5M-01/` | Candidate |
+| ADS-v0.2-C-RATE-5HZ-01 | ADS-v0.2 assumed | Constraint `At 5 Hz` on Collect measurements. | constraint | Testing + analysis | `CSTR-RATE-5HZ` | IVV, NIST-TI, ISO29119 | Timing/rate stats; `n=59` for 95/95 deadline planning; fault hardening: stalls/long gaps. | Pass if nominal period is about 200 ms and declared worst-gap/jitter criteria meet the accepted 5 Hz rule. | Views 3, 4; `tests/results/ADS-v0.2-C-RATE-5HZ-01/` | Candidate; exact gap criterion open |
+| ADS-v0.2-C-GYRO-30DPS-01 | ADS-v0.2 assumed | Constraint `Accuracy <30 deg/s` on angular velocities. | constraint | Testing + analysis | `CSTR-GYRO-30DPS`, `CAP-IMU` | IVV, ICM20948, NIST-TI | Continuous angular-rate error by axis/rate; fault hardening: saturation/out-of-range visible. | Pass if upper bound of absolute angular-rate error is `<30 deg/s` per condition. | View 5; `tests/results/ADS-v0.2-C-GYRO-30DPS-01/` | Candidate |
+| ADS-v0.2-C-NOBLOCK-01 | ADS-v0.2 assumed | Constraint no blocking except I2C/UART on Loop. | constraint | Analysis + testing | `CSTR-NOBLOCK`, `FE-STUCK-LOOP` | IVV, ISO29119, NIST-TI | Code review plus runtime timing; fault hardening: silent GPS, malformed UART, I2C NACK/stuck. | Pass if no non-I2C/non-UART function blocks external-data wait or breaks loop progress. | Views 2, 3, 7; `tests/results/ADS-v0.2-C-NOBLOCK-01/` | Candidate |
+| ADS-v0.2-C-GETTER-01 | ADS-v0.2 assumed | Constraint Variable Getter template. | constraint | Analysis + testing | `CSTR-GETTER`, `FE-CORRUPT-MEASUREMENT` | IVV, ISO29119 | Structural review; deterministic checks; fault hardening: failed reads do not corrupt stored values. | Pass if single-writer stored variables, side-effect-light getters/calculators, and observable freshness/validity exist. | Views 2, 3, 7; `tests/results/ADS-v0.2-C-GETTER-01/` | Candidate |
+| ADS-v0.2-C-PROC-5MS-01 | ADS-v0.2 assumed | Constraint Process/Calculate `<5 ms`. | constraint | Testing + analysis | `CSTR-PROC-5MS` | IVV, ISO29119, NIST-TI | Deadline samples; `n=59` all within limit for 95/95 planning; fault hardening: worst-case data/fault states. | Pass if every Process/Calculate invocation in campaign is `<5 ms`, with instrumentation overhead reported. | Views 2, 3, 7; `tests/results/ADS-v0.2-C-PROC-5MS-01/` | Candidate |
+| ADS-v0.2-C-UART-5MS-01 | ADS-v0.2 assumed | Constraint UART reads timeout `<=5 ms`. | constraint | Testing + analysis | `CSTR-UART-5MS`, `FE-STUCK-LOOP` | IVV, UBX-PROT, ISO29119, NIST-TI | Deadline samples under valid/silent/malformed UART; fault hardening: disconnected/silent GPS returns by timeout. | Pass if every UART read returns valid data or timeout/error in `<=5 ms`. | Views 2, 3, 7; `tests/results/ADS-v0.2-C-UART-5MS-01/` | Candidate |
+
+## 5. Reporting conventions
+
+Store evidence under `tests/results/<activity-id>/`. Each report shall identify referenced model views/elements, ADS v0.2 hardware/software baseline, as-tested configuration, raw data, analysis scripts, actual conditions, deviations, anomalies, pass/fail rationale, waivers, and retest status. Reports should reference model content rather than duplicate it.
+
+## 6. Coverage gaps and follow-up items
+
+- **Traceability gap:** no explicit mission, capability, use-case, or feared-event model elements exist in the v0.2 D2 views.
+- **Modeling gap:** no detailed verification means/test operator/harness are modeled in the functional chains.
+- **Fault-hardening gap:** v0.2 lacks an explicit I2C read timeout constraint; v1.0 adds one.
+- **Assumption gap:** Serial0 frame schema and `Measurements [LoRa Frame]` meaning in a PC-logging development baseline need confirmation.
+- **Execution gap:** GPS truth source, angular-rate reference, environmental levels, confidence targets, and firmware commit are not fixed by the model.
+- **Definition-stage handoff:** create/refine modeled verification definitions only after plan review; do not edit source ADS diagrams during planning.

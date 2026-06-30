@@ -1,0 +1,270 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV3 — PDS-VV-FC-002 functional allocation for the battery-supervision testbench.
+# References: IVV, PDS-R9 INA219, PDS-R10 I2C.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  select_test_case: "[F] Select / authorize\ntest case" { class: func }
+  record_deviation: "[F] Record deviation\nor anomaly" { class: func }
+  stop_unsafe_test: "[F] Stop unsafe\ntest condition" { class: func }
+}
+
+host_pc: "[EA] Host PC /\nserial logger" {
+  class: ea
+  direction: down
+  run_test_script: "[F] Run command /\nlogging script" { class: func }
+  log_measurements: "[F] Log measurements\nand result codes" { class: func }
+  timestamp_read_process: "[F] Timestamp read /\nprocess durations" { class: func }
+  export_evidence: "[F] Export raw\nevidence package" { class: func }
+}
+
+logic_analyzer: "[EA] I2C /\nlogic analyzer" {
+  class: ea
+  direction: down
+  probe_sda_scl: "[F] Probe SDA/SCL" { class: func }
+  decode_i2c_timing: "[F] Decode I2C\ntiming and NACKs" { class: func }
+}
+
+fault_harness: "[EA] I2C fault\ninjection harness" {
+  class: ea
+  direction: down
+  inject_absent: "[F] Emulate absent\nINA219" { class: func }
+  inject_nack: "[F] Inject NACK" { class: func }
+  inject_stuck_sda: "[F] Inject stuck SDA" { class: func }
+  inject_stuck_scl: "[F] Inject stuck SCL" { class: func }
+  inject_no_response: "[F] Inject delayed /\nno response" { class: func }
+}
+
+battery_emulator: "[EA] Battery emulator /\nsource-load" {
+  class: ea
+  direction: down
+  set_operating_point: "[F] Set voltage/current\noperating point" { class: func }
+  hold_stable_supply: "[F] Hold stable\nsupply/load" { class: func }
+}
+
+dmm_reference: "[EA] Precision DMM /\ncurrent reference" {
+  class: ea
+  direction: down
+  measure_reference_vi: "[F] Measure reference\nvoltage/current" { class: func }
+  report_uncertainty: "[F] Report declared\nuncertainty budget" { class: func }
+}
+
+ambient_meter: "[EA] Ambient thermometer /\nhygrometer" {
+  class: ea
+  direction: down
+  read_ambient: "[F] Read ambient before\nrepetitions" { class: func }
+}
+
+evidence_repository: "[EA] Evidence\nrepository" {
+  class: ea
+  direction: down
+  archive_evidence: "[F] Archive raw logs,\nconfigs, screenshots" { class: func }
+}
+
+system: "[System] PDS-VV-FC-002 battery-supervision functional allocation\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R9; PDS-R10" {
+  class: sys
+  direction: down
+  grid-columns: 2
+
+  uut: "[PC] CanSat UUT\nPDS & ESS v1.0" {
+    class: pc
+    direction: down
+
+    pds_module: "[PC] PDS Module" {
+      class: pc
+      direction: down
+
+      pds_pcb: "[PC] PDS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        ina219: "[PC] INA219" {
+          class: pc
+          direction: down
+          battery_monitoring: "[LC] Battery monitoring" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            measure_voltage: "[F] Measure voltage" { class: func }
+            measure_current: "[F] Measure current" { class: func }
+            respond_i2c: "[F] Respond to I2C\nrequests" { class: func }
+          }
+        }
+
+        protection: "[PC] Protection Circuit" {
+          class: pc
+          power_protection: "[LC] Power Protection" { class: lc }
+        }
+
+        regulator: "[PC] Regulator" {
+          class: pc
+          regulator_lc: "[LC] Regulator" { class: lc }
+        }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+
+          ess_processing: "[LC] ESS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            get_init_state: "[F] Get INA219\ninit state" { class: func }
+            read_voltage: "[F] Read voltage" { class: func }
+            read_current: "[F] Read current" { class: func }
+            process_voltage: "[F] Process voltage" { class: func }
+            process_current: "[F] Process current" { class: func }
+            return_bounded_status: "[F] Return bounded\nstatus/result code" { class: func }
+            mark_stale_invalid: "[F] Mark stale data\nnot valid" { class: func }
+          }
+
+          obcc: "[LC] OBCC" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            collect_init_states: "[F] Collect peripheral\ninit states" { class: func }
+            collect_measurements: "[F] Collect measurements" { class: func }
+            keep_scheduler_live: "[F] Keep scheduler /\nlogging live" { class: func }
+          }
+        }
+      }
+    }
+  }
+
+  test_harness: "[PC] PDS-VV-FC-002\nverification test harness" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    test_control: "[LC] Test command\ninterface" {
+      class: lc
+      direction: down
+      command_test_cases: "[F] Command nominal\nand fault cases" { class: func }
+      configure_operating_points: "[F] Configure operating\npoints and repetitions" { class: func }
+    }
+
+    timing_instrumentation: "[LC] Timing\ninstrumentation" {
+      class: lc
+      direction: down
+      timestamp_reads: "[F] Timestamp I2C\nread durations" { class: func }
+      timestamp_processes: "[F] Timestamp process /\ncalculate durations" { class: func }
+    }
+
+    i2c_test_interface: "[LC] I2C fault /\nprobe interface" {
+      class: lc
+      direction: down
+      condition_faults: "[F] Condition injected\nbus faults" { class: func }
+      record_bus_timing: "[F] Record SDA/SCL\nbus timing" { class: func }
+    }
+
+    reference_context: "[LC] Reference and\nenvironment context" {
+      class: lc
+      direction: down
+      capture_reference: "[F] Capture reference\nvoltage/current" { class: func }
+      record_environment: "[F] Record ambient and\nharness pullups/capacitance" { class: func }
+      record_calibration: "[F] Record instrument\ncalibration IDs" { class: func }
+    }
+
+    evidence_capture: "[LC] Evidence\ncapture" {
+      class: lc
+      direction: down
+      correlate_samples: "[F] Correlate reference,\nINA219, timing samples" { class: func }
+      package_evidence: "[F] Package evidence\nfor report" { class: func }
+    }
+  }
+
+  definition_note: "[C] PDS-VV-FC-002 definition:\nTesting/Demonstration with supporting Analysis;\ntrace PDS-UC-SuperviseBattery and PDS-FE-SensorBusFault;\nrefs IVV, PDS-R9, PDS-R10" {
+    class: note
+    shape: page
+  }
+
+  variable_getter_note: "[C] PDS-VV-CON-005:\nVariable Getter template implemented\nfor every read/process pair with\nownership, units, freshness, bounded status" {
+    class: note
+    shape: page
+  }
+
+  timing_note: "[C] PDS-VV-CON-006/007:\nProcess/Calculate < 5 ms;\nI2C read timeout ≤ 5 ms;\n59/59 in-limit timing samples for 95/95 claim" {
+    class: note
+    shape: page
+  }
+
+  blocking_note: "[C] PDS-VV-CON-008:\nNo unbounded blocking except modeled\nI2C or UART waits; scheduler/logging live" {
+    class: note
+    shape: page
+  }
+
+  stats_env_note: "[C] Evidence conditions:\n≥30 paired V/I samples per operating point;\naccuracy within declared INA219/reference uncertainty budget;\nambient, stable supply/load, calibration, pullups/capacitance recorded" {
+    class: note
+    shape: page
+  }
+}
+
+system.definition_note -> system.uut { class: cstr }
+system.definition_note -> system.test_harness { class: cstr }
+system.variable_getter_note -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing { class: cstr }
+system.variable_getter_note -> system.uut.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+system.timing_note -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing.read_voltage { class: cstr }
+system.timing_note -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing.read_current { class: cstr }
+system.timing_note -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing.process_voltage { class: cstr }
+system.timing_note -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing.process_current { class: cstr }
+system.timing_note -> system.test_harness.timing_instrumentation { class: cstr }
+system.blocking_note -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing { class: cstr }
+system.blocking_note -> system.uut.obcc_module.obcc_pcb.xiao.obcc.keep_scheduler_live { class: cstr }
+system.stats_env_note -> system.test_harness.reference_context { class: cstr }
+system.stats_env_note -> system.test_harness.evidence_capture { class: cstr }
+system.stats_env_note -> system.uut.pds_module.pds_pcb.ina219.battery_monitoring { class: cstr }

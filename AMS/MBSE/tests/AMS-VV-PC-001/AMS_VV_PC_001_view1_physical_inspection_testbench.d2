@@ -1,0 +1,157 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical view — AMS-VV-PC-001 physical component final-acceptance inspection
+# Verification references: IVV, AMS-R1 (BME280), AMS-R6 (CanSat build environment).
+# Traceability: AMS physical integration/build readiness; AMS-UC-MeasureAtmosphere.
+# Inspection scope: PC presence/identity/gross condition only; PL integrity is verified by AMS-VV-PL-001.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-VV-PC-001 PC inspection\nAMS v1.0 final acceptance\nRefs: IVV, AMS-R1, AMS-R6" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: right
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        direction: down
+
+        bme280: "[PC] BME280" { class: pc }
+        ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ams_headers: "[PC] 2mm 2x6 AMS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+
+        xiao: "[PC] XIAO ESP32-S3" { class: pc }
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+  }
+}
+
+inspection_fixture: "[EA] ESD-safe\nInspection Fixture" { class: ea }
+inspection_camera: "[EA] Inspection Camera /\nMicroscope Fixture" { class: ea }
+connector_gauge: "[EA] Caliper /\nConnector Gauge" { class: ea }
+
+note_airflow: "[C] Block sunlight,\nallow airflow" {
+  class: note
+  shape: page
+}
+note_scope: "[C] AMS-VV-PC-001 scope: 100% census\nof modeled UUT physical components;\nVV equipment excluded from PC count" {
+  class: note
+  shape: page
+}
+note_pc_identity: "[C] Pass only if each target PC is present,\nidentifiable, correct for AMS v1.0, and\nlocated in the modeled containment" {
+  class: note
+  shape: page
+}
+note_link_exclusion: "[C] Physical links, continuity, retention,\nscrews, footprints, traces, and cables are\nverified by AMS-VV-PL-001, not this activity" {
+  class: note
+  shape: page
+}
+note_duplicate_paths: "[C] Duplicate labels such as Backplane Connector\nare verified by full containment path; one\nphysical item cannot satisfy two PC targets" {
+  class: note
+  shape: page
+}
+note_fault_hardening: "[C] Fault-hardening inspection: wrong variant,\nwrong side/location, visible damage, FOD,\ncontamination, or unapproved substitution fails" {
+  class: note
+  shape: page
+}
+
+system.cansat.ams_module.ams_pcb -- system.cansat.ams_module: "[PL] Screws" { class: pl }
+system.cansat.obcc_module.obcc_pcb -- system.cansat.obcc_module: "[PL] Screws" { class: pl }
+
+system.cansat.ams_module -- system.cansat.backplane_pcb: "[PL] Backplane\nFixture" { class: pl }
+system.cansat.obcc_module -- system.cansat.backplane_pcb: "[PL] Backplane\nFixture" { class: pl }
+
+system.cansat.ams_module.ams_pcb.bme280 -- system.cansat.ams_module.ams_pcb: "[PL] BME280\nFootprint" { class: pl }
+system.cansat.ams_module.ams_pcb.ams_backplane_connector -- system.cansat.ams_module.ams_pcb: "[PL] Connector\nfootprint" { class: pl }
+system.cansat.ams_module.ams_pcb.bme280 -- system.cansat.ams_module.ams_pcb.ams_backplane_connector: "[PL] I2C + 3V3\ntraces" { class: pl }
+system.cansat.ams_module.ams_pcb.ams_backplane_connector -- system.cansat.backplane_pcb.ams_headers: "[PL] Parallel\nConnector" { class: pl }
+
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb: "[PL] XIAO\nFootprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.obcc_module.obcc_pcb: "[PL] Connector\nfootprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C + 3V3\ntraces" { class: pl }
+system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.backplane_pcb.obcc_headers: "[PL] Parallel\nCable" { class: pl }
+
+system.cansat.backplane_pcb.ams_headers -- system.cansat.backplane_pcb.spine: "[PL] Footprint" { class: pl }
+system.cansat.backplane_pcb.obcc_headers -- system.cansat.backplane_pcb.spine: "[PL] Footprint" { class: pl }
+
+inspection_fixture -- system.cansat: "[PL] ESD-safe support" { class: pl }
+inspection_camera -- system.cansat: "[PL] Optical inspection" { class: pl }
+connector_gauge -- system.cansat: "[PL] Gauge contact" { class: pl }
+
+note_airflow -> system.cansat.ams_module { class: cstr }
+note_scope -> system.cansat { class: cstr }
+note_pc_identity -> system.cansat.ams_module { class: cstr }
+note_pc_identity -> system.cansat.backplane_pcb { class: cstr }
+note_pc_identity -> system.cansat.obcc_module { class: cstr }
+note_link_exclusion -> system.cansat { class: cstr }
+note_duplicate_paths -> system.cansat.ams_module.ams_pcb.ams_backplane_connector { class: cstr }
+note_duplicate_paths -> system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector { class: cstr }
+note_fault_hardening -> system.cansat.ams_module.ams_pcb.bme280 { class: cstr }
+note_fault_hardening -> system.cansat.obcc_module.obcc_pcb.xiao { class: cstr }

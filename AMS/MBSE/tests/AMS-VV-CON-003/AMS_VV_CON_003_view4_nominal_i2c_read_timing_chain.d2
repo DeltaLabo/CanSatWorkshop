@@ -1,0 +1,117 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# Functional chain: nominal environmental-measurement I2C read timing test for AMS-VV-CON-003.
+
+chain: "AMS-VV-CON-003 — Nominal environmental I2C read timing\nTesting; AMS v1.0 final acceptance; Refs: IVV, AMS-R2, AMS-R5\nTrace: constraint, AMS-UC-MeasureAtmosphere, AMS-FE-SensorBusFault" {
+  class: chain
+  direction: down
+
+  configure_test_case: "[F] Configure\ntest case" { class: func }
+  read_ambient_temperature: "[F] Read ambient\ntemperature" { class: func }
+  record_ambient_conditions: "[F] Record ambient\nconditions" { class: func }
+  supply_stable_power: "[F] Supply stable\n3V3 power" { class: func }
+  record_voltage_current: "[F] Record voltage /\ncurrent" { class: func }
+  pass_nominal_i2c: "[F] Pass through\nnominal I2C" { class: func }
+  command_timed_read_batch: "[F] Command timed\nread batch" { class: func }
+  trigger_timed_pressure_read: "[F] Trigger timed\npressure read" { class: func }
+  trigger_timed_temperature_read: "[F] Trigger timed\ntemperature read" { class: func }
+  timestamp_read_entry_return: "[F] Timestamp read\nentry/return" { class: func }
+  read_pressure: "[F] Read\npressure" { class: func }
+  read_temperature: "[F] Read\ntemperature" { class: func }
+  respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+  capture_sda_scl_timing: "[F] Capture SDA/SCL\ntiming" { class: func }
+  emit_result_record: "[F] Emit result\nrecord" { class: func }
+  receive_timestamped_log: "[F] Receive timestamped\nsample log" { class: func }
+  compute_timing_statistics: "[F] Compute timing\nstatistics" { class: func }
+  archive_evidence: "[F] Archive\nevidence" { class: func }
+
+  note_scope: "[C] Scope confirmed for final acceptance:\nonly environmental measurement I2C reads\n(Read pressure, Read temperature);\ninit/chip-ID reads are out of scope" { class: note; shape: page }
+  note_timing: "[C] Pass if each of 59 nominal samples per\nenvironmental I2C read function has\nt_read + U95 ≤ 5.000 ms" { class: note; shape: page }
+  note_boundary: "[C] Timing boundary: read-function entry\nto returned OK/error status; record\ninstrumentation overhead" { class: note; shape: page }
+  note_environment: "[C] Ambient 20-30 °C recorded before repetitions;\nstable 3V3/common ground; harness pullups\nand bus capacitance recorded" { class: note; shape: page }
+  note_no_stale: "[C] Nominal result shall be OK, current,\nand not stale/error" { class: note; shape: page }
+}
+
+chain.configure_test_case -> chain.read_ambient_temperature: "[FE] Environment\nsetup" { class: fe }
+chain.read_ambient_temperature -> chain.record_ambient_conditions: "[FE] Ambient\nreading" { class: fe }
+chain.configure_test_case -> chain.supply_stable_power: "[FE] Power\nsetup" { class: fe }
+chain.supply_stable_power -> chain.record_voltage_current: "[FE] Voltage/current" { class: fe }
+chain.configure_test_case -> chain.pass_nominal_i2c: "[FE] Nominal\nbus profile" { class: fe }
+chain.configure_test_case -> chain.command_timed_read_batch: "[FE] Test case +\nn = 59" { class: fe }
+
+chain.command_timed_read_batch -> chain.trigger_timed_pressure_read: "[FE] Pressure\nread batch" { class: fe }
+chain.command_timed_read_batch -> chain.trigger_timed_temperature_read: "[FE] Temperature\nread batch" { class: fe }
+chain.trigger_timed_pressure_read -> chain.timestamp_read_entry_return: "[FE] Start timer" { class: fe }
+chain.trigger_timed_temperature_read -> chain.timestamp_read_entry_return: "[FE] Start timer" { class: fe }
+chain.timestamp_read_entry_return -> chain.read_pressure: "[FE] Timed pressure\ninvocation" { class: fe }
+chain.timestamp_read_entry_return -> chain.read_temperature: "[FE] Timed temp.\ninvocation" { class: fe }
+
+chain.read_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nI2C Req" { class: fe }
+chain.read_temperature -> chain.respond_i2c_requests: "[FE] Temp.\nI2C Req" { class: fe }
+chain.respond_i2c_requests -> chain.read_pressure: "[FE] Pressure" { class: fe }
+chain.respond_i2c_requests -> chain.read_temperature: "[FE] Temperature" { class: fe }
+
+chain.pass_nominal_i2c -> chain.capture_sda_scl_timing: "[FE] SDA/SCL\nedges" { class: fe }
+chain.read_pressure -> chain.emit_result_record: "[FE] Pressure status +\nduration" { class: fe }
+chain.read_temperature -> chain.emit_result_record: "[FE] Temp. status +\nduration" { class: fe }
+chain.emit_result_record -> chain.receive_timestamped_log: "[FE] Timestamped\nsample log" { class: fe }
+chain.capture_sda_scl_timing -> chain.compute_timing_statistics: "[FE] Timing trace" { class: fe }
+chain.receive_timestamped_log -> chain.compute_timing_statistics: "[FE] Durations and\nresult codes" { class: fe }
+chain.record_ambient_conditions -> chain.compute_timing_statistics: "[FE] Ambient\nconditions" { class: fe }
+chain.record_voltage_current -> chain.compute_timing_statistics: "[FE] Power\nconditions" { class: fe }
+chain.compute_timing_statistics -> chain.archive_evidence: "[FE] Pass/fail +\nraw data path" { class: fe }
+
+chain.note_scope -> chain.command_timed_read_batch { class: cstr }
+chain.note_timing -> chain.compute_timing_statistics { class: cstr }
+chain.note_boundary -> chain.timestamp_read_entry_return { class: cstr }
+chain.note_environment -> chain.record_ambient_conditions { class: cstr }
+chain.note_environment -> chain.record_voltage_current { class: cstr }
+chain.note_no_stale -> chain.emit_result_record { class: cstr }
+
+# Layout-only edges to keep setup functions before read functions and evidence functions after them.
+chain.record_voltage_current -> chain.pass_nominal_i2c { style: { opacity: 0 } }
+chain.trigger_timed_temperature_read -> chain.timestamp_read_entry_return { style: { opacity: 0 } }
+chain.read_temperature -> chain.capture_sda_scl_timing { style: { opacity: 0 } }

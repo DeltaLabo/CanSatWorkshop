@@ -1,76 +1,91 @@
-# DPS v0.1 Physical Architecture test plan
+# DPS v0.1 MBSE IVV verification plan
 
-This plan is derived from the Capella/D2 Physical Architecture views in `DPS/MBSE/v0.1/`. The diagrams themselves were not modified.
+Derived from `DPS/MBSE/v0.1/` Capella/D2 Physical Architecture views. Diagrams were not edited and no detailed test-definition diagrams are created here. This plan uses only [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md) and the existing corpus in [`references/`](./references/).
 
-Project-wide IVV conventions, statistics, rate terminology, fault semantics, and artifact paths are defined in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md). DPS v0.1 is an incremental-delivery baseline; its 5 Hz radio/PC stream tests are development performance checks and do not change the v1.0 OBCC `2 s` flight telemetry cadence.
+## 1. SSIV and assumptions
 
-## Scope read from the MBSE views
+- **Version/SSIV assumption:** `DPS-v0.1` development subsystem integration version. No formal SSIV document was found.
+- **Baseline meaning:** hardware-downgraded datalogger and ground-station circuitboards while preserving the v1.0 functional chains.
+- **Rate assumption:** 5 Hz activity is development stress evidence only; v1.0 OBCC flight telemetry remains 2 s.
+- **Traceability gap:** explicit mission, capability, use-case and feared-event model elements are absent; trace targets below are inferred and need confirmation.
 
-- **Physical links:** datalogger circuitboard (`XIAO ESP32-S3` + `RFM95W LoRa`), ground-station circuitboard (`XIAO ESP32` + `RFM95W LoRa`), and PC connected through USB-C; maximum datalogger-to-ground-station separation is **500 m**.
-- **Logical chain:** LoRa transceivers exchange payload/command frames; the ground forwarder bridges LoRa/SPI to PC/UART; the PC decoder feeds CSV writer and dashboard concurrently.
-- **Functional chains:**
-  - downlink decode/storage,
-  - dashboard command uplink,
-  - datalogger receive path,
-  - datalogger transmit path,
-  - dashboard visualisation,
-  - forwarder initialisation.
-- **Architectural constraints:** 5 s command-toggle cooldown; text alert when latency is `> 1 s`; unique CSV name based on initial timestamp; browser-accessible dashboard; concurrent decoder/CSV/dashboard execution.
+## 2. References
 
-## Reference basis
+- **P0:** `PM&SE/IVV.md` project MBSE IVV, IADT and statistics policy.
+- **R1:** ECSS-E-ST-10-03C test planning/reporting artifacts.
+- **R2:** ISO/IEC/IEEE 29119-2/3 software test process/documentation artifacts.
+- **R3:** NIST/SEMATECH binomial/sample-size artifacts.
+- **R4:** ETSI EN 300 220 and TTN EU868 radio constraints.
+- **R5:** RFM95W/SX1276/LoRa references.
+- **R6:** CanSat/Andøya telemetry and ground-station references.
+- **R7:** LoRa PDR/path-loss literature artifacts.
 
-The retrieved reference corpus is in [`references/`](./references/):
+## 3. MBSE planning inventory
 
-- ECSS-E-ST-10-03C Rev.1: testing programme, functional/performance test discipline, test specification/report documentation.
-- ISO/IEC/IEEE 29119-2 and 29119-3: software test processes and test documentation templates.
-- NIST/SEMATECH e-Handbook: binomial proportion tests and sample-size rationale.
-- ETSI EN 300 220 and TTN EU868 notes: short-range device spectrum/duty-cycle/EIRP constraints where EU863-870 operation applies.
-- Semtech SX1276 / HopeRF RFM95W / LoRa AN1200.22: LoRa radio capability, SPI interface, link budget, sensitivity, and payload limits.
-- CanSat/Andøya references: CanSat telemetry, ground-station, radio test, and operational readiness practices.
-- Callebaut & Van der Perre 2020: empirical LoRa point-to-point path-loss/PDR evidence.
+### 3.1 Views read
 
-## Statistical treatment
+PV1 `DPS_v0.1_view1_physical.d2`; PV2 `DPS_v0.1_view2_logical.d2`; PV3 `DPS_v0.1_view3_functional_allocation.d2`; chains `DPS_v0.1_view4_downlink_processing_chain.d2` through `DPS_v0.1_view9_forwarder_initialisation_chain.d2`.
 
-Apply the project-wide policy in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md) unless a scenario states a stricter criterion.
+### 3.2 Physical components and links
 
-For binary outcomes such as received frames, decoded frames, accepted commands, and rejected corrupt frames:
+- **PCs:** Datalogger Circuitboard; datalogger RFM95W LoRa; datalogger XIAO ESP32-S3; Ground Station Circuitboard; ground RFM95W LoRa; ground XIAO ESP32; PC; PC USB Port.
+- **PLs:** datalogger RFM95W-to-XIAO SPI wires; ground RFM95W-to-XIAO SPI + 5 V power wires; ground XIAO-to-PC USB-C cable.
 
-- Record `N`, successes, failures, and the one-sided 95% exact binomial / Clopper-Pearson lower confidence bound for success probability.
-- Useful zero-failure planning points at 95% confidence: `29/29` supports R90/C95, `59/59` supports about R95/C95, and `300/300` supports about R99/C95.
-- For PDR claims, pass only when the exact lower bound meets the required PDR.
+### 3.3 Component exchanges
 
-For continuous outcomes such as latency, inter-arrival time, RSSI/SNR, CPU/memory, and queue depth, retain raw logs and report min/mean/median/p95/max; use 59 representative in-limit samples for 95/95 deadline claims.
+1. Datalogger LoRa Transceiver -> Dummy Datalogger: SPI.
+2. LoRa Forwarder -> ground LoRa Transceiver: SPI.
+3. LoRa Forwarder -> PC Decoder: UART.
+4. PC Decoder -> CSV Writer: Payload.
+5. PC Decoder -> Dashboard: Payload.
+6. Dashboard -> PC Decoder: Command.
 
-## Planned tests, one per scenario
+### 3.4 Logical allocation inventory
 
-| ID | Scenario | Type | Diagram trace | Test to perform | Statistical/pass criteria |
-|---|---|---|---|---|---|
-| DPS-T-001 | Assembled v0.1 physical system powers up and all local interfaces are present. | Expected use case | Views 1-3: USB-C, SPI, PC, LoRa modules, USB power. | Inspect wiring, antennas, USB-C cable, SPI wiring; power-cycle the PC/ground/datalogger chain; verify ground XIAO enumerates and both RFM95W devices respond over SPI. | 10 power cycles, zero unsafe behavior; all interfaces detected every cycle; no radio TX without antenna. |
-| DPS-T-002 | Ground forwarder initialises Serial0 and SPI successfully. | Expected use case | View 9: `Init Serial0 with interrupts` → `Init SPI with interrupts`. | Restart the ground station and verify Serial0 IRQ, SPI IRQ, and LoRa radio register access. | 60 restarts, zero init failures to demonstrate at least 95% init success at 95% confidence. |
-| DPS-T-003 | Forwarder reports initialisation failure instead of silently operating. | Feared event | View 9: `Init SPI with interrupts` → `Log error`. | Disconnect or misconfigure SPI/radio, then start the forwarder. Repeat with UART unavailable. | 20 trials per injected fault; 100% of trials produce an error log and no false “ready” state. |
-| DPS-T-004 | Datalogger telemetry reaches PC decoder and CSV storage at the required processing rate. | Expected use case | View 4 and View 7: `Send LoRa packet`, `Store incoming data`, `Read payload`, `Forward to PC`, `Read and decode frame`, `Append to CSV`. | Send timestamped payload frames at **5 Hz** for 60 s from datalogger to ground station to PC. | `N = 300`; decoded+stored PDR lower 95% bound ≥ 0.95; p95 end-to-end latency < 1 s; CSV row count equals accepted decoded frames. |
-| DPS-T-005 | The 500 m datalogger-to-ground-station separation is achievable. | Expected use case / boundary | View 1-3 constraint: max separation 500 m. | Field-test or controlled RF-link test at 500 m equivalent path loss; record RSSI/SNR, PDR, radio settings, antenna setup, and legal TX duty cycle. | `N = 300`; PDR lower 95% bound ≥ 0.95; no sustained outage > 1 s under nominal line-of-sight conditions; RF settings comply with local band rules. |
-| DPS-T-006 | Corrupt or unreadable downlink frames are rejected and logged. | Feared event | View 4: `Read payload` → `Log error`; `Read and decode frame`. | Inject frames with bad CRC, truncated payload, invalid field count, bad timestamp, and out-of-range numeric values. | 60 corrupt frames per class; zero corrupt frames enter payload queue/CSV/dashboard; every rejection is logged with reason. |
-| DPS-T-007 | Dashboard displays real-time payload data in the required plots. | Expected use case | View 8: payload queue → dashboard plots; View 3 UI functions. | Feed known payloads covering temperature, humidity, altitude, pitch/roll/yaw, and latency; open dashboard in a browser. | `N = 300`; 100% accepted payloads appear in the correct plot; 4x4 plot matrix exists; 3D orientation plot is top-left; p95 display update latency < 1 s. |
-| DPS-T-008 | Dashboard latency alert activates only when latency exceeds 1 s. | Feared event / threshold | View 8 and View 3: `Update latency alert`, constraint `Latency > 1s`. | Inject payloads with computed latencies below, equal to, and above 1 s. | 30 payloads per threshold class; no alert for `<= 1.0 s`; alert shown at top for `> 1.0 s`; no false negative above threshold. |
-| DPS-T-009 | CSV files are uniquely named and preserve all accepted payloads. | Expected use case | View 3/4 constraint: unique CSV name based on initial timestamp; `Append to CSV`. | Start 10 independent logging sessions, including two starts within the same second if possible; feed known payload sequence. | Zero overwritten files; filenames unique; row order monotonic by RX timestamp; checksum/row count matches accepted payloads. |
-| DPS-T-010 | Dashboard state toggle creates a valid uplink command that reaches the datalogger. | Expected use case | View 5 and View 6: toggle → command queue → UART → forwarder → LoRa TX → datalogger receive/read command. | Trigger 60 user state toggles separated by more than the cooldown period; observe command frame at datalogger. | 60 commands, zero wrong state and zero duplicates; command success lower bound ≥ 0.95; p95 command latency < 1 s where radio settings allow. |
-| DPS-T-011 | Toggle cooldown prevents command spam. | Feared event | View 5: `Disable toggle` → `Cooldown` → `Enable toggle`, constraint `5 seconds`. | Rapidly click/toggle during cooldown; repeat after exactly 5 s. | 30 bursts; only first toggle in each burst enqueues a command; UI disabled during cooldown; re-enabled at `5.0 s ± 0.5 s`. |
-| DPS-T-012 | Datalogger receive path extracts command frames only after LoRa RX indication. | Expected use case | View 6: `Receive incoming data` → `Receive LoRa RX Interrupt` → `Read command`. | Send valid command frames and separately assert/spoof interrupts without valid frames. | 60 valid commands accepted; 60 spoof/no-frame interrupts rejected; no stale command is re-read. |
-| DPS-T-013 | Datalogger transmit path sends LoRa frames when a packet is provided. | Expected use case | View 7: `Send LoRa packet` → `Transmit outgoing data`. | Unit/integration test datalogger transmit function with timestamped payloads and radio TX-ready checks. | 60 transmissions; zero missing sequence numbers at a near-field receiver; no buffer overrun; no transmit attempt while radio not ready. |
-| DPS-T-014 | PC decoder, CSV writer, and dashboard remain stable under concurrent sustained load. | Expected use case / stress | View 2/3 constraints: concurrent decoder, CSV writer, dashboard. | Replay or generate a 5 Hz payload stream for 20 min while dashboard is open and CSV is writing. | `N = 6000`; no process crash; queue backlog returns to zero; p95 pipeline latency < 1 s; memory growth bounded and explainable. |
-| DPS-T-015 | USB/UART interruption is handled without corrupting state. | Feared event | Views 1-5: USB-C, UART CE, `Check if data is available`, `Forward to PC`. | Disconnect USB/UART for 10 s during a 5 Hz stream, then reconnect. | 10 interruptions; decoder does not crash; CSV remains parseable; dashboard indicates stale/no data; stream resumes without duplicate timestamps. |
-| DPS-T-016 | Co-channel/near-channel RF traffic does not produce accepted false payloads. | Feared event | LoRa transceiver functions; separation/radio constraints. | Operate a second LoRa transmitter on wrong sync word and on frequencies separated by at least 100 kHz; then test deliberate same-channel interference. | 300 foreign frames; zero false accepted payloads/commands. Same-channel interference may reduce PDR, but degradation is measured and reported rather than silently misdecoded. |
-| DPS-T-017 | Radio configuration is legal and compatible with payload rate. | Feared event / compliance | Views 1-7 LoRa links; source standards. | Compute time-on-air, payload size, channel, EIRP/ERP, duty cycle, and antenna gain for chosen local band. | Configuration complies with the applicable regional regulation before over-the-air tests. If 5 Hz LoRa airtime exceeds legal duty cycle, perform 5 Hz performance tests in cabled/attenuated lab setup and field tests at legal airtime. |
+| LC | Allocated functions |
+|---|---|
+| Datalogger LoRa Transceiver | Receive incoming data; Transmit outgoing data. |
+| Dummy Datalogger | Receive LoRa RX Interrupt; Send LoRa packet; Read command. |
+| Ground LoRa Transceiver | Store incoming data; Transmit outgoing data. |
+| LoRa Forwarder | Init Serial0 with interrupts; Init SPI with interrupts; Log error; Receive LoRa RX Interrupt; Read payload; Forward to PC; Store incoming UART data; Receive Serial0 RX Interrupt; Read command; Generate frame; Write to LoRa Radio. |
+| Decoder | Check if data is available; Read and decode frame; Push to payload queue; Get RX timestamp; Calculate latency; Forward to transceiver; Consume command queue. |
+| CSV Writer | Consume payload queue; Append to CSV. |
+| Dashboard | Consume payload queue; Update orientation 3D plot; Update relative-humidity 2D plot; Push to command queue; Update temperature 2D plot; Update altitude 2D plot; Catch State toggle; Update latency alert; Disable toggle; Enable toggle; Cooldown; Create plots. |
+| USB Power | Provide power. |
 
-## Evidence to archive per test
+### 3.5 Functional chains and constraints
 
-For each test run, save evidence under `results/<test-id>/` inside this `tests/` folder:
+- **Chains:** FC01 downlink decode/storage; FC02 dashboard command/uplink; FC03 CanSat receive path; FC04 CanSat transmit path; FC05 dashboard visualisation; FC06 forwarder initialisation.
+- **Constraints:** C01 max 500 m datalogger-ground separation; C02 concurrent Decoder/CSV/Dashboard execution; C03 browser-accessible dashboard; C04 unique CSV name from initial timestamp; C05 top alert when latency >1 s; C06 5 s toggle cooldown; C07 4x4 plot matrix with 3D plot top left.
+- **Inferred feared events:** missing hardware/interface, wrong protocol, dropped or corrupt accepted frame, overwritten CSV, hidden latency, command spam/stale command, silent init failure, RF false frame, USB/UART interruption.
 
-- diagram version (`DPS v0.1`) and test ID,
-- firmware/software commit or file hashes,
-- radio settings: frequency, bandwidth, spreading factor, coding rate, TX power, antenna type,
-- raw frame log with sequence number, TX timestamp, RX timestamp, RSSI/SNR if available,
-- decoded payload log, CSV output, dashboard screenshots where relevant,
-- command log for uplink tests,
-- pass/fail calculation including confidence interval and any excluded samples.
+## 4. Candidate IVV activities
+
+All rows include: ID, SSIV/version, model elements, IVV source category, IADT method, trace target, references, viewpoints including statistics/fault hardening, preliminary criteria, expected report location, and status.
+
+| ID | SSIV/version | Model element(s) covered | IVV source category | IADT | Traceability target | Refs | Viewpoints: statistics and fault hardening | Preliminary pass/fail criteria | Expected location | Status |
+|---|---|---|---|---|---|---|---|---|---|---|
+| DPS-V01-I-001 | DPS-v0.1 | All PCs and PLs in §3.2 | component/link | I | Assembled v0.1 telemetry bench capability | P0,R1,R5,R6 | 100% item coverage; wiring polarity, shorts, antenna-before-TX, USB power safety. | Every PC/PL present or dispositioned; SPI/5 V/USB continuity and polarity pass; no unsafe power-up. | `tests/results/DPS-V01-I-001/` | Candidate, define checklist later. |
+| DPS-V01-A-001 | DPS-v0.1 | All six CEs in §3.3 | component exchange | A | Telemetry and command paths | P0,R1,R2,R5,R6 | CE-by-CE protocol/direction/data analysis; handle stale bytes, corrupt payloads, lost UART/SPI. | SPI, UART, Payload and Command exchanges exist, match direction/intent, and faulted exchanges are detected or logged. | `tests/results/DPS-V01-A-001/` | Candidate, CE evidence template needed. |
+| DPS-V01-A-002 | DPS-v0.1 | All LC/function allocations in §3.4 | allocation | A | Correct software/hardware partition | P0,R1,R2 | Static review and runtime traces; no foreign functions, no missing queue/ISR path. | All intended functions allocated to listed LC/host; no conflicting foreign functions; cross-LC flows use modeled CEs. | `tests/results/DPS-V01-A-002/` | Candidate, update after code baseline. |
+| DPS-V01-T-001 | DPS-v0.1 | FC01 downlink decode/storage, C04 | functional chain/scenario | T | Use case: receive, decode, timestamp and store telemetry | P0,R1,R2,R3,R5,R6,R7 | Exact binomial frame success; latency distribution; corrupt-frame rejection. | Development run, nominally 5 Hz for 60 s, `N=300`; decoded+stored lower 95% bound meets agreed PDR target; p95 latency <1 s; CSV rows equal accepted frames; corrupt frames rejected/logged. | `tests/results/DPS-V01-T-001/` | Candidate, detailed definition required. |
+| DPS-V01-T-002 | DPS-v0.1 | FC02 command/uplink, C06 | functional chain/scenario | T | Use case: state command, feared command spam | P0,R1,R2,R3,R5,R6 | Binomial command success; cooldown timing; duplicate/stale-command hardening. | At least 60 valid toggles transmit with zero wrong state/duplicates; rapid toggles during cooldown enqueue no extra command; re-enable at 5.0 s ±0.5 s. | `tests/results/DPS-V01-T-002/` | Candidate, detailed definition required. |
+| DPS-V01-T-003 | DPS-v0.1 | FC03 CanSat receive path | functional chain/scenario | T | Use case: datalogger receives command | P0,R1,R3,R5,R6 | Valid/rejected-command counts; spoof/no-frame interrupt and old-buffer hardening. | 60 valid commands accepted; 60 spoof/no-frame/old-buffer cases rejected; no stale command is re-read. | `tests/results/DPS-V01-T-003/` | Candidate, detailed definition required. |
+| DPS-V01-T-004 | DPS-v0.1 | FC04 CanSat transmit path | functional chain/scenario | T | Use case: datalogger transmits LoRa frame | P0,R1,R3,R5,R6 | Sequence success count; radio-busy/not-ready and buffer-overrun hardening. | 60 transmissions with zero missing sequence numbers at near-field receiver; no TX while radio not ready; no buffer overrun. | `tests/results/DPS-V01-T-004/` | Candidate, detailed definition required. |
+| DPS-V01-T-005 | DPS-v0.1 | FC05 dashboard visualisation, C02,C03,C05,C07 | functional chain/scenario | D/T | Use case: operator sees real-time telemetry | P0,R1,R2,R3,R6 | Payload-to-plot success; display latency; stale/invalid field hardening. | `N=300` known payloads update correct plots; 4x4 matrix exists; 3D plot top-left; browser works; alert only for latency >1 s. | `tests/results/DPS-V01-T-005/` | Candidate, UI oracle required. |
+| DPS-V01-T-006 | DPS-v0.1 | FC06 forwarder initialisation | functional chain/scenario | T | Feared event: silent init failure | P0,R1,R2,R3,R5 | Independent restart trials; missing SPI/radio/UART hardening. | 59-60 restarts with zero init failures for selected claim; injected faults log error and never false-ready. | `tests/results/DPS-V01-T-006/` | Candidate, fault-injection detail required. |
+| DPS-V01-C-001 | DPS-v0.1 | C01 500 m separation | constraint | A/T | Datalogger-to-ground link constraint | P0,R1,R3,R4,R5,R6,R7 | Exact binomial PDR; RSSI/SNR/path-loss; legal duty cycle, antenna and interference hardening. | Field or RF-equivalent 500 m test; lower 95% PDR bound meets agreed target, default ≥0.90 unless stricter; radio settings legal. | `tests/results/DPS-V01-C-001/` | Candidate, range definition required. |
+| DPS-V01-C-002 | DPS-v0.1 | C02 concurrent execution | constraint | T | Concurrent process/store/display capability | P0,R1,R2,R3 | Sustained frame count, queue depth, memory growth; backlog/crash/deadlock hardening. | 20 min stress, e.g. 5 Hz, no crash; backlog returns to zero; p95 pipeline latency <1 s; memory bounded. | `tests/results/DPS-V01-C-002/` | Candidate, load definition required. |
+| DPS-V01-C-003 | DPS-v0.1 | C03 browser access | constraint | I/D | Operator UI use case | P0,R1,R2,R6 | Browser refresh/reconnect hardening; statistics not primary. | Dashboard opens in agreed browser(s), refresh/reconnect does not corrupt data, no developer console dependence for user functions. | `tests/results/DPS-V01-C-003/` | Candidate, browser set TBD. |
+| DPS-V01-C-004 | DPS-v0.1 | C04 unique CSV name | constraint | T | Data archival integrity | P0,R1,R2 | Rapid restart/same-second hardening; statistics not primary. | At least 10 sessions produce zero overwrites; filenames unique; row order monotonic; row count/checksum matches accepted frames. | `tests/results/DPS-V01-C-004/` | Candidate, filesystem oracle needed. |
+| DPS-V01-C-005 | DPS-v0.1 | C05 latency alert >1 s | constraint | T | Feared hidden latency | P0,R1,R2,R3 | Threshold samples; boundary timestamp hardening. | 30 payloads below, at and above threshold; no alert for ≤1.0 s; top alert for >1.0 s; invalid timestamps rejected/flagged. | `tests/results/DPS-V01-C-005/` | Candidate, threshold oracle needed. |
+| DPS-V01-C-006 | DPS-v0.1 | C06 5 s cooldown | constraint | T | Feared command spam | P0,R1,R2,R3 | Burst trials and timing distribution; clock-jitter hardening. | 30 bursts; only first toggle enqueues; UI disabled during cooldown and re-enabled at 5.0 s ±0.5 s. | `tests/results/DPS-V01-C-006/` | Candidate, UI timing definition needed. |
+| DPS-V01-C-007 | DPS-v0.1 | C07 4x4 plots, 3D top-left | constraint | I/D | Telemetry visualisation use case | P0,R1,R2,R6 | Layout/mapping inspection; missing fields and resize hardening. | Required plot matrix present and mapped. **Gap:** DPS README says 3D altitude model while PA model says 3D orientation plot. | `tests/results/DPS-V01-C-007/` | Candidate, open requirement/model discrepancy. |
+
+## 5. Gaps before detailed definition
+
+- Formal SSIV, mission, capability, use-case and feared-event IDs are missing.
+- All candidate rows require later detailed definition with `capella-pa-tests-definition.md` before execution.
+- DPS v0.1 dashboard includes relative humidity; OBCC v1.0 telemetry excludes it, so any v1.0 reuse must disposition this mismatch.
+- Statistical claims, independence of trials, RF environment and exact PDR thresholds must be fixed in each detailed test definition.
+- Corrupt frames, USB/UART interruptions, RF interference and power recovery are identified but not yet modeled as detailed verification scenarios.

@@ -1,0 +1,199 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-A-001 PV3 functional allocation analysis context.
+# Shows analysis functions, evidence sources, and verification-only analysis record functions. No exchanges are shown in PV3.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 38
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 38 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 38
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+analyst: "[EA] IVV CE Analyst" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  select_baseline: "[F] Select v1.0 model\nand implementation baseline" { class: func }
+  analyze_spi_exchanges: "[F] Analyze SPI\ncomponent exchanges" { class: func }
+  analyze_uart_exchange: "[F] Analyze UART\ncomponent exchange" { class: func }
+  analyze_payload_fanout: "[F] Analyze Payload\nfan-out exchanges" { class: func }
+  analyze_command_exchange: "[F] Analyze Command\nexchange" { class: func }
+  analyze_fault_hardening: "[F] Analyze stale/corrupt\nand disconnect handling" { class: func }
+  document_rationale: "[F] Document CE rationale\nand pass/fail findings" { class: func }
+}
+
+reviewer: "[EA] IVV Reviewer" {
+  class: ea
+  direction: down
+
+  review_analysis: "[F] Review CE analysis\nevidence package" { class: func }
+  approve_disposition: "[F] Approve or reject\nanalysis disposition" { class: func }
+}
+
+model_repository: "[EA] Model Baseline Repository" {
+  class: ea
+  direction: down
+
+  provide_d2_views: "[F] Provide DPS v1.0\nD2/PNG views" { class: func }
+}
+
+implementation_repository: "[EA] Implementation Artifact Repository" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  provide_schematic_netlist: "[F] Provide PCB schematic\nand netlist evidence" { class: func }
+  provide_firmware_code: "[F] Provide firmware/source\ninterface evidence" { class: func }
+  provide_pc_software: "[F] Provide PC decoder,\nCSV and dashboard code" { class: func }
+  provide_interface_logs: "[F] Provide interface logs\nor configuration snippets" { class: func }
+}
+
+system: "[System] DPS v1.0\nDPS-V10-A-001 PV3 functional allocation analysis context" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+        cansat_rfm: "[PC] RFM95W LoRa" {
+          class: pc
+          direction: down
+          cansat_lora: "[LC] LoRa Transceiver" { class: lc }
+        }
+        cansat_xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+          obcc: "[LC] OBCC" { class: lc }
+        }
+      }
+    }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+    ground_rfm: "[PC] RFM95W LoRa" {
+      class: pc
+      direction: down
+      ground_lora: "[LC] LoRa Transceiver" { class: lc }
+    }
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: down
+      ground_forwarder: "[LC] LoRa Forwarder" { class: lc }
+    }
+  }
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    decoder: "[LC] Decoder" { class: lc }
+    csv_writer: "[LC] CSV Writer" { class: lc }
+    dashboard: "[LC] Dashboard" { class: lc }
+
+    ce_analysis_record: "[LC] CE Analysis Record\n(verification-only)" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      store_ce_checklist: "[F] Store six-CE\nanalysis checklist" { class: func }
+      store_artifact_links: "[F] Store model/code/\nschematic evidence links" { class: func }
+      store_fault_review: "[F] Store fault-hardening\nreview" { class: func }
+      compute_verdict: "[F] Compute analysis\ncoverage and verdict" { class: func }
+      archive_report_inputs: "[F] Archive analysis\nreport inputs" { class: func }
+    }
+  }
+}
+
+note_title: "[C] DPS-V10-A-001 PV3 analysis allocation\nIADT: Analysis; report: tests/results/DPS-V10-A-001/" {
+  class: note
+  shape: page
+}
+
+note_environment: "[C] Analysis environment constraints: use frozen DPS v1.0 model baseline,\nimplementation artifact IDs/commit hashes, schematic/netlist revision, and code revision;\nrecord any mismatch as an anomaly or limitation" {
+  class: note
+  shape: page
+}
+
+note_pass: "[C] Pass constraints: each of six modeled CEs has an implementation artifact,\ncorrect protocol/direction/data semantics, no hidden substitute interface, and documented\nfault handling for stale bytes, corrupt payloads, lost UART/SPI and duplicate commands" {
+  class: note
+  shape: page
+}
+
+note_viewpoints: "[C] Viewpoints: protocol/physical-interface consistency, directionality,\ndata typing/framing, multi-consumer fan-out, timing/backlog risk, fault hardening,\nand 100% checklist coverage. Statistical significance is not primary for analysis." {
+  class: note
+  shape: page
+}
+
+note_verification_only: "[C] Verification-only LC: CE Analysis Record is not flight DPS functionality;\nit exists only to control analysis evidence and report references" {
+  class: note
+  shape: page
+}
+
+note_title -> system.pc.ce_analysis_record { class: cstr }
+note_environment -> model_repository.provide_d2_views { class: cstr }
+note_environment -> implementation_repository.provide_schematic_netlist { class: cstr }
+note_environment -> implementation_repository.provide_firmware_code { class: cstr }
+note_environment -> implementation_repository.provide_pc_software { class: cstr }
+note_pass -> analyst.analyze_spi_exchanges { class: cstr }
+note_pass -> analyst.analyze_uart_exchange { class: cstr }
+note_pass -> analyst.analyze_payload_fanout { class: cstr }
+note_pass -> analyst.analyze_command_exchange { class: cstr }
+note_pass -> system.pc.ce_analysis_record.compute_verdict { class: cstr }
+note_viewpoints -> analyst.analyze_fault_hardening { class: cstr }
+note_viewpoints -> system.pc.ce_analysis_record.store_fault_review { class: cstr }
+note_verification_only -> system.pc.ce_analysis_record { class: cstr }
+
+# Layout-only edges to keep evidence sources and humans above the UUT context.
+model_repository -> implementation_repository { style: { opacity: 0 } }
+implementation_repository -> analyst { style: { opacity: 0 } }
+analyst -> reviewer { style: { opacity: 0 } }
+reviewer -> system { style: { opacity: 0 } }
+system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.pc { style: { opacity: 0 } }

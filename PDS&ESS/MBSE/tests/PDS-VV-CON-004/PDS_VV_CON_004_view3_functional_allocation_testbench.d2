@@ -1,0 +1,279 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDS-VV-CON-004 PV3 functional allocation testbench.
+# References: IVV, PDS-R2, PDS-R6, PDS-R8.
+# Traceability: [C] Supply both 5±0.1 V and 3.3±0.1 V, 1 A;
+# PDS-UC-ProvideRegulatedPower; PDS-FE-RailBrownout.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  read_definition: "[F] Read modeled\nverification definition" { class: func }
+  command_switch: "[F] Press / command\nswitch on and off" { class: func }
+  accept_steps: "[F] Accept or abort\ntest steps" { class: func }
+}
+
+battery_emulator: "[EA] Battery emulator /\ncurrent-limited bench supply" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  set_input_voltage: "[F] Set emulated\nbattery voltage" { class: func }
+  set_current_limit: "[F] Set current\nand power limits" { class: func }
+  apply_input_power: "[F] Apply emulated\nbattery power" { class: func }
+}
+
+load_5v: "[EA] 5 V programmable load" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  command_5v_static: "[F] Command 5 V\nno-load, nominal, 1 A" { class: func }
+  command_5v_steps: "[F] Command 5 V\nload steps" { class: func }
+}
+
+load_3v3: "[EA] 3V3 programmable load" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  command_3v3_static: "[F] Command 3V3\nno-load, nominal, 1 A" { class: func }
+  command_3v3_steps: "[F] Command 3V3\nload steps" { class: func }
+}
+
+dmm_daq: "[EA] Calibrated DMM / DAQ" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  measure_5v: "[F] Measure 5 V\nsettled samples" { class: func }
+  measure_3v3: "[F] Measure 3V3\nsettled samples" { class: func }
+  measure_current: "[F] Measure input\nand load current" { class: func }
+}
+
+scope_logger: "[EA] Oscilloscope / logger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  capture_startup: "[F] Capture startup\novershoot" { class: func }
+  capture_transient: "[F] Capture load-step\nripple / recovery" { class: func }
+  capture_brownout: "[F] Observe no\nbrownout / reset" { class: func }
+}
+
+thermal_camera: "[EA] Thermocouple or\nIR camera" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  measure_temperature: "[F] Measure regulator\nand PCB temperature" { class: func }
+}
+
+ambient_meter: "[EA] Ambient thermometer /\nhygrometer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  read_ambient: "[F] Read ambient\ntemperature / humidity" { class: func }
+}
+
+host_pc: "[EA] Evidence repository /\nhost PC" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  log_data: "[F] Log voltage, current,\nripple, temperature" { class: func }
+  store_evidence: "[F] Store raw evidence\nand configuration" { class: func }
+  compare_constraints: "[F] Compare results\nto constraints" { class: func }
+}
+
+system: "[System] PDS-VV-CON-004 regulated-rail functional allocation\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R2; PDS-R6; PDS-R8" {
+  class: sys
+  direction: down
+  grid-columns: 2
+
+  ess_module: "[PC] ESS Module" {
+    class: pc
+    direction: down
+    battery_pack: "[PC] 1S1P Li-Ion\nisolated for this test" {
+      class: pc
+      battery_lc: "[LC] Battery" {
+        class: lc
+        grid-columns: 1
+        isolate_battery: "[F] Remain isolated\nfrom bench test" { class: func }
+      }
+    }
+  }
+
+  pds_module: "[PC] PDS Module" {
+    class: pc
+    direction: down
+
+    test_environment: "[LC] Verification\nenvironment context" {
+      class: lc
+      grid-columns: 1
+      qualify_ambient: "[F] Qualify ambient\nbefore repetition" { class: func }
+    }
+
+    pds_pcb: "[PC] PDS PCB" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      battery_connector: "[PC] Battery Connector" {
+        class: pc
+        battery_input_lc: "[LC] Emulated battery\ninput interface" {
+          class: lc
+          grid-columns: 1
+          receive_emulated_power: "[F] Receive emulated\nbattery power" { class: func }
+        }
+      }
+
+      protection: "[PC] Protection Circuit" {
+        class: pc
+        direction: down
+        power_protection: "[LC] Power Protection" {
+          class: lc
+          grid-columns: 1
+          restore_power: "[F] Restore power" { class: func }
+          detect_overcurrent: "[F] Detect overcurrent" { class: func }
+          detect_overvoltage: "[F] Detect overvoltage" { class: func }
+          cut_off_power: "[F] Cut off power" { class: func }
+        }
+      }
+
+      ina219: "[PC] INA219" {
+        class: pc
+        battery_monitoring: "[LC] Battery monitoring" {
+          class: lc
+          grid-columns: 1
+          measure_input_voltage: "[F] Measure input\nvoltage" { class: func }
+          measure_input_current: "[F] Measure input\ncurrent" { class: func }
+        }
+      }
+
+      regulator: "[PC] Regulator" {
+        class: pc
+        regulator_lc: "[LC] Regulator" {
+          class: lc
+          grid-columns: 1
+          regulate_voltage: "[F] Regulate voltage" { class: func }
+        }
+      }
+
+      pds_backplane_connector: "[PC] Backplane Connector" {
+        class: pc
+        rail_test_interface: "[LC] Rail test interface" {
+          class: lc
+          grid-columns: 1
+          export_5v: "[F] Export 5 V rail" { class: func }
+          export_3v3: "[F] Export 3V3 rail" { class: func }
+        }
+      }
+    }
+  }
+
+  backplane_pcb: "[PC] Backplane PCB" {
+    class: pc
+    backplane_distribution: "[LC] Backplane power\ndistribution" {
+      class: lc
+      grid-columns: 1
+      distribute_rails: "[F] Distribute 5 V\nand 3V3 rails" { class: func }
+    }
+  }
+
+  obcc_module: "[PC] OBCC Module" {
+    class: pc
+    direction: down
+    obcc_pcb: "[PC] OBCC PCB" {
+      class: pc
+      xiao: "[PC] XIAO ESP32-S3" {
+        class: pc
+        reset_observer: "[LC] Brownout /\nreset observer" {
+          class: lc
+          grid-columns: 1
+          indicate_no_reset: "[F] Indicate no\nbrownout / reset" { class: func }
+        }
+      }
+    }
+  }
+
+  note_supply: "[C] PDS-VV-CON-004 pass:\n5 V in [4.9, 5.1] V and\n3.3 V in [3.2, 3.4] V,\nincluding uncertainty, at no-load,\nnominal-load, and 1 A-load cases." {
+    class: note
+    shape: page
+  }
+
+  note_stats: "[C] Statistical significance:\ncollect ≥30 settled samples per rail\nper load case; retain raw data,\nuncertainty budget, and confidence interval." {
+    class: note
+    shape: page
+  }
+
+  note_fault: "[C] Fault-hardening constraints:\nstartup and load-step transients settle\nwithin campaign-configurable windows;\nno brownout/reset, unsafe temperature,\nor uncontrolled current." {
+    class: note
+    shape: page
+  }
+
+  note_refs: "[C] References: IVV, PDS-R2,\nPDS-R6, PDS-R8.\nTrace: PDS-UC-ProvideRegulatedPower;\nPDS-FE-RailBrownout." {
+    class: note
+    shape: page
+  }
+}
+
+system.note_supply -> system.pds_module.pds_pcb.regulator.regulator_lc.regulate_voltage { class: cstr }
+system.note_supply -> system.pds_module.pds_pcb.pds_backplane_connector.rail_test_interface.export_5v { class: cstr }
+system.note_supply -> system.pds_module.pds_pcb.pds_backplane_connector.rail_test_interface.export_3v3 { class: cstr }
+system.note_stats -> dmm_daq.measure_5v { class: cstr }
+system.note_stats -> dmm_daq.measure_3v3 { class: cstr }
+system.note_stats -> host_pc.compare_constraints { class: cstr }
+system.note_fault -> scope_logger.capture_startup { class: cstr }
+system.note_fault -> scope_logger.capture_transient { class: cstr }
+system.note_fault -> scope_logger.capture_brownout { class: cstr }
+system.note_fault -> thermal_camera.measure_temperature { class: cstr }
+system.note_refs -> host_pc.store_evidence { class: cstr }
+system.note_refs -> system.obcc_module.obcc_pcb.xiao.reset_observer.indicate_no_reset { class: cstr }
+
+# Layout-only edges to place external verification means before the UUT.
+test_operator -> battery_emulator { style: { opacity: 0 } }
+battery_emulator -> load_5v { style: { opacity: 0 } }
+load_5v -> load_3v3 { style: { opacity: 0 } }
+load_3v3 -> dmm_daq { style: { opacity: 0 } }
+dmm_daq -> scope_logger { style: { opacity: 0 } }
+scope_logger -> thermal_camera { style: { opacity: 0 } }
+thermal_camera -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> host_pc { style: { opacity: 0 } }
+host_pc -> system { style: { opacity: 0 } }

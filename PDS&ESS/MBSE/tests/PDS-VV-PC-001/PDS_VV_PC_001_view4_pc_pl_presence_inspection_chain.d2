@@ -1,0 +1,92 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain for PDS-VV-PC-001.
+# Capella PA Functional Chain view only: functions, functional exchanges, and constraints
+# directly in the chain container. No System, PC, LC, EA, PL, CE, FE-external grouping, or cstr links.
+# References: IVV; PDS-R1; PDS-R2; PDS-R4–PDS-R8.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDS-VV-PC-001 — PC/PL presence inspection chain\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R1; PDS-R2; PDS-R4–PDS-R8" {
+  class: chain
+  direction: down
+
+  read_ambient: "[F] Read ambient\nconditions" { class: func }
+  verify_setup: "[F] Verify calibration,\nESD status, and\nequipment readiness" { class: func }
+  review_liion: "[F] Review Li-ion\nsafety documents\nand limits" { class: func }
+  generate_checklist: "[F] Generate modeled\nPC/PL checklist\nfrom v1.0 baseline" { class: func }
+  inspect_components: "[F] Inspect components\nfor presence, correctness,\norientation, workmanship,\nsecurity" { class: func }
+  inspect_links: "[F] Inspect links\nfor presence, endpoints,\nrouting, contact, retention" { class: func }
+  probe_links: "[F] Probe continuity,\npolarity, isolation" { class: func }
+  photograph_evidence: "[F] Photograph evidence\nand item identifiers" { class: func }
+  compare_baseline: "[F] Compare observations\nand readings to\nPDS & ESS v1.0 baseline" { class: func }
+  log_evidence: "[F] Log evidence,\narticle/equipment IDs,\nconditions, and readings" { class: func }
+  disposition_anomalies: "[F] Disposition anomalies,\nwaivers, holds, retests" { class: func }
+  record_result: "[F] Record inspection\npass/fail rationale" { class: func }
+
+  note_scope: "[C] Scope / traceability\nPrimary: PDS-VV-PC-001. Companion coverage:\nPDS-VV-PL-001 and PDS-VV-SAFE-001.\nTrace: PDS-UC-ProvideRegulatedPower;\nPDS-FE-LiIonUnsafeCondition; PDS-FE-RailBrownout;\nPCB manufacturability constraint." { class: note; shape: page }
+  note_environment: "[C] Environmental constraints\nAmbient temperature/humidity read before inspection.\nUse ESD-safe workbench/fixture. Defer on condensation,\nunsafe ESD state, unresolved calibration/status problem,\nor unsafe cell condition." { class: note; shape: page }
+  note_pc_pass: "[C] PC pass/fail constraints\n100% modeled PCs inspected. Pass only if present, correct,\nidentifiable, oriented correctly, installed in modeled containment,\nsecure, undamaged, and workmanlike. No uninspected PC." { class: note; shape: page }
+  note_pl_pass: "[C] PL pass/fail constraints\n100% modeled PLs inspected. Pass only if present, endpoint-correct,\ncontinuous where electrical, correctly polarized, isolated from\nunintended shorts, mechanically retained, and contact/workmanship\nacceptable. No uninspected PL." { class: note; shape: page }
+  note_liion: "[C] Li-ion safety constraints\nCell/pack identity, datasheet/SDS or equivalent, UN 38.3 /\nIEC 62133 evidence when available, and charge/discharge/storage\nlimits are recorded before powered readings. Defer if unsafe,\ndamaged, swollen, leaking, undocumented, or out of limits." { class: note; shape: page }
+  note_pcb: "[C] PCB manufacturability constraints\nPDS, OBCC, and backplane PCB workmanship and DFM evidence\nsupport the Carvera Air CNC constraint and PCB current/thermal\nrationale for modeled 1 A rail paths. Ref: PDS-R8." { class: note; shape: page }
+  note_statistical: "[C] Statistical significance viewpoint\nThis is 100% article enumeration, not sampling. It supports\npass/fail for the inspected article only; any future population\nor lot inference requires a separate sampling plan." { class: note; shape: page }
+  note_fault_hardening: "[C] Fault-hardening viewpoint\nExplicitly screen for open/short, reversed battery/cable polarity,\nmis-mated backplane headers, high-resistance rail/ground paths,\nloose screws/fixtures, lifted pads, solder bridges, cracked connectors,\nrail-brownout precursors, and Li-ion unsafe-condition precursors." { class: note; shape: page }
+  note_evidence: "[C] Evidence constraints\nEvidence path: ../results/PDS-VV-PC-001/. Record baseline view,\narticle ID, operator, witness/reviewer, ambient readings, equipment IDs,\ncalibration/status, photos, continuity/isolation/polarity readings,\nLi-ion document status, anomalies, waivers, retests, and rationale." { class: note; shape: page }
+}
+
+chain.read_ambient -> chain.verify_setup: "[FE] Ambient T/RH" { class: fe }
+chain.verify_setup -> chain.review_liion: "[FE] Equipment and\nESD status" { class: fe }
+chain.review_liion -> chain.generate_checklist: "[FE] Safe handling\nlimits" { class: fe }
+chain.generate_checklist -> chain.inspect_components: "[FE] PC checklist" { class: fe }
+chain.generate_checklist -> chain.inspect_links: "[FE] PL checklist" { class: fe }
+chain.inspect_components -> chain.photograph_evidence: "[FE] PC observations" { class: fe }
+chain.inspect_links -> chain.probe_links: "[FE] Endpoints to\nprobe" { class: fe }
+chain.inspect_links -> chain.compare_baseline: "[FE] PL observations" { class: fe }
+chain.probe_links -> chain.photograph_evidence: "[FE] Reading labels" { class: fe }
+chain.inspect_components -> chain.compare_baseline: "[FE] PC observations" { class: fe }
+chain.probe_links -> chain.compare_baseline: "[FE] Continuity / polarity /\nisolation results" { class: fe }
+chain.photograph_evidence -> chain.log_evidence: "[FE] Image evidence" { class: fe }
+chain.compare_baseline -> chain.log_evidence: "[FE] Pass/fail\nrationale" { class: fe }
+chain.log_evidence -> chain.disposition_anomalies: "[FE] Evidence IDs\nand open items" { class: fe }
+chain.disposition_anomalies -> chain.record_result: "[FE] Closure, hold,\nor retest status" { class: fe }

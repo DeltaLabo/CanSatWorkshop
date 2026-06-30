@@ -1,0 +1,115 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Logical view: all-version LC allocation boundary inventory for ADS-IVV-A-ALLOC-ALL.
+# References: IVV allocation analysis rule; NASA-SE; GPS/UBX; IMU/I2C; SW/stats; ADS MBSE plan.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-A-ALLOC-ALL\nLogical allocation boundary inventory\nRefs: IVV; NASA-SE; GPS/UBX; IMU/I2C; SW/stats" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  v01: "[PC] ADS v0.1 allocation boundaries" {
+    class: pc
+    direction: right
+    gps: "[PC] UBX-G7020-KT GPS" {
+      class: pc
+      gps_sensing: "[LC] ADS GPS Sensing" { class: lc }
+    }
+    xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: down
+      setup: "[LC] Setup" { class: lc }
+      loop: "[LC] Loop" { class: lc }
+    }
+    note_v01_gap: "[C] v0.1 allocation-analysis note\nSetup and Loop both reside on XIAO.\nAny Setup↔Loop or Loop→PC data flow\nnot represented by PV2 CEs shall be\nrecorded as same-PC/internal or model gap." { class: note; shape: page }
+  }
+
+  v02: "[PC] ADS v0.2 allocation boundaries" {
+    class: pc
+    direction: right
+    gps: "[PC] UBX-G7020-KT GPS" {
+      class: pc
+      gps_sensing: "[LC] ADS GPS Sensing" { class: lc }
+    }
+    imu: "[PC] ICM20948 IMU" {
+      class: pc
+      kinematic_sensing: "[LC] ADS Kinematic Sensing" { class: lc }
+    }
+    xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: down
+      setup: "[LC] Setup" { class: lc }
+      loop: "[LC] Loop" { class: lc }
+    }
+    note_v02_gap: "[C] v0.2 allocation-analysis notes\nInit Serial0/Serial1 has allocation but no chain coverage.\nSetup↔Loop and Kinematic→Setup flows need\ninternal-flow or modeling-gap disposition.\nv0.2 lacks explicit I2C timeout constraint." { class: note; shape: page }
+  }
+
+  v03: "[PC] ADS v0.3 PCB delivery\nAllocation inventory = none" {
+    class: pc
+    note_v03_na: "[C] v0.3 allocation N/A rationale\nOnly PV1 physical PCB delivery is modeled.\nNo LCs, no Functions, no CEs, and no\nfunctional-allocation view exist.\nUART/I2C are PL traces, not LC allocations." { class: note; shape: page }
+  }
+
+  v10: "[PC] ADS v1.0 allocation boundaries" {
+    class: pc
+    direction: right
+    ads_pcb: "[PC] ADS PCB" {
+      class: pc
+      direction: down
+      gps: "[PC] UBX-G7020-KT GPS" {
+        class: pc
+        gps_sensing: "[LC] ADS GPS Sensing" { class: lc }
+      }
+      imu: "[PC] ICM20948 IMU" {
+        class: pc
+        kinematic_sensing: "[LC] ADS Kinematic Sensing" { class: lc }
+      }
+    }
+    obcc_pcb: "[PC] OBCC PCB / XIAO ESP32-S3" {
+      class: pc
+      direction: down
+      ads_processing: "[LC] ADS Processing" { class: lc }
+      obcc: "[LC] OBCC" { class: lc }
+    }
+    note_v10_na: "[C] v1.0 allocation note\nNo Serial0/PC monitor LC allocation is modeled.\nBackplane, headers, connectors, and cables\nhave physical roles but no allocated functions." { class: note; shape: page }
+  }
+}
+
+note_coverage: "[C] Allocation coverage constraint\nAnalyze 100% of selected-version LCs and functions.\nv0.1: 3 LCs / 11 LC functions.\nv0.2: 4 LCs / 22 LC functions.\nv0.3: explicit 0/0 N/A after 1/1 view reviewed.\nv1.0: 4 LCs / 20 functions." { class: note; shape: page }
+note_pass_fail: "[C] Allocation pass/fail\nPass only if every intended function is allocated\nto its modeled LC/PC, no foreign functions are\nallocated, and LC-boundary flows are supported\nby modeled CEs or explicitly dispositioned." { class: note; shape: page }
+note_faults: "[C] Fault-hardening viewpoint\nWrong ownership can hide silent sensors, stale data,\nblocking loops, corrupt getters/calculators, unsafe\npointer/return ownership, or OBCC consumption of\ninvalid ADS data." { class: note; shape: page }
+
+system.v01.gps.gps_sensing -> system.v01.xiao.loop: "[CE] UART" { class: ce }
+system.v02.gps.gps_sensing -> system.v02.xiao.loop: "[CE] UART" { class: ce }
+system.v02.imu.kinematic_sensing -> system.v02.xiao.loop: "[CE] I2C" { class: ce }
+system.v10.ads_pcb.gps.gps_sensing -> system.v10.obcc_pcb.ads_processing: "[CE] UART" { class: ce }
+system.v10.ads_pcb.imu.kinematic_sensing -> system.v10.obcc_pcb.ads_processing: "[CE] I2C" { class: ce }
+system.v10.obcc_pcb.ads_processing -> system.v10.obcc_pcb.obcc: "[CE] Pointers" { class: ce }
+system.v10.obcc_pcb.ads_processing -> system.v10.obcc_pcb.obcc: "[CE] Returns" { class: ce }
+
+note_coverage -> system { class: cstr }
+note_pass_fail -> system { class: cstr }
+note_faults -> system { class: cstr }
+
+# Layout-only rank hints for readable notes.
+system -> note_coverage { style: { opacity: 0 } }
+note_coverage -> note_pass_fail { style: { opacity: 0 } }
+note_pass_fail -> note_faults { style: { opacity: 0 } }

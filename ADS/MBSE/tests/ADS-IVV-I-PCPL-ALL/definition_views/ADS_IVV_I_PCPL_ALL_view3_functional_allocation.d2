@@ -1,0 +1,140 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view: verification-only functions, operators, and equipment for ADS-IVV-I-PCPL-ALL.
+# References: IVV skill minimum PC/PL inspection; ADS/MBSE/tests/README.md; copied ADS v0.1/v0.2/v0.3/v1.0 source views.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-I-PCPL-ALL\nVerification-only functional allocation\nRefs: IVV; NASA-SE; Workmanship; ADS MBSE plan" {
+  class: sys
+  direction: down
+
+  selected_article: "[PC] Selected ADS article\n(verification-only inspection interface)" {
+    class: pc
+    direction: down
+
+    inspection_interface: "[LC] PC/PL inspection interface" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      provide_article_id: "[F] Provide article\nID and version" { class: func }
+      expose_pc_pl_inventory: "[F] Expose modeled\nPC/PL inventory" { class: func }
+      expose_probe_points: "[F] Expose probe\npoints and connectors" { class: func }
+      hold_deviation_marks: "[F] Hold deviation\nmarkers until disposition" { class: func }
+    }
+  }
+}
+
+operator: "[EA] IVV operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  select_version: "[F] Select ADS version\nand article" { class: func }
+  read_ambient: "[F] Read ambient\nthermometer/hygrometer" { class: func }
+  inspect_components: "[F] Inspect component\npresence, identity,\norientation, security" { class: func }
+  inspect_links: "[F] Inspect link\npresence, routing,\nmating, workmanship" { class: func }
+  apply_probes: "[F] Apply DMM and\nfixture probes" { class: func }
+  record_evidence: "[F] Record photos,\nreadings, pass/fail" { class: func }
+}
+
+witness: "[EA] IVV witness / reviewer" {
+  class: ea
+  review_evidence: "[F] Review checklist\nand evidence" { class: func }
+}
+
+dmm: "[EA] Continuity / isolation DMM\n(calibrated)" {
+  class: ea
+  direction: down
+  measure_continuity: "[F] Measure continuity\nof modeled PLs" { class: func }
+  measure_isolation: "[F] Detect shorts\nagainst adjacent nets" { class: func }
+  display_resistance: "[F] Display resistance\nor continuity result" { class: func }
+}
+
+supply: "[EA] Current-limited 3V3\nbench supply" {
+  class: ea
+  direction: down
+  apply_current_limited_power: "[F] Apply current-limited\n3V3 power" { class: func }
+  measure_delivered_power: "[F] Measure delivered\nvoltage and current" { class: func }
+}
+
+fixture: "[EA] Header / cable\nprobe fixture" {
+  class: ea
+  direction: down
+  probe_header_pins: "[F] Probe header\nand connector pins" { class: func }
+  detect_reversal: "[F] Detect cable/header\nreversal or mis-mate" { class: func }
+}
+
+microscope: "[EA] Microscope / camera\ninspection station" {
+  class: ea
+  direction: down
+  magnify_workmanship: "[F] Magnify solder,\nfootprints, connectors" { class: func }
+  capture_photo: "[F] Capture photo\nevidence" { class: func }
+}
+
+ambient_monitor: "[EA] Ambient thermometer /\nhygrometer" {
+  class: ea
+  display_environment: "[F] Display ambient\ntemperature and humidity" { class: func }
+}
+
+note_environment: "[C] Environmental precondition\nOperator records ambient temperature\nand humidity before article batch.\nDefer if condensation, unsafe ESD\ncondition, or unverified equipment\ncalibration is present." { class: note; shape: page }
+note_calibration: "[C] Equipment constraint\nDMM/continuity equipment and\nbench supply must be in calibration\nor function-checked before use." { class: note; shape: page }
+note_pass_fail: "[C] Pass/fail constraint\nPass only when 100% of the selected\nversion's modeled PCs and PLs are\npresent, correctly connected,\ncontinuous where applicable, isolated\nfrom unintended shorts, and evidenced." { class: note; shape: page }
+note_stats_fault: "[C] Viewpoints\nStatistical significance: complete\nenumeration, not sampling.\nFault hardening: open/short, swapped\nTX/RX or SDA/SCL, weak power/ground,\nmis-mated headers, loose fixtures." { class: note; shape: page }
+
+note_environment -> operator.read_ambient { class: cstr }
+note_calibration -> dmm.measure_continuity { class: cstr }
+note_calibration -> supply.apply_current_limited_power { class: cstr }
+note_pass_fail -> operator.record_evidence { class: cstr }
+note_pass_fail -> system.selected_article.inspection_interface.expose_pc_pl_inventory { class: cstr }
+note_stats_fault -> operator.inspect_links { class: cstr }
+
+# Layout-only edge to keep the operators and equipment below the selected article.
+system -> operator { style: { opacity: 0 } }
+operator -> dmm { style: { opacity: 0 } }
+dmm -> supply { style: { opacity: 0 } }
+supply -> fixture { style: { opacity: 0 } }
+fixture -> microscope { style: { opacity: 0 } }
+microscope -> ambient_monitor { style: { opacity: 0 } }
+ambient_monitor -> witness { style: { opacity: 0 } }

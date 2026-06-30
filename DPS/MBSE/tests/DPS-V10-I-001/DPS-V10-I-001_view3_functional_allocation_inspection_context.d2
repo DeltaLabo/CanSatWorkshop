@@ -1,0 +1,198 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-I-001 functional allocation inspection context.
+# Shows human/equipment functions and the verification-only evidence-record functions.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 38
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 38 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 38
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+inspector: "[EA] IVV Inspector" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  read_lux_meter: "[F] Read illumination\nfrom lux meter" { class: func }
+  verify_esd_power_off: "[F] Verify ESD controls\nand UUT power off" { class: func }
+  inspect_pc_presence: "[F] Inspect physical\ncomponent presence" { class: func }
+  inspect_pl_presence: "[F] Inspect physical\nlink presence" { class: func }
+  verify_no_ground_backplane: "[F] Verify ground PCB\nbackplane connector absent" { class: func }
+  record_checklist: "[F] Record checklist\nand article IDs" { class: func }
+  attach_photos: "[F] Attach inspection\nphotos" { class: func }
+}
+
+reviewer: "[EA] IVV Reviewer" {
+  class: ea
+  direction: down
+
+  review_evidence: "[F] Review inspection\nevidence package" { class: func }
+  approve_or_reject: "[F] Approve or reject\ninspection verdict" { class: func }
+}
+
+dmm: "[EA] Digital Multimeter\ncontinuity / resistance" {
+  class: ea
+  direction: down
+
+  measure_continuity: "[F] Measure continuity\nand resistance" { class: func }
+  display_reading: "[F] Display continuity\nreading" { class: func }
+}
+
+usb_c_cable_tester: "[EA] USB-C Cable Tester" {
+  class: ea
+  direction: down
+
+  verify_usb_cable: "[F] Verify USB-C cable\ncontinuity and shorts" { class: func }
+}
+
+inspection_camera: "[EA] Inspection Camera\nor magnifier" {
+  class: ea
+  direction: down
+
+  capture_closeups: "[F] Capture focused\nclose-up photos" { class: func }
+}
+
+lux_meter: "[EA] Lux Meter" {
+  class: ea
+  direction: down
+
+  display_lux: "[F] Display PCB\nillumination" { class: func }
+}
+
+system: "[System] DPS v1.0\nDPS-V10-I-001 PV3 functional allocation context" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+        cansat_rfm: "[PC] RFM95W LoRa" { class: pc }
+        cansat_xiao: "[PC] XIAO ESP32-S3" { class: pc }
+        cansat_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+    ground_rfm: "[PC] RFM95W LoRa" { class: pc }
+    ground_xiao: "[PC] XIAO ESP32" { class: pc }
+  }
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: down
+
+    inspection_record: "[LC] Inspection Evidence Record\n(verification-only)" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      store_checklist: "[F] Store inspection\nchecklist" { class: func }
+      store_photos: "[F] Store inspection\nphotos" { class: func }
+      store_measurements: "[F] Store continuity\nand resistance readings" { class: func }
+      compute_coverage: "[F] Compute item\ncoverage and verdict" { class: func }
+      archive_package: "[F] Archive evidence\nin results folder" { class: func }
+    }
+
+    usb_port: "[PC] USB Port" { class: pc }
+  }
+}
+
+note_title: "[C] DPS-V10-I-001 PV3 inspection function allocation\nIADT: Inspection; report: tests/results/DPS-V10-I-001/" {
+  class: note
+  shape: page
+}
+
+note_environment: "[C] Environmental pass constraints: illumination ≥500 lx at inspected PCB;\nESD mat/strap connected; UUT unpowered during resistance/continuity checks;\ninspection photos are in focus and identify the article inspected" {
+  class: note
+  shape: page
+}
+
+note_pc_pl_pass: "[C] Presence/absence pass constraints: every modeled PC and PL in README §3.2\nis observed present or dispositioned; variants match model; screws/footprints/traces/USB cable\nare installed and continuity/polarity checks pass" {
+  class: note
+  shape: page
+}
+
+note_c02_pass: "[C] C02 pass constraint: ground-station PCB reuse is accepted only if\nthe backplane connector is absent/not soldered and no unintended\nbackplane continuity or load is measured" {
+  class: note
+  shape: page
+}
+
+note_fail: "[C] Failure conditions: missing PC/PL without disposition, wrong variant,\nvisible damage, 5 V/GND short, reversed polarity, absent antenna before later TX,\nor soldered ground-station backplane connector" {
+  class: note
+  shape: page
+}
+
+note_verification_only: "[C] Verification-only LC: Inspection Evidence Record\nis not flight DPS functionality; it exists only to control IVV evidence" {
+  class: note
+  shape: page
+}
+
+note_title -> system.pc.inspection_record { class: cstr }
+note_environment -> lux_meter.display_lux { class: cstr }
+note_environment -> inspector.read_lux_meter { class: cstr }
+note_environment -> inspector.verify_esd_power_off { class: cstr }
+note_environment -> inspection_camera.capture_closeups { class: cstr }
+note_pc_pl_pass -> inspector.inspect_pc_presence { class: cstr }
+note_pc_pl_pass -> inspector.inspect_pl_presence { class: cstr }
+note_pc_pl_pass -> dmm.measure_continuity { class: cstr }
+note_pc_pl_pass -> usb_c_cable_tester.verify_usb_cable { class: cstr }
+note_pc_pl_pass -> system.pc.inspection_record.compute_coverage { class: cstr }
+note_c02_pass -> inspector.verify_no_ground_backplane { class: cstr }
+note_c02_pass -> system.ground_station_pcb { class: cstr }
+note_fail -> system.pc.inspection_record.compute_coverage { class: cstr }
+note_verification_only -> system.pc.inspection_record { class: cstr }
+
+# Layout-only edges to keep verification means above the UUT context.
+lux_meter -> inspector { style: { opacity: 0 } }
+inspector -> dmm { style: { opacity: 0 } }
+dmm -> usb_c_cable_tester { style: { opacity: 0 } }
+usb_c_cable_tester -> inspection_camera { style: { opacity: 0 } }
+inspection_camera -> reviewer { style: { opacity: 0 } }
+reviewer -> system { style: { opacity: 0 } }

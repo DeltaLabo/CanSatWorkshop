@@ -1,0 +1,143 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical view — AMS-VV-CON-003 I2C read timeout testbench
+# Verification references: IVV, AMS-R2 (I2C), AMS-R5 (statistics).
+# Final acceptance scope: environmental measurement I2C reads only.
+# Traceability: constraint; AMS-FE-SensorBusFault; AMS-UC-MeasureAtmosphere.
+# Preserve the original PA hierarchy: Physical System > CanSat > AMS, backplane, and OBCC.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-VV-CON-003 I2C timeout\nFinal acceptance; Refs: IVV, AMS-R2, AMS-R5" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: right
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        direction: down
+
+        bme280: "[PC] BME280" { class: pc }
+        ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ams_headers: "[PC] 2mm 2x6 AMS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+
+        xiao: "[PC] XIAO ESP32-S3" { class: pc }
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+  }
+}
+
+test_controller: "[EA] Host PC /\nTest Controller" { class: ea }
+logic_analyzer: "[EA] Logic Analyzer /\nTimer" { class: ea }
+fault_harness: "[EA] I2C Fault\nInjection Harness" { class: ea }
+bench_supply: "[EA] Bench Power\nSupply" { class: ea }
+
+note_airflow: "[C] Block sunlight,\nallow airflow" {
+  class: note
+  shape: page
+}
+note_testbench: "[C] VV-only bench connections shall not\nbypass the modeled I2C path; record\nharness pullups/capacitance" {
+  class: note
+  shape: page
+}
+note_power_env: "[C] Stable 3V3/common ground required;\nrecord voltage/current before and\nafter each timing batch" {
+  class: note
+  shape: page
+}
+
+system.cansat.ams_module.ams_pcb -- system.cansat.ams_module: "[PL] Screws" { class: pl }
+system.cansat.obcc_module.obcc_pcb -- system.cansat.obcc_module: "[PL] Screws" { class: pl }
+
+system.cansat.ams_module -- system.cansat.backplane_pcb: "[PL] Backplane\nFixture" { class: pl }
+system.cansat.obcc_module -- system.cansat.backplane_pcb: "[PL] Backplane\nFixture" { class: pl }
+
+system.cansat.ams_module.ams_pcb.bme280 -- system.cansat.ams_module.ams_pcb: "[PL] BME280\nFootprint" { class: pl }
+system.cansat.ams_module.ams_pcb.ams_backplane_connector -- system.cansat.ams_module.ams_pcb: "[PL] Connector\nfootprint" { class: pl }
+system.cansat.ams_module.ams_pcb.bme280 -- system.cansat.ams_module.ams_pcb.ams_backplane_connector: "[PL] I2C + 3V3\ntraces" { class: pl }
+system.cansat.ams_module.ams_pcb.ams_backplane_connector -- system.cansat.backplane_pcb.ams_headers: "[PL] Parallel\nConnector" { class: pl }
+
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb: "[PL] XIAO\nFootprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.obcc_module.obcc_pcb: "[PL] Connector\nfootprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C + 3V3\ntraces" { class: pl }
+system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.backplane_pcb.obcc_headers: "[PL] Parallel\nCable" { class: pl }
+
+system.cansat.backplane_pcb.ams_headers -- system.cansat.backplane_pcb.spine: "[PL] Footprint" { class: pl }
+system.cansat.backplane_pcb.obcc_headers -- system.cansat.backplane_pcb.spine: "[PL] Footprint" { class: pl }
+
+test_controller -- system.cansat.obcc_module: "[PL] USB log" { class: pl }
+logic_analyzer -- system.cansat.ams_module: "[PL] SDA/SCL" { class: pl }
+fault_harness -- system.cansat.obcc_module: "[PL] I2C fault" { class: pl }
+bench_supply -- system.cansat.backplane_pcb: "[PL] 3V3/GND" { class: pl }
+
+note_airflow -> system.cansat.ams_module { class: cstr }
+note_testbench -> fault_harness { class: cstr }
+note_testbench -> logic_analyzer { class: cstr }
+note_power_env -> bench_supply { class: cstr }
+note_power_env -> system.cansat.backplane_pcb { class: cstr }

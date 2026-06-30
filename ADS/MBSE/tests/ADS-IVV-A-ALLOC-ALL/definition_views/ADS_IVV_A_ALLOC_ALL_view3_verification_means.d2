@@ -1,0 +1,107 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view: verification-only functions and means for ADS-IVV-A-ALLOC-ALL.
+# References: IVV allocation analysis rule; ADS MBSE all-version source views.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-A-ALLOC-ALL\nVerification-only functional allocation\nRefs: IVV; NASA-SE; GPS/UBX; IMU/I2C; SW/stats" {
+  class: sys
+  direction: down
+
+  selected_version: "[PC] Selected ADS version\n(allocation analysis interface)" {
+    class: pc
+    direction: down
+
+    allocation_interface: "[LC] Allocation analysis interface" {
+      class: lc
+      direction: down
+      grid-columns: 2
+      expose_views: "[F] Expose copied\nD2 source views" { class: func }
+      expose_lc_function_inventory: "[F] Expose LC/function\nallocation inventory" { class: func }
+      expose_boundary_flows: "[F] Expose LC-boundary\nflows and CEs" { class: func }
+      hold_allocation_deviation: "[F] Hold allocation\ndeviation markers" { class: func }
+    }
+  }
+}
+
+analyst: "[EA] IVV allocation analyst" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  select_baseline: "[F] Select ADS version\nand model baseline" { class: func }
+  enumerate_allocations: "[F] Enumerate LCs,\nPCs, and Functions" { class: func }
+  map_to_implementation: "[F] Map modeled functions\nto implementation modules" { class: func }
+  check_no_foreign: "[F] Check no missing,\nduplicate, or foreign functions" { class: func }
+  analyze_boundaries: "[F] Analyze LC-boundary\nflows through CEs" { class: func }
+  record_result: "[F] Record pass/fail,\nN/A rationale, gaps,\nwaivers, retest status" { class: func }
+}
+
+firmware_repo: "[EA] Firmware repository /\nstatic analysis tool" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  provide_source_tree: "[F] Provide source tree\nand firmware commit" { class: func }
+  inspect_call_graph: "[F] Inspect call graph\nand module ownership" { class: func }
+  inspect_getter_pattern: "[F] Inspect Variable Getter\nownership and side effects" { class: func }
+  inspect_timing_ownership: "[F] Inspect process/calculate\nand timeout ownership" { class: func }
+}
+
+runtime_evidence: "[EA] Runtime evidence tools" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  provide_uart_logs: "[F] Provide UART/GPS\ntransaction evidence" { class: func }
+  provide_i2c_logs: "[F] Provide I2C/IMU\ntransaction evidence" { class: func }
+  provide_obcc_logs: "[F] Provide OBCC\ncollection evidence" { class: func }
+  flag_fault_observations: "[F] Flag stale/corrupt\nor blocking observations" { class: func }
+}
+
+reference_corpus: "[EA] Reference corpus" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  provide_ivv_rules: "[F] Provide IVV\nallocation rules" { class: func }
+  provide_protocol_refs: "[F] Provide GPS/UBX\nand IMU/I2C references" { class: func }
+  provide_sw_refs: "[F] Provide SW/statistics\nreferences" { class: func }
+}
+
+quality_authority: "[EA] Quality / configuration\nauthority" {
+  class: ea
+  review_disposition: "[F] Review allocation\ndeviations and waivers" { class: func }
+}
+
+note_coverage: "[C] Complete allocation enumeration\nv0.1: 3 LCs/11 functions. v0.2: 4 LCs/22 functions.\nv0.3: 0/0 N/A after 1/1 view. v1.0: 4 LCs/20 functions." { class: note; shape: page }
+note_pass_fail: "[C] Pass/fail constraint\nPass if every intended function is allocated to the modeled\nLC/PC, no foreign function is allocated, and all LC-boundary\nflows use modeled CEs or have recorded disposition." { class: note; shape: page }
+note_faults: "[C] Fault-hardening viewpoint\nWrong allocation can mask silent sensors, stale or corrupt\nmeasurements, blocking loops, invalid getters/calculators,\nand unsafe v1.0 pointer/return ownership." { class: note; shape: page }
+note_stats: "[C] Statistical viewpoint\nThis is complete enumeration, not sampling. Runtime samples\nare evidence only for linked chain/constraint tests." { class: note; shape: page }
+
+note_coverage -> analyst.enumerate_allocations { class: cstr }
+note_pass_fail -> analyst.check_no_foreign { class: cstr }
+note_pass_fail -> analyst.analyze_boundaries { class: cstr }
+note_faults -> runtime_evidence.flag_fault_observations { class: cstr }
+note_stats -> analyst.record_result { class: cstr }
+
+# Layout-only edge to keep means below the selected-version interface.
+system -> analyst { style: { opacity: 0 } }
+analyst -> firmware_repo { style: { opacity: 0 } }
+firmware_repo -> runtime_evidence { style: { opacity: 0 } }
+runtime_evidence -> reference_corpus { style: { opacity: 0 } }
+reference_corpus -> quality_authority { style: { opacity: 0 } }

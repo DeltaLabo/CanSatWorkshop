@@ -1,144 +1,109 @@
-# OBCC MBSE v1.0 scenario-based test plan
+# OBCC v1.0 IVV-aligned verification plan
 
-This folder is a test/reference corpus for the Capella-style D2 Physical Architecture model in `OBCC/MBSE/v1.0`. It was prepared from the diagrams only.
+Planning artifact for the Capella/D2 views in `OBCC/MBSE/v1.0`. The model remains the source of truth; this file inventories the current model and identifies candidate verification activities to be modeled in a later test-definition pass. No Capella/D2 diagrams are modified by this plan.
 
-Project-wide IVV conventions, statistics, rate terminology, fault semantics, and artifact paths are defined in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md). In this plan, subsystem modules shown around the OBCC are integration context, not OBCC ownership. Internal sensor/control collection may run at `≥5 Hz`, while v1.0 LoRa heartbeat/status/measurement telemetry is modeled as a `2 s` downlink cadence. Startup critical-component checks gate flight readiness; mid-flight sensor/getter faults must return bounded error codes, appear in telemetry, and let OBCC/PDM command emergency deployment when required instead of blocking the scheduler.
+Project-wide IVV conventions, evidence paths, statistical policy, fault semantics, and report-by-reference rules are defined in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md). Evidence for any activity below should be stored under `results/<activity-id>/` in this `tests/` folder unless a campaign-level folder is later agreed.
 
-## Model views read
+## 1. SSIV / development-version assumptions
 
-| View | File | Test-relevant content |
-|---|---|---|
-| PV physical architecture | `OBCC_v1.0_view1_physical.d2` | XIAO ESP32-S3 OBCC, RFM95W LoRa, BME280, ICM20948, micro-servo, GPS, INA219, battery/PDS, ground station/dashboard, GPIO/I2C/UART/SPI/PWM/LoRa/power links. |
-| Logical architecture | `OBCC_v1.0_view2_logical.d2` | FreeRTOS tasks, queues, timers/ISRs, telemetry encoder, LoRa driver, state manager, deployment controller, sensor getters, ground decoder/dashboard/logger. |
-| Functional allocation | `OBCC_v1.0_view3_functional_allocation.d2` | Startup health, sensor acquisition, 34-byte telemetry payload, LoRa downlink/uplink, On/Standby modes, deployment gating, runtime fault management. |
-| Startup chain | `OBCC_v1.0_view4_startup_health_chain.d2` | Critical vs non-critical peripheral startup checks and degraded-mode entry. |
-| Telemetry chain | `OBCC_v1.0_view5_telemetry_downlink_chain.d2` | Sensor sampling, payload encoding, 2 s LoRa heartbeat/status/measurement downlink, ground decode/display/store. |
-| Command/state chain | `OBCC_v1.0_view6_command_state_chain.d2` | Wireless On/Standby command path; no serial-console operator for v1.0. |
-| Deployment gate chain | `OBCC_v1.0_view7_deployment_gating_chain.d2` | Deployment inhibited in Standby; in On, trigger must actuate servo within 5 s; telemetry continues. |
-| Runtime fault chain | `OBCC_v1.0_view8_runtime_fault_handling_chain.d2` | Getter timeouts, bus protection, error flags, non-blocking runtime sensor-fault disclosure, emergency-deploy request path when needed, and telemetry of health/status. |
+- **Assumed SSIV:** OBCC subsystem integration version **v1.0**, inferred from the folder path and diagram labels.
+- **System-level campaign ambiguity:** no separate SSIV/campaign identifier was found in the OBCC model files. Confirm whether this v1.0 plan is for workshop acceptance, protoflight, qualification, or final flight acceptance.
+- **Rate semantics from project IVV:** subsystem sensing/control may run at `>=5 Hz`; v1.0 LoRa heartbeat/status/measurement downlink cadence is `2 s`.
+- **Fault semantics from project IVV:** startup critical-component faults gate operational readiness. Runtime getter/sensor faults shall be bounded, error-coded, telemetry-visible, and non-blocking; emergency deployment is handled by the modeled deployment gate when needed.
 
-## Reference basis
+## 2. Views read
 
-Saved searches and source artifacts are under `tests/references`.
+- `OBCC_v1.0_view1_physical.d2`: integrated CanSat, subsystem modules/PCBs, OBCC XIAO/RFM95W, sensors, PDS/ESS, PDM, ground station/PC, physical links.
+- `OBCC_v1.0_view2_logical.d2`: FreeRTOS/task topology, queues, drivers, getters, telemetry, command/state, deployment and ground-station logical components.
+- `OBCC_v1.0_view3_functional_allocation.d2`: startup health, sensor acquisition, telemetry payload, LoRa downlink/uplink, On/Stand-by modes, deployment gating and runtime fault functions.
+- `OBCC_v1.0_view4_startup_health_chain.d2`: startup critical/non-critical peripheral health chain.
+- `OBCC_v1.0_view5_telemetry_downlink_chain.d2`: sensing, telemetry encoding, LoRa downlink, ground decode/display/store.
+- `OBCC_v1.0_view6_command_state_chain.d2`: wireless On/Stand-by command path.
+- `OBCC_v1.0_view7_deployment_gating_chain.d2`: Stand-by inhibit and On-mode deployment actuation.
+- `OBCC_v1.0_view8_runtime_fault_handling_chain.d2`: getter timeouts, error codes, runtime fault disclosure and emergency-deploy request policy.
 
-Primary sources used to shape the plan:
+## 3. Reference set used
 
-- ECSS-E-ST-10-03C Rev.1: qualification/acceptance/protoflight testing, functional/performance tests, test procedures and reports.
-- NASA GSFC-STD-7000B GEVS: tailored environmental verification, verification matrices, vibration/thermal/workmanship context.
-- NASA-STD-8739.8B: software assurance, software safety, IV&V, traceability.
-- CanSat Mission Guide 2025: telemetry/ground-station expectations, drop/thermal/vibration/vacuum tests, pre/post communications and mechanism demonstrations.
-- HopeRF RFM95W data sheet: LoRa long-range modem, packet engine/CRC, RSSI/SNR-related evidence, SPI interface.
-- NXP UM10204 I2C-bus specification: SDA/SCL, START/STOP, ACK/NACK, bus behavior.
-- FreeRTOS documentation: queues, mutexes/semaphores, direct-to-task notifications, ISR/task synchronization, ESP32 task APIs.
-- Reliability/tolerance interval references: exact binomial confidence and distribution-free tolerance interval methods.
-- LoRa outdoor PDR literature: packet-delivery ratio depends on range, environment, antenna orientation/weather; PDR must be measured in the final test geometry.
+No new external research was performed. References are the existing corpus in `tests/references/` plus the project IVV plan.
 
-## Test philosophy and statistics
+| Ref ID | Local source |
+|---|---|
+| IVV | `../../../../PM&SE/IVV.md` |
+| OBCC-R1 | ECSS-E-ST-10-03C testing artifact in `references/sources/` |
+| OBCC-R2 | NASA GSFC-STD-7000B GEVS artifact |
+| OBCC-R3 | NASA-STD-8739.8B software assurance artifact |
+| OBCC-R4 | CanSat Mission Guide and Andøya telemetry artifacts |
+| OBCC-R5 | HopeRF RFM95W / LoRa artifacts and LoRa PDR literature |
+| OBCC-R6 | NXP UM10204 I2C artifact |
+| OBCC-R7 | FreeRTOS / ESP-IDF task, queue, timer, mutex and ISR artifacts |
+| OBCC-R8 | Binomial reliability and non-parametric tolerance-interval artifacts |
 
-This section applies the common policy in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md).
+## 4. Planning inventory from the model
 
-1. **Trace every scenario to a model chain.** Each test below cites the view(s) it verifies and produces evidence that can close a verification matrix row.
-2. **Use ECSS-style tailoring.** For this educational CanSat, the environmental levels are tailored from CanSat/GEVS practice; they are not a substitute for launcher-required qualification unless a launch provider accepts the tailoring.
-3. **Binary success criteria use exact one-sided binomial confidence.** Record successes `k` out of trials `n`; for a required success probability `p_req`, pass only when the one-sided 95% Clopper-Pearson lower bound is at least `p_req`. Useful examples for `p_req = 0.90`:
-   - 29/29 successes,
-   - 58/59 successes,
-   - 96/100 successes,
-   - 114/120 successes,
-   - 142/150 successes,
-   - 188/200 successes,
-   - 279/300 successes.
-4. **Deadline/continuous limits use nonparametric one-sided tolerance bounds.** To claim at least 95% population coverage with 95% confidence for a limit such as "deployment command to servo actuation <= 5 s", collect at least 59 representative samples with all samples inside the limit. Fewer samples can still be used for engineering characterization but should not be reported as a 95/95 verification.
-5. **Forbidden events are counted as failures.** Examples: a deployment in Standby, a state transition on an invalid command, an unreported critical fault, or a telemetry frame with a valid packet count but corrupt payload.
-6. **Always log enough observables.** Minimum logs: test build/configuration, UTC/local time, OBCC state, packet counter, command counter, frame CRC/validity, decoded fields, health flags, RSSI/SNR if available, queue high-water marks, reset reason, deployment trigger time, servo command/position/current evidence.
+### 4.1 Physical components and actors
 
-## Test setup baseline
+Physical context: `[System] Physical System`; `[PC] CanSat`; `[PC] Standard Carrier Module Stack`. Modeled PCs include: ADS Module/PCB/headers, AMS Module/PCB/headers, PDS Module/PCB/headers, ESS Module, Backplane PCB/Spine, OBCC Module/PCB, XIAO ESP32-S3, RFM95W LoRa, BME280, ICM20948 IMU, UBX-G7020-KT GPS, INA219, Backplane Connectors, Parachute Module, Cap, Parachute, Servo, PDM Servo Connector, Ground Station PCB, XIAO ESP32, PC and USB Port. The ADS/AMS/PDS/ESS/PDM hardware is integration context for OBCC ownership unless the OBCC model explicitly allocates behavior to it.
 
-Use the same baseline for all scenario tests unless a test explicitly overrides it.
+### 4.2 Physical links
 
-- Flight-like OBCC hardware: XIAO ESP32-S3, RFM95W, BME280, ICM20948, micro-servo/deployment load or calibrated non-flight load, GPS/INA219 when available, representative battery/PDS harness.
-- Ground station: LoRa receiver, UART/USB bridge, PC decoder, dashboard, CSV logger.
-- Instrumentation: logic analyzer for SPI/I2C/UART/PWM when needed, current/voltage logger, stopwatch or timestamped telemetry, optional FreeRTOS trace/diagnostic build, RSSI/SNR capture, servo position/current monitor.
-- Safety: use a mechanical safe/arming plug or servo-load simulator for repeated deployment tests; never run destructive/armed tests when Standby-inhibit or invalid-command tests are being repeated.
+Modeled PL families: subsystem header mating links; connector footprints; XIAO and RFM footprints; SPI + 3V3 traces; SPI + 5V traces; I2C/UART/PWM + power traces; servo cable; servo fixture; USB-C cable. All modeled links require presence/absence inspection and, where electrical/mechanical, continuity/retention checks.
 
-## Scenario test corpus
+### 4.3 Component exchanges
 
-Method codes: **I** inspection, **A** analysis, **D** demonstration, **T** test.
+Modeled CEs requiring analysis: `I2C`, `UART`, `SPI`, `PWM`, `LoRa`, `Payload`, `Command`, `Getters`, `Queue`, `State`, `Mode gate`, and `IMU/alt`.
 
-### Architecture and interface scenarios
+### 4.4 Logical components and allocation groups
 
-| ID | Scenario | Views | Method | Evidence and pass criteria |
-|---|---|---:|---|---|
-| OBCC-T01 | Flight-like integrated OBCC matches the physical architecture. | PV physical | I/T | Inspect and photograph every modeled physical component and link. Continuity/polarity checks for power, I2C, UART, SPI, PWM, GPIO and LoRa antenna path. Pass: every required PC/PL is present or dispositioned; no shorts/reversed connectors; pre-functional telemetry received before scenario testing. |
-| OBCC-T02 | Modeled communication exchanges are implemented with the intended protocols. | Physical, logical, functional allocation | A/T | For each CE/PL, capture a nominal transaction: I2C BME/IMU/INA, UART GPS, SPI LoRa, PWM servo, LoRa frame, ground UART, FreeRTOS queue/timer/ISR event. Pass: protocol, addressing, packet direction, units and timing match the model; no unmodeled serial-console control path is needed for v1.0 operations. |
-| OBCC-T03 | Software task topology and shared-bus protection match the logical architecture. | Logical, runtime fault | A/T | Static review plus trace under load. Pass: modeled tasks/queues/timers/ISRs exist; shared buses are protected by mutex/critical sections as appropriate; no queue overflow, deadlock, watchdog reset or priority-inversion symptom during a mission-window run. |
+- **Supervisor/RTOS:** `OBCC Supervisor`, `Health Monitor`, `FreeRTOS Kernel`, message queues, tasks, timers, mutexes and ISRs.
+- **Sensing and processing:** `ADS GPS Sensing`, `ADS Kinematic Sensing`, `ADS Processing`, `AMS Sensing`, `AMS Processing`, `Battery Monitoring`, `ESS Processing`, `PDM Processing`, `Telemetry Collector`, `Telemetry Encoder`.
+- **Communication and ground:** `LoRa Transceiver`, `LoRa Forwarder`, `Decoder`, `Dashboard`, `CSV Writer`, `Command Handler`.
+- **Deployment:** `Trigger` and deployment-gating functions.
 
-### Startup health scenarios
+### 4.5 Functional chains / scenarios
 
-| ID | Scenario | Views | Method | Evidence and pass criteria |
-|---|---|---:|---|---|
-| OBCC-T04 | Nominal power-up reaches an operational state and starts heartbeat/status telemetry. | Startup, telemetry | T | Power-cycle with all critical peripherals healthy. Pass for reliability claim: 29/29 clean boots for >=90% success at 95% confidence, or 59/59 if treating boot time/telemetry-start timing as a 95/95 tolerance claim. Each boot reports healthy criticals and emits telemetry without operator serial interaction. |
-| OBCC-T05 | A critical startup peripheral fault prevents unsafe operation. | Startup, runtime fault | T | Inject missing/bad RFM95W, BME280, and servo feedback/command-path faults one at a time. Pass: fault is detected; health/status identifies it when the reporting path is available, otherwise local diagnostics/test-harness logs identify it; deployment cannot occur if the servo path is not verified; and the system enters the modeled error/safe state. Use 29/29 per critical fault class for a >=90%/95% claim. |
-| OBCC-T06 | A non-critical startup peripheral fault enters degraded operation. | Startup, telemetry, runtime fault | T | Inject GPS, ICM20948 or INA219 faults one at a time. Pass: OBCC continues critical functions; disabled getter or invalid-value coding is visible in telemetry/status; heartbeat remains periodic. Use 29/29 per non-critical fault class for a >=90%/95% claim. |
+Modeled chains: startup health, telemetry downlink, command/state, deployment gating, and runtime fault handling. The end-to-end mission-window rehearsal is an integration scenario candidate that should be modeled later if the OBCC plan is used as the system-level SSIV closure document.
 
-### Telemetry and ground-station scenarios
+### 4.6 Constraints and policy notes
 
-| ID | Scenario | Views | Method | Evidence and pass criteria |
-|---|---|---:|---|---|
-| OBCC-T07 | Telemetry payload schema matches the v1.0 model. | Functional allocation, telemetry | A/T | Golden-frame and boundary-value tests for attitude, angular-rate, acceleration, altitude, temperature, battery voltage/current, state and health/status metadata. Pass: payload length and field order match the model, relative humidity is not present, invalid/missing data are encoded deterministically, CRC/status handling is documented. |
-| OBCC-T08 | Telemetry is transmitted every 2 s in both On and Standby. | Telemetry, command/state | T | Measure inter-frame intervals in On and Standby at the ground station and, if possible, at the radio transmit call. Pass for 95/95 timing claim: >=59 consecutive intervals per mode inside the project tolerance. If no tighter tolerance is defined, use 2.0 s +/-10%; any missing scheduled transmit increment is a cadence failure, while RF losses are handled by the PDR test. |
-| OBCC-T09 | LoRa downlink works at the modeled >=500 m range. | Physical, telemetry | T | Outdoor end-to-end test at >=500 m with final antenna mounting/orientation; log transmitted and received packet counts, RSSI/SNR, weather and geometry. Pass: exact binomial one-sided 95% lower bound for packet success is >=0.90; practical sample: at least 96/100 valid frames. Repeat after antenna/harness changes. |
-| OBCC-T10 | Ground station receives, decodes, displays and stores telemetry. | Physical, telemetry, command/state | D/T | Feed at least 100 known-good and mixed-validity frames through the actual radio/UART path. Pass: packet counter continuity is preserved; valid frames are displayed/plotted and saved to CSV; invalid frames are rejected or flagged; decoded units are SI-compatible; no manual serial-console intervention is used. |
-| OBCC-T11 | Telemetry continues in Standby; only deployment is inhibited. | Command/state, deployment gate, telemetry | T | Command Standby, then run a sensor/trigger profile that would otherwise request deployment. Pass: heartbeat/status and measurement telemetry continue at the 2 s cadence, state metadata says Standby, no deployment command is issued. Combine with OBCC-T16 for Standby false-deployment statistics. |
+Constraints include: v1.0 excludes relative humidity; telemetry payload is 34 bytes before frame metadata; required downlink every `2 s`, `>=500 m`, `>=90%` transmission success; accepted commands are On and Stand-by; invalid commands do not change state; Stand-by keeps telemetry alive and inhibits deployment; On mode opens parachute `<=5 s` after trigger or emergency request; deployment trigger uses ADS IMU/altitude state; startup critical peripherals are RFM95W, BME280 and Servo; non-critical peripherals include UBX-G7020, ICM20948 and INA219; runtime getter faults return bounded codes and do not block; I2C/UART reads timeout `<=5 ms`; shared buses are protected; v1.0 has no serial-console operator path; runtime radio/deployment/power critical faults may enter safe/error behavior.
 
-### Command/state scenarios
+### 4.7 Traceability targets currently available
 
-| ID | Scenario | Views | Method | Evidence and pass criteria |
-|---|---|---:|---|---|
-| OBCC-T12 | Valid wireless commands change On/Standby state and are reflected in telemetry. | Command/state, telemetry | T | From the dashboard, alternate On and Standby commands through the LoRa uplink. Pass: every valid command is received once, debounced/validated, applied to the state manager, and reported in following status telemetry. Use 29/29 valid command applications for a >=90%/95% claim. |
-| OBCC-T13 | Invalid, corrupted, duplicate or out-of-context commands are rejected safely. | Command/state, runtime fault | T | Send malformed command frames, bad CRC, unsupported opcodes, duplicates/replays and commands during startup/error states. Pass: no unintended state transition or deployment; rejection is counted/logged in health/status. Recommended stress sample: 100 invalid frames with zero unsafe transitions. |
-| OBCC-T14 | v1.0 has no required serial-console operator path. | Command/state, README/model constraints | I/D | Operate the system with only power, radio and ground station connected. Pass: all mission-required commands and observability are available over LoRa/telemetry; disconnecting USB serial after flashing does not remove a required operational function. |
+The OBCC views do not contain explicit mission, capability, use-case, or feared-event nodes. Candidate trace targets used below are provisional: `OBCC-UC-StartupHealth`, `OBCC-UC-TelemetryDownlink`, `OBCC-UC-WirelessCommand`, `OBCC-UC-DeploymentGate`, `OBCC-UC-RuntimeFaultHandling`, `OBCC-FE-SilentCriticalFault`, `OBCC-FE-LostTelemetry`, `OBCC-FE-InvalidCommand`, `OBCC-FE-PrematureDeployment`, `OBCC-FE-NonDeployment`, `OBCC-FE-SchedulerBlocked`, and the modeled constraints listed above.
 
-### Deployment-gating scenarios
+## 5. Candidate verification activities
 
-| ID | Scenario | Views | Method | Evidence and pass criteria |
-|---|---|---:|---|---|
-| OBCC-T15 | Startup and non-triggered runtime keep the parachute actuator closed. | Deployment gate, startup | T | Power-cycle and run normal telemetry/sensor profiles without trigger. Pass: servo is commanded/held closed, telemetry indicates no deploy event, no motion beyond allowed mechanical slack. For a 95/95 forbidden-event claim, collect 59 representative no-trigger intervals/trials with zero openings. |
-| OBCC-T16 | Standby always inhibits parachute deployment. | Deployment gate, command/state | T | In Standby, inject trigger-equivalent sensor data or simulated trigger events using a safe servo load. Pass: zero deployment commands or servo openings; telemetry continues and reports inhibited/deployment-not-allowed status. Use 59 trials with zero openings for a 95/95 forbidden-event claim, or 29/29 for >=90%/95%. |
-| OBCC-T17 | In On mode, a valid trigger deploys within 5 s. | Deployment gate, telemetry, runtime fault | T | In On, inject representative trigger conditions with timestamped trigger and servo actuation evidence. Pass for 95/95 timing claim: at least 59 representative trigger trials and every actuation <=5 s; telemetry reports the deployment event/status. If hardware wear limits repeated full-stroke tests, use an instrumented servo simulator for the statistical run and at least one flight-servo demonstration. |
-| OBCC-T18 | Servo/actuator fault is handled as a critical deployment-path fault. | Startup, deployment gate, runtime fault | T | Disconnect/stall/load servo or inject PWM/position-command failure in a safe setup. Pass: fault is detected or bounded, no misleading "deployed" status is reported without actuation evidence, and the system enters the modeled safe/error state while telemetry preserves diagnosability. |
+Every activity below is a planning candidate. Detailed procedures, test means, stimuli, expected behavior, and pass/fail constraints should be modeled later under the `capella-pa-tests-definition.md` workflow before execution evidence is treated as final.
 
-### Runtime fault-handling scenarios
+| Verification activity ID | SSIV / version | Model element(s) covered | IVV source category | IADT method | Traceability target | Relevant references | Viewpoints: statistical significance and fault hardening | Preliminary pass/fail criteria or constraint candidates | Expected diagram/report location | Status |
+|---|---|---|---|---|---|---|---|---|---|---|
+| OBCC-VV-PC-001 | OBCC v1.0 | All physical components and actors in §4.1 | Component/link | Inspection | `OBCC-UC-StartupHealth`; integration/build readiness | IVV, OBCC-R1, OBCC-R2, OBCC-R4, OBCC-R5 | Stat: 100% inspection of each integrated article. Fault hardening: part identity, antenna presence before TX, connector/keying, sensor/servo orientation, battery/safety context. | Every modeled PC/actor is present, correct, installed in modeled containment, and either OBCC-owned or dispositioned as integration context; no critical unmodeled substitution. | Future model definition: `tests/definitions/OBCC-VV-PC-001`; report/evidence: `tests/results/OBCC-VV-PC-001/` | Candidate; checklist definition pending |
+| OBCC-VV-PL-001 | OBCC v1.0 | All physical links in §4.2 | Component/link | Inspection | `OBCC-FE-LostTelemetry`; `OBCC-FE-NonDeployment`; `OBCC-FE-SchedulerBlocked` | IVV, OBCC-R1, OBCC-R2, OBCC-R4-R6 | Stat: 100% continuity/retention/antenna-path inspection; pre/post environmental checks where used. Fault hardening: open/short, loose header, bad antenna path, servo cable intermittent, USB disconnect. | All modeled PLs are present and correctly connected; electrical links pass continuity/polarity/protocol bring-up; mechanical links retain; no unsafe shorts or loose deployment links. | Future model definition: `tests/definitions/OBCC-VV-PL-001`; report/evidence: `tests/results/OBCC-VV-PL-001/` | Candidate; checklist definition pending |
+| OBCC-VV-CE-001 | OBCC v1.0 | Sensor/bus CEs: `I2C`, `UART`, `SPI`, `PWM` | Component exchange | Analysis | `OBCC-UC-StartupHealth`; `OBCC-UC-RuntimeFaultHandling`; `OBCC-FE-SchedulerBlocked` | IVV, OBCC-R5-R8 | Stat: 100% CE-by-CE protocol and direction review; timing evidence uses 59 in-limit samples for 95/95 deadline claims. Fault hardening: I2C NACK/stuck bus, GPS UART silence/malformed frames, SPI radio errors, PWM glitches. | Implemented protocols, addressing, voltage levels, timing, direction and error-handling match model intent; faulted exchanges return bounded status and do not block scheduler. | Future model definition: `tests/definitions/OBCC-VV-CE-001`; report/evidence: `tests/results/OBCC-VV-CE-001/` | Candidate; interface evidence pending |
+| OBCC-VV-CE-002 | OBCC v1.0 | Radio/ground CEs: `LoRa`, `Payload`, `Command`, ground `UART` path | Component exchange | Analysis | `OBCC-UC-TelemetryDownlink`; `OBCC-UC-WirelessCommand`; `OBCC-FE-LostTelemetry`; `OBCC-FE-InvalidCommand` | IVV, OBCC-R1, OBCC-R3-R5, OBCC-R8 | Stat: packet/command success uses exact one-sided binomial bounds; latency uses tolerance/deadline evidence. Fault hardening: corrupt frames, bad CRC, wrong sync word, stale/duplicate commands, ground UART loss. | Implemented frame, CRC/status, packet direction, payload/command schemas and ground decode/store/display paths match the model and reject invalid frames safely. | Future model definition: `tests/definitions/OBCC-VV-CE-002`; report/evidence: `tests/results/OBCC-VV-CE-002/` | Candidate; frame schema evidence pending |
+| OBCC-VV-CE-003 | OBCC v1.0 | Software CEs: `Getters`, `Queue`, `State`, `Mode gate`, `IMU/alt` | Component exchange | Analysis | `OBCC-UC-RuntimeFaultHandling`; `OBCC-UC-DeploymentGate`; `OBCC-FE-PrematureDeployment`; `OBCC-FE-SchedulerBlocked` | IVV, OBCC-R3, OBCC-R7, OBCC-R8 | Stat: 100% API/state/queue review plus runtime trace under load. Fault hardening: stale getter values, queue overflow, invalid state transition, Stand-by emergency-deploy inhibition. | Getter contracts, queue ownership, state transitions, mode gate and IMU/altitude decision data are implemented consistently with the model; faults are bounded and visible. | Future model definition: `tests/definitions/OBCC-VV-CE-003`; report/evidence: `tests/results/OBCC-VV-CE-003/` | Candidate; runtime trace definition pending |
+| OBCC-VV-ALLOC-001 | OBCC v1.0 | Supervisor, Health Monitor and FreeRTOS Kernel allocations | Allocation | Analysis | `OBCC-UC-StartupHealth`; `OBCC-FE-SilentCriticalFault`; `OBCC-FE-SchedulerBlocked` | IVV, OBCC-R3, OBCC-R7, OBCC-R8 | Stat: 100% task/function allocation review; stress traces characterize queues, mutexes, ISR latency. Fault hardening: deadlock, priority inversion, watchdog reset, queue overflow. | Startup, health, task creation, queue/timer/ISR setup and safe/error state functions are allocated as modeled and no foreign functions are hidden in the wrong LC/task. | Future model definition: `tests/definitions/OBCC-VV-ALLOC-001`; report/evidence: `tests/results/OBCC-VV-ALLOC-001/` | Candidate; code baseline pending |
+| OBCC-VV-ALLOC-002 | OBCC v1.0 | Sensing/getters, telemetry collector and telemetry encoder allocations | Allocation | Analysis | `OBCC-UC-TelemetryDownlink`; `OBCC-UC-RuntimeFaultHandling` | IVV, OBCC-R3-R8 | Stat: 100% function/data-flow review; measurement/packet delivery stats in chain tests. Fault hardening: stale values, bad units, missing non-critical peripheral, runtime sensor fault. | Sensing/processing functions and getter calls are owned by modeled LCs; telemetry collector/encoder assembles only modeled fields and health/status metadata. | Future model definition: `tests/definitions/OBCC-VV-ALLOC-002`; report/evidence: `tests/results/OBCC-VV-ALLOC-002/` | Candidate; allocation review pending |
+| OBCC-VV-ALLOC-003 | OBCC v1.0 | Command handler, state manager, deployment controller/trigger, ground decoder/dashboard/logger allocations | Allocation | Analysis | `OBCC-UC-WirelessCommand`; `OBCC-UC-DeploymentGate`; `OBCC-FE-InvalidCommand`; `OBCC-FE-PrematureDeployment` | IVV, OBCC-R3-R8 | Stat: 100% function-to-LC review; command and deployment event stats in chain tests. Fault hardening: invalid/replay command, Stand-by false deployment, actuator fault. | Command, state, deployment, ground decode/display/store functions are allocated to intended LCs; no serial-console flight operator path or unmodeled deployment bypass exists. | Future model definition: `tests/definitions/OBCC-VV-ALLOC-003`; report/evidence: `tests/results/OBCC-VV-ALLOC-003/` | Candidate; allocation review pending |
+| OBCC-VV-FC-001 | OBCC v1.0 | Startup health functional chain | Functional chain/scenario | Testing / Demonstration | `OBCC-UC-StartupHealth`; `OBCC-FE-SilentCriticalFault` | IVV, OBCC-R1-R8 | Stat: 29/29 nominal boots supports R90/C95; 59/59 for stronger timing/deadline evidence if needed. Fault hardening: missing RFM95W/BME280/servo criticals; missing GPS/IMU/INA non-criticals. | Nominal boot reaches modeled operational readiness and starts telemetry; critical startup faults block operational mode; non-critical faults enter degraded telemetry-visible state without blocking. | Future model definition: `tests/definitions/OBCC-VV-FC-001`; report/evidence: `tests/results/OBCC-VV-FC-001/` | Candidate; detailed boot/fault campaign pending |
+| OBCC-VV-FC-002 | OBCC v1.0 | Telemetry downlink chain | Functional chain/scenario | Testing / Demonstration | `OBCC-UC-TelemetryDownlink`; `OBCC-FE-LostTelemetry` | IVV, OBCC-R1-R5, OBCC-R8 | Stat: PDR uses exact one-sided 95% lower bound; timing uses 59 in-limit intervals for 95/95 claim; RSSI/SNR logged. Fault hardening: corrupt/missing/stale fields, RF loss, ground decode failure. | Every `2 s` scheduled telemetry frame is encoded with the v1.0 34-byte payload excluding relative humidity, transmitted, decoded/displayed/stored when received, and health/status flags remain interpretable. | Future model definition: `tests/definitions/OBCC-VV-FC-002`; report/evidence: `tests/results/OBCC-VV-FC-002/` | Candidate; range/PDR campaign pending |
+| OBCC-VV-FC-003 | OBCC v1.0 | Command/state chain | Functional chain/scenario | Testing / Demonstration | `OBCC-UC-WirelessCommand`; `OBCC-FE-InvalidCommand` | IVV, OBCC-R1, OBCC-R3-R5, OBCC-R8 | Stat: 29/29 valid command applications for R90/C95 screening; invalid command set is exhaustive by equivalence class. Fault hardening: bad CRC, unsupported opcode, duplicate/replay/out-of-context command. | Valid wireless On/Stand-by commands change state exactly once and are reflected in telemetry; invalid/corrupt/duplicate commands produce no unintended state transition/deployment and are recorded. | Future model definition: `tests/definitions/OBCC-VV-FC-003`; report/evidence: `tests/results/OBCC-VV-FC-003/` | Candidate; detailed command oracle pending |
+| OBCC-VV-FC-004 | OBCC v1.0 | Deployment gating chain | Functional chain/scenario | Testing / Demonstration | `OBCC-UC-DeploymentGate`; `OBCC-FE-PrematureDeployment`; `OBCC-FE-NonDeployment` | IVV, OBCC-R1-R4, OBCC-R8 | Stat: 59 no-open Stand-by trials for 95/95 forbidden-event evidence; 59 On-mode trigger trials for 95/95 `<=5 s` timing if hardware/simulator permits. Fault hardening: invalid trigger, emergency request in Stand-by, servo jam/current fault. | Stand-by never produces open-servo command and telemetry continues; On mode opens within `<=5 s` after valid trigger/emergency request; actuation failure is diagnosable and does not falsely report success. | Future model definition: `tests/definitions/OBCC-VV-FC-004`; report/evidence: `tests/results/OBCC-VV-FC-004/` | Candidate; safe actuator fixture pending |
+| OBCC-VV-FC-005 | OBCC v1.0 | Runtime fault-handling chain | Functional chain/scenario | Testing / Demonstration | `OBCC-UC-RuntimeFaultHandling`; `OBCC-FE-SchedulerBlocked`; `OBCC-FE-NonDeployment` | IVV, OBCC-R3, OBCC-R5-R8 | Stat: timeout limits use 59 representative in-limit samples; fault-class trials use binomial counts. Fault hardening: I2C/UART/SPI faults, malformed sensor data, radio busy, deployment/power critical fault. | Runtime getter/sensor faults return bounded codes, update health telemetry, do not block scheduler, and request emergency deployment only according to modeled On/Stand-by policy. | Future model definition: `tests/definitions/OBCC-VV-FC-005`; report/evidence: `tests/results/OBCC-VV-FC-005/` | Candidate; fault-injection matrix pending |
+| OBCC-VV-FC-006 | OBCC v1.0 | End-to-end mission-window rehearsal candidate across all chains | Functional chain/scenario | Demonstration / Inspection | `OBCC-UC-StartupHealth`, `Telemetry`, `Command`, `DeploymentGate`, `RuntimeFaultHandling` | IVV, OBCC-R1-R8 | Stat: mission rehearsal is integration evidence; do not claim reliability unless independence and sample size are justified. Fault hardening: combined load, RF range, power loss/recovery, environmental pre/post checks. | Flight-like sequence runs through boot, Stand-by telemetry, command On, acquisition, downlink, trigger/no-trigger, faults if safe, and data export with no open safety-critical gaps. | Future model definition: `tests/definitions/OBCC-VV-FC-006`; report/evidence: `tests/results/OBCC-VV-FC-006/` | Candidate; **modeling gap** if used for SSIV closure |
+| OBCC-VV-CON-001 | OBCC v1.0 | Telemetry constraints: `2 s`, `>=500 m`, `>=90%`, 34-byte payload, no relative humidity | Constraint | Testing / Analysis | `OBCC-UC-TelemetryDownlink`; `OBCC-FE-LostTelemetry` | IVV, OBCC-R4, OBCC-R5, OBCC-R8 | Stat: PDR lower 95% bound must meet the selected requirement; timing 59 intervals for 95/95; RSSI/SNR/path geometry logged. Fault hardening: corrupt frames, legal radio settings, antenna orientation/weather. | Downlink cadence, range/PDR and payload schema match the model; relative humidity is absent/error-coded by design, not silently misinterpreted. | Future model definition: `tests/definitions/OBCC-VV-CON-001`; report/evidence: `tests/results/OBCC-VV-CON-001/` | Candidate; radio settings and payload schema pending |
+| OBCC-VV-CON-002 | OBCC v1.0 | Command/state constraints: accepted commands On/Stand-by; invalid rejected; no serial-console operator path | Constraint | Inspection / Analysis / Testing | `OBCC-UC-WirelessCommand`; `OBCC-FE-InvalidCommand` | IVV, OBCC-R3-R5, OBCC-R8 | Stat: valid/invalid command trials use binomial counts; serial-console absence is inspected/demonstrated. Fault hardening: replay, bad CRC, out-of-context command, USB serial disconnected after flashing. | All mission commands/observability are available over LoRa/telemetry; invalid commands do not change state; serial console is not required for flight operation. | Future model definition: `tests/definitions/OBCC-VV-CON-002`; report/evidence: `tests/results/OBCC-VV-CON-002/` | Candidate; operational command list pending |
+| OBCC-VV-CON-003 | OBCC v1.0 | Deployment constraints: Stand-by inhibit, On-mode `<=5 s`, ADS IMU/alt trigger, emergency policy | Constraint | Testing / Analysis | `OBCC-UC-DeploymentGate`; `OBCC-FE-PrematureDeployment`; `OBCC-FE-NonDeployment` | IVV, OBCC-R1-R4, OBCC-R8 | Stat: 59 in-limit On-mode trigger timings for 95/95; 59 no-open Stand-by trials for forbidden event. Fault hardening: sensor invalid, emergency request, servo jam, reset during actuation. | Stand-by inhibits all open commands; On-mode trigger/emergency request opens within `<=5 s`; trigger data source and emergency policy match modeled ADS IMU/altitude logic. | Future model definition: `tests/definitions/OBCC-VV-CON-003`; report/evidence: `tests/results/OBCC-VV-CON-003/` | Candidate; emergency policy details pending |
+| OBCC-VV-CON-004 | OBCC v1.0 | Fault/RTOS constraints: critical/non-critical startup policy, bounded getter return codes, I2C/UART `<=5 ms`, shared-bus protection, no scheduler blocking | Constraint | Analysis / Testing | `OBCC-UC-RuntimeFaultHandling`; `OBCC-FE-SchedulerBlocked`; `OBCC-FE-SilentCriticalFault` | IVV, OBCC-R3, OBCC-R6-R8 | Stat: 59 timeout samples per function/class for 95/95 timing; fault-class trials classified pass/fail. Fault hardening: NACK/stuck bus, malformed UART, queue overflow, mutex deadlock, watchdog reset. | Critical startup failures block operational mode; runtime faults return bounded result codes/health flags; reads timeout within `<=5 ms`; shared buses are protected and the scheduler remains live. | Future model definition: `tests/definitions/OBCC-VV-CON-004`; report/evidence: `tests/results/OBCC-VV-CON-004/` | Candidate; code/path coverage pending |
+| OBCC-VV-CON-005 | OBCC v1.0 | Runtime critical-fault constraints: radio, deployment-path or power faults may enter safe/error; sensor faults may request emergency deploy if descent-state observability is lost | Constraint | Analysis / Testing | `OBCC-UC-RuntimeFaultHandling`; `OBCC-FE-NonDeployment`; `OBCC-FE-LostTelemetry` | IVV, OBCC-R1-R8 | Stat: fault-class trials use exact binomial counts; safety-critical interpretation requires explicit campaign tailoring. Fault hardening: loss of radio telemetry, actuator path failure, power rail issue, conflicting Stand-by/On policy. | Safe/error behavior, telemetry diagnosability when possible, emergency-deploy request and Stand-by inhibition are consistent, bounded and documented. | Future model definition: `tests/definitions/OBCC-VV-CON-005`; report/evidence: `tests/results/OBCC-VV-CON-005/` | Candidate; safety policy confirmation required |
 
-| ID | Scenario | Views | Method | Evidence and pass criteria |
-|---|---|---:|---|---|
-| OBCC-T19 | Sensor getter timeout/error does not block the scheduler. | Runtime fault, telemetry, logical | T | Force I2C/UART/SPI NACK, timeout, stuck-bus, malformed sensor data and radio-busy conditions. Pass: getter returns within its configured timeout, error/result code is inserted in the affected field, health flags update, queues do not overflow, watchdog does not reset, and the next healthy sample clears or ages the fault as specified. For timeout limits, use 59 in-limit samples for 95/95. |
-| OBCC-T20 | Runtime critical actuator/radio fault transitions to safe/error behavior. | Runtime fault, startup, telemetry | T | Induce runtime RFM95W radio-path and servo/deployment-path faults after nominal startup. Pass: critical-fault state/status is emitted if the radio path remains available; unsafe deployment is prevented; recovery or latch behavior matches the model. Use 29/29 per critical fault class for >=90%/95% event success. |
-| OBCC-T21 | Runtime sensor faults produce error-coded telemetry and emergency-safe behavior without losing core scheduling. | Runtime fault, telemetry, deployment gate | T | Induce BME280, GPS, ICM20948 and INA219 transient and persistent failures after nominal startup. Pass: invalid/error-coded fields and health flags are visible; heartbeat and command handling continue; no reset loop; if the modeled safety policy requires emergency deployment in On mode, an emergency deploy request reaches the deployment gate while Standby inhibition remains active. Use 29/29 per fault class for >=90%/95% event success, plus 59 in-limit samples for any timeout claim. |
-| OBCC-T22 | End-to-end mission-window operation is stable. | All chains | T | Run a flight-like sequence: boot, health, Standby telemetry, command On, acquisition, >=500 m or RF-emulated downlink, trigger/no-trigger cases, command Standby, fault injection if safe. Duration: expected mission duration plus 20%; if unknown, use at least 30 min. Pass: no unexplained reset/deadlock, telemetry PDR meets OBCC-T09 criterion for the run, command/deployment timing criteria are met. |
+## 6. Coverage and gaps
 
-### Environmental and readiness scenarios
-
-| ID | Scenario | Views | Method | Evidence and pass criteria |
-|---|---|---:|---|---|
-| OBCC-T23 | Drop/shock handling does not break OBCC telemetry or actuator safety. | Physical, telemetry, deployment gate | T | Tailored CanSat drop/shock test in flight configuration, with battery and electronics secured. Pre/post: inspect mounts/connectors/antenna, verify telemetry and safe servo state. Pass: no loose/broken mounts, no unexpected deployment, and post-test functional tests pass. |
-| OBCC-T24 | Hot-environment operation preserves telemetry and mechanism function. | Physical, telemetry, deployment gate | T | Tailored CanSat thermal test, e.g. hot chamber around 55-60 °C for the agreed duration when materials allow. Run or immediately repeat telemetry and mechanism checks while hot. Pass: no material deformation affecting fit/function; telemetry, command state, and servo demonstration pass after exposure. |
-| OBCC-T25 | Vibration/workmanship exposure preserves connectors, radio and sensor operation. | Physical, logical, telemetry | T | Tailored vibration/workmanship test with the final harness and antenna. Pre/post and, if safe, during-test telemetry logging. Pass: no connector loosening, solder/harness damage, reset loop or lost sensor/radio function; post-test OBCC-T04/T08 spot checks pass. |
-| OBCC-T26 | Vacuum/altitude-style deployment simulation is understood and safe. | Deployment gate, telemetry | T | Use a safe pressure/altitude simulator or vacuum chamber only if compatible with the complete CanSat design. Pass: telemetry remains interpretable, altitude/trigger logic behaves as expected, Standby inhibition remains active, and On-mode deployment criterion is met in the simulated profile. |
-| OBCC-T27 | Flight readiness rehearsal closes the verification matrix. | All views | D/I | Rehearse the final field sequence with crew roles, checklist, ground station, antenna setup, battery verification, command path, data storage, and post-run artifact export. Pass: every scenario has pass/fail evidence or a signed waiver; residual risks are listed; latest diagram/model version is identified; no open safety-critical item remains. |
-
-## Minimum artifacts per executed test
-
-For each scenario, save evidence under `results/<test-id>/` inside this `tests/` folder:
-
-1. Test procedure or checklist version.
-2. Hardware/software configuration and model view revision.
-3. Raw logs: telemetry CSV, command log, RF stats, diagnostic/trace logs, sensor/logic analyzer captures if used.
-4. Photos/video for physical, deployment and environmental tests.
-5. Pass/fail sheet with exact trial counts and binomial/tolerance calculation when applicable.
-6. Anomaly reports with retest evidence and regression impact.
-
-## Suggested verification matrix columns
-
-If this corpus is expanded into a formal matrix, use these columns:
-
-`Requirement / modeled behavior`, `View(s)`, `Scenario ID`, `Method`, `Procedure`, `Sample size`, `Acceptance criterion`, `Result`, `Evidence file(s)`, `Anomaly/waiver`, `Closed by`, `Date`.
+- **Physical coverage:** all OBCC v1.0 physical components and physical links are covered by OBCC-VV-PC-001 and OBCC-VV-PL-001.
+- **Exchange coverage:** all modeled component exchanges are covered by OBCC-VV-CE-001 through OBCC-VV-CE-003.
+- **Allocation coverage:** modeled logical components/functions are covered by OBCC-VV-ALLOC-001 through OBCC-VV-ALLOC-003.
+- **Functional-chain coverage:** the five modeled chains are covered by OBCC-VV-FC-001 through OBCC-VV-FC-005; the mission-window rehearsal is identified as a candidate if this plan becomes SSIV closure evidence.
+- **Constraint coverage:** each explicit OBCC constraint family is assigned to at least one constraint-derived activity; duplicated diagram notes are treated as one modeled constraint for planning.
+- **Modeling gaps:** explicit mission/capability/use-case/feared-event nodes are absent; environment/mission-window scenario is not a dedicated modeled chain; exact emergency-deploy policy and actuator status semantics need confirmation.
+- **Traceability gaps:** detailed subsystem ownership for ADS/AMS/PDS/ESS/PDM context components must remain cross-referenced to their own subsystem plans to avoid double-counting design ownership.
+- **Definition gaps:** detailed test means, safe deployment fixture, command/payload schemas, RF settings, environmental profiles, and independence assumptions for repeated trials must be modeled later; this planning stage intentionally does not create test-definition diagrams.

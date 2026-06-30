@@ -1,0 +1,126 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional Chain — PDS-VV-FC-002 I2C fault timeout and recovery.
+# References: IVV, PDS-R9 INA219, PDS-R10 I2C.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDS-VV-FC-002 — I2C fault, timeout, and recovery chain\nRefs: IVV, PDS-R9, PDS-R10" {
+  class: chain
+  direction: right
+
+  command_fault_case: "[F] Command fault\ntest case" { class: func }
+  record_env_harness: "[F] Record ambient and\nharness configuration" { class: func }
+  configure_fault_harness: "[F] Configure I2C\nfault injection" { class: func }
+
+  inject_absent: "[F] Inject absent\nINA219" { class: func }
+  inject_nack: "[F] Inject NACK" { class: func }
+  inject_stuck_sda: "[F] Inject stuck SDA" { class: func }
+  inject_stuck_scl: "[F] Inject stuck SCL" { class: func }
+  inject_no_response: "[F] Inject delayed /\nno response" { class: func }
+
+  attempt_ina219_read: "[F] Attempt INA219\ninit/read" { class: func }
+  enforce_timeout: "[F] Enforce I2C\ntimeout guard" { class: func }
+  return_bounded_error: "[F] Return bounded\nerror/result code" { class: func }
+  invalidate_stale_data: "[F] Invalidate stale\nmeasurement data" { class: func }
+  keep_scheduler_live: "[F] Keep scheduler and\nlogging live" { class: func }
+  collect_fault_status: "[F] Collect fault\nstatus and health" { class: func }
+  clear_fault: "[F] Clear injected\nfault" { class: func }
+  verify_recovery_read: "[F] Verify recovery\nread or safe state" { class: func }
+  log_fault_evidence: "[F] Log fault trial\nevidence" { class: func }
+  archive_evidence: "[F] Archive controlled\nevidence package" { class: func }
+
+  definition_note: "[C] PDS-VV-FC-002 fault-hardening path:\ntrace PDS-FE-SensorBusFault;\nTesting/Demonstration with supporting Analysis;\nSSIV PDS & ESS v1.0 final flight acceptance" {
+    class: note
+    shape: page
+  }
+  fault_matrix_note: "[C] Mandatory fault cases:\nabsent INA219, NACK, stuck SDA,\nstuck SCL, delayed/no response;\neach trial classified pass/fail" {
+    class: note
+    shape: page
+  }
+  timeout_note: "[C] PDS-VV-CON-007:\nEvery INA219 I2C read succeeds or\ntimeouts within ≤5 ms;\n59/59 in-limit samples for 95/95 deadline claim" {
+    class: note
+    shape: page
+  }
+  bounded_note: "[C] Pass/fail:\nbounded error/result code for each fault;\nno stale voltage/current reported valid;\ngetter status distinguishes fault/timeout/stale" {
+    class: note
+    shape: page
+  }
+  liveness_note: "[C] PDS-VV-CON-008:\nno unbounded blocking except modeled\nI2C/UART waits; scheduler/logging live\nthrough fault and recovery" {
+    class: note
+    shape: page
+  }
+  gap_note: "[C] Residual source gap:\nINA219 I2C CE is not explicit in v1.0 PV2;\nthis chain provides analysis context only;\nfinal CE completeness claim blocked until resolved" {
+    class: note
+    shape: page
+  }
+}
+
+chain.command_fault_case -> chain.record_env_harness: "[FE] Setup metadata request" { class: fe }
+chain.record_env_harness -> chain.configure_fault_harness: "[FE] Harness limits and pullups" { class: fe }
+chain.command_fault_case -> chain.keep_scheduler_live: "[FE] Liveness monitor armed" { class: fe }
+
+chain.configure_fault_harness -> chain.inject_absent: "[FE] Absent device profile" { class: fe }
+chain.configure_fault_harness -> chain.inject_nack: "[FE] NACK profile" { class: fe }
+chain.configure_fault_harness -> chain.inject_stuck_sda: "[FE] SDA stuck profile" { class: fe }
+chain.configure_fault_harness -> chain.inject_stuck_scl: "[FE] SCL stuck profile" { class: fe }
+chain.configure_fault_harness -> chain.inject_no_response: "[FE] Delayed/no-response profile" { class: fe }
+
+chain.inject_absent -> chain.attempt_ina219_read: "[FE] No device response" { class: fe }
+chain.inject_nack -> chain.attempt_ina219_read: "[FE] NACK condition" { class: fe }
+chain.inject_stuck_sda -> chain.attempt_ina219_read: "[FE] SDA held" { class: fe }
+chain.inject_stuck_scl -> chain.attempt_ina219_read: "[FE] SCL held" { class: fe }
+chain.inject_no_response -> chain.attempt_ina219_read: "[FE] Delayed/no response" { class: fe }
+
+chain.attempt_ina219_read -> chain.enforce_timeout: "[FE] Pending read duration" { class: fe }
+chain.enforce_timeout -> chain.return_bounded_error: "[FE] Timeout or fault status" { class: fe }
+chain.return_bounded_error -> chain.invalidate_stale_data: "[FE] Fault result metadata" { class: fe }
+chain.return_bounded_error -> chain.collect_fault_status: "[FE] Error/result code" { class: fe }
+chain.invalidate_stale_data -> chain.collect_fault_status: "[FE] Validity flag" { class: fe }
+chain.keep_scheduler_live -> chain.collect_fault_status: "[FE] Heartbeat/logging alive" { class: fe }
+
+chain.collect_fault_status -> chain.clear_fault: "[FE] Fault trial complete" { class: fe }
+chain.clear_fault -> chain.verify_recovery_read: "[FE] Cleared bus condition" { class: fe }
+chain.verify_recovery_read -> chain.collect_fault_status: "[FE] Recovery status" { class: fe }
+chain.collect_fault_status -> chain.log_fault_evidence: "[FE] Classified trial result" { class: fe }
+chain.log_fault_evidence -> chain.archive_evidence: "[FE] Raw evidence" { class: fe }

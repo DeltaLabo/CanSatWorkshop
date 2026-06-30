@@ -1,0 +1,197 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-T-001 functional allocation test context.
+# Shows only functions participating in the downlink decode/storage verification activity.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 38
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 38 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 38
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+
+  read_ambient_thermometer: "[F] Read ambient\nthermometer" { class: func }
+  verify_rf_setup: "[F] Verify RF path,\nantennas and cadence" { class: func }
+  start_capture: "[F] Start DPS capture\nand test run" { class: func }
+  collect_evidence: "[F] Collect CSV, logs\nand configuration" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient Thermometer\nTesto 110 or calibrated equivalent" {
+  class: ea
+  direction: down
+
+  display_ambient_temperature: "[F] Display ambient\ntemperature" { class: func }
+}
+
+lora_test_transmitter: "[EA] LoRa Test Transmitter\nRFM95W/SX1276 reference radio" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  configure_lora_settings: "[F] Configure LoRa\nsettings and payload set" { class: func }
+  generate_valid_lora_frames: "[F] Generate valid\nLoRa frames" { class: func }
+  inject_corrupt_lora_frames: "[F] Inject corrupt, short\nor wrong-type frames" { class: func }
+  log_sent_sequence: "[F] Log sent sequence\nand TX timestamps" { class: func }
+}
+
+system: "[System] DPS v1.0 Physical System\nDPS-V10-T-001 functional allocation context" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm: "[PC] RFM95W LoRa" {
+      class: pc
+      direction: down
+
+      ground_lora: "[LC] LoRa Transceiver" {
+        class: lc
+        direction: down
+        store_incoming_data: "[F] Store incoming data" { class: func }
+      }
+    }
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: down
+
+      ground_forwarder: "[LC] LoRa Forwarder" {
+        class: lc
+        direction: down
+        grid-columns: 2
+
+        receive_lora_rx_interrupt: "[F] Receive LoRa\nRX Interrupt" { class: func }
+        read_payload: "[F] Read payload" { class: func }
+        forward_to_pc: "[F] Forward to PC" { class: func }
+        log_error: "[F] Log error" { class: func }
+      }
+    }
+  }
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: right
+    grid-columns: 3
+
+    decoder: "[LC] Decoder" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      check_if_data_is_available: "[F] Check if data\nis available" { class: func }
+      read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+      get_rx_timestamp: "[F] Get RX\ntimestamp" { class: func }
+      calculate_latency: "[F] Calculate\nlatency" { class: func }
+      push_to_payload_queue: "[F] Push to\npayload queue" { class: func }
+    }
+
+    csv_writer: "[LC] CSV Writer" {
+      class: lc
+      direction: down
+
+      csv_consume_payload_queue: "[F] Consume\npayload queue" { class: func }
+      append_to_csv: "[F] Append to CSV" { class: func }
+    }
+
+    dashboard: "[LC] Dashboard" {
+      class: lc
+      direction: down
+      create_plots: "[F] Display run\nstatus in browser" { class: func }
+    }
+
+    evidence_collector: "[LC] Test Evidence Collector\n(verification-only)" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      capture_transmit_log: "[F] Capture transmitter\nlog" { class: func }
+      capture_decoder_log: "[F] Capture decoder\nand error logs" { class: func }
+      compare_csv_to_reference: "[F] Compare CSV rows\nto transmit log" { class: func }
+      compute_pdr_latency: "[F] Compute PDR, latency\nand verdict" { class: func }
+      archive_evidence: "[F] Archive evidence\nin results folder" { class: func }
+    }
+  }
+}
+
+note_ref: "[C] DPS-V10-T-001 PV3 functional allocation\nIADT: Testing; trace: FC01 downlink decode/storage, C05 CSV name\nRefs: P0,R1-R5,R8-R15; expected report: tests/results/DPS-V10-T-001/" {
+  class: note
+  shape: page
+}
+
+note_env: "[C] Environmental condition: operator reads calibrated ambient thermometer\nbefore repetitions; acceptable lab ambient 15°C to 30°C and stable ±2°C\nduring valid-frame and corrupt-frame sequences" {
+  class: note
+  shape: page
+}
+
+note_valid_pass: "[C] Valid-frame pass constraints: N≥300 frames at 2.0s ±0.2s;\n95% exact one-sided PDR lower bound ≥0.90; p95 decode-to-CSV latency <1s;\nCSV rows exactly match accepted frame sequence and unique initial-timestamp filename" {
+  class: note
+  shape: page
+}
+
+note_fault_pass: "[C] Fault-hardening pass constraints: corrupt, short, wrong-type or CRC-bad frames\nare rejected/logged, not appended to CSV, and do not cause stale payload queue entries" {
+  class: note
+  shape: page
+}
+
+note_verification_only: "[C] Test Evidence Collector functions are verification-only\nand shall not be treated as flight DPS functionality" {
+  class: note
+  shape: page
+}
+
+note_ref -> system.pc.evidence_collector { class: cstr }
+note_env -> test_operator.read_ambient_thermometer { class: cstr }
+note_env -> ambient_thermometer.display_ambient_temperature { class: cstr }
+note_valid_pass -> lora_test_transmitter.generate_valid_lora_frames { class: cstr }
+note_valid_pass -> system.pc.csv_writer.append_to_csv { class: cstr }
+note_valid_pass -> system.pc.evidence_collector.compute_pdr_latency { class: cstr }
+note_fault_pass -> lora_test_transmitter.inject_corrupt_lora_frames { class: cstr }
+note_fault_pass -> system.pc.decoder.read_and_decode_frame { class: cstr }
+note_fault_pass -> system.pc.evidence_collector.capture_decoder_log { class: cstr }
+note_verification_only -> system.pc.evidence_collector { class: cstr }
+
+# Layout-only edges to keep verification actors above the UUT context.
+ambient_thermometer -> test_operator { style: { opacity: 0 } }
+test_operator -> lora_test_transmitter { style: { opacity: 0 } }
+lora_test_transmitter -> system { style: { opacity: 0 } }

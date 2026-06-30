@@ -1,6 +1,6 @@
 # Atmospheric Measurement System
 
-Owners: @darielmj
+Owners: @darielmj, @anthonyarguedas
 
 This subsystem collects atmospheric data, such as temperature and pressure, which are fundamental for the scientific and research objectives of the mission. Data is sent in real-time to the DPS for analysis, helping to monitor the CanSat’s environmental conditions in flight.
 

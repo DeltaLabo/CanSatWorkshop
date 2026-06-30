@@ -1,0 +1,93 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain: charging, storage, power distribution, and protection
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDS v1.0 — Power and protection chain" {
+  class: chain
+  direction: right
+
+  charger_power: "[F] Provide power" { class: func }
+  charger_regulate_voltage: "[F] Regulate voltage" { class: func }
+  store_energy: "[F] Store energy" { class: func }
+  provide_power: "[F] Provide power" { class: func }
+  regulate_voltage: "[F] Regulate voltage" { class: func }
+  switch_on: "[F] Switch power on" { class: func }
+  restore_power: "[F] Restore power" { class: func }
+  detect_overcurrent: "[F] Detect overcurrent" { class: func }
+  detect_overvoltage: "[F] Detect overvoltage" { class: func }
+  switch_off: "[F] Switch power off" { class: func }
+  cut_off_power: "[F] Cut off power" { class: func }
+
+  note_charge: "[C] At 4.2 V,\n0.5 A" {
+    class: note
+    shape: page
+  }
+  note_energy: "[C] Enough for 6 hours\nof continuous operation\nin On mode" {
+    class: note
+    shape: page
+  }
+  note_supply: "[C] Supply both 5±0.1 V\nand 3.3±0.1 V, 1 A" {
+    class: note
+    shape: page
+  }
+  note_prob: "[C] Probability < 1%" {
+    class: note
+    shape: page
+  }
+}
+
+chain.charger_power -> chain.charger_regulate_voltage: "[FE] Charge power" { class: fe }
+chain.charger_regulate_voltage -> chain.store_energy: "[FE] Charge current" { class: fe }
+chain.provide_power -> chain.regulate_voltage: "[FE] Battery power" { class: fe }
+chain.switch_on -> chain.restore_power: "[FE] Power-on command" { class: fe }
+chain.switch_off -> chain.cut_off_power: "[FE] Power-off command" { class: fe }
+chain.detect_overcurrent -> chain.cut_off_power: "[FE] Overcurrent detected" { class: fe }
+chain.detect_overvoltage -> chain.cut_off_power: "[FE] Overvoltage detected" { class: fe }
+
+chain.note_charge -> chain.charger_power { class: cstr }
+chain.note_energy -> chain.store_energy { class: cstr }
+chain.note_supply -> chain.regulate_voltage { class: cstr }
+chain.note_prob -> chain.detect_overcurrent { class: cstr }
+chain.note_prob -> chain.detect_overvoltage { class: cstr }

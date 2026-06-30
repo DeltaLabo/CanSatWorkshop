@@ -1,0 +1,155 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-I-001 physical inspection context.
+# Source baseline copied from DPS/MBSE/v1.0; verification additions are inspection equipment EA links and constraints.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+title_note: "[C] DPS-V10-I-001 PV1 physical inspection context\nIADT: Inspection; trace: v1.0 assembled DPS/CanSat interface and C02\nRefs: P0,R1-R3,R8,R11-R13; report: tests/results/DPS-V10-I-001/" {
+  class: note
+  shape: page
+}
+
+inspection_equipment_set: "[EA] Inspection Equipment Set\nESD bench + DMM + USB-C cable tester\ninspection camera/magnifier + lux meter" {
+  class: ea
+}
+
+system: "[System] DPS v1.0 Physical System\nDPS-V10-I-001 UUT" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+
+        cansat_rfm: "[PC] RFM95W LoRa" { class: pc }
+        cansat_xiao: "[PC] XIAO ESP32-S3" { class: pc }
+        cansat_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm: "[PC] RFM95W LoRa" { class: pc }
+    ground_xiao: "[PC] XIAO ESP32" { class: pc }
+  }
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: down
+
+    usb_port: "[PC] USB Port" { class: pc }
+  }
+}
+
+note_pc_presence: "[C] PC inspection pass constraint:\n100% of modeled PCs are present, identifiable,\ncorrect variant/revision, and not visibly damaged" {
+  class: note
+  shape: page
+}
+
+note_pl_presence: "[C] PL inspection pass constraint:\n100% of modeled physical links are present or explicitly dispositioned;\nscrews installed; footprints populated/soldered as modeled;\nSPI traces, 5 V traces and USB-C cable continuity pass" {
+  class: note
+  shape: page
+}
+
+note_ground_pcb_reuse: "[C] Ground Station PCB reuses OBCC PCB;\nBackplane Connector is not soldered.\nPass: connector absent/not soldered and no unintended\nbackplane continuity/load is present" {
+  class: note
+  shape: page
+}
+
+note_power_safety: "[C] Inspection safety/fault-hardening constraints:\nUUT unpowered for resistance/continuity checks;\nno short between 5 V and GND; polarity verified;\nantenna fitted before any later radio power-up" {
+  class: note
+  shape: page
+}
+
+note_environment: "[C] Inspection environment constraints:\nESD mat/strap connected; illumination ≥500 lx at PCB;\ninspection photos in focus; checklist records article IDs,\nboard revision, and as-inspected configuration" {
+  class: note
+  shape: page
+}
+
+note_separation: "[C] Max. separation of 500m\nbetween CanSat and DPS\nNot claimed by this inspection;\ncovered by DPS-V10-C-001" {
+  class: note
+  shape: page
+}
+
+system.cansat.obcc_module -- system.cansat.obcc_module.obcc_pcb: "[PL] Screws" { class: pl }
+system.cansat.obcc_module.obcc_pcb.cansat_rfm -- system.cansat.obcc_module.obcc_pcb: "[PL] RFM Footprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.cansat_xiao -- system.cansat.obcc_module.obcc_pcb: "[PL] XIAO Footprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.cansat_backplane_connector -- system.cansat.obcc_module.obcc_pcb: "[PL] Footprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.cansat_rfm -- system.cansat.obcc_module.obcc_pcb.cansat_xiao: "[PL] SPI\nTraces" { class: pl }
+
+system.ground_station_pcb.ground_rfm -- system.ground_station_pcb: "[PL] Footprint" { class: pl }
+system.ground_station_pcb.ground_xiao -- system.ground_station_pcb: "[PL] Footprint" { class: pl }
+system.ground_station_pcb.ground_rfm -- system.ground_station_pcb.ground_xiao: "[PL] SPI\nTraces" { class: pl }
+system.ground_station_pcb.ground_rfm -- system.ground_station_pcb.ground_xiao: "[PL] 5V Power\nTraces" { class: pl }
+system.ground_station_pcb.ground_xiao -- system.pc.usb_port: "[PL] USB-C Cable" { class: pl }
+
+inspection_equipment_set -- system.cansat: "[PL] ESD fixture, visual\nand probe access" { class: pl }
+inspection_equipment_set -- system.ground_station_pcb: "[PL] ESD fixture, visual\nand probe access" { class: pl }
+inspection_equipment_set -- system.pc.usb_port: "[PL] USB-C cable\ntest endpoint" { class: pl }
+
+title_note -> system { class: cstr }
+note_pc_presence -> system { class: cstr }
+note_pl_presence -> system { class: cstr }
+note_ground_pcb_reuse -> system.ground_station_pcb { class: cstr }
+note_power_safety -> inspection_equipment_set { class: cstr }
+note_environment -> inspection_equipment_set { class: cstr }
+note_separation -> system.cansat { class: cstr }
+note_separation -> system.ground_station_pcb { class: cstr }
+
+# Layout-only edges to keep notes, equipment, and physical bands in reading order.
+title_note -> inspection_equipment_set { style: { opacity: 0 } }
+inspection_equipment_set -> system { style: { opacity: 0 } }
+system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.pc { style: { opacity: 0 } }

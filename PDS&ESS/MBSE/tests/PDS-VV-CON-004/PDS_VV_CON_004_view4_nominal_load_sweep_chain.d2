@@ -1,0 +1,130 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDS-VV-CON-004 functional chain: nominal/no-load/1 A regulated rail sweep.
+# References: IVV, PDS-R2, PDS-R6, PDS-R8.
+# Traceability: [C] Supply both 5±0.1 V and 3.3±0.1 V, 1 A;
+# PDS-UC-ProvideRegulatedPower; PDS-FE-RailBrownout.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDS-VV-CON-004 — regulated rail load sweep chain\n(IVV, PDS-R2, PDS-R6, PDS-R8)" {
+  class: chain
+  direction: down
+
+  read_ambient: "[F] Read ambient\nbefore repetition" { class: func }
+  verify_calibration: "[F] Verify instrument\ncalibration / uncertainty" { class: func }
+  set_supply_limits: "[F] Set battery emulator\nvoltage and current limits" { class: func }
+  apply_emulated_input: "[F] Apply emulated\nbattery input" { class: func }
+  command_switch_on: "[F] Press / command\nswitch on" { class: func }
+  regulate_voltage: "[F] Regulate voltage" { class: func }
+
+  command_no_load: "[F] Command no-load\n5 V and 3V3 cases" { class: func }
+  settle_no_load: "[F] Wait for no-load\nsettling window" { class: func }
+  sample_no_load_5v: "[F] Collect ≥30 settled\n5 V no-load samples" { class: func }
+  sample_no_load_3v3: "[F] Collect ≥30 settled\n3V3 no-load samples" { class: func }
+
+  command_nominal_load: "[F] Command nominal-load\n5 V and 3V3 cases" { class: func }
+  settle_nominal_load: "[F] Wait for nominal-load\nsettling window" { class: func }
+  sample_nominal_5v: "[F] Collect ≥30 settled\n5 V nominal samples" { class: func }
+  sample_nominal_3v3: "[F] Collect ≥30 settled\n3V3 nominal samples" { class: func }
+
+  command_1a_load: "[F] Command 1 A-load\n5 V and 3V3 cases" { class: func }
+  settle_1a_load: "[F] Wait for 1 A-load\nsettling window" { class: func }
+  sample_1a_5v: "[F] Collect ≥30 settled\n5 V 1 A samples" { class: func }
+  sample_1a_3v3: "[F] Collect ≥30 settled\n3V3 1 A samples" { class: func }
+
+  monitor_current_temperature: "[F] Monitor current\nand temperature" { class: func }
+  observe_no_brownout: "[F] Observe no\nbrownout / reset" { class: func }
+  apply_uncertainty: "[F] Apply uncertainty\nbudget to all samples" { class: func }
+  compare_rail_limits: "[F] Compare to rail\nvoltage constraints" { class: func }
+  store_evidence: "[F] Store raw evidence\nand pass/fail result" { class: func }
+
+  note_supply: "[C] Pass/fail limits:\n5 V must remain in [4.9, 5.1] V;\n3.3 V must remain in [3.2, 3.4] V;\nlimits include expanded uncertainty." {
+    class: note
+    shape: page
+  }
+
+  note_stats: "[C] Statistical significance viewpoint:\ncollect n ≥ 30 settled samples per rail\nper no-load, nominal-load, and 1 A-load case;\nretain raw data, bias, spread, CI, and uncertainty." {
+    class: note
+    shape: page
+  }
+
+  note_environment: "[C] Environmental / setup constraints:\nambient T/RH read before repetitions;\ncalibrated instruments; battery emulator\nwith current limit; safe thermal and\ncurrent bounds observed." {
+    class: note
+    shape: page
+  }
+
+  note_trace: "[C] Trace / references:\nConstraint PDS-VV-CON-004;\nPDS-UC-ProvideRegulatedPower;\nPDS-FE-RailBrownout;\nIVV, PDS-R2, PDS-R6, PDS-R8." {
+    class: note
+    shape: page
+  }
+}
+
+chain.read_ambient -> chain.verify_calibration: "[FE] ambient record" { class: fe }
+chain.verify_calibration -> chain.set_supply_limits: "[FE] calibrated setup" { class: fe }
+chain.set_supply_limits -> chain.apply_emulated_input: "[FE] safe input limits" { class: fe }
+chain.apply_emulated_input -> chain.command_switch_on: "[FE] emulated battery power" { class: fe }
+chain.command_switch_on -> chain.regulate_voltage: "[FE] power-on command" { class: fe }
+chain.regulate_voltage -> chain.command_no_load: "[FE] 5 V / 3V3 rails" { class: fe }
+chain.command_no_load -> chain.settle_no_load: "[FE] no-load setpoints" { class: fe }
+chain.settle_no_load -> chain.sample_no_load_5v: "[FE] settled 5 V" { class: fe }
+chain.sample_no_load_5v -> chain.sample_no_load_3v3: "[FE] no-load data pair" { class: fe }
+chain.sample_no_load_3v3 -> chain.command_nominal_load: "[FE] next load case" { class: fe }
+chain.command_nominal_load -> chain.settle_nominal_load: "[FE] nominal setpoints" { class: fe }
+chain.settle_nominal_load -> chain.sample_nominal_5v: "[FE] settled 5 V" { class: fe }
+chain.sample_nominal_5v -> chain.sample_nominal_3v3: "[FE] nominal data pair" { class: fe }
+chain.sample_nominal_3v3 -> chain.command_1a_load: "[FE] next load case" { class: fe }
+chain.command_1a_load -> chain.settle_1a_load: "[FE] 1 A setpoints" { class: fe }
+chain.settle_1a_load -> chain.sample_1a_5v: "[FE] settled 5 V" { class: fe }
+chain.sample_1a_5v -> chain.sample_1a_3v3: "[FE] 1 A data pair" { class: fe }
+chain.sample_1a_3v3 -> chain.monitor_current_temperature: "[FE] complete sweep data" { class: fe }
+chain.monitor_current_temperature -> chain.observe_no_brownout: "[FE] safety observations" { class: fe }
+chain.observe_no_brownout -> chain.apply_uncertainty: "[FE] accepted data set" { class: fe }
+chain.apply_uncertainty -> chain.compare_rail_limits: "[FE] uncertainty-bounded values" { class: fe }
+chain.compare_rail_limits -> chain.store_evidence: "[FE] pass/fail decision" { class: fe }
+
+chain.note_environment -> chain.read_ambient { class: cstr }
+chain.note_environment -> chain.set_supply_limits { class: cstr }
+chain.note_stats -> chain.apply_uncertainty { class: cstr }
+chain.note_supply -> chain.compare_rail_limits { class: cstr }
+chain.note_trace -> chain.store_evidence { class: cstr }

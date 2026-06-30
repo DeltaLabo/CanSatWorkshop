@@ -1,0 +1,158 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDS-VV-CON-004 PV1 physical testbench.
+# References: IVV, PDS-R2, PDS-R6, PDS-R8.
+# Traceability: [C] Supply both 5±0.1 V and 3.3±0.1 V, 1 A;
+# PDS-UC-ProvideRegulatedPower; PDS-FE-RailBrownout.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+battery_emulator: "[EA] Battery emulator /\ncurrent-limited bench supply" { class: ea }
+load_5v: "[EA] 5 V programmable load" { class: ea }
+load_3v3: "[EA] 3V3 programmable load" { class: ea }
+dmm_daq: "[EA] Calibrated DMM / DAQ" { class: ea }
+scope_logger: "[EA] Oscilloscope / logger" { class: ea }
+thermal_camera: "[EA] Thermocouple or\nIR camera" { class: ea }
+ambient_meter: "[EA] Ambient thermometer /\nhygrometer" { class: ea }
+
+system: "[System] PDS-VV-CON-004 regulated-rail UUT\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R2; PDS-R6; PDS-R8" {
+  class: sys
+  direction: down
+
+  ess_module: "[PC] ESS Module" {
+    class: pc
+    direction: down
+    battery_pack: "[PC] 1S1P Li-Ion\nisolated for this test" { class: pc }
+  }
+
+  pds_module: "[PC] PDS Module" {
+    class: pc
+    direction: down
+
+    pds_pcb: "[PC] PDS PCB" {
+      class: pc
+      direction: right
+
+      battery_connector: "[PC] Battery Connector" { class: pc }
+      protection: "[PC] Protection Circuit" { class: pc }
+      ina219: "[PC] INA219" { class: pc }
+      regulator: "[PC] Regulator" { class: pc }
+      pds_backplane_connector: "[PC] Backplane Connector" { class: pc }
+    }
+  }
+
+  obcc_module: "[PC] OBCC Module\nreset/brownout witness" {
+    class: pc
+    direction: down
+
+    obcc_pcb: "[PC] OBCC PCB" {
+      class: pc
+      direction: right
+      xiao: "[PC] XIAO ESP32-S3" { class: pc }
+      obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+    }
+  }
+
+  backplane_pcb: "[PC] Backplane PCB" {
+    class: pc
+    direction: down
+    pds_headers: "[PC] 2mm 2x6 PDS Headers" { class: pc }
+    spine: "[PC] Spine" { class: pc }
+    obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+  }
+
+  note_supply: "[C] PDS-VV-CON-004 pass condition:\n5 V in [4.9, 5.1] V and\n3.3 V in [3.2, 3.4] V\nat no-load, nominal-load, and\n1 A-load cases, including uncertainty" {
+    class: note
+    shape: page
+  }
+
+  note_env: "[C] Environmental / setup controls:\nread ambient before repetitions;\nuse calibrated instruments;\nrecord bench supply limits;\nobserve safe current and temperature" {
+    class: note
+    shape: page
+  }
+
+  note_refs: "[C] References: IVV, PDS-R2,\nPDS-R6, PDS-R8.\nTrace: PDS-UC-ProvideRegulatedPower;\nPDS-FE-RailBrownout.\nDestructive Li-ion abuse out of scope." {
+    class: note
+    shape: page
+  }
+}
+
+battery_emulator -- system.pds_module.pds_pcb.battery_connector: "[PL] current-limited\nemulated battery leads" { class: pl }
+load_5v -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] 5 V load leads\nat backplane pins" { class: pl }
+load_3v3 -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] 3V3 load leads\nat backplane pins" { class: pl }
+dmm_daq -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] Kelvin / probe leads" { class: pl }
+scope_logger -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] high-impedance\nrail probes" { class: pl }
+thermal_camera -- system.pds_module.pds_pcb.regulator: "[PL] thermocouple contact\nor IR line of sight" { class: pl }
+ambient_meter -- system.pds_module: "[PL] lab air around UUT" { class: pl }
+
+system.pds_module.pds_pcb.battery_connector -- system.pds_module.pds_pcb.protection: "[PL] Battery ± traces" { class: pl }
+system.pds_module.pds_pcb.protection -- system.pds_module.pds_pcb.ina219: "[PL] protected output trace" { class: pl }
+system.pds_module.pds_pcb.ina219 -- system.pds_module.pds_pcb.regulator: "[PL] INA output trace" { class: pl }
+system.pds_module.pds_pcb.regulator -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] 5V / 3V3 regulator\nbackplane traces" { class: pl }
+system.pds_module.pds_pcb.pds_backplane_connector -- system.backplane_pcb.pds_headers: "[PL] Parallel cable" { class: pl }
+system.backplane_pcb.pds_headers -- system.backplane_pcb.spine: "[PL] backplane copper" { class: pl }
+system.backplane_pcb.spine -- system.backplane_pcb.obcc_headers: "[PL] backplane copper" { class: pl }
+system.backplane_pcb.obcc_headers -- system.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] Parallel cable" { class: pl }
+system.obcc_module.obcc_pcb.obcc_backplane_connector -- system.obcc_module.obcc_pcb.xiao: "[PL] 3V3 / reset witness traces" { class: pl }
+
+system.note_supply -> system.pds_module.pds_pcb.regulator { class: cstr }
+system.note_supply -> system.pds_module.pds_pcb.pds_backplane_connector { class: cstr }
+system.note_env -> system.pds_module { class: cstr }
+system.note_env -> system.pds_module.pds_pcb.regulator { class: cstr }
+system.note_refs -> system.pds_module.pds_pcb.regulator { class: cstr }
+system.note_refs -> system.obcc_module.obcc_pcb.xiao { class: cstr }
+
+# Layout-only edges to keep external test means above the UUT and constraints below it.
+battery_emulator -> load_5v { style: { opacity: 0 } }
+load_5v -> load_3v3 { style: { opacity: 0 } }
+load_3v3 -> dmm_daq { style: { opacity: 0 } }
+dmm_daq -> scope_logger { style: { opacity: 0 } }
+scope_logger -> thermal_camera { style: { opacity: 0 } }
+thermal_camera -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> system { style: { opacity: 0 } }
+system.ess_module -> system.pds_module { style: { opacity: 0 } }
+system.pds_module -> system.obcc_module { style: { opacity: 0 } }
+system.obcc_module -> system.backplane_pcb { style: { opacity: 0 } }
+system.backplane_pcb -> system.note_supply { style: { opacity: 0 } }
+system.note_supply -> system.note_env { style: { opacity: 0 } }
+system.note_env -> system.note_refs { style: { opacity: 0 } }

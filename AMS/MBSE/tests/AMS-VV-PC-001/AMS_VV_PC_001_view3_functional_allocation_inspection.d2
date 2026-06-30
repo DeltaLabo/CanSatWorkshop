@@ -1,0 +1,289 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view — AMS-VV-PC-001 physical component inspection functions
+# Verification references: IVV, AMS-R1 (BME280), AMS-R6 (CanSat build environment).
+# Traceability: AMS physical integration/build readiness; AMS-UC-MeasureAtmosphere.
+# Inspection scope: PC presence/identity/gross condition only; PL integrity is verified by AMS-VV-PL-001.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-VV-PC-001 PC inspection\nAMS v1.0 final acceptance\nRefs: IVV, AMS-R1, AMS-R6" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        bme280: "[PC] BME280" {
+          class: pc
+          direction: down
+
+          ams_sensing: "[LC] AMS Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 3
+
+            measure_pressure: "[F] Measure\npressure" { class: func }
+            measure_temperature: "[F] Measure\ntemp." { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+          }
+
+          note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
+            class: note
+            shape: page
+          }
+          note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+            class: note
+            shape: page
+          }
+        }
+
+        ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+
+          ams_processing: "[LC] AMS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 4
+
+            get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+            read_pressure: "[F] Read\npressure" { class: func }
+            read_temperature: "[F] Read\ntemperature" { class: func }
+            calculate_altitude: "[F] Calculate\naltitude" { class: func }
+            process_temperature: "[F] Process\ntemperature" { class: func }
+
+            note_resolution: "[C] Resolution\n< 10m" {
+              class: note
+              shape: page
+            }
+          }
+
+          obcc: "[LC] OBCC" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+            collect_measurements: "[F] Collect\nmeasurements" { class: func }
+          }
+        }
+
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+        note_variable_getter: "[C] Implement each\n(Read X, Process X) or\n(Read X, Calculate Y)\npair as a Variable\nGetter template" {
+          class: note
+          shape: page
+        }
+        note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" {
+          class: note
+          shape: page
+        }
+        note_process_time: "[C] All Process or\nCalculate functions\nmust take < 5 ms" {
+          class: note
+          shape: page
+        }
+        note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+          class: note
+          shape: page
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ams_headers: "[PC] 2mm 2x6 AMS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+  }
+}
+
+inspection_operator: "[EA] AMS-VV\nInspection Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  identify_article_baseline: "[F] Identify article /\nbaseline" { class: func }
+  inspect_pc_presence: "[F] Inspect PC\npresence" { class: func }
+  verify_marking_orientation: "[F] Verify part marking /\norientation" { class: func }
+  record_anomalies_evidence: "[F] Record anomalies /\nevidence" { class: func }
+}
+
+qa_witness: "[EA] QA Witness /\nReviewer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  review_pc_coverage: "[F] Review 13/13\nPC coverage" { class: func }
+  confirm_anomaly_disposition: "[F] Confirm anomaly\ndisposition" { class: func }
+}
+
+inspection_camera: "[EA] Inspection Camera /\nMicroscope Fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  capture_overview_photos: "[F] Capture overview\nphotos" { class: func }
+  capture_closeup_markings: "[F] Capture close-up\nmarkings" { class: func }
+}
+
+inspection_fixture: "[EA] ESD-safe\nInspection Fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  support_article: "[F] Support final\narticle" { class: func }
+  maintain_esd_control: "[F] Maintain ESD\ncontrol" { class: func }
+}
+
+connector_gauge: "[EA] Caliper /\nConnector Gauge" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  check_visible_placement: "[F] Check visible\nplacement" { class: func }
+  check_connector_fit_cues: "[F] Check connector\nfit cues" { class: func }
+}
+
+evidence_repository: "[EA] Evidence Repository /\nChecklist Tool" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  store_checklist: "[F] Store checklist" { class: func }
+  store_photos: "[F] Store photos" { class: func }
+  generate_pc_coverage_matrix: "[F] Generate PC\ncoverage matrix" { class: func }
+}
+
+note_final_acceptance: "[C] AMS v1.0 final acceptance: inspect the\nfinal integrated article, not a protoflight\nor partial build" {
+  class: note
+  shape: page
+}
+note_census: "[C] Statistical basis: 100% census inspection;\n13/13 modeled UUT PCs require individual\nchecklist and photo/build-record evidence" {
+  class: note
+  shape: page
+}
+note_pass: "[C] Pass iff every target PC is present,\nidentifiable, correct for the v1.0 baseline,\nand installed in its modeled containment" {
+  class: note
+  shape: page
+}
+note_fail: "[C] Fail or controlled waiver required for any\nmissing, wrong, ambiguous, damaged, contaminated,\nloose temporary, or unapproved substituted PC" {
+  class: note
+  shape: page
+}
+note_duplicate: "[C] Duplicate names are disambiguated by full\ncontainment path, especially AMS-side and\nOBCC-side Backplane Connector instances" {
+  class: note
+  shape: page
+}
+note_pl_out_scope: "[C] Out of scope: physical-link integrity,\ncontinuity, retention, screws, footprints, traces,\nand cables; see AMS-VV-PL-001" {
+  class: note
+  shape: page
+}
+note_fault_hardening: "[C] Fault-hardening viewpoint: wrong variant,\nwrong side/location, duplicate-instance confusion,\nvisible damage, FOD, contamination, or unapproved\ncritical substitution" {
+  class: note
+  shape: page
+}
+
+system.cansat.ams_module.ams_pcb.bme280.note_accuracy_pressure -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_pressure { class: cstr }
+system.cansat.ams_module.ams_pcb.bme280.note_accuracy_temperature -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.note_resolution -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.calculate_altitude { class: cstr }
+
+system.cansat.obcc_module.obcc_pcb.note_variable_getter -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_i2c_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_process_time -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+
+
+note_final_acceptance -> inspection_operator.identify_article_baseline { class: cstr }
+note_census -> evidence_repository.generate_pc_coverage_matrix { class: cstr }
+note_census -> qa_witness.review_pc_coverage { class: cstr }
+note_pass -> inspection_operator.inspect_pc_presence { class: cstr }
+note_pass -> inspection_operator.verify_marking_orientation { class: cstr }
+note_fail -> inspection_operator.record_anomalies_evidence { class: cstr }
+note_fail -> qa_witness.confirm_anomaly_disposition { class: cstr }
+note_duplicate -> qa_witness.review_pc_coverage { class: cstr }
+note_pl_out_scope -> inspection_operator.inspect_pc_presence { class: cstr }
+note_fault_hardening -> inspection_operator.verify_marking_orientation { class: cstr }
+
+# Layout-only edges to stack the inspection actors and constraints below the UUT allocation.
+system -> inspection_fixture { style: { opacity: 0 } }
+inspection_fixture -> inspection_camera { style: { opacity: 0 } }
+inspection_camera -> connector_gauge { style: { opacity: 0 } }
+connector_gauge -> inspection_operator { style: { opacity: 0 } }
+inspection_operator -> qa_witness { style: { opacity: 0 } }
+qa_witness -> evidence_repository { style: { opacity: 0 } }
+evidence_repository -> note_final_acceptance { style: { opacity: 0 } }
+note_final_acceptance -> note_census { style: { opacity: 0 } }
+note_census -> note_pass { style: { opacity: 0 } }
+note_pass -> note_fail { style: { opacity: 0 } }
+note_fail -> note_duplicate { style: { opacity: 0 } }
+note_duplicate -> note_pl_out_scope { style: { opacity: 0 } }
+note_pl_out_scope -> note_fault_hardening { style: { opacity: 0 } }

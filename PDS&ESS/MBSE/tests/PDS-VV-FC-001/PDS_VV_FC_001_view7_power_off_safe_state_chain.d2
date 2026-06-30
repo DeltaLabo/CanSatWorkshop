@@ -1,0 +1,120 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional Chain — PDS-VV-FC-001 commanded power-off safe state.
+# Only functions, FEs, and constraints are inside the chain container.
+# References: IVV, PDS-R2, PDS-R4, PDS-R5, PDS-R6, PDS-R7, PDS-R8.
+# Traceability: PDS-UC-ProvideRegulatedPower; PDS-FE-RailBrownout; PDS-FE-LiIonUnsafeCondition.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDS-VV-FC-001 — commanded power-off safe-state chain\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R2; PDS-R4; PDS-R5; PDS-R6; PDS-R7; PDS-R8" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  read_ambient: "[F] Read ambient\nbefore power-off trial" { class: func }
+  verify_calibration_status: "[F] Verify instrument\ncalibration / status" { class: func }
+  configure_safe_source: "[F] Configure safe charger /\nbattery emulator limits" { class: func }
+  arm_logging_safety: "[F] Arm logging, thermal,\nand E-stop watch" { class: func }
+  switch_power_on: "[F] Switch power on" { class: func }
+  restore_power_initial: "[F] Restore power" { class: func }
+  regulate_voltage: "[F] Regulate voltage" { class: func }
+  command_representative_loads: "[F] Command representative\nflight loads" { class: func }
+  verify_powered_nominal: "[F] Verify powered\nnominal state" { class: func }
+  switch_power_off: "[F] Switch power off" { class: func }
+  cut_off_power: "[F] Cut off power" { class: func }
+  verify_rails_deenergized: "[F] Verify rails\nde-energized" { class: func }
+  verify_no_unsafe_restart: "[F] Verify no unsafe\nrestart or reset cycling" { class: func }
+  monitor_temperature_current: "[F] Monitor safe current\nand temperature" { class: func }
+  hold_safe_off_interval: "[F] Hold safe-off interval\nfor observation" { class: func }
+  decide_restore_needed: "[F] Decide if campaign\nrequires controlled restore" { class: func }
+  command_controlled_restore: "[F] Command controlled\nrestore if required" { class: func }
+  restore_power_after_off: "[F] Restore power" { class: func }
+  verify_recovered_or_safe_off: "[F] Verify recovered nominal\nor remains safe-off" { class: func }
+  disposition_anomaly: "[F] Disposition any\nanomaly before pass" { class: func }
+  log_evidence: "[F] Log safe-state\nevidence" { class: func }
+  archive_evidence: "[F] Archive final-acceptance\nevidence package" { class: func }
+
+  note_definition: "[C] Definition scope:\nCommanded power-off safe-state path for PDS-VV-FC-001;\ntrace PDS-UC-ProvideRegulatedPower, PDS-FE-RailBrownout,\nPDS-FE-LiIonUnsafeCondition. Final flight acceptance only." {
+    class: note
+    shape: page
+  }
+  note_pass: "[C] Pass/fail:\noperator power-off command shall cut off power, de-energize 5 V and 3V3 rails\nto campaign-defined safe thresholds, and prevent uncontrolled restart.\nRestore is allowed only by explicit controlled command if the campaign requires it." {
+    class: note
+    shape: page
+  }
+  note_safety: "[C] Safety constraints:\nambient and equipment status recorded; ESD/fire-safe Li-ion handling active;\nunsafe current, overheating, cell anomaly, smoke, or uncontrolled restart\ncauses abort/fail and anomaly disposition." {
+    class: note
+    shape: page
+  }
+  note_stats: "[C] Statistical viewpoint:\nclassify each power-off safe-state trial pass/fail; continuous rail/current/thermal\nrecords use ≥30 samples per stable condition where a numerical trend is claimed.\nNo population reliability claim from one article without separate justification." {
+    class: note
+    shape: page
+  }
+  note_fault: "[C] Fault-hardening coverage:\nunsafe restore prevention, rail brownout/reset cycling, loose/high-resistance path,\noverheating, and Li-ion unsafe condition shall be observed or dispositioned." {
+    class: note
+    shape: page
+  }
+}
+
+chain.read_ambient -> chain.verify_calibration_status: "[FE] Ambient precheck" { class: fe }
+chain.verify_calibration_status -> chain.configure_safe_source: "[FE] Verified equipment" { class: fe }
+chain.configure_safe_source -> chain.arm_logging_safety: "[FE] Safe source/load limits" { class: fe }
+chain.arm_logging_safety -> chain.switch_power_on: "[FE] Ready for powered setup" { class: fe }
+chain.switch_power_on -> chain.restore_power_initial: "[FE] Power-on command" { class: fe }
+chain.restore_power_initial -> chain.regulate_voltage: "[FE] Protected power restored" { class: fe }
+chain.regulate_voltage -> chain.command_representative_loads: "[FE] 5 V / 3V3 rails" { class: fe }
+chain.command_representative_loads -> chain.verify_powered_nominal: "[FE] Representative load state" { class: fe }
+chain.verify_powered_nominal -> chain.switch_power_off: "[FE] Powered state accepted" { class: fe }
+chain.switch_power_off -> chain.cut_off_power: "[FE] Power-off command" { class: fe }
+chain.cut_off_power -> chain.verify_rails_deenergized: "[FE] Rails commanded off" { class: fe }
+chain.verify_rails_deenergized -> chain.verify_no_unsafe_restart: "[FE] Safe off rail evidence" { class: fe }
+chain.verify_no_unsafe_restart -> chain.monitor_temperature_current: "[FE] No restart/reset evidence" { class: fe }
+chain.monitor_temperature_current -> chain.hold_safe_off_interval: "[FE] Safe current/temperature" { class: fe }
+chain.hold_safe_off_interval -> chain.decide_restore_needed: "[FE] Safe-off observation complete" { class: fe }
+chain.decide_restore_needed -> chain.command_controlled_restore: "[FE] Campaign decision" { class: fe }
+chain.command_controlled_restore -> chain.restore_power_after_off: "[FE] Restore if required; otherwise hold off" { class: fe }
+chain.restore_power_after_off -> chain.verify_recovered_or_safe_off: "[FE] Restored nominal or safe-off state" { class: fe }
+chain.verify_recovered_or_safe_off -> chain.disposition_anomaly: "[FE] Accepted final state" { class: fe }
+chain.disposition_anomaly -> chain.log_evidence: "[FE] Anomaly disposition / no anomaly" { class: fe }
+chain.log_evidence -> chain.archive_evidence: "[FE] Controlled evidence" { class: fe }

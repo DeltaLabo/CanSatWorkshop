@@ -1,0 +1,90 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-I-001 logical inspection context.
+# Focused evidence-control view. The full source PV2 is copied in ./baseline/.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 26 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+inspector: "[EA] IVV Inspector" { class: ea }
+
+reviewer: "[EA] IVV Reviewer" { class: ea }
+
+system: "[System] DPS v1.0\nDPS-V10-I-001 PV2 logical inspection context\nIADT: Inspection; Refs: P0,R1-R3,R8,R11-R13; Trace: component/link inventory,C02" {
+  class: sys
+  direction: down
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: down
+
+    inspection_record: "[LC] Inspection Evidence Record\n(verification-only)" { class: lc }
+  }
+
+  note_scope: "[C] Evidence-control view only.\nInspection targets are all PCs and PLs in README §3.2\nand the detailed checklist; full v1.0 PV2 is copied in ./baseline/." {
+    class: note
+    shape: page
+  }
+
+  note_pass: "[C] Pass if every modeled PC/PL is present or formally dispositioned,\ncorrect variants are installed, continuity/polarity checks pass,\nand the ground backplane connector is absent/not soldered" {
+    class: note
+    shape: page
+  }
+
+  note_record_scope: "[C] Verification-only record stores checklist, photos,\ncontinuity readings, article IDs, deviations, dispositions,\nreview decision and final verdict" {
+    class: note
+    shape: page
+  }
+}
+
+inspector -> system.pc.inspection_record: "[CE] Checklist,\nphotos, readings" { class: ce }
+system.pc.inspection_record -> inspector: "[CE] Open items\n+ verdict" { class: ce }
+system.pc.inspection_record -> reviewer: "[CE] Inspection\npackage" { class: ce }
+reviewer -> system.pc.inspection_record: "[CE] Review\ndisposition" { class: ce }
+
+system.note_scope -> system.pc.inspection_record { class: cstr }
+system.note_pass -> system.pc.inspection_record { class: cstr }
+system.note_record_scope -> system.pc.inspection_record { class: cstr }
+
+# Layout-only edges to place human actors before the evidence record.
+inspector -> reviewer { style: { opacity: 0 } }
+reviewer -> system { style: { opacity: 0 } }

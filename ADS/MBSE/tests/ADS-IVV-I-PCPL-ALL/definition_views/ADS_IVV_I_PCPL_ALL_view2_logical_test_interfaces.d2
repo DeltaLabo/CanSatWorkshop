@@ -1,0 +1,76 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Logical view: test-specific human operator component exchanges for ADS-IVV-I-PCPL-ALL.
+# References: IVV skill minimum PC/PL inspection; ADS/MBSE/tests/README.md; copied ADS v0.1/v0.2/v0.3/v1.0 source views.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] IVV operator" { class: ea }
+quality_authority: "[EA] Quality / configuration\nauthority" { class: ea }
+
+system: "[System] ADS-IVV-I-PCPL-ALL\nLogical inspection interfaces\nRefs: IVV; NASA-SE; Workmanship; ADS MBSE plan" {
+  class: sys
+  direction: down
+
+  selected_article: "[PC] Selected ADS article\n(v0.1 / v0.2 / v0.3 / v1.0)" {
+    class: pc
+    direction: down
+
+    inspection_interface: "[LC] PC/PL inspection\nchecklist and evidence" { class: lc }
+    anomaly_control: "[LC] Nonconformance /\nanomaly control" { class: lc }
+
+    note_coverage: "[C] The selected version determines\nthe authoritative PC/PL checklist.\nAll modeled PCs and PLs for that\nversion must be inspected." {
+      class: note
+      shape: page
+    }
+    note_trace: "[C] Traceability: ADS-CAP-PHY,\nADS-CAP-PCB where applicable,\nADS-FE-OPEN-SHORT-LINK,\nand the selected version's\nphysical view copy." {
+      class: note
+      shape: page
+    }
+  }
+}
+
+operator -> system.selected_article.inspection_interface: "[CE] Checklist / evidence" { class: ce }
+system.selected_article.anomaly_control -> quality_authority: "[CE] Deviation / disposition" { class: ce }
+system.selected_article.note_coverage -> system.selected_article.inspection_interface { class: cstr }
+system.selected_article.note_trace -> system.selected_article.inspection_interface { class: cstr }

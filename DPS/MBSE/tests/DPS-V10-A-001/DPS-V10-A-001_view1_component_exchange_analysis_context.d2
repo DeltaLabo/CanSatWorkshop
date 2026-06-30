@@ -1,0 +1,150 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-A-001 PV2 component-exchange analysis context.
+# Focused CE view. The full source PV2 is copied in ./baseline/.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 20 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+analyst: "[EA] IVV CE Analyst" { class: ea }
+reviewer: "[EA] IVV Reviewer" { class: ea }
+
+system: "[System] DPS v1.0\nDPS-V10-A-001 PV2 component-exchange analysis\nIADT: Analysis; Refs: P0,R1-R3,R8-R13; Trace: telemetry and command paths" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat: "[PC] CanSat / OBCC module" {
+    class: pc
+    direction: right
+
+    cansat_rfm: "[PC] RFM95W LoRa" {
+      class: pc
+      direction: down
+      cansat_lora: "[LC] LoRa Transceiver" { class: lc }
+    }
+
+    cansat_xiao: "[PC] XIAO ESP32-S3" {
+      class: pc
+      direction: down
+      obcc: "[LC] OBCC" { class: lc }
+    }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: down
+      ground_forwarder: "[LC] LoRa Forwarder" { class: lc }
+    }
+
+    ground_rfm: "[PC] RFM95W LoRa" {
+      class: pc
+      direction: down
+      ground_lora: "[LC] LoRa Transceiver" { class: lc }
+    }
+  }
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: right
+    grid-columns: 4
+    grid-gap: 120
+
+    decoder: "[LC] Decoder" { class: lc }
+    csv_writer: "[LC] CSV\nWriter" { class: lc }
+    dashboard: "[LC] Dashboard" { class: lc }
+    ce_analysis_record: "[LC] CE Analysis Record\n(verification-only)" { class: lc }
+  }
+
+  note_scope: "[C] Focused CE-analysis view: only CE endpoints are shown.\nThe full v1.0 PV2 baseline is copied in ./baseline/." {
+    class: note
+    shape: page
+  }
+
+  note_ce_presence: "[C] CE analysis pass constraint: all six modeled CEs exist in implementation,\nmatch direction and model intent, and have no hidden substitute protocol" {
+    class: note
+    shape: page
+  }
+
+  note_protocols: "[C] Protocol/data viewpoints: CE-01/02 SPI use RFM95W/SX1276-compatible SPI;\nCE-03 UART uses agreed serial framing; CE-04/05 Payload preserve typed payload,\ntimestamp and ordering; CE-06 Command carries only valid state commands" {
+    class: note
+    shape: page
+  }
+
+  note_fault_statistics: "[C] Fault/statistical viewpoints: analyze stale bytes, corrupt payloads,\nlost UART/SPI, disconnects and duplicate/stale commands. Statistical basis is\n100% checklist coverage, not a stochastic claim." {
+    class: note
+    shape: page
+  }
+
+  note_trace: "[C] Traceability: telemetry downlink and command uplink use cases;\nfeared events: wrong protocol, corrupt accepted payload, hidden exchange,\nstale bytes and duplicate commands" {
+    class: note
+    shape: page
+  }
+}
+
+system.cansat.cansat_rfm.cansat_lora -> system.cansat.cansat_xiao.obcc: "[CE-01] SPI" { class: ce }
+system.ground_station_pcb.ground_xiao.ground_forwarder -> system.ground_station_pcb.ground_rfm.ground_lora: "[CE-02] SPI" { class: ce }
+system.ground_station_pcb.ground_xiao.ground_forwarder -> system.pc.decoder: "[CE-03] UART" { class: ce }
+system.pc.decoder -> system.pc.csv_writer: "[CE-04]" { class: ce }
+system.pc.decoder -> system.pc.dashboard: "[CE-05]" { class: ce }
+system.pc.dashboard -> system.pc.decoder: "[CE-06]" { class: ce }
+
+analyst -> system.pc.ce_analysis_record: "[CE] Findings" { class: ce }
+system.pc.ce_analysis_record -> reviewer: "[CE] Package" { class: ce }
+reviewer -> system.pc.ce_analysis_record: "[CE] Review" { class: ce }
+system.pc.ce_analysis_record -> analyst: "[CE] Verdict" { class: ce }
+
+system.note_scope -> system.pc.ce_analysis_record { class: cstr }
+system.note_ce_presence -> system.pc.ce_analysis_record { class: cstr }
+system.note_protocols -> system.pc.ce_analysis_record { class: cstr }
+system.note_fault_statistics -> system.pc.ce_analysis_record { class: cstr }
+system.note_trace -> system.pc.ce_analysis_record { class: cstr }
+
+# Layout-only edges to keep analysis actors above the focused UUT and preserve band order.
+analyst -> reviewer { style: { opacity: 0 } }
+reviewer -> system { style: { opacity: 0 } }
+system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.pc { style: { opacity: 0 } }

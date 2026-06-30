@@ -1,0 +1,146 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV2 Logical inspection interfaces for PDS-VV-PC-001.
+# Capella PA PV2 only: System, PCs, LCs, human EAs with CEs, Component Exchanges, constraints.
+# No physical links, functions, or functional exchanges appear in this view.
+# References: IVV; PDS-R1; PDS-R2; PDS-R4–PDS-R8.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea }
+witness_reviewer: "[EA] Witness / Reviewer" { class: ea }
+
+system: "[System] PDS-VV-PC-001 logical inspection interfaces\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R1; PDS-R2; PDS-R4–PDS-R8" {
+  class: sys
+  direction: down
+  grid-columns: 3
+
+  article: "[PC] Integrated PDS & ESS\nv1.0 article" {
+    class: pc
+    direction: down
+    inventory_lc: "[LC] Baseline PC/PL\ninventory model" { class: lc }
+    article_status_lc: "[LC] As-inspected\narticle status" { class: lc }
+  }
+
+  inspection_workstation: "[PC] Inspection Workstation /\nEvidence Host" {
+    class: pc
+    direction: down
+    inspection_control: "[LC] Inspection control\nand checklist" { class: lc }
+    evidence_repo: "[LC] Evidence repository" { class: lc }
+    liion_docs: "[LC] Li-ion safety\ndocument record" { class: lc }
+    anomaly_log: "[LC] Anomaly / waiver\nlog" { class: lc }
+  }
+
+  support_equipment: "[PC] Inspection Support\nEquipment" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    microscope_camera_pc: "[PC] Microscope / Camera" {
+      class: pc
+      visual_interface: "[LC] Visual evidence\ninterface" { class: lc }
+    }
+
+    dmm_pc: "[PC] DMM / Continuity Tester" {
+      class: pc
+      continuity_interface: "[LC] Continuity, polarity,\nisolation interface" { class: lc }
+    }
+
+    bench_supply_pc: "[PC] Current-limited\nBench Supply" {
+      class: pc
+      supply_interface: "[LC] Supply status and\ncurrent-limit interface" { class: lc }
+    }
+
+    ambient_pc: "[PC] Ambient Thermometer /\nHygrometer" {
+      class: pc
+      ambient_interface: "[LC] Ambient condition\ninterface" { class: lc }
+    }
+
+    esd_fixture_pc: "[PC] ESD Workbench / Fixture" {
+      class: pc
+      esd_interface: "[LC] ESD and fixture\nstatus interface" { class: lc }
+    }
+  }
+}
+
+note_scope: "[C] Scope and traceability\nPrimary PDS-VV-PC-001; companion coverage for\nPDS-VV-PL-001 and PDS-VV-SAFE-001.\nTrace: PDS-UC-ProvideRegulatedPower;\nPDS-FE-LiIonUnsafeCondition; PDS-FE-RailBrownout;\nPCB manufacturability constraint." { class: note; shape: page }
+note_interface_rule: "[C] Interface rule\nChecklist, readings, photos, Li-ion document records,\nand anomaly dispositions are linked to the copied\nPDS & ESS v1.0 baseline and article identifier." { class: note; shape: page }
+note_defer: "[C] Defer / hold points\nDo not continue if ambient condensation, unsafe ESD state,\nunresolved calibration/status issue, unsafe Li-ion condition,\nor missing safe-handling limits are found." { class: note; shape: page }
+note_evidence: "[C] Evidence path\nStore execution evidence under ../results/PDS-VV-PC-001/\nunless a campaign-level folder is later agreed.\nReports reference this model." { class: note; shape: page }
+note_coverage: "[C] Coverage rule\n100% of baseline PCs and PLs shall have a recorded status.\nAny uninspected item or unresolved anomaly prevents pass." { class: note; shape: page }
+
+# Human and logical component exchanges.
+test_operator -> system.inspection_workstation.inspection_control: "[CE] Checklist ↔\nprompts" { class: ce }
+witness_reviewer -> system.inspection_workstation.evidence_repo: "[CE] Review ↔\nconcurrence" { class: ce }
+
+system.inspection_workstation.inspection_control -> system.article.inventory_lc: "[CE] Baseline\ninventory" { class: ce }
+system.inspection_workstation.inspection_control -> system.article.article_status_lc: "[CE] Item\nstatus" { class: ce }
+system.article.article_status_lc -> system.inspection_workstation.evidence_repo: "[CE] Coverage\nstatus" { class: ce }
+
+system.inspection_workstation.inspection_control -> system.support_equipment.microscope_camera_pc.visual_interface: "[CE] Photo\nrequests" { class: ce }
+system.support_equipment.microscope_camera_pc.visual_interface -> system.inspection_workstation.evidence_repo: "[CE] Photos" { class: ce }
+
+system.inspection_workstation.inspection_control -> system.support_equipment.dmm_pc.continuity_interface: "[CE] Probe plan ↔\nreadings" { class: ce }
+
+system.inspection_workstation.inspection_control -> system.support_equipment.bench_supply_pc.supply_interface: "[CE] Enable/hold ↔\nsupply status" { class: ce }
+
+system.support_equipment.ambient_pc.ambient_interface -> system.inspection_workstation.inspection_control: "[CE] Ambient T/RH" { class: ce }
+system.support_equipment.esd_fixture_pc.esd_interface -> system.inspection_workstation.inspection_control: "[CE] ESD status" { class: ce }
+system.inspection_workstation.liion_docs -> system.inspection_workstation.inspection_control: "[CE] Li-ion docs" { class: ce }
+system.inspection_workstation.inspection_control -> system.inspection_workstation.evidence_repo: "[CE] Inspection\nrecord" { class: ce }
+system.inspection_workstation.inspection_control -> system.inspection_workstation.anomaly_log: "[CE] Anomalies" { class: ce }
+system.inspection_workstation.anomaly_log -> system.inspection_workstation.evidence_repo: "[CE] Waiver /\nretest" { class: ce }
+
+note_scope -> system.article.inventory_lc { class: cstr }
+note_interface_rule -> system.inspection_workstation.inspection_control { class: cstr }
+note_defer -> system.inspection_workstation.inspection_control { class: cstr }
+note_evidence -> system.inspection_workstation.evidence_repo { class: cstr }
+note_coverage -> system.article.article_status_lc { class: cstr }
+
+# Layout-only rank hints for notes.
+test_operator -> witness_reviewer { style: { opacity: 0 } }
+system -> note_scope { style: { opacity: 0 } }
+note_scope -> note_interface_rule { style: { opacity: 0 } }
+note_interface_rule -> note_defer { style: { opacity: 0 } }
+note_defer -> note_evidence { style: { opacity: 0 } }
+note_evidence -> note_coverage { style: { opacity: 0 } }

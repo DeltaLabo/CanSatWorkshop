@@ -1,0 +1,57 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain view: functional-allocation analysis sequence for ADS-IVV-A-ALLOC-ALL.
+# IADT method is Analysis; this chain is the modeled analysis procedure.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-A-ALLOC-ALL\nFunctional allocation analysis sequence\nRefs: IVV; NASA-SE; GPS/UBX; IMU/I2C; SW/stats" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_version: "[F] Select ADS version\nand model baseline" { class: func }
+  enumerate_views: "[F] Enumerate copied\nD2 source views" { class: func }
+  extract_allocations: "[F] Extract PCs, LCs,\nFunctions, constraints" { class: func }
+  map_impl: "[F] Map modeled functions\nto implementation units" { class: func }
+  check_completeness: "[F] Check intended\nfunctions present" { class: func }
+  check_no_foreign: "[F] Check no duplicate\nor foreign functions" { class: func }
+  analyze_boundaries: "[F] Analyze LC-boundary\nflows and CEs" { class: func }
+  analyze_constraints: "[F] Analyze constraint\nownership and fault cases" { class: func }
+  decide_allocation: "[F] Decide allocation\ncorrectness" { class: func }
+  record_result: "[F] Record pass/fail,\nN/A rationale, anomalies,\nwaivers, retest status" { class: func }
+
+  note_coverage: "[C] Coverage\nv0.1: 3 LCs / 11 functions.\nv0.2: 4 LCs / 22 functions.\nv0.3: 0 LCs/functions after 1/1 view reviewed.\nv1.0: 4 LCs / 20 functions.\nAll selected-version allocations are analyzed." { class: note; shape: page }
+  note_pass_fail: "[C] Allocation pass/fail\nPass if every intended function is allocated\nto the modeled LC/PC, no missing/duplicate/\nforeign functions exist, and boundary flows\nare supported by CEs or dispositioned." { class: note; shape: page }
+  note_v03: "[C] v0.3 N/A branch\nPass/N/A only if no LC/function/CE exists and\nphysical traces are not credited as behavior." { class: note; shape: page }
+  note_faults: "[C] Fault hardening\nReview silent/malformed sensors, stale values,\nblocking reads, corrupt getters/calculators,\nunsafe pointers/returns, and OBCC consuming\ninvalid ADS data where applicable." { class: note; shape: page }
+  note_stats: "[C] Statistical significance\nComplete enumeration, not sample-based testing.\nRuntime evidence supports linked chain/constraint\ntests unless a separate statistical criterion exists." { class: note; shape: page }
+}
+
+chain.select_version -> chain.enumerate_views: "[FE] Baseline" { class: fe }
+chain.enumerate_views -> chain.extract_allocations: "[FE] Views" { class: fe }
+chain.extract_allocations -> chain.map_impl: "[FE] Inventory" { class: fe }
+chain.map_impl -> chain.check_completeness: "[FE] Map" { class: fe }
+chain.check_completeness -> chain.check_no_foreign: "[FE] Presence" { class: fe }
+chain.check_no_foreign -> chain.analyze_boundaries: "[FE] Ownership" { class: fe }
+chain.analyze_boundaries -> chain.analyze_constraints: "[FE] Boundaries" { class: fe }
+chain.analyze_constraints -> chain.decide_allocation: "[FE] Rationale" { class: fe }
+chain.decide_allocation -> chain.record_result: "[FE] Result" { class: fe }
+

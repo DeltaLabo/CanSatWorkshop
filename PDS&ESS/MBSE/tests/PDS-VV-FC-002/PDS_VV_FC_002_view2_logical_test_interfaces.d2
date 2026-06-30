@@ -1,0 +1,182 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV2 — PDS-VV-FC-002 logical test interfaces for PDS & ESS v1.0.
+# References: IVV, PDS-R9 INA219, PDS-R10 I2C. No source baseline diagram is modified.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea }
+host_pc: "[EA] Host PC /\nserial logger" { class: ea }
+logic_analyzer: "[EA] I2C /\nlogic analyzer" { class: ea }
+fault_harness: "[EA] I2C fault\ninjection harness" { class: ea }
+battery_emulator: "[EA] Battery emulator /\nsource-load" { class: ea }
+dmm_reference: "[EA] Precision DMM /\ncurrent reference" { class: ea }
+ambient_meter: "[EA] Ambient thermometer /\nhygrometer" { class: ea }
+evidence_repository: "[EA] Evidence\nrepository" { class: ea }
+
+system: "[System] PDS-VV-FC-002 battery-supervision logical test interfaces\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R9; PDS-R10" {
+  class: sys
+  direction: down
+  grid-columns: 2
+
+  uut: "[PC] CanSat UUT\nPDS & ESS v1.0" {
+    class: pc
+    direction: down
+
+    ess_module: "[PC] ESS Module" {
+      class: pc
+      battery_pack: "[PC] 1S1P Li-Ion" {
+        class: pc
+        battery_lc: "[LC] Battery" { class: lc }
+      }
+    }
+
+    pds_module: "[PC] PDS Module" {
+      class: pc
+      direction: down
+
+      pds_pcb: "[PC] PDS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        protection: "[PC] Protection Circuit" {
+          class: pc
+          direction: down
+          battery_charger: "[LC] Battery Charger" { class: lc }
+          power_protection: "[LC] Power Protection" { class: lc }
+        }
+
+        ina219: "[PC] INA219" {
+          class: pc
+          battery_monitoring: "[LC] Battery monitoring" { class: lc }
+        }
+
+        regulator: "[PC] Regulator" {
+          class: pc
+          regulator_lc: "[LC] Regulator" { class: lc }
+        }
+
+        battery_connector: "[PC] Battery Connector" { class: pc }
+        pds_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+          ess_processing: "[LC] ESS Processing" { class: lc }
+          obcc: "[LC] OBCC" { class: lc }
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" { class: pc }
+  }
+
+  test_harness: "[PC] PDS-VV-FC-002\nverification test harness" {
+    class: pc
+    direction: down
+    test_control: "[LC] Test command\ninterface" { class: lc }
+    serial_log: "[LC] Serial log\ninterface" { class: lc }
+    i2c_observer: "[LC] I2C observation\ninterface" { class: lc }
+    i2c_fault_controller: "[LC] I2C fault\ncontroller" { class: lc }
+    source_load_control: "[LC] Source/load\ncontrol" { class: lc }
+    reference_measurement: "[LC] Reference V/I\nmeasurement" { class: lc }
+    environment_context: "[LC] Environment\ncontext capture" { class: lc }
+    evidence_capture: "[LC] Evidence\ncapture" { class: lc }
+  }
+
+  coverage_note: "[C] PDS-VV-FC-002 modeled coverage:\nPDS-VV-CON-005/006/007/008;\nsupports PDS-VV-CE-001, CE-002,\nand PDS-VV-ALLOC-002;\nIADT Testing/Demonstration + Analysis" {
+    class: note
+    shape: page
+  }
+
+  getter_note: "[C] Getter API pass criteria:\nPointers and Returns have bounded ownership,\nunits, freshness, status/error codes;\nno stale data reported valid;\nno unbounded blocking except modeled I2C/UART waits" {
+    class: note
+    shape: page
+  }
+
+  i2c_gap_note: "[C] Verification-analysis target:\nsource PV2 has no explicit INA219 I2C CE\nbetween ESS Processing and Battery monitoring.\nDo not modify baseline here;\nfinal execution claim blocked until resolved/justified.\nRefs IVV, PDS-R9, PDS-R10" {
+    class: note
+    shape: page
+  }
+}
+
+system.uut.obcc_module.obcc_pcb.xiao.obcc -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing: "[CE] Pointers /\ngetter API" { class: ce }
+system.uut.obcc_module.obcc_pcb.xiao.ess_processing -> system.uut.obcc_module.obcc_pcb.xiao.obcc: "[CE] Returns /\nstatus data" { class: ce }
+
+test_operator -> system.test_harness.test_control: "[CE] Test case commands" { class: ce }
+system.test_harness.test_control -> system.uut.obcc_module.obcc_pcb.xiao.obcc: "[CE] UART/console\ncommand hooks" { class: ce }
+system.uut.obcc_module.obcc_pcb.xiao.obcc -> system.test_harness.serial_log: "[CE] Scheduler heartbeat\nand measurement logs" { class: ce }
+system.test_harness.serial_log -> host_pc: "[CE] Timestamped serial log" { class: ce }
+host_pc -> system.test_harness.evidence_capture: "[CE] Parsed log artifacts" { class: ce }
+
+logic_analyzer -> system.test_harness.i2c_observer: "[CE] SDA/SCL captures" { class: ce }
+fault_harness -> system.test_harness.i2c_fault_controller: "[CE] Fault profile controls" { class: ce }
+system.test_harness.i2c_fault_controller -> system.test_harness.i2c_observer: "[CE] Fault timing markers" { class: ce }
+system.test_harness.i2c_fault_controller -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing: "[CE] Fault-case trigger\nverification-only" { class: ce }
+system.uut.obcc_module.obcc_pcb.xiao.ess_processing -> system.test_harness.i2c_observer: "[CE] Master timing\nobservations" { class: ce }
+system.uut.pds_module.pds_pcb.ina219.battery_monitoring -> system.test_harness.i2c_observer: "[CE] INA219 response\nobservations" { class: ce }
+
+battery_emulator -> system.test_harness.source_load_control: "[CE] Set voltage/load" { class: ce }
+system.test_harness.source_load_control -> system.test_harness.reference_measurement: "[CE] Stable operating\npoint metadata" { class: ce }
+dmm_reference -> system.test_harness.reference_measurement: "[CE] Reference V/I samples" { class: ce }
+ambient_meter -> system.test_harness.environment_context: "[CE] Ambient T/RH samples" { class: ce }
+system.test_harness.reference_measurement -> system.test_harness.evidence_capture: "[CE] Reference evidence" { class: ce }
+system.test_harness.environment_context -> system.test_harness.evidence_capture: "[CE] Environment evidence" { class: ce }
+system.test_harness.i2c_observer -> system.test_harness.evidence_capture: "[CE] I2C timing/fault\nevidence" { class: ce }
+system.test_harness.evidence_capture -> evidence_repository: "[CE] Controlled evidence\npackage" { class: ce }
+
+system.coverage_note -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing { class: cstr }
+system.coverage_note -> system.uut.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+system.getter_note -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing { class: cstr }
+system.getter_note -> system.uut.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+system.i2c_gap_note -> system.uut.pds_module.pds_pcb.ina219.battery_monitoring { class: cstr }
+system.i2c_gap_note -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing { class: cstr }

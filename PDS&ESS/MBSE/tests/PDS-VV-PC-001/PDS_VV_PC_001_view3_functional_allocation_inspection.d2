@@ -1,0 +1,171 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV3 Functional allocation inspection view for PDS-VV-PC-001.
+# Capella PA PV3 only: System, PCs, LCs, Functions, EAs with Functions, and constraints.
+# No physical links, component exchanges, or functional exchanges appear in this view.
+# References: IVV; PDS-R1; PDS-R2; PDS-R4–PDS-R8.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  verify_setup: "[F] Verify equipment\ncalibration/status" { class: func }
+  generate_checklist: "[F] Generate modeled\nPC/PL checklist" { class: func }
+  inspect_components: "[F] Inspect components\nfor presence, identity,\norientation, security,\nworkmanship" { class: func }
+  inspect_links: "[F] Inspect links\nfor presence, routing,\ncontact, retention" { class: func }
+  review_liion_docs: "[F] Review Li-ion\nsafety documents\nand limits" { class: func }
+  compare_baseline: "[F] Compare observations\nto v1.0 baseline" { class: func }
+  disposition_anomalies: "[F] Disposition anomalies,\nholds, waivers, retests" { class: func }
+}
+
+witness_reviewer: "[EA] Witness / Reviewer" {
+  class: ea
+  direction: down
+  review_evidence: "[F] Review evidence\nand pass/fail rationale" { class: func }
+}
+
+microscope_camera: "[EA] Microscope / Camera" {
+  class: ea
+  direction: down
+  photograph_evidence: "[F] Photograph component,\nlink, and workmanship\nevidence" { class: func }
+}
+
+dmm: "[EA] DMM / Continuity Tester" {
+  class: ea
+  direction: down
+  probe_links: "[F] Probe continuity,\npolarity, isolation" { class: func }
+}
+
+bench_supply: "[EA] Current-limited\nBench Supply" {
+  class: ea
+  direction: down
+  indicate_limits: "[F] Indicate current-limit\nand safe supply status" { class: func }
+}
+
+ambient_monitor: "[EA] Ambient Thermometer /\nHygrometer" {
+  class: ea
+  direction: down
+  read_ambient: "[F] Read ambient\ntemperature and humidity" { class: func }
+}
+
+esd_fixture: "[EA] ESD Workbench /\nFixture" {
+  class: ea
+  direction: down
+  maintain_esd: "[F] Maintain ESD-safe\narticle support" { class: func }
+}
+
+evidence_repo: "[EA] Evidence Repository /\nHost PC" {
+  class: ea
+  direction: down
+  log_evidence: "[F] Log evidence,\narticle ID, readings,\nphotos, and status" { class: func }
+}
+
+system: "[System] PDS-VV-PC-001 functional allocation inspection\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R1; PDS-R2; PDS-R4–PDS-R8" {
+  class: sys
+  direction: down
+
+  article: "[PC] Integrated PDS & ESS\nv1.0 article" {
+    class: pc
+    direction: down
+
+    inventory_lc: "[LC] Modeled PC/PL\ninventory under inspection" {
+      class: lc
+      direction: down
+      provide_pc_inventory: "[F] Provide modeled\nphysical component inventory" { class: func }
+      provide_pl_inventory: "[F] Provide modeled\nphysical link inventory" { class: func }
+      expose_endpoints: "[F] Expose modeled link\nendpoints for inspection" { class: func }
+      provide_cell_identity: "[F] Provide Li-ion cell\nidentity and markings" { class: func }
+      provide_pcb_markings: "[F] Provide PCB revision\nand manufacturability markings" { class: func }
+    }
+  }
+}
+
+note_scope: "[C] Scope / traceability\nPrimary PDS-VV-PC-001; companion coverage for\nPDS-VV-PL-001 and PDS-VV-SAFE-001.\nTrace: PDS-UC-ProvideRegulatedPower;\nPDS-FE-LiIonUnsafeCondition; PDS-FE-RailBrownout;\nPCB manufacturability constraint." { class: note; shape: page }
+note_environment: "[C] Environmental condition\nAmbient temperature and humidity are read before\narticle or batch inspection. Defer on condensation\nor unsafe ESD state." { class: note; shape: page }
+note_equipment: "[C] Equipment readiness\nDMM, camera, bench supply, ambient monitor,\nand ESD fixture status/calibration are checked\nbefore use. Defer on unresolved status issue." { class: note; shape: page }
+note_pc_pass: "[C] Component inspection pass/fail\nEvery modeled PC shall be present, correct,\nidentifiable, oriented correctly, secure,\nundamaged, and workmanlike." { class: note; shape: page }
+note_pl_pass: "[C] Link inspection pass/fail\nEvery modeled PL shall be present, endpoint-correct,\ncontinuous where electrical, polarized correctly,\nisolated from unintended shorts, retained,\nand contact/workmanship acceptable." { class: note; shape: page }
+note_liion: "[C] Li-ion safety pass/fail\nDocument cell identity, safety data, UN 38.3 / IEC 62133\nevidence when available, and charge/discharge/storage limits.\nDefer if damaged, swollen, leaking, undocumented,\nor outside safe limits. Refs: PDS-R4–PDS-R7." { class: note; shape: page }
+note_pcb: "[C] PCB manufacturability\nPDS, OBCC, and backplane PCB evidence shall support\nCarvera Air CNC manufacturability and 1 A current-path\nworkmanship/thermal rationale. Ref: PDS-R8." { class: note; shape: page }
+note_stats_fault: "[C] Statistical / fault-hardening viewpoint\n100% article enumeration; no lot-sampling inference.\nScreen open/short, reversed polarity, high resistance,\nmis-mated headers, weak rail/ground, loose fixtures,\nsolder bridges, lifted pads, rail-brownout precursors,\nand Li-ion unsafe-condition precursors." { class: note; shape: page }
+note_evidence: "[C] Evidence record\nRecord item status, readings, ambient conditions,\nequipment IDs, photos, Li-ion document status,\nanomalies, waivers, retests, and pass/fail rationale\nunder ../results/PDS-VV-PC-001/." { class: note; shape: page }
+
+note_scope -> system.article.inventory_lc { class: cstr }
+note_environment -> ambient_monitor.read_ambient { class: cstr }
+note_environment -> esd_fixture.maintain_esd { class: cstr }
+note_equipment -> test_operator.verify_setup { class: cstr }
+note_equipment -> dmm.probe_links { class: cstr }
+note_equipment -> bench_supply.indicate_limits { class: cstr }
+note_pc_pass -> test_operator.inspect_components { class: cstr }
+note_pc_pass -> system.article.inventory_lc.provide_pc_inventory { class: cstr }
+note_pl_pass -> test_operator.inspect_links { class: cstr }
+note_pl_pass -> dmm.probe_links { class: cstr }
+note_pl_pass -> system.article.inventory_lc.provide_pl_inventory { class: cstr }
+note_liion -> test_operator.review_liion_docs { class: cstr }
+note_liion -> system.article.inventory_lc.provide_cell_identity { class: cstr }
+note_pcb -> system.article.inventory_lc.provide_pcb_markings { class: cstr }
+note_stats_fault -> test_operator.compare_baseline { class: cstr }
+note_stats_fault -> test_operator.disposition_anomalies { class: cstr }
+note_evidence -> microscope_camera.photograph_evidence { class: cstr }
+note_evidence -> evidence_repo.log_evidence { class: cstr }
+note_evidence -> witness_reviewer.review_evidence { class: cstr }
+
+# Layout-only rank hints to keep actors, article, and constraints readable.
+test_operator -> witness_reviewer { style: { opacity: 0 } }
+witness_reviewer -> microscope_camera { style: { opacity: 0 } }
+microscope_camera -> dmm { style: { opacity: 0 } }
+dmm -> bench_supply { style: { opacity: 0 } }
+bench_supply -> ambient_monitor { style: { opacity: 0 } }
+ambient_monitor -> esd_fixture { style: { opacity: 0 } }
+esd_fixture -> evidence_repo { style: { opacity: 0 } }
+evidence_repo -> system { style: { opacity: 0 } }
+system -> note_scope { style: { opacity: 0 } }
+note_scope -> note_environment { style: { opacity: 0 } }
+note_environment -> note_equipment { style: { opacity: 0 } }
+note_equipment -> note_pc_pass { style: { opacity: 0 } }
+note_pc_pass -> note_pl_pass { style: { opacity: 0 } }
+note_pl_pass -> note_liion { style: { opacity: 0 } }
+note_liion -> note_pcb { style: { opacity: 0 } }
+note_pcb -> note_stats_fault { style: { opacity: 0 } }
+note_stats_fault -> note_evidence { style: { opacity: 0 } }

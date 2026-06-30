@@ -1,0 +1,115 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional Chain — PDS-VV-FC-001 charge and nominal power sequence.
+# Only functions, FEs, and constraints are inside the chain container.
+# References: IVV, PDS-R2, PDS-R4, PDS-R5, PDS-R6, PDS-R7, PDS-R8.
+# Traceability: PDS-UC-ChargeESS; PDS-UC-ProvideRegulatedPower;
+# PDS-FE-RailBrownout; PDS-FE-LiIonUnsafeCondition.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDS-VV-FC-001 — charge and nominal power chain\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R2; PDS-R4; PDS-R5; PDS-R6; PDS-R7; PDS-R8" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  read_ambient: "[F] Read ambient\nbefore repetitions" { class: func }
+  verify_calibration_status: "[F] Verify instrument\ncalibration / status" { class: func }
+  configure_charger_emulator: "[F] Configure safe\ncharger or emulator" { class: func }
+  set_current_limits: "[F] Set charger/source\ncurrent limits" { class: func }
+  charger_provide_power: "[F] Provide power" { class: func }
+  charger_regulate_voltage: "[F] Regulate voltage" { class: func }
+  store_energy: "[F] Store energy" { class: func }
+  provide_power: "[F] Provide power" { class: func }
+  switch_power_on: "[F] Switch power on" { class: func }
+  restore_power: "[F] Restore power" { class: func }
+  regulate_voltage: "[F] Regulate voltage" { class: func }
+  command_representative_loads: "[F] Command representative\n5 V / 3V3 loads" { class: func }
+  measure_rails_current_temp: "[F] Measure rails, current,\nand temperature" { class: func }
+  observe_no_brownout: "[F] Verify no brownout,\nreset, or restart" { class: func }
+  compare_nominal_constraints: "[F] Compare nominal\npass/fail constraints" { class: func }
+  log_evidence: "[F] Log rails, current,\ntemperature, ambient" { class: func }
+  archive_evidence: "[F] Archive final-acceptance\nevidence package" { class: func }
+
+  note_definition: "[C] Definition scope:\nPDS-VV-FC-001 nominal path for final flight acceptance;\ntrace PDS-UC-ChargeESS, PDS-UC-ProvideRegulatedPower,\nPDS-FE-RailBrownout, PDS-FE-LiIonUnsafeCondition.\nEarlier versions are protoflight/out of scope." {
+    class: note
+    shape: page
+  }
+  note_charge: "[C] Charge pass/fail:\nwhen normal charge is exercised, charge limit respects\nmodeled 4.2 V / 0.5 A; wrong or reverse charger setup\nshall hold/abort instead of energizing unsafely." {
+    class: note
+    shape: page
+  }
+  note_rails: "[C] Regulated-rail pass/fail:\n5 V rail in [4.9, 5.1] V and 3V3 rail in [3.2, 3.4] V\nat modeled 1 A condition, or explicitly reference\naccepted PDS-VV-CON-004 numerical rail-load evidence." {
+    class: note
+    shape: page
+  }
+  note_environment: "[C] Environmental / safety conditions:\nambient read before repetitions; calibrated/status-checked instruments;\nESD and fire-safe Li-ion handling; flight pack only for normal non-abuse;\nbattery emulator preferred for repeatable bench conditions." {
+    class: note
+    shape: page
+  }
+  note_stats: "[C] Statistical viewpoint:\ncontinuous rail/current/thermal data use ≥30 samples per condition\nor reference PDS-VV-CON-004; raw data and uncertainty retained.\nDo not infer population reliability from one article without justification." {
+    class: note
+    shape: page
+  }
+  note_fault: "[C] Fault-hardening screen in nominal path:\nno rail brownout/reset/uncontrolled restart, overheating, loose/high-resistance\npath indication, or Li-ion unsafe condition; failures require hold/anomaly disposition." {
+    class: note
+    shape: page
+  }
+}
+
+chain.read_ambient -> chain.verify_calibration_status: "[FE] Ambient record" { class: fe }
+chain.verify_calibration_status -> chain.configure_charger_emulator: "[FE] Calibrated setup" { class: fe }
+chain.configure_charger_emulator -> chain.set_current_limits: "[FE] Safe charge setup" { class: fe }
+chain.set_current_limits -> chain.charger_provide_power: "[FE] Current-limited enable" { class: fe }
+chain.charger_provide_power -> chain.charger_regulate_voltage: "[FE] Charge power" { class: fe }
+chain.charger_regulate_voltage -> chain.store_energy: "[FE] 4.2 V / 0.5 A charge current" { class: fe }
+chain.store_energy -> chain.provide_power: "[FE] Stored energy" { class: fe }
+chain.provide_power -> chain.switch_power_on: "[FE] Battery power available" { class: fe }
+chain.switch_power_on -> chain.restore_power: "[FE] Power-on command" { class: fe }
+chain.restore_power -> chain.regulate_voltage: "[FE] Protected power restored" { class: fe }
+chain.regulate_voltage -> chain.command_representative_loads: "[FE] 5 V / 3V3 rails" { class: fe }
+chain.command_representative_loads -> chain.measure_rails_current_temp: "[FE] Representative load condition" { class: fe }
+chain.measure_rails_current_temp -> chain.observe_no_brownout: "[FE] Rail/current/temperature samples" { class: fe }
+chain.observe_no_brownout -> chain.compare_nominal_constraints: "[FE] No brownout/reset evidence" { class: fe }
+chain.compare_nominal_constraints -> chain.log_evidence: "[FE] Nominal pass/fail decision" { class: fe }
+chain.log_evidence -> chain.archive_evidence: "[FE] Controlled evidence" { class: fe }

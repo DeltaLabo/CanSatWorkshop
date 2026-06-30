@@ -1,0 +1,146 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-T-001A functional chain: valid-frame downlink decode/storage test sequence.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 32 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 28 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 34
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 26 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 24 } }
+}
+
+chain: "DPS-V10-T-001A — Valid downlink decode/storage test\nIADT: Testing; Refs: P0,R1-R5,R8-R15; Trace: FC01, C05; Report: tests/results/DPS-V10-T-001/" {
+  class: chain
+  direction: down
+
+  display_ambient_temperature: "[F] Display ambient\ntemperature" { class: func }
+  op_read_ambient: "[F] Operator reads\nambient thermometer" { class: func }
+  op_verify_setup: "[F] Operator verifies\nRF path and antennas" { class: func }
+  tx_configure: "[F] Configure LoRa settings\nand 300-frame payload set" { class: func }
+  op_start_capture: "[F] Start DPS capture\nand evidence logging" { class: func }
+  tx_generate_valid: "[F] Generate valid\nLoRa frames" { class: func }
+  tx_log_sequence: "[F] Log sent sequence\nand TX timestamps" { class: func }
+
+  store_incoming_data: "[F] Store incoming data" { class: func }
+  receive_lora_rx_interrupt: "[F] Receive LoRa\nRX Interrupt" { class: func }
+  read_payload: "[F] Read payload" { class: func }
+  forward_to_pc: "[F] Forward to PC" { class: func }
+  check_if_data_is_available: "[F] Check if data\nis available" { class: func }
+  get_rx_timestamp: "[F] Get RX\ntimestamp" { class: func }
+  read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+  calculate_latency: "[F] Calculate\nlatency" { class: func }
+  push_to_payload_queue: "[F] Push to\npayload queue" { class: func }
+  csv_consume_payload_queue: "[F] Consume\npayload queue" { class: func }
+  append_to_csv: "[F] Append to CSV" { class: func }
+
+  capture_tx_log: "[F] Capture transmitter\nlog" { class: func }
+  capture_decoder_log: "[F] Capture decoder\nand error logs" { class: func }
+  compare_csv_to_reference: "[F] Compare CSV rows\nto transmit log" { class: func }
+  compute_pdr_latency: "[F] Compute PDR, p95 latency\nand pass/fail verdict" { class: func }
+  archive_evidence: "[F] Archive evidence\nin results folder" { class: func }
+
+  note_trace: "[C] Traceability target: inferred use case\n'receive, decode, timestamp and store OBCC telemetry';\nconstraint C05 unique CSV name. Mission/capability IDs remain TBD." {
+    class: note
+    shape: page
+  }
+
+  note_environment: "[C] Environment constraint: Testo 110 or calibrated equivalent thermometer\nread before the run; lab ambient 15°C–30°C, stable within ±2°C;\nRF geometry/attenuator and radio settings recorded before repetitions." {
+    class: note
+    shape: page
+  }
+
+  note_stimulus: "[C] Stimulus constraint: N≥300 valid LoRa frames,\n2.0s ±0.2s cadence, monotonically increasing sequence numbers,\nknown payload fields and no intentional corruption in this sequence." {
+    class: note
+    shape: page
+  }
+
+  note_stat_pass: "[C] Statistical pass constraint: one-sided 95% exact\nClopper-Pearson lower bound for decoded+stored PDR ≥0.90;\nfor N=300, k≥279 decoded+stored frames is the planning threshold." {
+    class: note
+    shape: page
+  }
+
+  note_latency_pass: "[C] Timing/data pass constraints: p95 RX-to-CSV latency <1s;\nCSV row count equals accepted frames; row payload and sequence match TX log;\nCSV filename is unique from initial timestamp and no overwrite occurs." {
+    class: note
+    shape: page
+  }
+
+  note_fault_watch: "[C] Fault-hardening viewpoint: any stale UART bytes, sequence reordering,\nUSB/UART interruption, silent decode error, or missing evidence record is a failure\nor must be dispositioned as a report anomaly/limitation." {
+    class: note
+    shape: page
+  }
+}
+
+chain.display_ambient_temperature -> chain.op_read_ambient: "[FE] Ambient temperature\n[°C]" { class: fe }
+chain.op_read_ambient -> chain.op_verify_setup: "[FE] Ambient OK\n[Test condition]" { class: fe }
+chain.op_verify_setup -> chain.tx_configure: "[FE] RF setup OK\n[Test condition]" { class: fe }
+chain.tx_configure -> chain.op_start_capture: "[FE] Configured run\n[Settings]" { class: fe }
+chain.op_start_capture -> chain.tx_generate_valid: "[FE] Start trigger\n[Test control]" { class: fe }
+chain.tx_generate_valid -> chain.store_incoming_data: "[FE] Valid LoRa frame\n[Known payload]" { class: fe }
+chain.tx_generate_valid -> chain.tx_log_sequence: "[FE] Sent sequence\n[TX log]" { class: fe }
+
+chain.store_incoming_data -> chain.receive_lora_rx_interrupt: "[FE] Interrupt []" { class: fe }
+chain.store_incoming_data -> chain.read_payload: "[FE] LoRa Data\n[LoRa Frame]" { class: fe }
+chain.receive_lora_rx_interrupt -> chain.read_payload: "[FE] Flag []" { class: fe }
+chain.read_payload -> chain.forward_to_pc: "[FE] Payload\n[LoRa Frame]" { class: fe }
+chain.forward_to_pc -> chain.check_if_data_is_available: "[FE] Payload\n[LoRa Frame]" { class: fe }
+chain.check_if_data_is_available -> chain.get_rx_timestamp: "[FE] UART available []" { class: fe }
+chain.check_if_data_is_available -> chain.read_and_decode_frame: "[FE] UART bytes []" { class: fe }
+chain.get_rx_timestamp -> chain.calculate_latency: "[FE] Timestamp []" { class: fe }
+chain.get_rx_timestamp -> chain.push_to_payload_queue: "[FE] Timestamp []" { class: fe }
+chain.read_and_decode_frame -> chain.push_to_payload_queue: "[FE] Payload\n[Decoded payload]" { class: fe }
+chain.calculate_latency -> chain.push_to_payload_queue: "[FE] Latency []" { class: fe }
+chain.push_to_payload_queue -> chain.csv_consume_payload_queue: "[FE] Payload\n[Timestamped payload]" { class: fe }
+chain.csv_consume_payload_queue -> chain.append_to_csv: "[FE] Payload\n[Timestamped payload]" { class: fe }
+
+chain.tx_log_sequence -> chain.capture_tx_log: "[FE] TX log\n[Reference data]" { class: fe }
+chain.read_and_decode_frame -> chain.capture_decoder_log: "[FE] Decode metrics\n[Log data]" { class: fe }
+chain.append_to_csv -> chain.compare_csv_to_reference: "[FE] CSV rows\n[Evidence]" { class: fe }
+chain.capture_tx_log -> chain.compare_csv_to_reference: "[FE] Reference sequence\n[Evidence]" { class: fe }
+chain.capture_decoder_log -> chain.compute_pdr_latency: "[FE] Error/decode log\n[Evidence]" { class: fe }
+chain.compare_csv_to_reference -> chain.compute_pdr_latency: "[FE] Matched rows\n[Counts/latency]" { class: fe }
+chain.compute_pdr_latency -> chain.archive_evidence: "[FE] Verdict and evidence\n[Test report input]" { class: fe }
+
+chain.note_environment -> chain.op_read_ambient { class: cstr }
+chain.note_stimulus -> chain.tx_generate_valid { class: cstr }
+chain.note_stat_pass -> chain.compute_pdr_latency { class: cstr }
+chain.note_latency_pass -> chain.append_to_csv { class: cstr }
+chain.note_latency_pass -> chain.compare_csv_to_reference { class: cstr }
+chain.note_fault_watch -> chain.capture_decoder_log { class: cstr }
+
+# Layout-only edge: keep traceability note near the pass constraints without adding verification semantics.
+chain.note_trace -> chain.note_stat_pass { style: { opacity: 0 } }

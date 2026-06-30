@@ -1,92 +1,114 @@
-# PDM v1.0 test plan
+# PDM v1.0 IVV-aligned verification plan
 
-Planning artifact for the Capella/D2 Physical Architecture views in `PDM/MBSE/v1.0`. The diagrams were read for traceability only and were not modified.
+Planning artifact for the Capella/D2 views in `PDM/MBSE/v1.0`. The model remains the source of truth; this file inventories the current model and identifies candidate verification activities to be modeled in a later test-definition pass. No Capella/D2 diagrams are modified by this plan.
 
-Project-wide IVV conventions, statistics, rate terminology, fault semantics, and artifact paths are defined in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md). Runtime sensor/getter faults shall be bounded and error-coded; they must not block the OBCC/PDM scheduler, and the deployment policy may request emergency deployment in On mode when safe descent-state observability is lost.
+Project-wide IVV conventions, evidence paths, statistical policy, fault semantics, and report-by-reference rules are defined in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md). Evidence for any activity below should be stored under `results/<activity-id>/` in this `tests/` folder unless a campaign-level folder is later agreed.
 
-## 1. Model views read
+## 1. SSIV / development-version assumptions
 
-Current test scope is **PDM v1.0**, because it is the canonical current architecture in `PDM/MBSE/README.md`.
+- **Assumed SSIV:** PDM subsystem integration version **v1.0**, inferred from the folder path, diagram labels, and `PDM/MBSE/README.md` identifying v1.0 as the canonical current PDM architecture.
+- **System-level campaign ambiguity:** no separate SSIV/campaign identifier was found in the PDM model files. Confirm whether this v1.0 plan is for workshop acceptance, protoflight, qualification, or final flight acceptance.
+- **Architecture assumption:** PDM v1.0 uses ADS IMU data for deployment and intentionally has no manual/BLE open-command path in flight mode.
+- **Fault semantics from project IVV:** runtime IMU/getter faults shall be bounded and error-coded; they shall not block the OBCC/PDM scheduler. Emergency-deploy behavior on lost descent-state observability must be confirmed as a system policy.
 
-- `PDM_v1.0_view1_physical.d2`: CanSat, ADS module, OBCC module, backplane PCB, parachute module, cap, parachute, servo, physical links.
-- `PDM_v1.0_view2_logical.d2`: ADS kinematic sensing, ADS processing, OBCC, PDM processing, trigger, parachute holder, descent-speed control; I2C, PWM, torque exchanges.
-- `PDM_v1.0_view3_functional_allocation.d2`: user preparation functions, IMU measurement/read/process functions, deployment decision, servo open/close functions, cap separation, parachute fold/unfold, descent-speed limiting; constraints: I2C timeout <= 5 ms, process/calculate < 5 ms, no blocking except I2C, initial servo = 0 deg, max parachute diameter = 30 cm.
-- `PDM_v1.0_view4_imu_triggered_deployment_chain.d2`: IMU-triggered deployment chain; no manual/BLE open command.
+## 2. Views read
 
-Historical views were also read as prior scenario context: v0.1 contains a manual fall-test chain with **3 reps** and `11 m/s max`; v0.2 contains a manual/BLE deployment test with **3 reps**. These are treated as development-screening history, not as high-confidence qualification evidence.
+- `PDM_v1.0_view1_physical.d2`: ADS/OBCC/backplane/parachute physical components, PDM-specific physical links, and parachute diameter constraint.
+- `PDM_v1.0_view2_logical.d2`: logical components and I2C, pointer/return, PWM, and torque component exchanges.
+- `PDM_v1.0_view3_functional_allocation.d2`: ADS, OBCC, PDM, trigger, holder, and descent-speed functions with constraints.
+- `PDM_v1.0_view4_imu_triggered_deployment_chain.d2`: IMU-triggered deployment functional chain and no-manual/BLE constraint.
 
-## 2. Reference corpus
+## 3. Reference set used
 
-Saved sources are in `tests/references/sources`; search records are in `tests/references/search`; source index is in `tests/references/README.md`.
+No new external research was performed. References are the existing corpus in `tests/references/` plus the project IVV plan.
 
-Reference IDs used below:
+| Ref ID | Local source |
+|---|---|
+| IVV | `../../../../PM&SE/IVV.md` |
+| PDM-R1–R4 | ESA/Andøya/ESERO CanSat recovery and parachute guidance artifacts |
+| PDM-R5 | CanSat Mission Guide environmental/drop-test artifact |
+| PDM-R6–R7 | ECSS verification and testing standards artifacts |
+| PDM-R8 | NXP UM10204 I2C artifact |
+| PDM-R9–R10 | ICM-20948 datasheet/product artifacts |
+| PDM-R11 | Servo PWM timing artifact |
+| PDM-R12–R13 | Binomial confidence / reliability-demonstration artifacts |
+| PDM-R14–R16 | MIL-STD-810H environmental, vibration, and shock artifacts |
 
-- R1-R4: ESA/Andoya/ESERO CanSat recovery and parachute guidance.
-- R5: CanSat Mission Guide 2024a environmental/drop-test examples.
-- R6-R7: ECSS verification and testing process standards.
-- R8: NXP UM10204 I2C bus specification.
-- R9-R10: ICM-20948 datasheet/product information.
-- R11: Servo PWM timing reference.
-- R12-R13: binomial confidence/reliability demonstration references.
-- R14-R16: MIL-STD-810H environmental, vibration, and shock tailoring references.
+## 4. Planning inventory from the model
 
-## 3. Statistical policy
+### 4.1 Physical context and components
 
-Apply the project-wide policy in [`../../../../PM&SE/IVV.md`](../../../../PM&SE/IVV.md) unless a scenario states a stricter criterion.
+Physical context: `[System] Physical System`; `[PC] CanSat`. Physical components: `[PC] ADS Module`; `[PC] ADS PCB`; `[PC] ICM20948 IMU`; ADS-side `[PC] Backplane Connector`; `[PC] OBCC Module`; `[PC] OBCC PCB`; `[PC] XIAO ESP32-S3`; OBCC-side `[PC] Backplane Connector`; `[PC] Backplane PCB`; `[PC] 2mm 2x6 ADS Headers`; `[PC] Spine`; `[PC] 2mm 2x6 OBCC Headers`; `[PC] 1x3 PDM JST Connector`; `[PC] Parachute Module`; `[PC] Cap`; `[PC] Parachute`; `[PC] Servo`.
 
-For pass/fail scenario tests with `n` independent trials, use exact one-sided binomial / Clopper-Pearson lower confidence bounds. Useful zero-failure planning points at 95% confidence:
+### 4.2 Physical links
 
-| Trials `n` | Demonstrated lower bound |
-| ---: | ---: |
-| 3 | about 37% |
-| 10 | about 74% |
-| 29 | about 90% |
-| 59 | about 95% |
-| 100 | about 97.0% |
-| 1000 | about 99.7% |
+ADS PCB screws; OBCC PCB screws; ADS module backplane fixture; OBCC module backplane fixture; parachute module backplane fixture; ICM20948 footprint; ADS connector footprint; ADS I2C traces; ADS 3V3 power traces; ADS parallel cable; XIAO footprint; OBCC connector footprint; OBCC I2C traces; OBCC PWM trace; OBCC 3V3 power traces; OBCC parallel cable; ADS header footprint; OBCC header footprint; PDM JST footprint; cap fixture; nylon thread; servo fixture; rotating link; servo cable `(PWM + 5V)`.
 
-Use `3 reps` only as development screening. Use `10 reps` for workshop-level acceptance when hardware is scarce. Use `29 reps` for R90/C95 release evidence and `59 reps` for about R95/C95 evidence.
+### 4.3 Component exchanges
 
-For measured quantities such as descent speed, latency, voltage, or PWM pulse width: keep raw per-trial data, compute min/mean/max and confidence intervals, but also classify each trial pass/fail against the stated limit and apply the binomial policy above.
+- `[CE] I2C`: ADS Kinematic Sensing to ADS Processing.
+- `[CE] Pointers/Returns`: ADS Processing to OBCC.
+- `[CE] PWM`: OBCC to Trigger.
+- `[CE] PWM`: Trigger to PDM Processing.
+- `[CE] Torque`: Trigger to Parachute Holder.
 
-## 4. Scenario-based test list
+### 4.4 Logical components and allocated functions
 
-| ID | Scenario | Type | Main model trace | Method | Acceptance criteria | Statistical plan | Refs |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| PDM-T-001 | User folds/reintroduces parachute and places cap before launch. | Expected use case | `User.reintroduce_parachute`, `Fold`, `Place cap`, `Stay shut`; cap/parachute/servo PCs | Inspection + repeated repack/close cycles using flight-like parachute, cap, and servo. Measure deployed parachute diameter. | Parachute can be folded and reintroduced without damage; cap seats repeatably; deployed parachute diameter <= 30 cm; no side protrusion in stowed configuration. | 10 consecutive repack cycles per design build; inspect every flight article. | R1-R4, R6 |
-| PDM-T-002 | Parachute/nylon-thread attachment survives opening load. | Feared event: attachment rupture | `Parachute`, `Nylon thread`, `Unfold`, `Limit terminal speed` | Static pull test or instrumented deployment-load test on engineering article; visual inspection after load. | No tear, knot slip, line failure, or anchor failure. If no project load is defined, tailor to mission-estimated peak opening load with margin; compare with ESA parachute-connection strength guidance. | Minimum 5 engineering pull tests; do not destructively overload the flight article unless required. | R1-R5, R16 |
-| PDM-T-003 | Power-up sets servo to safe closed state. | Expected use case and feared premature deployment | `Set Servo init state`, `Reach closed position`, `Retain position`, `Stay shut`; constraint `Initial servo position = 0 degrees` | Power-cycle full stack with parachute packed and cap installed; observe servo angle and cap state. | Servo initializes to calibrated closed pulse/angle; cap remains closed; no open pulse before deployment condition. | 29 zero-failure power cycles for R90/C95 evidence on the current software/hardware release. | R6-R7, R11, R13 |
-| PDM-T-004 | ADS IMU data are read over I2C within the timing budget. | Expected use case | `Respond to I2C Requests`, `Read angular velocities`, `Read accelerations`, `Read field intensities`; constraint `I2C read timeout <= 5 ms` | Logic analyzer on SCL/SDA and firmware timestamps during continuous reads. Verify bus speed and ACK/NACK behavior. | Each I2C read completes or times out within <= 5 ms; bus rate within selected standard/fast-mode limits; no blocking operation outside allowed I2C wait. | At least 59 representative in-limit reads for a 95/95 timing claim; 1000 read cycles with zero timing failures gives about 99.7% lower bound at 95% confidence for per-read success if representative. | R8-R10, R12-R13 |
-| PDM-T-005 | IMU health and calibration are adequate before arming deployment. | Expected use case / feared bad sensor | ICM-20948 PC; `Measure angular velocities`, `Measure accelerations`, `Measure magnetic field intensities`, `Calculate pitch, roll, yaw` | Run ICM-20948 self-test where available; static 6-orientation accelerometer check; gyro stillness bias check; magnetometer plausibility check away from strong magnetic disturbances. | Self-test passes datasheet limits; static acceleration norm is plausible; gyro bias remains within project threshold; bad/missing sensor does not arm deployment. | At least 10 power-up health checks per integrated unit; record bias/offset distributions. | R8-R10, R12 |
-| PDM-T-006 | ADS processing detects the true deployment condition. | Expected use case | `Process angular velocities`, `Process accelerations`, `Calculate pitch, roll, yaw`, `Collect measurements`, `Evaluate deployment condition` | Replay recorded or simulated IMU profiles through flight software; include nominal descent, non-deploy handling, and threshold-crossing cases. | True deployment profiles trigger exactly once; non-deploy profiles do not trigger; process/calculate functions each take < 5 ms. | 29 positive trigger trials and 29 negative trials for R90/C95 evidence on the critical threshold set; expand with regression profiles after algorithm changes. | R6-R7, R9-R13 |
-| PDM-T-007 | No manual/BLE command can deploy PDM v1.0. | Feared event / regression from v0.2 | Chain note `No manual/BLE open command`; no BLE function in v1.0 chain | Firmware/interface review plus black-box attempts to send historical v0.2 manual/BLE open command or equivalent debug commands. | No manual/BLE command path can produce `Send open signal to Servo` in flight mode; any debug command is disabled or gated by a ground-test-only mode. | Review every release; 29 black-box no-open attempts for R90/C95 evidence if the interface exists. | R6-R7, v0.2 views |
-| PDM-T-008 | PWM command drives servo to open and closed calibrated positions. | Expected use case | `Send open signal to Servo`, `Send close signal to Servo`, `Reach open position`, `Reach closed position`, `Retain position`; CE/FE `PWM` | Oscilloscope/logic analyzer on PWM trace; position gauge or video on servo/cap; test under representative cap load. | PWM period about 20 ms / 50 Hz; high pulse widths match calibrated closed/open values; servo reaches and retains the commanded position; no brownout or excessive jitter. | 29 open/close cycles with zero actuation failures for R90/C95 evidence. | R7, R11, R12-R13 |
-| PDM-T-009 | Full IMU-triggered deployment chain succeeds on the ground. | Expected use case | v1.0 functional chain from IMU measurement to `Limit terminal speed` | Full stack test with packed parachute: inject real/replayed IMU trigger, observe PWM, servo, cap separation, parachute extraction/unfolding. | Chain completes in order; no manual command involved; parachute clears holder; all logged timing limits met. | 10 development trials minimum; 29 trials if used as R90/C95 release evidence. | R1-R7, R9-R13 |
-| PDM-T-010 | Deployed parachute limits terminal descent speed. | Expected use case / mission performance | `Unfold`, `Limit terminal speed`; historical v0.1 `11 m/s max` | Drop tower, drone drop, balloon drop, or safe equivalent with final CanSat mass. Measure speed by video/altimeter over terminal segment after deployment transient. | Terminal descent speed within project requirement. Default from CanSat references: 8-11 m/s; at minimum, satisfy the model's `11 m/s max` historical constraint unless a newer requirement replaces it. | 10 measured drops for acceptance screening; 29 if demonstrating R90/C95. All individual drops must pass. | R1-R5, R12-R13 |
-| PDM-T-011 | Deployment shock/drop does not damage PDM or disconnect links. | Feared event | Physical links: servo cable, backplane fixtures, connectors, nylon thread; functions before/after shock | CanSat-style drop/shock test in flight configuration, followed by full functional test. The CanSat Mission Guide example uses a 61 cm cord and states the drop generates about 30 g shock. | No component detaches; cap/parachute/servo links intact; connectors remain seated; post-shock PDM-T-003, T-004, and T-008 still pass. | 3 engineering trials minimum; one acceptance shock test per flight article if competition process requires it. Do not claim high reliability from only 3 reps. | R5-R7, R16 |
-| PDM-T-012 | Launch/transport vibration does not loosen mounts or break electrical links. | Feared event | ADS/OBCC/backplane/parachute module physical links; I2C and PWM paths | Tailored vibration test: CanSat guide sweep example or MIL-STD-810H Method 514.8 category tailored to expected transport/launch environment. Functional test before, during if safe, and after. | No fastener/connector loosening; no solder/cable failure; I2C/PWM remain functional; full deployment chain still passes after vibration. | Environmental qualification is normally article-limited: test at least one qualification article; inspect and acceptance-test every flight article. | R5-R7, R14-R15 |
-| PDM-T-013 | Servo current transient does not brown out OBCC/ADS/IMU. | Feared event | `3V3 power traces`, servo cable `(PWM + 5V)`, `Set Servo init state`, `Send open signal to Servo` | Instrument 5 V servo rail, 3V3 rail, MCU reset line, and I2C bus while commanding servo under cap load. | No MCU reset; 3V3 remains within electronics limits; I2C reads continue or timeout cleanly <= 5 ms; servo reaches required position. | 100 open/close cycles with voltage logging; zero brownouts gives about 97.0% lower bound at 95% confidence. | R7-R11, R13 |
-| PDM-T-014 | I2C bus or IMU fault fails safe. | Feared event | I2C CE, `Read*` functions, `Evaluate deployment condition`, timeout/no-blocking constraints | Inject NACK, disconnected IMU, stuck SDA, stuck SCL, delayed response/clock stretching if applicable. | Flight software times out <= 5 ms per read, records a bounded sensor fault/error code, does not deploy from invalid data unless the modeled emergency-deploy policy requires it in On mode, and never blocks the scheduler. | 10 trials per fault class as screening; 29 for R90/C95 evidence on any mission-critical fault class; 59 in-limit samples for 95/95 timeout evidence. | R6-R10, R12-R13 |
-| PDM-T-015 | Servo/cap jam fails safe and is diagnosable. | Feared event | `Reach open position`, `Retain position`, `Separate from Module`, cap/servo rotating link | Mechanically restrict cap/servo movement and command open/close while measuring current, PWM, and state/log outputs. | No repeated over-current heating; no reset; failure is logged or otherwise observable; if cap cannot open, system remains safe and does not claim successful deployment. | 10 jam trials using engineering article; inspect for damage after each. | R6-R7, R11, R13, R16 |
-| PDM-T-016 | Post-deployment recovery and repack supports repeated tests. | Expected use case | `Reintroduce parachute`, `Fold`, `Send close signal`, `Reach closed position`, `Place cap` | After a deployment test, recover, close servo, fold/reintroduce parachute, place cap, and rerun preflight checks. | No wear that prevents repack; cap closes; servo closed state passes; next deployment chain can execute. | 10 full recover/repack cycles on engineering unit. | R1-R4, R6-R7 |
+- `[EA] User`: `Place cap`, `Reintroduce parachute`.
+- `[LC] ADS Kinematic Sensing`: `Measure angular velocities`, `Measure accelerations`, `Measure magnetic field intensities`, `Respond to I2C Requests`.
+- `[LC] ADS Processing`: `Read angular velocities`, `Process angular velocities`, `Read accelerations`, `Process accelerations`, `Read field intensities`, `Calculate pitch, roll, yaw`.
+- `[LC] OBCC`: `Collect measurements`, `Collect peripheral init states`.
+- `[LC] PDM Processing`: `Set Servo init state`, `Evaluate deployment condition`, `Send open signal to Servo`, `Send close signal to Servo`.
+- `[LC] Parachute Holder`: `Stay shut`, `Separate from Module`.
+- `[LC] Descent speed control`: `Fold`, `Unfold`, `Limit terminal speed`.
+- `[LC] Trigger`: `Reach closed position`, `Reach open position`, `Retain position`.
 
-## 5. Execution order
+### 4.5 Functional chains / scenarios
 
-1. **Inspection and bench setup:** PDM-T-001, PDM-T-003, PDM-T-004, PDM-T-005.
-2. **Software and signal tests:** PDM-T-006, PDM-T-007, PDM-T-008, PDM-T-014.
-3. **Actuation and full-chain ground tests:** PDM-T-009, PDM-T-013, PDM-T-015, PDM-T-016.
-4. **Environmental and mechanical qualification:** PDM-T-011, PDM-T-012.
-5. **Drop/descent performance:** PDM-T-010.
-6. **Flight readiness regression:** rerun PDM-T-003, PDM-T-004, PDM-T-008, and one non-destructive end-to-end deployment check on the final packed configuration, as allowed by operations.
+- `PDM v1.0 — IMU-triggered parachute deployment`: ADS IMU measurement and processing, OBCC collection, deployment decision, servo open, holder separation, parachute unfolding, and descent-speed limiting.
+- Implied scenarios requiring later model definition: pre-launch parachute fold/reintroduce/place-cap/servo-close preparation; post-deployment recovery/repack; descent-speed demonstration.
 
-## 6. Data to archive per test
+### 4.6 Constraints
 
-For each test run, save evidence under `results/<test-id>/` inside this `tests/` folder:
+Max parachute diameter `30 cm`; angular-rate accuracy `< 30 deg/s`; deployment trigger uses ADS IMU data / no manual trigger; initial servo position `0 degrees`; I2C read timeout `≤ 5 ms`; process/calculate time `< 5 ms`; no blocking operations besides I2C comms; no manual/BLE open command.
 
-- test ID, hardware serial/configuration, firmware commit, date, operator;
-- pass/fail outcome and failure mode classification;
-- raw timing traces for I2C/PWM/processing tests;
-- voltage/current logs for power tests;
-- video and speed extraction spreadsheet for descent tests;
-- photos before/after shock/vibration/drop tests;
-- computed binomial lower confidence bound for scenario pass probability when repeated trials are used.
+### 4.7 Traceability targets currently available
+
+The PDM views do not contain explicit mission, capability, use-case, or feared-event nodes. Candidate trace targets used below are provisional: `PDM-UC-PrepareRecoverySystem`, `PDM-UC-IMUTriggeredDeployment`, `PDM-UC-LimitTerminalSpeed`, `PDM-FE-PrematureDeployment`, `PDM-FE-NonDeployment`, `PDM-FE-SensorBusFault`, `PDM-FE-MechanicalJam`, and the modeled constraints listed above.
+
+## 5. Candidate verification activities
+
+Every activity below is a planning candidate. Detailed procedures, test means, stimuli, expected behavior, and pass/fail constraints should be modeled later under the `capella-pa-tests-definition.md` workflow before execution evidence is treated as final.
+
+| Verification activity ID | SSIV / version | Model element(s) covered | IVV source category | IADT method | Traceability target | Relevant references | Viewpoints: statistical significance and fault hardening | Preliminary pass/fail criteria or constraint candidates | Expected diagram/report location | Status |
+|---|---|---|---|---|---|---|---|---|---|---|
+| PDM-VV-PC-001 | PDM v1.0 | All physical components in §4.1 | Component/link | Inspection | `PDM-UC-PrepareRecoverySystem`; integration/build readiness | IVV, PDM-R1–R7 | Stat: 100% inspection of each integrated article. Fault hardening: workmanship, servo/cap/parachute installation, IMU orientation, connector retention. | Every modeled PC is present, correct, installed in the modeled containment, and has no unmodeled critical substitution; part IDs and configuration are recorded. | Future model definition: `tests/definitions/PDM-VV-PC-001`; report/evidence: `tests/results/PDM-VV-PC-001/` | Candidate; procedure definition pending |
+| PDM-VV-PL-001 | PDM v1.0 | All physical links in §4.2 | Component/link | Inspection | `PDM-FE-NonDeployment`; `PDM-FE-MechanicalJam`; integration readiness | IVV, PDM-R1–R7, PDM-R14–R16 | Stat: 100% continuity/retention inspection; pre/post environmental checks. Fault hardening: servo cable intermittency, cap rotating-link jam, nylon-thread failure, vibration/shock loosening. | All modeled PLs are present and functional; mechanical links retain and move as intended; electrical links have correct continuity/polarity and survive agreed handling/environmental checks. | Future model definition: `tests/definitions/PDM-VV-PL-001`; report/evidence: `tests/results/PDM-VV-PL-001/` | Candidate; procedure definition pending |
+| PDM-VV-CE-001 | PDM v1.0 | `[CE] I2C` ADS Kinematic Sensing to ADS Processing | Component exchange | Analysis | `PDM-UC-IMUTriggeredDeployment`; `PDM-FE-SensorBusFault` | IVV, PDM-R8–R10, PDM-R12–R13 | Stat: 100% interface review; timing/fault evidence may use 59 in-limit samples for 95/95 deadline claim. Fault hardening: NACK, disconnected IMU, stuck SDA/SCL, bad self-test. | Implemented IMU bus topology, address, pullups, voltage levels, transaction direction, and timeout policy are consistent with modeled I2C intent. | Future model definition: `tests/definitions/PDM-VV-CE-001`; report/evidence: `tests/results/PDM-VV-CE-001/` | Candidate; interface evidence pending |
+| PDM-VV-CE-002 | PDM v1.0 | `[CE] Pointers/Returns` ADS Processing to OBCC | Component exchange | Analysis | `PDM-UC-IMUTriggeredDeployment`; `PDM-FE-SensorBusFault` | IVV, PDM-R9–R13 | Stat: 100% API-path review. Fault hardening: stale IMU data, invalid pointer/result, out-of-range values. | Pointer/return contracts preserve units, freshness, error-result semantics, and ownership; OBCC receives only bounded valid/stale/fault states. | Future model definition: `tests/definitions/PDM-VV-CE-002`; report/evidence: `tests/results/PDM-VV-CE-002/` | Candidate; API contract pending |
+| PDM-VV-CE-003 | PDM v1.0 | `[CE] PWM` OBCC to Trigger | Component exchange | Analysis | `PDM-UC-IMUTriggeredDeployment`; `PDM-FE-PrematureDeployment` | IVV, PDM-R11–R13 | Stat: 100% signal-path review plus representative waveform measurements. Fault hardening: unexpected pulse at boot, jitter, brownout during servo actuation. | PWM source, period, pulse-width range, routing, and flight-mode gating match model intent; no open command can occur outside modeled trigger conditions. | Future model definition: `tests/definitions/PDM-VV-CE-003`; report/evidence: `tests/results/PDM-VV-CE-003/` | Candidate; signal evidence pending |
+| PDM-VV-CE-004 | PDM v1.0 | `[CE] PWM` Trigger to PDM Processing | Component exchange | Analysis | `PDM-UC-IMUTriggeredDeployment`; `PDM-FE-MechanicalJam` | IVV, PDM-R11–R13 | Stat: 100% feedback/status-path review if implemented. Fault hardening: servo does not reach commanded state, overcurrent, jam. | PDM Processing receives or derives bounded status consistent with commanded PWM state; no successful deployment is falsely claimed after actuation failure. | Future model definition: `tests/definitions/PDM-VV-CE-004`; report/evidence: `tests/results/PDM-VV-CE-004/` | Candidate; status semantics need confirmation |
+| PDM-VV-CE-005 | PDM v1.0 | `[CE] Torque` Trigger to Parachute Holder | Component exchange | Analysis | `PDM-UC-IMUTriggeredDeployment`; `PDM-FE-NonDeployment`; `PDM-FE-MechanicalJam` | IVV, PDM-R1–R7, PDM-R16 | Stat: mechanical analysis plus repeated actuation trials. Fault hardening: jam, friction, cap preload, thread/cap interference. | Servo torque and linkage margin are sufficient to release the holder under representative pack/cap load; jam is observable and does not cause unsafe repeated heating/reset. | Future model definition: `tests/definitions/PDM-VV-CE-005`; report/evidence: `tests/results/PDM-VV-CE-005/` | Candidate; mechanical margin definition pending |
+| PDM-VV-ALLOC-001 | PDM v1.0 | ADS Kinematic Sensing and ADS Processing functions | Allocation | Analysis | `PDM-UC-IMUTriggeredDeployment`; `PDM-FE-SensorBusFault` | IVV, PDM-R8–R10 | Stat: 100% function-to-LC and data-flow review. Fault hardening: invalid IMU data and calibration/self-test failure. | IMU measurement/response functions remain in ADS Kinematic Sensing; read/process/calculate functions remain in ADS Processing; all boundary crossings use modeled CEs. | Future model definition: `tests/definitions/PDM-VV-ALLOC-001`; report/evidence: `tests/results/PDM-VV-ALLOC-001/` | Candidate; allocation review pending |
+| PDM-VV-ALLOC-002 | PDM v1.0 | OBCC and PDM Processing functions | Allocation | Analysis | `PDM-UC-IMUTriggeredDeployment`; `PDM-FE-PrematureDeployment`; `PDM-FE-NonDeployment` | IVV, PDM-R6–R7, PDM-R11 | Stat: 100% function-to-LC and state-machine review. Fault hardening: bad input shall not cause premature deployment; lost observability policy requires confirmation. | OBCC collects measurements/init states; PDM Processing owns servo init, deployment evaluation, and open/close signal functions; no manual/BLE flight path is allocated. | Future model definition: `tests/definitions/PDM-VV-ALLOC-002`; report/evidence: `tests/results/PDM-VV-ALLOC-002/` | Candidate; allocation review pending |
+| PDM-VV-ALLOC-003 | PDM v1.0 | Parachute Holder, Trigger, Descent speed control, and User functions | Allocation | Analysis | `PDM-UC-PrepareRecoverySystem`; `PDM-UC-LimitTerminalSpeed`; `PDM-FE-MechanicalJam` | IVV, PDM-R1–R7 | Stat: 100% mechanical/function allocation review. Fault hardening: incorrect fold/repack, cap mis-seat, servo cannot retain, parachute fails to unfold. | User preparation, holder separation/stay-shut, servo open/closed/retain, and parachute fold/unfold/limit functions are allocated to the modeled actors/components with no missing or foreign functions. | Future model definition: `tests/definitions/PDM-VV-ALLOC-003`; report/evidence: `tests/results/PDM-VV-ALLOC-003/` | Candidate; allocation review pending |
+| PDM-VV-FC-001 | PDM v1.0 | IMU-triggered parachute deployment functional chain | Functional chain/scenario | Testing / Demonstration | `PDM-UC-IMUTriggeredDeployment`; `PDM-FE-NonDeployment`; `PDM-FE-PrematureDeployment` | IVV, PDM-R1–R13 | Stat: 10 development trials minimum; 29 zero-failure positive and 29 zero-failure negative trigger trials for R90/C95 release evidence if independent/representative. Fault hardening: bad IMU data, false trigger profile, no-manual command path, actuation jam. | Modeled chain completes in order from IMU data to parachute deployed/terminal-speed limiting; deployment triggers exactly once when expected and never from manual/BLE or non-deploy profiles. | Future model definition: `tests/definitions/PDM-VV-FC-001`; report/evidence: `tests/results/PDM-VV-FC-001/` | Candidate; detailed chain test definition pending |
+| PDM-VV-FC-002 | PDM v1.0 | Pre-launch preparation scenario: user reintroduces/folds parachute, places cap, servo closes/retains | Functional chain/scenario | Demonstration / Inspection | `PDM-UC-PrepareRecoverySystem`; `PDM-FE-PrematureDeployment` | IVV, PDM-R1–R7, PDM-R11 | Stat: 10 repeated repack/close cycles for workshop acceptance; inspect every flight article. Fault hardening: misfold, cap mis-seat, servo closed-state drift. | Parachute can be folded/reintroduced without damage; cap seats; servo closes and retains; no premature open pulse; scenario should be modeled later because it is not currently a dedicated chain. | Future model definition: `tests/definitions/PDM-VV-FC-002`; report/evidence: `tests/results/PDM-VV-FC-002/` | Candidate; **modeling gap**: scenario not yet represented as chain |
+| PDM-VV-FC-003 | PDM v1.0 | Descent-speed limiting scenario: `Unfold` → `Limit terminal speed` | Functional chain/scenario | Testing / Demonstration | `PDM-UC-LimitTerminalSpeed`; `PDM-FE-NonDeployment` | IVV, PDM-R1–R5, PDM-R12–R13 | Stat: 10 measured drops for acceptance screening; 29 if making R90/C95 claim. Fault hardening: partial unfold, line tangle, canopy damage, mass/configuration variation. | Terminal descent speed meets the confirmed project limit. **Constraint candidate:** use 8–11 m/s CanSat guidance or historical `11 m/s max` until a v1.0 model constraint is added/confirmed. | Future model definition: `tests/definitions/PDM-VV-FC-003`; report/evidence: `tests/results/PDM-VV-FC-003/` | Candidate; **blocked pending descent-speed requirement confirmation** |
+| PDM-VV-CON-001 | PDM v1.0 | `[C] Max. diameter 30 cm` | Constraint | Inspection / Demonstration | Constraint; `PDM-UC-PrepareRecoverySystem` | IVV, PDM-R1–R4 | Stat: 100% measurement of each flight/workshop parachute configuration. Fault hardening: post-fold and post-deployment dimensional changes. | Deployed parachute maximum diameter is `≤30 cm`; stowed configuration does not protrude or interfere with cap/servo path. | Future model definition: `tests/definitions/PDM-VV-CON-001`; report/evidence: `tests/results/PDM-VV-CON-001/` | Candidate; measurement procedure pending |
+| PDM-VV-CON-002 | PDM v1.0 | `[C] Accuracy < 30 deg/s` on angular-rate measurement | Constraint | Testing / Analysis | Constraint; `PDM-UC-IMUTriggeredDeployment`; `PDM-FE-SensorBusFault` | IVV, PDM-R8–R10, PDM-R12 | Stat: calibrated/static and dynamic checks with retained raw samples; confidence/uncertainty reported. Fault hardening: bias drift, bad calibration, saturation. | IMU angular-rate error plus uncertainty is `<30 deg/s` over the relevant trigger range, or deployment thresholds are shown robust to the measured error. | Future model definition: `tests/definitions/PDM-VV-CON-002`; report/evidence: `tests/results/PDM-VV-CON-002/` | Candidate; stimulus/calibration definition pending |
+| PDM-VV-CON-003 | PDM v1.0 | `[C] Deployment trigger uses ADS IMU data` / `No manual/BLE open command` | Constraint | Analysis / Testing | Constraint; `PDM-FE-PrematureDeployment` | IVV, PDM-R6–R7, PDM-R12–R13 | Stat: review every release; if an interface exists, 29 no-open black-box attempts support R90/C95 for tested attempts. Fault hardening: legacy BLE/manual command regression, debug mode leakage. | Flight mode has no manual/BLE command path to `Send open signal to Servo`; only ADS IMU-derived deployment decision can command open. | Future model definition: `tests/definitions/PDM-VV-CON-003`; report/evidence: `tests/results/PDM-VV-CON-003/` | Candidate; release review and black-box attempts pending |
+| PDM-VV-CON-004 | PDM v1.0 | `[C] Initial servo position = 0 degrees` | Constraint | Testing / Inspection | Constraint; `PDM-FE-PrematureDeployment` | IVV, PDM-R11–R13 | Stat: 29 zero-failure power cycles for R90/C95 evidence. Fault hardening: brownout, reset, packed-cap load. | On power-up/reset, servo initializes to calibrated closed/0-degree state; cap stays closed; no open pulse occurs before deployment condition. | Future model definition: `tests/definitions/PDM-VV-CON-004`; report/evidence: `tests/results/PDM-VV-CON-004/` | Candidate; servo calibration definition pending |
+| PDM-VV-CON-005 | PDM v1.0 | `[C] I2C read timeout ≤ 5 ms` | Constraint | Testing / Analysis | Constraint; `PDM-FE-SensorBusFault` | IVV, PDM-R8–R10, PDM-R12–R13 | Stat: 59 representative in-limit timings for 95/95 deadline claim; classify fault trials. Fault hardening: NACK, disconnected IMU, stuck SDA/SCL, delayed response. | Every IMU I2C read succeeds or times out within `≤5 ms`; scheduler remains live and fault is bounded. | Future model definition: `tests/definitions/PDM-VV-CON-005`; report/evidence: `tests/results/PDM-VV-CON-005/` | Candidate; timing/fault-injection definition pending |
+| PDM-VV-CON-006 | PDM v1.0 | `[C] Process/Calculate time < 5 ms` | Constraint | Testing / Analysis | Constraint; `PDM-UC-IMUTriggeredDeployment` | IVV, PDM-R12–R13 | Stat: 59 representative in-limit timings for 95/95 deadline claim; larger profiling set may characterize tails. Fault hardening: boundary sensor values and high-rate scheduler load. | Angular-rate processing, acceleration processing, and pitch/roll/yaw calculation each complete in `<5 ms` with representative worst-case inputs. | Future model definition: `tests/definitions/PDM-VV-CON-006`; report/evidence: `tests/results/PDM-VV-CON-006/` | Candidate; timing definition pending |
+| PDM-VV-CON-007 | PDM v1.0 | `[C] No blocking operations besides I2C comms` | Constraint | Analysis / Testing | Constraint; `PDM-FE-SensorBusFault`; `PDM-FE-PrematureDeployment` | IVV, PDM-R6–R10 | Stat: static/dynamic coverage of PDM/ADS callable paths; fault trials classified pass/fail. Fault hardening: mid-flight IMU fault shall not block scheduler or spuriously deploy except under confirmed emergency policy. | Code review and instrumentation show no unbounded blocking outside allowed I2C waits; runtime faults return bounded codes and scheduler/deployment logic continue according to policy. | Future model definition: `tests/definitions/PDM-VV-CON-007`; report/evidence: `tests/results/PDM-VV-CON-007/` | Candidate; policy and code/path coverage pending |
+
+## 6. Coverage and gaps
+
+- **Physical coverage:** all PDM v1.0 physical components and physical links are covered by PDM-VV-PC-001 and PDM-VV-PL-001.
+- **Exchange coverage:** all modeled component exchanges are covered by PDM-VV-CE-001 through PDM-VV-CE-005.
+- **Allocation coverage:** all modeled logical components, external-actor functions, and allocated functions are covered by PDM-VV-ALLOC-001 through PDM-VV-ALLOC-003.
+- **Functional-chain/scenario coverage:** the modeled IMU-triggered chain is covered by PDM-VV-FC-001. Preparation and descent-speed scenarios are identified but need later modeling as explicit verification chains/scenarios.
+- **Constraint coverage:** every explicit PDM constraint is assigned to at least one constraint-derived activity.
+- **Modeling gaps:** explicit mission/capability/use-case/feared-event nodes are absent; terminal descent-speed numeric requirement is not explicit in v1.0; emergency-deploy policy under lost observability is not explicit; servo status semantics for Trigger → PDM Processing need confirmation.
+- **Definition gaps:** detailed test means, drop method, IMU stimulus/replay set, environmental levels, independence assumptions for repeated deployment trials, and exact pass/fail constraints must be modeled later; this planning stage intentionally does not create test-definition diagrams.

@@ -1,0 +1,133 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# Functional chain: fault-injection timeout and mandatory recovery test for AMS-VV-CON-003.
+
+chain: "AMS-VV-CON-003 — Environmental I2C timeout fault-hardening and recovery\nTesting; AMS v1.0 final acceptance; Refs: IVV, AMS-R2, AMS-R5\nTrace: constraint, AMS-FE-SensorBusFault, AMS-UC-MeasureAtmosphere" {
+  class: chain
+  direction: down
+
+  configure_test_case: "[F] Configure\ntest case" { class: func }
+  read_ambient_temperature: "[F] Read ambient\ntemperature" { class: func }
+  record_ambient_conditions: "[F] Record ambient\nconditions" { class: func }
+  supply_stable_power: "[F] Supply stable\n3V3 power" { class: func }
+  record_voltage_current: "[F] Record voltage /\ncurrent" { class: func }
+  authorize_fault_injection: "[F] Authorize fault\ninjection" { class: func }
+  force_nack_absent_sensor: "[F] Force NACK /\nabsent sensor" { class: func }
+  hold_sda_low: "[F] Hold SDA\nlow" { class: func }
+  hold_scl_low: "[F] Hold SCL\nlow" { class: func }
+  command_timed_read_batch: "[F] Command timed\nread batch" { class: func }
+  timestamp_read_entry_return: "[F] Timestamp read\nentry/return" { class: func }
+  read_pressure: "[F] Read\npressure" { class: func }
+  read_temperature: "[F] Read\ntemperature" { class: func }
+  respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+  capture_sda_scl_timing: "[F] Capture SDA/SCL\ntiming" { class: func }
+  emit_result_record: "[F] Emit result\nrecord" { class: func }
+  monitor_scheduler_alive: "[F] Monitor scheduler\nalive" { class: func }
+  release_fault: "[F] Release\nfault" { class: func }
+  receive_timestamped_log: "[F] Receive timestamped\nsample log" { class: func }
+  compute_timing_statistics: "[F] Compute timing\nstatistics" { class: func }
+  record_anomalies: "[F] Record\nanomalies" { class: func }
+  archive_evidence: "[F] Archive\nevidence" { class: func }
+
+  note_scope: "[C] Scope confirmed for final acceptance:\nfault trials apply to environmental reads only\n(Read pressure, Read temperature)" { class: note; shape: page }
+  note_fault_modes: "[C] Execute NACK/absent-sensor, held SDA,\nheld SCL, and timeout/no-response cases\nfor each environmental I2C read function" { class: note; shape: page }
+  note_fault_pass: "[C] Faulted read passes only if returned status\nis TIMEOUT, NACK, BUS_ERROR, or SENSOR_UNAVAILABLE\nwithin 5.000 ms incl. U95" { class: note; shape: page }
+  note_no_forbidden: "[C] Forbidden: stale OK data, watchdog reset,\npower-cycle requirement, deadlock, or lost\ntest-command responsiveness" { class: note; shape: page }
+  note_recovery: "[C] Mandatory: after fault release, next modeled recovery read\nsucceeds without reset and t_read + U95 ≤ 5.000 ms" { class: note; shape: page }
+  note_binary_stats: "[C] Use 29/29 pass per fault mode/read function\nfor R90/C95 binary fault-response claim; otherwise\nreport as workshop screening" { class: note; shape: page }
+  note_environment: "[C] Ambient 20-30 °C recorded; stable 3V3/common\nground; harness pullups and bus capacitance recorded" { class: note; shape: page }
+}
+
+chain.configure_test_case -> chain.read_ambient_temperature: "[FE] Environment\nsetup" { class: fe }
+chain.read_ambient_temperature -> chain.record_ambient_conditions: "[FE] Ambient\nreading" { class: fe }
+chain.configure_test_case -> chain.supply_stable_power: "[FE] Power\nsetup" { class: fe }
+chain.supply_stable_power -> chain.record_voltage_current: "[FE] Voltage/current" { class: fe }
+chain.configure_test_case -> chain.authorize_fault_injection: "[FE] Fault plan" { class: fe }
+chain.authorize_fault_injection -> chain.force_nack_absent_sensor: "[FE] NACK / absent\nsensor mode" { class: fe }
+chain.authorize_fault_injection -> chain.hold_sda_low: "[FE] SDA-low mode" { class: fe }
+chain.authorize_fault_injection -> chain.hold_scl_low: "[FE] SCL-low mode" { class: fe }
+chain.configure_test_case -> chain.command_timed_read_batch: "[FE] Faulted read\nrequests" { class: fe }
+
+chain.force_nack_absent_sensor -> chain.respond_i2c_requests: "[FE] Faulted I2C\ncondition" { class: fe }
+chain.hold_sda_low -> chain.respond_i2c_requests: "[FE] Faulted SDA" { class: fe }
+chain.hold_scl_low -> chain.respond_i2c_requests: "[FE] Faulted SCL" { class: fe }
+chain.command_timed_read_batch -> chain.timestamp_read_entry_return: "[FE] Start timer" { class: fe }
+chain.timestamp_read_entry_return -> chain.read_pressure: "[FE] Faulted pressure\ninvocation" { class: fe }
+chain.timestamp_read_entry_return -> chain.read_temperature: "[FE] Faulted temp.\ninvocation" { class: fe }
+
+chain.read_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nI2C Req" { class: fe }
+chain.read_temperature -> chain.respond_i2c_requests: "[FE] Temp.\nI2C Req" { class: fe }
+chain.respond_i2c_requests -> chain.read_pressure: "[FE] Error / timeout" { class: fe }
+chain.respond_i2c_requests -> chain.read_temperature: "[FE] Error / timeout" { class: fe }
+
+chain.respond_i2c_requests -> chain.capture_sda_scl_timing: "[FE] SDA/SCL trace" { class: fe }
+chain.read_pressure -> chain.emit_result_record: "[FE] Error code +\nduration" { class: fe }
+chain.read_temperature -> chain.emit_result_record: "[FE] Error code +\nduration" { class: fe }
+chain.emit_result_record -> chain.monitor_scheduler_alive: "[FE] Responsiveness\ncheck" { class: fe }
+chain.monitor_scheduler_alive -> chain.release_fault: "[FE] Safe to\nrelease fault" { class: fe }
+chain.release_fault -> chain.command_timed_read_batch: "[FE] Recovery read\nrequest" { class: fe }
+chain.emit_result_record -> chain.receive_timestamped_log: "[FE] Fault trial\nrecord" { class: fe }
+chain.capture_sda_scl_timing -> chain.compute_timing_statistics: "[FE] Fault trace" { class: fe }
+chain.receive_timestamped_log -> chain.compute_timing_statistics: "[FE] Trial outcomes" { class: fe }
+chain.record_ambient_conditions -> chain.compute_timing_statistics: "[FE] Ambient\nconditions" { class: fe }
+chain.record_voltage_current -> chain.compute_timing_statistics: "[FE] Power\nconditions" { class: fe }
+chain.compute_timing_statistics -> chain.record_anomalies: "[FE] Exceptions" { class: fe }
+chain.compute_timing_statistics -> chain.archive_evidence: "[FE] Pass/fail +\nraw data path" { class: fe }
+
+chain.note_scope -> chain.command_timed_read_batch { class: cstr }
+chain.note_fault_modes -> chain.authorize_fault_injection { class: cstr }
+chain.note_fault_pass -> chain.emit_result_record { class: cstr }
+chain.note_no_forbidden -> chain.monitor_scheduler_alive { class: cstr }
+chain.note_recovery -> chain.release_fault { class: cstr }
+chain.note_binary_stats -> chain.compute_timing_statistics { class: cstr }
+chain.note_environment -> chain.record_ambient_conditions { class: cstr }
+chain.note_environment -> chain.record_voltage_current { class: cstr }
+
+# Layout-only edges to keep setup and fault selection before product read functions and evidence functions after them.
+chain.record_voltage_current -> chain.authorize_fault_injection { style: { opacity: 0 } }
+chain.hold_scl_low -> chain.command_timed_read_batch { style: { opacity: 0 } }
+chain.read_temperature -> chain.capture_sda_scl_timing { style: { opacity: 0 } }
+chain.release_fault -> chain.receive_timestamped_log { style: { opacity: 0 } }

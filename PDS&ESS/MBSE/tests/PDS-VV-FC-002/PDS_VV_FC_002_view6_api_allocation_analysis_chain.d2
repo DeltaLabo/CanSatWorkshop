@@ -1,0 +1,107 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional Chain — PDS-VV-FC-002 supporting API/exchange/allocation analysis.
+# References: IVV, PDS-R9 INA219, PDS-R10 I2C.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDS-VV-FC-002 — API, CE, and allocation analysis chain\nRefs: IVV, PDS-R9, PDS-R10" {
+  class: chain
+  direction: right
+
+  open_baseline: "[F] Open v1.0\nsource baseline" { class: func }
+  inventory_getters: "[F] Inventory getter\nand return paths" { class: func }
+  map_allocations: "[F] Map functions to\nlogical components" { class: func }
+  analyze_pointers: "[F] Analyze Pointers\ncomponent exchange" { class: func }
+  analyze_returns: "[F] Analyze Returns\ncomponent exchange" { class: func }
+  analyze_read_process_pairs: "[F] Analyze read /\nprocess pairs" { class: func }
+  verify_getter_template: "[F] Verify Variable\nGetter template" { class: func }
+  check_units_freshness: "[F] Check units, age,\nfreshness, validity" { class: func }
+  review_bounded_status: "[F] Review bounded\nstatus/result codes" { class: func }
+  review_blocking_paths: "[F] Review blocking\nand scheduler paths" { class: func }
+  analyze_i2c_gap: "[F] Analyze missing\nINA219 I2C CE" { class: func }
+  record_coverage: "[F] Record coverage\nand residual gaps" { class: func }
+  archive_analysis: "[F] Archive analysis\nevidence" { class: func }
+
+  definition_note: "[C] PDS-VV-FC-002 supporting Analysis:\nprovides context for PDS-VV-CE-001,\nPDS-VV-CE-002, PDS-VV-ALLOC-002;\ntraces PDS-UC-SuperviseBattery and PDS-FE-SensorBusFault" {
+    class: note
+    shape: page
+  }
+  inventory_note: "[C] Statistical viewpoint:\n100% inventory of getter, pointer,\nreturn, allocation, and blocking paths;\nfault cases classified pass/fail" {
+    class: note
+    shape: page
+  }
+  allocation_note: "[C] Allocation pass criteria:\nINA219/Battery monitoring owns measure/respond;\nESS Processing owns get/read/process/status;\nOBCC only collects init states/measurements;\nno foreign functions allocated" {
+    class: note
+    shape: page
+  }
+  api_note: "[C] PDS-VV-CON-005/008:\nall read/process pairs implement Variable Getter;\nreturns distinguish valid, stale, startup fault,\nruntime sensor fault, timeout, invalid input;\nno unbounded blocking outside I2C/UART waits" {
+    class: note
+    shape: page
+  }
+  timing_note: "[C] PDS-VV-CON-006/007 context:\nprocess/calculate < 5 ms; I2C read ≤ 5 ms;\nexecuted timing evidence supplied by nominal and fault chains" {
+    class: note
+    shape: page
+  }
+  gap_note: "[C] Residual blocked source-model gap:\nPV2 lacks explicit INA219 I2C CE.\nThis analysis can identify the target,\nbut final I2C CE completeness/execution claim\nrequires source model update or formal justification" {
+    class: note
+    shape: page
+  }
+}
+
+chain.open_baseline -> chain.inventory_getters: "[FE] v1.0 diagrams and API evidence" { class: fe }
+chain.open_baseline -> chain.map_allocations: "[FE] Allocation baseline" { class: fe }
+chain.inventory_getters -> chain.analyze_pointers: "[FE] Getter pointer paths" { class: fe }
+chain.inventory_getters -> chain.analyze_returns: "[FE] Return/data paths" { class: fe }
+chain.map_allocations -> chain.analyze_read_process_pairs: "[FE] Source function ownership" { class: fe }
+chain.analyze_read_process_pairs -> chain.verify_getter_template: "[FE] Read/process pair list" { class: fe }
+chain.analyze_pointers -> chain.check_units_freshness: "[FE] Pointer ownership/lifetime" { class: fe }
+chain.analyze_returns -> chain.check_units_freshness: "[FE] Data field semantics" { class: fe }
+chain.verify_getter_template -> chain.check_units_freshness: "[FE] Getter contract" { class: fe }
+chain.check_units_freshness -> chain.review_bounded_status: "[FE] Valid/stale/error semantics" { class: fe }
+chain.review_bounded_status -> chain.review_blocking_paths: "[FE] Fault return paths" { class: fe }
+chain.open_baseline -> chain.analyze_i2c_gap: "[FE] Missing I2C CE observation" { class: fe }
+chain.analyze_i2c_gap -> chain.record_coverage: "[FE] Blocked gap note" { class: fe }
+chain.review_blocking_paths -> chain.record_coverage: "[FE] CON-005/008 analysis result" { class: fe }
+chain.map_allocations -> chain.record_coverage: "[FE] ALLOC-002 result" { class: fe }
+chain.record_coverage -> chain.archive_analysis: "[FE] Analysis evidence package" { class: fe }

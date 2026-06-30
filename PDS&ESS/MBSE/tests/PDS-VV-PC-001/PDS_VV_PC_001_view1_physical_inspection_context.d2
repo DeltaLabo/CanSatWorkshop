@@ -1,0 +1,183 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV1 Physical inspection context for PDS-VV-PC-001.
+# Capella PA PV1 only: System, Physical Components, non-human External Actors with PLs,
+# Physical Links, and constraints. Human actors are represented in PV2/PV3.
+# References: IVV; PDS-R1; PDS-R2; PDS-R4–PDS-R8.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+charger: "[EA] Modeled Charger\n(source USB-C endpoint)" { class: ea }
+microscope_camera: "[EA] Microscope / Camera\n(workmanship evidence)" { class: ea }
+dmm: "[EA] DMM / Continuity Tester\n(calibrated)" { class: ea }
+bench_supply: "[EA] Current-limited\nBench Supply" { class: ea }
+ambient_monitor: "[EA] Ambient Thermometer /\nHygrometer" { class: ea }
+esd_fixture: "[EA] ESD Workbench /\nFixture" { class: ea }
+host_pc: "[EA] Evidence Repository /\nHost PC" { class: ea }
+
+system: "[System] PDS-VV-PC-001 physical inspection context\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R1; PDS-R2; PDS-R4–PDS-R8" {
+  class: sys
+  direction: down
+
+  article: "[PC] Integrated PDS & ESS\nv1.0 article under inspection" {
+    class: pc
+    direction: down
+
+    ess_module: "[PC] ESS Module" {
+      class: pc
+      direction: down
+      battery_pack: "[PC] 1S1P Li-Ion" { class: pc }
+    }
+
+    pds_module: "[PC] PDS Module" {
+      class: pc
+      direction: down
+
+      pds_pcb: "[PC] PDS PCB" {
+        class: pc
+        direction: right
+
+        battery_connector: "[PC] Battery Connector" { class: pc }
+        protection: "[PC] Protection Circuit" { class: pc }
+        ina219: "[PC] INA219" { class: pc }
+        regulator: "[PC] Regulator" { class: pc }
+        pds_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+
+        xiao: "[PC] XIAO ESP32-S3" { class: pc }
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+
+      pds_headers: "[PC] 2mm 2x6 PDS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+  }
+}
+
+note_scope: "[C] Scope / traceability\nPrimary: PDS-VV-PC-001. Companion coverage:\nPDS-VV-PL-001 and PDS-VV-SAFE-001.\nTrace: PDS-UC-ProvideRegulatedPower;\nPDS-FE-LiIonUnsafeCondition; PDS-FE-RailBrownout;\nPCB manufacturability constraint." { class: note; shape: page }
+note_pc_pass: "[C] PC pass/fail\n100% of modeled PCs from baseline view1\nshall be present, correct, identifiable,\nin modeled containment, properly oriented,\nsecure, undamaged, and workmanlike.\nNo uninspected PC may remain." { class: note; shape: page }
+note_pl_pass: "[C] PL pass/fail\n100% of modeled PLs from baseline view1\nshall be present, routed to modeled endpoints,\ncontinuous where electrical, correctly polarized,\nisolated from unintended shorts, retained,\nand free of contact/workmanship defects.\nNo uninspected PL may remain." { class: note; shape: page }
+note_environment: "[C] Environmental / equipment conditions\nRead ambient temperature and humidity before inspection.\nUse ESD-safe bench and calibrated/function-checked equipment.\nDefer on condensation, unsafe ESD state, unresolved\ncalibration/status problem, or unsafe cell condition." { class: note; shape: page }
+note_liion: "[C] Li-ion safety documentation\nRecord cell/pack identity, datasheet/SDS or equivalent,\nUN 38.3 / IEC 62133 evidence when available,\nand charge/discharge/storage limits before powered readings.\nRefs: PDS-R4–PDS-R7." { class: note; shape: page }
+note_pcb: "[C] PCB manufacturability / current paths\nPDS, OBCC, and backplane PCBs shall remain consistent\nwith the Carvera Air CNC manufacturability constraint;\ninspect footprints, clearances, trace workmanship,\nand 1 A rail path rationale. Ref: PDS-R8." { class: note; shape: page }
+note_stats_fault: "[C] Statistical and fault-hardening viewpoints\nThis is article-level 100% enumeration, not lot sampling.\nExplicitly screen open/short, reversed battery or cable,\nmis-mated headers, high-resistance rail/ground path,\nloose screws/fixtures, lifted pads, solder bridges,\nand rail-brownout or Li-ion unsafe-condition precursors." { class: note; shape: page }
+
+# Modeled PDS & ESS v1.0 physical links from baseline/PDS_v1.0_view1_physical.d2.
+charger -- system.article.pds_module.pds_pcb.protection: "[PL] Modeled USB-C cable" { class: pl }
+system.article.ess_module.battery_pack -- system.article.pds_module.pds_pcb.battery_connector: "[PL] Modeled battery cable" { class: pl }
+
+system.article.ess_module -- system.article.backplane_pcb: "[PL] ESS backplane fixture" { class: pl }
+system.article.pds_module -- system.article.backplane_pcb: "[PL] PDS backplane fixture" { class: pl }
+system.article.obcc_module -- system.article.backplane_pcb: "[PL] OBCC backplane fixture" { class: pl }
+
+system.article.pds_module.pds_pcb.protection -- system.article.pds_module.pds_pcb: "[PL] Protection footprint" { class: pl }
+system.article.pds_module.pds_pcb.ina219 -- system.article.pds_module.pds_pcb: "[PL] INA219 footprint" { class: pl }
+system.article.pds_module.pds_pcb.regulator -- system.article.pds_module.pds_pcb: "[PL] Regulator footprint" { class: pl }
+system.article.pds_module.pds_pcb.battery_connector -- system.article.pds_module.pds_pcb: "[PL] Battery-connector footprint" { class: pl }
+system.article.pds_module.pds_pcb.pds_backplane_connector -- system.article.pds_module.pds_pcb: "[PL] PDS backplane-connector footprint" { class: pl }
+system.article.obcc_module.obcc_pcb.xiao -- system.article.obcc_module.obcc_pcb: "[PL] XIAO footprint" { class: pl }
+system.article.obcc_module.obcc_pcb.obcc_backplane_connector -- system.article.obcc_module.obcc_pcb: "[PL] OBCC backplane-connector footprint" { class: pl }
+
+system.article.pds_module.pds_pcb -- system.article.pds_module: "[PL] PDS PCB screws" { class: pl }
+system.article.obcc_module.obcc_pcb -- system.article.obcc_module: "[PL] OBCC PCB screws" { class: pl }
+
+system.article.pds_module.pds_pcb.battery_connector -- system.article.pds_module.pds_pcb.protection: "[PL] Battery ± traces" { class: pl }
+system.article.pds_module.pds_pcb.protection -- system.article.pds_module.pds_pcb.ina219: "[PL] Protection output trace" { class: pl }
+system.article.pds_module.pds_pcb.ina219 -- system.article.pds_module.pds_pcb.regulator: "[PL] INA output trace" { class: pl }
+system.article.pds_module.pds_pcb.regulator -- system.article.pds_module.pds_pcb.pds_backplane_connector: "[PL] 5V / 3V3 traces" { class: pl }
+system.article.obcc_module.obcc_pcb.xiao -- system.article.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] OBCC 3V3 / PWM traces" { class: pl }
+
+system.article.pds_module.pds_pcb.pds_backplane_connector -- system.article.backplane_pcb.pds_headers: "[PL] PDS parallel cable" { class: pl }
+system.article.obcc_module.obcc_pcb.obcc_backplane_connector -- system.article.backplane_pcb.obcc_headers: "[PL] OBCC parallel cable" { class: pl }
+
+# Verification-only physical links for inspection support.
+microscope_camera -- system.article: "[PL] Camera stand /\ninspection fixture" { class: pl }
+dmm -- system.article: "[PL] Probe leads to\nselected endpoints" { class: pl }
+bench_supply -- system.article.pds_module.pds_pcb.pds_backplane_connector: "[PL] Current-limited\npower leads" { class: pl }
+ambient_monitor -- system.article: "[PL] Ambient sensor\nbench placement" { class: pl }
+esd_fixture -- system.article: "[PL] ESD mat /\nfixture restraint" { class: pl }
+host_pc -- system.article.obcc_module.obcc_pcb.xiao: "[PL] Evidence USB /\narticle ID cable if used" { class: pl }
+
+note_scope -> system.article { class: cstr }
+note_pc_pass -> system.article { class: cstr }
+note_pl_pass -> system.article { class: cstr }
+note_pl_pass -> dmm { class: cstr }
+note_environment -> ambient_monitor { class: cstr }
+note_environment -> esd_fixture { class: cstr }
+note_environment -> bench_supply { class: cstr }
+note_liion -> system.article.ess_module.battery_pack { class: cstr }
+note_liion -> system.article.pds_module.pds_pcb.protection { class: cstr }
+note_pcb -> system.article.pds_module.pds_pcb { class: cstr }
+note_pcb -> system.article.obcc_module.obcc_pcb { class: cstr }
+note_pcb -> system.article.backplane_pcb { class: cstr }
+note_stats_fault -> system.article { class: cstr }
+
+# Layout-only rank hints to keep equipment, article, and constraints in readable bands.
+charger -> microscope_camera { style: { opacity: 0 } }
+microscope_camera -> dmm { style: { opacity: 0 } }
+dmm -> bench_supply { style: { opacity: 0 } }
+bench_supply -> ambient_monitor { style: { opacity: 0 } }
+ambient_monitor -> esd_fixture { style: { opacity: 0 } }
+esd_fixture -> host_pc { style: { opacity: 0 } }
+system -> note_scope { style: { opacity: 0 } }
+note_scope -> note_pc_pass { style: { opacity: 0 } }
+note_pc_pass -> note_pl_pass { style: { opacity: 0 } }
+note_pl_pass -> note_environment { style: { opacity: 0 } }
+note_environment -> note_liion { style: { opacity: 0 } }
+note_liion -> note_pcb { style: { opacity: 0 } }
+note_pcb -> note_stats_fault { style: { opacity: 0 } }

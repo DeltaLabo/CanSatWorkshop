@@ -1,0 +1,218 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view: selected all-version LC/function allocation inventory for ADS-IVV-A-ALLOC-ALL.
+# References: IVV allocation analysis rule; copied ADS v0.1/v0.2/v0.3/v1.0 source views.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-A-ALLOC-ALL\nFunctional allocation inventory\nRefs: IVV; NASA-SE; GPS/UBX; IMU/I2C; SW/stats" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  v01: "[PC] ADS v0.1 article allocation" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    gps: "[PC] UBX-G7020-KT GPS" {
+      class: pc
+      gps_lc: "[LC] ADS GPS Sensing" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        f_lon: "[F] Measure longitude" { class: func }
+        f_lat: "[F] Measure latitude" { class: func }
+        f_send: "[F] Send payload" { class: func }
+      }
+    }
+
+    xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: right
+      setup: "[LC] Setup" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        f_get_ubx: "[F] Get UBX init state" { class: func }
+        f_collect_init: "[F] Collect peripheral init states" { class: func }
+        f_init_serial: "[F] Init Serial0 and Serial1" { class: func }
+      }
+      loop: "[LC] Loop" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        f_read_gps: "[F] Read and store lat/lon" { class: func }
+        f_get_lat: "[F] Get lat" { class: func }
+        f_get_lon: "[F] Get lon" { class: func }
+        f_collect: "[F] Collect measurements" { class: func }
+        f_log: "[F] Log via Serial0" { class: func }
+      }
+    }
+  }
+
+  v02: "[PC] ADS v0.2 article allocation" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    gps: "[PC] UBX-G7020-KT GPS" {
+      class: pc
+      gps_lc: "[LC] ADS GPS Sensing" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        f_lon: "[F] Measure longitude" { class: func }
+        f_lat: "[F] Measure latitude" { class: func }
+        f_send: "[F] Send payload" { class: func }
+      }
+    }
+
+    imu: "[PC] ICM20948 IMU" {
+      class: pc
+      imu_lc: "[LC] ADS Kinematic Sensing" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        f_gyro: "[F] Measure angular velocities" { class: func }
+        f_accel: "[F] Measure accelerations" { class: func }
+        f_mag: "[F] Measure magnetic field intensities" { class: func }
+        f_i2c: "[F] Respond to I2C Requests" { class: func }
+      }
+    }
+
+    xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: right
+      setup: "[LC] Setup" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        f_get_icm: "[F] Get ICM20948 init state" { class: func }
+        f_get_ubx: "[F] Get UBX init state" { class: func }
+        f_collect_init: "[F] Collect peripheral init states" { class: func }
+        f_init_serial: "[F] Init Serial0 and Serial1" { class: func }
+      }
+      loop: "[LC] Loop" {
+        class: lc
+        direction: down
+        grid-columns: 3
+        f_read_gps: "[F] Read and store lat/lon" { class: func }
+        f_read_gyro: "[F] Read angular velocities" { class: func }
+        f_read_accel: "[F] Read accelerations" { class: func }
+        f_read_mag: "[F] Read field intensities" { class: func }
+        f_get_lat: "[F] Get lat" { class: func }
+        f_get_lon: "[F] Get lon" { class: func }
+        f_proc_gyro: "[F] Process angular velocities" { class: func }
+        f_proc_accel: "[F] Process accelerations" { class: func }
+        f_calc_pry: "[F] Calculate pitch, roll, yaw" { class: func }
+        f_collect: "[F] Collect measurements" { class: func }
+        f_log: "[F] Log via Serial0" { class: func }
+      }
+    }
+  }
+
+  v03: "[PC] ADS v0.3 PCB delivery allocation" {
+    class: pc
+    note_na: "[C] v0.3 allocation N/A\nNo modeled LCs or Functions.\nPhysical PCB delivery only; do not credit\nfootprints/traces as behavior allocation." { class: note; shape: page }
+  }
+
+  v10: "[PC] ADS v1.0 article allocation" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    ads_pcb: "[PC] ADS PCB" {
+      class: pc
+      direction: down
+      grid-columns: 2
+      gps: "[PC] UBX-G7020-KT GPS" {
+        class: pc
+        gps_lc: "[LC] ADS GPS Sensing" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          f_lon: "[F] Measure longitude" { class: func }
+          f_lat: "[F] Measure latitude" { class: func }
+          f_send: "[F] Send payload" { class: func }
+        }
+      }
+      imu: "[PC] ICM20948 IMU" {
+        class: pc
+        imu_lc: "[LC] ADS Kinematic Sensing" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          f_gyro: "[F] Measure angular velocities" { class: func }
+          f_accel: "[F] Measure accelerations" { class: func }
+          f_mag: "[F] Measure magnetic field intensities" { class: func }
+          f_i2c: "[F] Respond to I2C Requests" { class: func }
+        }
+      }
+    }
+
+    obcc_pcb: "[PC] OBCC PCB / XIAO ESP32-S3" {
+      class: pc
+      direction: right
+      ads_processing: "[LC] ADS Processing" {
+        class: lc
+        direction: down
+        grid-columns: 3
+        f_get_ubx: "[F] Get UBX init state" { class: func }
+        f_read_gps: "[F] Read and store lat/lon" { class: func }
+        f_read_gyro: "[F] Read angular velocities" { class: func }
+        f_read_accel: "[F] Read accelerations" { class: func }
+        f_read_mag: "[F] Read field intensities" { class: func }
+        f_get_icm: "[F] Get ICM20948 init state" { class: func }
+        f_get_lat: "[F] Get lat" { class: func }
+        f_get_lon: "[F] Get lon" { class: func }
+        f_proc_gyro: "[F] Process angular velocities" { class: func }
+        f_proc_accel: "[F] Process accelerations" { class: func }
+        f_calc_pry: "[F] Calculate pitch, roll, yaw" { class: func }
+      }
+      obcc: "[LC] OBCC" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        f_collect_init: "[F] Collect peripheral init states" { class: func }
+        f_collect: "[F] Collect measurements" { class: func }
+      }
+    }
+  }
+}
+
+host_pc: "[EA] PC endpoint\n(v0.1/v0.2 support only)" {
+  class: ea
+  f_monitor: "[F] Monitor serial port" { class: func }
+}
+
+note_coverage: "[C] Coverage and no-foreign-function rule\nFor the selected version, every LC and modeled Function\nshall be mapped to exactly the intended LC/PC.\nNo extra or foreign implementation functions may be allocated\nwithout a recorded model update or waiver." { class: note; shape: page }
+note_constraints: "[C] Constraints reviewed through allocation\nNo blocking except I2C/UART, Variable Getter semantics,\nProcess/Calculate <5 ms, UART timeout <=5 ms,\nv1.0 I2C timeout <=5 ms, GPS <5 m, gyro <30 deg/s,\nand v0.1/v0.2 collection 5 Hz where modeled." { class: note; shape: page }
+note_stats: "[C] Statistical viewpoint\nAllocation analysis is complete enumeration, not sampling.\nRuntime samples belong to linked chain/constraint tests." { class: note; shape: page }
+
+note_coverage -> system { class: cstr }
+note_constraints -> system { class: cstr }
+note_stats -> system { class: cstr }
+
+# Layout-only edge to keep host PC and constraints after the source allocation inventory.
+system -> host_pc { style: { opacity: 0 } }
+host_pc -> note_coverage { style: { opacity: 0 } }
+note_coverage -> note_constraints { style: { opacity: 0 } }
+note_constraints -> note_stats { style: { opacity: 0 } }

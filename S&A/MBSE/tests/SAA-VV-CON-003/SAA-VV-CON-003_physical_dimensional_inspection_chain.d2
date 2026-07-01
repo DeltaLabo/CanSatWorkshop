@@ -1,0 +1,106 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-003 verification-only Functional Chain view.
+# Physical/dimensional inspection chain for backplane allocation, PCB size, stackup, headers and testpoint reachability.
+# References cited in the rendered chain title: IVV, SAA-R4, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+dimensional_chain: "[Functional Chain] SAA-VV-CON-003 Physical / Dimensional Inspection\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  identify_item: "[F] Operator: identify v0.1\nstructural article or v1.0\nbackplane\nPCB article and baseline copy" { class: func }
+  record_conditions: "[F] Ambient/ESD station:\nrecord temperature, humidity, ESD\nstate,\ncalibration IDs and tool condition" { class: func }
+  inspect_v0_1_volume: "[F] Operator: inspect v0.1\nperpendicular backplane volume,\nslot\nand top-module clearance" { class: func }
+  gauge_allocation: "[F] Calipers/gauge: confirm\n100 mm × 28 mm allocation fits the\nv0.1 backplane volume with\nclearance" { class: func }
+  measure_board_outline: "[F] Calipers: measure v1.0\nbackplane PCB length and width\nwith\nuncertainty guard band" { class: func }
+  inspect_stackup: "[F] Reviewer/operator: inspect\nreleased stackup and board edge\nfor\ntwo-layer construction evidence" { class: func }
+  check_header_pitch: "[F] Header gauge: verify\nADS/AMS/OBCC/PDS 2 mm 2×6 pitch,\npin count, orientation and seating" { class: func }
+  check_servo_connector: "[F] Operator: inspect PDM\nservo connector placement,\nendpoint\nmarking and mechanical condition" { class: func }
+  check_testpoint_presence: "[F] Probe set/operator:\nverify required rail and critical\nsignal\ntestpoints are present and\nreachable" { class: func }
+  capture_photos: "[F] Camera/operator: capture\nboard outline, headers,\nconnectors,\ntestpoints and gauge readings" { class: func }
+  disposition_findings: "[F] Operator/reviewer:\nrecord nonconformance, waiver,\nrework or required re-inspection" { class: func }
+  apply_inspection_gate: "[F] Acceptance gate: apply\nphysical/dimensional inspection\npass/fail constraints" { class: func }
+  archive_results: "[F] Evidence repository: archive\ninspection sheet, photos and raw\nmeasurements under\nresults/SAA-VV-CON-003" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nv0.1 backplane volume must provide a bounded perpendicular\nallocation for a 100 mm × 28 mm two-layer PCB without\nblocked slot or top-module clearance conflict. v1.0\nBackplane PCB dimensions must match 100 mm × 28 mm within\nreleased tolerance and measurement uncertainty; layer\ncount must be two; ADS/AMS/OBCC/PDS headers must be 2 mm\n2×6 with correct pitch, orientation, placement and pin\ncount; PDM servo connector must match released endpoint\nplacement; required rail and critical signal testpoints\nmust be physically present, labeled/mapped and reachable\nwithout article modification or adjacent-pin short risk.\nAny wrong pitch, damaged connector, missing testpoint,\nnon-positive clearance, missing calibration/evidence or\nopen anomaly = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nThis is a 100% presence/dimensional inspection of the\nselected article and every required header/testpoint\nendpoint. Dimensions are calibrated continuous\nmeasurements with uncertainty guard bands. It makes no\nboard-population claim." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nThe inspection blocks false pass from wrong pitch, swapped\norientation, missing or hidden testpoint, unrepresentative\nallocation gauge, bent pins, board outline error,\nunverified layer count, clearance conflict, uncalibrated\ngauge, ambiguous photos or evidence escape." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled Backplane allowance / Backplane PCB constraints;\nSAA-UC-BackplaneIntegration; SAA-FE-BackplaneMisMate." {
+    class: note
+    shape: page
+  }
+}
+
+dimensional_chain.identify_item -> dimensional_chain.record_conditions: "[FE] Article and\nbaseline identified" { class: fe }
+dimensional_chain.record_conditions -> dimensional_chain.inspect_v0_1_volume: "[FE] Controlled\ninspection setup" { class: fe }
+dimensional_chain.inspect_v0_1_volume -> dimensional_chain.gauge_allocation: "[FE] Volume, slot\nand clearance status" { class: fe }
+dimensional_chain.gauge_allocation -> dimensional_chain.measure_board_outline: "[FE] v0.1 allocation\nreadiness result" { class: fe }
+dimensional_chain.measure_board_outline -> dimensional_chain.inspect_stackup: "[FE] Guard-banded\noutline measurements" { class: fe }
+dimensional_chain.inspect_stackup -> dimensional_chain.check_header_pitch: "[FE] Layer-count\nstatus" { class: fe }
+dimensional_chain.check_header_pitch -> dimensional_chain.check_servo_connector: "[FE] Header geometry\nstatus" { class: fe }
+dimensional_chain.check_servo_connector -> dimensional_chain.check_testpoint_presence: "[FE] Servo connector\nstatus" { class: fe }
+dimensional_chain.check_testpoint_presence -> dimensional_chain.capture_photos: "[FE] Testpoint presence\nand reachability status" { class: fe }
+dimensional_chain.capture_photos -> dimensional_chain.disposition_findings: "[FE] Photo and\nmeasurement evidence" { class: fe }
+dimensional_chain.disposition_findings -> dimensional_chain.apply_inspection_gate: "[FE] Open/closed\nfindings" { class: fe }
+dimensional_chain.apply_inspection_gate -> dimensional_chain.archive_results: "[FE] Inspection\npass/fail/hold decision" { class: fe }
+
+# Layout-only edges keep notes after the executable inspection flow.
+dimensional_chain.archive_results -> dimensional_chain.pass_fail { style: { opacity: 0 } }
+dimensional_chain.pass_fail -> dimensional_chain.statistical { style: { opacity: 0 } }
+dimensional_chain.statistical -> dimensional_chain.fault_hardening { style: { opacity: 0 } }
+dimensional_chain.fault_hardening -> dimensional_chain.traceability { style: { opacity: 0 } }

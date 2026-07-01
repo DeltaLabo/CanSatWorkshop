@@ -1,0 +1,113 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-004 verification-only Functional Chain view.
+# Testing/inspection chain for critical-feature measurement against 0.2 mm print precision.
+# References cited in the rendered chain title: IVV, SAA-R3, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+measurement_chain: "[Functional Chain] SAA-VV-CON-004 Critical Feature 0.2 mm Precision Measurement\nRefs: IVV; SAA-R3; SAA-R5" {
+  class: chain
+  direction: down
+
+  select_gate: "[F] Operator/Witness: select\nv0.1 process screen or v1.0 final\nhardware acceptance gate" { class: func }
+  identify_features: "[F] Operator/Reviewer: identify\ncritical features from model and drawings:\nscrew bosses/holes, standoffs, PCB bays,\nbackplane slots, stack and top-module\nalignment features" { class: func }
+  verify_calibration: "[F] Operator/Witness: verify\ncalipers, micrometer, gauges, nominal\nvalues and expanded uncertainty method" { class: func }
+  record_ambient: "[F] Ambient meter: record\ntemperature and humidity before\nmeasurement repetitions" { class: func }
+  select_batch_parts: "[F] Operator: select final parts\nand at least 3 coupons/modules per\nprinter/material batch for process screen" { class: func }
+  measure_next_feature: "[F] Calipers/Micrometer: measure\nnext critical feature and record raw\nvalue, orientation and tool ID" { class: func }
+  compute_error: "[F] Operator/Reviewer: compute\nfeature error = |measured - nominal|" { class: func }
+  apply_guardband: "[F] Measurement gate: add expanded\nuncertainty U and compare error + U\nto 0.2 mm or stricter drawing tolerance" { class: func }
+  inspect_warp_alignment: "[F] Operator/Witness: inspect\nwarped slot, boss ovalization, print\nshrink, stack misalignment and blocked\nbackplane/PCB fit consequences" { class: func }
+  loop_or_complete: "[F] Acceptance gate: continue until\nall required critical features and batch\nscreen parts have recorded results" { class: func }
+  record_anomalies: "[F] Repository: record out-of-limit\nfeature, missing nominal, uncalibrated tool,\nwarped part, rework or reprint need" { class: func }
+  witness_decision: "[F] QA Witness: approve pass,\nfail, hold or re-measure/reprint" { class: func }
+  archive_measurements: "[F] Evidence repository: archive\nraw measurements, calculations, photos,\ncalibration and witness decision" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nEvery critical printed feature passes only when |measured - nominal| + expanded\nuncertainty U ≤ 0.2 mm unless a released drawing tolerance is stricter. Critical\nfeatures include screw bosses/holes, PCB standoff features, 44 mm PCB bay interfaces,\nbackplane slot/fixture features, stack alignment and top-module interfaces. Missing\nnominal, unguarded uncertainty, uncalibrated tool, warped feature, blocked fit or\nopen anomaly is hold/fail until corrected and re-measured." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nDimensional checks are calibrated continuous measurements with uncertainty guard\nbands. Process screening includes at least 3 coupons/modules per printer/material\nbatch. Acceptance of a single v1.0 article is article-level evidence and makes no\npopulation reliability claim." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nExplicitly screens printer/material drift, warped slots, screw-boss ovalization,\nundersized/oversized holes, standoff height error, PCB bay shrink, backplane slot\nshift, top-module misalignment, uncalibrated tools, ignored uncertainty and lost\nraw data." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Environmental/equipment condition:\nRecord ambient temperature/humidity, tool IDs, calibration status, feature nominal\nsource, operator/witness identity and camera field of view before measurement\nrepetitions. Hold if ambient drift or tool state invalidates 0.2 mm interpretation." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled Assembly / printing constraint: 0.2 mm print precision; SAA-UC-IntegratedAssembly;\nSAA-FE-EnvelopeNonCompliance; SAA-FE-StructuralLoosening." {
+    class: note
+    shape: page
+  }
+}
+
+measurement_chain.select_gate -> measurement_chain.identify_features: "[FE] Selected SSIV /\npart set" { class: fe }
+measurement_chain.identify_features -> measurement_chain.verify_calibration: "[FE] Feature matrix\nand nominals" { class: fe }
+measurement_chain.verify_calibration -> measurement_chain.record_ambient: "[FE] Tool calibration\nand U method" { class: fe }
+measurement_chain.record_ambient -> measurement_chain.select_batch_parts: "[FE] Ambient record\nand condition flag" { class: fe }
+measurement_chain.select_batch_parts -> measurement_chain.measure_next_feature: "[FE] Selected part\nand feature" { class: fe }
+measurement_chain.measure_next_feature -> measurement_chain.compute_error: "[FE] Raw measurement" { class: fe }
+measurement_chain.compute_error -> measurement_chain.apply_guardband: "[FE] Feature error" { class: fe }
+measurement_chain.apply_guardband -> measurement_chain.inspect_warp_alignment: "[FE] Guard-banded\nprecision status" { class: fe }
+measurement_chain.inspect_warp_alignment -> measurement_chain.loop_or_complete: "[FE] Warp/alignment\nstatus" { class: fe }
+measurement_chain.loop_or_complete -> measurement_chain.measure_next_feature: "[FE] Next critical\nfeature until complete" { class: fe }
+measurement_chain.loop_or_complete -> measurement_chain.record_anomalies: "[FE] All required\nfeatures complete" { class: fe }
+measurement_chain.record_anomalies -> measurement_chain.witness_decision: "[FE] Open/closed\nmeasurement anomalies" { class: fe }
+measurement_chain.witness_decision -> measurement_chain.archive_measurements: "[FE] Witness decision\nand release approval" { class: fe }
+
+# Layout-only edges keep notes after the executable measurement flow.
+measurement_chain.archive_measurements -> measurement_chain.pass_fail { style: { opacity: 0 } }
+measurement_chain.pass_fail -> measurement_chain.statistical { style: { opacity: 0 } }
+measurement_chain.statistical -> measurement_chain.fault_hardening { style: { opacity: 0 } }
+measurement_chain.fault_hardening -> measurement_chain.conditions { style: { opacity: 0 } }
+measurement_chain.conditions -> measurement_chain.traceability { style: { opacity: 0 } }

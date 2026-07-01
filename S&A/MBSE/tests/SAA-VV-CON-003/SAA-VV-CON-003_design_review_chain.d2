@@ -1,0 +1,106 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-003 verification-only Functional Chain view.
+# Design review / analysis chain for v0.1 backplane allocation readiness and v1.0 released PCB evidence.
+# References cited in the rendered chain title: IVV, SAA-R4, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+design_chain: "[Functional Chain] SAA-VV-CON-003 Design Review / Evidence Analysis\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  select_gate: "[F] Operator: select v0.1\nallocation readiness and/or v1.0\nflight-readiness evidence set" { class: func }
+  load_baselines: "[F] Operator: load frozen\nbaseline D2 copies and model\nconstraints" { class: func }
+  collect_design_pkg: "[F] Reviewer: collect released\nPCB CAD, drawing, Gerber, BOM,\nstackup, pinout and netlist\npackage" { class: func }
+  review_v0_1_allocation: "[F] Reviewer: confirm v0.1\nperpendicular backplane volume\nsupports\n100 mm × 28 mm two-layer\nallocation" { class: func }
+  review_dimensions_stackup: "[F] Reviewer: confirm v1.0\n100 mm × 28 mm outline and\ntwo-layer\nstackup in released design\nevidence" { class: func }
+  review_headers_pinout: "[F] Reviewer: compare ADS/AMS/\nOBCC/PDS 2 mm 2×6 headers and PDM\nservo connector pinout to model" { class: func }
+  run_erc_drc_review: "[F] Reviewer: review ERC/DRC\nreports as clean or fully\ndispositioned" { class: func }
+  review_testpoints_rails: "[F] Reviewer: verify rail nets,\nrequired testpoints, safe\nload/no-load\nassumptions and measurement plan" { class: func }
+  review_fast_lines: "[F] Reviewer: verify SPI/I2C/UART\nlow-capacitance and rise-time\nrationale" { class: func }
+  record_anomalies: "[F] Reviewer/operator: record\nanomalies, waivers, model updates,\nrework and required re-review" { class: func }
+  apply_design_gate: "[F] Acceptance gate: apply\ndesign review pass/fail/hold\nconstraints" { class: func }
+  witness_release: "[F] QA Witness: approve evidence\npackage or hold for\nmissing/ambiguous data" { class: func }
+  archive_package: "[F] Evidence repository: archive\nreview matrix and dispositions\nunder\nresults/SAA-VV-CON-003" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nv0.1 passes design/allocation readiness only if the\nbaseline contains a perpendicular backplane volume with\nbounded 100 mm × 28 mm two-layer allocation and clearance\nrationale. v1.0 passes design evidence only if the\nreleased PCB package shows 100 mm × 28 mm, two layers, 2\nmm 2×6 ADS/AMS/OBCC/PDS headers, PDM servo connector\nendpoints, pinout/netlist consistency, required\nrail/testpoint mapping, and low-capacitance SPI/I2C/UART\nrationale. ERC/DRC must be clean or every warning must\nhave approved disposition. Missing released evidence or\nunresolved discrepancy = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\n100% DRC/ERC/netlist/pinout/testpoint evidence review over\nthe released design package for this gate. This is a\ndesign-evidence census, not a sampling or\nreliability-population claim." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nThe review explicitly looks for wrong header pitch, wrong\npin count/orientation, swapped pins, unowned extra nets,\nmissing testpoints, undocumented safe-load assumptions,\nrail short/open risk, DRC/ERC escapes, excessive I2C\ncapacitance or rise time, SPI/UART loading and\nevidence-control gaps." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled Backplane allowance / Backplane PCB constraints;\nSAA-UC-BackplaneIntegration; SAA-FE-BackplaneMisMate." {
+    class: note
+    shape: page
+  }
+}
+
+design_chain.select_gate -> design_chain.load_baselines: "[FE] Version/gate\nselection" { class: fe }
+design_chain.load_baselines -> design_chain.collect_design_pkg: "[FE] Applicable\nmodel constraints" { class: fe }
+design_chain.collect_design_pkg -> design_chain.review_v0_1_allocation: "[FE] Allocation and\nCAD evidence" { class: fe }
+design_chain.review_v0_1_allocation -> design_chain.review_dimensions_stackup: "[FE] Readiness\nallocation status" { class: fe }
+design_chain.review_dimensions_stackup -> design_chain.review_headers_pinout: "[FE] Geometry /\nstackup status" { class: fe }
+design_chain.review_headers_pinout -> design_chain.run_erc_drc_review: "[FE] Pin interface\nmatrix" { class: fe }
+design_chain.run_erc_drc_review -> design_chain.review_testpoints_rails: "[FE] Clean or\ndispositioned reports" { class: fe }
+design_chain.review_testpoints_rails -> design_chain.review_fast_lines: "[FE] Rail and\ntestpoint plan" { class: fe }
+design_chain.review_fast_lines -> design_chain.record_anomalies: "[FE] SI rationale\nstatus" { class: fe }
+design_chain.record_anomalies -> design_chain.apply_design_gate: "[FE] Open/closed\ndispositions" { class: fe }
+design_chain.apply_design_gate -> design_chain.witness_release: "[FE] Pass/fail/hold\nrecommendation" { class: fe }
+design_chain.witness_release -> design_chain.archive_package: "[FE] Witness decision\nand evidence release" { class: fe }
+
+# Layout-only edges keep notes after the executable review flow.
+design_chain.archive_package -> design_chain.pass_fail { style: { opacity: 0 } }
+design_chain.pass_fail -> design_chain.statistical { style: { opacity: 0 } }
+design_chain.statistical -> design_chain.fault_hardening { style: { opacity: 0 } }
+design_chain.fault_hardening -> design_chain.traceability { style: { opacity: 0 } }

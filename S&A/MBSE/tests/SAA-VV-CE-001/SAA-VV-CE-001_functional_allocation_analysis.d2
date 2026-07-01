@@ -1,0 +1,198 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CE-001 verification-only Physical Architecture PV3.
+# Functional allocation/analysis view for the v1.0 component-exchange presence/absence activity.
+# References cited in the rendered system title: IVV, SAA-R4, SAA-R5.
+# Functions and LCs here define the analysis activity only; they are not baseline S&A design edits.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+reviewer: "[EA] Interface Reviewer" {
+  class: ea
+  direction: down
+  start: "[F] Select SAA v1.0 baseline\nand analysis checklist" { class: func }
+  collect: "[F] Collect pinout, netlist,\nDRC/ERC, measurements,\nand subsystem CE references" { class: func }
+  compare: "[F] Compare evidence to\nbackplane interface constraints" { class: func }
+  classify: "[F] Classify pass, hold,\nor fail with rationale" { class: func }
+}
+
+owners: "[EA] Subsystem Interface Owners\nADS / AMS / OBCC / PDS / ESS / PDM" {
+  class: ea
+  direction: down
+  provide_refs: "[F] Provide owned CE model\nreferences or ownership waivers" { class: func }
+  confirm_intent: "[F] Confirm endpoints,\ndirection, protocol, voltage,\nloads, and testpoint intent" { class: func }
+  resolve_gaps: "[F] Resolve ambiguous or\nmissing interface ownership" { class: func }
+}
+
+netlist_tool: "[EA] Backplane CAD /\nNetlist Evidence" {
+  class: ea
+  direction: down
+  export_pinout: "[F] Export connector pinout,\nnet names, and pin numbers" { class: func }
+  map_nets: "[F] Map rails, SPI/I2C/UART,\ntestpoints, and servo nets" { class: func }
+}
+
+drc_erc_tool: "[EA] DRC / ERC Tool" {
+  class: ea
+  direction: down
+  run_checks: "[F] Run or ingest ERC/DRC\nrelease report" { class: func }
+  disposition_violations: "[F] Identify clean, waived,\nor blocking violations" { class: func }
+}
+
+measurement_package: "[EA] Continuity / Rail\nMeasurement Package" {
+  class: ea
+  direction: down
+  measure_rails: "[F] Measure or ingest 5 V /\n3.3 V continuity, isolation,\nand voltage evidence" { class: func }
+  measure_fast_lines: "[F] Ingest capacitance /\nrise-time or layout rationale\nfor SPI/I2C/UART paths" { class: func }
+  measure_servo: "[F] Check PDM servo connector\ncontinuity and pin orientation" { class: func }
+}
+
+repo: "[EA] Evidence Repository" {
+  class: ea
+  direction: down
+  store: "[F] Store released analysis\nmatrix, report, and evidence" { class: func }
+}
+
+system: "[System] SAA-VV-CE-001 Functional Allocation / Interface Analysis\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+
+  uut: "[PC] v1.0 S&A Backplane\nInterface Under Analysis" {
+    class: pc
+    direction: down
+
+    candidate_lc: "[LC] Implied Interface\nCandidate Register\nverification-only" {
+      class: lc
+      direction: down
+      enumerate: "[F] Enumerate 100% of implied\nCE candidates from constraints" { class: func }
+      normalize: "[F] Normalize each candidate\ninto owner / endpoint / protocol\n/ voltage / testpoint fields" { class: func }
+    }
+
+    power_lc: "[LC] Power Rail Interface\nAnalysis\nverification-only" {
+      class: lc
+      direction: down
+      check_5v: "[F] Check 5.0 ±0.1 V rail\nownership, endpoints, loads,\ntestpoint, and short/open evidence" { class: func }
+      check_3v3: "[F] Check 3.3 ±0.1 V rail\nownership, endpoints, loads,\ntestpoint, and short/open evidence" { class: func }
+    }
+
+    signal_lc: "[LC] Fast Signal Interface\nAnalysis\nverification-only" {
+      class: lc
+      direction: down
+      check_spi: "[F] Check SPI endpoint, direction,\nprotocol intent, and low-cap rationale" { class: func }
+      check_i2c: "[F] Check I2C bus ownership,\naddressing intent, pullup/capacitance\nrationale, and testpoint access" { class: func }
+      check_uart: "[F] Check UART endpoint,\nTX/RX direction, voltage level,\nand wrong-protocol risk" { class: func }
+    }
+
+    connector_lc: "[LC] Header / Servo Connector\nAnalysis\nverification-only" {
+      class: lc
+      direction: down
+      check_headers: "[F] Check ADS/AMS/OBCC/PDS\n2×6 pin numbers, endpoints,\nand swapped-pin controls" { class: func }
+      check_testpoints: "[F] Check critical-signal\ntestpoint access and labels" { class: func }
+      check_servo: "[F] Check PDM servo connector\npath, pinout, polarity, and miswire controls" { class: func }
+    }
+
+    gate_lc: "[LC] Analysis Disposition Gate\nverification-only" {
+      class: lc
+      direction: down
+      verify_ownership: "[F] Verify each interface has\ntraceable S&A CE or subsystem\nCE cross-reference" { class: func }
+      close_matrix: "[F] Close complete matrix or\nrecord model/evidence gaps" { class: func }
+      release_decision: "[F] Release pass/hold/fail\ndecision for report-by-reference" { class: func }
+    }
+  }
+
+  report_by_reference: "[C] Report-by-reference constraint:\nExecution report identifies this model,\nv1.0 baseline copy, evidence revisions,\ncompleted matrix, actual findings, deviations,\nanomalies, waivers, and pass/hold/fail rationale." {
+    class: note
+    shape: page
+  }
+
+  pass_fail: "[C] Pass/fail constraint:\nPass only when every implied interface has\ntraceable ownership, endpoints, direction/\nprotocol intent, voltage where applicable,\ntestpoint access, low-capacitance rationale\nwhere applicable, clean/dispositioned DRC/ERC,\nand no wrong protocol, swapped pin, rail\nshort/open, or servo miswire. Missing or\nambiguous S&A-owned CE = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\n100% design/interface review of implied\nbackplane CEs and released evidence.\nNo reliability demonstration or sample\npopulation claim is made by this analysis." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nChecks target swapped pins, missing\ntestpoints, excessive capacitance/rise time,\nrail short/open, wrong protocol allocation,\nambiguous direction, unowned net, and\nPDM servo connector miswire." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Evidence conditions:\nUse controlled netlist/pinout, released or\nwaived DRC/ERC, identified measurement\npackage, and named subsystem owner inputs.\nIf any source is stale or unavailable, classify\nthe affected interface hold until resolved." {
+    class: note
+    shape: page
+  }
+
+  trace: "[C] Traceability target:\nSAA-UC-BackplaneIntegration;\nSAA-FE-BackplaneMisMate;\nbackplane defined pin interface, rails,\ntestpoints, low-capacitance fast lines,\nand ERC/DRC clean constraints." {
+    class: note
+    shape: page
+  }
+}
+
+system.report_by_reference -> system.uut.gate_lc.release_decision { class: cstr }
+system.pass_fail -> system.uut.gate_lc.release_decision { class: cstr }
+system.pass_fail -> system.uut.gate_lc.verify_ownership { class: cstr }
+system.statistical -> system.uut.candidate_lc.enumerate { class: cstr }
+system.fault_hardening -> system.uut.signal_lc.check_i2c { class: cstr }
+system.fault_hardening -> system.uut.connector_lc.check_servo { class: cstr }
+system.conditions -> system.uut.candidate_lc.normalize { class: cstr }
+system.trace -> system.uut.gate_lc.release_decision { class: cstr }
+
+# Layout-only edges keep roles and UUT analysis functions readable.
+reviewer -> owners { style: { opacity: 0 } }
+owners -> netlist_tool { style: { opacity: 0 } }
+netlist_tool -> drc_erc_tool { style: { opacity: 0 } }
+drc_erc_tool -> measurement_package { style: { opacity: 0 } }
+measurement_package -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.uut.candidate_lc -> system.uut.power_lc { style: { opacity: 0 } }
+system.uut.power_lc -> system.uut.signal_lc { style: { opacity: 0 } }
+system.uut.signal_lc -> system.uut.connector_lc { style: { opacity: 0 } }
+system.uut.connector_lc -> system.uut.gate_lc { style: { opacity: 0 } }
+system.uut -> system.report_by_reference { style: { opacity: 0 } }
+system.report_by_reference -> system.pass_fail { style: { opacity: 0 } }
+system.pass_fail -> system.statistical { style: { opacity: 0 } }
+system.statistical -> system.fault_hardening { style: { opacity: 0 } }
+system.fault_hardening -> system.conditions { style: { opacity: 0 } }
+system.conditions -> system.trace { style: { opacity: 0 } }

@@ -1,0 +1,127 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-002 verification-only Functional Chain view.
+# Inspection/demonstration chain for 44 mm PCB accommodation, positive clearance, retention, keepouts and removal paths.
+# References cited in the rendered chain title: IVV, SAA-R1, SAA-R3, SAA-R4, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+fit_chain: "[Functional Chain] SAA-VV-CON-002 44 mm PCB Accommodation, Keepout and Removal-Path Screen\nRefs: IVV; SAA-R1; SAA-R3; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  select_gate: "[F] Operator/Witness: select\nv0.1 dummy-gauge readiness or\nv1.0 flight-PCB acceptance gate" { class: func }
+  identify_article: "[F] Operator: identify article,\nbaseline copy, ADS/AMS/OBCC/PDS\naccommodations and evidence folder" { class: func }
+  verify_calibration: "[F] Operator/Witness: verify\nfit gauge or flight PCB identity,\ncalipers/feeler gauges and U_C" { class: func }
+  record_ambient: "[F] Ambient meter: record\ntemperature and humidity before\ninsert/remove repetitions" { class: func }
+  inspect_pre_fit: "[F] Operator/Witness: inspect\nmodule bay, standoffs, screws,\nbackplane/header side and service path" { class: func }
+  select_next_module: "[F] Operator: select next\nmandatory accommodation\nADS, AMS, OBCC or PDS" { class: func }
+  insert_board: "[F] Operator: insert 44 mm gauge,\ndummy PCB or flight PCB through\nintended path with finger pressure only" { class: func }
+  measure_clearance: "[F] Calipers/feeler gauges:\nmeasure C_min and uncertainty at\nedges, fasteners, components and path" { class: func }
+  verify_retention: "[F] Operator/Witness: engage\nintended retention and check no stress,\nloose board, rocking or warped contact" { class: func }
+  inspect_interference: "[F] Keepout probe: inspect\nbackplane, headers, battery, stack screws,\ntop module, cap, parachute and servo" { class: func }
+  remove_board: "[F] Operator: remove board/gauge\nthrough intended path without snag,\nscrape, bent pin, blockage or damage" { class: func }
+  repeat_cycles: "[F] Cycle counter: repeat\nN ≥ 3 insert/remove screen cycles\nper accommodation" { class: func }
+  record_module_result: "[F] Repository: record per-module\nclearance, retention, keepout,\ncycle and anomaly result" { class: func }
+  loop_or_complete: "[F] Acceptance gate: continue\nuntil ADS/AMS/OBCC/PDS all have\nrecorded results, then evaluate gate" { class: func }
+  capture_evidence: "[F] Camera/Repository: capture\nphotos/video, raw readings, calculations\nand witness evidence" { class: func }
+  witness_decision: "[F] Safety / QA Witness: approve\npass, fail, hold or re-run" { class: func }
+  release_package: "[F] Evidence repository: release\nreport-by-reference accommodation record" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nADS/AMS/OBCC/PDS accommodations pass only when the 44 mm board/gauge inserts and\nremoves through the intended service path without force, prying, filing, board flex,\nscrape, snag, temporary hardware omission or damage; C_min - U_C > 0 at every\napplicable clearance; retention engages with no stress or looseness; no keepout,\ninterference or blocked removal path remains. Any open anomaly = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  version_scope: "[C] Version distinction:\nv0.1 uses calibrated dummy PCBs or fit gauges to close reusable module readiness.\nv1.0 uses ADS/AMS/OBCC/PDS flight PCBs when released for handling or final-equivalent\n44 mm gauges when flight boards are unavailable, with final-equivalence justified in evidence." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nThis chain inspects/demonstrates 100% of mandatory ADS/AMS/OBCC/PDS accommodations\nfor the selected gate. Clearance is a continuous measurement with expanded uncertainty.\nN ≥ 3 insert/remove cycles are workmanship screens only and do not support reliability\nclaims without a separate representative-trial plan." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nPrevent false pass from tolerance stack, warped print, undersized/unrepresentative\ndummy PCB, ignored measurement uncertainty, forced insertion, blocked removal path,\nretention boss stripping, hidden backplane/header/battery/top-module interference,\ntemporary omission, ambiguous video or lost raw readings." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Environmental/equipment condition:\nRecord ambient temperature/humidity before repetitions; hold if outside equipment or\nmaterial operating range or if drift invalidates clearance. Record gauge IDs, calibration,\noperator/witness identity and camera field of view before the first module is tested." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled modular-structure constraint; SAA-UC-IntegratedAssembly;\nSAA-FE-EnvelopeNonCompliance; SAA-FE-StructuralLoosening." {
+    class: note
+    shape: page
+  }
+}
+
+fit_chain.select_gate -> fit_chain.identify_article: "[FE] Selected SSIV /\nreadiness gate" { class: fe }
+fit_chain.identify_article -> fit_chain.verify_calibration: "[FE] Article ID,\nmodule list and evidence path" { class: fe }
+fit_chain.verify_calibration -> fit_chain.record_ambient: "[FE] Gauge/PCB IDs,\ncalibration and U_C" { class: fe }
+fit_chain.record_ambient -> fit_chain.inspect_pre_fit: "[FE] Ambient record\nand condition flag" { class: fe }
+fit_chain.inspect_pre_fit -> fit_chain.select_next_module: "[FE] Pre-fit condition,\nservice path and keepout notes" { class: fe }
+fit_chain.select_next_module -> fit_chain.insert_board: "[FE] Selected module\nADS/AMS/OBCC/PDS" { class: fe }
+fit_chain.insert_board -> fit_chain.measure_clearance: "[FE] No-force insertion\nresult" { class: fe }
+fit_chain.measure_clearance -> fit_chain.verify_retention: "[FE] C_min and U_C" { class: fe }
+fit_chain.verify_retention -> fit_chain.inspect_interference: "[FE] Retention and\nstress status" { class: fe }
+fit_chain.inspect_interference -> fit_chain.remove_board: "[FE] Keepout and\ninterference status" { class: fe }
+fit_chain.remove_board -> fit_chain.repeat_cycles: "[FE] Removal path status" { class: fe }
+fit_chain.repeat_cycles -> fit_chain.record_module_result: "[FE] Cycle-screen\ncompletion status" { class: fe }
+fit_chain.record_module_result -> fit_chain.loop_or_complete: "[FE] Per-module\npass/fail/hold result" { class: fe }
+fit_chain.loop_or_complete -> fit_chain.select_next_module: "[FE] Next module\nuntil ADS/AMS/OBCC/PDS complete" { class: fe }
+fit_chain.loop_or_complete -> fit_chain.capture_evidence: "[FE] All mandatory\naccommodations complete" { class: fe }
+fit_chain.capture_evidence -> fit_chain.witness_decision: "[FE] Measurement,\nphoto/video and anomaly evidence" { class: fe }
+fit_chain.witness_decision -> fit_chain.release_package: "[FE] Witness decision\nand release approval" { class: fe }
+
+# Layout-only edges keep notes after the executable chain flow.
+fit_chain.release_package -> fit_chain.pass_fail { style: { opacity: 0 } }
+fit_chain.pass_fail -> fit_chain.version_scope { style: { opacity: 0 } }
+fit_chain.version_scope -> fit_chain.statistical { style: { opacity: 0 } }
+fit_chain.statistical -> fit_chain.fault_hardening { style: { opacity: 0 } }
+fit_chain.fault_hardening -> fit_chain.conditions { style: { opacity: 0 } }
+fit_chain.conditions -> fit_chain.traceability { style: { opacity: 0 } }

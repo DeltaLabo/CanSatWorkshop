@@ -1,0 +1,100 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CE-001 verification-only Functional Chain view.
+# Analysis scenario for v1.0 backplane/interface component-exchange presence/absence.
+# References cited in the rendered chain title: IVV, SAA-R4, SAA-R5.
+# This chain defines the analysis activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+analysis_chain: "[Functional Chain] SAA-VV-CE-001 Backplane/Interface CE Presence-Absence Analysis\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  load_baseline: "[F] Load v1.0 baseline\nphysical view and\nbackplane constraints" { class: func }
+  enumerate_implied: "[F] Enumerate implied CEs:\n5 V, 3.3 V, pins,\ntestpoints, SPI/I2C/UART,\nPDM servo" { class: func }
+  collect_evidence: "[F] Collect pinout/netlist,\nERC/DRC, measurements,\nand subsystem CE refs" { class: func }
+  normalize_matrix: "[F] Normalize interface matrix:\nowner, endpoints, direction,\nprotocol, voltage, testpoint" { class: func }
+  check_ownership: "[F] Check traceable ownership:\nS&A CE need or subsystem\nmodel cross-reference" { class: func }
+  check_power: "[F] Check 5 V / 3.3 V rails:\nendpoints, levels,\ntestpoints, short/open" { class: func }
+  check_signals: "[F] Check SPI/I2C/UART:\nprotocol intent, direction,\nlow-cap/rise-time rationale,\nwrong-protocol risk" { class: func }
+  check_servo: "[F] Check PDM servo path:\nconnector pinout, polarity,\nendpoint, miswire risk" { class: func }
+  classify: "[F] Classify Pass / Hold / Fail\nand required model update" { class: func }
+  release_report: "[F] Release report-by-reference\nevidence package" { class: func }
+
+  pass_fail: "[C] Pass/fail constraint:\nPass only if 100% of implied power/signal/servo\ninterfaces have traceable ownership, endpoints,\ndirection/protocol intent, voltage level when\napplicable, testpoint access, low-cap rationale\nfor SPI/I2C/UART, and no wrong protocol,\nswapped pin, rail short/open, or servo miswire.\nMissing/ambiguous S&A-owned CE or owner = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\n100% design/interface review of implied v1.0\nbackplane CEs and released evidence sources.\nNo reliability demonstration or sampling claim;\nmeasurements are supporting evidence only." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nExplicitly screen swapped pins, missing testpoints,\nexcessive capacitance/rise time, rail short/open,\nwrong protocol on a multi-point interface, ambiguous\ndirection/ownership, and PDM servo connector miswire." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nSAA-UC-BackplaneIntegration; SAA-FE-BackplaneMisMate;\nv1.0 backplane defined pin interface, 5.0 ±0.1 V,\n3.3 ±0.1 V, testpoints, low-capacitance fast lines,\nand ERC + DRC clean constraints." {
+    class: note
+    shape: page
+  }
+}
+
+analysis_chain.load_baseline -> analysis_chain.enumerate_implied: "[FE] Baseline constraints\nand no-[CE] gap" { class: fe }
+analysis_chain.enumerate_implied -> analysis_chain.collect_evidence: "[FE] 100% candidate list" { class: fe }
+analysis_chain.collect_evidence -> analysis_chain.normalize_matrix: "[FE] Evidence package" { class: fe }
+analysis_chain.normalize_matrix -> analysis_chain.check_ownership: "[FE] Normalized matrix" { class: fe }
+analysis_chain.check_ownership -> analysis_chain.check_power: "[FE] Ownership disposition" { class: fe }
+analysis_chain.check_power -> analysis_chain.check_signals: "[FE] Rail findings" { class: fe }
+analysis_chain.check_signals -> analysis_chain.check_servo: "[FE] Fast-line findings" { class: fe }
+analysis_chain.check_servo -> analysis_chain.classify: "[FE] Servo-path findings" { class: fe }
+analysis_chain.classify -> analysis_chain.release_report: "[FE] Pass/hold/fail\ndecision and model updates" { class: fe }
+
+# Layout-only edges keep notes after the executable analysis flow.
+analysis_chain.release_report -> analysis_chain.pass_fail { style: { opacity: 0 } }
+analysis_chain.pass_fail -> analysis_chain.statistical { style: { opacity: 0 } }
+analysis_chain.statistical -> analysis_chain.fault_hardening { style: { opacity: 0 } }
+analysis_chain.fault_hardening -> analysis_chain.traceability { style: { opacity: 0 } }

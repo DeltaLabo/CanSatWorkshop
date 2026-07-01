@@ -1,0 +1,104 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-005 verification-only Functional Chain view.
+# Inspection/testing hold path for anomaly disposition and re-run control after retention screens.
+# References cited in the rendered chain title: IVV, SAA-R1, SAA-R2, SAA-R3, SAA-R4, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+anomaly_chain: "[Functional Chain] SAA-VV-CON-005 Retention Anomaly Disposition and Re-run Control\nRefs: IVV; SAA-R1; SAA-R2; SAA-R3; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  detect_trigger: "[F] Monitor/Inspector: detect\nforbidden event or hold trigger:\ndetachment, looseness, shift,\ncrack, unseat, rail/interface fail\nor uncontrolled level" { class: func }
+  safe_stop: "[F] Operator/Witness: stop or hold\nscreen safely, protect personnel and\navoid masking damage" { class: func }
+  preserve_evidence: "[F] Camera/Logger: preserve\nas-found photos, video, acceleration\nlogs, witness marks and fixture state" { class: func }
+  quarantine_article: "[F] Witness: quarantine UUT\nconfiguration and prevent unrecorded\nrework, tightening or reseating" { class: func }
+  classify_anomaly: "[F] Operator/Witness: classify\nbattery, screw/standoff, backplane,\nheader/connector, envelope, rail/signal,\nfixture or evidence anomaly" { class: func }
+  inspect_extent: "[F] Inspection kit / checker:\ninspect extent of movement, cracks,\nlooseness, shorts, opens and hidden\ndamage across all affected targets" { class: func }
+  decide_disposition: "[F] Review gate: decide fail,\nhold, accepted limitation, controlled\nrework, waiver rejection or re-run scope" { class: func }
+  update_records: "[F] Repository: update anomaly\nrecord, root-cause notes, limitations,\nwaiver/rework decision and evidence IDs" { class: func }
+  restore_or_rework: "[F] Operator: perform only\napproved rework, replacement, retorque,\nreseating or model/evidence correction" { class: func }
+  rerun_required_checks: "[F] Acceptance gate: re-run\npre-inspection, affected screen events,\npost-inspection and rail/interface checks\nas required by disposition" { class: func }
+  final_gate: "[F] QA Witness: release final\npass/fail/hold decision only after all\nrequired re-runs and evidence close" { class: func }
+  archive: "[F] Evidence repository: archive\nanomaly disposition, rework, re-run and\nfinal gate package" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nAny detachment, looseness, shifted witness mark, new gap, rattle, crack, bent\npin, connector unseat, backplane movement, post-test rail/signal failure,\nuncontrolled level, ambiguous video/log or unapproved rework is a hold/fail\ntrigger. A pass can be released only after approved disposition and successful\nre-run of all affected inspections, screen events and backplane checks." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nAn anomaly on a screened article invalidates any simple zero-failure screen\nclaim until dispositioned. Corrective re-runs are evidence for the corrected\nconfiguration only and do not become independent reliability trials unless the\ntrial plan predefines independence, representativeness and acceptance rules." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nThis chain prevents false pass from tightening screws after the fact, reseating\nconnectors before photos, ignoring hidden cracks, accepting battery slip as\nnormal, masking fixture over/under-test, reusing ambiguous evidence, or closing\na rail/interface failure without root-cause and re-run evidence." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled landing-impact, backplane and assembly/printing constraints;\nSAA-FE-StructuralLoosening; SAA-FE-LandingDamage;\nSAA-FE-BackplaneMisMate; SAA-UC-IntegratedAssembly." {
+    class: note
+    shape: page
+  }
+}
+
+anomaly_chain.detect_trigger -> anomaly_chain.safe_stop: "[FE] Hold trigger\nor forbidden event" { class: fe }
+anomaly_chain.safe_stop -> anomaly_chain.preserve_evidence: "[FE] Safe hold and\nas-found configuration" { class: fe }
+anomaly_chain.preserve_evidence -> anomaly_chain.quarantine_article: "[FE] As-found logs,\nphotos and witness state" { class: fe }
+anomaly_chain.quarantine_article -> anomaly_chain.classify_anomaly: "[FE] Controlled UUT\nand no-unrecorded-rework state" { class: fe }
+anomaly_chain.classify_anomaly -> anomaly_chain.inspect_extent: "[FE] Affected target\nand fault class" { class: fe }
+anomaly_chain.inspect_extent -> anomaly_chain.decide_disposition: "[FE] Extent of condition,\nrail/interface and hidden-damage status" { class: fe }
+anomaly_chain.decide_disposition -> anomaly_chain.update_records: "[FE] Disposition,\nwaiver/rework/re-run scope" { class: fe }
+anomaly_chain.update_records -> anomaly_chain.restore_or_rework: "[FE] Approved action\nor continuing hold" { class: fe }
+anomaly_chain.restore_or_rework -> anomaly_chain.rerun_required_checks: "[FE] Corrected\nconfiguration or evidence update" { class: fe }
+anomaly_chain.rerun_required_checks -> anomaly_chain.final_gate: "[FE] Re-run screen,\ninspection and interface results" { class: fe }
+anomaly_chain.final_gate -> anomaly_chain.archive: "[FE] Final decision and\nclosed evidence package" { class: fe }
+
+# Layout-only edges keep notes after the anomaly-disposition flow.
+anomaly_chain.archive -> anomaly_chain.pass_fail { style: { opacity: 0 } }
+anomaly_chain.pass_fail -> anomaly_chain.statistical { style: { opacity: 0 } }
+anomaly_chain.statistical -> anomaly_chain.fault_hardening { style: { opacity: 0 } }
+anomaly_chain.fault_hardening -> anomaly_chain.traceability { style: { opacity: 0 } }

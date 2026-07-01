@@ -1,0 +1,112 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-FC-001 verification-only Functional Chain view.
+# Demonstration/inspection scenario for v1.0 integrated fit, mass, envelope, and module accommodation.
+# References cited in the rendered chain title: IVV, SAA-R1, SAA-R3, SAA-R4, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+fit_chain: "[Functional Chain] SAA-VV-FC-001 Integrated Assembly Fit/Mass/Envelope Demonstration\nRefs: IVV; SAA-R1; SAA-R3; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  identify: "[F] Operator: identify v1.0\narticle, build record, and\nbaseline copy" { class: func }
+  confirm_config: "[F] Operator/Witness: confirm\nfull as-flown configuration\nis installed" { class: func }
+  record_ambient: "[F] Ambient meter: record\nworkshop temperature and humidity" { class: func }
+  verify_pcb_fit: "[F] Fit gauges: verify\nall Type 1 standard modules\nhave 44 mm × 44 mm PCB\naccommodation without forced fit" { class: func }
+  check_backplane: "[F] Operator: inspect\nbackplane placement, header mating,\nand cap/parachute/servo coexistence" { class: func }
+  can_gauge: "[F] Can gauge: demonstrate\nfree fit in Ø66.0 mm × H122.0 mm\nenvelope without force" { class: func }
+  measure_diameter: "[F] Caliper: measure\nmaximum diameter and U_D" { class: func }
+  measure_height: "[F] Height gauge: measure\nmaximum height and U_H" { class: func }
+  measure_mass: "[F] Scale: measure total\nas-flown mass and U_M" { class: func }
+  capture_evidence: "[F] Camera: capture\nconfiguration, gauge, and\nmeasurement evidence" { class: func }
+  apply_gate: "[F] Acceptance gate: apply\nguard bands and fit/interference\npass/fail criteria" { class: func }
+  witness_review: "[F] QA Witness: review\nresults and approve pass,\nfail, or hold" { class: func }
+  release_package: "[F] Evidence repository:\nrelease report-by-reference\npackage" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nDiameter + U_D ≤ 66.0 mm; height + U_H ≤ modeled 122.0 mm;\nmeasured mass + U_M < 350.0 g. All standard module/PCB accommodation\nchecks pass without forced fit; backplane remains in its 100 mm × 28 mm\nallocation; cap/parachute/servo/battery/backplane coexist with no integrated\ninterference. Evidence incomplete or any open anomaly = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  mass_note: "[C] Mass wording assumption:\n'<350 ±0.1 g' is interpreted as actual total mass < 350.0 g with\nmeasurement uncertainty guard band. If U_M = 0.1 g, indicated mass must be\n< 349.9 g; otherwise use the calibrated expanded uncertainty reported." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nThis chain measures 100% of the final v1.0 article. Diameter, height and mass\nare continuous measurements requiring reported expanded uncertainty. It makes\nno population reliability claim and no independent repeated-fit-cycle claim." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nFinal pass is allowed only in full as-flown configuration with battery,\nparachute, cap, servo, backplane, headers and PCBs present. No temporary\nomissions, alternate envelopes, relief cuts, external protrusion exceptions,\nor removed flight items may be used for a pass." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nSAA-UC-IntegratedAssembly; SAA-UC-BackplaneIntegration;\nSAA-UC-ParachuteClearance; SAA-FE-EnvelopeNonCompliance;\nSAA-FE-MassNonCompliance; SAA-FE-BackplaneMisMate; modeled envelope, mass,\nmodule, backplane and assembly constraints." {
+    class: note
+    shape: page
+  }
+}
+
+fit_chain.identify -> fit_chain.confirm_config: "[FE] Article and baseline\nidentified" { class: fe }
+fit_chain.confirm_config -> fit_chain.record_ambient: "[FE] Full configuration\nconfirmed" { class: fe }
+fit_chain.record_ambient -> fit_chain.verify_pcb_fit: "[FE] Ambient record\nand condition flag" { class: fe }
+fit_chain.verify_pcb_fit -> fit_chain.check_backplane: "[FE] Module / PCB\nfit status" { class: fe }
+fit_chain.check_backplane -> fit_chain.can_gauge: "[FE] Integrated\ninterference status" { class: fe }
+fit_chain.can_gauge -> fit_chain.measure_diameter: "[FE] Free-fit result" { class: fe }
+fit_chain.measure_diameter -> fit_chain.measure_height: "[FE] Diameter and U_D" { class: fe }
+fit_chain.measure_height -> fit_chain.measure_mass: "[FE] Height and U_H" { class: fe }
+fit_chain.measure_mass -> fit_chain.capture_evidence: "[FE] Mass and U_M" { class: fe }
+fit_chain.capture_evidence -> fit_chain.apply_gate: "[FE] Evidence and raw\nmeasurement package" { class: fe }
+fit_chain.apply_gate -> fit_chain.witness_review: "[FE] Pass/fail/hold\nrecommendation" { class: fe }
+fit_chain.witness_review -> fit_chain.release_package: "[FE] Witness decision\nand evidence release" { class: fe }
+
+# Layout-only edges keep notes after the executable chain flow.
+fit_chain.release_package -> fit_chain.pass_fail { style: { opacity: 0 } }
+fit_chain.pass_fail -> fit_chain.mass_note { style: { opacity: 0 } }
+fit_chain.mass_note -> fit_chain.statistical { style: { opacity: 0 } }
+fit_chain.statistical -> fit_chain.fault_hardening { style: { opacity: 0 } }
+fit_chain.fault_hardening -> fit_chain.traceability { style: { opacity: 0 } }

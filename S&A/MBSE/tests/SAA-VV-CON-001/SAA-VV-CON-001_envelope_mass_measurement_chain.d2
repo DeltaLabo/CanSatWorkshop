@@ -1,0 +1,118 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-001 verification-only Functional Chain view.
+# Inspection/testing chain for 355 ml envelope, diameter/height, and mass constraint verification.
+# References cited in the rendered chain title: IVV, SAA-R1, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+measurement_chain: "[Functional Chain] SAA-VV-CON-001 Envelope and Mass Constraint Measurement\nRefs: IVV; SAA-R1; SAA-R5" {
+  class: chain
+  direction: down
+
+  select_version: "[F] Operator/Witness: select\nv0.1 transition readiness or\nv1.0 flight readiness gate" { class: func }
+  identify_article: "[F] Operator: identify article,\nbuild record, baseline copy,\nand evidence folder" { class: func }
+  confirm_config: "[F] Operator/Witness: confirm\narticle configuration and ballast\nstate required for selected gate" { class: func }
+  verify_instruments: "[F] Operator/Witness: verify\ncalibration status for envelope gauge,\ncaliper/height gauge and scale" { class: func }
+  record_ambient: "[F] Ambient meter: record\ntemperature and humidity before\nmeasurement repetitions" { class: func }
+  free_fit: "[F] Envelope gauge: check free\nfit within Ø66.0 mm × H122.0 mm\nwithout force or protrusion exception" { class: func }
+  measure_diameter: "[F] Caliper: measure maximum\noutside diameter and expanded\nuncertainty U_D" { class: func }
+  measure_height: "[F] Height gauge: measure\nmaximum height and expanded\nuncertainty U_H" { class: func }
+  measure_mass: "[F] Scale: measure structural,\nballasted or as-flown mass and\nexpanded uncertainty U_M" { class: func }
+  apply_gate: "[F] Acceptance gate: apply\nversion-specific envelope and mass\nconstraints with uncertainty guard bands" { class: func }
+  capture_evidence: "[F] Camera/Repository: capture\nconfiguration, gauge, raw readings,\nuncertainties and calculation evidence" { class: func }
+  witness_decision: "[F] Safety / QA Witness: approve\npass, fail, hold, or re-run\nfor the selected gate" { class: func }
+  release_package: "[F] Evidence repository: release\nreport-by-reference package" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nDiameter passes only if D_max + U_D ≤ 66.0 mm. Height passes only if H_max + U_H ≤\n122.0 mm using the modeled 355 ml envelope unless a stricter requirement is confirmed\nbefore execution. v1.0 total mass passes only if measured mass + U_M < 350.0 g.\nAny forced gauge fit, missing calibration, missing evidence, open anomaly, or unresolved\nheight/mass interpretation = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  version_scope: "[C] Version distinction:\nv0.1 is a structural/module/backplane-volume transition gate; record reference or ballasted\nmass and envelope margin, but do not claim final flight mass closure unless final hardware\nand ballast state are present. v1.0 is the final as-flown acceptance gate with battery, PCBs,\nbackplane, cap, parachute, servo, connectors and required ballast installed." {
+    class: note
+    shape: page
+  }
+
+  mass_note: "[C] Mass wording assumption:\nThe modeled '<350 ±0.1 g' wording is ambiguous. This activity treats it conservatively as\nactual total mass < 350.0 g with a measurement uncertainty guard band. If U_M = 0.1 g,\nthe displayed mass must be < 349.9 g; otherwise use the calibrated expanded uncertainty." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nDiameter, height and mass are calibrated continuous measurements. The report must retain\nraw readings and expanded uncertainties. This chain is a 100% article measurement for the\nselected gate and makes no population reliability claim." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nPrevent false pass from missing flight items, battery/ballast mismatch, hidden protrusions,\nforced gauge insertion, measuring a non-maximum orientation, ignored uncertainty guard bands,\nexpired calibration, ambient effects, ambiguous photos, or lost raw readings." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled 355 ml envelope and mass constraint; SAA-FE-EnvelopeNonCompliance;\nSAA-FE-MassNonCompliance; SAA-UC-IntegratedAssembly." {
+    class: note
+    shape: page
+  }
+}
+
+measurement_chain.select_version -> measurement_chain.identify_article: "[FE] Selected SSIV /\nreadiness gate" { class: fe }
+measurement_chain.identify_article -> measurement_chain.confirm_config: "[FE] Article identity,\nbuild record and baseline" { class: fe }
+measurement_chain.confirm_config -> measurement_chain.verify_instruments: "[FE] Configuration and\nballast state" { class: fe }
+measurement_chain.verify_instruments -> measurement_chain.record_ambient: "[FE] Instrument IDs and\ncalibration status" { class: fe }
+measurement_chain.record_ambient -> measurement_chain.free_fit: "[FE] Ambient record\nand condition flag" { class: fe }
+measurement_chain.free_fit -> measurement_chain.measure_diameter: "[FE] Free-fit / no-force\ngauge result" { class: fe }
+measurement_chain.measure_diameter -> measurement_chain.measure_height: "[FE] Diameter and U_D" { class: fe }
+measurement_chain.measure_height -> measurement_chain.measure_mass: "[FE] Height and U_H" { class: fe }
+measurement_chain.measure_mass -> measurement_chain.apply_gate: "[FE] Mass and U_M" { class: fe }
+measurement_chain.apply_gate -> measurement_chain.capture_evidence: "[FE] Guard-banded\npass/fail/hold result" { class: fe }
+measurement_chain.capture_evidence -> measurement_chain.witness_decision: "[FE] Measurement and\nphoto/video evidence" { class: fe }
+measurement_chain.witness_decision -> measurement_chain.release_package: "[FE] Witness decision\nand release approval" { class: fe }
+
+# Layout-only edges keep notes after the executable chain flow.
+measurement_chain.release_package -> measurement_chain.pass_fail { style: { opacity: 0 } }
+measurement_chain.pass_fail -> measurement_chain.version_scope { style: { opacity: 0 } }
+measurement_chain.version_scope -> measurement_chain.mass_note { style: { opacity: 0 } }
+measurement_chain.mass_note -> measurement_chain.statistical { style: { opacity: 0 } }
+measurement_chain.statistical -> measurement_chain.fault_hardening { style: { opacity: 0 } }
+measurement_chain.fault_hardening -> measurement_chain.traceability { style: { opacity: 0 } }

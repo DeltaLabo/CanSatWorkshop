@@ -1,0 +1,104 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-003 verification-only Functional Chain view.
+# Low-capacitance SPI/I2C/UART fast-line analysis chain with optional measurement evidence.
+# References cited in the rendered chain title: IVV, SAA-R4, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+fast_line_chain: "[Functional Chain] SAA-VV-CON-003 Low-capacitance SPI/I2C/UART Analysis\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  collect_evidence: "[F] Reviewer: collect released\nnetlist, pinout, PCB layout,\nstackup,\ntrace lengths and connector data" { class: func }
+  identify_nets: "[F] Reviewer: identify every\nSPI, I2C and UART fast-line net on\nthe\nbackplane and connected headers" { class: func }
+  identify_modes: "[F] Reviewer: identify selected\nI2C mode, pull-ups, rail level,\nbus\nmembers and timing requirement" { class: func }
+  build_cap_budget: "[F] Reviewer: build capacitance\nbudget including traces, headers,\npads,\nmodule inputs and probe/testpoint\nloading" { class: func }
+  check_i2c_limits: "[F] Analyst: check I2C total\nbus capacitance and rise-time\nagainst\nreleased mode limit" { class: func }
+  check_spi_uart_margin: "[F] Analyst: check SPI/UART\nloading, topology and edge-rate\nmargin\nagainst design rationale" { class: func }
+  review_drc_si_warnings: "[F] Reviewer: review DRC,\nERC and SI/layout warnings\naffecting\nfast lines" { class: func }
+  optional_measurement: "[F] Scope/C-meter: measure or\nspot-check capacitance/rise time\nif the\nanalysis margin or evidence is\nambiguous" { class: func }
+  evaluate_testpoints: "[F] Reviewer: confirm fast-line\ntestpoints/probe pads do not\nviolate\nthe capacitance and loading budget" { class: func }
+  disposition_findings: "[F] Reviewer/operator:\ndisposition SI findings, waivers,\nredesign or required re-analysis" { class: func }
+  apply_analysis_gate: "[F] Acceptance gate: apply\nlow-capacitance pass/fail/hold\ncriteria" { class: func }
+  archive_analysis: "[F] Evidence repository: archive\nSI worksheet, calculations, plots\nand\ndispositions under\nresults/SAA-VV-CON-003" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nEvery SPI/I2C/UART fast-line net on the released backplane\nmust be identified and traced to the header/pinout/netlist\nevidence. I2C bus capacitance and rise time, including\nbackplane traces, headers, module inputs, pull-ups,\ntestpoints and probe loading, must be within the released\nselected-mode limit; if no mode/limit is released, the\nactivity is held until the limit is selected from\nSAA-R4/UM10204 or a stricter design authority. SPI and\nUART nets must have an accepted topology/loading/edge-rate\nrationale with no unresolved SI, DRC or ERC warnings.\nTestpoints must not invalidate the capacitance/loading\nbudget. Any unresolved excessive capacitance/rise-time,\nunowned fast-line net, missing layout data, ambiguous\nprobe loading or undispositioned warning = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nThis is a 100% analysis of all released SPI/I2C/UART\nbackplane fast-line nets and associated evidence, not a\npacket-delivery or reliability demonstration. Optional\nmeasurements are characterization unless a separate\nstatistical plan is approved." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nThe chain hardens against excessive I2C capacitance/rise\ntime, wrong pull-up/rail assumption, star or stub topology\nescape, swapped or unowned fast-line pinout,\nprobe/testpoint capacitance side effect, SPI/UART\noverloading, missing DRC/ERC warning disposition and\nevidence-control gaps." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled Backplane PCB low-capacitance SPI/I2C/UART and\nERC/DRC-clean constraints; SAA-UC-BackplaneIntegration;\nSAA-FE-BackplaneMisMate." {
+    class: note
+    shape: page
+  }
+}
+
+fast_line_chain.collect_evidence -> fast_line_chain.identify_nets: "[FE] Released layout,\nnetlist and pinout data" { class: fe }
+fast_line_chain.identify_nets -> fast_line_chain.identify_modes: "[FE] SPI/I2C/UART\nnet census" { class: fe }
+fast_line_chain.identify_modes -> fast_line_chain.build_cap_budget: "[FE] Mode, rail,\npull-up and timing\nassumptions" { class: fe }
+fast_line_chain.build_cap_budget -> fast_line_chain.check_i2c_limits: "[FE] Capacitance\nbudget" { class: fe }
+fast_line_chain.check_i2c_limits -> fast_line_chain.check_spi_uart_margin: "[FE] I2C capacitance /\nrise-time status" { class: fe }
+fast_line_chain.check_spi_uart_margin -> fast_line_chain.review_drc_si_warnings: "[FE] SPI/UART\nmargin status" { class: fe }
+fast_line_chain.review_drc_si_warnings -> fast_line_chain.optional_measurement: "[FE] Warning and\nmargin status" { class: fe }
+fast_line_chain.optional_measurement -> fast_line_chain.evaluate_testpoints: "[FE] Measured or\nanalyzed loading evidence" { class: fe }
+fast_line_chain.evaluate_testpoints -> fast_line_chain.disposition_findings: "[FE] Testpoint loading\nstatus" { class: fe }
+fast_line_chain.disposition_findings -> fast_line_chain.apply_analysis_gate: "[FE] Open/closed\nSI dispositions" { class: fe }
+fast_line_chain.apply_analysis_gate -> fast_line_chain.archive_analysis: "[FE] Analysis\npass/fail/hold decision" { class: fe }
+
+# Layout-only edges keep notes after the executable analysis flow.
+fast_line_chain.archive_analysis -> fast_line_chain.pass_fail { style: { opacity: 0 } }
+fast_line_chain.pass_fail -> fast_line_chain.statistical { style: { opacity: 0 } }
+fast_line_chain.statistical -> fast_line_chain.fault_hardening { style: { opacity: 0 } }
+fast_line_chain.fault_hardening -> fast_line_chain.traceability { style: { opacity: 0 } }

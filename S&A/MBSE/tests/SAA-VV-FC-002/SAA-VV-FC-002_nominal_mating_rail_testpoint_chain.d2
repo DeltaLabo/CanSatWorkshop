@@ -1,0 +1,120 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-FC-002 verification-only Functional Chain view.
+# Nominal demonstration/testing scenario for v1.0 backplane mating, rail checks, testpoint access, and evidence logging.
+# References cited in the rendered chain title: IVV, SAA-R4, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+nominal_chain: "[Functional Chain] SAA-VV-FC-002 Nominal Backplane Mating / Rail-Testpoint Access Demonstration-Test\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  identify: "[F] Operator: identify v1.0\narticle, build record, baseline copy,\nand SAA-VV-FC-002 definition" { class: func }
+  record_ambient: "[F] Ambient meter: record\ntemperature, humidity, ESD state,\nand tool/calibration IDs" { class: func }
+  set_current_limit: "[F] Bench supply: set\n5 V / 3.3 V voltage and\ncurrent limits with output off" { class: func }
+  configure_load: "[F] Operator: connect campaign\nsafe load or document controlled\nno-load condition" { class: func }
+  align_fixture: "[F] Fixture: align backplane\nwith ADS/AMS/OBCC/PDS headers\nand PDM servo connector" { class: func }
+  mate_backplane: "[F] Operator: seat perpendicular\nbackplane and mate all modeled\nheaders/connectors without force" { class: func }
+  inspect_seating: "[F] Operator/Witness: inspect\nflushness, orientation, no bent pins,\nno partial seat, no connector damage" { class: func }
+  continuity_check: "[F] Continuity tester: check\n100% required rail/testpoint/critical\nendpoint continuity and isolation" { class: func }
+  enable_power: "[F] Bench supply: enable\ncurrent-limited safe power only\nafter continuity pass" { class: func }
+  measure_5v: "[F] DMM/DAQ: measure 5.0 V rail\nat required testpoints" { class: func }
+  measure_3v3: "[F] DMM/DAQ: measure 3.3 V rail\nat required testpoints" { class: func }
+  probe_testpoints: "[F] Probe set: demonstrate\nrequired rail and critical signal\ntestpoints are reachable" { class: func }
+  probe_fast_lines: "[F] Scope/logic analyzer: confirm\ncritical SPI/I2C/UART access is\nnon-invasive or record dependency" { class: func }
+  capture_evidence: "[F] Camera / DAQ: capture\nseating, pin, probe, rail, and\nreading evidence" { class: func }
+  apply_gate: "[F] Acceptance gate: apply\nmating, continuity, rail, testpoint,\nand evidence pass/fail criteria" { class: func }
+  witness_review: "[F] QA Witness: approve\npass, fail, or execution hold" { class: func }
+  release_package: "[F] Evidence repository: release\nreport-by-reference package under\nresults/SAA-VV-FC-002" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nBackplane seats perpendicularly and mates ADS, AMS, OBCC, PDS 2 mm 2×6 headers and the PDM servo connector to the modeled orientation/alignment with no forced insertion, bent pins, connector damage, partial seat, or wrong orientation. 100% required continuity/isolation checks show no short/open/swapped endpoint anomaly. Required testpoints are reachable. With current limit set and safe load applied or no-load documented, measured rails are 5.0 ±0.1 V and 3.3 ±0.1 V. Missing evidence or any open anomaly = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nThis chain performs a 100% check of required nets, rails, headers/connectors, and required testpoints for the v1.0 article. Repeated mate/demate cycles may screen handling robustness but do not demonstrate connector-cycle reliability unless an approved independent statistical plan is referenced." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nThe nominal chain blocks false pass by requiring de-energized mating, pre-power continuity/isolation, current limits before power, witness no-force inspection, and hold on bent pins, wrong orientation, inaccessible testpoints, short/open/swap, rail drop, overcurrent, or unresolved fast-line loading concern." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Environmental/equipment conditions:\nRecord ambient temperature/humidity, ESD control, probe condition, instrument calibration status, supply current limits, safe-load value or no-load rationale, and all raw readings. De-energize before mate/demate and before continuity/isolation checks." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nSAA-UC-BackplaneIntegration; SAA-FE-BackplaneMisMate; v1.0 Backplane PCB constraints for defined pin interface, 5.0 ±0.1 V, 3.3 ±0.1 V, testpoints, low-capacitance SPI/I2C/UART, and ERC + DRC clean." {
+    class: note
+    shape: page
+  }
+}
+
+nominal_chain.identify -> nominal_chain.record_ambient: "[FE] Article/baseline\nidentified" { class: fe }
+nominal_chain.record_ambient -> nominal_chain.set_current_limit: "[FE] Controlled setup\nand instrument status" { class: fe }
+nominal_chain.set_current_limit -> nominal_chain.configure_load: "[FE] Output off,\nlimits set" { class: fe }
+nominal_chain.configure_load -> nominal_chain.align_fixture: "[FE] Safe-load or\nno-load condition" { class: fe }
+nominal_chain.align_fixture -> nominal_chain.mate_backplane: "[FE] Connector\nalignment datum" { class: fe }
+nominal_chain.mate_backplane -> nominal_chain.inspect_seating: "[FE] Mated state" { class: fe }
+nominal_chain.inspect_seating -> nominal_chain.continuity_check: "[FE] Seating/no-force\ninspection result" { class: fe }
+nominal_chain.continuity_check -> nominal_chain.enable_power: "[FE] Continuity pass\nor power inhibit" { class: fe }
+nominal_chain.enable_power -> nominal_chain.measure_5v: "[FE] Current-limited\nrail enabled" { class: fe }
+nominal_chain.measure_5v -> nominal_chain.measure_3v3: "[FE] 5 V reading" { class: fe }
+nominal_chain.measure_3v3 -> nominal_chain.probe_testpoints: "[FE] 3.3 V reading" { class: fe }
+nominal_chain.probe_testpoints -> nominal_chain.probe_fast_lines: "[FE] Testpoint\nreachability status" { class: fe }
+nominal_chain.probe_fast_lines -> nominal_chain.capture_evidence: "[FE] Fast-line access\nstatus / dependency" { class: fe }
+nominal_chain.capture_evidence -> nominal_chain.apply_gate: "[FE] Evidence and raw\nmeasurement package" { class: fe }
+nominal_chain.apply_gate -> nominal_chain.witness_review: "[FE] Pass/fail/hold\nrecommendation" { class: fe }
+nominal_chain.witness_review -> nominal_chain.release_package: "[FE] Witness decision\nand evidence release" { class: fe }
+
+# Layout-only edges keep notes after the executable chain flow.
+nominal_chain.release_package -> nominal_chain.pass_fail { style: { opacity: 0 } }
+nominal_chain.pass_fail -> nominal_chain.statistical { style: { opacity: 0 } }
+nominal_chain.statistical -> nominal_chain.fault_hardening { style: { opacity: 0 } }
+nominal_chain.fault_hardening -> nominal_chain.conditions { style: { opacity: 0 } }
+nominal_chain.conditions -> nominal_chain.traceability { style: { opacity: 0 } }

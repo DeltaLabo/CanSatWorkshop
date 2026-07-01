@@ -1,0 +1,185 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-005 verification-only Physical Architecture PV2.
+# Logical/evidence interface view for v1.0 retention under vibration/drop/landing-style loads.
+# References cited in the rendered system title: IVV, SAA-R1, SAA-R2, SAA-R3, SAA-R4, SAA-R5.
+# These logical components and component exchanges define verification evidence flow only; they are not baseline S&A design exchanges.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" { class: ea }
+witness: "[EA] Safety / QA Witness" { class: ea }
+model_baseline: "[EA] Baseline D2 Copies\nv0.1 and v1.0" { class: ea }
+screen_definition_source: "[EA] Tailored Environmental\nScreen Definition\nvibration, drop, proof load" { class: ea }
+fixture_logger: "[EA] Fixture, Accelerometer\nand Event Logger Records" { class: ea }
+inspection_package: "[EA] Retention Inspection\nChecklists and Photos" { class: ea }
+scale_envelope_package: "[EA] Scale / Envelope\nMeasurement Records" { class: ea }
+backplane_checkout_package: "[EA] Backplane Rail /\nContinuity / Interface\nCheck Records" { class: ea }
+statistical_authority: "[EA] Statistical Claim /\nTrial-plan Authority" { class: ea }
+repo: "[EA] Evidence Repository\nresults/SAA-VV-CON-005" { class: ea }
+
+system: "[System] SAA-VV-CON-005 Logical Evidence Interface\nRefs: IVV; SAA-R1; SAA-R2; SAA-R3; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+
+  verification_boundary: "[PC] S&A v1.0 Retention Screen\nVerification Boundary\nverification-only" {
+    class: pc
+    direction: down
+
+    baseline_scope: "[LC] Baseline and Article\nConfiguration Record\nverification-only" { class: lc }
+    target_census: "[LC] Target PC/PL/Interface\nCensus\nverification-only" { class: lc }
+    preinspection_record: "[LC] Pre-screen Retention\nInspection Record\nverification-only" { class: lc }
+    screen_configuration: "[LC] Tailored Screen\nConfiguration Record\nverification-only" { class: lc }
+    fixture_coupling_record: "[LC] Fixture Coupling,\nAxis and Orientation Record\nverification-only" { class: lc }
+    execution_log: "[LC] Screen Execution and\nForbidden-event Log\nverification-only" { class: lc }
+    acceleration_record: "[LC] Acceleration / Event\nTime-history Record\nverification-only" { class: lc }
+    postinspection_record: "[LC] Post-screen Retention\nInspection Record\nverification-only" { class: lc }
+    movement_matrix: "[LC] Battery / PCB / Backplane\nMovement Acceptance Matrix\nverification-only" { class: lc }
+    envelope_mass_record: "[LC] Post-screen Envelope,\nMass and Part-census Record\nverification-only" { class: lc }
+    rail_interface_record: "[LC] Backplane Rail,\nContinuity and Interface Check\nverification-only" { class: lc }
+    statistical_record: "[LC] Statistical Significance\nand Claim-limitation Record\nverification-only" { class: lc }
+    fault_record: "[LC] Fault-hardening and\nAnomaly Disposition Record\nverification-only" { class: lc }
+    acceptance_gate: "[LC] Retention Screen\nAcceptance Gate\nverification-only" { class: lc }
+    evidence_package: "[LC] Report-by-reference\nEvidence Package\nverification-only" { class: lc }
+  }
+
+  scope_note: "[C] Verification-only scope:\nThese CEs carry baseline-selection, screen-definition, pre/post inspection,\nmovement, rail/interface, statistical-basis and evidence data for SAA-VV-CON-005.\nThey do not create baseline S&A component exchanges. The baseline architecture\nis copied unchanged under baseline/." {
+    class: note
+    shape: page
+  }
+
+  pass_fail: "[C] Pass/fail evidence required:\nNo retained mass detaches; no stack screw, PCB standoff/screw, battery fixture,\nbackplane fixture, ADS/AMS/OBCC/PDS header or PDM Servo Connector loosens,\nunseats, cracks, bends or shifts outside the approved acceptance threshold;\npost-screen envelope/mass/part-census, PC/PL inspection and backplane rail /\ncontinuity / interface checks pass; all limitations and anomalies are closed or\nexplicitly held." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nThis is a v1.0 article environmental screen unless an independent article/trial\nplan is approved. Pre/post inspection is a mandatory 100% census of every target\nPC, PL and interface on the screened article. Repeated axes, orientations or\nlevels on one article are not independent reliability trials unless justified." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nRecords explicitly screen heavy battery detachment, stack-screw loosening,\nPCB/standoff movement, header or PDM-servo-connector unseat, backplane movement,\nhidden cracks, bent pins, post-test rail/signal failure, unsafe fixture coupling,\nambiguous acceleration/video data and evidence-control escape." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability targets:\nModeled landing-impact, envelope/mass, backplane and assembly/printing\nconstraints; SAA-UC-IntegratedAssembly; SAA-UC-BackplaneIntegration;\nSAA-FE-StructuralLoosening; SAA-FE-LandingDamage; SAA-FE-BackplaneMisMate;\nSAA-FE-EnvelopeNonCompliance." {
+    class: note
+    shape: page
+  }
+}
+
+operator -> system.verification_boundary.baseline_scope: "[CE] Article ID,\nbuild record, selected v1.0 gate\nand evidence path" { class: ce }
+model_baseline -> system.verification_boundary.baseline_scope: "[CE] Frozen v0.1/v1.0\nbaseline copies and v1.0\nsource context" { class: ce }
+operator -> system.verification_boundary.target_census: "[CE] Target battery,\nPCB, backplane, connector and\nfixture locations" { class: ce }
+inspection_package -> system.verification_boundary.preinspection_record: "[CE] Pre-screen photos,\nwitness marks and torque/gap\ninspection status" { class: ce }
+screen_definition_source -> system.verification_boundary.screen_configuration: "[CE] Approved tailored\nlevels, axes, orientations,\ndurations and limitations" { class: ce }
+fixture_logger -> system.verification_boundary.fixture_coupling_record: "[CE] Fixture coupling,\nmounting and release setup" { class: ce }
+fixture_logger -> system.verification_boundary.execution_log: "[CE] Screen start/stop,\nabort and forbidden-event log" { class: ce }
+fixture_logger -> system.verification_boundary.acceleration_record: "[CE] Shock/vibration\nmarker or time-history data" { class: ce }
+inspection_package -> system.verification_boundary.postinspection_record: "[CE] Post-screen photos,\nwitness marks, gap and looseness\ninspection status" { class: ce }
+inspection_package -> system.verification_boundary.movement_matrix: "[CE] Measured or observed\nbattery/PCB/backplane movement" { class: ce }
+scale_envelope_package -> system.verification_boundary.envelope_mass_record: "[CE] Post-screen mass,\npart census and envelope fit data" { class: ce }
+backplane_checkout_package -> system.verification_boundary.rail_interface_record: "[CE] Continuity, isolation,\nrail and interface results" { class: ce }
+statistical_authority -> system.verification_boundary.statistical_record: "[CE] Screen-only basis or\napproved independent trial plan" { class: ce }
+witness -> system.verification_boundary.acceptance_gate: "[CE] Witness pass, fail,\nhold or re-run decision" { class: ce }
+
+system.verification_boundary.baseline_scope -> system.verification_boundary.target_census: "[CE] v1.0 target PC/PL\nand interface inventory" { class: ce }
+system.verification_boundary.target_census -> system.verification_boundary.preinspection_record: "[CE] 100% pre-screen\ninspection checklist" { class: ce }
+system.verification_boundary.preinspection_record -> system.verification_boundary.screen_configuration: "[CE] Article accepted\nfor screen or pre-hold" { class: ce }
+system.verification_boundary.screen_configuration -> system.verification_boundary.fixture_coupling_record: "[CE] Required coupling,\naxis and orientation setup" { class: ce }
+system.verification_boundary.fixture_coupling_record -> system.verification_boundary.execution_log: "[CE] Configured UUT\nready for screen" { class: ce }
+system.verification_boundary.execution_log -> system.verification_boundary.acceleration_record: "[CE] Executed event\nand monitor markers" { class: ce }
+system.verification_boundary.acceleration_record -> system.verification_boundary.postinspection_record: "[CE] As-run level,\nabort and validity status" { class: ce }
+system.verification_boundary.postinspection_record -> system.verification_boundary.movement_matrix: "[CE] Retention status,\nwitness-mark shifts and gaps" { class: ce }
+system.verification_boundary.movement_matrix -> system.verification_boundary.envelope_mass_record: "[CE] Movement status\nfor envelope/mass closure" { class: ce }
+system.verification_boundary.movement_matrix -> system.verification_boundary.rail_interface_record: "[CE] Backplane/header/\nconnector movement dependencies" { class: ce }
+system.verification_boundary.rail_interface_record -> system.verification_boundary.fault_record: "[CE] Rail/signal pass/fail\nand hidden-fault triggers" { class: ce }
+system.verification_boundary.postinspection_record -> system.verification_boundary.fault_record: "[CE] Crack, detachment,\nloosening or anomaly records" { class: ce }
+system.verification_boundary.execution_log -> system.verification_boundary.statistical_record: "[CE] Number of articles,\naxes, orientations and repeats" { class: ce }
+system.verification_boundary.statistical_record -> system.verification_boundary.acceptance_gate: "[CE] Screen limitation or\napproved reliability claim" { class: ce }
+system.verification_boundary.envelope_mass_record -> system.verification_boundary.acceptance_gate: "[CE] Envelope, mass and\npart-census status" { class: ce }
+system.verification_boundary.rail_interface_record -> system.verification_boundary.acceptance_gate: "[CE] Backplane / rail /\ninterface status" { class: ce }
+system.verification_boundary.fault_record -> system.verification_boundary.acceptance_gate: "[CE] Open/closed anomaly,\nwaiver and re-run status" { class: ce }
+system.verification_boundary.acceptance_gate -> system.verification_boundary.evidence_package: "[CE] Accepted or held\nreport package" { class: ce }
+system.verification_boundary.evidence_package -> repo: "[CE] Released report-by-reference\npackage" { class: ce }
+system.verification_boundary.fault_record -> repo: "[CE] Photos/video, logs,\nwaivers and re-run evidence" { class: ce }
+
+system.scope_note -> system.verification_boundary.baseline_scope { class: cstr }
+system.pass_fail -> system.verification_boundary.acceptance_gate { class: cstr }
+system.pass_fail -> system.verification_boundary.movement_matrix { class: cstr }
+system.pass_fail -> system.verification_boundary.rail_interface_record { class: cstr }
+system.statistical -> system.verification_boundary.statistical_record { class: cstr }
+system.fault_hardening -> system.verification_boundary.fault_record { class: cstr }
+system.traceability -> system.verification_boundary.acceptance_gate { class: cstr }
+
+# Layout-only edges keep sources, records, acceptance gate and notes readable.
+operator -> witness { style: { opacity: 0 } }
+witness -> model_baseline { style: { opacity: 0 } }
+model_baseline -> screen_definition_source { style: { opacity: 0 } }
+screen_definition_source -> fixture_logger { style: { opacity: 0 } }
+fixture_logger -> inspection_package { style: { opacity: 0 } }
+inspection_package -> scale_envelope_package { style: { opacity: 0 } }
+scale_envelope_package -> backplane_checkout_package { style: { opacity: 0 } }
+backplane_checkout_package -> statistical_authority { style: { opacity: 0 } }
+statistical_authority -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.verification_boundary.baseline_scope -> system.verification_boundary.target_census { style: { opacity: 0 } }
+system.verification_boundary.target_census -> system.verification_boundary.preinspection_record { style: { opacity: 0 } }
+system.verification_boundary.preinspection_record -> system.verification_boundary.screen_configuration { style: { opacity: 0 } }
+system.verification_boundary.screen_configuration -> system.verification_boundary.fixture_coupling_record { style: { opacity: 0 } }
+system.verification_boundary.fixture_coupling_record -> system.verification_boundary.execution_log { style: { opacity: 0 } }
+system.verification_boundary.execution_log -> system.verification_boundary.acceleration_record { style: { opacity: 0 } }
+system.verification_boundary.acceleration_record -> system.verification_boundary.postinspection_record { style: { opacity: 0 } }
+system.verification_boundary.postinspection_record -> system.verification_boundary.movement_matrix { style: { opacity: 0 } }
+system.verification_boundary.movement_matrix -> system.verification_boundary.envelope_mass_record { style: { opacity: 0 } }
+system.verification_boundary.envelope_mass_record -> system.verification_boundary.rail_interface_record { style: { opacity: 0 } }
+system.verification_boundary.rail_interface_record -> system.verification_boundary.statistical_record { style: { opacity: 0 } }
+system.verification_boundary.statistical_record -> system.verification_boundary.fault_record { style: { opacity: 0 } }
+system.verification_boundary.fault_record -> system.verification_boundary.acceptance_gate { style: { opacity: 0 } }
+system.verification_boundary.acceptance_gate -> system.verification_boundary.evidence_package { style: { opacity: 0 } }
+system.verification_boundary -> system.scope_note { style: { opacity: 0 } }
+system.scope_note -> system.pass_fail { style: { opacity: 0 } }
+system.pass_fail -> system.statistical { style: { opacity: 0 } }
+system.statistical -> system.fault_hardening { style: { opacity: 0 } }
+system.fault_hardening -> system.traceability { style: { opacity: 0 } }

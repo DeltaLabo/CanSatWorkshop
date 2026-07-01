@@ -1,0 +1,167 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-FC-001 verification-only Physical Architecture PV2.
+# Logical/interface view for fit, mass, envelope, configuration, and evidence exchanges.
+# References cited in the rendered system title: IVV, SAA-R1, SAA-R3, SAA-R4, SAA-R5.
+# These logical components and exchanges define the verification means only; they are not baseline S&A design exchanges.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" { class: ea }
+witness: "[EA] QA Witness" { class: ea }
+envelope_gauge: "[EA] 355 ml Envelope /\nCan Gauge" { class: ea }
+caliper_height: "[EA] Calibrated Caliper /\nHeight Gauge" { class: ea }
+scale: "[EA] Calibrated Scale" { class: ea }
+pcb_fit_gauges: "[EA] PCB Fit Gauges /\nDummy PCBs" { class: ea }
+camera: "[EA] Calibrated Camera /\nEvidence Light Box" { class: ea }
+ambient_meter: "[EA] Ambient Thermo-\nHygrometer" { class: ea }
+repo: "[EA] Evidence Repository\nresults/SAA-VV-FC-001" { class: ea }
+
+system: "[System] SAA-VV-FC-001 Logical Measurement / Evidence Exchange\nRefs: IVV; SAA-R1; SAA-R3; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] v1.0 CanSat Assembly\nverification boundary" {
+    class: pc
+    direction: right
+
+    configuration_lc: "[LC] As-Flown Configuration\nRecord\nverification-only" { class: lc }
+    measurement_lc: "[LC] Envelope and Mass\nMeasurement Record\nverification-only" { class: lc }
+
+    standard_stack: "[PC] Standard Carrier\nModule Stack" {
+      class: pc
+      direction: down
+      module_fit_lc: "[LC] Module / PCB\nFit Status\nverification-only" { class: lc }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+      backplane_lc: "[LC] Backplane Placement\nand Header-Mating Status\nverification-only" { class: lc }
+    }
+
+    parachute_module: "[PC] Parachute / Top\nModule" {
+      class: pc
+      direction: down
+      coexist_lc: "[LC] Cap / Parachute /\nServo Coexistence Status\nverification-only" { class: lc }
+    }
+
+    anomaly_lc: "[LC] Anomaly Disposition\nRecord\nverification-only" { class: lc }
+    evidence_lc: "[LC] Fit Demonstration\nEvidence Package\nverification-only" { class: lc }
+    acceptance_lc: "[LC] Integrated Fit / Mass /\nEnvelope Acceptance Gate\nverification-only" { class: lc }
+  }
+
+  verification_scope: "[C] Verification-only CEs:\nThese exchanges carry measurement,\nevidence, and QA-control information\nfor SAA-VV-FC-001 only. They do not\nclaim baseline S&A component exchanges." {
+    class: note
+    shape: page
+  }
+
+  pass_fail: "[C] Pass/fail data required:\nDiameter + U_D ≤ 66.0 mm;\nheight + U_H ≤ modeled 122.0 mm;\nmeasured mass + U_M < 350.0 g;\nall 44 mm × 44 mm module/PCB fit\nchecks pass without forced fit;\nbackplane/cap/parachute/servo/battery\ncoexist with no integrated interference;\nall evidence and anomalies are closed." {
+    class: note
+    shape: page
+  }
+
+  viewpoints: "[C] Viewpoints carried in record:\nStat = 100% final article measurement,\ncontinuous measurement uncertainty,\nno population reliability claim.\nFault hardening = full as-flown\nconfiguration with no temporary omissions\nor external exceptions." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nSAA-UC-IntegratedAssembly;\nSAA-UC-BackplaneIntegration;\nSAA-UC-ParachuteClearance;\nSAA-FE-EnvelopeNonCompliance;\nSAA-FE-MassNonCompliance;\nSAA-FE-BackplaneMisMate;\nmodeled envelope, mass, module,\nbackplane and assembly constraints." {
+    class: note
+    shape: page
+  }
+}
+
+operator -> system.cansat.configuration_lc: "[CE] Article ID, build record,\nbaseline selection" { class: ce }
+operator -> system.cansat.anomaly_lc: "[CE] Observed exceptions\nand operator notes" { class: ce }
+witness -> system.cansat.acceptance_lc: "[CE] Witness review,\napproval, hold, or fail" { class: ce }
+
+envelope_gauge -> system.cansat.measurement_lc: "[CE] Free-fit / no-force\ncan gauge result" { class: ce }
+caliper_height -> system.cansat.measurement_lc: "[CE] Max diameter, height,\nU_D, U_H" { class: ce }
+scale -> system.cansat.measurement_lc: "[CE] Mass reading,\nU_M, calibration status" { class: ce }
+pcb_fit_gauges -> system.cansat.standard_stack.module_fit_lc: "[CE] 44 mm × 44 mm\nfit status by Type 1\nstandard module" { class: ce }
+camera -> system.cansat.evidence_lc: "[CE] Photos/video and\nmeasurement context" { class: ce }
+ambient_meter -> system.cansat.measurement_lc: "[CE] Ambient temperature,\nhumidity, condition flag" { class: ce }
+
+system.cansat.configuration_lc -> system.cansat.measurement_lc: "[CE] Confirmed full\nas-flown configuration" { class: ce }
+system.cansat.configuration_lc -> system.cansat.standard_stack.module_fit_lc: "[CE] Installed PCB / dummy\nfit-gauge configuration" { class: ce }
+system.cansat.configuration_lc -> system.cansat.backplane_pcb.backplane_lc: "[CE] Backplane and header\nconfiguration record" { class: ce }
+system.cansat.configuration_lc -> system.cansat.parachute_module.coexist_lc: "[CE] Cap/parachute/servo\nconfiguration record" { class: ce }
+system.cansat.measurement_lc -> system.cansat.acceptance_lc: "[CE] Guard-banded\nmeasurement results" { class: ce }
+system.cansat.standard_stack.module_fit_lc -> system.cansat.acceptance_lc: "[CE] Module / PCB\naccommodation result" { class: ce }
+system.cansat.backplane_pcb.backplane_lc -> system.cansat.acceptance_lc: "[CE] Backplane placement\nand mating result" { class: ce }
+system.cansat.parachute_module.coexist_lc -> system.cansat.acceptance_lc: "[CE] Coexistence /\ninterference result" { class: ce }
+system.cansat.anomaly_lc -> system.cansat.acceptance_lc: "[CE] Closed or open\nanomaly disposition" { class: ce }
+system.cansat.evidence_lc -> system.cansat.acceptance_lc: "[CE] Evidence completeness\nstatus" { class: ce }
+system.cansat.acceptance_lc -> repo: "[CE] Released report-by-reference\npackage" { class: ce }
+system.cansat.anomaly_lc -> repo: "[CE] Anomaly records,\nwaivers, rework evidence" { class: ce }
+
+system.verification_scope -> system.cansat.configuration_lc { class: cstr }
+system.pass_fail -> system.cansat.acceptance_lc { class: cstr }
+system.pass_fail -> system.cansat.measurement_lc { class: cstr }
+system.pass_fail -> system.cansat.standard_stack.module_fit_lc { class: cstr }
+system.pass_fail -> system.cansat.backplane_pcb.backplane_lc { class: cstr }
+system.pass_fail -> system.cansat.parachute_module.coexist_lc { class: cstr }
+system.viewpoints -> system.cansat.acceptance_lc { class: cstr }
+system.traceability -> system.cansat.acceptance_lc { class: cstr }
+
+# Layout-only edges keep actors and record components in a readable order.
+operator -> witness { style: { opacity: 0 } }
+witness -> envelope_gauge { style: { opacity: 0 } }
+envelope_gauge -> caliper_height { style: { opacity: 0 } }
+caliper_height -> scale { style: { opacity: 0 } }
+scale -> pcb_fit_gauges { style: { opacity: 0 } }
+pcb_fit_gauges -> camera { style: { opacity: 0 } }
+camera -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.cansat.configuration_lc -> system.cansat.measurement_lc { style: { opacity: 0 } }
+system.cansat.measurement_lc -> system.cansat.standard_stack { style: { opacity: 0 } }
+system.cansat.standard_stack -> system.cansat.backplane_pcb { style: { opacity: 0 } }
+system.cansat.backplane_pcb -> system.cansat.parachute_module { style: { opacity: 0 } }
+system.cansat.parachute_module -> system.cansat.anomaly_lc { style: { opacity: 0 } }
+system.cansat.anomaly_lc -> system.cansat.evidence_lc { style: { opacity: 0 } }
+system.cansat.evidence_lc -> system.cansat.acceptance_lc { style: { opacity: 0 } }
+system.verification_scope -> system.pass_fail { style: { opacity: 0 } }
+system.pass_fail -> system.viewpoints { style: { opacity: 0 } }
+system.viewpoints -> system.traceability { style: { opacity: 0 } }

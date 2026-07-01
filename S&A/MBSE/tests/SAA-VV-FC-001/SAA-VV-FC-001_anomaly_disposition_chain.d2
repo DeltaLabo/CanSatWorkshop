@@ -1,0 +1,104 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-FC-001 verification-only Functional Chain view.
+# Anomaly disposition scenario for v1.0 integrated fit, mass, envelope, and module accommodation.
+# References cited in the rendered chain title: IVV, SAA-R1, SAA-R3, SAA-R4, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+anomaly_chain: "[Functional Chain] SAA-VV-FC-001 Integrated Fit Anomaly Disposition\nRefs: IVV; SAA-R1; SAA-R3; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  detect: "[F] Acceptance gate: detect\nout-of-guard-band, forced fit,\ninterference, evidence gap,\nor configuration exception" { class: func }
+  quarantine: "[F] Operator: stop pass claim\nand preserve as-tested\nconfiguration" { class: func }
+  capture: "[F] Camera / instruments:\ncapture anomaly evidence\nand raw readings" { class: func }
+  open_record: "[F] Operator: open anomaly\nrecord with affected model\nelements and constraints" { class: func }
+  classify: "[F] Engineering / QA:\nclassify rework, waiver,\nmodel update, or fail" { class: func }
+  correct_or_hold: "[F] Operator: perform approved\nrework or place execution\non hold / fail" { class: func }
+  rerun: "[F] Test team: re-run affected\nchecks in full as-flown\nconfiguration after rework" { class: func }
+  witness_close: "[F] QA Witness: approve\nclosed disposition or\nsustain hold/fail" { class: func }
+  archive: "[F] Evidence repository:\narchive anomaly, waiver,\nrework, and re-run package" { class: func }
+
+  anomaly_triggers: "[C] Anomaly trigger constraint:\nCreate an anomaly for diameter + U_D > 66.0 mm; height + U_H > modeled\n122.0 mm; measured mass + U_M ≥ 350.0 g; forced 44 mm PCB fit; PCB stress;\nbackplane/header protrusion or misfit; cap/parachute/servo/battery interference;\nmissing calibration/evidence; or any temporary omission used to obtain fit." {
+    class: note
+    shape: page
+  }
+
+  closure_rule: "[C] Closure constraint:\nNo anomaly may be closed as pass until the affected check is re-run on the\nfull as-flown configuration with no temporary omissions and with complete\nmeasurement/evidence records. Unapproved rework, unresolved ambiguity, or\nwaiver outside project authority = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nAnomaly re-runs are article-specific corrective checks. They do not create a\npopulation reliability demonstration unless a separate independent-trial plan\nis approved. Continuous measurements still require updated uncertainty values." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nDisposition explicitly prevents false pass caused by removing battery,\nparachute, cap, servo, backplane, headers, PCBs, screws, or protruding items;\nusing a non-flight gauge exception; ignoring measurement uncertainty; or\nlosing photo/raw-data evidence." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nSAA-FE-EnvelopeNonCompliance; SAA-FE-MassNonCompliance;\nSAA-FE-BackplaneMisMate; SAA-UC-IntegratedAssembly;\nSAA-UC-BackplaneIntegration; SAA-UC-ParachuteClearance; modeled envelope,\nmass, module, backplane, and assembly constraints." {
+    class: note
+    shape: page
+  }
+}
+
+anomaly_chain.detect -> anomaly_chain.quarantine: "[FE] Exception or\nhold condition" { class: fe }
+anomaly_chain.quarantine -> anomaly_chain.capture: "[FE] Preserved\nas-tested state" { class: fe }
+anomaly_chain.capture -> anomaly_chain.open_record: "[FE] Anomaly evidence\nand readings" { class: fe }
+anomaly_chain.open_record -> anomaly_chain.classify: "[FE] Affected model\nelements and constraints" { class: fe }
+anomaly_chain.classify -> anomaly_chain.correct_or_hold: "[FE] Approved\ndisposition path" { class: fe }
+anomaly_chain.correct_or_hold -> anomaly_chain.rerun: "[FE] Reworked article\nor hold/fail state" { class: fe }
+anomaly_chain.rerun -> anomaly_chain.witness_close: "[FE] Re-run results" { class: fe }
+anomaly_chain.witness_close -> anomaly_chain.archive: "[FE] Closed or sustained\nanomaly disposition" { class: fe }
+
+# Layout-only edges keep notes after the anomaly-disposition flow.
+anomaly_chain.archive -> anomaly_chain.anomaly_triggers { style: { opacity: 0 } }
+anomaly_chain.anomaly_triggers -> anomaly_chain.closure_rule { style: { opacity: 0 } }
+anomaly_chain.closure_rule -> anomaly_chain.statistical { style: { opacity: 0 } }
+anomaly_chain.statistical -> anomaly_chain.fault_hardening { style: { opacity: 0 } }
+anomaly_chain.fault_hardening -> anomaly_chain.traceability { style: { opacity: 0 } }

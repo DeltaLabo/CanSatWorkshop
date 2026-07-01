@@ -1,0 +1,113 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-004 verification-only Functional Chain view.
+# Testing/demonstration chain for representative screw/fit cycles and assembly fault hardening.
+# References cited in the rendered chain title: IVV, SAA-R3, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+cycle_chain: "[Functional Chain] SAA-VV-CON-004 Representative Screw / Fit Cycle Fault-hardening Screen\nRefs: IVV; SAA-R3; SAA-R5" {
+  class: chain
+  direction: down
+
+  select_gate: "[F] Operator/Witness: select\nv0.1 coupon/module process screen or\nv1.0 final assembly acceptance gate" { class: func }
+  select_trials: "[F] Operator/Reviewer: select\nrepresentative screw bosses, holes,\nmodules, coupons and final hardware\nlocations for cycle screen" { class: func }
+  verify_screw_and_tool: "[F] Operator/Witness: verify\nallowed screw type, torque-driver ID,\ncalibration and controlled torque setting" { class: func }
+  record_ambient: "[F] Ambient meter: record\ntemperature and humidity before\nscrew/fit repetitions" { class: func }
+  preinspect: "[F] Operator/Witness: inspect\npre-cycle boss condition, infill exposure,\nslot straightness and alignment baseline" { class: func }
+  perform_cycle: "[F] Operator: perform controlled\nscrew insertion/removal or representative\nassembly/fit cycle without forcing" { class: func }
+  record_torque_count: "[F] Torque tool / counter:\nrecord torque, cycle count, screw type,\nhole ID and operator observations" { class: func }
+  inspect_damage: "[F] Operator/Witness: inspect for\nstripped boss, crack, delamination,\nweak-infill crushing or torque damage" { class: func }
+  verify_alignment: "[F] Calipers/Gauge: verify\npost-cycle stack, standoff, PCB and\nbackplane-slot alignment is preserved" { class: func }
+  loop_or_complete: "[F] Acceptance gate: continue\nuntil all planned representative cycles\nor 29-hole R90/C95 claim set is complete" { class: func }
+  record_anomalies: "[F] Repository: record failures,\nopen anomalies, rework, reprint,\nwaivers and required re-run" { class: func }
+  witness_decision: "[F] QA Witness: approve pass,\nfail, hold or re-run" { class: func }
+  archive_cycle_package: "[F] Evidence repository: archive\ncycle matrix, torque logs, photos/video,\nmeasurements and witness decision" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nRepresentative screw/fit cycles pass only when allowed screw types are used at\ncontrolled torque/tool settings and no stripped boss, crack, delamination, weak\ninfill crushing, torque damage, boss pull-out, loose standoff, warped/backplane\nslot damage or loss of alignment occurs. Final v1.0 hardware must retain stack,\nPCB/standoff, top-module and backplane alignment after cycles. Any forced fit,\nmissing torque record, open anomaly or required re-run not completed is hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nAt least 3 representative coupons/modules per printer/material batch support a\nprocess screen. Routine cycle screening is workmanship evidence only. Claiming\nR90/C95 screw-hole reliability requires 29 independent representative screw-hole\ntrials with zero failures and approved independence rationale." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nExplicitly hardens against stripped bosses, boss pull-out, cracked or delaminated\nprints, weak infill, warped slots, screw torque damage, wrong screw type, tool\nmiscalibration, batch/printer drift, hidden rework and evidence-control escape." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Environmental/equipment condition:\nRecord ambient temperature/humidity, screw and hole IDs, torque setting, tool\ncalibration, coupon/module batch, operator/witness identity and camera view before\nrepetitions. Stop and hold on any damage, alignment loss or missing record." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled Assembly / printing constraint; SAA-UC-IntegratedAssembly;\nSAA-FE-StructuralLoosening; SAA-FE-LandingDamage." {
+    class: note
+    shape: page
+  }
+}
+
+cycle_chain.select_gate -> cycle_chain.select_trials: "[FE] Selected SSIV /\ntrial scope" { class: fe }
+cycle_chain.select_trials -> cycle_chain.verify_screw_and_tool: "[FE] Screw-hole,\ncoupon/module and final hardware list" { class: fe }
+cycle_chain.verify_screw_and_tool -> cycle_chain.record_ambient: "[FE] Screw type,\ntorque and calibration status" { class: fe }
+cycle_chain.record_ambient -> cycle_chain.preinspect: "[FE] Ambient record\nand condition flag" { class: fe }
+cycle_chain.preinspect -> cycle_chain.perform_cycle: "[FE] Pre-cycle condition\nand alignment baseline" { class: fe }
+cycle_chain.perform_cycle -> cycle_chain.record_torque_count: "[FE] Completed cycle\nor stop condition" { class: fe }
+cycle_chain.record_torque_count -> cycle_chain.inspect_damage: "[FE] Torque/cycle\nrecord" { class: fe }
+cycle_chain.inspect_damage -> cycle_chain.verify_alignment: "[FE] Damage inspection\nstatus" { class: fe }
+cycle_chain.verify_alignment -> cycle_chain.loop_or_complete: "[FE] Post-cycle\nalignment status" { class: fe }
+cycle_chain.loop_or_complete -> cycle_chain.perform_cycle: "[FE] Next representative\ncycle/trial until complete" { class: fe }
+cycle_chain.loop_or_complete -> cycle_chain.record_anomalies: "[FE] Planned cycle\nset complete" { class: fe }
+cycle_chain.record_anomalies -> cycle_chain.witness_decision: "[FE] Open/closed\ncycle anomalies" { class: fe }
+cycle_chain.witness_decision -> cycle_chain.archive_cycle_package: "[FE] Witness decision\nand release approval" { class: fe }
+
+# Layout-only edges keep notes after the executable cycle-screen flow.
+cycle_chain.archive_cycle_package -> cycle_chain.pass_fail { style: { opacity: 0 } }
+cycle_chain.pass_fail -> cycle_chain.statistical { style: { opacity: 0 } }
+cycle_chain.statistical -> cycle_chain.fault_hardening { style: { opacity: 0 } }
+cycle_chain.fault_hardening -> cycle_chain.conditions { style: { opacity: 0 } }
+cycle_chain.conditions -> cycle_chain.traceability { style: { opacity: 0 } }

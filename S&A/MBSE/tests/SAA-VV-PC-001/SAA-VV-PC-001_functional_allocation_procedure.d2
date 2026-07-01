@@ -1,0 +1,175 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-PC-001 verification-only Physical Architecture PV3.
+# Functional allocation/procedure view for the Inspection activity.
+# References cited in the rendered system title: IVV, SAA-R1, SAA-R2, SAA-R3, SAA-R4, SAA-R5.
+# Functions and LCs here define the inspection activity only; they are not baseline S&A design edits.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] Inspection Operator" {
+  class: ea
+  direction: down
+  identify: "[F] Identify article version,\nbuild record, and baseline" { class: func }
+  enumerate: "[F] Enumerate modeled PCs\nfrom version checklist" { class: func }
+  inspect: "[F] Inspect PC presence,\nidentity, placement, condition" { class: func }
+  record: "[F] Record photo/build\nevidence references" { class: func }
+  disposition: "[F] Disposition anomalies\nwith pass/fail/hold rationale" { class: func }
+}
+
+witness: "[EA] QA Witness" {
+  class: ea
+  direction: down
+  witness_census: "[F] Witness 100% PC census" { class: func }
+  approve: "[F] Approve readiness gate\nor place hold" { class: func }
+}
+
+camera: "[EA] Calibrated Camera /\nMicroscope" {
+  class: ea
+  direction: down
+  capture: "[F] Capture photo and\nmagnified identity evidence" { class: func }
+}
+
+caliper_scale: "[EA] Caliper / Scale" {
+  class: ea
+  direction: down
+  measure: "[F] Measure identity /\nplacement dimensions when needed" { class: func }
+}
+
+fixture: "[EA] ESD / Assembly Fixture" {
+  class: ea
+  direction: down
+  support: "[F] Support article in\nESD-safe inspection state" { class: func }
+}
+
+repo: "[EA] Evidence Repository" {
+  class: ea
+  direction: down
+  store: "[F] Store controlled report\nand evidence package" { class: func }
+}
+
+system: "[System] SAA-VV-PC-001 Functional Allocation / Inspection Procedure\nRefs: IVV; SAA-R1; SAA-R2; SAA-R3; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+
+  v01_article: "[PC] v0.1 S&A Article\nunder inspection" {
+    class: pc
+    direction: down
+    v01_lc: "[LC] v0.1 PC Census Gate\nverification-only" {
+      class: lc
+      direction: down
+      v01_pc_set: "[F] Declare v0.1 modeled PC set\n(9 physical components)" { class: func }
+      v01_bind: "[F] Bind observed items to\nv0.1 containment and placement" { class: func }
+      v01_gate: "[F] Apply v0.1 transition\nreadiness pass/fail/hold gate" { class: func }
+    }
+  }
+
+  v10_article: "[PC] v1.0 S&A Article\nunder inspection" {
+    class: pc
+    direction: down
+    v10_lc: "[LC] v1.0 PC Census Gate\nverification-only" {
+      class: lc
+      direction: down
+      v10_pc_set: "[F] Declare v1.0 modeled PC set\n(23 physical components)" { class: func }
+      v10_bind: "[F] Bind observed items to\nv1.0 containment and placement" { class: func }
+      v10_gate: "[F] Apply v1.0 flight\nreadiness pass/fail/hold gate" { class: func }
+    }
+  }
+
+  report_by_reference: "[C] Report-by-reference constraint:\nExecution report identifies this model,\nbaseline copy, as-inspected article,\nactual results, deviations, anomalies,\nwaivers, evidence IDs, and QA decision." {
+    class: note
+    shape: page
+  }
+
+  pass_fail: "[C] Pass/fail constraint:\nEvery modeled PC for the selected version\nmust be present, uniquely identifiable,\ncorrectly contained/located, undamaged,\nand evidence-recorded. Unapproved\nsubstitutions, ambiguous duplicates,\nmissing items, extra unmodeled items,\nor undocumented evidence = fail/hold." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nThis is a 100% census of modeled PCs\nfor each v0.1 or v1.0 inspected article.\nNo sampling or reliability population\nclaim is made by this inspection alone;\nreport actual article count and any repeats." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nInspection intentionally screens for\nwrong module type, omitted PC, swapped\nPCB, missing battery/backplane/header/\nspine/servo connector/cap/parachute/servo,\nmechanical damage, placement error,\nESD/handling nonconformance, and\nevidence-control escapes." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Environmental / equipment conditions:\nUse ESD-safe fixture, adequate lighting,\ncalibrated camera/microscope, and\ncalibrated caliper/scale when identity\nor placement needs measurement.\nRecord ambient or handling deviations\nthat could affect inspection evidence." {
+    class: note
+    shape: page
+  }
+
+  trace: "[C] Traceability target:\nSAA-UC-IntegratedAssembly;\nSAA-UC-BackplaneIntegration;\nSAA-UC-ParachuteClearance;\nSAA-FE-EnvelopeNonCompliance;\nSAA-FE-BackplaneMisMate;\nSAA-FE-StructuralLoosening;\nmodeled physical-component containment\nand placement constraints." {
+    class: note
+    shape: page
+  }
+}
+
+system.report_by_reference -> system.v01_article.v01_lc.v01_gate { class: cstr }
+system.report_by_reference -> system.v10_article.v10_lc.v10_gate { class: cstr }
+system.pass_fail -> system.v01_article.v01_lc.v01_gate { class: cstr }
+system.pass_fail -> system.v10_article.v10_lc.v10_gate { class: cstr }
+system.statistical -> system.v01_article.v01_lc.v01_pc_set { class: cstr }
+system.statistical -> system.v10_article.v10_lc.v10_pc_set { class: cstr }
+system.fault_hardening -> system.v01_article.v01_lc.v01_bind { class: cstr }
+system.fault_hardening -> system.v10_article.v10_lc.v10_bind { class: cstr }
+system.conditions -> system.v01_article.v01_lc.v01_bind { class: cstr }
+system.conditions -> system.v10_article.v10_lc.v10_bind { class: cstr }
+system.trace -> system.v01_article.v01_lc.v01_gate { class: cstr }
+system.trace -> system.v10_article.v10_lc.v10_gate { class: cstr }
+
+# Layout-only edges keep the procedure roles and modeled gates readable.
+operator -> camera { style: { opacity: 0 } }
+camera -> caliper_scale { style: { opacity: 0 } }
+caliper_scale -> fixture { style: { opacity: 0 } }
+fixture -> system { style: { opacity: 0 } }
+system -> witness { style: { opacity: 0 } }
+witness -> repo { style: { opacity: 0 } }
+system.v01_article -> system.v10_article { style: { opacity: 0 } }
+system.report_by_reference -> system.pass_fail { style: { opacity: 0 } }
+system.pass_fail -> system.statistical { style: { opacity: 0 } }
+system.statistical -> system.fault_hardening { style: { opacity: 0 } }
+system.fault_hardening -> system.conditions { style: { opacity: 0 } }
+system.conditions -> system.trace { style: { opacity: 0 } }

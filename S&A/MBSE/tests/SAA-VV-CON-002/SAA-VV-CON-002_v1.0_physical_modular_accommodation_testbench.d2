@@ -1,0 +1,220 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-002 verification-only Physical Architecture PV1.
+# v1.0 integrated module/PCB flight-readiness testbench for modular-structure and 44 mm PCB accommodation constraints.
+# References cited in the rendered system title: IVV, SAA-R1, SAA-R3, SAA-R4, SAA-R5.
+# This file is a test-definition view and does not modify the v1.0 baseline model.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" { class: ea }
+witness: "[EA] Safety / QA Witness" { class: ea }
+control_gauge: "[EA] 44 mm Control Gauge /\nDummy PCB Set\n44.00 mm × 44.00 mm" { class: ea }
+caliper_feeler: "[EA] Calipers /\nFeeler Gauges\nC_min, U_C" { class: ea }
+keepout_probe: "[EA] Keepout and\nRemoval-Path Probe" { class: ea }
+cycle_counter: "[EA] Insert / Remove\nCycle Counter\nN ≥ 3 screen" { class: ea }
+camera: "[EA] Photo / Video\nEvidence Camera" { class: ea }
+ambient_meter: "[EA] Ambient Thermo-\nHygrometer" { class: ea }
+repo: "[EA] Evidence Repository\nresults/SAA-VV-CON-002" { class: ea }
+
+system: "[System] SAA-VV-CON-002 v1.0 Integrated Module/PCB Accommodation Testbench\nRefs: IVV; SAA-R1; SAA-R3; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  article: "[PC] v1.0 Integrated CanSat Article\nflight-readiness UUT" {
+    class: pc
+    direction: right
+
+    cansat: "[PC] CanSat Assembly" {
+      class: pc
+      direction: right
+
+      standard_stack: "[PC] Standard Carrier\nModule Stack\n(Type 1)" {
+        class: pc
+        direction: down
+
+        ads_module: "[PC] ADS Module\nType 1 standard carrier" {
+          class: pc
+          direction: right
+          ads_pcb: "[PC] ADS PCB\n44 mm × 44 mm" { class: pc }
+        }
+
+        ams_module: "[PC] AMS Module\nType 1 standard carrier" {
+          class: pc
+          direction: right
+          ams_pcb: "[PC] AMS PCB\n44 mm × 44 mm" { class: pc }
+        }
+
+        obcc_module: "[PC] OBCC Module\nType 1 standard carrier" {
+          class: pc
+          direction: right
+          obcc_pcb: "[PC] OBCC PCB\n44 mm × 44 mm" { class: pc }
+        }
+
+        pds_module: "[PC] PDS Module\nType 1 standard carrier" {
+          class: pc
+          direction: right
+          pds_pcb: "[PC] PDS PCB\n44 mm × 44 mm" { class: pc }
+        }
+
+        ess_module: "[PC] ESS Module\nType 1 standard carrier" {
+          class: pc
+          direction: right
+          battery_pack: "[PC] ESS Battery Pack" { class: pc }
+        }
+      }
+
+      backplane_pcb: "[PC] Backplane PCB\n100 mm × 28 mm\n2-layer stackup" {
+        class: pc
+        direction: down
+        grid-columns: 1
+        ads_headers: "[PC] 2 mm 2×6\nADS Headers" { class: pc }
+        ams_headers: "[PC] 2 mm 2×6\nAMS Headers" { class: pc }
+        obcc_headers: "[PC] 2 mm 2×6\nOBCC Headers" { class: pc }
+        pds_headers: "[PC] 2 mm 2×6\nPDS Headers" { class: pc }
+        pdm_servo_header: "[PC] PDM Servo\nConnector" { class: pc }
+        spine: "[PC] Backplane Spine" { class: pc }
+      }
+
+      parachute_module: "[PC] Parachute / Top\nModule\n(Type 2)" {
+        class: pc
+        direction: down
+        grid-columns: 1
+        cap: "[PC] Cap" { class: pc }
+        parachute: "[PC] Parachute" { class: pc }
+        servo: "[PC] Servo" { class: pc }
+      }
+    }
+  }
+
+  type_count_limit: "[C] v1.0 module-type pass/fail:\nThe integrated assembly may use only Type 1 Standard Carrier Modules and\nthe Type 2 Parachute / Top Module as structural module types. ADS/AMS/OBCC/\nPDS/ESS modules are Type 1 instances. Backplane, battery, cap, parachute,\nservo, headers and connectors are contained hardware, not extra module types." {
+    class: note
+    shape: page
+  }
+
+  pcb_fit_acceptance: "[C] v1.0 PCB accommodation pass/fail:\nADS/AMS/OBCC/PDS flight PCBs, or final-equivalent 44.00 mm × 44.00 mm gauges\nwhen a flight PCB is not released for handling, seat in the standard modules\nwithout forced fit, board flex, scraping, protrusion, filing, unapproved shim,\ntemporary omission or unrelated hardware removal." {
+    class: note
+    shape: page
+  }
+
+  clearance_retention: "[C] Positive clearance/retention constraint:\nFor every ADS/AMS/OBCC/PDS accommodation, C_min - U_C > 0 at board edges,\nstandoffs, screws, components, backplane/header side and removal path.\nRetention fasteners/features engage without stress, stripped bosses, loose\nboard, rocking beyond intended clearance or warped-print contact." {
+    class: note
+    shape: page
+  }
+
+  keepout_interference: "[C] Keepout/removal-path constraint:\nBackplane PCB/spine, 2 mm 2×6 headers, battery pack, stack screws, top module,\ncap, parachute, servo and PDM servo connector must not interfere with board\ninsertion, retention, service access or removal. Any blocked path, bent pin,\nsnag, scrape or required temporary omission is hold/fail." {
+    class: note
+    shape: page
+  }
+
+  evidence_conditions: "[C] Evidence/environment constraint:\nRecord baseline copy, article ID, PCB/gauge IDs, calibration, ambient\ntemperature/humidity before cycles, raw clearances and U_C, N ≥ 3 insert/remove\nscreen cycles per ADS/AMS/OBCC/PDS accommodation, photos/video, witness decision\nand anomaly dispositions under results/SAA-VV-CON-002/." {
+    class: note
+    shape: page
+  }
+
+  viewpoints: "[C] Viewpoints:\nStatistical = 100% census of module instances and all ADS/AMS/OBCC/PDS PCB\naccommodations; repeated insert/remove cycles are screening only. Fault\nhardening = wrong type count, tolerance stack, warped print, backplane/header\ninterference, blocked removal path, forced fit, false final-equivalence or lost evidence." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability targets:\nModeled modular-structure constraint; SAA-UC-IntegratedAssembly;\nSAA-FE-EnvelopeNonCompliance; SAA-FE-StructuralLoosening." {
+    class: note
+    shape: page
+  }
+}
+
+system.article.cansat.standard_stack.ads_module -- system.article.cansat.standard_stack.ams_module: "[PL] Stack screws" { class: pl }
+system.article.cansat.standard_stack.ams_module -- system.article.cansat.standard_stack.obcc_module: "[PL] Stack screws" { class: pl }
+system.article.cansat.standard_stack.obcc_module -- system.article.cansat.standard_stack.pds_module: "[PL] Stack screws" { class: pl }
+system.article.cansat.standard_stack.pds_module -- system.article.cansat.standard_stack.ess_module: "[PL] Stack screws" { class: pl }
+system.article.cansat.standard_stack -- system.article.cansat.parachute_module: "[PL] Stack screws" { class: pl }
+system.article.cansat.standard_stack -- system.article.cansat.backplane_pcb: "[PL] Perpendicular fixture\n+ header mating" { class: pl }
+system.article.cansat.parachute_module -- system.article.cansat.backplane_pcb: "[PL] Backplane fixture\n+ servo connector" { class: pl }
+system.article.cansat.standard_stack.ads_module.ads_pcb -- system.article.cansat.standard_stack.ads_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.article.cansat.standard_stack.ams_module.ams_pcb -- system.article.cansat.standard_stack.ams_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.article.cansat.standard_stack.obcc_module.obcc_pcb -- system.article.cansat.standard_stack.obcc_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.article.cansat.standard_stack.pds_module.pds_pcb -- system.article.cansat.standard_stack.pds_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.article.cansat.standard_stack.ess_module.battery_pack -- system.article.cansat.standard_stack.ess_module: "[PL] Battery fixture" { class: pl }
+
+operator -- system.article: "[PL] Handling /\nmodule census" { class: pl }
+witness -- system.article: "[PL] Witnessed\ninspection" { class: pl }
+control_gauge -- system.article.cansat.standard_stack: "[PL] ADS/AMS/OBCC/PDS\n44 mm gauge comparison" { class: pl }
+caliper_feeler -- system.article.cansat.standard_stack: "[PL] Clearance probes" { class: pl }
+caliper_feeler -- system.article.cansat.backplane_pcb: "[PL] Header/edge\nclearance probes" { class: pl }
+keepout_probe -- system.article.cansat.standard_stack: "[PL] Removal-path probe" { class: pl }
+keepout_probe -- system.article.cansat.backplane_pcb: "[PL] Backplane/header\ninterference probe" { class: pl }
+keepout_probe -- system.article.cansat.parachute_module: "[PL] Top-module\ninterference probe" { class: pl }
+cycle_counter -- control_gauge: "[PL] Cycle log" { class: pl }
+camera -- system.article: "[PL] Photos/video" { class: pl }
+ambient_meter -- system.article: "[PL] Ambient record" { class: pl }
+repo -- camera: "[PL] Evidence transfer" { class: pl }
+
+system.type_count_limit -> system.article.cansat.standard_stack { class: cstr }
+system.type_count_limit -> system.article.cansat.parachute_module { class: cstr }
+system.pcb_fit_acceptance -> system.article.cansat.standard_stack { class: cstr }
+system.clearance_retention -> system.article.cansat.standard_stack { class: cstr }
+system.keepout_interference -> system.article.cansat.backplane_pcb { class: cstr }
+system.keepout_interference -> system.article.cansat.parachute_module { class: cstr }
+system.evidence_conditions -> repo { class: cstr }
+system.evidence_conditions -> ambient_meter { class: cstr }
+system.viewpoints -> system.article { class: cstr }
+system.traceability -> system.article.cansat.standard_stack { class: cstr }
+
+# Layout-only edges keep test equipment, UUT, repository, and notes in a stable reading order.
+operator -> witness { style: { opacity: 0 } }
+witness -> control_gauge { style: { opacity: 0 } }
+control_gauge -> caliper_feeler { style: { opacity: 0 } }
+caliper_feeler -> keepout_probe { style: { opacity: 0 } }
+keepout_probe -> cycle_counter { style: { opacity: 0 } }
+cycle_counter -> camera { style: { opacity: 0 } }
+camera -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.article -> system.type_count_limit { style: { opacity: 0 } }
+system.type_count_limit -> system.pcb_fit_acceptance { style: { opacity: 0 } }
+system.pcb_fit_acceptance -> system.clearance_retention { style: { opacity: 0 } }
+system.clearance_retention -> system.keepout_interference { style: { opacity: 0 } }
+system.keepout_interference -> system.evidence_conditions { style: { opacity: 0 } }
+system.evidence_conditions -> system.viewpoints { style: { opacity: 0 } }
+system.viewpoints -> system.traceability { style: { opacity: 0 } }

@@ -1,0 +1,149 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CE-001 verification-only Physical Architecture PV2.
+# Logical/interface context for v1.0 component-exchange presence/absence analysis.
+# References cited in the rendered system title: IVV, SAA-R4, SAA-R5.
+# These LCs and CEs define the verification analysis only; they are not baseline S&A design edits.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+reviewer: "[EA] Interface Reviewer" { class: ea }
+owners: "[EA] Subsystem Interface Owners\nADS / AMS / OBCC / PDS / ESS / PDM" { class: ea }
+netlist_pkg: "[EA] Backplane Netlist /\nPinout Evidence" { class: ea }
+drc_erc_report: "[EA] DRC / ERC\nReport" { class: ea }
+measurement_pkg: "[EA] Continuity / Rail\nMeasurement Package" { class: ea }
+repo: "[EA] Evidence Repository\nresults/SAA-VV-CE-001" { class: ea }
+
+system: "[System] SAA-VV-CE-001 Logical Interface Analysis Context\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+
+  uut: "[PC] v1.0 S&A Backplane\nInterface Analysis Boundary" {
+    class: pc
+    direction: down
+
+    candidate_register: "[LC] Implied CE Candidate Register\nverification-only" { class: lc }
+    power_set: "[LC] 5 V / 3.3 V\nPower Rail Interface Set\nverification-only" { class: lc }
+    header_pin_set: "[LC] ADS/AMS/OBCC/PDS\n2 mm 2×6 Header Pin Set\nverification-only" { class: lc }
+    fast_line_set: "[LC] SPI / I2C / UART\nFast-Line Intent Set\nverification-only" { class: lc }
+    testpoint_set: "[LC] Critical Testpoint\nAccess Set\nverification-only" { class: lc }
+    servo_path: "[LC] PDM Servo Connector\nPath\nverification-only" { class: lc }
+    ownership_matrix: "[LC] Ownership / Cross-reference\nMatrix\nverification-only" { class: lc }
+    disposition: "[LC] Pass / Hold / Fail\nAnalysis Disposition\nverification-only" { class: lc }
+  }
+
+  verification_only: "[C] Verification-only context:\nBaseline S&A v1.0 physical view has no [CE]\nelements. This analysis models the review\nbench that will either confirm subsystem\nCE ownership/cross-reference or hold/fail\nS&A-owned ambiguous or missing exchanges." {
+    class: note
+    shape: page
+  }
+
+  pass_fail: "[C] Pass/fail constraint:\nPass requires 100% review of all implied\npower, pin, testpoint, fast-line, and servo\ninterfaces. Each reviewed item needs owner,\nmodel reference or S&A CE need, endpoints,\ndirection/protocol intent, voltage level where\napplicable, testpoint access, low-capacitance\nrationale for SPI/I2C/UART, clean/dispositioned\nDRC/ERC, and no wrong-protocol or swapped-pin\nimplementation. Ambiguous/missing S&A-owned\nCEs or ownership = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nThis is a 100% design/interface review of\nevery implied v1.0 backplane interface and\nevery released evidence source. It makes no\nsampling or reliability claim; measurements\nare supporting evidence only." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nThe matrix explicitly screens swapped pins,\nmissing testpoints, excessive capacitance or\nrise-time risk, rail short/open, wrong protocol\non a multi-point link, ambiguous direction,\nand PDM servo connector miswire." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nSAA-UC-BackplaneIntegration;\nSAA-FE-BackplaneMisMate;\nv1.0 Backplane PCB constraints for defined\npin interface, 5.0 ±0.1 V, 3.3 ±0.1 V,\ntestpoints, low-capacitance SPI/I2C/UART,\nand ERC + DRC clean." {
+    class: note
+    shape: page
+  }
+}
+
+reviewer -> system.uut.candidate_register: "[CE] Kickoff + checklist" { class: ce }
+owners -> system.uut.ownership_matrix: "[CE] CE refs, endpoints,\nprotocol/voltage intent" { class: ce }
+netlist_pkg -> system.uut.candidate_register: "[CE] Netlist + pinout" { class: ce }
+netlist_pkg -> system.uut.header_pin_set: "[CE] Connector pin tables" { class: ce }
+drc_erc_report -> system.uut.disposition: "[CE] ERC/DRC results" { class: ce }
+measurement_pkg -> system.uut.power_set: "[CE] Rail evidence" { class: ce }
+measurement_pkg -> system.uut.testpoint_set: "[CE] Testpoint evidence" { class: ce }
+measurement_pkg -> system.uut.servo_path: "[CE] Servo continuity" { class: ce }
+
+system.uut.candidate_register -> system.uut.power_set: "[CE] Rail candidates" { class: ce }
+system.uut.candidate_register -> system.uut.header_pin_set: "[CE] Header candidates" { class: ce }
+system.uut.candidate_register -> system.uut.fast_line_set: "[CE] SPI/I2C/UART candidates" { class: ce }
+system.uut.candidate_register -> system.uut.testpoint_set: "[CE] Testpoint candidates" { class: ce }
+system.uut.candidate_register -> system.uut.servo_path: "[CE] Servo-path candidate" { class: ce }
+
+system.uut.power_set -> system.uut.ownership_matrix: "[CE] Rail endpoints" { class: ce }
+system.uut.header_pin_set -> system.uut.ownership_matrix: "[CE] Pin endpoints" { class: ce }
+system.uut.fast_line_set -> system.uut.ownership_matrix: "[CE] Protocol + SI rationale" { class: ce }
+system.uut.testpoint_set -> system.uut.ownership_matrix: "[CE] Critical access" { class: ce }
+system.uut.servo_path -> system.uut.ownership_matrix: "[CE] Servo endpoints" { class: ce }
+system.uut.ownership_matrix -> system.uut.disposition: "[CE] Complete matrix\n+ unresolved gaps" { class: ce }
+system.uut.disposition -> reviewer: "[CE] Pass/hold/fail\ndecision package" { class: ce }
+system.uut.disposition -> repo: "[CE] Released analysis\nrecord + evidence index" { class: ce }
+
+system.verification_only -> system.uut.candidate_register { class: cstr }
+system.pass_fail -> system.uut.disposition { class: cstr }
+system.statistical -> system.uut.candidate_register { class: cstr }
+system.fault_hardening -> system.uut.ownership_matrix { class: cstr }
+system.traceability -> system.uut.disposition { class: cstr }
+
+# Layout-only edges keep reviewers, evidence sources, system, and repository in a stable reading order.
+reviewer -> owners { style: { opacity: 0 } }
+owners -> netlist_pkg { style: { opacity: 0 } }
+netlist_pkg -> drc_erc_report { style: { opacity: 0 } }
+drc_erc_report -> measurement_pkg { style: { opacity: 0 } }
+measurement_pkg -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.uut.candidate_register -> system.uut.power_set { style: { opacity: 0 } }
+system.uut.power_set -> system.uut.header_pin_set { style: { opacity: 0 } }
+system.uut.header_pin_set -> system.uut.fast_line_set { style: { opacity: 0 } }
+system.uut.fast_line_set -> system.uut.testpoint_set { style: { opacity: 0 } }
+system.uut.testpoint_set -> system.uut.servo_path { style: { opacity: 0 } }
+system.uut.servo_path -> system.uut.ownership_matrix { style: { opacity: 0 } }
+system.uut.ownership_matrix -> system.uut.disposition { style: { opacity: 0 } }
+system.uut -> system.verification_only { style: { opacity: 0 } }
+system.verification_only -> system.pass_fail { style: { opacity: 0 } }
+system.pass_fail -> system.statistical { style: { opacity: 0 } }
+system.statistical -> system.fault_hardening { style: { opacity: 0 } }
+system.fault_hardening -> system.traceability { style: { opacity: 0 } }

@@ -1,0 +1,261 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-005 verification-only Physical Architecture PV3.
+# Functional allocation/procedure view for v1.0 retention under vibration/drop/landing-style loads.
+# References cited in the rendered system title: IVV, SAA-R1, SAA-R2, SAA-R3, SAA-R4, SAA-R5.
+# Functions and LCs here define the verification activity only; they are not baseline S&A design edits.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  identify_article: "[F] Identify v1.0 article,\nbaseline copy, build record\nand evidence folder" { class: func }
+  install_witness_marks: "[F] Install or verify\nretention witness marks and\nreference photos" { class: func }
+  configure_fixture: "[F] Configure fixture axis,\norientation, restraint and\nabort limits" { class: func }
+  execute_screen: "[F] Execute approved vibration,\ndrop or proof-load screen" { class: func }
+  record_anomaly: "[F] Record detachment,\nlooseness, movement, waiver,\nhold or re-run need" { class: func }
+}
+
+witness: "[EA] Safety / QA Witness" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  establish_safety: "[F] Establish safety boundary\nand no-hand-in-fixture rule" { class: func }
+  witness_prepost: "[F] Witness pre/post PC,\nPL and interface inspections" { class: func }
+  approve_disposition: "[F] Approve pass, fail,\nhold, waiver rejection or\nre-run disposition" { class: func }
+}
+
+screen_fixture: "[EA] Tailored Vibration / Drop /\nProof-load Fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  provide_load: "[F] Provide approved load level,\naxis, duration, orientation and\nfixture coupling" { class: func }
+  limit_abort: "[F] Enforce abort limits,\nremote release and safe stop" { class: func }
+}
+
+accelerometer_logger: "[EA] Accelerometer /\nEvent Logger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  capture_time_history: "[F] Capture vibration,\nshock or proof-load event\nmarkers and time history" { class: func }
+  flag_validity: "[F] Flag under-test,\nover-test, abort or missing\nsensor evidence" { class: func }
+}
+
+inspection_kit: "[EA] Retention Inspection Kit" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  inspect_witness_marks: "[F] Inspect witness marks,\ntorque marks, gaps, cracks,\nrattle and bent pins" { class: func }
+  measure_movement: "[F] Measure or bound battery,\nPCB, backplane and connector\nmovement" { class: func }
+}
+
+scale_envelope: "[EA] Scale and Envelope Gauge" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  check_mass_parts: "[F] Check post-screen mass\nand part census for lost hardware" { class: func }
+  check_envelope: "[F] Check 355 ml envelope\nfree fit and max dimensions" { class: func }
+}
+
+backplane_checker: "[EA] Backplane Checkout Tool" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  check_continuity: "[F] Check continuity,\nisolation and header/connector\nseating after screen" { class: func }
+  check_rails: "[F] Check 5.0 ±0.1 V and\n3.3 ±0.1 V rails at required\ntestpoints if powered" { class: func }
+}
+
+ambient_camera: "[EA] Ambient Meter and\nPhoto/Video Camera" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  record_ambient: "[F] Record temperature and\nhumidity before screen repetitions" { class: func }
+  capture_evidence: "[F] Capture setup, loading,\nrest state, inspections and\nanomalies" { class: func }
+}
+
+repo: "[EA] Evidence Repository" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  store_package: "[F] Store report-by-reference\npackage under results/SAA-VV-CON-005/" { class: func }
+}
+
+system: "[System] SAA-VV-CON-005 Functional Allocation / Retention Screen Procedure\nRefs: IVV; SAA-R1; SAA-R2; SAA-R3; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  v10_article: "[PC] v1.0 Integrated CanSat\nRetention Screen Article" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    retained_mass_lc: "[LC] ESS Battery and\nRetained Mass Retention\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      present_battery_fixture: "[F] Present ESS Battery Pack\nand battery fixture for\npre/post retention inspection" { class: func }
+      prevent_detachment: "[F] Retain heavy battery\nwithout detachment or movement\noutside acceptance" { class: func }
+      expose_battery_faults: "[F] Expose battery slip,\nstrap failure, fixture crack,\nrattle or hidden movement" { class: func }
+    }
+
+    stack_pcb_lc: "[LC] Stack Screw and\nPCB Standoff Retention\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      present_stack_pcbs: "[F] Present stack screws,\nADS/AMS/OBCC/PDS PCBs and\nPCB standoffs/screws" { class: func }
+      maintain_stack_retention: "[F] Maintain stack and PCB\nretention with no loose screw,\nnew gap, cracked boss or rattle" { class: func }
+      expose_pcb_faults: "[F] Expose loosened PCB,\nstripped boss, cracked module\nor shifted standoff" { class: func }
+    }
+
+    backplane_lc: "[LC] Backplane, Header and\nPDM Servo Connector Retention\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      present_backplane_interfaces: "[F] Present backplane PCB,\nspine, ADS/AMS/OBCC/PDS headers\nand PDM Servo Connector" { class: func }
+      maintain_connector_seating: "[F] Maintain header mating,\nbackplane fixture and PDM servo\nconnector seating" { class: func }
+      expose_interface_faults: "[F] Expose backplane movement,\nbent pins, connector unseat,\nshort, open or rail failure" { class: func }
+    }
+
+    top_module_lc: "[LC] Top-module and\nEnvelope Retention Context\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      present_top_module: "[F] Present top module,\ncap, parachute, servo and\nstack-to-top screws" { class: func }
+      maintain_envelope: "[F] Maintain external\nenvelope compliance after screen" { class: func }
+      expose_top_faults: "[F] Expose cap, servo,\nparachute or top-module movement\ncaused by screen" { class: func }
+    }
+  }
+
+  verification_records: "[PC] SAA-VV-CON-005 Control\nand Evidence Package\nverification-only" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    screen_control_lc: "[LC] Tailored Screen\nDefinition and Configuration\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      require_level_definition: "[F] Require approved levels,\naxes, orientations, duration,\ncoupling and limitations" { class: func }
+      classify_screen_only: "[F] Classify as article screen\nunless independent trial plan\nis approved" { class: func }
+    }
+
+    inspection_lc: "[LC] 100% Pre/Post\nInspection and Measurement Gate\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      inspect_all_targets: "[F] Inspect 100% of target\nPC/PL/interfaces before and\nafter the screen" { class: func }
+      compare_witness_marks: "[F] Compare witness marks,\ngaps, photos and movement\nmeasurements" { class: func }
+      verify_backplane_postcheck: "[F] Verify backplane rail,\ncontinuity and interface checks" { class: func }
+    }
+
+    acceptance_lc: "[LC] Retention Acceptance,\nAnomaly and Re-run Gate\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      apply_pass_fail: "[F] Apply no-detach,\nno-loosen, envelope and\npost-check pass/fail constraints" { class: func }
+      classify_anomaly: "[F] Classify forbidden event,\nopen anomaly, limitation,\nwaiver or re-run scope" { class: func }
+      bind_evidence: "[F] Bind baseline copies,\nscreen levels, logs, photos,\ninspections and witness decision" { class: func }
+      require_rerun: "[F] Require affected checks\nor full screen to be re-run after\nrework or configuration change" { class: func }
+    }
+  }
+
+  pass_fail: "[C] Pass/fail constraint:\nNo retained mass detaches; no battery fixture, PCB standoff/screw, stack screw,\nbackplane fixture, ADS/AMS/OBCC/PDS header, PDM Servo Connector or top-module\ninterface loosens, unseats, cracks, bends, rattles or shifts outside approved\nacceptance. Envelope remains compliant; post-screen PC/PL inspection and\nbackplane rail/continuity/interface checks pass. Missing levels, open anomaly,\nambiguous evidence or required re-run not completed is hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nEnvironmental article testing is a workmanship/integration screen unless an\nindependent article/trial plan is approved. Pre/post inspection is mandatory\n100% census coverage for every target PC, PL and interface on the v1.0 article;\nrepeated axes/orientations on the same article are not independent reliability\ntrials without approved rationale." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nDetect heavy battery detachment, connector unseat, backplane shift, stack screw\nor PCB standoff looseness, stripped/cracked printed bosses, hidden cracks, bent\npins, rail/signal failure, unsafe fixture over-constraint, under/over-test and\nevidence-control escape." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Environmental/equipment condition:\nRecord ambient temperature/humidity, article orientation, fixture adapter,\nlevel/duration/axis, accelerometer or event-logger setup, camera field of view,\nscale/envelope/checker calibration and safety boundary before repetitions begin.\nHold if the screen is not controlled or if conditions invalidate inspection." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled landing-impact, envelope/mass, backplane and assembly/printing\nconstraints; SAA-UC-IntegratedAssembly; SAA-UC-BackplaneIntegration;\nSAA-FE-StructuralLoosening; SAA-FE-LandingDamage; SAA-FE-BackplaneMisMate;\nSAA-FE-EnvelopeNonCompliance." {
+    class: note
+    shape: page
+  }
+}
+
+system.pass_fail -> system.v10_article.retained_mass_lc.prevent_detachment { class: cstr }
+system.pass_fail -> system.v10_article.stack_pcb_lc.maintain_stack_retention { class: cstr }
+system.pass_fail -> system.v10_article.backplane_lc.maintain_connector_seating { class: cstr }
+system.pass_fail -> system.v10_article.top_module_lc.maintain_envelope { class: cstr }
+system.pass_fail -> system.verification_records.acceptance_lc.apply_pass_fail { class: cstr }
+system.statistical -> system.verification_records.screen_control_lc.classify_screen_only { class: cstr }
+system.statistical -> system.verification_records.inspection_lc.inspect_all_targets { class: cstr }
+system.fault_hardening -> system.v10_article.retained_mass_lc.expose_battery_faults { class: cstr }
+system.fault_hardening -> system.v10_article.stack_pcb_lc.expose_pcb_faults { class: cstr }
+system.fault_hardening -> system.v10_article.backplane_lc.expose_interface_faults { class: cstr }
+system.fault_hardening -> system.verification_records.acceptance_lc.require_rerun { class: cstr }
+system.conditions -> system.verification_records.screen_control_lc.require_level_definition { class: cstr }
+system.conditions -> system.verification_records.inspection_lc.verify_backplane_postcheck { class: cstr }
+system.traceability -> system.verification_records.acceptance_lc.bind_evidence { class: cstr }
+
+# Layout-only edges keep actors, UUT records and notes in stable reading order.
+operator -> witness { style: { opacity: 0 } }
+witness -> screen_fixture { style: { opacity: 0 } }
+screen_fixture -> accelerometer_logger { style: { opacity: 0 } }
+accelerometer_logger -> inspection_kit { style: { opacity: 0 } }
+inspection_kit -> scale_envelope { style: { opacity: 0 } }
+scale_envelope -> backplane_checker { style: { opacity: 0 } }
+backplane_checker -> ambient_camera { style: { opacity: 0 } }
+ambient_camera -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.v10_article -> system.verification_records { style: { opacity: 0 } }
+system.verification_records -> system.pass_fail { style: { opacity: 0 } }
+system.pass_fail -> system.statistical { style: { opacity: 0 } }
+system.statistical -> system.fault_hardening { style: { opacity: 0 } }
+system.fault_hardening -> system.conditions { style: { opacity: 0 } }
+system.conditions -> system.traceability { style: { opacity: 0 } }

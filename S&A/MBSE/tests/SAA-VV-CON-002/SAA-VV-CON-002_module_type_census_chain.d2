@@ -1,0 +1,104 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-002 verification-only Functional Chain view.
+# Inspection/demonstration chain for counting module types and rejecting extra module families.
+# References cited in the rendered chain title: IVV, SAA-R1, SAA-R3, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+type_chain: "[Functional Chain] SAA-VV-CON-002 Module-Type Census and Two-Type Constraint\nRefs: IVV; SAA-R1; SAA-R3; SAA-R5" {
+  class: chain
+  direction: down
+
+  select_gate: "[F] Operator/Witness: select\nv0.1 transition readiness or\nv1.0 flight-readiness gate" { class: func }
+  identify_article: "[F] Operator: identify article,\nbuild/configuration record,\nbaseline copy and evidence folder" { class: func }
+  record_ambient: "[F] Ambient meter: record\ntemperature and humidity before\ninspection begins" { class: func }
+  load_inventory: "[F] Operator: load modeled\nmodule inventory for selected baseline" { class: func }
+  enumerate_modules: "[F] Operator: enumerate every\nmodule instance in stack and top assembly" { class: func }
+  classify_type1: "[F] Operator/Witness: classify\nADS/AMS/OBCC/PDS/ESS modules as\nType 1 Standard Carrier instances" { class: func }
+  classify_type2: "[F] Operator/Witness: classify\nParachute / Top Module as Type 2" { class: func }
+  inspect_extra_types: "[F] Witness: inspect for third\nmodule family, adapter, permanent shim,\nvariant or undocumented structural type" { class: func }
+  apply_constraint: "[F] Acceptance gate: apply\nmaximum two module types constraint" { class: func }
+  capture_evidence: "[F] Camera/Repository: capture\nmodule census, photos and witness notes" { class: func }
+  witness_decision: "[F] Safety / QA Witness: approve\npass, fail, hold or re-run" { class: func }
+  release_package: "[F] Evidence repository: release\nreport-by-reference module-type record" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nPass only if the selected article contains no more than two structural module types:\nType 1 Standard Carrier Module and Type 2 Parachute / Top Module. ADS/AMS/OBCC/PDS/ESS\nshall be counted as Type 1 instances. Extra module families, permanent adapters, structural\nvariants, undocumented shims, missing census evidence or open anomaly = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nThis is a 100% census inspection of every module instance in the selected baseline/article.\nIt is not a sampling claim. The witness must confirm every counted instance and every\nidentified non-module contained item such as PCB, backplane, battery, cap, parachute or servo." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nPrevent false pass from hidden third module type, permanent adapter disguised as a module,\nundocumented shim, swapped top-module geometry, missing Type 1 instance, baseline mismatch,\nambiguous photos, unrecorded rework or evidence-control escape." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled modular-structure constraint; SAA-UC-IntegratedAssembly;\nSAA-FE-EnvelopeNonCompliance; SAA-FE-StructuralLoosening." {
+    class: note
+    shape: page
+  }
+}
+
+type_chain.select_gate -> type_chain.identify_article: "[FE] Selected SSIV /\nreadiness gate" { class: fe }
+type_chain.identify_article -> type_chain.record_ambient: "[FE] Article ID,\nbaseline copy and evidence path" { class: fe }
+type_chain.record_ambient -> type_chain.load_inventory: "[FE] Ambient record\nand condition flag" { class: fe }
+type_chain.load_inventory -> type_chain.enumerate_modules: "[FE] Modeled module\ninventory and expected types" { class: fe }
+type_chain.enumerate_modules -> type_chain.classify_type1: "[FE] Module instance\nlist" { class: fe }
+type_chain.classify_type1 -> type_chain.classify_type2: "[FE] Type 1 classification\nADS/AMS/OBCC/PDS/ESS" { class: fe }
+type_chain.classify_type2 -> type_chain.inspect_extra_types: "[FE] Type 2 classification\ntop module" { class: fe }
+type_chain.inspect_extra_types -> type_chain.apply_constraint: "[FE] Extra-type / adapter /\nshim findings" { class: fe }
+type_chain.apply_constraint -> type_chain.capture_evidence: "[FE] Type-count\npass/fail/hold result" { class: fe }
+type_chain.capture_evidence -> type_chain.witness_decision: "[FE] Census and\nphoto/video evidence" { class: fe }
+type_chain.witness_decision -> type_chain.release_package: "[FE] Witness decision\nand release approval" { class: fe }
+
+# Layout-only edges keep notes after the executable chain flow.
+type_chain.release_package -> type_chain.pass_fail { style: { opacity: 0 } }
+type_chain.pass_fail -> type_chain.statistical { style: { opacity: 0 } }
+type_chain.statistical -> type_chain.fault_hardening { style: { opacity: 0 } }
+type_chain.fault_hardening -> type_chain.traceability { style: { opacity: 0 } }

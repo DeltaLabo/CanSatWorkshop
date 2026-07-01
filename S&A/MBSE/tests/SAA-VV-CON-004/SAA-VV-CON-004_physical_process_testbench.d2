@@ -1,0 +1,230 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-004 verification-only Physical Architecture PV1.
+# Assembly/printing screw-type, precision and infill constraint testbench for v0.1 process readiness and v1.0 flight acceptance.
+# References cited in the rendered system title: IVV, SAA-R3, SAA-R5.
+# This file is a test-definition view and does not modify the v0.1 or v1.0 baseline models.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" { class: ea }
+process_reviewer: "[EA] Manufacturing / Process\nReviewer" { class: ea }
+witness: "[EA] QA Witness" { class: ea }
+screw_inventory: "[EA] Controlled Screw\nInventory / BOM Tray" { class: ea }
+printer_records: "[EA] Printer Profile,\nSlicer and Build Records\n15% infill evidence" { class: ea }
+calipers: "[EA] Calipers / Micrometer\ncritical features, U" { class: ea }
+torque_tool: "[EA] Torque Driver /\nInsert-Cycle Tool" { class: ea }
+cycle_counter: "[EA] Screw-hole Trial /\nCycle Counter" { class: ea }
+ambient_meter: "[EA] Ambient Thermo-\nHygrometer" { class: ea }
+camera: "[EA] Photo / Video\nEvidence Camera" { class: ea }
+repo: "[EA] Evidence Repository\nresults/SAA-VV-CON-004" { class: ea }
+
+system: "[System] SAA-VV-CON-004 Assembly / Printing Process Constraint Verification Testbench\nRefs: IVV; SAA-R3; SAA-R5" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  readiness_article: "[PC] v0.1 Printed Process\nReadiness UUT" {
+    class: pc
+    direction: right
+
+    structural_envelope: "[PC] CanSat Structural\nEnvelope" {
+      class: pc
+      direction: right
+
+      standard_stack: "[PC] Standard Carrier\nModule Stack\n(Type 1 printed modules)" {
+        class: pc
+        direction: down
+        grid-columns: 1
+        ads_module: "[PC] ADS Module\nprinted Type 1" { class: pc }
+        ams_module: "[PC] AMS Module\nprinted Type 1" { class: pc }
+        obcc_module: "[PC] OBCC Module\nprinted Type 1" { class: pc }
+        pds_module: "[PC] PDS Module\nprinted Type 1" { class: pc }
+        ess_module: "[PC] ESS Module\nprinted Type 1" { class: pc }
+      }
+
+      backplane_volume: "[PC] Perpendicular\nBackplane Slot / Volume\nprinted feature" { class: pc }
+      parachute_module: "[PC] Parachute / Top\nModule\n(Type 2 printed)" { class: pc }
+      coupons: "[PC] Process Coupons and\nRepresentative Screw Bosses\nN ≥ 3 per printer/material batch" { class: pc }
+    }
+  }
+
+  acceptance_article: "[PC] v1.0 Final Printed / Module\nHardware Acceptance UUT" {
+    class: pc
+    direction: right
+
+    cansat: "[PC] CanSat Assembly" {
+      class: pc
+      direction: right
+
+      standard_stack: "[PC] Standard Carrier\nModule Stack\n(Type 1 final prints)" {
+        class: pc
+        direction: down
+        ads_module: "[PC] ADS Module\nwith 44 mm ADS PCB" { class: pc }
+        ams_module: "[PC] AMS Module\nwith 44 mm AMS PCB" { class: pc }
+        obcc_module: "[PC] OBCC Module\nwith 44 mm OBCC PCB" { class: pc }
+        pds_module: "[PC] PDS Module\nwith 44 mm PDS PCB" { class: pc }
+        ess_module: "[PC] ESS Module\nwith ESS Battery Pack" { class: pc }
+      }
+
+      backplane_pcb: "[PC] Backplane PCB and\nBackplane Slot / Fixture\n100 mm × 28 mm context" { class: pc }
+
+      top_module: "[PC] Parachute / Top\nModule\n(Type 2 final print)" {
+        class: pc
+        direction: down
+        cap: "[PC] Cap" { class: pc }
+        parachute: "[PC] Parachute" { class: pc }
+        servo: "[PC] Servo" { class: pc }
+      }
+
+      screw_boss_set: "[PC] Final Stack Screw,\nPCB Standoff and Top-module\nScrew Boss Set" { class: pc }
+    }
+  }
+
+  screw_count_limit: "[C] Screw-type pass/fail:\nCount unique self-tapping screw types by controlled diameter, pitch,\nlength, head/drive, material/coating and supplier record. The selected\nv0.1/v1.0 gate passes only when the self-tapping screw type count is\n≤ 2 and every installed/issued screw maps to one of those types. Any\nthird type, undocumented substitute, mixed untraceable bin or missing\ninventory evidence is hold/fail." {
+    class: note
+    shape: page
+  }
+
+  infill_limit: "[C] Print-profile / infill pass/fail:\nFor every printed module, top-module part, slot/boss coupon or accepted\nbatch surrogate, controlled slicer/printer/build records show 15% print\nfill/infill. A deviation from 15% is allowed only when approved before\nacceptance with rationale, affected part IDs, configuration control and\nre-verification scope. Missing profile/build log or unapproved infill is\nhold/fail." {
+    class: note
+    shape: page
+  }
+
+  precision_limit: "[C] 0.2 mm print-precision pass/fail:\nCritical printed features including screw bosses/holes, stack alignment\nfeatures, PCB bay/standoff features, backplane slot/fixture and top-module\ninterfaces satisfy |measured - nominal| + expanded uncertainty U ≤ 0.2 mm\nunless a released drawing imposes a stricter tolerance. Uncalibrated tools,\nmissing nominal, unguarded measurement or warped feature is hold/fail." {
+    class: note
+    shape: page
+  }
+
+  assembly_cycle_limit: "[C] Representative screw/fit-cycle pass/fail:\nAt controlled torque/tool settings, representative coupons/modules and the\nv1.0 final printed hardware complete the required screw insertion/removal or\nassembly-fit cycles without stripped bosses, cracks, delamination, torque\ndamage, boss pull-out, loss of alignment, blocked backplane slot, loose PCB\nstandoff or post-cycle dimensional nonconformance. Any open anomaly is\nhold/fail until corrected and re-run." {
+    class: note
+    shape: page
+  }
+
+  viewpoints: "[C] Viewpoints:\nStatistical = 100% screw-type census and at least 3 coupons/modules per\nprinter/material batch for process screen; dimensional data are guard-banded\ncontinuous measurements; 29 independent screw-hole trials are required only\nwhen claiming R90/C95. Fault hardening = stripped bosses, warped slots, weak\ninfill, torque damage, hidden third screw type, batch/printer drift and\nevidence-control escape." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability targets:\nModeled Assembly / printing constraint; SAA-UC-IntegratedAssembly;\nSAA-FE-StructuralLoosening; SAA-FE-EnvelopeNonCompliance;\nSAA-FE-LandingDamage." {
+    class: note
+    shape: page
+  }
+}
+
+system.readiness_article.structural_envelope.standard_stack.ads_module -- system.readiness_article.structural_envelope.standard_stack.ams_module: "[PL] Stack screws" { class: pl }
+system.readiness_article.structural_envelope.standard_stack.ams_module -- system.readiness_article.structural_envelope.standard_stack.obcc_module: "[PL] Stack screws" { class: pl }
+system.readiness_article.structural_envelope.standard_stack.obcc_module -- system.readiness_article.structural_envelope.standard_stack.pds_module: "[PL] Stack screws" { class: pl }
+system.readiness_article.structural_envelope.standard_stack.pds_module -- system.readiness_article.structural_envelope.standard_stack.ess_module: "[PL] Stack screws" { class: pl }
+system.readiness_article.structural_envelope.standard_stack -- system.readiness_article.structural_envelope.parachute_module: "[PL] Stack screws" { class: pl }
+system.readiness_article.structural_envelope.standard_stack -- system.readiness_article.structural_envelope.backplane_volume: "[PL] Perpendicular\nbackplane slot" { class: pl }
+system.readiness_article.structural_envelope.parachute_module -- system.readiness_article.structural_envelope.backplane_volume: "[PL] Backplane\nclearance" { class: pl }
+system.readiness_article.structural_envelope.coupons -- system.readiness_article.structural_envelope.standard_stack: "[PL] Same printer/material\nbatch surrogate" { class: pl }
+
+system.acceptance_article.cansat.standard_stack.ads_module -- system.acceptance_article.cansat.standard_stack.ams_module: "[PL] Stack screws" { class: pl }
+system.acceptance_article.cansat.standard_stack.ams_module -- system.acceptance_article.cansat.standard_stack.obcc_module: "[PL] Stack screws" { class: pl }
+system.acceptance_article.cansat.standard_stack.obcc_module -- system.acceptance_article.cansat.standard_stack.pds_module: "[PL] Stack screws" { class: pl }
+system.acceptance_article.cansat.standard_stack.pds_module -- system.acceptance_article.cansat.standard_stack.ess_module: "[PL] Stack screws" { class: pl }
+system.acceptance_article.cansat.standard_stack -- system.acceptance_article.cansat.top_module: "[PL] Stack screws" { class: pl }
+system.acceptance_article.cansat.standard_stack -- system.acceptance_article.cansat.backplane_pcb: "[PL] Perpendicular fixture\n+ header mating context" { class: pl }
+system.acceptance_article.cansat.top_module -- system.acceptance_article.cansat.backplane_pcb: "[PL] Backplane fixture\n+ servo connector context" { class: pl }
+system.acceptance_article.cansat.screw_boss_set -- system.acceptance_article.cansat.standard_stack: "[PL] Stack and PCB\nstandoff screw bosses" { class: pl }
+system.acceptance_article.cansat.screw_boss_set -- system.acceptance_article.cansat.top_module: "[PL] Top-module screw\nbosses / fit features" { class: pl }
+
+operator -- system.readiness_article: "[PL] Handling /\nprocess readiness inspection" { class: pl }
+operator -- system.acceptance_article: "[PL] Handling /\nfinal acceptance inspection" { class: pl }
+process_reviewer -- printer_records: "[PL] Controlled build\nrecord review" { class: pl }
+witness -- system.acceptance_article: "[PL] Witnessed\nassembly cycles" { class: pl }
+screw_inventory -- system.readiness_article.structural_envelope.standard_stack: "[PL] Issued screw kit\nfor v0.1 readiness" { class: pl }
+screw_inventory -- system.acceptance_article.cansat.screw_boss_set: "[PL] Issued screw kit\nfor v1.0 final hardware" { class: pl }
+printer_records -- system.readiness_article.structural_envelope.coupons: "[PL] Batch profile and\ninfill evidence" { class: pl }
+printer_records -- system.acceptance_article.cansat.standard_stack: "[PL] Final part build\nrecords" { class: pl }
+calipers -- system.readiness_article.structural_envelope.coupons: "[PL] Critical-feature\nmeasurements" { class: pl }
+calipers -- system.acceptance_article.cansat.screw_boss_set: "[PL] Boss/hole/standoff\nmeasurements" { class: pl }
+calipers -- system.acceptance_article.cansat.backplane_pcb: "[PL] Slot/fixture\nmeasurements" { class: pl }
+torque_tool -- system.readiness_article.structural_envelope.coupons: "[PL] Controlled screw\ninsert/remove cycles" { class: pl }
+torque_tool -- system.acceptance_article.cansat.screw_boss_set: "[PL] Controlled final\nassembly cycles" { class: pl }
+cycle_counter -- torque_tool: "[PL] Cycle and trial\ncount log" { class: pl }
+ambient_meter -- system.readiness_article: "[PL] Ambient record\nbefore repetitions" { class: pl }
+ambient_meter -- system.acceptance_article: "[PL] Ambient record\nbefore final checks" { class: pl }
+camera -- system.acceptance_article: "[PL] Photo/video\ninspection record" { class: pl }
+repo -- screw_inventory: "[PL] Screw inventory\narchive" { class: pl }
+repo -- printer_records: "[PL] Build-profile\narchive" { class: pl }
+repo -- camera: "[PL] Evidence transfer" { class: pl }
+repo -- calipers: "[PL] Raw measurement\narchive" { class: pl }
+repo -- torque_tool: "[PL] Torque/cycle\narchive" { class: pl }
+
+system.screw_count_limit -> screw_inventory { class: cstr }
+system.screw_count_limit -> system.acceptance_article.cansat.screw_boss_set { class: cstr }
+system.infill_limit -> printer_records { class: cstr }
+system.infill_limit -> system.readiness_article.structural_envelope.coupons { class: cstr }
+system.infill_limit -> system.acceptance_article.cansat.standard_stack { class: cstr }
+system.precision_limit -> calipers { class: cstr }
+system.precision_limit -> system.acceptance_article.cansat.screw_boss_set { class: cstr }
+system.precision_limit -> system.acceptance_article.cansat.backplane_pcb { class: cstr }
+system.assembly_cycle_limit -> torque_tool { class: cstr }
+system.assembly_cycle_limit -> system.acceptance_article.cansat.screw_boss_set { class: cstr }
+system.viewpoints -> system.readiness_article.structural_envelope.coupons { class: cstr }
+system.viewpoints -> system.acceptance_article.cansat.screw_boss_set { class: cstr }
+system.traceability -> system.acceptance_article.cansat.standard_stack { class: cstr }
+system.traceability -> system.acceptance_article.cansat.top_module { class: cstr }
+
+# Layout-only edges keep actors, UUTs, repository and notes in stable reading order.
+operator -> process_reviewer { style: { opacity: 0 } }
+process_reviewer -> witness { style: { opacity: 0 } }
+witness -> screw_inventory { style: { opacity: 0 } }
+screw_inventory -> printer_records { style: { opacity: 0 } }
+printer_records -> calipers { style: { opacity: 0 } }
+calipers -> torque_tool { style: { opacity: 0 } }
+torque_tool -> cycle_counter { style: { opacity: 0 } }
+cycle_counter -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> camera { style: { opacity: 0 } }
+camera -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.readiness_article -> system.acceptance_article { style: { opacity: 0 } }
+system.acceptance_article -> system.screw_count_limit { style: { opacity: 0 } }
+system.screw_count_limit -> system.infill_limit { style: { opacity: 0 } }
+system.infill_limit -> system.precision_limit { style: { opacity: 0 } }
+system.precision_limit -> system.assembly_cycle_limit { style: { opacity: 0 } }
+system.assembly_cycle_limit -> system.viewpoints { style: { opacity: 0 } }
+system.viewpoints -> system.traceability { style: { opacity: 0 } }

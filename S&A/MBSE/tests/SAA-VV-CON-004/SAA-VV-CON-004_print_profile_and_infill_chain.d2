@@ -1,0 +1,108 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-004 verification-only Functional Chain view.
+# Analysis/inspection chain for printer profile, build record and 15% infill evidence.
+# References cited in the rendered chain title: IVV, SAA-R3, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+profile_chain: "[Functional Chain] SAA-VV-CON-004 Printer Profile and 15% Infill Evidence Analysis\nRefs: IVV; SAA-R3; SAA-R5" {
+  class: chain
+  direction: down
+
+  select_gate: "[F] Operator/Reviewer: select\nv0.1 readiness and/or v1.0\nacceptance printed articles" { class: func }
+  identify_batches: "[F] Operator: identify printer,\nmaterial, nozzle/profile version,\npart IDs and batch boundaries" { class: func }
+  select_batch_screen: "[F] Operator/Witness: select\nat least 3 coupons/modules per\nprinter/material batch for process\nscreen" { class: func }
+  collect_profile_records: "[F] Reviewer: collect slicer\nprofile, G-code summary, printer log,\nmaterial lot and build plate records" { class: func }
+  verify_part_traceability: "[F] Reviewer: trace every\naccepted printed module, top-module\npart or coupon to a controlled build\nrecord" { class: func }
+  check_infill_setting: "[F] Reviewer: verify print\nfill/infill is recorded as 15% for\napplicable parts" { class: func }
+  evaluate_deviation: "[F] Reviewer: evaluate any\nnon-15% infill as approved controlled\ndeviation with rationale and scope" { class: func }
+  inspect_batch_drift: "[F] Reviewer/Witness: inspect\nfor reprint history, printer/material\nbatch drift or missing calibration" { class: func }
+  record_anomalies: "[F] Reviewer/operator: record\nmissing logs, unapproved infill, part\nmix-up, weak-infill concern or hold" { class: func }
+  apply_profile_gate: "[F] Acceptance gate: classify\nprofile/infill evidence as pass, fail,\nhold or re-run" { class: func }
+  archive_profile_package: "[F] Evidence repository: archive\nprofiles, build logs, batch list,\ndeviations and witness decision" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nPass only when every accepted printed part or approved surrogate has controlled\nprinter/slicer/build evidence showing 15% print fill/infill. A deviation from\n15% is acceptable only when approved before acceptance, tied to part IDs, justified\nfor strength/fit risk, and re-verified over the affected scope. Missing build log,\nuntraceable part ID, unapproved non-15% infill, uncontrolled reprint or unresolved\nweak-infill concern is hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nAt least 3 coupons/modules per printer/material batch are included for process\nscreening and traceability review. This screens process consistency only; it is\nnot a population reliability claim. Stronger claims require an approved sampling\nor reliability-demonstration plan." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nExplicitly screens weak infill, wrong profile loaded, missing G-code/build logs,\npart-to-record mix-up, uncontrolled reprint, material lot substitution, printer\ncalibration drift, batch drift and evidence-control escape." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Environmental/equipment condition:\nRecord printer ID, material lot, profile version, build date/time, ambient or\nprinter-chamber record when available, and reviewer/witness identity. Hold when\nrecords are insufficient to distinguish accepted parts from rejected/reprinted\nparts." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled Assembly / printing constraint: 15% print fill; SAA-UC-IntegratedAssembly;\nSAA-FE-StructuralLoosening; SAA-FE-LandingDamage." {
+    class: note
+    shape: page
+  }
+}
+
+profile_chain.select_gate -> profile_chain.identify_batches: "[FE] Selected SSIV /\nprinted article set" { class: fe }
+profile_chain.identify_batches -> profile_chain.select_batch_screen: "[FE] Printer/material\nbatch list" { class: fe }
+profile_chain.select_batch_screen -> profile_chain.collect_profile_records: "[FE] Batch screen\nsample list" { class: fe }
+profile_chain.collect_profile_records -> profile_chain.verify_part_traceability: "[FE] Profile,\nG-code and build logs" { class: fe }
+profile_chain.verify_part_traceability -> profile_chain.check_infill_setting: "[FE] Part-to-build\ntraceability status" { class: fe }
+profile_chain.check_infill_setting -> profile_chain.evaluate_deviation: "[FE] 15% infill status" { class: fe }
+profile_chain.evaluate_deviation -> profile_chain.inspect_batch_drift: "[FE] Deviation approval\nor hold" { class: fe }
+profile_chain.inspect_batch_drift -> profile_chain.record_anomalies: "[FE] Batch/process\ndrift status" { class: fe }
+profile_chain.record_anomalies -> profile_chain.apply_profile_gate: "[FE] Open/closed\nprofile anomalies" { class: fe }
+profile_chain.apply_profile_gate -> profile_chain.archive_profile_package: "[FE] Pass/fail/hold\nprofile decision" { class: fe }
+
+# Layout-only edges keep notes after the executable analysis flow.
+profile_chain.archive_profile_package -> profile_chain.pass_fail { style: { opacity: 0 } }
+profile_chain.pass_fail -> profile_chain.statistical { style: { opacity: 0 } }
+profile_chain.statistical -> profile_chain.fault_hardening { style: { opacity: 0 } }
+profile_chain.fault_hardening -> profile_chain.conditions { style: { opacity: 0 } }
+profile_chain.conditions -> profile_chain.traceability { style: { opacity: 0 } }

@@ -1,0 +1,179 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-001 verification-only Physical Architecture PV1.
+# v0.1 structural readiness testbench for 355 ml envelope, reference/ballasted mass, and landing-impact constraint.
+# References cited in the rendered system title: IVV, SAA-R1, SAA-R2, SAA-R5.
+# This file is a test-definition view and does not modify the v0.1 baseline model.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" { class: ea }
+witness: "[EA] Safety / QA Witness" { class: ea }
+envelope_gauge: "[EA] 355 ml Envelope /\nCan Gauge\nØ66.0 mm × H122.0 mm" { class: ea }
+caliper_height: "[EA] Calibrated Caliper /\nHeight Gauge\nU_D, U_H" { class: ea }
+scale: "[EA] Calibrated Scale\nU_M, ≤0.1 g target" { class: ea }
+drop_fixture: "[EA] Drop / Landing-Impact\nScreen Fixture\napproved tailored level or hold" { class: ea }
+impact_surface: "[EA] Tailored Impact Surface\nheight/material/orientation record" { class: ea }
+accel_logger: "[EA] Shock Witness Indicator\noptional v0.1 screen evidence" { class: ea }
+inspection_kit: "[EA] Post-Impact\nStructural Inspection Kit" { class: ea }
+camera: "[EA] Photo / Video\nEvidence Camera" { class: ea }
+ambient_meter: "[EA] Ambient Thermo-\nHygrometer" { class: ea }
+repo: "[EA] Evidence Repository\nresults/SAA-VV-CON-001" { class: ea }
+
+system: "[System] SAA-VV-CON-001 v0.1 Structural Envelope/Mass/Impact Testbench\nRefs: IVV; SAA-R1; SAA-R2; SAA-R5" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  article: "[PC] v0.1 Structural Article\ntransition-readiness UUT" {
+    class: pc
+    direction: right
+
+    structural_envelope: "[PC] CanSat Structural\nEnvelope" {
+      class: pc
+      direction: right
+
+      standard_stack: "[PC] Standard Carrier\nModule Stack\n(Type 1)" {
+        class: pc
+        direction: down
+        grid-columns: 1
+
+        ads_module: "[PC] ADS Module" { class: pc }
+        ams_module: "[PC] AMS Module" { class: pc }
+        obcc_module: "[PC] OBCC Module" { class: pc }
+        pds_module: "[PC] PDS Module" { class: pc }
+        ess_module: "[PC] ESS Module" { class: pc }
+      }
+
+      backplane_volume: "[PC] Perpendicular\nBackplane Volume" { class: pc }
+      parachute_module: "[PC] Parachute / Top\nModule\n(Type 2)" { class: pc }
+      mass_simulator: "[PC] Verification Mass\nSimulator / Ballast\nverification-only if used" { class: pc }
+    }
+  }
+
+  version_scope: "[C] v0.1 scope:\nTransition structural/module/backplane-volume readiness only.\nMass is reference or representative-ballast evidence unless\nfinal-like hardware is installed. Impact closure supports structural\nreadiness and does not by itself close v1.0 flight acceptance." {
+    class: note
+    shape: page
+  }
+
+  envelope_mass_guardbands: "[C] v0.1 envelope/reference-mass pass-fail:\nD_max + U_D ≤ 66.0 mm and H_max + U_H ≤ modeled 122.0 mm\nunless a stricter height is confirmed. Record structural or ballasted\nmass and U_M; do not claim final mass closure from v0.1 alone." {
+    class: note
+    shape: page
+  }
+
+  impact_constraint: "[C] v0.1 impact pass-fail:\nExecute only with approved tailored screen level, impact surface,\norientation set, ballast/article state and safety boundary, or record\nanalysis-backed hold. Pass only if no module stack, backplane volume,\ntop module, screw interface, envelope feature or ballast fixture cracks,\nloosens, shifts, deforms or becomes unserviceable; post-impact envelope\ncheck remains acceptable." {
+    class: note
+    shape: page
+  }
+
+  evidence_constraint: "[C] Evidence/environment constraint:\nRecord baseline copy, article ID, ballast state, calibration, ambient\ntemperature/humidity, tailored level or hold rationale, raw readings,\nuncertainties, photos/video, pre/post inspection, witness decision and\nanomaly dispositions under results/SAA-VV-CON-001/." {
+    class: note
+    shape: page
+  }
+
+  viewpoints: "[C] Viewpoints:\nStatistical = calibrated continuous measurements; binary impact screen\nonly, no reliability claim unless binomial trial plan is approved.\nFault hardening = prevent false pass from undocumented ballast, forced\ngauge fit, unresolved level, hidden cracks, loose screws, shifted backplane\nvolume/top module or incomplete evidence." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability targets:\nModeled 355 ml envelope / mass / landing-impact constraint;\nSAA-FE-EnvelopeNonCompliance; SAA-FE-MassNonCompliance;\nSAA-FE-LandingDamage." {
+    class: note
+    shape: page
+  }
+}
+
+system.article.structural_envelope.standard_stack.ads_module -- system.article.structural_envelope.standard_stack.ams_module: "[PL] Stack screws" { class: pl }
+system.article.structural_envelope.standard_stack.ams_module -- system.article.structural_envelope.standard_stack.obcc_module: "[PL] Stack screws" { class: pl }
+system.article.structural_envelope.standard_stack.obcc_module -- system.article.structural_envelope.standard_stack.pds_module: "[PL] Stack screws" { class: pl }
+system.article.structural_envelope.standard_stack.pds_module -- system.article.structural_envelope.standard_stack.ess_module: "[PL] Stack screws" { class: pl }
+system.article.structural_envelope.standard_stack -- system.article.structural_envelope.parachute_module: "[PL] Stack screws" { class: pl }
+system.article.structural_envelope.standard_stack -- system.article.structural_envelope.backplane_volume: "[PL] Perpendicular\nbackplane slot" { class: pl }
+system.article.structural_envelope.parachute_module -- system.article.structural_envelope.backplane_volume: "[PL] Backplane\nclearance" { class: pl }
+system.article.structural_envelope.mass_simulator -- system.article.structural_envelope.standard_stack: "[PL] Controlled ballast\nfixture if used" { class: pl }
+
+operator -- system.article: "[PL] Handling" { class: pl }
+witness -- system.article: "[PL] Witness" { class: pl }
+envelope_gauge -- system.article.structural_envelope: "[PL] Can gauge" { class: pl }
+caliper_height -- system.article.structural_envelope: "[PL] D/H probes" { class: pl }
+scale -- system.article: "[PL] Scale" { class: pl }
+drop_fixture -- system.article: "[PL] Release fixture" { class: pl }
+impact_surface -- drop_fixture: "[PL] Impact surface" { class: pl }
+accel_logger -- system.article: "[PL] Shock witness" { class: pl }
+inspection_kit -- system.article: "[PL] Inspection" { class: pl }
+camera -- system.article: "[PL] Camera" { class: pl }
+ambient_meter -- system.article: "[PL] Ambient" { class: pl }
+repo -- camera: "[PL] Media" { class: pl }
+repo -- scale: "[PL] Measurement log" { class: pl }
+repo -- accel_logger: "[PL] Shock log" { class: pl }
+
+system.version_scope -> system.article { class: cstr }
+system.envelope_mass_guardbands -> system.article.structural_envelope { class: cstr }
+system.envelope_mass_guardbands -> envelope_gauge { class: cstr }
+system.envelope_mass_guardbands -> caliper_height { class: cstr }
+system.envelope_mass_guardbands -> scale { class: cstr }
+system.impact_constraint -> drop_fixture { class: cstr }
+system.impact_constraint -> system.article { class: cstr }
+system.evidence_constraint -> repo { class: cstr }
+system.evidence_constraint -> ambient_meter { class: cstr }
+system.viewpoints -> system.article { class: cstr }
+system.traceability -> system.article.structural_envelope { class: cstr }
+
+# Layout-only edges keep test equipment, UUT, repository, and notes in a stable reading order.
+operator -> witness { style: { opacity: 0 } }
+witness -> envelope_gauge { style: { opacity: 0 } }
+envelope_gauge -> caliper_height { style: { opacity: 0 } }
+caliper_height -> scale { style: { opacity: 0 } }
+scale -> drop_fixture { style: { opacity: 0 } }
+drop_fixture -> impact_surface { style: { opacity: 0 } }
+impact_surface -> accel_logger { style: { opacity: 0 } }
+accel_logger -> inspection_kit { style: { opacity: 0 } }
+inspection_kit -> camera { style: { opacity: 0 } }
+camera -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.article -> system.version_scope { style: { opacity: 0 } }
+system.version_scope -> system.envelope_mass_guardbands { style: { opacity: 0 } }
+system.envelope_mass_guardbands -> system.impact_constraint { style: { opacity: 0 } }
+system.impact_constraint -> system.evidence_constraint { style: { opacity: 0 } }
+system.evidence_constraint -> system.viewpoints { style: { opacity: 0 } }
+system.viewpoints -> system.traceability { style: { opacity: 0 } }

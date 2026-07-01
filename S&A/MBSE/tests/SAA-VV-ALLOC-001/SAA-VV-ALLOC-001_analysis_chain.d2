@@ -1,0 +1,108 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-ALLOC-001 verification-only Functional Chain view.
+# Analysis scenario for v1.0 S&A integration-function allocation and ownership.
+# References cited in the rendered chain title: IVV, SAA-R1, SAA-R2, SAA-R3, SAA-R4, SAA-R5.
+# This chain defines the analysis activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+analysis_chain: "[Functional Chain] SAA-VV-ALLOC-001 S&A Integration-Function Allocation and Ownership Analysis\nRefs: IVV; SAA-R1; SAA-R2; SAA-R3; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  load_baseline: "[F] Load v1.0 baseline\nphysical view, tests plan,\nand S&A constraints" { class: func }
+  enumerate_candidates: "[F] Enumerate candidate\nS&A integration functions\nfrom PCs, PLs, and constraints" { class: func }
+  collect_owner_inputs: "[F] Collect subsystem owner\nmodel references, responses,\nand behavior waivers" { class: func }
+  separate_scope: "[F] Separate S&A physical\nconstraint responsibility\nfrom subsystem behavior" { class: func }
+  assign_disposition: "[F] Assign owner or disposition\nfor maintain envelope, retention,\nPCB accommodation, backplane,\ntestpoints, clearance, battery,\nconnector, and environmental screening" { class: func }
+  check_saa_owned: "[F] Check S&A-owned functions\nhave explicit LC/F allocation\nor controlled constraint-only\nrationale" { class: func }
+  check_subsystem_refs: "[F] Check subsystem-owned\nbehavior functions have\ntraceable model references" { class: func }
+  screen_foreign_unowned: "[F] Screen foreign, extra,\nor unowned functions and\nallocation gaps" { class: func }
+  screen_faults: "[F] Screen ownership-related\nbackplane, retention, clearance,\nfit, and environmental hazards" { class: func }
+  classify: "[F] Classify Pass / Hold / Fail\nand required model updates" { class: func }
+  release_record: "[F] Release report-by-reference\nallocation decision record" { class: func }
+
+  pass_fail: "[C] Pass/fail constraint:\nPass only if 100% of candidate S&A integration functions\nand foreign/ambiguous functions have explicit owner or\ncontrolled disposition. No ambiguous ownership remains for\nbackplane, harness/connector, retention, deployment clearance,\nphysical fit, testpoint access, or environmental screening.\nS&A-owned functions must have explicit allocation or documented\nconstraint-only rationale; subsystem-owned behavior must have\nmodel/evidence cross-reference. Missing owner/disposition = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\n100% model/ownership census review of the v1.0 allocation\ncandidate set, constraints, and owner responses. No sampling,\npacket-delivery, or reliability-population claim is made." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nA missed owner is treated as a hazard source for unverified\nbackplane mating, harness/connector retention, module/battery\nretention, deployment clearance, physical fit, mass/envelope\ncompliance, and environmental screening." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nSAA-UC-IntegratedAssembly; SAA-UC-BackplaneIntegration;\nSAA-UC-ParachuteClearance; SAA-FE-EnvelopeNonCompliance;\nSAA-FE-BackplaneMisMate; SAA-FE-StructuralLoosening;\nSAA-FE-LandingDamage; v1.0 envelope, module, backplane,\nand assembly/printing constraints." {
+    class: note
+    shape: page
+  }
+
+  evidence_conditions: "[C] Evidence conditions:\nUse controlled baseline copies, the current tests plan,\nS&A reference index, released subsystem model references\nor owner responses, and a configuration-managed matrix.\nIf any required owner response or reference is unavailable,\nclassify the affected function hold until resolved." {
+    class: note
+    shape: page
+  }
+}
+
+analysis_chain.load_baseline -> analysis_chain.enumerate_candidates: "[FE] v1.0 PCs, PLs,\nand constraints" { class: fe }
+analysis_chain.enumerate_candidates -> analysis_chain.collect_owner_inputs: "[FE] 100% candidate\nfunction list" { class: fe }
+analysis_chain.collect_owner_inputs -> analysis_chain.separate_scope: "[FE] Owner inputs\nand model refs" { class: fe }
+analysis_chain.separate_scope -> analysis_chain.assign_disposition: "[FE] S&A vs subsystem\nownership split" { class: fe }
+analysis_chain.assign_disposition -> analysis_chain.check_saa_owned: "[FE] Owner/disposition\nmatrix" { class: fe }
+analysis_chain.check_saa_owned -> analysis_chain.check_subsystem_refs: "[FE] S&A allocation\nor rationale status" { class: fe }
+analysis_chain.check_subsystem_refs -> analysis_chain.screen_foreign_unowned: "[FE] Cross-reference\ncoverage" { class: fe }
+analysis_chain.screen_foreign_unowned -> analysis_chain.screen_faults: "[FE] Gaps and\nforeign-function list" { class: fe }
+analysis_chain.screen_faults -> analysis_chain.classify: "[FE] Hazard-screened\nfindings" { class: fe }
+analysis_chain.classify -> analysis_chain.release_record: "[FE] Pass/hold/fail\ndecision and model updates" { class: fe }
+
+# Layout-only edges keep notes after the executable analysis flow.
+analysis_chain.release_record -> analysis_chain.pass_fail { style: { opacity: 0 } }
+analysis_chain.pass_fail -> analysis_chain.statistical { style: { opacity: 0 } }
+analysis_chain.statistical -> analysis_chain.fault_hardening { style: { opacity: 0 } }
+analysis_chain.fault_hardening -> analysis_chain.traceability { style: { opacity: 0 } }
+analysis_chain.traceability -> analysis_chain.evidence_conditions { style: { opacity: 0 } }

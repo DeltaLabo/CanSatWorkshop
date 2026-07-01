@@ -1,0 +1,157 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CE-001 verification-only Physical Architecture PV1.
+# Physical evidence-access view for the v1.0 backplane/interface CE analysis.
+# References cited in the rendered system title: IVV, SAA-R4, SAA-R5.
+# This file is a test-definition view and does not modify the v1.0 baseline model.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+fixture: "[EA] ESD Fixture /\nArticle Restraint" { class: ea }
+evidence_tools: "[EA] Backplane Evidence Tools\nDMM, continuity meter,\nscope/capacitance probe,\npinout workstation" { class: ea }
+
+system: "[System] SAA-VV-CE-001 v1.0 Interface Evidence Access\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] v1.0 CanSat Assembly\nunder interface analysis" {
+    class: pc
+    direction: right
+
+    standard_stack: "[PC] Standard Carrier\nModule Stack\n(Type 1)" {
+      class: pc
+      direction: down
+
+      ads_module: "[PC] ADS Module" {
+        class: pc
+        direction: right
+        ads_pcb: "[PC] ADS PCB\n44 mm × 44 mm" { class: pc }
+      }
+
+      ams_module: "[PC] AMS Module" {
+        class: pc
+        direction: right
+        ams_pcb: "[PC] AMS PCB\n44 mm × 44 mm" { class: pc }
+      }
+
+      obcc_module: "[PC] OBCC Module" {
+        class: pc
+        direction: right
+        obcc_pcb: "[PC] OBCC PCB\n44 mm × 44 mm" { class: pc }
+      }
+
+      pds_module: "[PC] PDS Module" {
+        class: pc
+        direction: right
+        pds_pcb: "[PC] PDS PCB\n44 mm × 44 mm" { class: pc }
+      }
+
+      ess_module: "[PC] ESS Module" {
+        class: pc
+        direction: right
+        battery_pack: "[PC] ESS Battery Pack" { class: pc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB\n100 mm × 28 mm\n2-layer stackup" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ads_headers: "[PC] 2 mm 2×6\nADS Headers" { class: pc }
+      ams_headers: "[PC] 2 mm 2×6\nAMS Headers" { class: pc }
+      obcc_headers: "[PC] 2 mm 2×6\nOBCC Headers" { class: pc }
+      pds_headers: "[PC] 2 mm 2×6\nPDS Headers" { class: pc }
+      pdm_servo_header: "[PC] PDM Servo\nConnector" { class: pc }
+      spine: "[PC] Backplane Spine" { class: pc }
+    }
+
+    parachute_module: "[PC] Parachute / Top\nModule\n(Type 2)" {
+      class: pc
+      direction: down
+
+      cap: "[PC] Cap" { class: pc }
+      parachute: "[PC] Parachute" { class: pc }
+      servo: "[PC] Servo" { class: pc }
+    }
+  }
+
+  analysis_scope: "[C] Analysis evidence-access scope:\nUse physical access only to support the\nCE presence/absence analysis for implied\n5 V, 3.3 V, pin-interface, testpoint,\nSPI/I2C/UART, and PDM servo paths.\nThe baseline has no S&A [CE] elements." {
+    class: note
+    shape: page
+  }
+
+  pass_fail_access: "[C] Access constraint:\nAll evidence used in the analysis must be\ntraceable to the v1.0 backplane/header/\nconnector endpoints. Probe contact must\nnot modify the article or create shorts.\nUnavailable or ambiguous access = hold\nuntil alternate evidence is approved." {
+    class: note
+    shape: page
+  }
+
+  support_only: "[C] Support-only constraint:\nContinuity, rail, capacitance, or rise-time\nmeasurements support the design/interface\nreview. They do not by themselves create\na reliability demonstration or replace the\nrequired modeled ownership/cross-reference." {
+    class: note
+    shape: page
+  }
+
+  fault_targets: "[C] Fault-hardening viewpoint:\nPhysical evidence access is selected to\ncatch swapped pins, missing testpoints,\nrail short/open, excessive capacitance or\nrise-time risk on SPI/I2C/UART paths, and\nPDM servo connector miswire." {
+    class: note
+    shape: page
+  }
+}
+
+system.cansat.standard_stack -- system.cansat.backplane_pcb: "[PL] Header mating" { class: pl }
+system.cansat.parachute_module -- system.cansat.backplane_pcb: "[PL] Servo connector" { class: pl }
+
+fixture -- system.cansat: "[PL] Restraint" { class: pl }
+evidence_tools -- system.cansat.backplane_pcb: "[PL] Probe / visual access" { class: pl }
+
+system.analysis_scope -> system.cansat.backplane_pcb { class: cstr }
+system.pass_fail_access -> system.cansat.backplane_pcb { class: cstr }
+system.support_only -> system.cansat.backplane_pcb { class: cstr }
+system.fault_targets -> system.cansat.backplane_pcb { class: cstr }
+
+# Layout-only edges keep equipment above the article and notes below it.
+fixture -> evidence_tools { style: { opacity: 0 } }
+evidence_tools -> system { style: { opacity: 0 } }
+system.cansat -> system.analysis_scope { style: { opacity: 0 } }
+system.analysis_scope -> system.pass_fail_access { style: { opacity: 0 } }
+system.pass_fail_access -> system.support_only { style: { opacity: 0 } }
+system.support_only -> system.fault_targets { style: { opacity: 0 } }

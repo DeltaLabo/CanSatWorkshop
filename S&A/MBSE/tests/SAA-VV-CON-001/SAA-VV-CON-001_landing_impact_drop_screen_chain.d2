@@ -1,0 +1,125 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-001 verification-only Functional Chain view.
+# Testing chain for landing-impact/drop-screen verification, with analysis-backed hold when exact levels are unresolved.
+# References cited in the rendered chain title: IVV, SAA-R1, SAA-R2, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+impact_chain: "[Functional Chain] SAA-VV-CON-001 Landing-Impact / Drop-Screen Verification or Hold\nRefs: IVV; SAA-R1; SAA-R2; SAA-R5" {
+  class: chain
+  direction: down
+
+  select_version: "[F] Operator/Witness: select\nv0.1 structural readiness or\nv1.0 final flight-readiness screen" { class: func }
+  load_screen: "[F] Test team: load approved\ndrop/impact screen definition,\nreferences and safety boundary" { class: func }
+  verify_screen: "[F] Acceptance gate: verify\ndrop height/energy, impact surface,\norientation set, configuration and\narticle state are controlled" { class: func }
+  hold_unresolved: "[F] Acceptance gate: classify\nanalysis-backed hold when exact\nimpact levels or article state\nremain unresolved" { class: func }
+  confirm_config: "[F] Operator/Witness: confirm\narticle configuration and mass/ballast\nstate for selected version" { class: func }
+  pre_inspect: "[F] Inspection kit: perform\npre-screen PC/PL, crack, connector,\nbattery, cap/parachute/servo and\nmeasurement baseline checks" { class: func }
+  record_ambient: "[F] Ambient meter: record\ntemperature, humidity, fixture state\nand safety condition" { class: func }
+  setup_fixture: "[F] Drop fixture: mount or hold\narticle in approved orientation\nwithout preloading or damage" { class: func }
+  release_article: "[F] Drop fixture: release\narticle for approved tailored\nlanding-impact/drop screen" { class: func }
+  observe_impact: "[F] Camera/Shock witness: record\ncomplete release, free fall, impact,\nrebound/rest state and any forbidden event" { class: func }
+  post_inspect: "[F] Inspection kit: inspect for\nstructural fracture, deformation,\nloose screws, battery movement,\nbackplane/header/connector unseat,\ncap/parachute/servo jam and hidden damage" { class: func }
+  post_measure: "[F] Measurement team: repeat\nenvelope and mass checks or verify\nno post-impact change requiring\nremeasurement closure" { class: func }
+  apply_gate: "[F] Acceptance gate: apply\nimpact pass/fail constraints and\nversion-specific closure rules" { class: func }
+  disposition: "[F] Engineering/QA: open anomaly,\nwaiver request, rework, re-run,\nhold or fail disposition as needed" { class: func }
+  witness_decision: "[F] Safety / QA Witness: approve\npass, fail, hold, or required re-run" { class: func }
+  archive: "[F] Evidence repository: archive\nscreen definition, video/photos, logs,\npost-impact inspection, remeasurements\nand decisions" { class: func }
+
+  pass_fail: "[C] Landing-impact pass/fail constraints:\nPass only when the tailored drop/impact screen is approved and executed, the complete\nrelease/impact is evidenced, no structural/integration failure occurs, and post-impact\ninspection plus remeasurement are acceptable. Failure/hold triggers include cracks, permanent\ndeformation, stack screw/standoff/battery/backplane/header/PDM servo connector loosening,\nmodule shift, electrical short/open evidence, cap/parachute/servo jam, mass/envelope guard-band\nexceedance after impact, ambiguous video, missing calibration/evidence, or open anomaly." {
+    class: note
+    shape: page
+  }
+
+  unresolved_level: "[C] Analysis-backed hold rule:\nExact drop height/energy, impact surface, orientation set and article state are unresolved in\nthe baseline. If these are not approved before execution, do not release the article and do not\nclaim landing-impact pass. Record an analysis-backed hold referencing IVV, SAA-R2, the proposed\nASTM D5276-style or tailored CanSat environmental screen, and the missing level decision." {
+    class: note
+    shape: page
+  }
+
+  version_scope: "[C] Version distinction:\nv0.1 screen supports structural/module/backplane-volume transition readiness and may use\ndocumented representative ballast. v1.0 screen supports final flight readiness and must use the\nfull as-flown configuration: battery, PCBs, backplane, headers, connectors, cap, parachute,\nservo and required ballast installed." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nEach impact/drop screen outcome is binary pass/fail. A single v0.1 or v1.0 article screen is a\nworkmanship and integration screen, not a population reliability demonstration. If a reliability\nclaim is made, use representative independent trials with one-sided binomial confidence; 29/29\nzero-failure trials is a planning point for R90/C95." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nThe chain hardens against false pass from under-mass ballast, removed flight items, unrecorded\norientation, unsupported drop surface, forced preloaded fixture, camera blind spots, ignored\nrebound damage, hidden cracks, loose fasteners, battery migration, backplane/header or PDM servo\nconnector unseat, jammed recovery hardware, and skipped post-impact remeasurement." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled 'withstand landing impact' constraint; SAA-FE-LandingDamage;\nSAA-FE-EnvelopeNonCompliance; SAA-FE-MassNonCompliance; SAA-UC-IntegratedAssembly;\nSAA-UC-ParachuteClearance." {
+    class: note
+    shape: page
+  }
+}
+
+impact_chain.select_version -> impact_chain.load_screen: "[FE] Selected SSIV /\nreadiness gate" { class: fe }
+impact_chain.load_screen -> impact_chain.verify_screen: "[FE] Proposed screen\nlevel and references" { class: fe }
+impact_chain.verify_screen -> impact_chain.hold_unresolved: "[FE] Missing approved\nlevel, surface, orientation,\narticle state or safety boundary" { class: fe }
+impact_chain.hold_unresolved -> impact_chain.archive: "[FE] Analysis-backed\nhold package" { class: fe }
+impact_chain.verify_screen -> impact_chain.confirm_config: "[FE] Approved tailored\nscreen definition" { class: fe }
+impact_chain.confirm_config -> impact_chain.pre_inspect: "[FE] Configuration and\nballast state" { class: fe }
+impact_chain.pre_inspect -> impact_chain.record_ambient: "[FE] Pre-screen\ninspection baseline" { class: fe }
+impact_chain.record_ambient -> impact_chain.setup_fixture: "[FE] Ambient and\nsafety condition" { class: fe }
+impact_chain.setup_fixture -> impact_chain.release_article: "[FE] Approved mount /\norientation ready" { class: fe }
+impact_chain.release_article -> impact_chain.observe_impact: "[FE] Release and\nimpact event" { class: fe }
+impact_chain.observe_impact -> impact_chain.post_inspect: "[FE] Impact video, shock\nmarker and forbidden-event status" { class: fe }
+impact_chain.post_inspect -> impact_chain.post_measure: "[FE] Post-impact\nintegrity status" { class: fe }
+impact_chain.post_measure -> impact_chain.apply_gate: "[FE] Post-impact envelope,\nmass and serviceability status" { class: fe }
+impact_chain.apply_gate -> impact_chain.disposition: "[FE] Pass/fail/hold\nrecommendation" { class: fe }
+impact_chain.disposition -> impact_chain.witness_decision: "[FE] Closed/open anomaly,\nwaiver, rework or re-run" { class: fe }
+impact_chain.witness_decision -> impact_chain.archive: "[FE] Witness decision\nand evidence release" { class: fe }
+
+# Layout-only edges keep notes after the executable chain flow.
+impact_chain.archive -> impact_chain.pass_fail { style: { opacity: 0 } }
+impact_chain.pass_fail -> impact_chain.unresolved_level { style: { opacity: 0 } }
+impact_chain.unresolved_level -> impact_chain.version_scope { style: { opacity: 0 } }
+impact_chain.version_scope -> impact_chain.statistical { style: { opacity: 0 } }
+impact_chain.statistical -> impact_chain.fault_hardening { style: { opacity: 0 } }
+impact_chain.fault_hardening -> impact_chain.traceability { style: { opacity: 0 } }

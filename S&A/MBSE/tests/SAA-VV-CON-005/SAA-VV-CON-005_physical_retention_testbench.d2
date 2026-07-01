@@ -1,0 +1,238 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-005 verification-only Physical Architecture PV1.
+# Retention under vibration/drop/landing-style loads for the v1.0 integrated S&A article.
+# References cited in the rendered system title: IVV, SAA-R1, SAA-R2, SAA-R3, SAA-R4, SAA-R5.
+# This file is a test-definition view and does not modify the v0.1 or v1.0 baseline models.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" { class: ea }
+witness: "[EA] Safety / QA Witness" { class: ea }
+environmental_fixture: "[EA] Tailored Vibration,\nDrop and 20 g-style\nProof-load Fixture" { class: ea }
+safety_barrier: "[EA] Safety Boundary /\nRemote Release Area" { class: ea }
+accelerometer_logger: "[EA] Tri-axial Accelerometer /\nEvent Logger" { class: ea }
+inspection_kit: "[EA] Retention Inspection Kit\nwitness marks, torque marks,\nfeeler gauges, magnifier" { class: ea }
+scale_envelope: "[EA] Calibrated Scale and\n355 ml Envelope Gauge" { class: ea }
+backplane_checker: "[EA] Backplane Rail /\nContinuity / Interface\nCheckout Tool" { class: ea }
+ambient_meter: "[EA] Ambient Thermo-\nHygrometer" { class: ea }
+camera: "[EA] Photo / Video\nEvidence Camera" { class: ea }
+repo: "[EA] Evidence Repository\nresults/SAA-VV-CON-005" { class: ea }
+
+system: "[System] SAA-VV-CON-005 Retention Under Vibration / Drop / Landing-style Loads Testbench\nRefs: IVV; SAA-R1; SAA-R2; SAA-R3; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  v10_uut: "[PC] v1.0 Integrated CanSat\nRetention Screen UUT\nfull as-flown S&A article" {
+    class: pc
+    direction: right
+
+    cansat: "[PC] CanSat Assembly" {
+      class: pc
+      direction: right
+
+      standard_stack: "[PC] Standard Carrier\nModule Stack\n(Type 1)" {
+        class: pc
+        direction: down
+
+        ads_module: "[PC] ADS Module" {
+          class: pc
+          direction: right
+          ads_pcb: "[PC] ADS PCB\n44 mm × 44 mm" { class: pc }
+        }
+
+        ams_module: "[PC] AMS Module" {
+          class: pc
+          direction: right
+          ams_pcb: "[PC] AMS PCB\n44 mm × 44 mm" { class: pc }
+        }
+
+        obcc_module: "[PC] OBCC Module" {
+          class: pc
+          direction: right
+          obcc_pcb: "[PC] OBCC PCB\n44 mm × 44 mm" { class: pc }
+        }
+
+        pds_module: "[PC] PDS Module" {
+          class: pc
+          direction: right
+          pds_pcb: "[PC] PDS PCB\n44 mm × 44 mm" { class: pc }
+        }
+
+        ess_module: "[PC] ESS Module" {
+          class: pc
+          direction: right
+          battery_pack: "[PC] ESS Battery Pack\nheavy retained mass" { class: pc }
+        }
+      }
+
+      backplane_pcb: "[PC] Backplane PCB\n100 mm × 28 mm\n2-layer stackup" {
+        class: pc
+        direction: down
+        grid-columns: 1
+
+        ads_headers: "[PC] 2 mm 2×6\nADS Headers" { class: pc }
+        ams_headers: "[PC] 2 mm 2×6\nAMS Headers" { class: pc }
+        obcc_headers: "[PC] 2 mm 2×6\nOBCC Headers" { class: pc }
+        pds_headers: "[PC] 2 mm 2×6\nPDS Headers" { class: pc }
+        pdm_servo_header: "[PC] PDM Servo\nConnector" { class: pc }
+        spine: "[PC] Backplane Spine" { class: pc }
+      }
+
+      parachute_module: "[PC] Parachute / Top\nModule\n(Type 2)" {
+        class: pc
+        direction: down
+        grid-columns: 1
+        cap: "[PC] Cap" { class: pc }
+        parachute: "[PC] Parachute" { class: pc }
+        servo: "[PC] Servo" { class: pc }
+      }
+
+      witness_markers: "[PC] Verification-only\nRetention Witness Marks\npaint marks, tamper tape,\nreference photos" { class: pc }
+    }
+  }
+
+  tailored_screen: "[C] Tailored environmental screen definition:\nBefore execution, record and approve vibration, drop, landing-impact or\n20 g-style proof-load level, axes, orientations, duration, fixture coupling,\nsafety limits, abort criteria and environmental limitations. If levels or\nlimitations are unresolved, the valid outcome is hold/no-pass; this activity is\nan article screen, not a qualification claim, unless an independent article/trial\nplan is approved." {
+    class: note
+    shape: page
+  }
+
+  retention_pass_fail: "[C] Retention pass/fail:\nAfter every approved screen, no retained mass detaches; no stack screw, PCB\nstandoff/screw, battery fixture, backplane fixture, ADS/AMS/OBCC/PDS header,\nPDM Servo Connector or top-module interface loosens, unseats, cracks or shifts\noutside the approved acceptance threshold. If no measured threshold is released,\nany visible witness-mark shift, new gap, rattle, crack, bent pin or connector\nmovement is hold/fail until dispositioned and re-screened." {
+    class: note
+    shape: page
+  }
+
+  envelope_postcheck: "[C] Envelope/mass post-screen check:\nThe v1.0 article remains within the modeled 355 ml envelope:\nD_max + U_D ≤ 66.0 mm and H_max + U_H ≤ 122.0 mm. Post-screen mass and\npart census show no lost hardware or unapproved removal; any mass change\noutside measurement uncertainty must be explained by approved fixture/removal\nrecords or is hold/fail." {
+    class: note
+    shape: page
+  }
+
+  backplane_postcheck: "[C] Backplane/interface post-screen check:\nBackplane seating, ADS/AMS/OBCC/PDS header mating, PDM Servo Connector,\ncontinuity/isolation and required rail/testpoint checks pass after the screen.\n5.0 ±0.1 V and 3.3 ±0.1 V checks are run under recorded safe-load or no-load\nconditions when power is applied. Any short, open, swapped endpoint, rail\nout-of-tolerance, intermittent connection, bent pin or connector unseat is\nhold/fail." {
+    class: note
+    shape: page
+  }
+
+  viewpoints: "[C] Viewpoints:\nStatistical = environmental article tests are screens unless an independent\narticle/trial plan is agreed; pre/post inspection is a mandatory 100% census of\nevery target PC/PL/interface on the tested v1.0 article. Fault hardening = heavy\nbattery detachment, connector unseat, backplane movement, loose PCB/standoff or\nstack screw, post-test rail/signal failure, hidden cracks and evidence-control\nescape." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability targets:\nModeled landing-impact, envelope/mass, backplane and assembly/printing\nconstraints; SAA-UC-IntegratedAssembly; SAA-UC-BackplaneIntegration;\nSAA-FE-StructuralLoosening; SAA-FE-LandingDamage; SAA-FE-BackplaneMisMate;\nSAA-FE-EnvelopeNonCompliance." {
+    class: note
+    shape: page
+  }
+}
+
+system.v10_uut.cansat.standard_stack.ads_module -- system.v10_uut.cansat.standard_stack.ams_module: "[PL] Stack screws" { class: pl }
+system.v10_uut.cansat.standard_stack.ams_module -- system.v10_uut.cansat.standard_stack.obcc_module: "[PL] Stack screws" { class: pl }
+system.v10_uut.cansat.standard_stack.obcc_module -- system.v10_uut.cansat.standard_stack.pds_module: "[PL] Stack screws" { class: pl }
+system.v10_uut.cansat.standard_stack.pds_module -- system.v10_uut.cansat.standard_stack.ess_module: "[PL] Stack screws" { class: pl }
+system.v10_uut.cansat.standard_stack -- system.v10_uut.cansat.parachute_module: "[PL] Stack screws" { class: pl }
+
+system.v10_uut.cansat.standard_stack.ads_module.ads_pcb -- system.v10_uut.cansat.standard_stack.ads_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.v10_uut.cansat.standard_stack.ams_module.ams_pcb -- system.v10_uut.cansat.standard_stack.ams_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.v10_uut.cansat.standard_stack.obcc_module.obcc_pcb -- system.v10_uut.cansat.standard_stack.obcc_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.v10_uut.cansat.standard_stack.pds_module.pds_pcb -- system.v10_uut.cansat.standard_stack.pds_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.v10_uut.cansat.standard_stack.ess_module.battery_pack -- system.v10_uut.cansat.standard_stack.ess_module: "[PL] Battery fixture" { class: pl }
+
+system.v10_uut.cansat.standard_stack -- system.v10_uut.cansat.backplane_pcb: "[PL] Perpendicular fixture\n+ header mating" { class: pl }
+system.v10_uut.cansat.parachute_module -- system.v10_uut.cansat.backplane_pcb: "[PL] Backplane fixture\n+ servo connector" { class: pl }
+
+system.v10_uut.cansat.backplane_pcb.ads_headers -- system.v10_uut.cansat.standard_stack.ads_module.ads_pcb: "[PL] ADS header mating\nretention witness" { class: pl }
+system.v10_uut.cansat.backplane_pcb.ams_headers -- system.v10_uut.cansat.standard_stack.ams_module.ams_pcb: "[PL] AMS header mating\nretention witness" { class: pl }
+system.v10_uut.cansat.backplane_pcb.obcc_headers -- system.v10_uut.cansat.standard_stack.obcc_module.obcc_pcb: "[PL] OBCC header mating\nretention witness" { class: pl }
+system.v10_uut.cansat.backplane_pcb.pds_headers -- system.v10_uut.cansat.standard_stack.pds_module.pds_pcb: "[PL] PDS header mating\nretention witness" { class: pl }
+system.v10_uut.cansat.backplane_pcb.pdm_servo_header -- system.v10_uut.cansat.parachute_module.servo: "[PL] PDM servo connector\nretention witness" { class: pl }
+system.v10_uut.cansat.witness_markers -- system.v10_uut.cansat.standard_stack.ess_module.battery_pack: "[PL] Battery movement\nwitness markers" { class: pl }
+system.v10_uut.cansat.witness_markers -- system.v10_uut.cansat.backplane_pcb: "[PL] Backplane and connector\nmovement witness markers" { class: pl }
+system.v10_uut.cansat.witness_markers -- system.v10_uut.cansat.standard_stack: "[PL] Stack / PCB screw\nwitness markers" { class: pl }
+
+operator -- system.v10_uut: "[PL] Handling and\npre/post inspection" { class: pl }
+witness -- safety_barrier: "[PL] Witnessed safety\nboundary control" { class: pl }
+witness -- system.v10_uut: "[PL] Witnessed no-looseness\ninspection" { class: pl }
+environmental_fixture -- system.v10_uut: "[PL] Tailored fixture,\ndrop cradle or proof-load coupling" { class: pl }
+safety_barrier -- environmental_fixture: "[PL] Remote release /\nprotected screen area" { class: pl }
+accelerometer_logger -- system.v10_uut: "[PL] Temporary accelerometer\nmount or event marker" { class: pl }
+inspection_kit -- system.v10_uut.cansat.witness_markers: "[PL] Witness-mark,\ngap and torque-mark inspection" { class: pl }
+scale_envelope -- system.v10_uut: "[PL] Post-screen mass\nand envelope free-fit check" { class: pl }
+backplane_checker -- system.v10_uut.cansat.backplane_pcb: "[PL] Test leads /\nconnector probe access" { class: pl }
+ambient_meter -- environmental_fixture: "[PL] Ambient record\nbefore screen repetitions" { class: pl }
+camera -- system.v10_uut: "[PL] Setup, screen and\npost-inspection imagery" { class: pl }
+repo -- camera: "[PL] Photo/video evidence\ntransfer" { class: pl }
+repo -- accelerometer_logger: "[PL] Event-log data\ntransfer" { class: pl }
+repo -- backplane_checker: "[PL] Rail/interface\nrecord archive" { class: pl }
+repo -- inspection_kit: "[PL] Checklist and\nmeasurement archive" { class: pl }
+
+system.tailored_screen -> environmental_fixture { class: cstr }
+system.tailored_screen -> accelerometer_logger { class: cstr }
+system.retention_pass_fail -> system.v10_uut.cansat.standard_stack { class: cstr }
+system.retention_pass_fail -> system.v10_uut.cansat.standard_stack.ess_module.battery_pack { class: cstr }
+system.retention_pass_fail -> system.v10_uut.cansat.backplane_pcb { class: cstr }
+system.retention_pass_fail -> system.v10_uut.cansat.backplane_pcb.pdm_servo_header { class: cstr }
+system.envelope_postcheck -> scale_envelope { class: cstr }
+system.envelope_postcheck -> system.v10_uut.cansat { class: cstr }
+system.backplane_postcheck -> backplane_checker { class: cstr }
+system.backplane_postcheck -> system.v10_uut.cansat.backplane_pcb { class: cstr }
+system.viewpoints -> inspection_kit { class: cstr }
+system.viewpoints -> system.v10_uut.cansat.witness_markers { class: cstr }
+system.traceability -> system.v10_uut.cansat { class: cstr }
+
+# Layout-only edges keep actors, UUT, equipment and constraints in stable reading order.
+operator -> witness { style: { opacity: 0 } }
+witness -> environmental_fixture { style: { opacity: 0 } }
+environmental_fixture -> safety_barrier { style: { opacity: 0 } }
+safety_barrier -> accelerometer_logger { style: { opacity: 0 } }
+accelerometer_logger -> inspection_kit { style: { opacity: 0 } }
+inspection_kit -> scale_envelope { style: { opacity: 0 } }
+scale_envelope -> backplane_checker { style: { opacity: 0 } }
+backplane_checker -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> camera { style: { opacity: 0 } }
+camera -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.v10_uut -> system.tailored_screen { style: { opacity: 0 } }
+system.tailored_screen -> system.retention_pass_fail { style: { opacity: 0 } }
+system.retention_pass_fail -> system.envelope_postcheck { style: { opacity: 0 } }
+system.envelope_postcheck -> system.backplane_postcheck { style: { opacity: 0 } }
+system.backplane_postcheck -> system.viewpoints { style: { opacity: 0 } }
+system.viewpoints -> system.traceability { style: { opacity: 0 } }

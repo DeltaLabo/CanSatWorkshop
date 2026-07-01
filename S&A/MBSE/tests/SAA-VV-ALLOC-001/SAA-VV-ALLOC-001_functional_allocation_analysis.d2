@@ -1,0 +1,221 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-ALLOC-001 verification-only Physical Architecture PV3.
+# Functional allocation/ownership analysis view for v1.0 S&A integration functions.
+# References cited in the rendered system title: IVV, SAA-R1, SAA-R2, SAA-R3, SAA-R4, SAA-R5.
+# Functions and LCs here define the analysis activity only; they are not baseline S&A design edits.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+reviewer: "[EA] S&A Integration Reviewer" {
+  class: ea
+  direction: down
+  select_baseline: "[F] Select SAA v1.0 baseline\nand allocation checklist" { class: func }
+  build_candidate_list: "[F] Build 100% candidate\nintegration-function list" { class: func }
+  record_disposition: "[F] Record owner / disposition\nand model-change needs" { class: func }
+}
+
+subsystem_owners: "[EA] Subsystem Model Owners\nADS / AMS / OBCC / PDS / ESS / PDM" {
+  class: ea
+  direction: down
+  provide_refs: "[F] Provide authoritative\nbehavior-model references" { class: func }
+  accept_or_reject: "[F] Accept, reject, or waive\nbehavior ownership" { class: func }
+  resolve_foreign: "[F] Resolve foreign or unowned\nfunction assignments" { class: func }
+}
+
+configuration_repo: "[EA] Configuration / Evidence\nRepository" {
+  class: ea
+  direction: down
+  store_matrix: "[F] Store released allocation\nmatrix and evidence index" { class: func }
+  store_requests: "[F] Store S&A or subsystem\nmodel-change requests" { class: func }
+}
+
+system: "[System] SAA-VV-ALLOC-001 Functional Allocation / Ownership Analysis\nRefs: IVV; SAA-R1; SAA-R2; SAA-R3; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat: "[PC] v1.0 CanSat Assembly\nAllocation Under Analysis" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    fit_lc: "[LC] S&A Physical Fit\nOwnership Candidate\nverification-only" {
+      class: lc
+      direction: down
+      maintain_envelope: "[F] Maintain 355 ml envelope\nand total mass constraint\nowner/disposition required" { class: func }
+      assign_screening: "[F] Assign environmental\nscreening ownership\nowner/disposition required" { class: func }
+    }
+
+    standard_stack: "[PC] Standard Carrier\nModule Stack\n(Type 1)" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      stack_lc: "[LC] Standard Module\nIntegration Ownership\nverification-only" {
+        class: lc
+        direction: down
+        retain_modules: "[F] Retain modules with\nstack screws\nS&A physical constraint candidate" { class: func }
+        accommodate_pcbs: "[F] Accommodate ADS/AMS/OBCC/PDS\n44 mm × 44 mm PCBs\nS&A physical interface candidate" { class: func }
+      }
+
+      ads_module: "[PC] ADS Module + PCB\n44 mm × 44 mm" { class: pc }
+      ams_module: "[PC] AMS Module + PCB\n44 mm × 44 mm" { class: pc }
+      obcc_module: "[PC] OBCC Module + PCB\n44 mm × 44 mm" { class: pc }
+      pds_module: "[PC] PDS Module + PCB\n44 mm × 44 mm" { class: pc }
+
+      ess_module: "[PC] ESS Module" {
+        class: pc
+        direction: down
+        battery_pack: "[PC] ESS Battery Pack" { class: pc }
+        battery_lc: "[LC] ESS Battery Fixture\nOwnership\nverification-only" {
+          class: lc
+          direction: down
+          retain_battery: "[F] Retain battery pack\nS&A physical retention candidate" { class: func }
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB\n100 mm × 28 mm\n2-layer stackup" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      backplane_lc: "[LC] Backplane Physical\nIntegration Ownership\nverification-only" {
+        class: lc
+        direction: down
+        locate_backplane: "[F] Locate and mate\nperpendicular backplane\nowner/disposition required" { class: func }
+        expose_testpoints: "[F] Expose critical\nrails/signals testpoints\nowner/disposition required" { class: func }
+        constrain_fast_lines: "[F] Maintain physical\nrouting constraints for\nSPI/I2C/UART fast lines" { class: func }
+      }
+
+      connector_lc: "[LC] Header / Harness /\nConnector Retention Ownership\nverification-only" {
+        class: lc
+        direction: down
+        retain_headers: "[F] Retain 2 mm 2×6\nADS/AMS/OBCC/PDS headers" { class: func }
+        retain_servo_connector: "[F] Retain PDM servo\nconnector and harness path" { class: func }
+      }
+
+      ads_headers: "[PC] ADS 2 mm 2×6 Headers" { class: pc }
+      ams_headers: "[PC] AMS 2 mm 2×6 Headers" { class: pc }
+      obcc_headers: "[PC] OBCC 2 mm 2×6 Headers" { class: pc }
+      pds_headers: "[PC] PDS 2 mm 2×6 Headers" { class: pc }
+      pdm_servo_header: "[PC] PDM Servo Connector" { class: pc }
+      spine: "[PC] Backplane Spine" { class: pc }
+    }
+
+    parachute_module: "[PC] Parachute / Top\nModule\n(Type 2)" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      deployment_lc: "[LC] Deployment Clearance\nOwnership\nverification-only" {
+        class: lc
+        direction: down
+        provide_clearance: "[F] Provide top-module, cap,\nservo, and backplane clearance" { class: func }
+        support_deployment: "[F] Support parachute\ndeployment clearance path" { class: func }
+      }
+
+      cap: "[PC] Cap" { class: pc }
+      parachute: "[PC] Parachute" { class: pc }
+      servo: "[PC] Servo" { class: pc }
+    }
+
+    gate_lc: "[LC] Allocation Decision Gate\nverification-only" {
+      class: lc
+      direction: down
+      assign_owner: "[F] Assign explicit owner\nor controlled disposition\nfor every candidate" { class: func }
+      reject_foreign: "[F] Reject or cross-reference\nforeign/unowned behavior\nfunctions" { class: func }
+      release_decision: "[F] Release pass / hold / fail\nallocation decision" { class: func }
+    }
+  }
+
+  ownership_policy: "[C] Ownership policy to analyze:\nS&A may own only physical integration constraints if\nsubsystem models own behavior and give traceable model\nreferences. S&A-owned integration behavior must be modeled\nas explicit [LC]/[F] allocations or dispositioned as a\nconstraint-only responsibility with rationale." {
+    class: note
+    shape: page
+  }
+
+  pass_fail: "[C] Pass/fail constraint:\nPass only if 100% of candidate functions are reviewed and\nhave owner/disposition. No ambiguous ownership remains for\nbackplane, harness/connector, retention, deployment clearance,\nphysical fit, testpoint access, or environmental screening.\nForeign functions such as sensing, command logic, rail regulation,\nor bus protocol operation need subsystem model cross-references\nor approved non-S&A disposition. Missing or ambiguous owner = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\n100% model/ownership review of the v1.0 candidate allocation\nset and owner responses. This is a census analysis, not a\nstatistical sample or reliability demonstration." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nMissed owner creates unverified hazards: backplane mislocation\nor mismate, harness/connector unseat, module or battery retention\nescape, blocked parachute deployment clearance, physical-fit or\nmass/envelope noncompliance, and unplanned environmental-screening gaps." {
+    class: note
+    shape: page
+  }
+
+  trace: "[C] Traceability targets:\nSAA-UC-IntegratedAssembly; SAA-UC-BackplaneIntegration;\nSAA-UC-ParachuteClearance; SAA-FE-EnvelopeNonCompliance;\nSAA-FE-BackplaneMisMate; SAA-FE-StructuralLoosening;\nSAA-FE-LandingDamage; v1.0 envelope, module, backplane,\nand assembly/printing constraints." {
+    class: note
+    shape: page
+  }
+}
+
+system.ownership_policy -> system.cansat.gate_lc.assign_owner { class: cstr }
+system.ownership_policy -> system.cansat.fit_lc.maintain_envelope { class: cstr }
+system.pass_fail -> system.cansat.gate_lc.release_decision { class: cstr }
+system.pass_fail -> system.cansat.gate_lc.reject_foreign { class: cstr }
+system.statistical -> reviewer.build_candidate_list { class: cstr }
+system.statistical -> system.cansat.gate_lc.assign_owner { class: cstr }
+system.fault_hardening -> system.cansat.backplane_pcb.backplane_lc.locate_backplane { class: cstr }
+system.fault_hardening -> system.cansat.parachute_module.deployment_lc.provide_clearance { class: cstr }
+system.trace -> system.cansat.gate_lc.release_decision { class: cstr }
+
+# Layout-only edges keep actors, analyzed assembly, repository, and notes in reading order.
+reviewer -> subsystem_owners { style: { opacity: 0 } }
+subsystem_owners -> system { style: { opacity: 0 } }
+system -> configuration_repo { style: { opacity: 0 } }
+system.cansat.fit_lc -> system.cansat.standard_stack { style: { opacity: 0 } }
+system.cansat.standard_stack -> system.cansat.backplane_pcb { style: { opacity: 0 } }
+system.cansat.backplane_pcb -> system.cansat.parachute_module { style: { opacity: 0 } }
+system.cansat.parachute_module -> system.cansat.gate_lc { style: { opacity: 0 } }
+system.cansat -> system.ownership_policy { style: { opacity: 0 } }
+system.ownership_policy -> system.pass_fail { style: { opacity: 0 } }
+system.pass_fail -> system.statistical { style: { opacity: 0 } }
+system.statistical -> system.fault_hardening { style: { opacity: 0 } }
+system.fault_hardening -> system.trace { style: { opacity: 0 } }

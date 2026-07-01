@@ -1,0 +1,252 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-003 verification-only Physical Architecture PV1.
+# Backplane allowance / Backplane PCB constraint-derived testbench for v0.1 allocation readiness and v1.0 built-board acceptance.
+# References cited in the rendered system title: IVV, SAA-R4, SAA-R5.
+# This file is a test-definition view and does not modify the v0.1 or v1.0 baseline models.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" { class: ea }
+design_reviewer: "[EA] Electrical / PCB\nDesign Reviewer" { class: ea }
+witness: "[EA] QA Witness" { class: ea }
+calipers: "[EA] Calipers /\nBoard-edge Gauge\n100 mm × 28 mm" { class: ea }
+header_gauge: "[EA] 2 mm 2×6\nHeader / Pitch Gauge" { class: ea }
+dmm_daq: "[EA] Calibrated DMM / DAQ\n5 V / 3.3 V rails" { class: ea }
+continuity: "[EA] Continuity /\nIsolation Tester" { class: ea }
+cad_evidence: "[EA] Released PCB CAD,\nNetlist, ERC/DRC Evidence" { class: ea }
+tp_probes: "[EA] Testpoint Probe Set\nrail + critical signals" { class: ea }
+scope_meter: "[EA] Oscilloscope /\nLogic Analyzer /\nCapacitance Meter" { class: ea }
+ambient_esd: "[EA] Ambient Meter /\nESD Workstation" { class: ea }
+repo: "[EA] Evidence Repository\nresults/SAA-VV-CON-003" { class: ea }
+
+system: "[System] SAA-VV-CON-003 Backplane Allowance / PCB Constraint\nVerification Testbench\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  readiness_article: "[PC] v0.1 Backplane Allocation\nReadiness UUT" {
+    class: pc
+    direction: right
+
+    structural_envelope: "[PC] CanSat Structural\nEnvelope" {
+      class: pc
+      direction: right
+
+      standard_stack: "[PC] Standard Carrier\nModule Stack\n(Type 1)" {
+        class: pc
+        direction: down
+        ads_module: "[PC] ADS Module" { class: pc }
+        ams_module: "[PC] AMS Module" { class: pc }
+        obcc_module: "[PC] OBCC Module" { class: pc }
+        pds_module: "[PC] PDS Module" { class: pc }
+        ess_module: "[PC] ESS Module" { class: pc }
+      }
+
+      backplane_volume: "[PC] Perpendicular\nBackplane Volume\nallocation for 100 mm × 28 mm\nPCB" { class: pc }
+      top_module: "[PC] Parachute / Top\nModule\n(Type 2)" { class: pc }
+    }
+  }
+
+  acceptance_article: "[PC] v1.0 Backplane PCB\nBuilt Acceptance UUT" {
+    class: pc
+    direction: right
+
+    cansat: "[PC] CanSat Assembly" {
+      class: pc
+      direction: right
+
+      standard_stack: "[PC] Standard Carrier\nModule Stack\n(Type 1)" {
+        class: pc
+        direction: down
+        ads_module: "[PC] ADS Module" {
+          class: pc
+          direction: right
+          ads_pcb: "[PC] ADS PCB\n44 mm × 44 mm" { class: pc }
+        }
+        ams_module: "[PC] AMS Module" {
+          class: pc
+          direction: right
+          ams_pcb: "[PC] AMS PCB\n44 mm × 44 mm" { class: pc }
+        }
+        obcc_module: "[PC] OBCC Module" {
+          class: pc
+          direction: right
+          obcc_pcb: "[PC] OBCC PCB\n44 mm × 44 mm" { class: pc }
+        }
+        pds_module: "[PC] PDS Module" {
+          class: pc
+          direction: right
+          pds_pcb: "[PC] PDS PCB\n44 mm × 44 mm" { class: pc }
+        }
+        ess_module: "[PC] ESS Module" {
+          class: pc
+          direction: right
+          battery_pack: "[PC] ESS Battery Pack" { class: pc }
+        }
+      }
+
+      backplane_pcb: "[PC] Backplane PCB\n100 mm × 28 mm\n2-layer stackup" {
+        class: pc
+        direction: down
+        grid-columns: 1
+        ads_headers: "[PC] 2 mm 2×6\nADS Headers" { class: pc }
+        ams_headers: "[PC] 2 mm 2×6\nAMS Headers" { class: pc }
+        obcc_headers: "[PC] 2 mm 2×6\nOBCC Headers" { class: pc }
+        pds_headers: "[PC] 2 mm 2×6\nPDS Headers" { class: pc }
+        pdm_servo_header: "[PC] PDM Servo\nConnector" { class: pc }
+        rail_testpoints: "[PC] Required Rail\nTestpoints\n5 V / 3.3 V" { class: pc }
+        signal_testpoints: "[PC] Required Critical\nSignal Testpoints\nSPI / I2C / UART" { class: pc }
+        fast_line_routes: "[PC] Low-capacitance\nFast-line Routes\nSPI / I2C / UART" { class: pc }
+        spine: "[PC] Backplane Spine" { class: pc }
+      }
+
+      top_module: "[PC] Parachute / Top\nModule\n(Type 2)" {
+        class: pc
+        direction: down
+        cap: "[PC] Cap" { class: pc }
+        parachute: "[PC] Parachute" { class: pc }
+        servo: "[PC] Servo" { class: pc }
+      }
+    }
+  }
+
+  allocation_constraint: "[C] v0.1 design/allocation pass/fail:\nPerpendicular Backplane Volume is present in the Type 1\nstack context, allows a\n100 mm × 28 mm two-layer backplane allocation, and\npreserves modeled slot and\ntop-module clearance. Missing allocation, blocked slot, or\nunbounded keepout is hold/fail." {
+    class: note
+    shape: page
+  }
+
+  geometry_constraint: "[C] v1.0 physical geometry pass/fail:\nBackplane PCB measured length/width match 100 mm × 28 mm\nwithin released drawing\ntolerance; board is two-layer; 2 mm 2×6 ADS/AMS/OBCC/PDS\nheaders and PDM servo\nconnector match modeled placement, pitch, orientation and\npin count. Wrong pitch,\nwrong board size, wrong layer count, bent/damaged\nconnector or unapproved rework is hold/fail." {
+    class: note
+    shape: page
+  }
+
+  electrical_constraint: "[C] Rail / testpoint / endpoint pass/fail:\n100% released netlist/pinout/required endpoint continuity\nand isolation is checked\non every released board before power. No short, open,\nswapped endpoint or unknown\nnet is accepted. With current limiting and safe load or\ncontrolled no-load, rail\ntestpoints measure 5.0 ±0.1 V and 3.3 ±0.1 V. Required\ntestpoints are present and reachable." {
+    class: note
+    shape: page
+  }
+
+  erc_drc_signal_constraint: "[C] ERC/DRC and low-capacitance pass/fail:\nERC/DRC reports are clean or every warning has approved\ndisposition. SPI/I2C/UART\nrouting, connector, pull-up, probe and board-capacitance\nevidence must show the\nreleased low-capacitance / rise-time rationale is\nacceptable; unresolved I2C\ncapacitance/rise-time, SPI/UART loading, or DRC/ERC escape\nis hold/fail." {
+    class: note
+    shape: page
+  }
+
+  viewpoints: "[C] Viewpoints:\nStatistical = 100% DRC/ERC/netlist/pinout/testpoint review\nand continuity/isolation\non every released backplane board; rail readings are\nguard-banded measurements;\nno sampling or population reliability claim. Fault\nhardening = wrong pitch,\nmissing testpoint, swapped pinout, rail short/open/drop,\nexcessive I2C capacitance\nor rise time, and evidence-control escape." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability targets:\nModeled Backplane allowance / Backplane PCB constraints;\nSAA-UC-BackplaneIntegration; SAA-FE-BackplaneMisMate." {
+    class: note
+    shape: page
+  }
+}
+
+system.readiness_article.structural_envelope.standard_stack.ads_module -- system.readiness_article.structural_envelope.standard_stack.ams_module: "[PL] Stack screws" { class: pl }
+system.readiness_article.structural_envelope.standard_stack.ams_module -- system.readiness_article.structural_envelope.standard_stack.obcc_module: "[PL] Stack screws" { class: pl }
+system.readiness_article.structural_envelope.standard_stack.obcc_module -- system.readiness_article.structural_envelope.standard_stack.pds_module: "[PL] Stack screws" { class: pl }
+system.readiness_article.structural_envelope.standard_stack.pds_module -- system.readiness_article.structural_envelope.standard_stack.ess_module: "[PL] Stack screws" { class: pl }
+system.readiness_article.structural_envelope.standard_stack -- system.readiness_article.structural_envelope.top_module: "[PL] Stack screws" { class: pl }
+system.readiness_article.structural_envelope.standard_stack -- system.readiness_article.structural_envelope.backplane_volume: "[PL] Perpendicular\nbackplane slot" { class: pl }
+system.readiness_article.structural_envelope.top_module -- system.readiness_article.structural_envelope.backplane_volume: "[PL] Backplane\nclearance" { class: pl }
+
+system.acceptance_article.cansat.standard_stack.ads_module.ads_pcb -- system.acceptance_article.cansat.backplane_pcb.ads_headers: "[PL] 2 mm 2×6\nADS pin interface" { class: pl }
+system.acceptance_article.cansat.standard_stack.ams_module.ams_pcb -- system.acceptance_article.cansat.backplane_pcb.ams_headers: "[PL] 2 mm 2×6\nAMS pin interface" { class: pl }
+system.acceptance_article.cansat.standard_stack.obcc_module.obcc_pcb -- system.acceptance_article.cansat.backplane_pcb.obcc_headers: "[PL] 2 mm 2×6\nOBCC pin interface" { class: pl }
+system.acceptance_article.cansat.standard_stack.pds_module.pds_pcb -- system.acceptance_article.cansat.backplane_pcb.pds_headers: "[PL] 2 mm 2×6\nPDS pin interface" { class: pl }
+system.acceptance_article.cansat.top_module.servo -- system.acceptance_article.cansat.backplane_pcb.pdm_servo_header: "[PL] PDM servo\nconnector interface" { class: pl }
+system.acceptance_article.cansat.standard_stack -- system.acceptance_article.cansat.backplane_pcb: "[PL] Perpendicular fixture\n+ header mating" { class: pl }
+system.acceptance_article.cansat.top_module -- system.acceptance_article.cansat.backplane_pcb: "[PL] Backplane fixture\n+ servo connector" { class: pl }
+
+operator -- system.readiness_article: "[PL] v0.1 handling /\nallocation inspection" { class: pl }
+operator -- system.acceptance_article: "[PL] v1.0 handling /\nsafe test control" { class: pl }
+design_reviewer -- cad_evidence: "[PL] Controlled design\nreview evidence" { class: pl }
+witness -- system.acceptance_article: "[PL] Witnessed inspection\nand test observation" { class: pl }
+calipers -- system.readiness_article.structural_envelope.backplane_volume: "[PL] Allocation gauge /\nclearance measurement" { class: pl }
+calipers -- system.acceptance_article.cansat.backplane_pcb: "[PL] Board length /\nwidth measurement" { class: pl }
+header_gauge -- system.acceptance_article.cansat.backplane_pcb.ads_headers: "[PL] Pitch / pin-count\ngauge contact" { class: pl }
+header_gauge -- system.acceptance_article.cansat.backplane_pcb.ams_headers: "[PL] Pitch / pin-count\ngauge contact" { class: pl }
+header_gauge -- system.acceptance_article.cansat.backplane_pcb.obcc_headers: "[PL] Pitch / pin-count\ngauge contact" { class: pl }
+header_gauge -- system.acceptance_article.cansat.backplane_pcb.pds_headers: "[PL] Pitch / pin-count\ngauge contact" { class: pl }
+dmm_daq -- system.acceptance_article.cansat.backplane_pcb.rail_testpoints: "[PL] Guard-banded\nrail measurements" { class: pl }
+continuity -- system.acceptance_article.cansat.backplane_pcb: "[PL] 100% continuity /\nisolation probes" { class: pl }
+cad_evidence -- system.acceptance_article.cansat.backplane_pcb: "[PL] CAD / netlist /\nERC / DRC evidence" { class: pl }
+tp_probes -- system.acceptance_article.cansat.backplane_pcb.rail_testpoints: "[PL] Rail testpoint\nprobe contacts" { class: pl }
+tp_probes -- system.acceptance_article.cansat.backplane_pcb.signal_testpoints: "[PL] Critical signal\ntestpoint contacts" { class: pl }
+scope_meter -- system.acceptance_article.cansat.backplane_pcb.fast_line_routes: "[PL] Low-capacitance\nprobe / C measurement" { class: pl }
+ambient_esd -- system.acceptance_article: "[PL] Ambient and ESD\ncontrol field" { class: pl }
+repo -- cad_evidence: "[PL] Controlled design\npackage archive" { class: pl }
+repo -- dmm_daq: "[PL] Raw readings\narchive" { class: pl }
+repo -- continuity: "[PL] Endpoint matrix\narchive" { class: pl }
+
+system.allocation_constraint -> system.readiness_article.structural_envelope.backplane_volume { class: cstr }
+system.geometry_constraint -> system.acceptance_article.cansat.backplane_pcb { class: cstr }
+system.geometry_constraint -> header_gauge { class: cstr }
+system.electrical_constraint -> system.acceptance_article.cansat.backplane_pcb.rail_testpoints { class: cstr }
+system.electrical_constraint -> continuity { class: cstr }
+system.erc_drc_signal_constraint -> cad_evidence { class: cstr }
+system.erc_drc_signal_constraint -> system.acceptance_article.cansat.backplane_pcb.fast_line_routes { class: cstr }
+system.viewpoints -> system.acceptance_article.cansat.backplane_pcb { class: cstr }
+system.traceability -> system.acceptance_article.cansat.backplane_pcb { class: cstr }
+system.traceability -> system.readiness_article.structural_envelope.backplane_volume { class: cstr }
+
+# Layout-only edges keep operators, UUTs, equipment, evidence and notes in a stable reading order.
+operator -> design_reviewer { style: { opacity: 0 } }
+design_reviewer -> witness { style: { opacity: 0 } }
+witness -> calipers { style: { opacity: 0 } }
+calipers -> header_gauge { style: { opacity: 0 } }
+header_gauge -> dmm_daq { style: { opacity: 0 } }
+dmm_daq -> continuity { style: { opacity: 0 } }
+continuity -> cad_evidence { style: { opacity: 0 } }
+cad_evidence -> tp_probes { style: { opacity: 0 } }
+tp_probes -> scope_meter { style: { opacity: 0 } }
+scope_meter -> ambient_esd { style: { opacity: 0 } }
+ambient_esd -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.readiness_article -> system.acceptance_article { style: { opacity: 0 } }
+system.acceptance_article -> system.allocation_constraint { style: { opacity: 0 } }
+system.allocation_constraint -> system.geometry_constraint { style: { opacity: 0 } }
+system.geometry_constraint -> system.electrical_constraint { style: { opacity: 0 } }
+system.electrical_constraint -> system.erc_drc_signal_constraint { style: { opacity: 0 } }
+system.erc_drc_signal_constraint -> system.viewpoints { style: { opacity: 0 } }
+system.viewpoints -> system.traceability { style: { opacity: 0 } }

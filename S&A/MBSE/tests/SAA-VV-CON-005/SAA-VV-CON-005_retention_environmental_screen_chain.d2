@@ -1,0 +1,124 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-005 verification-only Functional Chain view.
+# Testing/inspection chain for retention under vibration/drop/landing-style loads.
+# References cited in the rendered chain title: IVV, SAA-R1, SAA-R2, SAA-R3, SAA-R4, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+retention_chain: "[Functional Chain] SAA-VV-CON-005 Retention Environmental Screen\nRefs: IVV; SAA-R1; SAA-R2; SAA-R3; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  select_article: "[F] Operator/Witness: select\nv1.0 integrated CanSat article,\nbaseline copy and evidence folder" { class: func }
+  confirm_configuration: "[F] Operator: confirm full\nas-flown configuration with battery,\nPCBs, backplane, headers, PDM Servo\nConnector, cap, parachute and servo" { class: func }
+  load_screen_definition: "[F] Operator/Witness: load\napproved vibration/drop/landing-impact\nor 20 g-style proof-load definition" { class: func }
+  record_conditions: "[F] Ambient meter / camera:\nrecord temperature, humidity, safety\nboundary, fixture and camera setup" { class: func }
+  preinspect_targets: "[F] Operator/Witness: perform\n100% pre-screen PC/PL/interface inspection\nof battery fixture, PCBs, screws,\nbackplane, headers and connectors" { class: func }
+  install_markers: "[F] Operator: install or verify\nwitness marks, torque marks, gap references\nand accelerometer/event logger" { class: func }
+  configure_fixture: "[F] Fixture: configure axis,\norientation, coupling, restraint, level,\nduration and abort limits" { class: func }
+  execute_screen: "[F] Fixture/Operator: execute\napproved vibration, drop, landing-impact\nor proof-load screen" { class: func }
+  monitor_log: "[F] Logger/Camera/Witness: monitor\nload event, forbidden detachment, over/under\ntest, abort and rest state" { class: func }
+  repeat_if_required: "[F] Acceptance gate: repeat\nfor every approved axis, orientation,\nlevel or event in the screen definition" { class: func }
+  remove_and_safe: "[F] Operator/Witness: safe the\nfixture, remove UUT without masking damage\nand preserve as-run evidence" { class: func }
+  postinspect_retention: "[F] Operator/Witness: perform\n100% post-screen retention inspection for\nlooseness, cracks, witness-mark shift,\nrattle, bent pins and unseated connectors" { class: func }
+  measure_movement: "[F] Inspection kit: measure or\nbound battery, PCB, backplane, connector\nand top-module movement against acceptance" { class: func }
+  check_envelope_mass: "[F] Scale / envelope gauge:\ncheck no lost hardware, post-screen mass\ncensus and 355 ml envelope compliance" { class: func }
+  check_backplane: "[F] Backplane checker: run\ncontinuity/isolation, header/connector\nseating and 5 V / 3.3 V rail checks when\nsafe to power" { class: func }
+  apply_pass_fail: "[F] Acceptance gate: apply\nno-detach, no-loosen, no-out-of-threshold\nmovement, envelope and post-check criteria" { class: func }
+  disposition: "[F] Witness/Operator: disposition\npass, fail, hold, waiver rejection, rework\nor required re-run" { class: func }
+  archive: "[F] Evidence repository: archive\nscreen definition, limitations, logs, photos,\nmeasurements, inspections and decision" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nPass only when the screen definition and limitations are approved and recorded;\nno retained mass detaches; no battery fixture, PCB standoff/screw, stack screw,\nbackplane fixture, ADS/AMS/OBCC/PDS header, PDM Servo Connector or top-module\ninterface loosens, unseats, cracks, bends, rattles or shifts outside acceptance;\nD_max + U_D ≤ 66.0 mm and H_max + U_H ≤ 122.0 mm remain true; post-screen part\ncensus, PC/PL inspection, backplane continuity/isolation and required rail /\ninterface checks pass. Missing levels, ambiguous data, open anomaly or required\nre-run not completed is hold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nThe default evidence is a v1.0 article environmental screen, not a qualification\nor population reliability claim. Pre/post inspection is a mandatory 100% census\nof target PCs, PLs and interfaces on the screened article. Repeated axes,\norientations or events on one article are not independent trials unless an\napproved independent article/trial plan states otherwise." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nThe chain explicitly hardens against heavy battery detachment, connector unseat,\nbackplane movement, loose PCB/standoff or stack screw, hidden cracks in printed\nfeatures, bent pins, post-test rail/signal failure, false pass from fixture\nmasking, under/over-test, missing acceleration/video data and evidence-control\nescape." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Environmental/equipment condition:\nRecord ambient temperature/humidity, article orientation, fixture adapter,\naxis/level/duration, accelerometer/event logger ID, camera field of view,\ninspection tools, scale/envelope/checker calibration, operator/witness identity\nand safety boundary before execution. Tailored levels and limitations must be\nbound to the report; unresolved levels produce hold/no-pass." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled landing-impact, envelope/mass, backplane and assembly/printing\nconstraints; SAA-UC-IntegratedAssembly; SAA-UC-BackplaneIntegration;\nSAA-FE-StructuralLoosening; SAA-FE-LandingDamage; SAA-FE-BackplaneMisMate;\nSAA-FE-EnvelopeNonCompliance." {
+    class: note
+    shape: page
+  }
+}
+
+retention_chain.select_article -> retention_chain.confirm_configuration: "[FE] Article ID,\nv1.0 baseline and evidence path" { class: fe }
+retention_chain.confirm_configuration -> retention_chain.load_screen_definition: "[FE] Full as-flown\nconfiguration status" { class: fe }
+retention_chain.load_screen_definition -> retention_chain.record_conditions: "[FE] Approved levels,\naxes, durations and limitations" { class: fe }
+retention_chain.record_conditions -> retention_chain.preinspect_targets: "[FE] Ambient, safety\nand camera setup status" { class: fe }
+retention_chain.preinspect_targets -> retention_chain.install_markers: "[FE] Pre-screen PC/PL\nand interface status" { class: fe }
+retention_chain.install_markers -> retention_chain.configure_fixture: "[FE] Witness marks and\nlogger installed" { class: fe }
+retention_chain.configure_fixture -> retention_chain.execute_screen: "[FE] Coupled UUT and\nscreen-ready setup" { class: fe }
+retention_chain.execute_screen -> retention_chain.monitor_log: "[FE] Load event and\noperator action" { class: fe }
+retention_chain.monitor_log -> retention_chain.repeat_if_required: "[FE] Event log, camera\nand abort status" { class: fe }
+retention_chain.repeat_if_required -> retention_chain.configure_fixture: "[FE] Next approved axis /\norientation / event" { class: fe }
+retention_chain.repeat_if_required -> retention_chain.remove_and_safe: "[FE] All planned events\ncomplete" { class: fe }
+retention_chain.remove_and_safe -> retention_chain.postinspect_retention: "[FE] Safed UUT and\nas-run evidence preserved" { class: fe }
+retention_chain.postinspect_retention -> retention_chain.measure_movement: "[FE] Post-screen\nretention observations" { class: fe }
+retention_chain.measure_movement -> retention_chain.check_envelope_mass: "[FE] Movement matrix\nand threshold status" { class: fe }
+retention_chain.measure_movement -> retention_chain.check_backplane: "[FE] Backplane/header/\nconnector movement status" { class: fe }
+retention_chain.check_envelope_mass -> retention_chain.apply_pass_fail: "[FE] Envelope, mass\nand part-census status" { class: fe }
+retention_chain.check_backplane -> retention_chain.apply_pass_fail: "[FE] Rail/interface\npost-check status" { class: fe }
+retention_chain.apply_pass_fail -> retention_chain.disposition: "[FE] Constraint pass/fail\nor hold status" { class: fe }
+retention_chain.disposition -> retention_chain.archive: "[FE] Witness decision,\nlimitations and re-run scope" { class: fe }
+
+# Layout-only edges keep notes after the executable retention-screen flow.
+retention_chain.archive -> retention_chain.pass_fail { style: { opacity: 0 } }
+retention_chain.pass_fail -> retention_chain.statistical { style: { opacity: 0 } }
+retention_chain.statistical -> retention_chain.fault_hardening { style: { opacity: 0 } }
+retention_chain.fault_hardening -> retention_chain.conditions { style: { opacity: 0 } }
+retention_chain.conditions -> retention_chain.traceability { style: { opacity: 0 } }

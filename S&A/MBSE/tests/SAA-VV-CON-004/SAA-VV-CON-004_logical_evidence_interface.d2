@@ -1,0 +1,176 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-004 verification-only Physical Architecture PV2.
+# Logical/evidence interface view for assembly/printing screw-type, precision and infill process constraint verification.
+# References cited in the rendered system title: IVV, SAA-R3, SAA-R5.
+# These logical components and component exchanges define verification evidence flow only; they are not baseline S&A design exchanges.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" { class: ea }
+process_reviewer: "[EA] Manufacturing / Process\nReviewer" { class: ea }
+witness: "[EA] QA Witness" { class: ea }
+model_baseline: "[EA] Baseline D2 Copies\nv0.1 and v1.0" { class: ea }
+screw_bom: "[EA] Controlled Screw\nInventory / BOM" { class: ea }
+printer_package: "[EA] Printer Profile,\nSlicer, Material Batch\nand Build Logs" { class: ea }
+metrology_tools: "[EA] Metrology Instruments\ncalipers, micrometer,\nfeature gauge" { class: ea }
+torque_cycle_tools: "[EA] Torque Driver and\nCycle Counter Records" { class: ea }
+ambient_camera: "[EA] Ambient Meter and\nPhoto/Video Records" { class: ea }
+repo: "[EA] Evidence Repository\nresults/SAA-VV-CON-004" { class: ea }
+
+system: "[System] SAA-VV-CON-004 Logical Evidence Interface\nRefs: IVV; SAA-R3; SAA-R5" {
+  class: sys
+  direction: down
+
+  verification_boundary: "[PC] S&A Assembly / Printing\nConstraint Verification Boundary\nv0.1 readiness + v1.0 acceptance" {
+    class: pc
+    direction: down
+
+    baseline_scope: "[LC] Baseline and Gate\nSelection Record\nverification-only" { class: lc }
+    batch_selection: "[LC] Printer / Material Batch\nand Article Selection\nverification-only" { class: lc }
+    screw_type_census: "[LC] Self-tapping Screw\nType Census\nverification-only" { class: lc }
+    print_profile_record: "[LC] 15% Print Fill / Infill\nProfile Evidence\nverification-only" { class: lc }
+    deviation_control: "[LC] Controlled Infill\nDeviation Disposition\nverification-only" { class: lc }
+    critical_feature_matrix: "[LC] Critical Feature\nMeasurement Matrix\nverification-only" { class: lc }
+    uncertainty_guardband: "[LC] 0.2 mm Precision\nUncertainty Guard Band\nverification-only" { class: lc }
+    assembly_cycle_record: "[LC] Screw / Fit Cycle\nResult Record\nverification-only" { class: lc }
+    statistical_record: "[LC] Statistical Significance\nRecord\nverification-only" { class: lc }
+    fault_record: "[LC] Fault-hardening and\nAnomaly Record\nverification-only" { class: lc }
+    acceptance_gate: "[LC] Assembly / Printing\nConstraint Acceptance Gate\nverification-only" { class: lc }
+    evidence_package: "[LC] Report-by-reference\nEvidence Package\nverification-only" { class: lc }
+  }
+
+  scope_note: "[C] Verification-only scope:\nThese CEs carry model-selection, manufacturing, metrology,\ncycle-test and evidence data for SAA-VV-CON-004. They do not\ncreate baseline S&A component exchanges. Baseline architecture\nremains the physical source copied under baseline/." {
+    class: note
+    shape: page
+  }
+
+  pass_fail: "[C] Pass/fail evidence required:\nSelf-tapping screw type count ≤ 2; printer/profile/build records\nshow 15% infill/print fill or approved controlled deviation;\ncritical features satisfy |measured - nominal| + U ≤ 0.2 mm\nunless stricter drawing tolerance applies; representative screw\nand fit cycles show no stripped boss, crack, weak-infill damage,\nwarped slot, torque damage or loss of alignment; all anomalies\nclosed or gate held." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\n100% screw-type inventory census; at least 3 coupons/modules per\nprinter/material batch for process screen; dimensional measurements\nare guard-banded continuous measurements; 29 independent screw-hole\ntrials are required only if claiming R90/C95. Otherwise cycle results\nare workmanship screens, not reliability claims." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nRecords explicitly screen hidden third screw type, missing build log,\nunapproved infill deviation, stripped bosses, warped slots, weak infill,\ntorque damage, loss of alignment, material/printer/batch drift,\nuncalibrated tools and evidence-control escape." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability targets:\nModeled Assembly / printing constraint; SAA-UC-IntegratedAssembly;\nSAA-FE-StructuralLoosening; SAA-FE-EnvelopeNonCompliance;\nSAA-FE-LandingDamage." {
+    class: note
+    shape: page
+  }
+}
+
+operator -> system.verification_boundary.baseline_scope: "[CE] Selected gate,\narticle ID and evidence path" { class: ce }
+model_baseline -> system.verification_boundary.baseline_scope: "[CE] Frozen v0.1/v1.0\nbaseline D2 copies" { class: ce }
+operator -> system.verification_boundary.batch_selection: "[CE] Selected parts,\ncoupons and final article IDs" { class: ce }
+printer_package -> system.verification_boundary.batch_selection: "[CE] Printer, material,\nnozzle and batch IDs" { class: ce }
+screw_bom -> system.verification_boundary.screw_type_census: "[CE] Controlled screw\nBOM, tray labels and supplier data" { class: ce }
+printer_package -> system.verification_boundary.print_profile_record: "[CE] Slicer profile,\ninfill percentage and build logs" { class: ce }
+process_reviewer -> system.verification_boundary.deviation_control: "[CE] Approved or rejected\ncontrolled deviation rationale" { class: ce }
+metrology_tools -> system.verification_boundary.critical_feature_matrix: "[CE] Raw feature\nmeasurements and tool IDs" { class: ce }
+metrology_tools -> system.verification_boundary.uncertainty_guardband: "[CE] Calibration, U,\nnominal comparison results" { class: ce }
+torque_cycle_tools -> system.verification_boundary.assembly_cycle_record: "[CE] Torque settings,\ncycle counts and trial outcomes" { class: ce }
+ambient_camera -> system.verification_boundary.fault_record: "[CE] Ambient records,\nphotos/video and anomaly observations" { class: ce }
+witness -> system.verification_boundary.acceptance_gate: "[CE] Witness pass/fail/hold\nor re-run decision" { class: ce }
+
+system.verification_boundary.baseline_scope -> system.verification_boundary.batch_selection: "[CE] Applicable v0.1/v1.0\nmodel constraints" { class: ce }
+system.verification_boundary.batch_selection -> system.verification_boundary.screw_type_census: "[CE] Applicable screw\nfamilies and installed locations" { class: ce }
+system.verification_boundary.batch_selection -> system.verification_boundary.print_profile_record: "[CE] Part-to-build-log\ntraceability" { class: ce }
+system.verification_boundary.print_profile_record -> system.verification_boundary.deviation_control: "[CE] Infill status and\ndeviation need" { class: ce }
+system.verification_boundary.batch_selection -> system.verification_boundary.critical_feature_matrix: "[CE] Features to measure:\nbosses, slots, bays, alignment" { class: ce }
+system.verification_boundary.critical_feature_matrix -> system.verification_boundary.uncertainty_guardband: "[CE] Feature errors and\nexpanded uncertainty" { class: ce }
+system.verification_boundary.screw_type_census -> system.verification_boundary.assembly_cycle_record: "[CE] Screw types allowed\nfor representative cycles" { class: ce }
+system.verification_boundary.uncertainty_guardband -> system.verification_boundary.assembly_cycle_record: "[CE] Pre-cycle dimensional\nstatus" { class: ce }
+system.verification_boundary.assembly_cycle_record -> system.verification_boundary.fault_record: "[CE] Strip/crack/warp/\nalignment observations" { class: ce }
+system.verification_boundary.screw_type_census -> system.verification_boundary.statistical_record: "[CE] 100% screw-type\ncensus basis" { class: ce }
+system.verification_boundary.critical_feature_matrix -> system.verification_boundary.statistical_record: "[CE] N ≥ 3 batch screen\nand measurement basis" { class: ce }
+system.verification_boundary.statistical_record -> system.verification_boundary.acceptance_gate: "[CE] Claim basis and\nstatistical limitations" { class: ce }
+system.verification_boundary.deviation_control -> system.verification_boundary.acceptance_gate: "[CE] Approved deviations\nor holds" { class: ce }
+system.verification_boundary.uncertainty_guardband -> system.verification_boundary.acceptance_gate: "[CE] 0.2 mm precision\nstatus" { class: ce }
+system.verification_boundary.assembly_cycle_record -> system.verification_boundary.acceptance_gate: "[CE] Cycle-test\npass/fail/hold status" { class: ce }
+system.verification_boundary.fault_record -> system.verification_boundary.acceptance_gate: "[CE] Open/closed anomaly\nand hardening status" { class: ce }
+system.verification_boundary.acceptance_gate -> system.verification_boundary.evidence_package: "[CE] Accepted or held\nreport package" { class: ce }
+system.verification_boundary.evidence_package -> repo: "[CE] Released report-by-reference\npackage" { class: ce }
+system.verification_boundary.fault_record -> repo: "[CE] Photos/video, deviations,\nwaivers and re-run evidence" { class: ce }
+
+system.scope_note -> system.verification_boundary.baseline_scope { class: cstr }
+system.pass_fail -> system.verification_boundary.acceptance_gate { class: cstr }
+system.pass_fail -> system.verification_boundary.print_profile_record { class: cstr }
+system.pass_fail -> system.verification_boundary.uncertainty_guardband { class: cstr }
+system.statistical -> system.verification_boundary.statistical_record { class: cstr }
+system.fault_hardening -> system.verification_boundary.fault_record { class: cstr }
+system.traceability -> system.verification_boundary.acceptance_gate { class: cstr }
+
+# Layout-only edges keep sources, records, acceptance gate and notes readable.
+operator -> process_reviewer { style: { opacity: 0 } }
+process_reviewer -> witness { style: { opacity: 0 } }
+witness -> model_baseline { style: { opacity: 0 } }
+model_baseline -> screw_bom { style: { opacity: 0 } }
+screw_bom -> printer_package { style: { opacity: 0 } }
+printer_package -> metrology_tools { style: { opacity: 0 } }
+metrology_tools -> torque_cycle_tools { style: { opacity: 0 } }
+torque_cycle_tools -> ambient_camera { style: { opacity: 0 } }
+ambient_camera -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.verification_boundary.baseline_scope -> system.verification_boundary.batch_selection { style: { opacity: 0 } }
+system.verification_boundary.batch_selection -> system.verification_boundary.screw_type_census { style: { opacity: 0 } }
+system.verification_boundary.screw_type_census -> system.verification_boundary.print_profile_record { style: { opacity: 0 } }
+system.verification_boundary.print_profile_record -> system.verification_boundary.deviation_control { style: { opacity: 0 } }
+system.verification_boundary.deviation_control -> system.verification_boundary.critical_feature_matrix { style: { opacity: 0 } }
+system.verification_boundary.critical_feature_matrix -> system.verification_boundary.uncertainty_guardband { style: { opacity: 0 } }
+system.verification_boundary.uncertainty_guardband -> system.verification_boundary.assembly_cycle_record { style: { opacity: 0 } }
+system.verification_boundary.assembly_cycle_record -> system.verification_boundary.statistical_record { style: { opacity: 0 } }
+system.verification_boundary.statistical_record -> system.verification_boundary.fault_record { style: { opacity: 0 } }
+system.verification_boundary.fault_record -> system.verification_boundary.acceptance_gate { style: { opacity: 0 } }
+system.verification_boundary.acceptance_gate -> system.verification_boundary.evidence_package { style: { opacity: 0 } }
+system.verification_boundary -> system.scope_note { style: { opacity: 0 } }
+system.scope_note -> system.pass_fail { style: { opacity: 0 } }
+system.pass_fail -> system.statistical { style: { opacity: 0 } }
+system.statistical -> system.fault_hardening { style: { opacity: 0 } }
+system.fault_hardening -> system.traceability { style: { opacity: 0 } }

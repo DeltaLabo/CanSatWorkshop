@@ -1,0 +1,100 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-004 verification-only Functional Chain view.
+# Inspection chain for self-tapping screw-type count and installed/issued screw traceability.
+# References cited in the rendered chain title: IVV, SAA-R3, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+screw_chain: "[Functional Chain] SAA-VV-CON-004 Screw-Type Inventory Inspection\nRefs: IVV; SAA-R3; SAA-R5" {
+  class: chain
+  direction: down
+
+  select_gate: "[F] Operator/Witness: select\nv0.1 process readiness and/or\nv1.0 flight acceptance gate" { class: func }
+  load_baseline: "[F] Operator: load frozen\nbaseline copy and assembly/printing\nconstraint" { class: func }
+  collect_screw_records: "[F] Operator: collect controlled\nscrew BOM, supplier data, tray labels\nand installed screw-location list" { class: func }
+  classify_type_attributes: "[F] Operator/Reviewer: classify\nself-tapping screw types by diameter,\npitch/thread form, length, head/drive,\nmaterial/coating and supplier record" { class: func }
+  count_unique_types: "[F] Inspection gate: count unique\nself-tapping screw types issued or\ninstalled for stack, PCB standoff and\ntop-module locations" { class: func }
+  inspect_installed_sample: "[F] Operator/Witness: inspect\ninstalled v0.1/v1.0 screws or final\nhardware locations against the\ncontrolled inventory" { class: func }
+  compare_limit: "[F] Acceptance gate: compare\nunique screw type count to the\nmaximum of two" { class: func }
+  record_anomalies: "[F] Operator/Reviewer: record\nthird type, mixed bin, substitution,\nmissing label or ambiguous location" { class: func }
+  witness_decision: "[F] QA Witness: approve pass,\nfail, hold or re-run after inventory\ncorrection" { class: func }
+  archive_evidence: "[F] Evidence repository: archive\nscrew census, photos, BOM, baseline\nreference and witness decision" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nPass only when the controlled self-tapping screw type count is ≤ 2 and every\nissued or installed self-tapping screw maps to one of those two types. A screw\ntype is distinguished by controlled diameter, pitch/thread form, length,\nhead/drive, material/coating and supplier record. Any third type, unapproved\nsubstitution, mixed untraceable bin, missing location map or ambiguous evidence\nis hold/fail until corrected and re-inspected." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nThis is a 100% census of the screw inventory/type definitions and modeled screw\nlocations for the selected gate. It is not a sampling or reliability claim.\nIf screw-hole reliability is later claimed, use the separate 29 independent\nzero-failure screw-hole planning point for R90/C95." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nExplicitly screens hidden third screw type, mixed supplier lots, wrong screw\nlength, wrong head/drive, material mismatch, undocumented workshop substitution,\nincorrect installed location, inventory-label loss and evidence-control escape." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled Assembly / printing constraint: max two self-tapping screw types;\nSAA-UC-IntegratedAssembly; SAA-FE-StructuralLoosening." {
+    class: note
+    shape: page
+  }
+}
+
+screw_chain.select_gate -> screw_chain.load_baseline: "[FE] Selected SSIV /\nreadiness gate" { class: fe }
+screw_chain.load_baseline -> screw_chain.collect_screw_records: "[FE] Applicable model\nscrew constraints" { class: fe }
+screw_chain.collect_screw_records -> screw_chain.classify_type_attributes: "[FE] Screw BOM,\ntrays and location list" { class: fe }
+screw_chain.classify_type_attributes -> screw_chain.count_unique_types: "[FE] Normalized screw\ntype definitions" { class: fe }
+screw_chain.count_unique_types -> screw_chain.inspect_installed_sample: "[FE] Candidate type\ncount" { class: fe }
+screw_chain.inspect_installed_sample -> screw_chain.compare_limit: "[FE] Installed screw\ntraceability status" { class: fe }
+screw_chain.compare_limit -> screw_chain.record_anomalies: "[FE] ≤2 pass or\nnonconformance" { class: fe }
+screw_chain.record_anomalies -> screw_chain.witness_decision: "[FE] Open/closed inventory\nanomaly status" { class: fe }
+screw_chain.witness_decision -> screw_chain.archive_evidence: "[FE] Witness decision\nand release approval" { class: fe }
+
+# Layout-only edges keep notes after the executable inspection flow.
+screw_chain.archive_evidence -> screw_chain.pass_fail { style: { opacity: 0 } }
+screw_chain.pass_fail -> screw_chain.statistical { style: { opacity: 0 } }
+screw_chain.statistical -> screw_chain.fault_hardening { style: { opacity: 0 } }
+screw_chain.fault_hardening -> screw_chain.traceability { style: { opacity: 0 } }

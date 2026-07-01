@@ -1,0 +1,228 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-FC-002 verification-only Physical Architecture PV1.
+# v1.0 backplane mating, rail/testpoint/signal-access demonstration/testing testbench.
+# References cited in the rendered system title: IVV, SAA-R4, SAA-R5.
+# This file is a test-definition view and does not modify the v1.0 baseline model.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" { class: ea }
+witness: "[EA] QA Witness" { class: ea }
+fixture: "[EA] Mate / Demate Fixture\nwith Alignment Jig\nESD-safe restraint" { class: ea }
+supply: "[EA] Current-limited\nBench Supply\n5 V / 3.3 V capable" { class: ea }
+safe_load: "[EA] Campaign Safe Load\n/ No-load Adapter" { class: ea }
+dmm_daq: "[EA] Calibrated DMM / DAQ" { class: ea }
+continuity: "[EA] Continuity / Isolation\nTester" { class: ea }
+scope_la: "[EA] Oscilloscope /\nLogic Analyzer\nlow-cap probes" { class: ea }
+tp_probes: "[EA] Testpoint Probe Set\nneedle / pogo / clips" { class: ea }
+ambient_meter: "[EA] Ambient Thermo-\nHygrometer" { class: ea }
+camera: "[EA] Camera / Evidence\nLight Box" { class: ea }
+repo: "[EA] Evidence Repository\nresults/SAA-VV-FC-002" { class: ea }
+
+system: "[System] SAA-VV-FC-002 v1.0 Backplane Mating / Rail-Testpoint-Signal Access Testbench\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] v1.0 CanSat Assembly\nUUT for backplane access" {
+    class: pc
+    direction: right
+
+    standard_stack: "[PC] Standard Carrier\nModule Stack\n(Type 1)" {
+      class: pc
+      direction: down
+
+      ads_module: "[PC] ADS Module" {
+        class: pc
+        direction: right
+        ads_pcb: "[PC] ADS PCB\n44 mm × 44 mm" { class: pc }
+      }
+
+      ams_module: "[PC] AMS Module" {
+        class: pc
+        direction: right
+        ams_pcb: "[PC] AMS PCB\n44 mm × 44 mm" { class: pc }
+      }
+
+      obcc_module: "[PC] OBCC Module" {
+        class: pc
+        direction: right
+        obcc_pcb: "[PC] OBCC PCB\n44 mm × 44 mm" { class: pc }
+      }
+
+      pds_module: "[PC] PDS Module" {
+        class: pc
+        direction: right
+        pds_pcb: "[PC] PDS PCB\n44 mm × 44 mm" { class: pc }
+      }
+
+      ess_module: "[PC] ESS Module" {
+        class: pc
+        direction: right
+        battery_pack: "[PC] ESS Battery Pack" { class: pc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB\n100 mm × 28 mm\n2-layer stackup" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ads_headers: "[PC] 2 mm 2×6\nADS Headers" { class: pc }
+      ams_headers: "[PC] 2 mm 2×6\nAMS Headers" { class: pc }
+      obcc_headers: "[PC] 2 mm 2×6\nOBCC Headers" { class: pc }
+      pds_headers: "[PC] 2 mm 2×6\nPDS Headers" { class: pc }
+      pdm_servo_header: "[PC] PDM Servo\nConnector" { class: pc }
+      spine: "[PC] Backplane Spine" { class: pc }
+      verification_tps: "[PC] Verification Testpoint\nAccess Pads / Probe Terminals\nrails + critical SPI/I2C/UART\nverification-only" { class: pc }
+    }
+
+    parachute_module: "[PC] Parachute / Top\nModule\n(Type 2)" {
+      class: pc
+      direction: down
+
+      cap: "[PC] Cap" { class: pc }
+      parachute: "[PC] Parachute" { class: pc }
+      servo: "[PC] Servo" { class: pc }
+    }
+  }
+
+  mating_constraint: "[C] Mating pass/fail:\nPerpendicular backplane seats in the\nmodeled fixture and mates ADS, AMS,\nOBCC, PDS 2 mm 2×6 headers and the\nPDM servo connector to the modeled\norientation/alignment. No forced insertion,\nbent pins, damaged connector, partial seat,\nwrong orientation, or unapproved shim is\naccepted." {
+    class: note
+    shape: page
+  }
+
+  electrical_constraint: "[C] Rail/net pass/fail:\nBefore power, 100% continuity/isolation\nchecks for modeled rail/testpoint/critical\nendpoint paths show no short, open, or\nswapped endpoint anomaly. With current\nlimit set and campaign safe load applied\n(or no-load explicitly documented), rails\nmeasure 5.0 ±0.1 V and 3.3 ±0.1 V at\nrequired testpoints; overcurrent or rail\ndrop is a hold/fail trigger." {
+    class: note
+    shape: page
+  }
+
+  access_constraint: "[C] Testpoint/signal-access pass/fail:\nRequired rail and critical signal testpoints\nare physically reachable with controlled\nprobes without modifying the article,\nback-driving nets, or creating adjacent-pin\nshort risk. Critical SPI/I2C/UART fast-line\naccess is demonstrated non-invasively; any\nexcessive capacitance or rise-time concern\nis recorded as an analysis dependency for\nSAA-VV-CE-001 / SAA-VV-CON-003." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\n100% net, rail, connector, and required\ntestpoint checks on the v1.0 article.\nRepeated mate/demate cycles are screening\nonly unless an approved independent-cycle\nstatistical plan is referenced." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nScreen bent pins, wrong orientation,\nblocked/inaccessible testpoints, shorts,\nopens, swapped endpoints, overcurrent,\nrail drop, connector unseat, and probe\nloading of fast lines. Any anomaly stops\npass claim and requires disposition/re-run." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Environmental / equipment conditions:\nRecord ambient temperature/humidity and\nESD setup before checks. De-energize for\nmate/demate and continuity testing. Set\nbench-supply current limits before enabling\nrails. Hold if calibration, probe condition,\nambient state, or fixture alignment is not\ncontrolled." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability targets:\nSAA-UC-BackplaneIntegration;\nSAA-FE-BackplaneMisMate;\nv1.0 Backplane PCB constraints for defined\npin interface, 5.0 ±0.1 V, 3.3 ±0.1 V,\ntestpoints, low-capacitance SPI/I2C/UART,\nand ERC + DRC clean." {
+    class: note
+    shape: page
+  }
+}
+
+system.cansat.standard_stack.ads_module -- system.cansat.standard_stack.ams_module: "[PL] Stack screws" { class: pl }
+system.cansat.standard_stack.ams_module -- system.cansat.standard_stack.obcc_module: "[PL] Stack screws" { class: pl }
+system.cansat.standard_stack.obcc_module -- system.cansat.standard_stack.pds_module: "[PL] Stack screws" { class: pl }
+system.cansat.standard_stack.pds_module -- system.cansat.standard_stack.ess_module: "[PL] Stack screws" { class: pl }
+system.cansat.standard_stack -- system.cansat.parachute_module: "[PL] Stack screws" { class: pl }
+
+system.cansat.standard_stack -- system.cansat.backplane_pcb: "[PL] Perpendicular fixture\n+ header mating" { class: pl }
+system.cansat.parachute_module -- system.cansat.backplane_pcb: "[PL] Backplane fixture\n+ servo connector" { class: pl }
+
+system.cansat.standard_stack.ads_module.ads_pcb -- system.cansat.standard_stack.ads_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.cansat.standard_stack.ams_module.ams_pcb -- system.cansat.standard_stack.ams_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.cansat.standard_stack.obcc_module.obcc_pcb -- system.cansat.standard_stack.obcc_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.cansat.standard_stack.pds_module.pds_pcb -- system.cansat.standard_stack.pds_module: "[PL] PCB standoffs\n/ screws" { class: pl }
+system.cansat.standard_stack.ess_module.battery_pack -- system.cansat.standard_stack.ess_module: "[PL] Battery fixture" { class: pl }
+
+operator -- system.cansat: "[PL] Manual handling /\nmate-demate operation" { class: pl }
+witness -- system.cansat: "[PL] Direct witness\nline of sight" { class: pl }
+fixture -- system.cansat.backplane_pcb: "[PL] Guided seating /\nalignment datum" { class: pl }
+supply -- system.cansat.backplane_pcb.verification_tps: "[PL] Current-limited\nrail injection harness" { class: pl }
+safe_load -- system.cansat.backplane_pcb.verification_tps: "[PL] Safe-load or\nno-load adapter" { class: pl }
+dmm_daq -- system.cansat.backplane_pcb.verification_tps: "[PL] Voltage sense /\nmeasurement leads" { class: pl }
+continuity -- system.cansat.backplane_pcb: "[PL] Continuity /\nisolation probes" { class: pl }
+scope_la -- system.cansat.backplane_pcb.verification_tps: "[PL] Low-capacitance\nfast-line probes" { class: pl }
+tp_probes -- system.cansat.backplane_pcb.verification_tps: "[PL] Controlled\ntestpoint contacts" { class: pl }
+ambient_meter -- system.cansat: "[PL] Shared ambient\nmeasurement field" { class: pl }
+camera -- system.cansat: "[PL] Optical evidence\nfield of view" { class: pl }
+repo -- camera: "[PL] Evidence media\ntransfer path" { class: pl }
+
+system.mating_constraint -> system.cansat.backplane_pcb { class: cstr }
+system.mating_constraint -> fixture { class: cstr }
+system.electrical_constraint -> system.cansat.backplane_pcb.verification_tps { class: cstr }
+system.electrical_constraint -> supply { class: cstr }
+system.electrical_constraint -> dmm_daq { class: cstr }
+system.electrical_constraint -> continuity { class: cstr }
+system.access_constraint -> system.cansat.backplane_pcb.verification_tps { class: cstr }
+system.access_constraint -> tp_probes { class: cstr }
+system.access_constraint -> scope_la { class: cstr }
+system.statistical -> system.cansat.backplane_pcb { class: cstr }
+system.fault_hardening -> system.cansat.backplane_pcb { class: cstr }
+system.conditions -> ambient_meter { class: cstr }
+system.conditions -> supply { class: cstr }
+system.traceability -> system.cansat.backplane_pcb { class: cstr }
+
+# Layout-only edges keep the test equipment, UUT, repository, and notes in a stable reading order.
+operator -> witness { style: { opacity: 0 } }
+witness -> fixture { style: { opacity: 0 } }
+fixture -> supply { style: { opacity: 0 } }
+supply -> safe_load { style: { opacity: 0 } }
+safe_load -> dmm_daq { style: { opacity: 0 } }
+dmm_daq -> continuity { style: { opacity: 0 } }
+continuity -> scope_la { style: { opacity: 0 } }
+scope_la -> tp_probes { style: { opacity: 0 } }
+tp_probes -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> camera { style: { opacity: 0 } }
+camera -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.cansat -> system.mating_constraint { style: { opacity: 0 } }
+system.mating_constraint -> system.electrical_constraint { style: { opacity: 0 } }
+system.electrical_constraint -> system.access_constraint { style: { opacity: 0 } }
+system.access_constraint -> system.statistical { style: { opacity: 0 } }
+system.statistical -> system.fault_hardening { style: { opacity: 0 } }
+system.fault_hardening -> system.conditions { style: { opacity: 0 } }
+system.conditions -> system.traceability { style: { opacity: 0 } }

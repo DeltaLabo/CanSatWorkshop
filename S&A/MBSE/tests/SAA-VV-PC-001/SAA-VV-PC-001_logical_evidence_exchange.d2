@@ -1,0 +1,130 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-PC-001 verification-only Physical Architecture PV2.
+# Logical/evidence component exchanges between test actors and the inspection records.
+# References cited in the rendered system title: IVV, SAA-R1, SAA-R2, SAA-R3, SAA-R4, SAA-R5.
+# These CEs define the verification means only; they are not baseline S&A design exchanges.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] Inspection Operator" { class: ea }
+witness: "[EA] QA Witness" { class: ea }
+camera: "[EA] Calibrated Camera /\nMicroscope" { class: ea }
+caliper_scale: "[EA] Caliper / Scale" { class: ea }
+repo: "[EA] Evidence Repository\nresults/SAA-VV-PC-001" { class: ea }
+
+system: "[System] SAA-VV-PC-001 Logical Evidence Exchange View\nRefs: IVV; SAA-R1; SAA-R2; SAA-R3; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+
+  v01_article: "[PC] v0.1 S&A Article\ninspection record boundary" {
+    class: pc
+    direction: right
+    v01_census_lc: "[LC] v0.1 Baseline PC Census\nverification-only" { class: lc }
+    v01_record_lc: "[LC] v0.1 Inspection Evidence Record\nverification-only" { class: lc }
+  }
+
+  v10_article: "[PC] v1.0 S&A Article\ninspection record boundary" {
+    class: pc
+    direction: right
+    v10_census_lc: "[LC] v1.0 Baseline PC Census\nverification-only" { class: lc }
+    v10_record_lc: "[LC] v1.0 Inspection Evidence Record\nverification-only" { class: lc }
+  }
+
+  verification_only: "[C] Verification-only CEs:\nmodel test evidence/control flows.\nThey do not claim or replace missing\nbaseline S&A component exchanges." {
+    class: note
+    shape: page
+  }
+
+  evidence_integrity: "[C] Evidence integrity constraint:\nEach modeled PC row records article ID,\nversion, observed identity, containment /\nplacement, condition, photo/build record ID,\nanomaly disposition, and QA witness status." {
+    class: note
+    shape: page
+  }
+
+  gate_logic: "[C] Gate constraint:\nA version readiness gate cannot close\nuntil its evidence record has one\nnon-ambiguous disposition for every\nmodeled PC in that baseline." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nSAA-UC-IntegratedAssembly;\nSAA-UC-BackplaneIntegration;\nSAA-UC-ParachuteClearance;\nSAA-FE-EnvelopeNonCompliance;\nSAA-FE-BackplaneMisMate;\nSAA-FE-StructuralLoosening;\nmodeled PC containment constraints." {
+    class: note
+    shape: page
+  }
+}
+
+operator -> system.v01_article.v01_census_lc: "[CE] Select v0.1 baseline\nand checklist" { class: ce }
+operator -> system.v01_article.v01_record_lc: "[CE] Observed PC status\nand anomaly notes" { class: ce }
+camera -> system.v01_article.v01_record_lc: "[CE] v0.1 image evidence\nper modeled PC" { class: ce }
+caliper_scale -> system.v01_article.v01_record_lc: "[CE] v0.1 identity / placement\nmeasurements as needed" { class: ce }
+system.v01_article.v01_census_lc -> system.v01_article.v01_record_lc: "[CE] Modeled PC list\nand pass/fail fields" { class: ce }
+system.v01_article.v01_record_lc -> witness: "[CE] v0.1 review package\napproval / hold" { class: ce }
+system.v01_article.v01_record_lc -> repo: "[CE] v0.1 released\nevidence package" { class: ce }
+
+operator -> system.v10_article.v10_census_lc: "[CE] Select v1.0 baseline\nand checklist" { class: ce }
+operator -> system.v10_article.v10_record_lc: "[CE] Observed PC status\nand anomaly notes" { class: ce }
+camera -> system.v10_article.v10_record_lc: "[CE] v1.0 image evidence\nper modeled PC" { class: ce }
+caliper_scale -> system.v10_article.v10_record_lc: "[CE] v1.0 identity / placement\nmeasurements as needed" { class: ce }
+system.v10_article.v10_census_lc -> system.v10_article.v10_record_lc: "[CE] Modeled PC list\nand pass/fail fields" { class: ce }
+system.v10_article.v10_record_lc -> witness: "[CE] v1.0 review package\napproval / hold" { class: ce }
+system.v10_article.v10_record_lc -> repo: "[CE] v1.0 released\nevidence package" { class: ce }
+
+system.verification_only -> system.v01_article.v01_census_lc { class: cstr }
+system.verification_only -> system.v10_article.v10_census_lc { class: cstr }
+system.evidence_integrity -> system.v01_article.v01_record_lc { class: cstr }
+system.evidence_integrity -> system.v10_article.v10_record_lc { class: cstr }
+system.gate_logic -> system.v01_article.v01_record_lc { class: cstr }
+system.gate_logic -> system.v10_article.v10_record_lc { class: cstr }
+system.traceability -> system.v01_article { class: cstr }
+system.traceability -> system.v10_article { class: cstr }
+
+# Layout-only edges keep actors, system, and repository in a stable reading order.
+operator -> witness { style: { opacity: 0 } }
+witness -> camera { style: { opacity: 0 } }
+camera -> caliper_scale { style: { opacity: 0 } }
+caliper_scale -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.v01_article -> system.v10_article { style: { opacity: 0 } }
+system.v10_article -> system.verification_only { style: { opacity: 0 } }
+system.verification_only -> system.evidence_integrity { style: { opacity: 0 } }
+system.evidence_integrity -> system.gate_logic { style: { opacity: 0 } }
+system.gate_logic -> system.traceability { style: { opacity: 0 } }

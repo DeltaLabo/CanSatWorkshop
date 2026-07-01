@@ -1,0 +1,301 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-001 verification-only Physical Architecture PV3.
+# Functional allocation/procedure view for 355 ml envelope, mass, and landing-impact constraint verification.
+# References cited in the rendered system title: IVV, SAA-R1, SAA-R2, SAA-R5.
+# Functions and LCs here define the verification activity only; they are not baseline S&A design edits.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  identify: "[F] Identify article,\nbaseline copy, build record,\nand selected readiness gate" { class: func }
+  confirm_v01: "[F] Confirm v0.1 structural\narticle and any ballast\nconfiguration" { class: func }
+  confirm_v10: "[F] Confirm v1.0 full\nas-flown configuration" { class: func }
+  operate_measurement: "[F] Operate envelope gauge,\ncaliper/height gauge, and scale" { class: func }
+  configure_drop: "[F] Configure drop fixture,\norientation, safety boundary,\nand impact surface" { class: func }
+  record_anomaly: "[F] Record anomaly, waiver,\nhold, rework or re-run need" { class: func }
+}
+
+witness: "[EA] Safety / QA Witness" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  witness_setup: "[F] Witness setup, calibration,\nambient record and safety controls" { class: func }
+  witness_drop: "[F] Witness release, impact,\npost-impact inspections and\nno-hand-assist rules" { class: func }
+  approve_gate: "[F] Approve pass, fail,\nor execution hold disposition" { class: func }
+}
+
+envelope_gauge: "[EA] 355 ml Envelope /\nCan Gauge" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  check_free_fit: "[F] Check free fit in\nØ66.0 mm × H122.0 mm\ngauge without force" { class: func }
+}
+
+caliper_height: "[EA] Calibrated Caliper /\nHeight Gauge" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  measure_diameter: "[F] Measure maximum\noutside diameter and U_D" { class: func }
+  measure_height: "[F] Measure maximum\nheight and U_H" { class: func }
+}
+
+scale: "[EA] Calibrated Scale" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  measure_mass: "[F] Measure total mass\nand U_M with calibration\nrecord attached" { class: func }
+}
+
+drop_fixture: "[EA] Drop / Landing-Impact\nScreen Fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  hold_article: "[F] Hold article in approved\norientation before release" { class: func }
+  release_article: "[F] Release article for\ntailored drop/landing-impact screen" { class: func }
+}
+
+impact_surface: "[EA] Tailored Impact Surface /\nScreen-Level Record" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  define_screen: "[F] Provide approved drop\nheight/energy, surface, orientation\nset, or hold rationale" { class: func }
+}
+
+accel_logger: "[EA] Shock / Acceleration\nLogger or Witness Indicator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  record_shock: "[F] Record shock marker,\npeak acceleration or impact witness\nwhen installed" { class: func }
+}
+
+inspection_kit: "[EA] Post-Impact\nInspection Kit" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  inspect_damage: "[F] Inspect cracks, deformation,\nloose screws, connector unseat,\nbattery movement and hidden damage" { class: func }
+}
+
+camera: "[EA] Photo / Video\nEvidence Camera" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  capture_evidence: "[F] Capture configuration,\nmeasurement, release, impact and\npost-screen evidence" { class: func }
+}
+
+ambient_meter: "[EA] Ambient Thermo-\nHygrometer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  record_ambient: "[F] Record ambient temperature\nand humidity before measurements\nand before impact repetitions" { class: func }
+}
+
+repo: "[EA] Evidence Repository" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  store_package: "[F] Store report-by-reference\npackage under results/SAA-VV-CON-001/" { class: func }
+}
+
+system: "[System] SAA-VV-CON-001 Functional Allocation / Constraint Verification Procedure\nRefs: IVV; SAA-R1; SAA-R2; SAA-R5" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  v01_article: "[PC] v0.1 Structural Article\ntransition-readiness UUT" {
+    class: pc
+    direction: down
+    grid-columns: 1
+    v01_config_lc: "[LC] v0.1 Structural\nConfiguration\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      present_structural_article: "[F] Present modeled v0.1\nstructural envelope, module stack,\nbackplane volume and top module" { class: func }
+      present_ballast: "[F] Present documented\nrepresentative ballast if structural\nimpact screen claims mass realism" { class: func }
+    }
+    v01_measure_lc: "[LC] v0.1 Envelope /\nReference-Mass Gate\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      provide_diameter: "[F] Provide v0.1 maximum\ndiameter for measurement" { class: func }
+      provide_height: "[F] Provide v0.1 maximum\nheight for measurement" { class: func }
+      provide_reference_mass: "[F] Provide structural or\nballasted mass for readiness\nbudget record" { class: func }
+      apply_v01_gate: "[F] Apply v0.1 transition\nreadiness envelope and\nstructural-mass criteria" { class: func }
+    }
+    v01_impact_lc: "[LC] v0.1 Structural\nImpact Robustness\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      absorb_screen: "[F] Withstand approved structural\ndrop/landing-impact screen without\nstructural failure" { class: func }
+      expose_post_damage: "[F] Expose post-screen cracks,\nlooseness, backplane-volume shift,\nor module-stack deformation" { class: func }
+    }
+  }
+
+  v10_article: "[PC] v1.0 Integrated Article\nflight-readiness UUT" {
+    class: pc
+    direction: down
+    grid-columns: 1
+    v10_config_lc: "[LC] v1.0 As-Flown\nConfiguration\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      present_full_article: "[F] Present battery, PCBs,\nbackplane, headers, cap, parachute,\nservo, connectors and any required\nballast installed" { class: func }
+      expose_protrusions: "[F] Expose all external\nprotrusions and integration interfaces\nfor envelope and impact checks" { class: func }
+    }
+    v10_measure_lc: "[LC] v1.0 Envelope /\nMass Acceptance Gate\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      provide_diameter: "[F] Provide v1.0 maximum\noutside diameter for measurement" { class: func }
+      provide_height: "[F] Provide v1.0 maximum\nheight for measurement" { class: func }
+      provide_mass: "[F] Provide total as-flown\nmass for measurement" { class: func }
+      apply_guardbands: "[F] Apply conservative\nenvelope and mass guard bands" { class: func }
+    }
+    v10_impact_lc: "[LC] v1.0 Landing-Impact\nRobustness Gate\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      withstand_screen: "[F] Withstand approved\nas-flown drop/landing-impact screen" { class: func }
+      maintain_integration: "[F] Maintain stack, battery,\nPCBs, backplane, headers, PDM servo\nconnector, cap, parachute and servo\nintegration" { class: func }
+      support_remeasurement: "[F] Remain measurable and\nserviceable for post-impact\nenvelope/mass checks" { class: func }
+    }
+  }
+
+  verification_records: "[PC] Constraint Verification\nControl and Evidence Package\nverification-only" {
+    class: pc
+    direction: down
+    grid-columns: 1
+    screen_lc: "[LC] Tailored Screen\nDefinition\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      approve_level: "[F] Approve drop/impact\nlevel, orientation set, fixture,\nimpact surface and safety boundary" { class: func }
+      hold_unresolved: "[F] Hold impact closure\nwhen exact levels remain unresolved" { class: func }
+    }
+    evidence_lc: "[LC] Evidence and\nAnomaly Gate\nverification-only" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      bind_evidence: "[F] Bind baseline copies,\ncalibration, ambient data, readings,\nuncertainty, photos/video and logs" { class: func }
+      classify_gate: "[F] Classify v0.1 and v1.0\npass, fail, hold or re-run" { class: func }
+      require_rerun: "[F] Require re-run after rework,\nconfiguration change, waiver rejection\nor temporary omission" { class: func }
+    }
+  }
+
+  pass_fail: "[C] Pass/fail constraint:\nDiameter + U_D ≤ 66.0 mm and height + U_H ≤ modeled 122.0 mm unless a stricter\nheight is confirmed. v1.0 mass passes only if measured mass + U_M < 350.0 g.\nImpact passes only after approved tailored screen, no structural/integration failure,\ncomplete post-impact inspection and acceptable post-impact remeasurement. Open anomaly = hold/fail." {
+    class: note
+    shape: page
+  }
+
+  mass_interpretation: "[C] Conservative mass interpretation:\nThe modeled '<350 ±0.1 g' wording is treated as actual total mass < 350.0 g\nwith a measurement uncertainty guard band. If U_M = 0.1 g, indicated mass must\nbe < 349.9 g; otherwise use the calibrated expanded uncertainty. v0.1 mass is\nreadiness/budget evidence unless representative final ballast is documented." {
+    class: note
+    shape: page
+  }
+
+  screen_hold: "[C] Landing-impact ambiguity constraint:\nIf drop height, impact surface, orientation set, article state or safety boundary is\nnot approved before execution, the model-defined result for landing impact is\n'analysis-backed hold'; do not claim pass. The report may cite ASTM D5276-style\nfree-fall process or a tailored CanSat environmental screen once levels are controlled." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\nCalibrated continuous measurements with expanded uncertainty for diameter, height\nand mass. Drop/impact is binary pass/fail. A one-article screen is a workmanship\nscreen only; reliability claims require representative independent trials and\none-sided binomial confidence logic such as 29/29 for R90/C95." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nUse full as-flown v1.0 configuration and documented v0.1 ballast state. Re-measure\nafter impact and inspect hidden damage, cracks, screw looseness, backplane/header\nshift, battery movement, connector unseat, cap/parachute/servo jam, forced gauge\nfit, missing evidence or ambiguous video before release." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Environmental/equipment condition:\nAmbient thermo-hygrometer readings, equipment IDs, calibration status, impact\nsurface/fixture state, safety boundary, camera field of view and witness identity\nare recorded before repetitions begin. Hold if conditions affect measurement or safety." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled 355 ml envelope / mass / landing-impact constraint; SAA-FE-EnvelopeNonCompliance;\nSAA-FE-MassNonCompliance; SAA-FE-LandingDamage; SAA-UC-IntegratedAssembly;\nSAA-UC-ParachuteClearance." {
+    class: note
+    shape: page
+  }
+}
+
+system.pass_fail -> system.v01_article.v01_measure_lc.apply_v01_gate { class: cstr }
+system.pass_fail -> system.v10_article.v10_measure_lc.apply_guardbands { class: cstr }
+system.pass_fail -> system.v10_article.v10_impact_lc.maintain_integration { class: cstr }
+system.mass_interpretation -> system.v10_article.v10_measure_lc.apply_guardbands { class: cstr }
+system.mass_interpretation -> system.v01_article.v01_measure_lc.provide_reference_mass { class: cstr }
+system.screen_hold -> system.verification_records.screen_lc.hold_unresolved { class: cstr }
+system.screen_hold -> system.verification_records.screen_lc.approve_level { class: cstr }
+system.statistical -> system.v10_article.v10_measure_lc.provide_diameter { class: cstr }
+system.statistical -> system.v10_article.v10_measure_lc.provide_height { class: cstr }
+system.statistical -> system.v10_article.v10_measure_lc.provide_mass { class: cstr }
+system.statistical -> system.v10_article.v10_impact_lc.withstand_screen { class: cstr }
+system.fault_hardening -> system.v10_article.v10_config_lc.present_full_article { class: cstr }
+system.fault_hardening -> system.v10_article.v10_impact_lc.maintain_integration { class: cstr }
+system.fault_hardening -> system.verification_records.evidence_lc.require_rerun { class: cstr }
+system.conditions -> system.verification_records.evidence_lc.bind_evidence { class: cstr }
+system.traceability -> system.verification_records.evidence_lc.classify_gate { class: cstr }
+
+# Layout-only edges keep actors and system allocations in procedure order.
+operator -> witness { style: { opacity: 0 } }
+witness -> envelope_gauge { style: { opacity: 0 } }
+envelope_gauge -> caliper_height { style: { opacity: 0 } }
+caliper_height -> scale { style: { opacity: 0 } }
+scale -> drop_fixture { style: { opacity: 0 } }
+drop_fixture -> impact_surface { style: { opacity: 0 } }
+impact_surface -> accel_logger { style: { opacity: 0 } }
+accel_logger -> inspection_kit { style: { opacity: 0 } }
+inspection_kit -> camera { style: { opacity: 0 } }
+camera -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.v01_article -> system.v10_article { style: { opacity: 0 } }
+system.v10_article -> system.verification_records { style: { opacity: 0 } }
+system.pass_fail -> system.mass_interpretation { style: { opacity: 0 } }
+system.mass_interpretation -> system.screen_hold { style: { opacity: 0 } }
+system.screen_hold -> system.statistical { style: { opacity: 0 } }
+system.statistical -> system.fault_hardening { style: { opacity: 0 } }
+system.fault_hardening -> system.conditions { style: { opacity: 0 } }
+system.conditions -> system.traceability { style: { opacity: 0 } }

@@ -1,0 +1,114 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-003 verification-only Functional Chain view.
+# Safe rail and testpoint check chain for v1.0 Backplane PCB built-board acceptance.
+# References cited in the rendered chain title: IVV, SAA-R4, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+rail_chain: "[Functional Chain] SAA-VV-CON-003 Safe Rail / Testpoint Check\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  identify_board: "[F] Operator: identify v1.0\nBackplane PCB board ID, revision,\nnetlist and testpoint checklist" { class: func }
+  record_setup: "[F] Ambient/ESD station:\nrecord temperature, humidity, ESD\nstate, probe condition and\ncalibration" { class: func }
+  configure_supply: "[F] Bench supply: set output\noff, voltage targets and current\nlimits\nfor 5 V and 3.3 V" { class: func }
+  configure_load: "[F] Operator: connect campaign\nsafe load or document controlled\nno-load condition" { class: func }
+  prepower_continuity: "[F] Continuity tester: perform\n100% continuity/isolation against\nreleased endpoint matrix before\npower" { class: func }
+  inhibit_on_fault: "[F] Operator: inhibit power and\nrecord hold if any short, open,\nswap,\nunknown endpoint or probe risk\nappears" { class: func }
+  enable_current_limited: "[F] Bench supply: enable\ncurrent-limited power only after\npre-power checks pass" { class: func }
+  measure_5v: "[F] DMM/DAQ: measure 5.0 V\nrail at every required rail\ntestpoint" { class: func }
+  measure_3v3: "[F] DMM/DAQ: measure 3.3 V\nrail at every required rail\ntestpoint" { class: func }
+  check_testpoint_reach: "[F] Probe set: verify rail and\ncritical signal testpoints are\nreachable\nwithout modification/back-driving" { class: func }
+  monitor_overcurrent: "[F] Operator/DMM: monitor\nrail drop, overcurrent, heating or\nunexpected load response" { class: func }
+  capture_data: "[F] DAQ/camera: capture raw\nreadings, endpoint matrix, photos\nand\ntime stamps" { class: func }
+  apply_gate: "[F] Acceptance gate: apply safe\nrail/testpoint pass/fail\nconstraints" { class: func }
+  witness_archive: "[F] QA witness/repository:\napprove decision and archive\nevidence\nunder results/SAA-VV-CON-003" { class: func }
+
+  pass_fail: "[C] Pass/fail constraints:\nPower may be applied only after 100% continuity/isolation\nof released rail, ground, testpoint and critical endpoint\npaths shows no short, open, swapped endpoint or unknown\nnet. Bench-supply current limits and safe load or\ncontrolled no-load state must be recorded before rail\nenable. All required rail testpoints must be present,\nmapped and reachable without article modification,\nback-driving or adjacent-pin short risk. Measured 5 V rail\nvalues must satisfy 5.0 ±0.1 V and measured 3.3 V rail\nvalues must satisfy 3.3 ±0.1 V under the defined\ncondition. Any overcurrent, rail drop, missing testpoint,\nexpired calibration, missing raw data or open anomaly =\nhold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\n100% continuity/isolation on every released backplane\nboard and 100% required rail/testpoint measurement for the\naccepted board. Readings are guard-banded article\nacceptance measurements; no population claim is made." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nThe chain prevents false pass by requiring pre-power\nisolation, current limiting, power inhibit on\nshorts/opens/swaps, explicit safe-load/no-load state, and\nhold on rail short/open/drop, overcurrent, inaccessible\ntestpoint, missing raw data or probe-induced adjacent-pin\nrisk." {
+    class: note
+    shape: page
+  }
+
+  conditions: "[C] Environmental/equipment conditions:\nRecord ambient temperature/humidity before repetitions;\nuse ESD-safe workstation; verify DMM/DAQ, continuity\ntester, probes and supply calibration/condition. If\nambient, ESD, calibration or load state is uncontrolled,\nthe activity is held." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target:\nModeled Backplane PCB constraints for 5.0 ±0.1 V, 3.3 ±0.1\nV, required testpoints, pin interface and ERC/DRC clean;\nSAA-UC-BackplaneIntegration; SAA-FE-BackplaneMisMate." {
+    class: note
+    shape: page
+  }
+}
+
+rail_chain.identify_board -> rail_chain.record_setup: "[FE] Board and\nchecklist identified" { class: fe }
+rail_chain.record_setup -> rail_chain.configure_supply: "[FE] Controlled setup\nand calibration status" { class: fe }
+rail_chain.configure_supply -> rail_chain.configure_load: "[FE] Output off,\ncurrent limits set" { class: fe }
+rail_chain.configure_load -> rail_chain.prepower_continuity: "[FE] Load/no-load\ncondition" { class: fe }
+rail_chain.prepower_continuity -> rail_chain.inhibit_on_fault: "[FE] Endpoint\nmatrix result" { class: fe }
+rail_chain.inhibit_on_fault -> rail_chain.enable_current_limited: "[FE] Power permission\nor hold" { class: fe }
+rail_chain.enable_current_limited -> rail_chain.measure_5v: "[FE] Current-limited\nrails enabled" { class: fe }
+rail_chain.measure_5v -> rail_chain.measure_3v3: "[FE] 5 V rail\nreadings" { class: fe }
+rail_chain.measure_3v3 -> rail_chain.check_testpoint_reach: "[FE] 3.3 V rail\nreadings" { class: fe }
+rail_chain.check_testpoint_reach -> rail_chain.monitor_overcurrent: "[FE] Reachability\nstatus" { class: fe }
+rail_chain.monitor_overcurrent -> rail_chain.capture_data: "[FE] Rail health\nstatus" { class: fe }
+rail_chain.capture_data -> rail_chain.apply_gate: "[FE] Raw readings and\nevidence package" { class: fe }
+rail_chain.apply_gate -> rail_chain.witness_archive: "[FE] Pass/fail/hold\ndecision" { class: fe }
+
+# Layout-only edges keep notes after the executable test flow.
+rail_chain.witness_archive -> rail_chain.pass_fail { style: { opacity: 0 } }
+rail_chain.pass_fail -> rail_chain.statistical { style: { opacity: 0 } }
+rail_chain.statistical -> rail_chain.fault_hardening { style: { opacity: 0 } }
+rail_chain.fault_hardening -> rail_chain.conditions { style: { opacity: 0 } }
+rail_chain.conditions -> rail_chain.traceability { style: { opacity: 0 } }

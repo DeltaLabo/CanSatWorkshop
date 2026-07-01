@@ -1,0 +1,137 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-PC-001 verification-only Physical Architecture PV1.
+# v0.1 transition-readiness PC presence/identity/placement inspection.
+# References cited in the rendered system title: IVV, SAA-R1, SAA-R2, SAA-R3, SAA-R4, SAA-R5.
+# This file is a test-definition view and does not modify the v0.1 baseline model.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+fixture: "[EA] ESD / Assembly\nFixture" { class: ea }
+camera: "[EA] Calibrated Camera /\nMicroscope" { class: ea }
+caliper_scale: "[EA] Caliper / Scale\n(calibration current)" { class: ea }
+
+system: "[System] SAA-VV-PC-001 v0.1 Physical Inspection Testbench\nRefs: IVV; SAA-R1; SAA-R2; SAA-R3; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] v0.1 CanSat Structural\nEnvelope under inspection" {
+    class: pc
+    direction: right
+
+    standard_stack: "[PC] Standard Carrier\nModule Stack\n(Type 1)" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ads_module: "[PC] ADS Module" { class: pc }
+      ams_module: "[PC] AMS Module" { class: pc }
+      obcc_module: "[PC] OBCC Module" { class: pc }
+      pds_module: "[PC] PDS Module" { class: pc }
+      ess_module: "[PC] ESS Module" { class: pc }
+    }
+
+    backplane_volume: "[PC] Perpendicular\nBackplane Volume" { class: pc }
+
+    parachute_module: "[PC] Parachute / Top\nModule\n(Type 2)" { class: pc }
+  }
+
+  v01_census: "[C] v0.1 100% PC census target:\nCanSat Structural Envelope;\nStandard Carrier Module Stack;\nADS, AMS, OBCC, PDS, ESS Modules;\nPerpendicular Backplane Volume;\nParachute / Top Module." {
+    class: note
+    shape: page
+  }
+
+  pass_fail: "[C] v0.1 pass/fail constraint:\nPass only if every modeled PC is\npresent, uniquely identifiable,\ncorrectly contained/located,\nundamaged, and evidence-recorded.\nMissing, extra unmodeled, ambiguous\nduplicate, misplaced, damaged, or\nunapproved substituted PC = fail/hold." {
+    class: note
+    shape: page
+  }
+
+  stats_faults: "[C] Viewpoints:\nStatistical significance = 100% census\nof each v0.1 article; no sampling claim.\nFault hardening = catches wrong module\ntype, missing structural/backplane volume,\nwrong top module, damage, and evidence gaps." {
+    class: note
+    shape: page
+  }
+
+  inspection_conditions: "[C] Inspection conditions:\nUse ESD fixture/support.\nCamera/microscope and caliper/scale\ncalibration must be current.\nRecord ambient/handling deviations\nif they affect evidence quality." {
+    class: note
+    shape: page
+  }
+
+  trace: "[C] Traceability target:\nSAA-UC-IntegratedAssembly;\nSAA-FE-EnvelopeNonCompliance;\nSAA-FE-StructuralLoosening;\nmodeled module/backplane/assembly\nconstraints from the v0.1 PA view." {
+    class: note
+    shape: page
+  }
+}
+
+system.cansat.standard_stack.ads_module -- system.cansat.standard_stack.ams_module: "[PL] Stack screws" { class: pl }
+system.cansat.standard_stack.ams_module -- system.cansat.standard_stack.obcc_module: "[PL] Stack screws" { class: pl }
+system.cansat.standard_stack.obcc_module -- system.cansat.standard_stack.pds_module: "[PL] Stack screws" { class: pl }
+system.cansat.standard_stack.pds_module -- system.cansat.standard_stack.ess_module: "[PL] Stack screws" { class: pl }
+system.cansat.standard_stack -- system.cansat.parachute_module: "[PL] Stack screws" { class: pl }
+
+system.cansat.standard_stack -- system.cansat.backplane_volume: "[PL] Perpendicular\nbackplane slot" { class: pl }
+system.cansat.parachute_module -- system.cansat.backplane_volume: "[PL] Backplane\nclearance" { class: pl }
+
+fixture -- system.cansat: "[PL] ESD-safe support\nand article restraint" { class: pl }
+camera -- system.cansat: "[PL] Optical inspection\nfield / camera mount" { class: pl }
+caliper_scale -- system.cansat: "[PL] Measurement contact\ncaliper jaws / scale pan" { class: pl }
+
+system.v01_census -> system.cansat { class: cstr }
+system.pass_fail -> system.cansat { class: cstr }
+system.pass_fail -> system.cansat.standard_stack { class: cstr }
+system.pass_fail -> system.cansat.backplane_volume { class: cstr }
+system.pass_fail -> system.cansat.parachute_module { class: cstr }
+system.stats_faults -> system.cansat { class: cstr }
+system.inspection_conditions -> fixture { class: cstr }
+system.inspection_conditions -> camera { class: cstr }
+system.inspection_conditions -> caliper_scale { class: cstr }
+system.trace -> system.cansat { class: cstr }
+
+# Layout-only edges keep equipment above the v0.1 article and notes below it.
+fixture -> camera { style: { opacity: 0 } }
+camera -> caliper_scale { style: { opacity: 0 } }
+caliper_scale -> system { style: { opacity: 0 } }
+system.cansat -> system.v01_census { style: { opacity: 0 } }
+system.v01_census -> system.pass_fail { style: { opacity: 0 } }
+system.pass_fail -> system.stats_faults { style: { opacity: 0 } }
+system.stats_faults -> system.inspection_conditions { style: { opacity: 0 } }
+system.inspection_conditions -> system.trace { style: { opacity: 0 } }

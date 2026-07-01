@@ -1,0 +1,112 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-FC-003 verification-only Functional Chain view.
+# Fault-hardening scenario for v1.0 parachute deployment: snag, cap rub, backplane/servo-connector interference, and post-screen looseness.
+# References cited in the rendered chain title: IVV, SAA-R1, SAA-R2, SAA-R3, SAA-R4, SAA-R5.
+# This chain defines the verification activity only; it is not a baseline S&A functional chain.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+fault_chain: "[Functional Chain] SAA-VV-FC-003 Snag / Interference Fault-Hardening Checks\nRefs: IVV; SAA-R1; SAA-R2; SAA-R3; SAA-R4; SAA-R5" {
+  class: chain
+  direction: down
+
+  load_checklist: "[F] Operator/Witness: load\nfault-hardening checklist and\nconfirm safe actuation boundary" { class: func }
+  verify_post_screen: "[F] Inspection kit: verify\npost-vibration/drop condition and\npre-test link retention if screen\nwas previously executed" { class: func }
+  mark_rub_paths: "[F] Gauge team: place\nnon-damaging rub/snag witness markers\non cap path, backplane keep-out,\nand PDM servo connector area" { class: func }
+  vary_pack: "[F] Operator: pack parachute\nwithin approved process variation\nwithout introducing artificial snag" { class: func }
+  command_fault_screen: "[F] Servo interface: command\nor manually actuate deployment\nwith no hand assistance" { class: func }
+  detect_cap_rub: "[F] Camera/Gauge: detect\ncap rub, servo travel loss,\nblocked path, or backplane/contact mark" { class: func }
+  detect_snag: "[F] Camera/Witness: detect\nparachute snag, hang-up, delayed extraction,\nor drag on structure/backplane" { class: func }
+  inspect_connector: "[F] Inspection kit: inspect\nPDM servo connector, backplane fixture,\nstack screws and module alignment\nfor new movement or looseness" { class: func }
+  inhibit_pass: "[F] Acceptance gate: inhibit\npass on rub, snag, movement,\nambiguous video, or forced reset" { class: func }
+  open_anomaly: "[F] Operator: open anomaly\nwith affected cap, servo, parachute,\nbackplane, connector, stack or fixture" { class: func }
+  disposition: "[F] Engineering/QA: classify\nrework, model update, waiver request,\nexecution hold, or fail" { class: func }
+  rerun_nominal: "[F] Test team: re-run affected\nnominal deployment and pre/post\ninspection steps after approved closure" { class: func }
+  archive: "[F] Evidence repository: archive\nfault-screen videos, marker photos,\nanomaly, disposition and re-run evidence" { class: func }
+
+  fault_triggers: "[C] Fault-hardening trigger constraint: Trigger\nhold/fail for cap rub/contact mark, servo travel not\nreaching release, cap/backplane/structure/PDM servo\nconnector interference, parachute snag or hang-up,\nextraction requiring hand assistance, packed-parachute\nvariability that changes the result, any new\nconnector/backplane/module/screw movement, post-screen\nlooseness, ambiguous video, or evidence gap. Do not\nintentionally damage or force deployment through a snag." {
+    class: note
+    shape: page
+  }
+
+  closure_rule: "[C] Closure constraint: No snag/interference anomaly may\nbe closed as pass until the affected physical\ncomponent/link is corrected or formally dispositioned\nand the affected nominal steps are re-run with complete\nvideo, pre/post PC-PL inspection and witness evidence.\nAny accepted waiver must be explicit in the report and\ncannot support an unqualified flight-readiness pass." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint: Fault-hardening\ntrials are article-specific screens unless the report\nreferences an approved independent-trial plan. Use the\nsame zero-failure rule as the nominal chain: 10/10 for\nworkshop screen, 29/29 only for R90/C95. Re-runs after\nrework do not erase the original anomaly record." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint: The chain demonstrates\nthe procedure fails safe: post-screen looseness is\nchecked before deployment, rub/snag witnesses and video\nexpose interference, any movement inhibits pass, forced\nextraction is forbidden, and closure requires re-run\nrather than accepting a visually plausible deployment." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability target: SAA-UC-ParachuteClearance;\nSAA-FE-StructuralLoosening; SAA-FE-LandingDamage; v1.0\nstack screws, backplane fixture + PDM servo connector,\ntop-module cap/parachute/servo, and modeled\nlanding-impact / assembly constraints." {
+    class: note
+    shape: page
+  }
+}
+
+fault_chain.load_checklist -> fault_chain.verify_post_screen: "[FE] Fault checklist\nand safe boundary" { class: fe }
+fault_chain.verify_post_screen -> fault_chain.mark_rub_paths: "[FE] Retention and\npost-screen status" { class: fe }
+fault_chain.mark_rub_paths -> fault_chain.vary_pack: "[FE] Keep-out and witness\nmarkers ready" { class: fe }
+fault_chain.vary_pack -> fault_chain.command_fault_screen: "[FE] Approved pack\nvariation ready" { class: fe }
+fault_chain.command_fault_screen -> fault_chain.detect_cap_rub: "[FE] Actuation event\nand cap/servo motion" { class: fe }
+fault_chain.detect_cap_rub -> fault_chain.detect_snag: "[FE] Rub/interference\nstatus" { class: fe }
+fault_chain.detect_snag -> fault_chain.inspect_connector: "[FE] Extraction/snare\nstatus" { class: fe }
+fault_chain.inspect_connector -> fault_chain.inhibit_pass: "[FE] Retention / movement\nstatus" { class: fe }
+fault_chain.inhibit_pass -> fault_chain.open_anomaly: "[FE] Pass inhibited\nor no-fault status" { class: fe }
+fault_chain.open_anomaly -> fault_chain.disposition: "[FE] Affected model\nelements and evidence" { class: fe }
+fault_chain.disposition -> fault_chain.rerun_nominal: "[FE] Approved disposition\nor hold/fail" { class: fe }
+fault_chain.rerun_nominal -> fault_chain.archive: "[FE] Re-run results\nand closure evidence" { class: fe }
+
+# Layout-only edges keep notes after the executable fault-hardening flow.
+fault_chain.archive -> fault_chain.fault_triggers { style: { opacity: 0 } }
+fault_chain.fault_triggers -> fault_chain.closure_rule { style: { opacity: 0 } }
+fault_chain.closure_rule -> fault_chain.statistical { style: { opacity: 0 } }
+fault_chain.statistical -> fault_chain.fault_hardening { style: { opacity: 0 } }
+fault_chain.fault_hardening -> fault_chain.traceability { style: { opacity: 0 } }

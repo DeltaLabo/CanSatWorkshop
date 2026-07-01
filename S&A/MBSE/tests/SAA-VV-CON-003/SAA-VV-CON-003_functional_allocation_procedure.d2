@@ -1,0 +1,229 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# SAA-VV-CON-003 verification-only Physical Architecture PV3.
+# Functional allocation/procedure view for backplane allocation, PCB geometry, pin interface, rails, testpoints, ERC/DRC and low-capacitance checks.
+# References cited in the rendered system title: IVV, SAA-R4, SAA-R5.
+# The LCs and functions below define verification means only; they are not baseline S&A logical architecture.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+operator: "[EA] S&A Test Operator" {
+  class: ea
+  direction: down
+  select_gate: "[F] Select v0.1 readiness\nor v1.0 acceptance gate" { class: func }
+  identify_article: "[F] Identify article,\nboard revision and baseline copy" { class: func }
+  apply_hold: "[F] Stop execution and\nrecord hold on anomaly" { class: func }
+}
+
+reviewer: "[EA] PCB / Interface Reviewer" {
+  class: ea
+  direction: down
+  review_cad: "[F] Review released CAD,\nstackup and drawing package" { class: func }
+  review_netlist: "[F] Review pinout,\nnetlist, ERC and DRC evidence" { class: func }
+  review_si: "[F] Review SPI/I2C/UART\ncapacitance and rise-time\nrationale" { class: func }
+}
+
+witness: "[EA] QA Witness" {
+  class: ea
+  direction: down
+  witness_setup: "[F] Witness equipment,\nambient, ESD and calibration\nstatus" { class: func }
+  witness_decision: "[F] Witness pass,\nfail or hold decision" { class: func }
+}
+
+calipers: "[EA] Calipers / Board Gauge" {
+  class: ea
+  direction: down
+  measure_board: "[F] Measure board length,\nwidth and allowance clearance" { class: func }
+}
+
+header_gauge: "[EA] Header / Pitch Gauge" {
+  class: ea
+  direction: down
+  check_pitch: "[F] Check 2 mm pitch,\n2×6 pin count and orientation" { class: func }
+}
+
+continuity: "[EA] Continuity / Isolation\nTester" {
+  class: ea
+  direction: down
+  check_endpoints: "[F] Test every released\nendpoint for continuity/isolation" { class: func }
+}
+
+dmm_daq: "[EA] DMM / DAQ" {
+  class: ea
+  direction: down
+  measure_rails: "[F] Measure 5.0 V and\n3.3 V at required testpoints" { class: func }
+}
+
+tp_probes: "[EA] Testpoint Probe Set" {
+  class: ea
+  direction: down
+  probe_access: "[F] Probe required rail and\ncritical signal testpoints safely" { class: func }
+}
+
+scope_meter: "[EA] Scope / Logic Analyzer /\nCapacitance Meter" {
+  class: ea
+  direction: down
+  measure_fast_lines: "[F] Measure or support\nanalysis of fast-line loading" { class: func }
+}
+
+ambient_esd: "[EA] Ambient Meter /\nESD Workstation" {
+  class: ea
+  direction: down
+  record_conditions: "[F] Record ambient temperature,\nhumidity and ESD state before\nchecks" { class: func }
+}
+
+repo: "[EA] Evidence Repository" {
+  class: ea
+  direction: down
+  archive_evidence: "[F] Archive report, raw data,\nmatrices, drawings and\ndispositions\nunder results/SAA-VV-CON-003" { class: func }
+}
+
+system: "[System] SAA-VV-CON-003 Functional Allocation / Procedure\nRefs: IVV; SAA-R4; SAA-R5" {
+  class: sys
+  direction: down
+
+  v0_1_uut: "[PC] v0.1 Perpendicular\nBackplane Volume UUT" {
+    class: pc
+    direction: down
+    allocation_lc: "[LC] Allocation Readiness\nVerification\nverification-only" {
+      class: lc
+      direction: down
+      confirm_volume: "[F] Confirm perpendicular\nbackplane allocation exists" { class: func }
+      check_allowance: "[F] Check 100 mm × 28 mm\nallowance and clearance rationale" { class: func }
+      disposition_v0_1: "[F] Disposition v0.1 as\nready, fail or hold" { class: func }
+    }
+  }
+
+  v1_0_uut: "[PC] v1.0 Backplane PCB\nAcceptance UUT" {
+    class: pc
+    direction: down
+
+    geometry_lc: "[LC] Geometry / Stackup\nVerification\nverification-only" {
+      class: lc
+      direction: down
+      confirm_dimensions: "[F] Confirm 100 mm × 28 mm\nPCB dimensions with uncertainty" { class: func }
+      confirm_stackup: "[F] Confirm two-layer\nreleased stackup" { class: func }
+      confirm_header_geometry: "[F] Confirm 2 mm 2×6\nheader placement and orientation" { class: func }
+    }
+
+    interface_lc: "[LC] Pin Interface and\nNetlist Assurance\nverification-only" {
+      class: lc
+      direction: down
+      compare_pinout: "[F] Compare header and\nPDM connector pinout to model" { class: func }
+      check_erc_drc: "[F] Check ERC/DRC clean or\napproved dispositions" { class: func }
+      check_continuity: "[F] Check every released\nboard for continuity/isolation" { class: func }
+    }
+
+    rail_tp_lc: "[LC] Rails and Testpoints\nVerification\nverification-only" {
+      class: lc
+      direction: down
+      verify_testpoints: "[F] Verify required testpoints\nare present, mapped and reachable" { class: func }
+      verify_rails: "[F] Verify 5.0 ±0.1 V and\n3.3 ±0.1 V rail readings" { class: func }
+      record_load_state: "[F] Record safe load or\ncontrolled no-load condition" { class: func }
+    }
+
+    fast_line_lc: "[LC] Fast-line SI Analysis\nverification-only" {
+      class: lc
+      direction: down
+      identify_fast_lines: "[F] Identify all SPI/I2C/UART\ncritical fast lines" { class: func }
+      evaluate_capacitance: "[F] Evaluate capacitance,\nrise time and probe loading margin" { class: func }
+      disposition_si: "[F] Disposition SI evidence\naccepted, fail or hold" { class: func }
+    }
+
+    acceptance_lc: "[LC] Constraint Acceptance\nGate\nverification-only" {
+      class: lc
+      direction: down
+      collect_results: "[F] Collect design, inspection,\nmeasurement and analysis results" { class: func }
+      apply_pass_fail: "[F] Apply SAA-VV-CON-003\npass/fail constraints" { class: func }
+      release_report_ref: "[F] Release report-by-reference\nmodel evidence package" { class: func }
+    }
+  }
+
+  pass_fail: "[C] Pass/fail constraints:\nDimensions, two-layer stackup, 2 mm 2×6 headers, PDM\nconnector endpoints and\npinout match the model; ERC/DRC are clean or\ndispositioned; every released board\npasses 100% continuity/isolation; 5 V and 3.3 V rails are\nwithin tolerance;\nrequired testpoints are present/reachable; SPI/I2C/UART\nlow-capacitance evidence\nis accepted; unresolved anomaly or missing evidence =\nhold/fail." {
+    class: note
+    shape: page
+  }
+
+  statistical: "[C] Statistical-significance viewpoint:\n100% review of DRC/ERC/netlist/pinout/testpoint evidence\nand 100% continuity/\nisolation on every released backplane board. Measurements\nare article-level\nacceptance data only, with no population reliability\nclaim." {
+    class: note
+    shape: page
+  }
+
+  fault_hardening: "[C] Fault-hardening viewpoint:\nExplicitly hardens against wrong pitch, swapped pinout,\nmissing or unreachable\ntestpoint, rail short/open/drop, excessive I2C\ncapacitance/rise-time, SPI/UART\nloading, PDM servo miswire and evidence-control escape." {
+    class: note
+    shape: page
+  }
+
+  traceability: "[C] Traceability targets:\nModeled Backplane allowance / Backplane PCB constraints;\nSAA-UC-BackplaneIntegration; SAA-FE-BackplaneMisMate." {
+    class: note
+    shape: page
+  }
+}
+
+system.pass_fail -> system.v1_0_uut.acceptance_lc.apply_pass_fail { class: cstr }
+system.pass_fail -> system.v1_0_uut.rail_tp_lc.verify_rails { class: cstr }
+system.pass_fail -> system.v1_0_uut.interface_lc.check_erc_drc { class: cstr }
+system.statistical -> system.v1_0_uut.interface_lc.check_continuity { class: cstr }
+system.statistical -> system.v1_0_uut.interface_lc.check_erc_drc { class: cstr }
+system.fault_hardening -> system.v1_0_uut.acceptance_lc.apply_pass_fail { class: cstr }
+system.fault_hardening -> system.v1_0_uut.fast_line_lc.evaluate_capacitance { class: cstr }
+system.traceability -> system.v0_1_uut.allocation_lc.confirm_volume { class: cstr }
+system.traceability -> system.v1_0_uut.acceptance_lc.release_report_ref { class: cstr }
+
+# Layout-only edges keep actors, UUTs and constraints in reading order.
+operator -> reviewer { style: { opacity: 0 } }
+reviewer -> witness { style: { opacity: 0 } }
+witness -> calipers { style: { opacity: 0 } }
+calipers -> header_gauge { style: { opacity: 0 } }
+header_gauge -> continuity { style: { opacity: 0 } }
+continuity -> dmm_daq { style: { opacity: 0 } }
+dmm_daq -> tp_probes { style: { opacity: 0 } }
+tp_probes -> scope_meter { style: { opacity: 0 } }
+scope_meter -> ambient_esd { style: { opacity: 0 } }
+ambient_esd -> system { style: { opacity: 0 } }
+system -> repo { style: { opacity: 0 } }
+system.v0_1_uut -> system.v1_0_uut { style: { opacity: 0 } }
+system.v1_0_uut -> system.pass_fail { style: { opacity: 0 } }
+system.pass_fail -> system.statistical { style: { opacity: 0 } }
+system.statistical -> system.fault_hardening { style: { opacity: 0 } }
+system.fault_hardening -> system.traceability { style: { opacity: 0 } }

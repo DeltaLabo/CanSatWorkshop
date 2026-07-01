@@ -1,0 +1,97 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain — AMS-VV-CE-001 I2C component-exchange presence/absence analysis
+# Verification references: IVV, AMS-R1 (BME280), AMS-R2 (I2C).
+# IADT: Analysis. SSIV: AMS v1.0 final acceptance.
+# Traceability: AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "AMS-VV-CE-001 — I2C component-exchange presence/absence analysis\nAnalysis; AMS v1.0 final acceptance; Refs: IVV, AMS-R1, AMS-R2\nTrace: AMS-UC-MeasureAtmosphere, AMS-UC-InitializePeripheral, AMS-FE-SensorBusFault" {
+  class: chain
+  direction: down
+
+  identify_baseline: "[F] Identify final\nbaseline/config" { class: func }
+  inventory_target_ce: "[F] Inventory target\n[CE] I2C 1/1" { class: func }
+  map_model_endpoints: "[F] Map full-path\nLC endpoints" { class: func }
+  map_functional_crossings: "[F] Map 6 modeled I2C\nfunctional crossings" { class: func }
+  collect_schematic_netlist: "[F] Collect schematic /\nnetlist evidence" { class: func }
+  collect_firmware_config: "[F] Collect firmware\nI2C config" { class: func }
+  compare_i2c_intent: "[F] Compare I2C protocol,\nrole, address, bus" { class: func }
+  assess_fault_policy: "[F] Assess interface\nfault-policy presence" { class: func }
+  classify_anomalies: "[F] Classify pass/fail\nand anomalies" { class: func }
+  archive_report_inputs: "[F] Archive CE matrix\nand report inputs" { class: func }
+
+  note_scope: "[C] Scope: exactly 1/1 target UUT CE — [CE] I2C between\nAMS Sensing and AMS Processing in AMS v1.0; VV-only\nanalysis/evidence elements and Pointers/Returns are excluded" { class: note; shape: page }
+  note_crossings: "[C] Cover all modeled I2C functional crossings: pressure\nrequest/response, temperature request/response, and\nBME280 init-state request/response" { class: note; shape: page }
+  note_stat: "[C] Statistical basis: 100% design/interface analysis\nof the target CE; no sampling or fleet reliability claim" { class: note; shape: page }
+  note_pass: "[C] Pass iff implementation uses the modeled I2C exchange,\nendpoints/roles/address/bus config are unambiguous, and no\nwrong-protocol, wrong-endpoint, or bypass path carries it" { class: note; shape: page }
+  note_fault: "[C] Fault-hardening viewpoint: NACK, absent BME280, stuck\nSDA/SCL, clock-stretch/no-response, address/config mismatch,\nand bounded error/status behavior presence" { class: note; shape: page }
+  note_exclusions: "[C] Do not credit PL integrity from AMS-VV-PL-001 or\ndetailed ≤5 ms timing/recovery proof from AMS-VV-CON-003" { class: note; shape: page }
+}
+
+chain.identify_baseline -> chain.inventory_target_ce: "[FE] AMS v1.0\nbaseline" { class: fe }
+chain.inventory_target_ce -> chain.map_model_endpoints: "[FE] Target CE\nfull path" { class: fe }
+chain.map_model_endpoints -> chain.map_functional_crossings: "[FE] Endpoint-to-function\nallocation" { class: fe }
+chain.map_functional_crossings -> chain.collect_schematic_netlist: "[FE] I2C exchange\nrequirements" { class: fe }
+chain.collect_schematic_netlist -> chain.collect_firmware_config: "[FE] Bus/address\nevidence" { class: fe }
+chain.collect_firmware_config -> chain.compare_i2c_intent: "[FE] Firmware config\nand call paths" { class: fe }
+chain.compare_i2c_intent -> chain.assess_fault_policy: "[FE] Protocol consistency\nresult" { class: fe }
+chain.assess_fault_policy -> chain.classify_anomalies: "[FE] Fault-policy\nfindings" { class: fe }
+chain.classify_anomalies -> chain.archive_report_inputs: "[FE] Analysis result\nand evidence index" { class: fe }
+
+chain.note_scope -> chain.inventory_target_ce { class: cstr }
+chain.note_scope -> chain.map_model_endpoints { class: cstr }
+chain.note_crossings -> chain.map_functional_crossings { class: cstr }
+chain.note_stat -> chain.inventory_target_ce { class: cstr }
+chain.note_pass -> chain.compare_i2c_intent { class: cstr }
+chain.note_fault -> chain.assess_fault_policy { class: cstr }
+chain.note_exclusions -> chain.classify_anomalies { class: cstr }
+
+# Layout-only edge to keep the key analysis constraints grouped after the evidence path.
+chain.archive_report_inputs -> chain.note_scope { style: { opacity: 0 } }
+chain.note_scope -> chain.note_crossings { style: { opacity: 0 } }
+chain.note_crossings -> chain.note_stat { style: { opacity: 0 } }
+chain.note_stat -> chain.note_pass { style: { opacity: 0 } }
+chain.note_pass -> chain.note_fault { style: { opacity: 0 } }
+chain.note_fault -> chain.note_exclusions { style: { opacity: 0 } }

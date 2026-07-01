@@ -1,0 +1,228 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view — AMS-VV-CON-001 exposure inspection / demonstration functions
+# Verification references: IVV, AMS-R3 (thermal/meteorological exposure), AMS-R6 (CanSat environmental context), AMS-R5 (paired-sample statistics if used).
+# Traceability: [C] Block sunlight, allow airflow; AMS-FE-BadExposure; AMS-UC-MeasureAtmosphere; temperature-accuracy constraint context.
+# IADT: Inspection / Demonstration for AMS v1.0 final acceptance.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-VV-CON-001 exposure functions\nAMS v1.0 final acceptance\nRefs: IVV, AMS-R3, AMS-R6, AMS-R5" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: right
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        direction: down
+
+        bme280: "[PC] BME280" {
+          class: pc
+          direction: down
+
+          ams_sensing: "[LC] AMS Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            measure_temperature: "[F] Measure\ntemp." { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+          }
+
+          note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+            class: note
+            shape: page
+          }
+        }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+          grid-columns: 1
+
+          ams_processing: "[LC] AMS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            read_temperature: "[F] Read\ntemperature" { class: func }
+            process_temperature: "[F] Process\ntemperature" { class: func }
+          }
+
+          obcc: "[LC] OBCC" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            collect_measurements: "[F] Collect\nmeasurements" { class: func }
+          }
+
+          exposure_vv_instrumentation: "[LC] Exposure Verification\nInstrumentation\n(VV-only)" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            request_optional_temperature_samples: "[F] Request optional\nBME280 temp. samples" { class: func }
+            log_installed_temperature_bias: "[F] Log installed\ntemperature bias" { class: func }
+            emit_exposure_evidence_record: "[F] Emit exposure\nevidence record" { class: func }
+
+            note_paired_bias: "[C] If paired temperature-bias screening is used:\nn ≥ 30 paired samples, include U95, and\nrequire |bias| + U95 ≤ 0.5 °C; not AMS-VV-FC-001" {
+              class: note
+              shape: page
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+inspector_operator: "[EA] Inspector /\nTest Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  configure_integrated_article: "[F] Configure integrated\nCanSat/AMS" { class: func }
+  inspect_sunlight_los: "[F] Inspect sunlight\nline of sight" { class: func }
+  confirm_airflow_path: "[F] Confirm airflow\npath" { class: func }
+  read_ambient_reference: "[F] Read ambient /\nreference conditions" { class: func }
+  evaluate_pass_fail: "[F] Evaluate pass/fail\nand waivers" { class: func }
+
+  note_no_los: "[C] Pass: no direct solar/bright-lamp\nline of sight to BME280 in the modeled\ninstalled configuration" { class: note; shape: page }
+  note_fail_modes: "[C] Any blocked airflow, direct radiation path,\nheat-soak bias without mitigation, or unmodeled\ntemporary shielding fails unless waived/updated" { class: note; shape: page }
+}
+
+sun_simulator: "[EA] Inspection Light /\nSun Simulator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  set_light_geometry: "[F] Set bright-lamp\ngeometry" { class: func }
+  illuminate_ams_module: "[F] Illuminate installed\nAMS module" { class: func }
+}
+
+shade_vent_fixture: "[EA] Shade / Ventilation\nFixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  maintain_shade_and_vents: "[F] Maintain shade\nand open vents" { class: func }
+  note_source_constraint: "[C] Source constraint:\nBlock sunlight, allow airflow" { class: note; shape: page }
+}
+
+airflow_indicator: "[EA] Anemometer /\nSmoke Flow Indicator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  introduce_visible_airflow: "[F] Introduce visible\nairflow" { class: func }
+  measure_airflow_presence: "[F] Measure / observe\nairflow" { class: func }
+  note_airflow_path: "[C] Pass: airflow path to BME280/AMS\nmodule is unobstructed by fixture, wiring,\nevidence equipment, and CanSat structure" { class: note; shape: page }
+}
+
+ambient_thermometer: "[EA] Ambient / Reference\nThermometer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  measure_reference_temperature: "[F] Measure reference\ntemperature" { class: func }
+  note_environment: "[C] Ambient/reference conditions must be\nrecorded before demonstration begins" { class: note; shape: page }
+}
+
+evidence_camera: "[EA] Camera /\nVideo Recorder" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  capture_los_evidence: "[F] Capture LOS\nevidence" { class: func }
+  capture_airflow_evidence: "[F] Capture airflow\nevidence" { class: func }
+}
+
+evidence_repository: "[EA] Evidence\nRepository" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  archive_exposure_evidence: "[F] Archive exposure\nevidence" { class: func }
+}
+
+system.cansat.ams_module.ams_pcb.bme280.note_accuracy_temperature -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.exposure_vv_instrumentation.note_paired_bias -> system.cansat.obcc_module.obcc_pcb.xiao.exposure_vv_instrumentation.log_installed_temperature_bias { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.exposure_vv_instrumentation.note_paired_bias -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
+
+inspector_operator.note_no_los -> inspector_operator.inspect_sunlight_los { class: cstr }
+inspector_operator.note_no_los -> sun_simulator.illuminate_ams_module { class: cstr }
+inspector_operator.note_fail_modes -> inspector_operator.evaluate_pass_fail { class: cstr }
+inspector_operator.note_fail_modes -> evidence_repository.archive_exposure_evidence { class: cstr }
+shade_vent_fixture.note_source_constraint -> shade_vent_fixture.maintain_shade_and_vents { class: cstr }
+shade_vent_fixture.note_source_constraint -> inspector_operator.inspect_sunlight_los { class: cstr }
+airflow_indicator.note_airflow_path -> inspector_operator.confirm_airflow_path { class: cstr }
+airflow_indicator.note_airflow_path -> airflow_indicator.measure_airflow_presence { class: cstr }
+ambient_thermometer.note_environment -> inspector_operator.read_ambient_reference { class: cstr }
+ambient_thermometer.note_environment -> ambient_thermometer.measure_reference_temperature { class: cstr }
+
+# Layout-only edges to stack top-level allocation bands for readability.
+system -> inspector_operator { style: { opacity: 0 } }
+inspector_operator -> sun_simulator { style: { opacity: 0 } }
+sun_simulator -> shade_vent_fixture { style: { opacity: 0 } }
+shade_vent_fixture -> airflow_indicator { style: { opacity: 0 } }
+airflow_indicator -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> evidence_camera { style: { opacity: 0 } }
+evidence_camera -> evidence_repository { style: { opacity: 0 } }

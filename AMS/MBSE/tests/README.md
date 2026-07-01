@@ -1,20 +1,37 @@
-# AMS v1.0 IVV-aligned verification plan
+# AMS multi-version IVV-aligned verification plan
 
-Planning artifact for the Capella/D2 views in `AMS/MBSE/v1.0`. The model remains the source of truth; this file inventories the current model and identifies candidate verification activities to be modeled in a test-definition pass. Baseline Capella/D2 diagrams in `AMS/MBSE/v1.0` are not modified; modeled test-definition copies are added under this `tests/` folder.
+Planning artifact for the Capella/D2 views in `AMS/MBSE/`. The model remains the source of truth; baseline diagrams in `AMS/MBSE/v0.1`, `AMS/MBSE/v0.2`, and `AMS/MBSE/v1.0` are not modified. Modeled test-definition copies are added under this `tests/` folder.
 
 Project-wide IVV conventions, evidence paths, statistical policy, fault semantics, and report-by-reference rules are defined in [`../../../PM&SE/IVV.md`](../../../PM&SE/IVV.md). Evidence for any activity below should be stored under `results/<activity-id>/` in this `tests/` folder unless a campaign-level folder is later agreed.
 
 ## 1. SSIV / development-version assumptions
 
-- **Confirmed SSIV:** AMS subsystem integration version **v1.0** for **final acceptance**. Earlier AMS versions are treated as protoflight/incremental delivery baselines.
-- **Campaign scope:** final acceptance for AMS v1.0.
-- **AMS-VV-CON-003 scope confirmation:** I2C timeout verification is scoped to environmental measurement I2C read functions (`Read pressure`, `Read temperature`) only; peripheral-init, chip-ID, and hidden driver setup reads are out of scope unless reachable inside those environmental reads. Recovery without reset after released I2C fault is mandatory.
-- **Rate semantics from project IVV:** internal AMS/OBCC measurement collection may use `≥5 Hz`; v1.0 downlink telemetry cadence is the system-level `2 s` LoRa cadence.
-- **Fault semantics from project IVV:** a BME280 startup failure is treated as a critical startup fault; runtime getter/sensor failures shall return bounded error/result codes and shall not block the scheduler.
+- **AMS v0.1:** breadboard/subsystem baseline. Tests support advancement to the v0.2 PCB-delivery baseline.
+- **AMS v0.2:** PCB-delivery baseline. Tests support advancement to the v1.0 integrated flight-readiness baseline.
+- **AMS v1.0:** final acceptance / flight readiness baseline.
+- The only version directories present under `AMS/MBSE/` are `v0.1`, `v0.2`, and `v1.0`; this plan treats them as the controlled AMS development baselines.
+- Explicit mission, capability, use-case, and feared-event nodes are not present in the AMS D2 views; traceability targets below are provisional project-level labels derived from model intent and IVV fault semantics.
+- Rate semantics from project IVV: internal AMS/OBCC measurement collection may use `≥5 Hz`; v1.0 downlink telemetry cadence is the system-level `2 s` LoRa cadence.
+- Fault semantics from project IVV: a BME280 startup failure is treated as a critical startup fault; runtime getter/sensor failures shall return bounded error/result codes and shall not block the scheduler.
 
 ## 2. Views read
 
-- `AMS_v1.0_view1_physical.d2`: physical components, physical links, and airflow/sunlight physical constraint.
+### v0.1
+
+- `AMS_v0.1_view1_physical.d2`: BME280, XIAO ESP32, host PC, I2C/3V3/GND/USB links.
+- `AMS_v0.1_view2_logical.d2`: AMS Sensing, AMS Processing, and I2C CE.
+- `AMS_v0.1_view3_functional_allocation.d2`: sensing, processing, collection, Serial0 logging functions, and timing/accuracy/getter constraints.
+- `AMS_v0.1_view4_atmospheric_measurement_chain.d2`: pressure/temperature measurement, processing, and collection chain.
+- `AMS_v0.1_view5_peripheral_initialisation_chain.d2`: BME280 init-state collection chain.
+- `AMS_v0.1_view6_serial_logging_chain.d2`: collected init-state and measurement payload logging over Serial0.
+
+### v0.2
+
+- `AMS_v0.2_view1_physical.d2`: AMS PCB, BME280, backplane connector, footprints, I2C + 3V3 traces, and manufacturing/soldering constraint.
+
+### v1.0
+
+- `AMS_v1.0_view1_physical.d2`: physical components, physical links, and sunlight/airflow physical constraint.
 - `AMS_v1.0_view2_logical.d2`: logical components, I2C and pointer/return component exchanges, and software implementation constraints.
 - `AMS_v1.0_view3_functional_allocation.d2`: functions allocated to AMS Sensing, AMS Processing, and OBCC with measurement constraints.
 - `AMS_v1.0_view4_atmospheric_measurement_chain.d2`: atmospheric measurement functional chain.
@@ -37,103 +54,179 @@ No new external research was performed. References are the existing corpus in `t
 
 ## 4. Planning inventory from the model
 
-### 4.1 Physical context and components
+### 4.1 AMS v0.1 inventory
 
-Physical context: `[System] Physical System`; `[PC] CanSat`. Physical components: `[PC] AMS Module`; `[PC] AMS PCB`; `[PC] BME280`; AMS-side `[PC] Backplane Connector`; `[PC] Backplane PCB`; `[PC] 2mm 2x6 AMS Headers`; `[PC] Spine`; `[PC] 2mm 2x6 OBCC Headers`; `[PC] OBCC Module`; `[PC] OBCC PCB`; `[PC] XIAO ESP32-S3`; OBCC-side `[PC] Backplane Connector`.
+- **Physical context:** `[System] AMS v0.1 Subsystem`; `[PC] BME280`; `[PC] XIAO ESP32`; external `[EA] PC`.
+- **Physical links:** I2C Cables, 3V3, GND, USB-C Cable.
+- **Component exchanges:** `[CE] I2C` between AMS Sensing and AMS Processing.
+- **Logical components/functions:** AMS Sensing (`Measure pressure`, `Measure temperature`, `Respond to I2C Requests`); AMS Processing (`Get BME280 init state`, `Read pressure`, `Read temperature`, `Calculate altitude`, `Process temperature`, `Collect peripheral init states`, `Collect measurements`, `Init Serial0 and Serial1 with interrupts`, `Log via Serial0`).
+- **Functional chains/scenarios:** atmospheric measurement, peripheral initialisation, serial logging.
+- **Constraints:** pressure accuracy `<1 hPa`; temperature accuracy `<0.5 °C` over `10–40 °C`; altitude resolution `<10 m`; variable-getter template; I2C timeout `≤5 ms`; process/calculate `<5 ms`; no blocking besides I2C/UART.
 
-### 4.2 Physical links
+### 4.2 AMS v0.2 inventory
 
-AMS PCB screws; OBCC PCB screws; AMS module backplane fixture; OBCC module backplane fixture; BME280 footprint; AMS connector footprint; AMS I2C + 3V3 traces; AMS parallel connector; XIAO footprint; OBCC connector footprint; OBCC I2C + 3V3 traces; OBCC parallel cable; AMS header footprint; OBCC header footprint.
+- **Physical context:** `[System] AMS v0.2 PCB Delivery`.
+- **Physical components:** `[PC] AMS PCB`; `[PC] BME280`; `[PC] Backplane Connector`.
+- **Physical links:** BME280 footprint; connector footprint; I2C + 3V3 traces.
+- **Constraints:** manufacturable in a Carvera Air CNC and soldered by reflux or manually.
+- **Model gap:** no v0.2 logical, CE, allocation, or functional-chain views are currently modeled; powered bring-up activities therefore add VV-only test actors/functions around the physical baseline.
 
-### 4.3 Component exchanges
+### 4.3 AMS v1.0 inventory
 
-- `[CE] I2C`: AMS Sensing to AMS Processing.
-- `[CE] Pointers`: AMS Processing to OBCC.
-- `[CE] Returns`: AMS Processing to OBCC.
-
-### 4.4 Logical components and allocated functions
-
-- `[LC] AMS Sensing`: `Measure pressure`, `Measure temp.`, `Respond to I2C Requests`.
-- `[LC] AMS Processing`: `Get BME280 init state`, `Read pressure`, `Read temperature`, `Calculate altitude`, `Process temperature`.
-- `[LC] OBCC`: `Collect peripheral init states`, `Collect measurements`.
-
-### 4.5 Functional chains / scenarios
-
-- `AMS v1.0 — Atmospheric measurement chain`: pressure and temperature measurement, I2C response, read/process/calculate, and OBCC measurement collection.
-- `AMS v1.0 — Peripheral initialisation chain`: BME280 init-state request/response and OBCC init-state collection.
-
-### 4.6 Constraints
-
-Block sunlight while allowing airflow; variable-getter template for read/process or read/calculate pairs; all I2C read functions timeout `≤ 5 ms`; all process/calculate functions `< 5 ms`; no blocking operations besides I2C or UART comms; pressure accuracy `< 1 hPa`; temperature accuracy `< 0.5 °C` over `10–40 °C`; altitude resolution `< 10 m`.
-
-### 4.7 Traceability targets currently available
-
-The AMS views do not contain explicit mission, capability, use-case, or feared-event nodes. Candidate trace targets used below are therefore provisional: `AMS-UC-MeasureAtmosphere`, `AMS-UC-InitializePeripheral`, `AMS-FE-SensorBusFault`, `AMS-FE-BadExposure`, and the modeled constraints listed above.
+- **Physical components:** CanSat; AMS Module; AMS PCB; BME280; AMS-side Backplane Connector; Backplane PCB; 2mm 2x6 AMS Headers; Spine; 2mm 2x6 OBCC Headers; OBCC Module; OBCC PCB; XIAO ESP32-S3; OBCC-side Backplane Connector.
+- **Physical links:** AMS PCB screws; OBCC PCB screws; AMS module backplane fixture; OBCC module backplane fixture; BME280 footprint; AMS connector footprint; AMS I2C + 3V3 traces; AMS parallel connector; XIAO footprint; OBCC connector footprint; OBCC I2C + 3V3 traces; OBCC parallel cable; AMS header footprint; OBCC header footprint.
+- **Component exchanges:** `[CE] I2C`, `[CE] Pointers`, `[CE] Returns`.
+- **Logical components/functions:** AMS Sensing (`Measure pressure`, `Measure temp.`, `Respond to I2C Requests`); AMS Processing (`Get BME280 init state`, `Read pressure`, `Read temperature`, `Calculate altitude`, `Process temperature`); OBCC (`Collect peripheral init states`, `Collect measurements`).
+- **Functional chains/scenarios:** atmospheric measurement; peripheral initialisation.
+- **Constraints:** block sunlight while allowing airflow; variable-getter template; all I2C read functions timeout `≤5 ms`; all process/calculate functions `<5 ms`; no blocking operations besides I2C or UART comms; pressure accuracy `<1 hPa`; temperature accuracy `<0.5 °C` over `10–40 °C`; altitude resolution `<10 m`.
 
 ## 5. Verification activities
 
-Activities below are planning candidates unless their status states `Model-defined`. Detailed procedures, test means, stimuli, expected behavior, and pass/fail constraints should be modeled under the `capella-pa-tests-definition.md` workflow before execution evidence is treated as final.
+Activities below are model-defined unless their status says otherwise. Detailed execution reports should reference the model definition rather than duplicate it.
 
 | Verification activity ID | SSIV / version | Model element(s) covered | IVV source category | IADT method | Traceability target | Relevant references | Viewpoints: statistical significance and fault hardening | Preliminary pass/fail criteria or constraint candidates | Expected diagram/report location | Status |
 |---|---|---|---|---|---|---|---|---|---|---|
-| AMS-VV-PC-001 | AMS v1.0 final acceptance | All 13 modeled UUT physical components in §4.1 / `AMS_v1.0_view1_physical.d2`: CanSat; AMS Module; AMS PCB; BME280; AMS-side Backplane Connector; Backplane PCB; 2mm 2x6 AMS Headers; Spine; 2mm 2x6 OBCC Headers; OBCC Module; OBCC PCB; XIAO ESP32-S3; OBCC-side Backplane Connector. Excludes physical-link integrity except as context. | Component/link — PC portion | Inspection | AMS physical integration/build readiness; `AMS-UC-MeasureAtmosphere` | IVV, AMS-R1, AMS-R6 | Stat: 100% census inspection, `13/13` target PCs per final-acceptance article, no sampling/reliability claim. Fault hardening: missing/wrong PC, wrong variant, wrong side/location, duplicate-instance confusion, visible damage, FOD, contamination, unapproved critical substitution. | Pass iff every target PC is present, identifiable, correct for the v1.0 baseline, installed in modeled containment, and recorded with checklist/photo/build-record evidence; any missing, wrong, ambiguous, damaged, contaminated, temporary/loose, or unapproved substituted PC fails unless controlled waiver/model update exists; PL integrity remains under AMS-VV-PL-001. | Model definition: `tests/AMS-VV-PC-001/` (`AMS_VV_PC_001_view1` and `view3` D2/PNG); report/evidence: `tests/results/AMS-VV-PC-001/`; expected report: `tests/results/AMS-VV-PC-001/report.md` | Model-defined; execution/report pending |
-| AMS-VV-PL-001 | AMS v1.0 final acceptance | All 14 modeled UUT physical links in §4.2 / `AMS_v1.0_view1_physical.d2`: AMS PCB screws; OBCC PCB screws; AMS module backplane fixture; OBCC module backplane fixture; BME280 footprint; AMS connector footprint; AMS I2C + 3V3 traces; AMS parallel connector; XIAO footprint; OBCC connector footprint; OBCC I2C + 3V3 traces; OBCC parallel cable; AMS header footprint; OBCC header footprint. Excludes PC presence/identity covered by AMS-VV-PC-001 and CE protocol/timing behavior. | Component/link — PL portion | Inspection | AMS physical/electrical integration readiness; `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral`; `AMS-FE-SensorBusFault` / intermittent interconnect | IVV, AMS-R2, AMS-R6 | Stat: 100% census inspection, `14/14` target PLs per final-acceptance article, no sampling/reliability claim. Fault hardening: missing/loose link, wrong endpoint/route/cable, open, short, intermittent contact, connector/cable seating error, solder bridge, lifted pad, bent pin, FOD/contamination, unapproved bypass, probe-induced damage. | Pass iff every target PL is present, connects exactly the modeled endpoints, is installed/routed/seated/soldered as modeled, has visual/retention/continuity/build-record evidence as applicable, and has no unapproved reroute, bypass, temporary jumper, repair, or substitution; missing endpoint PCs are dependencies/anomalies against AMS-VV-PC-001; CE behavior is not credited here. | Model definition: `tests/AMS-VV-PL-001/` (`AMS_VV_PL_001_view1` and `view3` D2/PNG); report/evidence: `tests/results/AMS-VV-PL-001/`; expected report: `tests/results/AMS-VV-PL-001/report.md` | Model-defined; execution/report pending |
-| AMS-VV-CE-001 | AMS v1.0 | `[CE] I2C` between AMS Sensing and AMS Processing | Component exchange | Analysis | `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral`; `AMS-FE-SensorBusFault` | IVV, AMS-R1, AMS-R2 | Stat: analysis is 100% design/interface coverage; timing evidence may use 59 in-limit samples for a 95/95 deadline claim. Fault hardening: NACK, missing device, stuck SDA/SCL, clock-stretch/timeout behavior. | Implemented bus topology, address, pullups, voltage levels, transaction direction, and timeout policy are consistent with modeled I2C intent. | Future model definition: `tests/definitions/AMS-VV-CE-001`; report/evidence: `tests/results/AMS-VV-CE-001/` | Candidate; interface evidence pending |
-| AMS-VV-CE-002 | AMS v1.0 | `[CE] Pointers` between AMS Processing and OBCC | Component exchange | Analysis | `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral` | IVV | Stat: 100% API-path review. Fault hardening: null/invalid pointer handling if permitted by API; stale-data prevention. | Pointer ownership, lifetime, units, scaling, and error-result semantics are consistent with the variable-getter model. | Future model definition: `tests/definitions/AMS-VV-CE-002`; report/evidence: `tests/results/AMS-VV-CE-002/` | Candidate; API contract pending |
-| AMS-VV-CE-003 | AMS v1.0 | `[CE] Returns` between AMS Processing and OBCC | Component exchange | Analysis | `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral`; `AMS-FE-SensorBusFault` | IVV | Stat: 100% return-code and data-field review. Fault hardening: bounded error/result code for startup and runtime faults. | Return values distinguish valid measurement, stale value, startup fault, runtime sensor fault, timeout, and invalid input as applicable. | Future model definition: `tests/definitions/AMS-VV-CE-003`; report/evidence: `tests/results/AMS-VV-CE-003/` | Candidate; API contract pending |
-| AMS-VV-ALLOC-001 | AMS v1.0 | `[LC] AMS Sensing` and its functions | Allocation | Analysis | `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral` | IVV, AMS-R1 | Stat: 100% function-to-LC allocation review. Fault hardening: sensor self-state and invalid measurement behavior. | Only BME280 sensing and I2C response functions are allocated to AMS Sensing; no processing/OBCC functions are foreign to this LC. | Future model definition: `tests/definitions/AMS-VV-ALLOC-001`; report/evidence: `tests/results/AMS-VV-ALLOC-001/` | Candidate; allocation review pending |
-| AMS-VV-ALLOC-002 | AMS v1.0 | `[LC] AMS Processing` and its functions | Allocation | Analysis | `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral`; constraints on timing/getters | IVV, AMS-R1, AMS-R2 | Stat: 100% function-to-LC and data-flow review. Fault hardening: invalid BME280 response, timeout, stale data, computation overflow/units mismatch. | Init-state, read, process, and altitude-calculation functions are allocated to AMS Processing; all crossings use modeled I2C/pointer/return CEs. | Future model definition: `tests/definitions/AMS-VV-ALLOC-002`; report/evidence: `tests/results/AMS-VV-ALLOC-002/` | Candidate; allocation review pending |
-| AMS-VV-ALLOC-003 | AMS v1.0 | `[LC] OBCC`: collect init states and collect measurements | Allocation | Analysis | `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral` | IVV | Stat: 100% function-to-LC review. Fault hardening: OBCC behavior for critical startup fault versus runtime bounded fault. | OBCC only collects status/measurements; it does not own AMS sensing/processing functions; startup-fault blocking and runtime non-blocking semantics match IVV. | Future model definition: `tests/definitions/AMS-VV-ALLOC-003`; report/evidence: `tests/results/AMS-VV-ALLOC-003/` | Candidate; allocation review pending |
-| AMS-VV-FC-001 | AMS v1.0 | Atmospheric measurement functional chain | Functional chain/scenario | Testing / Demonstration | `AMS-UC-MeasureAtmosphere`; constraints: pressure, temperature, altitude resolution | IVV, AMS-R1, AMS-R3, AMS-R4, AMS-R5, AMS-R7 | Stat: `n ≥ 30` stable paired samples per operating point; report uncertainty; use rate/distribution evidence for sustained update claims. Fault hardening: swapped branches, stale data, sensor noise/outliers. | Pressure and temperature are read, processed, and collected in the modeled order; pressure accuracy `<1 hPa`, temperature accuracy `<0.5 °C`, altitude resolution `<10 m`, and update-rate/staleness criteria are met with uncertainty included. | Future model definition: `tests/definitions/AMS-VV-FC-001`; report/evidence: `tests/results/AMS-VV-FC-001/` | Candidate; detailed chain test definition pending |
-| AMS-VV-FC-002 | AMS v1.0 | Peripheral initialisation functional chain | Functional chain/scenario | Testing / Demonstration | `AMS-UC-InitializePeripheral`; `AMS-FE-SensorBusFault` | IVV, AMS-R1, AMS-R2, AMS-R5 | Stat: 29/29 nominal boots supports R90/C95; add explicit induced-fault trials. Fault hardening: absent BME280, NACK, stuck bus, warm reset. | Init-state request/response and OBCC collection complete; nominal boots return valid init state; critical startup fault is reported without unbounded blocking. | Future model definition: `tests/definitions/AMS-VV-FC-002`; report/evidence: `tests/results/AMS-VV-FC-002/` | Candidate; detailed chain test definition pending |
-| AMS-VV-CON-001 | AMS v1.0 | `[C] Block sunlight, allow airflow` | Constraint | Inspection / Demonstration | Constraint; `AMS-FE-BadExposure` | IVV, AMS-R3, AMS-R6 | Stat: 100% configuration inspection plus paired exposure samples if tested. Fault hardening: direct solar/heat-lamp bias, blocked ventilation. | Installed AMS configuration has no direct solar line-of-sight to BME280 and has an unobstructed airflow path; if tested, shaded/ventilated bias plus uncertainty remains within temperature constraint. | Future model definition: `tests/definitions/AMS-VV-CON-001`; report/evidence: `tests/results/AMS-VV-CON-001/` | Candidate; exposure test means pending |
-| AMS-VV-CON-002 | AMS v1.0 | `[C] Variable Getter template` | Constraint | Analysis / Testing | Constraint; `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral` | IVV | Stat: 100% getter inventory and API-case coverage. Fault hardening: invalid pointers and error-result propagation. | Each read/process or read/calculate pair is implemented as the agreed variable-getter pattern with documented units, ownership, and bounded status returns. | Future model definition: `tests/definitions/AMS-VV-CON-002`; report/evidence: `tests/results/AMS-VV-CON-002/` | Candidate; software design evidence pending |
-| AMS-VV-CON-003 | AMS v1.0 final acceptance | `[C] All I2C read functions must have a timeout ≤ 5 ms` scoped to environmental measurement reads; `[CE] I2C`; `[F] Read pressure`; `[F] Read temperature`; `[F] Respond to I2C Requests`; `[LC] AMS Processing`; `[LC] AMS Sensing`; relevant I2C physical path; atmospheric measurement chain. Peripheral-init, chip-ID, and hidden driver setup reads are out of scope unless reachable inside the environmental read functions. | Constraint; component exchange; functional chain/scenario | Testing / Analysis | Constraint; `AMS-FE-SensorBusFault`; `AMS-UC-MeasureAtmosphere` | IVV, AMS-R2, AMS-R5 | Stat: `59/59` nominal samples per environmental I2C read function for 95/95 timing claim; `29/29` fault trials per fault mode/read function if claiming R90/C95 binary fault response, otherwise report as screening. Fault hardening: NACK/absent sensor, held SDA, held SCL, timeout/no-response, no stale OK data, no reset/deadlock, mandatory recovery without reset after release. | Pass iff every environmental I2C read returns OK or a bounded timeout/error status within `t_read + U95 ≤ 5.000 ms` from read-function entry to returned status; nominal OK values are current; faulted reads return only `TIMEOUT`, `NACK`, `BUS_ERROR`, or `SENSOR_UNAVAILABLE`; after fault release, the next modeled recovery read succeeds without reset; supporting analysis maps 100% of environmental AMS Processing I2C read call paths and finds no extra environmental read path lacking a `≤5 ms` timeout. | Model definition: `tests/AMS-VV-CON-003/` (`AMS_VV_CON_003_view1`–`view6` D2/PNG); report/evidence: `tests/results/AMS-VV-CON-003/`; expected report: `tests/results/AMS-VV-CON-003/report.md` | Model-defined; execution/report pending |
-| AMS-VV-CON-004 | AMS v1.0 | `[C] Process/Calculate functions < 5 ms` | Constraint | Testing / Analysis | Constraint; `AMS-UC-MeasureAtmosphere` | IVV, AMS-R5 | Stat: 59 representative in-limit timings for 95/95 deadline claim; larger profiling set may characterize tails. Fault hardening: boundary pressure/temperature values and invalid samples. | `Calculate altitude` and `Process temperature` each complete in `<5 ms` with representative worst-case inputs. | Future model definition: `tests/definitions/AMS-VV-CON-004`; report/evidence: `tests/results/AMS-VV-CON-004/` | Candidate; timing definition pending |
-| AMS-VV-CON-005 | AMS v1.0 | `[C] No blocking operations besides I2C or UART comms` | Constraint | Analysis / Testing | Constraint; `AMS-FE-SensorBusFault` | IVV, AMS-R2 | Stat: static/dynamic coverage of all AMS callable paths; fault trials classified pass/fail. Fault hardening: mid-flight sensor fault shall not block scheduler. | Code review and instrumentation show no unbounded blocking outside allowed comm waits; runtime faults return bounded codes and scheduler continues. | Future model definition: `tests/definitions/AMS-VV-CON-005`; report/evidence: `tests/results/AMS-VV-CON-005/` | Candidate; code/path coverage pending |
-| AMS-VV-CON-006 | AMS v1.0 | `[C] Pressure accuracy < 1 hPa` | Constraint | Testing | Constraint; `AMS-UC-MeasureAtmosphere` | IVV, AMS-R1, AMS-R3, AMS-R5, AMS-R7 | Stat: `n ≥ 30` paired samples per pressure point; report bias, CI, and expanded uncertainty. Fault hardening: pressure drift/noise, environmental exposure, post-vibration spot check. | For each point, `abs(bias) + U95 ≤ 1 hPa`; raw pressure data retained. | Future model definition: `tests/definitions/AMS-VV-CON-006`; report/evidence: `tests/results/AMS-VV-CON-006/` | Candidate; calibration setup pending |
-| AMS-VV-CON-007 | AMS v1.0 | `[C] Temperature accuracy < 0.5 °C, 10–40 °C` | Constraint | Testing | Constraint; `AMS-UC-MeasureAtmosphere`; `AMS-FE-BadExposure` | IVV, AMS-R1, AMS-R3, AMS-R5, AMS-R6 | Stat: `n ≥ 30` paired samples at representative set points within 10–40 °C; uncertainty guard-band. Fault hardening: self-heating, sunlight, airflow obstruction, thermal soak. | At each set point, `abs(bias) + U95 ≤ 0.5 °C`; no unexplained outlier remains after reference uncertainty analysis. | Future model definition: `tests/definitions/AMS-VV-CON-007`; report/evidence: `tests/results/AMS-VV-CON-007/` | Candidate; calibration/exposure setup pending |
-| AMS-VV-CON-008 | AMS v1.0 | `[C] Altitude resolution < 10 m` | Constraint | Testing / Analysis | Constraint; `AMS-UC-MeasureAtmosphere` | IVV, AMS-R1, AMS-R4, AMS-R5, AMS-R7 | Stat: paired pressure/altitude samples with `n ≥ 30` per level or pressure step; CI on delta. Fault hardening: pressure-to-altitude unit/conversion error and stale pressure data. | A 10 m-equivalent pressure change is detected with correct sign and confidence interval excluding zero; calculated altitude error plus uncertainty is `<10 m` for tested deltas. | Future model definition: `tests/definitions/AMS-VV-CON-008`; report/evidence: `tests/results/AMS-VV-CON-008/` | Candidate; altitude/pressure stimulus pending |
+| AMS-V01-INTEG-001 | AMS v0.1 advancement gate to v0.2 PCB delivery | v0.1 BME280, XIAO ESP32, host PC, I2C/3V3/GND/USB links, AMS Sensing/Processing, `[CE] I2C`, allocated sensing/processing/collection/serial functions, and v0.1 constraints as readiness evidence. | Component/link; component exchange; allocation; constraint readiness | Inspection with supporting Analysis | `AMS-v0.1-to-v0.2-readiness`; `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral`; `AMS-FE-SensorBusFault` | IVV, AMS-R1, AMS-R2, AMS-R6 | Stat: 100% census of v0.1 readiness items, no reliability claim. Fault hardening: wrong/missing item, wrong pin, open/short/reversal, loose jumper, wrong I2C role/protocol/address, unmodeled bypass, missing bounded-timeout/non-blocking policy evidence. | Pass iff all target PCs/actors and PLs are present/correct, 3V3/GND/I2C/USB links have correct endpoints/polarity and no open/short/reversal/bypass, I2C CE endpoint/protocol/direction analysis is consistent, no foreign function allocation exists, and evidence is sufficient to convert links into v0.2 PCB traces/connectors. | Model definition: `tests/AMS-V01-INTEG-001/`; report/evidence: `tests/results/AMS-V01-INTEG-001/`; expected report: `tests/results/AMS-V01-INTEG-001/report.md` | Model-defined; execution/report pending |
+| AMS-V01-FC-001 | AMS v0.1 readiness gate to v0.2 PCB delivery | v0.1 atmospheric measurement, peripheral initialisation, and serial logging chains; pressure/temp/altitude/timing/no-blocking/variable-getter constraints. | Functional chain/scenario; constraint | Testing / Demonstration | `AMS-v0.1-to-v0.2-readiness`; `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral`; `AMS-UC-LogSerialTelemetry`; `AMS-FE-SensorBusFault` | IVV, AMS-R1, AMS-R2, AMS-R3, AMS-R4, AMS-R5, AMS-R6 | Stat: `n ≥ 30` paired pressure/temperature samples at the breadboard characterization point; serial/init smoke `≥5` nominal repetitions as screening. Fault hardening: stale data, swapped/missing fields, missing init state, sensor-bus non-response symptoms, unbounded blocking. | Pass iff paired pressure and temperature errors plus uncertainty meet modeled limits, altitude resolution is demonstrated or recorded as a readiness limitation, Serial0 includes init state and measurement fields in expected order/units with no stale-current sample, modeled timing constraints are met or tracked as dependencies, and no unbounded blocking occurs during nominal logging. | Model definition: `tests/AMS-V01-FC-001/`; report/evidence: `tests/results/AMS-V01-FC-001/`; expected report: `tests/results/AMS-V01-FC-001/report.md` | Model-defined; execution/report pending |
+| AMS-V02-PCB-001 | AMS v0.2 PCB-delivery advancement gate to v1.0 integrated build | v0.2 AMS PCB, BME280, Backplane Connector, BME280 footprint, connector footprint, I2C + 3V3 traces, and manufacturability/soldering constraint. | Component/link; constraint-derived manufacturability/readiness | Inspection with supporting Analysis | `AMS-v0.2-to-v1.0-readiness`; `AMS-UC-MeasureAtmosphere`; `AMS-FE-BadManufacturing`; `AMS-FE-SensorBusFault` | IVV, AMS-R1, AMS-R2, fabrication/rework traveler | Stat: 100% census of one delivered PCB article covering 3 PCs, 3 PLs, and 1 manufacturing constraint. Fault hardening: wrong variant/orientation, pitch mismatch, damage, FOD, solder bridge, lifted pad, open/shorted route, hidden jumper/bypass, traveler mismatch, uncontrolled rework. | Pass iff PCB is the v0.2 baseline with fabrication/rework traceability, components/footprints are present/correct/oriented/undamaged, I2C + 3V3 traces/pads have no visual opens/shorts/unapproved jumpers, and board/soldering evidence is compatible with the modeled manufacturing constraint. | Model definition: `tests/AMS-V02-PCB-001/`; report/evidence: `tests/results/AMS-V02-PCB-001/`; expected report: `tests/results/AMS-V02-PCB-001/report.md` | Model-defined; execution/report pending |
+| AMS-V02-BRINGUP-001 | AMS v0.2 advancement gate to v1.0 integrated build | v0.2 AMS PCB, BME280, Backplane Connector, I2C + 3V3 traces, BME280/connector footprints, VV-only connector test access, powered bring-up chain. | Component/link; component exchange; functional chain/scenario; constraint | Demonstration / Testing | `AMS-v0.2-to-v1.0-readiness`; `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral`; `AMS-FE-SensorBusFault` | IVV, AMS-R1, AMS-R2, AMS-R5 | Stat: `3/3` complete power-cycle/read attempts as a bring-up demonstration, not a reliability claim. Fault hardening: overcurrent, reversed power, wrong/no I2C address, NACK-only behavior, stuck SDA/SCL, unmodeled bypass, uncontrolled fixture configuration. | Pass iff current-limited 3V3/GND has no short/overcurrent and measures `3.3 V ±5%`, fixture enters through modeled connector/trace path with no bypass, I2C scan finds BME280 at `0x76`/`0x77` per build record, chip ID/status/readback evidence is logged (`0x60` chip ID), logic analyzer shows valid 3V3 I2C ACK/no stuck lines, and `3/3` cycles pass. | Model definition: `tests/AMS-V02-BRINGUP-001/`; report/evidence: `tests/results/AMS-V02-BRINGUP-001/`; expected report: `tests/results/AMS-V02-BRINGUP-001/report.md` | Model-defined; execution/report pending |
+| AMS-VV-PC-001 | AMS v1.0 final acceptance | All 13 modeled UUT physical components in v1.0. | Component/link — PC portion | Inspection | AMS physical integration/build readiness; `AMS-UC-MeasureAtmosphere` | IVV, AMS-R1, AMS-R6 | Stat: 100% census inspection, `13/13` target PCs. Fault hardening: missing/wrong PC, wrong variant/location, duplicate-instance confusion, visible damage, FOD, contamination, unapproved substitution. | Pass iff every target PC is present, identifiable, correct for v1.0, installed in modeled containment, and recorded with checklist/photo/build evidence; physical-link integrity remains under `AMS-VV-PL-001`. | Model definition: `tests/AMS-VV-PC-001/`; report/evidence: `tests/results/AMS-VV-PC-001/`; expected report: `tests/results/AMS-VV-PC-001/report.md` | Model-defined; execution/report pending |
+| AMS-VV-PL-001 | AMS v1.0 final acceptance | All 14 modeled UUT physical links in v1.0. | Component/link — PL portion | Inspection | AMS physical/electrical integration readiness; `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral`; `AMS-FE-SensorBusFault` | IVV, AMS-R2, AMS-R6 | Stat: 100% census inspection, `14/14` target PLs. Fault hardening: missing/loose link, wrong endpoint/route/cable, open, short, intermittent, connector/cable seating error, solder bridge, lifted pad, bent pin, FOD/contamination, unapproved bypass. | Pass iff every target PL is present, connects modeled endpoints, is installed/routed/seated/soldered as modeled, has applicable visual/retention/continuity/build evidence, and has no unapproved reroute/bypass/temporary jumper/repair/substitution. | Model definition: `tests/AMS-VV-PL-001/`; report/evidence: `tests/results/AMS-VV-PL-001/`; expected report: `tests/results/AMS-VV-PL-001/report.md` | Model-defined; execution/report pending |
+| AMS-VV-CE-001 | AMS v1.0 final acceptance | `[CE] I2C` between AMS Sensing and AMS Processing, including pressure/temp/init-state request-response crossings. | Component exchange | Analysis | `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral`; `AMS-FE-SensorBusFault` | IVV, AMS-R1, AMS-R2 | Stat: 100% design/interface analysis of the target CE. Fault hardening: wrong protocol/endpoint/direction/role, address conflict, bus mismatch, pullup/voltage mismatch, unmodeled bypass, NACK, absent BME280, stuck SDA/SCL, clock-stretch/no-response, missing bounded status policy. | Pass iff implementation uses modeled I2C exchange with correct endpoints, requester/responder roles, bus/address, 3V3/pullup/topology intent, bounded fault-policy evidence, and no unmodeled bypass or wrong-protocol substitute; detailed `≤5 ms` proof remains `AMS-VV-CON-003`. | Model definition: `tests/AMS-VV-CE-001/`; report/evidence: `tests/results/AMS-VV-CE-001/`; expected report: `tests/results/AMS-VV-CE-001/report.md` | Model-defined; execution/report pending |
+| AMS-VV-API-001 | AMS v1.0 final acceptance / flight readiness | `[CE] Pointers`, `[CE] Returns`, variable-getter template, allocations for AMS Sensing/Processing/OBCC, and modeled getter/collection paths. | Component exchange; allocation; constraint; functional-chain context | Analysis with supporting Inspection | `AMS-UC-MeasureAtmosphere`; `AMS-UC-InitializePeripheral`; `AMS-FE-SensorBusFault`; `AMS-FE-StaleMeasurement`; variable-getter constraint | IVV, model/API-contract analysis, AMS-R1/R2 context | Stat: 100% model/API checklist review; no reliability claim. Fault hardening: null/invalid pointer, ownership/lifetime error, aliasing/concurrency hazard, unit/scaling mismatch, invalid input, stale/no-data, startup/runtime fault, timeout/bus error, unmodeled data crossing, bounded non-blocking propagation. | Pass iff pointer semantics and return statuses are explicit and consistent with variable-getter intent, returns distinguish valid/stale/fault/timeout/invalid cases as applicable, allocations contain no foreign functions, all LC crossings use modeled `I2C`, `Pointers`, and `Returns`, and 100% of modeled getters/OBCC collection paths are checked. | Model definition: `tests/AMS-VV-API-001/`; report/evidence: `tests/results/AMS-VV-API-001/`; expected report: `tests/results/AMS-VV-API-001/report.md` | Model-defined; covers CE-002/003, ALLOC-001/002/003, and CON-002 if checklist evidence is complete |
+| AMS-VV-FC-001 | AMS v1.0 final acceptance / flight readiness | Atmospheric measurement functional chain, VV acceptance instrumentation/logger access, pressure/temperature/altitude constraints, OBCC currentness/order check. | Functional chain/scenario; constraint | Testing / Demonstration | `AMS-UC-MeasureAtmosphere`; pressure/temperature/altitude constraints; `AMS-FE-BadExposure`; `AMS-FE-StaleMeasurement` | IVV, AMS-R1, AMS-R3, AMS-R4, AMS-R5, AMS-R7 | Stat: `n ≥ 30` paired pressure/temperature samples per operating point; altitude step uses `n ≥ 30` paired samples at P0/P1. Fault hardening: bad exposure, stale/currentness errors, swapped branches, outliers, OBCC order errors, timeout/stale-OK anomalies. | Pass iff pressure `abs(bias)+U95 ≤ 1 hPa`, temperature `abs(bias)+U95 ≤ 0.5 °C` inside `10–40 °C`, 10 m-equivalent pressure change is resolved with correct sign/uncertainty, OBCC collects current altitude/temperature in modeled order, and logging does not bypass the modeled path. | Model definition: `tests/AMS-VV-FC-001/`; report/evidence: `tests/results/AMS-VV-FC-001/`; expected report: `tests/results/AMS-VV-FC-001/report.md` | Model-defined; execution/report pending |
+| AMS-VV-FC-002 | AMS v1.0 final acceptance / flight readiness | Peripheral initialisation functional chain, OBCC critical startup-fault/status collection, nominal boot and induced startup-fault chains. | Functional chain/scenario; constraint; component-exchange context | Testing / Demonstration | `AMS-UC-InitializePeripheral`; `AMS-FE-SensorBusFault`; `AMS-FE-StartupFault`; variable-getter/I2C-timeout/no-blocking constraints | IVV, AMS-R1, AMS-R2, AMS-R5 | Stat: `29/29` nominal boot successes for R90/C95 claim; `29/29` per induced startup-fault mode if making that claim. Fault hardening: absent/disconnected BME280, forced NACK, held SDA/SCL, stale/default OK prevention, bounded startup-fault status, startup responsiveness. | Pass iff nominal boot returns current BME280 init state and OBCC collects it before readiness OK; induced startup faults return bounded critical startup status with no unbounded blocking; faulted states are not reported as nominal OK; detailed environmental-read timeout proof remains `AMS-VV-CON-003`. | Model definition: `tests/AMS-VV-FC-002/`; report/evidence: `tests/results/AMS-VV-FC-002/`; expected report: `tests/results/AMS-VV-FC-002/report.md` | Model-defined; execution/report pending |
+| AMS-VV-CON-001 | AMS v1.0 final acceptance / flight readiness | `[C] Block sunlight, allow airflow` on AMS Module/BME280 installed configuration, exposure geometry, airflow path, optional exposure instrumentation. | Constraint; component/link context; functional chain/scenario | Inspection / Demonstration | Constraint `[C] Block sunlight, allow airflow`; `AMS-FE-BadExposure`; `AMS-UC-MeasureAtmosphere`; temperature-accuracy context | IVV, AMS-R3, AMS-R6, AMS-R5 if paired bias screening is used | Stat: 100% inspection/demonstration of final integrated configuration; optional `n ≥ 30` paired temperature-bias samples only if claiming statistical exposure-bias result. Fault hardening: direct sunlight/bright-lamp line of sight, blocked ventilation, fixture/wire/equipment obstruction, heat soak, unmodeled temporary shielding. | Pass iff no direct solar/bright-lamp line of sight to BME280 exists, airflow path is unobstructed, ambient/reference conditions and photo/video/flow evidence are recorded, and optional paired bias screening satisfies `|bias|+U95 ≤ 0.5 °C`; bad exposure conditions fail unless waived/model-updated. | Model definition: `tests/AMS-VV-CON-001/`; report/evidence: `tests/results/AMS-VV-CON-001/`; expected report: `tests/results/AMS-VV-CON-001/report.md` | Model-defined; execution/report pending |
+| AMS-VV-CON-003 | AMS v1.0 final acceptance | Environmental I2C read timeout `≤5 ms` for `Read pressure` and `Read temperature`; `[CE] I2C`; related physical/logical/allocation paths and atmospheric chain context. | Constraint; component exchange; functional chain/scenario | Testing / Analysis | Constraint; `AMS-FE-SensorBusFault`; `AMS-UC-MeasureAtmosphere` | IVV, AMS-R2, AMS-R5 | Stat: `59/59` nominal samples per read function for 95/95 timing claim; `29/29` fault trials per mode/read function if claiming R90/C95 binary response. Fault hardening: NACK/absent sensor, held SDA, held SCL, timeout/no-response, no stale OK data, no reset/deadlock, recovery without reset. | Pass iff every environmental I2C read returns OK or bounded error within `t_read+U95 ≤ 5.000 ms`; faulted reads return only bounded statuses, no stale OK data is accepted, next recovery read succeeds without reset after fault release, and 100% environmental read call paths have no extra read lacking timeout. | Model definition: `tests/AMS-VV-CON-003/`; report/evidence: `tests/results/AMS-VV-CON-003/`; expected report: `tests/results/AMS-VV-CON-003/report.md` | Model-defined; execution/report pending |
+| AMS-VV-CON-004 | AMS v1.0 final acceptance / flight readiness | Process/calculate `<5 ms` constraint; no-blocking constraint; `Calculate altitude`, `Process temperature`, AMS Processing, and AMS callable paths outside excluded I2C/UART waits. | Constraint; allocation/call-path analysis; functional chain/scenario | Testing with supporting Analysis | Constraints; `AMS-UC-MeasureAtmosphere`; `AMS-FE-SensorBusFault`; `AMS-FE-SchedulerBlock` | IVV, AMS-R5, PM&SE/IVV; `AMS-VV-CON-003` by reference | Stat: `59/59` in-limit timings per function/input set for 95/95 deadline claim. Fault hardening: representative/boundary/stale/error-coded/invalid/NaN inputs, bounded runtime fault return, no overflow/Inf acceptance, infinite loop, unbounded retry, or scheduler blockage. | Pass iff `Calculate altitude` and `Process temperature` each satisfy `t_exec+U95 < 5.000 ms`, invalid/NaN cases return/control safely, 100% static callable-path inventory finds no unbounded blocking outside allowed I2C/UART waits, and dynamic traces confirm scheduler-alive behavior; I2C timing/recovery is excluded. | Model definition: `tests/AMS-VV-CON-004/`; report/evidence: `tests/results/AMS-VV-CON-004/`; expected report: `tests/results/AMS-VV-CON-004/report.md` | Model-defined; covers CON-005 if non-blocking evidence is complete |
+
+### Covered candidate rows / residual planning notes
+
+| Candidate | Current disposition |
+|---|---|
+| AMS-VV-CE-002 | Covered by `AMS-VV-API-001` for `[CE] Pointers` ownership/lifetime/null-policy/units/concurrency/aliasing analysis, provided the checklist/static-analysis evidence is executed. |
+| AMS-VV-CE-003 | Covered by `AMS-VV-API-001` for `[CE] Returns` status/data semantics across valid, stale/no-data, startup fault, runtime fault, timeout/bus error, and invalid-input cases. |
+| AMS-VV-ALLOC-001/002/003 | Covered by `AMS-VV-API-001` allocation purity and modeled crossing analysis for AMS Sensing, AMS Processing, and OBCC. |
+| AMS-VV-CON-002 | Covered by `AMS-VV-API-001` if the variable-getter checklist and implementation evidence are complete; otherwise retain as residual implementation evidence gap. |
+| AMS-VV-CON-005 | Covered by `AMS-VV-CON-004` if the non-blocking static/dynamic callable-path evidence is complete; otherwise retain as residual scheduler/blocking evidence gap. |
+| AMS-VV-CON-006 | Pressure accuracy constraint is assigned to `AMS-VV-FC-001`; no separate model definition is needed unless execution requires a dedicated calibration campaign. |
+| AMS-VV-CON-007 | Temperature accuracy constraint is assigned to `AMS-VV-FC-001`; exposure hardening is addressed by `AMS-VV-CON-001`. |
+| AMS-VV-CON-008 | Altitude resolution constraint is assigned to `AMS-VV-FC-001` pressure-step chain. |
 
 ## 6. Coverage and gaps
 
-- **Physical coverage:** all AMS v1.0 physical components and physical links are covered by AMS-VV-PC-001 and AMS-VV-PL-001.
-- **Exchange coverage:** all modeled component exchanges are covered by AMS-VV-CE-001 through AMS-VV-CE-003.
-- **Allocation coverage:** all modeled logical components and allocated functions are covered by AMS-VV-ALLOC-001 through AMS-VV-ALLOC-003.
-- **Functional-chain coverage:** both modeled AMS chains are covered by AMS-VV-FC-001 and AMS-VV-FC-002.
-- **Constraint coverage:** every explicit AMS constraint is assigned to at least one constraint-derived activity.
-- **Modeling gaps:** explicit mission/capability/use-case/feared-event nodes are absent; traceability targets in this plan are candidates requiring user/model confirmation.
-- **Definition progress:** AMS-VV-PC-001 is now model-defined under `tests/AMS-VV-PC-001/` with baseline copies, physical inspection testbench view, functional-allocation inspection view, and inspection pass/fail constraints.
-- **Definition progress:** AMS-VV-PL-001 is now model-defined under `tests/AMS-VV-PL-001/` with baseline copies, physical-link inspection testbench view, functional-allocation inspection view, and inspection pass/fail constraints.
-- **Definition progress:** AMS-VV-CON-003 is now model-defined under `tests/AMS-VV-CON-003/` with baseline copies, physical/logical/allocation testbench views, nominal timing, fault-recovery, and supporting analysis chains.
-- **Remaining definition gaps:** detailed test means, instrumentation, environmental profiles, reference-instrument IDs, and exact pass/fail constraints remain pending for all activities other than AMS-VV-PC-001, AMS-VV-PL-001, and AMS-VV-CON-003.
+### v0.1 coverage
+
+- **Physical/link coverage:** all v0.1 PCs/actors and physical links are covered by `AMS-V01-INTEG-001`.
+- **Component-exchange coverage:** the single v0.1 `[CE] I2C` is covered by `AMS-V01-INTEG-001`.
+- **Allocation coverage:** all v0.1 logical components and allocated functions are covered by `AMS-V01-INTEG-001`.
+- **Functional-chain coverage:** atmospheric measurement, peripheral initialisation, and Serial0 logging chains are covered by `AMS-V01-FC-001`.
+- **Constraint coverage:** v0.1 accuracy/timing/getter/no-blocking constraints are assigned as pass conditions or readiness dependencies in `AMS-V01-FC-001` and reviewed in `AMS-V01-INTEG-001`.
+
+### v0.2 coverage
+
+- **Physical/link coverage:** all modeled v0.2 PCs and PLs are covered by `AMS-V02-PCB-001`; powered reachability over the same path is covered by `AMS-V02-BRINGUP-001`.
+- **Component-exchange / functional-chain coverage:** v0.2 has no modeled logical/CE/FC views, so `AMS-V02-BRINGUP-001` adds VV-only test actors/functions to demonstrate BME280 I2C reachability without claiming native v0.2 allocation coverage.
+- **Constraint coverage:** manufacturability/soldering constraint is covered by `AMS-V02-PCB-001`; safe powered bring-up/readiness is covered by `AMS-V02-BRINGUP-001`.
+
+### v1.0 coverage
+
+- **Physical coverage:** all v1.0 physical components and physical links are covered by `AMS-VV-PC-001` and `AMS-VV-PL-001`.
+- **Exchange coverage:** `[CE] I2C` is covered by `AMS-VV-CE-001`; `[CE] Pointers` and `[CE] Returns` are covered by `AMS-VV-API-001`.
+- **Allocation coverage:** all modeled logical components and allocated functions are covered by `AMS-VV-API-001`.
+- **Functional-chain coverage:** atmospheric measurement is covered by `AMS-VV-FC-001`; peripheral initialisation is covered by `AMS-VV-FC-002`.
+- **Constraint coverage:** sunlight/airflow (`AMS-VV-CON-001`), variable getter/API semantics (`AMS-VV-API-001`), I2C timeout (`AMS-VV-CON-003`), process/calculate timing and no-blocking (`AMS-VV-CON-004`), and pressure/temperature/altitude constraints (`AMS-VV-FC-001`) are all assigned to model-defined activities.
+- **Remaining modeling gap:** explicit mission/capability/use-case/feared-event nodes remain absent from AMS views; traceability targets in this plan remain provisional until modeled or confirmed.
 
 ## 7. Model-defined activity index
+
+### AMS-V01-INTEG-001 — v0.1 breadboard to v0.2 PCB readiness inspection
+
+- Test folder: `tests/AMS-V01-INTEG-001/`.
+- Baseline copied views: v0.1 `view1` through `view6` (`.d2` and `.png`).
+- Test-definition views: `AMS_V01_INTEG_001_view1_physical_inspection_testbench.d2`, `AMS_V01_INTEG_001_view2_logical_ce_analysis.d2`, `AMS_V01_INTEG_001_view3_functional_allocation_readiness_analysis.d2` with matching PNGs.
+- Report-by-reference target: `tests/results/AMS-V01-INTEG-001/report.md`.
+
+### AMS-V01-FC-001 — v0.1 atmospheric/init/serial functional-chain readiness test
+
+- Test folder: `tests/AMS-V01-FC-001/`.
+- Baseline copied views: v0.1 `view1` through `view6` (`.d2` and `.png`).
+- Test-definition views: physical, logical, functional-allocation, atmospheric measurement test chain, and serial/init smoke chain views with matching PNGs.
+- Report-by-reference target: `tests/results/AMS-V01-FC-001/report.md`.
+
+### AMS-V02-PCB-001 — v0.2 PCB delivery/manufacturability inspection
+
+- Test folder: `tests/AMS-V02-PCB-001/`.
+- Baseline copied view: `AMS_v0.2_view1_physical.d2/.png`.
+- Test-definition views: PCB physical inspection, inspection/allocation-analysis, and manufacturability/physical-link analysis chain with matching PNGs.
+- Report-by-reference target: `tests/results/AMS-V02-PCB-001/report.md`.
+
+### AMS-V02-BRINGUP-001 — v0.2 powered bring-up and I2C reachability demonstration
+
+- Test folder: `tests/AMS-V02-BRINGUP-001/`.
+- Baseline copied view: `AMS_v0.2_view1_physical.d2/.png`.
+- Testbench views: physical powered bring-up, logical I2C bring-up, functional-allocation bring-up, and power/I2C bring-up chain with matching PNGs.
+- Report-by-reference target: `tests/results/AMS-V02-BRINGUP-001/report.md`.
 
 ### AMS-VV-PC-001 — Physical component presence/absence inspection
 
 - Test folder: `tests/AMS-VV-PC-001/`.
-- Baseline copied views: `tests/AMS-VV-PC-001/baseline/AMS_v1.0_view1` through `view5` (`.d2` and `.png`).
-- Inspection testbench views: `AMS_VV_PC_001_view1_physical_inspection_testbench.d2`, `AMS_VV_PC_001_view3_functional_allocation_inspection.d2`.
-- Confirmed final-acceptance scope: 100% census of the 13 modeled UUT physical components; PL integrity is excluded and remains under `AMS-VV-PL-001`.
-- Rendered PNGs with matching names are generated beside each D2 file.
+- Baseline copied views: v1.0 `view1` through `view5` (`.d2` and `.png`).
+- Inspection testbench views: `AMS_VV_PC_001_view1_physical_inspection_testbench.d2`, `AMS_VV_PC_001_view3_functional_allocation_inspection.d2` with matching PNGs.
 - Report-by-reference target: `tests/results/AMS-VV-PC-001/report.md`.
 
 ### AMS-VV-PL-001 — Physical link presence/absence inspection
 
 - Test folder: `tests/AMS-VV-PL-001/`.
-- Baseline copied views: `tests/AMS-VV-PL-001/baseline/AMS_v1.0_view1` through `view5` (`.d2` and `.png`).
-- Inspection testbench views: `AMS_VV_PL_001_view1_physical_link_inspection_testbench.d2`, `AMS_VV_PL_001_view3_functional_allocation_inspection.d2`.
-- Confirmed final-acceptance scope: 100% census of the 14 modeled UUT physical links; PC identity and CE behavior are excluded.
-- Rendered PNGs with matching names are generated beside each D2 file.
+- Baseline copied views: v1.0 `view1` through `view5` (`.d2` and `.png`).
+- Inspection testbench views: `AMS_VV_PL_001_view1_physical_link_inspection_testbench.d2`, `AMS_VV_PL_001_view3_functional_allocation_inspection.d2` with matching PNGs.
 - Report-by-reference target: `tests/results/AMS-VV-PL-001/report.md`.
+
+### AMS-VV-CE-001 — I2C component-exchange presence/absence analysis
+
+- Test folder: `tests/AMS-VV-CE-001/`.
+- Baseline copied views: v1.0 `view1` through `view5` (`.d2` and `.png`).
+- Analysis testbench views: `AMS_VV_CE_001_view2_logical_ce_analysis_testbench.d2`, `AMS_VV_CE_001_view3_functional_allocation_ce_analysis.d2`, and `AMS_VV_CE_001_view4_i2c_ce_presence_absence_analysis_chain.d2` with matching PNGs.
+- Report-by-reference target: `tests/results/AMS-VV-CE-001/report.md`.
+
+### AMS-VV-API-001 — Pointer/return API and allocation consistency analysis
+
+- Test folder: `tests/AMS-VV-API-001/`.
+- Baseline copied views: v1.0 `view1` through `view5` (`.d2` and `.png`).
+- Analysis testbench views: logical API/CE analysis, functional-allocation API analysis, and variable-getter contract analysis chain with matching PNGs.
+- Report-by-reference target: `tests/results/AMS-VV-API-001/report.md`.
+
+### AMS-VV-FC-001 — Atmospheric measurement accuracy and altitude functional-chain test
+
+- Test folder: `tests/AMS-VV-FC-001/`.
+- Baseline copied views: v1.0 `view1` through `view5` (`.d2` and `.png`).
+- Test-definition views: physical, logical, functional-allocation, atmospheric measurement acceptance chain, and altitude-resolution pressure-step chain with matching PNGs.
+- Report-by-reference target: `tests/results/AMS-VV-FC-001/report.md`.
+
+### AMS-VV-FC-002 — Peripheral initialisation and startup-fault functional-chain test
+
+- Test folder: `tests/AMS-VV-FC-002/`.
+- Baseline copied views: v1.0 `view1` through `view5` (`.d2` and `.png`).
+- Test-definition views: physical, logical, functional-allocation, nominal boot init-state chain, and startup-fault init-state chain with matching PNGs.
+- Report-by-reference target: `tests/results/AMS-VV-FC-002/report.md`.
+
+### AMS-VV-CON-001 — Sunlight-blocking and airflow exposure inspection/demonstration
+
+- Test folder: `tests/AMS-VV-CON-001/`.
+- Baseline copied views: v1.0 `view1` through `view5` (`.d2` and `.png`).
+- Test-definition views: physical exposure testbench, logical exposure testbench, functional-allocation exposure, and sunlight/airflow demonstration chain with matching PNGs.
+- Report-by-reference target: `tests/results/AMS-VV-CON-001/report.md`.
 
 ### AMS-VV-CON-003 — I2C read timeout ≤ 5 ms
 
 - Test folder: `tests/AMS-VV-CON-003/`.
-- Baseline copied views: `tests/AMS-VV-CON-003/baseline/AMS_v1.0_view1` through `view5` (`.d2` and `.png`).
-- Testbench views: `AMS_VV_CON_003_view1_physical_testbench.d2`, `AMS_VV_CON_003_view2_logical_testbench.d2`, `AMS_VV_CON_003_view3_functional_allocation_testbench.d2`.
-- Test/analysis chains: `AMS_VV_CON_003_view4_nominal_i2c_read_timing_chain.d2`, `AMS_VV_CON_003_view5_fault_timeout_recovery_chain.d2`, `AMS_VV_CON_003_view6_timeout_implementation_analysis_chain.d2`.
-- Confirmed final-acceptance scope: environmental I2C reads only (`Read pressure`, `Read temperature`); recovery without reset after released fault is mandatory.
-- Rendered PNGs with matching names are generated beside each D2 file.
+- Baseline copied views: v1.0 `view1` through `view5` (`.d2` and `.png`).
+- Testbench views: physical/logical/allocation timeout testbench views plus nominal timing, fault-recovery, and supporting timeout implementation analysis chains with matching PNGs.
 - Report-by-reference target: `tests/results/AMS-VV-CON-003/report.md`.
+
+### AMS-VV-CON-004 — Processing timing and non-blocking callable-path verification
+
+- Test folder: `tests/AMS-VV-CON-004/`.
+- Baseline copied views: v1.0 `view1` through `view5` (`.d2` and `.png`).
+- Test-definition views: physical, logical, functional-allocation, processing timing chain, and nonblocking analysis chain with matching PNGs.
+- Report-by-reference target: `tests/results/AMS-VV-CON-004/report.md`.

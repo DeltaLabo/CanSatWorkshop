@@ -1,0 +1,225 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view — AMS-V02-PCB-001 inspection/analysis functions
+# IADT: Inspection with supporting Analysis. SSIV: AMS v0.2 advancement to v1.0 integrated build.
+# Traceability: AMS-v0.2-to-v1.0-readiness; AMS-UC-MeasureAtmosphere; AMS-FE-BadManufacturing; AMS-FE-SensorBusFault.
+# References: IVV, AMS-R1 (BME280), AMS-R2 (I2C), v0.2 PA baseline, fabrication/rework traveler.
+# Scope boundary: unpowered PCB delivery verification only; no powered I2C scan or BME280 register read.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-V02-PCB-001 PCB delivery inspection/analysis\nAMS v0.2 to v1.0 readiness\nRefs: IVV, AMS-R1, AMS-R2, v0.2 PA" {
+  class: sys
+  direction: down
+
+  ams_pcb: "[PC] AMS PCB" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    bme280: "[PC] BME280" { class: pc }
+    ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+    vv_article_evidence: "[LC] VV-only PCB\ninspection evidence" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      present_baseline_article: "[F] Present v0.2\narticle identity" { class: func }
+      present_footprints: "[F] Present modeled\ncomponent footprints" { class: func }
+      present_i2c_3v3_route: "[F] Present I2C + 3V3\ntrace/pad route" { class: func }
+      present_manufacturing_features: "[F] Present CNC /\nsoldering features" { class: func }
+    }
+  }
+}
+
+pcb_inspector: "[EA] PCB Inspector" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  identify_article: "[F] Identify article /\nbaseline" { class: func }
+  inspect_bme_footprint: "[F] Inspect BME280\nfootprint/component" { class: func }
+  inspect_connector: "[F] Inspect connector\nfootprint/component" { class: func }
+  inspect_traces: "[F] Inspect I2C + 3V3\ntraces/pads" { class: func }
+  inspect_fod_bridges: "[F] Inspect FOD, damage,\nand solder bridges" { class: func }
+  record_anomalies: "[F] Record anomalies\nand deviations" { class: func }
+}
+
+manufacturing_reviewer: "[EA] Manufacturing /\nQA Reviewer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  review_fabrication_records: "[F] Review fabrication /\nrework records" { class: func }
+  review_carvera_compatibility: "[F] Review Carvera Air\nCNC compatibility" { class: func }
+  review_soldering_evidence: "[F] Review reflux/manual\nsoldering evidence" { class: func }
+  disposition_waivers: "[F] Disposition waiver /\nmodel update" { class: func }
+}
+
+microscope: "[EA] Microscope /\nInspection Camera" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  capture_bme_photos: "[F] Capture BME280\nclose-up photos" { class: func }
+  capture_connector_photos: "[F] Capture connector\nclose-up photos" { class: func }
+  capture_trace_photos: "[F] Capture trace /\npad photos" { class: func }
+}
+
+connector_gauge: "[EA] Caliper /\nConnector Gauge" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  measure_pitch: "[F] Measure/check\npitch and variant" { class: func }
+  check_connector_fit: "[F] Check connector\nfit/alignment" { class: func }
+}
+
+continuity_meter: "[EA] DMM /\nContinuity Meter" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  verify_no_obvious_short: "[F] Check no obvious\nshorts, unpowered" { class: func }
+  verify_route_continuity: "[F] Check route\ncontinuity, unpowered" { class: func }
+}
+
+esd_fixture: "[EA] ESD-safe\nInspection Fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  support_pcb: "[F] Support PCB\nwithout damage" { class: func }
+  maintain_esd_control: "[F] Maintain ESD\ncontrol" { class: func }
+}
+
+evidence_repo: "[EA] Evidence Repository /\nChecklist Tool" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  store_checklist: "[F] Store inspection\nchecklist" { class: func }
+  store_photos_records: "[F] Store photos and\ntraveler records" { class: func }
+  generate_coverage_matrix: "[F] Generate 3 PC /\n3 PL coverage matrix" { class: func }
+}
+
+note_traceability: "[C] Activity traces to AMS-v0.2-to-v1.0-readiness,\nAMS-UC-MeasureAtmosphere, AMS-FE-BadManufacturing,\nand AMS-FE-SensorBusFault" {
+  class: note
+  shape: page
+}
+note_statistical: "[C] Statistical basis: 100% census inspection/analysis\nof the v0.2 delivered PCB article; 3/3 modeled PCs,\n3/3 modeled PLs, and 1/1 manufacturing constraint;\nno sampling or fleet-reliability claim" {
+  class: note
+  shape: page
+}
+note_article_pass: "[C] Pass iff the inspected PCB is the v0.2 delivery\nbaseline and has traceable fabrication, inspection,\nand rework evidence" {
+  class: note
+  shape: page
+}
+note_footprint_pass: "[C] Pass iff BME280 and connector footprints/components\nare present, correct orientation, correct pitch/variant,\nfit the modeled interface, and show no visible damage,\nFOD, or solder bridges" {
+  class: note
+  shape: page
+}
+note_trace_pass: "[C] Pass iff I2C + 3V3 traces/pads are present and\nhave no visual opens/shorts or unapproved jumpers;\nunpowered continuity/DMM checks are inspection support only" {
+  class: note
+  shape: page
+}
+note_manufacturing_pass: "[C] Pass iff board outline/features are compatible\nwith Carvera Air CNC manufacturing and selected\nreflux/manual soldering evidence" {
+  class: note
+  shape: page
+}
+note_failure: "[C] Fail unless controlled waiver/model update exists\nfor any missing, wrong, ambiguous component, footprint,\nroute, fabrication deviation, uncontrolled rework, or\ninspection-evidence gap" {
+  class: note
+  shape: page
+}
+note_no_bringup: "[C] Out of scope: powered 3V3 application, I2C scan,\nBME280 chip-ID read, logic-analyzer ACK evidence, and\npower-cycle repetition; see AMS-V02-BRINGUP-001" {
+  class: note
+  shape: page
+}
+note_fault_hardening: "[C] Fault-hardening viewpoint: wrong component variant,\nwrong orientation, pitch mismatch, solder bridge, lifted pad,\nFOD/contamination, open/short, unapproved jumper, and\nmanufacturing traveler mismatch" {
+  class: note
+  shape: page
+}
+
+note_traceability -> evidence_repo.generate_coverage_matrix { class: cstr }
+note_statistical -> evidence_repo.generate_coverage_matrix { class: cstr }
+note_statistical -> pcb_inspector.inspect_bme_footprint { class: cstr }
+note_statistical -> pcb_inspector.inspect_connector { class: cstr }
+note_statistical -> pcb_inspector.inspect_traces { class: cstr }
+note_article_pass -> pcb_inspector.identify_article { class: cstr }
+note_article_pass -> manufacturing_reviewer.review_fabrication_records { class: cstr }
+note_article_pass -> system.ams_pcb.vv_article_evidence.present_baseline_article { class: cstr }
+note_footprint_pass -> pcb_inspector.inspect_bme_footprint { class: cstr }
+note_footprint_pass -> pcb_inspector.inspect_connector { class: cstr }
+note_footprint_pass -> connector_gauge.measure_pitch { class: cstr }
+note_footprint_pass -> connector_gauge.check_connector_fit { class: cstr }
+note_trace_pass -> pcb_inspector.inspect_traces { class: cstr }
+note_trace_pass -> continuity_meter.verify_no_obvious_short { class: cstr }
+note_trace_pass -> continuity_meter.verify_route_continuity { class: cstr }
+note_trace_pass -> system.ams_pcb.vv_article_evidence.present_i2c_3v3_route { class: cstr }
+note_manufacturing_pass -> manufacturing_reviewer.review_carvera_compatibility { class: cstr }
+note_manufacturing_pass -> manufacturing_reviewer.review_soldering_evidence { class: cstr }
+note_manufacturing_pass -> system.ams_pcb.vv_article_evidence.present_manufacturing_features { class: cstr }
+note_failure -> pcb_inspector.record_anomalies { class: cstr }
+note_failure -> manufacturing_reviewer.disposition_waivers { class: cstr }
+note_no_bringup -> continuity_meter.verify_route_continuity { class: cstr }
+note_fault_hardening -> pcb_inspector.inspect_fod_bridges { class: cstr }
+note_fault_hardening -> manufacturing_reviewer.disposition_waivers { class: cstr }
+
+# Layout-only edges to stack VV actors and pass/fail constraints below the UUT allocation.
+system -> esd_fixture { style: { opacity: 0 } }
+esd_fixture -> microscope { style: { opacity: 0 } }
+microscope -> connector_gauge { style: { opacity: 0 } }
+connector_gauge -> continuity_meter { style: { opacity: 0 } }
+continuity_meter -> pcb_inspector { style: { opacity: 0 } }
+pcb_inspector -> manufacturing_reviewer { style: { opacity: 0 } }
+manufacturing_reviewer -> evidence_repo { style: { opacity: 0 } }
+evidence_repo -> note_traceability { style: { opacity: 0 } }
+note_traceability -> note_statistical { style: { opacity: 0 } }
+note_statistical -> note_article_pass { style: { opacity: 0 } }
+note_article_pass -> note_footprint_pass { style: { opacity: 0 } }
+note_footprint_pass -> note_trace_pass { style: { opacity: 0 } }
+note_trace_pass -> note_manufacturing_pass { style: { opacity: 0 } }
+note_manufacturing_pass -> note_failure { style: { opacity: 0 } }
+note_failure -> note_no_bringup { style: { opacity: 0 } }
+note_no_bringup -> note_fault_hardening { style: { opacity: 0 } }

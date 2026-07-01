@@ -1,0 +1,133 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# Functional chain: altitude-resolution pressure-step check for AMS-VV-FC-001.
+
+chain: "AMS-VV-FC-001 — Altitude resolution pressure-step chain\nTesting/Demonstration; AMS v1.0 final acceptance; Refs: IVV, AMS-R1, AMS-R3/R4/R5/R7\nTrace: AMS-UC-MeasureAtmosphere, AMS-FE-StaleMeasurement, [C] Resolution < 10m" {
+  class: chain
+  direction: down
+
+  configure_pressure_step_test: "[F] Configure altitude\npressure-step test" { class: func }
+  record_instrument_ids: "[F] Record instrument\nIDs/calibration" { class: func }
+  read_ambient_temperature: "[F] Read ambient\ntemperature" { class: func }
+  compute_10m_pressure_delta: "[F] Compute 10 m-equivalent\npressure delta" { class: func }
+  set_pressure_level_p0: "[F] Set pressure\nlevel P0" { class: func }
+  measure_reference_pressure_p0: "[F] Measure reference\npressure P0" { class: func }
+  collect_level_p0_samples: "[F] Collect n ≥ 30\nP0 samples" { class: func }
+  apply_pressure_step: "[F] Apply 10 m-equiv.\npressure step" { class: func }
+  measure_reference_pressure_p1: "[F] Measure reference\npressure P1" { class: func }
+  collect_level_p1_samples: "[F] Collect n ≥ 30\nP1 samples" { class: func }
+  tag_pressure_step_level: "[F] Tag pressure-step\nlevel and sample ID" { class: func }
+
+  measure_pressure: "[F] Measure\npressure" { class: func }
+  respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+  read_pressure: "[F] Read\npressure" { class: func }
+  calculate_altitude: "[F] Calculate\naltitude" { class: func }
+  collect_measurements: "[F] Collect\nmeasurements" { class: func }
+  emit_current_measurement_record: "[F] Emit current\nmeasurement record" { class: func }
+  capture_obcc_results: "[F] Capture OBCC\naltitude results" { class: func }
+  pair_levels_with_references: "[F] Pair P0/P1\nlevels with references" { class: func }
+  compute_altitude_delta_u95: "[F] Compute altitude\ndelta and U95" { class: func }
+  verify_correct_sign: "[F] Verify correct\nsign and resolution" { class: func }
+  archive_evidence: "[F] Archive raw data\nand pass/fail" { class: func }
+
+  note_step_method: "[C] Pressure step shall represent a 10 m-equivalent\naltitude change using AMS-R4 standard-atmosphere rationale\nwith AMS-R7 low-cost altitude context recorded" { class: note; shape: page }
+  note_n30_levels: "[C] Collect n ≥ 30 paired AMS/reference samples\nat each pressure level P0 and P1; any reduced scope\nshall be labeled screening only, not final acceptance" { class: note; shape: page }
+  note_altitude_pass: "[C] Altitude passes iff the 10 m-equivalent pressure\nchange is resolved with correct sign and uncertainty;\nthe confidence interval for the measured delta excludes zero" { class: note; shape: page }
+  note_stale: "[C] P1 samples must carry current sample IDs; stale P0\npressure/altitude results shall not be accepted as P1 current data" { class: note; shape: page }
+  note_i2c_dependency: "[C] Detailed I2C ≤5 ms timeout proof remains\nAMS-VV-CON-003; this chain checks altitude-result\ncurrentness and pressure-to-altitude behavior" { class: note; shape: page }
+}
+
+chain.configure_pressure_step_test -> chain.record_instrument_ids: "[FE] Test setup" { class: fe }
+chain.record_instrument_ids -> chain.read_ambient_temperature: "[FE] Ambient\nthermometer ID" { class: fe }
+chain.read_ambient_temperature -> chain.compute_10m_pressure_delta: "[FE] Ambient context" { class: fe }
+chain.record_instrument_ids -> chain.compute_10m_pressure_delta: "[FE] Pressure ref.\nID/U" { class: fe }
+chain.compute_10m_pressure_delta -> chain.set_pressure_level_p0: "[FE] P0 target" { class: fe }
+chain.set_pressure_level_p0 -> chain.measure_reference_pressure_p0: "[FE] Stable P0" { class: fe }
+chain.measure_reference_pressure_p0 -> chain.collect_level_p0_samples: "[FE] P0 ref. + U" { class: fe }
+chain.collect_level_p0_samples -> chain.apply_pressure_step: "[FE] P0 sample set" { class: fe }
+chain.compute_10m_pressure_delta -> chain.apply_pressure_step: "[FE] ΔP for 10 m" { class: fe }
+chain.apply_pressure_step -> chain.measure_reference_pressure_p1: "[FE] Stable P1" { class: fe }
+chain.measure_reference_pressure_p1 -> chain.collect_level_p1_samples: "[FE] P1 ref. + U" { class: fe }
+chain.collect_level_p0_samples -> chain.tag_pressure_step_level: "[FE] P0 level tag" { class: fe }
+chain.collect_level_p1_samples -> chain.tag_pressure_step_level: "[FE] P1 level tag" { class: fe }
+
+chain.measure_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nsignal" { class: fe }
+chain.tag_pressure_step_level -> chain.read_pressure: "[FE] Pressure read\nrequest + level tag" { class: fe }
+chain.read_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nI2C Req" { class: fe }
+chain.respond_i2c_requests -> chain.read_pressure: "[FE] Pressure" { class: fe }
+chain.read_pressure -> chain.calculate_altitude: "[FE] Pressure" { class: fe }
+chain.calculate_altitude -> chain.collect_measurements: "[FE] Result\n[Altitude]" { class: fe }
+chain.tag_pressure_step_level -> chain.collect_measurements: "[FE] Level/sample ID" { class: fe }
+chain.read_pressure -> chain.emit_current_measurement_record: "[FE] Current pressure\nevidence" { class: fe }
+chain.calculate_altitude -> chain.emit_current_measurement_record: "[FE] Current altitude\nevidence" { class: fe }
+chain.collect_measurements -> chain.capture_obcc_results: "[FE] OBCC altitude\nrecord" { class: fe }
+chain.emit_current_measurement_record -> chain.capture_obcc_results: "[FE] VV pressure/altitude\nrecord" { class: fe }
+chain.capture_obcc_results -> chain.pair_levels_with_references: "[FE] P0/P1 AMS\nresults" { class: fe }
+chain.measure_reference_pressure_p0 -> chain.pair_levels_with_references: "[FE] P0 ref." { class: fe }
+chain.measure_reference_pressure_p1 -> chain.pair_levels_with_references: "[FE] P1 ref." { class: fe }
+chain.pair_levels_with_references -> chain.compute_altitude_delta_u95: "[FE] Paired levels" { class: fe }
+chain.compute_altitude_delta_u95 -> chain.verify_correct_sign: "[FE] Δaltitude + U95" { class: fe }
+chain.verify_correct_sign -> chain.archive_evidence: "[FE] Resolution\npass/fail" { class: fe }
+
+chain.note_step_method -> chain.compute_10m_pressure_delta { class: cstr }
+chain.note_step_method -> chain.apply_pressure_step { class: cstr }
+chain.note_n30_levels -> chain.collect_level_p0_samples { class: cstr }
+chain.note_n30_levels -> chain.collect_level_p1_samples { class: cstr }
+chain.note_altitude_pass -> chain.compute_altitude_delta_u95 { class: cstr }
+chain.note_altitude_pass -> chain.verify_correct_sign { class: cstr }
+chain.note_stale -> chain.tag_pressure_step_level { class: cstr }
+chain.note_stale -> chain.capture_obcc_results { class: cstr }
+chain.note_i2c_dependency -> chain.read_pressure { class: cstr }
+chain.note_i2c_dependency -> chain.archive_evidence { class: cstr }
+
+# Layout-only edges to keep setup, P0/P1 stimulation, UUT flow, and constraints readable.
+chain.collect_level_p1_samples -> chain.measure_pressure { style: { opacity: 0 } }
+chain.calculate_altitude -> chain.emit_current_measurement_record { style: { opacity: 0 } }
+chain.archive_evidence -> chain.note_step_method { style: { opacity: 0 } }
+chain.note_step_method -> chain.note_n30_levels { style: { opacity: 0 } }
+chain.note_n30_levels -> chain.note_altitude_pass { style: { opacity: 0 } }
+chain.note_altitude_pass -> chain.note_stale { style: { opacity: 0 } }
+chain.note_stale -> chain.note_i2c_dependency { style: { opacity: 0 } }

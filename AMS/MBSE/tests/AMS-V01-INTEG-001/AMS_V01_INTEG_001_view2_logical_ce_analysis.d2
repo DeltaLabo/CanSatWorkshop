@@ -1,0 +1,134 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Logical view — AMS-V01-INTEG-001 component-exchange and readiness analysis
+# IADT: Supporting Analysis for the v0.1 to v0.2 advancement gate.
+# References: IVV, AMS-R1 (BME280), AMS-R2 (I2C), AMS-R6 (CanSat build environment).
+# Traceability: AMS-v0.1-to-v0.2-readiness; AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-V01-INTEG-001 CE/allocation analysis\nAMS v0.1 → v0.2 PCB gate\nRefs: IVV, AMS-R1, AMS-R2, AMS-R6" {
+  class: sys
+  direction: right
+
+  bme280: "[PC] BME280" {
+    class: pc
+    direction: down
+
+    ams_sensing: "[LC] AMS Sensing" { class: lc }
+  }
+
+  xiao: "[PC] XIAO ESP32" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ams_processing: "[LC] AMS Processing" { class: lc }
+    readiness_record: "[LC] v0.1→v0.2\nReadiness Analysis\nRecord (VV-only)" { class: lc }
+  }
+}
+
+analysis_operator: "[EA] Readiness review\noperator" { class: ea }
+wiring_evidence: "[EA] Breadboard wiring map /\nphoto evidence" { class: ea }
+host_pc: "[EA] PC / USB host\nserial terminal" { class: ea }
+i2c_scanner: "[EA] I2C scanner /\nlogic analyzer" { class: ea }
+evidence_repo: "[EA] Evidence repository /\nchecklist record" { class: ea }
+
+note_ce_scope: "[C] Scope: 1/1 target CE — [CE] I2C\nbetween AMS Sensing and AMS Processing.\nVV-only evidence exchanges are excluded." {
+  class: note
+  shape: page
+}
+note_ce_pass: "[C] Pass iff implementation uses I2C with\nmodeled endpoints, Sensing→Processing CE intent,\nXIAO requester/master, BME280 addressed responder,\nand no UART/SPI/GPIO/proxy bypass." {
+  class: note
+  shape: page
+}
+note_serial: "[C] USB serial evidence is supporting only:\nhost PC shall receive v0.1 init and measurement logs;\nit does not replace the I2C CE." {
+  class: note
+  shape: page
+}
+note_allocation: "[C] Allocation pass condition: all v0.1 functions\nremain allocated to AMS Sensing or AMS Processing\nas modeled; no foreign function is allocated\nto the wrong LC." {
+  class: note
+  shape: page
+}
+note_pcb_ready: "[C] PCB-readiness analysis: I2C, 3V3, GND, and\nUSB evidence is sufficiently unambiguous to convert\nbreadboard links into v0.2 PCB traces/connectors." {
+  class: note
+  shape: page
+}
+note_trace: "[C] Traceability: AMS-v0.1-to-v0.2-readiness;\nAMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral;\nAMS-FE-SensorBusFault." {
+  class: note
+  shape: page
+}
+
+system.bme280.ams_sensing -> system.xiao.ams_processing: "[CE] I2C\nTARGET 1/1\nmodel dir Sensing→Processing" { class: ce }
+system.xiao.ams_processing -> host_pc: "[CE] USB serial\nlog evidence" { class: ce }
+i2c_scanner -> system.xiao.readiness_record: "[CE] I2C scan /\nlogic capture" { class: ce }
+wiring_evidence -> system.xiao.readiness_record: "[CE] wiring evidence" { class: ce }
+analysis_operator -> system.xiao.readiness_record: "[CE] inspection decision" { class: ce }
+host_pc -> system.xiao.readiness_record: "[CE] serial log archive" { class: ce }
+system.bme280.ams_sensing -> system.xiao.readiness_record: "[CE] endpoint evidence" { class: ce }
+system.xiao.ams_processing -> system.xiao.readiness_record: "[CE] allocation /\nendpoint evidence" { class: ce }
+system.xiao.readiness_record -> evidence_repo: "[CE] archive\nreadiness package" { class: ce }
+
+note_ce_scope -> system.xiao.readiness_record { class: cstr }
+note_ce_pass -> system.xiao.readiness_record { class: cstr }
+note_ce_pass -> system.bme280.ams_sensing { class: cstr }
+note_ce_pass -> system.xiao.ams_processing { class: cstr }
+note_serial -> host_pc { class: cstr }
+note_serial -> system.xiao.ams_processing { class: cstr }
+note_allocation -> system.bme280.ams_sensing { class: cstr }
+note_allocation -> system.xiao.ams_processing { class: cstr }
+note_pcb_ready -> system.xiao.readiness_record { class: cstr }
+note_trace -> evidence_repo { class: cstr }
+
+# Layout-only edges to keep actors and constraints in readable bands.
+system -> analysis_operator { style: { opacity: 0 } }
+analysis_operator -> wiring_evidence { style: { opacity: 0 } }
+wiring_evidence -> host_pc { style: { opacity: 0 } }
+host_pc -> i2c_scanner { style: { opacity: 0 } }
+i2c_scanner -> evidence_repo { style: { opacity: 0 } }
+evidence_repo -> note_ce_scope { style: { opacity: 0 } }
+note_ce_scope -> note_ce_pass { style: { opacity: 0 } }
+note_ce_pass -> note_serial { style: { opacity: 0 } }
+note_serial -> note_allocation { style: { opacity: 0 } }
+note_allocation -> note_pcb_ready { style: { opacity: 0 } }
+note_pcb_ready -> note_trace { style: { opacity: 0 } }

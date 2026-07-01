@@ -1,0 +1,121 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical view — AMS-V02-BRINGUP-001 powered bring-up and I2C demonstration testbench
+# Verification references: IVV, AMS-R1 (BME280), AMS-R2 (I2C), AMS-R5 (statistics).
+# IADT: Demonstration / Testing. SSIV: AMS v0.2 → v1.0 readiness gate.
+# Traceability: AMS-v0.2-to-v1.0-readiness; AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault.
+# Scope: powered bring-up and I2C reachability only; visual/manufacturing inspection is covered by AMS-V02-PCB-001.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+esd_fixture: "[EA] ESD Fixture /\nUUT Cradle" { class: ea }
+test_operator: "[EA] Test Operator" { class: ea }
+bench_supply: "[EA] Current-limited\nBench 3V3 Supply" { class: ea }
+dmm: "[EA] DMM /\nVoltage Probe" { class: ea }
+fixture_controller: "[EA] Fixture Controller\n(XIAO/ESP32 or I2C analyzer)" { class: ea }
+logic_analyzer: "[EA] Logic Analyzer\n3V3 I2C Probe" { class: ea }
+host_logger: "[EA] Host PC /\nEvidence Logger" { class: ea }
+ambient_meter: "[EA] Ambient Thermometer /\nHygrometer" { class: ea }
+
+system: "[System] AMS-V02-BRINGUP-001 powered bring-up\nAMS v0.2→v1.0 readiness; Refs: IVV, AMS-R1, AMS-R2, AMS-R5" {
+  class: sys
+  direction: down
+
+  ams_pcb: "[PC] AMS PCB\n(UUT v0.2 delivery)" {
+    class: pc
+    direction: down
+
+    bme280: "[PC] BME280" { class: pc }
+    ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+  }
+}
+
+note_scope: "[C] Scope: v0.2 AMS PCB powered bring-up;\nUUT PCs are AMS PCB, BME280, Backplane Connector;\nUUT PLs are BME280 footprint, connector footprint,\nand I2C + 3V3 traces. Visual/manufacturing\ninspection remains AMS-V02-PCB-001." {
+  class: note
+  shape: page
+}
+note_power: "[C] Pass power-up iff current-limited 3V3/GND\nshows no short, no current-limit trip/overcurrent,\nno reverse polarity, and 3.3 V ±5% is measured\nat the connector and BME280 before I2C scanning." {
+  class: note
+  shape: page
+}
+note_path: "[C] Test fixture shall enter through the modeled\nBackplane Connector and PCB I2C + 3V3 trace path;\nany fixture-only jumper, direct sensor clip, or\nunmodeled bypass invalidates the attempt." {
+  class: note
+  shape: page
+}
+note_i2c: "[C] Pass I2C demonstration iff BME280 is found at\nthe expected build-record address (0x76 or 0x77)\nand chip ID/status/register evidence is logged\nover the modeled PCB trace path." {
+  class: note
+  shape: page
+}
+note_repeat_logic: "[C] At least 3/3 complete power-cycle/read\nattempts pass for bring-up demonstration only\n(no reliability claim). Logic-analyzer evidence\nshows valid 3V3 I2C ACKs and no stuck SDA/SCL." {
+  class: note
+  shape: page
+}
+note_fail: "[C] Any no-response, wrong address, overcurrent,\nreversed power, stuck SDA/SCL, or controlled-fixture\nbypass fails unless dispositioned as a controlled\ndeviation with report evidence." {
+  class: note
+  shape: page
+}
+note_environment: "[C] ESD-safe bench used; ambient lab\ntemperature/humidity recorded before repetitions;\nstop and de-energize on abnormal heating, smell,\nsmoke, visible damage, or operator concern." {
+  class: note
+  shape: page
+}
+
+system.ams_pcb.bme280 -- system.ams_pcb: "[PL] BME280\nFootprint" { class: pl }
+system.ams_pcb.ams_backplane_connector -- system.ams_pcb: "[PL] Connector\nfootprint" { class: pl }
+system.ams_pcb.bme280 -- system.ams_pcb.ams_backplane_connector: "[PL] I2C + 3V3\ntraces" { class: pl }
+
+esd_fixture -- system.ams_pcb: "[PL] ESD-safe\nfixture support" { class: pl }
+test_operator -- system.ams_pcb: "[PL] ESD-safe\nmanual handling" { class: pl }
+bench_supply -- system.ams_pcb.ams_backplane_connector: "[PL] Current-limited\n3V3/GND feed" { class: pl }
+dmm -- system.ams_pcb.ams_backplane_connector: "[PL] DMM\nvoltage probes" { class: pl }
+fixture_controller -- system.ams_pcb.ams_backplane_connector: "[PL] SDA/SCL +\n3V3/GND fixture cable" { class: pl }
+logic_analyzer -- system.ams_pcb.ams_backplane_connector: "[PL] High-Z\nSDA/SCL probe" { class: pl }
+host_logger -- system.ams_pcb.ams_backplane_connector: "[PL] Logger via\nfixture USB path" { class: pl }
+ambient_meter -- system.ams_pcb: "[PL] Ambient\nmeasurement near UUT" { class: pl }
+
+note_scope -> system.ams_pcb { class: cstr }
+note_power -> bench_supply { class: cstr }
+note_path -> fixture_controller { class: cstr }
+note_i2c -> fixture_controller { class: cstr }
+note_repeat_logic -> logic_analyzer { class: cstr }
+note_fail -> system.ams_pcb { class: cstr }
+note_environment -> esd_fixture { class: cstr }

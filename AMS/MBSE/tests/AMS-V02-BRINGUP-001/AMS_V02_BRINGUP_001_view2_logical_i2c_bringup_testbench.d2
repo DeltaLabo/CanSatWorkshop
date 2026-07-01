@@ -1,0 +1,112 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Logical view — AMS-V02-BRINGUP-001 I2C bring-up component exchanges
+# Verification references: IVV, AMS-R1 (BME280), AMS-R2 (I2C), AMS-R5 (statistics).
+# IADT: Demonstration / Testing. SSIV: AMS v0.2 → v1.0 readiness gate.
+# Traceability: AMS-v0.2-to-v1.0-readiness; AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault.
+# Show VV-only logical test means and exchanges introduced solely to demonstrate reachability over the v0.2 PCB path.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+fixture_controller: "[EA] Fixture Controller\n(XIAO/ESP32 or I2C analyzer)" { class: ea }
+
+system: "[System] AMS-V02-BRINGUP-001 I2C bring-up\nAMS v0.2→v1.0 readiness; Refs: IVV, AMS-R1, AMS-R2, AMS-R5" {
+  class: sys
+  direction: down
+
+  ams_pcb: "[PC] AMS PCB\n(UUT v0.2 delivery)" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    ams_backplane_connector: "[PC] Backplane Connector" {
+      class: pc
+      direction: down
+
+      connector_test_access: "[LC] Connector I2C/3V3\nTest Access\n(VV-only)" { class: lc }
+    }
+
+    bme280: "[PC] BME280" {
+      class: pc
+      direction: down
+
+      bme280_i2c_responder: "[LC] BME280 I2C\nResponder" { class: lc }
+    }
+
+    bringup_readiness_record: "[LC] Bring-up Evidence\nRecord\n(VV-only)" { class: lc }
+  }
+}
+
+logic_analyzer: "[EA] Logic Analyzer" { class: ea }
+host_logger: "[EA] Host PC /\nEvidence Logger" { class: ea }
+qa_witness: "[EA] QA Witness /\nReviewer" { class: ea }
+
+note_scope: "[C] v0.2 baseline has no flight LCs; VV-only\nlogical elements define test access and evidence.\nObserved BME280 responder behavior is credited\nonly for bring-up readiness." {
+  class: note
+  shape: page
+}
+note_target_ce: "[C] Target exchange: fixture I2C master →\nBackplane Connector test access → BME280 responder\nthrough the modeled PCB trace path; no direct\nsensor clip or jumper bypass." {
+  class: note
+  shape: page
+}
+note_power_i2c_pass: "[C] Pass iff current-limited 3V3 is confirmed,\nscan finds expected address 0x76/0x77, chip ID\nreturns 0x60, status/register evidence is logged,\nand 3/3 power-cycle/read attempts pass." {
+  class: note
+  shape: page
+}
+note_faults: "[C] Fail on no response, wrong address, NACK-only,\nstuck SDA/SCL, overcurrent, reversed power,\nmissing evidence, or uncontrolled bypass unless\ncontrolled as a deviation." {
+  class: note
+  shape: page
+}
+
+fixture_controller -> system.ams_pcb.ams_backplane_connector.connector_test_access: "[CE] cmd" { class: ce }
+system.ams_pcb.ams_backplane_connector.connector_test_access -> system.ams_pcb.bme280.bme280_i2c_responder: "[CE] I2C ↔ ACK" { class: ce }
+system.ams_pcb.ams_backplane_connector.connector_test_access -> logic_analyzer: "[CE] waveform" { class: ce }
+fixture_controller -> host_logger: "[CE] log" { class: ce }
+logic_analyzer -> host_logger: "[CE] waveform" { class: ce }
+host_logger -> system.ams_pcb.bringup_readiness_record: "[CE] evidence" { class: ce }
+system.ams_pcb.bringup_readiness_record -> qa_witness: "[CE] review" { class: ce }
+
+note_scope -> system.ams_pcb.bringup_readiness_record { class: cstr }
+note_target_ce -> system.ams_pcb.ams_backplane_connector.connector_test_access { class: cstr }
+note_power_i2c_pass -> system.ams_pcb.bringup_readiness_record { class: cstr }
+note_faults -> system.ams_pcb.bringup_readiness_record { class: cstr }

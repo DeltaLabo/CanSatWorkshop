@@ -1,0 +1,160 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# Functional chain: atmospheric measurement behavior extended through reference measurement, serial capture, comparison, and evidence logging.
+
+chain: "AMS-V01-FC-001 — Atmospheric measurement breadboard characterization\nTesting/Demonstration; AMS v0.1 → v0.2 readiness; Refs: IVV, AMS-R1, AMS-R3/R4/R5/R6\nTrace: AMS-v0.1-to-v0.2-readiness, AMS-UC-MeasureAtmosphere, AMS-UC-LogSerialTelemetry, AMS-FE-SensorBusFault" {
+  class: chain
+  direction: down
+
+  configure_test_case: "[F] Configure\ncharacterization point" { class: func }
+  record_instrument_ids: "[F] Record instrument\nIDs/calibration" { class: func }
+  measure_reference_temperature: "[F] Measure reference\ntemperature" { class: func }
+  measure_reference_pressure: "[F] Measure reference\npressure" { class: func }
+  record_reference_conditions: "[F] Record reference\nconditions" { class: func }
+  supply_stable_power: "[F] Supply stable\npower" { class: func }
+  record_voltage_current: "[F] Record voltage /\ncurrent" { class: func }
+  tag_sample_sequence: "[F] Tag sample\nsequence ID" { class: func }
+  timestamp_chain_steps: "[F] Timestamp read /\nprocess / log steps" { class: func }
+
+  measure_pressure: "[F] Measure\npressure" { class: func }
+  measure_temperature: "[F] Measure\ntemperature" { class: func }
+  respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+  read_pressure: "[F] Read\npressure" { class: func }
+  read_temperature: "[F] Read\ntemperature" { class: func }
+  calculate_altitude: "[F] Calculate\naltitude" { class: func }
+  process_temperature: "[F] Process\ntemperature" { class: func }
+  collect_measurements: "[F] Collect\nmeasurements" { class: func }
+  log_serial0: "[F] Log via\nSerial0" { class: func }
+
+  capture_serial0_log: "[F] Capture Serial0\nlog" { class: func }
+  parse_telemetry_fields: "[F] Parse telemetry\nfields" { class: func }
+  pair_samples_with_references: "[F] Pair samples\nwith references" { class: func }
+  compare_pressure_to_reference: "[F] Compare pressure\nto reference" { class: func }
+  compare_temperature_to_reference: "[F] Compare temperature\nto reference" { class: func }
+  evaluate_altitude_resolution: "[F] Evaluate altitude\nresolution" { class: func }
+  compute_uncertainty: "[F] Compute bias and\nexpanded uncertainty" { class: func }
+  compute_timing_statistics: "[F] Compute timing\nstatistics" { class: func }
+  archive_evidence: "[F] Archive raw data\nand pass/fail" { class: func }
+
+  note_n30: "[C] Pass condition: collect n ≥ 30 paired pressure/\ntemperature samples at the breadboard characterization\npoint before computing pass/fail statistics" { class: note; shape: page }
+  note_pressure: "[C] Pressure passes iff |P_AMS - P_ref| + U95 < 1 hPa\nfor the paired sample set" { class: note; shape: page }
+  note_temperature: "[C] Temperature passes iff |T_AMS - T_ref| + U95 < 0.5 °C\nwith the local test point inside 10-40 °C" { class: note; shape: page }
+  note_altitude: "[C] Altitude readiness passes iff the tested pressure delta\nshows < 10 m equivalent resolution; if no adequate\npressure delta is applied, record readiness limitation" { class: note; shape: page }
+  note_timing: "[C] Nominal read/process/calculate functions complete within\nmodeled constraints: I2C read timeout ≤5 ms, process/\ncalculate <5 ms; detailed fault-timeout proof may be\nreferenced to later I2C fault tests" { class: note; shape: page }
+  note_serial_stale: "[C] Serial payload shall carry current sample ID, pressure,\ntemperature, altitude, units/order, and shall not log\na stale measurement as current" { class: note; shape: page }
+  note_environment: "[C] Environment: reference thermometer and pressure reference\nreadings, calibration IDs, uncertainties, voltage/current,\nand anomalies are recorded before/with repetitions" { class: note; shape: page }
+  note_fault: "[C] Fault-hardening viewpoint: any unbounded blocking, lost\nserial logging, sensor-bus hang, or stale OK data fails\nthis readiness activity or creates a tracked dependency" { class: note; shape: page }
+}
+
+chain.configure_test_case -> chain.record_instrument_ids: "[FE] Test setup" { class: fe }
+chain.record_instrument_ids -> chain.measure_reference_temperature: "[FE] Thermometer\nID/uncertainty" { class: fe }
+chain.record_instrument_ids -> chain.measure_reference_pressure: "[FE] Pressure ref.\nID/uncertainty" { class: fe }
+chain.measure_reference_temperature -> chain.record_reference_conditions: "[FE] T_ref + U" { class: fe }
+chain.measure_reference_pressure -> chain.record_reference_conditions: "[FE] P_ref + U" { class: fe }
+chain.configure_test_case -> chain.supply_stable_power: "[FE] Power setup" { class: fe }
+chain.supply_stable_power -> chain.record_voltage_current: "[FE] Voltage/current" { class: fe }
+chain.configure_test_case -> chain.tag_sample_sequence: "[FE] n ≥ 30 sample plan" { class: fe }
+chain.tag_sample_sequence -> chain.timestamp_chain_steps: "[FE] Sample ID" { class: fe }
+
+chain.measure_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nsignal" { class: fe }
+chain.measure_temperature -> chain.respond_i2c_requests: "[FE] Temperature\nsignal" { class: fe }
+chain.read_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nI2C Req" { class: fe }
+chain.read_temperature -> chain.respond_i2c_requests: "[FE] Temperature\nI2C Req" { class: fe }
+chain.respond_i2c_requests -> chain.read_pressure: "[FE] Pressure" { class: fe }
+chain.respond_i2c_requests -> chain.read_temperature: "[FE] Temperature" { class: fe }
+chain.timestamp_chain_steps -> chain.read_pressure: "[FE] Timed pressure\nread request" { class: fe }
+chain.timestamp_chain_steps -> chain.read_temperature: "[FE] Timed temperature\nread request" { class: fe }
+chain.read_pressure -> chain.calculate_altitude: "[FE] Pressure" { class: fe }
+chain.read_temperature -> chain.process_temperature: "[FE] Temperature" { class: fe }
+chain.calculate_altitude -> chain.collect_measurements: "[FE] Result\n[Altitude]" { class: fe }
+chain.process_temperature -> chain.collect_measurements: "[FE] Result\n[Temperature]" { class: fe }
+chain.tag_sample_sequence -> chain.collect_measurements: "[FE] Sample ID" { class: fe }
+chain.collect_measurements -> chain.log_serial0: "[FE] Measurement\npayload" { class: fe }
+
+chain.log_serial0 -> chain.capture_serial0_log: "[FE] Serial0 line" { class: fe }
+chain.capture_serial0_log -> chain.parse_telemetry_fields: "[FE] Raw payload" { class: fe }
+chain.parse_telemetry_fields -> chain.pair_samples_with_references: "[FE] Parsed values\n+ sample ID" { class: fe }
+chain.record_reference_conditions -> chain.pair_samples_with_references: "[FE] Reference\nconditions" { class: fe }
+chain.pair_samples_with_references -> chain.compare_pressure_to_reference: "[FE] Pressure pairs" { class: fe }
+chain.pair_samples_with_references -> chain.compare_temperature_to_reference: "[FE] Temperature pairs" { class: fe }
+chain.compare_pressure_to_reference -> chain.evaluate_altitude_resolution: "[FE] Pressure delta /\naltitude input" { class: fe }
+chain.compare_pressure_to_reference -> chain.compute_uncertainty: "[FE] Pressure error" { class: fe }
+chain.compare_temperature_to_reference -> chain.compute_uncertainty: "[FE] Temperature error" { class: fe }
+chain.evaluate_altitude_resolution -> chain.compute_uncertainty: "[FE] Altitude\nresolution result" { class: fe }
+chain.timestamp_chain_steps -> chain.compute_timing_statistics: "[FE] Read/process/log\ntimestamps" { class: fe }
+chain.record_voltage_current -> chain.compute_timing_statistics: "[FE] Power context" { class: fe }
+chain.compute_uncertainty -> chain.archive_evidence: "[FE] Accuracy pass/fail" { class: fe }
+chain.compute_timing_statistics -> chain.archive_evidence: "[FE] Timing pass/fail" { class: fe }
+
+chain.note_n30 -> chain.tag_sample_sequence { class: cstr }
+chain.note_n30 -> chain.compute_uncertainty { class: cstr }
+chain.note_pressure -> chain.compare_pressure_to_reference { class: cstr }
+chain.note_pressure -> chain.compute_uncertainty { class: cstr }
+chain.note_temperature -> chain.compare_temperature_to_reference { class: cstr }
+chain.note_temperature -> chain.compute_uncertainty { class: cstr }
+chain.note_altitude -> chain.evaluate_altitude_resolution { class: cstr }
+chain.note_altitude -> chain.calculate_altitude { class: cstr }
+chain.note_timing -> chain.timestamp_chain_steps { class: cstr }
+chain.note_timing -> chain.compute_timing_statistics { class: cstr }
+chain.note_serial_stale -> chain.parse_telemetry_fields { class: cstr }
+chain.note_serial_stale -> chain.collect_measurements { class: cstr }
+chain.note_environment -> chain.record_reference_conditions { class: cstr }
+chain.note_environment -> chain.record_voltage_current { class: cstr }
+chain.note_fault -> chain.respond_i2c_requests { class: cstr }
+chain.note_fault -> chain.archive_evidence { class: cstr }
+
+# Layout-only edges to keep setup, UUT flow, and evidence flow in readable bands.
+chain.record_voltage_current -> chain.tag_sample_sequence { style: { opacity: 0 } }
+chain.read_temperature -> chain.calculate_altitude { style: { opacity: 0 } }
+chain.process_temperature -> chain.log_serial0 { style: { opacity: 0 } }
+chain.compute_timing_statistics -> chain.note_n30 { style: { opacity: 0 } }
+chain.note_n30 -> chain.note_pressure { style: { opacity: 0 } }
+chain.note_pressure -> chain.note_temperature { style: { opacity: 0 } }
+chain.note_temperature -> chain.note_altitude { style: { opacity: 0 } }
+chain.note_altitude -> chain.note_timing { style: { opacity: 0 } }
+chain.note_timing -> chain.note_serial_stale { style: { opacity: 0 } }
+chain.note_serial_stale -> chain.note_environment { style: { opacity: 0 } }
+chain.note_environment -> chain.note_fault { style: { opacity: 0 } }

@@ -1,0 +1,111 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain — AMS-V02-PCB-001 manufacturability and physical-link analysis
+# IADT: Inspection with supporting Analysis. SSIV: AMS v0.2 advancement to v1.0 integrated build.
+# Traceability: AMS-v0.2-to-v1.0-readiness; AMS-UC-MeasureAtmosphere; AMS-FE-BadManufacturing; AMS-FE-SensorBusFault.
+# References: IVV, AMS-R1 (BME280), AMS-R2 (I2C), v0.2 PA baseline, fabrication/rework traveler.
+# Scope boundary: analysis of delivered PCB evidence; powered I2C bring-up is AMS-V02-BRINGUP-001.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "AMS-V02-PCB-001 — Manufacturability / physical-link analysis\nInspection + Analysis; AMS v0.2 to v1.0 readiness; Refs: IVV, AMS-R1, AMS-R2\nTrace: AMS-v0.2-to-v1.0-readiness, AMS-UC-MeasureAtmosphere, AMS-FE-BadManufacturing, AMS-FE-SensorBusFault" {
+  class: chain
+  direction: down
+
+  identify_v02_baseline: "[F] Identify v0.2\nPCB baseline" { class: func }
+  retrieve_traveler_records: "[F] Retrieve traveler /\nrework records" { class: func }
+  inventory_model_elements: "[F] Inventory 3 PCs,\n3 PLs, 1 constraint" { class: func }
+  review_carvera_limits: "[F] Review Carvera Air\nCNC limits/features" { class: func }
+  review_solder_method: "[F] Review reflux/manual\nsoldering evidence" { class: func }
+  inspect_bme280_footprint: "[F] Analyze BME280\nfootprint correctness" { class: func }
+  inspect_connector_footprint: "[F] Analyze connector\nfootprint/fit" { class: func }
+  inspect_trace_route: "[F] Analyze I2C + 3V3\nroute and pads" { class: func }
+  review_unpowered_continuity: "[F] Review unpowered\ncontinuity support" { class: func }
+  evaluate_deviations: "[F] Evaluate deviations,\nwaivers, model updates" { class: func }
+  classify_readiness: "[F] Classify PCB delivery\nreadiness gate" { class: func }
+  archive_report_inputs: "[F] Archive evidence index\nand report inputs" { class: func }
+
+  note_scope: "[C] Scope covers the v0.2 delivered PCB physical system:\n[PC] AMS PCB, [PC] BME280, [PC] Backplane Connector;\n[PL] BME280 Footprint, Connector footprint, I2C + 3V3 traces;\nand the Carvera/reflux/manual manufacturability constraint" { class: note; shape: page }
+  note_stat: "[C] Statistical basis: 100% census review of the single\ndelivered PCB article and all modeled v0.2 PC/PL targets;\nno sample-based reliability or powered-function claim" { class: note; shape: page }
+  note_manufacturing: "[C] Pass iff PCB outline, drill/edge/features, material/process\nevidence, and selected soldering method are compatible with\nCarvera Air CNC and reflux or manual soldering; unclear\nmanufacturing evidence is a finding" { class: note; shape: page }
+  note_footprints: "[C] Pass iff BME280 and backplane connector footprints/components\nare present, correct orientation, correct pitch/variant, and\nfree from visible damage, FOD, opens, bridges, or lifted pads" { class: note; shape: page }
+  note_traces: "[C] Pass iff I2C + 3V3 route/pads are present with no visual\nopens/shorts or unapproved jumpers; DMM continuity is unpowered\ninspection support and cannot credit powered I2C behavior" { class: note; shape: page }
+  note_failure: "[C] Any missing, wrong, ambiguous component, footprint, route,\ncontrolled-interface mismatch, manufacturing deviation, or\nuncontrolled rework fails unless a controlled waiver/model\nupdate exists before v1.0 integration" { class: note; shape: page }
+  note_fault_hardening: "[C] Fault-hardening viewpoint: bad manufacturing, wrong part\nvariant/orientation, pitch mismatch, solder bridge, open trace,\nshorted 3V3/I2C, lifted pad, FOD/contamination, and hidden\njumper/bypass that masks a sensor-bus fault" { class: note; shape: page }
+  note_no_bringup: "[C] Exclusion: no powered 3V3 application, I2C address scan,\nchip-ID/status read, logic-analyzer ACK evidence, or power-cycle\nrepeat is credited here; those belong to AMS-V02-BRINGUP-001" { class: note; shape: page }
+}
+
+chain.identify_v02_baseline -> chain.retrieve_traveler_records: "[FE] Article ID\nand revision" { class: fe }
+chain.retrieve_traveler_records -> chain.inventory_model_elements: "[FE] Traveler /\nrework evidence" { class: fe }
+chain.inventory_model_elements -> chain.review_carvera_limits: "[FE] Modeled\ncoverage list" { class: fe }
+chain.review_carvera_limits -> chain.review_solder_method: "[FE] CNC\ncompatibility result" { class: fe }
+chain.review_solder_method -> chain.inspect_bme280_footprint: "[FE] Soldering\nevidence" { class: fe }
+chain.inspect_bme280_footprint -> chain.inspect_connector_footprint: "[FE] BME280\nfootprint findings" { class: fe }
+chain.inspect_connector_footprint -> chain.inspect_trace_route: "[FE] Connector\nfit findings" { class: fe }
+chain.inspect_trace_route -> chain.review_unpowered_continuity: "[FE] Trace/pad\nfindings" { class: fe }
+chain.review_unpowered_continuity -> chain.evaluate_deviations: "[FE] Continuity\nsupport findings" { class: fe }
+chain.evaluate_deviations -> chain.classify_readiness: "[FE] Waiver / model\nupdate status" { class: fe }
+chain.classify_readiness -> chain.archive_report_inputs: "[FE] Gate result\nand evidence index" { class: fe }
+
+chain.note_scope -> chain.inventory_model_elements { class: cstr }
+chain.note_stat -> chain.inventory_model_elements { class: cstr }
+chain.note_manufacturing -> chain.review_carvera_limits { class: cstr }
+chain.note_manufacturing -> chain.review_solder_method { class: cstr }
+chain.note_footprints -> chain.inspect_bme280_footprint { class: cstr }
+chain.note_footprints -> chain.inspect_connector_footprint { class: cstr }
+chain.note_traces -> chain.inspect_trace_route { class: cstr }
+chain.note_traces -> chain.review_unpowered_continuity { class: cstr }
+chain.note_failure -> chain.evaluate_deviations { class: cstr }
+chain.note_failure -> chain.classify_readiness { class: cstr }
+chain.note_fault_hardening -> chain.evaluate_deviations { class: cstr }
+chain.note_no_bringup -> chain.review_unpowered_continuity { class: cstr }
+
+# Layout-only edge to keep analysis constraints grouped after the analysis sequence.
+chain.archive_report_inputs -> chain.note_scope { style: { opacity: 0 } }
+chain.note_scope -> chain.note_stat { style: { opacity: 0 } }
+chain.note_stat -> chain.note_manufacturing { style: { opacity: 0 } }
+chain.note_manufacturing -> chain.note_footprints { style: { opacity: 0 } }
+chain.note_footprints -> chain.note_traces { style: { opacity: 0 } }
+chain.note_traces -> chain.note_failure { style: { opacity: 0 } }
+chain.note_failure -> chain.note_fault_hardening { style: { opacity: 0 } }
+chain.note_fault_hardening -> chain.note_no_bringup { style: { opacity: 0 } }

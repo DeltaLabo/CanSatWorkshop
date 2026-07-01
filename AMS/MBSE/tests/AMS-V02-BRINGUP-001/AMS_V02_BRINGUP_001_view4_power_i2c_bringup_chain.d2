@@ -1,0 +1,121 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain — AMS-V02-BRINGUP-001 powered bring-up and I2C reachability sequence
+# Verification references: IVV, AMS-R1 (BME280), AMS-R2 (I2C), AMS-R5 (statistics).
+# IADT: Demonstration / Testing. SSIV: AMS v0.2 → v1.0 readiness gate.
+# Traceability: AMS-v0.2-to-v1.0-readiness; AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "AMS-V02-BRINGUP-001 — Power and I2C bring-up chain\nDemonstration / Testing; AMS v0.2→v1.0 readiness; Refs: IVV, AMS-R1, AMS-R2, AMS-R5\nTrace: AMS-v0.2-to-v1.0-readiness; AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault" {
+  class: chain
+  direction: down
+
+  identify_uut_fixture: "[F] Identify v0.2 UUT\nand controlled fixture" { class: func }
+  read_ambient_conditions: "[F] Read ambient\nlab conditions" { class: func }
+  place_in_esd_fixture: "[F] Place PCB in\nESD fixture" { class: func }
+  inspect_safe_setup: "[F] Inspect safe\npre-power setup" { class: func }
+  configure_current_limit: "[F] Configure current-limited\n3V3/GND supply" { class: func }
+  connect_fixture_path: "[F] Connect fixture through\nBackplane Connector" { class: func }
+  apply_power: "[F] Apply current-limited\n3V3/GND" { class: func }
+  measure_connector_power: "[F] Measure connector\n3V3/GND" { class: func }
+  measure_bme280_power: "[F] Measure BME280\npad 3V3/GND" { class: func }
+  scan_i2c_bus: "[F] Scan I2C\nbus" { class: func }
+  validate_expected_address: "[F] Validate expected\nBME280 address" { class: func }
+  read_chip_id_status: "[F] Read BME280 chip ID /\nstatus/register" { class: func }
+  capture_i2c_waveform: "[F] Capture and decode\n3V3 I2C waveform" { class: func }
+  log_cycle_evidence: "[F] Log cycle\nevidence" { class: func }
+  remove_power: "[F] Remove power /\nsettle bus" { class: func }
+  power_cycle_repeat: "[F] Power-cycle and repeat\nuntil 3 attempts complete" { class: func }
+  assess_bringup_result: "[F] Assess pass/fail\nreadiness" { class: func }
+  archive_report_inputs: "[F] Archive report\ninputs" { class: func }
+
+  note_environment: "[C] ESD-safe bench and ambient lab\ntemperature/humidity recorded before repetitions;\nstop immediately on abnormal heating, smoke,\nsmell, visible damage, or operator concern." { class: note; shape: page }
+  note_power: "[C] Pass power step iff no short, no current-limit\ntrip/overcurrent, no reverse polarity, and\n3.3 V ±5% is measured at connector and BME280\nbefore any I2C scan is credited." { class: note; shape: page }
+  note_path: "[C] I2C/power stimulus must enter through\nthe Backplane Connector and modeled I2C + 3V3\ntraces. Direct BME280 clips, fixture-only jumpers,\nor unmodeled bypass paths fail the attempt." { class: note; shape: page }
+  note_i2c: "[C] Pass I2C step iff BME280 appears at expected\nbuild-record address (0x76 or 0x77), chip ID\nregister returns 0x60, and status/register read\nevidence is captured." { class: note; shape: page }
+  note_logic: "[C] Logic analyzer evidence shall show 3V3 I2C\nSTART/STOP activity, valid ACK for the BME280\ntransaction, and no stuck SDA/SCL during nominal\nbring-up." { class: note; shape: page }
+  note_repeats: "[C] Statistical viewpoint: require 3/3 complete\npower-cycle/read attempts passing. This is an\nincremental bring-up demonstration, not a\nreliability or 95/95 timing claim." { class: note; shape: page }
+  note_fail: "[C] Fail on no-response, wrong address, NACK-only\nbehavior, overcurrent, reversed power, stuck SDA/SCL,\nunlogged evidence, or bypass unless controlled as\na deviation in the report." { class: note; shape: page }
+}
+
+chain.identify_uut_fixture -> chain.read_ambient_conditions: "[FE] UUT/fixture\nidentity" { class: fe }
+chain.read_ambient_conditions -> chain.place_in_esd_fixture: "[FE] Ambient\nrecord" { class: fe }
+chain.place_in_esd_fixture -> chain.inspect_safe_setup: "[FE] Secured UUT" { class: fe }
+chain.inspect_safe_setup -> chain.configure_current_limit: "[FE] Safe to\nconfigure" { class: fe }
+chain.configure_current_limit -> chain.connect_fixture_path: "[FE] Power limit\nsettings" { class: fe }
+chain.connect_fixture_path -> chain.apply_power: "[FE] Connector path\nready" { class: fe }
+chain.apply_power -> chain.measure_connector_power: "[FE] Energized\nconnector" { class: fe }
+chain.measure_connector_power -> chain.measure_bme280_power: "[FE] Connector\n3V3/GND OK" { class: fe }
+chain.measure_bme280_power -> chain.scan_i2c_bus: "[FE] BME280 power\nOK" { class: fe }
+chain.scan_i2c_bus -> chain.validate_expected_address: "[FE] Address\nlist" { class: fe }
+chain.validate_expected_address -> chain.read_chip_id_status: "[FE] Expected\naddress selected" { class: fe }
+chain.read_chip_id_status -> chain.capture_i2c_waveform: "[FE] Register data" { class: fe }
+chain.capture_i2c_waveform -> chain.log_cycle_evidence: "[FE] Decoded ACK /\nwaveform" { class: fe }
+chain.log_cycle_evidence -> chain.remove_power: "[FE] Cycle evidence" { class: fe }
+chain.remove_power -> chain.power_cycle_repeat: "[FE] Cycle complete;\npower settled" { class: fe }
+chain.power_cycle_repeat -> chain.assess_bringup_result: "[FE] 3 attempts\ncomplete" { class: fe }
+chain.assess_bringup_result -> chain.archive_report_inputs: "[FE] Pass/fail +\ndeviations" { class: fe }
+
+chain.note_environment -> chain.read_ambient_conditions { class: cstr }
+chain.note_environment -> chain.place_in_esd_fixture { class: cstr }
+chain.note_power -> chain.apply_power { class: cstr }
+chain.note_power -> chain.measure_connector_power { class: cstr }
+chain.note_power -> chain.measure_bme280_power { class: cstr }
+chain.note_path -> chain.connect_fixture_path { class: cstr }
+chain.note_path -> chain.scan_i2c_bus { class: cstr }
+chain.note_i2c -> chain.validate_expected_address { class: cstr }
+chain.note_i2c -> chain.read_chip_id_status { class: cstr }
+chain.note_logic -> chain.capture_i2c_waveform { class: cstr }
+chain.note_repeats -> chain.power_cycle_repeat { class: cstr }
+chain.note_repeats -> chain.assess_bringup_result { class: cstr }
+chain.note_fail -> chain.assess_bringup_result { class: cstr }
+
+# Layout-only edges to keep constraints after the execution sequence.
+chain.archive_report_inputs -> chain.note_environment { style: { opacity: 0 } }
+chain.note_environment -> chain.note_power { style: { opacity: 0 } }
+chain.note_power -> chain.note_path { style: { opacity: 0 } }
+chain.note_path -> chain.note_i2c { style: { opacity: 0 } }
+chain.note_i2c -> chain.note_logic { style: { opacity: 0 } }
+chain.note_logic -> chain.note_repeats { style: { opacity: 0 } }
+chain.note_repeats -> chain.note_fail { style: { opacity: 0 } }

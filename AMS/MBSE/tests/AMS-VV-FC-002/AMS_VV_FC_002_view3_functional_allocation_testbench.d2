@@ -1,0 +1,308 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view — AMS-VV-FC-002 peripheral initialisation testbench
+# Verification references: IVV, AMS-R1 (BME280), AMS-R2 (I2C), AMS-R5 (statistics).
+# IADT: Testing / Demonstration. Traceability: AMS-UC-InitializePeripheral,
+# AMS-FE-SensorBusFault, AMS-FE-StartupFault, variable-getter/I2C-timeout/no-blocking constraints.
+# Show PA allocation plus VV-only actors, functions, and pass/fail constraints.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-VV-FC-002 Peripheral initialisation\nFinal acceptance; Refs: IVV, AMS-R1, AMS-R2, AMS-R5" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        bme280: "[PC] BME280" {
+          class: pc
+          direction: down
+
+          ams_sensing: "[LC] AMS Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 3
+
+            measure_pressure: "[F] Measure\npressure" { class: func }
+            measure_temperature: "[F] Measure\ntemp." { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+          }
+
+          note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
+            class: note
+            shape: page
+          }
+          note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+            class: note
+            shape: page
+          }
+        }
+
+        ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+
+          ams_processing: "[LC] AMS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 3
+
+            get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+            read_pressure: "[F] Read\npressure" { class: func }
+            read_temperature: "[F] Read\ntemperature" { class: func }
+            calculate_altitude: "[F] Calculate\naltitude" { class: func }
+            process_temperature: "[F] Process\ntemperature" { class: func }
+
+            note_resolution: "[C] Resolution\n< 10m" {
+              class: note
+              shape: page
+            }
+          }
+
+          obcc: "[LC] OBCC" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+            collect_critical_startup_fault: "[F] Collect critical\nstartup fault/status" { class: func }
+            collect_measurements: "[F] Collect\nmeasurements" { class: func }
+          }
+
+          init_test_instrumentation: "[LC] Init-State Test\nInstrumentation\n(VV-only)" {
+            class: lc
+            direction: down
+            grid-columns: 2
+
+            command_boot_init_trial: "[F] Command boot /\ninit trial" { class: func }
+            timestamp_boot_init_result: "[F] Timestamp boot\nand init result" { class: func }
+            tag_fault_mode_trial: "[F] Tag fault mode\nand trial ID" { class: func }
+            monitor_startup_responsiveness: "[F] Monitor startup\nresponsiveness" { class: func }
+            compare_obcc_status: "[F] Compare OBCC status\nto fault condition" { class: func }
+            emit_init_evidence_record: "[F] Emit init\nevidence record" { class: func }
+          }
+        }
+
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+        note_variable_getter: "[C] Init-state getter shall report a\ncurrent value or bounded status; no stale\ndefault OK is accepted" {
+          class: note
+          shape: page
+        }
+        note_i2c_timeout: "[C] Init I2C failures shall be bounded by\nstartup fault/status handling; environmental-read\n≤5 ms proof remains AMS-VV-CON-003" {
+          class: note
+          shape: page
+        }
+        note_no_blocking: "[C] No unbounded blocking during boot/init;\nfaulted startup shall remain observable by the logger" {
+          class: note
+          shape: page
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ams_headers: "[PC] 2mm 2x6 AMS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+  }
+}
+
+test_operator: "[EA] AMS-VV\nTest Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  configure_test_case: "[F] Configure\ntest case" { class: func }
+  select_stat_claim: "[F] Select statistical\nclaim / screening" { class: func }
+  authorize_power_cycle: "[F] Authorize\npower cycle" { class: func }
+  authorize_fault_injection: "[F] Authorize fault\ninjection" { class: func }
+  record_anomalies: "[F] Record\nanomalies" { class: func }
+  archive_evidence: "[F] Archive\nevidence" { class: func }
+}
+
+host_pc_logger: "[EA] Host PC /\nBoot Logger" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  command_nominal_boot_batch: "[F] Command nominal\nboot batch" { class: func }
+  capture_boot_init_log: "[F] Capture boot /\ninit log" { class: func }
+  compute_binary_statistics: "[F] Compute binary\nstatistics" { class: func }
+  generate_evidence_manifest: "[F] Generate evidence\nmanifest" { class: func }
+}
+
+power_cycle_fixture: "[EA] Bench Power /\nPower-Cycle Fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  supply_stable_power: "[F] Supply stable\n3V3 power" { class: func }
+  power_cycle_uut: "[F] Power-cycle\nUUT" { class: func }
+  record_voltage_current: "[F] Record voltage /\ncurrent" { class: func }
+}
+
+fault_fixture: "[EA] I2C Fault /\nBME280 Disconnect Fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  pass_nominal_i2c: "[F] Pass nominal\nI2C" { class: func }
+  disconnect_or_force_nack: "[F] Disconnect BME280\n/ force NACK" { class: func }
+  hold_sda_low: "[F] Hold SDA\nlow" { class: func }
+  hold_scl_low: "[F] Hold SCL\nlow" { class: func }
+  release_fault_between_trials: "[F] Release fault\nbetween startup trials" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient Thermometer\n/ Logger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  read_ambient_temperature: "[F] Read ambient\ntemperature" { class: func }
+}
+
+evidence_repository: "[EA] Evidence Repository\nControlled Storage" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  store_raw_logs: "[F] Store raw\nboot logs" { class: func }
+  store_fixture_config: "[F] Store fixture\nconfiguration" { class: func }
+  store_report_artifacts: "[F] Store report\nartifacts" { class: func }
+}
+
+note_nominal_pass: "[C] Nominal pass: boot/init sequence returns a\nvalid BME280 init state and OBCC collects the\nsame current state before readiness is accepted" {
+  class: note
+  shape: page
+}
+note_nominal_stats: "[C] Use 29/29 nominal boot successes for an\nR90/C95 binary success claim; fewer repetitions\nshall be labelled screening" {
+  class: note
+  shape: page
+}
+note_startup_fault: "[C] Startup-fault pass: absent/NACK BME280 or\nheld SDA/SCL returns a bounded critical startup\nfault/status and does not create unbounded blocking" {
+  class: note
+  shape: page
+}
+note_no_stale_ok: "[C] Faulted states shall not be reported as\nnominal OK; no stale init state or default success\nvalue is accepted" {
+  class: note
+  shape: page
+}
+note_con003_dep: "[C] Dependency only: AMS-VV-CON-003 owns detailed\nenvironmental-read timeout proof and recovery after\nreleased runtime I2C fault; this activity observes startup behavior" {
+  class: note
+  shape: page
+}
+note_environment: "[C] Record ambient 20-30 °C, stable 3V3/common\nground, power-cycle count, and exact fault-fixture\nmode before repetitions" {
+  class: note
+  shape: page
+}
+
+system.cansat.ams_module.ams_pcb.bme280.note_accuracy_pressure -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_pressure { class: cstr }
+system.cansat.ams_module.ams_pcb.bme280.note_accuracy_temperature -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.note_resolution -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.calculate_altitude { class: cstr }
+
+system.cansat.obcc_module.obcc_pcb.note_variable_getter -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.get_bme280_init_state { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_variable_getter -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.collect_peripheral_init_states { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_i2c_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.get_bme280_init_state { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.get_bme280_init_state { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module.obcc_pcb.xiao.init_test_instrumentation.monitor_startup_responsiveness { class: cstr }
+
+note_nominal_pass -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.get_bme280_init_state { class: cstr }
+note_nominal_pass -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.collect_peripheral_init_states { class: cstr }
+note_nominal_stats -> host_pc_logger.compute_binary_statistics { class: cstr }
+note_nominal_stats -> test_operator.select_stat_claim { class: cstr }
+note_startup_fault -> fault_fixture.disconnect_or_force_nack { class: cstr }
+note_startup_fault -> fault_fixture.hold_sda_low { class: cstr }
+note_startup_fault -> fault_fixture.hold_scl_low { class: cstr }
+note_startup_fault -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.collect_critical_startup_fault { class: cstr }
+note_startup_fault -> system.cansat.obcc_module.obcc_pcb.xiao.init_test_instrumentation.monitor_startup_responsiveness { class: cstr }
+note_no_stale_ok -> system.cansat.obcc_module.obcc_pcb.xiao.init_test_instrumentation.compare_obcc_status { class: cstr }
+note_no_stale_ok -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.collect_peripheral_init_states { class: cstr }
+note_con003_dep -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.read_pressure { class: cstr }
+note_con003_dep -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.read_temperature { class: cstr }
+note_environment -> ambient_thermometer.read_ambient_temperature { class: cstr }
+note_environment -> power_cycle_fixture.record_voltage_current { class: cstr }
+note_environment -> evidence_repository.store_fixture_config { class: cstr }
+
+# Layout-only edges to stack VV actors and constraints below UUT allocation.
+system -> test_operator { style: { opacity: 0 } }
+test_operator -> host_pc_logger { style: { opacity: 0 } }
+host_pc_logger -> power_cycle_fixture { style: { opacity: 0 } }
+power_cycle_fixture -> fault_fixture { style: { opacity: 0 } }
+fault_fixture -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> evidence_repository { style: { opacity: 0 } }
+evidence_repository -> note_nominal_pass { style: { opacity: 0 } }
+note_nominal_pass -> note_nominal_stats { style: { opacity: 0 } }
+note_nominal_stats -> note_startup_fault { style: { opacity: 0 } }
+note_startup_fault -> note_no_stale_ok { style: { opacity: 0 } }
+note_no_stale_ok -> note_con003_dep { style: { opacity: 0 } }
+note_con003_dep -> note_environment { style: { opacity: 0 } }

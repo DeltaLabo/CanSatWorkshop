@@ -1,0 +1,167 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical view — AMS-VV-CON-001 sunlight-blocking / airflow exposure testbench
+# Verification references: IVV, AMS-R3 (thermal/meteorological exposure), AMS-R6 (CanSat environmental context), AMS-R5 (paired-sample statistics if used).
+# Traceability: [C] Block sunlight, allow airflow; AMS-FE-BadExposure; AMS-UC-MeasureAtmosphere; temperature-accuracy constraint context.
+# IADT: Inspection / Demonstration for AMS v1.0 final acceptance.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-VV-CON-001 exposure constraint\nAMS v1.0 final acceptance\nRefs: IVV, AMS-R3, AMS-R6, AMS-R5" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: right
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        direction: down
+
+        bme280: "[PC] BME280" { class: pc }
+        ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ams_headers: "[PC] 2mm 2x6 AMS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+
+        xiao: "[PC] XIAO ESP32-S3" { class: pc }
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+  }
+}
+
+inspector_operator: "[EA] Inspector /\nTest Operator" { class: ea }
+sun_simulator: "[EA] Inspection Light /\nSun Simulator" { class: ea }
+airflow_indicator: "[EA] Anemometer /\nSmoke Flow Indicator" { class: ea }
+ambient_thermometer: "[EA] Ambient / Reference\nThermometer" { class: ea }
+evidence_camera: "[EA] Camera /\nVideo Recorder" { class: ea }
+evidence_repository: "[EA] Evidence\nRepository" { class: ea }
+shade_vent_fixture: "[EA] Shade / Ventilation\nFixture" { class: ea }
+
+note_source_constraint: "[C] Source constraint:\nBlock sunlight,\nallow airflow" {
+  class: note
+  shape: page
+}
+note_no_los: "[C] Pass: no direct solar or\nbright-lamp line of sight reaches\nthe BME280 in the modeled\ninstalled configuration" {
+  class: note
+  shape: page
+}
+note_airflow_path: "[C] Pass: airflow path to the\nBME280 / AMS module is not\nobstructed by fixture, wiring,\nevidence equipment, or CanSat structure" {
+  class: note
+  shape: page
+}
+note_environment: "[C] Ambient/reference conditions\nare recorded before demonstration:\nthermometer ID, location, time,\nand uncertainty / tolerance" {
+  class: note
+  shape: page
+}
+note_paired_bias: "[C] Optional paired temperature-bias\ncheck: if used, include uncertainty\nand require |bias| + U95 ≤ 0.5 °C;\ndoes not replace AMS-VV-FC-001" {
+  class: note
+  shape: page
+}
+note_fail_modes: "[C] Fail if blocked airflow, direct\nradiation path, heat-soak bias without\nmitigation, or unmodeled temporary\nshielding is found without waiver/update" {
+  class: note
+  shape: page
+}
+
+system.cansat.ams_module.ams_pcb -- system.cansat.ams_module: "[PL] Screws" { class: pl }
+system.cansat.obcc_module.obcc_pcb -- system.cansat.obcc_module: "[PL] Screws" { class: pl }
+
+system.cansat.ams_module -- system.cansat.backplane_pcb: "[PL] Backplane\nFixture" { class: pl }
+system.cansat.obcc_module -- system.cansat.backplane_pcb: "[PL] Backplane\nFixture" { class: pl }
+
+system.cansat.ams_module.ams_pcb.bme280 -- system.cansat.ams_module.ams_pcb: "[PL] BME280\nFootprint" { class: pl }
+system.cansat.ams_module.ams_pcb.ams_backplane_connector -- system.cansat.ams_module.ams_pcb: "[PL] Connector\nfootprint" { class: pl }
+system.cansat.ams_module.ams_pcb.bme280 -- system.cansat.ams_module.ams_pcb.ams_backplane_connector: "[PL] I2C + 3V3\ntraces" { class: pl }
+system.cansat.ams_module.ams_pcb.ams_backplane_connector -- system.cansat.backplane_pcb.ams_headers: "[PL] Parallel\nConnector" { class: pl }
+
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb: "[PL] XIAO\nFootprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.obcc_module.obcc_pcb: "[PL] Connector\nfootprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C + 3V3\ntraces" { class: pl }
+system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.backplane_pcb.obcc_headers: "[PL] Parallel\nCable" { class: pl }
+
+system.cansat.backplane_pcb.ams_headers -- system.cansat.backplane_pcb.spine: "[PL] Footprint" { class: pl }
+system.cansat.backplane_pcb.obcc_headers -- system.cansat.backplane_pcb.spine: "[PL] Footprint" { class: pl }
+
+inspector_operator -- system.cansat: "[PL] Manual access /\nvisual inspection" { class: pl }
+sun_simulator -- system.cansat.ams_module: "[PL] Bright-light\nexposure axis" { class: pl }
+airflow_indicator -- system.cansat.ams_module: "[PL] Visible airflow\npath / probe" { class: pl }
+ambient_thermometer -- system.cansat: "[PL] Ambient probe\nnear article" { class: pl }
+evidence_camera -- system.cansat.ams_module: "[PL] Photo/video\nline of sight" { class: pl }
+shade_vent_fixture -- system.cansat.ams_module: "[PL] Installed shade /\nventilation path" { class: pl }
+evidence_repository -- evidence_camera: "[PL] Evidence\ntransfer" { class: pl }
+
+note_source_constraint -> system.cansat.ams_module { class: cstr }
+note_no_los -> system.cansat.ams_module.ams_pcb.bme280 { class: cstr }
+note_no_los -> sun_simulator { class: cstr }
+note_no_los -> shade_vent_fixture { class: cstr }
+note_airflow_path -> system.cansat.ams_module { class: cstr }
+note_airflow_path -> airflow_indicator { class: cstr }
+note_environment -> ambient_thermometer { class: cstr }
+note_environment -> inspector_operator { class: cstr }
+note_paired_bias -> system.cansat.ams_module.ams_pcb.bme280 { class: cstr }
+note_paired_bias -> ambient_thermometer { class: cstr }
+note_fail_modes -> system.cansat.ams_module { class: cstr }
+note_fail_modes -> evidence_repository { class: cstr }

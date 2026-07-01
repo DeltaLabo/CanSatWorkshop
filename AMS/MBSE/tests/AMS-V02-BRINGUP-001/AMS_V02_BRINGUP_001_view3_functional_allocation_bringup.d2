@@ -1,0 +1,253 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view — AMS-V02-BRINGUP-001 powered bring-up functions
+# Verification references: IVV, AMS-R1 (BME280), AMS-R2 (I2C), AMS-R5 (statistics).
+# IADT: Demonstration / Testing. SSIV: AMS v0.2 → v1.0 readiness gate.
+# Traceability: AMS-v0.2-to-v1.0-readiness; AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault.
+# Show UUT-observed functions plus VV-only functions allocated to test means; no PL/CE/FE in this view.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-V02-BRINGUP-001 powered bring-up functions\nAMS v0.2→v1.0 readiness; Refs: IVV, AMS-R1, AMS-R2, AMS-R5" {
+  class: sys
+  direction: down
+
+  ams_pcb: "[PC] AMS PCB\n(UUT v0.2 delivery)" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    bme280: "[PC] BME280" {
+      class: pc
+      direction: down
+
+      bme280_i2c_responder: "[LC] BME280 I2C\nResponder" {
+        class: lc
+        direction: down
+        grid-columns: 1
+
+        power_up_sensor: "[F] Power up\nsensor" { class: func }
+        acknowledge_i2c_address: "[F] Acknowledge\nI2C address" { class: func }
+        return_chip_id_status: "[F] Return chip ID /\nstatus/register" { class: func }
+      }
+    }
+
+    ams_backplane_connector: "[PC] Backplane Connector" {
+      class: pc
+      direction: down
+
+      connector_test_access: "[LC] Connector I2C/3V3\nTest Access\n(VV-only)" {
+        class: lc
+        direction: down
+        grid-columns: 1
+
+        route_current_limited_power: "[F] Route current-limited\n3V3/GND to traces" { class: func }
+        route_i2c_signals: "[F] Route SDA/SCL\nto BME280 traces" { class: func }
+        expose_probe_points: "[F] Expose connector /\npad measurement points" { class: func }
+      }
+    }
+
+    bringup_readiness_record: "[LC] Bring-up Readiness\nGate\n(VV-only)" {
+      class: lc
+      direction: down
+      grid-columns: 1
+
+      judge_readiness: "[F] Judge v0.2→v1.0\nreadiness" { class: func }
+      record_deviations: "[F] Record controlled\ndeviations" { class: func }
+    }
+  }
+}
+
+esd_fixture: "[EA] ESD Fixture /\nUUT Cradle" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  hold_pcb: "[F] Hold PCB in\nESD-safe cradle" { class: func }
+  prevent_metallic_short: "[F] Prevent bench\nshort / FOD contact" { class: func }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  identify_uut: "[F] Identify v0.2\nUUT and fixture" { class: func }
+  read_ambient_meter: "[F] Read ambient\nthermometer/hygrometer" { class: func }
+  inspect_safe_setup: "[F] Inspect safe\npre-power setup" { class: func }
+  enable_power: "[F] Enable current-limited\n3V3" { class: func }
+  command_scan_read: "[F] Command I2C\nscan/read" { class: func }
+  power_cycle_repeat: "[F] Power-cycle and\nrepeat attempts" { class: func }
+  stop_on_anomaly: "[F] Stop on\nanomaly" { class: func }
+  enter_operator_notes: "[F] Enter operator\nnotes" { class: func }
+}
+
+bench_supply: "[EA] Current-limited\nBench 3V3 Supply" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  source_limited_power: "[F] Source current-limited\n3V3/GND" { class: func }
+  report_current_limit: "[F] Report current /\nlimit-trip state" { class: func }
+}
+
+dmm: "[EA] DMM" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  measure_connector_power: "[F] Measure connector\n3V3/GND polarity" { class: func }
+  measure_bme280_power: "[F] Measure BME280\npad 3V3/GND" { class: func }
+}
+
+fixture_controller: "[EA] Fixture Controller\n(XIAO/ESP32 or I2C analyzer)" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  issue_i2c_scan: "[F] Issue I2C\naddress scan" { class: func }
+  read_bme280_registers: "[F] Read BME280 chip ID /\nstatus/register" { class: func }
+  emit_serial_log: "[F] Emit serial /\nCSV evidence log" { class: func }
+}
+
+logic_analyzer: "[EA] Logic Analyzer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  capture_i2c_waveform: "[F] Capture 3V3\nSDA/SCL waveform" { class: func }
+  decode_ack_stuck_lines: "[F] Decode ACK /\ndetect stuck SDA/SCL" { class: func }
+}
+
+host_logger: "[EA] Host PC /\nEvidence Logger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  collect_test_logs: "[F] Collect scan/read\nlogs and waveforms" { class: func }
+  count_attempts: "[F] Count 3/3\npassing attempts" { class: func }
+  archive_report_inputs: "[F] Archive report\ninputs" { class: func }
+}
+
+ambient_meter: "[EA] Ambient Thermometer /\nHygrometer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  provide_lab_conditions: "[F] Provide ambient\nlab conditions" { class: func }
+}
+
+qa_witness: "[EA] QA Witness /\nReviewer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  review_evidence: "[F] Review evidence\nand deviations" { class: func }
+  approve_readiness_record: "[F] Approve readiness\nrecord" { class: func }
+}
+
+note_scope: "[C] VV-only functions/elements are limited to\ntest means and readiness record. They do not\nbecome flight AMS v1.0 architecture unless\nseparately modeled." {
+  class: note
+  shape: page
+}
+note_power: "[C] Pass power-up iff current-limited supply\ndoes not trip, no short/overcurrent/reversed\npower occurs, and DMM confirms 3.3 V ±5%\nat connector and BME280 pads." {
+  class: note
+  shape: page
+}
+note_i2c: "[C] Pass I2C iff scan reaches BME280 at\nexpected address and chip ID/status/register\nreadback is logged through the connector/trace path." {
+  class: note
+  shape: page
+}
+note_repeats: "[C] Statistical viewpoint: 3/3 complete cycles\nare a bring-up demonstration only; do not\nclaim fleet reliability from this sample count." {
+  class: note
+  shape: page
+}
+note_logic: "[C] Fault-hardening viewpoint: logic analyzer\nshall show valid 3V3 I2C signaling with ACK,\nSTART/STOP activity, and no stuck SDA/SCL in\nnominal bring-up." {
+  class: note
+  shape: page
+}
+note_fail: "[C] Fail unless controlled deviation: no-response,\nwrong address, NACK-only, overcurrent, reversed\npower, unmodeled jumper/bypass, damaged UUT,\nor uncontrolled fixture configuration." {
+  class: note
+  shape: page
+}
+note_environment: "[C] Environmental/safety context: ESD-safe\nfixture and recorded ambient lab conditions\nare required before repetitions begin." {
+  class: note
+  shape: page
+}
+
+note_scope -> system.ams_pcb.bringup_readiness_record.judge_readiness { class: cstr }
+note_power -> bench_supply.source_limited_power { class: cstr }
+note_power -> bench_supply.report_current_limit { class: cstr }
+note_power -> dmm.measure_connector_power { class: cstr }
+note_power -> dmm.measure_bme280_power { class: cstr }
+note_power -> system.ams_pcb.ams_backplane_connector.connector_test_access.route_current_limited_power { class: cstr }
+note_i2c -> fixture_controller.issue_i2c_scan { class: cstr }
+note_i2c -> fixture_controller.read_bme280_registers { class: cstr }
+note_i2c -> system.ams_pcb.bme280.bme280_i2c_responder.return_chip_id_status { class: cstr }
+note_repeats -> test_operator.power_cycle_repeat { class: cstr }
+note_repeats -> host_logger.count_attempts { class: cstr }
+note_logic -> logic_analyzer.capture_i2c_waveform { class: cstr }
+note_logic -> logic_analyzer.decode_ack_stuck_lines { class: cstr }
+note_fail -> test_operator.stop_on_anomaly { class: cstr }
+note_fail -> system.ams_pcb.bringup_readiness_record.record_deviations { class: cstr }
+note_environment -> esd_fixture.hold_pcb { class: cstr }
+note_environment -> esd_fixture.prevent_metallic_short { class: cstr }
+note_environment -> ambient_meter.provide_lab_conditions { class: cstr }
+
+# Layout-only edges to keep external actors and UUT in readable order.
+esd_fixture -> test_operator { style: { opacity: 0 } }
+test_operator -> bench_supply { style: { opacity: 0 } }
+bench_supply -> dmm { style: { opacity: 0 } }
+dmm -> fixture_controller { style: { opacity: 0 } }
+fixture_controller -> logic_analyzer { style: { opacity: 0 } }
+logic_analyzer -> host_logger { style: { opacity: 0 } }
+host_logger -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> qa_witness { style: { opacity: 0 } }
+qa_witness -> system { style: { opacity: 0 } }
+system -> note_scope { style: { opacity: 0 } }
+note_scope -> note_power { style: { opacity: 0 } }
+note_power -> note_i2c { style: { opacity: 0 } }
+note_i2c -> note_repeats { style: { opacity: 0 } }
+note_repeats -> note_logic { style: { opacity: 0 } }
+note_logic -> note_fail { style: { opacity: 0 } }
+note_fail -> note_environment { style: { opacity: 0 } }

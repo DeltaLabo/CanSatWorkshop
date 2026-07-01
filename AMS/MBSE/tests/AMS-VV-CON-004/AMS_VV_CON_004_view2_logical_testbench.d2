@@ -1,0 +1,165 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Logical view — AMS-VV-CON-004 processing timing and non-blocking testbench
+# Verification references: IVV, AMS-R5 (statistics), PM&SE/IVV timing/fault semantics.
+# IADT: Testing with supporting Analysis. SSIV: AMS v1.0 final acceptance.
+# Traceability: timing constraints; AMS-UC-MeasureAtmosphere; AMS-FE-SensorBusFault; AMS-FE-SchedulerBlock.
+# Scope note: AMS-VV-CON-003 owns I2C read timeout/recovery timing; this activity verifies processing/callable paths outside I2C/UART waits.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-VV-CON-004 timing / non-blocking logical testbench\nAMS v1.0 final acceptance; Refs: IVV, AMS-R5, PM&SE/IVV" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        bme280: "[PC] BME280" {
+          class: pc
+          direction: down
+
+          ams_sensing: "[LC] AMS Sensing" { class: lc }
+        }
+
+        ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+
+          ams_processing: "[LC] AMS Processing" { class: lc }
+          obcc: "[LC] OBCC" { class: lc }
+          timing_harness: "[LC] Timing / Non-blocking\nInstrumentation Harness\n(VV-only)" { class: lc }
+          con004_evidence_record: "[LC] AMS-VV-CON-004\nEvidence Record\n(VV-only)" { class: lc }
+        }
+
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+        note_variable_getter: "[C] Implement each\n(Read X, Process X) or\n(Read X, Calculate Y)\npair as a Variable\nGetter template" {
+          class: note
+          shape: page
+        }
+        note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" {
+          class: note
+          shape: page
+        }
+        note_process_time: "[C] All Process or\nCalculate functions\nmust take < 5 ms" {
+          class: note
+          shape: page
+        }
+        note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+          class: note
+          shape: page
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" { class: pc }
+  }
+}
+
+test_operator: "[EA] AMS-VV\nTest Operator" { class: ea }
+host_pc: "[EA] Host PC\nProfiler / Logger" { class: ea }
+bench_supply: "[EA] Bench Power\nSupply" { class: ea }
+fault_stimulus_injector: "[EA] Fault / Stimulus\nInjector (optional)" { class: ea }
+evidence_repository: "[EA] Evidence\nRepository" { class: ea }
+
+note_scope: "[C] Scope: Calculate altitude, Process temperature,\nand AMS callable paths outside allowed I2C/UART waits.\nI2C read timing and recovery are excluded and referenced\nto AMS-VV-CON-003." {
+  class: note
+  shape: page
+}
+note_method: "[C] IADT: Testing with supporting Analysis;\nreport by reference to this model definition and\narchive evidence at results/AMS-VV-CON-004/report.md" {
+  class: note
+  shape: page
+}
+note_stats_fault: "[C] Statistical viewpoint: 59/59 in-limit samples\nfor 95/95 timing claim per function/input set.\nFault-hardening viewpoint: boundary/invalid values\nshall not block the scheduler or corrupt results." {
+  class: note
+  shape: page
+}
+
+system.cansat.ams_module.ams_pcb.bme280.ams_sensing -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing: "[CE] I2C" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing -> system.cansat.obcc_module.obcc_pcb.xiao.obcc: "[CE] Pointers" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing -> system.cansat.obcc_module.obcc_pcb.xiao.obcc: "[CE] Returns" { class: ce }
+
+test_operator -> system.cansat.obcc_module.obcc_pcb.xiao.timing_harness: "[CE] procedure ↔\nanomaly decisions" { class: ce }
+host_pc -> system.cansat.obcc_module.obcc_pcb.xiao.timing_harness: "[CE] profile commands ↔\ntimestamped records" { class: ce }
+fault_stimulus_injector -> system.cansat.obcc_module.obcc_pcb.xiao.timing_harness: "[CE] representative /\nboundary vectors" { class: ce }
+bench_supply -> system.cansat.obcc_module.obcc_pcb.xiao.timing_harness: "[CE] power state\nrecord" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.timing_harness -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing: "[CE] timed calls ↔\nstatus/results" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.timing_harness -> system.cansat.obcc_module.obcc_pcb.xiao.con004_evidence_record: "[CE] raw profiles +\npath coverage" { class: ce }
+host_pc -> evidence_repository: "[CE] evidence\npackage" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.con004_evidence_record -> evidence_repository: "[CE] report\nreference" { class: ce }
+
+system.cansat.obcc_module.obcc_pcb.note_variable_getter -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_i2c_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_process_time -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+
+note_scope -> system.cansat.obcc_module.obcc_pcb.xiao.timing_harness { class: cstr }
+note_scope -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+note_method -> test_operator { class: cstr }
+note_method -> evidence_repository { class: cstr }
+note_stats_fault -> system.cansat.obcc_module.obcc_pcb.xiao.timing_harness { class: cstr }

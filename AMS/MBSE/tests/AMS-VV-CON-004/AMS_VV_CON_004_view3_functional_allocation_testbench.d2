@@ -1,0 +1,308 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view — AMS-VV-CON-004 processing timing and non-blocking testbench
+# Verification references: IVV, AMS-R5 (statistics), PM&SE/IVV timing/fault semantics.
+# IADT: Testing with supporting Analysis. SSIV: AMS v1.0 final acceptance.
+# Traceability: timing constraints; AMS-UC-MeasureAtmosphere; AMS-FE-SensorBusFault; AMS-FE-SchedulerBlock.
+# VV-only instrumentation functions are allocated to a test harness LC and external actors; flight allocation is preserved.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-VV-CON-004 timing / non-blocking allocation\nAMS v1.0 final acceptance; Refs: IVV, AMS-R5, PM&SE/IVV" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        bme280: "[PC] BME280" {
+          class: pc
+          direction: down
+
+          ams_sensing: "[LC] AMS Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 3
+
+            measure_pressure: "[F] Measure\npressure" { class: func }
+            measure_temperature: "[F] Measure\ntemp." { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+          }
+
+          note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
+            class: note
+            shape: page
+          }
+          note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+            class: note
+            shape: page
+          }
+        }
+
+        ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+
+          ams_processing: "[LC] AMS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 4
+
+            get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+            read_pressure: "[F] Read\npressure" { class: func }
+            read_temperature: "[F] Read\ntemperature" { class: func }
+            calculate_altitude: "[F] Calculate\naltitude" { class: func }
+            process_temperature: "[F] Process\ntemperature" { class: func }
+
+            note_resolution: "[C] Resolution\n< 10m" {
+              class: note
+              shape: page
+            }
+          }
+
+          obcc: "[LC] OBCC" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+            collect_measurements: "[F] Collect\nmeasurements" { class: func }
+          }
+
+          timing_harness: "[LC] Timing / Non-blocking\nInstrumentation Harness\n(VV-only)" {
+            class: lc
+            direction: down
+            grid-columns: 2
+
+            load_representative_vectors: "[F] Load representative\ninput vectors" { class: func }
+            load_boundary_invalid_vectors: "[F] Load boundary /\ninvalid vectors" { class: func }
+            timestamp_processing_entry_return: "[F] Timestamp processing\nentry/return" { class: func }
+            invoke_calculate_altitude: "[F] Invoke Calculate\naltitude" { class: func }
+            invoke_process_temperature: "[F] Invoke Process\ntemperature" { class: func }
+            monitor_scheduler_alive: "[F] Monitor scheduler\nalive" { class: func }
+            emit_profile_record: "[F] Emit profile\nrecord" { class: func }
+            map_callable_paths: "[F] Map AMS\ncallable paths" { class: func }
+            classify_blocking_points: "[F] Classify allowed\nblocking points" { class: func }
+            compare_static_dynamic_coverage: "[F] Compare static /\ndynamic coverage" { class: func }
+          }
+        }
+
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+        note_variable_getter: "[C] Implement each\n(Read X, Process X) or\n(Read X, Calculate Y)\npair as a Variable\nGetter template" {
+          class: note
+          shape: page
+        }
+        note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" {
+          class: note
+          shape: page
+        }
+        note_process_time: "[C] All Process or\nCalculate functions\nmust take < 5 ms" {
+          class: note
+          shape: page
+        }
+        note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+          class: note
+          shape: page
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ams_headers: "[PC] 2mm 2x6 AMS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+  }
+}
+
+test_operator: "[EA] AMS-VV\nTest Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  configure_test_plan: "[F] Configure test\nplan and matrix" { class: func }
+  verify_environment_setup: "[F] Verify bench\nconditions" { class: func }
+  approve_fault_stimulus: "[F] Approve boundary /\nfault stimulus" { class: func }
+  record_anomalies: "[F] Record\nanomalies" { class: func }
+}
+
+host_pc: "[EA] Host PC\nProfiler / Logger" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  command_profile_batch: "[F] Command profile\nbatch" { class: func }
+  receive_profile_log: "[F] Receive profile\nlog" { class: func }
+  compute_timing_statistics: "[F] Compute timing\nstatistics" { class: func }
+  generate_nonblocking_matrix: "[F] Generate non-blocking\ncoverage matrix" { class: func }
+}
+
+fault_stimulus_injector: "[EA] Fault / Stimulus\nInjector (optional)" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  provide_pressure_vectors: "[F] Provide pressure\nvectors" { class: func }
+  provide_temperature_vectors: "[F] Provide temperature\nvectors" { class: func }
+  inject_boundary_values: "[F] Inject boundary\nvalues" { class: func }
+  inject_invalid_nan_values: "[F] Inject invalid /\nNaN values" { class: func }
+}
+
+bench_supply: "[EA] Bench Power\nSupply" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  supply_stable_power: "[F] Supply stable\n3V3 power" { class: func }
+  record_voltage_current: "[F] Record voltage /\ncurrent" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient Thermometer\nTraceable Logger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  read_ambient_temperature: "[F] Read ambient\ntemperature" { class: func }
+}
+
+evidence_repository: "[EA] Evidence\nRepository" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  store_raw_timing_logs: "[F] Store raw\ntiming logs" { class: func }
+  store_path_analysis: "[F] Store path\nanalysis matrix" { class: func }
+  freeze_report_artifacts: "[F] Freeze report\nartifacts" { class: func }
+}
+
+note_calc_timing: "[C] Calculate altitude pass: each representative\nand boundary input set has 59/59 in-limit timings\nwith t_exec + U95 < 5.000 ms; smaller sets\nshall be labeled screening only" {
+  class: note
+  shape: page
+}
+note_temp_timing: "[C] Process temperature pass: each representative\nand boundary input set has 59/59 in-limit timings\nwith t_exec + U95 < 5.000 ms; smaller sets\nshall be labeled screening only" {
+  class: note
+  shape: page
+}
+note_invalid_inputs: "[C] Invalid/boundary sensor values shall not cause\noverflow, unhandled Inf, memory corruption, infinite\nloops, or scheduler blockage; NaN propagation is\naccepted as valid when input is invalid/NaN" {
+  class: note
+  shape: page
+}
+note_nonblocking: "[C] No unbounded blocking exists outside allowed\nI2C or UART communication waits; runtime sensor\nfaults return bounded codes and scheduler continues" {
+  class: note
+  shape: page
+}
+note_i2c_exclusion: "[C] I2C read timing and recovery are excluded\nfrom this activity and are referenced to\nAMS-VV-CON-003" {
+  class: note
+  shape: page
+}
+note_environment: "[C] Bench environment: ambient 20-30 °C recorded;\nstable 3V3/common ground before timing batches;\nrecord instrumentation overhead and configuration" {
+  class: note
+  shape: page
+}
+
+system.cansat.ams_module.ams_pcb.bme280.note_accuracy_pressure -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_pressure { class: cstr }
+system.cansat.ams_module.ams_pcb.bme280.note_accuracy_temperature -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.note_resolution -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.calculate_altitude { class: cstr }
+
+system.cansat.obcc_module.obcc_pcb.note_variable_getter -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_i2c_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_process_time -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+
+note_calc_timing -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.calculate_altitude { class: cstr }
+note_calc_timing -> system.cansat.obcc_module.obcc_pcb.xiao.timing_harness.invoke_calculate_altitude { class: cstr }
+note_temp_timing -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.process_temperature { class: cstr }
+note_temp_timing -> system.cansat.obcc_module.obcc_pcb.xiao.timing_harness.invoke_process_temperature { class: cstr }
+note_invalid_inputs -> fault_stimulus_injector.inject_invalid_nan_values { class: cstr }
+note_invalid_inputs -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.calculate_altitude { class: cstr }
+note_invalid_inputs -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.process_temperature { class: cstr }
+note_nonblocking -> system.cansat.obcc_module.obcc_pcb.xiao.timing_harness.classify_blocking_points { class: cstr }
+note_nonblocking -> system.cansat.obcc_module.obcc_pcb.xiao.timing_harness.monitor_scheduler_alive { class: cstr }
+note_i2c_exclusion -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.read_pressure { class: cstr }
+note_i2c_exclusion -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.read_temperature { class: cstr }
+note_environment -> bench_supply.supply_stable_power { class: cstr }
+note_environment -> ambient_thermometer.read_ambient_temperature { class: cstr }
+note_environment -> system.cansat.obcc_module.obcc_pcb.xiao.timing_harness.timestamp_processing_entry_return { class: cstr }
+
+# Layout-only edges to stack the VV actors and pass/fail notes below the UUT allocation.
+system -> test_operator { style: { opacity: 0 } }
+test_operator -> host_pc { style: { opacity: 0 } }
+host_pc -> fault_stimulus_injector { style: { opacity: 0 } }
+fault_stimulus_injector -> bench_supply { style: { opacity: 0 } }
+bench_supply -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> evidence_repository { style: { opacity: 0 } }
+evidence_repository -> note_calc_timing { style: { opacity: 0 } }
+note_calc_timing -> note_temp_timing { style: { opacity: 0 } }
+note_temp_timing -> note_invalid_inputs { style: { opacity: 0 } }
+note_invalid_inputs -> note_nonblocking { style: { opacity: 0 } }
+note_nonblocking -> note_i2c_exclusion { style: { opacity: 0 } }
+note_i2c_exclusion -> note_environment { style: { opacity: 0 } }

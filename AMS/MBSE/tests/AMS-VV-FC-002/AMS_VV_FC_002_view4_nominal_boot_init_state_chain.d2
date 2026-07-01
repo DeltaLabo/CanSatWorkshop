@@ -1,0 +1,125 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# Functional chain: nominal boot/init-state collection test for AMS-VV-FC-002.
+
+chain: "AMS-VV-FC-002 — Nominal BME280 init-state boot chain\nTesting / Demonstration; AMS v1.0 final acceptance; Refs: IVV, AMS-R1, AMS-R2, AMS-R5\nTrace: AMS-UC-InitializePeripheral, AMS-FE-SensorBusFault, AMS-FE-StartupFault, getter/I2C/no-block constraints" {
+  class: chain
+  direction: down
+
+  configure_test_case: "[F] Configure\ntest case" { class: func }
+  select_stat_claim: "[F] Select statistical\nclaim / screening" { class: func }
+  read_ambient_temperature: "[F] Read ambient\ntemperature" { class: func }
+  record_ambient_conditions: "[F] Record ambient\nconditions" { class: func }
+  supply_stable_power: "[F] Supply stable\n3V3 power" { class: func }
+  record_voltage_current: "[F] Record voltage /\ncurrent" { class: func }
+  pass_nominal_i2c: "[F] Pass nominal\nI2C" { class: func }
+  command_nominal_boot_batch: "[F] Command nominal\nboot batch" { class: func }
+  power_cycle_uut: "[F] Power-cycle\nUUT" { class: func }
+  command_boot_init_trial: "[F] Command boot /\ninit trial" { class: func }
+  timestamp_boot_init_result: "[F] Timestamp boot\nand init result" { class: func }
+  get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+  respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+  collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+  capture_boot_init_log: "[F] Capture boot /\ninit log" { class: func }
+  compare_obcc_status: "[F] Compare OBCC status\nto expected nominal" { class: func }
+  emit_init_evidence_record: "[F] Emit init\nevidence record" { class: func }
+  compute_binary_statistics: "[F] Compute binary\nstatistics" { class: func }
+  generate_evidence_manifest: "[F] Generate evidence\nmanifest" { class: func }
+  archive_evidence: "[F] Archive\nevidence" { class: func }
+
+  note_nominal_pass: "[C] Pass iff every nominal boot/init sequence returns\na valid BME280 init state and OBCC collects the\nsame current state before flight-readiness OK" { class: note; shape: page }
+  note_stats: "[C] Use 29/29 successful nominal boots for an\nR90/C95 binary success claim; smaller batches\nshall be labelled screening" { class: note; shape: page }
+  note_variable_getter: "[C] Init-state getter shall return a current value\nor bounded status with explicit validity; no default\nor stale OK value is accepted" { class: note; shape: page }
+  note_environment: "[C] Ambient 20-30 °C recorded before repetitions;\nstable 3V3/common ground and power-cycle count\nrecorded for every batch" { class: note; shape: page }
+  note_no_blocking: "[C] Nominal boot/init shall not cause unbounded blocking;\nlogger remains responsive and captures each trial outcome" { class: note; shape: page }
+  note_con003_dep: "[C] Context only: detailed environmental-read timeout proof\nand recovery after released runtime I2C fault are verified by\nAMS-VV-CON-003, not credited by this nominal chain" { class: note; shape: page }
+}
+
+chain.configure_test_case -> chain.select_stat_claim: "[FE] Claim basis" { class: fe }
+chain.configure_test_case -> chain.read_ambient_temperature: "[FE] Environment\nsetup" { class: fe }
+chain.read_ambient_temperature -> chain.record_ambient_conditions: "[FE] Ambient\nreading" { class: fe }
+chain.configure_test_case -> chain.supply_stable_power: "[FE] Power\nsetup" { class: fe }
+chain.supply_stable_power -> chain.record_voltage_current: "[FE] Voltage/current" { class: fe }
+chain.configure_test_case -> chain.pass_nominal_i2c: "[FE] Nominal\nbus profile" { class: fe }
+chain.configure_test_case -> chain.command_nominal_boot_batch: "[FE] Nominal\nboot plan" { class: fe }
+chain.command_nominal_boot_batch -> chain.power_cycle_uut: "[FE] Boot trigger" { class: fe }
+chain.power_cycle_uut -> chain.command_boot_init_trial: "[FE] Trial start" { class: fe }
+chain.command_boot_init_trial -> chain.timestamp_boot_init_result: "[FE] Start timer /\ntrial ID" { class: fe }
+chain.timestamp_boot_init_result -> chain.get_bme280_init_state: "[FE] Init-state\nrequest" { class: fe }
+
+chain.get_bme280_init_state -> chain.respond_i2c_requests: "[FE] BME280 init\nI2C Req" { class: fe }
+chain.respond_i2c_requests -> chain.get_bme280_init_state: "[FE] State info" { class: fe }
+chain.get_bme280_init_state -> chain.collect_peripheral_init_states: "[FE] Result\n[Init state]" { class: fe }
+
+chain.collect_peripheral_init_states -> chain.capture_boot_init_log: "[FE] OBCC init\nrecord" { class: fe }
+chain.collect_peripheral_init_states -> chain.compare_obcc_status: "[FE] Collected\nstate" { class: fe }
+chain.timestamp_boot_init_result -> chain.emit_init_evidence_record: "[FE] Timestamp +\ntrial ID" { class: fe }
+chain.compare_obcc_status -> chain.emit_init_evidence_record: "[FE] Pass/fail\nclassification" { class: fe }
+chain.capture_boot_init_log -> chain.compute_binary_statistics: "[FE] Trial log" { class: fe }
+chain.emit_init_evidence_record -> chain.compute_binary_statistics: "[FE] Trial result" { class: fe }
+chain.record_ambient_conditions -> chain.compute_binary_statistics: "[FE] Ambient\nconditions" { class: fe }
+chain.record_voltage_current -> chain.compute_binary_statistics: "[FE] Power\nconditions" { class: fe }
+chain.compute_binary_statistics -> chain.generate_evidence_manifest: "[FE] Statistics +\nraw data paths" { class: fe }
+chain.generate_evidence_manifest -> chain.archive_evidence: "[FE] Controlled\nevidence" { class: fe }
+
+chain.note_nominal_pass -> chain.get_bme280_init_state { class: cstr }
+chain.note_nominal_pass -> chain.collect_peripheral_init_states { class: cstr }
+chain.note_stats -> chain.select_stat_claim { class: cstr }
+chain.note_stats -> chain.compute_binary_statistics { class: cstr }
+chain.note_variable_getter -> chain.get_bme280_init_state { class: cstr }
+chain.note_variable_getter -> chain.compare_obcc_status { class: cstr }
+chain.note_environment -> chain.record_ambient_conditions { class: cstr }
+chain.note_environment -> chain.record_voltage_current { class: cstr }
+chain.note_no_blocking -> chain.capture_boot_init_log { class: cstr }
+chain.note_no_blocking -> chain.emit_init_evidence_record { class: cstr }
+chain.note_con003_dep -> chain.get_bme280_init_state { class: cstr }
+chain.note_con003_dep -> chain.archive_evidence { class: cstr }
+
+# Layout-only edges keep setup, UUT behavior, and evidence activities in readable bands.
+chain.record_voltage_current -> chain.pass_nominal_i2c { style: { opacity: 0 } }
+chain.pass_nominal_i2c -> chain.command_nominal_boot_batch { style: { opacity: 0 } }
+chain.respond_i2c_requests -> chain.collect_peripheral_init_states { style: { opacity: 0 } }
+chain.emit_init_evidence_record -> chain.compute_binary_statistics { style: { opacity: 0 } }

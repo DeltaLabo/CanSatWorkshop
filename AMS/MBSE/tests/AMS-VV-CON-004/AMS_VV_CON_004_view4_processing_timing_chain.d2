@@ -1,0 +1,126 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# Functional chain: processing/calculation timing test for AMS-VV-CON-004.
+
+chain: "AMS-VV-CON-004 — Process/calculate timing with representative and boundary inputs\nTesting; AMS v1.0 final acceptance; Refs: IVV, AMS-R5, PM&SE/IVV\nTrace: timing constraints, AMS-UC-MeasureAtmosphere, AMS-FE-SensorBusFault, AMS-FE-SchedulerBlock" {
+  class: chain
+  direction: down
+
+  configure_test_plan: "[F] Configure test\nplan and matrix" { class: func }
+  read_ambient_temperature: "[F] Read ambient\ntemperature" { class: func }
+  record_ambient_conditions: "[F] Record ambient\nconditions" { class: func }
+  supply_stable_power: "[F] Supply stable\n3V3 power" { class: func }
+  record_voltage_current: "[F] Record voltage /\ncurrent" { class: func }
+  command_profile_batch: "[F] Command profile\nbatch" { class: func }
+  load_representative_vectors: "[F] Load representative\ninput vectors" { class: func }
+  load_boundary_invalid_vectors: "[F] Load boundary /\ninvalid vectors" { class: func }
+  provide_pressure_vectors: "[F] Provide pressure\nvectors" { class: func }
+  provide_temperature_vectors: "[F] Provide temperature\nvectors" { class: func }
+  timestamp_processing_entry_return: "[F] Timestamp processing\nentry/return" { class: func }
+  calculate_altitude: "[F] Calculate\naltitude" { class: func }
+  process_temperature: "[F] Process\ntemperature" { class: func }
+  monitor_scheduler_alive: "[F] Monitor scheduler\nalive" { class: func }
+  emit_profile_record: "[F] Emit profile\nrecord" { class: func }
+  receive_profile_log: "[F] Receive profile\nlog" { class: func }
+  compute_timing_statistics: "[F] Compute timing\nstatistics" { class: func }
+  record_anomalies: "[F] Record\nanomalies" { class: func }
+  store_raw_timing_logs: "[F] Store raw\ntiming logs" { class: func }
+  freeze_report_artifacts: "[F] Freeze report\nartifacts" { class: func }
+
+  note_scope: "[C] Scope: Calculate altitude and Process temperature\nonly. I2C read timing/recovery is excluded and\nreferenced to AMS-VV-CON-003." { class: note; shape: page }
+  note_calc_timing: "[C] Calculate altitude passes only if each representative\nand boundary input set has 59/59 timings with\nt_exec + U95 < 5.000 ms; smaller sets are screening." { class: note; shape: page }
+  note_temp_timing: "[C] Process temperature passes only if each representative\nand boundary input set has 59/59 timings with\nt_exec + U95 < 5.000 ms; smaller sets are screening." { class: note; shape: page }
+  note_stats: "[C] AMS-R5 statistical basis: 59/59 in-limit samples\nsupport a 95/95 non-parametric one-sided deadline claim;\nrecord timer resolution, overhead, and U95." { class: note; shape: page }
+  note_input_faults: "[C] Representative/boundary sets include nominal, low/high,\nstale/error-coded, invalid, and NaN cases as applicable.\nNaN propagation is accepted as valid for invalid/NaN input;\nforbidden: overflow, unhandled Inf, infinite loop, or scheduler blockage." { class: note; shape: page }
+  note_environment: "[C] Ambient 20-30 °C and stable 3V3/common ground\nrecorded before repetitions; test vectors and configuration\nare archived with raw logs." { class: note; shape: page }
+}
+
+chain.configure_test_plan -> chain.read_ambient_temperature: "[FE] Environment\nsetup" { class: fe }
+chain.read_ambient_temperature -> chain.record_ambient_conditions: "[FE] Ambient\nreading" { class: fe }
+chain.configure_test_plan -> chain.supply_stable_power: "[FE] Power\nsetup" { class: fe }
+chain.supply_stable_power -> chain.record_voltage_current: "[FE] Voltage/current" { class: fe }
+chain.configure_test_plan -> chain.command_profile_batch: "[FE] Test matrix" { class: fe }
+chain.command_profile_batch -> chain.load_representative_vectors: "[FE] Representative\nsets" { class: fe }
+chain.command_profile_batch -> chain.load_boundary_invalid_vectors: "[FE] Boundary/invalid\nsets" { class: fe }
+chain.load_representative_vectors -> chain.provide_pressure_vectors: "[FE] Pressure inputs" { class: fe }
+chain.load_boundary_invalid_vectors -> chain.provide_pressure_vectors: "[FE] Boundary pressure" { class: fe }
+chain.load_representative_vectors -> chain.provide_temperature_vectors: "[FE] Temperature inputs" { class: fe }
+chain.load_boundary_invalid_vectors -> chain.provide_temperature_vectors: "[FE] Boundary temp" { class: fe }
+
+chain.provide_pressure_vectors -> chain.timestamp_processing_entry_return: "[FE] Altitude input" { class: fe }
+chain.provide_temperature_vectors -> chain.timestamp_processing_entry_return: "[FE] Temperature input" { class: fe }
+chain.timestamp_processing_entry_return -> chain.calculate_altitude: "[FE] Timed pressure→altitude\ninvocation" { class: fe }
+chain.timestamp_processing_entry_return -> chain.process_temperature: "[FE] Timed temperature\nprocessing invocation" { class: fe }
+chain.calculate_altitude -> chain.emit_profile_record: "[FE] Altitude result +\nduration" { class: fe }
+chain.process_temperature -> chain.emit_profile_record: "[FE] Temperature result +\nduration" { class: fe }
+chain.calculate_altitude -> chain.monitor_scheduler_alive: "[FE] Return control" { class: fe }
+chain.process_temperature -> chain.monitor_scheduler_alive: "[FE] Return control" { class: fe }
+chain.monitor_scheduler_alive -> chain.emit_profile_record: "[FE] Scheduler alive\nstatus" { class: fe }
+chain.emit_profile_record -> chain.receive_profile_log: "[FE] Timestamped\nprofile log" { class: fe }
+chain.receive_profile_log -> chain.compute_timing_statistics: "[FE] Durations and\nresult codes" { class: fe }
+chain.record_ambient_conditions -> chain.compute_timing_statistics: "[FE] Ambient\nconditions" { class: fe }
+chain.record_voltage_current -> chain.compute_timing_statistics: "[FE] Power\nconditions" { class: fe }
+chain.compute_timing_statistics -> chain.record_anomalies: "[FE] Exceptions /\nfailures" { class: fe }
+chain.compute_timing_statistics -> chain.store_raw_timing_logs: "[FE] Pass/fail +\nraw data" { class: fe }
+chain.store_raw_timing_logs -> chain.freeze_report_artifacts: "[FE] Evidence path" { class: fe }
+
+chain.note_scope -> chain.command_profile_batch { class: cstr }
+chain.note_calc_timing -> chain.calculate_altitude { class: cstr }
+chain.note_calc_timing -> chain.compute_timing_statistics { class: cstr }
+chain.note_temp_timing -> chain.process_temperature { class: cstr }
+chain.note_temp_timing -> chain.compute_timing_statistics { class: cstr }
+chain.note_stats -> chain.compute_timing_statistics { class: cstr }
+chain.note_input_faults -> chain.load_boundary_invalid_vectors { class: cstr }
+chain.note_input_faults -> chain.monitor_scheduler_alive { class: cstr }
+chain.note_environment -> chain.record_ambient_conditions { class: cstr }
+chain.note_environment -> chain.record_voltage_current { class: cstr }
+
+# Layout-only edges to keep setup functions before timed SUT functions and evidence functions after them.
+chain.record_voltage_current -> chain.command_profile_batch { style: { opacity: 0 } }
+chain.load_boundary_invalid_vectors -> chain.provide_pressure_vectors { style: { opacity: 0 } }
+chain.provide_temperature_vectors -> chain.timestamp_processing_entry_return { style: { opacity: 0 } }
+chain.process_temperature -> chain.monitor_scheduler_alive { style: { opacity: 0 } }
+chain.record_anomalies -> chain.store_raw_timing_logs { style: { opacity: 0 } }

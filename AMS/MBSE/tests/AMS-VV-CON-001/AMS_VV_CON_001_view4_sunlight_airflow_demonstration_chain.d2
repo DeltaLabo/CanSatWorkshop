@@ -1,0 +1,108 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain — AMS-VV-CON-001 sunlight-blocking and airflow demonstration sequence
+# Verification references: IVV, AMS-R3 (thermal/meteorological exposure), AMS-R6 (CanSat environmental context), AMS-R5 (paired-sample statistics if used).
+# Traceability: [C] Block sunlight, allow airflow; AMS-FE-BadExposure; AMS-UC-MeasureAtmosphere; temperature-accuracy constraint context.
+# IADT: Inspection / Demonstration for AMS v1.0 final acceptance.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "AMS-VV-CON-001 — Sunlight blocking and airflow demonstration\nInspection / Demonstration; AMS v1.0 final acceptance; Refs: IVV, AMS-R3, AMS-R6, AMS-R5\nTrace: [C] Block sunlight, allow airflow; AMS-FE-BadExposure; AMS-UC-MeasureAtmosphere; temp-accuracy context" {
+  class: chain
+  direction: down
+
+  configure_integrated_article: "[F] Configure integrated\nCanSat / AMS" { class: func }
+  verify_modeled_configuration: "[F] Verify modeled\ninstalled configuration" { class: func }
+  install_shade_vent_fixture: "[F] Install shade /\nvent fixture" { class: func }
+  set_bright_lamp_geometry: "[F] Set bright-lamp\nexposure geometry" { class: func }
+  read_ambient_reference: "[F] Read ambient /\nreference conditions" { class: func }
+  record_reference_conditions: "[F] Record reference\nconditions" { class: func }
+  illuminate_installed_ams: "[F] Illuminate installed\nAMS module" { class: func }
+  inspect_los_to_bme280: "[F] Inspect line of\nsight to BME280" { class: func }
+  capture_los_evidence: "[F] Capture LOS\nphoto/video evidence" { class: func }
+  introduce_visible_airflow: "[F] Introduce visible\nairflow / probe" { class: func }
+  measure_airflow_path: "[F] Measure or observe\nairflow path" { class: func }
+  confirm_unobstructed_airflow: "[F] Confirm unobstructed\nairflow to AMS" { class: func }
+  capture_airflow_evidence: "[F] Capture airflow\nevidence" { class: func }
+  request_optional_temp_samples: "[F] Request optional\nBME280 temp. samples" { class: func }
+  log_installed_temperature: "[F] Log installed\nBME280 temperature" { class: func }
+  compute_optional_bias: "[F] Compute optional\npaired bias + U95" { class: func }
+  evaluate_pass_fail: "[F] Evaluate exposure\npass/fail" { class: func }
+  archive_evidence: "[F] Archive evidence\nand report references" { class: func }
+
+  note_iadt_trace: "[C] IADT: Inspection / Demonstration;\n100% of the final integrated AMS/CanSat\nconfiguration is assessed for this constraint" { class: note; shape: page }
+  note_no_los: "[C] Pass iff no direct solar or bright-lamp\nline of sight reaches the BME280 in the\nmodeled installed configuration" { class: note; shape: page }
+  note_airflow: "[C] Pass iff airflow path to BME280/AMS\nmodule remains unobstructed by fixture, wiring,\nevidence equipment, and CanSat structure" { class: note; shape: page }
+  note_environment: "[C] Ambient/reference conditions are recorded\nbefore demonstration repetitions: instrument ID,\nlocation, timestamp, and uncertainty/tolerance" { class: note; shape: page }
+  note_bias: "[C] Optional paired bias screening: if a statistical\nclaim is made, use n ≥ 30 paired samples and pass\nonly when |bias| + U95 ≤ 0.5 °C; this does not\nreplace AMS-VV-FC-001 accuracy verification" { class: note; shape: page }
+  note_fail_modes: "[C] Fail if blocked airflow, direct radiation path,\nheat-soak bias without mitigation, or temporary\nunmodeled shielding is found unless a controlled\nwaiver/model update accepts it" { class: note; shape: page }
+}
+
+chain.configure_integrated_article -> chain.verify_modeled_configuration: "[FE] Final article\nidentity" { class: fe }
+chain.verify_modeled_configuration -> chain.install_shade_vent_fixture: "[FE] Modeled\ninstallation" { class: fe }
+chain.install_shade_vent_fixture -> chain.set_bright_lamp_geometry: "[FE] Shade/vent\nconfiguration" { class: fe }
+chain.set_bright_lamp_geometry -> chain.read_ambient_reference: "[FE] Exposure\ngeometry" { class: fe }
+chain.read_ambient_reference -> chain.record_reference_conditions: "[FE] Ambient/reference\nreadings" { class: fe }
+chain.record_reference_conditions -> chain.illuminate_installed_ams: "[FE] Recorded\nconditions" { class: fe }
+chain.illuminate_installed_ams -> chain.inspect_los_to_bme280: "[FE] Bright-light\nstimulus" { class: fe }
+chain.inspect_los_to_bme280 -> chain.capture_los_evidence: "[FE] LOS inspection\nresult" { class: fe }
+chain.capture_los_evidence -> chain.introduce_visible_airflow: "[FE] LOS evidence" { class: fe }
+chain.introduce_visible_airflow -> chain.measure_airflow_path: "[FE] Smoke / velocity\nindicator" { class: fe }
+chain.measure_airflow_path -> chain.confirm_unobstructed_airflow: "[FE] Airflow\nobservation" { class: fe }
+chain.confirm_unobstructed_airflow -> chain.capture_airflow_evidence: "[FE] Airflow\npass/fail" { class: fe }
+chain.capture_airflow_evidence -> chain.request_optional_temp_samples: "[FE] Airflow evidence" { class: fe }
+chain.record_reference_conditions -> chain.compute_optional_bias: "[FE] Reference\nconditions" { class: fe }
+chain.request_optional_temp_samples -> chain.log_installed_temperature: "[FE] Optional\nsample request" { class: fe }
+chain.log_installed_temperature -> chain.compute_optional_bias: "[FE] Installed\ntemperature samples" { class: fe }
+chain.compute_optional_bias -> chain.evaluate_pass_fail: "[FE] Optional bias\nresult" { class: fe }
+chain.evaluate_pass_fail -> chain.archive_evidence: "[FE] Pass/fail, waiver,\nmodel-update decision" { class: fe }
+
+chain.note_iadt_trace -> chain.configure_integrated_article { class: cstr }
+chain.note_no_los -> chain.inspect_los_to_bme280 { class: cstr }
+chain.note_no_los -> chain.capture_los_evidence { class: cstr }
+chain.note_airflow -> chain.confirm_unobstructed_airflow { class: cstr }
+chain.note_airflow -> chain.capture_airflow_evidence { class: cstr }
+chain.note_environment -> chain.record_reference_conditions { class: cstr }
+chain.note_bias -> chain.compute_optional_bias { class: cstr }
+chain.note_fail_modes -> chain.evaluate_pass_fail { class: cstr }
+

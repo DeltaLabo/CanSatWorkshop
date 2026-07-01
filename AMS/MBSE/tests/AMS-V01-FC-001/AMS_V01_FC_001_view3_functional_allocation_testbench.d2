@@ -1,0 +1,288 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view — AMS-V01-FC-001 breadboard functional-chain testbench
+# Verification references: IVV, AMS-R1 (BME280), AMS-R3/R4 (metrology/atmosphere), AMS-R5 (statistics), AMS-R6 (CanSat bench context).
+# IADT: Testing / Demonstration. SSIV: AMS v0.1 readiness gate to v0.2 PCB delivery.
+# Traceability: AMS-v0.1-to-v0.2-readiness; AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-UC-LogSerialTelemetry; AMS-FE-SensorBusFault.
+# Functional allocation view contains functions, LCs, PCs, EAs, constraints; no FE/CE/PL.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-V01-FC-001 breadboard chain test\nAMS v0.1 → v0.2 readiness; Refs: IVV, AMS-R1, AMS-R3/R4/R5/R6" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  bme280: "[PC] BME280\n(v0.1 breadboard)" {
+    class: pc
+    direction: down
+
+    ams_sensing: "[LC] AMS Sensing" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
+        class: note
+        shape: page
+      }
+      measure_pressure: "[F] Measure\npressure" { class: func }
+      note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+        class: note
+        shape: page
+      }
+      measure_temperature: "[F] Measure\ntemperature" { class: func }
+      respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+    }
+  }
+
+  xiao: "[PC] XIAO ESP32\n(v0.1 breadboard)" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ams_processing: "[LC] AMS Processing" {
+      class: lc
+      direction: down
+      grid-columns: 4
+
+      get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+      read_pressure: "[F] Read\npressure" { class: func }
+      read_temperature: "[F] Read\ntemperature" { class: func }
+      note_resolution: "[C] Resolution\n< 10m" {
+        class: note
+        shape: page
+      }
+      calculate_altitude: "[F] Calculate\naltitude" { class: func }
+      process_temperature: "[F] Process\ntemperature" { class: func }
+      collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+      collect_measurements: "[F] Collect\nmeasurements" { class: func }
+      init_serial0_serial1: "[F] Init Serial0 and\nSerial1 with interrupts" { class: func }
+      log_serial0: "[F] Log via\nSerial0" { class: func }
+    }
+
+    fc_test_instrumentation: "[LC] AMS v0.1 FC\nTest Instrumentation\n(VV-only)" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      tag_sample_sequence: "[F] Tag sample\nsequence ID" { class: func }
+      timestamp_chain_steps: "[F] Timestamp read /\nprocess / log steps" { class: func }
+      emit_evidence_marker: "[F] Emit evidence\nmarker" { class: func }
+      flag_stale_sample: "[F] Flag stale\nsample candidate" { class: func }
+    }
+
+    note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+      class: note
+      shape: page
+    }
+    note_variable_getter: "[C] Implement each\n(Read X, Process X) or\n(Read X, Calculate Y)\npair as a Variable\nGetter template" {
+      class: note
+      shape: page
+    }
+    note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" {
+      class: note
+      shape: page
+    }
+    note_process_time: "[C] All Process or\nCalculate functions\nmust take < 5 ms" {
+      class: note
+      shape: page
+    }
+  }
+
+  probe_points: "[PC] Breadboard Serial/I2C\nProbe Points (VV-only)" {
+    class: pc
+    direction: down
+
+    probe_interface: "[LC] Probe Interface\n(VV-only)" {
+      class: lc
+      direction: down
+      grid-columns: 1
+
+      expose_sda_scl_serial: "[F] Expose SDA/SCL\nand Serial0 probes" { class: func }
+    }
+  }
+}
+
+bench_operator: "[EA] Bench Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  configure_test_case: "[F] Configure\ntest case" { class: func }
+  record_instrument_ids: "[F] Record instrument\nIDs/calibration" { class: func }
+  press_reset_launch: "[F] Press reset /\nlaunch button" { class: func }
+  read_reference_displays: "[F] Read reference\ndisplays" { class: func }
+  annotate_anomalies: "[F] Annotate\nanomalies" { class: func }
+  archive_evidence: "[F] Archive\nevidence" { class: func }
+}
+
+host_pc: "[EA] Host PC Serial\nTerminal / Data Logger" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  monitor_serial_port: "[F] Monitor serial\nport" { class: func }
+  capture_serial0_log: "[F] Capture Serial0\nlog" { class: func }
+  parse_telemetry_fields: "[F] Parse telemetry\nfields" { class: func }
+  compare_to_references: "[F] Compare readings\nto references" { class: func }
+  compute_uncertainty: "[F] Compute bias and\nexpanded uncertainty" { class: func }
+  check_field_order_units: "[F] Check field\norder / units" { class: func }
+  compute_timing_statistics: "[F] Compute timing\nstatistics" { class: func }
+  store_raw_evidence: "[F] Store raw\nevidence" { class: func }
+}
+
+reference_thermometer: "[EA] Reference Thermometer\n(traceable logger)" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  measure_reference_temperature: "[F] Measure reference\ntemperature" { class: func }
+  provide_temperature_uncertainty: "[F] Provide temperature\nuncertainty" { class: func }
+}
+
+pressure_reference: "[EA] Reference Barometer /\nPressure Reference" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  measure_reference_pressure: "[F] Measure reference\npressure" { class: func }
+  provide_pressure_uncertainty: "[F] Provide pressure\nuncertainty" { class: func }
+  provide_pressure_delta: "[F] Provide tested\npressure delta" { class: func }
+}
+
+bench_power: "[EA] Bench Power /\nUSB Current Monitor" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  supply_stable_power: "[F] Supply stable\npower" { class: func }
+  record_voltage_current: "[F] Record voltage /\ncurrent" { class: func }
+}
+
+logic_analyzer: "[EA] Logic Analyzer /\nTimer (optional)" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  capture_i2c_serial_timing: "[F] Capture I2C /\nSerial timing" { class: func }
+  export_timing_trace: "[F] Export timing\ntrace" { class: func }
+}
+
+note_samples: "[C] Measurement characterization pass condition:\ncollect n ≥ 30 paired pressure/temperature samples\nat the breadboard characterization point" {
+  class: note
+  shape: page
+}
+note_pressure_pass: "[C] Pressure passes iff |BME280 pressure - reference|\n+ U95 < 1 hPa for the paired sample set" {
+  class: note
+  shape: page
+}
+note_temperature_pass: "[C] Temperature passes iff |BME280 temperature - reference|\n+ U95 < 0.5 °C; test point must be inside 10-40 °C" {
+  class: note
+  shape: page
+}
+note_altitude_pass: "[C] Altitude readiness passes iff the tested pressure delta\nshows < 10 m equivalent altitude resolution; otherwise\nrecord a v0.1→v0.2 readiness limitation" {
+  class: note
+  shape: page
+}
+note_serial_pass: "[C] Serial0 pass condition: payload contains init state and\nmeasurement fields in expected order/units; no stale\nmeasurement may be logged as current" {
+  class: note
+  shape: page
+}
+note_timing_pass: "[C] Nominal read/process/calculate/log steps shall complete\nwithin modeled constraints; detailed I2C fault-timeout\nproof may be a dependency on later fault tests" {
+  class: note
+  shape: page
+}
+note_smoke: "[C] Init/serial smoke: execute ≥5 nominal power-up/log\nrepetitions as readiness screening, not a reliability claim" {
+  class: note
+  shape: page
+}
+note_environment: "[C] Environmental conditions are formalized by\nreference thermometer, pressure reference, and bench power\nfunctions; record calibration/uncertainty IDs" {
+  class: note
+  shape: page
+}
+
+system.bme280.ams_sensing.note_accuracy_pressure -> system.bme280.ams_sensing.measure_pressure { class: cstr }
+system.bme280.ams_sensing.note_accuracy_temperature -> system.bme280.ams_sensing.measure_temperature { class: cstr }
+system.xiao.ams_processing.note_resolution -> system.xiao.ams_processing.calculate_altitude { class: cstr }
+
+system.xiao.note_no_blocking -> system.xiao.ams_processing { class: cstr }
+system.xiao.note_variable_getter -> system.xiao.ams_processing { class: cstr }
+system.xiao.note_i2c_timeout -> system.xiao.ams_processing { class: cstr }
+system.xiao.note_process_time -> system.xiao.ams_processing { class: cstr }
+
+note_samples -> host_pc.compute_uncertainty { class: cstr }
+note_samples -> system.xiao.ams_processing.collect_measurements { class: cstr }
+note_pressure_pass -> host_pc.compare_to_references { class: cstr }
+note_pressure_pass -> pressure_reference.provide_pressure_uncertainty { class: cstr }
+note_temperature_pass -> host_pc.compare_to_references { class: cstr }
+note_temperature_pass -> reference_thermometer.measure_reference_temperature { class: cstr }
+note_altitude_pass -> system.xiao.ams_processing.calculate_altitude { class: cstr }
+note_altitude_pass -> pressure_reference.provide_pressure_delta { class: cstr }
+note_serial_pass -> host_pc.parse_telemetry_fields { class: cstr }
+note_serial_pass -> host_pc.check_field_order_units { class: cstr }
+note_serial_pass -> system.xiao.fc_test_instrumentation.flag_stale_sample { class: cstr }
+note_timing_pass -> system.xiao.fc_test_instrumentation.timestamp_chain_steps { class: cstr }
+note_timing_pass -> logic_analyzer.capture_i2c_serial_timing { class: cstr }
+note_smoke -> bench_operator.press_reset_launch { class: cstr }
+note_smoke -> system.xiao.ams_processing.init_serial0_serial1 { class: cstr }
+note_environment -> reference_thermometer.measure_reference_temperature { class: cstr }
+note_environment -> pressure_reference.measure_reference_pressure { class: cstr }
+note_environment -> bench_power.record_voltage_current { class: cstr }
+note_environment -> bench_operator.record_instrument_ids { class: cstr }
+
+# Layout-only edges to keep UUT, actors, and constraints stacked.
+system -> bench_operator { style: { opacity: 0 } }
+bench_operator -> host_pc { style: { opacity: 0 } }
+host_pc -> reference_thermometer { style: { opacity: 0 } }
+reference_thermometer -> pressure_reference { style: { opacity: 0 } }
+pressure_reference -> bench_power { style: { opacity: 0 } }
+bench_power -> logic_analyzer { style: { opacity: 0 } }
+logic_analyzer -> note_samples { style: { opacity: 0 } }
+note_samples -> note_pressure_pass { style: { opacity: 0 } }
+note_pressure_pass -> note_temperature_pass { style: { opacity: 0 } }
+note_temperature_pass -> note_altitude_pass { style: { opacity: 0 } }
+note_altitude_pass -> note_serial_pass { style: { opacity: 0 } }
+note_serial_pass -> note_timing_pass { style: { opacity: 0 } }
+note_timing_pass -> note_smoke { style: { opacity: 0 } }
+note_smoke -> note_environment { style: { opacity: 0 } }

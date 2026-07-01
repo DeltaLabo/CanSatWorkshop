@@ -1,0 +1,123 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# Functional chain: non-blocking callable-path coverage analysis for AMS-VV-CON-004.
+
+chain: "AMS-VV-CON-004 — AMS callable-path non-blocking coverage analysis\nAnalysis supporting Testing; AMS v1.0 final acceptance; Refs: IVV, AMS-R5, PM&SE/IVV\nTrace: no-blocking constraint, AMS-UC-MeasureAtmosphere, AMS-FE-SensorBusFault, AMS-FE-SchedulerBlock" {
+  class: chain
+  direction: down
+
+  configure_test_plan: "[F] Configure test\nplan and matrix" { class: func }
+  generate_nonblocking_matrix: "[F] Generate non-blocking\ncoverage matrix" { class: func }
+  map_callable_paths: "[F] Map AMS\ncallable paths" { class: func }
+  collect_measurements: "[F] Collect\nmeasurements" { class: func }
+  collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+  get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+  read_pressure: "[F] Read\npressure" { class: func }
+  read_temperature: "[F] Read\ntemperature" { class: func }
+  calculate_altitude: "[F] Calculate\naltitude" { class: func }
+  process_temperature: "[F] Process\ntemperature" { class: func }
+  classify_blocking_points: "[F] Classify allowed\nblocking points" { class: func }
+  reference_con003_evidence: "[F] Reference AMS-VV-CON-003\nI2C timing evidence" { class: func }
+  inspect_processing_paths: "[F] Inspect processing\npaths for waits" { class: func }
+  inspect_getter_wrappers: "[F] Inspect getter wrappers\nand error returns" { class: func }
+  inject_invalid_nan_values: "[F] Inject invalid /\nNaN values" { class: func }
+  monitor_scheduler_alive: "[F] Monitor scheduler\nalive" { class: func }
+  compare_static_dynamic_coverage: "[F] Compare static /\ndynamic coverage" { class: func }
+  record_anomalies: "[F] Record\nanomalies" { class: func }
+  store_path_analysis: "[F] Store path\nanalysis matrix" { class: func }
+  freeze_report_artifacts: "[F] Freeze report\nartifacts" { class: func }
+
+  note_scope: "[C] Analyzed elements: AMS Processing, OBCC collection\ncall paths, Calculate altitude, Process temperature,\nRead pressure/temperature as call-path context, and\nGet BME280 init state as callable-path context." { class: note; shape: page }
+  note_no_blocking: "[C] Pass requires no unbounded blocking outside allowed\nI2C or UART communication waits: no busy-wait loops,\nunbounded delay(), unbounded retries, blocking mutex waits,\nor scheduler-disabling sections in AMS callable paths." { class: note; shape: page }
+  note_allowed_waits: "[C] Allowed blocking points are explicitly classified as\nI2C communication waits or UART communication waits.\nI2C read timing/recovery is excluded here and referenced\nto AMS-VV-CON-003." { class: note; shape: page }
+  note_processing_bound: "[C] Calculate altitude and Process temperature must be\nbounded CPU paths; dynamic timing evidence comes from\nthe AMS-VV-CON-004 timing chain." { class: note; shape: page }
+  note_fault_semantics: "[C] PM&SE/IVV runtime fault semantics: runtime sensor/getter\nfailure shall return bounded error/result code, disclose health\nstatus where applicable, and not block or brick the scheduler." { class: note; shape: page }
+  note_invalid_inputs: "[C] Invalid/boundary sensor values shall not cause overflow,\nunhandled Inf, memory corruption, infinite loops, or scheduler\nblockage; NaN propagation is accepted for invalid/NaN input." { class: note; shape: page }
+  note_coverage: "[C] Pass requires 100% static callable-path inventory\nplus dynamic trace evidence for the profiled paths; any\nsmaller dynamic set shall be labeled screening, not closure." { class: note; shape: page }
+}
+
+chain.configure_test_plan -> chain.generate_nonblocking_matrix: "[FE] Analysis\nscope" { class: fe }
+chain.generate_nonblocking_matrix -> chain.map_callable_paths: "[FE] Callable path\ninventory" { class: fe }
+chain.map_callable_paths -> chain.collect_measurements: "[FE] Measurement\nentry path" { class: fe }
+chain.map_callable_paths -> chain.collect_peripheral_init_states: "[FE] Init-state\nentry path" { class: fe }
+chain.collect_measurements -> chain.read_pressure: "[FE] Pressure getter\npath" { class: fe }
+chain.collect_measurements -> chain.read_temperature: "[FE] Temperature getter\npath" { class: fe }
+chain.read_pressure -> chain.calculate_altitude: "[FE] Pressure value /\nstatus" { class: fe }
+chain.read_temperature -> chain.process_temperature: "[FE] Temperature value /\nstatus" { class: fe }
+chain.collect_peripheral_init_states -> chain.get_bme280_init_state: "[FE] Init-state\ngetter path" { class: fe }
+chain.read_pressure -> chain.classify_blocking_points: "[FE] I2C wait\ncontext" { class: fe }
+chain.read_temperature -> chain.classify_blocking_points: "[FE] I2C wait\ncontext" { class: fe }
+chain.get_bme280_init_state -> chain.classify_blocking_points: "[FE] Callable wait\ncontext" { class: fe }
+chain.classify_blocking_points -> chain.reference_con003_evidence: "[FE] I2C wait\nclassification" { class: fe }
+chain.calculate_altitude -> chain.inspect_processing_paths: "[FE] Calculation\ncode path" { class: fe }
+chain.process_temperature -> chain.inspect_processing_paths: "[FE] Processing\ncode path" { class: fe }
+chain.inspect_processing_paths -> chain.inspect_getter_wrappers: "[FE] Wait/retry\nfindings" { class: fe }
+chain.inspect_getter_wrappers -> chain.inject_invalid_nan_values: "[FE] Fault input\ncases" { class: fe }
+chain.inject_invalid_nan_values -> chain.monitor_scheduler_alive: "[FE] Runtime fault\ntrials" { class: fe }
+chain.monitor_scheduler_alive -> chain.compare_static_dynamic_coverage: "[FE] Scheduler alive\nevidence" { class: fe }
+chain.reference_con003_evidence -> chain.compare_static_dynamic_coverage: "[FE] Excluded I2C\nevidence link" { class: fe }
+chain.inspect_processing_paths -> chain.compare_static_dynamic_coverage: "[FE] Static findings" { class: fe }
+chain.compare_static_dynamic_coverage -> chain.record_anomalies: "[FE] Gaps /\nfailures" { class: fe }
+chain.compare_static_dynamic_coverage -> chain.store_path_analysis: "[FE] Coverage result" { class: fe }
+chain.store_path_analysis -> chain.freeze_report_artifacts: "[FE] Evidence path" { class: fe }
+
+chain.note_scope -> chain.generate_nonblocking_matrix { class: cstr }
+chain.note_no_blocking -> chain.classify_blocking_points { class: cstr }
+chain.note_allowed_waits -> chain.reference_con003_evidence { class: cstr }
+chain.note_allowed_waits -> chain.classify_blocking_points { class: cstr }
+chain.note_processing_bound -> chain.inspect_processing_paths { class: cstr }
+chain.note_fault_semantics -> chain.inspect_getter_wrappers { class: cstr }
+chain.note_fault_semantics -> chain.monitor_scheduler_alive { class: cstr }
+chain.note_invalid_inputs -> chain.inject_invalid_nan_values { class: cstr }
+chain.note_invalid_inputs -> chain.monitor_scheduler_alive { class: cstr }
+chain.note_coverage -> chain.compare_static_dynamic_coverage { class: cstr }
+
+# Layout-only edges to keep callable path inventory before wait classification and evidence after comparison.
+chain.collect_peripheral_init_states -> chain.read_pressure { style: { opacity: 0 } }
+chain.get_bme280_init_state -> chain.calculate_altitude { style: { opacity: 0 } }
+chain.process_temperature -> chain.classify_blocking_points { style: { opacity: 0 } }
+chain.reference_con003_evidence -> chain.inspect_processing_paths { style: { opacity: 0 } }
+chain.record_anomalies -> chain.store_path_analysis { style: { opacity: 0 } }

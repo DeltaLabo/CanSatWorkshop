@@ -1,0 +1,358 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view — AMS-VV-FC-001 atmospheric measurement chain acceptance testbench
+# Verification references: IVV, AMS-R1 (BME280), AMS-R3/R4 (environment/standard atmosphere), AMS-R5 (statistics), AMS-R7 (low-cost altitude context).
+# IADT: Testing / Demonstration. SSIV: AMS v1.0 final acceptance / flight readiness.
+# Traceability: AMS-UC-MeasureAtmosphere; AMS-FE-BadExposure; AMS-FE-StaleMeasurement; pressure/temperature/altitude constraints.
+# Functional allocation view contains functions, LCs, PCs, EAs, constraints; no FE/CE/PL.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-VV-FC-001 atmospheric chain acceptance\nAMS v1.0 final; Refs: IVV, AMS-R1, AMS-R3/R4/R5/R7" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        bme280: "[PC] BME280" {
+          class: pc
+          direction: down
+
+          ams_sensing: "[LC] AMS Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 3
+
+            measure_pressure: "[F] Measure\npressure" { class: func }
+            measure_temperature: "[F] Measure\ntemp." { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+          }
+
+          note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
+            class: note
+            shape: page
+          }
+          note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+            class: note
+            shape: page
+          }
+        }
+
+        ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+
+          ams_processing: "[LC] AMS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 4
+
+            get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+            read_pressure: "[F] Read\npressure" { class: func }
+            read_temperature: "[F] Read\ntemperature" { class: func }
+            calculate_altitude: "[F] Calculate\naltitude" { class: func }
+            process_temperature: "[F] Process\ntemperature" { class: func }
+
+            note_resolution: "[C] Resolution\n< 10m" {
+              class: note
+              shape: page
+            }
+          }
+
+          obcc: "[LC] OBCC" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+            collect_measurements: "[F] Collect\nmeasurements" { class: func }
+          }
+
+          fc_acceptance_instrumentation: "[LC] Atmospheric Chain\nAcceptance Instrumentation\n(VV-only)" {
+            class: lc
+            direction: down
+            grid-columns: 2
+
+            tag_sample_sequence: "[F] Tag sample\nsequence ID" { class: func }
+            timestamp_measurement_steps: "[F] Timestamp read /\nprocess / collect steps" { class: func }
+            emit_current_measurement_record: "[F] Emit current\nmeasurement record" { class: func }
+            detect_stale_measurement: "[F] Detect stale\nmeasurement candidate" { class: func }
+            assert_obcc_collection_order: "[F] Assert OBCC\ncollection order" { class: func }
+            mark_pressure_step_level: "[F] Mark pressure-step\nlevel" { class: func }
+          }
+        }
+
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+        vv_usb_log_port: "[PC] VV USB / Logger\nAccess Port (VV-only)" {
+          class: pc
+          direction: down
+
+          vv_log_interface: "[LC] Measurement Evidence\nInterface (VV-only)" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            expose_obcc_result_stream: "[F] Expose OBCC\nresult stream" { class: func }
+            export_vv_log_records: "[F] Export VV\nlog records" { class: func }
+          }
+        }
+
+        note_variable_getter: "[C] Implement each\n(Read X, Process X) or\n(Read X, Calculate Y)\npair as a Variable\nGetter template" {
+          class: note
+          shape: page
+        }
+        note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" {
+          class: note
+          shape: page
+        }
+        note_process_time: "[C] All Process or\nCalculate functions\nmust take < 5 ms" {
+          class: note
+          shape: page
+        }
+        note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+          class: note
+          shape: page
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ams_headers: "[PC] 2mm 2x6 AMS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+  }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  configure_test_case: "[F] Configure\ntest case" { class: func }
+  record_instrument_ids: "[F] Record instrument\nIDs/calibration" { class: func }
+  set_operating_points: "[F] Set pressure /\ntemperature points" { class: func }
+  start_sample_repetitions: "[F] Start sample\nrepetitions" { class: func }
+  read_ambient_display: "[F] Read ambient\nthermometer" { class: func }
+  annotate_anomalies: "[F] Annotate\nanomalies" { class: func }
+  approve_evidence_archive: "[F] Approve evidence\narchive" { class: func }
+}
+
+host_pc_logger: "[EA] Host PC /\nData Logger" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  command_measurement_batch: "[F] Command measurement\nbatch" { class: func }
+  capture_obcc_results: "[F] Capture OBCC\nresult log" { class: func }
+  parse_result_order_units: "[F] Parse result\norder / units" { class: func }
+  pair_samples_with_references: "[F] Pair samples\nwith references" { class: func }
+  compare_pressure_to_reference: "[F] Compare pressure\nto reference" { class: func }
+  compare_temperature_to_reference: "[F] Compare temperature\nto reference" { class: func }
+  compute_bias_u95: "[F] Compute bias\nand U95" { class: func }
+  verify_altitude_step: "[F] Verify altitude\npressure-step result" { class: func }
+  check_current_not_stale: "[F] Check current /\nnot stale" { class: func }
+  store_raw_evidence: "[F] Store raw\nevidence" { class: func }
+}
+
+pressure_reference: "[EA] Reference Barometer /\nPressure Calibrator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  provide_reference_pressure: "[F] Provide reference\npressure" { class: func }
+  apply_10m_pressure_step: "[F] Apply 10 m-equiv.\npressure step" { class: func }
+  provide_pressure_uncertainty: "[F] Provide pressure\nuncertainty" { class: func }
+}
+
+thermal_reference: "[EA] Reference Thermometer /\nStable Thermal Source" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  set_stable_temperature_point: "[F] Set stable temp.\npoint in 10-40 °C" { class: func }
+  measure_reference_temperature: "[F] Measure reference\ntemperature" { class: func }
+  provide_temperature_uncertainty: "[F] Provide temperature\nuncertainty" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient Thermometer\nTraceable Logger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  read_ambient_temperature: "[F] Read ambient\ntemperature" { class: func }
+  provide_ambient_uncertainty: "[F] Provide ambient\nuncertainty" { class: func }
+}
+
+bench_supply: "[EA] Bench Power\nSupply" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  supply_stable_power: "[F] Supply stable\n3V3 power" { class: func }
+  record_voltage_current: "[F] Record voltage /\ncurrent" { class: func }
+}
+
+evidence_repo: "[EA] Evidence Repository /\nReport Workspace" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  receive_raw_data: "[F] Receive raw data\nand metadata" { class: func }
+  store_report_inputs: "[F] Store report\ninputs" { class: func }
+}
+
+note_samples: "[C] Pass condition: collect n ≥ 30 paired\npressure and temperature samples per operating point\nbefore computing final acceptance statistics" {
+  class: note
+  shape: page
+}
+note_pressure_pass: "[C] Pressure passes iff abs(bias) + U95 ≤ 1 hPa\nfor paired AMS pressure versus reference pressure" {
+  class: note
+  shape: page
+}
+note_temperature_pass: "[C] Temperature passes iff abs(bias) + U95 ≤ 0.5 °C\nfor tested point(s) inside the 10-40 °C range" {
+  class: note
+  shape: page
+}
+note_altitude_pass: "[C] Altitude passes iff a 10 m-equivalent pressure\nchange is resolved with correct sign and uncertainty;\nmethod uses AMS-R4/R7 rationale recorded in evidence" {
+  class: note
+  shape: page
+}
+note_obcc_current: "[C] OBCC pass condition: collect current altitude and\ntemperature results in the modeled order; stale data\nshall not be accepted as current" {
+  class: note
+  shape: page
+}
+note_i2c_dependency: "[C] Detailed I2C ≤5 ms timeout proof is a dependency\non AMS-VV-CON-003 and is not duplicated here; this\nactivity records any timeout/stale anomaly as a failure" {
+  class: note
+  shape: page
+}
+note_environment: "[C] Environmental conditions: ambient thermometer read\nbefore repetitions, stable pressure/temperature references\nco-located with BME280, stable 3V3/common ground, and\nfinal exposure configuration with sunlight blocked/airflow allowed" {
+  class: note
+  shape: page
+}
+note_fault_hardening: "[C] Fault-hardening viewpoint: BadExposure, stale\nmeasurement, swapped pressure/temperature branches,\noutliers, and evidence gaps fail or require anomaly/waiver" {
+  class: note
+  shape: page
+}
+
+system.cansat.ams_module.ams_pcb.bme280.note_accuracy_pressure -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_pressure { class: cstr }
+system.cansat.ams_module.ams_pcb.bme280.note_accuracy_temperature -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.note_resolution -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.calculate_altitude { class: cstr }
+
+system.cansat.obcc_module.obcc_pcb.note_variable_getter -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_i2c_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_process_time -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+
+note_samples -> test_operator.start_sample_repetitions { class: cstr }
+note_samples -> host_pc_logger.compute_bias_u95 { class: cstr }
+note_samples -> system.cansat.obcc_module.obcc_pcb.xiao.fc_acceptance_instrumentation.tag_sample_sequence { class: cstr }
+note_pressure_pass -> host_pc_logger.compare_pressure_to_reference { class: cstr }
+note_pressure_pass -> pressure_reference.provide_pressure_uncertainty { class: cstr }
+note_pressure_pass -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_pressure { class: cstr }
+note_temperature_pass -> host_pc_logger.compare_temperature_to_reference { class: cstr }
+note_temperature_pass -> thermal_reference.measure_reference_temperature { class: cstr }
+note_temperature_pass -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
+note_altitude_pass -> pressure_reference.apply_10m_pressure_step { class: cstr }
+note_altitude_pass -> host_pc_logger.verify_altitude_step { class: cstr }
+note_altitude_pass -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.calculate_altitude { class: cstr }
+note_obcc_current -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.collect_measurements { class: cstr }
+note_obcc_current -> system.cansat.obcc_module.obcc_pcb.xiao.fc_acceptance_instrumentation.assert_obcc_collection_order { class: cstr }
+note_obcc_current -> host_pc_logger.check_current_not_stale { class: cstr }
+note_i2c_dependency -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.read_pressure { class: cstr }
+note_i2c_dependency -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.read_temperature { class: cstr }
+note_i2c_dependency -> system.cansat.obcc_module.obcc_pcb.xiao.fc_acceptance_instrumentation.detect_stale_measurement { class: cstr }
+note_environment -> ambient_thermometer.read_ambient_temperature { class: cstr }
+note_environment -> thermal_reference.set_stable_temperature_point { class: cstr }
+note_environment -> pressure_reference.provide_reference_pressure { class: cstr }
+note_environment -> bench_supply.supply_stable_power { class: cstr }
+note_environment -> test_operator.record_instrument_ids { class: cstr }
+note_fault_hardening -> system.cansat.obcc_module.obcc_pcb.xiao.fc_acceptance_instrumentation.detect_stale_measurement { class: cstr }
+note_fault_hardening -> evidence_repo.store_report_inputs { class: cstr }
+
+# Layout-only edges to keep UUT, actors, and constraints stacked.
+system -> test_operator { style: { opacity: 0 } }
+test_operator -> host_pc_logger { style: { opacity: 0 } }
+host_pc_logger -> pressure_reference { style: { opacity: 0 } }
+pressure_reference -> thermal_reference { style: { opacity: 0 } }
+thermal_reference -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> bench_supply { style: { opacity: 0 } }
+bench_supply -> evidence_repo { style: { opacity: 0 } }
+evidence_repo -> note_samples { style: { opacity: 0 } }
+note_samples -> note_pressure_pass { style: { opacity: 0 } }
+note_pressure_pass -> note_temperature_pass { style: { opacity: 0 } }
+note_temperature_pass -> note_altitude_pass { style: { opacity: 0 } }
+note_altitude_pass -> note_obcc_current { style: { opacity: 0 } }
+note_obcc_current -> note_i2c_dependency { style: { opacity: 0 } }
+note_i2c_dependency -> note_environment { style: { opacity: 0 } }
+note_environment -> note_fault_hardening { style: { opacity: 0 } }

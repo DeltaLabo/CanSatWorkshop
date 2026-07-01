@@ -1,0 +1,318 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view — AMS-VV-API-001 API/component-exchange/allocation analysis functions
+# Verification references: IVV; model/API-contract analysis; AMS-R1 (BME280 context); AMS-R2 (I2C context).
+# IADT: Analysis with supporting Inspection. SSIV: AMS v1.0 final acceptance / flight readiness.
+# Traceability: AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault; AMS-FE-StaleMeasurement; variable-getter constraint.
+# Shows UUT functions plus VV-only analysis, review, checklist, static-analysis, and evidence functions. No CEs/FEs/PLs in PV3.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-VV-API-001 API/CE/allocation analysis\nAMS v1.0 final acceptance\nRefs: IVV; model/API-contract analysis; AMS-R1/R2 context" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        bme280: "[PC] BME280" {
+          class: pc
+          direction: down
+
+          ams_sensing: "[LC] AMS Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 3
+
+            measure_pressure: "[F] Measure\npressure" { class: func }
+            measure_temperature: "[F] Measure\ntemp." { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+          }
+
+          note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
+            class: note
+            shape: page
+          }
+          note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+            class: note
+            shape: page
+          }
+        }
+
+        ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+
+          ams_processing: "[LC] AMS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 4
+
+            get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+            read_pressure: "[F] Read\npressure" { class: func }
+            read_temperature: "[F] Read\ntemperature" { class: func }
+            calculate_altitude: "[F] Calculate\naltitude" { class: func }
+            process_temperature: "[F] Process\ntemperature" { class: func }
+
+            note_resolution: "[C] Resolution\n< 10m" {
+              class: note
+              shape: page
+            }
+          }
+
+          obcc: "[LC] OBCC" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+            collect_measurements: "[F] Collect\nmeasurements" { class: func }
+          }
+
+          api_analysis_record: "[LC] API / Allocation\nAnalysis Record\n(VV-only)" {
+            class: lc
+            direction: down
+            grid-columns: 2
+
+            identify_baseline_api: "[F] Identify v1.0\nAPI baseline" { class: func }
+            inventory_getters: "[F] Inventory AMS\nprocessing getters" { class: func }
+            map_obcc_collection_paths: "[F] Map OBCC\ncollection paths" { class: func }
+            inspect_pointer_contract: "[F] Inspect pointer\ncontract" { class: func }
+            inspect_return_contract: "[F] Inspect return\nstatus contract" { class: func }
+            map_allocations: "[F] Map LC function\nallocations" { class: func }
+            map_data_resource_crossings: "[F] Map data/resource\ncrossings" { class: func }
+            run_static_checks: "[F] Run static\nanalysis checks" { class: func }
+            inspect_unit_logs: "[F] Inspect unit-test /\nlog evidence" { class: func }
+            compile_coverage_matrix: "[F] Compile 100% API\ncoverage matrix" { class: func }
+            classify_api_anomalies: "[F] Classify pass/fail\nand anomalies" { class: func }
+            archive_report_inputs: "[F] Archive report\ninputs" { class: func }
+          }
+        }
+
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+        note_variable_getter: "[C] Implement each\n(Read X, Process X) or\n(Read X, Calculate Y)\npair as a Variable\nGetter template" {
+          class: note
+          shape: page
+        }
+        note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" {
+          class: note
+          shape: page
+        }
+        note_process_time: "[C] All Process or\nCalculate functions\nmust take < 5 ms" {
+          class: note
+          shape: page
+        }
+        note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+          class: note
+          shape: page
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ams_headers: "[PC] 2mm 2x6 AMS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+  }
+}
+
+code_reviewer: "[EA] Code Reviewer\n(API inspection)" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  identify_final_article: "[F] Identify final\narticle / code tag" { class: func }
+  inspect_api_declarations: "[F] Inspect API\ndeclarations" { class: func }
+  inspect_implementation_paths: "[F] Inspect implementation\npaths" { class: func }
+  record_review_findings: "[F] Record review\nfindings" { class: func }
+}
+
+static_analysis_tool: "[EA] Static-analysis\nTool" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  enumerate_call_graph: "[F] Enumerate getter\ncall graph" { class: func }
+  detect_pointer_hazards: "[F] Detect pointer\nhazards" { class: func }
+  detect_foreign_crossings: "[F] Detect foreign\nLC crossings" { class: func }
+  export_static_report: "[F] Export static\nanalysis report" { class: func }
+}
+
+api_contract_checklist: "[EA] API Contract\nChecklist" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  list_required_getters: "[F] List required\ngetters" { class: func }
+  list_status_cases: "[F] List return/status\ncases" { class: func }
+  list_pointer_fields: "[F] List pointer\nfields/units" { class: func }
+  verify_all_items_checked: "[F] Verify 100% items\nchecked" { class: func }
+}
+
+unit_test_log_repo: "[EA] Unit-test / Log\nEvidence Repository" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  provide_nominal_getter_logs: "[F] Provide nominal\ngetter logs" { class: func }
+  provide_fault_case_logs: "[F] Provide fault-case\nlogs" { class: func }
+  store_coverage_matrix: "[F] Store API coverage\nmatrix" { class: func }
+  store_report_inputs: "[F] Store report\ninputs" { class: func }
+}
+
+qa_reviewer: "[EA] QA Reviewer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  inspect_checklist_completeness: "[F] Inspect checklist\ncompleteness" { class: func }
+  confirm_anomaly_disposition: "[F] Confirm anomaly\ndisposition" { class: func }
+  approve_report_package: "[F] Approve report\npackage" { class: func }
+}
+
+note_final_acceptance: "[C] AMS v1.0 final acceptance: analyze controlled\nmodel/API contract plus as-coded evidence; no execution\nreliability claim is made by this analysis" {
+  class: note
+  shape: page
+}
+note_pointer_contract: "[C] Pointer pass/fail: ownership, lifetime, null/invalid\npointer policy, units/scaling, and concurrency/aliasing\nassumptions are explicit and internally consistent" {
+  class: note
+  shape: page
+}
+note_return_contract: "[C] Return pass/fail: statuses/data distinguish OK valid\nmeasurement, startup fault, runtime sensor fault, timeout/bus\nerror, invalid input, and stale/no-data cases as applicable" {
+  class: note
+  shape: page
+}
+note_allocation_sensing: "[C] Allocation pass/fail: no AMS Sensing functions are\nallocated to AMS Processing or OBCC; sensing owns only BME280\nmeasurement and I2C-response behavior" {
+  class: note
+  shape: page
+}
+note_allocation_obcc: "[C] Allocation pass/fail: no OBCC collection functions are\nallocated to AMS Sensing or AMS Processing except via modeled\nPointers/Returns exchange semantics" {
+  class: note
+  shape: page
+}
+note_crossings: "[C] Crossing pass/fail: all LC data/resource crossings are\naccounted for by modeled CEs — I2C, Pointers, Returns; any\nforeign unmodeled exchange fails unless controlled by model update" {
+  class: note
+  shape: page
+}
+note_coverage: "[C] Coverage pass/fail: checklist includes 100% of modeled\nAMS Processing getters and 100% of OBCC collection paths from\nboth v1.0 functional chains" {
+  class: note
+  shape: page
+}
+note_fault_hardening: "[C] Fault-hardening viewpoint: invalid pointers, aliasing,\nunit mismatch, stale data, startup fault, runtime sensor fault,\ntimeout/bus error, and bounded error propagation" {
+  class: note
+  shape: page
+}
+
+system.cansat.ams_module.ams_pcb.bme280.note_accuracy_pressure -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_pressure { class: cstr }
+system.cansat.ams_module.ams_pcb.bme280.note_accuracy_temperature -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.note_resolution -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.calculate_altitude { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_variable_getter -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_i2c_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_process_time -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+
+note_final_acceptance -> code_reviewer.identify_final_article { class: cstr }
+note_final_acceptance -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record.identify_baseline_api { class: cstr }
+note_pointer_contract -> code_reviewer.inspect_api_declarations { class: cstr }
+note_pointer_contract -> static_analysis_tool.detect_pointer_hazards { class: cstr }
+note_pointer_contract -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record.inspect_pointer_contract { class: cstr }
+note_return_contract -> api_contract_checklist.list_status_cases { class: cstr }
+note_return_contract -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record.inspect_return_contract { class: cstr }
+note_allocation_sensing -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_pressure { class: cstr }
+note_allocation_sensing -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
+note_allocation_sensing -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.respond_i2c_requests { class: cstr }
+note_allocation_sensing -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record.map_allocations { class: cstr }
+note_allocation_obcc -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.collect_peripheral_init_states { class: cstr }
+note_allocation_obcc -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.collect_measurements { class: cstr }
+note_allocation_obcc -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record.map_allocations { class: cstr }
+note_crossings -> static_analysis_tool.detect_foreign_crossings { class: cstr }
+note_crossings -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record.map_data_resource_crossings { class: cstr }
+note_coverage -> api_contract_checklist.verify_all_items_checked { class: cstr }
+note_coverage -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record.compile_coverage_matrix { class: cstr }
+note_fault_hardening -> unit_test_log_repo.provide_fault_case_logs { class: cstr }
+note_fault_hardening -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record.classify_api_anomalies { class: cstr }
+
+# Layout-only edges to stack the VV actors and constraint notes below the UUT allocation.
+system -> code_reviewer { style: { opacity: 0 } }
+code_reviewer -> static_analysis_tool { style: { opacity: 0 } }
+static_analysis_tool -> api_contract_checklist { style: { opacity: 0 } }
+api_contract_checklist -> unit_test_log_repo { style: { opacity: 0 } }
+unit_test_log_repo -> qa_reviewer { style: { opacity: 0 } }
+qa_reviewer -> note_final_acceptance { style: { opacity: 0 } }
+note_final_acceptance -> note_pointer_contract { style: { opacity: 0 } }
+note_pointer_contract -> note_return_contract { style: { opacity: 0 } }
+note_return_contract -> note_allocation_sensing { style: { opacity: 0 } }
+note_allocation_sensing -> note_allocation_obcc { style: { opacity: 0 } }
+note_allocation_obcc -> note_crossings { style: { opacity: 0 } }
+note_crossings -> note_coverage { style: { opacity: 0 } }
+note_coverage -> note_fault_hardening { style: { opacity: 0 } }

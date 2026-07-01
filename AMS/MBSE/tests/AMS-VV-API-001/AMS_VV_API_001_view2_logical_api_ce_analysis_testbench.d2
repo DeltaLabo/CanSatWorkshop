@@ -1,0 +1,170 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Logical view — AMS-VV-API-001 pointer/return API component-exchange analysis testbench
+# Verification references: IVV; model/API-contract analysis; AMS-R1 (BME280 context); AMS-R2 (I2C context).
+# IADT: Analysis with supporting Inspection. SSIV: AMS v1.0 final acceptance / flight readiness.
+# Traceability: AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault; AMS-FE-StaleMeasurement; variable-getter constraint.
+# Shows target same-XIAO [CE] Pointers and [CE] Returns plus VV-only analysis/evidence exchanges.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-VV-API-001 API/CE/allocation analysis\nAMS v1.0 final acceptance\nRefs: IVV; model/API-contract analysis; AMS-R1/R2 context" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        bme280: "[PC] BME280" {
+          class: pc
+          direction: down
+
+          ams_sensing: "[LC] AMS Sensing" { class: lc }
+        }
+
+        ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+
+          ams_processing: "[LC] AMS Processing" { class: lc }
+          obcc: "[LC] OBCC" { class: lc }
+          api_analysis_record: "[LC] API / Allocation\nAnalysis Record\n(VV-only)" { class: lc }
+        }
+
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" { class: pc }
+  }
+}
+
+code_reviewer: "[EA] Code Reviewer\n(API inspection)" { class: ea }
+static_analysis_tool: "[EA] Static-analysis\nTool" { class: ea }
+api_contract_checklist: "[EA] API Contract\nChecklist" { class: ea }
+unit_test_log_repo: "[EA] Unit-test / Log\nEvidence Repository" { class: ea }
+qa_reviewer: "[EA] QA Reviewer" { class: ea }
+
+note_scope: "[C] Scope: analyze 2/2 same-XIAO target CEs —\n[CE] Pointers and [CE] Returns between AMS Processing\nand OBCC; include variable-getter contract and LC allocations" {
+  class: note
+  shape: page
+}
+note_pointer_contract: "[C] Pass iff pointer ownership, lifetime, null/invalid\npointer policy, units/scaling, and concurrency/aliasing\nassumptions are explicit and consistent with getter semantics" {
+  class: note
+  shape: page
+}
+note_return_contract: "[C] Pass iff returns/statuses distinguish valid\nmeasurement, startup fault, runtime sensor fault, timeout/bus\nerror, invalid input, and stale/no-data cases as applicable" {
+  class: note
+  shape: page
+}
+note_crossing_contract: "[C] Pass iff every LC boundary crossing uses a modeled CE:\nI2C for AMS Sensing↔AMS Processing, Pointers and Returns\nfor AMS Processing→OBCC; no foreign exchange is required" {
+  class: note
+  shape: page
+}
+note_allocation_contract: "[C] Pass iff AMS Sensing, AMS Processing, and OBCC own\nonly their modeled functions; collection functions cross to\nprocessing only through modeled Pointers/Returns" {
+  class: note
+  shape: page
+}
+note_coverage_contract: "[C] Analysis checklist must cover 100% of modeled AMS\nProcessing getters and 100% of OBCC collection paths in the\natmospheric and peripheral-initialisation chains" {
+  class: note
+  shape: page
+}
+
+system.cansat.ams_module.ams_pcb.bme280.ams_sensing -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing: "[CE] I2C\ncontext" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing -> system.cansat.obcc_module.obcc_pcb.xiao.obcc: "[CE] Pointers\nTARGET 1/2" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing -> system.cansat.obcc_module.obcc_pcb.xiao.obcc: "[CE] Returns\nTARGET 2/2" { class: ce }
+
+code_reviewer -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record: "[CE] review findings" { class: ce }
+static_analysis_tool -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record: "[CE] call graph /\nstatic checks" { class: ce }
+api_contract_checklist -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record: "[CE] checklist\ncriteria" { class: ce }
+unit_test_log_repo -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record: "[CE] log / unit\nevidence" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record -> unit_test_log_repo: "[CE] archived\nanalysis result" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record -> qa_reviewer: "[CE] review\npackage" { class: ce }
+
+note_scope -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record { class: cstr }
+note_pointer_contract -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+note_pointer_contract -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+note_return_contract -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+note_return_contract -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+note_crossing_contract -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing { class: cstr }
+note_crossing_contract -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+note_crossing_contract -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+note_allocation_contract -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record { class: cstr }
+note_coverage_contract -> api_contract_checklist { class: cstr }
+note_coverage_contract -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record { class: cstr }
+
+# Layout-only edges to keep VV actors and constraints in readable bands.
+code_reviewer -> static_analysis_tool { style: { opacity: 0 } }
+static_analysis_tool -> api_contract_checklist { style: { opacity: 0 } }
+api_contract_checklist -> unit_test_log_repo { style: { opacity: 0 } }
+unit_test_log_repo -> qa_reviewer { style: { opacity: 0 } }
+qa_reviewer -> note_scope { style: { opacity: 0 } }
+note_scope -> note_pointer_contract { style: { opacity: 0 } }
+note_pointer_contract -> note_return_contract { style: { opacity: 0 } }
+note_return_contract -> note_crossing_contract { style: { opacity: 0 } }
+note_crossing_contract -> note_allocation_contract { style: { opacity: 0 } }
+note_allocation_contract -> note_coverage_contract { style: { opacity: 0 } }

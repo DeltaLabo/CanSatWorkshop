@@ -1,0 +1,142 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# Functional chain: induced startup fault test for AMS-VV-FC-002.
+
+chain: "AMS-VV-FC-002 — BME280 startup-fault init-state chain\nTesting / Demonstration; AMS v1.0 final acceptance; Refs: IVV, AMS-R1, AMS-R2, AMS-R5\nTrace: AMS-UC-InitializePeripheral, AMS-FE-SensorBusFault, AMS-FE-StartupFault, getter/I2C/no-block constraints" {
+  class: chain
+  direction: down
+
+  configure_test_case: "[F] Configure\ntest case" { class: func }
+  read_ambient_temperature: "[F] Read ambient\ntemperature" { class: func }
+  record_ambient_conditions: "[F] Record ambient\nconditions" { class: func }
+  supply_stable_power: "[F] Supply stable\n3V3 power" { class: func }
+  record_voltage_current: "[F] Record voltage /\ncurrent" { class: func }
+  authorize_fault_injection: "[F] Authorize fault\ninjection" { class: func }
+  disconnect_or_force_nack: "[F] Disconnect BME280\n/ force NACK" { class: func }
+  hold_sda_low: "[F] Hold SDA\nlow" { class: func }
+  hold_scl_low: "[F] Hold SCL\nlow" { class: func }
+  command_faulted_boot_batch: "[F] Command faulted\nboot batch" { class: func }
+  power_cycle_uut: "[F] Power-cycle\nUUT" { class: func }
+  command_boot_init_trial: "[F] Command boot /\ninit trial" { class: func }
+  timestamp_boot_init_result: "[F] Timestamp boot\nand init result" { class: func }
+  get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+  respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+  collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+  collect_critical_startup_fault: "[F] Collect critical\nstartup fault/status" { class: func }
+  monitor_startup_responsiveness: "[F] Monitor startup\nresponsiveness" { class: func }
+  compare_obcc_status: "[F] Compare OBCC status\nto fault condition" { class: func }
+  capture_boot_init_log: "[F] Capture boot /\ninit log" { class: func }
+  emit_init_evidence_record: "[F] Emit init\nevidence record" { class: func }
+  compute_binary_statistics: "[F] Compute binary\nstatistics" { class: func }
+  record_anomalies: "[F] Record\nanomalies" { class: func }
+  release_fault_between_trials: "[F] Release fault\nbetween startup trials" { class: func }
+  archive_evidence: "[F] Archive\nevidence" { class: func }
+
+  note_fault_modes: "[C] Induced startup-fault modes: absent/disconnected\nBME280 or forced NACK, held SDA low, and held SCL low;\nfixture mode is recorded for every trial" { class: note; shape: page }
+  note_fault_pass: "[C] Pass iff each induced startup fault returns a\nbounded critical startup fault/status, OBCC collects it,\nand startup does not block indefinitely" { class: note; shape: page }
+  note_no_nominal_ok: "[C] Faulted states shall never be reported as\nnominal OK; no stale init state, previous boot result,\nor default success value is accepted" { class: note; shape: page }
+  note_stats: "[C] Use 29/29 pass per induced fault mode for an\nR90/C95 binary fault-response claim; smaller batches\nshall be labelled screening" { class: note; shape: page }
+  note_environment: "[C] Ambient 20-30 °C recorded; stable 3V3/common\nground, power-cycle count, and exact harness electrical\nconfiguration recorded" { class: note; shape: page }
+  note_con003_dep: "[C] Dependency only: AMS-VV-CON-003 owns detailed\nenvironmental-read timeout proof and recovery after\nreleased runtime I2C fault; release here only resets the\nfixture between independent startup trials" { class: note; shape: page }
+}
+
+chain.configure_test_case -> chain.read_ambient_temperature: "[FE] Environment\nsetup" { class: fe }
+chain.read_ambient_temperature -> chain.record_ambient_conditions: "[FE] Ambient\nreading" { class: fe }
+chain.configure_test_case -> chain.supply_stable_power: "[FE] Power\nsetup" { class: fe }
+chain.supply_stable_power -> chain.record_voltage_current: "[FE] Voltage/current" { class: fe }
+chain.configure_test_case -> chain.authorize_fault_injection: "[FE] Fault plan" { class: fe }
+chain.authorize_fault_injection -> chain.disconnect_or_force_nack: "[FE] Absent/NACK\nmode" { class: fe }
+chain.authorize_fault_injection -> chain.hold_sda_low: "[FE] SDA-low\nmode" { class: fe }
+chain.authorize_fault_injection -> chain.hold_scl_low: "[FE] SCL-low\nmode" { class: fe }
+chain.configure_test_case -> chain.command_faulted_boot_batch: "[FE] Faulted\nboot plan" { class: fe }
+
+chain.disconnect_or_force_nack -> chain.respond_i2c_requests: "[FE] No ACK /\nabsent sensor" { class: fe }
+chain.hold_sda_low -> chain.respond_i2c_requests: "[FE] Held SDA" { class: fe }
+chain.hold_scl_low -> chain.respond_i2c_requests: "[FE] Held SCL" { class: fe }
+chain.command_faulted_boot_batch -> chain.power_cycle_uut: "[FE] Faulted boot\ntrigger" { class: fe }
+chain.power_cycle_uut -> chain.command_boot_init_trial: "[FE] Trial start" { class: fe }
+chain.command_boot_init_trial -> chain.timestamp_boot_init_result: "[FE] Start timer /\ntrial ID" { class: fe }
+chain.timestamp_boot_init_result -> chain.get_bme280_init_state: "[FE] Faulted init\nrequest" { class: fe }
+
+chain.get_bme280_init_state -> chain.respond_i2c_requests: "[FE] BME280 init\nI2C Req" { class: fe }
+chain.respond_i2c_requests -> chain.get_bme280_init_state: "[FE] Error /\ntimeout / no state" { class: fe }
+chain.get_bme280_init_state -> chain.collect_peripheral_init_states: "[FE] Result\n[Init status]" { class: fe }
+chain.collect_peripheral_init_states -> chain.collect_critical_startup_fault: "[FE] Critical startup\nfault/status" { class: fe }
+
+chain.collect_critical_startup_fault -> chain.monitor_startup_responsiveness: "[FE] Fault recorded\nwithout hang" { class: fe }
+chain.collect_critical_startup_fault -> chain.compare_obcc_status: "[FE] Collected\nfault status" { class: fe }
+chain.compare_obcc_status -> chain.capture_boot_init_log: "[FE] Classification" { class: fe }
+chain.timestamp_boot_init_result -> chain.emit_init_evidence_record: "[FE] Timestamp +\ntrial ID" { class: fe }
+chain.monitor_startup_responsiveness -> chain.emit_init_evidence_record: "[FE] Responsiveness\nresult" { class: fe }
+chain.capture_boot_init_log -> chain.compute_binary_statistics: "[FE] Trial log" { class: fe }
+chain.emit_init_evidence_record -> chain.compute_binary_statistics: "[FE] Trial outcome" { class: fe }
+chain.record_ambient_conditions -> chain.compute_binary_statistics: "[FE] Ambient\nconditions" { class: fe }
+chain.record_voltage_current -> chain.compute_binary_statistics: "[FE] Power\nconditions" { class: fe }
+chain.compute_binary_statistics -> chain.record_anomalies: "[FE] Exceptions" { class: fe }
+chain.compute_binary_statistics -> chain.release_fault_between_trials: "[FE] Safe to reset\nfixture" { class: fe }
+chain.record_anomalies -> chain.archive_evidence: "[FE] Anomaly\nrecords" { class: fe }
+chain.release_fault_between_trials -> chain.archive_evidence: "[FE] Completed\ntrial package" { class: fe }
+
+chain.note_fault_modes -> chain.authorize_fault_injection { class: cstr }
+chain.note_fault_modes -> chain.disconnect_or_force_nack { class: cstr }
+chain.note_fault_modes -> chain.hold_sda_low { class: cstr }
+chain.note_fault_modes -> chain.hold_scl_low { class: cstr }
+chain.note_fault_pass -> chain.get_bme280_init_state { class: cstr }
+chain.note_fault_pass -> chain.collect_critical_startup_fault { class: cstr }
+chain.note_fault_pass -> chain.monitor_startup_responsiveness { class: cstr }
+chain.note_no_nominal_ok -> chain.collect_peripheral_init_states { class: cstr }
+chain.note_no_nominal_ok -> chain.compare_obcc_status { class: cstr }
+chain.note_stats -> chain.compute_binary_statistics { class: cstr }
+chain.note_environment -> chain.record_ambient_conditions { class: cstr }
+chain.note_environment -> chain.record_voltage_current { class: cstr }
+chain.note_con003_dep -> chain.release_fault_between_trials { class: cstr }
+chain.note_con003_dep -> chain.archive_evidence { class: cstr }
+
+# Layout-only edges keep setup, fault injection, UUT behavior, and evidence activities in readable bands.
+chain.record_voltage_current -> chain.authorize_fault_injection { style: { opacity: 0 } }
+chain.hold_scl_low -> chain.command_faulted_boot_batch { style: { opacity: 0 } }
+chain.respond_i2c_requests -> chain.collect_peripheral_init_states { style: { opacity: 0 } }
+chain.capture_boot_init_log -> chain.emit_init_evidence_record { style: { opacity: 0 } }

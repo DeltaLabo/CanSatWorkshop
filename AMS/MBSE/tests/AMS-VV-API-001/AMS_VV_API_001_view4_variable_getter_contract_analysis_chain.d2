@@ -1,0 +1,116 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain — AMS-VV-API-001 variable-getter API/component-exchange/allocation analysis
+# Verification references: IVV; model/API-contract analysis; AMS-R1 (BME280 context); AMS-R2 (I2C context).
+# IADT: Analysis with supporting Inspection. SSIV: AMS v1.0 final acceptance / flight readiness.
+# Traceability: AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault; AMS-FE-StaleMeasurement; variable-getter constraint.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "AMS-VV-API-001 — Variable-getter API / CE / allocation analysis\nAnalysis with supporting Inspection; AMS v1.0 final acceptance; Refs: IVV; model/API-contract analysis; AMS-R1/R2 context\nTrace: AMS-UC-MeasureAtmosphere, AMS-UC-InitializePeripheral, AMS-FE-SensorBusFault, AMS-FE-StaleMeasurement, variable-getter constraint" {
+  class: chain
+  direction: down
+
+  identify_baseline: "[F] Identify AMS v1.0\nmodel/API baseline" { class: func }
+  inventory_getters: "[F] Inventory modeled\ngetter API surface" { class: func }
+  inventory_collection_paths: "[F] Inventory OBCC\ncollection paths" { class: func }
+  map_allocations: "[F] Map AMS Sensing /\nProcessing / OBCC allocations" { class: func }
+  map_modeled_ces: "[F] Map LC crossings to\nI2C, Pointers, Returns" { class: func }
+  inspect_api_declarations: "[F] Inspect API declarations\nand checklist entries" { class: func }
+  analyze_getter_call: "[F] Analyze getter call\ncontract" { class: func }
+  analyze_pointer_contract: "[F] Analyze pointer ownership,\nlifetime, units, aliasing" { class: func }
+  analyze_return_semantics: "[F] Analyze return status\nand data semantics" { class: func }
+  analyze_stale_prevention: "[F] Analyze stale/no-data\nprevention" { class: func }
+  analyze_bounded_errors: "[F] Analyze bounded error\nbehavior" { class: func }
+  run_static_analysis: "[F] Run static call-graph\nand crossing analysis" { class: func }
+  inspect_log_evidence: "[F] Inspect unit-test /\nlog evidence" { class: func }
+  classify_results: "[F] Classify pass/fail,\nwaivers, anomalies" { class: func }
+  archive_report_inputs: "[F] Archive coverage matrix\nand report inputs" { class: func }
+
+  note_scope: "[C] Scope: target [CE] Pointers, [CE] Returns, variable-getter\nconstraint, AMS Sensing/Processing/OBCC allocations, and the two\nmodeled v1.0 chains; [CE] I2C is context from AMS-VV-CE-001" { class: note; shape: page }
+  note_stat: "[C] Statistical basis: 100% model/API review of the enumerated\ngetter and OBCC collection paths; analysis/inspection only, no\nsampling or fleet reliability claim" { class: note; shape: page }
+  note_pointer: "[C] Pointer pass/fail: ownership, lifetime, null/invalid pointer\npolicy, units/scaling, and concurrency/aliasing assumptions are\nexplicit and consistent with variable-getter semantics" { class: note; shape: page }
+  note_return: "[C] Return pass/fail: valid measurement, startup fault, runtime\nsensor fault, timeout/bus error, invalid input, and stale/no-data\nstatuses/data are distinguishable where applicable" { class: note; shape: page }
+  note_allocation: "[C] Allocation pass/fail: no AMS Sensing functions are foreign\nto AMS Processing/OBCC; no OBCC collection functions are foreign\nto AMS Sensing/Processing except through modeled API exchanges" { class: note; shape: page }
+  note_crossings: "[C] Crossing pass/fail: all LC crossings require only modeled\nI2C, Pointers, and Returns CEs; no unmodeled foreign exchange,\nglobal data path, or bypass is required" { class: note; shape: page }
+  note_coverage: "[C] Coverage pass/fail: checklist marks 100% of modeled AMS\nprocessing getters and OBCC collection paths complete; missing,\nambiguous, or unauditable item fails unless formally waived" { class: note; shape: page }
+  note_fault: "[C] Fault-hardening viewpoint: invalid pointer, stale data, sensor\nstartup fault, runtime sensor fault, timeout/bus error, unit mismatch,\noverflow/NaN, and scheduler non-blocking error propagation" { class: note; shape: page }
+}
+
+chain.identify_baseline -> chain.inventory_getters: "[FE] Baseline model\nand API contract" { class: fe }
+chain.inventory_getters -> chain.inventory_collection_paths: "[FE] Getter list\nwith variables" { class: fe }
+chain.inventory_collection_paths -> chain.map_allocations: "[FE] Collection path\ninventory" { class: fe }
+chain.map_allocations -> chain.map_modeled_ces: "[FE] Allocation map" { class: fe }
+chain.map_modeled_ces -> chain.inspect_api_declarations: "[FE] CE boundary\nrequirements" { class: fe }
+chain.inspect_api_declarations -> chain.analyze_getter_call: "[FE] Prototype and\nchecklist evidence" { class: fe }
+chain.analyze_getter_call -> chain.analyze_pointer_contract: "[FE] Getter call\ncontract" { class: fe }
+chain.analyze_pointer_contract -> chain.analyze_return_semantics: "[FE] Pointer field\ncontract" { class: fe }
+chain.analyze_return_semantics -> chain.analyze_stale_prevention: "[FE] Status/data\ncase matrix" { class: fe }
+chain.analyze_stale_prevention -> chain.analyze_bounded_errors: "[FE] Freshness and\nage semantics" { class: fe }
+chain.analyze_bounded_errors -> chain.run_static_analysis: "[FE] Fault return\npolicy" { class: fe }
+chain.run_static_analysis -> chain.inspect_log_evidence: "[FE] Static findings\nand call graph" { class: fe }
+chain.inspect_log_evidence -> chain.classify_results: "[FE] Evidence coverage\nand fault logs" { class: fe }
+chain.classify_results -> chain.archive_report_inputs: "[FE] Analysis result\nand evidence index" { class: fe }
+
+chain.note_scope -> chain.inventory_getters { class: cstr }
+chain.note_scope -> chain.map_modeled_ces { class: cstr }
+chain.note_stat -> chain.inventory_getters { class: cstr }
+chain.note_pointer -> chain.analyze_pointer_contract { class: cstr }
+chain.note_return -> chain.analyze_return_semantics { class: cstr }
+chain.note_allocation -> chain.map_allocations { class: cstr }
+chain.note_crossings -> chain.map_modeled_ces { class: cstr }
+chain.note_crossings -> chain.run_static_analysis { class: cstr }
+chain.note_coverage -> chain.inventory_collection_paths { class: cstr }
+chain.note_coverage -> chain.classify_results { class: cstr }
+chain.note_fault -> chain.analyze_stale_prevention { class: cstr }
+chain.note_fault -> chain.analyze_bounded_errors { class: cstr }
+
+# Layout-only edge to keep the pass/fail constraint notes grouped after the analysis flow.
+chain.archive_report_inputs -> chain.note_scope { style: { opacity: 0 } }
+chain.note_scope -> chain.note_stat { style: { opacity: 0 } }
+chain.note_stat -> chain.note_pointer { style: { opacity: 0 } }
+chain.note_pointer -> chain.note_return { style: { opacity: 0 } }
+chain.note_return -> chain.note_allocation { style: { opacity: 0 } }
+chain.note_allocation -> chain.note_crossings { style: { opacity: 0 } }
+chain.note_crossings -> chain.note_coverage { style: { opacity: 0 } }
+chain.note_coverage -> chain.note_fault { style: { opacity: 0 } }

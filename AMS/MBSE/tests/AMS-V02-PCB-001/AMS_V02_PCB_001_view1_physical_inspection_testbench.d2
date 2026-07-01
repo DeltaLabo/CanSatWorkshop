@@ -1,0 +1,130 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical view — AMS-V02-PCB-001 PCB delivery/manufacturability inspection
+# IADT: Inspection with supporting Analysis. SSIV: AMS v0.2 advancement to v1.0 integrated build.
+# Traceability: AMS-v0.2-to-v1.0-readiness; AMS-UC-MeasureAtmosphere; AMS-FE-BadManufacturing; AMS-FE-SensorBusFault.
+# References: IVV, AMS-R1 (BME280), AMS-R2 (I2C), v0.2 PA baseline, fabrication/rework traveler.
+# Scope boundary: unpowered delivered-PCB inspection/analysis only; powered I2C bring-up is AMS-V02-BRINGUP-001.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS-V02-PCB-001 PCB delivery inspection\nAMS v0.2 to v1.0 readiness\nRefs: IVV, AMS-R1, AMS-R2, v0.2 PA" {
+  class: sys
+  direction: down
+
+  ams_pcb: "[PC] AMS PCB" {
+    class: pc
+    direction: down
+
+    bme280: "[PC] BME280" { class: pc }
+    ams_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+    note_article: "[C] AMS PCB article shall be the v0.2\ndelivery baseline and traceable to\nfabrication, inspection, and rework records" {
+      class: note
+      shape: page
+    }
+    note_bme280: "[C] BME280 component/footprint shall be\npresent, correct orientation, correct\npitch/variant, and free from visible\ndamage, FOD, solder bridges, or opens" {
+      class: note
+      shape: page
+    }
+    note_connector: "[C] Backplane connector component/footprint\nshall be present, correct orientation,\ncorrect pitch/variant, and mechanically\nfit the v1.0 interface intent" {
+      class: note
+      shape: page
+    }
+    note_traces: "[C] I2C + 3V3 traces/pads shall be present\nbetween BME280 and connector, with no\nvisible opens, shorts, lifted pads, or\nunapproved jumper/bypass routes" {
+      class: note
+      shape: page
+    }
+    note_manufacturing: "[C] Board outline, clearances, drill/features,\nand selected soldering method shall remain\ncompatible with Carvera Air CNC fabrication\nand reflux or manual soldering evidence" {
+      class: note
+      shape: page
+    }
+    note_failure_rule: "[C] Any missing, wrong, ambiguous component,\nfootprint, route, manufacturing deviation,\nor uncontrolled rework fails unless a\ncontrolled waiver/model update exists" {
+      class: note
+      shape: page
+    }
+    note_scope: "[C] Scope: unpowered physical inspection and\nmanufacturability/physical-link analysis;\npowered I2C bring-up is not credited here" {
+      class: note
+      shape: page
+    }
+  }
+}
+
+pcb_inspector_station: "[EA] PCB Inspector /\nInspection Workstation" { class: ea }
+esd_fixture: "[EA] ESD-safe\nInspection Fixture" { class: ea }
+microscope: "[EA] Microscope /\nInspection Camera" { class: ea }
+connector_gauge: "[EA] Caliper /\nConnector Gauge" { class: ea }
+continuity_meter: "[EA] DMM /\nContinuity Meter" { class: ea }
+traveler_repo: "[EA] Manufacturing Traveler /\nEvidence Repository" { class: ea }
+
+system.ams_pcb.bme280 -- system.ams_pcb: "[PL] BME280\nFootprint" { class: pl }
+system.ams_pcb.ams_backplane_connector -- system.ams_pcb: "[PL] Connector\nfootprint" { class: pl }
+system.ams_pcb.bme280 -- system.ams_pcb.ams_backplane_connector: "[PL] I2C + 3V3\ntraces" { class: pl }
+
+pcb_inspector_station -- system.ams_pcb: "[PL] ESD-safe handling /\nvisual access" { class: pl }
+esd_fixture -- system.ams_pcb: "[PL] ESD-safe\nboard support" { class: pl }
+microscope -- system.ams_pcb.bme280: "[PL] Magnified\nvisual inspection" { class: pl }
+microscope -- system.ams_pcb.ams_backplane_connector: "[PL] Close-up\nphoto evidence" { class: pl }
+connector_gauge -- system.ams_pcb.ams_backplane_connector: "[PL] Pitch / fit\ngauge contact" { class: pl }
+continuity_meter -- system.ams_pcb.bme280: "[PL] Unpowered\nprobe contact" { class: pl }
+continuity_meter -- system.ams_pcb.ams_backplane_connector: "[PL] Unpowered\nprobe contact" { class: pl }
+traveler_repo -- system.ams_pcb: "[PL] Fabrication /\nrework records" { class: pl }
+
+system.ams_pcb.note_article -> system.ams_pcb { class: cstr }
+system.ams_pcb.note_article -> traveler_repo { class: cstr }
+system.ams_pcb.note_bme280 -> system.ams_pcb.bme280 { class: cstr }
+system.ams_pcb.note_connector -> system.ams_pcb.ams_backplane_connector { class: cstr }
+system.ams_pcb.note_connector -> connector_gauge { class: cstr }
+system.ams_pcb.note_traces -> system.ams_pcb.bme280 { class: cstr }
+system.ams_pcb.note_traces -> system.ams_pcb.ams_backplane_connector { class: cstr }
+system.ams_pcb.note_traces -> continuity_meter { class: cstr }
+system.ams_pcb.note_manufacturing -> system.ams_pcb { class: cstr }
+system.ams_pcb.note_failure_rule -> system.ams_pcb { class: cstr }
+system.ams_pcb.note_scope -> system.ams_pcb { class: cstr }
+
+# Layout-only edges keep the external inspection means in a stable order.
+pcb_inspector_station -> esd_fixture { style: { opacity: 0 } }
+esd_fixture -> microscope { style: { opacity: 0 } }
+microscope -> connector_gauge { style: { opacity: 0 } }
+connector_gauge -> continuity_meter { style: { opacity: 0 } }
+continuity_meter -> traveler_repo { style: { opacity: 0 } }

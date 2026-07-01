@@ -1,0 +1,134 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view
+# Full AMS v0.1 PA allocation stack with functions and constraints, without exchanges.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] AMS v0.1 Subsystem" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  bme280: "[PC] BME280" {
+    class: pc
+    direction: down
+
+    ams_sensing: "[LC] AMS Sensing" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
+        class: note
+        shape: page
+      }
+      measure_pressure: "[F] Measure\npressure" { class: func }
+      note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+        class: note
+        shape: page
+      }
+      measure_temperature: "[F] Measure\ntemperature" { class: func }
+      respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+    }
+  }
+
+  xiao: "[PC] XIAO ESP32" {
+    class: pc
+    direction: down
+
+    ams_processing: "[LC] AMS Processing" {
+      class: lc
+      direction: down
+      grid-columns: 4
+
+      get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+      read_pressure: "[F] Read\npressure" { class: func }
+      read_temperature: "[F] Read\ntemperature" { class: func }
+      note_resolution: "[C] Resolution\n< 10m" {
+        class: note
+        shape: page
+      }
+      calculate_altitude: "[F] Calculate\naltitude" { class: func }
+      process_temperature: "[F] Process\ntemperature" { class: func }
+      collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+      collect_measurements: "[F] Collect\nmeasurements" { class: func }
+      init_serial0_serial1: "[F] Init Serial0 and\nSerial1 with interrupts" { class: func }
+      log_serial0: "[F] Log via\nSerial0" { class: func }
+    }
+
+    note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+      class: note
+      shape: page
+    }
+    note_variable_getter: "[C] Implement each\n(Read X, Process X) or\n(Read X, Calculate Y)\npair as a Variable\nGetter template" {
+      class: note
+      shape: page
+    }
+    note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" {
+      class: note
+      shape: page
+    }
+    note_process_time: "[C] All Process or\nCalculate functions\nmust take < 5 ms" {
+      class: note
+      shape: page
+    }
+  }
+}
+
+host_pc: "[EA] PC" {
+  class: ea
+  monitor_serial_port: "[F] Monitor serial\nport" { class: func }
+}
+
+system.bme280.ams_sensing.note_accuracy_pressure -> system.bme280.ams_sensing.measure_pressure { class: cstr }
+system.bme280.ams_sensing.note_accuracy_temperature -> system.bme280.ams_sensing.measure_temperature { class: cstr }
+system.xiao.ams_processing.note_resolution -> system.xiao.ams_processing.calculate_altitude { class: cstr }
+
+system.xiao.note_no_blocking -> system.xiao.ams_processing { class: cstr }
+system.xiao.note_variable_getter -> system.xiao.ams_processing { class: cstr }
+system.xiao.note_i2c_timeout -> system.xiao.ams_processing { class: cstr }
+system.xiao.note_process_time -> system.xiao.ams_processing { class: cstr }
+
+# Layout-only edge to keep the external PC below the subsystem.
+system -> host_pc { style: { opacity: 0 } }

@@ -1,0 +1,84 @@
+vars: {
+  d2-config: { layout-engine: elk }
+}
+
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 32 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 29 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 28 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 24 } }
+}
+
+auditor: "[EA] DFM Test Operator" {
+  class: ea
+  read_definition: "[F] Read modeled verification\nsequence" { class: func }
+  execute_checks: "[F] Execute visual/electrical checks" { class: func }
+  log_trace: "[F] Log pass/fail + trace IDs" { class: func }
+}
+
+qa_owner: "[EA] QA / Deviation Owner" {
+  class: ea
+  evaluate_findings: "[F] Evaluate findings" { class: func }
+  issue_waiver: "[F] Issue waiver or CAPA" { class: func }
+}
+
+evidence_repo: "[EA] Evidence Repository" {
+  class: ea
+  archive_records: "[F] Archive photos\nmeasurements\ncoupons" { class: func }
+  produce_report_ref: "[F] Produce report reference" { class: func }
+}
+
+system: "[System] PDS-VV-CON-009 logical evidence interface context" {
+  class: sys
+  direction: down
+  grid-columns: 2
+
+  source_scope: "[PC] Source v1.0 model scope" { class: pc
+    battery_lc: "[LC] Battery" { class: lc
+      provide_power: "[F] Provide power" { class: func }
+    }
+    charger_lc: "[LC] Battery Charger" { class: lc
+      regulate_voltage: "[F] Regulate voltage" { class: func }
+      current_limit: "[F] Limit current" { class: func }
+    }
+    protection_lc: "[LC] Power Protection" { class: lc
+      detect_overcurrent: "[F] Detect overcurrent" { class: func }
+      detect_overvoltage: "[F] Detect overvoltage" { class: func }
+      cut_off_power: "[F] Cut off power" { class: func }
+      restore_power: "[F] Restore power" { class: func }
+    }
+  }
+
+  evidence_scope: "[PC] Verification-only scope" { class: pc
+    dfm_review_lc: "[LC] DFM Review" { class: lc
+      check_trace: "[F] Check trace/space" { class: func }
+      check_drill: "[F] Check drill/annular" { class: func }
+      check_isolation: "[F] Check isolation/keepout" { class: func }
+      check_depth: "[F] Check milling thickness" { class: func }
+    }
+    deviation_lc: "[LC] Deviation Control" { class: lc
+      hold_if_needed: "[F] Hold on mandatory failures" { class: func }
+      close_waiver: "[F] Close waivers with owner" { class: func }
+    }
+  }
+}
+
+note_constraint: "[C] Constraint target\nCarvera Air CNC machability with trace/space, drill, annular ring, isolation,\nmilling depth, thickness, and keepout compliance" { class: note; shape: page }
+note_evidence: "[C] Evidence interface\nAll inspection outcomes map to test evidence and\n`PDS-VV-CON-009` report record" { class: note; shape: page }
+note_stat: "[C] Viewpoint\n100% campaign board/coupon scope coverage before powered integration" { class: note; shape: page }
+
+# Evidence interfaces
+qa_owner -> evidence_repo: "[CE] Deviation evidence" { class: ce }
+evidence_repo -> auditor: "[CE] Evidence requirements" { class: ce }
+auditor -> system.evidence_scope.deviation_lc.hold_if_needed: "[CE] Hold/authorize" { class: ce }
+auditor -> system.evidence_scope.dfm_review_lc.check_trace: "[CE] DFM evidence" { class: ce }
+
+note_constraint -> system.evidence_scope.dfm_review_lc.check_trace { class: cstr }
+note_stat -> auditor { class: cstr }
+note_evidence -> evidence_repo { class: cstr }

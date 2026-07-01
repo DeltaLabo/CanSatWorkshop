@@ -1,0 +1,118 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV1 — Physical DFM inspection context for PDS-VV-CON-009
+# References: IVV; PDS-R1; PDS-R2; PDS-R8
+
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 36 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 28 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 24 } }
+}
+
+auditor: "[EA] DFM Inspector" {
+  class: ea
+  inspect_board: "[F] Inspect boards/coupons\nfor workmanship and fit" { class: func }
+  log_defects: "[F] Log defects\nand evidence" { class: func }
+}
+
+qa_engineer: "[EA] QA Engineer / Deviation Owner" {
+  class: ea
+  check_rules: "[F] Check Carvera\npre-check list" { class: func }
+  approve_waiver: "[F] Approve waivers\nor hold conditions" { class: func }
+}
+
+metrology: "[EA] Metrology / AOI station" {
+  class: ea
+  measure_dim: "[F] Measure dimensions\nand mechanical clearances" { class: func }
+  verify_continuity: "[F] Verify continuity\nand isolation" { class: func }
+  capture_images: "[F] Capture visual\nand microscopy images" { class: func }
+}
+
+operator: "[EA] Human Operator" {
+  class: ea
+  ambient: "[F] Read ambient\ntemperature/humidity" { class: func }
+  safety_hold: "[F] Hold on unsafe\ncondition" { class: func }
+  identify_board: "[F] Identify board\nrevision/article" { class: func }
+}
+
+system: "[System] PDS-VV-CON-009 physical DFM inspection context\nPDS & ESS v1.0 final flight acceptance" {
+  class: sys
+  direction: down
+
+  uut_article: "[PC] Integrated PDS & ESS v1.0 article" {
+    class: pc
+    direction: down
+    ess_module: "[PC] ESS Module" { class: pc
+      battery_pack: "[PC] 1S1P Li-Ion" { class: pc }
+    }
+    pds_module: "[PC] PDS Module" { class: pc
+      pds_pcb: "[PC] PDS PCB" { class: pc
+        battery_connector: "[PC] Battery Connector" { class: pc }
+        protection: "[PC] Protection Circuit" { class: pc }
+        ina219: "[PC] INA219" { class: pc }
+        regulator: "[PC] Regulator" { class: pc }
+        pds_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+    obcc_module: "[PC] OBCC Module" { class: pc
+      obcc_pcb: "[PC] OBCC PCB" { class: pc
+        xiao: "[PC] XIAO ESP32-S3" { class: pc }
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+    backplane_pcb: "[PC] Backplane PCB" { class: pc
+      pds_headers: "[PC] 2mm 2x6 PDS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+  }
+
+  coupon_bench: "[PC] Coupon / DFM inspection benches" { class: pc
+    pds_coupon: "[PC] PDS PCB coupon set" { class: pc }
+    obcc_coupon: "[PC] OBCC PCB coupon set" { class: pc }
+    backplane_coupon: "[PC] Backplane PCB coupon set" { class: pc }
+    screw_fixture: "[PC] Screw-hole retention\nfixture/jig" { class: pc }
+  }
+}
+
+note_cnc_rules: "[C] Carvera Air rule set (pre-execution)\n- trace/space\n- drill/tool\n- annular ring\n- isolation/clearance\n- milling depth\n- board thickness\n- keepouts\nExecution blocked if unresolved" { class: note; shape: page }
+note_scope: "[C] 100% scope coverage: PDS PCB, OBCC PCB, backplane context,\nheaders, footprints, screw holes, battery/protection/INA/5V/3V3 traces" { class: note; shape: page }
+note_stat: "[C] Statistical view\n100% board/coupon inspection for the campaign\nNo lot inference without separate sampling" { class: note; shape: page }
+note_fault: "[C] Fault-hardening\nshorts, opens, high resistance, wrong footprint,\nclearance/thermal defects, retention failures,\nvibration/handling defects" { class: note; shape: page }
+
+auditor -> metrology: "[PL] Verification procedure handoff" { class: pl }
+qa_engineer -> auditor: "[PL] Defect disposition" { class: pl }
+operator -> qa_engineer: "[PL] Safety hold/authorization" { class: pl }
+
+system.uut_article.ess_module.battery_pack -- system.uut_article.pds_module.pds_pcb.battery_connector: "[PL] Battery cable" { class: pl }
+system.uut_article.pds_module.pds_pcb.battery_connector -- system.uut_article.pds_module.pds_pcb.protection: "[PL] Battery traces" { class: pl }
+system.uut_article.pds_module.pds_pcb.protection -- system.uut_article.pds_module.pds_pcb.ina219: "[PL] Protection output trace" { class: pl }
+system.uut_article.pds_module.pds_pcb.ina219 -- system.uut_article.pds_module.pds_pcb.regulator: "[PL] INA output trace" { class: pl }
+system.uut_article.pds_module.pds_pcb.regulator -- system.uut_article.pds_module.pds_pcb.pds_backplane_connector: "[PL] 5V/3V3 traces" { class: pl }
+system.uut_article.pds_module.pds_pcb.pds_backplane_connector -- system.uut_article.backplane_pcb.pds_headers: "[PL] PDS parallel cable" { class: pl }
+system.uut_article.obcc_module.obcc_pcb.obcc_backplane_connector -- system.uut_article.backplane_pcb.obcc_headers: "[PL] OBCC parallel cable" { class: pl }
+system.uut_article.pds_module.pds_pcb.battery_connector -- system.uut_article.pds_module.pds_pcb: "[PL] Battery footprint" { class: pl }
+system.uut_article.pds_module.pds_pcb.protection -- system.uut_article.pds_module.pds_pcb: "[PL] Protection footprint" { class: pl }
+system.uut_article.pds_module.pds_pcb.ina219 -- system.uut_article.pds_module.pds_pcb: "[PL] INA219 footprint" { class: pl }
+system.uut_article.pds_module.pds_pcb.regulator -- system.uut_article.pds_module.pds_pcb: "[PL] Regulator footprint" { class: pl }
+system.uut_article.obcc_module.obcc_pcb.xiao -- system.uut_article.obcc_module.obcc_pcb: "[PL] XIAO footprint" { class: pl }
+
+system.uut_article -> system.coupon_bench: "[PL] Inspection fixture path" { class: pl }
+system.uut_article.pds_module.pds_pcb -> system.coupon_bench.pds_coupon: "[PL] Coupon traceability" { class: pl }
+system.uut_article.obcc_module.obcc_pcb -> system.coupon_bench.obcc_coupon: "[PL] Coupon traceability" { class: pl }
+system.uut_article.backplane_pcb -> system.coupon_bench.backplane_coupon: "[PL] Coupon traceability" { class: pl }
+
+note_cnc_rules -> system.coupon_bench { class: cstr }
+note_scope -> system.uut_article { class: cstr }
+note_stat -> auditor { class: cstr }
+note_fault -> qa_engineer { class: cstr }

@@ -1,0 +1,105 @@
+vars: { d2-config: { layout-engine: elk } }
+
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 34 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 35 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 29 } }
+  alloc: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 28; stroke-dash: 2 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 28 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 24 } }
+}
+
+system: "[System] PDS-VV-CON-009 — DFM allocation review\nPDS & ESS v1.0 final flight acceptance" {
+  class: sys
+  direction: down
+  grid-columns: 2
+
+  source_scope: "[PC] Source v1.0 function/model scope" { class: pc
+    battery: "[LC] Battery" { class: lc
+      store_energy: "[F] Store energy" { class: func }
+    }
+    charger: "[LC] Battery Charger" { class: lc
+      regulate_voltage: "[F] Regulate voltage" { class: func }
+      limit_current: "[F] Limit current" { class: func }
+    }
+    prot: "[LC] Power Protection" { class: lc
+      detect_overcurrent: "[F] Detect overcurrent" { class: func }
+      detect_overvoltage: "[F] Detect overvoltage" { class: func }
+      cut_off_power: "[F] Cut off power" { class: func }
+      restore_power: "[F] Restore power" { class: func }
+    }
+    regulator: "[LC] Regulator" { class: lc
+      regulate_output: "[F] Regulate 5V / 3V3" { class: func }
+    }
+    monitoring: "[LC] Battery monitoring" { class: lc
+      read_voltage: "[F] Measure voltage" { class: func }
+      read_current: "[F] Measure current" { class: func }
+      respond_i2c: "[F] Respond to I2C requests" { class: func }
+    }
+  }
+
+  ver_scope: "[PC] Verification-only scope" { class: pc
+    dfm_board: "[PC] DFM inspection board (UUT)" { class: pc
+      trace_space: "[LC] PCB Trace Review" { class: lc
+        review_trace_space: "[F] Review trace/space" { class: func }
+        review_isolation: "[F] Review isolation and clearance" { class: func }
+      }
+      drill: "[LC] Drill and annular review" { class: lc
+        review_drill: "[F] Review drill size" { class: func }
+        review_annular: "[F] Review annular ring" { class: func }
+      }
+      depth: "[LC] Stack and fabrication review" { class: lc
+        review_thickness: "[F] Review board thickness" { class: func }
+        review_depth: "[F] Review milling depth" { class: func }
+        review_keepout: "[F] Review keepouts" { class: func }
+      }
+      continuity: "[LC] Board-coupon verification" { class: lc
+        review_fit: "[F] Inspect fit/placement" { class: func }
+        review_screws: "[F] Verify screw and connector retention" { class: func }
+        review_continuity: "[F] Verify continuity/isolation" { class: func }
+      }
+    }
+
+    evidence_pc: "[PC] Evidence and deviation control" { class: pc
+      dev_ctrl: "[LC] Deviation Control" { class: lc
+        hold_on_rule_fail: "[F] Hold on rule failure" { class: func }
+        authorize_waiver: "[F] Authorize / reject waiver" { class: func }
+      }
+      stats_pc: "[LC] Statistical control" { class: lc
+        record_100pc: "[F] Record 100% article coverage" { class: func }
+      }
+    }
+  }
+}
+
+qa_actor: "[EA] QA Lead / Test Operator" { class: ea }
+
+audit_chain: "[PC] Allocation verification chain" { class: pc
+  inspect_mapped: "[F] Inspect mapped functions" { class: func }
+  check_misalloc: "[F] Check missing/mis-allocation" { class: func }
+  confirm_links: "[F] Confirm physical links/components covered" { class: func }
+  signoff: "[F] Sign off allocation review" { class: func }
+}
+
+note_alloc: "[C] Allocation review target\nCarvera-related rules and checks must be reviewed in context\nwith intended ownership only." { class: note; shape: page }
+note_coverage: "[C] Coverage target\n100% of v1.0 article PCs/PLs and coupons\n(PDS PCB, OBCC PCB, backplane context, headers, footprints,\nretention points)." { class: note; shape: page }
+
+# Allocation links
+system.source_scope.battery.store_energy -> system.ver_scope.trace_space.review_trace_space: { class: alloc }
+system.source_scope.charger.regulate_voltage -> system.ver_scope.drill.review_drill: { class: alloc }
+system.source_scope.prot.cut_off_power -> system.ver_scope.trace_space.review_isolation: { class: alloc }
+system.source_scope.regulator.regulate_output -> system.ver_scope.depth.review_depth: { class: alloc }
+system.source_scope.monitoring.read_voltage -> system.ver_scope.depth.review_thickness: { class: alloc }
+
+qa_actor -> audit_chain.inspect_mapped: "[FE] Review inputs" { class: fe }
+audit_chain.confirm_links -> qa_actor: "[FE] Review outcome" { class: fe }
+system.ver_scope.evidence_pc.dev_ctrl -> qa_actor: "[FE] Hold/approve path" { class: fe }
+
+note_alloc -> system.source_scope { class: cstr }
+note_coverage -> system.ver_scope.trace_space { class: cstr }
+note_coverage -> system.ver_scope.depth { class: cstr }

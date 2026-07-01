@@ -1,0 +1,127 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV3 — PDS-VV-ALLOC-001 functional allocation review (source scope only, plus review controls).
+# References: IVV, CON-001, CON-003, CON-004, FC-001, PC-001.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9C"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+}
+
+system: "[System] PDS-VV-ALLOC-001 functional allocation review\nTarget: 100% LC/actor allocation and no foreign function without deviation (refs: IVV; FC-001; CON-001/003/004; PC-001)" {
+  class: sys
+  direction: down
+  grid-columns: 2
+
+  scoped_actor_functions: "[PC] External actor functions to be reviewed" {
+    class: pc
+    direction: down
+    grid-columns: 1
+    chg_provide_power: "[EA] Charger / Provide power" { class: func }
+    user_switch_on: "[EA] User / Switch power on" { class: func }
+    user_switch_off: "[EA] User / Switch power off" { class: func }
+  }
+
+  source_uut_allocation: "[PC] Source v1.0 functional allocation" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    battery: "[LC] Battery" { class: lc
+      direction: down
+      store_energy: "[F] Store energy" { class: func }
+      provide_power: "[F] Provide power" { class: func }
+    }
+
+    battery_charger: "[LC] Battery Charger" { class: lc
+      direction: down
+      charger_regulate: "[F] Regulate voltage" { class: func }
+    }
+
+    power_protection: "[LC] Power Protection" { class: lc
+      direction: down
+      detect_overcurrent: "[F] Detect overcurrent" { class: func }
+      detect_overvoltage: "[F] Detect overvoltage" { class: func }
+      restore_power: "[F] Restore power" { class: func }
+      cut_off_power: "[F] Cut off power" { class: func }
+    }
+
+    regulator: "[LC] Regulator" { class: lc
+      direction: down
+      regulate_voltage: "[F] Regulate voltage" { class: func }
+    }
+  }
+
+  expected: "[PC] Allocation check controls" {
+    class: pc
+    direction: down
+    grid-columns: 1
+    expected_list: "[LC] Expected function owners only" { class: lc }
+    map_checker: "[LC] Evidence-mapped owner/flow matrix" { class: lc }
+    no_foreign: "[LC] No-foreign-function assertion" { class: lc }
+    flow_boundary: "[LC] Cross-LC flow boundary assertion" { class: lc }
+    final_rationale: "[LC] ALLOC-001/ALLOC-003 rationale" { class: lc }
+  }
+
+  foreign_function_watch: "[PC] Foreign-function monitor" {
+    class: pc
+    direction: down
+    foreign_observed: "[LC] Foreign/unmodeled functions\n(observed: none expected)" { class: lc }
+    dispositioned: "[LC] Disposition status: Approved waiver / open blocker / reject" { class: lc }
+  }
+
+  note_pass: "[C] Pass/fail criteria\nPass if Battery, Battery Charger, Power Protection, and Regulator own exactly: Store energy, Provide power, Regulate voltage (charger), Detect overcurrent, Detect overvoltage, Restore power, Cut off power.\nCharger/User actor functions are also explicitly owned in actor model.\nNo foreign/unmodeled functions unless dispositioned, and all flows align to modeled CEs/PLs and existing evidence paths in FC-001/CON-001/CON-003/CON-004/PC-001." {
+    class: note
+    shape: page
+  }
+}
+
+system.scoped_actor_functions.chg_provide_power -> system.expected.expected_list: "[FE] Allocation check" { class: fe }
+system.scoped_actor_functions.user_switch_on -> system.expected.expected_list: "[FE] Switch ownership check" { class: fe }
+system.source_uut_allocation.battery.store_energy -> system.expected.map_checker: "[FE] Check source owner" { class: fe }
+system.source_uut_allocation.battery.provide_power -> system.expected.map_checker: "[FE] Check source owner" { class: fe }
+system.source_uut_allocation.battery_charger.charger_regulate -> system.expected.map_checker: "[FE] Check source owner" { class: fe }
+system.source_uut_allocation.power_protection.detect_overcurrent -> system.expected.flow_boundary: "[FE] Boundary-flow check" { class: fe }
+system.source_uut_allocation.power_protection.detect_overvoltage -> system.expected.flow_boundary: "[FE] Boundary-flow check" { class: fe }
+system.source_uut_allocation.power_protection.restore_power -> system.expected.flow_boundary: "[FE] Boundary-flow check" { class: fe }
+system.source_uut_allocation.power_protection.cut_off_power -> system.expected.flow_boundary: "[FE] Boundary-flow check" { class: fe }
+system.source_uut_allocation.regulator.regulate_voltage -> system.expected.map_checker: "[FE] Check source owner" { class: fe }
+system.expected.no_foreign -> system.foreign_function_watch.foreign_observed: "[FE] Ensure no foreign" { class: fe }
+system.foreign_function_watch.dispositioned -> system.expected.final_rationale: "[FE] Record discrepancy or waiver" { class: fe }
+
+system.note_pass -> system.expected.final_rationale { class: cstr }
+
+# Layout-only rank hints.
+system.scoped_actor_functions -> system.source_uut_allocation { style: { opacity: 0 } }
+system.source_uut_allocation -> system.expected { style: { opacity: 0 } }
+system.expected -> system.foreign_function_watch { style: { opacity: 0 } }

@@ -1,0 +1,45 @@
+vars: { d2-config: { layout-engine: elk } }
+
+direction: down
+
+classes: {
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 28 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 24 } }
+}
+
+chain: "PDS-VV-CON-009 — Carvera Air DFM analysis chain\nrefs: IVV; PDS-R8" {
+  class: chain
+  direction: down
+
+  precheck: "[F] Load v1.0 design artifacts\n(PDS, OBCC, Backplane, BOM, GERBER/ODB files)" { class: func }
+  check_ruleset: "[F] Execute Carvera Air rule pre-check\n(trace/space, drill, annular, isolation, keepout,\nthickness, milling depth, tool reach)" { class: func }
+  review_battery_paths: "[F] Analyze battery/protection/INA/5V/3V3 traces\nfor modeled 1 A current stress and thermal margins" { class: func }
+  inspect_headers: "[F] Review headers, footprints, screw holes,\nconnector mating geometry and orientation" { class: func }
+  inspect_backplane_ctx: "[F] Review backplane connector/header/spine context\nagainst v1.0 model" { class: func }
+  inspect_coupons: "[F] Inspect coupons\nfor dimensional fit and feature retention" { class: func }
+  classify_go_nogo: "[F] Classify each rule as PASS/WAIVER/HOLD" { class: func }
+  block_if_blocked: "[F] Block execution if any mandatory rule fails\nuntil disposition is closed" { class: func }
+  record_chain_evidence: "[F] Log deviations, closure, operator IDs,\nand rule-by-rule evidence" { class: func }
+  report_chain_result: "[F] Report chain result as inspection constraint evidence\nfor PDS-VV-CON-009" { class: func }
+
+  note_pre: "[C] Mandatory rule block: execution is blocked\nbefore powered integration when required\nrule sets are incomplete or unknown." { class: note; shape: page }
+  note_stats: "[C] Statistical view: 100% of flight boards/coupons\ncovered for this v1.0 campaign.\nSample size rationale = complete enumeration." { class: note; shape: page }
+  note_fault: "[C] Fault hardening: explicitly classify\nshorts, opens, wrong footprint/orientation, clearance intrusion,\nthermal overstress, retention failures, vibration/handling workmanship." { class: note; shape: page }
+}
+
+chain.precheck -> chain.check_ruleset: "[FE] DFM artifact import" { class: fe }
+chain.check_ruleset -> chain.review_battery_paths: "[FE] Rule interpretation" { class: fe }
+chain.review_battery_paths -> chain.inspect_headers: "[FE] Coverage check" { class: fe }
+chain.inspect_headers -> chain.inspect_backplane_ctx: "[FE] Coverage check" { class: fe }
+chain.inspect_backplane_ctx -> chain.inspect_coupons: "[FE] Coverage check" { class: fe }
+chain.inspect_coupons -> chain.classify_go_nogo: "[FE] Rule outcomes" { class: fe }
+chain.classify_go_nogo -> chain.block_if_blocked: "[FE] Mandatory block check" { class: fe }
+chain.block_if_blocked -> chain.record_chain_evidence: "[FE] Hold/waiver state" { class: fe }
+chain.record_chain_evidence -> chain.report_chain_result: "[FE] Final result export" { class: fe }
+
+chain.note_pre -> chain.block_if_blocked { class: cstr }
+chain.note_stats -> chain.record_chain_evidence { class: cstr }
+chain.note_fault -> chain.classify_go_nogo { class: cstr }

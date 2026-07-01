@@ -1,0 +1,169 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV4 — power-path allocation analysis chain for allocation category ALLOC-001.
+# References: IVV; FC-001; CON-001; CON-003; CON-004; PC-001.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+charger: "[EA] Charger" { class: ea
+  direction: down
+  provide_power: "[F] Provide power" { class: func }
+}
+
+user: "[EA] User" { class: ea
+  direction: down
+  switch_on: "[F] Switch power on" { class: func }
+  switch_off: "[F] Switch power off" { class: func }
+}
+
+system: "[System] PDS-VV-ALLOC-001 power-path allocation chain\nPDS & ESS v1.0; checks align to FC-001, CON-004 rail constraints, and CON-001 charge controls." {
+  class: sys
+  direction: right
+  grid-columns: 2
+
+  uut_alloc_chain: "[PC] UUT modeled power-path LCs/functions" {
+    class: pc
+    direction: down
+
+    battery: "[LC] Battery" { class: lc
+      direction: down
+      store_energy: "[F] Store energy" { class: func }
+      provide_power: "[F] Provide power" { class: func }
+    }
+
+    battery_charger: "[LC] Battery Charger" { class: lc
+      direction: down
+      regulate_voltage: "[F] Regulate voltage" { class: func }
+    }
+
+    power_protection: "[LC] Power Protection" { class: lc
+      direction: down
+      detect_overcurrent: "[F] Detect overcurrent" { class: func }
+      detect_overvoltage: "[F] Detect overvoltage" { class: func }
+      restore_power: "[F] Restore power" { class: func }
+      cut_off_power: "[F] Cut off power" { class: func }
+    }
+
+    regulator: "[LC] Regulator" { class: lc
+      direction: down
+      regulate_voltage: "[F] Regulate voltage" { class: func }
+    }
+  }
+
+  chain_review: "[Chain] Analysis sequence" {
+    class: chain
+    direction: down
+    charger_to_bc: "[F] Provide power" { class: func }
+    bc_charge_regulate: "[F] Regulate voltage" { class: func }
+    bat_store: "[F] Store energy" { class: func }
+    bat_provide: "[F] Provide power" { class: func }
+    rail_regulate: "[F] Regulate voltage" { class: func }
+    protection_cutoff: "[F] Cut off power" { class: func }
+    protection_restore: "[F] Restore power" { class: func }
+    user_on: "[F] Switch power on" { class: func }
+    user_off: "[F] Switch power off" { class: func }
+  }
+
+  flow_context: "[PC] Modeled flow assertions" {
+    class: pc
+    direction: down
+    usb_flow: "[LC] USB-C charge path only" { class: lc }
+    battery_flow: "[LC] Battery connector path only" { class: lc }
+    protected_rail_flow: "[LC] INA/regulated rail path only" { class: lc }
+    no_undocumented_flow: "[LC] No undocumented cross-LC power paths" { class: lc }
+    note_gate: "[C] Disposition only via approved waiver for documented model deltas" { class: note; shape: page }
+  }
+
+  review_controls: "[PC] ALLOC-001 review controls" {
+    class: pc
+    direction: down
+    check_flow: "[LC] Verify every power flow uses modeled links" { class: lc }
+    check_owner: "[LC] Verify each function owner" { class: lc }
+    check_fault_paths: "[LC] Verify overcurrent/overvoltage path ownership" { class: lc }
+    check_discrepancies: "[LC] Record discrepancy/waiver" { class: lc }
+  }
+}
+
+# Source-model function-to-LC ownership expected for ALLOC-001.
+charger.provide_power -> system.uut_alloc_chain.battery_charger.regulate_voltage: "[FE] Source charge path" { class: fe }
+system.uut_alloc_chain.battery_charger.regulate_voltage -> system.uut_alloc_chain.battery.store_energy: "[CE] USB-C charge / current-limited exchange" { class: ce }
+system.uut_alloc_chain.battery.store_energy -> system.uut_alloc_chain.battery.provide_power: "[FE] Stored energy" { class: fe }
+system.uut_alloc_chain.battery.provide_power -> system.uut_alloc_chain.regulator.regulate_voltage: "[CE] Battery/fault input to regulator path" { class: ce }
+system.uut_alloc_chain.regulator.regulate_voltage -> system.flow_context.protected_rail_flow: "[FE] Rail output (5V/3V3)" { class: fe }
+system.uut_alloc_chain.power_protection.detect_overcurrent -> system.uut_alloc_chain.power_protection.cut_off_power: "[FE] Demand/response action" { class: fe }
+system.uut_alloc_chain.power_protection.detect_overvoltage -> system.uut_alloc_chain.power_protection.cut_off_power: "[FE] Demand/response action" { class: fe }
+system.uut_alloc_chain.power_protection.cut_off_power -> system.uut_alloc_chain.power_protection.restore_power: "[FE] Controlled restore condition" { class: fe }
+
+# Review-chain control assertions.
+system.chain_review.charger_to_bc -> system.review_controls.check_owner: "[FE] Check charger function owner" { class: fe }
+system.chain_review.user_on -> system.review_controls.check_flow: "[FE] User switch control path check" { class: fe }
+system.chain_review.user_off -> system.review_controls.check_flow: "[FE] Safe-off verification check" { class: fe }
+system.flow_context.no_undocumented_flow -> system.review_controls.check_owner: "[FE] Check boundary crossing" { class: fe }
+
+# Fault-hardening coverage points for allocation review.
+system.review_controls.check_fault_paths -> system.uut_alloc_chain.power_protection.detect_overcurrent: "[FE] Overcurrent ownership" { class: fe }
+system.review_controls.check_fault_paths -> system.uut_alloc_chain.power_protection.detect_overvoltage: "[FE] Overvoltage ownership" { class: fe }
+system.review_controls.check_discrepancies -> system.review_controls.check_fault_paths: "[FE] Log discrepancy/waiver" { class: fe }
+
+# Constraint and coverage notes.
+pass_note: "[C] Pass/fail constraint set for ALLOC-001\n1) 100% source scope function allocation reviewed.\n2) No foreign function allocation without explicit approved discrepancy/waiver.\n3) Power/resource flow crosses only modeled links/exchanges.\n4) Conformance ties to CON-004 rail evidence and CON-001 startup/charge setup controls.\n5) Protection-demand and restore ownership follows CON-003 rationale." {
+  class: note
+  shape: page
+}
+
+flow_model_note: "[C] Mapped modeled links\nUSB-C cable, Battery cable, Battery/fault input, protected rail output, INA/conditioned paths, 5V/3V3 traces.\nAny additional physical power interface is a discrepancy until source model or waiver is updated." {
+  class: note
+  shape: page
+}
+
+system.flow_context.note_gate -> system.review_controls.check_discrepancies: "[CSTR] Potential deviation" { class: cstr }
+pass_note -> system.review_controls.check_owner { class: cstr }
+pass_note -> system.review_controls.check_flow { class: cstr }
+flow_model_note -> system.uut_alloc_chain { class: cstr }
+flow_model_note -> system.chain_review { class: cstr }
+
+# Layout ordering.
+charger -> user { style: { opacity: 0 } }
+user -> system { style: { opacity: 0 } }
+system.flow_context -> system.review_controls { style: { opacity: 0 } }
+system.review_controls -> pass_note { style: { opacity: 0 } }
+pass_note -> flow_model_note { style: { opacity: 0 } }

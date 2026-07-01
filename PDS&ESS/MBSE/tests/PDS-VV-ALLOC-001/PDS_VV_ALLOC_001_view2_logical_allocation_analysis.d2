@@ -1,0 +1,157 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV2 — PDS-VV-ALLOC-001 logical allocation boundary and interface analysis.
+# References: IVV, FC-001, CON-001, CON-003, CON-004, PC-001.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+charger: "[EA] Charger" {
+  class: ea
+  charger_power: "[F] Provide power" { class: func }
+}
+
+user: "[EA] User" {
+  class: ea
+  switch_on: "[F] Switch power on" { class: func }
+  switch_off: "[F] Switch power off" { class: func }
+}
+
+system: "[System] PDS-VV-ALLOC-001 logical allocation analysis\nPDS & ESS v1.0; refs: IVV and FC-001/CON-001/CON-003/CON-004/PC-001" {
+  class: sys
+  direction: down
+  grid-columns: 2
+
+  ess_module: "[PC] ESS Module" {
+    class: pc
+    direction: down
+    battery_pack: "[PC] 1S1P Li-Ion" {
+      class: pc
+      battery_lc: "[LC] Battery" { class: lc }
+    }
+  }
+
+  pds_module: "[PC] PDS Module" {
+    class: pc
+    direction: down
+
+    pds_pcb: "[PC] PDS PCB" {
+      class: pc
+      direction: down
+
+      protection: "[PC] Protection Circuit" {
+        class: pc
+        direction: down
+        battery_charger: "[LC] Battery Charger" { class: lc }
+        power_protection: "[LC] Power Protection" { class: lc }
+      }
+      ina219: "[PC] INA219" { class: pc }
+      regulator: "[PC] Regulator" {
+        class: pc
+        regulator_lc: "[LC] Regulator" { class: lc }
+      }
+    }
+
+    battery_connector: "[PC] Battery Connector" { class: pc }
+    pds_backplane_connector: "[PC] Backplane Connector" { class: pc }
+  }
+
+  obcc_module: "[PC] OBCC Module" {
+    class: pc
+    direction: down
+    obcc_pcb: "[PC] OBCC PCB" {
+      class: pc
+      xiao: "[PC] XIAO ESP32-S3" {
+        class: pc
+        ess_processing: "[LC] ESS Processing" { class: lc }
+        obcc: "[LC] OBCC" { class: lc }
+      }
+    }
+  }
+
+  allocation_scope: "[PC] Allocation analysis scope" {
+    class: pc
+    direction: down
+    grid-columns: 1
+    alloc_check: "[LC] 100% allocation completeness check" { class: lc }
+    flow_check: "[LC] CE/PL boundary-flow consistency check" { class: lc }
+    discrepancy_log: "[LC] Discrepancy and waiver log" { class: lc }
+  }
+
+  note_scope: "[C] Logical allocation analysis scope\nVerify intended LC ownership for charge/protection/rail functions and check cross-boundary exchanges against modeled CEs/PLs.\nNo foreign/unmodeled function ownership accepted without approved deviation." {
+    class: note
+    shape: page
+  }
+}
+
+# Source logical component exchanges (modeled) plus explicit analysis of boundary crossings.
+charger.charger_power -> system.pds_module.pds_pcb.protection.battery_charger: "[CE] Charge power" { class: ce }
+user.switch_on -> system.pds_module.pds_pcb.protection.power_protection: "[CE] Power-on intent (implicit physical switch path)" { class: ce }
+user.switch_off -> system.pds_module.pds_pcb.protection.power_protection: "[CE] Power-off intent" { class: ce }
+
+# Power-path allocation-relevant modeled exchanges reviewed by this activity.
+system.ess_module.battery_pack -> system.pds_module.pds_pcb.battery_connector: "[CE] Stored battery power" { class: ce }
+system.pds_module.pds_pcb.battery_connector -> system.pds_module.pds_pcb.pds_backplane_connector: "[CE] Protected power path model" { class: ce }
+system.pds_module.pds_pcb.pds_backplane_connector -> system.obcc_module.obcc_pcb.xiao: "[CE] Protected 5V / 3V3 rail exchange" { class: ce }
+system.ess_module.battery_pack -> system.pds_module.pds_pcb.protection.battery_charger: "[CE] Battery-fault input exchange" { class: ce }
+
+# Analysis check links.
+system.allocation_scope.alloc_check -> system.pds_module.pds_pcb.protection.battery_charger { class: fe }
+system.allocation_scope.flow_check -> system.ess_module.battery_pack { class: fe }
+system.allocation_scope.flow_check -> system.pds_module.pds_pcb.pds_backplane_connector { class: fe }
+system.allocation_scope.discrepancy_log -> system.allocation_scope.alloc_check: "[FE] Record foreign-function / gap findings" { class: fe }
+
+system.note_scope -> system.allocation_scope.alloc_check { class: cstr }
+system.note_scope -> system.allocation_scope.flow_check { class: cstr }
+
+# Blocker note kept explicit for actor-interface gap (for ALLOC-003). 
+master_switch_gap: "[C] ALLOC-003 actor-interface caveat\nNo explicit master switch/accessibility hardware is modeled in source PV1/PV2.\nProceed via controlled operator procedure and blocker/waiver decision unless updated source model is provided." {
+  class: note
+  shape: page
+}
+
+master_switch_gap -> user { class: cstr }
+master_switch_gap -> system.allocation_scope.discrepancy_log { class: cstr }
+
+# Layout order hints.
+charger -> user { style: { opacity: 0 } }
+user -> system { style: { opacity: 0 } }
+system -> master_switch_gap { style: { opacity: 0 } }

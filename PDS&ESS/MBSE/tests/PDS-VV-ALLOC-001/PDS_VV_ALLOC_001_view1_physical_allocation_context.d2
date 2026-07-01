@@ -1,0 +1,150 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV1 — PDS-VV-ALLOC-001 physical allocation context and source/test-bench boundary.
+# References: IVV, PDS-R2, PDS-R4–R7, and supporting allocation/tests in FC-001, CON-001, CON-003, CON-004, PC-001.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+charger_eq: "[EA] Charger / certified source" { class: ea }
+user_eq: "[EA] User operator" { class: ea }
+safety_observer: "[EA] Safety Observer / Witness" { class: ea }
+
+test_operator: "[EA] Test operator / safety technician" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  apply_checklists: "[F] Apply checklist and waiver path" { class: func }
+  read_ambient: "[F] Read ambient before tests" { class: func }
+  archive_links: "[F] Tag evidence link map" { class: func }
+}
+
+system: "[System] PDS-VV-ALLOC-001 physical allocation context\nPDS & ESS v1.0 final flight acceptance; refs: IVV; PDS-R2, PDS-R4–R7; FC-001; CON-001; CON-003; CON-004; PC-001" {
+  class: sys
+  direction: down
+
+  ess_module: "[PC] ESS Module" {
+    class: pc
+    direction: down
+    battery_pack: "[PC] 1S1P Li-Ion" { class: pc }
+  }
+
+  pds_module: "[PC] PDS Module" {
+    class: pc
+    direction: down
+
+    pds_pcb: "[PC] PDS PCB" {
+      class: pc
+      direction: right
+      battery_connector: "[PC] Battery Connector" { class: pc }
+      protection: "[PC] Protection Circuit" { class: pc }
+      ina219: "[PC] INA219" { class: pc }
+      regulator: "[PC] Regulator" { class: pc }
+      pds_backplane_connector: "[PC] Backplane Connector" { class: pc }
+    }
+  }
+
+  obcc_module: "[PC] OBCC Module" {
+    class: pc
+    direction: down
+
+    obcc_pcb: "[PC] OBCC PCB" {
+      class: pc
+      direction: right
+      xiao: "[PC] XIAO ESP32-S3" { class: pc }
+      obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+    }
+  }
+
+  backplane_pcb: "[PC] Backplane PCB" {
+    class: pc
+    direction: down
+    pds_headers: "[PC] 2mm 2x6 PDS Headers" { class: pc }
+    spine: "[PC] Spine" { class: pc }
+    obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+  }
+
+  note_scope: "[C] Allocation-context scope\nSource model baseline is v1.0 only. All modeled PCs/PLs in baseline are inspected by this allocation review for function-to-LC correctness;\nPC/PL coverage details remain in PDS-VV-PC-001 and CON-004/PC-001 evidence paths." {
+    class: note
+    shape: page
+  }
+  test_bench_linkage: "[PC] PDS-VV-ALLOC-001 verification testbench context" {
+    class: pc
+    direction: down
+    allocation_trace: "[LC] Allocation evidence trace" { class: lc }
+    discrepancy_log: "[LC] Discrepancy/waiver log" { class: lc }
+    safety_cutoff: "[LC] Power-off verification sink" { class: lc }
+  }
+}
+
+master_switch_caveat: "[C] Source-model caveat\nNo physical master-switch/accessibility element is explicit in v1.0 PV1.\nIf no safe and verifiable access procedure is approved, use blocker/waiver path before powered runs." {
+  class: note
+  shape: page
+}
+
+# Physical links inherited from source baseline.
+charger_eq -- system.pds_module.pds_pcb.protection: "[PL] USB-C cable" { class: pl }
+system.ess_module.battery_pack -- system.pds_module.pds_pcb.battery_connector: "[PL] Battery cable" { class: pl }
+system.pds_module.pds_pcb.battery_connector -- system.pds_module.pds_pcb.protection: "[PL] Battery ± traces" { class: pl }
+system.pds_module.pds_pcb.protection -- system.pds_module.pds_pcb.ina219: "[PL] PC out trace" { class: pl }
+system.pds_module.pds_pcb.ina219 -- system.pds_module.pds_pcb.regulator: "[PL] INA out trace" { class: pl }
+system.pds_module.pds_pcb.regulator -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] 5V / 3V3 traces" { class: pl }
+system.pds_module.pds_pcb.pds_backplane_connector -- system.backplane_pcb.pds_headers: "[PL] Parallel cable" { class: pl }
+system.obcc_module.obcc_pcb.obcc_backplane_connector -- system.backplane_pcb.obcc_headers: "[PL] Parallel cable" { class: pl }
+system.pds_module.pds_pcb.pds_backplane_connector -- system.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] Backplane interconnect" { class: pl }
+
+# Verification-only controls and observations as external-context links (not modifying baseline behavior).
+test_operator.apply_checklists -> system.test_bench_linkage.discrepancy_log: "[FE] Authorize safe allocation review" { class: fe }
+test_operator.archive_links -> system.test_bench_linkage.allocation_trace: "[FE] Archive allocation evidence IDs" { class: fe }
+safety_observer -> system.test_bench_linkage.safety_cutoff: "[FE] Witness and stop-control approvals" { class: fe }
+
+# Codelink source caveat to context record.
+master_switch_caveat -> user_eq: "[CSTR] Unmodeled physical switch access" { class: cstr }
+master_switch_caveat -> system.test_bench_linkage.safety_cutoff: "[CSTR] Blocker/waiver decision point" { class: cstr }
+system.note_scope -> system.test_bench_linkage { class: cstr }
+
+# Layout-only ordering hints.
+charger_eq -> user_eq { style: { opacity: 0 } }
+user_eq -> safety_observer { style: { opacity: 0 } }
+safety_observer -> test_operator { style: { opacity: 0 } }
+test_operator -> system { style: { opacity: 0 } }
+system -> master_switch_caveat { style: { opacity: 0 } }

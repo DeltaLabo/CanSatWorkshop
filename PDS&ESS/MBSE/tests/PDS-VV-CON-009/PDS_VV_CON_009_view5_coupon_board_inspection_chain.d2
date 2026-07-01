@@ -1,0 +1,47 @@
+vars: { d2-config: { layout-engine: elk } }
+
+direction: down
+
+classes: {
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 28 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 24 } }
+}
+
+chain: "PDS-VV-CON-009 — Coupon and board inspection chain\\nPDS & ESS v1.0 final flight acceptance" {
+  class: chain
+  direction: down
+
+  start: "[F] Select v1.0 flight boards and coupons" { class: func }
+  ambient: "[F] Capture ambient and verify fixture readiness" { class: func }
+  visual: "[F] Visual inspection for solder, traces, connectors, orientation" { class: func }
+  dimensional: "[F] Dimensional fit check against footprints and stack geometry" { class: func }
+  continuity: "[F] Continuity and isolation check on high-current routes" { class: func }
+  thermal_scan: "[F] Thermal/workmanship inspection for heat-sensitive zones" { class: func }
+  review_traces: "[F] Review battery/protection/INA/5V/3V3 trace compliance for 1A model" { class: func }
+  coupon_checks: "[F] Inspect coupons for keepout, drill, annular compliance" { class: func }
+  faults: "[F] Record defects: open/short/high resistance/wrong orientation" { class: func }
+  gate: "[F] Hold on blocking defect; do not release for power integration" { class: func }
+  closeout: "[F] Close 100% checklist and issue report reference" { class: func }
+
+  note_scope: "[C] Scope: all v1.0 boards and coupons\\nin acceptance lot are inspected before integration." { class: note; shape: page }
+  note_results: "[C] Pass only if visual, dimensional, fit, continuity, isolation and\\nworkmanship checks are all acceptable on all units." { class: note; shape: page }
+  note_footprint: "[C] Includes PDS PCB traces, OBCC PCB traces, backplane headers/spine\\nfootprints, connector retention and screw-hole geometry." { class: note; shape: page }
+}
+
+chain.start -> chain.ambient: "[FE] readiness" { class: fe }
+chain.ambient -> chain.visual: "[FE] gating" { class: fe }
+chain.visual -> chain.dimensional: "[FE] progression" { class: fe }
+chain.dimensional -> chain.continuity: "[FE] continuation" { class: fe }
+chain.continuity -> chain.thermal_scan: "[FE] progression" { class: fe }
+chain.thermal_scan -> chain.review_traces: "[FE] electrical focus" { class: fe }
+chain.review_traces -> chain.coupon_checks: "[FE] feature focus" { class: fe }
+chain.coupon_checks -> chain.faults: "[FE] defect discovery" { class: fe }
+chain.faults -> chain.gate: "[FE] hold/approve" { class: fe }
+chain.gate -> chain.closeout: "[FE] closure" { class: fe }
+
+chain.note_scope -> chain.start { class: cstr }
+chain.note_results -> chain.closeout { class: cstr }
+chain.note_footprint -> chain.review_traces { class: cstr }

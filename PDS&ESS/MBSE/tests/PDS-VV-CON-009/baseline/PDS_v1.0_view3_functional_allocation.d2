@@ -1,0 +1,253 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+charger: "[EA] Charger" {
+  class: ea
+  direction: down
+
+  charger_power: "[F] Provide power" { class: func }
+  note_charge: "[C] At 4.2 V,\n0.5 A" {
+    class: note
+    shape: page
+  }
+}
+
+user: "[EA] User" {
+  class: ea
+  direction: down
+
+  switch_on: "[F] Switch power on" { class: func }
+  switch_off: "[F] Switch power off" { class: func }
+}
+
+system: "[System] CanSat" {
+  class: sys
+  direction: down
+  grid-columns: 2
+
+  ess_module: "[PC] ESS Module" {
+    class: pc
+    direction: down
+
+    battery_pack: "[PC] 1S1P Li-Ion" {
+      class: pc
+      direction: down
+
+      battery_lc: "[LC] Battery" {
+        class: lc
+        grid-columns: 1
+        direction: down
+
+        store_energy: "[F] Store energy" { class: func }
+        provide_power: "[F] Provide power" { class: func }
+      }
+
+      note_energy: "[C] Enough for 6 hours\nof continuous operation\nin On mode" {
+        class: note
+        shape: page
+      }
+    }
+  }
+
+  pds_module: "[PC] PDS Module" {
+    class: pc
+    direction: down
+
+    pds_pcb: "[PC] PDS PCB" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      protection: "[PC] Protection Circuit" {
+        class: pc
+        direction: down
+
+        battery_charger: "[LC] Battery Charger" {
+          class: lc
+          grid-columns: 1
+          charger_regulate_voltage: "[F] Regulate voltage" { class: func }
+        }
+
+        power_protection: "[LC] Power Protection" {
+          class: lc
+          grid-columns: 1
+          direction: down
+
+          detect_overcurrent: "[F] Detect overcurrent" { class: func }
+          detect_overvoltage: "[F] Detect overvoltage" { class: func }
+          restore_power: "[F] Restore power" { class: func }
+          cut_off_power: "[F] Cut off power" { class: func }
+        }
+
+        note_prob: "[C] Probability < 1%" {
+          class: note
+          shape: page
+        }
+      }
+
+      ina219: "[PC] INA219" {
+        class: pc
+        direction: down
+
+        battery_monitoring: "[LC] Battery monitoring" {
+          class: lc
+          grid-columns: 1
+          direction: down
+
+          measure_voltage: "[F] Measure voltage" { class: func }
+          measure_current: "[F] Measure current" { class: func }
+          respond_i2c: "[F] Respond to I2C\nrequests" { class: func }
+        }
+      }
+
+      regulator: "[PC] Regulator" {
+        class: pc
+        direction: down
+
+        regulator_lc: "[LC] Regulator" {
+          class: lc
+          grid-columns: 1
+          regulate_voltage: "[F] Regulate voltage" { class: func }
+        }
+
+        note_supply: "[C] Supply both 5±0.1 V\nand 3.3±0.1 V, 1 A" {
+          class: note
+          shape: page
+        }
+      }
+
+      battery_connector: "[PC] Battery Connector" { class: pc }
+      pds_backplane_connector: "[PC] Backplane Connector" { class: pc }
+    }
+  }
+
+  obcc_module: "[PC] OBCC Module" {
+    class: pc
+    direction: down
+
+    obcc_pcb: "[PC] OBCC PCB" {
+      class: pc
+      direction: down
+
+      xiao: "[PC] XIAO ESP32-S3" {
+        class: pc
+        direction: down
+
+        ess_processing: "[LC] ESS Processing" {
+          class: lc
+          grid-columns: 1
+          direction: down
+
+          get_init_state: "[F] Get INA219 init state" { class: func }
+          read_voltage: "[F] Read voltage" { class: func }
+          read_current: "[F] Read current" { class: func }
+          process_voltage: "[F] Process voltage" { class: func }
+          process_current: "[F] Process current" { class: func }
+        }
+
+        obcc: "[LC] OBCC" {
+          class: lc
+          grid-columns: 1
+          direction: down
+
+          collect_init_states: "[F] Collect peripheral\ninit states" { class: func }
+          collect_measurements: "[F] Collect measurements" { class: func }
+        }
+      }
+
+      obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+      note_variable_getter: "[C] Implement each\n(Read X, Process X)\npair as a Variable\nGetter template" {
+        class: note
+        shape: page
+      }
+      note_process_time: "[C] All Process /\nCalculate functions\nmust take < 5 ms" {
+        class: note
+        shape: page
+      }
+      note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" {
+        class: note
+        shape: page
+      }
+      note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+        class: note
+        shape: page
+      }
+    }
+  }
+
+  backplane_pcb: "[PC] Backplane PCB" {
+    class: pc
+    direction: down
+
+    pds_headers: "[PC] 2mm 2x6 PDS Headers" { class: pc }
+    spine: "[PC] Spine" { class: pc }
+    obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+  }
+}
+
+pcb_cnc_note: "[C] All PCBs must be\nmachinable in a\nCarvera Air CNC" {
+  class: note
+  shape: page
+}
+
+charger.note_charge -> charger.charger_power { class: cstr }
+system.ess_module.battery_pack.note_energy -> system.ess_module.battery_pack.battery_lc.store_energy { class: cstr }
+system.pds_module.pds_pcb.protection.note_prob -> system.pds_module.pds_pcb.protection.power_protection.detect_overcurrent { class: cstr }
+system.pds_module.pds_pcb.protection.note_prob -> system.pds_module.pds_pcb.protection.power_protection.detect_overvoltage { class: cstr }
+system.pds_module.pds_pcb.regulator.note_supply -> system.pds_module.pds_pcb.regulator.regulator_lc.regulate_voltage { class: cstr }
+system.obcc_module.obcc_pcb.note_variable_getter -> system.obcc_module.obcc_pcb.xiao.ess_processing { class: cstr }
+system.obcc_module.obcc_pcb.note_process_time -> system.obcc_module.obcc_pcb.xiao.ess_processing { class: cstr }
+system.obcc_module.obcc_pcb.note_i2c_timeout -> system.obcc_module.obcc_pcb.xiao.ess_processing { class: cstr }
+system.obcc_module.obcc_pcb.note_no_blocking -> system.obcc_module.obcc_pcb.xiao.ess_processing { class: cstr }
+pcb_cnc_note -> system.pds_module.pds_pcb { class: cstr }
+pcb_cnc_note -> system.obcc_module.obcc_pcb { class: cstr }
+pcb_cnc_note -> system.backplane_pcb { class: cstr }
+
+# Layout-only edges to keep external actors above the system and the PCB constraint below it.
+charger -> system { style: { opacity: 0 } }
+user -> system { style: { opacity: 0 } }
+system -> pcb_cnc_note { style: { opacity: 0 } }

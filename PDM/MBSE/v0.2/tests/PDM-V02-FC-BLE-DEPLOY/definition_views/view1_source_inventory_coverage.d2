@@ -1,0 +1,78 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDM-V02-FC-BLE-DEPLOY verification-management chain.
+# Purpose: bind the copied PDM v0.2 source views to IVV minimum coverage for
+# the detailed BLE/manual parachute deployment verification definition.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDM-V02-FC-BLE-DEPLOY — source inventory and IVV coverage\nrefs: PDM v0.2 views 1-4; PDS v0.1; PM&SE/IVV.md" {
+  class: chain
+  direction: right
+
+  note_version_gate: "[C] Version gate\nPDM v0.2 -> PDM v1.0\nmanual BLE deployment only\n(no IMU/altitude fallback)" { class: note; shape: page }
+  note_source_views: "[C] Copied source views\nview1 physical\nview2 logical\nview3 allocation\nview4 parachute chain" { class: note; shape: page }
+  note_ivv_minimum: "[C] IVV minimum coverage\nPC/PL inspection\nCE analysis\nLC allocation analysis\nFC/scenario + constraints" { class: note; shape: page }
+  note_traceability: "[C] Trace targets\nPDM-UC-V02-ManualBLEDeployment\nPDM-UC-V02-LimitTerminalSpeed\nPDM-FE-V02-NonDeployment\nPDM-FE-V02-PrematureDeployment\nPDM-FE-V02-BLELinkLoss" { class: note; shape: page }
+
+  identify_baseline: "[F] Identify PDM v0.2\nsource baseline" { class: func }
+  inspect_physical_inventory: "[F] Plan PC/PL\npresence inspection" { class: func }
+  analyze_component_exchanges: "[F] Plan CE\nBLE/PWM analysis" { class: func }
+  analyze_logical_allocation: "[F] Plan LC/function\nallocation analysis" { class: func }
+  define_ble_deployment_activity: "[F] Define BLE deployment\nverification activity" { class: func }
+  bind_report_evidence: "[F] Bind evidence and report\nto modeled activity" { class: func }
+}
+
+chain.identify_baseline -> chain.inspect_physical_inventory: "[FE] Source inventory []" { class: fe }
+chain.inspect_physical_inventory -> chain.analyze_component_exchanges: "[FE] PC/PL gap list []" { class: fe }
+chain.analyze_component_exchanges -> chain.analyze_logical_allocation: "[FE] CE intent list []" { class: fe }
+chain.analyze_logical_allocation -> chain.define_ble_deployment_activity: "[FE] Allocated functions []" { class: fe }
+chain.define_ble_deployment_activity -> chain.bind_report_evidence: "[FE] Verification definition []" { class: fe }
+
+chain.note_version_gate -> chain.identify_baseline { class: cstr }
+chain.note_source_views -> chain.identify_baseline { class: cstr }
+chain.note_ivv_minimum -> chain.inspect_physical_inventory { class: cstr }
+chain.note_ivv_minimum -> chain.analyze_component_exchanges { class: cstr }
+chain.note_ivv_minimum -> chain.analyze_logical_allocation { class: cstr }
+chain.note_traceability -> chain.define_ble_deployment_activity { class: cstr }
+chain.note_traceability -> chain.bind_report_evidence { class: cstr }

@@ -1,0 +1,138 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Evidence and traceability interface view for PDM-VV-FC-001.
+# PV2-style view: PCs/LCs/EAs, component exchanges, and constraints.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 38 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 26 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 24 } }
+}
+
+system: "[System] PDM-VV-FC-001 evidence and traceability interface\nRefs: IVV; PDM v1.0 plan; PDM-R1–R16; NASA-SE/FM" {
+  class: sys
+  direction: down
+
+  uut: "[PC] PDM v1.0 CanSat UUT" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    ads_module: "[PC] ADS Module" {
+      class: pc
+      direction: down
+      imu: "[PC] ICM20948 IMU" {
+        class: pc
+        direction: down
+        ads_kinematic_sensing: "[LC] ADS Kinematic Sensing" { class: lc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+      xiao: "[PC] XIAO ESP32-S3" {
+        class: pc
+        direction: down
+        grid-columns: 2
+        ads_processing: "[LC] ADS Processing" { class: lc }
+        obcc: "[LC] OBCC" { class: lc }
+        pdm_processing: "[LC] PDM Processing" { class: lc }
+        evidence_if: "[LC] Verification evidence interface" { class: lc }
+      }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: down
+      grid-columns: 3
+      cap: "[PC] Cap" {
+        class: pc
+        direction: down
+        parachute_holder: "[LC] Parachute Holder" { class: lc }
+      }
+      servo: "[PC] Servo" {
+        class: pc
+        direction: down
+        trigger: "[LC] Trigger" { class: lc }
+      }
+      parachute: "[PC] Parachute" {
+        class: pc
+        direction: down
+        descent_speed_control: "[LC] Descent speed control" { class: lc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB\nADS/OBCC headers and PDM JST" { class: pc }
+  }
+}
+
+source_baseline: "[EA] Source baseline package\nsource_views/v1.0/" { class: ea }
+motion_stimulus: "[EA] IMU profile stimulus set\nnominal, negative, false, bad/stale" { class: ea }
+host_logger: "[EA] Host/logger workstation\nfirmware logs, trial IDs, reset records" { class: ea }
+logic_analyzer: "[EA] I2C/PWM logic analyzer\nraw traces and timing markers" { class: ea }
+camera_evidence: "[EA] Video evidence store\nservo/cap/holder/parachute observations" { class: ea }
+power_environment: "[EA] Power and environment records\nvoltage/current, ambient, equipment calibration" { class: ea }
+analysis_workstation: "[EA] Analysis workstation\ntiming, accuracy, stats, fault verdicts" { class: ea }
+report_store: "[EA] Expected report/evidence store\ntests/results/PDM-VV-FC-001/" { class: ea }
+configuration_authority: "[EA] Review / configuration authority\nwaivers, anomalies, limitations, retest status" { class: ea }
+
+target_deployment: "[C] Trace target: PDM-UC-IMUTriggeredDeployment\nDeployment is commanded only by ADS IMU-derived flight logic and completes the\nmodeled IMU → PDM → PWM → servo → holder → parachute chain." { class: note; shape: page }
+target_speed: "[C] Trace target: PDM-UC-LimitTerminalSpeed\nTerminal-speed limiting evidence is recorded or linked. The v1.0 model lacks an\nexplicit numeric descent-speed constraint, so the report shall identify the linked\nevidence requirement or limitation." { class: note; shape: page }
+target_faults: "[C] Feared-event targets\nPDM-FE-NonDeployment; PDM-FE-PrematureDeployment; PDM-FE-SensorBusFault;\nPDM-FE-MechanicalJam. Fault-hardening evidence covers bad/stale IMU, I2C faults,\nfalse profiles, jam/no-open, brownout/reset, and no-manual/BLE regression." { class: note; shape: page }
+linked_constraints: "[C] Linked pass/fail constraints\nParachute diameter ≤30 cm; angular-rate error <30 deg/s or robust threshold;\nI2C read timeout ≤5 ms; process/calculate <5 ms; no blocking besides I2C;\ninitial servo position 0 degrees/closed; no manual/BLE open command." { class: note; shape: page }
+source_ce_coverage: "[C] Source CE coverage in referenced model\nPDM-VV-FC-001 covers source CEs I2C, Pointers/Returns, PWM, PWM feedback/status,\nand Torque through the copied logical view, physical probes, and evidence interfaces." { class: note; shape: page }
+report_content: "[C] Report status data\nReport identifies model baseline, UUT configuration, firmware build, source views,\nstimulus profiles, raw logs/traces/video, environmental conditions, analysis\nsettings, deviations, anomalies, waivers, limitations, pass/fail rationale, and\nretest status." { class: note; shape: page }
+
+source_baseline -> system.uut.obcc_module.xiao.evidence_if: "[CE] Baseline ID" { class: ce }
+motion_stimulus -> system.uut.ads_module.imu.ads_kinematic_sensing: "[CE] IMU profiles" { class: ce }
+system.uut.obcc_module.xiao.evidence_if -> host_logger: "[CE] Raw logs" { class: ce }
+logic_analyzer -> analysis_workstation: "[CE] Traces" { class: ce }
+host_logger -> analysis_workstation: "[CE] Logs" { class: ce }
+camera_evidence -> analysis_workstation: "[CE] Video" { class: ce }
+power_environment -> analysis_workstation: "[CE] Env/power" { class: ce }
+analysis_workstation -> report_store: "[CE] Metrics" { class: ce }
+configuration_authority -> report_store: "[CE] Review" { class: ce }
+
+
+target_deployment -> system.uut.obcc_module.xiao.pdm_processing { class: cstr }
+target_deployment -> system.uut.parachute_module.servo.trigger { class: cstr }
+target_speed -> system.uut.parachute_module.parachute.descent_speed_control { class: cstr }
+target_faults -> analysis_workstation { class: cstr }
+target_faults -> report_store { class: cstr }
+linked_constraints -> system.uut.ads_module.imu.ads_kinematic_sensing { class: cstr }
+linked_constraints -> system.uut.obcc_module.xiao.ads_processing { class: cstr }
+linked_constraints -> system.uut.obcc_module.xiao.pdm_processing { class: cstr }
+linked_constraints -> system.uut.parachute_module.parachute.descent_speed_control { class: cstr }
+source_ce_coverage -> system.uut.obcc_module.xiao.evidence_if { class: cstr }
+source_ce_coverage -> logic_analyzer { class: cstr }
+report_content -> report_store { class: cstr }
+
+# Layout-only rank hints; no Capella semantics.
+source_baseline -> motion_stimulus { style: { opacity: 0 } }
+motion_stimulus -> host_logger { style: { opacity: 0 } }
+host_logger -> logic_analyzer { style: { opacity: 0 } }
+logic_analyzer -> camera_evidence { style: { opacity: 0 } }
+camera_evidence -> power_environment { style: { opacity: 0 } }
+power_environment -> analysis_workstation { style: { opacity: 0 } }
+analysis_workstation -> report_store { style: { opacity: 0 } }
+report_store -> configuration_authority { style: { opacity: 0 } }
+system -> target_deployment { style: { opacity: 0 } }
+target_deployment -> target_speed { style: { opacity: 0 } }
+target_speed -> target_faults { style: { opacity: 0 } }
+target_faults -> linked_constraints { style: { opacity: 0 } }
+linked_constraints -> source_ce_coverage { style: { opacity: 0 } }
+source_ce_coverage -> report_content { style: { opacity: 0 } }

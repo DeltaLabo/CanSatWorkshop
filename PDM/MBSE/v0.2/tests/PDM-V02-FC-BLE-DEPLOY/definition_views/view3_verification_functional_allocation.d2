@@ -1,0 +1,245 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Verification functional allocation for PDM-V02-FC-BLE-DEPLOY. This view
+# allocates human, equipment, and UUT functions; it intentionally contains no
+# physical, component, or functional exchanges.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+diagram_title: "[C] PDM-V02-FC-BLE-DEPLOY — verification functional allocation\nrefs: PDM v0.2 views 2-4; PDS v0.1" { class: note; shape: page }
+
+human_ble_operator: "[EA] Human BLE test operator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  read_ambient_thermometer: "[F] Read ambient\nthermometer" { class: func }
+  confirm_los_range: "[F] Confirm >=20 m\nline of sight" { class: func }
+  confirm_preflight_ble: "[F] Confirm pre-flight\nBLE connection" { class: func }
+  command_airborne_condition: "[F] Release or mark\nairborne condition" { class: func }
+  send_ble_open_command: "[F] Send BLE open\ncommand" { class: func }
+  record_deviations: "[F] Record deviations\nand anomalies" { class: func }
+}
+
+ble_controller_phone: "[EA] BLE controller / phone" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  establish_ble_at_range: "[F] Establish BLE\nat range" { class: func }
+  transmit_open_command: "[F] Transmit open\ncommand" { class: func }
+  log_ble_status: "[F] Log BLE status\nand RSSI" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient thermometer" {
+  class: ea
+  direction: down
+
+  measure_ambient_temperature: "[F] Measure ambient\ntemperature" { class: func }
+}
+
+drop_suspension_fixture: "[EA] Drop / suspension fixture" {
+  class: ea
+  direction: down
+
+  hold_release_uut: "[F] Hold and release\nUUT surrogate" { class: func }
+  mark_airborne_condition: "[F] Mark airborne\ncondition" { class: func }
+}
+
+pwm_logic_analyzer: "[EA] PWM logic analyzer" {
+  class: ea
+  direction: down
+
+  capture_pwm_open_signal: "[F] Capture PWM\nopen signal" { class: func }
+}
+
+power_logger: "[EA] Battery / boost power logger" {
+  class: ea
+  direction: down
+
+  measure_voltage_current: "[F] Measure battery/boost\nvoltage and current" { class: func }
+}
+
+video_camera: "[EA] Video camera" {
+  class: ea
+  direction: down
+
+  record_servo_parachute_state: "[F] Record servo and\nparachute state" { class: func }
+}
+
+evidence_repository: "[EA] Evidence repository" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  store_source_baseline: "[F] Store source model\nbaseline reference" { class: func }
+  store_logs_video_traces: "[F] Store logs, video,\nPWM and power traces" { class: func }
+  store_report: "[F] Store verification\nreport reference" { class: func }
+}
+
+system: "[System] Physical System UUT\nPDM v0.2 manual BLE deployment" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      xiao_esp32_c3: "[PC] XIAO ESP32-C3" {
+        class: pc
+        direction: down
+
+        obcc: "[LC] OBCC" {
+          class: lc
+          direction: down
+
+          maintain_ble_connection: "[F] Maintain BLE\nconnection" { class: func }
+          receive_ble_open_command: "[F] Receive BLE\nopen command" { class: func }
+          set_pwm_open_position: "[F] Set PWM to\nopen position" { class: func }
+        }
+
+        verification_instrumentation: "[LC] Verification instrumentation\n(test-only)" {
+          class: lc
+          direction: down
+
+          timestamp_ble_command: "[F] Timestamp BLE\ncommand receipt" { class: func }
+          expose_pwm_probe_point: "[F] Expose PWM\nprobe point" { class: func }
+        }
+      }
+
+      antenna_2_4ghz: "[PC] 2.4 GHz Antenna" { class: pc }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: right
+
+      servo: "[PC] Servo" {
+        class: pc
+        direction: down
+
+        parachute_trigger: "[LC] Parachute trigger" {
+          class: lc
+          direction: down
+
+          hold_closed_until_command: "[F] Hold closed\nuntil command" { class: func }
+          open_parachute: "[F] Open\nparachute" { class: func }
+          reach_open_state: "[F] Reach open\nstate" { class: func }
+        }
+      }
+
+      parachute: "[PC] Parachute" {
+        class: pc
+        direction: down
+
+        descent_speed_control: "[LC] Descent speed control" {
+          class: lc
+          direction: down
+
+          limit_terminal_speed: "[F] Limit terminal\nspeed" { class: func }
+        }
+      }
+    }
+
+    power_module: "[PC] Power Module" {
+      class: pc
+      direction: right
+
+      battery: "[PC] Battery" {
+        class: pc
+        direction: down
+
+        power_storage: "[LC] Power storage" {
+          class: lc
+          direction: down
+
+          provide_power: "[F] Provide power" { class: func }
+        }
+      }
+
+      boost_converter: "[PC] Boost Converter" {
+        class: pc
+        direction: down
+
+        voltage_regulation: "[LC] Voltage regulation" {
+          class: lc
+          direction: down
+
+          step_up_voltage: "[F] Step up\nvoltage" { class: func }
+          sustain_servo_power: "[F] Sustain servo\nactuation power" { class: func }
+        }
+      }
+    }
+  }
+}
+
+note_ble_preflight: "[C] Pass: BLE command/control path\nestablished and verified at >=20 m LOS\nbefore airborne/release" { class: note; shape: page }
+note_airborne_command: "[C] Pass: during airborne condition,\nhuman BLE open command leads to\nPWM open position and parachute opening" { class: note; shape: page }
+note_no_precommand: "[C] Pass: no parachute open actuation\nbefore modeled command + airborne condition" { class: note; shape: page }
+note_power: "[C] Pass: PDS v0.1 / battery / boost\nremain within needed voltage/current range\nduring command and servo actuation" { class: note; shape: page }
+note_environment: "[C] Environmental condition formalization\noperator reads identified thermometer\nbefore repetitions and records deviations" { class: note; shape: page }
+note_stat_fault: "[C] Viewpoints\nstatistical: repeated trials; 3 reps = screening\nfault-hardening: BLE loss, late command,\nlow battery, servo jam, antenna orientation,\nwind/gusts, partial deployment" { class: note; shape: page }
+note_terminal_speed: "[C] Terminal-speed limit evidence\nopen-state support is in this activity;\nquantified terminal-speed measurement may be\nlinked companion evidence/report" { class: note; shape: page }
+
+diagram_title -> system { class: cstr }
+note_ble_preflight -> human_ble_operator.confirm_los_range { class: cstr }
+note_ble_preflight -> human_ble_operator.confirm_preflight_ble { class: cstr }
+note_ble_preflight -> ble_controller_phone.establish_ble_at_range { class: cstr }
+note_ble_preflight -> system.cansat.obcc_module.xiao_esp32_c3.obcc.maintain_ble_connection { class: cstr }
+note_airborne_command -> human_ble_operator.send_ble_open_command { class: cstr }
+note_airborne_command -> system.cansat.obcc_module.xiao_esp32_c3.obcc.set_pwm_open_position { class: cstr }
+note_airborne_command -> system.cansat.parachute_module.servo.parachute_trigger.open_parachute { class: cstr }
+note_no_precommand -> system.cansat.parachute_module.servo.parachute_trigger.hold_closed_until_command { class: cstr }
+note_no_precommand -> video_camera.record_servo_parachute_state { class: cstr }
+note_power -> power_logger.measure_voltage_current { class: cstr }
+note_power -> system.cansat.power_module.boost_converter.voltage_regulation.sustain_servo_power { class: cstr }
+note_environment -> ambient_thermometer.measure_ambient_temperature { class: cstr }
+note_environment -> human_ble_operator.read_ambient_thermometer { class: cstr }
+note_stat_fault -> human_ble_operator.record_deviations { class: cstr }
+note_stat_fault -> evidence_repository.store_report { class: cstr }
+note_terminal_speed -> system.cansat.parachute_module.parachute.descent_speed_control.limit_terminal_speed { class: cstr }
+note_terminal_speed -> evidence_repository.store_report { class: cstr }

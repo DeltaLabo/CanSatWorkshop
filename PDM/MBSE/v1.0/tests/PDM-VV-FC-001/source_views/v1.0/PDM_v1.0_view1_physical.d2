@@ -1,0 +1,144 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDM v1.0 physical view.
+# Based on the Capella "PDM v1.0" extraction and extended with the ADS v1.0
+# IMU source path so parachute deployment is triggered by ADS IMU data rather
+# than by a manual/BLE command.
+# The ADS context is intentionally limited to the IMU path required by PDM;
+# see ADS/MBSE/v1.0 for the complete ADS architecture.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    ads_module: "[PC] ADS Module" {
+      class: pc
+      direction: down
+
+      ads_pcb: "[PC] ADS PCB" {
+        class: pc
+        direction: right
+
+        imu: "[PC] ICM20948 IMU" { class: pc }
+        ads_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+
+        xiao: "[PC] XIAO ESP32-S3" { class: pc }
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: right
+
+      ads_headers: "[PC] 2mm 2x6 ADS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+      pdm_jst_connector: "[PC] 1x3 PDM JST Connector" { class: pc }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: right
+
+      cap: "[PC] Cap" { class: pc }
+      parachute: "[PC] Parachute" { class: pc }
+      servo: "[PC] Servo" { class: pc }
+      max_diameter_30cm: "[C] Max. diameter\n30 cm" { class: note; shape: page }
+    }
+  }
+}
+
+system.cansat.ads_module.ads_pcb -- system.cansat.ads_module: "[PL] Screws" { class: pl }
+system.cansat.obcc_module.obcc_pcb -- system.cansat.obcc_module: "[PL] Screws" { class: pl }
+
+system.cansat.ads_module -- system.cansat.backplane_pcb: "[PL] Backplane\nFixture" { class: pl }
+system.cansat.obcc_module -- system.cansat.backplane_pcb: "[PL] Backplane\nFixture" { class: pl }
+system.cansat.parachute_module -- system.cansat.backplane_pcb: "[PL] Backplane\nFixture" { class: pl }
+
+system.cansat.ads_module.ads_pcb.imu -- system.cansat.ads_module.ads_pcb: "[PL] ICM20948\nFootprint" { class: pl }
+system.cansat.ads_module.ads_pcb.ads_backplane_connector -- system.cansat.ads_module.ads_pcb: "[PL] Connector\nFootprint" { class: pl }
+system.cansat.ads_module.ads_pcb.ads_backplane_connector -- system.cansat.ads_module.ads_pcb.imu: "[PL] I2C\ntraces" { class: pl }
+system.cansat.ads_module.ads_pcb.ads_backplane_connector -- system.cansat.ads_module.ads_pcb.imu: "[PL] 3V3 power\ntraces" { class: pl }
+system.cansat.ads_module.ads_pcb.ads_backplane_connector -- system.cansat.backplane_pcb.ads_headers: "[PL] Parallel\nCable" { class: pl }
+
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb: "[PL] XIAO\nFootprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.obcc_module.obcc_pcb: "[PL] Connector\nFootprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C\ntraces" { class: pl }
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] PWM\ntrace" { class: pl }
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] 3V3 power\ntraces" { class: pl }
+system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.backplane_pcb.obcc_headers: "[PL] Parallel\nCable" { class: pl }
+
+system.cansat.backplane_pcb.ads_headers -- system.cansat.backplane_pcb.spine: "[PL] ADS header\nFootprint" { class: pl }
+system.cansat.backplane_pcb.obcc_headers -- system.cansat.backplane_pcb.spine: "[PL] OBCC header\nFootprint" { class: pl }
+system.cansat.backplane_pcb.pdm_jst_connector -- system.cansat.backplane_pcb.spine: "[PL] Footprint" { class: pl }
+
+system.cansat.parachute_module.cap -- system.cansat.parachute_module: "[PL] Cap Fixture" { class: pl }
+system.cansat.parachute_module.parachute -- system.cansat.parachute_module: "[PL] Nylon thread" { class: pl }
+system.cansat.parachute_module.servo -- system.cansat.parachute_module: "[PL] Servo fixture" { class: pl }
+system.cansat.parachute_module.cap -- system.cansat.parachute_module.servo: "[PL] Rotating link" { class: pl }
+system.cansat.parachute_module.servo -- system.cansat.backplane_pcb.pdm_jst_connector: "[PL] Servo cable\n(PWM + 5V)" { class: pl }
+
+system.cansat.parachute_module.max_diameter_30cm -> system.cansat.parachute_module.parachute { class: cstr }
+
+# Layout-only edges keep module order close to the combined ADS/PDM stack.
+# They carry no Capella semantics.
+system.cansat.ads_module -> system.cansat.obcc_module { style: { opacity: 0 } }
+system.cansat.obcc_module -> system.cansat.backplane_pcb { style: { opacity: 0 } }
+system.cansat.backplane_pcb -> system.cansat.parachute_module { style: { opacity: 0 } }

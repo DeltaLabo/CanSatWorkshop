@@ -1,0 +1,165 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view reconstructed from PDM/PDM_v0.2_S.png and
+# PDM/PDM_v0.2_FC.jpg.
+# Physical containment and logical components provide allocation context; this
+# view contains no communication, flow, or physical-link exchange labels.
+# Historical drift: the raster labels the MCU XIAO ESP32-C3, while current PDM
+# v1.0 XML uses XIAO ESP32-S3. The historical v0.2 label is preserved here.
+# v0.2 intentionally models manual BLE deployment only; no IMU/altitude
+# fallback is present in this version.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+human_tester: "[EA] Human Tester" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  establish_ble_connection: "[F] Establish BLE\nconnection" { class: func }
+  release_dummy: "[F] Release\ndummy" { class: func }
+  send_ble_open_command: "[F] Send BLE open\ncommand" { class: func }
+}
+
+note_preflight_ble: "[C] BLE connection\nestablished pre-flight" { class: note; shape: page }
+note_airborne: "[C] While CanSat\nis airborne" { class: note; shape: page }
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: right
+
+      parachute: "[PC] Parachute" {
+        class: pc
+        direction: down
+
+        descent_speed_control: "[LC] Descent speed control" {
+          class: lc
+          direction: down
+
+          limit_terminal_speed: "[F] Limit terminal speed" { class: func }
+        }
+      }
+
+      servo: "[PC] Servo" {
+        class: pc
+        direction: down
+
+        parachute_trigger: "[LC] Parachute trigger" {
+          class: lc
+          direction: down
+
+          open_parachute: "[F] Open parachute" { class: func }
+        }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      xiao_esp32_c3: "[PC] XIAO ESP32-C3" {
+        class: pc
+        direction: down
+
+        obcc: "[LC] OBCC" {
+          class: lc
+          direction: down
+
+          maintain_ble_connection: "[F] Maintain BLE\nconnection" { class: func }
+          set_pwm_open_position: "[F] Set PWM to open\nposition" { class: func }
+        }
+      }
+
+      antenna_2_4ghz: "[PC] 2.4 GHz Antenna" { class: pc }
+    }
+
+    power_module: "[PC] Power Module" {
+      class: pc
+      direction: right
+
+      battery: "[PC] Battery" {
+        class: pc
+        direction: down
+
+        power_storage: "[LC] Power storage" {
+          class: lc
+          direction: down
+
+          provide_power: "[F] Provide power" { class: func }
+        }
+      }
+
+      boost_converter: "[PC] Boost Converter" {
+        class: pc
+        direction: down
+
+        voltage_regulation: "[LC] Voltage regulation" {
+          class: lc
+          direction: down
+
+          step_up_voltage: "[F] Step up voltage" { class: func }
+        }
+      }
+    }
+
+    note_pds_v0_1: "[C] PDS\nv0.1" { class: note; shape: page }
+  }
+}
+
+note_preflight_ble -> human_tester.establish_ble_connection { class: cstr }
+note_airborne -> human_tester.send_ble_open_command { class: cstr }
+system.cansat.note_pds_v0_1 -> system.cansat.power_module { class: cstr }
+
+# Layout-only edges keep the pre-flight and airborne notes close to their
+# constrained human functions. They carry no Capella semantics.
+note_preflight_ble -> human_tester { style: { opacity: 0 } }
+note_airborne -> human_tester { style: { opacity: 0 } }

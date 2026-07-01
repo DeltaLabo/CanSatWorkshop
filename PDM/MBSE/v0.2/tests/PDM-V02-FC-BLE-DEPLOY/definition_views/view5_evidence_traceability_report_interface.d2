@@ -1,0 +1,86 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Evidence and traceability/report interface for the modeled verification
+# activity. This is a functional chain of verification-record handling, not an
+# as-executed report.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDM-V02-FC-BLE-DEPLOY — evidence, traceability, and report interface\nrefs: PDM v0.2 views 1-4; PM&SE/IVV.md; tests/README.md" {
+  class: chain
+  direction: down
+
+  note_traceability: "[C] Traceability targets\nPDM-UC-V02-ManualBLEDeployment\nPDM-UC-V02-LimitTerminalSpeed\nPDM-FE-V02-NonDeployment\nPDM-FE-V02-PrematureDeployment\nPDM-FE-V02-BLELinkLoss" { class: note; shape: page }
+  note_report_location: "[C] Expected report reference\nPDM/MBSE/v0.2/tests/results/\nPDM-V02-FC-BLE-DEPLOY/report.md" { class: note; shape: page }
+  note_report_contents: "[C] Minimum report content\nmodel baseline, as-tested UUT, BLE config,\nrange/LOS, environment, logs/video/PWM/power,\nresults, deviations, anomalies, waivers" { class: note; shape: page }
+  note_constraint_mapping: "[C] Constraint mapping\nBLE >=20 m LOS; pre-flight BLE; airborne command;\nno premature actuation; PDS v0.1 power;\nterminal-speed evidence linkage" { class: note; shape: page }
+  note_status: "[C] Status\nmodel definition complete; execution evidence not present\nstatus remains Planned / Ready for execution" { class: note; shape: page }
+
+  record_model_baseline: "[F] Record model baseline\nand source-view refs" { class: func }
+  record_uut_configuration: "[F] Record UUT and\nverification instrumentation config" { class: func }
+  record_ble_range_environment: "[F] Record BLE device,\nrange/LOS, and environment" { class: func }
+  collect_logs_traces_video: "[F] Collect BLE logs, PWM traces,\npower traces, and video" { class: func }
+  analyze_pass_fail_constraints: "[F] Analyze pass/fail\nconstraints" { class: func }
+  classify_faults_deviations: "[F] Classify faults, deviations,\nanomalies, waivers" { class: func }
+  bind_terminal_speed_evidence: "[F] Bind terminal-speed\ncompanion evidence if separate" { class: func }
+  issue_report_reference: "[F] Issue controlled\nreport reference" { class: func }
+  update_plan_status: "[F] Update v0.2 testing\nplan status" { class: func }
+}
+
+chain.record_model_baseline -> chain.record_uut_configuration: "[FE] Baseline ID []" { class: fe }
+chain.record_uut_configuration -> chain.record_ble_range_environment: "[FE] As-tested config []" { class: fe }
+chain.record_ble_range_environment -> chain.collect_logs_traces_video: "[FE] Execution context []" { class: fe }
+chain.collect_logs_traces_video -> chain.analyze_pass_fail_constraints: "[FE] Evidence package []" { class: fe }
+chain.analyze_pass_fail_constraints -> chain.classify_faults_deviations: "[FE] Pass/fail rationale []" { class: fe }
+chain.classify_faults_deviations -> chain.bind_terminal_speed_evidence: "[FE] Limitations []" { class: fe }
+chain.bind_terminal_speed_evidence -> chain.issue_report_reference: "[FE] Complete record []" { class: fe }
+chain.issue_report_reference -> chain.update_plan_status: "[FE] Report reference []" { class: fe }
+
+chain.note_traceability -> chain.record_model_baseline { class: cstr }
+chain.note_traceability -> chain.analyze_pass_fail_constraints { class: cstr }
+chain.note_report_location -> chain.issue_report_reference { class: cstr }
+chain.note_report_contents -> chain.record_uut_configuration { class: cstr }
+chain.note_report_contents -> chain.collect_logs_traces_video { class: cstr }
+chain.note_constraint_mapping -> chain.analyze_pass_fail_constraints { class: cstr }
+chain.note_constraint_mapping -> chain.bind_terminal_speed_evidence { class: cstr }
+chain.note_status -> chain.update_plan_status { class: cstr }

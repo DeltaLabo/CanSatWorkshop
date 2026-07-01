@@ -1,0 +1,105 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical view reconstructed from PDM/PDM_v0.2_S.png.
+# The legacy raster mixes several concerns; this file keeps only tangible
+# structure, the visible physical/wireless links, and the physical context note.
+# Historical drift: the raster labels the MCU XIAO ESP32-C3, while current PDM
+# v1.0 XML uses XIAO ESP32-S3. The historical v0.2 label is preserved here.
+# BLE is drawn in the raster with the same red styling as cable links. It is
+# kept as a physical/wireless link endpoint here, although it is semantically
+# borderline and appears as communication in the logical view.
+# The BLE wireless link terminates at the explicit 2.4 GHz antenna added inside
+# the OBCC module for the airborne remote deployment test.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+human_tester: "[EA] Human Tester" { class: ea }
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      xiao_esp32_c3: "[PC] XIAO ESP32-C3" { class: pc }
+      antenna_2_4ghz: "[PC] 2.4 GHz Antenna" { class: pc }
+      note_ble_range: "[C] BLE command link\n>= 20 m LOS" { class: note; shape: page }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: right
+
+      parachute: "[PC] Parachute" { class: pc }
+      servo: "[PC] Servo" { class: pc }
+    }
+
+    power_module: "[PC] Power Module" {
+      class: pc
+      direction: right
+
+      battery: "[PC] Battery" { class: pc }
+      boost_converter: "[PC] Boost Converter" { class: pc }
+      note_pds_v0_1: "[C] PDS\nv0.1" { class: note; shape: page }
+    }
+  }
+}
+
+human_tester -- system.cansat.obcc_module.antenna_2_4ghz: "[PL] BLE 2.4 GHz\nwireless link" { class: pl }
+
+system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.obcc_module.antenna_2_4ghz: "[PL] 2.4 GHz\nantenna feed" { class: pl }
+system.cansat.obcc_module.note_ble_range -> system.cansat.obcc_module.antenna_2_4ghz { class: cstr }
+
+system.cansat.parachute_module.parachute -- system.cansat.parachute_module.servo: "[PL] Deployment\nmechanism" { class: pl }
+system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.parachute_module.servo: "[PL] Soldered\ncables (3x)" { class: pl }
+system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.power_module.boost_converter: "[PL] 5V Power\nCable Pair" { class: pl }
+system.cansat.power_module.boost_converter -- system.cansat.parachute_module.servo: "[PL] 5V Servo\nPower" { class: pl }
+system.cansat.power_module.battery -- system.cansat.power_module.boost_converter: "[PL] Soldered Power\nCables (2x)" { class: pl }
+
+system.cansat.power_module.note_pds_v0_1 -> system.cansat.power_module { class: cstr }

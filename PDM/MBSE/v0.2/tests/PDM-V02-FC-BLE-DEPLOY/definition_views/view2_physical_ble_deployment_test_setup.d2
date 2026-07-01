@@ -1,0 +1,129 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical test setup for the PDM v0.2 BLE/manual parachute deployment
+# verification activity. This view keeps only tangible/UUT structure, external
+# test equipment, physical/wireless links, and constraints on them.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+diagram_title: "[C] PDM-V02-FC-BLE-DEPLOY — physical BLE deployment test setup\nrefs: PDM v0.2 views 1-4; PDS v0.1" { class: note; shape: page }
+
+ble_controller_phone: "[EA] BLE controller / phone" { class: ea }
+range_los_marker: "[EA] 20 m LOS range marker" { class: ea }
+pwm_logic_analyzer: "[EA] PWM logic analyzer" { class: ea }
+power_logger: "[EA] Battery / boost power logger" { class: ea }
+video_camera: "[EA] Video camera" { class: ea }
+drop_suspension_fixture: "[EA] Drop / suspension fixture" { class: ea }
+ambient_thermometer: "[EA] Ambient thermometer" { class: ea }
+
+system: "[System] Physical System UUT\nPDM v0.2 manual BLE deployment" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      xiao_esp32_c3: "[PC] XIAO ESP32-C3" { class: pc }
+      antenna_2_4ghz: "[PC] 2.4 GHz Antenna" { class: pc }
+      pwm_probe_terminal: "[PC] Verification-only\nPWM probe terminal" { class: pc }
+      note_ble_range: "[C] BLE command link\nverified >= 20 m LOS\nbefore airborne/release" { class: note; shape: page }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: right
+
+      parachute: "[PC] Parachute" { class: pc }
+      servo: "[PC] Servo" { class: pc }
+      note_no_precommand_open: "[C] No parachute open actuation\nbefore command + airborne condition" { class: note; shape: page }
+    }
+
+    power_module: "[PC] Power Module" {
+      class: pc
+      direction: right
+
+      battery: "[PC] Battery" { class: pc }
+      boost_converter: "[PC] Boost Converter" { class: pc }
+      power_probe_terminal: "[PC] Verification-only\npower probe terminal" { class: pc }
+      note_pds_power: "[C] PDS v0.1 / battery / boost\nremain within needed range\nduring command and servo actuation" { class: note; shape: page }
+    }
+  }
+}
+
+note_airborne_surrogate: "[C] Airborne condition is represented by\nsafe drop/suspension surrogate\nunless a flight drop is authorized" { class: note; shape: page }
+note_environment: "[C] Ambient conditions recorded\nbefore repetitions begin\nusing identified thermometer" { class: note; shape: page }
+
+ble_controller_phone -- system.cansat.obcc_module.antenna_2_4ghz: "[PL] BLE\n>=20 m LOS" { class: pl }
+range_los_marker -- ble_controller_phone: "[PL] Controller\nrange marker" { class: pl }
+
+pwm_logic_analyzer -- system.cansat.obcc_module.pwm_probe_terminal: "[PL] PWM/GND probe leads" { class: pl }
+system.cansat.obcc_module.pwm_probe_terminal -- system.cansat.obcc_module.xiao_esp32_c3: "[PL] Verification-only\nPWM tap" { class: pl }
+
+power_logger -- system.cansat.power_module.power_probe_terminal: "[PL] V/I sense leads" { class: pl }
+system.cansat.power_module.power_probe_terminal -- system.cansat.power_module.battery: "[PL] Battery voltage tap" { class: pl }
+system.cansat.power_module.power_probe_terminal -- system.cansat.power_module.boost_converter: "[PL] 5V boost output tap" { class: pl }
+
+video_camera -- system.cansat.parachute_module: "[PL] Optical observation\nline of sight" { class: pl }
+drop_suspension_fixture -- system.cansat: "[PL] Airborne surrogate\nrelease fixture" { class: pl }
+ambient_thermometer -- system.cansat: "[PL] Test-area ambient\nmeasurement reference" { class: pl }
+
+system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.obcc_module.antenna_2_4ghz: "[PL] 2.4 GHz antenna feed" { class: pl }
+system.cansat.parachute_module.parachute -- system.cansat.parachute_module.servo: "[PL] Deployment mechanism" { class: pl }
+system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.parachute_module.servo: "[PL] Soldered cables (3x)" { class: pl }
+system.cansat.obcc_module.xiao_esp32_c3 -- system.cansat.power_module.boost_converter: "[PL] 5V power cable pair" { class: pl }
+system.cansat.power_module.boost_converter -- system.cansat.parachute_module.servo: "[PL] 5V servo power" { class: pl }
+system.cansat.power_module.battery -- system.cansat.power_module.boost_converter: "[PL] Soldered power cables (2x)" { class: pl }
+
+diagram_title -> system { class: cstr }
+system.cansat.obcc_module.note_ble_range -> system.cansat.obcc_module.antenna_2_4ghz { class: cstr }
+system.cansat.parachute_module.note_no_precommand_open -> system.cansat.parachute_module.servo { class: cstr }
+system.cansat.power_module.note_pds_power -> system.cansat.power_module.boost_converter { class: cstr }
+system.cansat.power_module.note_pds_power -> system.cansat.power_module.battery { class: cstr }
+note_airborne_surrogate -> drop_suspension_fixture { class: cstr }
+note_airborne_surrogate -> system.cansat { class: cstr }
+note_environment -> ambient_thermometer { class: cstr }

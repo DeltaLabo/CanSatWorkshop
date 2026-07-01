@@ -1,0 +1,112 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical Architecture PV1-style setup for PDM-VV-FC-001.
+# Only PCs, non-human equipment EAs, PLs, and setup constraints are shown.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 22 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] PDM-VV-FC-001 physical test setup\nIMU-triggered deployment — Refs: IVV; PDM v1.0 plan; PDM-R1–R16; NASA-SE/FM" {
+  class: sys
+  direction: down
+
+  uut: "[PC] PDM v1.0 CanSat UUT\nADS + OBCC + Backplane + Parachute Module" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    ads_module: "[PC] ADS Module\nADS PCB + ICM20948 IMU" {
+      class: pc
+      direction: down
+      ads_pcb: "[PC] ADS PCB" {
+        class: pc
+        direction: down
+        imu: "[PC] ICM20948 IMU" { class: pc }
+        ads_service_probe: "[PC] Temporary ADS I2C probe pads\nverification-only" { class: pc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module\nOBCC PCB + XIAO ESP32-S3" {
+      class: pc
+      direction: down
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+        xiao: "[PC] XIAO ESP32-S3" { class: pc }
+        obcc_service_access: "[PC] Temporary firmware/log access\nUSB/UART/JTAG/test pads" { class: pc }
+        pwm_probe: "[PC] Temporary PWM probe pad\nverification-only" { class: pc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB\nADS/OBCC headers + PDM JST + spine" { class: pc }
+
+    parachute_module: "[PC] Parachute Module UUT" {
+      class: pc
+      direction: right
+      cap: "[PC] Cap" { class: pc }
+      servo: "[PC] Servo" { class: pc }
+      parachute: "[PC] Parachute" { class: pc }
+      holder_witness: "[PC] Temporary holder witness mark\nverification-only" { class: pc }
+      diameter_gauge: "[PC] 30 cm diameter gauge\nverification-only" { class: pc }
+    }
+  }
+}
+
+motion_rig: "[EA] IMU motion/drop stimulus rig\nrate-table, swing arm, or tethered drop jig" { class: ea }
+power_monitor: "[EA] Calibrated current-limited power supply\nand current/voltage monitor" { class: ea }
+logic_analyzer: "[EA] I2C/PWM logic analyzer\nshared timebase and fault fixture" { class: ea }
+host_logger: "[EA] Host/logger workstation\nfirmware logs, trial IDs, source baseline" { class: ea }
+servo_camera: "[EA] High-speed camera / optical observer\nservo, cap, holder, parachute" { class: ea }
+ambient_monitor: "[EA] Calibrated ambient thermometer/hygrometer\nmodel, serial, and calibration recorded" { class: ea }
+recovery_net: "[EA] Recovery net / soft landing area\ncontains parachute/CanSat after release" { class: ea }
+
+note_source: "[C] Source-baseline setup constraint\nUse copied source views in source_views/v1.0/ and record UUT serial, hardware\nrevision, firmware commit/build, source baseline, equipment IDs, and calibration\nstatus before trial data is credited." { class: note; shape: page }
+note_nonintrusive: "[C] Non-intrusive probe constraint\nTemporary probe pads, witness marks, and harnesses shall not change the modeled\nADS IMU → OBCC/PDM → PWM → servo/holder deployment behavior or bypass safety gates." { class: note; shape: page }
+note_environment: "[C] Environmental condition constraint\nThe ambient monitor is physically present and read before repetitions and after\nfault/brownout cases. Record temperature/humidity, power limits, and deviations." { class: note; shape: page }
+note_safety: "[C] Test safety and recovery constraint\nThe motion/drop rig and recovery area prevent uncontrolled impact. If the servo,\ncap, holder, or parachute jams, preserve the as-found condition for evidence." { class: note; shape: page }
+note_physical_inspection: "[C] Supporting inspection pass/fail\nBefore functional trials, inspect presence/configuration of ADS IMU path, OBCC\nXIAO, backplane links, PDM JST/servo cable, cap fixture, rotating link, nylon\nthread, servo fixture, parachute, and ≤30 cm diameter gauge fit." { class: note; shape: page }
+
+motion_rig -- system.uut.ads_module.ads_pcb.imu: "[PL] mechanical IMU\nstimulus fixture" { class: pl }
+motion_rig -- system.uut: "[PL] tether/drop\nrestraint" { class: pl }
+power_monitor -- system.uut.backplane_pcb: "[PL] power leads\n3V3/5V monitoring" { class: pl }
+logic_analyzer -- system.uut.ads_module.ads_pcb.ads_service_probe: "[PL] I2C probe\nSDA/SCL/GND" { class: pl }
+logic_analyzer -- system.uut.obcc_module.obcc_pcb.pwm_probe: "[PL] PWM probe\nsignal/GND" { class: pl }
+host_logger -- system.uut.obcc_module.obcc_pcb.obcc_service_access: "[PL] USB/UART/JTAG\nlog link" { class: pl }
+servo_camera -- system.uut.parachute_module: "[PL] optical\nline of sight" { class: pl }
+ambient_monitor -- system.uut: "[PL] ambient monitor\nnear UUT" { class: pl }
+recovery_net -- system.uut.parachute_module: "[PL] catch/containment\nfixture" { class: pl }
+system.uut.parachute_module.diameter_gauge -- system.uut.parachute_module.parachute: "[PL] diameter\nmeasurement contact" { class: pl }
+system.uut.parachute_module.holder_witness -- system.uut.parachute_module.cap: "[PL] witness\nmark contact" { class: pl }
+
+note_source -> system.uut { class: cstr }
+note_nonintrusive -> system.uut.ads_module.ads_pcb.ads_service_probe { class: cstr }
+note_nonintrusive -> system.uut.obcc_module.obcc_pcb.pwm_probe { class: cstr }
+note_environment -> ambient_monitor { class: cstr }
+note_environment -> power_monitor { class: cstr }
+note_safety -> motion_rig { class: cstr }
+note_safety -> recovery_net { class: cstr }
+note_physical_inspection -> system.uut.parachute_module { class: cstr }
+note_physical_inspection -> system.uut.backplane_pcb { class: cstr }
+
+# Layout-only rank hints for the constraint-note band.
+system -> note_source { style: { opacity: 0 } }
+note_source -> note_nonintrusive { style: { opacity: 0 } }
+note_nonintrusive -> note_environment { style: { opacity: 0 } }
+note_environment -> note_safety { style: { opacity: 0 } }
+note_safety -> note_physical_inspection { style: { opacity: 0 } }

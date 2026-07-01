@@ -1,0 +1,77 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDM-V01-FC-FALL evidence/report and traceability chain.
+# Functional chain view: chain, functions, FEs, and constraints only.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDM-V01-FC-FALL — Evidence/report and traceability chain\nRefs: PDM_v0.1 views 1-4; PM&SE/IVV.md reporting rules" {
+  class: chain
+  direction: down
+
+  reference_model: "[F] Reference modeled\nverification definition" { class: func }
+  retain_raw_video: "[F] Retain raw video\nand calibration media" { class: func }
+  retain_configuration: "[F] Retain as-tested\nUUT configuration" { class: func }
+  retain_environment: "[F] Retain actual\nenvironmental conditions" { class: func }
+  retain_analysis: "[F] Retain speed trace\nand uncertainty method" { class: func }
+  record_deviations: "[F] Record deviations,\nanomalies, waivers" { class: func }
+  generate_report: "[F] Generate verification\nreport record" { class: func }
+  trace_result: "[F] Trace result to use case,\nfeared event, constraints" { class: func }
+
+  report_path: "[C] Expected report/evidence location:\nPDM/MBSE/v0.1/tests/results/\nPDM-V01-FC-FALL/" { class: note; shape: page }
+  traceability_targets: "[C] Traceability targets:\nPDM-UC-V01-FallTestTerminalSpeed;\nPDM-UC-V01-PrepareManualParachute;\nPDM-FE-V01-ExcessDescentSpeed;\nconstraints in source views." { class: note; shape: page }
+  report_minimum: "[C] Report minimum: model baseline,\nas-tested configuration, actual results,\nevidence, pass/fail rationale, deviations,\nanomalies, assumptions, limitations." { class: note; shape: page }
+  status_constraint: "[C] Status at definition time:\nmodeled verification definition ready;\nexecution/report pending." { class: note; shape: page }
+}
+
+chain.reference_model -> chain.retain_raw_video: "[FE] model definition reference []" { class: fe }
+chain.retain_raw_video -> chain.retain_configuration: "[FE] video evidence index []" { class: fe }
+chain.retain_configuration -> chain.retain_environment: "[FE] UUT configuration record []" { class: fe }
+chain.retain_environment -> chain.retain_analysis: "[FE] environment record []" { class: fe }
+chain.retain_analysis -> chain.record_deviations: "[FE] speed result + method []" { class: fe }
+chain.record_deviations -> chain.generate_report: "[FE] anomaly/deviation record []" { class: fe }
+chain.generate_report -> chain.trace_result: "[FE] report []" { class: fe }
+
+chain.report_path -> chain.generate_report { class: cstr }
+chain.report_minimum -> chain.generate_report { class: cstr }
+chain.status_constraint -> chain.reference_model { class: cstr }

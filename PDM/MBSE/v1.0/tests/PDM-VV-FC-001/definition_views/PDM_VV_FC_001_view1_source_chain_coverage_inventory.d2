@@ -1,0 +1,70 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDM-VV-FC-001 source chain and IVV coverage inventory.
+# Functional Chain view: verification inventory functions, FEs, and coverage constraints only.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDM-VV-FC-001 — source chain and coverage inventory\nIMU-triggered parachute deployment — Refs: IVV; PDM v1.0 plan; PDM-R1–R13; NASA-SE/FM" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_source_baseline: "[F] Select copied v1.0 source views\nphysical, logical, allocation, source chain" { class: func }
+  inventory_imu_source: "[F] Inventory source IMU measurement functions\nMeasure angular velocity, acceleration, field intensity; Respond I2C" { class: func }
+  inventory_ads_processing: "[F] Inventory source ADS processing functions\nRead/process IMU data; Calculate pitch, roll, yaw" { class: func }
+  inventory_pdm_decision: "[F] Inventory source OBCC/PDM functions\nCollect measurements; Evaluate deployment condition; Send open signal" { class: func }
+  inventory_mechanical_chain: "[F] Inventory source actuation/recovery functions\nReach/retain open; Separate holder; Unfold; Limit terminal speed" { class: func }
+  map_component_exchanges: "[F] Map linked component exchanges\nI2C, Pointers/Returns, PWM, Torque" { class: func }
+  map_allocation_coverage: "[F] Map allocation coverage\nADS Kinematic Sensing, ADS Processing, OBCC, PDM Processing, Trigger, Holder, Descent" { class: func }
+  map_physical_coverage: "[F] Map linked physical inspection coverage\nADS/OBCC/backplane/servo/cap/parachute PCs and relevant PLs" { class: func }
+  map_constraints: "[F] Map pass/fail constraint coverage\ndiameter, accuracy, no-manual, initial servo, I2C, processing, no-blocking" { class: func }
+  define_sequences: "[F] Define nominal, negative, and fault-hardening\nverification sequences for PDM-VV-FC-001" { class: func }
+  define_evidence_traceability: "[F] Define report/evidence interfaces\nand traceability to use cases/feared events" { class: func }
+
+  note_scope: "[C] Activity scope and IADT method\nPDM v1.0 flight-readiness activity. Primary method: Testing/Demonstration, with\nsupporting Analysis and Inspection. Primary source category: functional chain/scenario;\nlinked component-exchange, allocation, component/link, and constraint coverage." { class: note; shape: page }
+  note_trace: "[C] Traceability targets\nPDM-UC-IMUTriggeredDeployment; PDM-UC-LimitTerminalSpeed;\nPDM-FE-NonDeployment; PDM-FE-PrematureDeployment; PDM-FE-SensorBusFault;\nPDM-FE-MechanicalJam; linked source constraints." { class: note; shape: page }
+  note_nominal: "[C] Nominal pass/fail inventory\nNominal IMU-derived trigger profile produces exactly one ordered chain: IMU data →\nADS processing → OBCC/PDM evaluation → PWM open → servo open → holder separates →\nparachute unfolds → terminal-speed limiting evidence recorded or linked." { class: note; shape: page }
+  note_negative_faults: "[C] Negative and fault-hardening inventory\nNegative profiles and manual/BLE attempts do not produce open commands. Fault cases:\nbad/stale IMU, I2C NACK/disconnect/stuck bus, false trigger profiles, servo jam/no-open,\nbrownout/reset, and no-manual/BLE regression." { class: note; shape: page }
+  note_constraints: "[C] Constraint coverage inventory\nI2C reads ≤5 ms; process/calculate <5 ms; no blocking outside I2C; angular-rate error\n<30 deg/s or robust trigger thresholds; initial servo 0 degrees/closed; parachute\ndiameter ≤30 cm; terminal-speed limiting evidence linked." { class: note; shape: page }
+  note_stats: "[C] Statistical viewpoint inventory\nDevelopment screening: ≥10 nominal trials. R90/C95 release evidence needs 29/29\nindependent positive and 29/29 independent negative no-failure trials. 95/95 timing\nclaims need 59/59 in-limit timing samples." { class: note; shape: page }
+}
+
+chain.select_source_baseline -> chain.inventory_imu_source: "[FE] Source views selected" { class: fe }
+chain.inventory_imu_source -> chain.inventory_ads_processing: "[FE] IMU source functions" { class: fe }
+chain.inventory_ads_processing -> chain.inventory_pdm_decision: "[FE] Processed IMU source" { class: fe }
+chain.inventory_pdm_decision -> chain.inventory_mechanical_chain: "[FE] Deployment decision source" { class: fe }
+chain.inventory_mechanical_chain -> chain.map_component_exchanges: "[FE] Deployment chain source" { class: fe }
+chain.map_component_exchanges -> chain.map_allocation_coverage: "[FE] CE coverage" { class: fe }
+chain.map_allocation_coverage -> chain.map_physical_coverage: "[FE] Allocation coverage" { class: fe }
+chain.map_physical_coverage -> chain.map_constraints: "[FE] PC/PL coverage" { class: fe }
+chain.map_constraints -> chain.define_sequences: "[FE] Constraint coverage" { class: fe }
+chain.define_sequences -> chain.define_evidence_traceability: "[FE] Modeled definition inputs" { class: fe }
+
+# Constraint notes summarize the coverage inventory for this view. Detailed pass/fail
+# constraint links are placed in the setup, allocation, sequence, and traceability views.
+
+# Layout-only ordering hints for the constraint-note band.
+chain.define_evidence_traceability -> chain.note_scope { style: { opacity: 0 } }
+chain.note_scope -> chain.note_trace { style: { opacity: 0 } }
+chain.note_trace -> chain.note_nominal { style: { opacity: 0 } }
+chain.note_nominal -> chain.note_negative_faults { style: { opacity: 0 } }
+chain.note_negative_faults -> chain.note_constraints { style: { opacity: 0 } }
+chain.note_constraints -> chain.note_stats { style: { opacity: 0 } }

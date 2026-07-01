@@ -1,0 +1,255 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-allocation definition for PDM-VV-FC-001.
+# PV3-style view: EAs/PCs/LCs/functions and constraint links only.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 38 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 24 } }
+}
+
+test_conductor: "[EA] Human test conductor" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  select_uut: "[F] Select PDM v1.0 UUT\nand source baseline" { class: func }
+  read_ambient: "[F] Read ambient\nthermometer/hygrometer" { class: func }
+  arm_flight_mode: "[F] Arm flight mode\nand start trial" { class: func }
+  record_deviations: "[F] Record deviations,\nanomalies, waivers" { class: func }
+}
+
+safety_operator: "[EA] Human safety / parachute observer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  inspect_parachute: "[F] Inspect parachute\ndiameter and cap seating" { class: func }
+  verify_clear_area: "[F] Verify recovery\narea is clear" { class: func }
+  stop_on_jam: "[F] Stop test and\npreserve jam evidence" { class: func }
+}
+
+motion_rig: "[EA] IMU motion/drop stimulus rig" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  apply_nominal_profile: "[F] Apply nominal\ndeployment profile" { class: func }
+  apply_negative_profile: "[F] Apply negative /\nnon-deploy profiles" { class: func }
+  apply_false_profile: "[F] Apply false-trigger\nrobustness profiles" { class: func }
+}
+
+fault_probe: "[EA] Fault-injection and logic-analyzer fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  inject_i2c_faults: "[F] Inject I2C NACK,\ndisconnect, stuck bus" { class: func }
+  capture_i2c_timing: "[F] Capture I2C\nread timing" { class: func }
+  capture_pwm_timing: "[F] Capture PWM open/closed\npulse timing" { class: func }
+}
+
+power_current_monitor: "[EA] Power/current monitor" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  supply_limited_power: "[F] Supply current-limited\n3V3/5V power" { class: func }
+  log_voltage_current: "[F] Log voltage/current\nand resets" { class: func }
+  induce_brownout_reset: "[F] Induce bounded\nbrownout/reset case" { class: func }
+}
+
+camera_station: "[EA] High-speed camera / optical station" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  observe_servo_cap: "[F] Observe servo, cap,\nholder separation" { class: func }
+  observe_parachute: "[F] Observe parachute\nunfolding" { class: func }
+  timestamp_video: "[F] Timestamp video\nagainst log timebase" { class: func }
+}
+
+analysis_station: "[EA] Analysis workstation" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  analyze_timing: "[F] Analyze I2C, processing,\nPWM, servo timing" { class: func }
+  analyze_accuracy: "[F] Analyze angular-rate\nerror or threshold margin" { class: func }
+  calculate_stats: "[F] Calculate repetition\nstatistics and confidence" { class: func }
+  prepare_report_inputs: "[F] Prepare report\nevidence package" { class: func }
+}
+
+system: "[System] PDM-VV-FC-001 verification functional allocation\nRefs: IVV; PDM v1.0 plan; PDM-R1–R16; NASA-SE/FM" {
+  class: sys
+  direction: down
+
+  uut: "[PC] PDM v1.0 CanSat UUT" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ads_module: "[PC] ADS Module" {
+      class: pc
+      direction: down
+      ads_pcb: "[PC] ADS PCB" {
+        class: pc
+        direction: down
+        imu: "[PC] ICM20948 IMU" {
+          class: pc
+          direction: down
+          ads_kinematic_sensing: "[LC] ADS Kinematic Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            measure_angular_velocities: "[F] Measure angular\nvelocities" { class: func }
+            measure_accelerations: "[F] Measure\naccelerations" { class: func }
+            measure_magnetic_field_intensities: "[F] Measure magnetic\nfield intensities" { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+          }
+          note_accuracy: "[C] Angular-rate error <30 deg/s\nor trigger threshold robustness analyzed" { class: note; shape: page }
+        }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+          grid-columns: 1
+          ads_processing: "[LC] ADS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            read_angular_velocities: "[F] Read angular\nvelocities" { class: func }
+            read_accelerations: "[F] Read\naccelerations" { class: func }
+            read_field_intensities: "[F] Read field\nintensities" { class: func }
+            process_angular_velocities: "[F] Process angular\nvelocities" { class: func }
+            process_accelerations: "[F] Process\naccelerations" { class: func }
+            calculate_pitch_roll_yaw: "[F] Calculate\npitch, roll, yaw" { class: func }
+          }
+          obcc: "[LC] OBCC" {
+            class: lc
+            direction: down
+            collect_measurements: "[F] Collect\nmeasurements" { class: func }
+            collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+          }
+          pdm_processing: "[LC] PDM Processing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            set_servo_init_state: "[F] Set Servo\ninit state" { class: func }
+            evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+            send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
+            send_close_signal_to_servo: "[F] Send close signal\nto Servo" { class: func }
+          }
+        }
+        verification_probe: "[PC] Temporary verification probe harness" {
+          class: pc
+          direction: down
+          verification_evidence_interface: "[LC] Verification evidence interface" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            log_firmware_build: "[F] Log firmware build,\nsource baseline, trial ID" { class: func }
+            timestamp_i2c_pwm: "[F] Timestamp I2C, PWM,\nand decision events" { class: func }
+            log_fault_markers: "[F] Log fault markers\nand reset events" { class: func }
+          }
+        }
+        note_i2c_timeout: "[C] Every I2C read succeeds or\ntimes out within ≤5 ms" { class: note; shape: page }
+        note_process_time: "[C] Process/calculate functions\ncomplete in <5 ms" { class: note; shape: page }
+        note_no_blocking: "[C] No blocking operations\nbesides modeled I2C comms" { class: note; shape: page }
+        note_no_manual: "[C] Flight mode has no manual/BLE\nopen command path" { class: note; shape: page }
+        note_initial_servo: "[C] Startup/reset servo position\n0 degrees / closed; no early open pulse" { class: note; shape: page }
+      }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: down
+      grid-columns: 3
+      cap: "[PC] Cap" {
+        class: pc
+        direction: down
+        parachute_holder: "[LC] Parachute Holder" {
+          class: lc
+          direction: down
+          stay_shut: "[F] Stay shut" { class: func }
+          separate_from_module: "[F] Separate from\nModule" { class: func }
+        }
+      }
+      servo: "[PC] Servo" {
+        class: pc
+        direction: down
+        trigger: "[LC] Trigger" {
+          class: lc
+          direction: down
+          reach_closed_position: "[F] Reach closed\nposition" { class: func }
+          reach_open_position: "[F] Reach open\nposition" { class: func }
+          retain_position: "[F] Retain position" { class: func }
+        }
+      }
+      parachute: "[PC] Parachute" {
+        class: pc
+        direction: down
+        descent_speed_control: "[LC] Descent speed control" {
+          class: lc
+          direction: down
+          fold: "[F] Fold" { class: func }
+          unfold: "[F] Unfold" { class: func }
+          limit_terminal_speed: "[F] Limit terminal\nspeed" { class: func }
+        }
+      }
+      note_diameter: "[C] Parachute maximum\ndiameter ≤30 cm" { class: note; shape: page }
+      note_terminal_speed: "[C] Terminal-speed limiting\nevidence recorded or linked; numeric v1.0 limit pending" { class: note; shape: page }
+    }
+  }
+}
+
+note_environment: "[C] Environmental pass/fail precondition\nHuman conductor reads the calibrated ambient monitor before repetitions and after\nfault cases; power/current monitor records limits. Missing actual conditions make\nthe verdict blocked or limited." { class: note; shape: page }
+note_stats_faults: "[C] Statistical and fault-hardening viewpoint\nMinimum development screening: ≥10 nominal trials. R90/C95 release evidence needs\n29/29 positive and 29/29 negative no-failure trials. 95/95 timing claims need\n59/59 in-limit timings. Faults: bad/stale IMU, I2C NACK/disconnect/stuck bus,\nfalse profiles, jam/no-open, brownout/reset, and no-manual/BLE regression." { class: note; shape: page }
+note_nominal: "[C] Nominal deployment pass/fail\nExactly one commanded deployment for a nominal IMU trigger profile, with ordered\nADS data, PDM evaluation, PWM open pulse, servo open, holder separation, parachute\nunfolding, and recorded/linked terminal-speed evidence." { class: note; shape: page }
+
+system.uut.ads_module.ads_pcb.imu.note_accuracy -> system.uut.ads_module.ads_pcb.imu.ads_kinematic_sensing.measure_angular_velocities { class: cstr }
+system.uut.obcc_module.obcc_pcb.note_i2c_timeout -> system.uut.obcc_module.obcc_pcb.xiao.ads_processing.read_angular_velocities { class: cstr }
+system.uut.obcc_module.obcc_pcb.note_i2c_timeout -> system.uut.obcc_module.obcc_pcb.xiao.ads_processing.read_accelerations { class: cstr }
+system.uut.obcc_module.obcc_pcb.note_i2c_timeout -> system.uut.obcc_module.obcc_pcb.xiao.ads_processing.read_field_intensities { class: cstr }
+system.uut.obcc_module.obcc_pcb.note_process_time -> system.uut.obcc_module.obcc_pcb.xiao.ads_processing.process_angular_velocities { class: cstr }
+system.uut.obcc_module.obcc_pcb.note_process_time -> system.uut.obcc_module.obcc_pcb.xiao.ads_processing.calculate_pitch_roll_yaw { class: cstr }
+system.uut.obcc_module.obcc_pcb.note_no_blocking -> system.uut.obcc_module.obcc_pcb.xiao.pdm_processing.evaluate_deployment_condition { class: cstr }
+system.uut.obcc_module.obcc_pcb.note_no_manual -> system.uut.obcc_module.obcc_pcb.xiao.pdm_processing.send_open_signal_to_servo { class: cstr }
+system.uut.obcc_module.obcc_pcb.note_initial_servo -> system.uut.obcc_module.obcc_pcb.xiao.pdm_processing.set_servo_init_state { class: cstr }
+system.uut.parachute_module.note_diameter -> system.uut.parachute_module.parachute { class: cstr }
+system.uut.parachute_module.note_terminal_speed -> system.uut.parachute_module.parachute.descent_speed_control.limit_terminal_speed { class: cstr }
+note_environment -> test_conductor.read_ambient { class: cstr }
+note_environment -> power_current_monitor.log_voltage_current { class: cstr }
+note_stats_faults -> analysis_station.calculate_stats { class: cstr }
+note_stats_faults -> fault_probe.inject_i2c_faults { class: cstr }
+note_nominal -> system.uut.obcc_module.obcc_pcb.xiao.pdm_processing.evaluate_deployment_condition { class: cstr }
+note_nominal -> system.uut.parachute_module.cap.parachute_holder.separate_from_module { class: cstr }
+note_nominal -> system.uut.parachute_module.parachute.descent_speed_control.unfold { class: cstr }
+
+# Layout-only ordering hints; no Capella semantics.
+test_conductor -> safety_operator { style: { opacity: 0 } }
+safety_operator -> motion_rig { style: { opacity: 0 } }
+motion_rig -> fault_probe { style: { opacity: 0 } }
+fault_probe -> power_current_monitor { style: { opacity: 0 } }
+power_current_monitor -> camera_station { style: { opacity: 0 } }
+camera_station -> analysis_station { style: { opacity: 0 } }
+analysis_station -> system { style: { opacity: 0 } }
+system -> note_environment { style: { opacity: 0 } }
+note_environment -> note_stats_faults { style: { opacity: 0 } }
+note_stats_faults -> note_nominal { style: { opacity: 0 } }

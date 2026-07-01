@@ -1,0 +1,95 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDM-V01-FC-FALL functional chain for fall-test execution.
+# Functional chain view: chain, functions, FEs, and constraints only.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDM-V01-FC-FALL — Fall-test terminal-speed verification chain\nRefs: PDM_v0.1 view4; PDM-UC-V01-FallTestTerminalSpeed; PDM-FE-V01-ExcessDescentSpeed; PM&SE/IVV.md" {
+  class: chain
+  direction: down
+
+  confirm_baseline: "[F] Confirm model\nbaseline and ID" { class: func }
+  record_config_input: "[F] Record final-mass\nconfiguration input" { class: func }
+  measure_mass: "[F] Measure dummy\nmass/configuration" { class: func }
+  inspect_parachute: "[F] Inspect manual fold\nand open condition" { class: func }
+  read_environment: "[F] Read ambient\nwind/conditions" { class: func }
+  setup_calibration: "[F] Set drop height\nand video calibration" { class: func }
+  arm_camera: "[F] Arm video camera" { class: func }
+  release_dummy: "[F] Release dummy" { class: func }
+  limit_terminal_speed: "[F] Limit terminal speed" { class: func }
+  capture_video: "[F] Capture fall video\nand references" { class: func }
+  extract_speed: "[F] Extract descent\nspeed trace" { class: func }
+  compare_limit: "[F] Compare accepted\nsegment to 11 m/s" { class: func }
+  archive_evidence: "[F] Archive evidence\nand anomalies" { class: func }
+
+  mass_input: "[C] Pass: dummy mass/configuration\nmatches final estimate or documented\npre-execution tolerance input." { class: note; shape: page }
+  manual_open: "[C] Pass: parachute is folded/released\nmanually and open for accepted\nmeasurement segment." { class: note; shape: page }
+  speed_limit: "[C] Pass: terminal descent speed\nfrom retained video/time-distance\nevidence is <= 11 m/s." { class: note; shape: page }
+  evidence_required: "[C] Pass: evidence includes source\nmodel version, UUT configuration,\nvideo/logs, method, environment,\ndeviations, and anomalies." { class: note; shape: page }
+  statistical_basis: "[C] Statistical viewpoint: execute\n3 v0.1 screening repetitions; do not\nclaim reliability/confidence unless\nstatistical basis is stated." { class: note; shape: page }
+  fault_hardening: "[C] Fault-hardening viewpoint:\nmisfold/tangle, partial opening,\nrelease bias, mass mismatch, video\ncalibration, wind/gusts, drop damage." { class: note; shape: page }
+}
+
+chain.confirm_baseline -> chain.record_config_input: "[FE] baseline/activity ID []" { class: fe }
+chain.record_config_input -> chain.measure_mass: "[FE] final mass/config estimate []" { class: fe }
+chain.measure_mass -> chain.inspect_parachute: "[FE] accepted UUT configuration []" { class: fe }
+chain.inspect_parachute -> chain.read_environment: "[FE] parachute setup accepted []" { class: fe }
+chain.read_environment -> chain.setup_calibration: "[FE] environmental record []" { class: fe }
+chain.setup_calibration -> chain.arm_camera: "[FE] calibrated drop setup []" { class: fe }
+chain.arm_camera -> chain.release_dummy: "[FE] ready-to-drop []" { class: fe }
+chain.release_dummy -> chain.limit_terminal_speed: "[FE] manual release []" { class: fe }
+chain.limit_terminal_speed -> chain.capture_video: "[FE] descent event []" { class: fe }
+chain.capture_video -> chain.extract_speed: "[FE] video/time-distance evidence []" { class: fe }
+chain.extract_speed -> chain.compare_limit: "[FE] speed trace + uncertainty []" { class: fe }
+chain.compare_limit -> chain.archive_evidence: "[FE] result []" { class: fe }
+
+chain.mass_input -> chain.measure_mass { class: cstr }
+chain.mass_input -> chain.record_config_input { class: cstr }
+chain.manual_open -> chain.inspect_parachute { class: cstr }
+chain.manual_open -> chain.release_dummy { class: cstr }
+chain.speed_limit -> chain.limit_terminal_speed { class: cstr }
+chain.speed_limit -> chain.compare_limit { class: cstr }
+chain.statistical_basis -> chain.compare_limit { class: cstr }
+chain.fault_hardening -> chain.inspect_parachute { class: cstr }
+chain.fault_hardening -> chain.setup_calibration { class: cstr }

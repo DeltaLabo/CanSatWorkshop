@@ -1,0 +1,92 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDM-V01-FC-FALL verification-only physical setup.
+# Physical view: System/PCs, non-human EAs, physical links, and constraints only.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] PDM-V01-FC-FALL physical fall-test setup\nRefs: PDM_v0.1 view1; PDM-UC-V01-FallTestTerminalSpeed; PM&SE/IVV.md" {
+  class: sys
+  direction: down
+
+  dummy_cansat: "[PC] Dummy CanSat\nUUT" {
+    class: pc
+    direction: down
+
+    top_module: "[PC] Top module" {
+      class: pc
+      direction: down
+
+      parachute: "[PC] Parachute" { class: pc }
+    }
+  }
+}
+
+release_fixture: "[EA] Release/drop fixture" { class: ea }
+calibrated_scale: "[EA] Calibrated scale" { class: ea }
+drop_height_marker: "[EA] Measuring tape /\ndrop-height marker" { class: ea }
+video_camera: "[EA] Calibrated video camera" { class: ea }
+time_distance_reference: "[EA] Time/distance\nreference target" { class: ea }
+ambient_wind_meter: "[EA] Ambient thermometer\n/ wind meter" { class: ea }
+
+same_weight: "[C] Same weight as final estimate\nor within documented pre-execution\nmass/configuration tolerance." { class: note; shape: page }
+manual_deploy: "[C] Parachute is foldable and\nreleased/deployed manually for\nthis v0.1 test condition." { class: note; shape: page }
+open_condition: "[C] Accepted fall segment must\nrepresent the parachute-open\ncondition." { class: note; shape: page }
+measurement_setup: "[C] Measurement environment:\nrecord drop height, video scale/time\nreference, ambient temperature, wind,\nand equipment identifiers." { class: note; shape: page }
+verification_links: "[C] Red [PL] links in this view are\nverification-only test setup links;\nthe source v0.1 model has no PLs." { class: note; shape: page }
+
+system.dummy_cansat -- calibrated_scale: "[PL] weighing contact" { class: pl }
+system.dummy_cansat -- release_fixture: "[PL] temporary release fixture" { class: pl }
+system.dummy_cansat.top_module.parachute -- release_fixture: "[PL] manual parachute setup" { class: pl }
+system.dummy_cansat -- drop_height_marker: "[PL] release-height reference" { class: pl }
+system.dummy_cansat -- video_camera: "[PL] optical fall observation path" { class: pl }
+system.dummy_cansat -- time_distance_reference: "[PL] video scale/time reference" { class: pl }
+system.dummy_cansat -- ambient_wind_meter: "[PL] co-located ambient/wind observation" { class: pl }
+
+same_weight -> system.dummy_cansat { class: cstr }
+manual_deploy -> system.dummy_cansat.top_module.parachute { class: cstr }
+open_condition -> system.dummy_cansat.top_module.parachute { class: cstr }
+measurement_setup -> video_camera { class: cstr }
+measurement_setup -> ambient_wind_meter { class: cstr }
+measurement_setup -> drop_height_marker { class: cstr }
+verification_links -> system { class: cstr }

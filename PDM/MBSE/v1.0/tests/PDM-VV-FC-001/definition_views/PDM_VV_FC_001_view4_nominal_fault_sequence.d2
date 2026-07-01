@@ -1,0 +1,121 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style verification sequence for PDM-VV-FC-001.
+# Testing/Demonstration primary method, with supporting Analysis and Inspection.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 28 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 24 } }
+}
+
+chain: "PDM-VV-FC-001 — nominal and fault-hardening deployment sequence\nTesting/Demonstration + Analysis/Inspection — Refs: IVV; PDM plan; PDM-R1–R16; NASA-SE/FM" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_baseline: "[F] Select v1.0 source-view copy,\nUUT serial, firmware commit/build" { class: func }
+  inspect_setup: "[F] Inspect UUT configuration:\nADS IMU, OBCC, backplane, servo, cap, parachute" { class: func }
+  inspect_diameter: "[F] Measure parachute diameter\nwith 30 cm gauge" { class: func }
+  record_environment: "[F] Read ambient monitor\nand power/current limits" { class: func }
+  configure_loggers: "[F] Configure loggers, camera,\nlogic analyzer, timebase" { class: func }
+  initialize_servo: "[F] Power/reset UUT and verify\nservo 0 degrees / closed" { class: func }
+  arm_flight_mode: "[F] Arm flight mode; confirm\nmanual/BLE open path unavailable" { class: func }
+
+  stimulate_nominal: "[F] Stimulate nominal IMU\ndeployment profile" { class: func }
+  measure_imu: "[F] Measure and respond with\nIMU angular/accel/field data" { class: func }
+  read_process_imu: "[F] Read, process, and calculate\nIMU state for deployment logic" { class: func }
+  collect_measurements: "[F] Collect IMU measurements\nand init state" { class: func }
+  evaluate_condition: "[F] Evaluate deployment\ncondition from ADS IMU data" { class: func }
+  command_open: "[F] Send exactly one PWM\nopen command" { class: func }
+  observe_servo: "[F] Observe servo reaches\nand retains open position" { class: func }
+  observe_holder: "[F] Observe holder/cap\nseparation" { class: func }
+  observe_parachute: "[F] Observe parachute unfolding\nand terminal-speed evidence link" { class: func }
+  log_nominal: "[F] Log raw nominal evidence:\nIMU, decisions, PWM, video, environment" { class: func }
+
+  run_negative_profiles: "[F] Run negative/non-deploy\nIMU profiles" { class: func }
+  attempt_manual_ble: "[F] Attempt manual/BLE open\nregression checks in flight mode" { class: func }
+  inject_bad_stale_imu: "[F] Inject bad/stale/out-of-range\nIMU data cases" { class: func }
+  inject_i2c_faults: "[F] Inject I2C NACK, disconnect,\nstuck-bus, timeout cases" { class: func }
+  inject_servo_jam: "[F] Inject or simulate servo jam /\nno-open observation case" { class: func }
+  induce_brownout_reset: "[F] Induce brownout/reset; verify\nclosed state and no early open" { class: func }
+  analyze_evidence: "[F] Analyze timing, accuracy margin,\nfault handling, repetitions" { class: func }
+  decide_verdict: "[F] Decide pass/fail, blocked,\nwaived, or retest verdict" { class: func }
+  archive_report: "[F] Archive evidence and report\nunder tests/results/PDM-VV-FC-001/" { class: func }
+
+  note_nominal: "[C] Nominal pass/fail\nPass only if a nominal IMU-derived trigger produces exactly one complete ordered\ndeployment chain and the report links or records terminal-speed limiting evidence.\nFail on missing step, duplicate open command, or untraceable evidence." { class: note; shape: page }
+  note_no_deploy: "[C] Negative/no-manual pass/fail\nNegative/non-deploy profiles, manual/BLE attempts, and bad/stale IMU inputs shall\nnot produce a flight-mode open command. Legacy debug/manual paths are failures\nunless formally disabled or dispositioned before execution." { class: note; shape: page }
+  note_i2c_fault: "[C] I2C fault pass/fail\nEvery read succeeds or times out within ≤5 ms. NACK, disconnect, and stuck-bus\ncases are bounded, logged, and do not block the scheduler or falsely satisfy the\ndeployment condition." { class: note; shape: page }
+  note_timing: "[C] Processing/timing pass/fail\nProcess/calculate functions complete in <5 ms for representative inputs. PWM and\nservo observations are timestamped against the same timebase. No blocking outside\nmodeled I2C comms is observed or found by supporting analysis." { class: note; shape: page }
+  note_servo: "[C] Startup/mechanical pass/fail\nInitial servo state is 0 degrees/closed after startup or reset, no open pulse occurs\nbefore the deployment condition, and servo jam/no-open is reported rather than\nclaimed as successful deployment." { class: note; shape: page }
+  note_accuracy_diameter: "[C] Accuracy/diameter pass/fail\nAngular-rate error is <30 deg/s or deployment thresholds are analyzed robust to\nthat error. Parachute diameter is ≤30 cm before credited deployment trials." { class: note; shape: page }
+  note_stats: "[C] Statistical viewpoint\nMinimum development definition: ≥10 nominal trials plus enumerated faults. R90/C95\nrelease claim requires 29/29 independent positive and 29/29 independent negative\ntrials with no failures. 95/95 deadline claim requires 59/59 in-limit timings." { class: note; shape: page }
+  note_report: "[C] Evidence/report content\nReport records source model version, UUT configuration, firmware build, stimulus\nprofiles, raw logs/traces/video, timing/accuracy analyses, environmental conditions,\ndeviations, anomalies, waivers, limitations, and retest status." { class: note; shape: page }
+}
+
+chain.select_baseline -> chain.inspect_setup: "[FE] Baseline selected" { class: fe }
+chain.inspect_setup -> chain.inspect_diameter: "[FE] Configuration inspected" { class: fe }
+chain.inspect_diameter -> chain.record_environment: "[FE] Diameter result" { class: fe }
+chain.record_environment -> chain.configure_loggers: "[FE] Conditions recorded" { class: fe }
+chain.configure_loggers -> chain.initialize_servo: "[FE] Instrumented UUT" { class: fe }
+chain.initialize_servo -> chain.arm_flight_mode: "[FE] Closed state confirmed" { class: fe }
+chain.arm_flight_mode -> chain.stimulate_nominal: "[FE] Flight-mode ready" { class: fe }
+
+chain.stimulate_nominal -> chain.measure_imu: "[FE] Motion profile" { class: fe }
+chain.measure_imu -> chain.read_process_imu: "[FE] IMU data" { class: fe }
+chain.read_process_imu -> chain.collect_measurements: "[FE] Processed IMU\n[Vels, Accels, PRY]" { class: fe }
+chain.collect_measurements -> chain.evaluate_condition: "[FE] ADS IMU state" { class: fe }
+chain.evaluate_condition -> chain.command_open: "[FE] Deployment trigger" { class: fe }
+chain.command_open -> chain.observe_servo: "[FE] Open signal [PWM]" { class: fe }
+chain.observe_servo -> chain.observe_holder: "[FE] Servo open" { class: fe }
+chain.observe_holder -> chain.observe_parachute: "[FE] Holder open" { class: fe }
+chain.observe_parachute -> chain.log_nominal: "[FE] Deployment evidence" { class: fe }
+
+chain.log_nominal -> chain.run_negative_profiles: "[FE] Nominal evidence saved" { class: fe }
+chain.run_negative_profiles -> chain.attempt_manual_ble: "[FE] No-open profile results" { class: fe }
+chain.attempt_manual_ble -> chain.inject_bad_stale_imu: "[FE] No-manual results" { class: fe }
+chain.inject_bad_stale_imu -> chain.inject_i2c_faults: "[FE] Bad/stale data results" { class: fe }
+chain.inject_i2c_faults -> chain.inject_servo_jam: "[FE] I2C fault results" { class: fe }
+chain.inject_servo_jam -> chain.induce_brownout_reset: "[FE] Jam/no-open result" { class: fe }
+chain.induce_brownout_reset -> chain.analyze_evidence: "[FE] Reset result" { class: fe }
+chain.analyze_evidence -> chain.decide_verdict: "[FE] Analysis findings" { class: fe }
+chain.decide_verdict -> chain.archive_report: "[FE] Verdict package" { class: fe }
+
+chain.note_nominal -> chain.evaluate_condition { class: cstr }
+chain.note_nominal -> chain.observe_parachute { class: cstr }
+chain.note_no_deploy -> chain.run_negative_profiles { class: cstr }
+chain.note_no_deploy -> chain.attempt_manual_ble { class: cstr }
+chain.note_no_deploy -> chain.inject_bad_stale_imu { class: cstr }
+chain.note_i2c_fault -> chain.inject_i2c_faults { class: cstr }
+chain.note_i2c_fault -> chain.read_process_imu { class: cstr }
+chain.note_timing -> chain.read_process_imu { class: cstr }
+chain.note_timing -> chain.analyze_evidence { class: cstr }
+chain.note_servo -> chain.initialize_servo { class: cstr }
+chain.note_servo -> chain.inject_servo_jam { class: cstr }
+chain.note_accuracy_diameter -> chain.inspect_diameter { class: cstr }
+chain.note_accuracy_diameter -> chain.analyze_evidence { class: cstr }
+chain.note_stats -> chain.analyze_evidence { class: cstr }
+chain.note_report -> chain.archive_report { class: cstr }
+
+# Layout-only ordering hints for notes.
+chain.archive_report -> chain.note_nominal { style: { opacity: 0 } }
+chain.note_nominal -> chain.note_no_deploy { style: { opacity: 0 } }
+chain.note_no_deploy -> chain.note_i2c_fault { style: { opacity: 0 } }
+chain.note_i2c_fault -> chain.note_timing { style: { opacity: 0 } }
+chain.note_timing -> chain.note_servo { style: { opacity: 0 } }
+chain.note_servo -> chain.note_accuracy_diameter { style: { opacity: 0 } }
+chain.note_accuracy_diameter -> chain.note_stats { style: { opacity: 0 } }
+chain.note_stats -> chain.note_report { style: { opacity: 0 } }

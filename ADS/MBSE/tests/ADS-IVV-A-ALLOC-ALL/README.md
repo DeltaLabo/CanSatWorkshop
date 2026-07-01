@@ -27,6 +27,7 @@ All Capella/D2 views for the selected all-version scope were copied under `sourc
 | `definition_views/ADS_IVV_A_ALLOC_ALL_view2_functional_allocation_inventory.d2/png` | PV3 allocation inventory listing modeled PCs, LCs, and functions for v0.1, v0.2, and v1.0; includes v0.3 zero-allocation rationale and applicable constraints. |
 | `definition_views/ADS_IVV_A_ALLOC_ALL_view3_verification_means.d2/png` | PV3 verification means: allocation analyst, firmware/static-analysis tools, runtime evidence tools, reference corpus, quality authority, and verification-only functions. |
 | `definition_views/ADS_IVV_A_ALLOC_ALL_view4_analysis_sequence.d2/png` | Functional-chain style analysis sequence used as the modeled allocation-analysis procedure; IADT method remains Analysis. |
+| `definition_views/ADS_IVV_A_ALLOC_ALL_view5_logical_analysis_interfaces.d2/png` | PV2 allocation-analysis record interfaces, connecting analyst, firmware/OBCC owner, and quality authority to the analysis records via Component Exchanges. |
 
 ## Version allocation coverage
 

@@ -1,6 +1,6 @@
 # Structures and Assembly
 
-Owners: @prigo11, @secoher26, @Maripro
+Owners: @prigo11, @secoher26, @MariaAC1501
 
 This subsystem provides a lightweight and modular physical structure for the CanSat, designed to protect internal components and ensure impact resistance during landing. It maintains standard dimensions, facilitates easy module replacement, and allows for straightforward handling and maintenance, contributing to the overall reliability and efficiency of the CanSat.
 

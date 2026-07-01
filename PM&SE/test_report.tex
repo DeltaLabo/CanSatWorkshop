@@ -16,127 +16,179 @@
 }
 
 % Set metadata
-\doctitle{Test Report Template}
-\docsubtitle{Based on ISO/IEC/IEEE 29119, IEC 60068, ISO/IEC 17025}
+\doctitle{MBSE-First Verification Report Template}
+\docsubtitle{Report-by-reference for Capella/ARCADIA IADT verification activities}
 
 \docid{TEST-000}
 \version{1.0}
 \docdate{\today}
 \preparedby{Alice}
 \approvedby{Bob}
-\observations{None}
+\observations{Draft template}
+
+\newcommand{\placeholder}[1]{\textcolor{DarkCyan}{#1}}
 
 \begin{document}
 
 \makedeltaheader
 
-\section{Test Plan Summary}
+\section{Report Control and Verification Activity Summary}
 \makeversionapprovaltable
 
-\section{Purpose and Scope}
-\textcolor{DarkCyan} {Explain why the test is being performed and what it consists of, including:} 
-\begin{itemize}
-  \item \textbf{Main objective of the test:} Describe the purpose, such as functional verification, performance evaluation, or compliance validation.
-  \item \textbf{Limits of the test:} Specify which subsystems are included or excluded from the scope.
-  \item \textbf{Key focus areas:} Indicate any special aspects to be checked, for example environmental resistance, calibration traceability, or safety features).
-\end{itemize}
+\placeholder{Use this template after the verification activity has been researched in the subsystem \texttt{tests/README.md} and modeled in Capella/D2 under \texttt{tests/<activity-id>/}. The Capella/ARCADIA model is the source of truth. This report records the executed evidence, configuration, results, deviations, and pass/fail rationale; it should not duplicate stable model content unnecessarily.}
 
-\section{References}
-
-\textcolor{DarkCyan} {List all documents, standards, and procedures used to design or execute the test.}
-\begin{itemize}
-  \item \textbf{Standards:} 
-  \nocite{ISO29119,IEC60068,ISO17025} % asegura que se impriman aunque no las cites explícitamente
-  \printbibliography[heading=none]
-  \item \textbf{Design Documents:} Engineering drawings, schematics, datasheets.
-  \item \textbf{Internal Procedures:} Company testing protocols, safety guidelines.
-\end{itemize}
-
-\section{Definitions and Abbreviations}
-
-\textcolor{DarkCyan} {Avoid confusion by clarifying technical terms and acronyms.}
-\begin{itemize}
-  \item \textbf{DUT:} Device Under Test – The hardware being tested.
-  \item \textbf{EUT:} Equipment Under Test – Same as DUT, used in some standards.
-  \item \textbf{RBF:} Remove-Before-Flight safety pin.
-\end{itemize}
-
-\section{Test Item Identification}
-
-\renewcommand{\arraystretch}{1.3} 
-\setlength{\tabcolsep}{3pt}      
-
-\begin{tabular}{|>{\centering\arraybackslash}m{2.9cm}
-                |>{\centering\arraybackslash}m{2.9cm}
-                |>{\centering\arraybackslash}m{2.9cm}
-                |>{\centering\arraybackslash}m{2.9cm}
-                |>{\centering\arraybackslash}m{3.2cm}|}
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|>{\centering\arraybackslash}m{3.1cm}
+                |>{\centering\arraybackslash}m{4.1cm}
+                |>{\centering\arraybackslash}m{3.6cm}
+                |>{\centering\arraybackslash}m{4.1cm}|}
 \hline
-\textbf{Name / Idem Number} & \textbf{Serial Number / Revision} & \textbf{Manufacturer} & \textbf{Configuration (HW/SW)} & \textbf{Photographs / Diagrams} \\ 
+\textbf{Field} & \textbf{Value} & \textbf{Field} & \textbf{Value} \\
 \hline
-Enter the official idem name or code 
-& Enter serial number and revision code 
-& Manufacturer name 
-& Hardware and software version details 
-& Include reference to images or diagrams showing identification marks \\
+Verification activity ID & \placeholder{e.g., DPS-V10-T-001} & Report type & \placeholder{Activity report / campaign report / retest report} \\
+\hline
+Subsystem / SSIV & \placeholder{Subsystem and development version, e.g., PDS \& ESS v1.0} & IADT method & \placeholder{Inspection / Analysis / Demonstration / Testing} \\
+\hline
+IVV source category & \placeholder{component/link, component exchange, allocation, functional chain/scenario, or constraint} & Traceability target(s) & \placeholder{mission, capability, use case, feared event, or constraint IDs} \\
+\hline
+Model baseline & \placeholder{Capella/D2 commit, tag, branch, or controlled baseline ID} & As-verified configuration & \placeholder{HW revision, firmware commit, article serial numbers, tools} \\
+\hline
+Modeled definition folder & \placeholder{\texttt{tests/<activity-id>/}} & Evidence folder & \placeholder{\texttt{tests/results/<activity-id>/}} \\
+\hline
+Overall result & \placeholder{Pass / Fail / Conditional pass / Inconclusive / Not run} & Retest or waiver reference & \placeholder{N/A or identifier} \\
 \hline
 \end{tabular}
 
-\section{Test Environment and Equipment}
+\section{Purpose, Scope, and MBSE Source of Truth}
+\subsection{Purpose}
+\placeholder{State why this verification was executed and which modeled verification activity it closes or partially closes.}
 
-\subsection{Environmental Conditions}
-
-\textcolor{DarkCyan} {Document the physical conditions during the test.}
+\subsection{Scope}
 \begin{itemize}
-    \item Ambient temperature (°C)
-    \item Humidity (\%)
-    \item Pressure (if relevant and applicable)
-    \item EMC/EMI background (if relevant and applicable)
+  \item \textbf{Included model elements:} \placeholder{List the referenced physical components, physical links, component exchanges, logical components/functions, functional chains/scenarios, or constraints by model name/ID.}
+  \item \textbf{Excluded model elements:} \placeholder{List explicit exclusions and their rationale, such as another SSIV, another subsystem, or a candidate activity not yet modeled.}
+  \item \textbf{Applicable SSIV/development version:} \placeholder{State the exact version. If inferred from folders rather than a controlled SSIV, state that limitation.}
 \end{itemize}
 
-\subsection{Test Equipment}
+\subsection{MBSE-first reporting rule}
+\placeholder{If the unit under verification, environment, test means, interfaces, stimuli, expected behavior, and pass/fail constraints are already defined in the model, reference them here instead of repeating them. Add details only when needed to identify the as-tested configuration, actual execution conditions, observed results, or deviations from the modeled definition.}
 
+\section{Referenced MBSE Definition and Traceability}
+\subsection{Source and Verification Definition Views}
+\begin{tabular}{|>{\centering\arraybackslash}m{3.1cm}
+                |>{\centering\arraybackslash}m{5.0cm}
+                |>{\centering\arraybackslash}m{7.0cm}|}
+\hline
+\textbf{Reference type} & \textbf{Path or model element} & \textbf{Notes / baseline} \\
+\hline
+Subsystem test plan & \placeholder{\texttt{<subsystem>/MBSE/tests/README.md}} & \placeholder{Planning row/status for this activity.} \\
+\hline
+Research references & \placeholder{\texttt{<subsystem>/MBSE/tests/references/}} & \placeholder{Standards, literature, statistics, and fault-hardening references used during planning.} \\
+\hline
+Source architecture views & \placeholder{\texttt{<subsystem>/MBSE/<version>/...}} & \placeholder{Unmodified Capella/D2 physical architecture baseline.} \\
+\hline
+Modeled verification views & \placeholder{\texttt{<subsystem>/MBSE/tests/<activity-id>/}} & \placeholder{Copied and extended views with verification actors, equipment, functions, links, chains, constraints, and traceability.} \\
+\hline
+Functional chains / scenarios & \placeholder{Model element names or diagram paths} & \placeholder{Only for demonstration/testing or chain-based analyses.} \\
+\hline
+Pass/fail constraints & \placeholder{Constraint IDs/names} & \placeholder{Where each acceptance criterion is modeled.} \\
+\hline
+\end{tabular}
+
+\subsection{Traceability and Coverage Summary}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.3cm}
+                |>{\centering\arraybackslash}m{3.0cm}
+                |>{\centering\arraybackslash}m{3.1cm}
+                |>{\centering\arraybackslash}m{3.2cm}
+                |>{\centering\arraybackslash}m{3.2cm}|}
+\hline
+\textbf{Activity ID} & \textbf{Model elements covered} & \textbf{Trace target} & \textbf{Viewpoints} & \textbf{Result / coverage impact} \\
+\hline
+\placeholder{ID} & \placeholder{PC/PL, CE, allocation, chain, scenario, or constraint} & \placeholder{mission/capability/use case/feared event/constraint} & \placeholder{statistics, fault hardening, environment, safety, timing, etc.} & \placeholder{Closed / partially closed / gap remains} \\
+\hline
+\end{tabular}
+
+\section{References}
+\placeholder{List documents, standards, modeled references, and procedures used to research, define, or execute this activity. The planning prompts are process references; the controlled verification content is the resulting model and test plan.}
+\begin{itemize}
+  \item \textbf{Project IVV policy:} \placeholder{\texttt{PM\&SE/IVV.md}.}
+  \item \textbf{Research workflow:} \placeholder{\texttt{/Users/antho/agent-tools/syseng/prompts/capella-pa-tests-research.md}.}
+  \item \textbf{Model-definition workflow:} \placeholder{\texttt{/Users/antho/agent-tools/syseng/prompts/capella-pa-tests-definition.md}.}
+  \item \textbf{Subsystem plan and modeled definition:} \placeholder{\texttt{tests/README.md} row and \texttt{tests/<activity-id>/} diagrams.}
+  \item \textbf{Standards:}
+  \nocite{ISO29119,IEC60068,ISO17025}
+  \printbibliography[heading=none]
+  \item \textbf{Additional saved references:} \placeholder{List local files in \texttt{tests/references/} used for statistics, environmental assumptions, fault hardening, datasheet limits, or workmanship criteria.}
+\end{itemize}
+
+\section{Definitions and Abbreviations}
+\begin{itemize}
+  \item \textbf{ARCADIA:} Architecture Analysis and Design Integrated Approach.
+  \item \textbf{Capella/D2 view:} Modeled system or verification definition used as the authoritative verification source.
+  \item \textbf{IADT:} Inspection, Analysis, Demonstration, and Testing.
+  \item \textbf{MBSE:} Model-Based Systems Engineering.
+  \item \textbf{SSIV:} System or Subsystem Integration Version.
+  \item \textbf{UUT:} Unit Under Verification; use DUT/EUT only if required by a referenced standard.
+  \item \textbf{Deviation:} Any executed condition, setup, criterion, or sequence that differs from the modeled verification definition.
+\end{itemize}
+
+\section{Test Item and As-Verified Configuration}
+\placeholder{Identify only execution-specific configuration details that are not already controlled by the model, or that must be bound to evidence for repeatability.}
+
+\begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}
+                |>{\centering\arraybackslash}m{2.7cm}
+                |>{\centering\arraybackslash}m{2.7cm}
+                |>{\centering\arraybackslash}m{3.1cm}
+                |>{\centering\arraybackslash}m{3.4cm}|}
+\hline
+\textbf{Item / article} & \textbf{Serial or revision} & \textbf{Manufacturer / owner} & \textbf{HW/SW configuration} & \textbf{Photographs / diagrams / evidence} \\
+\hline
+\placeholder{UUT or analyzed artifact} & \placeholder{Serial, board rev, firmware commit} & \placeholder{Name} & \placeholder{As-tested configuration} & \placeholder{Photo/log/model reference} \\
+\hline
+\end{tabular}
+
+\section{Verification Means, Environment, Equipment, and Operators}
+\subsection{Modeled Verification Means}
+\placeholder{Reference the external actors, test equipment, human operators, verification-only functions, physical links, component exchanges, and environmental constraints added in the modeled definition.}
+
+\subsection{Actual Environmental Conditions}
+\begin{itemize}
+  \item \textbf{Date/time/location:} \placeholder{Actual execution context.}
+  \item \textbf{Temperature, humidity, pressure, EMC/EMI, lighting, ESD, safety controls:} \placeholder{Record values when relevant to the modeled criteria or evidence interpretation.}
+  \item \textbf{Configuration stability:} \placeholder{State warm-up, calibration status, battery state, radio settings, or other conditions that affect the result.}
+\end{itemize}
+
+\subsection{Equipment Used}
 \equipmenttable{
-  1 & Equipment name & Type or Model & Manufacturer & Calibration Date & Serial No. & Notes \\
-  \hline
-  2 & Oscilloscope & MSO-X 3054A & Keysight & 2024-11-15 & ABC456 & 500 MHz bandwidth \\
+  1 & \placeholder{Equipment name} & \placeholder{Type or model} & \placeholder{Manufacturer} & \placeholder{Calibration date / N.A.} & \placeholder{Serial no.} & \placeholder{Role in modeled definition} \\
   \hline
 }
 
-\section{Test Inputs, Outputs, and Acceptance Criteria}
-\subsection{Test Inputs}
-\textcolor{DarkCyan} {List all inputs applied to the DUT (voltages, loads, software commands).}
-\subsection{Expected Outputs}
-\textcolor{DarkCyan} {Describe measurable responses (voltage, signal shape, movement, LED indicators, etc.).}
-\subsection{Acceptance Criteria}
-\textcolor{DarkCyan} {Set the pass/fail limits:}
-\begin{itemize}
-    \item Tolerances (± values)
-    \item Minimum performance thresholds
-    \item Safety constraints
-\end{itemize}
+\subsection{Operators and Roles}
+\begin{tabular}{|>{\centering\arraybackslash}m{3.3cm}
+                |>{\centering\arraybackslash}m{4.2cm}
+                |>{\centering\arraybackslash}m{4.2cm}
+                |>{\centering\arraybackslash}m{3.2cm}|}
+\hline
+\textbf{Name} & \textbf{Modeled actor/function} & \textbf{Actual role performed} & \textbf{Training / authorization} \\
+\hline
+\placeholder{Operator} & \placeholder{e.g., press launch button, record measurement, inspect PCB} & \placeholder{Actual role} & \placeholder{Reference or N/A} \\
+\hline
+\end{tabular}
 
-\section{Test Procedure}
-\textcolor{DarkCyan} {Provide a clear, step-by-step process so the test can be repeated exactly.}
-\begin{enumerate}
-    \item \textbf{Setup:} Prepare the DUT, connect equipment, configure environment.
-    \item \textbf{Action:} Apply stimulus or command.
-    \item \textbf{Measurement:} Record DUT response.
-    \item \textbf{Verification:} Compare with acceptance criteria.
-\end{enumerate}    
-
-\renewcommand{\arraystretch}{1.3} 
-\setlength{\tabcolsep}{3pt}      
+\section{As-Executed Procedure or Analysis Method}
+\placeholder{Reference the modeled functional chain, scenario, inspection checklist, or analysis checklist. Record the executed sequence or analysis method only to the level needed to reproduce evidence and identify deviations.}
 
 \begin{tabular}{|>{\centering\arraybackslash}m{0.9cm}
-                |>{\centering\arraybackslash}m{3.5cm}
-                |>{\centering\arraybackslash}m{3.5cm}
-                |>{\centering\arraybackslash}m{3.5cm}
-                |>{\centering\arraybackslash}m{3.5cm}|}
+                |>{\centering\arraybackslash}m{3.2cm}
+                |>{\centering\arraybackslash}m{3.2cm}
+                |>{\centering\arraybackslash}m{3.2cm}
+                |>{\centering\arraybackslash}m{3.2cm}|}
 \hline
-\textbf{Step} & \textbf{Input Condition} & \textbf{Expected Output} & \textbf{Actual Output} & \textbf{Pass/Fail} \\
+\textbf{Step} & \textbf{Modeled action / analysis item} & \textbf{Actual execution / evidence} & \textbf{Deviation from model} & \textbf{Initial result} \\
 \hline
-1 & & & & \\
+1 & \placeholder{Setup/action/check} & \placeholder{Log/photo/script/checklist row} & \placeholder{None or ID} & \placeholder{Pass/Fail/Obs.} \\
 \hline
 2 & & & & \\
 \hline
@@ -144,42 +196,99 @@ Enter the official idem name or code
 \hline
 \end{tabular}
 
-\section{Results}
+\section{Results and Evidence Index}
+\subsection{Evidence Inventory}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.4cm}
+                |>{\centering\arraybackslash}m{4.0cm}
+                |>{\centering\arraybackslash}m{3.0cm}
+                |>{\centering\arraybackslash}m{5.0cm}|}
+\hline
+\textbf{Evidence ID} & \textbf{File/path or artifact} & \textbf{Produced by} & \textbf{Purpose / linked model element} \\
+\hline
+\placeholder{E-001} & \placeholder{\texttt{results/<activity-id>/...}} & \placeholder{tool/operator} & \placeholder{raw data, photo, script output, checklist, analysis note} \\
+\hline
+\end{tabular}
 
-\subsection{Raw Data}
-\textcolor{DarkCyan} {Attach logs, oscilloscope screenshots, photos, or measurement sheets.}
+\subsection{Raw Results}
+\placeholder{Summarize raw measured values, observations, checklist counts, analysis findings, logs, screenshots, photos, or scripts. Keep raw artifacts in the evidence folder and cite them here.}
 
-\subsection{Analysis}
-\textcolor{DarkCyan} {Highlight anomalies, trends, and deviations from expected performance.}
+\subsection{Statistical Treatment and Uncertainty}
+\placeholder{Apply the statistical policy from \texttt{PM\&SE/IVV.md} and the modeled activity: exact binomial confidence for success/failure or PDR claims, at least 30 samples for continuous measurements where applicable, 59 in-limit samples for 95/95 deadline claims, or state why statistics are not applicable for inspection/analysis. Record confidence, sample size, independence assumptions, uncertainty, and limitations.}
+
+\subsection{Fault-Hardening Results}
+\placeholder{Record injected or analyzed fault cases, forbidden events, recovery behavior, and whether failures were detected, rejected, bounded, logged, or safely handled as modeled.}
+
+\section{IADT-Specific Pass/Fail Rationale}
+\placeholder{Complete the subsection(s) that apply to this activity. Mark non-applicable subsections as N/A with rationale.}
+
+\subsection{Physical Component and Physical Link Inspection}
+\placeholder{For component/link inspection activities, state the inspected PC/PL population, inspection coverage, missing/extra items, continuity/polarity/short results, workmanship findings, and disposition. Pass only if all modeled physical components and links are present or explicitly dispositioned.}
+
+\subsection{Component Exchange Analysis}
+\placeholder{For component-exchange analyses, state each analyzed CE, evidence that the exchange exists, protocol/direction/data semantics, implementation consistency with model intent, and fault-hardening rationale.}
+
+\subsection{Functional Allocation Analysis}
+\placeholder{For allocation analyses, state whether every intended function is allocated to the modeled logical component, no foreign functions are allocated, and cross-boundary flows use modeled component exchanges or documented dispositions.}
+
+\subsection{Functional Chain or Scenario Testing/Demonstration}
+\placeholder{For chain/scenario activities, state stimuli, expected behavior, observed behavior, pass/fail constraints, trace target, relevant viewpoints, sample counts, timing/rate/accuracy metrics, and evidence that the human/equipment verification means participated as modeled.}
+
+\subsection{Constraint-Derived Verification}
+\placeholder{For constraint-derived activities, state each constraint, where it is modeled as a pass/fail condition, the measured/analyzed result, and whether the constraint is closed, partially closed, or still requires another verification activity.}
+
+\section{Deviations, Anomalies, Waivers, Assumptions, and Limitations}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.0cm}
+                |>{\centering\arraybackslash}m{2.4cm}
+                |>{\centering\arraybackslash}m{5.2cm}
+                |>{\centering\arraybackslash}m{3.1cm}
+                |>{\centering\arraybackslash}m{2.6cm}|}
+\hline
+\textbf{ID} & \textbf{Type} & \textbf{Description and impact} & \textbf{Disposition / owner} & \textbf{Status} \\
+\hline
+\placeholder{DEV-001} & \placeholder{Deviation / anomaly / waiver / assumption / limitation} & \placeholder{Describe impact on interpretation of result.} & \placeholder{Accept, retest, update model, open issue} & \placeholder{Open/Closed} \\
+\hline
+\end{tabular}
+
+\section{Coverage and SSIV Completeness Impact}
+\placeholder{Update the subsystem \texttt{tests/README.md} after report approval if this result changes status, coverage, gaps, or expected report references.}
+
+\begin{itemize}
+  \item \textbf{Coverage closed by this report:} \placeholder{Activities/model elements/constraints now evidenced.}
+  \item \textbf{Coverage partially closed:} \placeholder{Items needing additional evidence, model update, or retest.}
+  \item \textbf{Remaining gaps:} \placeholder{Missing traceability, missing modeled CE/allocation/constraint, unconfirmed SSIV, insufficient statistics, missing fault case, or missing evidence.}
+  \item \textbf{Impact on SSIV readiness:} \placeholder{Ready / ready with limitations / not ready, with rationale.}
+\end{itemize}
 
 \section{Conclusion}
 \begin{itemize}
-    \item \textbf{Overall Result:} Indicate if the DUT passed or failed the tests.
-    \item \textbf{Key Observations:} Summarize important findings, anomalies, or deviations from expected behavior.
+  \item \textbf{Overall result:} \placeholder{Pass / Fail / Conditional pass / Inconclusive / Not run.}
+  \item \textbf{Pass/fail rationale:} \placeholder{Tie the result to modeled pass/fail constraints and actual evidence.}
+  \item \textbf{Required follow-up:} \placeholder{Retest, update Capella/D2 model, update tests/README.md, raise anomaly, or accept waiver.}
 \end{itemize}
 
 \section{Signatures}
 
 \makeatletter
 \signatureTable{
-\@approvedby & Approver & \@docdate & \\ 
+\@approvedby & Approver & \@docdate & \\
 \hline
 }
 \makeatother
 
 \section{Annexes}
-\textcolor{DarkCyan} {Include:}
+\placeholder{Attach or reference controlled supporting material:}
 \begin{itemize}
-    \item Test circuit diagrams.
-    \item Environmental chamber profiles.
-    \item Calibration certificates.
+  \item Modeled verification diagrams exported from \texttt{tests/<activity-id>/}.
+  \item Raw data, scripts, notebooks, logs, photos, screenshots, videos, and checklist scans.
+  \item Calibration certificates, datasheets, environmental profiles, safety documentation, and workmanship records.
+  \item Updated coverage table excerpt from the subsystem \texttt{tests/README.md}, if needed.
 \end{itemize}
 
-\vspace{3cm}
+\vspace{2cm}
 \begin{center}
 \Huge \textcolor{DarkCyan}{\textbf{IMPORTANT:} \\[0.5cm]}
-\large 
-\textcolor{DarkCyan}{This template is a guide, not a pre-filled report. All instructions and example text must be replaced with the actual test information, ensuring accuracy, completeness, and compliance with international laboratory standards. Text written in dark cyan is a visual reminder that it must be replaced with the real test data.}
+\large
+\textcolor{DarkCyan}{This is an MBSE-first report template. Replace all dark-cyan guidance with actual evidence. If a verification activity is not yet represented in the Capella/D2 model or the subsystem tests plan, stop and define it first using the project MBSE verification workflow. The final report should reference the model definition and record the as-executed evidence, not become the uncontrolled source of the test design.}
 \end{center}
 
 \end{document}

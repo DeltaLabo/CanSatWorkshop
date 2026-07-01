@@ -1,0 +1,62 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style verification sequence for ADS-IVV-FC-ANG.
+# IADT method: Testing with supporting Analysis.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-FC-ANG\nAngular velocity functional-chain verification sequence\nRefs: IVV; NASA-SE; IMU/I2C; SW/stats" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_version: "[F] Select ADS version\nand source baseline" { class: func }
+  confirm_applicability: "[F] Confirm angular-chain\napplicability or N/A" { class: func }
+  configure_reference: "[F] Configure angular-rate\ntruth source and uncertainty" { class: func }
+  configure_uut: "[F] Configure UUT, firmware,\npower, logger, timebase" { class: func }
+  acquire_nominal: "[F] Acquire nominal static\nand known-rate samples" { class: func }
+  align_filter: "[F] Align samples and\nfilter invalid data" { class: func }
+  compute_error: "[F] Compute per-axis\nangular-rate error" { class: func }
+  evaluate_accuracy: "[F] Evaluate <30 deg/s\naccuracy pass condition" { class: func }
+  evaluate_i2c_timing: "[F] Evaluate I2C timing\nand no-blocking behavior" { class: func }
+  inject_faults: "[F] Inject I2C, stale,\nsaturation fault cases" { class: func }
+  evaluate_faults: "[F] Evaluate finite outputs,\nvalidity flags, recovery" { class: func }
+  decide_result: "[F] Decide angular chain\npass/fail or N/A" { class: func }
+  record_report: "[F] Record evidence, anomalies,\nwaivers, limitations, retest" { class: func }
+
+  note_accuracy: "[C] Angular-rate constraint\nPass if accepted per-axis angular-rate error criterion,\nincluding uncertainty or 95/95 bound where claimed,\nis <30 deg/s for valid matched samples." { class: note; shape: page }
+  note_i2c: "[C] I2C/no-blocking viewpoint\nv1.0 I2C reads shall return data or timeout/error <=5 ms.\nv0.2 records the missing I2C timeout constraint as a\nmodeling gap while observing no-blocking behavior." { class: note; shape: page }
+  note_stats: "[C] Statistical significance\nUse complete campaign records. Minimum >=30 matched\nvalid samples per axis/rate condition; justify any 95/95\nclaim and include reference uncertainty/axis alignment." { class: note; shape: page }
+  note_faults: "[C] Fault hardening\nI2C NACK/stuck/wrong-address/partial-read, stale sample,\nand saturation/out-of-range cases shall not be accepted\nas valid rates and shall not cause unrecovered loop/OBCC blockage." { class: note; shape: page }
+  note_na: "[C] v0.1/v0.3 N/A branch\nIf selected version has no angular velocity chain, stop after\nconfirming copied source views have no applicable LC/CE behavior;\nrecord N/A rationale." { class: note; shape: page }
+}
+
+chain.select_version -> chain.confirm_applicability: "[FE] Baseline" { class: fe }
+chain.confirm_applicability -> chain.configure_reference: "[FE] Applicable" { class: fe }
+chain.configure_reference -> chain.configure_uut: "[FE] Reference setup" { class: fe }
+chain.configure_uut -> chain.acquire_nominal: "[FE] Ready" { class: fe }
+chain.acquire_nominal -> chain.align_filter: "[FE] ADS/truth logs" { class: fe }
+chain.align_filter -> chain.compute_error: "[FE] Matched valid samples" { class: fe }
+chain.compute_error -> chain.evaluate_accuracy: "[FE] Error set" { class: fe }
+chain.evaluate_accuracy -> chain.evaluate_i2c_timing: "[FE] Accuracy result" { class: fe }
+chain.evaluate_i2c_timing -> chain.inject_faults: "[FE] Timing result" { class: fe }
+chain.inject_faults -> chain.evaluate_faults: "[FE] Fault evidence" { class: fe }
+chain.evaluate_faults -> chain.decide_result: "[FE] Fault result" { class: fe }
+chain.decide_result -> chain.record_report: "[FE] Verdict" { class: fe }

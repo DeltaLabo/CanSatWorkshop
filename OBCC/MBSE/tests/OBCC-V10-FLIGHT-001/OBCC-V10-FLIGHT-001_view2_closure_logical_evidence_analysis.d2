@@ -1,0 +1,129 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V10-FLIGHT-001 PV2: logical evidence interfaces for final closure analysis.
+# References cited in the System title: OBCC/MBSE/v1.0, OBCC/MBSE/tests/README.md, PM&SE/IVV.md.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 22 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+review_board: "[EA] Flight Readiness\nReview Board" { class: ea }
+test_lead: "[EA] Test Lead /\nReview Operator" { class: ea }
+evidence_librarian: "[EA] Evidence\nLibrarian" { class: ea }
+configuration_manager: "[EA] Configuration\nManager" { class: ea }
+safety_reviewer: "[EA] Fault-hardening /\nSafety Reviewer" { class: ea }
+statistics_reviewer: "[EA] Statistical\nReviewer" { class: ea }
+
+system: "[System] OBCC-V10-FLIGHT-001 — final closure logical analysis\nRefs: OBCC/MBSE/v1.0; tests/README; PM&SE/IVV" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  review_workstation: "[PC] Review and\nEvidence Workstation" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    review_session_interface: "[LC] FRR Review\nSession Interface" { class: lc }
+
+    source_model_index: "[LC] Copied v1.0 Model\nSource Index" { class: lc }
+    candidate_plan: "[LC] Candidate Coverage\nRows PC/PL/CE/ALLOC/FC/CON" { class: lc }
+    modeled_definitions_index: "[LC] Modeled Definition\nIndex" { class: lc }
+    results_index: "[LC] Expected Results\nFolder Index" { class: lc }
+    as_built_register: "[LC] As-built Configuration\nand Deviation Register" { class: lc }
+    residual_risk_log: "[LC] Residual-risk\nand Blocker Log" { class: lc }
+    closure_matrix: "[LC] Closure Matrix" { class: lc }
+    readiness_checklist: "[LC] Readiness\nChecklist" { class: lc }
+    closure_report: "[LC] Flight-readiness\nClosure Report" { class: lc }
+  }
+
+  note_coverage: "[C] Pass only if every v1.0\ncandidate row is covered by a\nmodeled definition and evidence path,\nor deferred/N/A with rationale." {
+    class: note
+    shape: page
+  }
+
+  note_as_built: "[C] As-built hardware, software,\nradio settings, and configuration must\nmatch the v1.0 model or have\naccepted deviation dispositions." {
+    class: note
+    shape: page
+  }
+
+  note_no_blockers: "[C] No open critical fault-hardening,\ncommand/deployment, telemetry/range,\nor scheduler-blocking gap may block flight." {
+    class: note
+    shape: page
+  }
+}
+
+review_board -> system.review_workstation.review_session_interface: "[CE] board review" { class: ce }
+test_lead -> system.review_workstation.review_session_interface: "[CE] gate refs" { class: ce }
+evidence_librarian -> system.review_workstation.review_session_interface: "[CE] evidence index" { class: ce }
+configuration_manager -> system.review_workstation.review_session_interface: "[CE] as-built IDs" { class: ce }
+safety_reviewer -> system.review_workstation.review_session_interface: "[CE] safety findings" { class: ce }
+statistics_reviewer -> system.review_workstation.review_session_interface: "[CE] statistics review" { class: ce }
+
+system.review_workstation.review_session_interface -> system.review_workstation.source_model_index: "[CE] source refs" { class: ce }
+system.review_workstation.review_session_interface -> system.review_workstation.modeled_definitions_index: "[CE] definitions" { class: ce }
+system.review_workstation.review_session_interface -> system.review_workstation.results_index: "[CE] evidence" { class: ce }
+system.review_workstation.review_session_interface -> system.review_workstation.as_built_register: "[CE] as-built" { class: ce }
+system.review_workstation.review_session_interface -> system.review_workstation.residual_risk_log: "[CE] findings" { class: ce }
+
+system.review_workstation.source_model_index -> system.review_workstation.candidate_plan: "[CE] PC/PL/CE/ALLOC/FC/CON" { class: ce }
+system.review_workstation.candidate_plan -> system.review_workstation.closure_matrix: "[CE] rows" { class: ce }
+system.review_workstation.modeled_definitions_index -> system.review_workstation.closure_matrix: "[CE] definition status" { class: ce }
+system.review_workstation.results_index -> system.review_workstation.closure_matrix: "[CE] evidence status" { class: ce }
+system.review_workstation.as_built_register -> system.review_workstation.closure_matrix: "[CE] deviations" { class: ce }
+system.review_workstation.residual_risk_log -> system.review_workstation.closure_matrix: "[CE] risk status" { class: ce }
+system.review_workstation.closure_matrix -> system.review_workstation.readiness_checklist: "[CE] closure" { class: ce }
+system.review_workstation.readiness_checklist -> system.review_workstation.closure_report: "[CE] decision package" { class: ce }
+
+system.note_coverage -> system.review_workstation.closure_matrix { class: cstr }
+system.note_as_built -> system.review_workstation.as_built_register { class: cstr }
+system.note_no_blockers -> system.review_workstation.residual_risk_log { class: cstr }
+
+# Layout-only edges keep actors above the review workstation and constraints below it.
+review_board -> test_lead { style: { opacity: 0 } }
+test_lead -> evidence_librarian { style: { opacity: 0 } }
+evidence_librarian -> configuration_manager { style: { opacity: 0 } }
+configuration_manager -> safety_reviewer { style: { opacity: 0 } }
+safety_reviewer -> statistics_reviewer { style: { opacity: 0 } }
+statistics_reviewer -> system.review_workstation { style: { opacity: 0 } }
+system.review_workstation -> system.note_coverage { style: { opacity: 0 } }
+system.note_coverage -> system.note_as_built { style: { opacity: 0 } }
+system.note_as_built -> system.note_no_blockers { style: { opacity: 0 } }

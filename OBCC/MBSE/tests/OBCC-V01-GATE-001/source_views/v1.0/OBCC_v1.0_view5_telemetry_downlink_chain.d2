@@ -1,0 +1,109 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain: periodic telemetry generation, heartbeat/status inclusion,
+# LoRa downlink, and DPS-side reception.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC v1.0 — Telemetry downlink chain" {
+  class: chain
+  direction: down
+
+  enforce_two_second_cadence: "[F] Enforce 2 s\ntelemetry cadence" { class: func }
+  collect_measurements: "[F] Collect\nmeasurements" { class: func }
+  call_variable_getters: "[F] Call variable\ngetters" { class: func }
+  replace_missing_value_with_error_code: "[F] Replace missing value\nwith error code" { class: func }
+  publish_health_flags: "[F] Publish\nhealth flags" { class: func }
+  publish_state_metadata: "[F] Publish state\nmetadata" { class: func }
+  add_heartbeat_status: "[F] Add heartbeat\nstatus" { class: func }
+  push_to_measurement_queue: "[F] Push to measurement\nqueue" { class: func }
+  consume_measurement_queue: "[F] Consume measurement\nqueue" { class: func }
+  generate_frame: "[F] Generate\nLoRa frame" { class: func }
+  send_lora_packet: "[F] Send LoRa\npacket" { class: func }
+  transmit_outgoing_data: "[F] Transmit\noutgoing data" { class: func }
+  store_incoming_data: "[F] Store incoming\ndata" { class: func }
+  read_payload: "[F] Read\npayload" { class: func }
+  forward_to_pc: "[F] Forward\nto PC" { class: func }
+  read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+  push_to_payload_queue: "[F] Push to\npayload queue" { class: func }
+  append_to_csv: "[F] Append\nto CSV" { class: func }
+  update_plots: "[F] Update\nplots" { class: func }
+
+  note_payload: "[C] v1.0 payload excludes relative humidity.\nMeasurement payload: pitch, roll, yaw,\n3 angular speeds, 3 accelerations,\naltitude, temperature, lat, lon,\nbattery voltage, battery current." {
+    class: note
+    shape: page
+  }
+
+  note_standby: "[C] In Stand-by, this chain still executes\nas heartbeat + telemetry; only\ndeployment is inhibited." {
+    class: note
+    shape: page
+  }
+
+  note_radio: "[C] Required downlink: every 2 s,\n≥500 m, ≥90% transmission success." {
+    class: note
+    shape: page
+  }
+}
+
+chain.enforce_two_second_cadence -> chain.collect_measurements: "[FE] Timer release\n[2 s]" { class: fe }
+chain.collect_measurements -> chain.call_variable_getters: "[FE] Getter calls\n[Variable list]" { class: fe }
+chain.call_variable_getters -> chain.replace_missing_value_with_error_code: "[FE] Getter results\n[Variables + result codes]" { class: fe }
+chain.publish_health_flags -> chain.add_heartbeat_status: "[FE] Health flags []" { class: fe }
+chain.publish_state_metadata -> chain.add_heartbeat_status: "[FE] State\n[On / Stand-by]" { class: fe }
+chain.replace_missing_value_with_error_code -> chain.add_heartbeat_status: "[FE] Corrected\nmeasurements []" { class: fe }
+chain.add_heartbeat_status -> chain.push_to_measurement_queue: "[FE] Telemetry set\n[Measurements + status]" { class: fe }
+chain.push_to_measurement_queue -> chain.consume_measurement_queue: "[FE] Queued telemetry []" { class: fe }
+chain.consume_measurement_queue -> chain.generate_frame: "[FE] Telemetry set\n[LoRa payload fields]" { class: fe }
+chain.generate_frame -> chain.send_lora_packet: "[FE] Frame\n[LoRa Frame v1.0]" { class: fe }
+chain.send_lora_packet -> chain.transmit_outgoing_data: "[FE] Frame\n[LoRa Frame v1.0]" { class: fe }
+chain.transmit_outgoing_data -> chain.store_incoming_data: "[FE] Radio signal\n[LoRa Frame v1.0]" { class: fe }
+chain.store_incoming_data -> chain.read_payload: "[FE] LoRa data\n[LoRa Frame v1.0]" { class: fe }
+chain.read_payload -> chain.forward_to_pc: "[FE] Payload\n[LoRa Frame v1.0]" { class: fe }
+chain.forward_to_pc -> chain.read_and_decode_frame: "[FE] UART payload\n[LoRa Frame v1.0]" { class: fe }
+chain.read_and_decode_frame -> chain.push_to_payload_queue: "[FE] Payload\n[Decoded Payload]" { class: fe }
+chain.push_to_payload_queue -> chain.append_to_csv: "[FE] Payload\n[Timestamped Payload]" { class: fe }
+chain.push_to_payload_queue -> chain.update_plots: "[FE] Payload\n[Timestamped Payload]" { class: fe }
+
+chain.note_payload -> chain.generate_frame { class: cstr }
+chain.note_standby -> chain.enforce_two_second_cadence { class: cstr }
+chain.note_radio -> chain.transmit_outgoing_data { class: cstr }

@@ -1,0 +1,75 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain: GPS position polling over UART and delivery to OBCC
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS v1.0 — GPS position chain" {
+  class: chain
+  direction: right
+
+  measure_longitude: "[F] Measure\nlongitude" { class: func }
+  measure_latitude: "[F] Measure\nlatitude" { class: func }
+  send_payload: "[F] Send payload" { class: func }
+  read_store_lat_lon: "[F] Read and store\nlat, lon" { class: func }
+  get_lat: "[F] Get lat" { class: func }
+  get_lon: "[F] Get lon" { class: func }
+  collect_measurements: "[F] Collect\nmeasurements" { class: func }
+
+  note_accuracy_position: "[C] Accuracy < 5 m" {
+    class: note
+    shape: page
+  }
+}
+
+chain.measure_longitude -> chain.send_payload: "[FE] Longitude\nsignal" { class: fe }
+chain.measure_latitude -> chain.send_payload: "[FE] Latitude\nsignal" { class: fe }
+chain.read_store_lat_lon -> chain.send_payload: "[FE] UART Req" { class: fe }
+chain.send_payload -> chain.read_store_lat_lon: "[FE] UART Response\n[GPS Payload]" { class: fe }
+chain.read_store_lat_lon -> chain.get_lat: "[FE] Stored\nLatitude" { class: fe }
+chain.read_store_lat_lon -> chain.get_lon: "[FE] Stored\nLongitude" { class: fe }
+chain.get_lat -> chain.collect_measurements: "[FE] Result\n[Lat]" { class: fe }
+chain.get_lon -> chain.collect_measurements: "[FE] Result\n[Lon]" { class: fe }
+
+chain.note_accuracy_position -> chain.get_lat { class: cstr }
+chain.note_accuracy_position -> chain.get_lon { class: cstr }

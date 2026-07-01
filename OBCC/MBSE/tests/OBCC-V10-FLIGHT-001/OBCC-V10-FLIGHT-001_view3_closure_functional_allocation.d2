@@ -1,0 +1,218 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V10-FLIGHT-001 PV3: final readiness review functions and allocations.
+# References cited in the System title: OBCC/MBSE/v1.0, OBCC/MBSE/tests/README.md, PM&SE/IVV.md.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+review_board: "[EA] Flight Readiness\nReview Board" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  convene_review: "[F] Convene final\nreadiness review" { class: func }
+  question_closure: "[F] Question closure\nrationale" { class: func }
+  approve_or_reject: "[F] Approve or reject\nflight readiness" { class: func }
+}
+
+test_lead: "[EA] Test Lead /\nReview Operator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  present_closure_matrix: "[F] Present closure\nmatrix" { class: func }
+  walk_through_gates: "[F] Walk through\ngate references" { class: func }
+  record_review_actions: "[F] Record review\nactions" { class: func }
+}
+
+evidence_librarian: "[EA] Evidence\nLibrarian" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  verify_results_folders: "[F] Verify results\nfolders" { class: func }
+  index_evidence: "[F] Index evidence\nartifacts" { class: func }
+}
+
+configuration_manager: "[EA] Configuration\nManager" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  lock_baseline: "[F] Lock v1.0\nbaseline" { class: func }
+  disposition_deviations: "[F] Disposition\nas-built deviations" { class: func }
+}
+
+safety_reviewer: "[EA] Fault-hardening /\nSafety Reviewer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  review_critical_gaps: "[F] Review critical\nfault gaps" { class: func }
+  confirm_no_blockers: "[F] Confirm no\nsafety blockers" { class: func }
+}
+
+statistics_reviewer: "[EA] Statistical\nReviewer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  check_sample_claims: "[F] Check sample\nand confidence claims" { class: func }
+  mark_characterization: "[F] Mark weak evidence\nas characterization" { class: func }
+}
+
+ambient_time_recorder: "[EA] Ambient and Time\nReference Recorder" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  record_review_environment: "[F] Record review\nambient conditions" { class: func }
+  record_clock_basis: "[F] Record clock\nsynchronization basis" { class: func }
+}
+
+system: "[System] OBCC-V10-FLIGHT-001 — final readiness functional allocation\nRefs: OBCC/MBSE/v1.0; tests/README; PM&SE/IVV" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  flight_article: "[PC] As-built CanSat\nFlight Article" {
+    class: pc
+    direction: right
+    obcc_configuration: "[LC] OBCC As-built\nConfiguration" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      provide_hardware_ids: "[F] Provide hardware\nrevision IDs" { class: func }
+      provide_firmware_ids: "[F] Provide firmware\nand radio settings" { class: func }
+      provide_health_state: "[F] Provide final\nhealth/state snapshot" { class: func }
+    }
+    ground_configuration: "[LC] Ground Station\nConfiguration" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      provide_ground_ids: "[F] Provide ground\nsoftware and radio IDs" { class: func }
+      provide_export_path: "[F] Provide telemetry\nexport path" { class: func }
+    }
+  }
+
+  review_workstation: "[PC] Review and\nEvidence Workstation" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    model_baseline_index: "[LC] Model Baseline\nIndex" {
+      class: lc
+      direction: down
+      identify_source_views: "[F] Identify copied\nv1.0 source views" { class: func }
+      enumerate_candidate_rows: "[F] Enumerate PC, PL,\nCE, ALLOC, FC, CON rows" { class: func }
+    }
+
+    modeled_definition_index: "[LC] Modeled Definition\nIndex" {
+      class: lc
+      direction: down
+      index_gate_definitions: "[F] Index modeled\ngate definitions" { class: func }
+      flag_missing_definitions: "[F] Flag missing\nor deferred definitions" { class: func }
+    }
+
+    evidence_repository: "[LC] Evidence Repository\nIndex" {
+      class: lc
+      direction: down
+      verify_expected_paths: "[F] Verify expected\nresults paths" { class: func }
+      check_evidence_presence: "[F] Check evidence\npresence or plan" { class: func }
+    }
+
+    coverage_matrix: "[LC] Closure Coverage\nMatrix" {
+      class: lc
+      direction: down
+      inspect_pc_pl_closure: "[F] Inspect PC/PL\nclosure status" { class: func }
+      analyze_ce_closure: "[F] Analyze CE\nclosure status" { class: func }
+      analyze_allocation_closure: "[F] Analyze allocation\nclosure status" { class: func }
+      review_fc_closure: "[F] Review functional-chain\nclosure status" { class: func }
+      verify_constraint_closure: "[F] Verify constraint\ncoverage closure" { class: func }
+    }
+
+    residual_risk_log: "[LC] Residual-risk\nLog" {
+      class: lc
+      direction: down
+      record_open_gaps: "[F] Record open gaps\nand waivers" { class: func }
+      classify_blockers: "[F] Classify flight\nreadiness blockers" { class: func }
+    }
+
+    readiness_checklist: "[LC] Readiness\nChecklist" {
+      class: lc
+      direction: down
+      compile_go_no_go: "[F] Compile go/no-go\nchecklist" { class: func }
+      record_final_decision: "[F] Record final\nreadiness decision" { class: func }
+    }
+
+    closure_report_generator: "[LC] Closure Report\nGenerator" {
+      class: lc
+      direction: down
+      generate_report_index: "[F] Generate report\nand evidence index" { class: func }
+      archive_closure_record: "[F] Archive closure\nrecord" { class: func }
+    }
+  }
+
+  note_evidence: "[C] Each candidate row needs a\nmodeled definition and expected\nresults path, or a traceable\ndefer/N/A disposition." {
+    class: note
+    shape: page
+  }
+
+  note_stats: "[C] Statistical claims must cite\nsample size and policy: PDR exact\nbinomial, 59/59 timing, 29/29\nsuccess screening where applicable." {
+    class: note
+    shape: page
+  }
+
+  note_fault: "[C] Open safety-critical command,\ndeployment, telemetry/range, runtime\nfault, or scheduler-blocking gaps\nblock flight readiness." {
+    class: note
+    shape: page
+  }
+}
+
+# Constraint notes are placed near the closure functions they constrain; no constraint links are drawn here to keep the allocation view readable.
+
+# Layout-only edges keep reviewers, equipment, article, workstation, and notes in bands.
+review_board -> test_lead { style: { opacity: 0 } }
+test_lead -> evidence_librarian { style: { opacity: 0 } }
+evidence_librarian -> configuration_manager { style: { opacity: 0 } }
+configuration_manager -> safety_reviewer { style: { opacity: 0 } }
+safety_reviewer -> statistics_reviewer { style: { opacity: 0 } }
+statistics_reviewer -> ambient_time_recorder { style: { opacity: 0 } }
+ambient_time_recorder -> system.flight_article { style: { opacity: 0 } }
+system.flight_article -> system.review_workstation { style: { opacity: 0 } }
+system.review_workstation -> system.note_evidence { style: { opacity: 0 } }
+system.note_evidence -> system.note_stats { style: { opacity: 0 } }
+system.note_stats -> system.note_fault { style: { opacity: 0 } }

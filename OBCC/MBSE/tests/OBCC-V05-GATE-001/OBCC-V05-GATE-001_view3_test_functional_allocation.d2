@@ -1,0 +1,241 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V05-GATE-001 PV3: deployment-gating verification functional allocation.
+# Shows human/operator functions, test-equipment functions, and verification-only
+# functions introduced for the v0.5 deployment gate.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  inspect_fixture: "[F] Inspect safe fixture\nand actuator restraint" { class: func }
+  select_trial_case: "[F] Select Stand-by,\nOn-trigger, emergency,\nor fault case" { class: func }
+  command_mode: "[F] Command On or\nStand-by state" { class: func }
+  authorize_reset: "[F] Authorize reset\nor power-cycle" { class: func }
+  record_pass_fail: "[F] Record pass/fail,\nanomalies, and deviations" { class: func }
+}
+
+safety_observer: "[EA] Safety Observer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  confirm_safe_actuator: "[F] Confirm no live\nparachute release hazard" { class: func }
+  hold_if_fixture_unsafe: "[F] Hold test if fixture\nor current limit is unsafe" { class: func }
+}
+
+ads_trigger_simulator: "[EA] ADS trigger simulator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  output_valid_trigger: "[F] Output valid IMU/alt\ntrigger data" { class: func }
+  output_invalid_trigger: "[F] Output invalid or\nout-of-context trigger data" { class: func }
+  withhold_ads_data: "[F] Withhold ADS data\nor mark data stale" { class: func }
+  issue_emergency_request: "[F] Issue modeled\nemergency request" { class: func }
+}
+
+servo_current_position_observer: "[EA] Servo current /\nposition observer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  measure_pwm_edges: "[F] Measure PWM /\nopen-command timing" { class: func }
+  measure_current: "[F] Measure servo\ncurrent signature" { class: func }
+  measure_position: "[F] Measure closed/open\nposition" { class: func }
+  inject_safe_fault_load: "[F] Apply safe jam /\ncurrent-fault load" { class: func }
+}
+
+telemetry_trace_logger: "[EA] Telemetry / trace logger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  log_trial_events: "[F] Log trial ID,\nmode, trigger, reset,\nand timestamps" { class: func }
+  capture_telemetry: "[F] Capture telemetry\nand health flags" { class: func }
+  compute_open_latency: "[F] Compute trigger-to-open\nlatency" { class: func }
+  compare_oracle: "[F] Compare telemetry\nsuccess with observer evidence" { class: func }
+}
+
+bench_power_reset: "[EA] Bench power /\nreset controller" {
+  class: ea
+  direction: down
+  power_uut: "[F] Supply controlled\nbench power" { class: func }
+  reset_during_actuation: "[F] Reset UUT during\nselected actuation trial" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" {
+  class: ea
+  direction: down
+  measure_ambient: "[F] Measure ambient\nbench condition" { class: func }
+}
+
+system: "[System] OBCC-V05-GATE-001 — v0.5 deployment gate functional allocation\nRefs: IVV, OBCC README, Variable Getter Template, v1.0 PV3/Deployment/Fault chains" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  uut: "[PC] v0.5 OBCC/PDM\ndeployment-gate UUT" {
+    class: pc
+    direction: down
+
+    obcc_controller: "[PC] OBCC controller\nassembly" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      test_harness: "[LC] Deployment-gate\ntest harness\n(verification-only)" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        load_trial_matrix: "[F] Load Stand-by,\nOn, emergency, and\nfault trial matrix" { class: func }
+        stamp_test_events: "[F] Stamp test events\nwith monotonic time" { class: func }
+        expose_reset_marker: "[F] Expose reset\nmarker to trace" { class: func }
+      }
+
+      command_state_manager: "[LC] Command/state\nmanager" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        accept_on_command: "[F] Accept On\ncommand" { class: func }
+        accept_standby_command: "[F] Accept Stand-by\ncommand" { class: func }
+        publish_state_metadata: "[F] Publish state\nmetadata" { class: func }
+      }
+
+      ads_trigger_adapter: "[LC] ADS IMU/alt\ntrigger adapter" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        receive_simulated_imu_alt: "[F] Receive simulated\nIMU/alt data" { class: func }
+        validate_trigger_data: "[F] Validate trigger\ndata freshness and range" { class: func }
+        flag_missing_ads_data: "[F] Flag missing or\nstale ADS data" { class: func }
+      }
+
+      emergency_request_handler: "[LC] Emergency-request\nhandler" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        receive_emergency_request: "[F] Receive modeled\nemergency request" { class: func }
+        reject_invalid_request: "[F] Reject invalid /\nout-of-context request" { class: func }
+      }
+
+      deployment_gate: "[LC] Deployment gate /\nPDM processing" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+        evaluate_emergency_deploy_need: "[F] Evaluate emergency\ndeploy need" { class: func }
+        inhibit_deployment_in_standby: "[F] Inhibit deployment\nin Stand-by" { class: func }
+        command_open_in_on: "[F] Command open\nonly in On mode" { class: func }
+        declare_inhibit_or_fault: "[F] Declare inhibit,\ninvalid data, or\nactuator fault reason" { class: func }
+      }
+
+      telemetry_health_publisher: "[LC] Telemetry and\nhealth publisher" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        publish_deployment_decision: "[F] Publish gate\ndecision and reason" { class: func }
+        publish_actuator_status: "[F] Publish actuator\ncurrent/position status" { class: func }
+        continue_heartbeat: "[F] Continue heartbeat /\ntelemetry in Stand-by" { class: func }
+      }
+    }
+
+    actuator_path: "[PC] PDM servo\nactuation path" {
+      class: pc
+      direction: down
+      grid-columns: 1
+      servo_pwm_driver: "[LC] Servo PWM\nopen/hold driver" {
+        class: lc
+        direction: down
+        send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
+        suppress_open_signal: "[F] Suppress open signal\nwhen inhibited" { class: func }
+      }
+      actuator_feedback_adapter: "[LC] Actuator status\nfeedback adapter\n(verification-only)" {
+        class: lc
+        direction: down
+        capture_position_feedback: "[F] Capture closed/open\nposition feedback" { class: func }
+        capture_current_feedback: "[F] Capture servo\ncurrent feedback" { class: func }
+        detect_false_success: "[F] Detect telemetry/observer\nsuccess mismatch" { class: func }
+      }
+    }
+
+    lora_radio: "[PC] RFM95W LoRa" {
+      class: pc
+      lora_transceiver: "[LC] LoRa Transceiver" {
+        class: lc
+        direction: down
+        transmit_health_telemetry: "[F] Transmit health /\ndeployment telemetry" { class: func }
+      }
+    }
+  }
+}
+
+note_source_gap: "[C] No v0.5 Capella/D2 source baseline\nexists in the repository; this verification\nallocation uses copied v1.0 deployment views\nas context for v0.5->v0.6 advancement." {
+  class: note
+  shape: page
+}
+
+note_pf: "[C] Pass/fail allocation policy:\nStand-by shall allocate inhibit before any\nopen command; On mode may command open only\nafter valid trigger/emergency request; faults\nmust feed telemetry/trace before success is claimed." {
+  class: note
+  shape: page
+}
+
+note_statistics: "[C] Statistical viewpoint:\nplan 59/59 no-open Stand-by trials and\n59/59 On-mode <=5 s timing trials when\nfixture/hardware independence permits;\nsmaller sets are advancement characterization." {
+  class: note
+  shape: page
+}
+
+note_source_gap -> system.uut.obcc_controller.test_harness { class: cstr }
+note_pf -> system.uut.obcc_controller.deployment_gate { class: cstr }
+note_pf -> system.uut.actuator_path.actuator_feedback_adapter { class: cstr }
+note_statistics -> telemetry_trace_logger.compute_open_latency { class: cstr }
+
+# Layout-only edges keep actors above the UUT and notes below it.
+test_operator -> safety_observer { style: { opacity: 0 } }
+safety_observer -> ads_trigger_simulator { style: { opacity: 0 } }
+ads_trigger_simulator -> servo_current_position_observer { style: { opacity: 0 } }
+servo_current_position_observer -> telemetry_trace_logger { style: { opacity: 0 } }
+telemetry_trace_logger -> bench_power_reset { style: { opacity: 0 } }
+bench_power_reset -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> system { style: { opacity: 0 } }
+system -> note_source_gap { style: { opacity: 0 } }
+note_source_gap -> note_pf { style: { opacity: 0 } }
+note_pf -> note_statistics { style: { opacity: 0 } }

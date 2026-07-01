@@ -1,0 +1,141 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V04-GATE-001 PV2: v0.4 wireless command/state logical interfaces.
+# Only PCs, LCs, EAs, CEs, and constraints are shown.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 18 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea }
+command_station: "[EA] Command transmitter /\nDPS ground-station emulator" { class: ea }
+rf_link_monitor: "[EA] RF Link Monitor" { class: ea }
+telemetry_observer: "[EA] Telemetry Observer /\nDashboard Logger" { class: ea }
+bench_pc: "[EA] USB Programming PC\n(bench aid only)" { class: ea }
+deployment_monitor: "[EA] Deployment Side-effect\nMonitor" { class: ea }
+ambient_thermometer: "[EA] Ambient Thermometer" { class: ea }
+
+system: "[System] OBCC-V04-GATE-001 — v0.4 wireless command/state logical interfaces\nRefs: IVV, OBCC README, LoRa_Frame, v1.0 PV2/PV3/Command and Telemetry chains" {
+  class: sys
+  direction: down
+
+  uut: "[PC] v0.4 OBCC command/state UUT" {
+    class: pc
+    direction: right
+
+    obcc_pcb: "[PC] OBCC PCB or breadboard" {
+      class: pc
+      direction: right
+
+      rfm95w: "[PC] RFM95W LoRa" {
+        class: pc
+        lora_transceiver: "[LC] LoRa Transceiver" { class: lc }
+      }
+
+      xiao: "[PC] XIAO ESP32-S3" {
+        class: pc
+        direction: down
+        grid-columns: 3
+
+        command_handler: "[LC] Command Handler" { class: lc }
+        state_manager: "[LC] OBCC Supervisor /\nState Manager" { class: lc }
+        telemetry_encoder: "[LC] Telemetry Encoder /\nState Metadata Publisher" { class: lc }
+        deployment_guard: "[LC] Deployment Output Guard\n(v0.4 verification-only)" { class: lc }
+        trace_publisher: "[LC] Command-result Trace Publisher\n(verification-only)" { class: lc }
+        usb_flash_interface: "[LC] USB Flash / Diagnostic Interface\n(bench aid only)" { class: lc }
+      }
+    }
+  }
+
+  note_commands: "[C] Accepted operational commands\nfor this gate are On and Stand-by.\nA valid command is accepted exactly\nonce and advances state as modeled." {
+    class: note
+    shape: page
+  }
+
+  note_invalid: "[C] Invalid/corrupt/unsupported/\nout-of-context/replay/duplicate\ncommands shall not change state,\nshall not create deployment effects,\nand shall be visible in telemetry/logs." {
+    class: note
+    shape: page
+  }
+
+  note_no_serial: "[C] Analysis/inspection target:\nflight operation does not depend on\nserial console. USB may flash/setup\nor collect bench diagnostics only;\nit is not a command authority." {
+    class: note
+    shape: page
+  }
+
+  note_statistics: "[C] Statistical viewpoint:\nvalid command repetitions use the\nproject binomial policy; invalid\ncoverage is by equivalence class.\nFault-hardening includes RF corruption,\nreplay, duplicates, and stale context." {
+    class: note
+    shape: page
+  }
+}
+
+test_operator -> system.uut.obcc_pcb.xiao.trace_publisher: "[CE] Trial-control checklist\nand evidence annotation" { class: ce }
+ambient_thermometer -> system.uut.obcc_pcb.xiao.trace_publisher: "[CE] Ambient readout\nentered in evidence" { class: ce }
+bench_pc -> system.uut.obcc_pcb.xiao.usb_flash_interface: "[CE] Flash/setup;\nno flight command" { class: ce }
+command_station -> system.uut.obcc_pcb.rfm95w.lora_transceiver: "[CE] LoRa command uplink\nOn / Stand-by / invalid" { class: ce }
+system.uut.obcc_pcb.rfm95w.lora_transceiver -> rf_link_monitor: "[CE] RF observation\nuplink/downlink RSSI/SNR" { class: ce }
+system.uut.obcc_pcb.rfm95w.lora_transceiver -> system.uut.obcc_pcb.xiao.command_handler: "[CE] SPI RX command frame" { class: ce }
+system.uut.obcc_pcb.xiao.command_handler -> system.uut.obcc_pcb.xiao.state_manager: "[CE] Valid state request /\ninvalid-command result" { class: ce }
+system.uut.obcc_pcb.xiao.state_manager -> system.uut.obcc_pcb.xiao.telemetry_encoder: "[CE] State metadata\nOn / Stand-by" { class: ce }
+system.uut.obcc_pcb.xiao.command_handler -> system.uut.obcc_pcb.xiao.trace_publisher: "[CE] Acceptance/rejection event\nand command class" { class: ce }
+system.uut.obcc_pcb.xiao.trace_publisher -> system.uut.obcc_pcb.xiao.telemetry_encoder: "[CE] Command result\nfor evidence" { class: ce }
+system.uut.obcc_pcb.xiao.state_manager -> system.uut.obcc_pcb.xiao.deployment_guard: "[CE] No deployment enable\nbefore v0.5" { class: ce }
+system.uut.obcc_pcb.xiao.deployment_guard -> deployment_monitor: "[CE] Logic-probe/no-edge\nside-effect evidence" { class: ce }
+system.uut.obcc_pcb.xiao.telemetry_encoder -> system.uut.obcc_pcb.rfm95w.lora_transceiver: "[CE] SPI state telemetry" { class: ce }
+system.uut.obcc_pcb.rfm95w.lora_transceiver -> telemetry_observer: "[CE] LoRa state telemetry\nand command result" { class: ce }
+
+system.note_commands -> system.uut.obcc_pcb.xiao.command_handler { class: cstr }
+system.note_invalid -> system.uut.obcc_pcb.xiao.command_handler { class: cstr }
+system.note_invalid -> system.uut.obcc_pcb.xiao.deployment_guard { class: cstr }
+system.note_no_serial -> system.uut.obcc_pcb.xiao.usb_flash_interface { class: cstr }
+system.note_statistics -> system.uut.obcc_pcb.xiao.trace_publisher { class: cstr }
+
+# Layout-only edges keep actors above the UUT and notes below it.
+test_operator -> command_station { style: { opacity: 0 } }
+command_station -> rf_link_monitor { style: { opacity: 0 } }
+rf_link_monitor -> telemetry_observer { style: { opacity: 0 } }
+telemetry_observer -> bench_pc { style: { opacity: 0 } }
+bench_pc -> deployment_monitor { style: { opacity: 0 } }
+deployment_monitor -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> system { style: { opacity: 0 } }
+system.uut -> system.note_commands { style: { opacity: 0 } }
+system.note_commands -> system.note_invalid { style: { opacity: 0 } }
+system.note_invalid -> system.note_no_serial { style: { opacity: 0 } }
+system.note_no_serial -> system.note_statistics { style: { opacity: 0 } }

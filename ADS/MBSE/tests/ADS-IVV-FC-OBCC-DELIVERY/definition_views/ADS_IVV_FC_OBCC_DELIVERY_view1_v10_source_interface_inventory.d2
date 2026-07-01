@@ -1,0 +1,76 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Source interface inventory for ADS-IVV-FC-OBCC-DELIVERY.
+# PV2-style logical interface view. The Pointers and Returns source CEs are grouped on one
+# rendered edge to avoid overlapping parallel labels; the note below lists both CEs explicitly.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-OBCC-DELIVERY\nv1.0 source interface inventory\nRefs: IVV; ADS MBSE plan; NASA-SE; SW/stats" {
+  class: sys
+  direction: right
+  grid-columns: 2
+
+  ads_pcb: "[PC] ADS Module / ADS PCB" {
+    class: pc
+    direction: down
+    grid-columns: 1
+    gps: "[PC] UBX-G7020-KT GPS" {
+      class: pc
+      gps_lc: "[LC] ADS GPS Sensing" { class: lc }
+    }
+    imu: "[PC] ICM20948 IMU" {
+      class: pc
+      imu_lc: "[LC] ADS Kinematic Sensing" { class: lc }
+    }
+  }
+
+  obcc_xiao: "[PC] OBCC Module / XIAO ESP32-S3" {
+    class: pc
+    direction: right
+    grid-columns: 2
+    ads_processing: "[LC] ADS Processing\nsource producer" { class: lc }
+    obcc: "[LC] OBCC\ncollection consumer" { class: lc }
+  }
+}
+
+note_v10_scope: "[C] Applicable source scope\nv1.0 view2 has CEs: UART, I2C, Pointers, Returns.\nFunctional chains provide GPS, angular velocity, attitude,\nand init-state data to OBCC collection." { class: note; shape: page }
+note_contract: "[C] Pointers/Returns contract to verify\nSource model has separate ADS Processing → OBCC CEs:\nPointers and Returns. Verify modeled data/handles, ownership,\nlifetime, freshness, validity, error semantics, and bounds." { class: note; shape: page }
+note_trace: "[C] Traceability\nADS-CAP-DELIVERY; ADS-FE-CORRUPT-MEASUREMENT; ADS-FE-STUCK-LOOP;\nno-blocking, Variable Getter, process/calculate <5 ms,\nUART/I2C timeout <=5 ms constraints." { class: note; shape: page }
+note_na_legacy: "[C] N/A for v0.1/v0.2\nThose versions deliver measurements to a PC through\nSerial0 logging, not ADS Processing → OBCC Pointers/Returns.\nCover with ADS-IVV-FC-SERIAL, not this activity." { class: note; shape: page }
+note_na_pcb: "[C] N/A for v0.3\nPCB-only delivery has no LCs, CEs, allocations, or\nfunctional chains. Physical traces shall not be credited\nas OBCC delivery behavior." { class: note; shape: page }
+
+system.ads_pcb.gps.gps_lc -> system.obcc_xiao.ads_processing: "[CE] UART" { class: ce }
+system.ads_pcb.imu.imu_lc -> system.obcc_xiao.ads_processing: "[CE] I2C" { class: ce }
+system.obcc_xiao.ads_processing -> system.obcc_xiao.obcc: "[CE] P/R" { class: ce }
+
+note_v10_scope -> system.obcc_xiao.ads_processing { class: cstr }
+note_contract -> system.obcc_xiao.ads_processing { class: cstr }
+note_contract -> system.obcc_xiao.obcc { class: cstr }
+note_trace -> system { class: cstr }
+note_na_legacy -> system { class: cstr }
+note_na_pcb -> system { class: cstr }
+
+# Layout-only note banding.
+system -> note_v10_scope { style: { opacity: 0 } }
+note_v10_scope -> note_contract { style: { opacity: 0 } }
+note_contract -> note_trace { style: { opacity: 0 } }
+note_trace -> note_na_legacy { style: { opacity: 0 } }
+note_na_legacy -> note_na_pcb { style: { opacity: 0 } }

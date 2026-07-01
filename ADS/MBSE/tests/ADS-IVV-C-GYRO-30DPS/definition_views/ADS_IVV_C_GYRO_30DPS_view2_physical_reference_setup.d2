@@ -1,0 +1,97 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical/reference setup for ADS-IVV-C-GYRO-30DPS.
+# Shows the UUT, test-only observation interface, angular-rate reference, ambient monitor, loggers, and fault equipment.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-GYRO-30DPS\nPhysical/reference setup\nRefs: IVV; NASA-SE; IMU/I2C; SW/stats" {
+  class: sys
+  direction: down
+
+  uut: "[PC] ADS UUT under angular-rate verification\nselect one version per execution" {
+    class: pc
+    direction: down
+    grid-columns: 2
+    v02: "[PC] v0.2 prototype\nICM20948 + XIAO" { class: pc }
+    v10: "[PC] v1.0 integrated\nCanSat / ADS / OBCC" { class: pc }
+    v01: "[PC] v0.1\nN/A: no IMU constraint" { class: pc }
+    v03: "[PC] v0.3\nN/A: PCB-only behavior" { class: pc }
+    probe: "[PC] Test-only observation /\nprobe terminal" { class: pc }
+  }
+}
+
+test_conductor: "[EA] Human IVV\ntest conductor" { class: ea }
+version_selector: "[EA] ADS UUT /\nversion selector fixture" { class: ea }
+rate_reference: "[EA] Calibrated angular-rate reference\nrate table, turntable, or still fixture" { class: ea }
+axis_fixture: "[EA] Axis alignment and\nmounting fixture" { class: ea }
+logger: "[EA] PC / OBCC logger\nADS, truth, timebase capture" { class: ea }
+fault_injector: "[EA] I2C / IMU\nfault injector" { class: ea }
+ambient_monitor: "[EA] Calibrated ambient\ntemperature/humidity monitor" { class: ea }
+power_supply: "[EA] Current-limited supply\nor battery simulator" { class: ea }
+analysis_tool: "[EA] Statistical\nanalysis tool" { class: ea }
+
+note_pass: "[C] Constraint pass/fail\nFor each applicable version, axis, and rate condition,\nuse n >= 30 matched valid ADS/truth samples. Pass only if\nabsolute angular-rate error plus uncertainty/guard band, or\nformal 95/95 upper bound where claimed, is <30 deg/s." { class: note; shape: page }
+note_valid: "[C] Validity and range\nADS outputs used as valid evidence shall be finite, in the\nconfigured ICM20948 range, fresh, timestamped, and associated\nwith a valid I2C transaction. Saturated, stale, non-finite,\nor I2C-fault data are not accepted as valid samples." { class: note; shape: page }
+note_environment: "[C] Execution conditions\nRecord fixture type, reference calibration ID, axis/sign\nconvention, alignment uncertainty, warm-up, power mode,\ntimebase, firmware commit, ambient temperature/humidity,\nand any vibration/slip or mounting deviation before sampling." { class: note; shape: page }
+note_delivery: "[C] v1.0 integrated observation\nWhere v1.0 is tested, collect evidence at the ADS/OBCC\nintegrated delivery point as well as the ADS Processing\nangular-rate observation point, unless a deviation is approved." { class: note; shape: page }
+note_faults: "[C] Fault-hardening cases\nInject or simulate I2C NACK, stuck bus, wrong address, partial\nread, stale sample, saturation/out-of-range value, and recovery.\nFail if the loop or OBCC blocks unrecoverably or corrupt data\nis accepted as valid." { class: note; shape: page }
+
+# Temporary physical links introduced by the verification setup.
+version_selector -- system.uut: "[PL] programming /\nversion-select cable" { class: pl }
+rate_reference -- axis_fixture: "[PL] fixture adapter" { class: pl }
+axis_fixture -- system.uut: "[PL] aligned mechanical\nmount / rate stimulus" { class: pl }
+logger -- system.uut.probe: "[PL] USB/UART/debug\nlog cable" { class: pl }
+fault_injector -- system.uut.probe: "[PL] I2C/fault\nharness" { class: pl }
+power_supply -- system.uut: "[PL] power leads" { class: pl }
+ambient_monitor -- logger: "[PL] data cable or\nmanual reading record" { class: pl }
+
+# Test-specific component exchanges and records.
+test_conductor -> version_selector: "[CE] run sheet, target\nversion, firmware ID" { class: ce }
+version_selector -> system.uut: "[CE] selected ADS\nversion/configuration" { class: ce }
+rate_reference -> logger: "[CE] truth gx/gy/gz\nand timestamps" { class: ce }
+system.uut -> logger: "[CE] ADS gx/gy/gz,\nstatus, timestamp" { class: ce }
+system.uut -> logger: "[CE] v1.0 OBCC collected\nIMU record" { class: ce }
+fault_injector -> logger: "[CE] fault markers\nand timing" { class: ce }
+ambient_monitor -> logger: "[CE] ambient readings\nbefore repetitions" { class: ce }
+logger -> analysis_tool: "[CE] raw logs and\ncalibration metadata" { class: ce }
+analysis_tool -> test_conductor: "[CE] guarded result\nand limitations" { class: ce }
+
+note_pass -> analysis_tool { class: cstr }
+note_valid -> logger { class: cstr }
+note_environment -> ambient_monitor { class: cstr }
+note_environment -> rate_reference { class: cstr }
+note_delivery -> logger { class: cstr }
+note_faults -> fault_injector { class: cstr }
+
+# Layout-only rank hints.
+test_conductor -> version_selector { style: { opacity: 0 } }
+version_selector -> rate_reference { style: { opacity: 0 } }
+rate_reference -> axis_fixture { style: { opacity: 0 } }
+axis_fixture -> logger { style: { opacity: 0 } }
+logger -> fault_injector { style: { opacity: 0 } }
+fault_injector -> ambient_monitor { style: { opacity: 0 } }
+ambient_monitor -> power_supply { style: { opacity: 0 } }
+power_supply -> analysis_tool { style: { opacity: 0 } }
+system -> note_pass { style: { opacity: 0 } }
+note_pass -> note_valid { style: { opacity: 0 } }
+note_valid -> note_environment { style: { opacity: 0 } }
+note_environment -> note_delivery { style: { opacity: 0 } }
+note_delivery -> note_faults { style: { opacity: 0 } }

@@ -1,0 +1,139 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-T-003 physical test context.
+# Focused PV1: CanSat command-receive hardware plus external command transmitter and debug monitor.
+# Full v1.0 PV1 is copied in ./baseline/.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+command_test_transmitter: "[EA] Command Test Transmitter\nRFM95W/SX1276 reference radio" {
+  class: ea
+}
+
+obcc_debug_monitor: "[EA] OBCC Debug Monitor\nserial/log probe or logic analyzer" {
+  class: ea
+}
+
+system: "[System] DPS v1.0 Physical System\nDPS-V10-T-003 focused PV1 CanSat command-receive UUT" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+
+        cansat_rfm: "[PC] RFM95W LoRa" { class: pc }
+        cansat_xiao: "[PC] XIAO ESP32-S3" { class: pc }
+        cansat_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+  }
+}
+
+diagram_ref: "[C] DPS-V10-T-003 PV1 physical context\nIADT: Testing; trace: FC03 CanSat receive path\nRefs: P0,R1-R5,R8-R13; report: tests/results/DPS-V10-T-003/" {
+  class: note
+  shape: page
+}
+
+note_scope: "[C] Test scope: command frames are transmitted to the CanSat radio\nand OBCC command-read behavior is observed. The command transmitter replaces\nthe ground station so the CanSat receive path can be isolated." {
+  class: note
+  shape: page
+}
+
+note_full_baseline: "[C] Focused PV1: only CanSat command-receive physical endpoints\nand verification equipment are shown. Full DPS v1.0 architecture is copied\nunchanged in ./baseline/." {
+  class: note
+  shape: page
+}
+
+note_rf_setup: "[C] Controlled RF setup: command transmitter and CanSat antennas/attenuator\nconnected before TX; fixed lab geometry or attenuation recorded; LoRa settings\nmatch v1.0 command-uplink configuration." {
+  class: note
+  shape: page
+}
+
+note_debug_setup: "[C] Debug/observation setup: OBCC debug monitor connected without changing\nradio/command behavior; probe ID, connection point, sampling/log rate and\ntimebase are recorded before valid and fault trials." {
+  class: note
+  shape: page
+}
+
+note_safety: "[C] Safety/fault hardening: antenna fitted before any radio TX;\ndebug wiring strain-relieved; no accidental reset/power-cycle during trials;\nany reset, probe-induced fault or missing evidence is an anomaly." {
+  class: note
+  shape: page
+}
+
+system.cansat.obcc_module -- system.cansat.obcc_module.obcc_pcb: "[PL] Screws" { class: pl }
+system.cansat.obcc_module.obcc_pcb.cansat_rfm -- system.cansat.obcc_module.obcc_pcb: "[PL] RFM Footprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.cansat_xiao -- system.cansat.obcc_module.obcc_pcb: "[PL] XIAO Footprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.cansat_backplane_connector -- system.cansat.obcc_module.obcc_pcb: "[PL] Footprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.cansat_rfm -- system.cansat.obcc_module.obcc_pcb.cansat_xiao: "[PL] SPI\nTraces" { class: pl }
+
+command_test_transmitter -- system.cansat.obcc_module.obcc_pcb.cansat_rfm: "[PL] Controlled RF path\nnear-field or attenuated" { class: pl }
+obcc_debug_monitor -- system.cansat.obcc_module.obcc_pcb.cansat_xiao: "[PL] Debug serial/\nlogic probe" { class: pl }
+
+diagram_ref -> system.cansat { class: cstr }
+note_scope -> command_test_transmitter { class: cstr }
+note_scope -> system.cansat.obcc_module.obcc_pcb.cansat_rfm { class: cstr }
+note_full_baseline -> system { class: cstr }
+note_rf_setup -> command_test_transmitter { class: cstr }
+note_rf_setup -> system.cansat.obcc_module.obcc_pcb.cansat_rfm { class: cstr }
+note_debug_setup -> obcc_debug_monitor { class: cstr }
+note_debug_setup -> system.cansat.obcc_module.obcc_pcb.cansat_xiao { class: cstr }
+note_safety -> command_test_transmitter { class: cstr }
+note_safety -> obcc_debug_monitor { class: cstr }
+
+# Layout-only edges keep verification equipment above the CanSat UUT and notes below.
+command_test_transmitter -> obcc_debug_monitor { style: { opacity: 0 } }
+obcc_debug_monitor -> system { style: { opacity: 0 } }
+system -> diagram_ref { style: { opacity: 0 } }
+diagram_ref -> note_scope { style: { opacity: 0 } }
+note_scope -> note_full_baseline { style: { opacity: 0 } }
+note_full_baseline -> note_rf_setup { style: { opacity: 0 } }
+note_rf_setup -> note_debug_setup { style: { opacity: 0 } }
+note_debug_setup -> note_safety { style: { opacity: 0 } }

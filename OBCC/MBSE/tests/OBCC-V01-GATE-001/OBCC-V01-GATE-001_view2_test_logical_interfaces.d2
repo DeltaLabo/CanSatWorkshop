@@ -1,0 +1,149 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V01-GATE-001 PV2: v0.1 breadboard verification logical interfaces.
+# Only LCs, PCs, EAs, CEs, and constraints are shown.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 18 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea }
+bench_pc: "[EA] USB power/programming PC" { class: ea }
+serial_monitor: "[EA] Serial/status log monitor" { class: ea }
+ground_monitor: "[EA] Ground LoRa telemetry monitor" { class: ea }
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" { class: ea }
+
+system: "[System] OBCC-V01-GATE-001 — Breadboard startup-health logical interfaces\nRefs: IVV, OBCC README, LoRa_Frame, v1.0 PV2/PV3/Startup chain" {
+  class: sys
+  direction: down
+
+  breadboard: "[PC] v0.1 OBCC breadboard /\ndevelopment assembly" {
+    class: pc
+    direction: right
+
+    xiao: "[PC] XIAO ESP32-S3" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      test_harness: "[LC] Bench startup-health\ntest harness\n(verification-only)" { class: lc }
+      diagnostic_interface: "[LC] USB serial diagnostic\ninterface\n(verification-only)" { class: lc }
+      health_monitor: "[LC] Health Monitor" { class: lc }
+      obcc_supervisor: "[LC] OBCC Supervisor" { class: lc }
+      telemetry_status: "[LC] Telemetry / status\nindicator" { class: lc }
+    }
+
+    rfm95w: "[PC] RFM95W LoRa" {
+      class: pc
+      lora_transceiver: "[LC] LoRa Transceiver" { class: lc }
+    }
+
+    bme280: "[PC] BME280" {
+      class: pc
+      ams_sensing: "[LC] AMS pressure/temperature\nsensing" { class: lc }
+    }
+
+    gps: "[PC] UBX-G7020 GPS" {
+      class: pc
+      gps_sensing: "[LC] GPS sensing" { class: lc }
+    }
+
+    imu: "[PC] ICM20948 or legacy\nMPU6050 IMU" {
+      class: pc
+      imu_sensing: "[LC] Kinematic sensing" { class: lc }
+    }
+
+    ina219: "[PC] INA219" {
+      class: pc
+      battery_monitoring: "[LC] Battery monitoring" { class: lc }
+    }
+
+    servo: "[PC] Servo / deployment\nactuator context" {
+      class: pc
+      trigger: "[LC] Trigger / servo init" { class: lc }
+    }
+  }
+
+  note_v01_dev: "[C] v0.1 advancement gate permits\nUSB/serial bench diagnostics. This is\nnot the v1.0 flight operator path." {
+    class: note
+    shape: page
+  }
+
+  note_fault_policy: "[C] Critical startup faults:\nRFM95W LoRa, BME280, Servo.\nMissing critical blocks operational\nreadiness; missing non-critical GPS,\nIMU, or INA219 allows degraded operation." {
+    class: note
+    shape: page
+  }
+
+  note_environment: "[C] Before repeated boots, record\nambient temperature from calibrated\nthermometer. Treat model/TBD or\nout-of-range conditions as evidence gaps." {
+    class: note
+    shape: page
+  }
+}
+
+test_operator -> system.breadboard.xiao.test_harness: "[CE] Manual fault-insertion\nand inspection checklist" { class: ce }
+bench_pc -> system.breadboard.xiao.diagnostic_interface: "[CE] USB power/reset/flash" { class: ce }
+system.breadboard.xiao.diagnostic_interface -> serial_monitor: "[CE] USB CDC serial\nstartup log" { class: ce }
+system.breadboard.xiao.health_monitor -> system.breadboard.xiao.diagnostic_interface: "[CE] Health/status log" { class: ce }
+system.breadboard.xiao.health_monitor -> system.breadboard.xiao.obcc_supervisor: "[CE] Startup health state" { class: ce }
+system.breadboard.xiao.obcc_supervisor -> system.breadboard.xiao.telemetry_status: "[CE] Operational readiness /\ndegraded state" { class: ce }
+system.breadboard.xiao.telemetry_status -> system.breadboard.rfm95w.lora_transceiver: "[CE] SPI status frame" { class: ce }
+system.breadboard.rfm95w.lora_transceiver -> ground_monitor: "[CE] LoRa health/status" { class: ce }
+ambient_thermometer -> system.breadboard.xiao.test_harness: "[CE] Ambient readout\nentered in test log" { class: ce }
+
+system.breadboard.xiao.health_monitor -> system.breadboard.rfm95w.lora_transceiver: "[CE] SPI init status" { class: ce }
+system.breadboard.xiao.health_monitor -> system.breadboard.bme280.ams_sensing: "[CE] I2C init status" { class: ce }
+system.breadboard.xiao.health_monitor -> system.breadboard.servo.trigger: "[CE] PWM init status" { class: ce }
+system.breadboard.xiao.health_monitor -> system.breadboard.gps.gps_sensing: "[CE] UART init status" { class: ce }
+system.breadboard.xiao.health_monitor -> system.breadboard.imu.imu_sensing: "[CE] I2C init status" { class: ce }
+system.breadboard.xiao.health_monitor -> system.breadboard.ina219.battery_monitoring: "[CE] I2C init status" { class: ce }
+
+system.note_v01_dev -> system.breadboard.xiao.diagnostic_interface { class: cstr }
+system.note_fault_policy -> system.breadboard.xiao.health_monitor { class: cstr }
+system.note_environment -> ambient_thermometer { class: cstr }
+
+# Layout-only edges keep actors above the UUT and notes below it.
+test_operator -> bench_pc { style: { opacity: 0 } }
+bench_pc -> serial_monitor { style: { opacity: 0 } }
+serial_monitor -> ground_monitor { style: { opacity: 0 } }
+ground_monitor -> ambient_thermometer { style: { opacity: 0 } }
+system.breadboard -> system.note_v01_dev { style: { opacity: 0 } }
+system.note_v01_dev -> system.note_fault_policy { style: { opacity: 0 } }
+system.note_fault_policy -> system.note_environment { style: { opacity: 0 } }

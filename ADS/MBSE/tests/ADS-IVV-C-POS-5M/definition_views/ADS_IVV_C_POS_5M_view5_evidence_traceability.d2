@@ -1,0 +1,84 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style evidence and traceability closure view.
+# This view defines report evidence flow and trace targets for the activity.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-C-POS-5M evidence and traceability closure\nRefs: IVV, ADS MBSE plan, model inventory, GPS/UBX, SW/statistics" {
+  class: chain
+  direction: down
+
+  identify_baseline: "[F] Identify selected\nADS version, UUT,\nfirmware, and model\nbaseline" { class: func }
+  reference_source_views: "[F] Reference copied\nsource D2/PNG views" { class: func }
+  bind_model_elements: "[F] Bind covered model\nelements and constraints" { class: func }
+  bind_trace_targets: "[F] Bind capability and\nfeared-event trace targets" { class: func }
+  preserve_raw_logs: "[F] Preserve raw ADS,\ntruth, time, environment,\nand fault logs" { class: func }
+  preserve_analysis: "[F] Preserve matching\nand analysis script outputs" { class: func }
+  decide_report_status: "[F] Record pass/fail,\nN/A, deviations, waivers,\nand retest status" { class: func }
+  file_report: "[F] File verification report\nunder expected results\nlocation" { class: func }
+  update_coverage: "[F] Provide coverage row\nfor master plan integration" { class: func }
+
+  c_category: "[C] IVV source category: constraint;\nIADT: Testing with supporting Analysis" { class: note; shape: page }
+  c_elements: "[C] Covered elements:\nAccuracy < 5 m, GPS position chains,\nGet lat/Get lon, UART/GPS validity,\nv1.0 ADS/OBCC observation point" { class: note; shape: page }
+  c_trace: "[C] Trace targets:\nconstraint <5 m, ADS-CAP-GPS,\nADS-FE-SILENT-SENSOR-FAIL,\nADS-FE-CORRUPT-MEASUREMENT" { class: note; shape: page }
+  c_results: "[C] Expected reports:\n../results/ADS-IVV-C-POS-5M/v0.1,\nv0.2, v0.3, and v1.0" { class: note; shape: page }
+  c_v03: "[C] v0.3 report status is N/A only after\nsource review confirms no behavior chain" { class: note; shape: page }
+  c_completion: "[C] Definition status:\nready for review; execution pending" { class: note; shape: page }
+}
+
+chain.identify_baseline -> chain.reference_source_views: "[FE] baseline" { class: fe }
+chain.reference_source_views -> chain.bind_model_elements: "[FE] sources" { class: fe }
+chain.bind_model_elements -> chain.bind_trace_targets: "[FE] model" { class: fe }
+chain.bind_trace_targets -> chain.preserve_raw_logs: "[FE] trace" { class: fe }
+chain.preserve_raw_logs -> chain.preserve_analysis: "[FE] raw data" { class: fe }
+chain.preserve_analysis -> chain.decide_report_status: "[FE] bounds" { class: fe }
+chain.decide_report_status -> chain.file_report: "[FE] verdict" { class: fe }
+chain.file_report -> chain.update_coverage: "[FE] report ref" { class: fe }
+
+chain.c_category -> chain.identify_baseline { class: cstr }
+chain.c_elements -> chain.bind_model_elements { class: cstr }
+chain.c_trace -> chain.bind_trace_targets { class: cstr }
+chain.c_results -> chain.file_report { class: cstr }
+chain.c_v03 -> chain.decide_report_status { class: cstr }
+chain.c_completion -> chain.update_coverage { class: cstr }

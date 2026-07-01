@@ -1,0 +1,148 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V03-GATE-001 functional-chain verification definition.
+# Functions name the responsible human/equipment/SUT in their labels;
+# no PC/LC/EA containers are used in this Functional Chain view.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V03-GATE-001 — v0.3 LoRa telemetry frame/cadence/range advancement gate chain\nRefs: IVV, PM&SE/IVV, OBCC README, LoRa_Frame, Variable Getter Template, v1.0 Telemetry Downlink views" {
+  class: chain
+  direction: down
+
+  review_config: "[F] Test Director: review\nv0.3 gate configuration,\nactual firmware, and\nsource-baseline gap" { class: func }
+  sync_time_weather: "[F] Equipment + Operator:\nsync clocks and record\nweather/environment" { class: func }
+  survey_range: "[F] Range Operator: survey\n>=500 m RF path or\njustify RF-equivalent setup" { class: func }
+  set_radio_antennas: "[F] Ground Operator: set\nradio settings, antennas,\norientation, and safety limits" { class: func }
+  start_loggers: "[F] Ground Station + PC:\nstart raw-frame, RSSI/SNR,\ndashboard, and CSV logging" { class: func }
+
+  load_known_payloads: "[F] Stimulus Fixture: provide\nknown payload field values\nand result-code cases" { class: func }
+  release_timer: "[F] OBCC: release telemetry\nproduction on 2 s timer" { class: func }
+  collect_measurements: "[F] OBCC: collect measurements\nfrom getters or stubs" { class: func }
+  add_status_metadata: "[F] OBCC: add heartbeat,\nstate, health, sequence,\nand timestamp metadata" { class: func }
+  encode_frame: "[F] OBCC: encode v1.0 target\nLoRa frame payload without\nrelative humidity" { class: func }
+  transmit_frame: "[F] OBCC RFM95W: transmit\nLoRa telemetry frame" { class: func }
+  receive_log_frame: "[F] Ground Station: receive\nframe and log RSSI/SNR\nwith raw bytes" { class: func }
+  forward_decode: "[F] PC Decoder: decode frame,\npreserve sequence/timestamps,\nand report errors" { class: func }
+  display_store: "[F] PC Dashboard/CSV: display\nand store decoded payload\nrecords" { class: func }
+  compare_schema: "[F] Analyzer: compare fields,\norder, units, and missing/RH\nhandling to schema oracle" { class: func }
+  evaluate_cadence: "[F] Analyzer: evaluate 2 s\nintervals, stale frames,\nduplicates, and gaps" { class: func }
+
+  inject_malformed: "[F] Injection Tool: replay or\ninject corrupt, truncated,\nwrong-length, and extra-RH\nframe cases" { class: func }
+  reject_malformed: "[F] Decoder: reject malformed\nframes without updating\nvalid dashboard/CSV data" { class: func }
+  record_rejections: "[F] Analyzer: record rejected\nframe classes and confirm\nno silent misinterpretation" { class: func }
+
+  run_repetition_set: "[F] Operators + Equipment:\nrun planned lab/range\nrepetition set and retain\nraw evidence" { class: func }
+  compute_pdr_bound: "[F] Statistics Tool: compute\nexact one-sided 95%\nbinomial PDR lower bound" { class: func }
+  classify_gate: "[F] Test Director: classify\npass/fail, staged-open\nrange condition, deviations,\nand report references" { class: func }
+
+  note_pf_schema: "[C] PF-001 schema/content: valid frames\ncarry the modeled v1.0 target payload\n(pitch, roll, yaw; 3 angular speeds;\n3 accelerations; altitude; temperature;\nlatitude; longitude; battery voltage;\nbattery current = 34 bytes before\nmetadata). Relative humidity is absent\nor explicitly error-coded, never silently\nmisdecoded as another field." {
+    class: note
+    shape: page
+  }
+
+  note_pf_cadence: "[C] PF-002 cadence: generated telemetry\nuses the modeled 2 s cadence. For a\n95/95 deadline claim, collect at least\n59 representative intervals and require\nall intervals to meet the selected\ntolerance. Default v0.3 planning\ntolerance is 2.0 s +/-0.2 s pending\nproject confirmation." {
+    class: note
+    shape: page
+  }
+
+  note_pf_decode: "[C] PF-003 decode/store: sequence and\ntimestamps are preserved through raw log,\ndecoder, dashboard, and CSV. Corrupt,\ntruncated, wrong-length, bad-CRC, or\nextra-RH frames are rejected and logged\nas invalid, not stored as valid telemetry." {
+    class: note
+    shape: page
+  }
+
+  note_pf_range: "[C] PF-004 range/PDR: at >=500 m separation\nor justified RF-equivalent setup, packet\ndelivery passes only if the one-sided\n95% exact binomial lower confidence bound\nis >=0.90. 96/100 valid received frames\nis a planning point. Lab-only evidence\nleaves this gate condition open." {
+    class: note
+    shape: page
+  }
+
+  note_environment: "[C] PF-005 environment/evidence: record\nrange geometry, endpoint positions, antenna\norientation, radio settings, weather, time\nsync method, raw bytes, RSSI/SNR, decoded\nrecords, and analysis script/version before\nclaiming pass." {
+    class: note
+    shape: page
+  }
+
+  note_viewpoints: "[C] Viewpoints: statistical significance\nuses exact binomial for PDR and timing\nsample policy for cadence. Fault hardening\nfocuses on corrupt frames, missing/stale\nfields, RF loss, duplicate/gap sequences,\nand ground decode/store failure." {
+    class: note
+    shape: page
+  }
+
+  note_trace: "[C] Traceability: OBCC-UC-TelemetryDownlink,\nOBCC-FE-LostTelemetry, OBCC-VV-CE-002,\nOBCC-VV-FC-002, and OBCC-VV-CON-001." {
+    class: note
+    shape: page
+  }
+}
+
+chain.review_config -> chain.sync_time_weather: "[FE] Approved test setup\n[firmware + sources]" { class: fe }
+chain.sync_time_weather -> chain.survey_range: "[FE] Time/environment\nrecord [conditions]" { class: fe }
+chain.survey_range -> chain.set_radio_antennas: "[FE] Path geometry\n[>=500 m or equivalent]" { class: fe }
+chain.set_radio_antennas -> chain.start_loggers: "[FE] Radio/orientation\nsettings [configured]" { class: fe }
+chain.start_loggers -> chain.load_known_payloads: "[FE] Evidence capture\nready [raw + decoded]" { class: fe }
+
+chain.load_known_payloads -> chain.release_timer: "[FE] Known variable set\n[fields + result codes]" { class: fe }
+chain.release_timer -> chain.collect_measurements: "[FE] Timer release\n[2 s]" { class: fe }
+chain.collect_measurements -> chain.add_status_metadata: "[FE] Measurements\n[values + result codes]" { class: fe }
+chain.add_status_metadata -> chain.encode_frame: "[FE] Telemetry set\n[payload + metadata]" { class: fe }
+chain.encode_frame -> chain.transmit_frame: "[FE] LoRa frame\n[34-byte target payload + metadata]" { class: fe }
+chain.transmit_frame -> chain.receive_log_frame: "[FE] RF signal\n[LoRa frame]" { class: fe }
+chain.receive_log_frame -> chain.forward_decode: "[FE] Raw frame + RF metrics\n[RSSI/SNR/time]" { class: fe }
+chain.forward_decode -> chain.display_store: "[FE] Decoded payload\n[sequence + timestamp]" { class: fe }
+chain.display_store -> chain.compare_schema: "[FE] Stored/displayed record\n[CSV + dashboard]" { class: fe }
+chain.compare_schema -> chain.evaluate_cadence: "[FE] Schema verdict\n[field-by-field]" { class: fe }
+
+chain.start_loggers -> chain.inject_malformed: "[FE] Decoder hardening\nsubsequence ready []" { class: fe }
+chain.inject_malformed -> chain.reject_malformed: "[FE] Invalid frame set\n[CRC/length/RH/corrupt]" { class: fe }
+chain.reject_malformed -> chain.record_rejections: "[FE] Rejection result\n[invalid, not stored]" { class: fe }
+chain.record_rejections -> chain.run_repetition_set: "[FE] Hardening evidence\n[classes covered]" { class: fe }
+
+chain.evaluate_cadence -> chain.run_repetition_set: "[FE] Cadence evidence\n[intervals/gaps]" { class: fe }
+chain.run_repetition_set -> chain.compute_pdr_bound: "[FE] Packet counts\n[tx, rx, valid, invalid]" { class: fe }
+chain.compute_pdr_bound -> chain.classify_gate: "[FE] PDR lower bound\n[one-sided 95%]" { class: fe }
+
+chain.note_pf_schema -> chain.encode_frame { class: cstr }
+chain.note_pf_cadence -> chain.release_timer { class: cstr }
+chain.note_pf_decode -> chain.reject_malformed { class: cstr }
+chain.note_pf_range -> chain.compute_pdr_bound { class: cstr }
+chain.note_environment -> chain.sync_time_weather { class: cstr }
+chain.note_environment -> chain.receive_log_frame { class: cstr }
+chain.note_viewpoints -> chain.compute_pdr_bound { class: cstr }
+chain.note_trace -> chain.classify_gate { class: cstr }

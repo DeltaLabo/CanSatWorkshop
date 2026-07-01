@@ -1,0 +1,127 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Verification functional allocation for ADS-IVV-C-GETTER.
+# PV3-style allocation: UUT functions under verification plus external actors and their verification functions.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-GETTER\nVerification functional allocation\nRefs: IVV; ADS MBSE plan; SW/stats; source_views v0.1/v0.2/v0.3/v1.0" {
+  class: sys
+  direction: down
+
+  uut: "[PC] Selected ADS runtime UUT\nv0.1, v0.2, or v1.0" {
+    class: pc
+    direction: down
+    impl: "[LC] Getter/storage implementation under verification" {
+      class: lc
+      direction: down
+      grid-columns: 3
+      maintain_store: "[F] Maintain backing\nstorage per measured value" { class: func }
+      update_lat_lon: "[F] Read/update\nlat, lon" { class: func }
+      get_lat_lon: "[F] Return Get lat /\nGet lon values" { class: func }
+      update_angular: "[F] Read/process\nangular velocities" { class: func }
+      update_accels: "[F] Read/process\naccelerations" { class: func }
+      calculate_pry: "[F] Read/calculate\npitch, roll, yaw" { class: func }
+      expose_state: "[F] Expose validity,\nfreshness, and error state" { class: func }
+      collect_measurements: "[F] Provide collected\nmeasurements" { class: func }
+      pointer_returns: "[F] v1.0 expose\nPointers and Returns" { class: func }
+
+      note_single_writer: "[C] Pass A: single writer\nFor every measured value, exactly one modeled read/update path writes the backing store.\nNo getter, processor, calculator, collector, or OBCC consumer writes it except through the update path." { class: note; shape: page }
+      note_side_effects: "[C] Pass B: side-effect-light accessors\nGetters, process functions, and calculate functions return coherent stored or derived values\nwithout hidden sensor reads, unrelated mutation, or freshness/validity bypass." { class: note; shape: page }
+      note_failed_reads: "[C] Pass C: failed read behavior\nNo-fix, malformed, silent, NACK, stuck, partial, or stale reads shall not corrupt the prior valid value.\nValidity, freshness, and error state shall be observable." { class: note; shape: page }
+      note_stability: "[C] Pass D: repeated-call stability\nRepeated getter/process/calculate calls return stable coherent values and status until a successful update.\nAfter success, related outputs transition coherently." { class: note; shape: page }
+      note_pointer: "[C] Pass E: v1.0 Pointers/Returns\nOBCC pointer or return exposure shall preserve lifetime/ownership and shall not let OBCC consume\nstale, invalid, or corrupt ADS data as valid." { class: note; shape: page }
+    }
+  }
+}
+
+review_station: "[EA] Code/model review station" {
+  class: ea
+  enumerate_pairs: "[F] Enumerate source\ngetter/process pairs" { class: func }
+  inspect_writers: "[F] Inspect single-writer\nstorage ownership" { class: func }
+  inspect_side_effects: "[F] Inspect side effects\nand sensor IO boundaries" { class: func }
+  inspect_pointer_returns: "[F] Inspect v1.0 pointer\nlifetime and return semantics" { class: func }
+}
+
+firmware_harness: "[EA] Deterministic firmware test harness" {
+  class: ea
+  build_fixture: "[F] Build version-specific\nfirmware fixture" { class: func }
+  seed_values: "[F] Seed known valid\nbacking-store values" { class: func }
+  drive_nominal_vectors: "[F] Drive nominal GPS/IMU\nsensor vectors" { class: func }
+  call_getters: "[F] Call getters/processors\nrepeatedly" { class: func }
+  inject_failed_reads: "[F] Inject failed or\nstale read outcomes" { class: func }
+  record_calls: "[F] Record calls, returns,\nstatus, and timestamps" { class: func }
+}
+
+fault_injector: "[EA] Sensor fault / stale-data injector" {
+  class: ea
+  force_gps_faults: "[F] Force GPS no-fix,\nmalformed, silent, stale" { class: func }
+  force_imu_faults: "[F] Force IMU NACK, stuck,\npartial, stale where modeled" { class: func }
+}
+
+pc_obcc_logger: "[EA] PC / OBCC logger" {
+  class: ea
+  log_serial_debug: "[F] Log serial/debug\ngetter evidence" { class: func }
+  log_obcc_delivery: "[F] Log v1.0 OBCC\nPointer/Return observations" { class: func }
+}
+
+analysis_workstation: "[EA] Analysis script workstation" {
+  class: ea
+  compare_logs: "[F] Compare observed values\nagainst expected vectors" { class: func }
+  generate_verdict: "[F] Generate pass/fail\nanalysis record" { class: func }
+}
+
+human_conductor: "[EA] Human test conductor" {
+  class: ea
+  select_baseline: "[F] Select baseline, UUT,\ncommit, and source package" { class: func }
+  start_harness: "[F] Start harness and\nfault sequences" { class: func }
+  review_anomalies: "[F] Review anomalies,\nwaivers, and retest need" { class: func }
+}
+
+ambient_monitor: "[EA] Ambient thermometer / hygrometer" {
+  class: ea
+  read_ambient: "[F] Read and record ambient\ntemperature and humidity" { class: func }
+}
+
+note_statistics: "[C] Statistical viewpoint\nStructural analysis plus deterministic vector testing over all modeled getter/value/fault classes.\nThis supports coverage, not population reliability; later reliability claims need a separate plan." { class: note; shape: page }
+note_environment: "[C] Execution condition\nRecord ambient temperature/humidity, equipment IDs/calibration, firmware commit, build flags, UUT ID,\nand whether execution used physical hardware, host-only harness, or both." { class: note; shape: page }
+
+system.uut.impl.note_single_writer -> system.uut.impl.maintain_store { class: cstr }
+system.uut.impl.note_single_writer -> review_station.inspect_writers { class: cstr }
+system.uut.impl.note_side_effects -> system.uut.impl.get_lat_lon { class: cstr }
+system.uut.impl.note_side_effects -> system.uut.impl.update_angular { class: cstr }
+system.uut.impl.note_side_effects -> system.uut.impl.calculate_pry { class: cstr }
+system.uut.impl.note_failed_reads -> system.uut.impl.expose_state { class: cstr }
+system.uut.impl.note_failed_reads -> firmware_harness.inject_failed_reads { class: cstr }
+system.uut.impl.note_stability -> firmware_harness.call_getters { class: cstr }
+system.uut.impl.note_stability -> analysis_workstation.compare_logs { class: cstr }
+system.uut.impl.note_pointer -> system.uut.impl.pointer_returns { class: cstr }
+system.uut.impl.note_pointer -> pc_obcc_logger.log_obcc_delivery { class: cstr }
+note_statistics -> analysis_workstation.generate_verdict { class: cstr }
+note_environment -> ambient_monitor.read_ambient { class: cstr }
+
+# Layout-only rank hints keep external actors below the UUT allocation.
+system -> review_station { style: { opacity: 0 } }
+review_station -> firmware_harness { style: { opacity: 0 } }
+firmware_harness -> fault_injector { style: { opacity: 0 } }
+fault_injector -> pc_obcc_logger { style: { opacity: 0 } }
+pc_obcc_logger -> analysis_workstation { style: { opacity: 0 } }
+analysis_workstation -> human_conductor { style: { opacity: 0 } }
+human_conductor -> ambient_monitor { style: { opacity: 0 } }

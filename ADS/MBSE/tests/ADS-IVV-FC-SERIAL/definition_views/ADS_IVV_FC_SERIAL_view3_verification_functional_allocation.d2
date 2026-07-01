@@ -1,0 +1,131 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Verification-only functional allocation for ADS-IVV-FC-SERIAL.
+# Allocates serial logging, parser, stimulus, environmental, and analysis functions to the selected UUT and test means.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-SERIAL\nVerification functional allocation\nRefs: IVV; NASA-SE; SW/stats; ESA-CANSAT" {
+  class: sys
+  direction: down
+
+  selected_version: "[PC] Selected ADS version\nSerial0 logging UUT interface" {
+    class: pc
+    direction: down
+    serial_lc: "[LC] Serial0 logging observation\ninterface" {
+      class: lc
+      direction: down
+      grid-columns: 2
+      expose_source_chain: "[F] Expose copied v0.1/v0.2\nSerial logging chain" { class: func }
+      collect_init_states: "[F] Collect peripheral\ninit states" { class: func }
+      collect_measurements: "[F] Collect\nmeasurements" { class: func }
+      log_serial0: "[F] Log via Serial0" { class: func }
+      emit_validity_markers: "[F] Emit validity, freshness,\nunavailable markers" { class: func }
+      expose_na_rationale: "[F] Expose v0.3/v1.0\nN/A rationale" { class: func }
+      note_na: "[C] N/A branches\nv0.3: PCB-only, no behavior chain.\nv1.0: no ADS Serial0 chain; use ADS/OBCC\nPointers/Returns delivery verification." { class: note; shape: page }
+    }
+  }
+}
+
+conductor: "[EA] IVV Serial test conductor" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  select_baseline: "[F] Select ADS version,\nmodel baseline, firmware commit" { class: func }
+  declare_schema: "[F] Declare Serial0 schema\nand expected fields" { class: func }
+  connect_and_start: "[F] Connect USB-C,\napply power, start logger" { class: func }
+  press_reset: "[F] Press reset / launch\ntest sequence" { class: func }
+  read_ambient: "[F] Read ambient\nthermometer/hygrometer" { class: func }
+  record_deviations: "[F] Record deviations,\nwaivers, retest status" { class: func }
+  note_schema: "[C] Schema prerequisite\nSerial0 schema is not fully modeled in source views.\nDeclare fields, marker vocabulary, parser version,\nserial settings, and expected frame count/cadence\nif statistics are claimed." { class: note; shape: page }
+}
+
+serial_pc: "[EA] Development PC\nserial logger / parser" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  monitor_serial: "[F] Monitor serial port" { class: func }
+  capture_raw: "[F] Capture raw Serial0\nbytes and line records" { class: func }
+  parse_records: "[F] Parse init and\nmeasurement records" { class: func }
+  detect_errors: "[F] Detect malformed, missing,\nstale, unavailable fields" { class: func }
+  timestamp_records: "[F] Timestamp received\nframes/records" { class: func }
+  preserve_logs: "[F] Preserve raw and\nparsed evidence" { class: func }
+  note_pass: "[C] Serial logging pass/fail\nPass only if parseable init and measurement records reach the PC,\nmodeled fields or explicit unavailable/stale markers are present,\nand malformed/missing/stale fields are detected rather than hidden." { class: note; shape: page }
+}
+
+power_supply: "[EA] Power supply /\nbattery simulator" {
+  class: ea
+  direction: down
+  apply_power: "[F] Apply current-limited\npower profile" { class: func }
+  log_power: "[F] Log voltage/current\nconditions" { class: func }
+}
+
+timebase: "[EA] Timebase" {
+  class: ea
+  provide_time: "[F] Provide synchronized\ntime reference" { class: func }
+}
+
+stimulus_fault: "[EA] GPS/IMU stimulus\nand fault harness" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  provide_nominal: "[F] Provide nominal GPS/IMU\ninput conditions" { class: func }
+  inject_unavailable: "[F] Inject unavailable\nsensor/init states" { class: func }
+  inject_malformed: "[F] Inject malformed\nor corrupt fields" { class: func }
+  inject_stale: "[F] Inject stale data\nor missing updates" { class: func }
+  note_faults: "[C] Fault hardening\nFault cases shall not create false-valid measurements\nor an unrecovered loop hang; logging shall make\ncorrupt/stale/unavailable data visible." { class: note; shape: page }
+}
+
+ambient: "[EA] Ambient monitor" {
+  class: ea
+  display_conditions: "[F] Display temperature\nand humidity" { class: func }
+}
+
+analysis_tool: "[EA] Serial analysis script" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  check_field_coverage: "[F] Check modeled field\ncoverage vs schema" { class: func }
+  analyze_freshness: "[F] Analyze validity and\nfreshness markers" { class: func }
+  compute_frame_stats: "[F] Compute frame counts\n/ PDR when declared" { class: func }
+  decide_pass_fail: "[F] Produce pass/fail\nor N/A rationale" { class: func }
+  note_stats: "[C] Statistical viewpoint\nPDR/frame statistics are evidence only unless campaign size,\nexpected frames, confidence method, and threshold are declared.\nUse exact binomial bounds for formal binary/PDR claims." { class: note; shape: page }
+}
+
+quality: "[EA] Quality / configuration\nauthority" {
+  class: ea
+  review_package: "[F] Review evidence,\nlimitations, anomalies" { class: func }
+}
+
+conductor.note_schema -> conductor.declare_schema { class: cstr }
+serial_pc.note_pass -> serial_pc.detect_errors { class: cstr }
+stimulus_fault.note_faults -> stimulus_fault.inject_malformed { class: cstr }
+analysis_tool.note_stats -> analysis_tool.compute_frame_stats { class: cstr }
+system.selected_version.serial_lc.note_na -> system.selected_version.serial_lc.expose_na_rationale { class: cstr }
+
+# Layout-only edge to stack verification means under the selected UUT interface.
+system -> conductor { style: { opacity: 0 } }
+conductor -> serial_pc { style: { opacity: 0 } }
+serial_pc -> power_supply { style: { opacity: 0 } }
+power_supply -> timebase { style: { opacity: 0 } }
+timebase -> stimulus_fault { style: { opacity: 0 } }
+stimulus_fault -> ambient { style: { opacity: 0 } }
+ambient -> analysis_tool { style: { opacity: 0 } }
+analysis_tool -> quality { style: { opacity: 0 } }

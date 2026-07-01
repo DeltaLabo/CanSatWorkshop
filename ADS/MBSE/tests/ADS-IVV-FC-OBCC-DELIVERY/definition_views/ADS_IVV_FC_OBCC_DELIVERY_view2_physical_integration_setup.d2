@@ -1,0 +1,73 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical integration setup for ADS-IVV-FC-OBCC-DELIVERY.
+# PV1-style view: test article, non-human test equipment EAs, temporary physical links, and setup constraints.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 18 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-OBCC-DELIVERY\nphysical setup — IVV; ADS plan; NASA-SE; SW/stats" {
+  class: sys
+  direction: down
+
+  uut: "[PC] v1.0 integrated CanSat / Backplane / OBCC UUT" {
+    class: pc
+    direction: down
+    grid-columns: 2
+    ads_module: "[PC] ADS Module\nGPS + IMU + ADS connector" { class: pc }
+    backplane: "[PC] Backplane PCB\nADS/OBCC headers + spine" { class: pc }
+    obcc_module: "[PC] OBCC Module\nOBCC PCB + XIAO ESP32-S3" { class: pc }
+    service_access: "[PC] Temporary service access\nUSB/UART/JTAG/test pads" { class: pc }
+  }
+}
+
+power_supply: "[EA] Current-limited power supply\nor battery simulator" { class: ea }
+obcc_log_harness: "[EA] OBCC firmware / log harness\nUSB serial, JTAG, or debug console" { class: ea }
+ads_stim_logger: "[EA] ADS data stimulus / logger\nGPS/IMU stimulus, fault markers, timestamps" { class: ea }
+pointer_monitor: "[EA] Pointer lifetime / freshness monitor\nor code-review workstation" { class: ea }
+ambient_monitor: "[EA] Ambient thermometer / hygrometer\ncalibrated environmental monitor" { class: ea }
+analysis_station: "[EA] Analysis workstation\nlog capture and script host" { class: ea }
+
+note_setup: "[C] Setup pass condition\nUse the modeled v1.0 integrated article only. Record UUT serial,\nhardware revision, firmware commit, source-view copies, equipment IDs,\nand calibration status before applying a verdict." { class: note; shape: page }
+note_nonintrusive: "[C] Interface-intrusion constraint\nTemporary probes/log harnesses may observe Pointers/Returns and timing,\nbut shall not provide an unmodeled ADS data path to OBCC or mask\nnull/dangling/stale/corrupt behavior." { class: note; shape: page }
+note_environment: "[C] Environment constraints\nAmbient monitor is read before repetitions and after fault cases.\nRecord temperature/humidity and power limits; defer if conditions or\nequipment calibration/function checks are unresolved." { class: note; shape: page }
+note_fault_hardening: "[C] Fault-hardening setup\nSupport nominal delivery observation and injection/observation of null,\ndangling, stale, corrupt, invalid-return, and slow/stuck-call cases\nwithout bypassing ADS Processing → OBCC interfaces." { class: note; shape: page }
+note_links: "[C] Temporary PL means\nPower leads, USB/UART/JTAG debug link, GPS/IMU stimulus or sensor-log\nharness, pointer/debug probe, ambient stand, and host-capture cable." { class: note; shape: page }
+
+power_supply -- system.uut: "[PL]" { class: pl }
+obcc_log_harness -- system.uut.service_access: "[PL]" { class: pl }
+ads_stim_logger -- system.uut.ads_module: "[PL]" { class: pl }
+pointer_monitor -- system.uut.service_access: "[PL]" { class: pl }
+ambient_monitor -- system.uut: "[PL]" { class: pl }
+analysis_station -- system.uut.service_access: "[PL]" { class: pl }
+
+note_setup -> system.uut { class: cstr }
+note_nonintrusive -> system.uut.service_access { class: cstr }
+note_environment -> ambient_monitor { class: cstr }
+note_environment -> power_supply { class: cstr }
+note_fault_hardening -> pointer_monitor { class: cstr }
+note_fault_hardening -> ads_stim_logger { class: cstr }
+note_links -> system.uut { class: cstr }
+
+# Layout-only ordering hints for the constraint note band.
+system -> note_setup { style: { opacity: 0 } }
+note_setup -> note_nonintrusive { style: { opacity: 0 } }
+note_nonintrusive -> note_environment { style: { opacity: 0 } }
+note_environment -> note_fault_hardening { style: { opacity: 0 } }
+note_fault_hardening -> note_links { style: { opacity: 0 } }

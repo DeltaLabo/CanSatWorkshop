@@ -1,0 +1,95 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain: startup, peripheral health policy, and runtime enable.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC v1.0 — Startup health chain" {
+  class: chain
+  direction: down
+
+  bootstrap_obcc: "[F] Bootstrap\nOBCC" { class: func }
+  init_kernel_objects: "[F] Init kernel\nobjects" { class: func }
+  create_message_queues: "[F] Create message\nqueues" { class: func }
+  init_buses: "[F] Init UART, PWM,\nSPI and I2C" { class: func }
+  check_critical_peripherals: "[F] Check critical\nperipherals" { class: func }
+  check_noncritical_peripherals: "[F] Check non-critical\nperipherals" { class: func }
+  disable_failed_noncritical_getters: "[F] Disable failed\nnon-critical getters" { class: func }
+  set_servo_init_state: "[F] Set Servo\ninit state" { class: func }
+  collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+  publish_health_flags: "[F] Publish\nhealth flags" { class: func }
+  start_runtime_services: "[F] Start runtime\nservices" { class: func }
+  enter_error_state: "[F] Enter error\nstate" { class: func }
+
+  note_critical: "[C] Startup critical peripherals:\nRFM95W LoRa, BME280, Servo.\nFailure blocks operational mode." {
+    class: note
+    shape: page
+  }
+
+  note_noncritical: "[C] Non-critical peripherals:\nUBX-G7020, ICM20948, INA219.\nFaults degrade telemetry but\ndo not prevent runtime." {
+    class: note
+    shape: page
+  }
+
+  note_no_console: "[C] v1.0 has no serial-console\ntest operator path; startup\nstatus is represented by\nhealth/state telemetry." {
+    class: note
+    shape: page
+  }
+}
+
+chain.bootstrap_obcc -> chain.init_kernel_objects: "[FE] Boot started []" { class: fe }
+chain.init_kernel_objects -> chain.create_message_queues: "[FE] Kernel ready []" { class: fe }
+chain.create_message_queues -> chain.init_buses: "[FE] Queues ready []" { class: fe }
+chain.init_buses -> chain.check_critical_peripherals: "[FE] Wired comms\nready []" { class: fe }
+chain.init_buses -> chain.enter_error_state: "[FE] Wired comms\nfailure []" { class: fe }
+chain.check_critical_peripherals -> chain.enter_error_state: "[FE] Critical\nfault []" { class: fe }
+chain.check_critical_peripherals -> chain.check_noncritical_peripherals: "[FE] Criticals\noperational []" { class: fe }
+chain.check_noncritical_peripherals -> chain.disable_failed_noncritical_getters: "[FE] Non-critical\nfault []" { class: fe }
+chain.check_noncritical_peripherals -> chain.set_servo_init_state: "[FE] All peripherals\noperational []" { class: fe }
+chain.disable_failed_noncritical_getters -> chain.set_servo_init_state: "[FE] Degraded\nconfiguration []" { class: fe }
+chain.set_servo_init_state -> chain.collect_peripheral_init_states: "[FE] Servo init\nresult [Result]" { class: fe }
+chain.collect_peripheral_init_states -> chain.publish_health_flags: "[FE] Startup health\nstate []" { class: fe }
+chain.publish_health_flags -> chain.start_runtime_services: "[FE] Runtime allowed []" { class: fe }
+
+chain.note_critical -> chain.check_critical_peripherals { class: cstr }
+chain.note_noncritical -> chain.check_noncritical_peripherals { class: cstr }

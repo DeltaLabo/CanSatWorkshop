@@ -1,0 +1,81 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Results and traceability interface view for ADS-IVV-FC-ANG.
+# Ensures reports reference modeled test definition, constraints, capabilities, feared events, and source views.
+direction: right
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+ivv_authority: "[EA] IVV authority /\ntest reviewer" { class: ea }
+reference_corpus: "[EA] Reference corpus\nIVV; NASA-SE; IMU/I2C; SW/stats" { class: ea }
+firmware_repo: "[EA] Firmware repository /\nconfiguration source" { class: ea }
+
+system: "[System] ADS-IVV-FC-ANG\nResults and traceability interfaces\nRefs: IVV; NASA-SE; IMU/I2C; SW/stats; ADS MBSE plan" {
+  class: sys
+  direction: down
+
+  test_record: "[PC] Angular-chain verification\nrecord package" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    trace_matrix: "[LC] Traceability matrix" {
+      class: lc
+      direction: down
+      map_source: "[F] Map source views\nand model elements" { class: func }
+      map_targets: "[F] Map capabilities,\nconstraints, feared events" { class: func }
+    }
+
+    evidence_record: "[LC] Raw evidence record" {
+      class: lc
+      direction: down
+      store_ads_logs: "[F] Store ADS/OBCC\nIMU logs" { class: func }
+      store_truth_logs: "[F] Store truth, fault,\ntimebase, calibration logs" { class: func }
+    }
+
+    analysis_record: "[LC] Analysis record" {
+      class: lc
+      direction: down
+      store_error_stats: "[F] Store per-axis error\nand uncertainty analysis" { class: func }
+      store_faults: "[F] Store I2C timing\nand fault analysis" { class: func }
+    }
+
+    disposition_record: "[LC] Result and\ndisposition record" {
+      class: lc
+      direction: down
+      store_verdict: "[F] Store pass/fail\nor N/A verdict" { class: func }
+      store_limits: "[F] Store deviations,\nwaivers, limitations, retest" { class: func }
+    }
+  }
+}
+
+note_targets: "[C] Traceability targets\nADS-CAP-IMU; constraint Accuracy <30 deg/s;\nADS-FE-STUCK-LOOP and ADS-FE-CORRUPT-MEASUREMENT.\nv0.1/v0.3 N/A may reference ADS-CAP-PHY or\nADS-CAP-PCB/DELIVERY as applicable." { class: note; shape: page }
+note_reports: "[C] Report rule\nReports reference this modeled definition and record\nonly execution-specific configuration, actual conditions,\nraw evidence, analysis outputs, deviations, anomalies,\nlimitations, waivers, and retest status." { class: note; shape: page }
+note_references: "[C] Reference use\nUse saved repository references only unless a later\ncontrolled update adds new sources. Record exact angular-rate\ntruth method, axis convention, and firmware commit before execution." { class: note; shape: page }
+
+ivv_authority -> system.test_record.disposition_record: "[CE] verdict review" { class: ce }
+reference_corpus -> system.test_record.trace_matrix: "[CE] reference basis" { class: ce }
+firmware_repo -> system.test_record.evidence_record: "[CE] firmware commit\nand build evidence" { class: ce }
+system.test_record.evidence_record -> system.test_record.analysis_record: "[CE] analysis inputs" { class: ce }
+system.test_record.analysis_record -> system.test_record.disposition_record: "[CE] pass/fail rationale" { class: ce }
+system.test_record.trace_matrix -> system.test_record.disposition_record: "[CE] model trace" { class: ce }
+
+note_targets -> system.test_record.trace_matrix { class: cstr }
+note_reports -> system.test_record.disposition_record { class: cstr }
+note_references -> reference_corpus { class: cstr }

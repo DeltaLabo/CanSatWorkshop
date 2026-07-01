@@ -1,0 +1,195 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V04-GATE-001 functional-chain verification definition.
+# Chain functions name the responsible actor/equipment/SUT in the function label;
+# no PC/LC/EA containers are used in this Functional Chain view.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V04-GATE-001 — v0.4 wireless command/state advancement gate\nRefs: IVV, PM&SE/IVV, OBCC README, LoRa_Frame, v1.0 Command/Telemetry/Deployment views" {
+  class: chain
+  direction: down
+
+  inspect_setup: "[F] Operator: inspect\nRFM95W, antenna path,\nstate telemetry path, and\nsafe deployment monitor" { class: func }
+  flash_setup: "[F] USB PC: flash/configure\nv0.4 command-state firmware\n(bench aid only)" { class: func }
+  disable_serial: "[F] Operator: disconnect or\ndisable USB serial command\ncontrol before trials" { class: func }
+  measure_ambient: "[F] Thermometer: measure\nambient condition before\nrepetitions" { class: func }
+  record_environment: "[F] Operator: record ambient,\nradio settings, firmware hash,\nand as-tested configuration" { class: func }
+  start_monitors: "[F] RF monitor and telemetry\nobserver: start synchronized\nRF/state/deployment logging" { class: func }
+  load_vectors: "[F] Command station: load\nvalid commands and invalid\nequivalence-class vectors" { class: func }
+
+  generate_on: "[F] Command station: generate\nvalid On command with\nfresh trial ID" { class: func }
+  transmit_on: "[F] Command station: transmit\nvalid On command over LoRa" { class: func }
+  receive_on: "[F] OBCC: receive On frame\nand LoRa RX interrupt" { class: func }
+  validate_on: "[F] OBCC: validate On\nopcode, frame, and context" { class: func }
+  accept_on_once: "[F] OBCC: accept On\ncommand exactly once" { class: func }
+  set_on: "[F] OBCC: set On state\nand coordinate state manager" { class: func }
+  publish_on: "[F] OBCC: publish On state\nand command-result telemetry" { class: func }
+  observe_on: "[F] Telemetry observer: verify\nOn state and one transition" { class: func }
+  no_deploy_on: "[F] Deployment monitor: verify\nno deployment side effect" { class: func }
+  record_on: "[F] Operator: record valid\nOn trial result" { class: func }
+
+  generate_standby: "[F] Command station: generate\nvalid Stand-by command with\nfresh trial ID" { class: func }
+  transmit_standby: "[F] Command station: transmit\nvalid Stand-by command over LoRa" { class: func }
+  receive_standby: "[F] OBCC: receive Stand-by\nframe and LoRa RX interrupt" { class: func }
+  validate_standby: "[F] OBCC: validate Stand-by\nopcode, frame, and context" { class: func }
+  accept_standby_once: "[F] OBCC: accept Stand-by\ncommand exactly once" { class: func }
+  set_standby: "[F] OBCC: set Stand-by state\nand keep telemetry alive" { class: func }
+  publish_standby: "[F] OBCC: publish Stand-by\nstate and command-result telemetry" { class: func }
+  observe_standby: "[F] Telemetry observer: verify\nStand-by state and one transition" { class: func }
+  no_deploy_standby: "[F] Deployment monitor: verify\nno deployment side effect" { class: func }
+  record_standby: "[F] Operator: record valid\nStand-by trial result" { class: func }
+
+  replay_last: "[F] Command station: replay /\nduplicate a previously\naccepted command frame" { class: func }
+  receive_replay: "[F] OBCC: receive duplicate\nor replay command frame" { class: func }
+  reject_replay: "[F] OBCC: reject replay /\nduplicate or suppress\nsecond transition" { class: func }
+  observe_replay: "[F] Telemetry observer: verify\nstate unchanged and transition\ncount not incremented" { class: func }
+  no_deploy_replay: "[F] Deployment monitor: verify\nno deployment side effect" { class: func }
+  record_replay: "[F] Operator: record replay /\nduplicate trial result" { class: func }
+
+  generate_invalid: "[F] Command station: generate\nnext invalid vector\n(corrupt, unsupported,\nout-of-context, malformed)" { class: func }
+  transmit_invalid: "[F] Command station: transmit\ninvalid vector over LoRa" { class: func }
+  receive_invalid: "[F] OBCC: receive invalid\ncommand candidate" { class: func }
+  reject_invalid: "[F] OBCC: reject invalid\ncommand and log class" { class: func }
+  preserve_state: "[F] OBCC: preserve previous\nOn/Stand-by state" { class: func }
+  publish_rejection: "[F] OBCC: publish command\nerror/status telemetry" { class: func }
+  observe_rejection: "[F] Telemetry observer: verify\nerror visible and state unchanged" { class: func }
+  no_deploy_invalid: "[F] Deployment monitor: verify\nno deployment side effect" { class: func }
+  record_invalid: "[F] Operator: record invalid\nclass result and continue\nuntil coverage complete" { class: func }
+
+  close_report: "[F] Operator: close evidence\npackage and identify gaps /\nwaivers for execution report" { class: func }
+
+  note_valid: "[C] PF-VALID:\nValid wireless On and Stand-by\ncommands are accepted exactly once,\nchange state as modeled, and are\nreflected in telemetry. For separate\nR90/C95 screening claims, plan 29/29\nsuccesses for each command class." {
+    class: note
+    shape: page
+  }
+
+  note_invalid: "[C] PF-INVALID:\nEach invalid equivalence class is\nrejected with no unintended state\ntransition and no deployment side\neffect. Classes include malformed\nframe/header/footer, bad CRC/corrupt\npayload, unsupported opcode,\nout-of-context command, replay,\nduplicate, and stale trial ID." {
+    class: note
+    shape: page
+  }
+
+  note_no_serial: "[C] PF-NO-SERIAL:\nFlight operation for this gate uses\nLoRa command uplink and telemetry\nonly. USB serial may support flash or\nbench diagnostics but must be disabled,\ndisconnected, or shown non-authoritative\nfor command trials." {
+    class: note
+    shape: page
+  }
+
+  note_environment: "[C] Environmental/evidence condition:\nrecord calibrated ambient thermometer\nmodel/serial, reading, radio settings,\nfirmware/configuration IDs, and RF\nmonitor clock synchronization before\nrepetitions begin." {
+    class: note
+    shape: page
+  }
+
+  note_statistics: "[C] Viewpoints:\nStatistical significance uses project\nbinomial policy; invalid coverage is\nexhaustive by equivalence class unless\nwaived. Fault hardening covers RF\ncorruption, replay/duplicate frames,\nstale context, and forbidden deployment\nside effects before v0.5." {
+    class: note
+    shape: page
+  }
+
+  note_trace: "[C] Traceability:\nOBCC-UC-WirelessCommand and\nOBCC-FE-InvalidCommand; maps to\nv1.0 candidates OBCC-VV-FC-003 and\nOBCC-VV-CON-002." {
+    class: note
+    shape: page
+  }
+
+  note_source_gap: "[C] Source baseline gap:\nno v0.4 Capella/D2 source views exist\nin the repository. This gate uses copied\nv1.0 command/state views as target\nbehavior context only." {
+    class: note
+    shape: page
+  }
+}
+
+chain.inspect_setup -> chain.flash_setup: "[FE] Physical setup\nready [checklist]" { class: fe }
+chain.flash_setup -> chain.disable_serial: "[FE] Firmware loaded\n[config]" { class: fe }
+chain.disable_serial -> chain.measure_ambient: "[FE] No serial command\nauthority [inspection]" { class: fe }
+chain.measure_ambient -> chain.record_environment: "[FE] Ambient reading\n[°C, model/serial]" { class: fe }
+chain.record_environment -> chain.start_monitors: "[FE] Conditions accepted\n[evidence header]" { class: fe }
+chain.start_monitors -> chain.load_vectors: "[FE] Logs armed\n[RF/state/deploy]" { class: fe }
+
+chain.load_vectors -> chain.generate_on: "[FE] Begin valid On\nset [repeat]" { class: fe }
+chain.generate_on -> chain.transmit_on: "[FE] Valid On frame\n[opcode + trial ID]" { class: fe }
+chain.transmit_on -> chain.receive_on: "[FE] LoRa RF command\n[On + RF monitor log]" { class: fe }
+chain.receive_on -> chain.validate_on: "[FE] Command frame\n[On]" { class: fe }
+chain.validate_on -> chain.accept_on_once: "[FE] Valid command\n[On]" { class: fe }
+chain.accept_on_once -> chain.set_on: "[FE] State request\n[On]" { class: fe }
+chain.set_on -> chain.publish_on: "[FE] State update\n[On]" { class: fe }
+chain.publish_on -> chain.observe_on: "[FE] Telemetry\n[On + accepted]" { class: fe }
+chain.observe_on -> chain.no_deploy_on: "[FE] One transition\n[count OK]" { class: fe }
+chain.no_deploy_on -> chain.record_on: "[FE] No deployment\nedge/event" { class: fe }
+
+chain.record_on -> chain.generate_standby: "[FE] Begin valid Stand-by\nset [repeat]" { class: fe }
+chain.generate_standby -> chain.transmit_standby: "[FE] Valid Stand-by frame\n[opcode + trial ID]" { class: fe }
+chain.transmit_standby -> chain.receive_standby: "[FE] LoRa RF command\n[Stand-by + RF monitor log]" { class: fe }
+chain.receive_standby -> chain.validate_standby: "[FE] Command frame\n[Stand-by]" { class: fe }
+chain.validate_standby -> chain.accept_standby_once: "[FE] Valid command\n[Stand-by]" { class: fe }
+chain.accept_standby_once -> chain.set_standby: "[FE] State request\n[Stand-by]" { class: fe }
+chain.set_standby -> chain.publish_standby: "[FE] State update\n[Stand-by]" { class: fe }
+chain.publish_standby -> chain.observe_standby: "[FE] Telemetry\n[Stand-by + accepted]" { class: fe }
+chain.observe_standby -> chain.no_deploy_standby: "[FE] One transition\n[count OK]" { class: fe }
+chain.no_deploy_standby -> chain.record_standby: "[FE] No deployment\nedge/event" { class: fe }
+
+chain.record_standby -> chain.replay_last: "[FE] Begin replay /\nduplicate hardening" { class: fe }
+chain.replay_last -> chain.receive_replay: "[FE] Duplicate/replay\nLoRa frame + RF log" { class: fe }
+chain.receive_replay -> chain.reject_replay: "[FE] Previously consumed\ncommand" { class: fe }
+chain.reject_replay -> chain.observe_replay: "[FE] Rejection or no-op\n[no new transition]" { class: fe }
+chain.observe_replay -> chain.no_deploy_replay: "[FE] State unchanged\n[count unchanged]" { class: fe }
+chain.no_deploy_replay -> chain.record_replay: "[FE] No deployment\nedge/event" { class: fe }
+
+chain.record_replay -> chain.generate_invalid: "[FE] Begin invalid\nclass set [repeat]" { class: fe }
+chain.generate_invalid -> chain.transmit_invalid: "[FE] Invalid vector\n[class ID]" { class: fe }
+chain.transmit_invalid -> chain.receive_invalid: "[FE] LoRa RF command\n[invalid + RF monitor log]" { class: fe }
+chain.receive_invalid -> chain.reject_invalid: "[FE] Invalid candidate\n[class evidence]" { class: fe }
+chain.reject_invalid -> chain.preserve_state: "[FE] Reject result\n[class code]" { class: fe }
+chain.preserve_state -> chain.publish_rejection: "[FE] Previous state\n[unchanged]" { class: fe }
+chain.publish_rejection -> chain.observe_rejection: "[FE] Telemetry\n[error + same state]" { class: fe }
+chain.observe_rejection -> chain.no_deploy_invalid: "[FE] Rejection verified\n[no state change]" { class: fe }
+chain.no_deploy_invalid -> chain.record_invalid: "[FE] No deployment\nedge/event" { class: fe }
+chain.record_invalid -> chain.close_report: "[FE] All invalid classes\ncovered or waived" { class: fe }
+
+chain.note_valid -> chain.accept_on_once { class: cstr }
+chain.note_valid -> chain.accept_standby_once { class: cstr }
+chain.note_invalid -> chain.reject_invalid { class: cstr }
+chain.note_invalid -> chain.reject_replay { class: cstr }
+chain.note_no_serial -> chain.disable_serial { class: cstr }
+chain.note_environment -> chain.measure_ambient { class: cstr }
+chain.note_statistics -> chain.record_on { class: cstr }
+chain.note_statistics -> chain.record_invalid { class: cstr }
+chain.note_trace -> chain.validate_on { class: cstr }
+chain.note_trace -> chain.reject_invalid { class: cstr }
+chain.note_source_gap -> chain.inspect_setup { class: cstr }

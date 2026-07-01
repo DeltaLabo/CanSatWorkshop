@@ -1,0 +1,131 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V01-GATE-001 PV1: v0.1 breadboard verification physical setup.
+# v0.1 Capella source views are absent; this test setup uses the v1.0
+# OBCC source views only as target-architecture context.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 24 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+bench_pc: "[EA] USB power/programming PC\nand serial monitor" { class: ea }
+ground_monitor: "[EA] Ground LoRa telemetry\nreceiver/monitor" { class: ea }
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" { class: ea }
+
+system: "[System] OBCC-V01-GATE-001 — Breadboard startup-health physical setup\nRefs: IVV, OBCC README, LoRa_Frame, v1.0 PV1/PV3/Startup chain" {
+  class: sys
+  direction: down
+
+  breadboard: "[PC] v0.1 OBCC breadboard /\ndevelopment assembly" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    xiao: "[PC] XIAO ESP32-S3" { class: pc }
+    usb_connector: "[PC] XIAO USB-C\nconnector" { class: pc }
+    status_indicator: "[PC] Status indicator\nLED / test point" { class: pc }
+
+    harness: "[PC] Dupont jumper\nharness set" {
+      class: pc
+      direction: right
+      grid-columns: 4
+      spi_jumpers: "[PC] SPI + 3V3\njumpers" { class: pc }
+      i2c_bus: "[PC] I2C + 3V3\njumper bus" { class: pc }
+      uart_jumpers: "[PC] UART + power\njumpers" { class: pc }
+      pwm_leads: "[PC] PWM + 5V/GND\nservo leads" { class: pc }
+    }
+
+    peripheral_set: "[PC] Peripheral breakout /\nactuator set" {
+      class: pc
+      direction: right
+      grid-columns: 4
+      rfm95w: "[PC] RFM95W LoRa\ncritical" { class: pc }
+      i2c_sensors: "[PC] I2C sensor\nbreakout set" {
+        class: pc
+        direction: down
+        grid-columns: 1
+        bme280: "[PC] BME280\ncritical" { class: pc }
+        imu: "[PC] ICM20948 or legacy\nMPU6050 IMU\nnon-critical" { class: pc }
+        ina219: "[PC] INA219\nnon-critical" { class: pc }
+      }
+      gps: "[PC] UBX-G7020 GPS\nnon-critical" { class: pc }
+      servo: "[PC] Servo / deployment\nactuator context\ncritical" { class: pc }
+    }
+
+    note_presence: "[C] Inspection pass: every required\nbreadboard component and critical\nwire is present, identified, and\nnot substituted without disposition." {
+      class: note
+      shape: page
+    }
+
+    note_source_gap: "[C] Source baseline gap:\nno v0.1 Capella/D2 views exist\nin the repository; v1.0 views are\nused as target-architecture context." {
+      class: note
+      shape: page
+    }
+  }
+}
+
+bench_pc -- system.breadboard.usb_connector: "[PL] USB-C\npower/log" { class: pl }
+ground_monitor -- system.breadboard.peripheral_set.rfm95w: "[PL] Antenna path\nRF separation" { class: pl }
+ambient_thermometer -- system.breadboard: "[PL] Bench air\nobservation" { class: pl }
+
+system.breadboard.usb_connector -- system.breadboard.xiao: "[PL] USB pads" { class: pl }
+system.breadboard.xiao -- system.breadboard.status_indicator: "[PL] GPIO/log" { class: pl }
+system.breadboard.xiao -- system.breadboard.harness.spi_jumpers: "[PL] SPI" { class: pl }
+system.breadboard.xiao -- system.breadboard.harness.i2c_bus: "[PL] I2C" { class: pl }
+system.breadboard.xiao -- system.breadboard.harness.uart_jumpers: "[PL] UART" { class: pl }
+system.breadboard.xiao -- system.breadboard.harness.pwm_leads: "[PL] PWM" { class: pl }
+
+system.breadboard.harness.spi_jumpers -- system.breadboard.peripheral_set.rfm95w: "[PL] SPI drop" { class: pl }
+system.breadboard.harness.i2c_bus -- system.breadboard.peripheral_set.i2c_sensors: "[PL] 3x I2C drops" { class: pl }
+system.breadboard.harness.uart_jumpers -- system.breadboard.peripheral_set.gps: "[PL] UART drop" { class: pl }
+system.breadboard.harness.pwm_leads -- system.breadboard.peripheral_set.servo: "[PL] Servo lead" { class: pl }
+
+system.breadboard.note_presence -> system.breadboard.harness { class: cstr }
+system.breadboard.note_presence -> system.breadboard.peripheral_set { class: cstr }
+system.breadboard.note_source_gap -> system { class: cstr }
+
+# Layout-only edges keep the physical setup bands stacked.
+bench_pc -> ground_monitor { style: { opacity: 0 } }
+ground_monitor -> ambient_thermometer { style: { opacity: 0 } }
+system.breadboard.xiao -> system.breadboard.harness { style: { opacity: 0 } }
+system.breadboard.harness -> system.breadboard.peripheral_set { style: { opacity: 0 } }
+system.breadboard.peripheral_set -> system.breadboard.note_presence { style: { opacity: 0 } }
+system.breadboard.note_presence -> system.breadboard.note_source_gap { style: { opacity: 0 } }

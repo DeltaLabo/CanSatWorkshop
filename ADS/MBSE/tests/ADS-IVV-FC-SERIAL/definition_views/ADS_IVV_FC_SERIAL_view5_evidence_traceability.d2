@@ -1,0 +1,93 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Results/evidence and traceability interface view for ADS-IVV-FC-SERIAL.
+# Ensures reports reference the modeled definition, source views, schema, capabilities, feared events, and constraints.
+direction: right
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+ivv_authority: "[EA] IVV authority /\ntest reviewer" { class: ea }
+source_package: "[EA] Copied ADS source views\nsource_views/v0.1..v1.0" { class: ea }
+firmware_repo: "[EA] Firmware repository /\nconfiguration source" { class: ea }
+schema_source: "[EA] Serial0 schema source\ncontrolled doc or parser spec" { class: ea }
+reference_corpus: "[EA] Reference corpus\nIVV; NASA-SE; SW/stats; ESA-CANSAT" { class: ea }
+
+system: "[System] ADS-IVV-FC-SERIAL\nEvidence and traceability interfaces\nRefs: IVV; NASA-SE; SW/stats; ESA-CANSAT; ADS MBSE plan" {
+  class: sys
+  direction: down
+
+  test_record: "[PC] Serial0 verification\nrecord package" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    trace_matrix: "[LC] Traceability matrix" {
+      class: lc
+      direction: down
+      map_source: "[F] Map v0.1/v0.2\nSerial logging chains" { class: func }
+      map_na: "[F] Map v0.3/v1.0\nN/A rationale" { class: func }
+      map_targets: "[F] Map capability, feared\nevents, assumptions" { class: func }
+    }
+
+    evidence_record: "[LC] Raw evidence record" {
+      class: lc
+      direction: down
+      store_raw_serial: "[F] Store raw Serial0\nbyte/line logs" { class: func }
+      store_parsed: "[F] Store parser outputs\nand schema version" { class: func }
+      store_context: "[F] Store power, ambient,\ntimebase, USB-C context" { class: func }
+      store_fault_markers: "[F] Store stimulus and\nfault markers" { class: func }
+    }
+
+    analysis_record: "[LC] Analysis record" {
+      class: lc
+      direction: down
+      check_parseability: "[F] Check parseability\nand field coverage" { class: func }
+      check_validity: "[F] Check validity/freshness\nand unavailable markers" { class: func }
+      check_hidden_invalid: "[F] Check corrupt/stale data\nnot hidden as valid" { class: func }
+      compute_stats: "[F] Compute frame/PDR stats\nonly if declared" { class: func }
+    }
+
+    disposition_record: "[LC] Result and\ndisposition record" {
+      class: lc
+      direction: down
+      store_verdict: "[F] Store pass/fail,\nBlocked/Limited, or N/A" { class: func }
+      store_limits: "[F] Store deviations, anomalies,\nwaivers, limitations, retest" { class: func }
+    }
+  }
+}
+
+note_targets: "[C] Traceability targets\nADS-CAP-DELIVERY to development PC; ADS-FE-CORRUPT-MEASUREMENT;\nADS-FE-STUCK-LOOP; freshness/validity assumptions.\nN/A branches reference ADS-CAP-PCB/DELIVERY and OBCC delivery path." { class: note; shape: page }
+note_reports: "[C] Report rule\nReports reference this modeled definition and record execution-specific\nconfiguration, actual conditions, raw evidence, parser/schema versions,\nanalysis outputs, deviations, anomalies, limitations, waivers, and retest." { class: note; shape: page }
+note_locations: "[C] Expected report locations\n../results/ADS-IVV-FC-SERIAL/v0.1/\n../results/ADS-IVV-FC-SERIAL/v0.2/\n../results/ADS-IVV-FC-SERIAL/v0.3/\n../results/ADS-IVV-FC-SERIAL/v1.0/" { class: note; shape: page }
+note_schema: "[C] Schema gap control\nIf a controlled Serial0 schema is absent, execution may still preserve\nraw evidence but cannot claim parseability, field coverage, or PDR pass/fail." { class: note; shape: page }
+
+ivv_authority -> system.test_record.disposition_record: "[CE] review" { class: ce }
+source_package -> system.test_record.trace_matrix: "[CE] sources" { class: ce }
+firmware_repo -> system.test_record.evidence_record: "[CE] firmware" { class: ce }
+schema_source -> system.test_record.evidence_record: "[CE] schema" { class: ce }
+reference_corpus -> system.test_record.trace_matrix: "[CE] refs" { class: ce }
+system.test_record.evidence_record -> system.test_record.analysis_record: "[CE] analysis inputs" { class: ce }
+system.test_record.analysis_record -> system.test_record.disposition_record: "[CE] pass/fail rationale" { class: ce }
+system.test_record.trace_matrix -> system.test_record.disposition_record: "[CE] model trace" { class: ce }
+
+note_targets -> system.test_record.trace_matrix { class: cstr }
+note_reports -> system.test_record.disposition_record { class: cstr }
+note_locations -> system.test_record.disposition_record { class: cstr }
+note_schema -> schema_source { class: cstr }
+note_schema -> system.test_record.analysis_record.compute_stats { class: cstr }

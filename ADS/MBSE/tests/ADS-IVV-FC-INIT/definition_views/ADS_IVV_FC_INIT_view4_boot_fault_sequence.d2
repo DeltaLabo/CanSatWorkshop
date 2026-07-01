@@ -1,0 +1,73 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style boot and fault-injection sequence for ADS-IVV-FC-INIT.
+# IADT method: Testing/Demonstration with supporting Analysis.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-FC-INIT\nBoot and peripheral-fault verification sequence\nRefs: IVV; NASA-SE; GPS/UBX; IMU/I2C; SW/stats" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_version: "[F] Test conductor:\nselect ADS version, source views, firmware" { class: func }
+  confirm_applicability: "[F] Analysis station:\nconfirm runtime applicability;\nif v0.3 record N/A and stop" { class: func }
+  read_environment: "[F] Ambient monitor + conductor:\nread temperature and humidity" { class: func }
+  configure_power_logger: "[F] Power supply + logger:\nset current limit and timebase" { class: func }
+  set_nominal_harness: "[F] GPS/IMU harnesses:\nset nominal peripheral connections" { class: func }
+  reset_nominal: "[F] Reset control:\nstart nominal boot trial" { class: func }
+  capture_nominal_boot: "[F] PC/OBCC logger:\ncapture nominal boot evidence" { class: func }
+  collect_nominal_states: "[F] ADS UUT:\ncollect peripheral init states" { class: func }
+  evaluate_nominal: "[F] Analysis station:\nevaluate expected nominal states" { class: func }
+  set_gps_fault: "[F] GPS harness:\nset disconnected, silent, or no-fix GPS" { class: func }
+  reset_gps_fault: "[F] Reset control + logger:\nboot and capture GPS-fault evidence" { class: func }
+  evaluate_gps_fault: "[F] Analysis station:\nevaluate GPS degraded/error state" { class: func }
+  set_imu_fault: "[F] IMU harness:\nset disconnected or NACKing ICM20948" { class: func }
+  reset_imu_fault: "[F] Reset control + logger:\nboot and capture IMU-fault evidence" { class: func }
+  evaluate_imu_fault: "[F] Analysis station:\nevaluate IMU degraded/error state" { class: func }
+  analyze_timeouts_nohang: "[F] Analysis station:\nanalyze timeouts, no-blocking, reset/hang" { class: func }
+  decide_result: "[F] IVV reviewer:\ndecide pass/fail or N/A" { class: func }
+  preserve_report: "[F] Data logger + conductor:\npreserve raw evidence and report" { class: func }
+
+  note_nominal: "[C] Nominal pass condition\nv0.1 reports UBX/GPS init state and Serial0/Serial1 setup evidence.\nv0.2 reports UBX/GPS and ICM20948 init states plus Serial setup.\nv1.0 reports GPS and ICM20948 init states in ADS Processing/OBCC.\nFail on missing expected state, unexpected reset, hang, or lost boot evidence." { class: note; shape: page }
+  note_faults: "[C] Fault-hardening pass condition\nDisconnected, silent, no-fix, or NACKing peripherals produce\ndegraded/error/unavailable states without firmware reset or unrecovered hang.\nInvalid peripheral state shall not be accepted as nominal/ready." { class: note; shape: page }
+  note_timeouts: "[C] Constraint-derived timing\nUART read functions timeout <=5 ms for v0.1/v0.2/v1.0.\nv1.0 I2C read functions timeout <=5 ms.\nNo blocking except I2C/UART; process/calculate <5 ms where relevant." { class: note; shape: page }
+  note_statistics: "[C] Statistical significance\nUse all trial outcomes. If reliability is claimed, use zero-failure\nlogic such as 29/29 for R90/C95 or 59/59 for about R95/C95.\nDo not infer reliability from unsupported repeated samples." { class: note; shape: page }
+  note_environment: "[C] Execution environment\nRecord ambient temperature/humidity, equipment IDs/calibration,\ncurrent limit, firmware commit, hardware revision, timebase, and\nfault-harness state before each repetition group." { class: note; shape: page }
+  note_v03: "[C] v0.3 N/A branch\nIf v0.3 is selected, stop after confirming 1/1 source view is PV1-only\nwith no runtime chain, LC, CE, allocation, or boot firmware behavior." { class: note; shape: page }
+}
+
+chain.select_version -> chain.confirm_applicability: "[FE] Selected baseline" { class: fe }
+chain.confirm_applicability -> chain.read_environment: "[FE] Runtime baseline only" { class: fe }
+chain.read_environment -> chain.configure_power_logger: "[FE] Ambient record" { class: fe }
+chain.configure_power_logger -> chain.set_nominal_harness: "[FE] Powered/logging ready" { class: fe }
+chain.set_nominal_harness -> chain.reset_nominal: "[FE] Nominal connections" { class: fe }
+chain.reset_nominal -> chain.capture_nominal_boot: "[FE] Boot trigger" { class: fe }
+chain.capture_nominal_boot -> chain.collect_nominal_states: "[FE] Boot log" { class: fe }
+chain.collect_nominal_states -> chain.evaluate_nominal: "[FE] Init-state record" { class: fe }
+chain.evaluate_nominal -> chain.set_gps_fault: "[FE] Nominal verdict" { class: fe }
+chain.set_gps_fault -> chain.reset_gps_fault: "[FE] GPS fault setup" { class: fe }
+chain.reset_gps_fault -> chain.evaluate_gps_fault: "[FE] GPS fault evidence" { class: fe }
+chain.evaluate_gps_fault -> chain.set_imu_fault: "[FE] GPS fault verdict" { class: fe }
+chain.set_imu_fault -> chain.reset_imu_fault: "[FE] IMU fault setup" { class: fe }
+chain.reset_imu_fault -> chain.evaluate_imu_fault: "[FE] IMU fault evidence" { class: fe }
+chain.evaluate_imu_fault -> chain.analyze_timeouts_nohang: "[FE] IMU fault verdict" { class: fe }
+chain.analyze_timeouts_nohang -> chain.decide_result: "[FE] Timing and hang analysis" { class: fe }
+chain.decide_result -> chain.preserve_report: "[FE] Pass/fail verdict" { class: fe }

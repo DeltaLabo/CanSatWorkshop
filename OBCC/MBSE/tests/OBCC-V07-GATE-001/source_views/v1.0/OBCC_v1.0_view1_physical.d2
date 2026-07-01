@@ -1,0 +1,156 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC v1.0 physical view.
+# Hardware details owned by ADS/AMS/PDS/PDM/S&A are intentionally kept as
+# module-level context here; their detailed footprints/traces are defined in
+# their own MBSE views. This PV1 focuses on OBCC integration links.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 26 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    standard_stack: "[PC] Standard Carrier\nModule Stack" {
+      class: pc
+      direction: right
+      grid-columns: 3
+
+      ads_module: "[PC] ADS Module" { class: pc }
+      ams_module: "[PC] AMS Module" { class: pc }
+      pds_module: "[PC] PDS Module" { class: pc }
+      ess_module: "[PC] ESS Module" { class: pc }
+
+      obcc_module: "[PC] OBCC Module" {
+        class: pc
+        direction: down
+
+        obcc_pcb: "[PC] OBCC PCB" {
+          class: pc
+          direction: right
+
+          rfm95w: "[PC] RFM95W LoRa" { class: pc }
+          xiao: "[PC] XIAO ESP32-S3" { class: pc }
+          obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: right
+      grid-columns: 3
+
+      ads_headers: "[PC] 2mm 2x6 ADS Headers" { class: pc }
+      ams_headers: "[PC] 2mm 2x6 AMS Headers" { class: pc }
+      pds_headers: "[PC] 2mm 2x6 PDS Headers" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+      pdm_servo_connector: "[PC] PDM Servo Connector" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: right
+
+      cap: "[PC] Cap" { class: pc }
+      parachute: "[PC] Parachute" { class: pc }
+      servo: "[PC] Servo" { class: pc }
+    }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm95w: "[PC] RFM95W LoRa" { class: pc }
+    ground_xiao: "[PC] XIAO ESP32" { class: pc }
+  }
+
+  pc_computer: "[PC] PC" {
+    class: pc
+    direction: down
+    usb_port: "[PC] USB Port" { class: pc }
+  }
+
+  note_lora_range: "[C] LoRa link must support\n≥500 m separation and\n≥90% telemetry success" {
+    class: note
+    shape: page
+  }
+
+  note_no_console: "[C] OBCC v1.0 is flight-ready:\nno serial-console test operator\nis part of the architecture" {
+    class: note
+    shape: page
+  }
+}
+
+system.cansat.standard_stack.ads_module -- system.cansat.backplane_pcb.ads_headers: "[PL] ADS header\nmating" { class: pl }
+system.cansat.standard_stack.ams_module -- system.cansat.backplane_pcb.ams_headers: "[PL] AMS header\nmating" { class: pl }
+system.cansat.standard_stack.pds_module -- system.cansat.backplane_pcb.pds_headers: "[PL] PDS header\nmating" { class: pl }
+system.cansat.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.backplane_pcb.obcc_headers: "[PL] OBCC header\nmating" { class: pl }
+system.cansat.parachute_module.servo -- system.cansat.backplane_pcb.pdm_servo_connector: "[PL] Servo cable" { class: pl }
+
+system.cansat.standard_stack.obcc_module.obcc_pcb.rfm95w -- system.cansat.standard_stack.obcc_module.obcc_pcb: "[PL] RFM footprint" { class: pl }
+system.cansat.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat.standard_stack.obcc_module.obcc_pcb: "[PL] XIAO footprint" { class: pl }
+system.cansat.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.standard_stack.obcc_module.obcc_pcb: "[PL] Connector footprint" { class: pl }
+system.cansat.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat.standard_stack.obcc_module.obcc_pcb.rfm95w: "[PL] SPI + 3V3 traces" { class: pl }
+system.cansat.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C / UART / PWM\n+ power traces" { class: pl }
+
+system.cansat.parachute_module.servo -- system.cansat.parachute_module: "[PL] Servo fixture" { class: pl }
+
+system.ground_station_pcb.ground_rfm95w -- system.ground_station_pcb: "[PL] RFM footprint" { class: pl }
+system.ground_station_pcb.ground_xiao -- system.ground_station_pcb: "[PL] XIAO footprint" { class: pl }
+system.ground_station_pcb.ground_rfm95w -- system.ground_station_pcb.ground_xiao: "[PL] SPI + 5V traces" { class: pl }
+system.ground_station_pcb.ground_xiao -- system.pc_computer.usb_port: "[PL] USB-C cable" { class: pl }
+
+# Layout-only edges keep the physical bands stacked.
+system.cansat.standard_stack -> system.cansat.backplane_pcb { style: { opacity: 0 } }
+system.cansat.backplane_pcb -> system.cansat.parachute_module { style: { opacity: 0 } }
+system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.pc_computer { style: { opacity: 0 } }
+system.pc_computer -> system.note_lora_range { style: { opacity: 0 } }
+system.note_lora_range -> system.note_no_console { style: { opacity: 0 } }

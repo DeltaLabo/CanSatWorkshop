@@ -1,0 +1,181 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-A-002 PV2 allocation-boundary analysis context.
+# Shows LC boundaries and CEs used to validate that cross-LC functional responsibility is allocated correctly.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 22 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+analyst: "[EA] IVV Allocation Analyst" { class: ea }
+reviewer: "[EA] IVV Reviewer" { class: ea }
+runtime_trace_collector: "[EA] Runtime Trace Collector" { class: ea }
+
+system: "[System] DPS v1.0\nDPS-V10-A-002 PV2 allocation-boundary analysis\nIADT: Analysis; Refs: P0,R1-R5,R8-R13; Trace: LC responsibility and shared-load behavior" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+
+        cansat_rfm: "[PC] RFM95W LoRa" {
+          class: pc
+          direction: down
+          cansat_lora: "[LC] LoRa Transceiver" { class: lc }
+        }
+
+        cansat_xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+          grid-columns: 2
+          obcc: "[LC] OBCC" { class: lc }
+          ess_processing: "[LC] ESS Processing\n(context)" { class: lc }
+          ads_processing: "[LC] ADS Processing\n(context)" { class: lc }
+          pdm_processing: "[LC] PDM Processing\n(context)" { class: lc }
+          ams_processing: "[LC] AMS Processing\n(context)" { class: lc }
+        }
+
+        cansat_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: down
+      ground_forwarder: "[LC] LoRa Forwarder" { class: lc }
+    }
+
+    ground_rfm: "[PC] RFM95W LoRa" {
+      class: pc
+      direction: down
+      ground_lora: "[LC] LoRa Transceiver" { class: lc }
+    }
+  }
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: right
+    grid-columns: 4
+    grid-gap: 80
+
+    decoder: "[LC] Decoder" { class: lc }
+    csv_writer: "[LC] CSV\nWriter" { class: lc }
+    dashboard: "[LC] Dashboard" { class: lc }
+    usb_power_pc: "[PC] USB Port" {
+      class: pc
+      direction: down
+      usb_power: "[LC] USB Power" { class: lc }
+    }
+    allocation_analysis_record: "[LC] Allocation Analysis Record\n(verification-only)" { class: lc }
+  }
+
+  note_scope: "[C] Boundary-analysis scope: all 12 LCs in README §3.4 are checked.\nPV3 view 1 shows every allocated function; this PV2 view checks the LC boundaries\nthat must carry cross-LC functional responsibility." {
+    class: note
+    shape: page
+  }
+
+  note_ce_map: "[C] CE map for boundary review: CE-01 CanSat radio→OBCC SPI;\nCE-02 Forwarder→ground radio SPI; CE-03 Forwarder→Decoder UART;\nCE-04 Decoder→CSV Payload; CE-05 Decoder→Dashboard Payload;\nCE-06 Dashboard→Decoder Command." {
+    class: note
+    shape: page
+  }
+
+  note_pass: "[C] Allocation pass: intended functions are owned by their modeled LC;\nno foreign DPS function appears in another LC; no direct bypass crosses LC boundaries\noutside the modeled CEs or local queues/protocols." {
+    class: note
+    shape: page
+  }
+
+  note_context: "[C] Context-load pass: ESS/ADS/PDM/AMS stay context-only for DPS\nand shared XIAO workload evidence does not starve OBCC radio/command handling\nat the 2 s v1.0 cadence." {
+    class: note
+    shape: page
+  }
+
+  note_stats_fault: "[C] Viewpoints: 100% allocation checklist coverage; flow-boundary consistency;\nimplementation/code ownership; runtime service gaps and queue growth; fault hardening\nfor missing/foreign function, stale command bypass and shared-load starvation." {
+    class: note
+    shape: page
+  }
+
+  note_report: "[C] Report/evidence: tests/results/DPS-V10-A-002/ records baseline,\nartifact versions, LC checklist, boundary-flow rationale, trace summary, anomalies,\nlimitations, waivers and reviewer disposition." {
+    class: note
+    shape: page
+  }
+}
+
+system.cansat.obcc_module.obcc_pcb.cansat_rfm.cansat_lora -> system.cansat.obcc_module.obcc_pcb.cansat_xiao.obcc: "[CE-01] SPI" { class: ce }
+system.ground_station_pcb.ground_xiao.ground_forwarder -> system.ground_station_pcb.ground_rfm.ground_lora: "[CE-02] SPI" { class: ce }
+system.ground_station_pcb.ground_xiao.ground_forwarder -> system.pc.decoder: "[CE-03] UART" { class: ce }
+system.pc.decoder -> system.pc.csv_writer: "[CE-04]" { class: ce }
+system.pc.decoder -> system.pc.dashboard: "[CE-05]" { class: ce }
+system.pc.dashboard -> system.pc.decoder: "[CE-06]" { class: ce }
+
+analyst -> system.pc.allocation_analysis_record: "[CE] Findings" { class: ce }
+runtime_trace_collector -> system.pc.allocation_analysis_record: "[CE] Metrics" { class: ce }
+system.pc.allocation_analysis_record -> reviewer: "[CE] Package" { class: ce }
+reviewer -> system.pc.allocation_analysis_record: "[CE] Review" { class: ce }
+
+system.note_scope -> system.pc.allocation_analysis_record { class: cstr }
+system.note_ce_map -> system.pc.allocation_analysis_record { class: cstr }
+system.note_pass -> system.pc.allocation_analysis_record { class: cstr }
+system.note_context -> system.cansat.obcc_module.obcc_pcb.cansat_xiao { class: cstr }
+system.note_context -> system.pc.allocation_analysis_record { class: cstr }
+system.note_stats_fault -> system.pc.allocation_analysis_record { class: cstr }
+system.note_report -> system.pc.allocation_analysis_record { class: cstr }
+
+# Layout-only edges to keep IVV actors above the UUT and preserve architecture bands.
+analyst -> runtime_trace_collector { style: { opacity: 0 } }
+runtime_trace_collector -> reviewer { style: { opacity: 0 } }
+reviewer -> system { style: { opacity: 0 } }
+system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.pc { style: { opacity: 0 } }

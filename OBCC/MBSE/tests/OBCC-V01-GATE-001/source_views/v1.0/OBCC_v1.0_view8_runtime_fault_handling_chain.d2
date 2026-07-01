@@ -1,0 +1,110 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain: runtime getter result-code handling, timeout policy,
+# non-blocking sensor-fault disclosure, emergency-deploy request policy,
+# degraded operation, and critical-fault safe/error state.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC v1.0 — Runtime fault-handling chain" {
+  class: chain
+  direction: down
+
+  collect_measurements: "[F] Collect\nmeasurements" { class: func }
+  call_variable_getters: "[F] Call variable\ngetters" { class: func }
+  count_timeouts: "[F] Count\ntimeouts" { class: func }
+  reset_timeouts: "[F] Reset\ntimeouts" { class: func }
+  classify_runtime_faults: "[F] Classify runtime\nfaults" { class: func }
+  disable_failed_sensor_getters: "[F] Disable failed\nsensor getters" { class: func }
+  replace_missing_value_with_error_code: "[F] Replace missing value\nwith error code" { class: func }
+  evaluate_emergency_deploy_need: "[F] Evaluate emergency\ndeploy need" { class: func }
+  enter_error_state: "[F] Enter safe/error\nstate" { class: func }
+  publish_health_flags: "[F] Publish\nhealth flags" { class: func }
+  add_heartbeat_status: "[F] Add heartbeat\nstatus" { class: func }
+
+  note_getters: "[C] Getter return codes indicate\nsuccess, overflow, underflow,\nor communication/runtime failure." {
+    class: note
+    shape: page
+  }
+
+  note_timeout: "[C] I2C/UART reads should timeout\n≤5 ms; no unbounded blocking\ninside FreeRTOS tasks." {
+    class: note
+    shape: page
+  }
+
+  note_sensor_policy: "[C] Runtime sensor/getter faults\nreturn bounded error codes;\nthey shall not block or brick\nthe CanSat scheduler." {
+    class: note
+    shape: page
+  }
+
+  note_emergency_deploy: "[C] If a runtime sensor fault\nremoves safe descent-state\nobservability, OBCC/PDM may\nrequest emergency deploy." {
+    class: note
+    shape: page
+  }
+
+  note_critical_policy: "[C] Runtime radio, deployment-path,\nor power critical faults may\nenter safe/error behavior." {
+    class: note
+    shape: page
+  }
+}
+
+chain.collect_measurements -> chain.call_variable_getters: "[FE] Getter calls []" { class: fe }
+chain.call_variable_getters -> chain.reset_timeouts: "[FE] Successful\nresults []" { class: fe }
+chain.call_variable_getters -> chain.count_timeouts: "[FE] Timeout or\nerror result []" { class: fe }
+chain.count_timeouts -> chain.classify_runtime_faults: "[FE] Fault evidence\n+ counters []" { class: fe }
+chain.classify_runtime_faults -> chain.disable_failed_sensor_getters: "[FE] Sensor getter\nfault []" { class: fe }
+chain.disable_failed_sensor_getters -> chain.replace_missing_value_with_error_code: "[FE] Disabled getter\nmask []" { class: fe }
+chain.classify_runtime_faults -> chain.evaluate_emergency_deploy_need: "[FE] Descent-state\nuncertain []" { class: fe }
+chain.evaluate_emergency_deploy_need -> chain.publish_health_flags: "[FE] Emergency deploy\nrequest + reason []" { class: fe }
+chain.classify_runtime_faults -> chain.enter_error_state: "[FE] Radio/deployment/power\ncritical fault []" { class: fe }
+chain.reset_timeouts -> chain.replace_missing_value_with_error_code: "[FE] Valid\nvalues []" { class: fe }
+chain.replace_missing_value_with_error_code -> chain.publish_health_flags: "[FE] Corrected values\n+ result codes []" { class: fe }
+chain.enter_error_state -> chain.publish_health_flags: "[FE] Safe/error state []" { class: fe }
+chain.publish_health_flags -> chain.add_heartbeat_status: "[FE] Health flags []" { class: fe }
+
+chain.note_getters -> chain.call_variable_getters { class: cstr }
+chain.note_timeout -> chain.count_timeouts { class: cstr }
+chain.note_sensor_policy -> chain.disable_failed_sensor_getters { class: cstr }
+chain.note_emergency_deploy -> chain.evaluate_emergency_deploy_need { class: cstr }
+chain.note_critical_policy -> chain.enter_error_state { class: cstr }
+

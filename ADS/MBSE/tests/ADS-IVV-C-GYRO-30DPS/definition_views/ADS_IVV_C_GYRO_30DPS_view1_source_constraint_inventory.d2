@@ -1,0 +1,89 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Source constraint inventory for ADS-IVV-C-GYRO-30DPS.
+# Constraint category verification: Angular-rate accuracy <30 deg/s.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-GYRO-30DPS\nSource constraint inventory\nRefs: IVV; ADS MBSE plan; IMU/I2C; SW/stats" {
+  class: sys
+  direction: down
+
+  versions: "[PC] Selected ADS MBSE source baselines" {
+    class: pc
+    direction: right
+    grid-columns: 2
+
+    v01: "[PC] v0.1 prototype\nsource_views/v0.1" {
+      class: pc
+      direction: down
+      note_na: "[C] N/A for ADS-IVV-C-GYRO-30DPS\nNo ICM20948 IMU, I2C CE, angular-rate chain,\nor Accuracy <30 deg/s constraint is modeled in v0.1.\nDo not claim angular-rate evidence from this baseline." { class: note; shape: page }
+    }
+
+    v02: "[PC] v0.2 prototype\nsource_views/v0.2" {
+      class: pc
+      direction: down
+      imu_chain: "[LC] Angular-rate constraint path\nview3 allocation + view5 chain" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        icm_reading: "[F] ICM20948 measures\nangular velocities" { class: func }
+        i2c_respond: "[F] Respond to I2C\nRequests" { class: func }
+        read_rates: "[F] Read angular\nvelocities" { class: func }
+        process_rates: "[F] Process angular\nvelocities" { class: func }
+        collect: "[F] Collect measurements\nLoop observation point" { class: func }
+        serial_log: "[F] Log via Serial0\nPC evidence path" { class: func }
+      }
+      note_constraint: "[C] Source constraint\nAccuracy <30 deg/s is linked to\nMeasure angular velocities. I2C carries request/response\nbetween ICM20948 and Loop. v0.2 has no explicit\nI2C <=5 ms timeout constraint; record as modeling gap." { class: note; shape: page }
+    }
+
+    v03: "[PC] v0.3 PCB delivery\nsource_views/v0.3" {
+      class: pc
+      direction: down
+      note_na: "[C] N/A for ADS-IVV-C-GYRO-30DPS\nThe source package includes ICM20948 hardware and I2C traces\nbut no LC, CE, allocation, functional chain, or\nAccuracy <30 deg/s behavioral constraint. Physical traces\nare not credited as angular-rate behavior." { class: note; shape: page }
+    }
+
+    v10: "[PC] v1.0 integrated CanSat\nsource_views/v1.0" {
+      class: pc
+      direction: down
+      imu_chain: "[LC] Angular-rate constraint path\nview3 allocation + view5 chain" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        icm_reading: "[F] ICM20948 measures\nangular velocities" { class: func }
+        i2c_respond: "[F] Respond to I2C\nRequests" { class: func }
+        read_rates: "[F] Read angular\nvelocities" { class: func }
+        process_rates: "[F] Process angular\nvelocities" { class: func }
+        collect: "[F] OBCC Collect\nmeasurements" { class: func }
+        delivery: "[F] ADS Processing delivers\nvia Pointers/Returns" { class: func }
+      }
+      note_constraint: "[C] Source constraint\nAccuracy <30 deg/s is linked to\nMeasure angular velocities. I2C CE crosses the ADS sensor\nPCB/backplane path to ADS Processing; v1.0 also models\nI2C timeout <=5 ms and OBCC delivery interfaces." { class: note; shape: page }
+    }
+  }
+
+  note_trace: "[C] Traceability targets\nConstraint <30 deg/s; ADS-CAP-IMU;\nADS-FE-CORRUPT-MEASUREMENT; ADS-FE-STUCK-LOOP.\nv1.0 evidence shall include the integrated ADS/OBCC\ncollection or delivery observation point where applicable." { class: note; shape: page }
+
+  note_activity: "[C] Activity scope\nIADT = Testing with supporting Analysis.\nIVV category = constraint. Applies to v0.2 and v1.0;\nexplicit N/A branches are recorded for v0.1 and v0.3." { class: note; shape: page }
+}
+
+system.versions.v02.note_constraint -> system.versions.v02.imu_chain.icm_reading { class: cstr }
+system.versions.v10.note_constraint -> system.versions.v10.imu_chain.icm_reading { class: cstr }
+system.note_trace -> system.versions { class: cstr }
+system.note_activity -> system.versions { class: cstr }

@@ -1,0 +1,190 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V09-GATE-001 Functional Chain: end-to-end mission-window rehearsal.
+# Function labels name the responsible human, equipment, or SUT participant.
+# No PC/LC/EA containers are used in this Functional Chain view.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V09-GATE-001 — End-to-end mission-window rehearsal advancement gate\nRefs: IVV, PM&SE/IVV, OBCC README, LoRa_Frame, Variable Getter Template, OBCC v1.0 views 1-8; trace: OBCC-UC-StartupHealth, TelemetryDownlink, WirelessCommand, DeploymentGate, RuntimeFaultHandling, feared events SilentCriticalFault/LostTelemetry/InvalidCommand/PrematureDeployment/NonDeployment/SchedulerBlocked" {
+  class: chain
+  direction: down
+
+  record_config: "[F] Config recorder:\nrecord UUT, firmware,\nradio settings, source\ncopy, and equipment IDs" { class: func }
+  record_environment: "[F] Ambient/weather recorder:\nread calibrated instruments\nand log conditions before\nrepetitions" { class: func }
+  pretest_inspection: "[F] Integrated operator:\nperform pre-test inspection,\nantenna/load check, current\nlimit, and fixture holdpoint" { class: func }
+  start_evidence_index: "[F] Evidence manager:\nopen results folder, time\nbase, photo/video/log index" { class: func }
+  arm_safe_fixture: "[F] Deployment-safety observer:\narm safe fixture and confirm\nno hazardous release path" { class: func }
+  apply_power_boot: "[F] Bench harness + operator:\napply current-limited power\nand press launch/start" { class: func }
+  startup_health: "[F] SUT: bootstrap OBCC, init\nFreeRTOS/buses, check critical\nand non-critical peripherals" { class: func }
+  publish_standby_health: "[F] SUT: publish Stand-by\nhealth, state metadata,\nand heartbeat telemetry" { class: func }
+  decode_store_standby: "[F] Ground PC: downlink,\ndecode, display, and store\nStand-by telemetry" { class: func }
+  log_rf_standby: "[F] RF monitor: log RSSI, SNR,\nreceived/lost frames,\nrange geometry, and channel" { class: func }
+  standby_trigger_probe: "[F] Fixture controller:\napply safe trigger/no-trigger\nprobe while still Stand-by" { class: func }
+  verify_standby_inhibit: "[F] SUT + observer:\nverify Stand-by inhibits\nopen command and telemetry\ncontinues" { class: func }
+  send_invalid_command: "[F] Fault-injection controller:\nsend invalid/corrupt command\nequivalence challenge" { class: func }
+  verify_invalid_rejected: "[F] SUT + ground operator:\nverify state unchanged, no\ndeployment, command error\nreported in telemetry" { class: func }
+  send_on_command: "[F] Range/ground operator:\nsend valid On command\nthrough ground station" { class: func }
+  transition_on: "[F] SUT: receive, validate,\nhandle On command and\npublish On state metadata" { class: func }
+  collect_measurements: "[F] SUT: collect measurements,\ncall getters, add health/status,\nqueue telemetry at 2 s cadence" { class: func }
+  downlink_decode_store: "[F] SUT + ground PC:\ngenerate frame, LoRa downlink,\ndecode/display/store CSV" { class: func }
+  verify_payload: "[F] Evidence manager:\nverify v1.0 payload schema,\n34-byte measurement payload,\nno relative humidity field" { class: func }
+  run_no_trigger_branch: "[F] Fixture controller:\nrun no-trigger branch\nwith On state active" { class: func }
+  verify_no_trigger_closed: "[F] SUT + observer:\nverify no open command and\nservo/fixture remains closed" { class: func }
+  run_safe_trigger_branch: "[F] Fixture controller:\napply safe deployment trigger\nor safe emergency-request proxy" { class: func }
+  verify_open_deadline: "[F] SUT + timing logger:\nverify open command/fixture\ntravel within ≤5 s in On" { class: func }
+  inject_runtime_faults: "[F] Fault-injection controller:\ninject selected safe getter,\nRF/frame, or sensor-timeout\nfaults" { class: func }
+  verify_fault_response: "[F] SUT + ground PC:\nverify bounded error codes,\nhealth telemetry, no scheduler\nblock, correct emergency policy" { class: func }
+  restore_nominal: "[F] Fault-injection controller:\nremove fault stimulus and\nverify telemetry/commands\nrecover or safe state persists" { class: func }
+  export_evidence: "[F] Evidence/data manager:\nexport raw logs, RF metrics,\nCSV, timing, photos/video,\nand deviations" { class: func }
+  compare_oracle: "[F] Analyst/operator:\ncompare evidence to FC-001..005\nregression oracle, constraints,\nand v1.0 source context" { class: func }
+  gate_decision: "[F] Integrated operator:\nrecord pass, fail, waiver,\nor corrective action for\nv0.9 -> v1.0 advancement" { class: func }
+  block_advancement: "[F] Integrated operator:\nblock advancement if any\nunresolved safety-critical gap\nor forbidden event remains" { class: func }
+
+  note_pf001: "[C] PF-001 configuration/source identity:\nrecord UUT serial/revision, firmware/commit/config,\nradio settings, source-view copies, equipment IDs,\ncalibration status, and the missing v0.9 source gap\nbefore any pass/fail classification." {
+    class: note
+    shape: page
+  }
+
+  note_pf002: "[C] PF-002 pre-test safety inspection:\n100% of rehearsal-critical physical components, physical\nlinks, antenna/dummy load, current limit, deployment fixture,\nconnector retention, and evidence paths are present and safe.\nNo powered step proceeds with unresolved short, loose\ndeployment link, unsafe RF path, or undispositioned substitution." {
+    class: note
+    shape: page
+  }
+
+  note_pf003: "[C] PF-003 startup health:\nnominal boot reaches Stand-by telemetry/heartbeat; startup\ncritical peripherals RFM95W, BME280, and Servo are healthy.\nAny critical startup fault blocks operational mode; non-critical\nfaults are telemetry-visible and degraded only." {
+    class: note
+    shape: page
+  }
+
+  note_pf004: "[C] PF-004 telemetry downlink:\nStand-by and On telemetry continue at the modeled 2 s cadence;\nframes use the v1.0 payload without relative humidity; received\nframes are decoded, displayed, and stored. ≥500 m / ≥90% PDR\nclaims require independent packet evidence and exact one-sided\n95% confidence bounds, not just this rehearsal." {
+    class: note
+    shape: page
+  }
+
+  note_pf005: "[C] PF-005 command/state:\nvalid On and Stand-by commands change state exactly once and\nare reflected in telemetry. Invalid/corrupt/duplicate/out-of-context\ncommands do not change state, do not deploy, and are recorded." {
+    class: note
+    shape: page
+  }
+
+  note_pf006: "[C] PF-006 deployment gate:\nStand-by shall never produce an open-servo command, including\nemergency-deploy requests. In On mode, valid trigger or safe\nemergency proxy produces open command/fixture travel within ≤5 s;\nno-trigger branch remains closed." {
+    class: note
+    shape: page
+  }
+
+  note_pf007: "[C] PF-007 runtime fault hardening:\nselected safe I2C/UART/SPI/getter/RF/sensor faults return bounded\nresult codes or health flags, do not block FreeRTOS scheduling,\nand follow the modeled emergency-deploy/safe-error policy.\nForbidden events: scheduler hang, silent critical fault, premature\ndeployment, non-deployment under required trigger, lost evidence." {
+    class: note
+    shape: page
+  }
+
+  note_pf008: "[C] PF-008 evidence completeness:\nreports reference this modeled chain and record actual results,\nas-tested configuration, raw telemetry/CSV/RF/timing/photo/video\nevidence, deviations, anomalies, waivers, and pass/fail rationale\nunder tests/results/OBCC-V09-GATE-001/." {
+    class: note
+    shape: page
+  }
+
+  note_pf009: "[C] PF-009 statistical significance viewpoint:\nthis mission rehearsal is integration demonstration/testing evidence.\nIt does not prove reliability unless sample independence and counts\nare justified. Use 29/29 for R90/C95 binary screening, 59/59 for\n95/95 timing limits, and exact binomial bounds for PDR claims." {
+    class: note
+    shape: page
+  }
+
+  note_pf010: "[C] PF-010 environmental/fault context:\nambient/weather instruments, range geometry, RF settings, power\nstate, fixture state, and selected fault profiles are formalized\nas evidence-producing means, not free-text assumptions." {
+    class: note
+    shape: page
+  }
+
+  note_source_gap: "[C] Source gap:\nno v0.9 Capella/D2 views exist in the repository. This rehearsal\nuses copied v1.0 views as target context for the advancement gate\nand must not edit source model files under OBCC/MBSE/v1.0/." {
+    class: note
+    shape: page
+  }
+}
+
+chain.record_config -> chain.record_environment: "[FE] As-tested identity\n[UUT/equipment/source IDs]" { class: fe }
+chain.record_environment -> chain.pretest_inspection: "[FE] Environmental context\n[ambient/weather]" { class: fe }
+chain.pretest_inspection -> chain.start_evidence_index: "[FE] Safety holdpoint\npassed [go/no-go]" { class: fe }
+chain.start_evidence_index -> chain.arm_safe_fixture: "[FE] Evidence index\nready [time base]" { class: fe }
+chain.arm_safe_fixture -> chain.apply_power_boot: "[FE] Fixture safe\n[restraint/travel mark]" { class: fe }
+chain.apply_power_boot -> chain.startup_health: "[FE] Boot stimulus\n[current-limited power]" { class: fe }
+chain.startup_health -> chain.publish_standby_health: "[FE] Startup result\n[health state]" { class: fe }
+chain.publish_standby_health -> chain.decode_store_standby: "[FE] Stand-by heartbeat\n[LoRa Frame v1.0]" { class: fe }
+chain.decode_store_standby -> chain.log_rf_standby: "[FE] Decoded telemetry\n[CSV/dashboard]" { class: fe }
+chain.log_rf_standby -> chain.standby_trigger_probe: "[FE] RF baseline\n[RSSI/SNR/PDR]" { class: fe }
+chain.standby_trigger_probe -> chain.verify_standby_inhibit: "[FE] Safe trigger\nprobe + Stand-by" { class: fe }
+chain.verify_standby_inhibit -> chain.send_invalid_command: "[FE] Inhibit evidence\n[no open + telemetry]" { class: fe }
+chain.send_invalid_command -> chain.verify_invalid_rejected: "[FE] Invalid frame\n[bad/opcode/CRC class]" { class: fe }
+chain.verify_invalid_rejected -> chain.send_on_command: "[FE] Command rejection\nevidence [state unchanged]" { class: fe }
+chain.send_on_command -> chain.transition_on: "[FE] Valid On command\n[LoRa command frame]" { class: fe }
+chain.transition_on -> chain.collect_measurements: "[FE] On state update\n[state metadata]" { class: fe }
+chain.collect_measurements -> chain.downlink_decode_store: "[FE] Telemetry set\n[measurements + status]" { class: fe }
+chain.downlink_decode_store -> chain.verify_payload: "[FE] Downlinked frames\n[decoded payloads]" { class: fe }
+chain.verify_payload -> chain.run_no_trigger_branch: "[FE] Payload oracle\nresult [schema/cadence]" { class: fe }
+chain.run_no_trigger_branch -> chain.verify_no_trigger_closed: "[FE] No-trigger profile\n[On active]" { class: fe }
+chain.verify_no_trigger_closed -> chain.run_safe_trigger_branch: "[FE] Closed fixture\nevidence [no open]" { class: fe }
+chain.run_safe_trigger_branch -> chain.verify_open_deadline: "[FE] Safe trigger or\nemergency proxy [On]" { class: fe }
+chain.verify_open_deadline -> chain.inject_runtime_faults: "[FE] Deployment timing\nevidence [≤5 s]" { class: fe }
+chain.inject_runtime_faults -> chain.verify_fault_response: "[FE] Fault stimulus\n[selected safe class]" { class: fe }
+chain.verify_fault_response -> chain.restore_nominal: "[FE] Fault response\nevidence [codes/status]" { class: fe }
+chain.restore_nominal -> chain.export_evidence: "[FE] Recovery or safe\nstate evidence" { class: fe }
+chain.export_evidence -> chain.compare_oracle: "[FE] Evidence package\n[raw files + deviations]" { class: fe }
+chain.compare_oracle -> chain.gate_decision: "[FE] All mandatory\ncriteria pass or waived" { class: fe }
+chain.compare_oracle -> chain.block_advancement: "[FE] Unresolved failure\n[forbidden event/gap]" { class: fe }
+chain.block_advancement -> chain.gate_decision: "[FE] Advancement blocked\n[fail/rework]" { class: fe }
+
+chain.note_pf001 -> chain.record_config { class: cstr }
+chain.note_pf001 -> chain.start_evidence_index { class: cstr }
+chain.note_pf002 -> chain.pretest_inspection { class: cstr }
+chain.note_pf002 -> chain.arm_safe_fixture { class: cstr }
+chain.note_pf003 -> chain.startup_health { class: cstr }
+chain.note_pf003 -> chain.publish_standby_health { class: cstr }
+chain.note_pf004 -> chain.collect_measurements { class: cstr }
+chain.note_pf004 -> chain.downlink_decode_store { class: cstr }
+chain.note_pf005 -> chain.send_invalid_command { class: cstr }
+chain.note_pf005 -> chain.send_on_command { class: cstr }
+chain.note_pf006 -> chain.verify_standby_inhibit { class: cstr }
+chain.note_pf006 -> chain.verify_open_deadline { class: cstr }
+chain.note_pf007 -> chain.inject_runtime_faults { class: cstr }
+chain.note_pf007 -> chain.verify_fault_response { class: cstr }
+chain.note_pf008 -> chain.export_evidence { class: cstr }
+chain.note_pf008 -> chain.compare_oracle { class: cstr }
+chain.note_pf009 -> chain.gate_decision { class: cstr }
+chain.note_pf010 -> chain.record_environment { class: cstr }
+chain.note_pf010 -> chain.log_rf_standby { class: cstr }
+chain.note_source_gap -> chain.record_config { class: cstr }

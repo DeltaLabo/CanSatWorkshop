@@ -1,0 +1,151 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V03-GATE-001 PV1: telemetry downlink RF/range physical setup.
+# No v0.3 Capella source views exist in this repository; copied v1.0
+# telemetry/downlink views are used as target-architecture context only.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 24 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+telemetry_stimulus_fixture: "[EA] Telemetry stimulus fixture\nknown payload values\n(model TBD)" { class: ea }
+range_survey_kit: "[EA] Range survey kit\nGNSS / laser rangefinder\n(model TBD)" { class: ea }
+weather_meter: "[EA] Weather station\nthermometer / anemometer\n(model TBD)" { class: ea }
+time_reference: "[EA] Reference time source\nNTP or GPS-disciplined\n(model TBD)" { class: ea }
+antenna_orientation_fixture: "[EA] Antenna orientation\ncheck fixture / compass\n(model TBD)" { class: ea }
+
+system: "[System] OBCC-V03-GATE-001 — v0.3 LoRa telemetry RF/range gate physical setup\nRefs: IVV, OBCC README, LoRa_Frame, v1.0 PV1/PV2/PV3/Telemetry chain" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat_test_article: "[PC] v0.3 OBCC telemetry\ntest article / UUT" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC module\n(target v1.0 context)" {
+      class: pc
+      direction: right
+      grid-columns: 3
+
+      xiao: "[PC] XIAO ESP32-S3" { class: pc }
+      rfm95w: "[PC] RFM95W LoRa" { class: pc }
+      flight_antenna: "[PC] Flight LoRa antenna\n/ feedline" { class: pc }
+      backplane_connector: "[PC] OBCC backplane\n/ stimulus connector" { class: pc }
+    }
+
+    source_context: "[PC] ADS / AMS / PDS\nsource context or stubs" {
+      class: pc
+      direction: right
+      grid-columns: 3
+      imu_source: "[PC] IMU / kinematic\nsource" { class: pc }
+      env_source: "[PC] BME280 / pressure\ntemperature source" { class: pc }
+      power_source: "[PC] INA219 / battery\nsource" { class: pc }
+    }
+  }
+
+  ground_station: "[PC] Ground station\ntelemetry receiver" {
+    class: pc
+    direction: right
+    grid-columns: 3
+
+    ground_rfm95w: "[PC] RFM95W LoRa" { class: pc }
+    ground_antenna: "[PC] Ground LoRa antenna\n/ feedline" { class: pc }
+    ground_xiao: "[PC] XIAO ESP32\nforwarder" { class: pc }
+  }
+
+  logging_pc: "[PC] PC decoder / dashboard\n/ CSV logger" {
+    class: pc
+    direction: down
+    usb_port: "[PC] USB Port" { class: pc }
+    evidence_storage: "[PC] Evidence storage\nresults/OBCC-V03-GATE-001" { class: pc }
+  }
+
+  note_range: "[C] Range/PDR condition: execute at\n>=500 m separation or an RF-equivalent\nsetup justified in the report. Log path\ngeometry, antenna orientation, RSSI/SNR,\nand exact one-sided binomial PDR evidence." {
+    class: note
+    shape: page
+  }
+
+  note_payload: "[C] Payload/schema condition: v1.0 target\nmeasurement payload is 34 bytes before\nframe/status metadata and excludes\nrelative humidity; RH must not be\nsilently decoded as another field." {
+    class: note
+    shape: page
+  }
+
+  note_source_gap: "[C] Source baseline gap: no v0.3\nCapella/D2 views are present; this\ngate uses copied v1.0 telemetry views\nas target-context only." {
+    class: note
+    shape: page
+  }
+}
+
+telemetry_stimulus_fixture -- system.cansat_test_article.obcc_module.backplane_connector: "[PL] Stimulus harness\nI2C/UART/getter stubs" { class: pl }
+range_survey_kit -- system.cansat_test_article: "[PL] Surveyed UUT\nendpoint" { class: pl }
+range_survey_kit -- system.ground_station: "[PL] Surveyed ground\nendpoint" { class: pl }
+weather_meter -- system.cansat_test_article: "[PL] Ambient/weather\nobservation" { class: pl }
+time_reference -- system.logging_pc.usb_port: "[PL] Time-sync\nUSB/NTP/GPS" { class: pl }
+antenna_orientation_fixture -- system.cansat_test_article.obcc_module.flight_antenna: "[PL] Azimuth/elevation\norientation check" { class: pl }
+antenna_orientation_fixture -- system.ground_station.ground_antenna: "[PL] Azimuth/elevation\norientation check" { class: pl }
+
+system.cansat_test_article.obcc_module.xiao -- system.cansat_test_article.obcc_module.rfm95w: "[PL] SPI + 3V3\ntraces/harness" { class: pl }
+system.cansat_test_article.obcc_module.rfm95w -- system.cansat_test_article.obcc_module.flight_antenna: "[PL] RF feedline\n/ antenna mount" { class: pl }
+system.cansat_test_article.obcc_module.xiao -- system.cansat_test_article.obcc_module.backplane_connector: "[PL] I2C/UART/power\nbackplane traces" { class: pl }
+system.cansat_test_article.obcc_module.backplane_connector -- system.cansat_test_article.source_context: "[PL] Source-module\ninterface harness" { class: pl }
+
+system.cansat_test_article.obcc_module.flight_antenna -- system.ground_station.ground_antenna: "[PL] LoRa RF path\n>=500 m / equivalent" { class: pl }
+system.ground_station.ground_antenna -- system.ground_station.ground_rfm95w: "[PL] RF feedline\n/ antenna mount" { class: pl }
+system.ground_station.ground_rfm95w -- system.ground_station.ground_xiao: "[PL] SPI + power\ntraces/harness" { class: pl }
+system.ground_station.ground_xiao -- system.logging_pc.usb_port: "[PL] USB-C serial\nraw-frame log" { class: pl }
+system.logging_pc.usb_port -- system.logging_pc.evidence_storage: "[PL] File-system\nwrite path" { class: pl }
+
+system.note_range -> system.cansat_test_article.obcc_module.flight_antenna { class: cstr }
+system.note_range -> system.ground_station.ground_antenna { class: cstr }
+system.note_payload -> system.logging_pc.evidence_storage { class: cstr }
+system.note_source_gap -> system.cansat_test_article { class: cstr }
+
+# Layout-only edges keep external equipment above the flight-to-ground path and notes below.
+telemetry_stimulus_fixture -> range_survey_kit { style: { opacity: 0 } }
+range_survey_kit -> weather_meter { style: { opacity: 0 } }
+weather_meter -> time_reference { style: { opacity: 0 } }
+time_reference -> antenna_orientation_fixture { style: { opacity: 0 } }
+system.cansat_test_article -> system.ground_station { style: { opacity: 0 } }
+system.ground_station -> system.logging_pc { style: { opacity: 0 } }
+system.logging_pc -> system.note_range { style: { opacity: 0 } }
+system.note_range -> system.note_payload { style: { opacity: 0 } }
+system.note_payload -> system.note_source_gap { style: { opacity: 0 } }

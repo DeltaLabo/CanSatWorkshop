@@ -1,0 +1,136 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Verification-only functional allocation for ADS-IVV-C-GYRO-30DPS.
+# Allocates test, logging, fault-injection, ambient, and analysis functions to EAs and the selected ADS UUT.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-GYRO-30DPS\nVerification functional allocation\nRefs: IVV; NASA-SE; IMU/I2C; SW/stats" {
+  class: sys
+  direction: down
+
+  selected_ads: "[PC] Selected ADS UUT\nv0.2 or v1.0 when applicable" {
+    class: pc
+    direction: down
+    observation_lc: "[LC] Angular-rate constraint\nobservation interface" {
+      class: lc
+      direction: down
+      grid-columns: 2
+      expose_source: "[F] Expose copied source\nconstraint and chain" { class: func }
+      emit_ads_rates: "[F] Emit ADS gx/gy/gz,\nstatus, timestamps" { class: func }
+      expose_i2c: "[F] Expose I2C request,\nresponse, timeout/error markers" { class: func }
+      expose_validity: "[F] Expose validity, freshness,\nsaturation and range state" { class: func }
+      emit_delivery: "[F] Emit collection/delivery\nobservation record" { class: func }
+      probe_terminal: "[F] Provide test-only\nprobe/log terminal" { class: func }
+    }
+  }
+}
+
+conductor: "[EA] Human IVV\ntest conductor" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  select_baseline: "[F] Select ADS version,\nmodel baseline, firmware commit" { class: func }
+  read_ambient: "[F] Read and record\nambient monitor" { class: func }
+  align_fixture: "[F] Mount UUT and\nverify axis alignment" { class: func }
+  run_nominal: "[F] Run nominal static\nand rate campaign" { class: func }
+  run_faults: "[F] Run I2C, stale,\nsaturation campaign" { class: func }
+  record_deviations: "[F] Record deviations,\nwaivers, retest status" { class: func }
+}
+
+reference: "[EA] Angular-rate reference\nand axis fixture" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  provide_truth: "[F] Provide truth\ngx/gy/gz/time" { class: func }
+  provide_conditions: "[F] Provide still and\nknown-rate conditions" { class: func }
+  provide_alignment: "[F] Provide axis/sign\nalignment evidence" { class: func }
+  provide_uncertainty: "[F] Provide reference\nuncertainty and guard band" { class: func }
+}
+
+logger: "[EA] PC / OBCC logger\nand timebase" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  capture_ads: "[F] Capture ADS angular-rate\nsamples and status" { class: func }
+  capture_truth: "[F] Capture truth, ambient,\nfault and timebase records" { class: func }
+  capture_delivery: "[F] Capture v1.0 integrated\nADS/OBCC delivery evidence" { class: func }
+  preserve_raw: "[F] Preserve raw logs\nand calibration metadata" { class: func }
+}
+
+fault_injector: "[EA] I2C / IMU\nfault injector" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  inject_i2c: "[F] Inject NACK, stuck bus,\nwrong address, partial read" { class: func }
+  inject_data_faults: "[F] Inject stale, saturated,\nout-of-range values" { class: func }
+  mark_faults: "[F] Emit fault markers\nand recovery times" { class: func }
+  restore_nominal: "[F] Restore nominal\nI2C/IMU behavior" { class: func }
+}
+
+ambient: "[EA] Ambient monitor" {
+  class: ea
+  direction: down
+  measure_env: "[F] Measure temperature\nand humidity before repetitions" { class: func }
+  report_cal: "[F] Report equipment ID\nand calibration status" { class: func }
+}
+
+analysis_tool: "[EA] Statistical analysis\ntool" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  align_samples: "[F] Align truth and ADS\nvalid samples" { class: func }
+  compute_error: "[F] Compute per-axis\nabsolute angular-rate error" { class: func }
+  compute_bound: "[F] Apply uncertainty guard\nband or 95/95 bound" { class: func }
+  assess_validity: "[F] Assess finite/range,\nstale, saturation, I2C validity" { class: func }
+  assess_faults: "[F] Assess fault rejection\nand recovery" { class: func }
+  make_verdict: "[F] Produce pass/fail\nor N/A rationale" { class: func }
+}
+
+quality: "[EA] Quality / configuration\nauthority" {
+  class: ea
+  direction: down
+  review_result: "[F] Review traceability,\nlimitations, anomalies" { class: func }
+}
+
+note_pass: "[C] Constraint pass/fail allocation\nThe <30 deg/s constraint is verified by the analysis tool using\nvalid ADS/truth pairs; v1.0 must include integrated delivery\nwhere applicable. Faulted samples may be excluded from accuracy\nonly when ADS marks or handles them as invalid." { class: note; shape: page }
+note_stats: "[C] Statistical viewpoint\nMinimum n >= 30 matched valid samples per axis/rate condition.\nFor a formal 95/95 claim, record tolerance/confidence method,\nreference uncertainty, alignment uncertainty, and guard band." { class: note; shape: page }
+note_fault: "[C] Fault-hardening viewpoint\nSaturated, stale, non-finite, out-of-range, or I2C-fault data\nshall not be accepted as valid. v1.0 I2C reads shall return\ndata or timeout/error <=5 ms; v0.2 timeout remains a model gap." { class: note; shape: page }
+note_na: "[C] N/A rule\nv0.1 passes N/A only after confirming no IMU/angular-rate\nconstraint exists. v0.3 passes N/A only after confirming it is\nPCB-only with no behavioral LC/CE/functional-chain model." { class: note; shape: page }
+
+note_pass -> analysis_tool.compute_error { class: cstr }
+note_pass -> analysis_tool.make_verdict { class: cstr }
+note_stats -> analysis_tool.compute_bound { class: cstr }
+note_fault -> analysis_tool.assess_faults { class: cstr }
+note_fault -> system.selected_ads.observation_lc.expose_i2c { class: cstr }
+note_na -> conductor.record_deviations { class: cstr }
+
+# Layout-only edge to keep verification means in execution order.
+system -> conductor { style: { opacity: 0 } }
+conductor -> reference { style: { opacity: 0 } }
+reference -> logger { style: { opacity: 0 } }
+logger -> fault_injector { style: { opacity: 0 } }
+fault_injector -> ambient { style: { opacity: 0 } }
+ambient -> analysis_tool { style: { opacity: 0 } }
+analysis_tool -> quality { style: { opacity: 0 } }
+quality -> note_pass { style: { opacity: 0 } }
+note_pass -> note_stats { style: { opacity: 0 } }
+note_stats -> note_fault { style: { opacity: 0 } }
+note_fault -> note_na { style: { opacity: 0 } }

@@ -1,0 +1,70 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical test setup view for ADS-IVV-FC-INIT.
+# PV1-style setup: tangible UUT, non-human test-equipment external actors, physical links, and physical/environment constraints.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-INIT\nPhysical boot/fault test setup\nRefs: IVV; NASA-SE; GPS/UBX; IMU/I2C; SW/stats" {
+  class: sys
+  direction: down
+
+  uut: "[PC] Selected ADS UUT\none version per execution" {
+    class: pc
+    direction: down
+    grid-columns: 2
+    v01: "[PC] v0.1 GPS + XIAO\nprototype runtime article" { class: pc }
+    v02: "[PC] v0.2 GPS + IMU + XIAO\nprototype runtime article" { class: pc }
+    v03: "[PC] v0.3 ADS PCB\nN/A behavior article" { class: pc }
+    v10: "[PC] v1.0 integrated\nCanSat / ADS / OBCC article" { class: pc }
+  }
+}
+
+power_supply: "[EA] Current-limited\nbench power supply / battery simulator" { class: ea }
+reset_control: "[EA] Boot/reset control\nbutton, reset lead, or power-cycle relay" { class: ea }
+pc_logger: "[EA] PC data logger\nUSB Serial0 / debug log capture" { class: ea }
+obcc_logger: "[EA] OBCC data logger\nv1.0 collection/debug capture" { class: ea }
+gps_fault_harness: "[EA] Switchable GPS\nfault-injection harness" { class: ea }
+imu_fault_harness: "[EA] Switchable IMU\nfault-injection harness" { class: ea }
+ambient_monitor: "[EA] Ambient thermometer\n/ hygrometer" { class: ea }
+analysis_station: "[EA] Analysis / review\nstation and evidence store" { class: ea }
+
+note_power: "[C] Power/reset constraint\nUse current limit and record supply voltage/current.\nA boot trial fails if over-current, brownout, unexpected reset,\nor unrecovered hang occurs outside the deliberate reset step." { class: note; shape: page }
+note_faults: "[C] Fault harness states\nNominal; GPS disconnected/silent/no-fix; IMU disconnected\nor NACKing where IMU is applicable. Harness changes shall be\nmarked in the log before reset/boot evidence is captured." { class: note; shape: page }
+note_environment: "[C] Environmental condition\nBefore repetitions, read ambient temperature and humidity\nfrom the modeled thermometer/hygrometer and record equipment ID,\ncalibration status, and actual values. No fixed room-temperature\nclaim is made unless a later controlled requirement adds one." { class: note; shape: page }
+note_applicability: "[C] Applicability\nv0.1: GPS init + Serial0/Serial1 context.\nv0.2: GPS + ICM20948 init + Serial context.\nv1.0: GPS + ICM20948 init via ADS Processing/OBCC.\nv0.3: PCB-only N/A, no runtime boot behavior." { class: note; shape: page }
+
+# Verification physical links.
+power_supply -- system.uut: "[PL] current-limited\npower leads" { class: pl }
+reset_control -- system.uut: "[PL] reset / boot\ncontrol access" { class: pl }
+pc_logger -- system.uut: "[PL] USB Serial0 or\ndebug log cable" { class: pl }
+obcc_logger -- system.uut: "[PL] OBCC debug\nlog interface" { class: pl }
+gps_fault_harness -- system.uut: "[PL] GPS UART/RF\ndisconnect harness" { class: pl }
+imu_fault_harness -- system.uut: "[PL] IMU I2C\ndisconnect/NACK harness" { class: pl }
+ambient_monitor -- system.uut: "[PL] ambient\nprobe placement" { class: pl }
+analysis_station -- system.uut: "[PL] evidence\nmedia / review dock" { class: pl }
+
+note_power -> power_supply { class: cstr }
+note_power -> reset_control { class: cstr }
+note_faults -> gps_fault_harness { class: cstr }
+note_faults -> imu_fault_harness { class: cstr }
+note_environment -> ambient_monitor { class: cstr }
+note_applicability -> system.uut { class: cstr }
+

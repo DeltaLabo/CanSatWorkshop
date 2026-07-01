@@ -1,0 +1,269 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V06-GATE-001 PV3: runtime fault-handling verification functional allocation.
+# Shows human/operator functions, test-equipment functions, and verification-only
+# UUT functions introduced for the v0.6 non-blocking runtime-fault gate.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  inspect_runtime_setup: "[F] Inspect fault-injection\nsetup and probe attachment" { class: func }
+  select_fault_matrix: "[F] Select I2C, UART,\nSPI/radio, queue, state,\nor power fault case" { class: func }
+  command_operational_mode: "[F] Command On or\nStand-by mode" { class: func }
+  authorize_repetition: "[F] Authorize next\nrepetition after reset" { class: func }
+  record_deviations: "[F] Record pass/fail,\nanomalies, and deviations" { class: func }
+}
+
+safety_observer: "[EA] Safety Observer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  confirm_no_live_release: "[F] Confirm no live\nparachute release hazard" { class: func }
+  hold_on_unsafe_fault: "[F] Hold test if power,\nRF, or deployment path\nis unsafe" { class: func }
+}
+
+fault_injection_controller: "[EA] Fault-injection controller" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  load_fault_profile: "[F] Load fault profile\nand expected oracle" { class: func }
+  synchronize_fault_time: "[F] Synchronize fault\nstart/stop with trace clock" { class: func }
+  restore_nominal_state: "[F] Restore nominal bus,\nradio, queue, and mode state" { class: func }
+}
+
+bus_fault_injector: "[EA] Bus/protocol fault injector" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  inject_i2c_fault: "[F] Inject I2C NACK,\nstuck SDA/SCL, or late data" { class: func }
+  inject_uart_fault: "[F] Inject UART silence,\nmalformed, or delayed frame" { class: func }
+  inject_spi_radio_fault: "[F] Inject SPI radio busy,\nCRC/status, or RF-loss fault" { class: func }
+  inject_queue_state_fault: "[F] Inject queue overflow,\nstate delay, or stale message" { class: func }
+}
+
+trace_timing_collector: "[EA] Trace and timing collector" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  stamp_trial_events: "[F] Timestamp trial ID,\nfault start/stop, and reset" { class: func }
+  measure_getter_duration: "[F] Measure getter\nentry-to-return duration" { class: func }
+  capture_task_heartbeat: "[F] Capture FreeRTOS\ntask heartbeat and watchdog state" { class: func }
+  capture_queue_mutex: "[F] Capture queue depth,\nstate gate, and mutex hold time" { class: func }
+  compute_telemetry_gaps: "[F] Compute telemetry\nintervals and worst gap" { class: func }
+  compare_timing_oracle: "[F] Compare timing and\nliveness against oracle" { class: func }
+}
+
+rf_health_monitor: "[EA] RF / health telemetry monitor" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  capture_lora_frames: "[F] Capture LoRa health /\nstatus frames" { class: func }
+  decode_error_codes: "[F] Decode result/error\ncodes and health flags" { class: func }
+  log_rssi_snr_loss: "[F] Log RSSI, SNR,\npacket loss, and RF fault" { class: func }
+  compare_health_oracle: "[F] Compare health telemetry\nagainst injected fault oracle" { class: func }
+}
+
+bench_power_reset: "[EA] Bench power / reset controller" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  supply_current_limited_power: "[F] Supply current-limited\nbench power" { class: func }
+  inject_power_critical_fault: "[F] Inject safe power\ncritical-fault case" { class: func }
+  reset_between_trials: "[F] Reset or power-cycle\nUUT between selected trials" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" {
+  class: ea
+  direction: down
+  measure_ambient: "[F] Measure ambient\nbench condition before\nrepetitions" { class: func }
+}
+
+system: "[System] OBCC-V06-GATE-001 — v0.6 runtime fault-handling functional allocation\nRefs: IVV, OBCC README, Variable Getter Template, v1.0 PV3/Fault/Telemetry/Deployment chains" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  uut: "[PC] v0.6 OBCC runtime\nfault-handling UUT" {
+    class: pc
+    direction: down
+
+    obcc_controller: "[PC] XIAO ESP32-S3\nOBCC controller" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      runtime_test_harness: "[LC] Runtime-fault\ntest harness\n(verification-only)" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        load_trial_matrix: "[F] Load fault-class,\nmode, and repetition matrix" { class: func }
+        arm_trace_hooks: "[F] Arm RTOS, bus,\nmode-gate, and telemetry hooks" { class: func }
+        stamp_uut_events: "[F] Stamp UUT events\nwith monotonic time" { class: func }
+        expose_reset_marker: "[F] Expose reset /\npower-fault marker to trace" { class: func }
+      }
+
+      free_rtos_monitor: "[LC] FreeRTOS scheduler\nand queue monitor\n(verification-only)" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        publish_task_heartbeats: "[F] Publish task\nheartbeats" { class: func }
+        monitor_queue_depth: "[F] Monitor queue depth\nand overflow flags" { class: func }
+        monitor_mutex_holds: "[F] Monitor shared-bus\nmutex hold time" { class: func }
+        detect_blocked_gate: "[F] Detect blocked task,\ngate, queue, or ISR path" { class: func }
+      }
+
+      bus_timeout_mutex: "[LC] Bus timeout and\nmutex protection" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        protect_shared_buses: "[F] Protect shared\nI2C/SPI/UART resources" { class: func }
+        apply_i2c_uart_timeout: "[F] Apply I2C/UART\nread timeout <=5 ms" { class: func }
+        bound_spi_radio_busy: "[F] Bound SPI/radio\nbusy result" { class: func }
+        return_bus_status: "[F] Return bounded bus\nstatus to getter" { class: func }
+      }
+
+      variable_getter_wrapper: "[LC] Variable getter\nwrapper" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        call_variable_getters: "[F] Call variable\ngetters" { class: func }
+        map_result_codes: "[F] Map success, overflow,\nunderflow, timeout, and\ncomm/runtime error codes" { class: func }
+        mark_stale_or_missing: "[F] Mark stale or\nmissing values" { class: func }
+      }
+
+      runtime_fault_classifier: "[LC] Runtime fault\nclassifier" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        count_timeouts: "[F] Count timeouts\nper getter/source" { class: func }
+        reset_timeouts: "[F] Reset timeout counters\nafter valid recovery" { class: func }
+        classify_runtime_faults: "[F] Classify I2C, UART,\nSPI/radio, queue/state,\npower, or deployment-path fault" { class: func }
+        disable_failed_getters: "[F] Disable failed\nsensor getters when policy\nrequires" { class: func }
+      }
+
+      telemetry_health_publisher: "[LC] Telemetry and\nhealth publisher" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        replace_missing_value: "[F] Replace missing value\nwith error code" { class: func }
+        publish_health_flags: "[F] Publish health flags\nand bounded result codes" { class: func }
+        add_heartbeat_status: "[F] Add heartbeat, state,\nand degraded-mode status" { class: func }
+        enqueue_telemetry: "[F] Enqueue telemetry\nwithout unbounded wait" { class: func }
+      }
+
+      command_state_gate: "[LC] Command/state and\nmode gate" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        publish_state_metadata: "[F] Publish On /\nStand-by state metadata" { class: func }
+        evaluate_emergency_deploy_need: "[F] Evaluate emergency\ndeploy need from observability" { class: func }
+        inhibit_deploy_in_standby: "[F] Inhibit emergency\ndeploy request in Stand-by" { class: func }
+        emit_onmode_emergency_request: "[F] Emit On-mode emergency\ndeploy request when policy permits" { class: func }
+      }
+
+      safe_error_manager: "[LC] Safe/error-state\nmanager" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        enter_safe_error_state: "[F] Enter safe/error\nstate for critical runtime fault" { class: func }
+        publish_safe_error_reason: "[F] Publish safe/error\nreason when observable" { class: func }
+      }
+    }
+
+    lora_radio: "[PC] RFM95W LoRa" {
+      class: pc
+      lora_transceiver: "[LC] LoRa Transceiver" {
+        class: lc
+        direction: down
+        transmit_health_telemetry: "[F] Transmit health /\nstatus telemetry" { class: func }
+        report_radio_fault_status: "[F] Report radio busy\nor RF fault status" { class: func }
+      }
+    }
+  }
+}
+
+note_source_gap: "[C] No v0.6 Capella/D2 source baseline exists;\nthis verification allocation uses copied v1.0 runtime-fault,\ntelemetry, deployment, logical, and physical views as target context." {
+  class: note
+  shape: page
+}
+
+note_pf: "[C] Pass/fail allocation policy: every injected fault\nshall terminate in a bounded result/error code, health/status\ntelemetry or trace evidence, no unbounded scheduler blockage,\nand emergency/safe-error behavior consistent with the modeled policy." {
+  class: note
+  shape: page
+}
+
+note_statistics: "[C] Statistical viewpoint: use 59/59 in-limit\nI2C/UART timeout samples per applicable getter/fault class for\n95/95 timing claims where feasible; fault-class trials are\nclassified pass/fail and remain advancement screening unless\nindependence is justified." {
+  class: note
+  shape: page
+}
+
+note_fault_hardening: "[C] Fault-hardening viewpoint: cover I2C NACK/stuck bus,\nUART silence/malformed frames, SPI/radio busy or RF loss,\nqueue/state/mode-gate stress, power/deployment critical faults,\nand recovery/restoration after each injected fault." {
+  class: note
+  shape: page
+}
+
+note_source_gap -> system.uut.obcc_controller.runtime_test_harness { class: cstr }
+note_pf -> system.uut.obcc_controller.runtime_fault_classifier { class: cstr }
+note_pf -> system.uut.obcc_controller.telemetry_health_publisher { class: cstr }
+note_statistics -> trace_timing_collector.measure_getter_duration { class: cstr }
+note_fault_hardening -> bus_fault_injector.inject_i2c_fault { class: cstr }
+note_fault_hardening -> bus_fault_injector.inject_uart_fault { class: cstr }
+note_fault_hardening -> bus_fault_injector.inject_spi_radio_fault { class: cstr }
+note_fault_hardening -> bus_fault_injector.inject_queue_state_fault { class: cstr }
+
+# Layout-only edges keep actors above the UUT and notes below it.
+test_operator -> safety_observer { style: { opacity: 0 } }
+safety_observer -> fault_injection_controller { style: { opacity: 0 } }
+fault_injection_controller -> bus_fault_injector { style: { opacity: 0 } }
+bus_fault_injector -> trace_timing_collector { style: { opacity: 0 } }
+trace_timing_collector -> rf_health_monitor { style: { opacity: 0 } }
+rf_health_monitor -> bench_power_reset { style: { opacity: 0 } }
+bench_power_reset -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> system { style: { opacity: 0 } }
+system -> note_source_gap { style: { opacity: 0 } }
+note_source_gap -> note_pf { style: { opacity: 0 } }
+note_pf -> note_statistics { style: { opacity: 0 } }
+note_statistics -> note_fault_hardening { style: { opacity: 0 } }

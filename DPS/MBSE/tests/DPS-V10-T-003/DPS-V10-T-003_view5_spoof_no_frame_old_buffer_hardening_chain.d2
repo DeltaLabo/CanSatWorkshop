@@ -1,0 +1,134 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-T-003B functional chain: spoof/no-frame/old-buffer command hardening test sequence.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 32 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 28 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 34
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 26 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 24 } }
+}
+
+chain: "DPS-V10-T-003B — Spoof/no-frame/old-buffer hardening test\nIADT: Testing; Refs: P0,R1-R5,R8-R13; Trace: FC03, feared stale/spoof command; Report: tests/results/DPS-V10-T-003/" {
+  class: chain
+  direction: down
+
+  op_confirm_baseline: "[F] Operator confirms\nDPS v1.0 baseline" { class: func }
+  configure_fault_set: "[F] Configure spoof/no-frame/\nold-buffer fault set" { class: func }
+  arm_obcc_debug_capture: "[F] Arm OBCC debug\nand interrupt capture" { class: func }
+  seed_previous_valid_command: "[F] Seed one previous\nvalid command" { class: func }
+  inject_fault_trials: "[F] Inject 60 invalid\ncommand receive trials" { class: func }
+  log_fault_sequence: "[F] Log fault sequence\nand timestamps" { class: func }
+
+  receive_fault_stimulus: "[F] Receive incoming data\nor no-frame event" { class: func }
+  receive_lora_rx_interrupt: "[F] Receive LoRa\nRX Interrupt" { class: func }
+  read_command: "[F] Read command" { class: func }
+  record_no_command_or_reject: "[F] Record no-command\nor rejection status" { class: func }
+  assert_no_stale_reread: "[F] Assert no stale command\nis re-read" { class: func }
+
+  generate_followup_valid: "[F] Generate valid\nfollow-up command" { class: func }
+  receive_followup_data: "[F] Receive follow-up\ncommand frame" { class: func }
+  read_followup_command: "[F] Read follow-up\ncommand once" { class: func }
+
+  capture_tx_log: "[F] Capture transmitter\nfault/follow-up log" { class: func }
+  capture_obcc_log: "[F] Capture OBCC debug\nand rejection log" { class: func }
+  compare_fault_evidence: "[F] Compare OBCC results\nto fault sequence" { class: func }
+  compute_fault_verdict: "[F] Compute rejection and\nstale-buffer verdict" { class: func }
+  archive_evidence: "[F] Archive evidence\nin results folder" { class: func }
+
+  note_trace: "[C] Traceability target: feared event 'spoof, no-frame interrupt or old buffer\nis accepted as a valid command'. Source model FC03 CanSat receive path." {
+    class: note
+    shape: page
+  }
+
+  note_environment: "[C] Environment/setup constraint: same controlled RF and debug-monitor setup\nas valid sequence; timebase, fault configuration, transmitter logs and OBCC logs\nare captured for every trial." {
+    class: note
+    shape: page
+  }
+
+  note_fault_set: "[C] Fault stimulus constraint: at least 60 invalid trials spanning spoof/wrong\nsender or wrong type, no-frame/spurious interrupt, old-buffer/stale replay,\nduplicate sequence and malformed/CRC-bad command frame cases." {
+    class: note
+    shape: page
+  }
+
+  note_pass: "[C] Pass constraints: zero invalid trials are accepted as commands; every invalid\ncase is rejected, ignored or logged; previous valid command is never re-read;\nvalid follow-up command is accepted exactly once." {
+    class: note
+    shape: page
+  }
+
+  note_statistics: "[C] Statistical viewpoint: fault injection is counted as binary screening trials.\nReport clean-rejection k/N overall and by fault class; this is not a\nhigh-confidence reliability claim without additional sample-size rationale." {
+    class: note
+    shape: page
+  }
+}
+
+chain.op_confirm_baseline -> chain.configure_fault_set: "[FE] Baseline OK\n[Test condition]" { class: fe }
+chain.configure_fault_set -> chain.arm_obcc_debug_capture: "[FE] Fault set ready\n[Test condition]" { class: fe }
+chain.arm_obcc_debug_capture -> chain.seed_previous_valid_command: "[FE] Capture ready\n[Test condition]" { class: fe }
+chain.seed_previous_valid_command -> chain.inject_fault_trials: "[FE] Prior valid state\n[Old-buffer sentinel]" { class: fe }
+chain.inject_fault_trials -> chain.receive_fault_stimulus: "[FE] Invalid/no-frame stimulus\n[Fault case]" { class: fe }
+chain.inject_fault_trials -> chain.log_fault_sequence: "[FE] Fault sequence\n[Reference log]" { class: fe }
+
+chain.receive_fault_stimulus -> chain.receive_lora_rx_interrupt: "[FE] Interrupt or no-frame\n[Fault condition]" { class: fe }
+chain.receive_fault_stimulus -> chain.read_command: "[FE] Frame or stale buffer\n[Invalid data]" { class: fe }
+chain.receive_lora_rx_interrupt -> chain.read_command: "[FE] Flag []" { class: fe }
+chain.read_command -> chain.record_no_command_or_reject: "[FE] No command/reject\n[Status]" { class: fe }
+chain.record_no_command_or_reject -> chain.assert_no_stale_reread: "[FE] Rejection evidence\n[No accepted command]" { class: fe }
+
+chain.assert_no_stale_reread -> chain.generate_followup_valid: "[FE] Recovery trigger\n[Test control]" { class: fe }
+chain.generate_followup_valid -> chain.receive_followup_data: "[FE] Valid follow-up\n[LoRa Frame]" { class: fe }
+chain.receive_followup_data -> chain.read_followup_command: "[FE] Follow-up command\n[State]" { class: fe }
+
+chain.log_fault_sequence -> chain.capture_tx_log: "[FE] Fault/follow-up log\n[Evidence]" { class: fe }
+chain.record_no_command_or_reject -> chain.capture_obcc_log: "[FE] Reject/no-command log\n[Evidence]" { class: fe }
+chain.read_followup_command -> chain.compare_fault_evidence: "[FE] Follow-up accepted\n[Evidence]" { class: fe }
+chain.assert_no_stale_reread -> chain.compare_fault_evidence: "[FE] No stale re-read\n[Evidence]" { class: fe }
+chain.capture_tx_log -> chain.compare_fault_evidence: "[FE] Fault reference\n[Evidence]" { class: fe }
+chain.capture_obcc_log -> chain.compute_fault_verdict: "[FE] OBCC reject log\n[Evidence]" { class: fe }
+chain.compare_fault_evidence -> chain.compute_fault_verdict: "[FE] Clean rejection count\n[k/N]" { class: fe }
+chain.compute_fault_verdict -> chain.archive_evidence: "[FE] Verdict and evidence\n[Test report input]" { class: fe }
+
+chain.note_environment -> chain.configure_fault_set { class: cstr }
+chain.note_environment -> chain.arm_obcc_debug_capture { class: cstr }
+chain.note_fault_set -> chain.inject_fault_trials { class: cstr }
+chain.note_pass -> chain.assert_no_stale_reread { class: cstr }
+chain.note_pass -> chain.read_followup_command { class: cstr }
+chain.note_statistics -> chain.compute_fault_verdict { class: cstr }
+
+# Layout-only edge: keep traceability near pass constraints without adding verification semantics.
+chain.note_trace -> chain.note_pass { style: { opacity: 0 } }

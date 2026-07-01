@@ -1,0 +1,122 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical view
+# Preserve the original PA hierarchy: Physical System > CanSat > modules / backplane.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    ads_module: "[PC] ADS Module" {
+      class: pc
+      direction: down
+
+      ads_pcb: "[PC] ADS PCB" {
+        class: pc
+        direction: right
+
+        gps: "[PC] UBX-G7020-KT GPS" { class: pc }
+        ads_backplane_connector: "[PC] Backplane Connector" { class: pc }
+        imu: "[PC] ICM20948 IMU" { class: pc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ads_headers: "[PC] 2mm 2x6 ADS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+
+        xiao: "[PC] XIAO ESP32-S3" { class: pc }
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      }
+    }
+  }
+}
+
+system.cansat.ads_module.ads_pcb -- system.cansat.ads_module: "[PL] Screws" { class: pl }
+system.cansat.obcc_module.obcc_pcb -- system.cansat.obcc_module: "[PL] Screws" { class: pl }
+
+system.cansat.ads_module -- system.cansat.backplane_pcb: "[PL] Backplane\nFixture" { class: pl }
+system.cansat.obcc_module -- system.cansat.backplane_pcb: "[PL] Backplane\nFixture" { class: pl }
+
+system.cansat.ads_module.ads_pcb.gps -- system.cansat.ads_module.ads_pcb: "[PL] GPS\nFootprint" { class: pl }
+system.cansat.ads_module.ads_pcb.imu -- system.cansat.ads_module.ads_pcb: "[PL] ICM20948\nFootprint" { class: pl }
+system.cansat.ads_module.ads_pcb.ads_backplane_connector -- system.cansat.ads_module.ads_pcb: "[PL] Connector\nFootprint" { class: pl }
+
+system.cansat.ads_module.ads_pcb.ads_backplane_connector -- system.cansat.ads_module.ads_pcb.gps: "[PL] UART\ntraces" { class: pl }
+system.cansat.ads_module.ads_pcb.ads_backplane_connector -- system.cansat.ads_module.ads_pcb.gps: "[PL] 3V3 power\ntraces" { class: pl }
+system.cansat.ads_module.ads_pcb.ads_backplane_connector -- system.cansat.ads_module.ads_pcb.imu: "[PL] I2C\ntraces" { class: pl }
+system.cansat.ads_module.ads_pcb.ads_backplane_connector -- system.cansat.ads_module.ads_pcb.imu: "[PL] 3V3 power\ntraces" { class: pl }
+system.cansat.ads_module.ads_pcb.ads_backplane_connector -- system.cansat.backplane_pcb.ads_headers: "[PL] Parallel\nCable" { class: pl }
+
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb: "[PL] XIAO\nFootprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.obcc_module.obcc_pcb: "[PL] Connector\nFootprint" { class: pl }
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] UART\ntraces" { class: pl }
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C\ntraces" { class: pl }
+system.cansat.obcc_module.obcc_pcb.xiao -- system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] 3V3 power\ntraces" { class: pl }
+system.cansat.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.backplane_pcb.obcc_headers: "[PL] Parallel\nCable" { class: pl }
+
+system.cansat.backplane_pcb.ads_headers -- system.cansat.backplane_pcb.spine: "[PL] ADS header\nFootprint" { class: pl }
+system.cansat.backplane_pcb.obcc_headers -- system.cansat.backplane_pcb.spine: "[PL] OBCC header\nFootprint" { class: pl }
+
+# Layout-only edge to keep ADS above OBCC, as in the Capella source.
+system.cansat.ads_module -> system.cansat.obcc_module { style: { opacity: 0 } }

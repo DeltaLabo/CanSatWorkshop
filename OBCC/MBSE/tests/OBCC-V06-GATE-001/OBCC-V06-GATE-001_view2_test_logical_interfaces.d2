@@ -1,0 +1,163 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V06-GATE-001 PV2: runtime fault-handling verification logical interfaces.
+# Only PCs, LCs, EAs, CEs, and constraints are shown.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 18 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea }
+safety_observer: "[EA] Safety Observer" { class: ea }
+fault_controller: "[EA] Fault-injection\ncontroller" { class: ea }
+i2c_fault_injector: "[EA] I2C fault injector" { class: ea }
+uart_fault_injector: "[EA] UART fault injector" { class: ea }
+spi_radio_fault_injector: "[EA] SPI / radio fault injector" { class: ea }
+trace_timing_collector: "[EA] Trace and timing\ncollector" { class: ea }
+rf_health_monitor: "[EA] RF / health-telemetry\nmonitor" { class: ea }
+bench_power_reset: "[EA] Bench power /\nreset controller" { class: ea }
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" { class: ea }
+
+system: "[System] OBCC-V06-GATE-001 — v0.6 runtime fault-handling logical interfaces\nRefs: IVV, OBCC README, Variable Getter Template, v1.0 Logical/PV3/Fault/Telemetry/Deployment views, OBCC-VV-FC-005, OBCC-VV-CON-004/005" {
+  class: sys
+  direction: down
+
+  uut: "[PC] v0.6 OBCC runtime\nfault-handling UUT" {
+    class: pc
+    direction: right
+
+    obcc_controller: "[PC] XIAO ESP32-S3\nOBCC controller" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      test_harness: "[LC] Runtime-fault\ntest harness\n(verification-only)" { class: lc }
+      bus_timeout_mutex: "[LC] Bus timeout and\nmutex protection" { class: lc }
+      variable_getter_wrapper: "[LC] Variable getter\nwrapper" { class: lc }
+      runtime_fault_classifier: "[LC] Runtime fault\nclassifier" { class: lc }
+      scheduler_queue_monitor: "[LC] Scheduler, queue\nand state monitor\n(verification-only)" { class: lc }
+      telemetry_health_publisher: "[LC] Telemetry and\nhealth publisher" { class: lc }
+      command_state_manager: "[LC] Command/state\nmanager" { class: lc }
+      emergency_policy_gate: "[LC] Emergency-deploy\npolicy gate" { class: lc }
+      safe_error_manager: "[LC] Safe/error-state\nmanager" { class: lc }
+    }
+
+    lora_radio: "[PC] RFM95W LoRa" {
+      class: pc
+      lora_transceiver: "[LC] LoRa Transceiver" { class: lc }
+    }
+
+    data_source_interfaces: "[PC] Sensor/source\ninterface context" {
+      class: pc
+      direction: down
+      ads_getters: "[LC] ADS getter\ninterfaces" { class: lc }
+      ams_getters: "[LC] AMS getter\ninterfaces" { class: lc }
+      ess_getters: "[LC] ESS getter\ninterfaces" { class: lc }
+      pdm_gate_context: "[LC] PDM gate\ncontext" { class: lc }
+    }
+  }
+
+  note_analysis: "[C] Analysis pass/fail: modeled CEs and allocations\nfor I2C, UART, SPI/radio, getters, queue/state,\nmode gate, health telemetry, emergency policy,\nand safe/error state are present and implemented with no\nunmodeled blocking or deployment bypass." {
+    class: note
+    shape: page
+  }
+
+  note_timeout: "[C] Timeout constraint: I2C/UART read attempts\nthat are faulted return within <=5 ms where applicable;\nSPI/radio busy faults are bounded by the modeled driver result." {
+    class: note
+    shape: page
+  }
+
+  note_liveness: "[C] Scheduler constraint: no task, gate, queue,\nor mutex remains unboundedly blocked; telemetry cadence\ndegradation is bounded and visible in health/status metadata." {
+    class: note
+    shape: page
+  }
+
+  note_emergency: "[C] Emergency policy constraint: sensor faults may\nrequest emergency deploy only when descent-state observability\nis lost and the modeled On/Stand-by policy permits it; Stand-by\ninhibits deployment requests." {
+    class: note
+    shape: page
+  }
+
+  note_safe_error: "[C] Runtime radio, deployment-path, or power critical\nfaults may enter safe/error behavior; the transition and reason\nmust be visible when telemetry/trace remains available." {
+    class: note
+    shape: page
+  }
+}
+
+test_operator -> system.uut.obcc_controller.test_harness: "[CE] Test script,\ntrial selection,\nchecklist" { class: ce }
+safety_observer -> system.uut.obcc_controller.test_harness: "[CE] Safe-to-run /\nhold confirmation" { class: ce }
+fault_controller -> system.uut.obcc_controller.test_harness: "[CE] Fault matrix,\ncase ID, oracle" { class: ce }
+ambient_thermometer -> system.uut.obcc_controller.test_harness: "[CE] Ambient reading\nentered in log" { class: ce }
+bench_power_reset -> system.uut.obcc_controller.test_harness: "[CE] Controlled power,\nreset, rail-fault case" { class: ce }
+
+i2c_fault_injector -> system.uut.obcc_controller.bus_timeout_mutex: "[CE] I2C NACK,\nstuck SDA/SCL" { class: ce }
+uart_fault_injector -> system.uut.obcc_controller.bus_timeout_mutex: "[CE] UART silence,\nlate or malformed frame" { class: ce }
+spi_radio_fault_injector -> system.uut.obcc_controller.bus_timeout_mutex: "[CE] SPI busy/drop\nor radio fault" { class: ce }
+spi_radio_fault_injector -> system.uut.lora_radio.lora_transceiver: "[CE] Radio busy, RF loss,\nCRC/status fault" { class: ce }
+
+system.uut.obcc_controller.test_harness -> system.uut.obcc_controller.scheduler_queue_monitor: "[CE] Scheduler load,\nqueue/state fault case" { class: ce }
+system.uut.obcc_controller.test_harness -> system.uut.obcc_controller.command_state_manager: "[CE] On / Stand-by\nstate command" { class: ce }
+system.uut.obcc_controller.test_harness -> system.uut.obcc_controller.variable_getter_wrapper: "[CE] Getter trial\nrelease" { class: ce }
+
+system.uut.data_source_interfaces.ads_getters -> system.uut.obcc_controller.variable_getter_wrapper: "[CE] ADS getter\nresults / faults" { class: ce }
+system.uut.data_source_interfaces.ams_getters -> system.uut.obcc_controller.variable_getter_wrapper: "[CE] AMS getter\nresults / faults" { class: ce }
+system.uut.data_source_interfaces.ess_getters -> system.uut.obcc_controller.variable_getter_wrapper: "[CE] ESS getter\nresults / faults" { class: ce }
+system.uut.obcc_controller.bus_timeout_mutex -> system.uut.obcc_controller.variable_getter_wrapper: "[CE] Bounded read\nstatus + timeout" { class: ce }
+system.uut.obcc_controller.variable_getter_wrapper -> system.uut.obcc_controller.runtime_fault_classifier: "[CE] Result/error codes,\nstale/missing flags" { class: ce }
+system.uut.obcc_controller.scheduler_queue_monitor -> system.uut.obcc_controller.runtime_fault_classifier: "[CE] Task/queue/mutex\nliveness evidence" { class: ce }
+system.uut.obcc_controller.runtime_fault_classifier -> system.uut.obcc_controller.telemetry_health_publisher: "[CE] Fault class,\nhealth flags" { class: ce }
+system.uut.obcc_controller.runtime_fault_classifier -> system.uut.obcc_controller.emergency_policy_gate: "[CE] Descent-state\nobservability lost" { class: ce }
+system.uut.obcc_controller.command_state_manager -> system.uut.obcc_controller.emergency_policy_gate: "[CE] Mode gate\n[On / Stand-by]" { class: ce }
+system.uut.obcc_controller.emergency_policy_gate -> system.uut.data_source_interfaces.pdm_gate_context: "[CE] Emergency deploy\nrequest or inhibit" { class: ce }
+system.uut.obcc_controller.runtime_fault_classifier -> system.uut.obcc_controller.safe_error_manager: "[CE] Radio/deploy/power\ncritical fault" { class: ce }
+system.uut.obcc_controller.safe_error_manager -> system.uut.obcc_controller.telemetry_health_publisher: "[CE] Safe/error\nstate reason" { class: ce }
+system.uut.obcc_controller.telemetry_health_publisher -> system.uut.lora_radio.lora_transceiver: "[CE] Health/status\ntelemetry" { class: ce }
+system.uut.lora_radio.lora_transceiver -> rf_health_monitor: "[CE] LoRa frames,\nRSSI/SNR, packet loss" { class: ce }
+system.uut.obcc_controller.scheduler_queue_monitor -> trace_timing_collector: "[CE] Task heartbeat,\nqueue depth, mutex hold" { class: ce }
+system.uut.obcc_controller.bus_timeout_mutex -> trace_timing_collector: "[CE] Getter entry/exit,\nread timeout timing" { class: ce }
+system.uut.obcc_controller.test_harness -> trace_timing_collector: "[CE] Trial ID, timestamps,\nreset marker" { class: ce }
+
+system.note_analysis -> system.uut.obcc_controller.runtime_fault_classifier { class: cstr }
+system.note_analysis -> system.uut.obcc_controller.scheduler_queue_monitor { class: cstr }
+system.note_timeout -> system.uut.obcc_controller.bus_timeout_mutex { class: cstr }
+system.note_liveness -> system.uut.obcc_controller.scheduler_queue_monitor { class: cstr }
+system.note_emergency -> system.uut.obcc_controller.emergency_policy_gate { class: cstr }
+system.note_safe_error -> system.uut.obcc_controller.safe_error_manager { class: cstr }
+

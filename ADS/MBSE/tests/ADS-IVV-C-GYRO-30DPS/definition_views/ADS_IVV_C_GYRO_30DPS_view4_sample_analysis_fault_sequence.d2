@@ -1,0 +1,71 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style test sequence for ADS-IVV-C-GYRO-30DPS.
+# IADT = Testing with supporting Analysis. Only functions, FEs, and constraints are included in this chain view.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-C-GYRO-30DPS\nSample, analysis, and fault-hardening sequence\nRefs: IVV; NASA-SE; IMU/I2C; SW/stats" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_version: "[F] Operator selects ADS version\nand source baseline" { class: func }
+  confirm_applicability: "[F] Confirm applicability\nor record N/A rationale" { class: func }
+  configure_reference: "[F] Configure angular-rate\nreference, fixture, uncertainty" { class: func }
+  record_environment: "[F] Read ambient monitor\nand record execution conditions" { class: func }
+  configure_uut: "[F] Configure UUT firmware,\npower, logger, timebase" { class: func }
+  align_axes: "[F] Align UUT axes and\nverify sign convention" { class: func }
+  acquire_nominal: "[F] Acquire still and known-rate\nADS/truth samples" { class: func }
+  validate_samples: "[F] Validate finite, in-range,\nfresh samples and I2C status" { class: func }
+  verify_sample_count: "[F] Verify n >= 30 matched\nvalid samples per axis/rate" { class: func }
+  compute_error: "[F] Compute per-axis absolute\nangular-rate error" { class: func }
+  apply_guard: "[F] Apply uncertainty guard band\nor formal 95/95 bound" { class: func }
+  evaluate_constraint: "[F] Evaluate <30 deg/s\nconstraint verdict" { class: func }
+  observe_delivery: "[F] Observe collection/delivery\npoint, including v1.0 OBCC" { class: func }
+  inject_faults: "[F] Inject I2C, stale, saturation,\nout-of-range fault cases" { class: func }
+  evaluate_faults: "[F] Evaluate invalid-data rejection,\nfinite outputs, recovery" { class: func }
+  decide_result: "[F] Decide pass/fail, blocked,\nor N/A result" { class: func }
+  record_report: "[F] Record report package,\nlimitations, anomalies, retest" { class: func }
+
+  note_constraint: "[C] Angular-rate pass condition\nPass only if absolute angular-rate error plus uncertainty/guard\nband, or 95/95 upper bound where claimed, is <30 deg/s for\neach accepted axis/rate condition." { class: note; shape: page }
+  note_stats: "[C] Statistical significance\nUse complete campaign records and at least n >= 30 matched\nvalid ADS/truth samples per axis/rate condition. Record the\nselected confidence/tolerance method before claiming 95/95." { class: note; shape: page }
+  note_validity: "[C] Validity and fault hardening\nDo not accept saturated, stale, non-finite, out-of-range,\nor I2C-fault data as valid. v1.0 I2C timeout <=5 ms applies;\nv0.2 missing I2C timeout is a modeling gap to report." { class: note; shape: page }
+  note_delivery: "[C] Observation point\nv0.2 observes Loop collection and Serial0/PC evidence when used.\nv1.0 observes ADS Processing and integrated OBCC collection or\nPointers/Returns delivery evidence where applicable." { class: note; shape: page }
+  note_na: "[C] N/A branch\nv0.1 has no IMU/angular-rate constraint. v0.3 is PCB-only\nwithout behavioral LC/CE/chain; physical I2C traces alone do not\nsatisfy this constraint verification." { class: note; shape: page }
+}
+
+chain.select_version -> chain.confirm_applicability: "[FE] Target version" { class: fe }
+chain.confirm_applicability -> chain.configure_reference: "[FE] Applicable v0.2/v1.0" { class: fe }
+chain.configure_reference -> chain.record_environment: "[FE] Reference setup" { class: fe }
+chain.record_environment -> chain.configure_uut: "[FE] Execution conditions" { class: fe }
+chain.configure_uut -> chain.align_axes: "[FE] UUT ready" { class: fe }
+chain.align_axes -> chain.acquire_nominal: "[FE] Axis alignment" { class: fe }
+chain.acquire_nominal -> chain.validate_samples: "[FE] ADS/truth streams" { class: fe }
+chain.validate_samples -> chain.verify_sample_count: "[FE] Valid sample set" { class: fe }
+chain.verify_sample_count -> chain.compute_error: "[FE] n >= 30 per condition" { class: fe }
+chain.compute_error -> chain.apply_guard: "[FE] Error values" { class: fe }
+chain.apply_guard -> chain.evaluate_constraint: "[FE] Guarded bound" { class: fe }
+chain.evaluate_constraint -> chain.observe_delivery: "[FE] Accuracy verdict" { class: fe }
+chain.observe_delivery -> chain.inject_faults: "[FE] Delivery evidence" { class: fe }
+chain.inject_faults -> chain.evaluate_faults: "[FE] Fault evidence" { class: fe }
+chain.evaluate_faults -> chain.decide_result: "[FE] Fault verdict" { class: fe }
+chain.decide_result -> chain.record_report: "[FE] Final disposition" { class: fe }
+

@@ -1,0 +1,80 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style verification sequence for ADS-IVV-FC-SERIAL.
+# IADT method: Demonstration/Testing with supporting Analysis; includes nominal and fault cases.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-FC-SERIAL\nSerial0 logging verification sequence\nRefs: IVV; NASA-SE; SW/stats; ESA-CANSAT" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_version: "[F] Select ADS version\nand source baseline" { class: func }
+  confirm_applicability: "[F] Confirm Serial0 applicability\nor v0.3/v1.0 N/A" { class: func }
+  declare_schema: "[F] Declare Serial0 schema,\nparser, and expected fields" { class: func }
+  configure_environment: "[F] Read ambient conditions,\npower, USB-C, timebase" { class: func }
+  start_logger: "[F] Start PC serial logger\nand parser" { class: func }
+  boot_uut: "[F] Boot/reset UUT and\nstart firmware" { class: func }
+  collect_init_states: "[F] Collect peripheral\ninit states" { class: func }
+  log_init_records: "[F] Log init-state\nrecords via Serial0" { class: func }
+  parse_init_records: "[F] Monitor and parse\ninit-state records" { class: func }
+  apply_nominal_stimulus: "[F] Apply nominal GPS/IMU\ninput conditions" { class: func }
+  collect_measurements: "[F] Collect\nmeasurements" { class: func }
+  log_measurement_records: "[F] Log measurement\nrecords via Serial0" { class: func }
+  parse_measurement_records: "[F] Monitor and parse\nmeasurement records" { class: func }
+  inject_fault_cases: "[F] Inject unavailable, stale,\nmalformed, missing fields" { class: func }
+  log_fault_records: "[F] Log explicit markers\nor parser-detectable errors" { class: func }
+  analyze_records: "[F] Analyze field coverage,\nfreshness, frame counts" { class: func }
+  decide_result: "[F] Decide pass/fail,\nBlocked, or N/A" { class: func }
+  record_report: "[F] Record evidence, anomalies,\nwaivers, limitations, retest" { class: func }
+
+  note_schema: "[C] Schema prerequisite\nPass/fail is blocked or limited until Serial0 schema, parser version,\nexpected fields, marker vocabulary, and serial settings are declared." { class: note; shape: page }
+  note_parse: "[C] Parseability constraint\nEach applicable v0.1/v0.2 execution shall produce parseable\ninit and measurement records at the PC, or explicit parser errors\nfor malformed/missing records." { class: note; shape: page }
+  note_fields: "[C] Field and validity constraint\nv0.1: UBX init state and GPS measurement fields.\nv0.2: UBX and ICM20948 init states plus GPS/IMU/attitude fields.\nUnavailable/stale values require explicit markers." { class: note; shape: page }
+  note_faults: "[C] Fault-hardening constraint\nUnavailable, stale, malformed, and missing data shall not be logged\nas false-valid measurements and shall not cause unrecovered loop blockage." { class: note; shape: page }
+  note_stats: "[C] Statistical/PDR constraint\nFrame/PDR statistics are pass/fail only when expected frame count,\ncampaign duration, threshold, and confidence method are declared;\notherwise report them as characterization." { class: note; shape: page }
+  note_na: "[C] N/A branches\nv0.3 stops after source review because it is PCB-only.\nv1.0 stops for Serial0 and redirects to OBCC delivery verification." { class: note; shape: page }
+}
+
+chain.select_version -> chain.confirm_applicability: "[FE] Baseline" { class: fe }
+chain.confirm_applicability -> chain.declare_schema: "[FE] Applicability\ndecision" { class: fe }
+chain.declare_schema -> chain.configure_environment: "[FE] Schema and settings" { class: fe }
+chain.configure_environment -> chain.start_logger: "[FE] Test setup ready" { class: fe }
+chain.start_logger -> chain.boot_uut: "[FE] Logger active" { class: fe }
+chain.boot_uut -> chain.collect_init_states: "[FE] Boot state" { class: fe }
+chain.collect_init_states -> chain.log_init_records: "[FE] Init states" { class: fe }
+chain.log_init_records -> chain.parse_init_records: "[FE] Serial0 init records" { class: fe }
+chain.parse_init_records -> chain.apply_nominal_stimulus: "[FE] Init parse result" { class: fe }
+chain.apply_nominal_stimulus -> chain.collect_measurements: "[FE] Nominal sensor inputs" { class: fe }
+chain.collect_measurements -> chain.log_measurement_records: "[FE] Measurements" { class: fe }
+chain.log_measurement_records -> chain.parse_measurement_records: "[FE] Serial0 measurement records" { class: fe }
+chain.parse_measurement_records -> chain.inject_fault_cases: "[FE] Nominal parse result" { class: fe }
+chain.inject_fault_cases -> chain.log_fault_records: "[FE] Fault stimuli" { class: fe }
+chain.log_fault_records -> chain.analyze_records: "[FE] Fault and log evidence" { class: fe }
+chain.analyze_records -> chain.decide_result: "[FE] Analysis result" { class: fe }
+chain.decide_result -> chain.record_report: "[FE] Verdict" { class: fe }
+
+chain.note_schema -> chain.declare_schema { class: cstr }
+chain.note_parse -> chain.parse_measurement_records { class: cstr }
+chain.note_fields -> chain.analyze_records { class: cstr }
+chain.note_faults -> chain.log_fault_records { class: cstr }
+chain.note_stats -> chain.analyze_records { class: cstr }
+chain.note_na -> chain.confirm_applicability { class: cstr }

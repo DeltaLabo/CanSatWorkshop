@@ -1,0 +1,251 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V03-GATE-001 PV3: telemetry gate functional allocation.
+# Shows verification-only functions allocated to human operators and test equipment,
+# and SUT/ground functions allocated to their logical/physical hosts.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_director: "[EA] Test Director / verification analyst" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  review_plan: "[F] Review activity\nconfiguration and source\nbaseline gap" { class: func }
+  start_campaign: "[F] Start lab + range\ntelemetry campaign" { class: func }
+  classify_results: "[F] Classify pass/fail\nand deviations" { class: func }
+}
+
+ground_operator: "[EA] Ground Station Operator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  align_antennas: "[F] Align antennas\nand record orientation" { class: func }
+  start_receiver: "[F] Start LoRa receiver\nand PC logging" { class: func }
+  monitor_dashboard: "[F] Monitor decoded\ntelemetry dashboard" { class: func }
+}
+
+range_operator: "[EA] Range Operator / Safety Marshal" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  survey_distance: "[F] Survey >=500 m\npath or RF equivalent" { class: func }
+  record_path: "[F] Record path geometry\nand line-of-sight limits" { class: func }
+}
+
+telemetry_stimulus_fixture: "[EA] Telemetry Stimulus Fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  generate_known_values: "[F] Generate known\npayload field values" { class: func }
+  generate_fault_codes: "[F] Generate missing /\nerror-coded value cases" { class: func }
+}
+
+malformed_frame_injector: "[EA] Malformed-frame Injection Tool" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  inject_bad_crc: "[F] Inject corrupt CRC /\ntruncated frame cases" { class: func }
+  inject_wrong_schema: "[F] Inject wrong length /\nextra RH field cases" { class: func }
+}
+
+measurement_equipment: "[EA] Time, weather, and statistics equipment" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  provide_reference_time: "[F] Provide reference\ntimebase" { class: func }
+  measure_environment: "[F] Measure ambient\nweather before runs" { class: func }
+  compute_binomial_bound: "[F] Compute exact\none-sided PDR bound" { class: func }
+  compare_frame_schema: "[F] Compare decoded\nfields to schema oracle" { class: func }
+}
+
+system: "[System] OBCC-V03-GATE-001 — v0.3 LoRa telemetry frame/cadence/range functional allocation\nRefs: IVV, OBCC README, LoRa_Frame, Variable Getter Template, v1.0 PV3/Telemetry chain" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat: "[PC] CanSat telemetry test article" {
+    class: pc
+    direction: down
+
+    source_context: "[PC] Source modules / stubs" {
+      class: pc
+      source_provider: "[LC] Known telemetry source provider" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        provide_kinematics: "[F] Provide pitch, roll, yaw,\nangular speeds, accelerations" { class: func }
+        provide_environment: "[F] Provide altitude and\ntemperature values" { class: func }
+        provide_navigation: "[F] Provide latitude and\nlongitude values" { class: func }
+        provide_power: "[F] Provide battery voltage\nand current values" { class: func }
+      }
+    }
+
+    xiao: "[PC] XIAO ESP32-S3" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      telemetry_collector: "[LC] Telemetry Collector" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        collect_measurements: "[F] Collect\nmeasurements" { class: func }
+        call_variable_getters: "[F] Call variable\ngetters / stubs" { class: func }
+        replace_missing_value: "[F] Replace missing value\nwith error code" { class: func }
+        add_heartbeat_status: "[F] Add heartbeat\nstatus metadata" { class: func }
+      }
+
+      telemetry_encoder: "[LC] Telemetry Encoder" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        enforce_two_second_cadence: "[F] Enforce 2 s\ntelemetry cadence" { class: func }
+        consume_measurement_queue: "[F] Consume measurement\nqueue" { class: func }
+        generate_frame: "[F] Generate LoRa frame\nwith 34-byte target payload" { class: func }
+        omit_relative_humidity: "[F] Omit / error-code\nrelative humidity" { class: func }
+        attach_sequence_time: "[F] Attach sequence,\ntime, health/status metadata" { class: func }
+        send_lora_packet: "[F] Send LoRa\npacket" { class: func }
+      }
+
+      health_status: "[LC] Health/status metadata publisher" {
+        class: lc
+        direction: down
+        publish_health_flags: "[F] Publish\nhealth flags" { class: func }
+        publish_state_metadata: "[F] Publish state\nmetadata" { class: func }
+      }
+    }
+
+    rfm95w: "[PC] RFM95W LoRa" {
+      class: pc
+      cansat_lora: "[LC] LoRa Transceiver" {
+        class: lc
+        direction: down
+        transmit_outgoing_data: "[F] Transmit\noutgoing data" { class: func }
+      }
+    }
+  }
+
+  ground_station: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm95w: "[PC] RFM95W LoRa" {
+      class: pc
+      ground_lora: "[LC] LoRa Transceiver" {
+        class: lc
+        direction: down
+        store_incoming_data: "[F] Store incoming\ndata" { class: func }
+        measure_rssi_snr: "[F] Measure RSSI\nand SNR" { class: func }
+      }
+    }
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      lora_forwarder: "[LC] LoRa Forwarder" {
+        class: lc
+        direction: down
+        read_payload: "[F] Read\npayload" { class: func }
+        forward_to_pc: "[F] Forward raw frame\nand RF metrics to PC" { class: func }
+      }
+    }
+  }
+
+  pc_computer: "[PC] PC decoder / dashboard / CSV logger" {
+    class: pc
+    direction: down
+    grid-columns: 3
+
+    decoder: "[LC] Decoder" {
+      class: lc
+      direction: down
+      read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+      reject_malformed_frame: "[F] Reject corrupt /\nmalformed frame" { class: func }
+      preserve_sequence_time: "[F] Preserve sequence\nand timestamps" { class: func }
+    }
+
+    dashboard: "[LC] Dashboard" {
+      class: lc
+      direction: down
+      update_plots: "[F] Update\nplots" { class: func }
+      show_health_status: "[F] Display health\nand state metadata" { class: func }
+    }
+
+    csv_writer: "[LC] CSV Writer" {
+      class: lc
+      direction: down
+      consume_payload_queue: "[F] Consume decoded\npayload queue" { class: func }
+      append_to_csv: "[F] Append decoded\nrecord to CSV" { class: func }
+    }
+
+    packet_analyzer: "[LC] Packet evidence analyzer\n(verification-only)" {
+      class: lc
+      direction: down
+      grid-columns: 2
+      compute_cadence: "[F] Compute telemetry\ninterval statistics" { class: func }
+      count_packets: "[F] Count transmitted,\nreceived, valid, rejected frames" { class: func }
+      verify_payload_content: "[F] Verify payload\nfield content and order" { class: func }
+      write_evidence_summary: "[F] Write evidence\nsummary to results folder" { class: func }
+    }
+  }
+
+  note_constraints: "[C] Allocation analysis pass/fail:\ntelemetry collection/encoding, LoRa TX/RX,\ndecode/display/store, RSSI/SNR logging,\nand packet analysis are allocated to\nthe modeled LCs with no hidden path." {
+    class: note
+    shape: page
+  }
+
+  note_source_gap: "[C] v0.3 source Capella/D2 baseline is\nabsent; v1.0 functions are target-context.\nRecord actual firmware/ground software\nversions in the report." {
+    class: note
+    shape: page
+  }
+}
+
+# Layout-only edges preserve the actor/equipment band above the SUT band.
+test_director -> ground_operator { style: { opacity: 0 } }
+ground_operator -> range_operator { style: { opacity: 0 } }
+range_operator -> telemetry_stimulus_fixture { style: { opacity: 0 } }
+telemetry_stimulus_fixture -> malformed_frame_injector { style: { opacity: 0 } }
+malformed_frame_injector -> measurement_equipment { style: { opacity: 0 } }
+system.cansat -> system.ground_station { style: { opacity: 0 } }
+system.ground_station -> system.pc_computer { style: { opacity: 0 } }
+system.pc_computer -> system.note_constraints { style: { opacity: 0 } }
+system.note_constraints -> system.note_source_gap { style: { opacity: 0 } }

@@ -1,0 +1,317 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V02-GATE-001 PV3: v0.2 bus/protocol and getter timing functional allocation.
+# Functions are allocated to External Actors or to LCs nested in PCs.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  record_configuration: "[F] Record as-tested\nconfiguration and source gap" { class: func }
+  connect_instruments: "[F] Connect logic analyzer,\nfault injector, serial log,\nand timer trace collector" { class: func }
+  run_fault_matrix: "[F] Run nominal and fault\nmatrix procedure" { class: func }
+  judge_pass_fail: "[F] Judge pass/fail against\nmodeled constraints" { class: func }
+}
+
+interface_reviewer: "[EA] Interface / code reviewer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  review_protocol_mapping: "[F] Review implemented\nprotocol, direction, voltage,\naddressing, and ownership" { class: func }
+  review_getter_contracts: "[F] Review getter APIs,\ntyped values, result codes,\nand task ownership" { class: func }
+}
+
+logic_analyzer: "[EA] Logic analyzer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  decode_i2c_uart_spi_pwm: "[F] Decode I2C, UART,\nSPI, and PWM waveforms" { class: func }
+  export_timestamps: "[F] Export timestamped\nwaveform evidence" { class: func }
+}
+
+protocol_fault_injector: "[EA] Protocol exerciser /\nfault injector" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  inject_i2c_nack_stuck: "[F] Inject I2C NACK\nor stuck-bus fault" { class: func }
+  inject_gps_silence_malformed: "[F] Inject GPS UART\nsilence or malformed frame" { class: func }
+  inject_spi_radio_fault: "[F] Inject SPI radio\nbusy/fault response" { class: func }
+  inject_pwm_servo_unavailable: "[F] Make PWM/servo\nunavailable in safe fixture" { class: func }
+}
+
+serial_trace_capture: "[EA] Serial log and timer\ntrace capture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  log_result_codes: "[F] Log getter values,\nerror status, and health flags" { class: func }
+  measure_getter_durations: "[F] Measure getter/bus\ntransaction durations" { class: func }
+  monitor_scheduler_liveness: "[F] Monitor scheduler\nheartbeat under faults" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" {
+  class: ea
+  direction: down
+  read_ambient_temperature: "[F] Read ambient\ntemperature before trials" { class: func }
+}
+
+system: "[System] OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing allocation\nRefs: IVV, OBCC README, Variable Getter Template, v1.0 PV3/runtime-fault chain" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  bringup_article: "[PC] v0.2 OBCC bus-bring-up\narticle" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC development module" {
+      class: pc
+      direction: down
+
+      xiao: "[PC] XIAO ESP32-S3" {
+        class: pc
+        direction: down
+        grid-columns: 3
+
+        verification_harness: "[LC] Bus/getter test harness\n(verification-only)" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          execute_bus_matrix: "[F] Execute bus/protocol\nbring-up matrix" { class: func }
+          timestamp_getter_calls: "[F] Timestamp getter\nentry and return" { class: func }
+          emit_trace_markers: "[F] Emit GPIO trace\nmarkers" { class: func }
+          log_test_metadata: "[F] Log test metadata\nand fault case ID" { class: func }
+        }
+
+        free_rtos: "[LC] FreeRTOS Kernel" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          protect_shared_buses: "[F] Protect shared\nbuses" { class: func }
+          schedule_runtime_tasks: "[F] Schedule runtime\ntasks while faults occur" { class: func }
+          preserve_queue_ownership: "[F] Preserve queue,\nstate, and mode-gate\nownership" { class: func }
+        }
+
+        health_monitor: "[LC] Health Monitor" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          init_uart_pwm_spi_i2c: "[F] Init UART, PWM,\nSPI, and I2C" { class: func }
+          count_timeouts: "[F] Count bounded\nbus timeouts" { class: func }
+          classify_interface_faults: "[F] Classify interface\nfaults" { class: func }
+          publish_health_flags: "[F] Publish health flags\nand fault codes" { class: func }
+        }
+
+        ads_processing: "[LC] ADS Processing" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          read_gps_uart: "[F] Read UBX-G7020\nUART payload" { class: func }
+          read_imu_i2c: "[F] Read ICM20948 / MPU\nI2C data" { class: func }
+          return_ads_getters: "[F] Return ADS typed\nvalues or error status" { class: func }
+        }
+
+        ams_processing: "[LC] AMS Processing" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          read_bme280_i2c: "[F] Read BME280\nI2C data" { class: func }
+          return_ams_getters: "[F] Return altitude /\ntemperature value or\nerror status" { class: func }
+        }
+
+        ess_processing: "[LC] ESS Processing" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          read_ina219_i2c: "[F] Read INA219\nI2C data" { class: func }
+          return_ess_getters: "[F] Return voltage/current\nvalue or error status" { class: func }
+        }
+
+        telemetry_collector: "[LC] Telemetry Collector" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          call_variable_getters: "[F] Call variable\ngetters" { class: func }
+          replace_missing_value: "[F] Replace missing value\nwith error code" { class: func }
+          push_measurement_queue: "[F] Push measurement\nqueue item" { class: func }
+        }
+
+        telemetry_encoder: "[LC] Telemetry Encoder" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          consume_measurement_queue: "[F] Consume measurement\nqueue without blocking" { class: func }
+          exercise_spi_radio: "[F] Exercise RFM95W\nSPI transaction" { class: func }
+        }
+
+        command_handler: "[LC] Command Handler" {
+          class: lc
+          direction: down
+          read_state_command: "[F] Read state command\npath for ownership check" { class: func }
+        }
+
+        obcc_supervisor: "[LC] OBCC Supervisor" {
+          class: lc
+          direction: down
+          coordinate_mode_gate: "[F] Coordinate state /\nmode gate path" { class: func }
+        }
+
+        pdm_processing: "[LC] PDM Processing" {
+          class: lc
+          direction: down
+          send_pwm_servo: "[F] Send PWM servo\ncommand in safe fixture" { class: func }
+          report_pwm_fault: "[F] Report bounded\nPWM/servo fault" { class: func }
+        }
+      }
+
+      rfm95w: "[PC] RFM95W LoRa" {
+        class: pc
+        cansat_lora: "[LC] LoRa transceiver" {
+          class: lc
+          direction: down
+          respond_spi_transaction: "[F] Respond to SPI\ntransaction or busy/fault" { class: func }
+        }
+      }
+    }
+
+    interface_targets: "[PC] Sensor / actuator\ninterface targets" {
+      class: pc
+      direction: right
+      grid-columns: 3
+
+      bme280: "[PC] BME280" {
+        class: pc
+        ams_sensing: "[LC] AMS sensing" {
+          class: lc
+          respond_i2c_bme: "[F] Respond to BME280\nI2C requests" { class: func }
+        }
+      }
+
+      imu: "[PC] ICM20948 IMU\n(or legacy MPU6050)" {
+        class: pc
+        imu_sensing: "[LC] Kinematic sensing" {
+          class: lc
+          respond_i2c_imu: "[F] Respond to IMU\nI2C requests" { class: func }
+        }
+      }
+
+      ina219: "[PC] INA219" {
+        class: pc
+        battery_monitoring: "[LC] Battery monitoring" {
+          class: lc
+          respond_i2c_ina: "[F] Respond to INA219\nI2C requests" { class: func }
+        }
+      }
+
+      gps: "[PC] UBX-G7020-KT GPS" {
+        class: pc
+        gps_sensing: "[LC] GPS sensing" {
+          class: lc
+          send_uart_payload: "[F] Send GPS UART\npayload" { class: func }
+        }
+      }
+
+      servo_fixture: "[PC] Servo safe-load fixture" {
+        class: pc
+        trigger: "[LC] Servo trigger" {
+          class: lc
+          respond_pwm_or_unavailable: "[F] Respond to PWM or\nremain unavailable" { class: func }
+        }
+      }
+    }
+  }
+}
+
+note_protocol: "[C] PF-001: implemented I2C/UART/SPI/PWM\nprotocol, voltage, direction, addressing,\nand exchange ownership match model intent." {
+  class: note
+  shape: page
+}
+
+note_getters: "[C] PF-002: getter calls return typed value\nand explicit success/error status without\nunbounded blocking or hidden cross-task\nownership violations." {
+  class: note
+  shape: page
+}
+
+note_timing: "[C] PF-003: I2C and UART reads timeout ≤5 ms\nwhere modeled; SPI and PWM fault paths are\nbounded, observable, and scheduler-safe." {
+  class: note
+  shape: page
+}
+
+note_faults: "[C] PF-004: fault cases include I2C NACK/stuck bus,\nGPS UART silence/malformed frame, SPI radio busy/fault,\nand PWM/servo unavailable." {
+  class: note
+  shape: page
+}
+
+note_stats_env: "[C] Viewpoints: 100% CE/API/allocation review.\nFor a 95/95 timing claim, collect 59 in-limit\nrepresentative samples per class; otherwise record as\nv0.2 advancement screening. Record ambient conditions." {
+  class: note
+  shape: page
+}
+
+note_source_gap: "[C] No v0.2 Capella/D2 baseline exists;\nv1.0 source views are copied as intended-target context." {
+  class: note
+  shape: page
+}
+
+note_protocol -> system.bringup_article.obcc_module.xiao.verification_harness { class: cstr }
+note_protocol -> system.bringup_article.obcc_module.xiao.health_monitor { class: cstr }
+note_getters -> system.bringup_article.obcc_module.xiao.telemetry_collector { class: cstr }
+note_getters -> interface_reviewer.review_getter_contracts { class: cstr }
+note_timing -> serial_trace_capture.measure_getter_durations { class: cstr }
+note_timing -> system.bringup_article.obcc_module.xiao.health_monitor.count_timeouts { class: cstr }
+note_faults -> protocol_fault_injector { class: cstr }
+note_stats_env -> ambient_thermometer.read_ambient_temperature { class: cstr }
+note_source_gap -> test_operator.record_configuration { class: cstr }
+
+# Layout-only edges preserve reading order and keep notes below the system.
+test_operator -> interface_reviewer { style: { opacity: 0 } }
+interface_reviewer -> logic_analyzer { style: { opacity: 0 } }
+logic_analyzer -> protocol_fault_injector { style: { opacity: 0 } }
+protocol_fault_injector -> serial_trace_capture { style: { opacity: 0 } }
+serial_trace_capture -> ambient_thermometer { style: { opacity: 0 } }
+system -> note_protocol { style: { opacity: 0 } }
+note_protocol -> note_getters { style: { opacity: 0 } }
+note_getters -> note_timing { style: { opacity: 0 } }
+note_timing -> note_faults { style: { opacity: 0 } }
+note_faults -> note_stats_env { style: { opacity: 0 } }
+note_stats_env -> note_source_gap { style: { opacity: 0 } }

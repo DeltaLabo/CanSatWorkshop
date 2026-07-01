@@ -1,0 +1,111 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V05-GATE-001 functional chain: Stand-by inhibit and telemetry-continuity test.
+# Function labels name the responsible actor/equipment/SUT; no PC/LC/EA containers
+# are used in this Functional Chain view.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V05-GATE-001 — Stand-by inhibit/no-open verification chain\nRefs: IVV, PM&SE/IVV, OBCC README, v1.0 Deployment/Telemetry chains, OBCC-VV-FC-004, OBCC-VV-CON-003" {
+  class: chain
+  direction: down
+
+  inspect_fixture: "[F] Operator: inspect\nsafe fixture, observer,\nand current limit" { class: func }
+  measure_ambient: "[F] Thermometer: measure\nambient bench condition" { class: func }
+  start_trace: "[F] Trace logger: start\ntrial log and telemetry\ncapture" { class: func }
+  command_standby: "[F] Operator/test harness:\ncommand Stand-by" { class: func }
+  publish_standby_state: "[F] OBCC: publish\nStand-by state metadata" { class: func }
+  inject_valid_trigger: "[F] Trigger simulator:\ninject valid ADS\nIMU/alt trigger" { class: func }
+  issue_emergency_standby: "[F] Trigger simulator:\nissue modeled emergency\nrequest in Stand-by" { class: func }
+  evaluate_trigger: "[F] OBCC: evaluate\ndeployment condition" { class: func }
+  evaluate_emergency: "[F] OBCC: evaluate\nemergency deploy need" { class: func }
+  inhibit_in_standby: "[F] OBCC: inhibit\ndeployment in Stand-by" { class: func }
+  suppress_open_signal: "[F] PDM: suppress\nopen-servo command" { class: func }
+  observe_no_open: "[F] Servo observer:\nconfirm no PWM-open,\nno current signature,\nand closed position" { class: func }
+  continue_telemetry: "[F] OBCC/LoRa: continue\nheartbeat and telemetry" { class: func }
+  log_no_open_result: "[F] Trace logger:\nrecord no-open evidence\nand telemetry continuity" { class: func }
+  operator_accepts_trial: "[F] Operator: classify\ntrial pass/fail and\nrepeat as planned" { class: func }
+
+  note_pf_standby: "[C] PF-002 Stand-by pass/fail:\nfor every valid trigger and modeled emergency\nrequest while in Stand-by, no open-servo command,\nno opening current signature, and no open position\nare observed; telemetry continues. Any open evidence\nor lost telemetry without disposition is a failure." {
+    class: note
+    shape: page
+  }
+
+  note_stat_no_open: "[C] Statistical viewpoint:\nplan 59/59 zero-open Stand-by trials where feasible\nfor a 95/95 forbidden-event screening claim.\nEach valid-trigger and emergency-request equivalence\nclass must be represented; smaller samples are\nadvancement characterization only." {
+    class: note
+    shape: page
+  }
+
+  note_source_gap: "[C] Source gap:\nno v0.5 Capella/D2 deployment views exist.\nThis chain uses copied v1.0 deployment and\ntelemetry chains as target-context references." {
+    class: note
+    shape: page
+  }
+
+  note_trace: "[C] Traceability:\nOBCC-UC-DeploymentGate and\nOBCC-FE-PrematureDeployment;\ncovers Stand-by inhibit portion of\nOBCC-VV-FC-004 / OBCC-VV-CON-003." {
+    class: note
+    shape: page
+  }
+}
+
+chain.inspect_fixture -> chain.measure_ambient: "[FE] Safe fixture accepted\n[checklist]" { class: fe }
+chain.measure_ambient -> chain.start_trace: "[FE] Ambient condition\n[°C, model/serial]" { class: fe }
+chain.start_trace -> chain.command_standby: "[FE] Trace ready\n[trial ID]" { class: fe }
+chain.command_standby -> chain.publish_standby_state: "[FE] Stand-by command\n[mode]" { class: fe }
+chain.publish_standby_state -> chain.inject_valid_trigger: "[FE] Confirmed Stand-by\n[state metadata]" { class: fe }
+chain.publish_standby_state -> chain.issue_emergency_standby: "[FE] Confirmed Stand-by\n[state metadata]" { class: fe }
+chain.inject_valid_trigger -> chain.evaluate_trigger: "[FE] Trigger met\n[valid IMU/alt]" { class: fe }
+chain.issue_emergency_standby -> chain.evaluate_emergency: "[FE] Emergency request\n[modeled request]" { class: fe }
+chain.evaluate_trigger -> chain.inhibit_in_standby: "[FE] Trigger met\n+ Stand-by" { class: fe }
+chain.evaluate_emergency -> chain.inhibit_in_standby: "[FE] Emergency needed\n+ Stand-by" { class: fe }
+chain.inhibit_in_standby -> chain.suppress_open_signal: "[FE] Inhibit decision\n[no open]" { class: fe }
+chain.suppress_open_signal -> chain.observe_no_open: "[FE] Hold/closed command\n[no PWM-open]" { class: fe }
+chain.publish_standby_state -> chain.continue_telemetry: "[FE] Heartbeat continues\n[2 s cadence target]" { class: fe }
+chain.observe_no_open -> chain.log_no_open_result: "[FE] Observer evidence\n[closed/no current]" { class: fe }
+chain.continue_telemetry -> chain.log_no_open_result: "[FE] Telemetry evidence\n[health/state frames]" { class: fe }
+chain.log_no_open_result -> chain.operator_accepts_trial: "[FE] Trial record\n[pass/fail + raw trace]" { class: fe }
+
+chain.note_pf_standby -> chain.suppress_open_signal { class: cstr }
+chain.note_pf_standby -> chain.observe_no_open { class: cstr }
+chain.note_stat_no_open -> chain.operator_accepts_trial { class: cstr }
+chain.note_source_gap -> chain.start_trace { class: cstr }
+chain.note_trace -> chain.inhibit_in_standby { class: cstr }

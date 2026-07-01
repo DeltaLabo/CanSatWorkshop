@@ -1,0 +1,104 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Verification-only functional allocation for ADS-IVV-FC-ATT.
+# Allocates attitude demonstration/test and analysis functions to human actors, test equipment, and selected ADS version.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-ATT\nVerification-only functional allocation\nRefs: IVV; NASA-SE; IMU/I2C; ESA-CANSAT; SW/stats" {
+  class: sys
+  direction: down
+
+  selected_version: "[PC] Selected ADS version\nAttitude-chain UUT interface" {
+    class: pc
+    direction: down
+    attitude_test_lc: "[LC] Attitude chain\nobservation interface" {
+      class: lc
+      direction: down
+      grid-columns: 2
+      expose_model_chain: "[F] Expose copied\nattitude chain and constraints" { class: func }
+      emit_ads_attitude: "[F] Emit ADS accel/mag/\nPRY/status/timestamps" { class: func }
+      expose_timing_markers: "[F] Expose I2C, process,\ncalculate timing markers" { class: func }
+      expose_fault_state: "[F] Expose validity,\nfreshness, disturbance state" { class: func }
+    }
+  }
+}
+
+conductor: "[EA] IVV attitude\ndemonstration conductor" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  select_baseline: "[F] Select ADS version,\nmodel baseline, firmware commit" { class: func }
+  run_orientation_demo: "[F] Run static orientation\nand yaw-change demonstration" { class: func }
+  run_fault_demo: "[F] Run I2C, invalid IMU,\nmagnetic disturbance demo" { class: func }
+  record_deviations: "[F] Record deviations,\nwaivers, retest status" { class: func }
+}
+
+orientation_reference: "[EA] Orientation / magnetic\nreference means" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  provide_orientation: "[F] Provide known\norientation/time labels" { class: func }
+  provide_yaw_context: "[F] Provide yaw/heading\nreference or relative change" { class: func }
+  provide_uncertainty: "[F] Provide fixture,\nlevel, field uncertainty" { class: func }
+  inject_disturbance: "[F] Provide magnetic\nor invalid-orientation stimuli" { class: func }
+}
+
+data_logger: "[EA] Data logger /\ntimebase" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  capture_ads_stream: "[F] Capture ADS accel,\nmag, PRY samples" { class: func }
+  capture_reference_stream: "[F] Capture reference\norientation and timestamps" { class: func }
+  align_samples: "[F] Align reference and\nADS samples" { class: func }
+  preserve_raw_evidence: "[F] Preserve raw\nevidence files" { class: func }
+}
+
+analysis_tool: "[EA] Demonstration analysis\ntool" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  check_finite_bounds: "[F] Check PRY finite\nand convention-bounded" { class: func }
+  check_plausibility: "[F] Check orientation/yaw\nplausibility" { class: func }
+  characterize_repeatability: "[F] Characterize\nrepeatability; no accuracy claim" { class: func }
+  analyze_fault_results: "[F] Analyze invalid/stale/\ndisturbed data behavior" { class: func }
+}
+
+quality: "[EA] Quality / configuration\nauthority" {
+  class: ea
+  review_result: "[F] Review pass/fail,\nlimitations, anomalies" { class: func }
+}
+
+note_pass: "[C] Attitude chain pass/fail\nPass if accel/mag data and PRY traverse the modeled chain,\nPRY is finite and within the selected convention/range, plausible\nfor known orientations/yaw changes, and invalid/stale/disturbed data\nare not accepted as valid." { class: note; shape: page }
+note_stats: "[C] Statistical viewpoint\nThis is a demonstration/repeatability characterization, not a\nformal attitude accuracy test unless a new requirement is added.\nUse complete orientation records and report sample counts, repeatability,\nand any execution-approved plausibility tolerance." { class: note; shape: page }
+note_na: "[C] v0.1/v0.3 N/A rule\nPass/N/A only after confirming source views have no\nattitude functional chain, LC allocation, or CE behavior\nto execute for the selected version." { class: note; shape: page }
+
+note_pass -> analysis_tool.check_finite_bounds { class: cstr }
+note_pass -> analysis_tool.check_plausibility { class: cstr }
+note_pass -> analysis_tool.analyze_fault_results { class: cstr }
+note_stats -> analysis_tool.characterize_repeatability { class: cstr }
+note_na -> conductor.record_deviations { class: cstr }
+
+# Layout-only edge to stack verification means under the selected UUT interface.
+system -> conductor { style: { opacity: 0 } }
+conductor -> orientation_reference { style: { opacity: 0 } }
+orientation_reference -> data_logger { style: { opacity: 0 } }
+data_logger -> analysis_tool { style: { opacity: 0 } }
+analysis_tool -> quality { style: { opacity: 0 } }

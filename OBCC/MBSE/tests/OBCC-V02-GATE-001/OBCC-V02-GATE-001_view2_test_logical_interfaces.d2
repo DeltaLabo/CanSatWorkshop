@@ -1,0 +1,189 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V02-GATE-001 PV2: v0.2 component-exchange analysis and test logical interfaces.
+# Only LCs, PCs, EAs, CEs, and constraints are shown.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 18 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea }
+interface_reviewer: "[EA] Interface / code reviewer" { class: ea }
+logic_analyzer: "[EA] Logic analyzer" { class: ea }
+protocol_fault_injector: "[EA] Protocol exerciser /\nfault injector" { class: ea }
+serial_log_capture: "[EA] Serial log capture" { class: ea }
+timer_trace_collector: "[EA] Timer/trace collector" { class: ea }
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" { class: ea }
+
+system: "[System] OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing logical view\nRefs: IVV, OBCC README, Variable Getter Template, v1.0 PV2/PV3/runtime-fault chain" {
+  class: sys
+  direction: down
+
+  bringup_article: "[PC] v0.2 OBCC bus-bring-up\narticle" {
+    class: pc
+    direction: right
+
+    data_targets: "[PC] Sensor / actuator\ninterface targets" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      bme280: "[PC] BME280" {
+        class: pc
+        ams_sensing: "[LC] AMS sensing" { class: lc }
+      }
+
+      imu: "[PC] ICM20948 IMU\n(or legacy MPU6050)" {
+        class: pc
+        imu_sensing: "[LC] Kinematic sensing" { class: lc }
+      }
+
+      ina219: "[PC] INA219" {
+        class: pc
+        battery_monitoring: "[LC] Battery monitoring" { class: lc }
+      }
+
+      gps: "[PC] UBX-G7020-KT GPS" {
+        class: pc
+        gps_sensing: "[LC] GPS sensing" { class: lc }
+      }
+
+      servo: "[PC] Servo safe-load fixture" {
+        class: pc
+        trigger: "[LC] Servo trigger" { class: lc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC development module" {
+      class: pc
+      direction: down
+
+      rfm95w: "[PC] RFM95W LoRa" {
+        class: pc
+        cansat_lora: "[LC] LoRa transceiver" { class: lc }
+      }
+
+      xiao: "[PC] XIAO ESP32-S3" {
+        class: pc
+        direction: down
+        grid-columns: 1
+
+        health_monitor: "[LC] Health Monitor" { class: lc }
+        free_rtos: "[LC] FreeRTOS Kernel" { class: lc }
+        ads_processing: "[LC] ADS Processing" { class: lc }
+        ams_processing: "[LC] AMS Processing" { class: lc }
+        ess_processing: "[LC] ESS Processing" { class: lc }
+        telemetry_collector: "[LC] Telemetry Collector" { class: lc }
+        telemetry_encoder: "[LC] Telemetry Encoder" { class: lc }
+        command_handler: "[LC] Command Handler" { class: lc }
+        obcc_supervisor: "[LC] OBCC Supervisor" { class: lc }
+        pdm_processing: "[LC] PDM Processing" { class: lc }
+        verification_harness: "[LC] Bus/getter test harness\n(verification-only)" { class: lc }
+        diagnostic_interface: "[LC] USB serial diagnostic\ninterface\n(verification-only)" { class: lc }
+        trace_exporter: "[LC] GPIO/timer trace\nexporter\n(verification-only)" { class: lc }
+      }
+    }
+  }
+
+  note_ce_analysis: "[C] Analysis pass/fail:\n100% of I2C, UART, SPI, PWM,\ngetter, queue, state, and mode-gate\nexchanges have implemented protocol,\nvoltage level, direction, addressing,\nand ownership matching model intent." {
+    class: note
+    shape: page
+  }
+
+  note_getter_contract: "[C] Getter contract:\neach getter returns typed value plus\nsuccess/error status; no hidden cross-task\nbus ownership or unbounded blocking." {
+    class: note
+    shape: page
+  }
+
+  note_timing_faults: "[C] Timing/fault constraints:\nI2C/UART reads timeout ≤5 ms where\nmodeled; SPI/PWM fault paths are bounded\nand observable through status/log/trace." {
+    class: note
+    shape: page
+  }
+
+  note_source_gap: "[C] Source baseline gap:\nno v0.2 Capella/D2 views exist in the\nrepository. v1.0 views are target context,\nnot an as-built v0.2 baseline." {
+    class: note
+    shape: page
+  }
+}
+
+test_operator -> system.bringup_article.obcc_module.xiao.verification_harness: "[CE] Test procedure\nand fault matrix" { class: ce }
+interface_reviewer -> system.bringup_article.obcc_module.xiao.verification_harness: "[CE] Interface review\nfindings" { class: ce }
+ambient_thermometer -> system.bringup_article.obcc_module.xiao.verification_harness: "[CE] Ambient readout\nentered in evidence" { class: ce }
+logic_analyzer <- system.bringup_article.obcc_module.xiao.trace_exporter: "[CE] Probe timing\nmarkers" { class: ce }
+system.bringup_article.obcc_module.xiao.diagnostic_interface -> serial_log_capture: "[CE] Getter result /\nhealth log" { class: ce }
+system.bringup_article.obcc_module.xiao.trace_exporter -> timer_trace_collector: "[CE] Getter duration\ntrace" { class: ce }
+protocol_fault_injector -> system.bringup_article.obcc_module.xiao.verification_harness: "[CE] Fault scripts /\nstimulus commands" { class: ce }
+
+system.bringup_article.data_targets.gps.gps_sensing -> system.bringup_article.obcc_module.xiao.ads_processing: "[CE] UART" { class: ce }
+system.bringup_article.data_targets.imu.imu_sensing -> system.bringup_article.obcc_module.xiao.ads_processing: "[CE] I2C" { class: ce }
+system.bringup_article.data_targets.bme280.ams_sensing -> system.bringup_article.obcc_module.xiao.ams_processing: "[CE] I2C" { class: ce }
+system.bringup_article.data_targets.ina219.battery_monitoring -> system.bringup_article.obcc_module.xiao.ess_processing: "[CE] I2C" { class: ce }
+system.bringup_article.obcc_module.xiao.pdm_processing -> system.bringup_article.data_targets.servo.trigger: "[CE] PWM" { class: ce }
+
+system.bringup_article.obcc_module.xiao.telemetry_encoder -> system.bringup_article.obcc_module.rfm95w.cansat_lora: "[CE] SPI" { class: ce }
+system.bringup_article.obcc_module.rfm95w.cansat_lora -> system.bringup_article.obcc_module.xiao.command_handler: "[CE] SPI" { class: ce }
+
+system.bringup_article.obcc_module.xiao.ads_processing -> system.bringup_article.obcc_module.xiao.telemetry_collector: "[CE] Getters" { class: ce }
+system.bringup_article.obcc_module.xiao.ams_processing -> system.bringup_article.obcc_module.xiao.telemetry_collector: "[CE] Getters" { class: ce }
+system.bringup_article.obcc_module.xiao.ess_processing -> system.bringup_article.obcc_module.xiao.telemetry_collector: "[CE] Getters" { class: ce }
+system.bringup_article.obcc_module.xiao.telemetry_collector -> system.bringup_article.obcc_module.xiao.telemetry_encoder: "[CE] Queue" { class: ce }
+system.bringup_article.obcc_module.xiao.command_handler -> system.bringup_article.obcc_module.xiao.obcc_supervisor: "[CE] State" { class: ce }
+system.bringup_article.obcc_module.xiao.obcc_supervisor -> system.bringup_article.obcc_module.xiao.pdm_processing: "[CE] Mode gate" { class: ce }
+system.bringup_article.obcc_module.xiao.free_rtos -> system.bringup_article.obcc_module.xiao.verification_harness: "[CE] Bus ownership /\nmutex and liveness evidence" { class: ce }
+
+system.note_ce_analysis -> system.bringup_article.obcc_module.xiao.verification_harness { class: cstr }
+system.note_ce_analysis -> system.bringup_article.obcc_module.xiao.free_rtos { class: cstr }
+system.note_getter_contract -> system.bringup_article.obcc_module.xiao.telemetry_collector { class: cstr }
+system.note_timing_faults -> system.bringup_article.obcc_module.xiao.health_monitor { class: cstr }
+system.note_timing_faults -> protocol_fault_injector { class: cstr }
+system.note_source_gap -> system { class: cstr }
+
+# Layout-only edges keep actors above the UUT and notes below it.
+logic_analyzer -> protocol_fault_injector { style: { opacity: 0 } }
+protocol_fault_injector -> serial_log_capture { style: { opacity: 0 } }
+serial_log_capture -> timer_trace_collector { style: { opacity: 0 } }
+timer_trace_collector -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> test_operator { style: { opacity: 0 } }
+test_operator -> interface_reviewer { style: { opacity: 0 } }
+system.bringup_article -> system.note_ce_analysis { style: { opacity: 0 } }
+system.note_ce_analysis -> system.note_getter_contract { style: { opacity: 0 } }
+system.note_getter_contract -> system.note_timing_faults { style: { opacity: 0 } }
+system.note_timing_faults -> system.note_source_gap { style: { opacity: 0 } }

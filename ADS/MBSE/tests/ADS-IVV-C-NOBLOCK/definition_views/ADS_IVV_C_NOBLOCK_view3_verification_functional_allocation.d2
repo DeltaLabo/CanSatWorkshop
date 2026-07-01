@@ -1,0 +1,150 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Verification-only functional allocation for ADS-IVV-C-NOBLOCK.
+# Allocates analysis and supporting-test functions to human operators, test equipment, and the UUT interface.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-NOBLOCK\nVerification-only functional allocation\nRefs: IVV; ADS MBSE plan; SW/stats; GPS/UBX; IMU/I2C" {
+  class: sys
+  direction: down
+
+  selected_version: "[PC] Selected ADS version\nno-blocking UUT interface" {
+    class: pc
+    direction: down
+    observation_lc: "[LC] Runtime and source\nobservation adapter" {
+      class: lc
+      direction: down
+      grid-columns: 2
+      expose_source_model: "[F] Expose copied model\nconstraints and chains" { class: func }
+      expose_firmware_map: "[F] Expose firmware\ncall graph and symbols" { class: func }
+      instrument_reads: "[F] Instrument UART/I2C\nread durations and errors" { class: func }
+      emit_heartbeat: "[F] Emit Loop / ADS Processing\nheartbeat markers" { class: func }
+      expose_cycle: "[F] Expose cycle progress,\ninit state, and resets" { class: func }
+      expose_fault_state: "[F] Expose timeout, stale,\nmalformed, NACK states" { class: func }
+    }
+  }
+}
+
+conductor: "[EA] IVV no-blocking\ntest conductor" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  select_baseline: "[F] Select version, model\nbaseline, firmware commit" { class: func }
+  start_review: "[F] Start code/model\nreview session" { class: func }
+  start_runtime: "[F] Start instrumented\nruntime campaign" { class: func }
+  inject_cases: "[F] Command GPS and I2C\nfault cases" { class: func }
+  record_result: "[F] Record pass/fail,\nblocked, N/A, retest" { class: func }
+  read_environment: "[F] Read ambient monitor\nbefore repetitions" { class: func }
+}
+
+review_station: "[EA] Code/model\nreview station" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  review_d2: "[F] Review copied D2\nconstraint/function inventory" { class: func }
+  inspect_source: "[F] Inspect firmware loops,\ndelays, waits, blocking calls" { class: func }
+  classify_waits: "[F] Classify waits as\nUART/I2C or forbidden" { class: func }
+  trace_functions: "[F] Trace implementation\nto modeled functions" { class: func }
+}
+
+timing_tool: "[EA] Timing analysis\ntool" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  build_call_graph: "[F] Build call graph and\nblocking-call inventory" { class: func }
+  analyze_timeouts: "[F] Analyze UART/I2C\ntimeout/error paths" { class: func }
+  flag_hidden_waits: "[F] Flag hidden waits\noutside UART/I2C" { class: func }
+  generate_report: "[F] Generate timing and\nno-blocking analysis report" { class: func }
+}
+
+watchdog: "[EA] Runtime watchdog /\nheartbeat instrumentation" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  toggle_heartbeat: "[F] Toggle heartbeat at\nloop entry/exit" { class: func }
+  timestamp_cycles: "[F] Timestamp cycle\nprogress and gaps" { class: func }
+  detect_stall: "[F] Detect stall, reset,\nor missed heartbeat" { class: func }
+  bound_overhead: "[F] Characterize\ninstrumentation overhead" { class: func }
+}
+
+logger: "[EA] Serial / OBCC\nlogger" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  capture_heartbeat: "[F] Capture heartbeat\nand cycle timestamps" { class: func }
+  capture_ads_logs: "[F] Capture ADS/OBCC\nruntime logs" { class: func }
+  capture_fault_markers: "[F] Capture injected\nfault markers" { class: func }
+  preserve_evidence: "[F] Preserve raw logs\nand timebase metadata" { class: func }
+}
+
+gps_fault: "[EA] GPS silent /\nmalformed fault injector" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  silence_uart: "[F] Silence GPS UART\nor withhold payloads" { class: func }
+  send_malformed: "[F] Send malformed or\npartial GPS frames" { class: func }
+  restore_nominal: "[F] Restore nominal\nGPS stream" { class: func }
+}
+
+imu_fault: "[EA] IMU NACK /\nstuck-bus fault injector" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  force_nack: "[F] Force I2C NACK or\nwrong-address response" { class: func }
+  hold_bus: "[F] Hold SDA/SCL stuck\nor simulate bus lock" { class: func }
+  restore_bus: "[F] Restore I2C bus\nand device response" { class: func }
+}
+
+environment: "[EA] Bench supply and\nambient monitor" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  read_voltage: "[F] Measure delivered\nvoltage/current" { class: func }
+  read_ambient: "[F] Measure ambient\ntemperature/humidity" { class: func }
+  record_conditions: "[F] Record execution\nconditions" { class: func }
+}
+
+quality: "[EA] Quality / configuration\nauthority" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  review_evidence: "[F] Review evidence,\nlimitations, anomalies" { class: func }
+}
+
+note_pass: "[C] No-blocking pass/fail\nAll non-I2C/non-UART functions have no external-data wait.\nUART/I2C waits return data or timeout/error.\nHeartbeat/cycle progress remains observable during fault cases.\nNo hidden wait state is found." { class: note; shape: page }
+note_stats: "[C] Statistical viewpoint\nSource/model review is complete enumeration of reviewed call sites.\nRuntime timing samples support fault-hardening; use n=59 zero-violation\nsamples for any formal 95/95 deadline/timeout claim." { class: note; shape: page }
+note_faults: "[C] Fault-hardening viewpoint\nGPS silent/malformed, UART timeout, IMU NACK/stuck bus, partial reads,\nstale data, recovery, reset/stall, and logger loss are evaluated.\nIMU cases apply to v0.2 and v1.0 only." { class: note; shape: page }
+note_v03: "[C] v0.3 N/A rule\nNo runtime allocation or functional chains exist in the v0.3 source.\nRecord N/A after source review; do not infer no-blocking from PCB traces." { class: note; shape: page }
+
+# Layout-only edge to stack verification means under the selected UUT interface.
+system -> conductor { style: { opacity: 0 } }
+conductor -> review_station { style: { opacity: 0 } }
+review_station -> timing_tool { style: { opacity: 0 } }
+timing_tool -> watchdog { style: { opacity: 0 } }
+watchdog -> logger { style: { opacity: 0 } }
+logger -> gps_fault { style: { opacity: 0 } }
+gps_fault -> imu_fault { style: { opacity: 0 } }
+imu_fault -> environment { style: { opacity: 0 } }
+environment -> quality { style: { opacity: 0 } }
+quality -> note_pass { style: { opacity: 0 } }
+note_pass -> note_stats { style: { opacity: 0 } }
+note_stats -> note_faults { style: { opacity: 0 } }
+note_faults -> note_v03 { style: { opacity: 0 } }

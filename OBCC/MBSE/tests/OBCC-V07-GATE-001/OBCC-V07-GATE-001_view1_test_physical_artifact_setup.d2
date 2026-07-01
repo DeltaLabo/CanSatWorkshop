@@ -1,0 +1,105 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V07-GATE-001 PV1: physical/artifact setup for v0.7 FreeRTOS
+# allocation, interface ownership, and trace-hook analysis.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 28 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+analysis_workstation: "[EA] Analysis workstation\n(static analyzer, matrix editor)" { class: ea }
+rtos_event_logger: "[EA] RTOS event logger /\nGPIO trace collector" { class: ea }
+stress_exerciser: "[EA] Bench stress exerciser\n(optional trace hook)" { class: ea }
+
+def_system: "[System] OBCC-V07-GATE-001 — v0.7 FreeRTOS allocation/interface analysis physical setup\nRefs: IVV, OBCC README, Variable Getter Template, v1.0 PV1/PV2/PV3/FC8" {
+  class: sys
+  direction: down
+
+  uut: "[PC] v0.7 OBCC software / target article\n(v0.7 Capella source absent)" {
+    class: pc
+    direction: right
+
+    baseline_package: "[PC] Controlled source, build,\nand configuration snapshot" { class: pc }
+
+    obcc_target: "[PC] XIAO ESP32-S3\nFreeRTOS target" {
+      class: pc
+      direction: down
+      usb_debug_port: "[PC] USB-C / UART /\nJTAG debug port" { class: pc }
+      trace_header: "[PC] GPIO trace pins\n(verification-only)" { class: pc }
+    }
+
+    review_package: "[PC] Allocation matrix +\ntask/queue/mutex/ISR inventory" { class: pc }
+  }
+
+  note_inspection: "[C] Inspection target: source/config snapshot,\nallocation matrix, task list, queue list,\nmutex/bus-protection list, ISR list,\ntimer list, trace-hook definition, and\nreview disposition log are present." {
+    class: note
+    shape: page
+  }
+
+  note_trace: "[C] Trace/stress hook: event logs are optional\ninputs to the analysis gate, not final reliability\nevidence unless statistical assumptions are stated." {
+    class: note
+    shape: page
+  }
+
+  note_gap: "[C] Source gap: no v0.7 Capella/D2 baseline\nexists. Copied v1.0 views are target context\nfor the advancement definition only." {
+    class: note
+    shape: page
+  }
+}
+
+analysis_workstation -- def_system.uut.baseline_package: "[PL] Controlled file\nreview access" { class: pl }
+analysis_workstation -- def_system.uut.review_package: "[PL] Matrix and\ninventory review" { class: pl }
+analysis_workstation -- def_system.uut.obcc_target.usb_debug_port: "[PL] USB-C / JTAG /\nserial evidence link" { class: pl }
+rtos_event_logger -- def_system.uut.obcc_target.trace_header: "[PL] GPIO timestamp\ntrace leads" { class: pl }
+stress_exerciser -- def_system.uut.obcc_target.usb_debug_port: "[PL] Load-command\nbench link" { class: pl }
+
+def_system.note_inspection -> def_system.uut.baseline_package { class: cstr }
+def_system.note_inspection -> def_system.uut.review_package { class: cstr }
+def_system.note_trace -> rtos_event_logger { class: cstr }
+def_system.note_trace -> stress_exerciser { class: cstr }
+def_system.note_gap -> def_system { class: cstr }
+
+# Layout-only edges keep external equipment above the UUT and notes below it.
+analysis_workstation -> rtos_event_logger { style: { opacity: 0 } }
+rtos_event_logger -> stress_exerciser { style: { opacity: 0 } }
+def_system.uut -> def_system.note_inspection { style: { opacity: 0 } }
+def_system.note_inspection -> def_system.note_trace { style: { opacity: 0 } }
+def_system.note_trace -> def_system.note_gap { style: { opacity: 0 } }

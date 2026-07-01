@@ -1,0 +1,387 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V09-GATE-001 PV3: functional allocation for mission-window rehearsal.
+# Shows human/operator functions, test-equipment functions, UUT functions, and
+# verification-only functions. No component/physical/functional exchanges are used.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] OBCC mission-window rehearsal functional allocation\nRefs: IVV, PM&SE/IVV, OBCC README, LoRa_Frame, Variable Getter Template, v1.0 PV3/chains; trace: OBCC-VV-FC-006 and regressions FC-001..FC-005" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat: "[PC] Integrated CanSat\nunder test" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+
+        rfm95w: "[PC] RFM95W LoRa" {
+          class: pc
+          cansat_lora: "[LC] LoRa Transceiver" {
+            class: lc
+            direction: down
+            receive_incoming_data: "[F] Receive incoming\nLoRa data" { class: func }
+            transmit_outgoing_data: "[F] Transmit outgoing\nLoRa data" { class: func }
+          }
+        }
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+          grid-columns: 2
+
+          free_rtos: "[LC] FreeRTOS Kernel" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            init_kernel_objects: "[F] Init kernel\nobjects" { class: func }
+            create_runtime_tasks: "[F] Create runtime\ntasks" { class: func }
+            schedule_periodic_timers: "[F] Schedule periodic\ntimers" { class: func }
+            protect_shared_buses: "[F] Protect shared\nbuses" { class: func }
+          }
+
+          obcc_supervisor: "[LC] OBCC Supervisor" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            bootstrap_obcc: "[F] Bootstrap\nOBCC" { class: func }
+            coordinate_operational_state: "[F] Coordinate\noperational state" { class: func }
+            start_runtime_services: "[F] Start runtime\nservices" { class: func }
+            publish_state_metadata: "[F] Publish state\nmetadata" { class: func }
+          }
+
+          health_monitor: "[LC] Health Monitor" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            check_critical_peripherals: "[F] Check critical\nperipherals" { class: func }
+            check_noncritical_peripherals: "[F] Check non-critical\nperipherals" { class: func }
+            publish_health_flags: "[F] Publish health\nflags" { class: func }
+            classify_runtime_faults: "[F] Classify runtime\nfaults" { class: func }
+            enter_error_state: "[F] Enter safe/error\nstate" { class: func }
+            count_timeouts: "[F] Count\ntimeouts" { class: func }
+          }
+
+          telemetry_collector: "[LC] Telemetry Collector" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            collect_measurements: "[F] Collect\nmeasurements" { class: func }
+            call_variable_getters: "[F] Call variable\ngetters" { class: func }
+            replace_missing_value: "[F] Replace missing value\nwith error code" { class: func }
+            add_heartbeat_status: "[F] Add heartbeat\nstatus" { class: func }
+            push_to_measurement_queue: "[F] Push to measurement\nqueue" { class: func }
+          }
+
+          telemetry_encoder: "[LC] Telemetry Encoder" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            enforce_two_second_cadence: "[F] Enforce 2 s\ntelemetry cadence" { class: func }
+            consume_measurement_queue: "[F] Consume measurement\nqueue" { class: func }
+            generate_frame: "[F] Generate LoRa\nframe" { class: func }
+            send_lora_packet: "[F] Send LoRa\npacket" { class: func }
+          }
+
+          command_handler: "[LC] Command Handler" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            read_command: "[F] Read\ncommand" { class: func }
+            validate_command: "[F] Validate\ncommand" { class: func }
+            handle_command: "[F] Handle\ncommand" { class: func }
+            set_on_state: "[F] Set On\nstate" { class: func }
+            set_standby_state: "[F] Set Stand-by\nstate" { class: func }
+            log_invalid_command: "[F] Log invalid\ncommand" { class: func }
+          }
+
+          pdm_processing: "[LC] PDM Processing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+            evaluate_emergency_deploy: "[F] Evaluate emergency\ndeploy need" { class: func }
+            inhibit_deployment_standby: "[F] Inhibit deployment\nin Stand-by" { class: func }
+            send_open_signal: "[F] Send open signal\nto Servo" { class: func }
+          }
+        }
+      }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      servo: "[PC] Servo" {
+        class: pc
+        trigger: "[LC] Trigger" {
+          class: lc
+          direction: down
+          reach_closed_position: "[F] Reach closed\nposition" { class: func }
+          reach_open_position: "[F] Reach open\nposition" { class: func }
+          retain_position: "[F] Retain\nposition" { class: func }
+        }
+      }
+    }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm95w: "[PC] RFM95W LoRa" {
+      class: pc
+      ground_lora: "[LC] LoRa Transceiver" {
+        class: lc
+        direction: down
+        store_incoming_data: "[F] Store incoming\nLoRa data" { class: func }
+        transmit_outgoing_data: "[F] Transmit outgoing\ncommand data" { class: func }
+      }
+    }
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      lora_forwarder: "[LC] LoRa Forwarder" {
+        class: lc
+        direction: down
+        read_payload: "[F] Read\npayload" { class: func }
+        forward_to_pc: "[F] Forward\nto PC" { class: func }
+        generate_command_frame: "[F] Generate command\nframe" { class: func }
+        write_to_lora_radio: "[F] Write to\nLoRa radio" { class: func }
+      }
+    }
+  }
+
+  ground_pc: "[PC] Ground PC" {
+    class: pc
+    direction: right
+
+    decoder: "[LC] Decoder" {
+      class: lc
+      direction: down
+      read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+      push_to_payload_queue: "[F] Push to\npayload queue" { class: func }
+    }
+
+    dashboard: "[LC] Dashboard" {
+      class: lc
+      direction: down
+      catch_state_toggle: "[F] Catch state\ntoggle" { class: func }
+      update_plots: "[F] Update\nplots" { class: func }
+    }
+
+    csv_writer: "[LC] CSV Writer" {
+      class: lc
+      direction: down
+      append_to_csv: "[F] Append\nto CSV" { class: func }
+      export_csv: "[F] Export CSV\nfor evidence" { class: func }
+    }
+  }
+
+  test_workstation: "[PC] Test Evidence Workstation\n(verification-only)" {
+    class: pc
+    direction: right
+
+    evidence_orchestrator: "[LC] Evidence Orchestrator" {
+      class: lc
+      direction: down
+      timestamp_events: "[F] Timestamp\nmission events" { class: func }
+      compare_to_oracle: "[F] Compare evidence\nto pass/fail oracle" { class: func }
+      record_gate_decision: "[F] Record v0.9 -> v1.0\ngate decision" { class: func }
+    }
+
+    timing_logger: "[LC] Timing Logger" {
+      class: lc
+      direction: down
+      measure_cadence: "[F] Measure telemetry\ncadence" { class: func }
+      measure_deploy_latency: "[F] Measure deployment\nlatency" { class: func }
+      mark_fault_recovery: "[F] Mark fault\nrecovery times" { class: func }
+    }
+
+    fault_injection_controller: "[LC] Safe Fault Injection Controller" {
+      class: lc
+      direction: down
+      issue_invalid_command: "[F] Issue invalid\ncommand challenge" { class: func }
+      inject_getter_timeout: "[F] Inject selected\ngetter timeout/NACK" { class: func }
+      restore_nominal_path: "[F] Restore nominal\npath" { class: func }
+    }
+
+    fixture_controller: "[LC] Deployment Fixture Controller" {
+      class: lc
+      direction: down
+      request_no_trigger: "[F] Request no-trigger\nbranch" { class: func }
+      request_safe_trigger: "[F] Request safe trigger\nbranch" { class: func }
+      report_servo_travel: "[F] Report servo travel\nor inhibition" { class: func }
+    }
+
+    config_manifest: "[LC] As-tested Config Manifest" {
+      class: lc
+      direction: down
+      capture_uut_ids: "[F] Capture UUT, firmware,\nsource, equipment IDs" { class: func }
+      record_source_gap: "[F] Record missing v0.9\nsource baseline" { class: func }
+    }
+  }
+
+  note_pf: "[C] Pass/fail constraints PF-001..PF-010\nare allocated to the mission rehearsal chain and\ncover configuration, environment, startup, telemetry,\ncommand/state, deployment, fault handling, statistics,\nand evidence completeness." {
+    class: note
+    shape: page
+  }
+}
+
+integrated_test_operator: "[EA] Integrated test operator" {
+  class: ea
+  direction: down
+  select_procedure: "[F] Select rehearsal\nprocedure and checklist" { class: func }
+  perform_pretest_holdpoint: "[F] Perform pre-test\nsafety holdpoint" { class: func }
+  start_rehearsal: "[F] Press launch /\nstart rehearsal" { class: func }
+  declare_gate_outcome: "[F] Declare pass, fail,\nwaiver, or rework" { class: func }
+}
+
+range_ground_operator: "[EA] Range / ground operator" {
+  class: ea
+  direction: down
+  command_standby_on: "[F] Send Stand-by /\nOn commands" { class: func }
+  verify_dashboard_state: "[F] Verify dashboard\nstate and plots" { class: func }
+  request_recovery: "[F] Request recovery\nor abort if unsafe" { class: func }
+}
+
+rf_monitor: "[EA] RF monitor" {
+  class: ea
+  direction: down
+  verify_rf_setup: "[F] Verify antenna, channel,\nand RF monitor setup" { class: func }
+  log_rssi_snr_pdr: "[F] Log RSSI, SNR,\nreceived/lost frames" { class: func }
+}
+
+ambient_weather_recorder: "[EA] Ambient/weather recorder" {
+  class: ea
+  direction: down
+  read_ambient_instruments: "[F] Read thermometer,\nbarometer, and wind\ninstruments" { class: func }
+  log_environment: "[F] Log environmental\nconditions" { class: func }
+}
+
+deployment_safety_observer: "[EA] Deployment-safety observer" {
+  class: ea
+  direction: down
+  arm_safe_fixture: "[F] Arm safe deployment\nfixture" { class: func }
+  observe_no_open_or_open: "[F] Observe no-open /\nopen behavior" { class: func }
+  call_safety_stop: "[F] Call safety stop\nif fixture unsafe" { class: func }
+}
+
+evidence_data_manager: "[EA] Evidence/data manager" {
+  class: ea
+  direction: down
+  create_evidence_index: "[F] Create evidence\nindex" { class: func }
+  export_evidence_package: "[F] Export raw logs,\nphotos, CSV, RF data" { class: func }
+  protect_report_folder: "[F] Protect results\nfolder" { class: func }
+}
+
+as_tested_config_recorder: "[EA] As-tested configuration recorder" {
+  class: ea
+  direction: down
+  record_hardware_revision: "[F] Record hardware\nrevision and serials" { class: func }
+  record_firmware_config: "[F] Record firmware,\ncommit, radio settings" { class: func }
+  record_equipment_ids: "[F] Record calibrated\nequipment IDs" { class: func }
+}
+
+bench_test_harness: "[EA] Current-limited power\nand fault-injection harness" {
+  class: ea
+  direction: down
+  apply_current_limited_power: "[F] Apply current-limited\npower" { class: func }
+  inject_safe_fault_signal: "[F] Inject safe\nfault signal" { class: func }
+  remove_fault_signal: "[F] Remove fault\nsignal" { class: func }
+}
+
+rf_measurement_set: "[EA] RF measurement set" {
+  class: ea
+  direction: down
+  measure_channel_power: "[F] Measure channel\npower / RSSI" { class: func }
+  capture_rf_trace: "[F] Capture RF trace\nand timestamps" { class: func }
+}
+
+weather_station: "[EA] Weather station" {
+  class: ea
+  direction: down
+  measure_temperature: "[F] Measure ambient\ntemperature" { class: func }
+  measure_pressure_wind: "[F] Measure pressure\nand wind context" { class: func }
+}
+
+deployment_fixture_equipment: "[EA] Deployment safety fixture" {
+  class: ea
+  direction: down
+  restrain_deployment_path: "[F] Restrain deployment\npath safely" { class: func }
+  measure_servo_travel: "[F] Measure servo\ntravel" { class: func }
+}
+
+evidence_storage: "[EA] Controlled evidence archive" {
+  class: ea
+  direction: down
+  store_raw_evidence: "[F] Store raw\nevidence files" { class: func }
+  preserve_report: "[F] Preserve report\nby reference" { class: func }
+}
+
+system.note_pf -> system.test_workstation.evidence_orchestrator.compare_to_oracle { class: cstr }
+system.note_pf -> system.cansat.obcc_module.obcc_pcb.xiao.telemetry_encoder.enforce_two_second_cadence { class: cstr }
+system.note_pf -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing.send_open_signal { class: cstr }
+
+# Layout-only edges keep human roles, equipment roles, and UUT bands readable.
+integrated_test_operator -> range_ground_operator { style: { opacity: 0 } }
+range_ground_operator -> rf_monitor { style: { opacity: 0 } }
+rf_monitor -> ambient_weather_recorder { style: { opacity: 0 } }
+ambient_weather_recorder -> deployment_safety_observer { style: { opacity: 0 } }
+deployment_safety_observer -> evidence_data_manager { style: { opacity: 0 } }
+evidence_data_manager -> as_tested_config_recorder { style: { opacity: 0 } }
+as_tested_config_recorder -> bench_test_harness { style: { opacity: 0 } }
+bench_test_harness -> rf_measurement_set { style: { opacity: 0 } }
+rf_measurement_set -> weather_station { style: { opacity: 0 } }
+weather_station -> deployment_fixture_equipment { style: { opacity: 0 } }
+deployment_fixture_equipment -> evidence_storage { style: { opacity: 0 } }
+evidence_storage -> system { style: { opacity: 0 } }
+system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.ground_pc { style: { opacity: 0 } }
+system.ground_pc -> system.test_workstation { style: { opacity: 0 } }

@@ -1,0 +1,137 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V06-GATE-001 PV1: v0.6 runtime fault-handling verification physical setup.
+# v0.6 Capella source views are absent; copied v1.0 views are target-context only.
+# PV2/PV3 decompose the aggregate test bench into individual actors/functions.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 18 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_bench: "[EA] Runtime fault test-bench equipment\n(fault injectors, bus monitor, trace/timing\ncollector, RF monitor, power/reset controller)" { class: ea }
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" { class: ea }
+
+system: "[System] OBCC-V06-GATE-001 — v0.6 runtime fault-handling physical test setup\nRefs: IVV, PM&SE/IVV, OBCC README, Variable Getter Template, v1.0 PV1/PV2/PV3/Fault/Telemetry/Deployment views" {
+  class: sys
+  direction: down
+
+  uut: "[PC] v0.6 OBCC runtime\nfault-handling UUT" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    obcc_controller: "[PC] OBCC controller\nassembly" {
+      class: pc
+      direction: right
+      grid-columns: 3
+      xiao: "[PC] XIAO ESP32-S3" { class: pc }
+      rfm95w: "[PC] RFM95W LoRa" { class: pc }
+      obcc_backplane_connector: "[PC] OBCC backplane /\ntest header" { class: pc }
+    }
+
+    bus_fault_ports: "[PC] Bus and protocol\nfault-injection ports" {
+      class: pc
+      direction: right
+      grid-columns: 4
+      i2c_fault_port: "[PC] I2C NACK /\nstuck-bus port" { class: pc }
+      uart_fault_port: "[PC] UART silence /\nmalformed GPS port" { class: pc }
+      spi_fault_port: "[PC] SPI radio busy /\nfault port" { class: pc }
+      queue_trace_port: "[PC] RTOS queue /\nstate trace hook" { class: pc }
+    }
+
+    policy_observers: "[PC] Runtime policy\nobservation points" {
+      class: pc
+      direction: right
+      grid-columns: 4
+      health_telem_port: "[PC] Health/status\ntelemetry output" { class: pc }
+      mode_gate_probe: "[PC] On / Stand-by\nmode-gate probe" { class: pc }
+      emergency_request_probe: "[PC] Emergency-deploy\nrequest probe" { class: pc }
+      safe_error_probe: "[PC] Safe/error-state\nprobe" { class: pc }
+    }
+
+    note_presence: "[C] Inspection pass: controller, RFM95W,\nbus-fault ports, trace hooks, RF monitor path,\nmode/emergency/safe-error probes, bench power/reset,\nand environmental thermometer are present and identified." {
+      class: note
+      shape: page
+    }
+
+    note_nonblocking: "[C] Runtime-fault gate pass: injected faults\nmust not cause unbounded task, queue, mutex,\ngetter, mode-gate, or telemetry blocking." {
+      class: note
+      shape: page
+    }
+
+    note_source_gap: "[C] Source baseline gap:\nno v0.6 Capella/D2 views exist in this repository.\nCopied v1.0 runtime-fault views are target context only." {
+      class: note
+      shape: page
+    }
+  }
+}
+
+test_bench -- system.uut.bus_fault_ports.i2c_fault_port: "[PL] I2C" { class: pl }
+test_bench -- system.uut.bus_fault_ports.uart_fault_port: "[PL] UART" { class: pl }
+test_bench -- system.uut.bus_fault_ports.spi_fault_port: "[PL] SPI/RF" { class: pl }
+test_bench -- system.uut.bus_fault_ports.queue_trace_port: "[PL] Queue/trace" { class: pl }
+test_bench -- system.uut.obcc_controller.obcc_backplane_connector: "[PL] Trace" { class: pl }
+test_bench -- system.uut.obcc_controller.rfm95w: "[PL] RF" { class: pl }
+test_bench -- system.uut.obcc_controller.xiao: "[PL] Power/reset" { class: pl }
+test_bench -- system.uut.policy_observers: "[PL] Policy probes" { class: pl }
+ambient_thermometer -- system.uut: "[PL] Ambient" { class: pl }
+
+system.uut.obcc_controller.xiao -- system.uut.obcc_controller.rfm95w: "[PL] SPI + power" { class: pl }
+system.uut.obcc_controller.xiao -- system.uut.obcc_controller.obcc_backplane_connector: "[PL] I2C/UART/GPIO" { class: pl }
+system.uut.obcc_controller.obcc_backplane_connector -- system.uut.bus_fault_ports: "[PL] Fault harness" { class: pl }
+system.uut.obcc_controller.obcc_backplane_connector -- system.uut.policy_observers: "[PL] Probe harness" { class: pl }
+system.uut.policy_observers.health_telem_port -- system.uut.obcc_controller.rfm95w: "[PL] Telemetry/RF" { class: pl }
+system.uut.policy_observers.mode_gate_probe -- system.uut.policy_observers.emergency_request_probe: "[PL] Gate/request" { class: pl }
+
+system.uut.note_presence -> system.uut.obcc_controller { class: cstr }
+system.uut.note_presence -> test_bench { class: cstr }
+system.uut.note_nonblocking -> system.uut.bus_fault_ports.queue_trace_port { class: cstr }
+system.uut.note_nonblocking -> test_bench { class: cstr }
+system.uut.note_source_gap -> system { class: cstr }
+
+# Layout-only edges keep test means above the UUT and constraints below.
+test_bench -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> system { style: { opacity: 0 } }
+system.uut.obcc_controller -> system.uut.bus_fault_ports { style: { opacity: 0 } }
+system.uut.bus_fault_ports -> system.uut.policy_observers { style: { opacity: 0 } }
+system.uut.policy_observers -> system.uut.note_presence { style: { opacity: 0 } }
+system.uut.note_presence -> system.uut.note_nonblocking { style: { opacity: 0 } }
+system.uut.note_nonblocking -> system.uut.note_source_gap { style: { opacity: 0 } }

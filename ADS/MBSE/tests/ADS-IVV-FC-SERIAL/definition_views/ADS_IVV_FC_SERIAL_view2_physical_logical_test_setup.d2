@@ -1,0 +1,77 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical/logical test setup view for ADS-IVV-FC-SERIAL.
+# Defines the selected pre-v1.0 UUT, development PC logger/parser, USB-C path, power, timebase, stimuli, and records.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-SERIAL\nPhysical/logical Serial0 test setup\nRefs: IVV; NASA-SE; SW/stats; ESA-CANSAT" {
+  class: sys
+  direction: down
+
+  uut: "[PC] Selected ADS UUT\n(one version per execution)" {
+    class: pc
+    direction: right
+    grid-columns: 2
+    v01: "[PC] v0.1 GPS + XIAO\nSerial0-applicable prototype" { class: pc }
+    v02: "[PC] v0.2 GPS + IMU + XIAO\nSerial0-applicable prototype" { class: pc }
+    v03: "[PC] v0.3 ADS PCB\nN/A: PCB-only" { class: pc }
+    v10: "[PC] v1.0 integrated CanSat\nN/A: OBCC delivery path" { class: pc }
+  }
+}
+
+test_conductor: "[EA] IVV Serial test conductor\n(human operator)" { class: ea }
+serial_pc: "[EA] Development PC\nSerial0 logger / parser" { class: ea }
+power_supply: "[EA] Current-limited\nbench supply or battery simulator" { class: ea }
+fault_harness: "[EA] Optional GPS/IMU\nstimulus and fault harness" { class: ea }
+time_env: "[EA] Timebase + ambient monitor\nclock, thermometer, hygrometer" { class: ea }
+analysis_script: "[EA] Serial log\nanalysis script" { class: ea }
+
+note_schema: "[C] Execution prerequisite\nDeclare Serial0 schema before execution: baud/port/settings,\nline framing, init-state fields, measurement fields,\nvalidity/freshness/unavailable markers, and parser version.\nIf absent, verdict is Blocked/Limited, not pass." { class: note; shape: page }
+note_pass: "[C] Parseability pass condition\nFor v0.1/v0.2, the PC receives parseable init and\nmeasurement records matching the declared schema.\nMalformed or missing records are detected and reported." { class: note; shape: page }
+note_faults: "[C] Fault-hardening conditions\nUnavailable, stale, malformed, and missing GPS/IMU/init fields\nshall be explicit markers or parser-detectable errors;\nSerial0 shall not hide invalid data as valid." { class: note; shape: page }
+note_stats: "[C] Statistical/PDR viewpoint\nFrame counts, PDR, and binomial confidence are pass/fail only\nif expected frame count, campaign duration, schema, and\nacceptance threshold are declared before the run." { class: note; shape: page }
+note_environment: "[C] Environment and configuration\nRecord ambient temperature/humidity, timebase uncertainty, power level,\nUSB-C cable/port identity, firmware commit, UUT serial,\nPC OS/tool versions, and deviations." { class: note; shape: page }
+
+# Temporary physical links used by the verification setup.
+serial_pc -- system.uut: "[PL] USB-C cable\nunder test" { class: pl }
+power_supply -- system.uut: "[PL] power leads" { class: pl }
+fault_harness -- system.uut: "[PL] sensor stimulus\n/ fault fixture" { class: pl }
+
+# Verification component exchanges / records.
+test_conductor -> system.uut: "[CE] version selection,\nreset, run sheet" { class: ce }
+system.uut -> serial_pc: "[CE] Serial0 stream\ninit + measurements" { class: ce }
+fault_harness -> serial_pc: "[CE] fault markers" { class: ce }
+time_env -> serial_pc: "[CE] timestamps and\nambient readings" { class: ce }
+serial_pc -> analysis_script: "[CE] raw logs and\nparser outputs" { class: ce }
+analysis_script -> test_conductor: "[CE] pass/fail rationale\nand anomaly list" { class: ce }
+
+# Layout-only rank hints: UUT, actors, then setup constraints.
+system -> test_conductor { style: { opacity: 0 } }
+test_conductor -> serial_pc { style: { opacity: 0 } }
+serial_pc -> power_supply { style: { opacity: 0 } }
+power_supply -> fault_harness { style: { opacity: 0 } }
+fault_harness -> time_env { style: { opacity: 0 } }
+time_env -> analysis_script { style: { opacity: 0 } }
+analysis_script -> note_schema { style: { opacity: 0 } }
+note_schema -> note_pass { style: { opacity: 0 } }
+note_pass -> note_faults { style: { opacity: 0 } }
+note_faults -> note_stats { style: { opacity: 0 } }
+note_stats -> note_environment { style: { opacity: 0 } }

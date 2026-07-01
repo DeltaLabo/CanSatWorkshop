@@ -1,0 +1,64 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style verification sequence for ADS-IVV-FC-ATT.
+# IADT method: Demonstration with supporting Testing and Analysis.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-FC-ATT\nAttitude estimation demonstration sequence\nRefs: IVV; NASA-SE; IMU/I2C; ESA-CANSAT; SW/stats" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_version: "[F] Select ADS version\nand source baseline" { class: func }
+  confirm_applicability: "[F] Confirm attitude-chain\napplicability or N/A" { class: func }
+  configure_reference: "[F] Configure orientation\nand magnetic reference" { class: func }
+  configure_uut: "[F] Configure UUT, firmware,\npower, logger, timebase" { class: func }
+  acquire_orientation: "[F] Acquire static orientations\nand yaw-change records" { class: func }
+  align_filter: "[F] Align samples and\nfilter invalid data" { class: func }
+  check_finite: "[F] Check PRY finite\nand convention-bounded" { class: func }
+  check_plausible: "[F] Check PRY plausibility\nfor known orientations/yaw" { class: func }
+  characterize_repeatability: "[F] Characterize repeatability;\nno formal accuracy claim" { class: func }
+  evaluate_timing: "[F] Evaluate process/calculate\nand I2C timing where applicable" { class: func }
+  inject_faults: "[F] Inject I2C, invalid IMU,\nmagnetic disturbance cases" { class: func }
+  evaluate_faults: "[F] Evaluate validity flags,\nfinite outputs, recovery" { class: func }
+  decide_result: "[F] Decide attitude chain\npass/fail or N/A" { class: func }
+  record_report: "[F] Record evidence, anomalies,\nwaivers, limitations, retest" { class: func }
+
+  note_pass: "[C] Demonstration pass condition\nPass if modeled accel/mag-to-PRY chain executes, PRY is finite\nand convention-bounded, plausible for known orientations/yaw\nchanges, and collector/OBCC receives the modeled outputs." { class: note; shape: page }
+  note_no_accuracy: "[C] No formal accuracy requirement\nNo attitude accuracy constraint is modeled. Report repeatability\nand plausibility; do not claim numerical attitude accuracy unless\na new constraint and statistical criterion are added." { class: note; shape: page }
+  note_timing: "[C] Timing viewpoint\nProcess/Calculate <5 ms applies where instrumented; v1.0 I2C\nread timeout <=5 ms applies; v0.2 I2C timeout is a modeling gap." { class: note; shape: page }
+  note_faults: "[C] Fault hardening\nI2C faults, invalid acceleration/magnetic field, disturbance, and\nstale samples shall not be accepted as valid attitude outputs and\nshall not cause unrecovered loop/OBCC blockage." { class: note; shape: page }
+  note_na: "[C] v0.1/v0.3 N/A branch\nIf selected version has no attitude chain, stop after confirming\ncopied source views have no applicable LC/CE behavior; record N/A rationale." { class: note; shape: page }
+}
+
+chain.select_version -> chain.confirm_applicability: "[FE] Baseline" { class: fe }
+chain.confirm_applicability -> chain.configure_reference: "[FE] Applicable" { class: fe }
+chain.configure_reference -> chain.configure_uut: "[FE] Reference setup" { class: fe }
+chain.configure_uut -> chain.acquire_orientation: "[FE] Ready" { class: fe }
+chain.acquire_orientation -> chain.align_filter: "[FE] ADS/reference logs" { class: fe }
+chain.align_filter -> chain.check_finite: "[FE] Matched valid samples" { class: fe }
+chain.check_finite -> chain.check_plausible: "[FE] Bounds result" { class: fe }
+chain.check_plausible -> chain.characterize_repeatability: "[FE] Plausibility result" { class: fe }
+chain.characterize_repeatability -> chain.evaluate_timing: "[FE] Repeatability data" { class: fe }
+chain.evaluate_timing -> chain.inject_faults: "[FE] Timing result" { class: fe }
+chain.inject_faults -> chain.evaluate_faults: "[FE] Fault evidence" { class: fe }
+chain.evaluate_faults -> chain.decide_result: "[FE] Fault result" { class: fe }
+chain.decide_result -> chain.record_report: "[FE] Verdict" { class: fe }

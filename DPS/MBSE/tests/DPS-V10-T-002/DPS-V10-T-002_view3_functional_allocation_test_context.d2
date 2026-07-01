@@ -1,0 +1,215 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-T-002 functional allocation test context.
+# Shows only functions participating in the command/uplink and cooldown verification activity.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 38
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 38 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 38
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  confirm_test_baseline: "[F] Confirm DPS v1.0\nbaseline and configuration" { class: func }
+  start_valid_toggle_run: "[F] Start valid-toggle\nsequence" { class: func }
+  start_cooldown_bursts: "[F] Start rapid-toggle\nburst sequence" { class: func }
+  review_verdict: "[F] Review command/uplink\nverdict and anomalies" { class: func }
+}
+
+ui_automation_driver: "[EA] UI Automation Driver" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  open_dashboard: "[F] Open dashboard\nin browser" { class: func }
+  issue_valid_toggles: "[F] Issue 60 valid\nstate toggles" { class: func }
+  issue_rapid_bursts: "[F] Issue 30 cooldown\nrapid-toggle bursts" { class: func }
+  timestamp_ui_events: "[F] Timestamp UI\nevents and states" { class: func }
+}
+
+test_clock: "[EA] Monotonic Test Clock" {
+  class: ea
+  direction: down
+  provide_timebase: "[F] Provide monotonic\ntimebase for cooldown" { class: func }
+}
+
+command_rf_monitor: "[EA] Command RF Monitor\nRFM95W/SX1276 reference receiver" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  configure_rf_capture: "[F] Configure RF capture\nsettings" { class: func }
+  capture_command_frames: "[F] Capture RF command\nframes" { class: func }
+  timestamp_rf_frames: "[F] Timestamp received\ncommand frames" { class: func }
+  decode_command_state: "[F] Decode commanded\nstate from frame" { class: func }
+}
+
+system: "[System] DPS v1.0 Physical System\nDPS-V10-T-002 functional allocation context" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: right
+    grid-columns: 3
+
+    dashboard: "[LC] Dashboard" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      catch_state_toggle: "[F] Catch State\ntoggle" { class: func }
+      push_to_command_queue: "[F] Push to\ncommand queue" { class: func }
+      disable_toggle: "[F] Disable\ntoggle" { class: func }
+      cooldown: "[F] Cooldown" { class: func }
+      enable_toggle: "[F] Enable\ntoggle" { class: func }
+    }
+
+    decoder: "[LC] Decoder" {
+      class: lc
+      direction: down
+
+      consume_command_queue: "[F] Consume\ncommand queue" { class: func }
+      forward_to_transceiver: "[F] Forward to\ntransceiver" { class: func }
+    }
+
+    evidence_collector: "[LC] Command Test Evidence Collector\n(verification-only)" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      capture_ui_log: "[F] Capture UI event\nand cooldown log" { class: func }
+      capture_decoder_log: "[F] Capture command queue\nand decoder log" { class: func }
+      capture_forwarder_log: "[F] Capture forwarder\nand serial log" { class: func }
+      capture_rf_log: "[F] Capture RF monitor\nlog" { class: func }
+      compute_success_stats: "[F] Compute command\nsuccess statistics" { class: func }
+      compute_cooldown_verdict: "[F] Compute cooldown\nand duplicate verdict" { class: func }
+      archive_evidence: "[F] Archive evidence\nin results folder" { class: func }
+    }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: down
+
+      ground_forwarder: "[LC] LoRa Forwarder" {
+        class: lc
+        direction: down
+        grid-columns: 2
+
+        store_incoming_uart_data: "[F] Store incoming\nUART data" { class: func }
+        receive_serial0_rx_interrupt: "[F] Receive Serial0\nRX Interrupt" { class: func }
+        read_command: "[F] Read command" { class: func }
+        generate_frame: "[F] Generate frame" { class: func }
+        write_to_lora_radio: "[F] Write to\nLoRa Radio" { class: func }
+      }
+    }
+
+    ground_rfm: "[PC] RFM95W LoRa" {
+      class: pc
+      direction: down
+
+      ground_lora: "[LC] LoRa Transceiver" {
+        class: lc
+        direction: down
+        transmit_outgoing_data: "[F] Transmit\noutgoing data" { class: func }
+      }
+    }
+  }
+}
+
+note_ref: "[C] DPS-V10-T-002 PV3 functional allocation\nIADT: Testing; trace: FC02 dashboard command/uplink and C07 cooldown\nRefs: P0,R1-R5,R8-R13; expected report: tests/results/DPS-V10-T-002/" {
+  class: note
+  shape: page
+}
+
+note_valid_pass: "[C] Valid-command pass constraints: 60 accepted toggles outside cooldown;\neach yields exactly one captured RF command frame with expected state;\nzero wrong states, duplicate RF frames or missing commands." {
+  class: note
+  shape: page
+}
+
+note_cooldown_pass: "[C] Cooldown pass constraints: 30 rapid-toggle bursts;\nonly first toggle in each burst queues/transmits; suppressed toggles generate\nzero extra queue entries/RF frames; UI re-enables at 5.0 s ±0.5 s." {
+  class: note
+  shape: page
+}
+
+note_fault_pass: "[C] Fault-hardening viewpoint: monitor stale command replay, duplicate\nUI event, queue bypass, UART/SPI/radio-not-ready errors, and missing RF capture.\nAny unresolved anomaly is a failed or limited result." {
+  class: note
+  shape: page
+}
+
+note_statistics: "[C] Statistics viewpoint: 60/60 valid command successes supports an\nexact-binomial screening claim; burst trials are counted as duplicate-suppression\nscreening evidence and not a high-confidence reliability claim." {
+  class: note
+  shape: page
+}
+
+note_verification_only: "[C] Command Test Evidence Collector is verification-only\nand shall not be treated as flight DPS functionality." {
+  class: note
+  shape: page
+}
+
+note_ref -> system.pc.evidence_collector { class: cstr }
+note_valid_pass -> ui_automation_driver.issue_valid_toggles { class: cstr }
+note_valid_pass -> command_rf_monitor.capture_command_frames { class: cstr }
+note_valid_pass -> system.pc.evidence_collector.compute_success_stats { class: cstr }
+note_cooldown_pass -> ui_automation_driver.issue_rapid_bursts { class: cstr }
+note_cooldown_pass -> system.pc.dashboard.cooldown { class: cstr }
+note_cooldown_pass -> test_clock.provide_timebase { class: cstr }
+note_cooldown_pass -> system.pc.evidence_collector.compute_cooldown_verdict { class: cstr }
+note_fault_pass -> system.pc.evidence_collector.capture_decoder_log { class: cstr }
+note_fault_pass -> system.pc.evidence_collector.capture_forwarder_log { class: cstr }
+note_fault_pass -> system.pc.evidence_collector.capture_rf_log { class: cstr }
+note_statistics -> system.pc.evidence_collector.compute_success_stats { class: cstr }
+note_verification_only -> system.pc.evidence_collector { class: cstr }
+
+# Layout-only edges to keep verification actors above the UUT context.
+test_operator -> ui_automation_driver { style: { opacity: 0 } }
+ui_automation_driver -> test_clock { style: { opacity: 0 } }
+test_clock -> command_rf_monitor { style: { opacity: 0 } }
+command_rf_monitor -> system { style: { opacity: 0 } }
+system.pc -> system.ground_station_pcb { style: { opacity: 0 } }

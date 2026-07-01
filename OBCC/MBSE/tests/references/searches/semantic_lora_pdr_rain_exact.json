@@ -1,0 +1,29 @@
+{
+  "query": "\"Enhancement of Packet Delivery Ratio during Rain Attenuation for Long Range Technology\"",
+  "total": 1,
+  "pages_retrieved": 1,
+  "results": [
+    {
+      "paperId": "7f015143a7d29ddc13b1335ba56e7d6e99f5e7eb",
+      "doi": "10.14569/ijacsa.2019.0101031",
+      "title": "Enhancement of Packet Delivery Ratio during Rain Attenuation for Long Range Technology",
+      "authors": [
+        {
+          "name": "Hossinuzzaman"
+        },
+        {
+          "name": "D. P. Dahnil"
+        }
+      ],
+      "year": 2019,
+      "abstract": "Countries with tropical climates experience various weather changes throughout the year. The weather can drastically change from extremely hot and humid to a complete downpour in a twenty-four-hour cycle. Different atmospheric conditions such as atmospheric gas attenuation, cloud attenuation, and rain attenuation can cause interruption of electromagnetic signals and weaken the radio signals. The amount of attenuation is mostly depending on the raindrops. Rate of attenuation by rain depends on the composition, temperature, orientation, shape and fall velocity of raindrops. In this paper, we measure the effect of different atmospheric attenuations, particularly due to rain for non-line-of-sight environments and proposed a LoRa (Long Range) based wireless mesh network to enhance packet delivery ratio (PDR). We experimented with the LoRa based wireless network by taking the packet delivery ratio at different times of the day when there was no rain and performed some experiments while raining. The experiments conclude that PDR is affected by different volumes of rain where PDR decreases significantly from 100% when it was not raining and decreases to 89.5% when it rains. The results also show that the LoRa device can successfully transmit up to 1.7km in a line-of-sight environment and around 1.3km in a non-line-of-sight environment without rain. The results show the effect of atmospheric attenuation to LoRa wireless network and become a consideration factor when designing any LoRa applications for outdoor deployment.",
+      "citationCount": 9,
+      "openAccess_pdf": {
+        "url": "https://doi.org/10.14569/ijacsa.2019.0101031"
+      }
+    }
+  ],
+  "output_metadata": {
+    "extracted_at": "2026-06-12T00:34:43.917623"
+  }
+}

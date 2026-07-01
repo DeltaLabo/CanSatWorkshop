@@ -1,0 +1,74 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical analysis/test setup for ADS-IVV-C-GETTER.
+# PV1-style setup: selected UUT, external verification means, physical links, and environmental/setup constraints.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-GETTER\nAnalysis and deterministic test setup\nRefs: IVV; ADS MBSE plan; SW/stats; source_views v0.1/v0.2/v0.3/v1.0" {
+  class: sys
+  direction: down
+
+  uut: "[PC] Selected ADS UUT / firmware item\none baseline per execution" {
+    class: pc
+    direction: down
+    grid-columns: 2
+    v01: "[PC] v0.1 GPS + XIAO\nruntime article or firmware target" { class: pc }
+    v02: "[PC] v0.2 GPS + IMU + XIAO\nruntime article or firmware target" { class: pc }
+    v03: "[PC] v0.3 ADS PCB\nN/A behavior source package" { class: pc }
+    v10: "[PC] v1.0 integrated CanSat / ADS / OBCC\nruntime article or firmware target" { class: pc }
+  }
+}
+
+human_conductor: "[EA] Human test conductor\noperator and configuration controller" { class: ea }
+review_station: "[EA] Code/model review station\nsource D2 + firmware repository" { class: ea }
+firmware_harness: "[EA] Deterministic firmware\ntest harness" { class: ea }
+fault_injector: "[EA] Sensor fault / stale-data\ninjector" { class: ea }
+pc_obcc_logger: "[EA] PC / OBCC logger\nserial, debug, and memory observations" { class: ea }
+analysis_workstation: "[EA] Analysis script workstation\ntrace and verdict generation" { class: ea }
+ambient_monitor: "[EA] Ambient thermometer / hygrometer\nrecord execution conditions" { class: ea }
+evidence_store: "[EA] Controlled evidence store\nraw logs, scripts, review records" { class: ea }
+
+note_setup: "[C] Setup constraint\nBefore execution, record selected ADS version, source-view copies, firmware commit,\nhardware revision or host harness configuration, compiler/build flags, logger timebase,\nand equipment IDs/calibration status." { class: note; shape: page }
+note_harness: "[C] Deterministic harness constraint\nHarness shall set known backing-store seed values, provide nominal sensor vectors,\ninvoke each getter/process/calculate pair repeatedly, and preserve raw call/return logs.\nThe test is deterministic coverage, not a statistical population claim." { class: note; shape: page }
+note_faults: "[C] Fault and stale-data conditions\nInject failed/stale GPS UART payloads and, where applicable, I2C NACK/stuck/partial/stale IMU data.\nFailed reads shall be marked in logs and shall not overwrite the prior valid stored value." { class: note; shape: page }
+note_environment: "[C] Environmental condition\nBefore repetitions, the conductor reads ambient temperature and humidity from the modeled\nthermometer/hygrometer and records actual values. No fixed-temperature claim is made unless\na later controlled requirement adds one." { class: note; shape: page }
+note_applicability: "[C] Applicability\nv0.1/v0.2/v1.0 execute analysis + deterministic supporting tests.\nv0.3 stops after source review records PCB-only N/A rationale; no runtime getter test is executed." { class: note; shape: page }
+note_safety: "[C] UUT protection\nUse current-limited power or a host-only firmware harness. Fault injection shall not create\nuncontrolled shorts, bus contention, or unsafe reset loops; deviations are reportable anomalies." { class: note; shape: page }
+
+# Verification physical links.
+human_conductor -- system.uut: "[PL] operator control\nbutton / reset / build selection" { class: pl }
+review_station -- system.uut: "[PL] source checkout /\nmodel-copy media" { class: pl }
+firmware_harness -- system.uut: "[PL] programming and\ndebug interface" { class: pl }
+fault_injector -- system.uut: "[PL] UART/I2C/GPS/IMU\nfault-injection access" { class: pl }
+pc_obcc_logger -- system.uut: "[PL] USB serial /\nOBCC debug link" { class: pl }
+analysis_workstation -- system.uut: "[PL] analysis\nworkspace link" { class: pl }
+ambient_monitor -- system.uut: "[PL] ambient probe\nnear UUT" { class: pl }
+evidence_store -- system.uut: "[PL] archived UUT\nlogs and source package" { class: pl }
+
+note_setup -> human_conductor { class: cstr }
+note_setup -> review_station { class: cstr }
+note_harness -> firmware_harness { class: cstr }
+note_faults -> fault_injector { class: cstr }
+note_faults -> pc_obcc_logger { class: cstr }
+note_environment -> ambient_monitor { class: cstr }
+note_applicability -> system.uut { class: cstr }
+note_safety -> system.uut { class: cstr }
+

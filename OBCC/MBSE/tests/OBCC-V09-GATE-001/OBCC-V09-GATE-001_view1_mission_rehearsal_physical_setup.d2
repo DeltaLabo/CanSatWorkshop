@@ -1,0 +1,176 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V09-GATE-001 PV1: physical setup for the v0.9 -> v1.0
+# end-to-end mission-window rehearsal. Verification-only equipment is shown as
+# External Actors or clearly marked verification-only physical components.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 26 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] OBCC mission-window rehearsal physical setup\nRefs: IVV, PM&SE/IVV, OBCC README, LoRa_Frame, v1.0 PV1; trace: OBCC-UC-StartupHealth, TelemetryDownlink, WirelessCommand, DeploymentGate, RuntimeFaultHandling" {
+  class: sys
+  direction: down
+
+  cansat_under_test: "[PC] Integrated CanSat\nunder test" {
+    class: pc
+    direction: down
+
+    standard_stack: "[PC] Standard Carrier\nModule Stack" {
+      class: pc
+      direction: right
+      grid-columns: 3
+
+      ads_module: "[PC] ADS Module\n(context)" { class: pc }
+      ams_module: "[PC] AMS Module\n(context)" { class: pc }
+      pds_module: "[PC] PDS Module\n(context)" { class: pc }
+      ess_module: "[PC] ESS Module\n(context)" { class: pc }
+
+      obcc_module: "[PC] OBCC Module" {
+        class: pc
+        direction: down
+
+        obcc_pcb: "[PC] OBCC PCB" {
+          class: pc
+          direction: right
+
+          rfm95w: "[PC] RFM95W LoRa" { class: pc }
+          xiao: "[PC] XIAO ESP32-S3" { class: pc }
+          obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: right
+      grid-columns: 3
+
+      ads_headers: "[PC] 2mm 2x6 ADS Headers" { class: pc }
+      ams_headers: "[PC] 2mm 2x6 AMS Headers" { class: pc }
+      pds_headers: "[PC] 2mm 2x6 PDS Headers" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+      pdm_servo_connector: "[PC] PDM Servo Connector" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+    }
+
+    parachute_module: "[PC] Parachute Module\nunder safe fixture" {
+      class: pc
+      direction: right
+
+      cap: "[PC] Cap" { class: pc }
+      parachute: "[PC] Parachute" { class: pc }
+      servo: "[PC] Servo" { class: pc }
+    }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm95w: "[PC] RFM95W LoRa" { class: pc }
+    ground_xiao: "[PC] XIAO ESP32" { class: pc }
+  }
+
+  ground_pc: "[PC] Ground PC" {
+    class: pc
+    direction: down
+    usb_port: "[PC] USB Port" { class: pc }
+  }
+
+  evidence_workstation: "[PC] Test Evidence\nWorkstation\n(verification-only)" {
+    class: pc
+    direction: right
+    evidence_usb: "[PC] Evidence USB / LAN Port" { class: pc }
+    storage: "[PC] Evidence Storage" { class: pc }
+  }
+
+  note_source_gap: "[C] No v0.9 Capella/D2 source baseline\nexists in this repository. Copied v1.0\nviews are target context for this\nv0.9 -> v1.0 advancement gate." {
+    class: note
+    shape: page
+  }
+
+  note_safety: "[C] Pre-test physical gate: antenna/dummy load,\ncurrent limit, deployment fixture, connector\nretention, and evidence paths are verified\nbefore powered mission rehearsal." {
+    class: note
+    shape: page
+  }
+}
+
+bench_power: "[EA] Current-limited\nbench supply and\nservice harness" { class: ea }
+rf_monitor: "[EA] RF monitor /\nspectrum analyzer\nwith sniffer antenna" { class: ea }
+ambient_station: "[EA] Ambient/weather\nrecorder\n(thermometer/barometer)" { class: ea }
+deployment_fixture: "[EA] Deployment safety\nfixture with travel\nmarker" { class: ea }
+evidence_archive: "[EA] External evidence\narchive / controlled\nreport store" { class: ea }
+
+system.cansat_under_test.standard_stack.ads_module -- system.cansat_under_test.backplane_pcb.ads_headers: "[PL] ADS header\nmating" { class: pl }
+system.cansat_under_test.standard_stack.ams_module -- system.cansat_under_test.backplane_pcb.ams_headers: "[PL] AMS header\nmating" { class: pl }
+system.cansat_under_test.standard_stack.pds_module -- system.cansat_under_test.backplane_pcb.pds_headers: "[PL] PDS header\nmating" { class: pl }
+system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat_under_test.backplane_pcb.obcc_headers: "[PL] OBCC header\nmating" { class: pl }
+system.cansat_under_test.parachute_module.servo -- system.cansat_under_test.backplane_pcb.pdm_servo_connector: "[PL] Servo cable" { class: pl }
+system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.rfm95w: "[PL] SPI + 3V3 traces" { class: pl }
+system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C / UART / PWM\n+ power traces" { class: pl }
+system.cansat_under_test.parachute_module.servo -- system.cansat_under_test.parachute_module: "[PL] Servo fixture" { class: pl }
+
+system.ground_station_pcb.ground_rfm95w -- system.ground_station_pcb.ground_xiao: "[PL] SPI + 5V traces" { class: pl }
+system.ground_station_pcb.ground_xiao -- system.ground_pc.usb_port: "[PL] USB-C evidence\nand command cable" { class: pl }
+system.ground_pc.usb_port -- system.evidence_workstation.evidence_usb: "[PL] Evidence export\nUSB/LAN cable" { class: pl }
+
+bench_power -- system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] Current-limited\nservice power/probe harness" { class: pl }
+rf_monitor -- system.ground_station_pcb.ground_rfm95w: "[PL] RF sniffer antenna\nplacement / optional coax" { class: pl }
+ambient_station -- system.evidence_workstation.evidence_usb: "[PL] Weather log\nUSB/LAN cable" { class: pl }
+deployment_fixture -- system.cansat_under_test.parachute_module: "[PL] Mechanical restraint\nand travel marker" { class: pl }
+evidence_archive -- system.evidence_workstation.storage: "[PL] Controlled evidence\narchive export" { class: pl }
+
+system.note_source_gap -> system.cansat_under_test { class: cstr }
+system.note_safety -> deployment_fixture { class: cstr }
+system.note_safety -> bench_power { class: cstr }
+system.note_safety -> rf_monitor { class: cstr }
+
+# Layout-only edges keep the main rehearsal bands in reading order.
+system.cansat_under_test -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.ground_pc { style: { opacity: 0 } }
+system.ground_pc -> system.evidence_workstation { style: { opacity: 0 } }
+system.evidence_workstation -> system.note_source_gap { style: { opacity: 0 } }
+system.note_source_gap -> system.note_safety { style: { opacity: 0 } }
+bench_power -> rf_monitor { style: { opacity: 0 } }
+rf_monitor -> ambient_station { style: { opacity: 0 } }
+ambient_station -> deployment_fixture { style: { opacity: 0 } }
+deployment_fixture -> evidence_archive { style: { opacity: 0 } }

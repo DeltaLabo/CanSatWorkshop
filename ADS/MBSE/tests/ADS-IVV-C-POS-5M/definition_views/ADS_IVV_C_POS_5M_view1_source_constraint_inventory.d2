@@ -1,0 +1,161 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Source constraint inventory for ADS-IVV-C-POS-5M.
+# PV3-style inventory: functions and constraints only; no exchanges.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-POS-5M source constraint inventory\nRefs: IVV, ADS MBSE plan, GPS/UBX, SW/statistics" {
+  class: sys
+  direction: down
+  grid-columns: 2
+
+  v01: "[PC] ADS v0.1 UUT\nGPS-only prototype" {
+    class: pc
+    direction: down
+
+    chain_lc: "[LC] GPS position chain sources" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      measure_longitude: "[F] Measure\nlongitude" { class: func }
+      measure_latitude: "[F] Measure\nlatitude" { class: func }
+      send_payload: "[F] Send GPS\npayload" { class: func }
+      read_store: "[F] Read and store\nlat, lon" { class: func }
+      get_lat: "[F] Get lat" { class: func }
+      get_lon: "[F] Get lon" { class: func }
+      collect: "[F] Collect\nmeasurements" { class: func }
+    }
+
+    c_accuracy: "[C] Accuracy < 5 m\nsource constraint" { class: note; shape: page }
+    c_rate: "[C] At 5 Hz\nsupporting source constraint" { class: note; shape: page }
+    c_uart_valid: "[C] UART response must be\nvalid, fresh, and timeout\n≤ 5 ms when silent" { class: note; shape: page }
+  }
+
+  v02: "[PC] ADS v0.2 UUT\nGPS + IMU prototype" {
+    class: pc
+    direction: down
+
+    chain_lc: "[LC] GPS position chain sources" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      measure_longitude: "[F] Measure\nlongitude" { class: func }
+      measure_latitude: "[F] Measure\nlatitude" { class: func }
+      send_payload: "[F] Send GPS\npayload" { class: func }
+      read_store: "[F] Read and store\nlat, lon" { class: func }
+      get_lat: "[F] Get lat" { class: func }
+      get_lon: "[F] Get lon" { class: func }
+      collect: "[F] Collect\nmeasurements" { class: func }
+    }
+
+    c_accuracy: "[C] Accuracy < 5 m\nsource constraint" { class: note; shape: page }
+    c_rate: "[C] At 5 Hz\nsupporting source constraint" { class: note; shape: page }
+    c_uart_valid: "[C] UART response must be\nvalid, fresh, and timeout\n≤ 5 ms when silent" { class: note; shape: page }
+  }
+
+  v03: "[PC] ADS v0.3 PCB delivery" {
+    class: pc
+    direction: down
+
+    c_na: "[C] N/A for ADS-IVV-C-POS-5M:\nPV1-only PCB delivery;\nno LC, CE, allocation,\nor behavior chain modeled" { class: note; shape: page }
+    c_physical: "[C] GPS/UART traces are\nphysical delivery evidence\nonly, not position-accuracy\nbehavior evidence" { class: note; shape: page }
+  }
+
+  v10: "[PC] ADS v1.0 UUT\nIntegrated CanSat / OBCC" {
+    class: pc
+    direction: down
+
+    ads_processing: "[LC] ADS Processing\nGPS position sources" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      measure_longitude: "[F] Measure\nlongitude" { class: func }
+      measure_latitude: "[F] Measure\nlatitude" { class: func }
+      send_payload: "[F] Send GPS\npayload" { class: func }
+      read_store: "[F] Read and store\nlat, lon" { class: func }
+      get_lat: "[F] Get lat" { class: func }
+      get_lon: "[F] Get lon" { class: func }
+    }
+
+    obcc: "[LC] OBCC observation point" {
+      class: lc
+      direction: down
+      grid-columns: 1
+
+      collect: "[F] Collect\nmeasurements" { class: func }
+    }
+
+    c_accuracy: "[C] Accuracy < 5 m\nsource constraint" { class: note; shape: page }
+    c_uart_valid: "[C] UART response must be\nvalid, fresh, and timeout\n≤ 5 ms when silent" { class: note; shape: page }
+    c_obcc: "[C] v1.0 verdict observed at\nADS/OBCC collection point" { class: note; shape: page }
+  }
+}
+
+trace: "[C] Trace targets:\nconstraint <5 m, ADS-CAP-GPS,\nADS-FE-SILENT-SENSOR-FAIL,\nADS-FE-CORRUPT-MEASUREMENT" {
+  class: note
+  shape: page
+}
+
+system.v01.c_accuracy -> system.v01.chain_lc.get_lat { class: cstr }
+system.v01.c_accuracy -> system.v01.chain_lc.get_lon { class: cstr }
+system.v01.c_rate -> system.v01.chain_lc.collect { class: cstr }
+system.v01.c_uart_valid -> system.v01.chain_lc.read_store { class: cstr }
+
+system.v02.c_accuracy -> system.v02.chain_lc.get_lat { class: cstr }
+system.v02.c_accuracy -> system.v02.chain_lc.get_lon { class: cstr }
+system.v02.c_rate -> system.v02.chain_lc.collect { class: cstr }
+system.v02.c_uart_valid -> system.v02.chain_lc.read_store { class: cstr }
+
+system.v10.c_accuracy -> system.v10.ads_processing.get_lat { class: cstr }
+system.v10.c_accuracy -> system.v10.ads_processing.get_lon { class: cstr }
+system.v10.c_uart_valid -> system.v10.ads_processing.read_store { class: cstr }
+system.v10.c_obcc -> system.v10.obcc.collect { class: cstr }
+
+trace -> system { class: cstr }
+
+# Layout-only edge to keep the trace note below the inventory.
+system -> trace { style: { opacity: 0 } }

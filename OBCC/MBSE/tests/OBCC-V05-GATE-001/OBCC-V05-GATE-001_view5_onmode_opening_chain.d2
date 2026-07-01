@@ -1,0 +1,114 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V05-GATE-001 functional chain: On-mode trigger/emergency opening timing.
+# Function labels name the responsible actor/equipment/SUT; no PC/LC/EA containers
+# are used in this Functional Chain view.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V05-GATE-001 — On-mode safe-actuator opening timing chain\nRefs: IVV, PM&SE/IVV, OBCC README, v1.0 Deployment/Runtime Fault chains, OBCC-VV-FC-004, OBCC-VV-CON-003" {
+  class: chain
+  direction: down
+
+  confirm_safe_fixture: "[F] Safety observer:\nconfirm safe fixture,\ncurrent limit, and\nclosed start position" { class: func }
+  start_timed_trace: "[F] Trace logger: start\nsynchronized telemetry,\nPWM, current, position\ncapture" { class: func }
+  command_on: "[F] Operator/test harness:\ncommand On mode" { class: func }
+  publish_on_state: "[F] OBCC: publish\nOn state metadata" { class: func }
+  inject_valid_trigger: "[F] Trigger simulator:\ninject valid ADS\nIMU/alt trigger" { class: func }
+  issue_emergency_on: "[F] Trigger simulator:\nissue modeled emergency\nrequest in On" { class: func }
+  validate_ads_trigger: "[F] OBCC: validate\nADS trigger data" { class: func }
+  evaluate_deployment_condition: "[F] OBCC: evaluate\ndeployment condition" { class: func }
+  evaluate_emergency: "[F] OBCC: evaluate\nemergency deploy need" { class: func }
+  command_open: "[F] OBCC/PDM: command\nopen only in On" { class: func }
+  send_open_pwm: "[F] PDM: send open\nPWM to actuator" { class: func }
+  observe_open_motion: "[F] Servo observer:\nmeasure opening current\nand open position" { class: func }
+  publish_deployment_status: "[F] OBCC/LoRa: publish\ndeployment command,\nactuator status, and\nhealth telemetry" { class: func }
+  compute_latency: "[F] Trace logger: compute\naccepted-trigger/request\nto open-position latency" { class: func }
+  restore_closed: "[F] Operator/fixture:\nrestore safe closed\nposition for next trial" { class: func }
+  record_timing_result: "[F] Operator: record\npass/fail, raw trace,\nand sample count" { class: func }
+
+  note_pf_timing: "[C] PF-003 On-mode pass/fail:\nfor valid ADS trigger or modeled emergency\nrequest while On, observed safe-actuator open\nposition shall occur <=5.0 s after accepted\ntrigger/request. Telemetry success must agree\nwith current/position observer evidence." {
+    class: note
+    shape: page
+  }
+
+  note_stat_timing: "[C] Statistical viewpoint:\nplan 59/59 in-limit On-mode timing trials\nwhere feasible for a 95/95 timing/deadline\nscreening claim. Include both valid-trigger\nand emergency-request cases or disposition\nwhy one is not executable." {
+    class: note
+    shape: page
+  }
+
+  note_safety: "[C] Safety viewpoint:\nuse a current-limited safe deployment fixture\nor actuator surrogate. Live parachute-release\nhardware requires separate safety approval and\nshall not be used for routine repeated trials." {
+    class: note
+    shape: page
+  }
+
+  note_trace: "[C] Traceability:\nOBCC-UC-DeploymentGate and\nOBCC-FE-NonDeployment;\ncovers On-mode <=5 s opening portion of\nOBCC-VV-FC-004 / OBCC-VV-CON-003." {
+    class: note
+    shape: page
+  }
+}
+
+chain.confirm_safe_fixture -> chain.start_timed_trace: "[FE] Fixture safe\n[closed + current limit]" { class: fe }
+chain.start_timed_trace -> chain.command_on: "[FE] Trace synchronized\n[trial ID]" { class: fe }
+chain.command_on -> chain.publish_on_state: "[FE] On command\n[mode]" { class: fe }
+chain.publish_on_state -> chain.inject_valid_trigger: "[FE] Confirmed On\n[state metadata]" { class: fe }
+chain.publish_on_state -> chain.issue_emergency_on: "[FE] Confirmed On\n[state metadata]" { class: fe }
+chain.inject_valid_trigger -> chain.validate_ads_trigger: "[FE] Valid IMU/alt\ntrigger data" { class: fe }
+chain.validate_ads_trigger -> chain.evaluate_deployment_condition: "[FE] Trigger accepted\n[t0]" { class: fe }
+chain.issue_emergency_on -> chain.evaluate_emergency: "[FE] Emergency request\naccepted [t0]" { class: fe }
+chain.evaluate_deployment_condition -> chain.command_open: "[FE] Trigger met\n+ On" { class: fe }
+chain.evaluate_emergency -> chain.command_open: "[FE] Emergency needed\n+ On" { class: fe }
+chain.command_open -> chain.send_open_pwm: "[FE] Open command\n[PWM target]" { class: fe }
+chain.send_open_pwm -> chain.observe_open_motion: "[FE] PWM/current/position\n[opening evidence]" { class: fe }
+chain.command_open -> chain.publish_deployment_status: "[FE] Decision and command\n[health/status]" { class: fe }
+chain.observe_open_motion -> chain.publish_deployment_status: "[FE] Actuator evidence\n[open/current]" { class: fe }
+chain.observe_open_motion -> chain.compute_latency: "[FE] Open position\ntimestamp [t_open]" { class: fe }
+chain.publish_deployment_status -> chain.compute_latency: "[FE] Telemetry timestamp\n[status trace]" { class: fe }
+chain.compute_latency -> chain.restore_closed: "[FE] Latency result\n[t_open - t0]" { class: fe }
+chain.restore_closed -> chain.record_timing_result: "[FE] Fixture restored\n[closed]" { class: fe }
+
+chain.note_pf_timing -> chain.compute_latency { class: cstr }
+chain.note_pf_timing -> chain.publish_deployment_status { class: cstr }
+chain.note_stat_timing -> chain.record_timing_result { class: cstr }
+chain.note_safety -> chain.confirm_safe_fixture { class: cstr }
+chain.note_trace -> chain.command_open { class: cstr }

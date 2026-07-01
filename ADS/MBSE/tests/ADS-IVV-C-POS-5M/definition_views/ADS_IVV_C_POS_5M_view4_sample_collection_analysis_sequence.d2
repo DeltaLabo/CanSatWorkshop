@@ -1,0 +1,108 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style test sequence for nominal samples and invalid/no-fix cases.
+# Per Capella chain rules, functions are shown directly in the chain with FEs only.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-C-POS-5M sample collection and analysis sequence\nRefs: IVV, ADS MBSE plan, GPS/UBX, SW/statistics" {
+  class: chain
+  direction: down
+
+  select_version: "[F] Conductor:\nselect version, UUT,\nand firmware" { class: func }
+  configure_truth: "[F] Configure GNSS truth\nor reference receiver" { class: func }
+  record_environment: "[F] Record ambient,\nsky, antenna, power" { class: func }
+  sync_timebase: "[F] Synchronise\nADS and truth time" { class: func }
+  collect_truth: "[F] Generate or log\ntruth position samples" { class: func }
+  ads_read_store: "[F] ADS reads and stores\nlat, lon over UART" { class: func }
+  observe_output: "[F] Observe Serial0 or\nADS/OBCC position point" { class: func }
+  log_samples: "[F] Logger stores matched\nADS, truth, time, and\nvalidity records" { class: func }
+  match_samples: "[F] Analysis matches\nvalid ADS/truth samples" { class: func }
+  compute_error: "[F] Compute horizontal\nposition error" { class: func }
+  apply_bound: "[F] Apply uncertainty guard\nband or formal 95/95\nbound" { class: func }
+  decide_verdict: "[F] Decide < 5 m\npass/fail verdict" { class: func }
+  archive_evidence: "[F] Archive report, raw\nevidence, scripts, and\ndeviations" { class: func }
+
+  inject_faults: "[F] Inject no-fix,\nstale, malformed,\nor silent GPS cases" { class: func }
+  ads_flag_invalid: "[F] ADS flags, rejects,\ntimeouts, or handles\ninvalid GPS data" { class: func }
+  log_fault_evidence: "[F] Logger records\nfault markers and\nADS handling" { class: func }
+  exclusion_check: "[F] Analysis excludes\ninvalid samples only\nwhen visibly flagged" { class: func }
+  fault_verdict: "[F] Decide fault-hardening\npass/fail verdict" { class: func }
+
+  c_scope: "[C] Applies to v0.1, v0.2, v1.0;\nv0.3 is N/A because no behavior chain is modeled" { class: note; shape: page }
+  c_samples: "[C] Nominal campaign pass condition:\nn ≥ 30 matched valid samples" { class: note; shape: page }
+  c_accuracy: "[C] Accuracy pass condition:\nhorizontal error + uncertainty guard band\nor claimed 95/95 bound < 5 m" { class: note; shape: page }
+  c_validity: "[C] Invalid/no-fix/stale samples are\nexcluded only if ADS/OBCC visibly\nflags or handles them invalid" { class: note; shape: page }
+  c_v10: "[C] v1.0 proof point:\nvalue observed at ADS/OBCC collection point" { class: note; shape: page }
+  c_environment: "[C] Environmental condition evidence:\ntruth uncertainty, sky/multipath, antenna placement,\nambient, warm-up, and power are recorded" { class: note; shape: page }
+}
+
+chain.select_version -> chain.configure_truth: "[FE] selected\nconfiguration" { class: fe }
+chain.configure_truth -> chain.record_environment: "[FE] truth\nmethod" { class: fe }
+chain.record_environment -> chain.sync_timebase: "[FE] conditions" { class: fe }
+chain.sync_timebase -> chain.collect_truth: "[FE] common\ntimebase" { class: fe }
+chain.collect_truth -> chain.ads_read_store: "[FE] GNSS signal\nor reference" { class: fe }
+chain.ads_read_store -> chain.observe_output: "[FE] stored lat/lon\n+ validity" { class: fe }
+chain.observe_output -> chain.log_samples: "[FE] ADS sample\nrecord" { class: fe }
+chain.collect_truth -> chain.log_samples: "[FE] truth sample\nrecord" { class: fe }
+chain.log_samples -> chain.match_samples: "[FE] raw evidence" { class: fe }
+chain.match_samples -> chain.compute_error: "[FE] matched valid\nsample set" { class: fe }
+chain.compute_error -> chain.apply_bound: "[FE] errors" { class: fe }
+chain.apply_bound -> chain.decide_verdict: "[FE] bound" { class: fe }
+chain.decide_verdict -> chain.archive_evidence: "[FE] accuracy\nverdict" { class: fe }
+
+chain.configure_truth -> chain.inject_faults: "[FE] fault-case\nconfiguration" { class: fe }
+chain.inject_faults -> chain.ads_read_store: "[FE] invalid/no-fix\nGPS stimulus" { class: fe }
+chain.ads_read_store -> chain.ads_flag_invalid: "[FE] invalid or\ntimeout result" { class: fe }
+chain.ads_flag_invalid -> chain.log_fault_evidence: "[FE] validity /\nerror state" { class: fe }
+chain.log_fault_evidence -> chain.exclusion_check: "[FE] fault\nevidence" { class: fe }
+chain.exclusion_check -> chain.fault_verdict: "[FE] exclusion\nrationale" { class: fe }
+chain.fault_verdict -> chain.archive_evidence: "[FE] fault-hardening\nverdict" { class: fe }
+
+chain.c_scope -> chain.select_version { class: cstr }
+chain.c_samples -> chain.match_samples { class: cstr }
+chain.c_accuracy -> chain.apply_bound { class: cstr }
+chain.c_validity -> chain.exclusion_check { class: cstr }
+chain.c_validity -> chain.ads_flag_invalid { class: cstr }
+chain.c_v10 -> chain.observe_output { class: cstr }
+chain.c_environment -> chain.record_environment { class: cstr }

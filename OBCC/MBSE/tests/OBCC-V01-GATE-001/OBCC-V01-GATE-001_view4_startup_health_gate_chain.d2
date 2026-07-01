@@ -1,0 +1,155 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V01-GATE-001 functional-chain verification definition.
+# Chain functions name the responsible actor/equipment/SUT in the function label;
+# no PC/LC/EA containers are used in this Functional Chain view.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V01-GATE-001 — v0.1 breadboard startup-health gate chain\nRefs: IVV, OBCC README, LoRa_Frame, Variable Getter Template, v1.0 Startup/Telemetry views" {
+  class: chain
+  direction: down
+
+  inspect_breadboard: "[F] Operator: inspect\nbreadboard components\nand critical wiring" { class: func }
+  flash_and_power: "[F] USB PC: flash v0.1\ntest firmware and\nsupply USB power" { class: func }
+  measure_ambient: "[F] Thermometer: measure\nambient temperature" { class: func }
+  record_environment: "[F] Operator: record\nambient condition and\nas-tested configuration" { class: func }
+
+  connect_all: "[F] Operator: connect\nall required peripherals" { class: func }
+  reset_nominal: "[F] Operator: reset /\npower-cycle UUT" { class: func }
+  bootstrap_nominal: "[F] OBCC: bootstrap\nand init UART/PWM/SPI/I2C" { class: func }
+  check_critical_nominal: "[F] OBCC: check critical\nRFM95W, BME280, Servo" { class: func }
+  check_noncritical_nominal: "[F] OBCC: check non-critical\nGPS, IMU, INA219" { class: func }
+  publish_ready: "[F] OBCC: publish startup\ncomplete and readiness" { class: func }
+  observe_ready: "[F] Monitor: capture serial\nlog or LoRa health/status" { class: func }
+  record_nominal_pass: "[F] Operator: record\nnominal boot result" { class: func }
+
+  disconnect_critical: "[F] Operator: disconnect one\ncritical peripheral\n(RFM95W/BME280/Servo)" { class: func }
+  reset_critical: "[F] Operator: reset /\npower-cycle UUT" { class: func }
+  detect_critical_fault: "[F] OBCC: detect missing\nstartup-critical peripheral" { class: func }
+  block_runtime: "[F] OBCC: block operational\nmode and enter safe/error" { class: func }
+  observe_critical_fault: "[F] Monitor: capture explicit\ncritical-fault report" { class: func }
+  record_critical_pass: "[F] Operator: record\ncritical-fault trial result" { class: func }
+
+  restore_all: "[F] Operator: restore\nall peripheral wiring" { class: func }
+  disconnect_noncritical: "[F] Operator: disconnect one\nnon-critical peripheral\n(GPS/IMU/INA219)" { class: func }
+  reset_noncritical: "[F] Operator: reset /\npower-cycle UUT" { class: func }
+  detect_noncritical_fault: "[F] OBCC: detect missing\nnon-critical peripheral" { class: func }
+  disable_getter: "[F] OBCC: disable dependent\ngetter or mark value stale" { class: func }
+  start_degraded_runtime: "[F] OBCC: start runtime\nin degraded configuration" { class: func }
+  observe_degraded: "[F] Monitor: capture telemetry-visible\nstatus/error coding" { class: func }
+  record_noncritical_pass: "[F] Operator: record\nnon-critical trial result" { class: func }
+
+  note_inspection: "[C] Inspection pass/fail:\nall modeled/required v0.1 breadboard\nPCs and critical PLs are present,\nidentified, and dispositioned." {
+    class: note
+    shape: page
+  }
+
+  note_nominal: "[C] Nominal pass/fail:\nwith all peripherals connected, startup\nchecks complete, no missing-peripheral\nfault is reported, and readiness/status\nis visible through serial or LoRa." {
+    class: note
+    shape: page
+  }
+
+  note_critical: "[C] Critical-fault pass/fail:\nfor each RFM95W, BME280, and Servo\nmissing-at-startup case, OBCC reports\nthe named critical fault and does not\nenter operational mode." {
+    class: note
+    shape: page
+  }
+
+  note_noncritical: "[C] Non-critical-fault pass/fail:\nfor each GPS, IMU, and INA219 missing\ncase, OBCC enters degraded runtime and\ntelemetry/status exposes error-coded,\nzero, null, or stale-marked values." {
+    class: note
+    shape: page
+  }
+
+  note_environment: "[C] Environmental condition:\nrecord calibrated ambient thermometer\nmodel/serial in evidence. Execute at\nbench ambient compatible with BME280\ntelemetry range 10..40 °C or log a\ndeviation before repetitions." {
+    class: note
+    shape: page
+  }
+
+  note_statistics: "[C] Viewpoints: 100% inspection.\nv0.1 gate evidence is advancement\nscreening unless repeated trials are\nplanned. 29/29 nominal boots support\nR90/C95; fault injection trials classify\nforbidden events as failures." {
+    class: note
+    shape: page
+  }
+
+  note_trace: "[C] Traceability: OBCC-UC-StartupHealth,\nOBCC-FE-SilentCriticalFault, integration\nbuild readiness, and startup/fault\nconstraints from OBCC-VV-CON-004." {
+    class: note
+    shape: page
+  }
+}
+
+chain.inspect_breadboard -> chain.flash_and_power: "[FE] Inspection complete\n[checklist]" { class: fe }
+chain.flash_and_power -> chain.measure_ambient: "[FE] UUT powered\n[test firmware]" { class: fe }
+chain.measure_ambient -> chain.record_environment: "[FE] Ambient reading\n[°C, model/serial]" { class: fe }
+chain.record_environment -> chain.connect_all: "[FE] Conditions accepted\n[config record]" { class: fe }
+
+chain.connect_all -> chain.reset_nominal: "[FE] All peripherals\nconnected []" { class: fe }
+chain.reset_nominal -> chain.bootstrap_nominal: "[FE] Boot start []" { class: fe }
+chain.bootstrap_nominal -> chain.check_critical_nominal: "[FE] Buses initialized\n[UART/PWM/SPI/I2C]" { class: fe }
+chain.check_critical_nominal -> chain.check_noncritical_nominal: "[FE] Critical init\nresults [all OK]" { class: fe }
+chain.check_noncritical_nominal -> chain.publish_ready: "[FE] Non-critical init\nresults [all OK]" { class: fe }
+chain.publish_ready -> chain.observe_ready: "[FE] Readiness/status\n[health flags]" { class: fe }
+chain.observe_ready -> chain.record_nominal_pass: "[FE] Evidence captured\n[log/telemetry]" { class: fe }
+
+chain.record_nominal_pass -> chain.disconnect_critical: "[FE] Begin critical\nfault-injection set []" { class: fe }
+chain.disconnect_critical -> chain.reset_critical: "[FE] One critical peripheral\nremoved [repeat x3]" { class: fe }
+chain.reset_critical -> chain.detect_critical_fault: "[FE] Boot start with\ncritical missing []" { class: fe }
+chain.detect_critical_fault -> chain.block_runtime: "[FE] Critical fault\n[name + code]" { class: fe }
+chain.block_runtime -> chain.observe_critical_fault: "[FE] Safe/error state\n[no readiness]" { class: fe }
+chain.observe_critical_fault -> chain.record_critical_pass: "[FE] Evidence captured\n[log/status]" { class: fe }
+
+chain.record_critical_pass -> chain.restore_all: "[FE] Critical cases complete\n[3/3 required]" { class: fe }
+chain.restore_all -> chain.disconnect_noncritical: "[FE] Baseline restored []" { class: fe }
+chain.disconnect_noncritical -> chain.reset_noncritical: "[FE] One non-critical peripheral\nremoved [repeat x3]" { class: fe }
+chain.reset_noncritical -> chain.detect_noncritical_fault: "[FE] Boot start with\nnon-critical missing []" { class: fe }
+chain.detect_noncritical_fault -> chain.disable_getter: "[FE] Non-critical fault\n[name + code]" { class: fe }
+chain.disable_getter -> chain.start_degraded_runtime: "[FE] Disabled getter mask\n[or stale flag]" { class: fe }
+chain.start_degraded_runtime -> chain.observe_degraded: "[FE] Degraded operation\n[readiness + errors]" { class: fe }
+chain.observe_degraded -> chain.record_noncritical_pass: "[FE] Evidence captured\n[log/telemetry]" { class: fe }
+
+chain.note_inspection -> chain.inspect_breadboard { class: cstr }
+chain.note_nominal -> chain.publish_ready { class: cstr }
+chain.note_critical -> chain.block_runtime { class: cstr }
+chain.note_noncritical -> chain.start_degraded_runtime { class: cstr }
+chain.note_environment -> chain.measure_ambient { class: cstr }
+chain.note_statistics -> chain.record_nominal_pass { class: cstr }
+chain.note_trace -> chain.detect_critical_fault { class: cstr }
+chain.note_trace -> chain.detect_noncritical_fault { class: cstr }

@@ -1,0 +1,177 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV3 verification-only functional allocation for the position accuracy activity.
+# Functions are allocated to the UUT, verification adapter, humans, and equipment.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_conductor: "[EA] Human test conductor" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  select_version: "[F] Select ADS\nversion and UUT" { class: func }
+  start_campaign: "[F] Start nominal\ncollection campaign" { class: func }
+  command_faults: "[F] Command no-fix,\nstale, malformed,\nand silent cases" { class: func }
+  record_deviations: "[F] Record anomalies,\ndeviations, and waivers" { class: func }
+  c_scope: "[C] Scope: v0.1, v0.2, and v1.0 applicable;\nv0.3 N/A because no behavior chain is modeled" { class: note; shape: page }
+}
+
+condition_observer: "[EA] Human ambient /\nsky observer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  read_environment: "[F] Read ambient\nthermometer / hygrometer" { class: func }
+  assess_sky: "[F] Record sky view,\nmultipath, and antenna\nplacement" { class: func }
+  c_environment: "[C] Environment condition:\nrecord ambient, sky, multipath, antenna\nplacement, warm-up, and power before repeats" { class: note; shape: page }
+}
+
+gnss_source: "[EA] GNSS simulator or\nsurveyed reference receiver" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  provide_truth: "[F] Generate or measure\ntruth lat/lon" { class: func }
+  log_truth: "[F] Log truth samples\nwith uncertainty" { class: func }
+  provide_invalid_cases: "[F] Provide no-fix,\nstale, malformed,\nor silent stimuli" { class: func }
+}
+
+timebase: "[EA] Common timebase" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  timestamp: "[F] Provide common\ntimestamps" { class: func }
+}
+
+logger: "[EA] PC / OBCC logger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  log_ads: "[F] Log ADS / OBCC\nposition samples" { class: func }
+  log_fault_marks: "[F] Log validity and\nfault markers" { class: func }
+  export_raw: "[F] Export immutable\nraw evidence" { class: func }
+}
+
+stats_tool: "[EA] Statistical analysis tool" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  match_samples: "[F] Match ADS and\ntruth samples" { class: func }
+  compute_error: "[F] Compute horizontal\nposition error" { class: func }
+  apply_bound: "[F] Apply uncertainty\nguard band or 95/95\nbound" { class: func }
+  make_verdict: "[F] Produce pass/fail\nanalysis verdict" { class: func }
+  c_stats: "[C] Statistical viewpoint:\nn ≥ 30 matched valid samples per campaign;\nstate 95/95 method when claimed" { class: note; shape: page }
+  c_guard: "[C] Pass constraint:\nhorizontal error + uncertainty guard band\nOR formal 95/95 bound < 5 m" { class: note; shape: page }
+}
+
+qa_authority: "[EA] Quality /\nconfiguration authority" {
+  class: ea
+  direction: down
+  grid-columns: 1
+
+  archive_report: "[F] Archive report and\ntraceability package" { class: func }
+}
+
+system: "[System] ADS-IVV-C-POS-5M verification functional allocation\nRefs: IVV, ADS MBSE plan, GPS/UBX, SW/statistics" {
+  class: sys
+  direction: down
+
+  uut: "[PC] ADS UUT /\nversion selector" {
+    class: pc
+    direction: down
+
+    acquisition: "[LC] GPS acquisition\nand validity handling" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      read_store: "[F] Read and store\nlat, lon" { class: func }
+      get_lat: "[F] Get lat" { class: func }
+      get_lon: "[F] Get lon" { class: func }
+      flag_invalid: "[F] Flag no-fix, stale,\nmalformed, or timeout\ndata invalid" { class: func }
+      c_fault: "[C] Fault-hardening viewpoint:\nno-fix, stale, malformed, and silent GPS\nnot accepted as valid positions" { class: note; shape: page }
+    }
+
+    observation: "[LC] Selected observation\npoint" {
+      class: lc
+      direction: down
+      grid-columns: 1
+
+      expose_position: "[F] Expose ADS position\nto Serial0 or OBCC" { class: func }
+      collect_obcc: "[F] Collect measurements\nat ADS/OBCC point\n(v1.0 only)" { class: func }
+      c_v10: "[C] v1.0-specific pass condition:\nevidence is taken at ADS/OBCC collection point" { class: note; shape: page }
+    }
+  }
+
+  adapter: "[PC] Verification-only\nlogging adapter" {
+    class: pc
+    direction: down
+
+    evidence_lc: "[LC] Evidence capture" {
+      class: lc
+      direction: down
+      grid-columns: 1
+
+      tag_version: "[F] Tag selected version,\nfirmware, and campaign" { class: func }
+      preserve_streams: "[F] Preserve ADS, truth,\ntime, and condition\nstreams" { class: func }
+    }
+  }
+}
+
+test_conductor.c_scope -> test_conductor.select_version { class: cstr }
+stats_tool.c_stats -> stats_tool.match_samples { class: cstr }
+stats_tool.c_guard -> stats_tool.apply_bound { class: cstr }
+system.uut.acquisition.c_fault -> system.uut.acquisition.flag_invalid { class: cstr }
+system.uut.acquisition.c_fault -> logger.log_fault_marks { class: cstr }
+condition_observer.c_environment -> condition_observer.read_environment { class: cstr }
+condition_observer.c_environment -> condition_observer.assess_sky { class: cstr }
+system.uut.observation.c_v10 -> system.uut.observation.collect_obcc { class: cstr }
+
+# Layout-only edges to keep human/equipment functions above analysis/reporting.
+test_conductor -> system { style: { opacity: 0 } }
+system -> stats_tool { style: { opacity: 0 } }
+stats_tool -> qa_authority { style: { opacity: 0 } }

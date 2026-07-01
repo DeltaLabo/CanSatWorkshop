@@ -1,0 +1,135 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Verification-only functional allocation for ADS-IVV-FC-INIT.
+# Allocates human, equipment, UUT-observation, logging, and analysis functions without exchanges.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-INIT\nVerification-only functional allocation\nRefs: IVV; NASA-SE; GPS/UBX; IMU/I2C; SW/stats" {
+  class: sys
+  direction: down
+
+  selected_version: "[PC] Selected ADS version\ninitialization UUT interface" {
+    class: pc
+    direction: down
+    init_observation: "[LC] Initialization-state\nobservation interface" {
+      class: lc
+      direction: down
+      grid-columns: 2
+      expose_source_chain: "[F] Expose copied init\nchain and constraints" { class: func }
+      emit_boot_records: "[F] Emit boot/reset\nrecords and timestamps" { class: func }
+      expose_gps_state: "[F] Expose UBX/GPS\ninit state" { class: func }
+      expose_imu_state: "[F] Expose ICM20948\ninit state where applicable" { class: func }
+      expose_lifecycle: "[F] Expose reset, hang,\nwatchdog, and progress state" { class: func }
+      preserve_boot_evidence: "[F] Preserve boot\nevidence interface" { class: func }
+    }
+  }
+}
+
+conductor: "[EA] IVV init test conductor\n(human)" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  select_baseline: "[F] Select ADS version,\nmodel package, firmware commit" { class: func }
+  read_environment: "[F] Read ambient\nthermometer/hygrometer" { class: func }
+  set_fault_case: "[F] Set nominal or\nfault-injection case" { class: func }
+  press_reset: "[F] Press reset / launch\nboot trial" { class: func }
+  observe_leds_logs: "[F] Observe current,\nLEDs, and boot logs" { class: func }
+  record_deviations: "[F] Record deviations,\nanomalies, retest status" { class: func }
+  note_v03: "[C] v0.3 N/A rule\nPass/N/A only after confirming source_views/v0.3 has\nno runtime LC, CE, allocation, or init functional chain." { class: note; shape: page }
+}
+
+power_supply: "[EA] Current-limited\npower supply" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  apply_power: "[F] Apply power\nwithin current limit" { class: func }
+  log_current: "[F] Log voltage/current\nduring boot" { class: func }
+}
+
+reset_control: "[EA] Boot/reset\ncontrol fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  assert_reset: "[F] Assert reset or\npower-cycle UUT" { class: func }
+  mark_boot_time: "[F] Mark boot\nstart time" { class: func }
+}
+
+data_logger: "[EA] PC or OBCC\ndata logger" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  capture_serial0: "[F] Capture Serial0\ninit records v0.1/v0.2" { class: func }
+  capture_obcc: "[F] Capture OBCC\ninit records v1.0" { class: func }
+  timestamp_trials: "[F] Timestamp trial\nand fault markers" { class: func }
+  preserve_raw_logs: "[F] Preserve raw\nboot evidence" { class: func }
+}
+
+gps_harness: "[EA] GPS fault-injection\nharness" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  connect_gps: "[F] Connect nominal\nGPS UART/RF" { class: func }
+  inject_gps_fault: "[F] Disconnect, silence,\nor force no-fix GPS" { class: func }
+}
+
+imu_harness: "[EA] IMU fault-injection\nharness" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  connect_imu: "[F] Connect nominal\nICM20948 I2C" { class: func }
+  inject_imu_fault: "[F] Disconnect or\nNACK ICM20948" { class: func }
+}
+
+ambient_monitor: "[EA] Ambient thermometer\n/ hygrometer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  measure_environment: "[F] Measure ambient\ntemperature and humidity" { class: func }
+  report_calibration: "[F] Report equipment ID\nand calibration status" { class: func }
+}
+
+analysis_station: "[EA] Analysis / review\nstation" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  classify_states: "[F] Classify nominal,\ndegraded, error states" { class: func }
+  analyze_timeouts: "[F] Analyze no-blocking,\nUART/I2C timeout evidence" { class: func }
+  evaluate_statistics: "[F] Evaluate repetitions\n29/29 or 59/59 if claimed" { class: func }
+  generate_report: "[F] Generate report\npackage and plan row" { class: func }
+  note_pass: "[C] Pass/fail allocation\nPass if nominal boot reports expected peripheral states,\nfaulted peripherals report degraded/error states, no firmware\nreset/hang occurs, and boot evidence is preserved." { class: note; shape: page }
+  note_timeout: "[C] Timing and no-blocking viewpoint\nUART reads return data or timeout/error in <=5 ms.\nv1.0 I2C reads return data or timeout/error in <=5 ms.\nProcess/calculate timing <5 ms applies where instrumented." { class: note; shape: page }
+  note_stats: "[C] Statistical viewpoint\nA single successful trial is functional evidence only.\nUse 29/29 zero-failure for R90/C95 or 59/59 for about R95/C95\nif a reliability claim is made; otherwise report screening." { class: note; shape: page }
+}
+
+analysis_station.note_pass -> analysis_station.classify_states { class: cstr }
+analysis_station.note_timeout -> analysis_station.analyze_timeouts { class: cstr }
+analysis_station.note_stats -> analysis_station.evaluate_statistics { class: cstr }
+conductor.note_v03 -> conductor.record_deviations { class: cstr }
+
+# Layout-only edge to stack verification means under the selected UUT interface.
+system -> conductor { style: { opacity: 0 } }
+conductor -> power_supply { style: { opacity: 0 } }
+power_supply -> reset_control { style: { opacity: 0 } }
+reset_control -> data_logger { style: { opacity: 0 } }
+data_logger -> gps_harness { style: { opacity: 0 } }
+gps_harness -> imu_harness { style: { opacity: 0 } }
+imu_harness -> ambient_monitor { style: { opacity: 0 } }
+ambient_monitor -> analysis_station { style: { opacity: 0 } }

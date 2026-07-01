@@ -1,0 +1,233 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V01-GATE-001 PV3: v0.1 breadboard verification functional allocation.
+# Shows human/operator functions, test-equipment functions, and verification-only
+# functions introduced for the v0.1 startup-health gate.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  inspect_breadboard: "[F] Inspect breadboard\ncomponents and wiring" { class: func }
+  configure_peripheral_fault: "[F] Disconnect / reconnect\none peripheral at a time" { class: func }
+  press_reset: "[F] Press reset /\npower-cycle UUT" { class: func }
+  read_ambient_temperature: "[F] Read ambient\nthermometer" { class: func }
+  record_pass_fail: "[F] Record pass/fail\nand anomalies" { class: func }
+}
+
+bench_pc: "[EA] USB power/programming PC" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  power_uut: "[F] Supply USB power\nto XIAO" { class: func }
+  flash_test_firmware: "[F] Flash v0.1\ntest firmware" { class: func }
+  capture_serial_log: "[F] Capture serial\nstartup log" { class: func }
+}
+
+serial_monitor: "[EA] Serial/status log monitor" {
+  class: ea
+  direction: down
+  decode_startup_log: "[F] Decode startup\nstatus log" { class: func }
+}
+
+ground_monitor: "[EA] Ground LoRa telemetry monitor" {
+  class: ea
+  direction: down
+  receive_health_telemetry: "[F] Receive health/status\ntelemetry" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" {
+  class: ea
+  direction: down
+  measure_ambient_temperature: "[F] Measure ambient\ntemperature" { class: func }
+}
+
+system: "[System] OBCC-V01-GATE-001 — Breadboard startup-health functional allocation\nRefs: IVV, OBCC README, LoRa_Frame, Variable Getter Template, v1.0 PV3/Startup chain" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  breadboard: "[PC] v0.1 OBCC breadboard /\ndevelopment assembly" {
+    class: pc
+    direction: down
+
+    xiao: "[PC] XIAO ESP32-S3" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      test_harness: "[LC] Bench startup-health\ntest harness\n(verification-only)" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        select_test_case: "[F] Select nominal,\ncritical-fault, or\nnon-critical-fault case" { class: func }
+        expose_reset_entry: "[F] Expose reset /\nboot entry point" { class: func }
+      }
+
+      diagnostic_interface: "[LC] USB serial diagnostic\ninterface\n(verification-only)" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        emit_startup_log: "[F] Emit startup-health\nlog to serial" { class: func }
+      }
+
+      health_monitor: "[LC] Health Monitor" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        init_buses: "[F] Init UART, PWM,\nSPI and I2C" { class: func }
+        check_critical_peripherals: "[F] Check critical\nperipherals" { class: func }
+        check_noncritical_peripherals: "[F] Check non-critical\nperipherals" { class: func }
+        collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+        disable_failed_getters: "[F] Disable failed\nnon-critical getters" { class: func }
+        enter_error_state: "[F] Enter safe/error\nstate" { class: func }
+        publish_health_flags: "[F] Publish health\nflags" { class: func }
+      }
+
+      obcc_supervisor: "[LC] OBCC Supervisor" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        bootstrap_obcc: "[F] Bootstrap OBCC" { class: func }
+        start_runtime_services: "[F] Start runtime\nservices" { class: func }
+        publish_state_metadata: "[F] Publish state\nmetadata" { class: func }
+      }
+
+      telemetry_status: "[LC] Telemetry / status\nindicator" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        add_heartbeat_status: "[F] Add heartbeat\nstatus" { class: func }
+        show_operational_readiness: "[F] Show operational\nreadiness / degraded state" { class: func }
+      }
+    }
+
+    rfm95w: "[PC] RFM95W LoRa" {
+      class: pc
+      lora_transceiver: "[LC] LoRa Transceiver" {
+        class: lc
+        direction: down
+        get_rfm95w_init_state: "[F] Get RFM95W\ninit state" { class: func }
+        transmit_status_packet: "[F] Transmit status\npacket" { class: func }
+      }
+    }
+
+    bme280: "[PC] BME280" {
+      class: pc
+      ams_sensing: "[LC] AMS pressure/temperature\nsensing" {
+        class: lc
+        direction: down
+        get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+      }
+    }
+
+    gps: "[PC] UBX-G7020 GPS" {
+      class: pc
+      gps_sensing: "[LC] GPS sensing" {
+        class: lc
+        direction: down
+        get_ubx_init_state: "[F] Get UBX-G7020\ninit state" { class: func }
+      }
+    }
+
+    imu: "[PC] ICM20948 or legacy\nMPU6050 IMU" {
+      class: pc
+      imu_sensing: "[LC] Kinematic sensing" {
+        class: lc
+        direction: down
+        get_imu_init_state: "[F] Get IMU\ninit state" { class: func }
+      }
+    }
+
+    ina219: "[PC] INA219" {
+      class: pc
+      battery_monitoring: "[LC] Battery monitoring" {
+        class: lc
+        direction: down
+        get_ina219_init_state: "[F] Get INA219\ninit state" { class: func }
+      }
+    }
+
+    servo: "[PC] Servo / deployment\nactuator context" {
+      class: pc
+      trigger: "[LC] Trigger / servo init" {
+        class: lc
+        direction: down
+        set_servo_init_state: "[F] Set Servo\ninit state" { class: func }
+        retain_safe_position: "[F] Retain safe\nbench position" { class: func }
+      }
+    }
+  }
+}
+
+note_v01_source_gap: "[C] No v0.1 Capella/D2 source baseline\nexists in the repository. This allocation\nview is a verification definition for the\nv0.1->v0.2 gate using v1.0 context." {
+  class: note
+  shape: page
+}
+
+note_fault_policy: "[C] Pass/fail policy: nominal all-connected\nboot reports startup checks complete and\nallows runtime; missing RFM95W/BME280/Servo\nblocks runtime; missing GPS/IMU/INA219\nallows degraded telemetry-visible operation." {
+  class: note
+  shape: page
+}
+
+note_statistics: "[C] v0.1 advancement screening: 100%\ncomponent/link inspection plus at least one\nnominal boot and one injected case per\ncritical/non-critical peripheral. Use 29/29\nnominal boots only if making an R90/C95 claim." {
+  class: note
+  shape: page
+}
+
+note_v01_source_gap -> system.breadboard.xiao.test_harness { class: cstr }
+note_fault_policy -> system.breadboard.xiao.health_monitor { class: cstr }
+note_fault_policy -> system.breadboard.xiao.obcc_supervisor { class: cstr }
+note_statistics -> test_operator.record_pass_fail { class: cstr }
+
+# Layout-only edges keep actors above the UUT and notes below it.
+test_operator -> bench_pc { style: { opacity: 0 } }
+bench_pc -> serial_monitor { style: { opacity: 0 } }
+serial_monitor -> ground_monitor { style: { opacity: 0 } }
+ground_monitor -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> system { style: { opacity: 0 } }
+system -> note_v01_source_gap { style: { opacity: 0 } }
+note_v01_source_gap -> note_fault_policy { style: { opacity: 0 } }
+note_fault_policy -> note_statistics { style: { opacity: 0 } }

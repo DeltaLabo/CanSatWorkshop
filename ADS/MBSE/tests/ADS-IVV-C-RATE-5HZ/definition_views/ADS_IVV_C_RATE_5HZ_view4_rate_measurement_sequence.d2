@@ -1,0 +1,81 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style verification sequence for ADS-IVV-C-RATE-5HZ.
+# IADT method: Testing with supporting Analysis.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-C-RATE-5HZ\nRate measurement verification sequence\nRefs: IVV; SW/stats; ADS MBSE plan" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_version: "[F] Select ADS version\nand source baseline" { class: func }
+  confirm_applicability: "[F] Confirm v0.1/v0.2\napplicability or N/A" { class: func }
+  select_tolerance: "[F] Select jitter and\nworst-gap tolerance" { class: func }
+  configure_timebase: "[F] Configure reference clock\nand logger timebase" { class: func }
+  configure_environment: "[F] Record power, ambient,\nfirmware, and calibration state" { class: func }
+  configure_instrumentation: "[F] Configure serial logger\nand optional firmware timestamps" { class: func }
+  start_run: "[F] Start collection-rate\nmeasurement run" { class: func }
+  acquire_records: "[F] Acquire collection records\nwith timestamps and sample IDs" { class: func }
+  observe_fault_markers: "[F] Observe loop stalls,\nstale/drop markers, backpressure" { class: func }
+  stop_run: "[F] Stop run and preserve\nraw evidence" { class: func }
+  parse_records: "[F] Parse and align UUT,\nhost, and reference timestamps" { class: func }
+  compute_periods: "[F] Compute per-sample\nperiods and mean rate" { class: func }
+  compute_worst_gap: "[F] Compute worst gap\nand dropped/duplicate records" { class: func }
+  check_stale_values: "[F] Check stale values\nand validity markers" { class: func }
+  apply_statistics: "[F] Apply n = 59 rule\nif formal tolerance claim" { class: func }
+  evaluate_constraints: "[F] Evaluate 5 Hz\npass/fail constraints" { class: func }
+  decide_verdict: "[F] Decide pass, fail,\nblocked, limited, or N/A" { class: func }
+  record_report: "[F] Record report, evidence,\nlimitations, retest status" { class: func }
+
+  note_nominal: "[C] 5 Hz constraint\nNominal collection period = 200 ms for v0.1/v0.2\nCollect measurements. Mean rate alone is insufficient;\nper-sample periods and worst gaps are evaluated." { class: note; shape: page }
+  note_gate: "[C] Pre-execution gate\nAllowed jitter and worst-gap tolerance must be selected\nbefore the run. If not selected, the execution verdict is\nblocked/limited; do not create a hidden requirement." { class: note; shape: page }
+  note_formal: "[C] Formal deadline/tolerance claim\nUse n = 59 representative samples and require every\nsample period/gap to be inside the selected limit." { class: note; shape: page }
+  note_faults: "[C] Fault hardening\nFail or limit if loop progress stalls, stale or dropped\nrecords are unflagged, timestamp stream stops, logger\nbackpressure is unrecorded, or clock drift/wrap is unresolved." { class: note; shape: page }
+  note_na: "[C] N/A branch\nv0.3 has no behavior model. v1.0 has no explicit ADS 5 Hz\nconstraint in the current model. Record rationale and do not\napply a 5 Hz pass/fail verdict to those versions." { class: note; shape: page }
+}
+
+chain.select_version -> chain.confirm_applicability: "[FE] Version and\nsource views" { class: fe }
+chain.confirm_applicability -> chain.select_tolerance: "[FE] Applicable\nv0.1/v0.2" { class: fe }
+chain.select_tolerance -> chain.configure_timebase: "[FE] Accepted\ntiming limits" { class: fe }
+chain.configure_timebase -> chain.configure_environment: "[FE] Timebase\nready" { class: fe }
+chain.configure_environment -> chain.configure_instrumentation: "[FE] Execution\nconditions" { class: fe }
+chain.configure_instrumentation -> chain.start_run: "[FE] Logger and\nhooks ready" { class: fe }
+chain.start_run -> chain.acquire_records: "[FE] Start marker" { class: fe }
+chain.acquire_records -> chain.observe_fault_markers: "[FE] Timestamped\nrecords" { class: fe }
+chain.observe_fault_markers -> chain.stop_run: "[FE] Fault/stale/drop\nobservations" { class: fe }
+chain.stop_run -> chain.parse_records: "[FE] Raw evidence" { class: fe }
+chain.parse_records -> chain.compute_periods: "[FE] Aligned\ntimestamps" { class: fe }
+chain.compute_periods -> chain.compute_worst_gap: "[FE] Period series" { class: fe }
+chain.compute_worst_gap -> chain.check_stale_values: "[FE] Gap/drop\nstatistics" { class: fe }
+chain.check_stale_values -> chain.apply_statistics: "[FE] Validity and\nfreshness set" { class: fe }
+chain.apply_statistics -> chain.evaluate_constraints: "[FE] Statistical\nbasis" { class: fe }
+chain.evaluate_constraints -> chain.decide_verdict: "[FE] Constraint\nresult" { class: fe }
+chain.decide_verdict -> chain.record_report: "[FE] Verdict and\nlimitations" { class: fe }
+
+chain.note_nominal -> chain.compute_periods { class: cstr }
+chain.note_nominal -> chain.compute_worst_gap { class: cstr }
+chain.note_gate -> chain.select_tolerance { class: cstr }
+chain.note_gate -> chain.decide_verdict { class: cstr }
+chain.note_formal -> chain.apply_statistics { class: cstr }
+chain.note_faults -> chain.observe_fault_markers { class: cstr }
+chain.note_faults -> chain.check_stale_values { class: cstr }
+chain.note_na -> chain.confirm_applicability { class: cstr }

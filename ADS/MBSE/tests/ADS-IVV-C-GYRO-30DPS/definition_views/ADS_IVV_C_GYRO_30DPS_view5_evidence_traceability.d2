@@ -1,0 +1,93 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Evidence and traceability view for ADS-IVV-C-GYRO-30DPS.
+# Ensures report/evidence traces to source views, constraints, capability, feared events, and IVV report outputs.
+direction: right
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+ivv_authority: "[EA] IVV authority /\ntest reviewer" { class: ea }
+source_package: "[EA] Copied source views\nv0.1 v0.2 v0.3 v1.0" { class: ea }
+reference_corpus: "[EA] Reference corpus\nIVV; NASA-SE; IMU/I2C; SW/stats" { class: ea }
+firmware_config: "[EA] Firmware and hardware\nconfiguration source" { class: ea }
+calibration_records: "[EA] Calibration and fixture\nrecords" { class: ea }
+
+system: "[System] ADS-IVV-C-GYRO-30DPS\nEvidence and traceability view\nRefs: IVV; NASA-SE; IMU/I2C; SW/stats; ADS MBSE plan" {
+  class: sys
+  direction: down
+
+  record: "[PC] Angular-rate constraint\nverification record package" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    source_trace: "[LC] Source-model trace" {
+      class: lc
+      direction: down
+      map_versions: "[F] Map v0.2/v1.0\napplicable chains" { class: func }
+      map_na: "[F] Map v0.1/v0.3\nN/A rationale" { class: func }
+      map_constraint: "[F] Map Accuracy <30 deg/s\nconstraint and I2C CE" { class: func }
+    }
+
+    evidence: "[LC] Raw evidence record" {
+      class: lc
+      direction: down
+      store_ads: "[F] Store ADS gx/gy/gz,\nstatus, timestamp logs" { class: func }
+      store_truth: "[F] Store truth-rate, ambient,\nfault-marker logs" { class: func }
+      store_delivery: "[F] Store v1.0 OBCC\ndelivery evidence" { class: func }
+      store_config: "[F] Store hardware, firmware,\nfixture, calibration IDs" { class: func }
+    }
+
+    analysis: "[LC] Analysis record" {
+      class: lc
+      direction: down
+      store_matching: "[F] Store sample matching\nand validity filtering" { class: func }
+      store_error: "[F] Store per-axis error,\nuncertainty, guard band" { class: func }
+      store_stats: "[F] Store n counts and\n95/95 method if claimed" { class: func }
+      store_faults: "[F] Store I2C/fault rejection\nand recovery analysis" { class: func }
+    }
+
+    disposition: "[LC] Result and\ndisposition record" {
+      class: lc
+      direction: down
+      store_verdict: "[F] Store pass/fail, blocked,\nor N/A verdict" { class: func }
+      store_limits: "[F] Store deviations, anomalies,\nwaivers, limitations, retest" { class: func }
+      store_report_ref: "[F] Store report path under\nresults/ADS-IVV-C-GYRO-30DPS" { class: func }
+    }
+  }
+}
+
+note_targets: "[C] Traceability targets\nConstraint <30 deg/s; ADS-CAP-IMU;\nADS-FE-CORRUPT-MEASUREMENT; ADS-FE-STUCK-LOOP.\nN/A rationale may reference ADS-CAP-PHY for v0.1 and\nADS-CAP-PCB / ADS-CAP-DELIVERY for v0.3." { class: note; shape: page }
+note_pass: "[C] Pass/fail constraints\nPer axis/rate condition: n >= 30 valid matched samples,\nguarded absolute error or formal 95/95 bound <30 deg/s,\nfinite/in-range/fresh outputs, no valid credit for saturated,\nstale, corrupt, or I2C-fault data, and v1.0 delivery observed." { class: note; shape: page }
+note_report: "[C] Report rule\nReports reference this modeled definition and record exact\nmodel baseline, as-tested configuration, equipment/calibration,\nactual conditions, raw evidence, analysis settings, deviations,\nanomalies, waivers, limitations, and retest status." { class: note; shape: page }
+note_status: "[C] Status\nDefinition ready for review; execution pending.\nThe ADS MBSE-wide IVV plan has been integrated;\nreports shall reference this definition and recorded evidence." { class: note; shape: page }
+
+source_package -> system.record.source_trace: "[CE] copied D2/PNG\nsource views" { class: ce }
+reference_corpus -> system.record.source_trace: "[CE] reference basis" { class: ce }
+firmware_config -> system.record.evidence: "[CE] version, commit,\nBOM, article ID" { class: ce }
+calibration_records -> system.record.evidence: "[CE] reference and\nambient calibration" { class: ce }
+system.record.evidence -> system.record.analysis: "[CE] raw data for\nanalysis" { class: ce }
+system.record.source_trace -> system.record.disposition: "[CE] model trace" { class: ce }
+system.record.analysis -> system.record.disposition: "[CE] pass/fail\nrationale" { class: ce }
+ivv_authority -> system.record.disposition: "[CE] review and\napproval" { class: ce }
+
+note_targets -> system.record.source_trace { class: cstr }
+note_pass -> system.record.analysis { class: cstr }
+note_report -> system.record.disposition { class: cstr }
+note_status -> system.record.disposition { class: cstr }

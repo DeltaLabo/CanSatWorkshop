@@ -1,0 +1,84 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain inventory view for ADS-IVV-FC-ANG.
+# Covers angular velocity chains in v0.2 and v1.0; v0.1 and v0.3 are explicit N/A.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-ANG\nAngular velocity functional-chain source inventory\nRefs: IVV; NASA-SE; IMU/I2C; SW/stats; ADS MBSE plan" {
+  class: sys
+  direction: down
+
+  versions: "[PC] Selected ADS source baselines" {
+    class: pc
+    direction: right
+    grid-columns: 2
+
+    v01: "[PC] v0.1 prototype\nsource_views/v0.1" {
+      class: pc
+      direction: down
+      note_na: "[C] N/A for angular velocity chain\nNo IMU PC/LC/CE or angular-rate functional chain\nis modeled in v0.1. GPS-only behavior is covered\nby ADS-IVV-FC-GPS." { class: note; shape: page }
+    }
+
+    v02: "[PC] v0.2 prototype\nsource_views/v0.2" {
+      class: pc
+      direction: down
+      chain: "[LC] Angular velocity chain\nview5_angular_velocity_chain" {
+        class: lc
+        direction: down
+        measure: "[F] Measure angular\nvelocities" { class: func }
+        respond: "[F] Respond to I2C\nRequests" { class: func }
+        read: "[F] Read angular\nvelocities" { class: func }
+        process: "[F] Process angular\nvelocities" { class: func }
+        collect: "[F] Collect measurements" { class: func }
+      }
+      note_c: "[C] v0.2 pass constraint\nAngular-rate accuracy <30 deg/s.\nI2C carries request/response between IMU\nand Loop. v0.2 I2C timeout is a modeling gap." { class: note; shape: page }
+    }
+
+    v03: "[PC] v0.3 PCB delivery\nsource_views/v0.3" {
+      class: pc
+      direction: down
+      note_na: "[C] N/A for angular velocity chain\nOnly PV1 PCB/trace delivery is modeled.\nNo LC, CE, allocation, or angular velocity chain exists;\nphysical I2C traces are not credited as behavior." { class: note; shape: page }
+    }
+
+    v10: "[PC] v1.0 integrated CanSat\nsource_views/v1.0" {
+      class: pc
+      direction: down
+      chain: "[LC] Angular velocity chain\nview5_angular_velocity_chain" {
+        class: lc
+        direction: down
+        measure: "[F] Measure angular\nvelocities" { class: func }
+        respond: "[F] Respond to I2C\nRequests" { class: func }
+        read: "[F] Read angular\nvelocities" { class: func }
+        process: "[F] Process angular\nvelocities" { class: func }
+        collect: "[F] Collect measurements" { class: func }
+      }
+      note_c: "[C] v1.0 pass constraint\nAngular-rate accuracy <30 deg/s.\nI2C timeout <=5 ms, process/calculate <5 ms,\nand no-blocking constraints are linked in logical/allocation views." { class: note; shape: page }
+    }
+  }
+
+  note_trace: "[C] Traceability\nADS-CAP-IMU; constraint <30 deg/s;\nfeared events ADS-FE-STUCK-LOOP and\nADS-FE-CORRUPT-MEASUREMENT. v0.3 N/A may\nreference ADS-CAP-PCB/DELIVERY." { class: note; shape: page }
+  note_scope: "[C] Source coverage\nAll D2 files for v0.1, v0.2, v0.3, and v1.0\nare copied into this definition. Angular-chain execution\napplies to v0.2/v1.0; v0.1/v0.3 are recorded N/A." { class: note; shape: page }
+}
+
+system.versions.v02.note_c -> system.versions.v02.chain.measure { class: cstr }
+system.versions.v10.note_c -> system.versions.v10.chain.measure { class: cstr }
+system.note_trace -> system.versions { class: cstr }
+system.note_scope -> system.versions { class: cstr }

@@ -1,0 +1,389 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC v1.0 functional allocation view.
+# Shows all functions under their allocated logical component / physical host.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    ads_module: "[PC] ADS Module" {
+      class: pc
+      direction: down
+
+      ads_pcb: "[PC] ADS PCB" {
+        class: pc
+        direction: right
+
+        gps: "[PC] UBX-G7020-KT GPS" {
+          class: pc
+          ads_gps_sensing: "[LC] ADS GPS Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            measure_longitude: "[F] Measure\nlongitude" { class: func }
+            measure_latitude: "[F] Measure\nlatitude" { class: func }
+            send_gps_payload: "[F] Send GPS\npayload" { class: func }
+          }
+        }
+
+        imu: "[PC] ICM20948 IMU" {
+          class: pc
+          ads_kinematic_sensing: "[LC] ADS Kinematic Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            measure_angular_velocities: "[F] Measure angular\nvelocities" { class: func }
+            measure_accelerations: "[F] Measure\naccelerations" { class: func }
+            measure_magnetic_field_intensities: "[F] Measure magnetic\nfield intensities" { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nrequests" { class: func }
+          }
+        }
+      }
+    }
+
+    ams_module: "[PC] AMS Module" {
+      class: pc
+      direction: down
+
+      ams_pcb: "[PC] AMS PCB" {
+        class: pc
+        bme280: "[PC] BME280" {
+          class: pc
+          ams_sensing: "[LC] AMS Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            measure_pressure: "[F] Measure\npressure" { class: func }
+            measure_temperature: "[F] Measure\ntemperature" { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nrequests" { class: func }
+          }
+        }
+      }
+    }
+
+    pds_module: "[PC] PDS Module" {
+      class: pc
+      direction: down
+
+      pds_pcb: "[PC] PDS PCB" {
+        class: pc
+        ina219: "[PC] INA219" {
+          class: pc
+          battery_monitoring: "[LC] Battery Monitoring" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            measure_voltage: "[F] Measure\nvoltage" { class: func }
+            measure_current: "[F] Measure\ncurrent" { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nrequests" { class: func }
+          }
+        }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+
+        rfm95w: "[PC] RFM95W LoRa" {
+          class: pc
+          cansat_lora: "[LC] LoRa Transceiver" {
+            class: lc
+            direction: down
+            receive_incoming_data: "[F] Receive\nincoming data" { class: func }
+            transmit_outgoing_data: "[F] Transmit\noutgoing data" { class: func }
+          }
+        }
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+          grid-columns: 2
+
+          free_rtos: "[LC] FreeRTOS Kernel" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            init_kernel_objects: "[F] Init kernel\nobjects" { class: func }
+            create_message_queues: "[F] Create message\nqueues" { class: func }
+            create_runtime_tasks: "[F] Create runtime\ntasks" { class: func }
+            schedule_periodic_timers: "[F] Schedule periodic\ntimers" { class: func }
+            dispatch_interrupts: "[F] Dispatch\ninterrupts" { class: func }
+            protect_shared_buses: "[F] Protect shared\nbuses" { class: func }
+          }
+
+          obcc_supervisor: "[LC] OBCC Supervisor" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            bootstrap_obcc: "[F] Bootstrap\nOBCC" { class: func }
+            coordinate_operational_state: "[F] Coordinate\noperational state" { class: func }
+            start_runtime_services: "[F] Start runtime\nservices" { class: func }
+            publish_state_metadata: "[F] Publish state\nmetadata" { class: func }
+          }
+
+          health_monitor: "[LC] Health Monitor" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            init_serial1_pwm_spi_i2c: "[F] Init UART, PWM,\nSPI and I2C" { class: func }
+            check_critical_peripherals: "[F] Check critical\nperipherals" { class: func }
+            check_noncritical_peripherals: "[F] Check non-critical\nperipherals" { class: func }
+            collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+            disable_failed_sensor_getters: "[F] Disable failed\nsensor getters" { class: func }
+            enter_error_state: "[F] Enter safe/error\nstate" { class: func }
+            count_timeouts: "[F] Count\ntimeouts" { class: func }
+            reset_timeouts: "[F] Reset\ntimeouts" { class: func }
+            classify_runtime_faults: "[F] Classify runtime\nfaults" { class: func }
+            publish_health_flags: "[F] Publish\nhealth flags" { class: func }
+          }
+
+          command_handler: "[LC] Command Handler" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            receive_lora_rx_interrupt: "[F] Receive LoRa\nRX interrupt" { class: func }
+            read_command: "[F] Read\ncommand" { class: func }
+            validate_command: "[F] Validate\ncommand" { class: func }
+            handle_command: "[F] Handle\ncommand" { class: func }
+            set_on_state: "[F] Set On\nstate" { class: func }
+            set_standby_state: "[F] Set Stand-by\nstate" { class: func }
+            log_invalid_command: "[F] Log invalid\ncommand" { class: func }
+          }
+
+          telemetry_collector: "[LC] Telemetry Collector" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            collect_measurements: "[F] Collect\nmeasurements" { class: func }
+            call_variable_getters: "[F] Call variable\ngetters" { class: func }
+            replace_missing_value_with_error_code: "[F] Replace missing value\nwith error code" { class: func }
+            add_heartbeat_status: "[F] Add heartbeat\nstatus" { class: func }
+            push_to_measurement_queue: "[F] Push to measurement\nqueue" { class: func }
+          }
+
+          telemetry_encoder: "[LC] Telemetry Encoder" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            consume_measurement_queue: "[F] Consume measurement\nqueue" { class: func }
+            generate_frame: "[F] Generate\nLoRa frame" { class: func }
+            send_lora_packet: "[F] Send LoRa\npacket" { class: func }
+            enforce_two_second_cadence: "[F] Enforce 2 s\ntelemetry cadence" { class: func }
+          }
+
+          ads_processing: "[LC] ADS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 3
+            get_ubx_init_state: "[F] Get UBX-G7020\ninit state" { class: func }
+            read_store_lat_lon: "[F] Read and store\nlat, lon" { class: func }
+            get_lat: "[F] Get\nlatitude" { class: func }
+            get_lon: "[F] Get\nlongitude" { class: func }
+            get_icm20948_init_state: "[F] Get ICM20948\ninit state" { class: func }
+            read_angular_velocities: "[F] Read angular\nvelocities" { class: func }
+            process_angular_velocities: "[F] Process angular\nvelocities" { class: func }
+            read_accelerations: "[F] Read\naccelerations" { class: func }
+            process_accelerations: "[F] Process\naccelerations" { class: func }
+            read_field_intensities: "[F] Read field\nintensities" { class: func }
+            calculate_pitch_roll_yaw: "[F] Calculate\npitch, roll, yaw" { class: func }
+          }
+
+          ams_processing: "[LC] AMS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+            read_pressure: "[F] Read\npressure" { class: func }
+            read_temperature: "[F] Read\ntemperature" { class: func }
+            calculate_altitude: "[F] Calculate\naltitude" { class: func }
+            process_temperature: "[F] Process\ntemperature" { class: func }
+          }
+
+          ess_processing: "[LC] ESS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            get_ina219_init_state: "[F] Get INA219\ninit state" { class: func }
+            read_voltage: "[F] Read\nvoltage" { class: func }
+            read_current: "[F] Read\ncurrent" { class: func }
+            process_voltage: "[F] Process\nvoltage" { class: func }
+            process_current: "[F] Process\ncurrent" { class: func }
+          }
+
+          pdm_processing: "[LC] PDM Processing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+            set_servo_init_state: "[F] Set Servo\ninit state" { class: func }
+            evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+            evaluate_emergency_deploy_need: "[F] Evaluate emergency\ndeploy need" { class: func }
+            inhibit_deployment_in_standby: "[F] Inhibit deployment\nin Stand-by" { class: func }
+            send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
+            send_close_signal_to_servo: "[F] Send close signal\nto Servo" { class: func }
+          }
+        }
+      }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: down
+      servo: "[PC] Servo" {
+        class: pc
+        trigger: "[LC] Trigger" {
+          class: lc
+          direction: down
+          reach_closed_position: "[F] Reach closed\nposition" { class: func }
+          reach_open_position: "[F] Reach open\nposition" { class: func }
+          retain_position: "[F] Retain\nposition" { class: func }
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" { class: pc }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm95w: "[PC] RFM95W LoRa" {
+      class: pc
+      ground_lora: "[LC] LoRa Transceiver" {
+        class: lc
+        direction: down
+        store_incoming_data: "[F] Store incoming\ndata" { class: func }
+        transmit_outgoing_data: "[F] Transmit\noutgoing data" { class: func }
+      }
+    }
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      lora_forwarder: "[LC] LoRa Forwarder" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        read_payload: "[F] Read\npayload" { class: func }
+        forward_to_pc: "[F] Forward\nto PC" { class: func }
+        store_incoming_uart_data: "[F] Store incoming\nUART data" { class: func }
+        generate_command_frame: "[F] Generate command\nframe" { class: func }
+        write_to_lora_radio: "[F] Write to\nLoRa radio" { class: func }
+      }
+    }
+  }
+
+  pc_computer: "[PC] PC" {
+    class: pc
+    direction: down
+    grid-columns: 3
+
+    decoder: "[LC] Decoder" {
+      class: lc
+      direction: down
+      read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+      push_to_payload_queue: "[F] Push to\npayload queue" { class: func }
+    }
+
+    dashboard: "[LC] Dashboard" {
+      class: lc
+      direction: down
+      catch_state_toggle: "[F] Catch state\ntoggle" { class: func }
+      push_to_command_queue: "[F] Push to\ncommand queue" { class: func }
+      update_plots: "[F] Update\nplots" { class: func }
+    }
+
+    csv_writer: "[LC] CSV Writer" {
+      class: lc
+      direction: down
+      consume_payload_queue: "[F] Consume\npayload queue" { class: func }
+      append_to_csv: "[F] Append\nto CSV" { class: func }
+    }
+  }
+}
+
+note_freertos: "[C] Multiple FreeRTOS tasks are allowed\non the dual-core XIAO ESP32-S3;\nshared buses must be protected" {
+  class: note
+  shape: page
+}
+
+note_health: "[C] Startup policy:\ncritical failure prevents runtime.\nRuntime sensor faults use bounded\nerror codes and may request\nemergency deploy if needed." {
+  class: note
+  shape: page
+}
+
+note_modes: "[C] Stand-by: send heartbeat\nand telemetry, but never\ncommand parachute deployment" {
+  class: note
+  shape: page
+}
+
+note_payload: "[C] v1.0 telemetry excludes\nrelative humidity; keep Pitch, Roll,\nYaw, angular speed, acceleration,\naltitude, temperature, GPS,\nbattery voltage/current" {
+  class: note
+  shape: page
+}
+
+note_deploy_deadline: "[C] In On mode, open parachute\n≤5 s after trigger conditions\nor emergency request are met" {
+  class: note
+  shape: page
+}
+
+# Layout-only edges preserve the flight-to-ground reading order.
+system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.pc_computer { style: { opacity: 0 } }
+system.pc_computer -> note_freertos { style: { opacity: 0 } }
+note_freertos -> note_health { style: { opacity: 0 } }
+note_health -> note_modes { style: { opacity: 0 } }
+note_modes -> note_payload { style: { opacity: 0 } }
+note_payload -> note_deploy_deadline { style: { opacity: 0 } }

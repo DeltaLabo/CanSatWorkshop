@@ -1,0 +1,151 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V02-GATE-001 PV1: v0.2 bus/protocol and getter timing physical setup.
+# No v0.2 Capella/D2 source views exist in the repository; this setup uses
+# v1.0 source views as target-architecture context.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 24 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+bench_pc: "[EA] Serial log capture /\nprogramming PC" { class: ea }
+logic_analyzer: "[EA] Logic analyzer\nI2C/UART/SPI/PWM decoders" { class: ea }
+protocol_fault_injector: "[EA] Protocol exerciser /\nfault injector" { class: ea }
+timer_trace_collector: "[EA] Timer/trace collector\nGPIO timestamp input" { class: ea }
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" { class: ea }
+bench_supply: "[EA] Bench power / USB supply\ncurrent-limited" { class: ea }
+
+system: "[System] OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing setup\nRefs: IVV, OBCC README, Variable Getter Template, v1.0 PV1/PV2/PV3/runtime-fault chain" {
+  class: sys
+  direction: down
+
+  bringup_article: "[PC] v0.2 OBCC bus-bring-up\narticle / development assembly" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    xiao: "[PC] XIAO ESP32-S3\nwith v0.2 test firmware" { class: pc }
+    usb_connector: "[PC] USB-C connector" { class: pc }
+    trace_header: "[PC] Verification probe /\ntrace header" { class: pc }
+
+    harness: "[PC] Instrumented bus harness" {
+      class: pc
+      direction: right
+      grid-columns: 4
+      i2c_bus: "[PC] I2C + 3V3 bus\nBME280 / IMU / INA219" { class: pc }
+      uart_bus: "[PC] UART + power\nGPS" { class: pc }
+      spi_bus: "[PC] SPI + 3V3 bus\nRFM95W" { class: pc }
+      pwm_lead: "[PC] PWM + servo\npower lead" { class: pc }
+    }
+
+    interface_set: "[PC] Interface target set" {
+      class: pc
+      direction: right
+      grid-columns: 4
+      bme280: "[PC] BME280\npressure/temperature" { class: pc }
+      imu: "[PC] ICM20948 IMU\n(or legacy MPU6050)" { class: pc }
+      ina219: "[PC] INA219\npower monitor" { class: pc }
+      gps: "[PC] UBX-G7020-KT GPS" { class: pc }
+      rfm95w: "[PC] RFM95W LoRa" { class: pc }
+      servo_fixture: "[PC] Servo safe-load /\ndisconnect fixture" {
+        class: pc
+        servo: "[PC] Servo" { class: pc }
+      }
+    }
+
+    note_source_gap: "[C] Source baseline gap:\nno v0.2 Capella/D2 views exist.\nThe copied v1.0 views are context\nfor intended interfaces only." {
+      class: note
+      shape: page
+    }
+
+    note_protocol_presence: "[C] Setup pass/fail precondition:\nall instrumented I2C, UART, SPI,\nPWM, USB, trace, and power links are\npresent, labelled, and safe to fault." {
+      class: note
+      shape: page
+    }
+
+    note_fault_safety: "[C] Fault-injection safety:\ncurrent limit bench power; inject stuck\nbus/NACK, GPS silence/malformed data,\nSPI busy/fault, and PWM unavailable\nwithout damaging the UUT." {
+      class: note
+      shape: page
+    }
+  }
+}
+
+bench_pc -- system.bringup_article.usb_connector: "[PL] USB-C\nflash/log" { class: pl }
+bench_supply -- system.bringup_article.usb_connector: "[PL] Current-limited\nUSB power" { class: pl }
+logic_analyzer -- system.bringup_article.trace_header: "[PL] Probe pod" { class: pl }
+timer_trace_collector -- system.bringup_article.trace_header: "[PL] GPIO timestamp\nlead" { class: pl }
+protocol_fault_injector -- system.bringup_article.harness.i2c_bus: "[PL] I2C fault\nclip" { class: pl }
+protocol_fault_injector -- system.bringup_article.harness.uart_bus: "[PL] UART fault /\nexerciser lead" { class: pl }
+protocol_fault_injector -- system.bringup_article.harness.spi_bus: "[PL] SPI fault /\nbusy lead" { class: pl }
+protocol_fault_injector -- system.bringup_article.harness.pwm_lead: "[PL] PWM/servo\ndisconnect lead" { class: pl }
+ambient_thermometer -- system.bringup_article: "[PL] Bench air\nobservation" { class: pl }
+
+system.bringup_article.usb_connector -- system.bringup_article.xiao: "[PL] USB pads" { class: pl }
+system.bringup_article.xiao -- system.bringup_article.trace_header: "[PL] GPIO trace /\nprobe pads" { class: pl }
+system.bringup_article.xiao -- system.bringup_article.harness.i2c_bus: "[PL] I2C lines" { class: pl }
+system.bringup_article.xiao -- system.bringup_article.harness.uart_bus: "[PL] UART lines" { class: pl }
+system.bringup_article.xiao -- system.bringup_article.harness.spi_bus: "[PL] SPI lines" { class: pl }
+system.bringup_article.xiao -- system.bringup_article.harness.pwm_lead: "[PL] PWM line" { class: pl }
+
+system.bringup_article.harness.i2c_bus -- system.bringup_article.interface_set.bme280: "[PL] I2C drop" { class: pl }
+system.bringup_article.harness.i2c_bus -- system.bringup_article.interface_set.imu: "[PL] I2C drop" { class: pl }
+system.bringup_article.harness.i2c_bus -- system.bringup_article.interface_set.ina219: "[PL] I2C drop" { class: pl }
+system.bringup_article.harness.uart_bus -- system.bringup_article.interface_set.gps: "[PL] UART drop" { class: pl }
+system.bringup_article.harness.spi_bus -- system.bringup_article.interface_set.rfm95w: "[PL] SPI drop" { class: pl }
+system.bringup_article.harness.pwm_lead -- system.bringup_article.interface_set.servo_fixture.servo: "[PL] Servo PWM /\npower" { class: pl }
+
+system.bringup_article.note_source_gap -> system { class: cstr }
+system.bringup_article.note_protocol_presence -> system.bringup_article.harness { class: cstr }
+system.bringup_article.note_protocol_presence -> system.bringup_article.interface_set { class: cstr }
+system.bringup_article.note_fault_safety -> protocol_fault_injector { class: cstr }
+system.bringup_article.note_fault_safety -> system.bringup_article.interface_set.servo_fixture { class: cstr }
+
+# Layout-only edges keep equipment, UUT internals, and constraints readable.
+bench_pc -> bench_supply { style: { opacity: 0 } }
+bench_supply -> logic_analyzer { style: { opacity: 0 } }
+logic_analyzer -> protocol_fault_injector { style: { opacity: 0 } }
+protocol_fault_injector -> timer_trace_collector { style: { opacity: 0 } }
+timer_trace_collector -> ambient_thermometer { style: { opacity: 0 } }
+system.bringup_article.xiao -> system.bringup_article.harness { style: { opacity: 0 } }
+system.bringup_article.harness -> system.bringup_article.interface_set { style: { opacity: 0 } }
+system.bringup_article.interface_set -> system.bringup_article.note_source_gap { style: { opacity: 0 } }
+system.bringup_article.note_source_gap -> system.bringup_article.note_protocol_presence { style: { opacity: 0 } }
+system.bringup_article.note_protocol_presence -> system.bringup_article.note_fault_safety { style: { opacity: 0 } }

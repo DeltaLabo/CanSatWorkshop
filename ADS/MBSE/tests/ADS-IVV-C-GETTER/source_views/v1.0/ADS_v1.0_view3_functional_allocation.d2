@@ -1,0 +1,198 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional allocation view
+# Show the full PA allocation stack without exchanges.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    ads_module: "[PC] ADS Module" {
+      class: pc
+      direction: down
+
+      ads_pcb: "[PC] ADS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 3
+
+        gps: "[PC] UBX-G7020-KT GPS" {
+          class: pc
+          direction: down
+
+          gps_lc: "[LC] ADS GPS Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 2
+
+            measure_longitude: "[F] Measure\nlongitude" { class: func }
+            measure_latitude: "[F] Measure\nlatitude" { class: func }
+            send_payload: "[F] Send payload" { class: func }
+          }
+        }
+
+        ads_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+        imu: "[PC] ICM20948 IMU" {
+          class: pc
+          direction: down
+
+          imu_lc: "[LC] ADS Kinematic Sensing" {
+            class: lc
+            direction: down
+            grid-columns: 3
+
+            measure_angular_velocities: "[F] Measure angular\nvelocities" { class: func }
+            measure_accelerations: "[F] Measure\naccelerations" { class: func }
+            measure_magnetic_field_intensities: "[F] Measure magnetic\nfield intensities" { class: func }
+            respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+          }
+
+          note_accuracy_angular_rate: "[C] Accuracy\n< 30 deg/s" {
+            class: note
+            shape: page
+          }
+        }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+
+          ads_processing: "[LC] ADS Processing" {
+            class: lc
+            direction: down
+            grid-columns: 3
+
+            get_ubx_init_state: "[F] Get UBX-G7020-KT\ninit state" { class: func }
+            read_store_lat_lon: "[F] Read and store\nlat, lon" { class: func }
+            read_angular_velocities: "[F] Read angular\nvelocities" { class: func }
+            read_accelerations: "[F] Read\naccelerations" { class: func }
+            read_field_intensities: "[F] Read field\nintensities" { class: func }
+            get_icm20948_init_state: "[F] Get ICM20948\ninit state" { class: func }
+            get_lat: "[F] Get lat" { class: func }
+            get_lon: "[F] Get lon" { class: func }
+            process_angular_velocities: "[F] Process angular\nvelocities" { class: func }
+            process_accelerations: "[F] Process\naccelerations" { class: func }
+            calculate_pitch_roll_yaw: "[F] Calculate\npitch, roll, yaw" { class: func }
+
+            note_accuracy_position: "[C] Accuracy < 5 m" {
+              class: note
+              shape: page
+            }
+          }
+
+          obcc: "[LC] OBCC" {
+            class: lc
+            direction: down
+            grid-columns: 1
+
+            collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+            collect_measurements: "[F] Collect\nmeasurements" { class: func }
+          }
+        }
+
+        obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+
+        note_variable_getter: "[C] Implement each\n(Read X, Process X) or\n(Read X, Calculate Y)\npair as a Variable\nGetter template" {
+          class: note
+          shape: page
+        }
+        note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" {
+          class: note
+          shape: page
+        }
+        note_process_time: "[C] All Process or\nCalculate functions\nmust take < 5 ms" {
+          class: note
+          shape: page
+        }
+        note_uart_timeout: "[C] All UART read\nfunctions must have\na timeout ≤ 5 ms" {
+          class: note
+          shape: page
+        }
+        note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+          class: note
+          shape: page
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ads_headers: "[PC] 2mm 2x6 ADS Headers" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+      obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+    }
+  }
+}
+
+system.cansat.ads_module.ads_pcb.imu.note_accuracy_angular_rate -> system.cansat.ads_module.ads_pcb.imu.imu_lc.measure_angular_velocities { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.note_accuracy_position -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.get_lat { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.note_accuracy_position -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.get_lon { class: cstr }
+
+system.cansat.obcc_module.obcc_pcb.note_variable_getter -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_i2c_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_process_time -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_uart_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }
+

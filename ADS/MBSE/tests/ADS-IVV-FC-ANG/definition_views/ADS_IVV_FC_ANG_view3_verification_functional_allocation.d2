@@ -1,0 +1,104 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Verification-only functional allocation for ADS-IVV-FC-ANG.
+# Allocates angular-rate test and analysis functions to human actors, test equipment, and selected ADS version.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-ANG\nVerification-only functional allocation\nRefs: IVV; NASA-SE; IMU/I2C; SW/stats" {
+  class: sys
+  direction: down
+
+  selected_version: "[PC] Selected ADS version\nAngular-chain UUT interface" {
+    class: pc
+    direction: down
+    angular_test_lc: "[LC] Angular velocity\nchain observation interface" {
+      class: lc
+      direction: down
+      grid-columns: 2
+      expose_model_chain: "[F] Expose copied\nangular chain and constraints" { class: func }
+      emit_ads_rates: "[F] Emit ADS gx/gy/gz,\nstatus, and timestamps" { class: func }
+      expose_i2c_markers: "[F] Expose I2C read,\ntimeout, and error markers" { class: func }
+      expose_fault_state: "[F] Expose validity,\nfreshness, saturation state" { class: func }
+    }
+  }
+}
+
+conductor: "[EA] IVV angular-rate\ntest conductor" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  select_baseline: "[F] Select ADS version,\nmodel baseline, firmware commit" { class: func }
+  run_nominal_campaign: "[F] Run nominal\nangular-rate campaign" { class: func }
+  run_fault_campaign: "[F] Run I2C/fault\nand saturation campaign" { class: func }
+  record_deviations: "[F] Record deviations,\nwaivers, retest status" { class: func }
+}
+
+rate_reference: "[EA] Angular-rate truth /\nstimulus source" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  provide_truth: "[F] Provide truth\ngx/gy/gz/time" { class: func }
+  provide_conditions: "[F] Provide static and\nknown-rate conditions" { class: func }
+  provide_uncertainty: "[F] Provide reference\nuncertainty and alignment" { class: func }
+  inject_rate_faults: "[F] Provide saturation\nor invalid-rate stimuli" { class: func }
+}
+
+data_logger: "[EA] Data logger /\ntimebase" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  capture_ads_stream: "[F] Capture ADS IMU\nangular-rate samples" { class: func }
+  capture_truth_stream: "[F] Capture truth\nrates and timestamps" { class: func }
+  align_samples: "[F] Align truth and\nADS samples" { class: func }
+  preserve_raw_evidence: "[F] Preserve raw\nevidence files" { class: func }
+}
+
+analysis_tool: "[EA] Statistical analysis\ntool" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  compute_error: "[F] Compute per-axis\nangular-rate error" { class: func }
+  compute_bound: "[F] Compute uncertainty\nor 95/95 bound where claimed" { class: func }
+  analyze_i2c_timing: "[F] Analyze I2C timing\nand no-blocking behavior" { class: func }
+  analyze_fault_results: "[F] Analyze invalid/stale/\nsaturated data behavior" { class: func }
+}
+
+quality: "[EA] Quality / configuration\nauthority" {
+  class: ea
+  review_result: "[F] Review pass/fail,\nlimitations, anomalies" { class: func }
+}
+
+note_pass: "[C] Angular chain pass/fail\nPass if valid angular-rate data traverse the modeled chain,\naccepted per-axis error criterion is <30 deg/s, and invalid,\nstale, saturated, or I2C-fault data are not accepted as valid." { class: note; shape: page }
+note_stats: "[C] Statistical viewpoint\nMinimum >=30 matched valid samples per axis/rate condition.\nIf a formal 95/95 claim is made, compute and record the\nselected tolerance/confidence method and uncertainty guard band." { class: note; shape: page }
+note_na: "[C] v0.1/v0.3 N/A rule\nPass/N/A only after confirming source views have no\nangular velocity functional chain, LC allocation, or CE behavior\nto execute for the selected version." { class: note; shape: page }
+
+note_pass -> analysis_tool.compute_error { class: cstr }
+note_pass -> analysis_tool.analyze_i2c_timing { class: cstr }
+note_pass -> analysis_tool.analyze_fault_results { class: cstr }
+note_stats -> analysis_tool.compute_bound { class: cstr }
+note_na -> conductor.record_deviations { class: cstr }
+
+# Layout-only edge to stack verification means under the selected UUT interface.
+system -> conductor { style: { opacity: 0 } }
+conductor -> rate_reference { style: { opacity: 0 } }
+rate_reference -> data_logger { style: { opacity: 0 } }
+data_logger -> analysis_tool { style: { opacity: 0 } }
+analysis_tool -> quality { style: { opacity: 0 } }

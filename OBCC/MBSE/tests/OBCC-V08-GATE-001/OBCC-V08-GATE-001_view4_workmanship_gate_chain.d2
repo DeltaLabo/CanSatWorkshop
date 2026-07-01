@@ -1,0 +1,136 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V08-GATE-001 functional chain: PCB/backplane/link workmanship inspection,
+# continuity/polarity/protocol bring-up demonstration, and evidence closure.
+# Function labels name the responsible actor/equipment/SUT; no PC/LC/EA containers
+# are used in this Functional Chain view.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V08-GATE-001 — PCB/backplane/link workmanship advancement gate chain\nRefs: IVV, PM&SE/IVV, OBCC README, LoRa_Frame, v1.0 PV1/PV2/PV3; trace: integration/build readiness, OBCC-FE-LostTelemetry, OBCC-FE-NonDeployment, OBCC-FE-SchedulerBlocked" {
+  class: chain
+  direction: down
+
+  select_uut: "[F] Operator: select\nv0.8 UUT, revision,\nchecklist, and v1.0\nsource-context copy" { class: func }
+  read_ambient: "[F] Operator/thermometer:\nrecord ambient condition\nand instrument ID" { class: func }
+  start_evidence: "[F] Evidence camera:\nstart photo/video index\nand time reference" { class: func }
+  inspect_obcc_pcb: "[F] Visual inspector:\ninspect OBCC PCB,\nXIAO, RFM95W, antenna\npath, connectors" { class: func }
+  inspect_context_devices: "[F] Visual inspector:\ninspect BME280, ICM20948,\nUBX-G7020, INA219,\nand context headers" { class: func }
+  retention_check: "[F] Retention fixture:\ncheck backplane headers,\nservo cable, keying,\nand seating" { class: func }
+  no_short_check: "[F] DMM: verify no shorts\nbetween power rails,\nground, adjacent pins,\nand antenna path" { class: func }
+  continuity_check: "[F] DMM: verify continuity\nand polarity on SPI,\nI2C, UART, PWM, power,\nground, USB-C, headers" { class: func }
+  rf_safe_check: "[F] RF checker: verify\nantenna or dummy load\nbefore any LoRa TX" { class: func }
+  apply_limited_power: "[F] Bench power/USB:\napply current-limited\npower and enumerate\nUSB-C bench link" { class: func }
+  uut_probe_log: "[F] UUT harness: stamp\nPCB/firmware IDs and\nprobe terminal status" { class: func }
+  protocol_bringup: "[F] UUT harness: perform\nI2C/UART/SPI/PWM\nsafe bring-up checks" { class: func }
+  lora_safe_bringup: "[F] UUT + RF checker:\nperform safe LoRa /\nground-context bring-up" { class: func }
+  capture_evidence: "[F] Evidence camera/logger:\ncapture photos, readings,\ntrace logs, RSSI/SNR,\nand deviations" { class: func }
+  compare_oracle: "[F] Operator/analyst:\ncompare evidence to\nmodel element checklist\nand CE/link oracle" { class: func }
+  gate_decision: "[F] Operator: declare\npass, fail, waiver,\nor corrective action\nfor v0.8->v0.9" { class: func }
+  quarantine_failure: "[F] Operator: quarantine\nUUT and block advancement\non any unresolved\nforbidden event" { class: func }
+
+  note_components: "[C] PF-001/PF-002 component/link inspection:\n100% of modeled PCs/PLs in the v0.8 gate are\npresent, correct, oriented, connected, and\ndispositioned as OBCC-owned or integration context.\nMissing, reversed, substituted, unseated, or\nuncontrolled elements fail the gate unless formally\nwaived with corrective action." {
+    class: note
+    shape: page
+  }
+
+  note_electrical: "[C] PF-003 electrical demonstration:\nno unmodeled shorts; all power/ground references,\nSPI/I2C/UART/PWM traces, USB-C bench link, headers,\nand servo-cable links pass continuity, polarity,\nand protocol bring-up intent before advancement." {
+    class: note
+    shape: page
+  }
+
+  note_rf_mech: "[C] PF-004/PF-005 RF and mechanical hardening:\nLoRa antenna/dummy-load path is safe before TX;\nbackplane and servo links pass keying/retention.\nOpen antenna path, loose deployment link, or\nunexplained telemetry link fragility is a failure." {
+    class: note
+    shape: page
+  }
+
+  note_analysis: "[C] PF-007 analysis viewpoint:\nimplemented links/exchanges are consistent with\nmodeled v1.0 intent for I2C, UART, SPI, PWM,\npower/ground, LoRa, USB bench evidence, and header\nmating. No hidden bypass or foreign allocation is\nneeded for the gate to pass." {
+    class: note
+    shape: page
+  }
+
+  note_stats: "[C] Statistical significance viewpoint:\nthis is 100% workmanship inspection and one-gate\narticle demonstration, not a reliability claim.\nRecord every modeled component/link/exchange check.\nRepeated measurements are screening unless\nindependence is justified in the report." {
+    class: note
+    shape: page
+  }
+
+  note_environment: "[C] PF-008 environment/evidence:\nrecord ambient thermometer model/serial/reading,\nbench power current limit, RF load state, UUT IDs,\nas-tested wiring, microscope photos, meter/RF readings,\nand report deviations before pass." {
+    class: note
+    shape: page
+  }
+
+  note_source_gap: "[C] Source gap:\nno v0.8 Capella/D2 source baseline exists in the\nrepository. This chain uses copied v1.0 physical,\nlogical, and allocation views only as source context\nfor the v0.8->v0.9 advancement gate." {
+    class: note
+    shape: page
+  }
+}
+
+chain.select_uut -> chain.read_ambient: "[FE] UUT + checklist\nselected [IDs]" { class: fe }
+chain.read_ambient -> chain.start_evidence: "[FE] Ambient condition\n[°C, instrument ID]" { class: fe }
+chain.start_evidence -> chain.inspect_obcc_pcb: "[FE] Evidence index\nready [step IDs]" { class: fe }
+chain.inspect_obcc_pcb -> chain.inspect_context_devices: "[FE] OBCC PCB\ninspection record" { class: fe }
+chain.inspect_context_devices -> chain.retention_check: "[FE] Context ownership\nand footprint record" { class: fe }
+chain.retention_check -> chain.no_short_check: "[FE] Connector retention\nrecord" { class: fe }
+chain.no_short_check -> chain.continuity_check: "[FE] No-short status\n[rails/pins]" { class: fe }
+chain.continuity_check -> chain.rf_safe_check: "[FE] Continuity + polarity\nmatrix" { class: fe }
+chain.rf_safe_check -> chain.apply_limited_power: "[FE] RF-safe authorization\n[antenna/dummy load]" { class: fe }
+chain.apply_limited_power -> chain.uut_probe_log: "[FE] Powered UUT\n[current + USB enum]" { class: fe }
+chain.uut_probe_log -> chain.protocol_bringup: "[FE] Config/probe log\n[as-built IDs]" { class: fe }
+chain.protocol_bringup -> chain.lora_safe_bringup: "[FE] Bus bring-up\n[I2C/UART/SPI/PWM]" { class: fe }
+chain.lora_safe_bringup -> chain.capture_evidence: "[FE] Safe RF/ground\nevidence [RSSI/SNR or\nbench disposition]" { class: fe }
+chain.capture_evidence -> chain.compare_oracle: "[FE] Complete evidence\npackage [raw files]" { class: fe }
+chain.compare_oracle -> chain.gate_decision: "[FE] All checks pass\nor waived with action" { class: fe }
+chain.compare_oracle -> chain.quarantine_failure: "[FE] Unresolved failure\n[forbidden event]" { class: fe }
+chain.quarantine_failure -> chain.gate_decision: "[FE] Advancement blocked\n[fail / rework]" { class: fe }
+
+chain.note_components -> chain.inspect_obcc_pcb { class: cstr }
+chain.note_components -> chain.inspect_context_devices { class: cstr }
+chain.note_electrical -> chain.no_short_check { class: cstr }
+chain.note_electrical -> chain.continuity_check { class: cstr }
+chain.note_rf_mech -> chain.rf_safe_check { class: cstr }
+chain.note_rf_mech -> chain.retention_check { class: cstr }
+chain.note_analysis -> chain.compare_oracle { class: cstr }
+chain.note_stats -> chain.gate_decision { class: cstr }
+chain.note_environment -> chain.read_ambient { class: cstr }
+chain.note_environment -> chain.capture_evidence { class: cstr }
+chain.note_source_gap -> chain.select_uut { class: cstr }

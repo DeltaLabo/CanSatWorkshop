@@ -1,0 +1,143 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V06-GATE-001 functional chain: scheduler non-blocking behavior,
+# bounded telemetry degradation, emergency-deploy policy, and safe/error behavior.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V06-GATE-001 — Scheduler liveness and emergency-policy chain\nRefs: IVV, PM&SE/IVV, OBCC README, Variable Getter Template, v1.0 Runtime Fault/Deployment/Telemetry views" {
+  class: chain
+  direction: down
+
+  inspect_liveness_setup: "[F] Inspect trace, queue,\nmutex, mode-gate, and\ntelemetry monitors" { class: func }
+  select_concurrent_fault_load: "[F] Select concurrent\nfault/load profile" { class: func }
+  arm_liveness_trace: "[F] Arm scheduler,\nqueue, mutex, RF, and\nmode-gate trace" { class: func }
+  start_runtime_load: "[F] Start runtime\ntelemetry/getter load" { class: func }
+
+  command_standby_state: "[F] Command Stand-by\nstate" { class: func }
+  command_on_state: "[F] Command On\nstate" { class: func }
+  publish_state_metadata: "[F] Publish state\nmetadata" { class: func }
+
+  inject_stuck_bus_queue_radio_fault: "[F] Inject stuck bus,\nqueue overflow, radio busy,\nor stale state fault" { class: func }
+  inject_power_or_deploy_critical_fault: "[F] Inject safe power,\nradio, or deployment-path\ncritical fault" { class: func }
+
+  publish_task_heartbeats: "[F] Publish task\nheartbeats" { class: func }
+  monitor_queue_mutex: "[F] Monitor queue depth,\nstate gate, and mutex\nhold time" { class: func }
+  measure_getter_deadlines: "[F] Measure getter and\ndriver return deadlines" { class: func }
+  measure_telemetry_cadence: "[F] Measure telemetry\ncadence and worst gap" { class: func }
+  detect_descent_observability_loss: "[F] Detect descent-state\nobservability loss" { class: func }
+
+  evaluate_emergency_need: "[F] Evaluate emergency\ndeploy need" { class: func }
+  apply_mode_gate_policy: "[F] Apply On / Stand-by\nmode-gate policy" { class: func }
+  inhibit_in_standby: "[F] Inhibit emergency\ndeploy request in Stand-by" { class: func }
+  issue_onmode_request: "[F] Issue emergency\ndeploy request only in On\nwhen policy permits" { class: func }
+
+  enter_safe_error_state: "[F] Enter safe/error\nstate for critical runtime fault" { class: func }
+  publish_safe_error_reason: "[F] Publish safe/error\nreason when observable" { class: func }
+  continue_degraded_telemetry: "[F] Continue bounded\ndegraded telemetry / health\nstatus" { class: func }
+  compare_liveness_oracle: "[F] Compare no-blocking,\ncadence, policy, and\nsafe/error oracle" { class: func }
+  restore_after_fault: "[F] Restore nominal\nruntime state after trial" { class: func }
+
+  note_liveness: "[C] Pass PF-005/PF-006: no task, ISR path,\nqueue, mutex, getter, mode gate, or telemetry path becomes\nunboundedly blocked; blocked-task or watchdog evidence is failure\nunless explicitly dispositioned as expected safe/error behavior." {
+    class: note
+    shape: page
+  }
+
+  note_cadence: "[C] Pass PF-007: telemetry cadence degradation is\nbounded and visible. Nominal target remains 2 s; worst gap and\nreason are logged for every injected fault trial." {
+    class: note
+    shape: page
+  }
+
+  note_emergency: "[C] Pass PF-008: emergency deploy is requested only\nwhen descent-state observability is lost and the modeled policy\nallows it in On mode. Stand-by always inhibits the request." {
+    class: note
+    shape: page
+  }
+
+  note_safe_error: "[C] Pass PF-009: radio, deployment-path, or power\ncritical faults may enter safe/error state; the state/reason must\nbe traceable and must not masquerade as a normal successful run." {
+    class: note
+    shape: page
+  }
+
+  note_fault_hardening: "[C] Fault-hardening viewpoint: combined bus,\nradio, queue/state, mode-gate, power, and deployment-path faults\nexercise deadlock, priority inversion, stale data, lost telemetry,\nnon-deployment, and premature-deployment feared events." {
+    class: note
+    shape: page
+  }
+}
+
+chain.inspect_liveness_setup -> chain.select_concurrent_fault_load: "[FE] Setup accepted []" { class: fe }
+chain.select_concurrent_fault_load -> chain.arm_liveness_trace: "[FE] Trial profile + oracle []" { class: fe }
+chain.arm_liveness_trace -> chain.start_runtime_load: "[FE] Trace ready []" { class: fe }
+chain.start_runtime_load -> chain.command_standby_state: "[FE] Stand-by profile []" { class: fe }
+chain.start_runtime_load -> chain.command_on_state: "[FE] On-mode profile []" { class: fe }
+chain.command_standby_state -> chain.publish_state_metadata: "[FE] Stand-by state []" { class: fe }
+chain.command_on_state -> chain.publish_state_metadata: "[FE] On state []" { class: fe }
+chain.publish_state_metadata -> chain.inject_stuck_bus_queue_radio_fault: "[FE] State under test []" { class: fe }
+chain.publish_state_metadata -> chain.inject_power_or_deploy_critical_fault: "[FE] Critical-fault case []" { class: fe }
+
+chain.inject_stuck_bus_queue_radio_fault -> chain.publish_task_heartbeats: "[FE] Faulted runtime load []" { class: fe }
+chain.publish_task_heartbeats -> chain.monitor_queue_mutex: "[FE] Task liveness []" { class: fe }
+chain.monitor_queue_mutex -> chain.measure_getter_deadlines: "[FE] Queue/mutex evidence []" { class: fe }
+chain.measure_getter_deadlines -> chain.measure_telemetry_cadence: "[FE] Timing evidence []" { class: fe }
+chain.measure_getter_deadlines -> chain.detect_descent_observability_loss: "[FE] Missing/stale IMU/alt\nor result codes []" { class: fe }
+chain.detect_descent_observability_loss -> chain.evaluate_emergency_need: "[FE] Observability lost []" { class: fe }
+chain.evaluate_emergency_need -> chain.apply_mode_gate_policy: "[FE] Emergency needed\n+ current state []" { class: fe }
+chain.publish_state_metadata -> chain.apply_mode_gate_policy: "[FE] Mode gate\n[On / Stand-by]" { class: fe }
+chain.apply_mode_gate_policy -> chain.inhibit_in_standby: "[FE] Stand-by +\nemergency needed []" { class: fe }
+chain.apply_mode_gate_policy -> chain.issue_onmode_request: "[FE] On + emergency\nneeded []" { class: fe }
+chain.inhibit_in_standby -> chain.continue_degraded_telemetry: "[FE] Inhibit reason []" { class: fe }
+chain.issue_onmode_request -> chain.continue_degraded_telemetry: "[FE] Request + reason []" { class: fe }
+chain.measure_telemetry_cadence -> chain.continue_degraded_telemetry: "[FE] Cadence evidence []" { class: fe }
+
+chain.inject_power_or_deploy_critical_fault -> chain.enter_safe_error_state: "[FE] Critical runtime fault []" { class: fe }
+chain.enter_safe_error_state -> chain.publish_safe_error_reason: "[FE] Safe/error state []" { class: fe }
+chain.publish_safe_error_reason -> chain.continue_degraded_telemetry: "[FE] State reason if observable []" { class: fe }
+
+chain.continue_degraded_telemetry -> chain.compare_liveness_oracle: "[FE] Health/status + trace []" { class: fe }
+chain.compare_liveness_oracle -> chain.restore_after_fault: "[FE] Pass/fail + anomalies []" { class: fe }
+
+chain.note_liveness -> chain.monitor_queue_mutex { class: cstr }
+chain.note_liveness -> chain.publish_task_heartbeats { class: cstr }
+chain.note_cadence -> chain.measure_telemetry_cadence { class: cstr }
+chain.note_emergency -> chain.apply_mode_gate_policy { class: cstr }
+chain.note_safe_error -> chain.enter_safe_error_state { class: cstr }
+chain.note_fault_hardening -> chain.select_concurrent_fault_load { class: cstr }

@@ -1,0 +1,133 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V05-GATE-001 functional chain: invalid trigger, missing ADS data,
+# reset-during-actuation, and servo current/position fault hardening.
+# Function labels name the responsible actor/equipment/SUT; no PC/LC/EA containers
+# are used in this Functional Chain view.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V05-GATE-001 — Deployment gate fault-hardening and no-false-success chain\nRefs: IVV, PM&SE/IVV, OBCC README, Variable Getter Template, v1.0 Deployment/Fault chains, OBCC-VV-FC-004, OBCC-VV-CON-003" {
+  class: chain
+  direction: down
+
+  review_model_paths: "[F] Analyst: review\nmode gate, ADS IMU/alt,\nemergency request, and\nPDM/PWM model paths" { class: func }
+  start_fault_trace: "[F] Trace logger: start\nfault trial log and\nobserver capture" { class: func }
+  select_fault_case: "[F] Operator/test harness:\nselect invalid trigger,\nmissing ADS, reset, or\nservo fault case" { class: func }
+
+  inject_invalid_trigger: "[F] Trigger simulator:\ninject invalid trigger\nor invalid emergency\nrequest" { class: func }
+  withhold_ads_data: "[F] Trigger simulator:\nwithhold ADS data or\nmark data stale" { class: func }
+  reject_invalid_inputs: "[F] OBCC: reject invalid /\nout-of-context trigger\nor request" { class: func }
+  flag_missing_ads: "[F] OBCC: flag missing\nor stale ADS data" { class: func }
+  keep_or_inhibit_closed: "[F] OBCC/PDM: keep closed\nor inhibit open command" { class: func }
+
+  command_on_for_reset: "[F] Operator/test harness:\ncommand On for reset\nor actuator-fault case" { class: func }
+  inject_valid_trigger_for_fault: "[F] Trigger simulator:\ninject valid trigger for\nfault trial" { class: func }
+  begin_open_actuation: "[F] OBCC/PDM: begin\nopen actuation" { class: func }
+  reset_during_actuation: "[F] Bench controller:\nreset UUT during\nactuation window" { class: func }
+  recover_after_reset: "[F] OBCC: recover with\nsafe status and reset\nmarker in telemetry" { class: func }
+
+  apply_servo_fault_load: "[F] Servo observer/fixture:\napply safe jam or\ncurrent-fault load" { class: func }
+  detect_actuator_fault: "[F] Observer/UUT: detect\ncurrent or position\nfault evidence" { class: func }
+  publish_fault_status: "[F] OBCC/LoRa: publish\nfault, inhibit, reset,\nor actuator-status reason" { class: func }
+  compare_no_false_success: "[F] Trace logger: compare\ntelemetry success with\ncurrent/position evidence" { class: func }
+  record_fault_result: "[F] Operator: classify\nfault trial pass/fail\nand attach raw trace" { class: func }
+
+  note_pf_invalid_missing: "[C] PF-004 invalid/missing pass/fail:\ninvalid trigger/emergency requests and missing\nor stale ADS data shall be observable, shall not\ncommand open in a forbidden context, and shall not\nreport deployment success without observer evidence." {
+    class: note
+    shape: page
+  }
+
+  note_pf_reset_fault: "[C] PF-005 reset/actuator-fault pass/fail:\nreset during actuation and servo current/position\nfaults shall be observable in trace/telemetry; no\nfalse success is allowed, and safe/error/degraded\nstatus shall be recorded where applicable." {
+    class: note
+    shape: page
+  }
+
+  note_analysis: "[C] Analysis viewpoint:\nreview confirms deployment gate exchanges and\nallocations match v1.0 intent: Mode gate +\nADS IMU/alt + emergency request feed PDM;\nonly PDM/PWM path may drive actuator; telemetry\nreports inhibit/fault reasons." {
+    class: note
+    shape: page
+  }
+
+  note_stats_faults: "[C] Statistical/fault-hardening viewpoint:\nclassify each injected fault trial as pass/fail;\nforbidden events include open in Stand-by,\nopen from invalid/missing data, scheduler hang,\nand false deployment success report. Repeated\nfault trials support screening, not reliability,\nunless independence is justified." {
+    class: note
+    shape: page
+  }
+
+  note_trace: "[C] Traceability:\nOBCC-UC-DeploymentGate,\nOBCC-FE-PrematureDeployment, and\nOBCC-FE-NonDeployment;\nfault-hardening coverage for\nOBCC-VV-FC-004 / OBCC-VV-CON-003." {
+    class: note
+    shape: page
+  }
+}
+
+chain.review_model_paths -> chain.start_fault_trace: "[FE] Analysis baseline\n[model path checklist]" { class: fe }
+chain.start_fault_trace -> chain.select_fault_case: "[FE] Trace ready\n[fault matrix]" { class: fe }
+
+chain.select_fault_case -> chain.inject_invalid_trigger: "[FE] Invalid-input\ncase selected" { class: fe }
+chain.select_fault_case -> chain.withhold_ads_data: "[FE] Missing/stale ADS\ncase selected" { class: fe }
+chain.inject_invalid_trigger -> chain.reject_invalid_inputs: "[FE] Invalid trigger/request\n[case ID]" { class: fe }
+chain.withhold_ads_data -> chain.flag_missing_ads: "[FE] Missing/stale ADS\n[case ID]" { class: fe }
+chain.reject_invalid_inputs -> chain.keep_or_inhibit_closed: "[FE] Reject reason\n[no valid deploy]" { class: fe }
+chain.flag_missing_ads -> chain.keep_or_inhibit_closed: "[FE] Data fault reason\n[no normal trigger]" { class: fe }
+chain.keep_or_inhibit_closed -> chain.publish_fault_status: "[FE] Closed/inhibited\n[fault reason]" { class: fe }
+
+chain.select_fault_case -> chain.command_on_for_reset: "[FE] Reset or actuator-fault\ncase selected" { class: fe }
+chain.command_on_for_reset -> chain.inject_valid_trigger_for_fault: "[FE] On mode\n[state metadata]" { class: fe }
+chain.inject_valid_trigger_for_fault -> chain.begin_open_actuation: "[FE] Valid trigger\n[start actuation]" { class: fe }
+chain.begin_open_actuation -> chain.reset_during_actuation: "[FE] Actuation window\n[reset case]" { class: fe }
+chain.reset_during_actuation -> chain.recover_after_reset: "[FE] Reset event\n[timestamp]" { class: fe }
+chain.recover_after_reset -> chain.publish_fault_status: "[FE] Reset marker +\nsafe status" { class: fe }
+chain.begin_open_actuation -> chain.apply_servo_fault_load: "[FE] Actuation window\n[servo fault case]" { class: fe }
+chain.apply_servo_fault_load -> chain.detect_actuator_fault: "[FE] Jam/current fault\n[evidence]" { class: fe }
+chain.detect_actuator_fault -> chain.publish_fault_status: "[FE] Fault evidence\n[current/position]" { class: fe }
+
+chain.keep_or_inhibit_closed -> chain.compare_no_false_success: "[FE] Observer evidence\n[closed/no open]" { class: fe }
+chain.publish_fault_status -> chain.compare_no_false_success: "[FE] Telemetry evidence\n[reason/status]" { class: fe }
+chain.compare_no_false_success -> chain.record_fault_result: "[FE] Oracle comparison\n[pass/fail]" { class: fe }
+
+chain.note_pf_invalid_missing -> chain.keep_or_inhibit_closed { class: cstr }
+chain.note_pf_invalid_missing -> chain.compare_no_false_success { class: cstr }
+chain.note_pf_reset_fault -> chain.recover_after_reset { class: cstr }
+chain.note_pf_reset_fault -> chain.detect_actuator_fault { class: cstr }
+chain.note_analysis -> chain.review_model_paths { class: cstr }
+chain.note_stats_faults -> chain.record_fault_result { class: cstr }
+chain.note_trace -> chain.publish_fault_status { class: cstr }

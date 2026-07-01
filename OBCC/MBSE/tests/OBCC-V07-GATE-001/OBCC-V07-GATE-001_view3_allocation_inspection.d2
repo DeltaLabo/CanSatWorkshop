@@ -1,0 +1,348 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V07-GATE-001 PV3: functional allocation inspection and analysis.
+# Shows the verification actors/tools and the OBCC/ground functions to be
+# dispositioned in the allocation matrix. No component or functional exchanges.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+analysis_operator: "[EA] Analysis Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  select_v07_gate: "[F] Select v0.7 -> v0.8\nadvancement gate" { class: func }
+  record_source_gap: "[F] Record absent v0.7\nCapella baseline" { class: func }
+  control_review_checklist: "[F] Control allocation and\ninterface checklist" { class: func }
+  archive_review_package: "[F] Archive evidence under\nresults/OBCC-V07-GATE-001" { class: func }
+}
+
+code_reviewer: "[EA] Code Reviewer" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  inspect_lc_task_map: "[F] Inspect LC-to-task\nmap" { class: func }
+  inspect_queue_ownership: "[F] Inspect queue\nownership" { class: func }
+  inspect_mutex_isr_use: "[F] Inspect mutex and\nISR-safe API use" { class: func }
+  inspect_dynamic_allocation: "[F] Inspect dynamic\nallocation policy" { class: func }
+}
+
+static_analyzer: "[EA] Static analysis /\ncall-graph tool" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  extract_call_graph: "[F] Extract call graph\nand symbol inventory" { class: func }
+  compare_model_mapping: "[F] Compare symbols to\nmodel allocation matrix" { class: func }
+  flag_foreign_functions: "[F] Flag foreign functions\nor hidden ownership" { class: func }
+}
+
+rtos_event_logger: "[EA] RTOS event logger" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  capture_task_switches: "[F] Capture task\nswitch events" { class: func }
+  capture_queue_events: "[F] Capture queue\ndepth/overflow events" { class: func }
+  capture_mutex_events: "[F] Capture mutex\nlock/unlock events" { class: func }
+  capture_isr_notifications: "[F] Capture ISR\nnotifications" { class: func }
+}
+
+allocation_artifacts: "[EA] Allocation and ownership\nmatrix artifacts" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  provide_function_matrix: "[F] Provide model-function\nto LC/task matrix" { class: func }
+  provide_rtos_inventory: "[F] Provide task, queue,\ntimer, mutex, ISR inventory" { class: func }
+  provide_review_dispositions: "[F] Provide signed\nreview dispositions" { class: func }
+}
+
+system: "[System] OBCC-V07-GATE-001 — FreeRTOS allocation inspection/analysis PV3\nRefs: IVV, OBCC README, Variable Getter Template, v1.0 PV3, startup/telemetry/command/deployment/fault chains" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat: "[PC] v0.7 OBCC software\nanalysis context" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB / XIAO ESP32-S3" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        free_rtos: "[LC] FreeRTOS Kernel" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          init_kernel_objects: "[F] Init kernel\nobjects" { class: func }
+          create_message_queues: "[F] Create message\nqueues" { class: func }
+          create_runtime_tasks: "[F] Create runtime\ntasks" { class: func }
+          schedule_periodic_timers: "[F] Schedule periodic\ntimers" { class: func }
+          dispatch_interrupts: "[F] Dispatch\ninterrupts" { class: func }
+          protect_shared_buses: "[F] Protect shared\nbuses" { class: func }
+        }
+
+        obcc_supervisor: "[LC] OBCC Supervisor" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          bootstrap_obcc: "[F] Bootstrap\nOBCC" { class: func }
+          coordinate_operational_state: "[F] Coordinate\noperational state" { class: func }
+          start_runtime_services: "[F] Start runtime\nservices" { class: func }
+          publish_state_metadata: "[F] Publish state\nmetadata" { class: func }
+        }
+
+        health_monitor: "[LC] Health Monitor" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          init_serial1_pwm_spi_i2c: "[F] Init UART, PWM,\nSPI and I2C" { class: func }
+          check_critical_peripherals: "[F] Check critical\nperipherals" { class: func }
+          check_noncritical_peripherals: "[F] Check non-critical\nperipherals" { class: func }
+          collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+          disable_failed_sensor_getters: "[F] Disable failed\nsensor getters" { class: func }
+          enter_error_state: "[F] Enter safe/error\nstate" { class: func }
+          count_timeouts: "[F] Count\ntimeouts" { class: func }
+          reset_timeouts: "[F] Reset\ntimeouts" { class: func }
+          classify_runtime_faults: "[F] Classify runtime\nfaults" { class: func }
+          publish_health_flags: "[F] Publish\nhealth flags" { class: func }
+        }
+
+        command_handler: "[LC] Command Handler" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          receive_lora_rx_interrupt: "[F] Receive LoRa\nRX interrupt" { class: func }
+          read_command: "[F] Read\ncommand" { class: func }
+          validate_command: "[F] Validate\ncommand" { class: func }
+          handle_command: "[F] Handle\ncommand" { class: func }
+          set_on_state: "[F] Set On\nstate" { class: func }
+          set_standby_state: "[F] Set Stand-by\nstate" { class: func }
+          log_invalid_command: "[F] Log invalid\ncommand" { class: func }
+        }
+
+        telemetry_collector: "[LC] Telemetry Collector" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          collect_measurements: "[F] Collect\nmeasurements" { class: func }
+          call_variable_getters: "[F] Call variable\ngetters" { class: func }
+          replace_missing_value_with_error_code: "[F] Replace missing value\nwith error code" { class: func }
+          add_heartbeat_status: "[F] Add heartbeat\nstatus" { class: func }
+          push_to_measurement_queue: "[F] Push to measurement\nqueue" { class: func }
+        }
+
+        telemetry_encoder: "[LC] Telemetry Encoder" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          consume_measurement_queue: "[F] Consume measurement\nqueue" { class: func }
+          generate_frame: "[F] Generate\nLoRa frame" { class: func }
+          send_lora_packet: "[F] Send LoRa\npacket" { class: func }
+          enforce_two_second_cadence: "[F] Enforce 2 s\ntelemetry cadence" { class: func }
+        }
+
+        ads_processing: "[LC] ADS Processing" {
+          class: lc
+          direction: down
+          grid-columns: 3
+          get_ubx_init_state: "[F] Get UBX-G7020\ninit state" { class: func }
+          read_store_lat_lon: "[F] Read and store\nlat, lon" { class: func }
+          get_lat: "[F] Get\nlatitude" { class: func }
+          get_lon: "[F] Get\nlongitude" { class: func }
+          get_icm20948_init_state: "[F] Get ICM20948\ninit state" { class: func }
+          read_angular_velocities: "[F] Read angular\nvelocities" { class: func }
+          process_angular_velocities: "[F] Process angular\nvelocities" { class: func }
+          read_accelerations: "[F] Read\naccelerations" { class: func }
+          process_accelerations: "[F] Process\naccelerations" { class: func }
+          read_field_intensities: "[F] Read field\nintensities" { class: func }
+          calculate_pitch_roll_yaw: "[F] Calculate\npitch, roll, yaw" { class: func }
+        }
+
+        ams_processing: "[LC] AMS Processing" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
+          read_pressure: "[F] Read\npressure" { class: func }
+          read_temperature: "[F] Read\ntemperature" { class: func }
+          calculate_altitude: "[F] Calculate\naltitude" { class: func }
+          process_temperature: "[F] Process\ntemperature" { class: func }
+        }
+
+        ess_processing: "[LC] ESS Processing" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          get_ina219_init_state: "[F] Get INA219\ninit state" { class: func }
+          read_voltage: "[F] Read\nvoltage" { class: func }
+          read_current: "[F] Read\ncurrent" { class: func }
+          process_voltage: "[F] Process\nvoltage" { class: func }
+          process_current: "[F] Process\ncurrent" { class: func }
+        }
+
+        pdm_processing: "[LC] PDM Processing" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          set_servo_init_state: "[F] Set Servo\ninit state" { class: func }
+          evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+          evaluate_emergency_deploy_need: "[F] Evaluate emergency\ndeploy need" { class: func }
+          inhibit_deployment_in_standby: "[F] Inhibit deployment\nin Stand-by" { class: func }
+          send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
+          send_close_signal_to_servo: "[F] Send close signal\nto Servo" { class: func }
+        }
+
+        allocation_review_adapter: "[LC] Allocation/trace review\nadapter (verification-only)" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          export_rtos_inventory: "[F] Export task, queue,\ntimer, mutex, ISR inventory" { class: func }
+          map_symbols_to_model: "[F] Map symbols to\nmodel elements" { class: func }
+          emit_trace_markers: "[F] Emit trace\nmarkers" { class: func }
+          tag_stress_run_id: "[F] Tag stress\nrun ID" { class: func }
+          generate_allocation_report: "[F] Generate allocation\nreview report" { class: func }
+        }
+      }
+    }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm95w: "[PC] RFM95W LoRa" {
+      class: pc
+      ground_lora: "[LC] LoRa Transceiver" {
+        class: lc
+        direction: down
+        store_incoming_data: "[F] Store incoming\ndata" { class: func }
+        transmit_outgoing_data: "[F] Transmit\noutgoing data" { class: func }
+      }
+    }
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      lora_forwarder: "[LC] LoRa Forwarder" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        read_payload: "[F] Read\npayload" { class: func }
+        forward_to_pc: "[F] Forward\nto PC" { class: func }
+        store_incoming_uart_data: "[F] Store incoming\nUART data" { class: func }
+        generate_command_frame: "[F] Generate command\nframe" { class: func }
+        write_to_lora_radio: "[F] Write to\nLoRa radio" { class: func }
+      }
+    }
+  }
+
+  pc_computer: "[PC] PC" {
+    class: pc
+    direction: down
+    grid-columns: 3
+
+    decoder: "[LC] Decoder" {
+      class: lc
+      direction: down
+      read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+      push_to_payload_queue: "[F] Push to\npayload queue" { class: func }
+    }
+
+    dashboard: "[LC] Dashboard" {
+      class: lc
+      direction: down
+      catch_state_toggle: "[F] Catch state\ntoggle" { class: func }
+      push_to_command_queue: "[F] Push to\ncommand queue" { class: func }
+      update_plots: "[F] Update\nplots" { class: func }
+    }
+
+    csv_writer: "[LC] CSV Writer" {
+      class: lc
+      direction: down
+      consume_payload_queue: "[F] Consume\npayload queue" { class: func }
+      append_to_csv: "[F] Append\nto CSV" { class: func }
+    }
+  }
+
+  note_pf_alloc: "[C] PF-001: every modeled function shown in the\nv1.0 allocation context is dispositioned against the v0.7\ncode/configuration matrix; no unallocated or foreign function\nis accepted without a finding or waiver." {
+    class: note
+    shape: page
+  }
+
+  note_pf_inspection: "[C] PF-002: required artifacts are present:\nsource/build ID, model baseline reference, allocation matrix,\ntask/queue/timer/mutex/ISR inventory, reviewer checklist,\ntrace-hook definition, and expected results path." {
+    class: note
+    shape: page
+  }
+
+  note_pf_rtos: "[C] PF-003: RTOS primitives support the model:\nqueue ownership is unique, shared buses use mutex protection,\nISR paths use ISR-safe APIs, queue overflow is handled, and\nno unbounded dynamic allocation or blocking is left unanalyzed." {
+    class: note
+    shape: page
+  }
+
+  note_source_gap: "[C] PF-004: no v0.7 Capella/D2 source baseline\nexists; analysis report must cite copied v1.0 views as\ntarget context only and record the actual v0.7 code baseline." {
+    class: note
+    shape: page
+  }
+}
+
+system.note_pf_alloc -> system.cansat.obcc_module.obcc_pcb.allocation_review_adapter { class: cstr }
+system.note_pf_alloc -> system.pc_computer.decoder { class: cstr }
+system.note_pf_inspection -> allocation_artifacts { class: cstr }
+system.note_pf_rtos -> system.cansat.obcc_module.obcc_pcb.free_rtos { class: cstr }
+system.note_pf_rtos -> rtos_event_logger { class: cstr }
+system.note_source_gap -> analysis_operator { class: cstr }
+system.note_source_gap -> system.cansat { class: cstr }
+
+# Layout-only edges keep actors above the allocation context and notes below.
+analysis_operator -> code_reviewer { style: { opacity: 0 } }
+code_reviewer -> static_analyzer { style: { opacity: 0 } }
+static_analyzer -> rtos_event_logger { style: { opacity: 0 } }
+rtos_event_logger -> allocation_artifacts { style: { opacity: 0 } }
+system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.pc_computer { style: { opacity: 0 } }
+system.pc_computer -> system.note_pf_alloc { style: { opacity: 0 } }
+system.note_pf_alloc -> system.note_pf_inspection { style: { opacity: 0 } }
+system.note_pf_inspection -> system.note_pf_rtos { style: { opacity: 0 } }
+system.note_pf_rtos -> system.note_source_gap { style: { opacity: 0 } }

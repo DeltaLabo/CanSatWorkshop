@@ -1,0 +1,84 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style review/runtime sequence for ADS-IVV-C-NOBLOCK.
+# IADT method remains Analysis with supporting Testing.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-C-NOBLOCK\nReview and runtime fault sequence\nRefs: IVV; ADS MBSE plan; SW/stats; GPS/UBX; IMU/I2C" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_version: "[F] Select ADS version\nand copied source baseline" { class: func }
+  confirm_applicability: "[F] Confirm applicability\nor v0.3 N/A branch" { class: func }
+  load_sources: "[F] Load D2 model, firmware\nsource, build map, and symbols" { class: func }
+  map_model: "[F] Map modeled functions\nto implementation call sites" { class: func }
+  inspect_waits: "[F] Inspect loops, delays,\nblocking APIs, and external waits" { class: func }
+  classify_waits: "[F] Classify waits as\nUART, I2C, internal, or forbidden" { class: func }
+  verify_timeouts: "[F] Verify UART/I2C\ntimeout and error paths" { class: func }
+  instrument_firmware: "[F] Build/deploy heartbeat\nand read-duration instrumentation" { class: func }
+  run_nominal: "[F] Run nominal init and\nruntime cycles" { class: func }
+  inject_gps: "[F] Inject silent and\nmalformed GPS cases" { class: func }
+  inject_i2c: "[F] Inject IMU NACK and\nstuck-bus cases\n(v0.2/v1.0)" { class: func }
+  observe_progress: "[F] Observe Loop / ADS Processing\nheartbeat and cycle progress" { class: func }
+  analyze_evidence: "[F] Analyze logs, timing,\nstalls, resets, and hidden waits" { class: func }
+  decide_result: "[F] Decide pass, fail,\nblocked, or N/A" { class: func }
+  record_report: "[F] Record evidence package,\nlimitations, waivers, retest" { class: func }
+
+  note_constraint: "[C] Constraint under verification\nNo blocking operations besides I2C or UART comms." { class: note; shape: page }
+  note_pass: "[C] Pass/fail constraints\nFail if any non-I2C/non-UART function waits for external data,\nif UART/I2C read wait lacks bounded timeout/error behavior,\nif GPS/I2C fault cases stop observable progress,\nor if hidden wait states are found." { class: note; shape: page }
+  note_access: "[C] Source/instrumentation gate\nIf firmware source or equivalent instrumentation evidence is absent,\nrecord blocked/limited; do not claim pass from model review alone." { class: note; shape: page }
+  note_stats: "[C] Statistical significance\nReview 100% of modeled no-blocking target functions and discovered\nblocking call sites. Runtime testing records representative cycles;\nuse n=59 zero deadline/timeout violations for formal 95/95 claims." { class: note; shape: page }
+  note_faults: "[C] Fault hardening\nGPS silent/malformed, UART timeout, IMU NACK/stuck bus, partial reads,\nstale data, recovery, reset/stall, and logger loss are dispositioned." { class: note; shape: page }
+  note_v03: "[C] v0.3 branch\nFor v0.3, stop after source review confirms PV1-only PCB delivery with\nno runtime functions/chains; record N/A rationale and no runtime verdict." { class: note; shape: page }
+}
+
+chain.select_version -> chain.confirm_applicability: "[FE] Baseline" { class: fe }
+chain.confirm_applicability -> chain.load_sources: "[FE] Applicable\nor N/A decision" { class: fe }
+chain.load_sources -> chain.map_model: "[FE] Source package" { class: fe }
+chain.map_model -> chain.inspect_waits: "[FE] Function-to-code map" { class: fe }
+chain.inspect_waits -> chain.classify_waits: "[FE] Wait inventory" { class: fe }
+chain.classify_waits -> chain.verify_timeouts: "[FE] UART/I2C wait set" { class: fe }
+chain.verify_timeouts -> chain.instrument_firmware: "[FE] Bounded paths" { class: fe }
+chain.instrument_firmware -> chain.run_nominal: "[FE] Instrumented build" { class: fe }
+chain.run_nominal -> chain.inject_gps: "[FE] Nominal progress evidence" { class: fe }
+chain.inject_gps -> chain.inject_i2c: "[FE] GPS fault evidence" { class: fe }
+chain.inject_i2c -> chain.observe_progress: "[FE] I2C fault evidence" { class: fe }
+chain.observe_progress -> chain.analyze_evidence: "[FE] Heartbeats and logs" { class: fe }
+chain.analyze_evidence -> chain.decide_result: "[FE] Analysis results" { class: fe }
+chain.decide_result -> chain.record_report: "[FE] Verdict" { class: fe }
+
+chain.note_constraint -> chain.inspect_waits { class: cstr }
+chain.note_pass -> chain.classify_waits { class: cstr }
+chain.note_pass -> chain.observe_progress { class: cstr }
+chain.note_access -> chain.load_sources { class: cstr }
+chain.note_stats -> chain.analyze_evidence { class: cstr }
+chain.note_faults -> chain.inject_gps { class: cstr }
+chain.note_faults -> chain.inject_i2c { class: cstr }
+chain.note_v03 -> chain.confirm_applicability { class: cstr }
+
+# Layout-only edges to keep constraints after the sequence.
+chain.record_report -> chain.note_constraint { style: { opacity: 0 } }
+chain.note_constraint -> chain.note_pass { style: { opacity: 0 } }
+chain.note_pass -> chain.note_access { style: { opacity: 0 } }
+chain.note_access -> chain.note_stats { style: { opacity: 0 } }
+chain.note_stats -> chain.note_faults { style: { opacity: 0 } }
+chain.note_faults -> chain.note_v03 { style: { opacity: 0 } }

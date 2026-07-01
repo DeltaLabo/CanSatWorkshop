@@ -1,0 +1,80 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Evidence and traceability interfaces for ADS-IVV-C-I2C-5MS.
+# Model timing logs, bus captures, fault markers, analysis reports, waivers, limitations, and retest closure.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 38 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 34 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 28 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 28 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 28 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-I2C-5MS\nEvidence and traceability interfaces\nRefs: IVV; ADS MBSE plan; saved references" {
+  class: sys
+  direction: down
+  uut: "[PC] Selected ADS UUT\none version per execution" {
+    class: pc
+    direction: right
+    grid-columns: 2
+    v01: "[PC] v0.1\nGPS + XIAO prototype" { class: pc }
+    v02: "[PC] v0.2\nGPS + IMU + XIAO prototype" { class: pc }
+    v03: "[PC] v0.3\nADS PCB delivery / N/A as noted" { class: pc }
+    v10: "[PC] v1.0\nintegrated CanSat / ADS / OBCC" { class: pc }
+  }
+}
+
+conductor: "[EA] IVV test conductor\n(human operator)" { class: ea }
+fault: "[EA] I2C fault injector /\ncontrollable IMU harness" { class: ea }
+timer: "[EA] Logic analyzer /\nI2C timing tool" { class: ea }
+logger: "[EA] PC / OBCC\nI2C logger" { class: ea }
+analysis: "[EA] Deadline analysis\nscript" { class: ea }
+cfg: "[EA] Configuration\nauthority" { class: ea }
+note_1: "[C] Pass/fail\nv1.0: every I2C read returns data or timeout/error in <=5 ms under ACK, NACK, invalid address, partial read, stuck-bus, and recovery cases." { class: note; shape: page }
+note_2: "[C] v0.2 model gap\nI2C behavior exists but no explicit <=5 ms I2C timeout constraint is modeled; characterize only unless the model is updated." { class: note; shape: page }
+note_3: "[C] Statistics\nUse n=59 zero-violation samples for any formal v1.0 deadline claim." { class: note; shape: page }
+note_4: "[C] N/A\nv0.1 has no IMU/I2C behavior; v0.3 is PCB-only physical traces." { class: note; shape: page }
+
+conductor -> system.uut: "[CE] test procedure / baseline" { class: ce }
+fault -- system.uut: "[PL] verification connection / probe" { class: pl }
+conductor -> fault { style: { opacity: 0 } }
+timer -- system.uut: "[PL] verification connection / probe" { class: pl }
+fault -> timer { style: { opacity: 0 } }
+system.uut -> logger: "[CE] logs / evidence" { class: ce }
+timer -> logger { style: { opacity: 0 } }
+system.uut -> analysis: "[CE] logs / evidence" { class: ce }
+logger -> analysis { style: { opacity: 0 } }
+system.uut -> cfg: "[CE] logs / evidence" { class: ce }
+analysis -> cfg { style: { opacity: 0 } }
+cfg -> system { style: { opacity: 0 } }
+system -> note_1 { style: { opacity: 0 } }
+note_1 -> note_2 { style: { opacity: 0 } }
+note_2 -> note_3 { style: { opacity: 0 } }
+note_3 -> note_4 { style: { opacity: 0 } }
+
+chain: "[FC] Evidence and traceability interfaces\nModel timing logs, bus captures, fault markers, analysis reports, waivers, limitations, and retest closure." {
+  class: chain
+  direction: right
+  start: "[F] Select version and\nas-tested config" { class: func }
+  setup: "[F] Configure verification\nmeans" { class: func }
+  run: "[F] Execute nominal and\nfault cases" { class: func }
+  analyze: "[F] Analyze against\npass/fail constraints" { class: func }
+  report: "[F] Record evidence,\ndeviations, verdict" { class: func }
+  start -> setup: "[FE] configuration" { class: fe }
+  setup -> run: "[FE] stimuli / probes ready" { class: fe }
+  run -> analyze: "[FE] raw evidence" { class: fe }
+  analyze -> report: "[FE] verdict rationale" { class: fe }
+}
+note_1 -> chain { style: { opacity: 0 } }

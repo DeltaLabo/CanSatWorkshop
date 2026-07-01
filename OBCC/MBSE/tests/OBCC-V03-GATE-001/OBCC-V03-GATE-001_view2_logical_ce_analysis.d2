@@ -1,0 +1,178 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V03-GATE-001 PV2: telemetry logical interfaces and CE analysis.
+# Only LCs, PCs, EAs, CEs, and constraints are shown.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 18 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_director: "[EA] Test Director /\nverification analyst" { class: ea }
+ground_operator: "[EA] Ground station\noperator" { class: ea }
+range_operator: "[EA] Range operator /\npath safety marshal" { class: ea }
+telemetry_stimulus_fixture: "[EA] Telemetry stimulus\nfixture / source stubs" { class: ea }
+malformed_frame_injector: "[EA] Malformed-frame\ninjection tool" { class: ea }
+frame_schema_oracle: "[EA] Frame schema oracle\nLoRa_Frame + v1.0 model" { class: ea }
+pdr_statistics_tool: "[EA] PDR statistics tool\nexact binomial calculator" { class: ea }
+time_environment_log: "[EA] Time/environment\nlogbook" { class: ea }
+
+system: "[System] OBCC-V03-GATE-001 — v0.3 telemetry logical interfaces and CE analysis\nRefs: IVV, OBCC README, LoRa_Frame, Variable Getter Template, v1.0 PV2/Telemetry chain" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat telemetry\ntest article" {
+    class: pc
+    direction: right
+
+    source_context: "[PC] Source modules\n/ verification stubs" {
+      class: pc
+      direction: down
+      source_provider: "[LC] Known telemetry\nsource provider" { class: lc }
+    }
+
+    xiao: "[PC] XIAO ESP32-S3" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      telemetry_collector: "[LC] Telemetry Collector" { class: lc }
+      telemetry_encoder: "[LC] Telemetry Encoder" { class: lc }
+      health_status: "[LC] Health/status\nmetadata publisher" { class: lc }
+      cadence_monitor: "[LC] 2 s cadence\nmonitor\n(verification-only)" { class: lc }
+    }
+
+    rfm95w: "[PC] RFM95W LoRa" {
+      class: pc
+      cansat_lora: "[LC] LoRa Transceiver" { class: lc }
+    }
+  }
+
+  ground_station: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm95w: "[PC] RFM95W LoRa" {
+      class: pc
+      ground_lora: "[LC] LoRa Transceiver" { class: lc }
+    }
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      lora_forwarder: "[LC] LoRa Forwarder" { class: lc }
+    }
+  }
+
+  pc_computer: "[PC] PC decoder / dashboard / CSV logger" {
+    class: pc
+    direction: right
+    grid-columns: 4
+
+    raw_frame_logger: "[LC] Raw frame + RSSI/SNR\nlogger\n(verification-only)" { class: lc }
+    decoder: "[LC] Decoder" { class: lc }
+    dashboard: "[LC] Dashboard" { class: lc }
+    csv_writer: "[LC] CSV Writer" { class: lc }
+    packet_analyzer: "[LC] Packet sequence /\ncadence / PDR analyzer\n(verification-only)" { class: lc }
+  }
+
+  note_ce_analysis: "[C] CE analysis pass/fail: LoRa, Payload,\nground UART, decoder/store/display, and\nverification-only analysis exchanges are\npresent, directional, and implemented\nconsistently with the v1.0 telemetry intent." {
+    class: note
+    shape: page
+  }
+
+  note_schema: "[C] Schema analysis pass/fail: decoder\nmaps the 34-byte target payload fields,\npreserves sequence/timestamps/status,\nand rejects corrupt/malformed frames;\nrelative humidity is absent/error-coded." {
+    class: note
+    shape: page
+  }
+
+  note_statistics: "[C] Statistical viewpoint: range PDR\npasses only if the one-sided 95% exact\nbinomial lower bound is >=0.90. 96/100\nvalid frames is a planning point." {
+    class: note
+    shape: page
+  }
+
+  note_stage: "[C] v0.3 staging rule: if this run is\nlab-only, schema/cadence/decode evidence\nmay mature the design, but the >=500 m\nrange/PDR condition remains open as a\nv0.3->v0.4 gate item." {
+    class: note
+    shape: page
+  }
+}
+
+telemetry_stimulus_fixture -> system.cansat.source_context.source_provider: "[CE] Known payload values\n+ fault-code cases" { class: ce }
+system.cansat.source_context.source_provider -> system.cansat.xiao.telemetry_collector: "[CE] Getter/stub payloads" { class: ce }
+system.cansat.xiao.health_status -> system.cansat.xiao.telemetry_collector: "[CE] Health/status metadata" { class: ce }
+system.cansat.xiao.cadence_monitor -> system.cansat.xiao.telemetry_encoder: "[CE] Timer release\n2 s cadence" { class: ce }
+system.cansat.xiao.telemetry_collector -> system.cansat.xiao.telemetry_encoder: "[CE] Queue\nmeasurements + status" { class: ce }
+system.cansat.xiao.telemetry_encoder -> system.cansat.rfm95w.cansat_lora: "[CE] SPI\nLoRa frame" { class: ce }
+system.cansat.rfm95w.cansat_lora -> system.ground_station.ground_rfm95w.ground_lora: "[CE] LoRa\ndownlink frame" { class: ce }
+system.ground_station.ground_rfm95w.ground_lora -> system.ground_station.ground_xiao.lora_forwarder: "[CE] SPI\nraw frame + RSSI/SNR" { class: ce }
+system.ground_station.ground_xiao.lora_forwarder -> system.pc_computer.raw_frame_logger: "[CE] UART\nraw frame + RF metrics" { class: ce }
+system.pc_computer.raw_frame_logger -> system.pc_computer.decoder: "[CE] Raw payload\nwith sequence/time" { class: ce }
+system.pc_computer.decoder -> system.pc_computer.csv_writer: "[CE] Payload\nCSV record" { class: ce }
+system.pc_computer.decoder -> system.pc_computer.dashboard: "[CE] Payload\ndisplay record" { class: ce }
+system.pc_computer.decoder -> system.pc_computer.packet_analyzer: "[CE] Decode result\naccepted/rejected" { class: ce }
+system.pc_computer.raw_frame_logger -> system.pc_computer.packet_analyzer: "[CE] RF metrics\nRSSI/SNR/path" { class: ce }
+
+malformed_frame_injector -> system.pc_computer.decoder: "[CE] Corrupt/malformed\nframe cases" { class: ce }
+frame_schema_oracle -> system.pc_computer.packet_analyzer: "[CE] Expected schema\nfield map" { class: ce }
+system.pc_computer.packet_analyzer -> pdr_statistics_tool: "[CE] Success/failure\ncounts" { class: ce }
+test_director -> system.pc_computer.packet_analyzer: "[CE] Analysis plan\nand acceptance rules" { class: ce }
+ground_operator -> system.ground_station.ground_rfm95w.ground_lora: "[CE] Antenna/radio\nsettings log" { class: ce }
+range_operator -> system.pc_computer.raw_frame_logger: "[CE] Range geometry\nand orientation log" { class: ce }
+time_environment_log -> system.pc_computer.raw_frame_logger: "[CE] Time sync and\nenvironment record" { class: ce }
+
+system.note_ce_analysis -> system.cansat.rfm95w.cansat_lora { class: cstr }
+system.note_ce_analysis -> system.ground_station.ground_xiao.lora_forwarder { class: cstr }
+system.note_schema -> system.pc_computer.decoder { class: cstr }
+system.note_statistics -> system.pc_computer.packet_analyzer { class: cstr }
+system.note_stage -> system.cansat.xiao.telemetry_encoder { class: cstr }
+
+# Layout-only edges keep actors above the UUT and notes below it.
+test_director -> ground_operator { style: { opacity: 0 } }
+ground_operator -> range_operator { style: { opacity: 0 } }
+range_operator -> telemetry_stimulus_fixture { style: { opacity: 0 } }
+telemetry_stimulus_fixture -> malformed_frame_injector { style: { opacity: 0 } }
+malformed_frame_injector -> frame_schema_oracle { style: { opacity: 0 } }
+frame_schema_oracle -> pdr_statistics_tool { style: { opacity: 0 } }
+pdr_statistics_tool -> time_environment_log { style: { opacity: 0 } }
+system.cansat -> system.ground_station { style: { opacity: 0 } }
+system.ground_station -> system.pc_computer { style: { opacity: 0 } }
+system.pc_computer -> system.note_ce_analysis { style: { opacity: 0 } }
+system.note_ce_analysis -> system.note_schema { style: { opacity: 0 } }
+system.note_schema -> system.note_statistics { style: { opacity: 0 } }
+system.note_statistics -> system.note_stage { style: { opacity: 0 } }

@@ -1,0 +1,70 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style deterministic getter/fault verification sequence for ADS-IVV-C-GETTER.
+# IADT method: Analysis with supporting Testing.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-C-GETTER\nDeterministic Variable Getter analysis/test sequence\nRefs: IVV; ADS MBSE plan; SW/stats; source_views v0.1/v0.2/v0.3/v1.0" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_scope: "[F] Test conductor:\nselect version, source package, UUT, and commit" { class: func }
+  confirm_applicability: "[F] Review station:\nconfirm runtime applicability; v0.3 records N/A" { class: func }
+  read_environment: "[F] Conductor + ambient monitor:\nread temperature and humidity" { class: func }
+  enumerate_pairs: "[F] Review station:\nenumerate read/getter/process/calculate pairs" { class: func }
+  analyze_structure: "[F] Review station:\nanalyze storage writers, side effects, validity/freshness" { class: func }
+  build_harness: "[F] Firmware harness:\nbuild version-specific deterministic fixture" { class: func }
+  seed_storage: "[F] Harness:\nseed known valid backing-store values and status" { class: func }
+  run_nominal_update: "[F] UUT + harness:\nrun nominal successful sensor update" { class: func }
+  repeat_accessors: "[F] Harness:\ncall getters/processors/calculators repeatedly" { class: func }
+  inject_faults: "[F] Fault injector:\napply failed, malformed, silent, NACK, stuck, partial, or stale reads" { class: func }
+  repeat_after_fault: "[F] Harness:\nrepeat accessors after failed/stale update" { class: func }
+  observe_delivery: "[F] PC/OBCC logger:\nobserve collected measurements, status, pointers, returns" { class: func }
+  check_pointer_returns: "[F] Review station:\ncheck v1.0 pointer lifetime and return semantics" { class: func }
+  compare_results: "[F] Analysis script:\ncompare logs to expected values and status transitions" { class: func }
+  decide_verdict: "[F] IVV reviewer:\ndecide pass/fail or N/A and record anomalies" { class: func }
+  archive_evidence: "[F] Test conductor + evidence store:\narchive model refs, logs, scripts, and report" { class: func }
+
+  note_analysis: "[C] Analysis pass condition\nEvery modeled measured value has one backing store and one writer path. Getters, processors, calculators,\ncollectors, and OBCC consumers do not perform hidden sensor reads or unrelated writes. Each applicable\nsource view/function is traced, or v0.3 is recorded N/A." { class: note; shape: page }
+  note_testing: "[C] Deterministic testing pass condition\nFor seeded and nominal-update vectors, repeated calls remain stable and coherent until a successful update.\nAfter failed/stale reads, prior valid values are preserved and validity/freshness/error state is observable." { class: note; shape: page }
+  note_faults: "[C] Fault-hardening cases\nGPS no-fix, malformed, silent, stale; IMU NACK, stuck bus, partial, stale where modeled; v0.1 has no IMU;\nv1.0 also checks OBCC Pointers/Returns; v0.3 is PCB-only N/A." { class: note; shape: page }
+  note_pointer: "[C] v1.0 delivery constraint\nPointers and Returns shall preserve lifetime, ownership, freshness, validity, and error semantics.\nOBCC shall not consume a stale/invalid ADS value as a valid measurement by bypassing getters/status." { class: note; shape: page }
+  note_statistics: "[C] Statistics viewpoint\nUse deterministic vector/fault coverage over all modeled getter classes. Count all vectors and outcomes, but\ndo not claim population reliability or statistical accuracy from these deterministic checks." { class: note; shape: page }
+  note_environment: "[C] Execution condition\nRecord firmware commit, hardware or host-harness configuration, equipment IDs, actual ambient temperature\nand humidity, harness seed values, fault schedule, analysis script version, deviations, and retest status." { class: note; shape: page }
+}
+
+chain.select_scope -> chain.confirm_applicability: "[FE] Selected baseline" { class: fe }
+chain.confirm_applicability -> chain.read_environment: "[FE] Runtime baseline or N/A" { class: fe }
+chain.read_environment -> chain.enumerate_pairs: "[FE] Execution conditions" { class: fe }
+chain.enumerate_pairs -> chain.analyze_structure: "[FE] Getter pair inventory" { class: fe }
+chain.analyze_structure -> chain.build_harness: "[FE] Analysis findings" { class: fe }
+chain.build_harness -> chain.seed_storage: "[FE] Deterministic fixture" { class: fe }
+chain.seed_storage -> chain.run_nominal_update: "[FE] Seed values" { class: fe }
+chain.run_nominal_update -> chain.repeat_accessors: "[FE] Successful update" { class: fe }
+chain.repeat_accessors -> chain.inject_faults: "[FE] Stable nominal returns" { class: fe }
+chain.inject_faults -> chain.repeat_after_fault: "[FE] Fault/stale read" { class: fe }
+chain.repeat_after_fault -> chain.observe_delivery: "[FE] Post-fault returns/status" { class: fe }
+chain.observe_delivery -> chain.check_pointer_returns: "[FE] Collected data / pointer observations" { class: fe }
+chain.check_pointer_returns -> chain.compare_results: "[FE] Delivery semantics" { class: fe }
+chain.compare_results -> chain.decide_verdict: "[FE] Analysis output" { class: fe }
+chain.decide_verdict -> chain.archive_evidence: "[FE] Verdict and dispositions" { class: fe }
+

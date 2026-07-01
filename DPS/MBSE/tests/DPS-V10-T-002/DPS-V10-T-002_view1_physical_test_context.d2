@@ -1,0 +1,134 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-T-002 physical test context.
+# Focused PV1: ground command-uplink hardware plus external RF monitor. Full v1.0 PV1 is copied in ./baseline/.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+command_rf_monitor: "[EA] Command RF Monitor\nRFM95W/SX1276 reference receiver" {
+  class: ea
+}
+
+system: "[System] DPS v1.0 Physical System\nDPS-V10-T-002 focused PV1 command/uplink UUT" {
+  class: sys
+  direction: down
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm: "[PC] RFM95W LoRa" { class: pc }
+    ground_xiao: "[PC] XIAO ESP32" { class: pc }
+  }
+
+  pc: "[PC] PC" {
+    class: pc
+    direction: down
+
+    usb_port: "[PC] USB Port" { class: pc }
+  }
+}
+
+diagram_ref: "[C] DPS-V10-T-002 PV1 physical context\nIADT: Testing; trace: FC02 command/uplink, C07 cooldown\nRefs: P0,R1-R5,R8-R13; report: tests/results/DPS-V10-T-002/" {
+  class: note
+  shape: page
+}
+
+note_scope: "[C] Test scope: command path from Dashboard toggle to ground-station\nLoRa transmit is exercised. RF monitor replaces flight CanSat as\ncontrolled receiver/counter for command-uplink evidence." {
+  class: note
+  shape: page
+}
+
+note_full_baseline: "[C] Focused PV1: only command-uplink physical endpoints are shown.\nThe full DPS v1.0 physical architecture, including CanSat hardware,\nis copied unchanged in ./baseline/." {
+  class: note
+  shape: page
+}
+
+note_separation: "[C] Max. separation of 500m between CanSat and DPS is not\nclaimed by this bench test; range is covered by DPS-V10-C-001." {
+  class: note
+  shape: page
+}
+
+note_ground_pcb_reuse: "[C] Ground Station PCB reuses OBCC PCB; Backplane Connector\nis not soldered. Presence/absence is covered by DPS-V10-I-001." {
+  class: note
+  shape: page
+}
+
+note_rf_setup: "[C] Test RF path: ground radio and RF monitor antennas/attenuator\nconnected before TX; fixed lab geometry or attenuator recorded;\nLoRa settings match v1.0 command-uplink configuration." {
+  class: note
+  shape: page
+}
+
+note_ui_setup: "[C] Test UI setup: browser/dashboard access, PC time source,\nUSB-C cable, serial port and evidence folders identified before\nvalid-toggle and cooldown burst trials begin." {
+  class: note
+  shape: page
+}
+
+system.ground_station_pcb.ground_rfm -- system.ground_station_pcb: "[PL] Footprint" { class: pl }
+system.ground_station_pcb.ground_xiao -- system.ground_station_pcb: "[PL] Footprint" { class: pl }
+system.ground_station_pcb.ground_rfm -- system.ground_station_pcb.ground_xiao: "[PL] SPI\nTraces" { class: pl }
+system.ground_station_pcb.ground_rfm -- system.ground_station_pcb.ground_xiao: "[PL] 5V Power\nTraces" { class: pl }
+system.ground_station_pcb.ground_xiao -- system.pc.usb_port: "[PL] USB-C Cable" { class: pl }
+
+system.ground_station_pcb.ground_rfm -- command_rf_monitor: "[PL] Controlled RF path\nnear-field or attenuated" { class: pl }
+
+diagram_ref -> system.ground_station_pcb { class: cstr }
+note_scope -> system.ground_station_pcb.ground_rfm { class: cstr }
+note_scope -> command_rf_monitor { class: cstr }
+note_full_baseline -> system { class: cstr }
+note_separation -> system.ground_station_pcb { class: cstr }
+note_ground_pcb_reuse -> system.ground_station_pcb { class: cstr }
+note_rf_setup -> system.ground_station_pcb.ground_rfm { class: cstr }
+note_rf_setup -> command_rf_monitor { class: cstr }
+note_ui_setup -> system.pc { class: cstr }
+
+# Layout-only edges to keep the monitor and ground hardware before the PC.
+command_rf_monitor -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.pc { style: { opacity: 0 } }
+system.pc -> diagram_ref { style: { opacity: 0 } }
+diagram_ref -> note_scope { style: { opacity: 0 } }
+note_scope -> note_full_baseline { style: { opacity: 0 } }
+note_full_baseline -> note_rf_setup { style: { opacity: 0 } }
+note_rf_setup -> note_ui_setup { style: { opacity: 0 } }
+note_ui_setup -> note_ground_pcb_reuse { style: { opacity: 0 } }
+note_ground_pcb_reuse -> note_separation { style: { opacity: 0 } }

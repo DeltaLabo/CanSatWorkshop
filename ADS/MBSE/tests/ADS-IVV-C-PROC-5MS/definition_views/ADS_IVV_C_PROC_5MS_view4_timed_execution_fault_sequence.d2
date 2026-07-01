@@ -1,0 +1,80 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Timed execution and fault sequence for ADS-IVV-C-PROC-5MS.
+# Functional-chain style sequence for nominal, worst-case valid, and fault-data timing campaigns.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 38 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 34 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 28 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 28 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 28 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-PROC-5MS\nTimed execution and fault sequence\nRefs: IVV; ADS MBSE plan; saved references" {
+  class: sys
+  direction: down
+  uut: "[PC] Selected ADS UUT\none version per execution" {
+    class: pc
+    direction: right
+    grid-columns: 2
+    v01: "[PC] v0.1\nGPS + XIAO prototype" { class: pc }
+    v02: "[PC] v0.2\nGPS + IMU + XIAO prototype" { class: pc }
+    v03: "[PC] v0.3\nADS PCB delivery / N/A as noted" { class: pc }
+    v10: "[PC] v1.0\nintegrated CanSat / ADS / OBCC" { class: pc }
+  }
+}
+
+conductor: "[EA] IVV test conductor\n(human operator)" { class: ea }
+timer: "[EA] Firmware timing\ninstrumentation / timer" { class: ea }
+stimulus: "[EA] Representative valid\nand fault-data source" { class: ea }
+logger: "[EA] PC / OBCC\ntiming logger" { class: ea }
+analysis: "[EA] Timing analysis\nscript" { class: ea }
+cfg: "[EA] Configuration\nauthority" { class: ea }
+note_1: "[C] Pass/fail\nEvery targeted Process/Calculate invocation shall complete in <5 ms after timing overhead is accounted for; missing targets or any sample >=5 ms fail." { class: note; shape: page }
+note_2: "[C] Statistics\nUse n=59 representative samples with zero violations for any formal 95/95 deadline planning claim; otherwise report characterization only." { class: note; shape: page }
+note_3: "[C] Fault hardening\nExercise representative worst-case valid data and invalid/stale/fault-data branches without changing modeled allocation." { class: note; shape: page }
+note_4: "[C] v0.3 N/A\nPCB-only source has no runtime process/calculate functions; record N/A after source review." { class: note; shape: page }
+
+conductor -> system.uut: "[CE] test procedure / baseline" { class: ce }
+timer -- system.uut: "[PL] verification connection / probe" { class: pl }
+conductor -> timer { style: { opacity: 0 } }
+system.uut -> stimulus: "[CE] logs / evidence" { class: ce }
+timer -> stimulus { style: { opacity: 0 } }
+system.uut -> logger: "[CE] logs / evidence" { class: ce }
+stimulus -> logger { style: { opacity: 0 } }
+system.uut -> analysis: "[CE] logs / evidence" { class: ce }
+logger -> analysis { style: { opacity: 0 } }
+system.uut -> cfg: "[CE] logs / evidence" { class: ce }
+analysis -> cfg { style: { opacity: 0 } }
+cfg -> system { style: { opacity: 0 } }
+system -> note_1 { style: { opacity: 0 } }
+note_1 -> note_2 { style: { opacity: 0 } }
+note_2 -> note_3 { style: { opacity: 0 } }
+note_3 -> note_4 { style: { opacity: 0 } }
+
+chain: "[FC] Timed execution and fault sequence\nFunctional-chain style sequence for nominal, worst-case valid, and fault-data timing campaigns." {
+  class: chain
+  direction: right
+  start: "[F] Select version and\nas-tested config" { class: func }
+  setup: "[F] Configure verification\nmeans" { class: func }
+  run: "[F] Execute nominal and\nfault cases" { class: func }
+  analyze: "[F] Analyze against\npass/fail constraints" { class: func }
+  report: "[F] Record evidence,\ndeviations, verdict" { class: func }
+  start -> setup: "[FE] configuration" { class: fe }
+  setup -> run: "[FE] stimuli / probes ready" { class: fe }
+  run -> analyze: "[FE] raw evidence" { class: fe }
+  analyze -> report: "[FE] verdict rationale" { class: fe }
+}
+note_1 -> chain { style: { opacity: 0 } }

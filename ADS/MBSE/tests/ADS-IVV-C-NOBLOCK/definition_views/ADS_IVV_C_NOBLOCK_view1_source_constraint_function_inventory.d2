@@ -1,0 +1,131 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Source constraint/function inventory for ADS-IVV-C-NOBLOCK.
+# IADT method: Analysis with supporting Testing. Category: constraint.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-NOBLOCK\nSource constraint and function inventory\nRefs: IVV; ADS MBSE plan; SW/stats; GPS/UBX; IMU/I2C" {
+  class: sys
+  direction: down
+
+  versions: "[PC] Selected ADS source baselines\nsource_views/ copied from v0.1, v0.2, v0.3, v1.0" {
+    class: pc
+    direction: right
+    grid-columns: 2
+
+    v01: "[PC] v0.1 GPS prototype\nsource_views/v0.1" {
+      class: pc
+      direction: down
+      targets: "[LC] Loop and Setup\nno-blocking review targets" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        init_serial: "[F] Init Serial0\nand Serial1" { class: func }
+        read_gps: "[F] Read and store\nlat, lon\n(UART allowed wait)" { class: func }
+        get_ubx_init: "[F] Get UBX-G7020-KT\ninit state" { class: func }
+        getters: "[F] Get lat / Get lon\n(no external wait)" { class: func }
+        collect: "[F] Collect\nmeasurements" { class: func }
+        log_serial0: "[F] Log via Serial0" { class: func }
+      }
+      c_no_block: "[C] Source constraint\nNo blocking operations besides\nI2C or UART comms" { class: note; shape: page }
+      c_uart: "[C] UART read functions\ntimeout <= 5 ms" { class: note; shape: page }
+      c_process: "[C] Process/calculate\nfunctions < 5 ms" { class: note; shape: page }
+    }
+
+    v02: "[PC] v0.2 GPS + IMU prototype\nsource_views/v0.2" {
+      class: pc
+      direction: down
+      targets: "[LC] Loop and Setup\nno-blocking review targets" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        read_gps: "[F] Read and store\nlat, lon\n(UART allowed wait)" { class: func }
+        read_gyro: "[F] Read angular\nvelocities\n(I2C allowed wait)" { class: func }
+        read_accel: "[F] Read\naccelerations\n(I2C allowed wait)" { class: func }
+        read_mag: "[F] Read field\nintensities\n(I2C allowed wait)" { class: func }
+        process_gyro: "[F] Process angular\nvelocities" { class: func }
+        process_accel: "[F] Process\naccelerations" { class: func }
+        calculate_pry: "[F] Calculate\npitch, roll, yaw" { class: func }
+        getters: "[F] Get lat / Get lon\n(no external wait)" { class: func }
+        init_states: "[F] Get UBX and\nICM20948 init states" { class: func }
+        collect_log: "[F] Collect measurements\nand Log via Serial0" { class: func }
+      }
+      c_no_block: "[C] Source constraint\nNo blocking operations besides\nI2C or UART comms" { class: note; shape: page }
+      c_uart: "[C] UART read functions\ntimeout <= 5 ms" { class: note; shape: page }
+      c_i2c_gap: "[C] v0.2 model gap\nNo explicit I2C timeout constraint;\nanalysis still checks bounded I2C\nerror/timeout behavior." { class: note; shape: page }
+      c_process: "[C] Process/calculate\nfunctions < 5 ms" { class: note; shape: page }
+    }
+
+    v03: "[PC] v0.3 PCB delivery\nsource_views/v0.3" {
+      class: pc
+      direction: down
+      c_na: "[C] N/A rationale\nPV1-only PCB delivery: GPS, IMU,\nconnector, footprints, UART/I2C/3V3 traces.\nNo LC, CE, allocation, no-blocking constraint,\nor executable runtime chain is modeled." { class: note; shape: page }
+    }
+
+    v10: "[PC] v1.0 integrated CanSat\nsource_views/v1.0" {
+      class: pc
+      direction: down
+      targets: "[LC] ADS Processing and OBCC\nno-blocking review targets" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        read_gps: "[F] Read and store\nlat, lon\n(UART allowed wait)" { class: func }
+        read_gyro: "[F] Read angular\nvelocities\n(I2C allowed wait)" { class: func }
+        read_accel: "[F] Read\naccelerations\n(I2C allowed wait)" { class: func }
+        read_mag: "[F] Read field\nintensities\n(I2C allowed wait)" { class: func }
+        init_states: "[F] Get UBX and\nICM20948 init states" { class: func }
+        getters: "[F] Get lat / Get lon\n(no external wait)" { class: func }
+        process_gyro: "[F] Process angular\nvelocities" { class: func }
+        process_accel: "[F] Process\naccelerations" { class: func }
+        calculate_pry: "[F] Calculate\npitch, roll, yaw" { class: func }
+        collect: "[F] OBCC Collect\nmeasurements / init states" { class: func }
+      }
+      c_no_block: "[C] Source constraint\nNo blocking operations besides\nI2C or UART comms" { class: note; shape: page }
+      c_uart: "[C] UART read functions\ntimeout <= 5 ms" { class: note; shape: page }
+      c_i2c: "[C] I2C read functions\ntimeout <= 5 ms" { class: note; shape: page }
+      c_process: "[C] Process/calculate\nfunctions < 5 ms" { class: note; shape: page }
+    }
+  }
+
+  trace: "[C] Traceability\nConstraint: No blocking operations besides I2C or UART comms.\nFeared event: ADS-FE-STUCK-LOOP.\nCapabilities: ADS-CAP-INIT and ADS-CAP-DELIVERY.\nRuntime evidence supports GPS/IMU chain fault-hardening." { class: note; shape: page }
+}
+
+system.versions.v01.c_no_block -> system.versions.v01.targets { class: cstr }
+system.versions.v01.c_uart -> system.versions.v01.targets.read_gps { class: cstr }
+system.versions.v01.c_process -> system.versions.v01.targets.collect { class: cstr }
+
+system.versions.v02.c_no_block -> system.versions.v02.targets { class: cstr }
+system.versions.v02.c_uart -> system.versions.v02.targets.read_gps { class: cstr }
+system.versions.v02.c_i2c_gap -> system.versions.v02.targets.read_gyro { class: cstr }
+system.versions.v02.c_i2c_gap -> system.versions.v02.targets.read_accel { class: cstr }
+system.versions.v02.c_i2c_gap -> system.versions.v02.targets.read_mag { class: cstr }
+system.versions.v02.c_process -> system.versions.v02.targets.process_gyro { class: cstr }
+system.versions.v02.c_process -> system.versions.v02.targets.calculate_pry { class: cstr }
+
+system.versions.v10.c_no_block -> system.versions.v10.targets { class: cstr }
+system.versions.v10.c_uart -> system.versions.v10.targets.read_gps { class: cstr }
+system.versions.v10.c_i2c -> system.versions.v10.targets.read_gyro { class: cstr }
+system.versions.v10.c_i2c -> system.versions.v10.targets.read_accel { class: cstr }
+system.versions.v10.c_i2c -> system.versions.v10.targets.read_mag { class: cstr }
+system.versions.v10.c_process -> system.versions.v10.targets.process_accel { class: cstr }
+system.versions.v10.c_process -> system.versions.v10.targets.calculate_pry { class: cstr }
+
+system.trace -> system.versions { class: cstr }

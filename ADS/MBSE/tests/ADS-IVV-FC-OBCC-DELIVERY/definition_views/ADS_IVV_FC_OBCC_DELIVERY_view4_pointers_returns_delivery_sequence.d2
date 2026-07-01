@@ -1,0 +1,97 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain style verification sequence for ADS-IVV-FC-OBCC-DELIVERY.
+# IADT method: Demonstration/Testing with supporting Analysis.
+# Functional Chain view: only functions, functional exchanges, and constraints are shown.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "ADS-IVV-FC-OBCC-DELIVERY\nPointers/Returns delivery verification sequence\nRefs: IVV; ADS MBSE plan; NASA-SE; SW/stats" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  select_scope: "[F] Select v1.0 UUT, source\nbaseline, firmware commit" { class: func }
+  record_na: "[F] Record N/A branches:\nv0.1/v0.2 Serial0 PC delivery; v0.3 PCB-only" { class: func }
+  configure_setup: "[F] Configure power, ambient\nmonitor, log harness, timebase" { class: func }
+  load_instrumentation: "[F] Load ADS/OBCC delivery\ninstrumentation" { class: func }
+  start_nominal: "[F] Start nominal ADS data\nstimulus and OBCC collection" { class: func }
+  ads_update: "[F] ADS Processing updates\nGPS, IMU, attitude, init-state data" { class: func }
+  expose_handles: "[F] ADS Processing exposes\nPointers to modeled data handles" { class: func }
+  obcc_request: "[F] OBCC requests data\nthrough Pointers" { class: func }
+  check_semantics: "[F] OBCC checks ownership,\nlifetime, freshness, validity" { class: func }
+  provide_returns: "[F] ADS Processing provides\nReturns status/error values" { class: func }
+  collect_valid: "[F] OBCC collects only\nvalid GPS/IMU/attitude records" { class: func }
+  log_nominal: "[F] Log nominal delivery\nrecord and heartbeat" { class: func }
+  inject_null: "[F] Inject null or missing\nPointer/Return case" { class: func }
+  inject_dangling: "[F] Inject dangling or\nout-of-lifetime handle case" { class: func }
+  inject_stale: "[F] Inject stale/freshness\nexpired data case" { class: func }
+  inject_corrupt: "[F] Inject corrupt data or\ninvalid-return case" { class: func }
+  inject_slow: "[F] Inject slow/stuck-call\nno-blocking case" { class: func }
+  evaluate_faults: "[F] Evaluate rejection,\nerror semantics, recovery" { class: func }
+  analyze_contract: "[F] Analyze Pointers/Returns\nAPI and caller implementation" { class: func }
+  decide_verdict: "[F] Decide pass/fail or\nblocked/limited verdict" { class: func }
+  record_report: "[F] Record evidence, traceability,\nanomalies, waivers, retest" { class: func }
+
+  note_contract: "[C] Interface-contract pass/fail\nPass only if OBCC obtains modeled ADS data/handles through\nPointers/Returns and no unmodeled data path is used. Ownership,\nlifetime, freshness, validity, and error semantics are explicit." { class: note; shape: page }
+  note_data_set: "[C] Data coverage pass/fail\nNominal records shall cover GPS lat/lon/init state, IMU angular\nvelocity/accel/field data, attitude pitch/roll/yaw, and OBCC\ncollection fields present in the v1.0 source inventory." { class: note; shape: page }
+  note_faults: "[C] Fault-hardening pass/fail\nNull, dangling, stale, corrupt, invalid-return, and slow/stuck cases\nshall not be consumed as valid. Expected behavior is explicit error\nreturn, invalid/freshness flag, bounded retry/skip, or safe recovery." { class: note; shape: page }
+  note_timing: "[C] Timing/no-blocking pass/fail\nNo unexpected blocking outside modeled I2C/UART waits. Verify linked\nconstraints: Variable Getter template, process/calculate <5 ms, UART/I2C\nread timeout <=5 ms, plus recorded delivery watchdog threshold." { class: note; shape: page }
+  note_stats: "[C] Statistical significance\nMinimum engineering demonstration: >=30 nominal delivery observations\ncovering modeled fields plus all enumerated fault cases. Formal PDR or\ndeadline claims require a predeclared method and sample count." { class: note; shape: page }
+  note_environment: "[C] Execution conditions\nBefore repetitions, read ambient monitor, verify power limits and\ncalibration IDs, and record timebase, firmware, UUT serial, and source\nview copy. Deviations become report limitations." { class: note; shape: page }
+}
+
+chain.select_scope -> chain.record_na: "[FE] Version scope" { class: fe }
+chain.record_na -> chain.configure_setup: "[FE] v1.0 applicable" { class: fe }
+chain.configure_setup -> chain.load_instrumentation: "[FE] Verified setup" { class: fe }
+chain.load_instrumentation -> chain.start_nominal: "[FE] Instrumented UUT" { class: fe }
+chain.start_nominal -> chain.ads_update: "[FE] Stimulus / collection start" { class: fe }
+chain.ads_update -> chain.expose_handles: "[FE] Fresh ADS data" { class: fe }
+chain.expose_handles -> chain.obcc_request: "[FE] Pointers" { class: fe }
+chain.obcc_request -> chain.check_semantics: "[FE] Handles" { class: fe }
+chain.check_semantics -> chain.provide_returns: "[FE] Accepted request" { class: fe }
+chain.provide_returns -> chain.collect_valid: "[FE] Returns + status" { class: fe }
+chain.collect_valid -> chain.log_nominal: "[FE] Valid record" { class: fe }
+chain.log_nominal -> chain.inject_null: "[FE] Nominal evidence" { class: fe }
+chain.inject_null -> chain.inject_dangling: "[FE] Null/missing result" { class: fe }
+chain.inject_dangling -> chain.inject_stale: "[FE] Dangling result" { class: fe }
+chain.inject_stale -> chain.inject_corrupt: "[FE] Stale result" { class: fe }
+chain.inject_corrupt -> chain.inject_slow: "[FE] Corrupt/invalid result" { class: fe }
+chain.inject_slow -> chain.evaluate_faults: "[FE] Slow/stuck result" { class: fe }
+chain.evaluate_faults -> chain.analyze_contract: "[FE] Fault verdict inputs" { class: fe }
+chain.analyze_contract -> chain.decide_verdict: "[FE] Analysis finding" { class: fe }
+chain.decide_verdict -> chain.record_report: "[FE] Verdict package" { class: fe }
+
+chain.note_contract -> chain.expose_handles { class: cstr }
+chain.note_contract -> chain.obcc_request { class: cstr }
+chain.note_data_set -> chain.collect_valid { class: cstr }
+chain.note_faults -> chain.evaluate_faults { class: cstr }
+chain.note_timing -> chain.inject_slow { class: cstr }
+chain.note_timing -> chain.decide_verdict { class: cstr }
+chain.note_stats -> chain.log_nominal { class: cstr }
+chain.note_environment -> chain.configure_setup { class: cstr }
+
+# Layout-only ordering hints for notes after the executable sequence.
+chain.record_report -> chain.note_contract { style: { opacity: 0 } }
+chain.note_contract -> chain.note_data_set { style: { opacity: 0 } }
+chain.note_data_set -> chain.note_faults { style: { opacity: 0 } }
+chain.note_faults -> chain.note_timing { style: { opacity: 0 } }
+chain.note_timing -> chain.note_stats { style: { opacity: 0 } }
+chain.note_stats -> chain.note_environment { style: { opacity: 0 } }

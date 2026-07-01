@@ -1,0 +1,81 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical test setup view for ADS-IVV-FC-GPS.
+# Defines UUT, GPS truth/stimulus means, logging means, temporary PLs/CEs, and environment constraints.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-GPS\nPhysical GPS test setup\nRefs: IVV; NASA-SE; GPS/UBX; SW/stats" {
+  class: sys
+  direction: down
+
+  uut: "[PC] Selected ADS UUT\n(one version per execution)" {
+    class: pc
+    direction: right
+    grid-columns: 2
+    v01: "[PC] v0.1 GPS + XIAO\nprototype" { class: pc }
+    v02: "[PC] v0.2 GPS + IMU + XIAO\nprototype" { class: pc }
+    v03: "[PC] v0.3 ADS PCB\nN/A behavior article" { class: pc }
+    v10: "[PC] v1.0 integrated\nCanSat / ADS / OBCC" { class: pc }
+  }
+}
+
+test_conductor: "[EA] IVV GPS test conductor\n(human)" { class: ea }
+gnss_truth: "[EA] GPS truth source\nGNSS simulator or surveyed open-sky\nreference receiver" { class: ea }
+fault_injector: "[EA] GPS UART / RF\nfault injector" { class: ea }
+serial_logger: "[EA] Data-acquisition PC\nUSB serial logger / timestamp source" { class: ea }
+obcc_logger: "[EA] OBCC log capture\n(v1.0 delivery evidence)" { class: ea }
+power_supply: "[EA] Current-limited\nbench supply / battery simulator" { class: ea }
+
+note_accuracy: "[C] Accuracy pass condition\nFor each tested version, collect >=30 matched\nvalid ADS GPS samples and truth samples.\nPass only if the accepted horizontal error\ncriterion, including truth/instrument uncertainty\nor 95/95 bound where claimed, is < 5 m." { class: note; shape: page }
+note_rate: "[C] 5 Hz pass condition\nv0.1/v0.2 only: record timestamps and gaps.\nPass if the accepted 5 Hz timing rule is met\nfor the campaign. v1.0 has no modeled ADS 5 Hz\nconstraint; report rate as information only." { class: note; shape: page }
+note_environment: "[C] Environment constraints\nRecord sky/simulator mode, surveyed truth point\nor scenario, antenna placement, multipath/shielding,\nambient temperature/humidity, power mode, warm-up,\nfirmware commit, and timebase uncertainty.\nDo not execute if truth source/calibration is unknown." { class: note; shape: page }
+note_faults: "[C] Fault-hardening conditions\nInject or simulate no-fix, malformed payload,\nsilent GPS/UART timeout, stale position, and recovery.\nFail if invalid/stale GPS is accepted as valid,\nloop progress blocks unexpectedly, or OBCC consumes\ninvalid ADS data as valid in v1.0." { class: note; shape: page }
+
+# Temporary physical links used by the verification setup.
+gnss_truth -- system.uut: "[PL] RF antenna /\nsimulator feed" { class: pl }
+fault_injector -- system.uut: "[PL] UART/RF\nfault harness" { class: pl }
+serial_logger -- system.uut: "[PL] USB/UART\nlog cable" { class: pl }
+obcc_logger -- system.uut: "[PL] OBCC debug\nlog interface" { class: pl }
+power_supply -- system.uut: "[PL] power leads" { class: pl }
+
+# Verification component exchanges / records.
+test_conductor -> system.uut: "[CE] test run sheet\nand version selection" { class: ce }
+gnss_truth -> serial_logger: "[CE] truth positions\nand timestamps" { class: ce }
+system.uut -> serial_logger: "[CE] ADS GPS samples\nlat/lon/status/time" { class: ce }
+system.uut -> obcc_logger: "[CE] v1.0 OBCC\ncollected GPS record" { class: ce }
+fault_injector -> serial_logger: "[CE] injected fault\nmarkers" { class: ce }
+
+note_accuracy -> serial_logger { class: cstr }
+note_rate -> serial_logger { class: cstr }
+note_environment -> system { class: cstr }
+note_faults -> fault_injector { class: cstr }
+note_faults -> obcc_logger { class: cstr }
+
+# Layout-only rank hints.
+test_conductor -> gnss_truth { style: { opacity: 0 } }
+gnss_truth -> fault_injector { style: { opacity: 0 } }
+fault_injector -> serial_logger { style: { opacity: 0 } }
+serial_logger -> obcc_logger { style: { opacity: 0 } }
+obcc_logger -> power_supply { style: { opacity: 0 } }
+system -> note_accuracy { style: { opacity: 0 } }
+note_accuracy -> note_rate { style: { opacity: 0 } }
+note_rate -> note_environment { style: { opacity: 0 } }
+note_environment -> note_faults { style: { opacity: 0 } }

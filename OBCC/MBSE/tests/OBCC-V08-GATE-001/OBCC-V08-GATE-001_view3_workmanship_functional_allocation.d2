@@ -1,0 +1,249 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V08-GATE-001 PV3: verification functional allocation for PCB/backplane/link workmanship gate.
+# Shows human/operator functions, test-equipment functions, and verification-only UUT functions.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  select_uut_checklist: "[F] Select UUT,\nrevision, and\nchecklist" { class: func }
+  read_ambient_record: "[F] Read ambient\nthermometer and\nrecord conditions" { class: func }
+  authorize_power_on: "[F] Authorize current-limited\npower-on after shorts\nand RF path checks" { class: func }
+  classify_gate_result: "[F] Classify pass/fail,\nwaivers, anomalies,\nand corrective actions" { class: func }
+}
+
+visual_inspector: "[EA] Visual Inspector" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  inspect_solder: "[F] Inspect solder joints,\nbridges, damage,\nand contamination" { class: func }
+  verify_orientation: "[F] Verify component\norientation, footprint,\nand pin-1/keying" { class: func }
+  inspect_mating: "[F] Inspect header mating,\nbackplane seating,\nand connector locks" { class: func }
+  disposition_context: "[F] Disposition OBCC-owned\nvs integration-context\nelements" { class: func }
+}
+
+dmm_tester: "[EA] DMM / continuity tester" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  measure_no_shorts: "[F] Measure no shorts\nbetween rails and\nadjacent pins" { class: func }
+  measure_continuity: "[F] Measure continuity\non SPI/I2C/UART/PWM,\npower, and ground" { class: func }
+  verify_polarity: "[F] Verify polarity,\nlogic-level rails,\nand ground reference" { class: func }
+  log_meter_readings: "[F] Log meter readings\nand probe locations" { class: func }
+}
+
+rf_path_checker: "[EA] RF antenna-path checker" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  attach_dummy_load: "[F] Attach antenna\nor dummy load" { class: func }
+  verify_rf_continuity: "[F] Verify RF path,\nconnector seating,\nand no open TX path" { class: func }
+  authorize_safe_tx: "[F] Authorize safe\nlow-power LoRa\nbring-up" { class: func }
+}
+
+retention_fixture: "[EA] Connector-retention fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  apply_header_retention: "[F] Apply header\nretention / keying\ncheck" { class: func }
+  exercise_servo_cable: "[F] Exercise servo\ncable and fixture\nretention" { class: func }
+  flag_loose_link: "[F] Flag loose,\nmis-keyed, or\nunseated link" { class: func }
+}
+
+evidence_camera: "[EA] Evidence camera" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  capture_microscope: "[F] Capture microscope\nimages of PCB and\nconnector details" { class: func }
+  capture_meter_screens: "[F] Capture DMM,\nRF checker, and\nfixture evidence" { class: func }
+  index_evidence: "[F] Index evidence files\nto UUT and test\nstep IDs" { class: func }
+}
+
+bench_power_usb: "[EA] Current-limited bench\npower and USB-C host" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  supply_limited_power: "[F] Supply current-limited\nbench power" { class: func }
+  enumerate_usb: "[F] Enumerate USB-C\nbench link" { class: func }
+  record_current_draw: "[F] Record inrush and\nsteady current draw" { class: func }
+  trip_on_overcurrent: "[F] Trip or halt on\novercurrent anomaly" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" {
+  class: ea
+  direction: down
+  measure_ambient: "[F] Measure ambient\ntemperature before\nrepetitions" { class: func }
+}
+
+system: "[System] OBCC-V08-GATE-001 — workmanship gate functional allocation\nRefs: IVV, PM&SE/IVV, OBCC README, LoRa_Frame, Variable Getter Template, v1.0 PV3; maps OBCC-VV-PC-001/PL-001/CE-001" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  uut: "[PC] v0.8 PCB/backplane\nintegration UUT" {
+    class: pc
+    direction: down
+
+    obcc_pcb: "[PC] OBCC PCB" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      assembly_qc: "[LC] PCB assembly\nworkmanship QC" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        identify_footprints: "[F] Identify XIAO,\nRFM95W, antenna,\nand connector footprints" { class: func }
+        inspect_sensor_context: "[F] Verify sensor/power\ncontext interfaces for\nBME280, ICM20948,\nUBX-G7020, INA219" { class: func }
+        tag_owned_context: "[F] Tag OBCC-owned\nand integration-context\nitems in evidence" { class: func }
+      }
+
+      power_ground_matrix: "[LC] Power / ground\nmatrix" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        expose_probe_points: "[F] Expose test pads\nand probe terminals" { class: func }
+        support_no_short_test: "[F] Support rail\nshort and polarity\nmeasurement" { class: func }
+        verify_rails: "[F] Verify 3V3/5V/GND\nreferences before\npower-on" { class: func }
+      }
+
+      bus_bringup_monitor: "[LC] Bus and protocol\nbring-up monitor\n(verification-only)" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        enumerate_i2c_devices: "[F] Enumerate I2C\nBME/IMU/INA endpoints\nwhere connected" { class: func }
+        read_gps_uart: "[F] Read UBX-G7020\nUART presence or\ndisposition context" { class: func }
+        read_lora_spi_id: "[F] Read RFM95W\nSPI identity/status" { class: func }
+        drive_pwm_test_point: "[F] Exercise PWM test\npoint without unsafe\ndeployment" { class: func }
+      }
+
+      evidence_interface: "[LC] Evidence and\nconfiguration interface\n(verification-only)" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        stamp_configuration: "[F] Stamp firmware,\nPCB revision, and\nas-built IDs" { class: func }
+        emit_bringup_log: "[F] Emit link bring-up\nlog over bench path" { class: func }
+        mark_usb_nonflight: "[F] Mark USB-C as\nbench evidence only,\nnot v1.0 flight path" { class: func }
+      }
+    }
+
+    backplane_integration: "[PC] Backplane PCB /\nintegration context" {
+      class: pc
+      direction: down
+      connector_matrix: "[LC] Connector and\npinout matrix" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        map_headers: "[F] Map ADS/AMS/PDS/ESS/\nOBCC/PDM headers to\nschematic pinout" { class: func }
+        route_protocols_power: "[F] Route I2C, UART,\nPWM, power, and\nground references" { class: func }
+        support_retention_evidence: "[F] Support retention,\nkeying, and mating\nevidence" { class: func }
+      }
+    }
+
+    ground_station_context: "[PC] Ground-station\nphysical context" {
+      class: pc
+      ground_lora_monitor: "[LC] Ground LoRa /\nPC evidence monitor" {
+        class: lc
+        direction: down
+        receive_safe_packet: "[F] Receive safe\nlow-power LoRa\nbring-up packet" { class: func }
+        log_rssi_snr: "[F] Log RSSI/SNR\nor disposition RF\nevidence" { class: func }
+      }
+    }
+
+    servo_fixture_context: "[PC] Servo cable /\nfixture context" {
+      class: pc
+      servo_link_observer: "[LC] Servo link\nworkmanship observer" {
+        class: lc
+        direction: down
+        confirm_servo_continuity: "[F] Confirm servo-cable\ncontinuity and\ncorrect connector" { class: func }
+        confirm_no_loose_deploy_link: "[F] Confirm no loose\nor mis-keyed\ndeployment link" { class: func }
+      }
+    }
+  }
+}
+
+note_source_gap: "[C] Source gap:\nno v0.8 Capella/D2 views exist in the\nrepository. v1.0 source copies are\ncontext; v0.8/v1.0 differences must be\nlisted as assumptions or deviations." {
+  class: note
+  shape: page
+}
+
+note_pf: "[C] Pass/fail allocation policy:\nevery inspection, measurement, RF safety,\nretention, bring-up, and evidence function\nis allocated to a named operator, test\nequipment actor, or UUT logical component;\nno hidden or foreign function may be needed\nfor a pass." {
+  class: note
+  shape: page
+}
+
+note_stats_faults: "[C] Statistical/fault-hardening viewpoint:\n100% of modeled PCs, PLs, and workmanship-\ncritical CEs are inspected/analyzed on the\ngate article. Continuity/protocol bring-up\nis advancement demonstration, not a\nreliability claim. Opens, shorts, wrong\npolarity, unsafe RF path, and loose links\nare forbidden events." {
+  class: note
+  shape: page
+}
+
+note_environment: "[C] Environmental/evidence constraint:\nambient thermometer model/serial/reading,\nbench power current limit, RF load state,\nUUT IDs, photo set, and as-tested wiring\nare recorded before declaring pass." {
+  class: note
+  shape: page
+}
+
+note_source_gap -> system.uut.obcc_pcb.evidence_interface.stamp_configuration { class: cstr }
+note_pf -> system.uut.obcc_pcb.assembly_qc.identify_footprints { class: cstr }
+note_pf -> system.uut.backplane_integration.connector_matrix.map_headers { class: cstr }
+note_stats_faults -> dmm_tester.measure_no_shorts { class: cstr }
+note_stats_faults -> rf_path_checker.verify_rf_continuity { class: cstr }
+note_stats_faults -> retention_fixture.flag_loose_link { class: cstr }
+note_environment -> ambient_thermometer.measure_ambient { class: cstr }
+note_environment -> evidence_camera.index_evidence { class: cstr }
+
+# Layout-only edges keep actors above the UUT and notes below it.
+test_operator -> visual_inspector { style: { opacity: 0 } }
+visual_inspector -> dmm_tester { style: { opacity: 0 } }
+dmm_tester -> rf_path_checker { style: { opacity: 0 } }
+rf_path_checker -> retention_fixture { style: { opacity: 0 } }
+retention_fixture -> evidence_camera { style: { opacity: 0 } }
+evidence_camera -> bench_power_usb { style: { opacity: 0 } }
+bench_power_usb -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> system { style: { opacity: 0 } }
+system -> note_source_gap { style: { opacity: 0 } }
+note_source_gap -> note_pf { style: { opacity: 0 } }
+note_pf -> note_stats_faults { style: { opacity: 0 } }
+note_stats_faults -> note_environment { style: { opacity: 0 } }

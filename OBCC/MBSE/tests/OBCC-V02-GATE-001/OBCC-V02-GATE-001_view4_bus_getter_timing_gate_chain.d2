@@ -1,0 +1,193 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V02-GATE-001 functional-chain verification definition.
+# Function labels include the responsible human, test equipment, or SUT role;
+# no PC/LC/EA containers are used in this Functional Chain view.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing gate chain\nRefs: IVV, OBCC README, Variable Getter Template, v1.0 PV2/PV3/runtime-fault chain" {
+  class: chain
+  direction: down
+
+  record_source_gap: "[F] Operator: record v0.2\nsource-baseline gap and\nas-tested configuration" { class: func }
+  read_ambient: "[F] Thermometer: read\nambient temperature" { class: func }
+  record_environment: "[F] Operator: record\nambient and equipment IDs" { class: func }
+  review_ce_mapping: "[F] Reviewer: analyze I2C,\nUART, SPI, PWM, getters,\nqueues, state, and mode gate" { class: func }
+  connect_instruments: "[F] Operator: connect\nlogic analyzer, fault injector,\nserial log, and trace collector" { class: func }
+  arm_capture: "[F] Test equipment: arm\nbus decoders and timing trace" { class: func }
+  init_interfaces: "[F] OBCC: init UART, PWM,\nSPI, I2C, queues, and\nbus protection" { class: func }
+
+  call_i2c_getters: "[F] OBCC: call BME280,\nIMU, and INA219 I2C\ngetters" { class: func }
+  capture_i2c: "[F] Logic analyzer: capture\nI2C addresses, voltage,\ndirection, and timing" { class: func }
+  log_i2c_results: "[F] Serial/trace: log I2C\ntyped values, result codes,\nand durations" { class: func }
+
+  call_uart_getter: "[F] OBCC: call UBX-G7020\nGPS UART getter" { class: func }
+  capture_uart: "[F] Logic analyzer: capture\nUART baud, framing,\ndirection, and timing" { class: func }
+  log_uart_results: "[F] Serial/trace: log GPS\nvalue/status and duration" { class: func }
+
+  exercise_spi_radio: "[F] OBCC: exercise RFM95W\nSPI transaction" { class: func }
+  capture_spi: "[F] Logic analyzer: capture\nSPI mode, CS ownership,\nvoltage, and timing" { class: func }
+  log_spi_results: "[F] Serial/trace: log radio\nstatus and bounded result" { class: func }
+
+  exercise_pwm_servo: "[F] OBCC: command servo\nPWM in safe fixture" { class: func }
+  capture_pwm: "[F] Logic analyzer: capture\nPWM pulse train and\nservo availability" { class: func }
+  log_pwm_results: "[F] Serial/trace: log PWM /\nservo result status" { class: func }
+
+  measure_getter_contracts: "[F] Trace collector: measure\nnominal getter return times\nand scheduler heartbeat" { class: func }
+  log_nominal_results: "[F] Operator: record nominal\nbus/getter evidence set" { class: func }
+
+  inject_i2c_fault: "[F] Fault injector: apply\nI2C NACK or stuck-bus\nfault" { class: func }
+  observe_i2c_timeout: "[F] OBCC + trace: return\nI2C error status within\n≤5 ms and keep scheduler live" { class: func }
+  inject_uart_fault: "[F] Fault injector: apply\nGPS UART silence or\nmalformed frame" { class: func }
+  observe_uart_timeout: "[F] OBCC + trace: return\nUART error status within\n≤5 ms and keep scheduler live" { class: func }
+  inject_spi_fault: "[F] Fault injector: apply\nSPI radio busy/fault case" { class: func }
+  observe_spi_bounded: "[F] OBCC + log: report\nbounded SPI/radio error\nwithout hidden blocking" { class: func }
+  inject_pwm_fault: "[F] Fault injector: make\nPWM/servo unavailable" { class: func }
+  observe_pwm_bounded: "[F] OBCC + log: report\nbounded PWM/servo error\nand safe fixture state" { class: func }
+
+  run_liveness_check: "[F] Trace collector: confirm\nheartbeat/timer activity\nduring all fault cases" { class: func }
+  review_ownership: "[F] Reviewer: confirm no\nhidden cross-task bus,\nqueue, state, or mode-gate\nownership violation" { class: func }
+  collect_evidence: "[F] Operator: archive raw\nwaveforms, serial logs,\ntrace tables, and review notes" { class: func }
+  judge_gate: "[F] Operator + reviewer:\njudge v0.2 -> v0.3\nadvancement gate result" { class: func }
+
+  note_source_gap: "[C] Source gap pass/fail condition:\nstate explicitly that no v0.2 Capella/D2\nviews exist; cite v1.0 source views only\nas target-architecture context." {
+    class: note
+    shape: page
+  }
+
+  note_ce_analysis: "[C] PF-001 component-exchange analysis:\nimplemented I2C, UART, SPI, PWM, getter,\nqueue, state, and mode-gate exchanges match\nmodel intent for protocol, voltage level,\ndirection, addressing, and ownership." {
+    class: note
+    shape: page
+  }
+
+  note_getter_contract: "[C] PF-002 getter/API contract:\neach getter returns a typed value plus explicit\nsuccess/error status; no unbounded blocking and\nno hidden cross-task ownership violations." {
+    class: note
+    shape: page
+  }
+
+  note_timing: "[C] PF-003 bounded timing:\nI2C and UART read attempts timeout ≤5 ms where\nmodeled. SPI and PWM/servo fault paths have an\nobserved bounded exit and status/log evidence." {
+    class: note
+    shape: page
+  }
+
+  note_fault_matrix: "[C] PF-004 fault-hardening matrix:\ninclude I2C NACK/stuck bus, GPS UART silence,\nGPS malformed frame, SPI radio busy/fault,\nand PWM/servo unavailable cases." {
+    class: note
+    shape: page
+  }
+
+  note_scheduler: "[C] PF-005 scheduler and data-path liveness:\nfaulted getters update health/status or result codes,\nqueue/state/mode-gate ownership remains as modeled,\nand scheduler heartbeat continues." {
+    class: note
+    shape: page
+  }
+
+  note_statistics: "[C] Statistical viewpoint:\nv0.2 gate evidence is advancement screening unless\n59 representative in-limit timing samples per class\nare collected for a 95/95 timing claim. All CE/API\nitems require 100% review disposition." {
+    class: note
+    shape: page
+  }
+
+  note_environment: "[C] Environmental condition:\nrecord calibrated ambient thermometer model/serial\nand reading before repetitions; log deviations if\nconditions or equipment IDs are missing." {
+    class: note
+    shape: page
+  }
+
+  note_trace: "[C] Traceability:\nOBCC-UC-RuntimeFaultHandling,\nOBCC-FE-SchedulerBlocked, startup/interface\nreadiness, OBCC-VV-CE-001, OBCC-VV-CE-003,\nand timing/fault portions of OBCC-VV-CON-004." {
+    class: note
+    shape: page
+  }
+}
+
+chain.record_source_gap -> chain.read_ambient: "[FE] Source gap recorded\n[baseline note]" { class: fe }
+chain.read_ambient -> chain.record_environment: "[FE] Ambient reading\n[°C, model/serial]" { class: fe }
+chain.record_environment -> chain.review_ce_mapping: "[FE] Config accepted\n[article + equipment IDs]" { class: fe }
+chain.review_ce_mapping -> chain.connect_instruments: "[FE] CE/API review matrix\n[draft disposition]" { class: fe }
+chain.connect_instruments -> chain.arm_capture: "[FE] Test equipment connected\n[LA + injector + trace]" { class: fe }
+chain.arm_capture -> chain.init_interfaces: "[FE] Captures armed\n[timebase synchronized]" { class: fe }
+chain.init_interfaces -> chain.call_i2c_getters: "[FE] Interfaces initialized\n[UART/PWM/SPI/I2C]" { class: fe }
+
+chain.call_i2c_getters -> chain.capture_i2c: "[FE] I2C transactions\n[BME280/IMU/INA219]" { class: fe }
+chain.capture_i2c -> chain.log_i2c_results: "[FE] Decoded I2C evidence\n[address/ACK/timing]" { class: fe }
+chain.log_i2c_results -> chain.call_uart_getter: "[FE] I2C getter status\n[values + result codes]" { class: fe }
+
+chain.call_uart_getter -> chain.capture_uart: "[FE] UART transaction\n[GPS payload]" { class: fe }
+chain.capture_uart -> chain.log_uart_results: "[FE] Decoded UART evidence\n[baud/frame/timing]" { class: fe }
+chain.log_uart_results -> chain.exercise_spi_radio: "[FE] GPS getter status\n[value/error code]" { class: fe }
+
+chain.exercise_spi_radio -> chain.capture_spi: "[FE] SPI transaction\n[RFM95W]" { class: fe }
+chain.capture_spi -> chain.log_spi_results: "[FE] Decoded SPI evidence\n[mode/CS/status]" { class: fe }
+chain.log_spi_results -> chain.exercise_pwm_servo: "[FE] Radio status\n[bounded result]" { class: fe }
+
+chain.exercise_pwm_servo -> chain.capture_pwm: "[FE] PWM command\n[safe fixture]" { class: fe }
+chain.capture_pwm -> chain.log_pwm_results: "[FE] PWM evidence\n[pulse train/status]" { class: fe }
+chain.log_pwm_results -> chain.measure_getter_contracts: "[FE] Servo/PWM status\n[bounded result]" { class: fe }
+chain.measure_getter_contracts -> chain.log_nominal_results: "[FE] Nominal timing set\n[durations + heartbeat]" { class: fe }
+
+chain.log_nominal_results -> chain.inject_i2c_fault: "[FE] Begin fault matrix\n[fault classes]" { class: fe }
+chain.inject_i2c_fault -> chain.observe_i2c_timeout: "[FE] I2C NACK/stuck bus\n[fault stimulus]" { class: fe }
+chain.observe_i2c_timeout -> chain.inject_uart_fault: "[FE] Bounded I2C result\n[≤5 ms + code]" { class: fe }
+chain.inject_uart_fault -> chain.observe_uart_timeout: "[FE] GPS silence/malformed\n[fault stimulus]" { class: fe }
+chain.observe_uart_timeout -> chain.inject_spi_fault: "[FE] Bounded UART result\n[≤5 ms + code]" { class: fe }
+chain.inject_spi_fault -> chain.observe_spi_bounded: "[FE] SPI busy/fault\n[fault stimulus]" { class: fe }
+chain.observe_spi_bounded -> chain.inject_pwm_fault: "[FE] Bounded SPI result\n[error status]" { class: fe }
+chain.inject_pwm_fault -> chain.observe_pwm_bounded: "[FE] PWM unavailable\n[fault stimulus]" { class: fe }
+chain.observe_pwm_bounded -> chain.run_liveness_check: "[FE] Bounded PWM result\n[error status]" { class: fe }
+
+chain.run_liveness_check -> chain.review_ownership: "[FE] Scheduler trace\n[heartbeat alive]" { class: fe }
+chain.review_ownership -> chain.collect_evidence: "[FE] Ownership review\n[no hidden owner]" { class: fe }
+chain.collect_evidence -> chain.judge_gate: "[FE] Evidence package\n[logs + waveforms + review]" { class: fe }
+
+chain.note_source_gap -> chain.record_source_gap { class: cstr }
+chain.note_ce_analysis -> chain.review_ce_mapping { class: cstr }
+chain.note_ce_analysis -> chain.capture_i2c { class: cstr }
+chain.note_getter_contract -> chain.measure_getter_contracts { class: cstr }
+chain.note_timing -> chain.observe_i2c_timeout { class: cstr }
+chain.note_timing -> chain.observe_uart_timeout { class: cstr }
+chain.note_fault_matrix -> chain.inject_i2c_fault { class: cstr }
+chain.note_fault_matrix -> chain.inject_uart_fault { class: cstr }
+chain.note_fault_matrix -> chain.inject_spi_fault { class: cstr }
+chain.note_fault_matrix -> chain.inject_pwm_fault { class: cstr }
+chain.note_scheduler -> chain.run_liveness_check { class: cstr }
+chain.note_scheduler -> chain.review_ownership { class: cstr }
+chain.note_statistics -> chain.log_nominal_results { class: cstr }
+chain.note_environment -> chain.read_ambient { class: cstr }
+chain.note_trace -> chain.judge_gate { class: cstr }

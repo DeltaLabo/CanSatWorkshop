@@ -1,0 +1,163 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V07-GATE-001 PV2: logical component-exchange analysis for
+# FreeRTOS allocation, software interface ownership, and evidence flow.
+# This is an aggregated analysis view; PV3 expands function-level allocation.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 22 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+analysis_operator: "[EA] Analysis Operator" { class: ea }
+code_reviewer: "[EA] Code Reviewer" { class: ea }
+static_analyzer: "[EA] Static analysis /\ncall-graph tool" { class: ea }
+allocation_artifacts: "[EA] Allocation and\nownership matrices" { class: ea }
+rtos_event_logger: "[EA] RTOS event logger" { class: ea }
+stress_trace_harness: "[EA] Stress/trace harness\n(optional hook)" { class: ea }
+evidence_repository: "[EA] Evidence repository" { class: ea }
+
+system: "[System] OBCC-V07-GATE-001 — FreeRTOS allocation/interface logical analysis\nRefs: IVV, OBCC README, Variable Getter Template, v1.0 PV2/PV3/FC5-FC8, OBCC-R7" {
+  class: sys
+  direction: down
+
+  software_article: "[PC] v0.7 OBCC software\nanalysis article" {
+    class: pc
+    direction: right
+
+    obcc_flight: "[PC] OBCC XIAO ESP32-S3\nsoftware context" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      verification_adapter: "[LC] Allocation/trace\nreview adapter\n(verification-only)" { class: lc }
+      trace_exporter: "[LC] RTOS trace exporter\n(verification-only)" { class: lc }
+      free_rtos: "[LC] FreeRTOS Kernel" { class: lc }
+      supervisor_state: "[LC] OBCC Supervisor +\nState Manager" { class: lc }
+      health_monitor: "[LC] Health Monitor" { class: lc }
+      getter_providers: "[LC] ADS/AMS/ESS\nsensing + getters" { class: lc }
+      telemetry_collector: "[LC] Telemetry Collector" { class: lc }
+      telemetry_encoder: "[LC] Telemetry Encoder" { class: lc }
+      command_handler: "[LC] Command Handler" { class: lc }
+      deployment_controller: "[LC] Deployment Controller\n(PDM Processing)" { class: lc }
+      cansat_lora: "[LC] LoRa Transceiver" { class: lc }
+    }
+
+    ground_path: "[PC] Ground station / PC\nsoftware context" {
+      class: pc
+      direction: down
+      grid-columns: 1
+      ground_decode_display_store: "[LC] Ground decode,\ndisplay, and store" { class: lc }
+      ground_command_origin: "[LC] Ground command\ngeneration" { class: lc }
+    }
+  }
+
+  note_alloc: "[C] PF-001 allocation analysis: every modeled function is\nmapped to the intended LC/task across Supervisor, Health Monitor,\nFreeRTOS, sensing/getters, telemetry, command/state, deployment,\nand ground decode/display/store; no hidden foreign ownership." {
+    class: note
+    shape: page
+  }
+
+  note_ce: "[C] PF-002 software CE analysis: getter, queue, state,\nmode-gate, IMU/altitude, command, payload, and trace-evidence\nexchanges have an accountable owner, modeled direction, data\ncontract, and observable evidence endpoint." {
+    class: note
+    shape: page
+  }
+
+  note_rtos: "[C] PF-003 FreeRTOS hardening: task creation, timers,\nqueues, mutex/shared-bus protection, ISR-safe calls, queue overflow\nhandling, watchdog/liveness, and no unbounded dynamic allocation\nwhere relevant are inspected/analyzed against the model." {
+    class: note
+    shape: page
+  }
+
+  note_trace: "[C] PF-004 trace/stress hook: RTOS event logs may support\nqueue-depth, scheduler-liveness, mutex, and ISR rationale. Use n=59\nin-limit timing samples only for a 95/95 deadline claim; otherwise\nlabel traces as characterization." {
+    class: note
+    shape: page
+  }
+
+  note_source_gap: "[C] PF-005 source gap: no v0.7 Capella/D2 source\nbaseline exists; copied v1.0 views are target-context inputs\nand cannot be treated as an as-built v0.7 model." {
+    class: note
+    shape: page
+  }
+}
+
+analysis_operator -> system.software_article.obcc_flight.verification_adapter: "[CE] Review procedure\nand dispositions" { class: ce }
+code_reviewer -> system.software_article.obcc_flight.verification_adapter: "[CE] Code inspection\nfindings" { class: ce }
+static_analyzer -> system.software_article.obcc_flight.verification_adapter: "[CE] Call graph /\nsymbol ownership" { class: ce }
+allocation_artifacts -> system.software_article.obcc_flight.verification_adapter: "[CE] Allocation, task,\nqueue, mutex, ISR\ninventories" { class: ce }
+stress_trace_harness -> system.software_article.obcc_flight.verification_adapter: "[CE] Load profile /\ntrace scenario" { class: ce }
+system.software_article.obcc_flight.trace_exporter -> rtos_event_logger: "[CE] Task/queue/mutex/\nISR events" { class: ce }
+system.software_article.obcc_flight.verification_adapter -> evidence_repository: "[CE] Review package\nand report inputs" { class: ce }
+
+system.software_article.obcc_flight.free_rtos -> system.software_article.obcc_flight.verification_adapter: "[CE] Task/queue/timer/\nmutex/ISR inventory" { class: ce }
+system.software_article.obcc_flight.free_rtos -> system.software_article.obcc_flight.health_monitor: "[CE] Timer +\nwatchdog service" { class: ce }
+system.software_article.obcc_flight.free_rtos -> system.software_article.obcc_flight.telemetry_collector: "[CE] Periodic task\nrelease" { class: ce }
+system.software_article.obcc_flight.free_rtos -> system.software_article.obcc_flight.telemetry_encoder: "[CE] Queue wait +\n2 s timer" { class: ce }
+system.software_article.obcc_flight.free_rtos -> system.software_article.obcc_flight.command_handler: "[CE] ISR-safe\nnotification" { class: ce }
+
+system.software_article.obcc_flight.health_monitor -> system.software_article.obcc_flight.supervisor_state: "[CE] Startup/runtime\nstatus" { class: ce }
+system.software_article.obcc_flight.getter_providers -> system.software_article.obcc_flight.telemetry_collector: "[CE] Getters" { class: ce }
+system.software_article.obcc_flight.telemetry_collector -> system.software_article.obcc_flight.telemetry_encoder: "[CE] Measurement\nqueue" { class: ce }
+system.software_article.obcc_flight.telemetry_collector -> system.software_article.obcc_flight.deployment_controller: "[CE] IMU/alt" { class: ce }
+system.software_article.obcc_flight.command_handler -> system.software_article.obcc_flight.supervisor_state: "[CE] State" { class: ce }
+system.software_article.obcc_flight.supervisor_state -> system.software_article.obcc_flight.deployment_controller: "[CE] Mode gate" { class: ce }
+system.software_article.obcc_flight.telemetry_encoder -> system.software_article.obcc_flight.cansat_lora: "[CE] SPI payload" { class: ce }
+system.software_article.obcc_flight.cansat_lora -> system.software_article.obcc_flight.command_handler: "[CE] SPI command" { class: ce }
+system.software_article.obcc_flight.cansat_lora -> system.software_article.ground_path.ground_decode_display_store: "[CE] LoRa / Payload" { class: ce }
+system.software_article.ground_path.ground_command_origin -> system.software_article.obcc_flight.cansat_lora: "[CE] LoRa / Command" { class: ce }
+
+system.note_alloc -> system.software_article.obcc_flight.verification_adapter { class: cstr }
+system.note_alloc -> system.software_article.ground_path.ground_decode_display_store { class: cstr }
+system.note_ce -> system.software_article.obcc_flight.telemetry_collector { class: cstr }
+system.note_ce -> system.software_article.obcc_flight.command_handler { class: cstr }
+system.note_rtos -> system.software_article.obcc_flight.free_rtos { class: cstr }
+system.note_trace -> rtos_event_logger { class: cstr }
+system.note_trace -> stress_trace_harness { class: cstr }
+system.note_source_gap -> system.software_article { class: cstr }
+
+# Layout-only edges keep review means above, the software context in the middle, and notes below.
+analysis_operator -> code_reviewer { style: { opacity: 0 } }
+code_reviewer -> static_analyzer { style: { opacity: 0 } }
+static_analyzer -> allocation_artifacts { style: { opacity: 0 } }
+allocation_artifacts -> rtos_event_logger { style: { opacity: 0 } }
+rtos_event_logger -> stress_trace_harness { style: { opacity: 0 } }
+stress_trace_harness -> evidence_repository { style: { opacity: 0 } }
+system.software_article -> system.note_alloc { style: { opacity: 0 } }
+system.note_alloc -> system.note_ce { style: { opacity: 0 } }
+system.note_ce -> system.note_rtos { style: { opacity: 0 } }
+system.note_rtos -> system.note_trace { style: { opacity: 0 } }
+system.note_trace -> system.note_source_gap { style: { opacity: 0 } }

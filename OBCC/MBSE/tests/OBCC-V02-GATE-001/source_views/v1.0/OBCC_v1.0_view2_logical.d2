@@ -1,0 +1,201 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC v1.0 logical view.
+# The CE set is intentionally aggregated so the view stays readable; detailed
+# task-level behavior is captured in the functional chains.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 18 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] Physical System" {
+  class: sys
+  direction: down
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: right
+
+    data_source_modules: "[PC] ADS / AMS / PDS\nsource modules" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ads_module: "[PC] ADS Module" {
+        class: pc
+        direction: right
+        ads_gps_sensing: "[LC] ADS GPS Sensing" { class: lc }
+        ads_kinematic_sensing: "[LC] ADS Kinematic Sensing" { class: lc }
+      }
+
+      ams_module: "[PC] AMS Module" {
+        class: pc
+        direction: right
+        ams_sensing: "[LC] AMS Sensing" { class: lc }
+      }
+
+      pds_module: "[PC] PDS Module" {
+        class: pc
+        direction: right
+        battery_monitoring: "[LC] Battery Monitoring" { class: lc }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+
+        rfm95w: "[PC] RFM95W LoRa" {
+          class: pc
+          cansat_lora: "[LC] LoRa Transceiver" { class: lc }
+        }
+
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+          grid-columns: 4
+
+          ads_processing: "[LC] ADS Processing" { class: lc }
+          ams_processing: "[LC] AMS Processing" { class: lc }
+          ess_processing: "[LC] ESS Processing" { class: lc }
+          pdm_processing: "[LC] PDM Processing" { class: lc }
+          telemetry_collector: "[LC] Telemetry Collector" { class: lc }
+          telemetry_encoder: "[LC] Telemetry Encoder" { class: lc }
+          command_handler: "[LC] Command Handler" { class: lc }
+          obcc_supervisor: "[LC] OBCC Supervisor" { class: lc }
+          health_monitor: "[LC] Health Monitor" { class: lc }
+          free_rtos: "[LC] FreeRTOS Kernel" { class: lc }
+        }
+      }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: down
+      servo: "[PC] Servo" {
+        class: pc
+        trigger: "[LC] Trigger" { class: lc }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" { class: pc }
+  }
+
+  ground_station_pcb: "[PC] Ground Station PCB" {
+    class: pc
+    direction: right
+
+    ground_rfm95w: "[PC] RFM95W LoRa" {
+      class: pc
+      ground_lora: "[LC] LoRa Transceiver" { class: lc }
+    }
+
+    ground_xiao: "[PC] XIAO ESP32" {
+      class: pc
+      lora_forwarder: "[LC] LoRa Forwarder" { class: lc }
+    }
+  }
+
+  pc_computer: "[PC] PC" {
+    class: pc
+    direction: right
+    decoder: "[LC] Decoder" { class: lc }
+    dashboard: "[LC] Dashboard" { class: lc }
+    csv_writer: "[LC] CSV Writer" { class: lc }
+  }
+
+  note_freertos: "[C] XIAO ESP32-S3 is dual-core;\nOBCC v1.0 uses multiple\nFreeRTOS tasks, queues,\ntimers, mutexes, and ISRs" {
+    class: note
+    shape: page
+  }
+
+  note_modes: "[C] Stand-by still sends\nheartbeat and telemetry;\nit only inhibits parachute\ndeployment" {
+    class: note
+    shape: page
+  }
+
+  note_payload: "[C] LoRa frame v1.0 excludes\nrelative humidity; measurement\npayload is 34 bytes before\nany frame header/status metadata" {
+    class: note
+    shape: page
+  }
+
+  note_health: "[C] Startup critical peripherals:\nRFM95W LoRa, BME280, Servo.\nRuntime sensor faults return\nerror-coded values without\nscheduler blocking." {
+    class: note
+    shape: page
+  }
+}
+
+system.cansat.data_source_modules.ads_module.ads_gps_sensing -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing: "[CE] UART" { class: ce }
+system.cansat.data_source_modules.ads_module.ads_kinematic_sensing -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing: "[CE] I2C" { class: ce }
+system.cansat.data_source_modules.ams_module.ams_sensing -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing: "[CE] I2C" { class: ce }
+system.cansat.data_source_modules.pds_module.battery_monitoring -> system.cansat.obcc_module.obcc_pcb.xiao.ess_processing: "[CE] I2C" { class: ce }
+
+system.cansat.obcc_module.obcc_pcb.xiao.command_handler -> system.cansat.obcc_module.obcc_pcb.xiao.obcc_supervisor: "[CE] State" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.obcc_supervisor -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing: "[CE] Mode gate" { class: ce }
+
+system.cansat.obcc_module.obcc_pcb.xiao.ads_processing -> system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector: "[CE] Getters" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing -> system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector: "[CE] Getters" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.ess_processing -> system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector: "[CE] Getters" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector -> system.cansat.obcc_module.obcc_pcb.xiao.telemetry_encoder: "[CE] Queue" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing: "[CE] IMU/alt" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing -> system.cansat.parachute_module.servo.trigger: "[CE] PWM" { class: ce }
+
+system.cansat.obcc_module.obcc_pcb.xiao.telemetry_encoder -> system.cansat.obcc_module.obcc_pcb.rfm95w.cansat_lora: "[CE] SPI" { class: ce }
+system.cansat.obcc_module.obcc_pcb.rfm95w.cansat_lora -> system.cansat.obcc_module.obcc_pcb.xiao.command_handler: "[CE] SPI" { class: ce }
+system.cansat.obcc_module.obcc_pcb.rfm95w.cansat_lora -> system.ground_station_pcb.ground_rfm95w.ground_lora: "[CE] LoRa" { class: ce }
+system.ground_station_pcb.ground_rfm95w.ground_lora -> system.ground_station_pcb.ground_xiao.lora_forwarder: "[CE] SPI" { class: ce }
+system.ground_station_pcb.ground_xiao.lora_forwarder -> system.ground_station_pcb.ground_rfm95w.ground_lora: "[CE] SPI" { class: ce }
+system.ground_station_pcb.ground_xiao.lora_forwarder -> system.pc_computer.decoder: "[CE] UART" { class: ce }
+system.pc_computer.decoder -> system.pc_computer.csv_writer: "[CE] Payload" { class: ce }
+system.pc_computer.decoder -> system.pc_computer.dashboard: "[CE] Payload" { class: ce }
+system.pc_computer.dashboard -> system.pc_computer.decoder: "[CE] Command" { class: ce }
+
+# Layout-only edges preserve the flight-to-ground reading order and keep notes below the system.
+system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
+system.ground_station_pcb -> system.pc_computer { style: { opacity: 0 } }
+system.pc_computer -> system.note_freertos { style: { opacity: 0 } }
+system.note_freertos -> system.note_modes { style: { opacity: 0 } }
+system.note_modes -> system.note_payload { style: { opacity: 0 } }
+system.note_payload -> system.note_health { style: { opacity: 0 } }

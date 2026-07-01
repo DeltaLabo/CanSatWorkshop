@@ -1,0 +1,120 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V07-GATE-001 functional chain: analysis/inspection workflow and
+# optional trace/stress hook for FreeRTOS allocation and interface ownership.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 28 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V07-GATE-001 — FreeRTOS allocation/interface analysis chain\nRefs: IVV, OBCC README, Variable Getter Template, v1.0 PV2/PV3/FC4-FC8, OBCC-R7" {
+  class: chain
+  direction: down
+
+  record_gate_context: "[F] Operator: record v0.7 -> v0.8\ngate and absent v0.7 model" { class: func }
+  load_model_context: "[F] Analyst: load copied\nv1.0 PV2/PV3/chains" { class: func }
+  inspect_artifact_presence: "[F] Reviewer: inspect source, build,\nallocation matrix, RTOS inventory,\nand trace-hook artifacts" { class: func }
+  extract_code_inventory: "[F] Static analyzer: extract functions,\ntasks, queues, timers, mutexes,\nISRs, calls, and allocations" { class: func }
+  build_allocation_matrix: "[F] Analyst: build model-to-code\nfunction/LC/task matrix" { class: func }
+  review_supervisor_rtos: "[F] Reviewer: analyze Supervisor,\nHealth Monitor, FreeRTOS objects,\ntimers, mutexes, and ISRs" { class: func }
+  review_sensing_telemetry: "[F] Reviewer: analyze sensing/getters,\nTelemetry Collector, encoder,\nmeasurement queue, and health flags" { class: func }
+  review_command_deploy_ground: "[F] Reviewer: analyze command handler,\nstate manager, mode/deployment gate,\nand ground decode/display/store" { class: func }
+  review_software_ce: "[F] Reviewer: analyze getters, queue,\nstate, mode-gate, IMU/alt,\npayload, and command interfaces" { class: func }
+  capture_trace_hook: "[F] RTOS logger: capture optional\nstress/liveness trace hooks" { class: func }
+  analyze_fault_hardening: "[F] Analyst: check queue overflow,\nmutex deadlock/priority inversion,\nISR-safe calls, and scheduler liveness" { class: func }
+  resolve_findings: "[F] Team: resolve discrepancies\nor open controlled findings" { class: func }
+  decide_advancement: "[F] Review board: decide v0.8\nadvancement readiness" { class: func }
+  archive_evidence: "[F] Operator: archive report inputs\nin results/OBCC-V07-GATE-001" { class: func }
+
+  note_pf_artifacts: "[C] PF-001 Inspection pass: all required\nartifacts are present or explicitly listed\nas missing blocking findings: source/build ID,\nallocation matrix, task/queue/timer/mutex/ISR\ninventory, trace-hook definition, and review log." {
+    class: note
+    shape: page
+  }
+
+  note_pf_alloc: "[C] PF-002 Allocation pass: every modeled\nfunction is assigned to the intended LC/task;\nno foreign function, hidden state owner, or\nunmodeled deployment/command bypass is accepted." {
+    class: note
+    shape: page
+  }
+
+  note_pf_ce: "[C] PF-003 Interface pass: getter contracts,\nqueue ownership/depth/overflow policy, state\ntransitions, mode/deployment gates, IMU/altitude\ndata, and ground payload/command paths match\nthe model and are analyzable from evidence." {
+    class: note
+    shape: page
+  }
+
+  note_pf_rtos: "[C] PF-004 FreeRTOS fault hardening pass:\nshared buses use mutex protection, ISRs call\nISR-safe APIs, timers/tasks are bounded,\nno unanalyzed unbounded dynamic allocation remains,\nand scheduler-blocking failure is not observed or justified." {
+    class: note
+    shape: page
+  }
+
+  note_pf_stats: "[C] Statistical viewpoint: analysis/inspection\nrequire 100% disposition of modeled elements.\nOptional stress traces are characterization unless\nclaim-specific sample size is justified; use n=59\nin-limit timing samples for a 95/95 deadline claim." {
+    class: note
+    shape: page
+  }
+
+  note_traceability: "[C] Traceability: OBCC-UC-StartupHealth,\nOBCC-UC-TelemetryDownlink, OBCC-UC-WirelessCommand,\nOBCC-UC-DeploymentGate, and OBCC-FE-SchedulerBlocked." {
+    class: note
+    shape: page
+  }
+}
+
+chain.record_gate_context -> chain.load_model_context: "[FE] Gate scope\n[v0.7 -> v0.8]" { class: fe }
+chain.load_model_context -> chain.inspect_artifact_presence: "[FE] Model baseline\n[v1.0 context]" { class: fe }
+chain.inspect_artifact_presence -> chain.extract_code_inventory: "[FE] Artifact set\n[present/missing]" { class: fe }
+chain.extract_code_inventory -> chain.build_allocation_matrix: "[FE] Code inventory\n[symbols + RTOS objects]" { class: fe }
+chain.build_allocation_matrix -> chain.review_supervisor_rtos: "[FE] Allocation matrix\n[Supervisor/RTOS]" { class: fe }
+chain.build_allocation_matrix -> chain.review_sensing_telemetry: "[FE] Allocation matrix\n[Sensing/telemetry]" { class: fe }
+chain.build_allocation_matrix -> chain.review_command_deploy_ground: "[FE] Allocation matrix\n[Command/deploy/ground]" { class: fe }
+chain.review_supervisor_rtos -> chain.review_software_ce: "[FE] RTOS ownership\nrationale" { class: fe }
+chain.review_sensing_telemetry -> chain.review_software_ce: "[FE] Getter + queue\nrationale" { class: fe }
+chain.review_command_deploy_ground -> chain.review_software_ce: "[FE] State/mode/ground\nrationale" { class: fe }
+chain.review_software_ce -> chain.capture_trace_hook: "[FE] Trace objectives\n[optional]" { class: fe }
+chain.capture_trace_hook -> chain.analyze_fault_hardening: "[FE] RTOS event log\n[task/queue/mutex/ISR]" { class: fe }
+chain.review_software_ce -> chain.analyze_fault_hardening: "[FE] Static evidence\n[interfaces]" { class: fe }
+chain.analyze_fault_hardening -> chain.resolve_findings: "[FE] Pass/fail dispositions\n[findings/waivers]" { class: fe }
+chain.resolve_findings -> chain.decide_advancement: "[FE] Closure package\n[ready / not ready]" { class: fe }
+chain.decide_advancement -> chain.archive_evidence: "[FE] Decision record\n[v0.8 gate]" { class: fe }
+
+chain.note_pf_artifacts -> chain.inspect_artifact_presence { class: cstr }
+chain.note_pf_alloc -> chain.build_allocation_matrix { class: cstr }
+chain.note_pf_ce -> chain.review_software_ce { class: cstr }
+chain.note_pf_rtos -> chain.analyze_fault_hardening { class: cstr }
+chain.note_pf_stats -> chain.capture_trace_hook { class: cstr }
+chain.note_traceability -> chain.decide_advancement { class: cstr }

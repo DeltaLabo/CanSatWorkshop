@@ -1,0 +1,95 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional-chain inventory view for ADS-IVV-FC-INIT.
+# Covers runtime init-state behavior in v0.1, v0.2, and v1.0; v0.3 is explicit PCB-only N/A.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-INIT\nPeripheral initialization source-chain inventory\nRefs: IVV; NASA-SE; GPS/UBX; IMU/I2C; SW/stats; ADS MBSE plan" {
+  class: sys
+  direction: down
+
+  versions: "[PC] Selected ADS source baselines\nsource_views/v0.1, v0.2, v0.3, v1.0" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    v01: "[PC] v0.1 prototype\nGPS-only runtime baseline" {
+      class: pc
+      direction: down
+      init_context: "[LC] Init-state and Serial setup context\nview3 allocation + view5 logging" {
+        class: lc
+        direction: down
+        get_ubx: "[F] Get UBX-G7020-KT\ninit state" { class: func }
+        collect: "[F] Collect peripheral\ninit states" { class: func }
+        init_serial: "[F] Init Serial0 and\nSerial1" { class: func }
+        log_serial: "[F] Log init states\nvia Serial0" { class: func }
+      }
+      note_c: "[C] v0.1 coverage\nUBX/GPS initialization plus Serial0/Serial1\nsetup context. No IMU is modeled. UART timeout <=5 ms,\nno-blocking, and process/calculate timing constraints apply\nthrough the logical/allocation views." { class: note; shape: page }
+    }
+
+    v02: "[PC] v0.2 prototype\nGPS + ICM20948 runtime baseline" {
+      class: pc
+      direction: down
+      init_chain: "[LC] Peripheral initialisation chain\nview7 + Serial0 evidence view8" {
+        class: lc
+        direction: down
+        read_gps: "[F] Read/store GPS\nlat, lon" { class: func }
+        get_ubx: "[F] Get UBX-G7020-KT\ninit state" { class: func }
+        respond_i2c: "[F] Respond to I2C\nRequests" { class: func }
+        get_icm: "[F] Get ICM20948\ninit state" { class: func }
+        collect: "[F] Collect peripheral\ninit states" { class: func }
+        init_serial: "[F] Init Serial0 and\nSerial1" { class: func }
+        log_serial: "[F] Log init states\nvia Serial0" { class: func }
+      }
+      note_c: "[C] v0.2 coverage\nUBX/GPS and ICM20948 init states plus Serial0/Serial1\nsetup. UART timeout <=5 ms, no-blocking, Variable Getter,\nand process/calculate <5 ms are modeled. Explicit I2C timeout\nis a v0.2 modeling gap; observe no-hang behavior." { class: note; shape: page }
+    }
+
+    v03: "[PC] v0.3 ADS PCB delivery\nsource_views/v0.3" {
+      class: pc
+      direction: down
+      note_na: "[C] N/A branch\nPCB-only delivery contains physical GPS, IMU, connector,\nfootprints, UART/I2C/3V3 traces, and manufacturing note.\nNo LC, CE, functional allocation, firmware boot, or\nperipheral initialization chain is modeled." { class: note; shape: page }
+    }
+
+    v10: "[PC] v1.0 integrated CanSat\nADS Processing + OBCC runtime baseline" {
+      class: pc
+      direction: down
+      init_chain: "[LC] Peripheral initialisation chain\nview7 + ADS/OBCC allocation" {
+        class: lc
+        direction: down
+        read_gps: "[F] Read/store GPS\nlat, lon" { class: func }
+        get_ubx: "[F] Get UBX-G7020-KT\ninit state" { class: func }
+        respond_i2c: "[F] Respond to I2C\nRequests" { class: func }
+        get_icm: "[F] Get ICM20948\ninit state" { class: func }
+        collect: "[F] Collect peripheral\ninit states in OBCC" { class: func }
+      }
+      note_c: "[C] v1.0 coverage\nGPS + ICM20948 init states collected in the integrated\nADS Processing / OBCC context. UART timeout <=5 ms,\nI2C timeout <=5 ms, no-blocking, Variable Getter, and\nprocess/calculate <5 ms constraints are modeled." { class: note; shape: page }
+    }
+  }
+
+  note_trace: "[C] Traceability\nCapability ADS-CAP-INIT; feared events\nADS-FE-SILENT-SENSOR-FAIL and ADS-FE-STUCK-LOOP;\nlinked constraints: no-blocking, UART timeout <=5 ms,\nI2C timeout <=5 ms where modeled, and process/calculate\ntiming where relevant." { class: note; shape: page }
+  note_scope: "[C] Source coverage\nAll D2/PNG source views for v0.1, v0.2, v0.3, and v1.0\nare copied into this definition. Runtime testing applies to\nv0.1/v0.2/v1.0; v0.3 is explicitly documented N/A." { class: note; shape: page }
+}
+
+system.versions.v01.note_c -> system.versions.v01.init_context.collect { class: cstr }
+system.versions.v02.note_c -> system.versions.v02.init_chain.collect { class: cstr }
+system.versions.v10.note_c -> system.versions.v10.init_chain.collect { class: cstr }
+system.note_trace -> system.versions { class: cstr }
+system.note_scope -> system.versions { class: cstr }

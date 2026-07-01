@@ -1,0 +1,143 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Verification-only functional allocation for ADS-IVV-FC-MISSION-WINDOW.
+# Allocates test, stimulus, logging, analysis, and UUT observation functions.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-MISSION-WINDOW\nVerification functional allocation\nRefs: IVV; NASA-SE; GEVS; ESA-CANSAT; SW/stats" {
+  class: sys
+  direction: down
+
+  selected_version: "[PC] Selected ADS version\nmission-window UUT interface" {
+    class: pc
+    direction: down
+
+    observation_lc: "[LC] Runtime chain observation\ninterface" {
+      class: lc
+      direction: down
+      grid-columns: 2
+      expose_source_set: "[F] Expose copied source\nviews and constraints" { class: func }
+      emit_init_health: "[F] Emit boot, reset,\nand peripheral health markers" { class: func }
+      emit_gps_fields: "[F] Emit GPS lat/lon,\nvalidity, timestamp fields" { class: func }
+      emit_imu_attitude: "[F] Emit IMU and attitude\nfields where modeled" { class: func }
+      deliver_record: "[F] Deliver Serial0 frames\nor OBCC records" { class: func }
+      emit_cycle_markers: "[F] Emit cycle/frame\nsequence markers" { class: func }
+    }
+  }
+}
+
+conductor: "[EA] Human IVV test conductor" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  select_baseline: "[F] Select ADS version,\nsource baseline, firmware commit" { class: func }
+  press_start: "[F] Press launch/start\nor begin mission-window run" { class: func }
+  monitor_safety: "[F] Monitor safe power\nand stop criteria" { class: func }
+  record_deviations: "[F] Record deviations,\nwaivers, retest status" { class: func }
+}
+
+run_controller: "[EA] Mission-window run\ncontroller / timer" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  set_window: "[F] Set mission duration,\nclaimed cadence, max gap" { class: func }
+  start_stop_timer: "[F] Start/stop representative\ndescent window" { class: func }
+  emit_time_markers: "[F] Emit synchronized\ntime markers" { class: func }
+  enforce_stop: "[F] Enforce configured\nend-of-window stop" { class: func }
+}
+
+stimulus_truth: "[EA] GPS/IMU truth and\nstimulus tools" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  provide_gps_truth: "[F] Provide GPS truth\nor simulated descent track" { class: func }
+  provide_imu_truth: "[F] Provide IMU orientation,\nrate, or still reference" { class: func }
+  provide_uncertainty: "[F] Provide reference\nuncertainty and calibration" { class: func }
+  inject_faults: "[F] Inject silent, corrupt,\nstale, timeout stimuli" { class: func }
+}
+
+power_source: "[EA] Power source /\nbattery simulator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  supply_power: "[F] Supply current-limited\nmission-window power" { class: func }
+  log_power: "[F] Log voltage/current\nand brownout markers" { class: func }
+}
+
+logger: "[EA] PC or OBCC logger" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  capture_serial0: "[F] Capture Serial0 logs\nfor v0.1/v0.2" { class: func }
+  capture_obcc: "[F] Capture OBCC delivery\nlogs for v1.0" { class: func }
+  capture_truth_env: "[F] Capture truth, timer,\npower, ambient records" { class: func }
+  preserve_raw: "[F] Preserve raw evidence\nand hashes/metadata" { class: func }
+}
+
+ambient_monitor: "[EA] Ambient monitor" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  read_environment: "[F] Read temperature and\nhumidity before and after run" { class: func }
+  log_environment: "[F] Log readings with\nequipment ID/calibration" { class: func }
+}
+
+analysis_station: "[EA] Analysis and review\nstation" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  align_records: "[F] Align ADS, truth,\nand timer records" { class: func }
+  check_fields: "[F] Check expected fields\nand time correlation" { class: func }
+  compute_cadence: "[F] Compute frame/cycle\npresence and max gaps" { class: func }
+  analyze_faults: "[F] Analyze resets, stalls,\nfault recovery, invalid data" { class: func }
+}
+
+reviewer: "[EA] IVV reviewer /\nconfiguration authority" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  review_verdict: "[F] Review pass/fail, N/A,\nblocked items, limitations" { class: func }
+}
+
+c_pass: "[C] Pass/fail constraints\nNo reset or unrecovered peripheral failure; expected modeled fields\nfor selected version are present/time-correlated; at least 95% of\nexpected cycles/frames are present when cadence is claimed; no gap\nexceeds selected maximum." { class: note; shape: page }
+c_prereq: "[C] Blocked verdict prerequisites\nMission duration, expected cadence/frame rule, maximum allowed gap,\ntruth/reference tools, firmware commit, hardware revision, and logger\ntimebase must be fixed before execution verdict can be closed." { class: note; shape: page }
+c_stats: "[C] Statistics viewpoint\nUse complete run records. Repeated samples on one article are\nscreening unless independence is justified. For deadline/timing 95/95\nclaims use n=59 all within limit; for PDR use exact binomial bounds." { class: note; shape: page }
+c_v03: "[C] v0.3 N/A rule\nRecord N/A after reviewing source_views/v0.3 and confirming no\nruntime LC, CE, allocation, or functional chain is modeled." { class: note; shape: page }
+
+c_pass -> analysis_station.check_fields { class: cstr }
+c_pass -> analysis_station.compute_cadence { class: cstr }
+c_pass -> analysis_station.analyze_faults { class: cstr }
+c_prereq -> run_controller.set_window { class: cstr }
+c_prereq -> conductor.select_baseline { class: cstr }
+c_prereq -> logger.preserve_raw { class: cstr }
+c_stats -> analysis_station.compute_cadence { class: cstr }
+c_stats -> reviewer.review_verdict { class: cstr }
+c_v03 -> conductor.record_deviations { class: cstr }
+
+# Layout-only edge to stack verification means under the selected UUT interface.
+system -> conductor { style: { opacity: 0 } }
+conductor -> run_controller { style: { opacity: 0 } }
+run_controller -> stimulus_truth { style: { opacity: 0 } }
+stimulus_truth -> power_source { style: { opacity: 0 } }
+power_source -> logger { style: { opacity: 0 } }
+logger -> ambient_monitor { style: { opacity: 0 } }
+ambient_monitor -> analysis_station { style: { opacity: 0 } }
+analysis_station -> reviewer { style: { opacity: 0 } }

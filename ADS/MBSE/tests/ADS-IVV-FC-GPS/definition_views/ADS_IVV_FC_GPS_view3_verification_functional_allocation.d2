@@ -1,0 +1,104 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Verification-only functional allocation for ADS-IVV-FC-GPS.
+# Allocates test and analysis functions to human actors, test equipment, and the selected ADS version.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-GPS\nVerification-only functional allocation\nRefs: IVV; NASA-SE; GPS/UBX; SW/stats" {
+  class: sys
+  direction: down
+
+  selected_version: "[PC] Selected ADS version\nGPS-chain UUT interface" {
+    class: pc
+    direction: down
+    gps_test_lc: "[LC] GPS chain observation\ninterface" {
+      class: lc
+      direction: down
+      grid-columns: 2
+      expose_model_chain: "[F] Expose copied\nGPS chain and constraints" { class: func }
+      emit_ads_samples: "[F] Emit ADS lat/lon,\nstatus, and timestamps" { class: func }
+      expose_rate_markers: "[F] Expose collection\nrate/gap markers" { class: func }
+      expose_fault_state: "[F] Expose validity,\nfreshness, timeout state" { class: func }
+    }
+  }
+}
+
+conductor: "[EA] IVV GPS test conductor" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  select_baseline: "[F] Select ADS version,\nmodel baseline, firmware commit" { class: func }
+  run_nominal_campaign: "[F] Run nominal GPS\nposition campaign" { class: func }
+  run_fault_campaign: "[F] Run no-fix, malformed,\nsilent GPS fault campaign" { class: func }
+  record_deviations: "[F] Record deviations,\nwaivers, retest status" { class: func }
+}
+
+gnss_reference: "[EA] GNSS truth / stimulus\nsource" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  provide_truth: "[F] Provide truth\nlat/lon/time" { class: func }
+  provide_scenario: "[F] Provide static or\ndynamic GPS scenario" { class: func }
+  provide_uncertainty: "[F] Provide truth and\ninstrument uncertainty" { class: func }
+  inject_gps_faults: "[F] Provide no-fix,\nmalformed, silent stimuli" { class: func }
+}
+
+data_logger: "[EA] Data logger /\ntimebase" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  capture_ads_stream: "[F] Capture ADS GPS\nsamples and raw logs" { class: func }
+  capture_truth_stream: "[F] Capture truth\nsamples and timestamps" { class: func }
+  align_samples: "[F] Align truth and\nADS samples" { class: func }
+  preserve_raw_evidence: "[F] Preserve raw\nevidence files" { class: func }
+}
+
+analysis_tool: "[EA] Statistical analysis\ntool" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  compute_error: "[F] Compute horizontal\nposition error" { class: func }
+  compute_95_95: "[F] Compute 95/95 bound\nwhere claimed" { class: func }
+  analyze_rate: "[F] Analyze 5 Hz\nrate/gaps v0.1/v0.2" { class: func }
+  analyze_fault_results: "[F] Analyze invalid/stale\ndata behavior" { class: func }
+}
+
+quality: "[EA] Quality / configuration\nauthority" {
+  class: ea
+  review_result: "[F] Review pass/fail,\nlimitations, anomalies" { class: func }
+}
+
+note_pass: "[C] GPS chain pass/fail\nPass if valid GPS data traverse the modeled chain,\naccepted position-error criterion is <5 m, v0.1/v0.2\n5 Hz rule is met where modeled, and invalid/stale/fault\nGPS data are not accepted as valid." { class: note; shape: page }
+note_stats: "[C] Statistical viewpoint\nMinimum >=30 matched valid position samples per campaign.\nIf a formal 95/95 accuracy claim is made, compute and record\nthe selected tolerance/confidence method and uncertainty guard band." { class: note; shape: page }
+note_v03: "[C] v0.3 N/A rule\nPass/N/A only after confirming source_views/v0.3 has no\nGPS functional chain, LC allocation, or CE behavior to execute." { class: note; shape: page }
+
+note_pass -> analysis_tool.compute_error { class: cstr }
+note_pass -> analysis_tool.analyze_rate { class: cstr }
+note_pass -> analysis_tool.analyze_fault_results { class: cstr }
+note_stats -> analysis_tool.compute_95_95 { class: cstr }
+note_v03 -> conductor.record_deviations { class: cstr }
+
+# Layout-only edge to stack verification means under the selected UUT interface.
+system -> conductor { style: { opacity: 0 } }
+conductor -> gnss_reference { style: { opacity: 0 } }
+gnss_reference -> data_logger { style: { opacity: 0 } }
+data_logger -> analysis_tool { style: { opacity: 0 } }
+analysis_tool -> quality { style: { opacity: 0 } }

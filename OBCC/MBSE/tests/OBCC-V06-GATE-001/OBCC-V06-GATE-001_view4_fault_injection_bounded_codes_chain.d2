@@ -1,0 +1,138 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V06-GATE-001 functional chain: injected runtime faults shall produce
+# bounded getter/result codes, health disclosure, and observable timing evidence.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "OBCC-V06-GATE-001 — Runtime fault injection and bounded-code chain\nRefs: IVV, PM&SE/IVV, OBCC README, Variable Getter Template, v1.0 Runtime Fault/Telemetry views" {
+  class: chain
+  direction: down
+
+  inspect_setup: "[F] Inspect probes,\nfault injectors, RF monitor,\nand safe fixture" { class: func }
+  measure_ambient: "[F] Read calibrated\nambient thermometer" { class: func }
+  select_fault_case: "[F] Select fault class\nand expected oracle" { class: func }
+  arm_trace: "[F] Arm trace, timing,\nand RF capture" { class: func }
+  start_nominal_runtime: "[F] Start nominal\nruntime services" { class: func }
+
+  inject_i2c_fault: "[F] Inject I2C NACK,\nstuck bus, or late data" { class: func }
+  inject_uart_fault: "[F] Inject UART silence,\nmalformed, or delayed frame" { class: func }
+  inject_spi_radio_fault: "[F] Inject SPI radio busy,\nCRC/status, or RF-loss fault" { class: func }
+  inject_queue_state_fault: "[F] Inject queue overflow,\nstate delay, or stale message" { class: func }
+
+  release_getter_or_radio_task: "[F] Release periodic\ngetter/radio task" { class: func }
+  protect_shared_buses: "[F] Protect shared\nbuses with mutex policy" { class: func }
+  enforce_read_timeout: "[F] Enforce bounded\nI2C/UART read timeout" { class: func }
+  call_variable_getters: "[F] Call variable\ngetters or radio driver" { class: func }
+  return_bounded_result: "[F] Return bounded\nresult/error code" { class: func }
+  mark_stale_missing: "[F] Mark stale or\nmissing value" { class: func }
+  count_and_classify: "[F] Count timeouts\nand classify runtime fault" { class: func }
+  disable_failed_getter: "[F] Disable failed\ngetter if policy requires" { class: func }
+  replace_with_error_code: "[F] Replace missing value\nwith error code" { class: func }
+  publish_health_flags: "[F] Publish health flags\nand fault class" { class: func }
+  add_heartbeat_status: "[F] Add heartbeat, state,\nand degraded-mode status" { class: func }
+  enqueue_without_blocking: "[F] Enqueue telemetry\nwithout unbounded wait" { class: func }
+  transmit_health_telemetry: "[F] Transmit health /\nstatus telemetry" { class: func }
+  capture_trace_rf: "[F] Capture trace timing\nand RF/telemetry evidence" { class: func }
+  compare_oracle: "[F] Compare bounded-code,\ntimeout, and telemetry oracle" { class: func }
+  restore_nominal_state: "[F] Restore nominal\nbus/radio/queue state" { class: func }
+
+  note_fault_classes: "[C] Fault matrix includes I2C NACK/stuck bus,\nUART silence/malformed frames, SPI/radio busy or RF loss,\nqueue/state/mode-gate stress, and recovery after each case." {
+    class: note
+    shape: page
+  }
+
+  note_timeout: "[C] Pass PF-002/PF-003: applicable I2C/UART read\nattempts return within <=5 ms and all getters/drivers return\na bounded result/error code; no unbounded task wait is allowed." {
+    class: note
+    shape: page
+  }
+
+  note_telemetry: "[C] Pass PF-004/PF-005: health/status telemetry\nor trace discloses the injected fault, stale/missing value,\nresult code, degraded mode, and telemetry-cadence impact." {
+    class: note
+    shape: page
+  }
+
+  note_statistics: "[C] Statistical viewpoint: for timeout claims, plan\n59/59 in-limit representative samples per applicable getter/fault\nclass where feasible; fault-class trials are pass/fail screening\nunless independence is justified." {
+    class: note
+    shape: page
+  }
+}
+
+chain.inspect_setup -> chain.measure_ambient: "[FE] Setup accepted []" { class: fe }
+chain.measure_ambient -> chain.select_fault_case: "[FE] Environmental log []" { class: fe }
+chain.select_fault_case -> chain.arm_trace: "[FE] Trial ID + oracle []" { class: fe }
+chain.arm_trace -> chain.start_nominal_runtime: "[FE] Trace ready []" { class: fe }
+chain.start_nominal_runtime -> chain.inject_i2c_fault: "[FE] I2C case []" { class: fe }
+chain.start_nominal_runtime -> chain.inject_uart_fault: "[FE] UART case []" { class: fe }
+chain.start_nominal_runtime -> chain.inject_spi_radio_fault: "[FE] SPI/radio case []" { class: fe }
+chain.start_nominal_runtime -> chain.inject_queue_state_fault: "[FE] Queue/state case []" { class: fe }
+
+chain.inject_i2c_fault -> chain.release_getter_or_radio_task: "[FE] Fault applied []" { class: fe }
+chain.inject_uart_fault -> chain.release_getter_or_radio_task: "[FE] Fault applied []" { class: fe }
+chain.inject_spi_radio_fault -> chain.release_getter_or_radio_task: "[FE] Fault applied []" { class: fe }
+chain.inject_queue_state_fault -> chain.release_getter_or_radio_task: "[FE] Fault applied []" { class: fe }
+
+chain.release_getter_or_radio_task -> chain.protect_shared_buses: "[FE] Task released []" { class: fe }
+chain.protect_shared_buses -> chain.enforce_read_timeout: "[FE] Bus access controlled []" { class: fe }
+chain.enforce_read_timeout -> chain.call_variable_getters: "[FE] Timed read attempt []" { class: fe }
+chain.call_variable_getters -> chain.return_bounded_result: "[FE] Result or fault []" { class: fe }
+chain.return_bounded_result -> chain.mark_stale_missing: "[FE] Error/stale marker []" { class: fe }
+chain.return_bounded_result -> chain.count_and_classify: "[FE] Result code + timing []" { class: fe }
+chain.count_and_classify -> chain.disable_failed_getter: "[FE] Fault policy action []" { class: fe }
+chain.disable_failed_getter -> chain.replace_with_error_code: "[FE] Getter disabled mask []" { class: fe }
+chain.mark_stale_missing -> chain.replace_with_error_code: "[FE] Missing/stale value []" { class: fe }
+chain.replace_with_error_code -> chain.publish_health_flags: "[FE] Error-coded value []" { class: fe }
+chain.count_and_classify -> chain.publish_health_flags: "[FE] Fault class + counters []" { class: fe }
+chain.publish_health_flags -> chain.add_heartbeat_status: "[FE] Health flags []" { class: fe }
+chain.add_heartbeat_status -> chain.enqueue_without_blocking: "[FE] Telemetry set []" { class: fe }
+chain.enqueue_without_blocking -> chain.transmit_health_telemetry: "[FE] Queued telemetry []" { class: fe }
+chain.transmit_health_telemetry -> chain.capture_trace_rf: "[FE] Health/status frame []" { class: fe }
+chain.capture_trace_rf -> chain.compare_oracle: "[FE] Evidence set []" { class: fe }
+chain.compare_oracle -> chain.restore_nominal_state: "[FE] Pass/fail + anomaly log []" { class: fe }
+
+chain.note_fault_classes -> chain.select_fault_case { class: cstr }
+chain.note_timeout -> chain.enforce_read_timeout { class: cstr }
+chain.note_timeout -> chain.return_bounded_result { class: cstr }
+chain.note_telemetry -> chain.publish_health_flags { class: cstr }
+chain.note_telemetry -> chain.capture_trace_rf { class: cstr }
+chain.note_statistics -> chain.compare_oracle { class: cstr }

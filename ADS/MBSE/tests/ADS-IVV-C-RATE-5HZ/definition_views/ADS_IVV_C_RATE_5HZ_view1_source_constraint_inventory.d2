@@ -1,0 +1,96 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Source constraint inventory for ADS-IVV-C-RATE-5HZ.
+# Constraint category: internal collection rate at 5 Hz.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-RATE-5HZ\nSource constraint inventory\nRefs: IVV; SW/stats; ADS MBSE plan; source_views" {
+  class: sys
+  direction: down
+
+  versions: "[PC] Selected ADS MBSE baselines\nall copied under source_views/" {
+    class: pc
+    direction: right
+    grid-columns: 2
+
+    v01: "[PC] v0.1 GPS prototype\nsource_views/v0.1" {
+      class: pc
+      direction: down
+      loop: "[LC] Loop and GPS chain\nview3 allocation + view4 chain" {
+        class: lc
+        direction: down
+        read_store: "[F] Read and store\nlat, lon" { class: func }
+        getters: "[F] Get lat / Get lon" { class: func }
+        collect: "[F] Collect\nmeasurements" { class: func }
+        log: "[F] Log via Serial0\n(view5 evidence path)" { class: func }
+      }
+      note_5hz: "[C] At 5 Hz\nExplicit source constraint on\nCollect measurements. Nominal\ncollection period is 200 ms." { class: note; shape: page }
+      note_timing_context: "[C] Timing context\nGPS UART request/response, getters,\nSerial0 logging, no-blocking rule,\nprocess/calculate <5 ms, UART timeout <=5 ms." { class: note; shape: page }
+    }
+
+    v02: "[PC] v0.2 GPS + IMU prototype\nsource_views/v0.2" {
+      class: pc
+      direction: down
+      loop: "[LC] Loop and GPS/serial chains\nview3 allocation + views4/8 chains" {
+        class: lc
+        direction: down
+        read_store: "[F] Read and store\nlat, lon" { class: func }
+        read_imu: "[F] Read/process IMU\nloop context" { class: func }
+        getters: "[F] Get lat / Get lon" { class: func }
+        collect: "[F] Collect\nmeasurements" { class: func }
+        log: "[F] Log via Serial0\n(view8 evidence path)" { class: func }
+      }
+      note_5hz: "[C] At 5 Hz\nExplicit source constraint on\nCollect measurements. Nominal\ncollection period is 200 ms." { class: note; shape: page }
+      note_timing_context: "[C] Timing context\nGPS and IMU reads share the loop.\nAnalyze Serial0 timestamps, optional\nfirmware timestamps, stale/dropped fields,\nand interference from IMU processing." { class: note; shape: page }
+    }
+
+    v03: "[PC] v0.3 PCB delivery\nsource_views/v0.3" {
+      class: pc
+      direction: down
+      note_na: "[C] N/A for rate execution\nOnly PV1 PCB/trace delivery is modeled.\nNo LC, CE, Collect measurements function,\nfunctional chain, or At 5 Hz constraint exists.\nDo not credit physical UART/I2C traces as rate behavior." { class: note; shape: page }
+    }
+
+    v10: "[PC] v1.0 integrated CanSat\nsource_views/v1.0" {
+      class: pc
+      direction: down
+      loop: "[LC] ADS Processing / OBCC\nview3 allocation + view4 GPS chain" {
+        class: lc
+        direction: down
+        read_store: "[F] Read and store\nlat, lon" { class: func }
+        getters: "[F] Get lat / Get lon" { class: func }
+        collect: "[F] Collect\nmeasurements" { class: func }
+      }
+      note_na: "[C] N/A for ADS 5 Hz verdict\nv1.0 contains Collect measurements but no\nexplicit At 5 Hz ADS constraint and no Serial0\nlogging chain in the current model. Report any\nobserved rate only as information unless a new\nconstraint is added." { class: note; shape: page }
+    }
+  }
+
+  note_trace: "[C] Traceability targets\nConstraint 5 Hz; ADS-CAP-GPS; ADS-CAP-DELIVERY;\nfeared event ADS-FE-STUCK-LOOP. Constraint source category." { class: note; shape: page }
+  note_method: "[C] IADT method\nTesting with supporting Analysis. Verification focuses on\ncollection timestamps, logger timestamps, optional firmware\ntimestamps, loop timing context, and pass/fail constraints." { class: note; shape: page }
+}
+
+system.versions.v01.note_5hz -> system.versions.v01.loop.collect { class: cstr }
+system.versions.v01.note_timing_context -> system.versions.v01.loop { class: cstr }
+system.versions.v02.note_5hz -> system.versions.v02.loop.collect { class: cstr }
+system.versions.v02.note_timing_context -> system.versions.v02.loop { class: cstr }
+system.versions.v10.note_na -> system.versions.v10.loop.collect { class: cstr }
+system.note_trace -> system.versions { class: cstr }
+system.note_method -> system.versions.v01.loop.collect { class: cstr }
+system.note_method -> system.versions.v02.loop.collect { class: cstr }

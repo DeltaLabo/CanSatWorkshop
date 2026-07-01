@@ -1,0 +1,90 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Evidence and traceability interface view for ADS-IVV-C-GETTER.
+# PV2-style logical/evidence interface: record package LCs, external evidence sources, component exchanges, constraints.
+direction: right
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+source_views: "[EA] Copied source-model package\nsource_views/v0.1-v1.0" { class: ea }
+firmware_config: "[EA] Firmware / source-code\nconfiguration baseline" { class: ea }
+review_station: "[EA] Code/model review station" { class: ea }
+firmware_harness_logs: "[EA] Deterministic firmware\nharness logs" { class: ea }
+fault_injector_logs: "[EA] Fault/stale-data\ninjector logs" { class: ea }
+pc_obcc_logger: "[EA] PC / OBCC logger" { class: ea }
+analysis_script: "[EA] Analysis script\nexpected-vector comparator" { class: ea }
+ivv_reviewer: "[EA] IVV reviewer /\ntest conductor" { class: ea }
+results_repository: "[EA] Results repository\nADS/MBSE/tests/results" { class: ea }
+
+system: "[System] ADS-IVV-C-GETTER\nEvidence and traceability record package\nRefs: IVV; ADS MBSE plan; SW/stats; source_views v0.1/v0.2/v0.3/v1.0" {
+  class: sys
+  direction: down
+
+  record_package: "[PC] Variable Getter verification record package" {
+    class: pc
+    direction: down
+    grid-columns: 1
+    trace_matrix: "[LC] Trace matrix\nversions, elements, constraints, targets" { class: lc }
+    structural_review: "[LC] Structural analysis record\nsingle writer, side effects, pointer/return semantics" { class: lc }
+    deterministic_test: "[LC] Deterministic test evidence\nseed values, nominal and fault vectors" { class: lc }
+    delivery_evidence: "[LC] Delivery evidence\ncollected measurements, PC/OBCC observations" { class: lc }
+    analysis_record: "[LC] Analysis-script output\nstability, preservation, state observability" { class: lc }
+    disposition_record: "[LC] Result and disposition\npass/fail/N/A, anomalies, waivers" { class: lc }
+    report_index: "[LC] Expected report index\nresults/ADS-IVV-C-GETTER/<version>/" { class: lc }
+  }
+}
+
+note_targets: "[C] Traceability targets\nConstraint: Variable Getter template. Feared event: ADS-FE-CORRUPT-MEASUREMENT.\nCapabilities: ADS-CAP-GPS, ADS-CAP-IMU, ADS-CAP-ATT, ADS-CAP-DELIVERY where applicable.\nSupporting context: ADS-FE-STUCK-LOOP through timeout/no-blocking evidence." { class: note; shape: page }
+note_passfail: "[C] Pass/fail criteria\nPass only if every applicable version and model element is covered; single-writer storage exists per value;\naccessors are side-effect-light; failed reads preserve prior valid values; freshness/validity/error state is\nobservable; repeated calls are stable until successful update; v1.0 Pointers/Returns do not bypass semantics." { class: note; shape: page }
+note_viewpoints: "[C] Viewpoints\nStatistics: deterministic vector/fault coverage, not a reliability population claim. Fault hardening: no-fix,\nmalformed, silent, stale GPS; NACK/stuck/partial/stale IMU where modeled; pointer lifetime/ownership in v1.0.\nEnvironment/configuration: actual ambient, equipment IDs, firmware commit, build flags, UUT ID." { class: note; shape: page }
+note_reports: "[C] Report rule\nReports reference this modeled definition and record selected version, source baseline, as-tested/as-analyzed\nconfiguration, raw evidence, analysis settings, deviations, anomalies, limitations, waivers, retest status,\nand exact pass/fail/N/A rationale." { class: note; shape: page }
+note_status: "[C] Status and gaps\nModeled definition ready for review; execution pending. v0.3 is N/A because it has no runtime behavior model.\nTraceability IDs are placeholders from the ADS IVV plan until formal mission/capability/feared-event elements exist.\nv0.2 I2C timeout remains a modeling gap but stale/fault behavior is still checked." { class: note; shape: page }
+
+source_views -> system.record_package.trace_matrix: "[CE] source refs" { class: ce }
+firmware_config -> system.record_package.structural_review: "[CE] code cfg" { class: ce }
+review_station -> system.record_package.structural_review: "[CE] review notes" { class: ce }
+firmware_harness_logs -> system.record_package.deterministic_test: "[CE] call logs" { class: ce }
+fault_injector_logs -> system.record_package.deterministic_test: "[CE] fault schedule" { class: ce }
+pc_obcc_logger -> system.record_package.delivery_evidence: "[CE] observed outputs" { class: ce }
+analysis_script -> system.record_package.analysis_record: "[CE] expected-vs-actual" { class: ce }
+system.record_package.trace_matrix -> system.record_package.disposition_record: "[CE] trace" { class: ce }
+system.record_package.structural_review -> system.record_package.disposition_record: "[CE] analysis" { class: ce }
+system.record_package.deterministic_test -> system.record_package.analysis_record: "[CE] raw test" { class: ce }
+system.record_package.delivery_evidence -> system.record_package.analysis_record: "[CE] delivery" { class: ce }
+system.record_package.analysis_record -> system.record_package.disposition_record: "[CE] verdict basis" { class: ce }
+ivv_reviewer -> system.record_package.disposition_record: "[CE] review / approval" { class: ce }
+system.record_package.disposition_record -> system.record_package.report_index: "[CE] status" { class: ce }
+system.record_package.report_index -> results_repository: "[CE] archive" { class: ce }
+
+note_targets -> system.record_package.trace_matrix { class: cstr }
+note_passfail -> system.record_package.disposition_record { class: cstr }
+note_viewpoints -> system.record_package.analysis_record { class: cstr }
+note_reports -> system.record_package.report_index { class: cstr }
+note_status -> system.record_package.disposition_record { class: cstr }
+
+# Layout-only rank hints keep inputs, record package, and repository readable.
+source_views -> system { style: { opacity: 0 } }
+firmware_config -> system { style: { opacity: 0 } }
+review_station -> system { style: { opacity: 0 } }
+firmware_harness_logs -> system { style: { opacity: 0 } }
+fault_injector_logs -> system { style: { opacity: 0 } }
+pc_obcc_logger -> system { style: { opacity: 0 } }
+analysis_script -> system { style: { opacity: 0 } }
+ivv_reviewer -> system { style: { opacity: 0 } }
+system -> results_repository { style: { opacity: 0 } }

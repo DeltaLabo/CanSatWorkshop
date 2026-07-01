@@ -1,0 +1,109 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Cross-version source inventory for ADS-IVV-FC-MISSION-WINDOW.
+# Defines which source chains are covered and why v0.3 is N/A for runtime demonstration/testing.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-FC-MISSION-WINDOW\nCross-version source inventory\nRefs: IVV; NASA-SE; GEVS; ESA-CANSAT; SW/stats; ADS MBSE plan" {
+  class: sys
+  direction: down
+
+  versions: "[PC] ADS MBSE source baselines\nsource_views copied for test definition" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    v01: "[PC] v0.1 runtime prototype\nGPS + Serial0" {
+      class: pc
+      direction: down
+      gps_chain: "[LC] GPS position chain\nview4" {
+        class: lc
+        direction: down
+        measure_gps: "[F] Measure lat/lon\nand send payload" { class: func }
+        read_get_collect: "[F] Read/store, get,\ncollect GPS fields" { class: func }
+      }
+      serial_chain: "[LC] Serial logging chain\nview5" {
+        class: lc
+        direction: down
+        init_states: "[F] Collect UBX init\nstate" { class: func }
+        log_serial0: "[F] Log init states and\nmeasurements via Serial0" { class: func }
+      }
+      c_v01: "[C] v0.1 mission-window coverage\nEnd-to-end runtime demonstration covers GPS data\ncollection at modeled 5 Hz and Serial0 PC delivery.\nNo IMU or attitude fields are expected." { class: note; shape: page }
+    }
+
+    v02: "[PC] v0.2 runtime prototype\nGPS + IMU + Serial0" {
+      class: pc
+      direction: down
+      sensing_chains: "[LC] GPS / IMU chains\nviews4-5" {
+        class: lc
+        direction: down
+        gps: "[F] GPS lat/lon path" { class: func }
+        gyro: "[F] Angular velocity path" { class: func }
+      }
+      attitude_init: "[LC] Attitude + init + logging\nviews6-8" {
+        class: lc
+        direction: down
+        attitude: "[F] Accel/mag to\npitch-roll-yaw" { class: func }
+        init_serial: "[F] GPS/ICM init and\nSerial0 delivery" { class: func }
+      }
+      c_v02: "[C] v0.2 mission-window coverage\nRuntime demonstration covers GPS, IMU angular rate,\nattitude outputs, peripheral init states, 5 Hz\ncollection, and Serial0 PC delivery." { class: note; shape: page }
+    }
+
+    v03: "[PC] v0.3 PCB delivery\nPV1 only" {
+      class: pc
+      direction: down
+      physical_only: "[LC] PCB physical view\nview1" {
+        class: lc
+        direction: down
+        traces: "[F] No runtime function\nmodeled" { class: func }
+      }
+      c_v03: "[C] v0.3 N/A branch\nOnly ADS PCB, GPS, IMU, connector, footprints,\nUART/I2C/3V3 traces, and manufacturing note are modeled.\nNo LC/CE/allocation/functional chain exists to run." { class: note; shape: page }
+    }
+
+    v10: "[PC] v1.0 integrated CanSat\nADS + Backplane + OBCC" {
+      class: pc
+      direction: down
+      sensor_chains: "[LC] GPS / IMU / attitude\nviews4-6" {
+        class: lc
+        direction: down
+        gps: "[F] GPS lat/lon via\nADS Processing" { class: func }
+        imu_att: "[F] IMU angular rate\nand PRY outputs" { class: func }
+      }
+      init_obcc: "[LC] Init + OBCC delivery\nview7 and logical CEs" {
+        class: lc
+        direction: down
+        init: "[F] Collect GPS/ICM\ninit states" { class: func }
+        obcc: "[F] Deliver measurements\nto OBCC via Pointers/Returns" { class: func }
+      }
+      c_v10: "[C] v1.0 mission-window coverage\nRuntime demonstration covers GPS, IMU, attitude, init,\nADS Processing to OBCC delivery, UART/I2C timeouts,\nand no-blocking constraints. No ADS Serial0 chain is modeled." { class: note; shape: page }
+    }
+  }
+
+  c_trace: "[C] Traceability targets\nMission ADS-MSN-CANSAT-DESCENT; placeholders\nADS-CAP-GPS, ADS-CAP-IMU, ADS-CAP-ATT,\nADS-CAP-INIT, ADS-CAP-DELIVERY; feared events\nADS-FE-SILENT-SENSOR-FAIL, ADS-FE-STUCK-LOOP,\nADS-FE-CORRUPT-MEASUREMENT." { class: note; shape: page }
+  c_status: "[C] Definition scope\nIADT: Demonstration/Testing with supporting Analysis.\nRuntime branches apply to v0.1, v0.2, and v1.0.\nv0.3 is explicitly N/A for runtime behavior." { class: note; shape: page }
+}
+
+system.versions.v01.c_v01 -> system.versions.v01.serial_chain.log_serial0 { class: cstr }
+system.versions.v02.c_v02 -> system.versions.v02.attitude_init.init_serial { class: cstr }
+system.versions.v03.c_v03 -> system.versions.v03.physical_only.traces { class: cstr }
+system.versions.v10.c_v10 -> system.versions.v10.init_obcc.obcc { class: cstr }
+system.c_trace -> system.versions { class: cstr }
+system.c_status -> system.versions { class: cstr }

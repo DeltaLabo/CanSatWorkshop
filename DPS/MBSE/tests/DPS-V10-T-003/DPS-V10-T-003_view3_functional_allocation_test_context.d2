@@ -1,0 +1,199 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# DPS-V10-T-003 functional allocation test context.
+# Shows functions participating in CanSat receive path verification.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 38
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 38 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 38
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  confirm_test_baseline: "[F] Confirm DPS v1.0\nbaseline and configuration" { class: func }
+  arm_debug_capture: "[F] Arm OBCC debug\nand evidence capture" { class: func }
+  start_valid_sequence: "[F] Start valid-command\nreceive sequence" { class: func }
+  start_fault_sequence: "[F] Start spoof/no-frame\nand stale-buffer sequence" { class: func }
+  review_verdict: "[F] Review receive-path\nverdict and anomalies" { class: func }
+}
+
+command_test_transmitter: "[EA] Command Test Transmitter\nRFM95W/SX1276 reference radio" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  configure_lora_command_settings: "[F] Configure LoRa\ncommand settings" { class: func }
+  generate_valid_commands: "[F] Generate 60 valid\ncommand frames" { class: func }
+  inject_fault_commands: "[F] Inject spoof/no-frame/\nold-buffer stimuli" { class: func }
+  log_command_sequence: "[F] Log command sequence\nand TX timestamps" { class: func }
+}
+
+obcc_debug_monitor: "[EA] OBCC Debug Monitor\nserial/log probe or logic analyzer" {
+  class: ea
+  direction: down
+  grid-columns: 2
+
+  capture_rx_interrupts: "[F] Capture LoRa RX\ninterrupt events" { class: func }
+  capture_command_reads: "[F] Capture OBCC command\nread results" { class: func }
+  capture_reject_status: "[F] Capture rejection/no-\ncommand status" { class: func }
+  timestamp_observations: "[F] Timestamp observed\ncommand events" { class: func }
+}
+
+test_clock: "[EA] Monotonic Test Clock" {
+  class: ea
+  direction: down
+  provide_timebase: "[F] Provide monotonic\ntrial timebase" { class: func }
+}
+
+system: "[System] DPS v1.0 Physical System\nDPS-V10-T-003 functional allocation context" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  cansat: "[PC] CanSat" {
+    class: pc
+    direction: down
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        direction: right
+
+        cansat_rfm: "[PC] RFM95W LoRa" {
+          class: pc
+          direction: down
+
+          cansat_lora: "[LC] LoRa Transceiver" {
+            class: lc
+            direction: down
+            receive_incoming_data: "[F] Receive incoming data" { class: func }
+          }
+        }
+
+        cansat_xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          direction: down
+
+          obcc: "[LC] OBCC" {
+            class: lc
+            direction: down
+            receive_lora_rx_interrupt: "[F] Receive LoRa\nRX Interrupt" { class: func }
+            read_command: "[F] Read command" { class: func }
+          }
+        }
+      }
+    }
+  }
+
+  pc: "[PC] Test/Evidence PC" {
+    class: pc
+    direction: down
+
+    evidence_collector: "[LC] Command Receive Evidence Collector\n(verification-only)" {
+      class: lc
+      direction: down
+      grid-columns: 2
+
+      capture_tx_log: "[F] Capture transmitter\ncommand log" { class: func }
+      capture_obcc_log: "[F] Capture OBCC debug\nand interrupt log" { class: func }
+      compare_acceptance: "[F] Compare accepted\ncommands to TX log" { class: func }
+      compute_success_stats: "[F] Compute valid-command\nsuccess statistics" { class: func }
+      compute_fault_verdict: "[F] Compute invalid/stale\nrejection verdict" { class: func }
+      archive_evidence: "[F] Archive evidence\nin results folder" { class: func }
+    }
+  }
+}
+
+note_ref: "[C] DPS-V10-T-003 PV3 functional allocation\nIADT: Testing; trace: FC03 CanSat receive path\nRefs: P0,R1-R5,R8-R13; expected report: tests/results/DPS-V10-T-003/" {
+  class: note
+  shape: page
+}
+
+note_valid_pass: "[C] Valid-command pass constraints: 60 valid command frames;\neach causes one OBCC command read with expected state/sequence;\nzero missing, duplicate, wrong or stale acceptances." {
+  class: note
+  shape: page
+}
+
+note_fault_pass: "[C] Fault-hardening pass constraints: 60 spoof/no-frame/old-buffer/invalid\ntrials; zero invalid commands accepted; previous valid command is never re-read;\nvalid follow-up command is accepted once." {
+  class: note
+  shape: page
+}
+
+note_statistics: "[C] Statistics viewpoint: 60/60 valid accepts gives exact-binomial\nscreening evidence; invalid trials are screening counts by class, not a\nhigh-confidence reliability claim." {
+  class: note
+  shape: page
+}
+
+note_environment: "[C] Environment/setup: RF geometry/attenuator, transmitter settings,\nOBCC debug monitor connection, timebase, software revisions and evidence\nfolder are recorded before valid and fault trials." {
+  class: note
+  shape: page
+}
+
+note_verification_only: "[C] Command Receive Evidence Collector is verification-only\nand shall not be treated as flight DPS functionality." {
+  class: note
+  shape: page
+}
+
+note_ref -> system.pc.evidence_collector { class: cstr }
+note_valid_pass -> command_test_transmitter.generate_valid_commands { class: cstr }
+note_valid_pass -> system.cansat.obcc_module.obcc_pcb.cansat_xiao.obcc.read_command { class: cstr }
+note_valid_pass -> system.pc.evidence_collector.compute_success_stats { class: cstr }
+note_fault_pass -> command_test_transmitter.inject_fault_commands { class: cstr }
+note_fault_pass -> obcc_debug_monitor.capture_reject_status { class: cstr }
+note_fault_pass -> system.pc.evidence_collector.compute_fault_verdict { class: cstr }
+note_statistics -> system.pc.evidence_collector.compute_success_stats { class: cstr }
+note_statistics -> system.pc.evidence_collector.compute_fault_verdict { class: cstr }
+note_environment -> command_test_transmitter.configure_lora_command_settings { class: cstr }
+note_environment -> obcc_debug_monitor.capture_rx_interrupts { class: cstr }
+note_environment -> test_clock.provide_timebase { class: cstr }
+note_verification_only -> system.pc.evidence_collector { class: cstr }
+
+# Layout-only edges to keep verification actors above the UUT context.
+test_operator -> command_test_transmitter { style: { opacity: 0 } }
+command_test_transmitter -> obcc_debug_monitor { style: { opacity: 0 } }
+obcc_debug_monitor -> test_clock { style: { opacity: 0 } }
+test_clock -> system { style: { opacity: 0 } }
+system.cansat -> system.pc { style: { opacity: 0 } }

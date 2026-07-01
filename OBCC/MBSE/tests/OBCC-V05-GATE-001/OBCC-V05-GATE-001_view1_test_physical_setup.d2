@@ -1,0 +1,132 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V05-GATE-001 PV1: v0.5 deployment-gating verification physical setup.
+# v0.5 Capella source views are absent; this setup copies/uses v1.0 views only
+# as target-architecture context for the deployment gate. PV2/PV3 decompose the
+# aggregate test-bench equipment into individual external actors and functions.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 24 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_bench: "[EA] Deployment test-bench equipment\n(power/reset, ADS trigger simulator,\ntelemetry/trace logger, servo\ncurrent/position observer, safe fixture)" { class: ea }
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" { class: ea }
+
+system: "[System] OBCC-V05-GATE-001 — v0.5 deployment gate physical test setup\nRefs: IVV, PM&SE/IVV, OBCC README, v1.0 PV1/PV2/PV3/Deployment/Fault chains" {
+  class: sys
+  direction: down
+
+  uut: "[PC] v0.5 OBCC/PDM\ndeployment-gate UUT" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    obcc_controller: "[PC] OBCC controller\nassembly" {
+      class: pc
+      direction: right
+      grid-columns: 3
+      xiao: "[PC] XIAO ESP32-S3" { class: pc }
+      rfm95w: "[PC] RFM95W LoRa" { class: pc }
+      obcc_backplane_connector: "[PC] OBCC backplane /\ntest header" { class: pc }
+    }
+
+    ads_interface_harness: "[PC] ADS trigger-data\ninterface harness" {
+      class: pc
+      direction: right
+      imu_alt_stimulus_port: "[PC] IMU/alt stimulus\nport" { class: pc }
+      emergency_request_port: "[PC] Emergency request\ninjection port" { class: pc }
+    }
+
+    pdm_actuation_path: "[PC] PDM / parachute\nactuation path" {
+      class: pc
+      direction: right
+      grid-columns: 3
+      pwm_driver_test_point: "[PC] PWM/open-command\ntest point" { class: pc }
+      servo_power_shunt: "[PC] Servo current\nmeasurement shunt" { class: pc }
+      servo_connector: "[PC] PDM servo\nconnector" { class: pc }
+      safe_servo: "[PC] Instrumented servo /\nactuator surrogate" { class: pc }
+    }
+
+    note_presence: "[C] Inspection pass: OBCC controller,\nADS stimulus harness, PDM/PWM path,\nservo connector, current/position observer,\ntrace logger, and safe fixture are present\nand dispositioned before energizing." {
+      class: note
+      shape: page
+    }
+
+    note_safety: "[C] Safety constraint: execute with a\nsafe deployment fixture or actuator surrogate.\nDo not use a live parachute release unless a\nseparate safety review authorizes it." {
+      class: note
+      shape: page
+    }
+
+    note_source_gap: "[C] Source baseline gap:\nno v0.5 Capella/D2 views exist in the\nrepository. Copied v1.0 deployment views\nare target-context only." {
+      class: note
+      shape: page
+    }
+  }
+}
+
+test_bench -- system.uut.obcc_controller.xiao: "[PL] USB/power/reset" { class: pl }
+test_bench -- system.uut.ads_interface_harness: "[PL] Stimulus harness" { class: pl }
+test_bench -- system.uut.obcc_controller.rfm95w: "[PL] RF/trace capture" { class: pl }
+test_bench -- system.uut.pdm_actuation_path: "[PL] Probe harness" { class: pl }
+test_bench -- system.uut.pdm_actuation_path.safe_servo: "[PL] Capture mount" { class: pl }
+ambient_thermometer -- system.uut: "[PL] Bench air observation" { class: pl }
+
+system.uut.obcc_controller.xiao -- system.uut.obcc_controller.rfm95w: "[PL] SPI + power" { class: pl }
+system.uut.obcc_controller.xiao -- system.uut.obcc_controller.obcc_backplane_connector: "[PL] GPIO/PWM/backplane" { class: pl }
+system.uut.obcc_controller.obcc_backplane_connector -- system.uut.ads_interface_harness: "[PL] ADS + emergency wiring" { class: pl }
+system.uut.obcc_controller.obcc_backplane_connector -- system.uut.pdm_actuation_path.pwm_driver_test_point: "[PL] Mode-gated PWM" { class: pl }
+system.uut.pdm_actuation_path.pwm_driver_test_point -- system.uut.pdm_actuation_path.servo_connector: "[PL] PWM + power" { class: pl }
+system.uut.pdm_actuation_path.servo_power_shunt -- system.uut.pdm_actuation_path.servo_connector: "[PL] Current shunt" { class: pl }
+system.uut.pdm_actuation_path.servo_connector -- system.uut.pdm_actuation_path.safe_servo: "[PL] Servo cable" { class: pl }
+
+system.uut.note_presence -> system.uut.obcc_controller { class: cstr }
+system.uut.note_presence -> system.uut.pdm_actuation_path { class: cstr }
+system.uut.note_safety -> test_bench { class: cstr }
+system.uut.note_source_gap -> system { class: cstr }
+
+# Layout-only edges keep the test means above the UUT and notes below it.
+test_bench -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> system { style: { opacity: 0 } }
+system.uut.obcc_controller -> system.uut.ads_interface_harness { style: { opacity: 0 } }
+system.uut.ads_interface_harness -> system.uut.pdm_actuation_path { style: { opacity: 0 } }
+system.uut.pdm_actuation_path -> system.uut.note_presence { style: { opacity: 0 } }
+system.uut.note_presence -> system.uut.note_safety { style: { opacity: 0 } }
+system.uut.note_safety -> system.uut.note_source_gap { style: { opacity: 0 } }

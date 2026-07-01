@@ -1,0 +1,132 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Source constraint/function inventory for ADS-IVV-C-GETTER.
+# PA/PV3-style inventory: functions and constraints under the selected source baselines.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-GETTER\nVariable Getter constraint source inventory\nRefs: IVV; ADS MBSE plan; SW/stats; source_views v0.1/v0.2/v0.3/v1.0" {
+  class: sys
+  direction: down
+
+  versions: "[PC] Selected ADS source baselines\ncopied under source_views/" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    v01: "[PC] v0.1 GPS-only runtime baseline" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      loop_scope: "[LC] Loop variable-getter scope\nsource: v0.1 views 2-5" {
+        class: lc
+        direction: down
+        grid-columns: 2
+        read_store_lat_lon: "[F] Read and store\nlat, lon" { class: func }
+        get_lat: "[F] Get lat" { class: func }
+        get_lon: "[F] Get lon" { class: func }
+        collect_measurements: "[F] Collect\nmeasurements" { class: func }
+      }
+      init_logging_context: "[LC] Init/logging context\nnot a new getter target" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        get_ubx_init_state: "[F] Get UBX-G7020-KT\ninit state" { class: func }
+        log_serial0: "[F] Log via Serial0" { class: func }
+      }
+      note_c: "[C] v0.1 applicability\nVariable Getter constraint is modeled on Loop.\nCovered measured values: latitude and longitude.\nNo IMU angular/attitude process/calculate pairs are modeled." { class: note; shape: page }
+    }
+
+    v02: "[PC] v0.2 GPS + IMU runtime baseline" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      loop_scope: "[LC] Loop variable-getter scope\nsource: v0.2 views 2-8" {
+        class: lc
+        direction: down
+        grid-columns: 3
+        read_store_lat_lon: "[F] Read and store\nlat, lon" { class: func }
+        get_lat: "[F] Get lat" { class: func }
+        get_lon: "[F] Get lon" { class: func }
+        read_angular_velocities: "[F] Read angular\nvelocities" { class: func }
+        process_angular_velocities: "[F] Process angular\nvelocities" { class: func }
+        read_accelerations: "[F] Read\naccelerations" { class: func }
+        process_accelerations: "[F] Process\naccelerations" { class: func }
+        read_field_intensities: "[F] Read field\nintensities" { class: func }
+        calculate_pry: "[F] Calculate pitch,\nroll, yaw" { class: func }
+        get_ubx_init_state: "[F] Get UBX-G7020-KT\ninit state" { class: func }
+        get_icm_init_state: "[F] Get ICM20948\ninit state" { class: func }
+        collect_measurements: "[F] Collect\nmeasurements" { class: func }
+      }
+      note_c: "[C] v0.2 applicability\nVariable Getter covers GPS get-lat/get-lon, angular-rate\nread/process, acceleration read/process, and acceleration +\nfield-intensity read/calculate PRY pairs. v0.2 lacks an\nexplicit I2C timeout constraint; keep this gap visible." { class: note; shape: page }
+    }
+
+    v03: "[PC] v0.3 ADS PCB delivery\nN/A for runtime Variable Getter" {
+      class: pc
+      direction: down
+      note_na: "[C] N/A branch\nThe only v0.3 source view is PV1 physical PCB delivery:\nADS PCB, GPS, IMU, backplane connector, footprints, UART/I2C/3V3 traces.\nNo LC, CE, functions, software storage, getters, or process/calculate pairs\nare modeled; do not claim getter behavior from v0.3." { class: note; shape: page }
+    }
+
+    v10: "[PC] v1.0 integrated CanSat runtime baseline" {
+      class: pc
+      direction: down
+      grid-columns: 1
+
+      ads_processing_scope: "[LC] ADS Processing variable-getter scope\nsource: v1.0 views 2-7" {
+        class: lc
+        direction: down
+        grid-columns: 3
+        read_store_lat_lon: "[F] Read and store\nlat, lon" { class: func }
+        get_lat: "[F] Get lat" { class: func }
+        get_lon: "[F] Get lon" { class: func }
+        read_angular_velocities: "[F] Read angular\nvelocities" { class: func }
+        process_angular_velocities: "[F] Process angular\nvelocities" { class: func }
+        read_accelerations: "[F] Read\naccelerations" { class: func }
+        process_accelerations: "[F] Process\naccelerations" { class: func }
+        read_field_intensities: "[F] Read field\nintensities" { class: func }
+        calculate_pry: "[F] Calculate pitch,\nroll, yaw" { class: func }
+        get_ubx_init_state: "[F] Get UBX-G7020-KT\ninit state" { class: func }
+        get_icm_init_state: "[F] Get ICM20948\ninit state" { class: func }
+      }
+      obcc_scope: "[LC] OBCC consumer scope\nPointers / Returns delivery implications" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        collect_measurements: "[F] Collect\nmeasurements" { class: func }
+        collect_init_states: "[F] Collect peripheral\ninit states" { class: func }
+      }
+      note_c: "[C] v1.0 applicability\nSame GPS/IMU/process/calculate getter pairs as v0.2, allocated\nto ADS Processing. OBCC consumes outputs through Pointers and Returns,\nso pointer lifetime/ownership, return values, freshness, and validity\nmust not bypass the Variable Getter semantics." { class: note; shape: page }
+    }
+  }
+
+  note_variable_getter: "[C] Source constraint under verification\nImplement each (Read X, Process X) or (Read X, Calculate Y) pair\nas a Variable Getter template. Analysis target: one backing store per\nmeasured value, one writer for updates, side-effect-light getters/processors,\nand observable validity/freshness/error state." { class: note; shape: page }
+  note_trace: "[C] Traceability targets\nConstraint: Variable Getter template; feared event ADS-FE-CORRUPT-MEASUREMENT;\ncapabilities ADS-CAP-GPS, ADS-CAP-IMU, ADS-CAP-ATT, ADS-CAP-DELIVERY.\nADS-FE-STUCK-LOOP is supporting context through timeout/no-blocking checks." { class: note; shape: page }
+  note_status: "[C] Verification selection\nIADT: Analysis with supporting Testing. Runtime baselines: v0.1, v0.2, v1.0.\nv0.3 is explicit N/A. Reports cite this source inventory and the copied source views." { class: note; shape: page }
+}
+
+system.versions.v01.note_c -> system.versions.v01.loop_scope { class: cstr }
+system.versions.v02.note_c -> system.versions.v02.loop_scope { class: cstr }
+system.versions.v10.note_c -> system.versions.v10.ads_processing_scope { class: cstr }
+system.versions.v10.note_c -> system.versions.v10.obcc_scope { class: cstr }
+system.note_variable_getter -> system.versions { class: cstr }
+system.note_trace -> system.versions { class: cstr }
+system.note_status -> system.versions { class: cstr }

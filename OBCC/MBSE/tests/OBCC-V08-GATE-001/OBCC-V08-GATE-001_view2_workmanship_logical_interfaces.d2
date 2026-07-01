@@ -1,0 +1,177 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V08-GATE-001 PV2: PCB/backplane/link workmanship logical interfaces and CE analysis.
+# Only PCs, LCs, EAs, CEs, and constraints are shown.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 18 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea }
+visual_inspector: "[EA] Visual Inspector" { class: ea }
+dmm_analyzer: "[EA] DMM / continuity\nanalyzer" { class: ea }
+rf_path_checker: "[EA] RF / antenna-path\nchecker" { class: ea }
+retention_fixture: "[EA] Connector-retention\nfixture" { class: ea }
+evidence_camera: "[EA] Evidence camera" { class: ea }
+bench_power_usb: "[EA] Bench power /\nUSB-C host" { class: ea }
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" { class: ea }
+
+system: "[System] OBCC-V08-GATE-001 — PCB/backplane/link CE and allocation analysis\nRefs: IVV, PM&SE/IVV, OBCC README, LoRa_Frame, v1.0 PV2/PV3; maps OBCC-VV-PC-001/PL-001/CE-001" {
+  class: sys
+  direction: down
+
+  uut: "[PC] v0.8 PCB/backplane\nintegration UUT" {
+    class: pc
+    direction: down
+    grid-columns: 1
+
+    obcc_pcb: "[PC] OBCC PCB" {
+      class: pc
+      direction: right
+      grid-columns: 2
+      workmanship_gate_harness: "[LC] Workmanship gate\nharness\n(verification-only)" { class: lc }
+      xiao_host_interface: "[LC] XIAO host /\nUSB bench interface" { class: lc }
+      rfm95w_interface: "[LC] RFM95W LoRa\nSPI/RF interface" { class: lc }
+      obcc_header_interface: "[LC] OBCC header\nI2C/UART/PWM/power\ninterface" { class: lc }
+      power_ground_reference: "[LC] Power and ground\nreference matrix" { class: lc }
+    }
+
+    backplane: "[PC] Backplane PCB /\ncarrier spine" {
+      class: pc
+      direction: right
+      grid-columns: 2
+      connector_matrix: "[LC] Header mating /\nconnector matrix" { class: lc }
+      rail_distribution: "[LC] Power-ground rail\ndistribution" { class: lc }
+      servo_link_interface: "[LC] PDM servo cable /\nPWM link interface" { class: lc }
+    }
+
+    source_modules: "[PC] ADS / AMS / PDS\nsensor and power context" {
+      class: pc
+      direction: right
+      grid-columns: 2
+      gps_uart_endpoint: "[LC] UBX-G7020 UART\nendpoint" { class: lc }
+      imu_i2c_endpoint: "[LC] ICM20948 I2C\nendpoint" { class: lc }
+      bme280_i2c_endpoint: "[LC] BME280 I2C\nendpoint" { class: lc }
+      ina219_i2c_endpoint: "[LC] INA219 I2C\nendpoint" { class: lc }
+    }
+
+    ground_context: "[PC] Ground-station\nphysical context" {
+      class: pc
+      direction: right
+      ground_lora_interface: "[LC] Ground LoRa\nreceive context" { class: lc }
+      ground_usb_evidence: "[LC] Ground USB /\nPC evidence context" { class: lc }
+    }
+  }
+
+  note_analysis: "[C] PF-007 analysis pass:\nevery modeled I2C, UART, SPI, PWM,\npower/ground, USB, header-mating, and\nLoRa/RF exchange is present in the\nimplementation evidence, has the correct\ndirection/protocol/voltage intent, and no\nunmodeled bypass or foreign function is\nneeded for v0.8 advancement." {
+    class: note
+    shape: page
+  }
+
+  note_short_faults: "[C] Fault-hardening viewpoint:\nopens, shorts, reversed polarity, missing\nground reference, wrong bus topology, wrong\nchip-select/address, loose header, loose\nservo cable, and unsafe antenna substitution\nare each classified as gate failures unless\nwaived with corrective action." {
+    class: note
+    shape: page
+  }
+
+  note_rf_safe: "[C] RF/TX constraint:\nLoRa TX or ground-station bring-up occurs\nonly after RF path checker records antenna\nor dummy-load safety. Open antenna path is\na fail before transmission." {
+    class: note
+    shape: page
+  }
+
+  note_usb: "[C] USB-C is bench evidence only for this\nv0.8 gate. It does not create a required\nv1.0 serial-console flight operator path." {
+    class: note
+    shape: page
+  }
+
+  note_source_gap: "[C] No v0.8 Capella/D2 baseline exists;\nthis analysis uses copied v1.0 views as\nsource context and records any v0.8/v1.0\ndifferences as assumptions or deviations." {
+    class: note
+    shape: page
+  }
+}
+
+test_operator -> system.uut.obcc_pcb.workmanship_gate_harness: "[CE] Checklist,\nUUT ID,\nwaiver control" { class: ce }
+visual_inspector -> system.uut.obcc_pcb.workmanship_gate_harness: "[CE] Workmanship,\norientation,\nownership record" { class: ce }
+evidence_camera -> system.uut.obcc_pcb.workmanship_gate_harness: "[CE] Photo/video\nevidence index" { class: ce }
+ambient_thermometer -> system.uut.obcc_pcb.workmanship_gate_harness: "[CE] Ambient reading\nand instrument ID" { class: ce }
+bench_power_usb -> system.uut.obcc_pcb.xiao_host_interface: "[CE] Current-limited\npower + USB enum" { class: ce }
+dmm_analyzer -> system.uut.obcc_pcb.power_ground_reference: "[CE] No-short,\ncontinuity,\npolarity evidence" { class: ce }
+dmm_analyzer -> system.uut.backplane.rail_distribution: "[CE] Rail continuity\nand reference ground" { class: ce }
+rf_path_checker -> system.uut.obcc_pcb.rfm95w_interface: "[CE] RF path safety,\nantenna/dummy-load\nstatus" { class: ce }
+retention_fixture -> system.uut.backplane.connector_matrix: "[CE] Header mating,\nkeying, retention\nresult" { class: ce }
+retention_fixture -> system.uut.backplane.servo_link_interface: "[CE] Servo cable\nretention result" { class: ce }
+
+system.uut.obcc_pcb.xiao_host_interface -> system.uut.obcc_pcb.rfm95w_interface: "[CE] SPI\nLoRa bring-up" { class: ce }
+system.uut.obcc_pcb.rfm95w_interface -> system.uut.ground_context.ground_lora_interface: "[CE] LoRa\nsafe bring-up" { class: ce }
+system.uut.ground_context.ground_lora_interface -> system.uut.ground_context.ground_usb_evidence: "[CE] Payload /\nRSSI/SNR evidence" { class: ce }
+system.uut.obcc_pcb.xiao_host_interface -> system.uut.obcc_pcb.obcc_header_interface: "[CE] I2C / UART /\nPWM + power intent" { class: ce }
+system.uut.obcc_pcb.obcc_header_interface -> system.uut.backplane.connector_matrix: "[CE] Header map\nand pinout" { class: ce }
+system.uut.obcc_pcb.power_ground_reference -> system.uut.backplane.rail_distribution: "[CE] Power/GND\nreference" { class: ce }
+system.uut.backplane.connector_matrix -> system.uut.source_modules.gps_uart_endpoint: "[CE] UART\nGPS path" { class: ce }
+system.uut.backplane.connector_matrix -> system.uut.source_modules.imu_i2c_endpoint: "[CE] I2C\nIMU path" { class: ce }
+system.uut.backplane.connector_matrix -> system.uut.source_modules.bme280_i2c_endpoint: "[CE] I2C\nBME280 path" { class: ce }
+system.uut.backplane.connector_matrix -> system.uut.source_modules.ina219_i2c_endpoint: "[CE] I2C\nINA219 path" { class: ce }
+system.uut.backplane.connector_matrix -> system.uut.backplane.servo_link_interface: "[CE] PWM + power\nservo path" { class: ce }
+
+system.note_analysis -> system.uut.obcc_pcb.obcc_header_interface { class: cstr }
+system.note_analysis -> system.uut.backplane.connector_matrix { class: cstr }
+system.note_short_faults -> system.uut.obcc_pcb.power_ground_reference { class: cstr }
+system.note_short_faults -> system.uut.backplane.servo_link_interface { class: cstr }
+system.note_rf_safe -> system.uut.obcc_pcb.rfm95w_interface { class: cstr }
+system.note_usb -> system.uut.obcc_pcb.xiao_host_interface { class: cstr }
+system.note_source_gap -> system { class: cstr }
+
+# Layout-only edges keep actors above the UUT and constraints below.
+test_operator -> visual_inspector { style: { opacity: 0 } }
+visual_inspector -> dmm_analyzer { style: { opacity: 0 } }
+dmm_analyzer -> rf_path_checker { style: { opacity: 0 } }
+rf_path_checker -> retention_fixture { style: { opacity: 0 } }
+retention_fixture -> evidence_camera { style: { opacity: 0 } }
+evidence_camera -> bench_power_usb { style: { opacity: 0 } }
+bench_power_usb -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> system { style: { opacity: 0 } }
+system.uut.obcc_pcb -> system.uut.backplane { style: { opacity: 0 } }
+system.uut.backplane -> system.uut.source_modules { style: { opacity: 0 } }
+system.uut.source_modules -> system.uut.ground_context { style: { opacity: 0 } }
+system.uut -> system.note_analysis { style: { opacity: 0 } }
+system.note_analysis -> system.note_short_faults { style: { opacity: 0 } }
+system.note_short_faults -> system.note_rf_safe { style: { opacity: 0 } }
+system.note_rf_safe -> system.note_usb { style: { opacity: 0 } }
+system.note_usb -> system.note_source_gap { style: { opacity: 0 } }

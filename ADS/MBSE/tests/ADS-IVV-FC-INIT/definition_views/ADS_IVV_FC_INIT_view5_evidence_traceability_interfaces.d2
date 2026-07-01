@@ -1,0 +1,75 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Results and traceability interface view for ADS-IVV-FC-INIT.
+# PV2-style logical/evidence interface: LCs, external actors, component exchanges, and constraints.
+direction: right
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+ivv_authority: "[EA] IVV authority /\ntest reviewer" { class: ea }
+source_package: "[EA] Copied source-model\npackage" { class: ea }
+firmware_config: "[EA] Firmware and hardware\nconfiguration source" { class: ea }
+equipment_records: "[EA] Equipment calibration\nand setup records" { class: ea }
+results_repository: "[EA] Results repository\nADS/MBSE/tests/results" { class: ea }
+
+system: "[System] ADS-IVV-FC-INIT\nEvidence and traceability interfaces\nRefs: IVV; NASA-SE; GPS/UBX; IMU/I2C; SW/stats; ADS MBSE plan" {
+  class: sys
+  direction: down
+
+  record_package: "[PC] Initialization verification\nrecord package" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    trace_matrix: "[LC] Traceability matrix\nsource views, elements, constraints, targets" { class: lc }
+    boot_evidence: "[LC] Nominal boot evidence\nraw logs, current, environment" { class: lc }
+    fault_evidence: "[LC] Fault-injection evidence\nGPS/IMU harness markers and logs" { class: lc }
+    analysis_record: "[LC] Supporting analysis record\ntimeouts, no-blocking, statistics" { class: lc }
+    disposition_record: "[LC] Result and disposition\npass/fail/N/A, anomalies, waivers" { class: lc }
+    report_index: "[LC] Expected report index\nresults/ADS-IVV-FC-INIT/<version>/" { class: lc }
+  }
+}
+
+note_targets: "[C] Traceability targets\nADS-CAP-INIT; ADS-FE-SILENT-SENSOR-FAIL; ADS-FE-STUCK-LOOP;\nconstraints for no-blocking, UART timeout <=5 ms, I2C timeout <=5 ms\nwhere modeled, and process/calculate timing where relevant." { class: note; shape: page }
+note_reports: "[C] Report rule\nReports reference this modeled definition and record selected SSIV/version,\nas-tested configuration, equipment IDs/calibration, actual environment, raw\nboot/fault evidence, analysis outputs, deviations, anomalies, waivers,\nlimitations, and retest status." { class: note; shape: page }
+note_status: "[C] Status and limitations\nModeled definition ready for review; execution pending. v0.3 is N/A for\nruntime behavior. v0.2 lacks an explicit I2C timeout constraint, so report\nobserved no-hang behavior and keep the modeling gap visible." { class: note; shape: page }
+note_statistics: "[C] Statistics/fault-hardening viewpoint\nUse 29/29 or 59/59 zero-failure logic only if a reliability claim is made.\nFault-hardening evidence covers disconnected, silent, no-fix, and NACKing\nperipherals plus reset/hang and evidence-preservation checks." { class: note; shape: page }
+
+source_package -> system.record_package.trace_matrix: "[CE] refs" { class: ce }
+firmware_config -> system.record_package.boot_evidence: "[CE] cfg" { class: ce }
+equipment_records -> system.record_package.boot_evidence: "[CE] equip" { class: ce }
+system.record_package.boot_evidence -> system.record_package.analysis_record: "[CE] boot" { class: ce }
+system.record_package.fault_evidence -> system.record_package.analysis_record: "[CE] fault" { class: ce }
+system.record_package.trace_matrix -> system.record_package.disposition_record: "[CE] trace" { class: ce }
+system.record_package.analysis_record -> system.record_package.disposition_record: "[CE] why" { class: ce }
+system.record_package.disposition_record -> system.record_package.report_index: "[CE] status" { class: ce }
+system.record_package.report_index -> results_repository: "[CE] archive" { class: ce }
+ivv_authority -> system.record_package.disposition_record: "[CE] review" { class: ce }
+
+note_targets -> system.record_package.trace_matrix { class: cstr }
+note_reports -> system.record_package.report_index { class: cstr }
+note_status -> system.record_package.disposition_record { class: cstr }
+note_statistics -> system.record_package.analysis_record { class: cstr }
+
+# Layout-only rank hints to keep source inputs, record package, and repository readable.
+source_package -> system { style: { opacity: 0 } }
+firmware_config -> system { style: { opacity: 0 } }
+equipment_records -> system { style: { opacity: 0 } }
+ivv_authority -> system { style: { opacity: 0 } }
+system -> results_repository { style: { opacity: 0 } }

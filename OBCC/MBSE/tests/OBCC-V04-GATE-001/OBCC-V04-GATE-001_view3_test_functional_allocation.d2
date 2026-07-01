@@ -1,0 +1,223 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V04-GATE-001 PV3: v0.4 wireless command/state functional allocation.
+# Shows verification means, human operator functions, and UUT functions.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  inspect_no_serial_path: "[F] Inspect no serial-console\nflight operator path" { class: func }
+  select_command_vectors: "[F] Select valid and invalid\ncommand vector set" { class: func }
+  start_repetition_campaign: "[F] Start command\nrepetition campaign" { class: func }
+  record_pass_fail: "[F] Record pass/fail\nand deviations" { class: func }
+}
+
+command_station: "[EA] Command Transmitter /\nDPS Ground Station Emulator" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  generate_valid_on: "[F] Generate valid\nOn command frame" { class: func }
+  generate_valid_standby: "[F] Generate valid\nStand-by command frame" { class: func }
+  generate_invalid_vectors: "[F] Generate invalid/corrupt/\nunsupported/out-of-context\ncommand frames" { class: func }
+  replay_duplicate_command: "[F] Replay or duplicate\nprevious command frame" { class: func }
+  transmit_command_frame: "[F] Transmit LoRa\ncommand frame" { class: func }
+}
+
+rf_link_monitor: "[EA] RF Link Monitor" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  log_rssi_snr: "[F] Log RSSI/SNR and\nobserved RF frames" { class: func }
+}
+
+telemetry_observer: "[EA] Telemetry Observer /\nDashboard Logger" {
+  class: ea
+  direction: down
+  grid-columns: 2
+  decode_state_telemetry: "[F] Decode state\ntelemetry" { class: func }
+  verify_transition_count: "[F] Verify command result\nand transition count" { class: func }
+  store_trial_evidence: "[F] Store timestamped\ntrial evidence" { class: func }
+}
+
+bench_pc: "[EA] USB Programming PC\n(bench aid only)" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  flash_test_firmware: "[F] Flash/configure v0.4\ncommand-state firmware" { class: func }
+  disconnect_serial_control: "[F] Disconnect or disable\nUSB serial command control" { class: func }
+}
+
+deployment_monitor: "[EA] Deployment Side-effect Monitor" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  probe_deployment_output: "[F] Probe deployment output\nor safe-load event line" { class: func }
+  confirm_no_deploy_event: "[F] Confirm no deployment\nside-effect event" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient Thermometer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  measure_ambient: "[F] Measure ambient\ntemperature before trials" { class: func }
+}
+
+system: "[System] OBCC-V04-GATE-001 — v0.4 wireless command/state functional allocation\nRefs: IVV, OBCC README, LoRa_Frame, v1.0 Functional Allocation and Command/Telemetry chains" {
+  class: sys
+  direction: down
+
+  uut: "[PC] v0.4 OBCC command/state UUT" {
+    class: pc
+    direction: down
+
+    obcc_pcb: "[PC] OBCC PCB or breadboard" {
+      class: pc
+      direction: right
+
+      rfm95w: "[PC] RFM95W LoRa" {
+        class: pc
+        lora_transceiver: "[LC] LoRa Transceiver" {
+          class: lc
+          direction: down
+          receive_incoming_data: "[F] Receive incoming\nLoRa command data" { class: func }
+          transmit_outgoing_data: "[F] Transmit outgoing\nstate telemetry" { class: func }
+        }
+      }
+
+      xiao: "[PC] XIAO ESP32-S3" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        command_handler: "[LC] Command Handler" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          receive_lora_rx_interrupt: "[F] Receive LoRa\nRX interrupt" { class: func }
+          read_command: "[F] Read command\nfrom radio frame" { class: func }
+          validate_command: "[F] Validate command\nopcode, frame, context" { class: func }
+          reject_invalid_command: "[F] Reject invalid,\ncorrupt, replay, or\nduplicate command" { class: func }
+          handle_command: "[F] Handle valid\ncommand once" { class: func }
+          log_invalid_command: "[F] Log invalid\ncommand result" { class: func }
+        }
+
+        state_manager: "[LC] OBCC Supervisor /\nState Manager" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          set_on_state: "[F] Set On state" { class: func }
+          set_standby_state: "[F] Set Stand-by state" { class: func }
+          coordinate_operational_state: "[F] Coordinate\noperational state" { class: func }
+          hold_deployment_disabled: "[F] Hold deployment\ncontrol disabled\nfor v0.4 gate" { class: func }
+        }
+
+        telemetry_encoder: "[LC] Telemetry Encoder /\nState Metadata Publisher" {
+          class: lc
+          direction: down
+          grid-columns: 2
+          publish_state_metadata: "[F] Publish On/Stand-by\nstate metadata" { class: func }
+          publish_command_result: "[F] Publish command\naccept/reject result" { class: func }
+          send_lora_packet: "[F] Send LoRa\ntelemetry packet" { class: func }
+        }
+
+        trace_publisher: "[LC] Command-result Trace Publisher\n(verification-only)" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          tag_command_class: "[F] Tag command class\nand trial ID" { class: func }
+          count_state_transitions: "[F] Count accepted\nstate transitions" { class: func }
+        }
+
+        usb_flash_interface: "[LC] USB Flash / Diagnostic Interface\n(bench aid only)" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          expose_flash_port: "[F] Expose flash/setup\nport only" { class: func }
+        }
+      }
+    }
+  }
+
+  note_valid: "[C] PF-valid: valid On and Stand-by\nLoRa commands are accepted exactly\nonce, update the modeled state, and\nare reflected in telemetry." {
+    class: note
+    shape: page
+  }
+
+  note_invalid: "[C] PF-invalid: invalid/corrupt/\nunsupported/out-of-context/replay/\nduplicate commands do not change\nstate and do not create deployment\nside effects." {
+    class: note
+    shape: page
+  }
+
+  note_no_serial: "[C] PF-no-serial: serial console\nis not a flight operator command path;\nUSB is setup/bench evidence only and\nis disconnected or disabled for trials." {
+    class: note
+    shape: page
+  }
+
+  note_source_gap: "[C] Gap: no v0.4 source Capella/D2\nviews exist. This allocation extends\nthe copied v1.0 command/state model\nwith verification means only." {
+    class: note
+    shape: page
+  }
+}
+
+system.note_valid -> system.uut.obcc_pcb.xiao.command_handler.handle_command { class: cstr }
+system.note_valid -> system.uut.obcc_pcb.xiao.telemetry_encoder.publish_state_metadata { class: cstr }
+system.note_invalid -> system.uut.obcc_pcb.xiao.command_handler.reject_invalid_command { class: cstr }
+system.note_invalid -> deployment_monitor.confirm_no_deploy_event { class: cstr }
+system.note_no_serial -> bench_pc.disconnect_serial_control { class: cstr }
+system.note_no_serial -> system.uut.obcc_pcb.xiao.usb_flash_interface.expose_flash_port { class: cstr }
+system.note_source_gap -> system { class: cstr }
+
+# Layout-only edges keep verification means above the UUT and constraints below it.
+test_operator -> command_station { style: { opacity: 0 } }
+command_station -> rf_link_monitor { style: { opacity: 0 } }
+rf_link_monitor -> telemetry_observer { style: { opacity: 0 } }
+telemetry_observer -> bench_pc { style: { opacity: 0 } }
+bench_pc -> deployment_monitor { style: { opacity: 0 } }
+deployment_monitor -> ambient_thermometer { style: { opacity: 0 } }
+system.uut -> system.note_valid { style: { opacity: 0 } }
+system.note_valid -> system.note_invalid { style: { opacity: 0 } }
+system.note_invalid -> system.note_no_serial { style: { opacity: 0 } }
+system.note_no_serial -> system.note_source_gap { style: { opacity: 0 } }

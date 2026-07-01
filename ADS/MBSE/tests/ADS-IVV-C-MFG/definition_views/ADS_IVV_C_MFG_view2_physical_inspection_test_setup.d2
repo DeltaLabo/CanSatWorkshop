@@ -1,0 +1,80 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Physical inspection/test setup for ADS-IVV-C-MFG.
+# Model microscope/camera, DMM, current-limited supply, ESD/ambient controls, mating fixture, and inspection authority.
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 34 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 38 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 46 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 38 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 30 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 34 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 28 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 28 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 28 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+system: "[System] ADS-IVV-C-MFG\nPhysical inspection/test setup\nRefs: IVV; ADS MBSE plan; saved references" {
+  class: sys
+  direction: down
+  uut: "[PC] Selected ADS UUT\none version per execution" {
+    class: pc
+    direction: right
+    grid-columns: 2
+    v01: "[PC] v0.1\nGPS + XIAO prototype" { class: pc }
+    v02: "[PC] v0.2\nGPS + IMU + XIAO prototype" { class: pc }
+    v03: "[PC] v0.3\nADS PCB delivery / N/A as noted" { class: pc }
+    v10: "[PC] v1.0\nintegrated CanSat / ADS / OBCC" { class: pc }
+  }
+}
+
+conductor: "[EA] IVV test conductor\n(human operator)" { class: ea }
+inspector: "[EA] Human workmanship\ninspector" { class: ea }
+scope: "[EA] Microscope /\ncamera" { class: ea }
+dmm: "[EA] DMM / continuity\ntester" { class: ea }
+supply: "[EA] Current-limited\npower supply" { class: ea }
+cfg: "[EA] Workmanship /\nconfiguration authority" { class: ea }
+note_1: "[C] Pass/fail\nAll modeled PCB/assembly items, connectors, fixtures, and nets are present, correct, workmanlike, continuous/isolated where applicable, and evidenced." { class: note; shape: page }
+note_2: "[C] Fault hardening\nSolder bridge, open trace, lifted pad, wrong orientation, cracked joint, mis-mated header, cable reversal, loose screw/fixture, weak power/ground." { class: note; shape: page }
+note_3: "[C] Statistics\nInspect 100% of modeled items for the selected article; no population inference without a separate sampling plan." { class: note; shape: page }
+note_4: "[C] Execution prerequisite\nSelect workmanship class/criteria and manufacturing route before verdict." { class: note; shape: page }
+
+conductor -> system.uut: "[CE] test procedure / baseline" { class: ce }
+system.uut -> inspector: "[CE] logs / evidence" { class: ce }
+conductor -> inspector { style: { opacity: 0 } }
+scope -- system.uut: "[PL] verification connection / probe" { class: pl }
+inspector -> scope { style: { opacity: 0 } }
+dmm -- system.uut: "[PL] verification connection / probe" { class: pl }
+scope -> dmm { style: { opacity: 0 } }
+supply -- system.uut: "[PL] verification connection / probe" { class: pl }
+dmm -> supply { style: { opacity: 0 } }
+system.uut -> cfg: "[CE] logs / evidence" { class: ce }
+supply -> cfg { style: { opacity: 0 } }
+cfg -> system { style: { opacity: 0 } }
+system -> note_1 { style: { opacity: 0 } }
+note_1 -> note_2 { style: { opacity: 0 } }
+note_2 -> note_3 { style: { opacity: 0 } }
+note_3 -> note_4 { style: { opacity: 0 } }
+
+chain: "[FC] Physical inspection/test setup\nModel microscope/camera, DMM, current-limited supply, ESD/ambient controls, mating fixture, and inspection authority." {
+  class: chain
+  direction: right
+  start: "[F] Select version and\nas-tested config" { class: func }
+  setup: "[F] Configure verification\nmeans" { class: func }
+  run: "[F] Execute nominal and\nfault cases" { class: func }
+  analyze: "[F] Analyze against\npass/fail constraints" { class: func }
+  report: "[F] Record evidence,\ndeviations, verdict" { class: func }
+  start -> setup: "[FE] configuration" { class: fe }
+  setup -> run: "[FE] stimuli / probes ready" { class: fe }
+  run -> analyze: "[FE] raw evidence" { class: fe }
+  analyze -> report: "[FE] verdict rationale" { class: fe }
+}
+note_1 -> chain { style: { opacity: 0 } }

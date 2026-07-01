@@ -1,0 +1,150 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V05-GATE-001 PV2: deployment-gating verification logical interfaces.
+# Only PCs, LCs, EAs, CEs, and constraints are shown.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 18 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea }
+safety_observer: "[EA] Safety Observer" { class: ea }
+bench_power_reset: "[EA] Bench power /\nreset controller" { class: ea }
+ads_trigger_simulator: "[EA] ADS trigger\nsimulator" { class: ea }
+servo_current_position_observer: "[EA] Servo current /\nposition observer" { class: ea }
+telemetry_trace_logger: "[EA] Telemetry /\ntrace logger" { class: ea }
+ambient_thermometer: "[EA] Ambient thermometer\n(calibrated; model TBD)" { class: ea }
+
+system: "[System] OBCC-V05-GATE-001 — v0.5 deployment gate logical interfaces\nRefs: IVV, OBCC README, v1.0 Logical/PV3/Deployment/Fault chains, OBCC-VV-FC-004, OBCC-VV-CON-003" {
+  class: sys
+  direction: down
+
+  uut: "[PC] v0.5 OBCC/PDM\ndeployment-gate UUT" {
+    class: pc
+    direction: right
+
+    obcc_controller: "[PC] OBCC controller\nassembly" {
+      class: pc
+      direction: down
+      grid-columns: 2
+
+      test_harness: "[LC] Deployment-gate\ntest harness\n(verification-only)" { class: lc }
+      command_state_manager: "[LC] Command/state\nmanager" { class: lc }
+      ads_trigger_adapter: "[LC] ADS IMU/alt\ntrigger adapter" { class: lc }
+      emergency_request_handler: "[LC] Emergency-request\nhandler" { class: lc }
+      deployment_gate: "[LC] Deployment gate /\nPDM processing" { class: lc }
+      telemetry_health_publisher: "[LC] Telemetry and\nhealth publisher" { class: lc }
+    }
+
+    lora_radio: "[PC] RFM95W LoRa" {
+      class: pc
+      lora_transceiver: "[LC] LoRa Transceiver" { class: lc }
+    }
+
+    actuator_path: "[PC] PDM servo\nactuation path" {
+      class: pc
+      direction: down
+      servo_pwm_driver: "[LC] Servo PWM\nopen/hold driver" { class: lc }
+      actuator_feedback_adapter: "[LC] Actuator status\nfeedback adapter\n(verification-only)" { class: lc }
+    }
+  }
+
+  note_analysis: "[C] Analysis pass/fail:\nMode gate, ADS IMU/alt data, emergency\nrequest, PDM/PWM actuation, telemetry,\nand observer exchanges are present;\nno unmodeled bypass can command open\naround Stand-by inhibit." {
+    class: note
+    shape: page
+  }
+
+  note_standby: "[C] Stand-by constraint:\nall valid triggers and modeled emergency\nrequests are inhibited while telemetry\ncontinues and remains observable." {
+    class: note
+    shape: page
+  }
+
+  note_on_timing: "[C] On-mode constraint:\nvalid ADS trigger or modeled emergency\nrequest shall produce observed safe-actuator\nopen position within <=5 s." {
+    class: note
+    shape: page
+  }
+
+  note_faults: "[C] Fault-hardening constraint:\ninvalid trigger/emergency, missing ADS data,\nreset during actuation, and servo current /\nposition faults are observable and never\nfalsely reported as successful deployment." {
+    class: note
+    shape: page
+  }
+}
+
+test_operator -> system.uut.obcc_controller.test_harness: "[CE] Test script,\ntrial selection,\nchecklist" { class: ce }
+safety_observer -> system.uut.obcc_controller.test_harness: "[CE] Safety hold /\ngo confirmation" { class: ce }
+bench_power_reset -> system.uut.obcc_controller.test_harness: "[CE] Power-cycle /\nreset events" { class: ce }
+ambient_thermometer -> system.uut.obcc_controller.test_harness: "[CE] Ambient reading\nentered in log" { class: ce }
+ads_trigger_simulator -> system.uut.obcc_controller.ads_trigger_adapter: "[CE] Simulated ADS\nIMU/alt trigger data" { class: ce }
+ads_trigger_simulator -> system.uut.obcc_controller.emergency_request_handler: "[CE] Modeled emergency\nrequest / invalid request" { class: ce }
+
+system.uut.obcc_controller.test_harness -> system.uut.obcc_controller.command_state_manager: "[CE] On / Stand-by\nstate command" { class: ce }
+system.uut.obcc_controller.test_harness -> system.uut.obcc_controller.ads_trigger_adapter: "[CE] Valid/invalid/missing\nADS-data case control" { class: ce }
+system.uut.obcc_controller.test_harness -> system.uut.obcc_controller.emergency_request_handler: "[CE] Emergency/no-emergency\ncase control" { class: ce }
+
+system.uut.obcc_controller.command_state_manager -> system.uut.obcc_controller.deployment_gate: "[CE] Mode gate\n[On / Stand-by]" { class: ce }
+system.uut.obcc_controller.ads_trigger_adapter -> system.uut.obcc_controller.deployment_gate: "[CE] IMU/alt trigger\ndata + validity" { class: ce }
+system.uut.obcc_controller.emergency_request_handler -> system.uut.obcc_controller.deployment_gate: "[CE] Emergency\ndeploy request" { class: ce }
+system.uut.obcc_controller.deployment_gate -> system.uut.actuator_path.servo_pwm_driver: "[CE] Open command\nor inhibit" { class: ce }
+system.uut.actuator_path.servo_pwm_driver -> system.uut.actuator_path.actuator_feedback_adapter: "[CE] PWM/open signal\nand status" { class: ce }
+servo_current_position_observer -> system.uut.actuator_path.actuator_feedback_adapter: "[CE] Current + position\nmeasurements" { class: ce }
+system.uut.actuator_path.actuator_feedback_adapter -> system.uut.obcc_controller.telemetry_health_publisher: "[CE] Actuator evidence /\nfault flags" { class: ce }
+system.uut.obcc_controller.deployment_gate -> system.uut.obcc_controller.telemetry_health_publisher: "[CE] Decision,\ninhibit, fault reason" { class: ce }
+system.uut.obcc_controller.telemetry_health_publisher -> system.uut.lora_radio.lora_transceiver: "[CE] Health/state /\ndeployment telemetry" { class: ce }
+system.uut.lora_radio.lora_transceiver -> telemetry_trace_logger: "[CE] LoRa telemetry\nand event trace" { class: ce }
+system.uut.obcc_controller.test_harness -> telemetry_trace_logger: "[CE] Trial script ID,\ntimestamps, reset marker" { class: ce }
+
+system.note_analysis -> system.uut.obcc_controller.deployment_gate { class: cstr }
+system.note_analysis -> system.uut.actuator_path.servo_pwm_driver { class: cstr }
+system.note_standby -> system.uut.obcc_controller.command_state_manager { class: cstr }
+system.note_on_timing -> system.uut.actuator_path.actuator_feedback_adapter { class: cstr }
+system.note_faults -> system.uut.obcc_controller.telemetry_health_publisher { class: cstr }
+
+# Layout-only edges keep actors above the UUT and constraints below.
+test_operator -> safety_observer { style: { opacity: 0 } }
+safety_observer -> bench_power_reset { style: { opacity: 0 } }
+bench_power_reset -> ads_trigger_simulator { style: { opacity: 0 } }
+ads_trigger_simulator -> servo_current_position_observer { style: { opacity: 0 } }
+servo_current_position_observer -> telemetry_trace_logger { style: { opacity: 0 } }
+telemetry_trace_logger -> ambient_thermometer { style: { opacity: 0 } }
+system.uut -> system.note_analysis { style: { opacity: 0 } }
+system.note_analysis -> system.note_standby { style: { opacity: 0 } }
+system.note_standby -> system.note_on_timing { style: { opacity: 0 } }
+system.note_on_timing -> system.note_faults { style: { opacity: 0 } }

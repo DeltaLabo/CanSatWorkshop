@@ -1,0 +1,165 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# OBCC-V10-FLIGHT-001 PV1: final flight-readiness review physical setup.
+# References cited in the System title: OBCC/MBSE/v1.0, OBCC/MBSE/tests/README.md, PM&SE/IVV.md.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 28 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+archive_server: "[EA] Controlled Results\nArchive Server" { class: ea }
+evidence_camera: "[EA] Evidence Camera" { class: ea }
+ambient_time_recorder: "[EA] Ambient and Time\nReference Recorder" { class: ea }
+
+system: "[System] OBCC-V10-FLIGHT-001 — final flight-readiness physical setup\nRefs: OBCC/MBSE/v1.0; tests/README; PM&SE/IVV" {
+  class: sys
+  direction: down
+
+  flight_article: "[PC] Final As-built\nCanSat Flight Article" {
+    class: pc
+    direction: down
+
+    standard_stack: "[PC] Standard Carrier\nModule Stack" {
+      class: pc
+      direction: right
+      grid-columns: 3
+
+      ads_module: "[PC] ADS Module" { class: pc }
+      ams_module: "[PC] AMS Module" { class: pc }
+      pds_module: "[PC] PDS Module" { class: pc }
+      ess_module: "[PC] ESS Module" { class: pc }
+
+      obcc_module: "[PC] OBCC Module" {
+        class: pc
+        direction: down
+        obcc_pcb: "[PC] OBCC PCB" {
+          class: pc
+          direction: right
+          xiao: "[PC] XIAO ESP32-S3" { class: pc }
+          rfm95w: "[PC] RFM95W LoRa" { class: pc }
+          obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      direction: right
+      grid-columns: 3
+      ads_headers: "[PC] ADS Headers" { class: pc }
+      ams_headers: "[PC] AMS Headers" { class: pc }
+      pds_headers: "[PC] PDS Headers" { class: pc }
+      obcc_headers: "[PC] OBCC Headers" { class: pc }
+      pdm_servo_connector: "[PC] PDM Servo Connector" { class: pc }
+      spine: "[PC] Spine" { class: pc }
+    }
+
+    parachute_module: "[PC] Parachute Module" {
+      class: pc
+      direction: right
+      cap: "[PC] Cap" { class: pc }
+      parachute: "[PC] Parachute" { class: pc }
+      servo: "[PC] Servo" { class: pc }
+    }
+  }
+
+  ground_station_set: "[PC] Ground Station\nand PC Set" {
+    class: pc
+    direction: right
+    ground_station_pcb: "[PC] Ground Station PCB" {
+      class: pc
+      direction: right
+      ground_rfm95w: "[PC] RFM95W LoRa" { class: pc }
+      ground_xiao: "[PC] XIAO ESP32" { class: pc }
+    }
+    pc_computer: "[PC] PC" {
+      class: pc
+      usb_port: "[PC] USB Port" { class: pc }
+    }
+  }
+
+  review_workstation: "[PC] Flight Readiness\nReview Workstation" {
+    class: pc
+    direction: down
+    results_drive: "[PC] Results Index\nand Evidence Folders" { class: pc }
+    readiness_checklist: "[PC] Readiness\nChecklist Record" { class: pc }
+    residual_risk_log: "[PC] Residual-risk\nLog Record" { class: pc }
+    config_package: "[PC] As-built Configuration\nPackage" { class: pc }
+    closure_report: "[PC] Closure Report\nDraft" { class: pc }
+  }
+
+  note_closure_scope: "[C] Closure scope covers every\nOBCC v1.0 candidate row:\nPC, PL, CE, ALLOC, FC, CON." {
+    class: note
+    shape: page
+  }
+
+  note_safety_blockers: "[C] Flight readiness fails if any\ncritical command, deployment,\ntelemetry/range, fault-hardening,\nor scheduler-blocking gap remains open." {
+    class: note
+    shape: page
+  }
+}
+
+system.flight_article.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector -- system.flight_article.backplane_pcb.obcc_headers: "[PL] OBCC header\nmating" { class: pl }
+system.flight_article.standard_stack.obcc_module.obcc_pcb.xiao -- system.flight_article.standard_stack.obcc_module.obcc_pcb: "[PL] XIAO footprint" { class: pl }
+system.flight_article.standard_stack.obcc_module.obcc_pcb.rfm95w -- system.flight_article.standard_stack.obcc_module.obcc_pcb: "[PL] RFM footprint" { class: pl }
+system.flight_article.standard_stack.obcc_module.obcc_pcb.xiao -- system.flight_article.standard_stack.obcc_module.obcc_pcb.rfm95w: "[PL] SPI + 3V3 traces" { class: pl }
+system.flight_article.standard_stack.obcc_module.obcc_pcb.xiao -- system.flight_article.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C / UART / PWM\n+ power traces" { class: pl }
+system.flight_article.standard_stack.ads_module -- system.flight_article.backplane_pcb.ads_headers: "[PL] ADS header\nmating" { class: pl }
+system.flight_article.standard_stack.ams_module -- system.flight_article.backplane_pcb.ams_headers: "[PL] AMS header\nmating" { class: pl }
+system.flight_article.standard_stack.pds_module -- system.flight_article.backplane_pcb.pds_headers: "[PL] PDS header\nmating" { class: pl }
+system.flight_article.parachute_module.servo -- system.flight_article.backplane_pcb.pdm_servo_connector: "[PL] Servo cable" { class: pl }
+system.ground_station_set.ground_station_pcb.ground_xiao -- system.ground_station_set.pc_computer.usb_port: "[PL] USB-C evidence\nexport" { class: pl }
+system.review_workstation.results_drive -- system.review_workstation.closure_report: "[PL] report file\nreferences" { class: pl }
+archive_server -- system.review_workstation.results_drive: "[PL] controlled\nevidence sync" { class: pl }
+evidence_camera -- system.flight_article: "[PL] photo/video\ncapture" { class: pl }
+ambient_time_recorder -- system.review_workstation.readiness_checklist: "[PL] environment and\ntime record" { class: pl }
+
+system.note_closure_scope -> system.review_workstation.readiness_checklist { class: cstr }
+system.note_safety_blockers -> system.review_workstation.residual_risk_log { class: cstr }
+
+# Layout-only edges keep equipment, article, ground, records, and constraints in review order.
+archive_server -> evidence_camera { style: { opacity: 0 } }
+evidence_camera -> ambient_time_recorder { style: { opacity: 0 } }
+ambient_time_recorder -> system.flight_article { style: { opacity: 0 } }
+system.flight_article -> system.ground_station_set { style: { opacity: 0 } }
+system.ground_station_set -> system.review_workstation { style: { opacity: 0 } }
+system.review_workstation -> system.note_closure_scope { style: { opacity: 0 } }
+system.note_closure_scope -> system.note_safety_blockers { style: { opacity: 0 } }

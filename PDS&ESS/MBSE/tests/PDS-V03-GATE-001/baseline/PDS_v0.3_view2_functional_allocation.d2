@@ -1,0 +1,158 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 14 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 16 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 18 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+charger: "[EA] Charger" {
+  class: ea
+  charger_power: "[F] Provide power" { class: func }
+}
+
+user: "[EA] User" {
+  class: ea
+  direction: down
+  switch_on: "[F] Switch power on" { class: func }
+  switch_off: "[F] Switch power off" { class: func }
+}
+
+pds: "[System] PDS v0.2-0.3 Subsystem" {
+  class: sys
+  direction: down
+
+  battpack: "[PC] 1S1P Li-Ion" {
+    class: pc
+    battery_lc: "[LC] Battery" {
+      class: lc
+      grid-columns: 1
+      direction: down
+      store_energy: "[F] Store energy" { class: func }
+      provide_power: "[F] Provide power" { class: func }
+    }
+  }
+
+  board: "[PC] PDS Circuitboard" {
+    class: pc
+    direction: down
+
+    protection: "[PC] Protection Circuit" {
+      class: pc
+      direction: down
+
+      battery_charger: "[LC] Battery Charger" {
+        class: lc
+        grid-columns: 1
+        charger_regulate_voltage: "[F] Regulate\nvoltage" { class: func }
+      }
+
+      power_protection: "[LC] Power Protection" {
+        class: lc
+        grid-columns: 1
+        direction: down
+        restore_power: "[F] Restore power" { class: func }
+        detect_overcurrent: "[F] Detect\novercurrent" { class: func }
+        detect_overvoltage: "[F] Detect\novervoltage" { class: func }
+        cut_off_power: "[F] Cut off power" { class: func }
+      }
+    }
+
+    ina219: "[PC] INA219" {
+      class: pc
+      battery_monitoring: "[LC] Battery monitoring" {
+        class: lc
+        grid-columns: 1
+        direction: down
+        measure_voltage: "[F] Measure\nvoltage" { class: func }
+        measure_current: "[F] Measure\ncurrent" { class: func }
+        respond_i2c: "[F] Respond to\nI2C requests" { class: func }
+      }
+    }
+
+    regulator_block: "[PC] Regulator" {
+      class: pc
+      regulator_lc: "[LC] Regulator" {
+        class: lc
+        grid-columns: 1
+        regulate_voltage: "[F] Regulate\nvoltage" { class: func }
+      }
+    }
+
+    connector_terminal: "[PC] Connector\nTerminal" { class: pc }
+  }
+
+  xiao: "[PC] XIAO ESP32" {
+    class: pc
+    direction: down
+
+    setup: "[LC] Setup" {
+      class: lc
+      grid-columns: 1
+      direction: down
+      get_init_state: "[F] Get INA219\ninit state" { class: func }
+      collect_init_states: "[F] Collect peripheral\ninit states" { class: func }
+      init_bus: "[F] Init Serial0\nand I2C" { class: func }
+    }
+
+    loop: "[LC] Loop" {
+      class: lc
+      grid-columns: 1
+      direction: down
+      read_voltage: "[F] Read voltage" { class: func }
+      read_current: "[F] Read current" { class: func }
+      process_voltage: "[F] Process\nvoltage" { class: func }
+      process_current: "[F] Process\ncurrent" { class: func }
+      collect_measurements: "[F] Collect PDS\nmeasurements" { class: func }
+      log_measurements: "[F] Log via\nSerial0" { class: func }
+    }
+  }
+}
+
+note_energy: "[C] Enough for 6 hours\nof continuous\noperation in On mode" {
+  class: note
+  shape: page
+}
+
+note_prob: "[C] Probability < 1%" {
+  class: note
+  shape: page
+}
+
+note_energy -> pds.battpack.battery_lc.store_energy { class: cstr }
+note_prob -> pds.board.protection.power_protection.detect_overcurrent { class: cstr }
+note_prob -> pds.board.protection.power_protection.detect_overvoltage { class: cstr }
+
+# Layout-only edges to keep external actors above the system and constraints below it.
+charger -> pds { style: { opacity: 0 } }
+user -> pds { style: { opacity: 0 } }
+pds -> note_energy { style: { opacity: 0 } }
+pds -> note_prob { style: { opacity: 0 } }

@@ -1,0 +1,78 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional chain: sensor servicing, software processing, and measurement collection
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDS v1.0 — Battery supervision chain" {
+  class: chain
+  direction: right
+
+  get_init_state: "[F] Get INA219\ninit state" { class: func }
+  read_voltage: "[F] Read voltage" { class: func }
+  read_current: "[F] Read current" { class: func }
+  measure_voltage: "[F] Measure voltage" { class: func }
+  measure_current: "[F] Measure current" { class: func }
+  respond_i2c: "[F] Respond to I2C\nrequests" { class: func }
+  process_voltage: "[F] Process voltage" { class: func }
+  process_current: "[F] Process current" { class: func }
+  collect_init_states: "[F] Collect peripheral\ninit states" { class: func }
+  collect_measurements: "[F] Collect measurements" { class: func }
+}
+
+chain.get_init_state -> chain.respond_i2c: "[FE] Init req" { class: fe }
+chain.read_voltage -> chain.respond_i2c: "[FE] V read req" { class: fe }
+chain.read_current -> chain.respond_i2c: "[FE] I read req" { class: fe }
+chain.measure_voltage -> chain.respond_i2c: "[FE] V sample" { class: fe }
+chain.measure_current -> chain.respond_i2c: "[FE] I sample" { class: fe }
+chain.respond_i2c -> chain.get_init_state: "[FE] Init rsp" { class: fe }
+chain.respond_i2c -> chain.process_voltage: "[FE] V rsp" { class: fe }
+chain.respond_i2c -> chain.process_current: "[FE] I rsp" { class: fe }
+chain.get_init_state -> chain.collect_init_states: "[FE] Init result" { class: fe }
+chain.process_voltage -> chain.collect_measurements: "[FE] V result" { class: fe }
+chain.process_current -> chain.collect_measurements: "[FE] I result" { class: fe }
+
+# Layout-only edges to separate the init path from the runtime request/response paths.
+chain.respond_i2c -> chain.collect_init_states { style: { opacity: 0 } }
+chain.collect_init_states -> chain.process_voltage { style: { opacity: 0 } }
+chain.process_voltage -> chain.process_current { style: { opacity: 0 } }

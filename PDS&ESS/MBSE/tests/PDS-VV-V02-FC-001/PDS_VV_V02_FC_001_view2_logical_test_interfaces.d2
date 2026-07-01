@@ -1,0 +1,79 @@
+vars: { d2-config: { layout-engine: elk } }
+
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# PV2 — logical interfaces. Verification-only, baseline unchanged.
+operator: "[EA] Bench operator" { class: ea }
+charger: "[EA] USB-C charger / supply" { class: ea }
+serial_host: "[EA] Serial0 logging PC" { class: ea }
+i2c_analyzer: "[EA] I2C analyzer" { class: ea }
+fault_fixture: "[EA] I2C fault fixture" { class: ea }
+ref_meter: "[EA] Reference V/I meter" { class: ea }
+ambient: "[EA] Ambient meter" { class: ea }
+repo: "[EA] Evidence repository" { class: ea }
+
+system: "[System] PDS-VV-V02-FC-001 logical test interfaces\nPDS & ESS v0.2 gate to v0.3 — refs: IVV; PM&SE/IVV; PDS-R9; PDS-R10" {
+  class: sys
+  direction: down
+  uut: "[PC] PDS v0.2 UUT" {
+    class: pc
+    direction: down
+    board: "[PC] PDS Circuitboard" {
+      class: pc
+      direction: down
+      protection: "[PC] Protection Circuit" { class: pc; battery_charger: "[LC] Battery Charger" { class: lc }; power_protection: "[LC] Power Protection" { class: lc } }
+      ina219: "[PC] INA219" { class: pc; battery_monitoring: "[LC] Battery monitoring" { class: lc } }
+      regulator: "[PC] Regulator" { class: pc; regulator_lc: "[LC] Regulator" { class: lc } }
+      connector: "[PC] Connector Terminal" { class: pc; output_probe: "[LC] Output/load probe interface\n(verification-only)" { class: lc } }
+      xiao: "[PC] XIAO ESP32-S3" { class: pc; setup: "[LC] Setup" { class: lc }; loop: "[LC] Loop" { class: lc } }
+    }
+    batt: "[PC] 1S1P Li-Ion" { class: pc; battery_lc: "[LC] Battery" { class: lc } }
+  }
+  harness: "[PC] Verification harness" {
+    class: pc
+    direction: down
+    test_control: "[LC] Test command interface" { class: lc }
+    serial_log: "[LC] Serial0 log interface" { class: lc }
+    i2c_observe_fault: "[LC] I2C observe/fault interface" { class: lc }
+    reference_capture: "[LC] Reference/environment capture" { class: lc }
+    evidence_capture: "[LC] Evidence capture" { class: lc }
+  }
+  c_ce: "[C] CE pass: I2C request/response, Serial0 logs, source/load, reference, environment, fault, and evidence exchanges are present and implemented consistently." { class: note; shape: page }
+  c_getter: "[C] Getter pass: ownership, units, freshness/age, valid/stale state, and bounded status/error semantics are defined." { class: note; shape: page }
+  c_trace: "[C] Trace: PDS-UC-SuperviseBattery-v0.2; PDS-FE-SensorBusFault-v0.2; PDS-UC-ProvideRegulatedPower-v0.2." { class: note; shape: page }
+}
+operator -> system.harness.test_control: "[CE] test commands" { class: ce }
+charger -> system.uut.board.protection.battery_charger: "[CE] USB-C input status" { class: ce }
+system.harness.test_control -> system.uut.board.xiao.setup: "[CE] reset/init trigger" { class: ce }
+system.harness.test_control -> system.uut.board.xiao.loop: "[CE] run/fault trigger" { class: ce }
+system.uut.board.xiao.setup -> system.uut.board.ina219.battery_monitoring: "[CE] I2C init request" { class: ce }
+system.uut.board.ina219.battery_monitoring -> system.uut.board.xiao.setup: "[CE] I2C init response/status" { class: ce }
+system.uut.board.xiao.loop -> system.uut.board.ina219.battery_monitoring: "[CE] I2C V/I read requests" { class: ce }
+system.uut.board.ina219.battery_monitoring -> system.uut.board.xiao.loop: "[CE] I2C measurement/status" { class: ce }
+system.uut.board.xiao.loop -> system.harness.serial_log: "[CE] Serial0 frames/heartbeat" { class: ce }
+system.harness.serial_log -> serial_host: "[CE] timestamped logs" { class: ce }
+i2c_analyzer -> system.harness.i2c_observe_fault: "[CE] SDA/SCL captures" { class: ce }
+fault_fixture -> system.harness.i2c_observe_fault: "[CE] absent/NACK/stuck/delayed profiles" { class: ce }
+ref_meter -> system.harness.reference_capture: "[CE] reference V/I samples" { class: ce }
+ambient -> system.harness.reference_capture: "[CE] ambient T/RH" { class: ce }
+system.harness.serial_log -> system.harness.evidence_capture: "[CE] logs" { class: ce }
+system.harness.i2c_observe_fault -> system.harness.evidence_capture: "[CE] timing/fault evidence" { class: ce }
+system.harness.reference_capture -> system.harness.evidence_capture: "[CE] reference/environment evidence" { class: ce }
+system.harness.evidence_capture -> repo: "[CE] controlled evidence package" { class: ce }
+system.c_ce -> system.uut.board.xiao.loop { class: cstr }
+system.c_getter -> system.uut.board.xiao.loop { class: cstr }
+system.c_trace -> system.uut.board.ina219.battery_monitoring { class: cstr }

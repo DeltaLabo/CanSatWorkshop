@@ -1,0 +1,197 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV3 — PDS-VV-CON-002 functional allocation (verification-only).
+# References: IVV, PDS-R2, PDS-R6, PDS-R7, PDS-R9, PDS-R10.
+# Traceability: [C] 6 h On-mode endurance chain mapping.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea
+  pre_test_review: "[F] Perform safety/config pre-checks" { class: func }
+  precondition_battery: "[F] Verify battery pre-run state" { class: func }
+  start_6h_run: "[F] Start 6 h On-mode run" { class: func }
+  monitor_anomalies: "[F] Monitor run-time alarms" { class: func }
+  command_safe_cutoff: "[F] Command safe cutoff" { class: func }
+  pass_fail_decision: "[F] Make go/no-go decision" { class: func }
+}
+
+safety_observer: "[EA] Safety Operator" { class: ea
+  witness_precheck: "[F] Witness pre-check" { class: func }
+  issue_emergency_stop: "[F] Issue emergency stop" { class: func }
+  witness_safe_stop: "[F] Witness safe state" { class: func }
+}
+
+load_profile_emulator: "[EA] On-mode profile emulator" { class: ea
+  define_profile: "[F] Define profile" { class: func }
+  command_steps: "[F] Command load segment" { class: func }
+  hold_steps: "[F] Hold segment timing" { class: func }
+}
+
+precondition_fixture: "[EA] Precondition fixture" { class: ea
+  precondition_charge: "[F] Apply safe precondition" { class: func }
+  verify_soc_state: "[F] Verify SoC/SoH state" { class: func }
+}
+
+data_logger: "[EA] Continuous logger" { class: ea
+  record_rails: "[F] Record rails/current" { class: func }
+  record_ina219: "[F] Record INA219 data" { class: func }
+  quality_flags: "[F] Record stale/timeouts" { class: func }
+}
+
+scheduler: "[EA] Timer" { class: ea
+  emit_duration_marker: "[F] Emit 6 h duration marker" { class: func }
+  periodic_checkpoint: "[F] Emit periodic checkpoints" { class: func }
+}
+
+gateway: "[EA] Evidence gateway" { class: ea
+  stage_artifacts: "[F] Stage artifacts" { class: func }
+  archive_evidence: "[F] Archive evidence bundle" { class: func }
+}
+
+system: "[System] PDS-VV-CON-002 function allocation map\nPDS & ESS v1.0 final flight acceptance" {
+  class: sys
+  direction: down
+
+  pds_module: "[PC] PDS Module" {
+    class: pc
+    direction: down
+    pds_pcb: "[PC] PDS PCB" {
+      class: pc
+      battery_connector_lc: "[LC] Battery connector context" {
+        class: lc
+        receive_precondition: "[F] Receive precondition" { class: func }
+        expose_battery_state: "[F] Expose battery state" { class: func }
+      }
+      power_charger_lc: "[LC] Battery Charger" {
+        class: lc
+        regulate_input: "[F] Regulate input during precondition" { class: func }
+      }
+      regulator_lc: "[LC] Regulator" {
+        class: lc
+        switch_on: "[F] Switch On mode" { class: func }
+        maintain_rails: "[F] Maintain 5V/3V3" { class: func }
+      }
+      protection_lc: "[LC] Power Protection" {
+        class: lc
+        detect_faults: "[F] Detect load/voltage faults" { class: func }
+        safe_cutoff: "[F] Perform safe cutoff" { class: func }
+        restore_output: "[F] Restore output" { class: func }
+      }
+      ina219_lc: "[LC] INA219" {
+        class: lc
+        init_capture: "[F] Expose init state" { class: func }
+        provide_measurements: "[F] Provide V/I measurements" { class: func }
+        provide_status: "[F] Provide status" { class: func }
+      }
+    }
+  }
+
+  obcc_module: "[PC] OBCC Module" {
+    class: pc
+    direction: down
+    obcc_pcb: "[PC] OBCC PCB" {
+      class: pc
+      xiao: "[LC] XIAO / ESS Processing" {
+        class: lc
+        init_chain: "[F] Init measurement chain" { class: func }
+        read_chain: "[F] Read V/I in cadence" { class: func }
+        process_chain: "[F] Process sample validity" { class: func }
+        supervise_state: "[F] Supervise health state" { class: func }
+        command_protection: "[F] Command protection state" { class: func }
+      }
+    }
+  }
+
+  battery: "[LC] ESS battery" {
+    class: lc
+    provide_battery_power: "[F] Provide energy" { class: func }
+  }
+
+  note_ref: "[C] Allocation trace:\nConstraint-derived activity PDS-VV-CON-002 with\\nOn-mode runtime, logging, anomaly, and cutoff functions.\\nReference to CON-001/004, CON-003, FC-001/002 for shared power/protection and battery-supervision behavior." {
+    class: note
+    shape: page
+  }
+}
+
+# Allocation mapping
+test_operator.pre_test_review -> system.pds_module.pds_pcb.ina219_lc.init_capture { class: ce }
+test_operator.precondition_battery -> precondition_fixture.precondition_charge { class: fe }
+test_operator.start_6h_run -> system.pds_module.pds_pcb.regulator_lc.switch_on { class: fe }
+test_operator.monitor_anomalies -> system.obcc_module.obcc_pcb.xiao.supervise_state { class: fe }
+test_operator.command_safe_cutoff -> system.pds_module.pds_pcb.protection_lc.safe_cutoff { class: fe }
+test_operator.pass_fail_decision -> gateway.archive_evidence { class: ce }
+
+safety_observer.witness_precheck -> test_operator.pre_test_review { class: ce }
+safety_observer.issue_emergency_stop -> system.pds_module.pds_pcb.protection_lc.safe_cutoff { class: fe }
+safety_observer.witness_safe_stop -> system.obcc_module.obcc_pcb.xiao.supervise_state { class: ce }
+
+precondition_fixture.precondition_charge -> system.pds_module.pds_pcb.battery_connector_lc.receive_precondition { class: fe }
+precondition_fixture.verify_soc_state -> system.pds_module.pds_pcb.battery_connector_lc.expose_battery_state { class: ce }
+load_profile_emulator.define_profile -> test_operator.start_6h_run { class: ce }
+load_profile_emulator.command_steps -> system.pds_module.pds_pcb.regulator_lc.switch_on { class: fe }
+load_profile_emulator.hold_steps -> system.pds_module.pds_pcb.regulator_lc.maintain_rails { class: fe }
+
+data_logger.record_rails -> system.pds_module.pds_pcb.regulator_lc.maintain_rails { class: ce }
+data_logger.record_ina219 -> system.pds_module.pds_pcb.ina219_lc.provide_measurements { class: ce }
+data_logger.quality_flags -> system.pds_module.pds_pcb.ina219_lc.provide_status { class: ce }
+scheduler.emit_duration_marker -> test_operator.pass_fail_decision { class: ce }
+scheduler.periodic_checkpoint -> system.obcc_module.obcc_pcb.xiao.supervise_state { class: ce }
+
+gateway.stage_artifacts -> gateway.archive_evidence { class: ce }
+
+# Supporting function-to-function links (within system)
+system.pds_module.pds_pcb.battery_connector_lc.receive_precondition -> system.pds_module.pds_pcb.power_charger_lc.regulate_input { class: pl }
+system.pds_module.pds_pcb.power_charger_lc.regulate_input -> system.pds_module.pds_pcb.regulator_lc.maintain_rails { class: pl }
+system.pds_module.pds_pcb.ina219_lc.provide_measurements -> system.obcc_module.obcc_pcb.xiao.read_chain { class: pl }
+system.obcc_module.obcc_pcb.xiao.read_chain -> system.obcc_module.obcc_pcb.xiao.process_chain { class: pl }
+system.obcc_module.obcc_pcb.xiao.process_chain -> system.obcc_module.obcc_pcb.xiao.supervise_state { class: pl }
+system.obcc_module.obcc_pcb.xiao.supervise_state -> system.pds_module.pds_pcb.protection_lc.detect_faults { class: pl }
+system.obcc_module.obcc_pcb.xiao.command_protection -> system.pds_module.pds_pcb.protection_lc.restore_output { class: pl }
+system.pds_module.pds_pcb.protection_lc.restore_output -> system.pds_module.pds_pcb.regulator_lc.maintain_rails { class: pl }
+
+# Constraint trace links
+system.note_ref -> system.pds_module.pds_pcb.regulator_lc.maintain_rails { style: { stroke-dash: 3; stroke-width: 1 } }
+system.note_ref -> system.pds_module.pds_pcb.ina219_lc.provide_status { style: { stroke-dash: 3; stroke-width: 1 } }
+system.note_ref -> system.pds_module.pds_pcb.protection_lc.safe_cutoff { style: { stroke-dash: 3; stroke-width: 1 } }
+system.note_ref -> system.obcc_module.obcc_pcb.xiao.supervise_state { style: { stroke-dash: 3; stroke-width: 1 } }
+
+# Layout helpers
+load_profile_emulator -> precondition_fixture { style: { opacity: 0 } }
+precondition_fixture -> data_logger { style: { opacity: 0 } }
+data_logger -> scheduler { style: { opacity: 0 } }
+scheduler -> gateway { style: { opacity: 0 } }
+gateway -> system { style: { opacity: 0 } }
+test_operator -> safety_observer { style: { opacity: 0 } }

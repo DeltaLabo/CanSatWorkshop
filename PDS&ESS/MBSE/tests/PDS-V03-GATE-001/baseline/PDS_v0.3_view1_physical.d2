@@ -1,0 +1,55 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 16 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 18 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 12 } }
+}
+
+charger: "[EA] Charger" {
+  class: ea
+}
+
+pds: "[System] PDS v0.2-0.3 Subsystem" {
+  class: sys
+  direction: down
+
+  battpack: "[PC] 1S1P Li-Ion" { class: pc }
+
+  board: "[PC] PDS Circuitboard" {
+    class: pc
+    direction: down
+
+    protection: "[PC] Protection Circuit" { class: pc }
+    ina219: "[PC] INA219" { class: pc }
+    regulator_block: "[PC] Regulator" { class: pc }
+    connector_terminal: "[PC] Connector\nTerminal" { class: pc }
+  }
+
+  xiao: "[PC] XIAO ESP32" { class: pc }
+}
+
+charger -- pds.board.protection: "[PL] USB-C cable" { class: pl }
+pds.battpack -- pds.board.protection: "[PL] Battery cable" { class: pl }
+pds.board.protection -- pds.board.ina219: "[PL] PC Out trace" { class: pl }
+pds.board.ina219 -- pds.board.regulator_block: "[PL] INA Out / GND" { class: pl }
+pds.board.regulator_block -- pds.board.connector_terminal: "[PL] 3V3 / 5V / GND" { class: pl }
+pds.board.ina219 -- pds.xiao: "[PL] I2C cables" { class: pl }
+pds.board.connector_terminal -- pds.xiao: "[PL] 5V / GND" { class: pl }

@@ -1,0 +1,263 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDS-V03-GATE-001 view1: physical testbench
+# References: IVV; PM&SE/IVV.md; PDS-R2, PDS-R4, PDS-R5, PDS-R6, PDS-R7, PDS-R8
+# Traceability: PDS-v0.3-AdvanceToV1.0, PDS-UC-ProvideRegulatedPower,
+# PDS-UC-SuperviseBattery, PDS-FE-OvercurrentOvervoltage,
+# PDS-FE-RailBrownout, PDS-FE-LiIonUnsafeCondition
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 16 }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 16 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 18 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+bench_operator: "[EA] Bench Operator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  read_definition: "[F] Read verification definition" { class: func }
+  setup_cell: "[F] Set up safe test cell" { class: func }
+  authorize_step: "[F] Authorize each test step" { class: func }
+  stop_on_hazard: "[F] Hold/abort on unsafe event" { class: func }
+}
+
+safety_observer: "[EA] Safety Observer / Witness" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  verify_containment: "[F] Verify containment and ESD controls" { class: func }
+  approve_run: "[F] Approve trial set" { class: func }
+  witness_hold: "[F] Witness hold and anomaly disposition" { class: func }
+}
+
+bench_supply: "[EA] Current-limited bench supply" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  set_limits: "[F] Set current/voltage limits" { class: func }
+  apply_source_power: "[F] Apply emulated power" { class: func }
+  remove_source_power: "[F] Remove power" { class: func }
+}
+
+battery_fixture: "[EA] Battery emulator / supervised Li-Ion" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  verify_cell_state: "[F] Verify cell/safety state" { class: func }
+  establish_profile: "[F] Establish normal profile" { class: func }
+}
+
+overcurrent_fixture: "[EA] Overcurrent injection fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  configure_demand: "[F] Configure demand envelope" { class: func }
+  inject_demand: "[F] Inject overcurrent demand" { class: func }
+  clear_demand: "[F] Clear demand" { class: func }
+}
+
+overvoltage_fixture: "[EA] Overvoltage injection fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  configure_demand: "[F] Configure current-limited OV level" { class: func }
+  inject_demand: "[F] Inject overvoltage demand" { class: func }
+  clear_demand: "[F] Clear demand" { class: func }
+}
+
+rail_load: "[EA] Programmable load bank" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  program_profile: "[F] Program endurance load profile" { class: func }
+  run_endurance: "[F] Run 6h On-mode load cycle" { class: func }
+  remove_load: "[F] Remove loads" { class: func }
+}
+
+dmm_daq: "[EA] Calibrated DMM / DAQ" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  sample_traces: "[F] Sample rails and current" { class: func }
+  verify_limits: "[F] Verify safe voltage/current envelope" { class: func }
+}
+
+scope_cam: "[EA] Scope / logger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  capture_cutoff: "[F] Capture cutoff / restore" { class: func }
+  capture_timing: "[F] Capture timing on demand transitions" { class: func }
+}
+
+thermal_probe: "[EA] Thermal camera / IR thermometer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  monitor_temps: "[F] Monitor Li-Ion/protection/regulator temp" { class: func }
+}
+
+i2c_logger: "[EA] Serial0 + I2C logger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  capture_i2c: "[F] Capture I2C / Serial0 replies" { class: func }
+  archive_log: "[F] Archive raw logs" { class: func }
+}
+
+ambient_station: "[EA] Ambient thermometer / humidity" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  read_ambient: "[F] Record ambient before repetitions" { class: func }
+}
+
+interlock_panel: "[EA] Relay / interlock / E-stop panel" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  arm_panel: "[F] Arm relays and E-stop" { class: func }
+  isolate_on_violation: "[F] Isolate power paths on violation" { class: func }
+}
+
+evidence_repo: "[EA] Evidence repository" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  collect_media: "[F] Collect photos/waves/CSVs" { class: func }
+  archive_package: "[F] Archive evidence package" { class: func }
+}
+
+system: "[System] PDS-V03-GATE-001 Physical protection/endurance testbench\nPDS & ESS v0.3 gate toward v1.0 — refs: IVV, PM&SE/IVV.md, PDS-R2, PDS-R4, PDS-R5, PDS-R6, PDS-R7, PDS-R8" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  harness: "[PC] Test harness and fixture" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    fixture_breakouts: "[PC] Power / measurement breakouts" { class: pc }
+    fault_panel: "[PC] Fault and interlock panel" { class: pc }
+    load_breakout: "[PC] Rail-load adapter" { class: pc }
+    temp_mount: "[PC] Thermal mounts" { class: pc }
+    evidence_node: "[PC] Evidence export" { class: pc }
+    ambient_node: "[PC] Ambient monitor station" { class: pc }
+  }
+
+  uut: "[System] PDS v0.2-0.3 Subsystem" {
+    class: sys
+    direction: down
+
+    battpack: "[PC] 1S1P Li-Ion" { class: pc }
+
+    board: "[PC] PDS Circuitboard" {
+      class: pc
+      direction: down
+
+      protection: "[PC] Protection Circuit" { class: pc }
+      ina219: "[PC] INA219" { class: pc }
+      regulator_block: "[PC] Regulator" { class: pc }
+      connector_terminal: "[PC] Connector\nTerminal" { class: pc }
+    }
+
+    xiao: "[PC] XIAO ESP32" { class: pc }
+  }
+
+  note_presence: "[C] PDS-V03-GATE-001 presence/continuity check\nAll v0.3 source components and links required for this gate are modeled and linked in this testbench. If any required component or link is missing or unsafe, the gate is failed pending rework.\nEvidence: photos + cable/continuity checks." { class: note, shape: page }
+
+  note_constraint: "[C] Constraint controls\nThis gate explicitly models conservative interpretation of\n[C] Probability < 1% as missed demanded unsafe protection action probability per mode.\nFormal claim requires 299 independent zero-miss demanded trials per mode;\nfewer trials are screening only.\nEnergy constraint: [C] Enough for 6h continuous operation in On mode is modeled\nwith endurance loop and run evidence in View 4." { class: note, shape: page }
+}
+
+# Baseline v0.3 physical links
+bench_supply -- system.uut.board.protection: "[PL] USB-C cable" { class: pl }
+system.uut.battpack -- system.uut.board.protection: "[PL] Battery cable" { class: pl }
+system.uut.board.protection -- system.uut.board.ina219: "[PL] PC Out trace" { class: pl }
+system.uut.board.ina219 -- system.uut.board.regulator_block: "[PL] INA Out / GND" { class: pl }
+system.uut.board.regulator_block -- system.uut.board.connector_terminal: "[PL] 3V3 / 5V / GND" { class: pl }
+system.uut.board.ina219 -- system.uut.xiao: "[PL] I2C cables" { class: pl }
+system.uut.board.connector_terminal -- system.uut.xiao: "[PL] Connector / XIAO power" { class: pl }
+
+# Verification fixture links
+battery_fixture -- system.harness.fixture_breakouts: "[PL] source leads" { class: pl }
+bench_supply -- system.harness.fixture_breakouts: "[PL] source leads" { class: pl }
+system.harness.fixture_breakouts -- system.uut.battpack: "[PL] source/battery input" { class: pl }
+overcurrent_fixture -- system.harness.fault_panel: "[PL] fault injection lead" { class: pl }
+system.harness.fault_panel -- system.uut.board.connector_terminal: "[PL] fault-injection access" { class: pl }
+overvoltage_fixture -- system.harness.fault_panel: "[PL] over-voltage lead" { class: pl }
+rail_load -- system.harness.load_breakout: "[PL] representative load leads" { class: pl }
+system.harness.load_breakout -- system.uut.board.connector_terminal: "[PL] rail-load access" { class: pl }
+dmm_daq -- system.harness.evidence_node: "[PL] scope/probe harness" { class: pl }
+dmm_daq -- system.uut.board.regulator_block: "[PL] rail sense" { class: pl }
+scope_cam -- system.harness.evidence_node: "[PL] scope probes" { class: pl }
+scope_cam -- system.uut.board.protection: "[PL] protection waveform probe" { class: pl }
+thermal_probe -- system.harness.temp_mount: "[PL] thermal link / sight line" { class: pl }
+thermal_probe -- system.uut.board.protection: "[PL] thermal coupling" { class: pl }
+thermal_probe -- system.uut.board.regulator_block: "[PL] thermal coupling" { class: pl }
+i2c_logger -- system.harness.evidence_node: "[PL] serial/i2c capture" { class: pl }
+i2c_logger -- system.uut.board.ina219: "[PL] i2c capture" { class: pl }
+i2c_logger -- system.uut.xiao: "[PL] serial0 capture" { class: pl }
+ambient_station -- system.harness.ambient_node: "[PL] ambient sensor link" { class: pl }
+ambient_station -- system.uut: "[PL] ambient read context" { class: pl }
+interlock_panel -- system.harness.fault_panel: "[PL] interlock control" { class: pl }
+interlock_panel -- bench_supply: "[PL] source cutoff control" { class: pl }
+interlock_panel -- overcurrent_fixture: "[PL] demand cutoff control" { class: pl }
+interlock_panel -- overvoltage_fixture: "[PL] demand cutoff control" { class: pl }
+evidence_repo -- system.uut: "[PL] report and evidence channel" { class: pl }
+evidence_repo -- system.harness.evidence_node: "[PL] evidence export" { class: pl }
+
+# Verification constraint targets
+system.note_presence -> system.uut.battpack { class: cstr }
+system.note_presence -> system.uut.board.protection { class: cstr }
+system.note_presence -> system.uut.board.ina219 { class: cstr }
+system.note_presence -> system.uut.board.regulator_block { class: cstr }
+system.note_presence -> system.uut.board.connector_terminal { class: cstr }
+system.note_presence -> system.uut.board.ina219
+system.note_presence -> system.uut.xiao { class: cstr }
+system.note_constraint -> overcurrent_fixture.inject_demand { class: cstr }
+system.note_constraint -> overvoltage_fixture.inject_demand { class: cstr }
+system.note_constraint -> rail_load.run_endurance { class: cstr }
+system.note_constraint -> bench_operator.stop_on_hazard { class: cstr }
+
+# Layout-only hints
+bench_operator -> safety_observer { style: { opacity: 0 } }
+safety_observer -> bench_supply { style: { opacity: 0 } }
+bench_supply -> battery_fixture { style: { opacity: 0 } }
+battery_fixture -> overcurrent_fixture { style: { opacity: 0 } }
+overcurrent_fixture -> overvoltage_fixture { style: { opacity: 0 } }
+overvoltage_fixture -> rail_load { style: { opacity: 0 } }
+rail_load -> dmm_daq { style: { opacity: 0 } }
+dmm_daq -> scope_cam { style: { opacity: 0 } }
+scope_cam -> thermal_probe { style: { opacity: 0 } }
+thermal_probe -> i2c_logger { style: { opacity: 0 } }
+i2c_logger -> ambient_station { style: { opacity: 0 } }
+ambient_station -> interlock_panel { style: { opacity: 0 } }
+interlock_panel -> evidence_repo { style: { opacity: 0 } }
+evidence_repo -> system { style: { opacity: 0 } }
+system.harness -> system.uut { style: { opacity: 0 } }
+system.uut -> system.note_presence { style: { opacity: 0 } }
+system.note_presence -> system.note_constraint { style: { opacity: 0 } }

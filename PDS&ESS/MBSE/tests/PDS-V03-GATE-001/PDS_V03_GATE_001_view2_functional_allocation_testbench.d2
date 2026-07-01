@@ -1,0 +1,327 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDS-V03-GATE-001 view2: functional allocation and interfaces.
+# References cited in title: IVV; PM&SE/IVV.md; PDS-R2, PDS-R4, PDS-R5, PDS-R6, PDS-R7, PDS-R8.
+# Traceability: PDS-v0.3-AdvanceToV1.0; PDS-UC-ProvideRegulatedPower;
+# PDS-UC-SuperviseBattery; PDS-FE-OvercurrentOvervoltage;
+# PDS-FE-RailBrownout; PDS-FE-LiIonUnsafeCondition.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 16 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 16 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 18 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 13 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+bench_operator: "[EA] Bench Operator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  authorize: "[F] Authorize trial procedures" { class: func }
+  choose_mode: "[F] Select overcurrent or overvoltage trial" { class: func }
+  witness_step: "[F] Witness each step" { class: func }
+}
+
+safety_observer: "[EA] Safety Observer / Witness" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  verify_setup: "[F] Verify safety setup" { class: func }
+  approve_set: "[F] Approve test set" { class: func }
+  hold_or_abort: "[F] Hold or abort unsafe behavior" { class: func }
+}
+
+bench_supply: "[EA] Current-limited bench supply" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  set_limits: "[F] Configure source limits" { class: func }
+  apply_power: "[F] Apply source power" { class: func }
+  remove_power: "[F] Remove source power" { class: func }
+}
+
+battery_fixture: "[EA] Battery emulator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  program_cell: "[F] Program cell profile" { class: func }
+  maintain_safety: "[F] Maintain non-abuse conditions" { class: func }
+}
+
+overcurrent_fixture: "[EA] Overcurrent injection fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  select_oc_level: "[F] Set OC demand and current limit" { class: func }
+  inject_oc: "[F] Inject OC demand" { class: func }
+  clear_oc: "[F] Clear OC demand" { class: func }
+}
+overvoltage_fixture: "[EA] Overvoltage injection fixture" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  select_ov_level: "[F] Set OV demand and current limit" { class: func }
+  inject_ov: "[F] Inject OV demand" { class: func }
+  clear_ov: "[F] Clear OV demand" { class: func }
+}
+
+load_bank: "[EA] Programmable load bank" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  setup_profile: "[F] Setup endurance profile" { class: func }
+  run_profile: "[F] Run 6h profile" { class: func }
+  stop_profile: "[F] Stop and discharge profile" { class: func }
+}
+
+dmm_daq: "[EA] Calibrated DMM / DAQ" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  capture_rails: "[F] Capture voltage/current/limits" { class: func }
+  compare_with_thresholds: "[F] Check against threshold table" { class: func }
+}
+i2c_logger: "[EA] Serial0 logger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  capture_i2c: "[F] Capture I2C responses" { class: func }
+  capture_serial: "[F] Capture Serial0 supervision" { class: func }
+}
+
+evidence_host: "[EA] Evidence repository" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  classify_trial: "[F] Classify pass/fail/miss/hold" { class: func }
+  compute_statistics: "[F] Compute CP bounds and evidence status" { class: func }
+  archive: "[F] Archive package" { class: func }
+}
+
+system: "[System] PDS-V03-GATE-001 functional allocation and interfaces\nPDS & ESS v0.3 gate toward v1.0" {
+  class: sys
+  direction: down
+  grid-columns: 2
+
+  uut: "[System] PDS v0.2-0.3 Subsystem" {
+    class: sys
+    direction: down
+
+    battpack: "[PC] 1S1P Li-Ion" {
+      class: pc
+      battery_lc: "[LC] Battery" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        provide_power: "[F] Provide power" { class: func }
+        remain_non_abuse: "[F] Remain in non-abuse condition" { class: func }
+      }
+    }
+
+    board: "[PC] PDS Circuitboard" {
+      class: pc
+      direction: down
+
+      protection: "[PC] Protection Circuit" {
+        class: pc
+        direction: down
+
+        battery_charger: "[LC] Battery Charger" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          regulate_battery_voltage: "[F] Regulate voltage" { class: func }
+        }
+
+        power_protection: "[LC] Power Protection" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          restore_power: "[F] Restore power" { class: func }
+          detect_overcurrent: "[F] Detect overcurrent" { class: func }
+          detect_overvoltage: "[F] Detect overvoltage" { class: func }
+          cut_off_power: "[F] Cut off power" { class: func }
+          inhibit_restore_until_cleared: "[F] Inhibit restore until cleared" { class: func }
+        }
+      }
+
+      ina219: "[PC] INA219" {
+        class: pc
+        battery_monitoring: "[LC] Battery monitoring" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          measure_voltage: "[F] Measure voltage" { class: func }
+          measure_current: "[F] Measure current" { class: func }
+          respond_i2c: "[F] Respond to I2C requests" { class: func }
+        }
+      }
+
+      regulator_block: "[PC] Regulator" {
+        class: pc
+        regulator_lc: "[LC] Regulator" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          regulate_voltage: "[F] Regulate voltage" { class: func }
+          expose_rail_status: "[F] Expose protected rail state" { class: func }
+        }
+      }
+
+      connector_terminal: "[PC] Connector\nTerminal" {
+        class: pc
+        setup_interface: "[LC] Protected power interface" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          export_3v3: "[F] Export 3V3" { class: func }
+          export_5v: "[F] Export 5V" { class: func }
+          indicate_safe_state: "[F] Indicate safe rails" { class: func }
+        }
+      }
+    }
+
+    xiao: "[PC] XIAO ESP32" {
+      class: pc
+      direction: down
+      setup_lc: "[LC] Setup" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        get_init_state: "[F] Get INA219 init state" { class: func }
+        init_bus: "[F] Init I2C / Serial0" { class: func }
+      }
+
+      loop_lc: "[LC] Loop" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        read_voltage: "[F] Read voltage" { class: func }
+        read_current: "[F] Read current" { class: func }
+        process_voltage: "[F] Process voltage" { class: func }
+        process_current: "[F] Process current" { class: func }
+        collect_measurements: "[F] Collect PDS measurements" { class: func }
+        log_measurements: "[F] Log via Serial0" { class: func }
+      }
+    }
+  }
+
+  test_harness: "[PC] Verification test harness" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    setup_lc: "[LC] Setup, safety, and context" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      verify_calibration: "[F] Verify calibration and status" { class: func }
+      log_ambient: "[F] Log ambient and setup" { class: func }
+      arm_interlocks: "[F] Arm interlocks" { class: func }
+    }
+    fault_injection_lc: "[LC] Fault injection control" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      set_oc_ov_demand: "[F] Set OC/OV demand" { class: func }
+      inject_fault_demand: "[F] Inject demand" { class: func }
+      clear_fault_demand: "[F] Clear demand" { class: func }
+    }
+    load_profile_lc: "[LC] Load and endurance profile" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      apply_load: "[F] Apply representative load" { class: func }
+      run_6h_cycle: "[F] Run endurance cycle" { class: func }
+      remove_load: "[F] Remove load" { class: func }
+    }
+    measurement_capture_lc: "[LC] Measurement and logging" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      capture_rail_data: "[F] Capture continuous voltage/current" { class: func }
+      capture_thermals: "[F] Capture thermal profile" { class: func }
+      capture_supervision: "[F] Capture init/read/process/log" { class: func }
+    }
+    analysis_lc: "[LC] Trial analysis and statistics" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      classify_trials: "[F] Classify per-trial pass/fail" { class: func }
+      compute_cp_bound: "[F] Compute binomial bound" { class: func }
+      package_evidence: "[F] Package evidence package" { class: func }
+    }
+  }
+
+  note_trace: "[C] Traceability and allocation note\nActors and harness LCs are allocated for trial control, fault injection,\nmeasurement, endurance logging, and analysis. Primary trace targets include\nPDS-v0.3-AdvanceToV1.0 and the functional/protection supervision chain constraints." { class: note, shape: page }
+  note_stats: "[C] Statistical and safety viewpoint\nThis gate documents that <1% missed-demand probability requires per-mode\n299 independent zero-miss trials for formal claim. Without this evidence,\nclassification remains screening. Constraints for 6h On-mode endurance are modeled\nin View4 with controlled run/logging." { class: note, shape: page }
+}
+
+# Trial interfaces (verification-only CEs)
+bench_operator -> system.test_harness.setup_lc: "[CE] Trial command / step selection" { class: ce }
+safety_observer -> system.test_harness.setup_lc: "[CE] Safety approval and stop conditions" { class: ce }
+bench_supply -> system.test_harness.fault_injection_lc: "[CE] Source limit and power state" { class: ce }
+battery_fixture -> system.uut.battpack.battery_lc: "[CE] Electrical source state" { class: ce }
+overcurrent_fixture -> system.test_harness.fault_injection_lc: "[CE] Overcurrent demand" { class: ce }
+overvoltage_fixture -> system.test_harness.fault_injection_lc: "[CE] Overvoltage demand" { class: ce }
+load_bank -> system.test_harness.load_profile_lc: "[CE] Endurance load profile" { class: ce }
+dmm_daq -> system.test_harness.measurement_capture_lc: "[CE] Rail and current samples" { class: ce }
+i2c_logger -> system.test_harness.measurement_capture_lc: "[CE] I2C/Serial0 samples" { class: ce }
+
+# Required source-path interfaces from v0.3 model allocations
+system.uut.board.protection.battery_charger.regulate_battery_voltage -> system.uut.battpack.battery_lc.provide_power: "[CE] Charge current path" { class: ce }
+system.uut.battpack.battery_lc.provide_power -> system.uut.board.protection.power_protection.restore_power: "[CE] Battery power handoff" { class: ce }
+system.uut.board.protection.power_protection.restore_power -> system.uut.board.regulator_block.regulator_lc.regulate_voltage: "[CE] Protected enable" { class: ce }
+system.uut.board.regulator_block.regulator_lc.regulate_voltage -> system.uut.board.connector_terminal.setup_interface.export_3v3: "[CE] Regulated rail" { class: ce }
+system.uut.board.connector_terminal.setup_interface.export_3v3 -> system.uut.xiao.setup_lc.get_init_state: "[CE] Power/boot context" { class: ce }
+system.uut.ina219.battery_monitoring.measure_voltage -> system.uut.xiao.loop_lc.process_voltage: "[CE] Measured voltage value" { class: ce }
+system.uut.ina219.battery_monitoring.measure_current -> system.uut.xiao.loop_lc.process_current: "[CE] Measured current value" { class: ce }
+system.uut.xiao.loop_lc.read_voltage -> system.uut.xiao.loop_lc.process_voltage: "[CE] Read-voltage chain" { class: ce }
+system.uut.xiao.loop_lc.read_current -> system.uut.xiao.loop_lc.process_current: "[CE] Read-current chain" { class: ce }
+system.uut.xiao.loop_lc.collect_measurements -> system.test_harness.measurement_capture_lc.capture_supervision: "[CE] Supervision reporting" { class: ce }
+
+system.note_trace -> system.uut.xiao.loop_lc.log_measurements { class: cstr }
+system.note_trace -> system.test_harness.analysis_lc.package_evidence { class: cstr }
+system.note_stats -> system.test_harness.analysis_lc.compute_cp_bound { class: cstr }
+
+# Layout-only hints
+bench_operator -> safety_observer { style: { opacity: 0 } }
+safety_observer -> bench_supply { style: { opacity: 0 } }
+bench_supply -> battery_fixture { style: { opacity: 0 } }
+battery_fixture -> overcurrent_fixture { style: { opacity: 0 } }
+overcurrent_fixture -> overvoltage_fixture { style: { opacity: 0 } }
+overvoltage_fixture -> load_bank { style: { opacity: 0 } }
+load_bank -> dmm_daq { style: { opacity: 0 } }
+dmm_daq -> i2c_logger { style: { opacity: 0 } }
+i2c_logger -> evidence_host { style: { opacity: 0 } }
+evidence_host -> system { style: { opacity: 0 } }
+system.uut -> system.test_harness { style: { opacity: 0 } }
+system.test_harness -> system.note_trace { style: { opacity: 0 } }
+system.note_trace -> system.note_stats { style: { opacity: 0 } }

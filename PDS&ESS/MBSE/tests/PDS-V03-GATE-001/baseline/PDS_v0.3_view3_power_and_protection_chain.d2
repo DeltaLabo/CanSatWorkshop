@@ -1,0 +1,61 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 14 }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 18
+    }
+  }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+chain: "PDS v0.3 — Power and protection chain" {
+  class: chain
+  direction: right
+
+  charger_power: "[F] Provide power" { class: func }
+  switch_on: "[F] Switch power on" { class: func }
+  switch_off: "[F] Switch power off" { class: func }
+  charger_regulate_voltage: "[F] Regulate\nvoltage" { class: func }
+  store_energy: "[F] Store energy" { class: func }
+  provide_power: "[F] Provide power" { class: func }
+  restore_power: "[F] Restore power" { class: func }
+  detect_overcurrent: "[F] Detect\novercurrent" { class: func }
+  detect_overvoltage: "[F] Detect\novervoltage" { class: func }
+  cut_off_power: "[F] Cut off power" { class: func }
+  regulate_voltage: "[F] Regulate\nvoltage" { class: func }
+
+  note_energy: "[C] Enough for 6 hours\nof continuous\noperation in On mode" {
+    class: note
+    shape: page
+  }
+  note_prob: "[C] Probability < 1%" {
+    class: note
+    shape: page
+  }
+}
+
+chain.charger_power -> chain.charger_regulate_voltage: "[FE] Charge power" { class: fe }
+chain.switch_on -> chain.restore_power: "[FE] Power-on command" { class: fe }
+chain.switch_off -> chain.cut_off_power: "[FE] Power-off command" { class: fe }
+chain.detect_overcurrent -> chain.cut_off_power: "[FE] Overcurrent detected" { class: fe }
+chain.detect_overvoltage -> chain.cut_off_power: "[FE] Overvoltage detected" { class: fe }
+chain.charger_regulate_voltage -> chain.store_energy: "[FE] Charge current" { class: fe }
+chain.provide_power -> chain.regulate_voltage: "[FE] Battery power" { class: fe }
+
+chain.note_energy -> chain.store_energy { class: cstr }
+chain.note_prob -> chain.detect_overcurrent { class: cstr }
+chain.note_prob -> chain.detect_overvoltage { class: cstr }

@@ -1,0 +1,117 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional Chain — PDS-VV-CON-001 wrong-charger / unsafe-setup safety hold.
+# Only functions, FEs, and constraints are directly inside the chain container.
+# References: IVV, PDS-R2, PDS-R4, PDS-R5, PDS-R6, PDS-R7.
+# Traceability: [C] At 4.2 V, 0.5 A; PDS-UC-ChargeESS; PDS-FE-LiIonUnsafeCondition;
+# PDS-FE-OvercurrentOvervoltage; PDS-VV-FC-001; PDS-VV-SAFE-001.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDS-VV-CON-001 — wrong-charger / unsafe-setup safety-hold chain\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R2; PDS-R4; PDS-R5; PDS-R6; PDS-R7" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  read_definition: "[F] Read PDS-VV-CON-001\ncharge-hold definition" { class: func }
+  inspect_liion_docs: "[F] Inspect Li-ion\nsafety documents and limits" { class: func }
+  verify_instrument_status: "[F] Verify instrument\ncalibration / status" { class: func }
+  read_ambient: "[F] Read ambient before\nsetup decision" { class: func }
+  verify_charger_certification: "[F] Verify charger\ncertification and settings" { class: func }
+  check_voltage_current_capability: "[F] Check charger voltage /\ncurrent capability against 4.2 V / 0.5 A" { class: func }
+  check_polarity_and_connection: "[F] Check polarity, connector,\nand setup ambiguity" { class: func }
+  detect_unsafe_cell_condition: "[F] Detect unsafe, damaged,\nswollen, undocumented cell condition" { class: func }
+  detect_setup_hold_condition: "[F] Detect hold condition\nbefore energizing" { class: func }
+  safety_observer_hold: "[F] Safety Observer\ncommands hold / abort" { class: func }
+  prevent_energize: "[F] Prevent charger\nenergize" { class: func }
+  remove_source_energy: "[F] Remove or keep off\nsource energy" { class: func }
+  hold_charge_path_safe: "[F] Hold charge path\nsafe and de-energized" { class: func }
+  use_emulator_only_if_allowed: "[F] Use supervised emulator\npath check only if allowed" { class: func }
+  record_hold_reason: "[F] Record hold reason,\nsetup state, and evidence" { class: func }
+  disposition_anomaly: "[F] Disposition anomaly\nbefore any retest" { class: func }
+  classify_no_liion_claim: "[F] Classify no final\nLi-ion charge claim if applicable" { class: func }
+  archive_hold_evidence: "[F] Archive hold / abort\nevidence package" { class: func }
+
+  note_scope: "[C] PDS-VV-CON-001 hold-chain scope\nSafety-hold scenario for wrong charger, unsafe setup, missing Li-ion evidence,\nunsafe ambient, unresolved calibration/status, unsafe cell condition, reverse\nor ambiguous connection. Trace: PDS-FE-LiIonUnsafeCondition;\nPDS-FE-OvercurrentOvervoltage; PDS-VV-FC-001; PDS-VV-SAFE-001." {
+    class: note
+    shape: page
+  }
+  note_hold_pass: "[C] Hold pass/fail\nA wrong/uncertified charger, wrong voltage/current capability, reverse polarity,\nambiguous setup, missing safety documents or limits, unsafe cell condition,\nunsafe ambient, unresolved calibration/status issue, or Safety Observer hold\nshall prevent energizing. Safety hold passes only if no unsafe energization occurs." {
+    class: note
+    shape: page
+  }
+  note_charge_limit: "[C] Constraint protection\nThe modeled charge constraint remains 4.2 V / 0.5 A. A setup that cannot be\nshown to enforce the declared voltage/current limits is held, not used for\npowered Li-ion charging. No tighter chemistry requirement is invented here." {
+    class: note
+    shape: page
+  }
+  note_no_claim: "[C] No-Li-ion-claim condition\nIf cell identity, safety documentation, charge/discharge/storage limits, or\nrequired safety evidence are absent, only supervised emulator/non-cell path\nchecks may proceed. The result shall report no final powered Li-ion charge\nacceptance until documents are available." {
+    class: note
+    shape: page
+  }
+  note_environment: "[C] Environmental and safety controls\nAmbient is read before setup decision; instruments are calibrated/status-checked;\nfire-safe enclosure and E-stop remain available; Safety Observer/Witness can hold\nfor any ambiguity. Destructive Li-ion abuse and accredited certification are out of scope." {
+    class: note
+    shape: page
+  }
+  note_fault: "[C] Fault-hardening viewpoint\nFault-hardening evidence is the safe refusal to energize for wrong charger,\nreverse/ambiguous connection, calibration issue, unsafe ambient, missing\ndocuments, unsafe cell condition, or overcurrent/overvoltage precursor." {
+    class: note
+    shape: page
+  }
+}
+
+chain.read_definition -> chain.inspect_liion_docs: "[FE] Activity and\nsafety prerequisites" { class: fe }
+chain.inspect_liion_docs -> chain.verify_instrument_status: "[FE] Document status" { class: fe }
+chain.verify_instrument_status -> chain.read_ambient: "[FE] Instrument status" { class: fe }
+chain.read_ambient -> chain.verify_charger_certification: "[FE] Ambient status" { class: fe }
+chain.verify_charger_certification -> chain.check_voltage_current_capability: "[FE] Charger identity /\ncertification status" { class: fe }
+chain.check_voltage_current_capability -> chain.check_polarity_and_connection: "[FE] Capability vs limits" { class: fe }
+chain.check_polarity_and_connection -> chain.detect_unsafe_cell_condition: "[FE] Polarity / setup status" { class: fe }
+chain.detect_unsafe_cell_condition -> chain.detect_setup_hold_condition: "[FE] Cell condition status" { class: fe }
+chain.detect_setup_hold_condition -> chain.safety_observer_hold: "[FE] Hold condition found" { class: fe }
+chain.safety_observer_hold -> chain.prevent_energize: "[FE] Hold / abort command" { class: fe }
+chain.prevent_energize -> chain.remove_source_energy: "[FE] Charger enable inhibited" { class: fe }
+chain.remove_source_energy -> chain.hold_charge_path_safe: "[FE] Source off / safe" { class: fe }
+chain.hold_charge_path_safe -> chain.use_emulator_only_if_allowed: "[FE] De-energized charge path" { class: fe }
+chain.use_emulator_only_if_allowed -> chain.record_hold_reason: "[FE] Emulator-only option\nor no test" { class: fe }
+chain.record_hold_reason -> chain.disposition_anomaly: "[FE] Hold evidence" { class: fe }
+chain.disposition_anomaly -> chain.classify_no_liion_claim: "[FE] Retest / waiver status" { class: fe }
+chain.classify_no_liion_claim -> chain.archive_hold_evidence: "[FE] No-Li-ion-claim\nor hold classification" { class: fe }

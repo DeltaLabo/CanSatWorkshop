@@ -1,0 +1,125 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional Chain — PDS-VV-CON-001 charge evidence analysis.
+# Only functions, FEs, and constraints are directly inside the chain container.
+# References: IVV, PDS-R2, PDS-R4, PDS-R5, PDS-R6, PDS-R7.
+# Traceability: [C] At 4.2 V, 0.5 A; PDS-UC-ChargeESS; PDS-FE-LiIonUnsafeCondition;
+# PDS-FE-OvercurrentOvervoltage; PDS-VV-FC-001; PDS-VV-SAFE-001.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDS-VV-CON-001 — charge evidence analysis chain\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R2; PDS-R4; PDS-R5; PDS-R6; PDS-R7" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  import_charge_logs: "[F] Import V-I-T\ncharge logs and profiles" { class: func }
+  import_hold_records: "[F] Import hold / abort\nand wrong-charger records" { class: func }
+  import_safety_documents: "[F] Import Li-ion safety\ndocuments and limits" { class: func }
+  verify_activity_baseline: "[F] Verify activity ID,\nSSIV, baseline, article ID" { class: func }
+  verify_calibration_ambient: "[F] Verify calibration/status\nand ambient records" { class: func }
+  validate_data_integrity: "[F] Validate raw data,\nsampling, timestamps, setup" { class: func }
+  determine_evidence_basis: "[F] Determine ≥30 stable\nsamples or complete profile basis" { class: func }
+  compute_uncertainty: "[F] Compute declared\nmeasurement uncertainty / tolerance" { class: func }
+  compare_voltage_limit: "[F] Compare charge voltage\nto 4.2 V plus uncertainty" { class: func }
+  compare_current_limit: "[F] Compare charge current\nto nominal 0.5 A with uncertainty" { class: func }
+  record_termination: "[F] Record actual charger\ntermination if below 4.2 V" { class: func }
+  review_thermal_safety: "[F] Review temperature, smoke,\nswelling, cell anomaly evidence" { class: func }
+  review_protection_events: "[F] Review unexpected\nprotection, overcurrent, overvoltage" { class: func }
+  review_hold_effectiveness: "[F] Review wrong-charger /\nunsafe-setup hold effectiveness" { class: func }
+  classify_document_status: "[F] Classify safety-document\nstatus and Li-ion claim eligibility" { class: func }
+  link_to_fc001: "[F] Link normal charge\ncoverage to PDS-VV-FC-001" { class: func }
+  link_to_safe001: "[F] Link safety-document\nevidence to PDS-VV-SAFE-001" { class: func }
+  classify_activity_result: "[F] Classify PDS-VV-CON-001\npass, fail, hold, or no-Li-ion-claim" { class: func }
+  write_report_reference: "[F] Write report-by-reference\nwith assumptions and caveats" { class: func }
+  archive_analysis: "[F] Archive analysis and\ncontrolled evidence package" { class: func }
+
+  note_scope: "[C] Evidence-analysis scope\nAnalyze final flight acceptance evidence for the normal charge constraint [C] At\n4.2 V, 0.5 A. Trace to PDS-UC-ChargeESS, PDS-FE-LiIonUnsafeCondition,\nPDS-FE-OvercurrentOvervoltage, PDS-VV-FC-001, and PDS-VV-SAFE-001." {
+    class: note
+    shape: page
+  }
+  note_voltage_current: "[C] Voltage/current acceptance\nVoltage measured at the cell/protection charge path shall never exceed modeled\n4.2 V plus declared measurement uncertainty/tolerance. Current shall be limited\nto nominal 0.5 A with uncertainty considered. Record actual termination if below\n4.2 V; do not invent a tighter battery-chemistry requirement." {
+    class: note
+    shape: page
+  }
+  note_safety: "[C] Safety-document acceptance\nCell identity, datasheet/SDS or equivalent, charge/discharge/storage limits, and\nUN38.3/IEC62133 or equivalent evidence when available are required for a powered\nLi-ion charge acceptance claim. If absent, classify as emulator/non-cell path\ncheck only and report no final Li-ion charge acceptance." {
+    class: note
+    shape: page
+  }
+  note_stop_fail: "[C] Fail / hold events\nAny uncontrolled current, unexpected overcurrent/protection event, overvoltage,\nreverse current, unexpected heating, smoke, swelling, unsafe connector/PCB\ntemperature, cell anomaly, wrong charger energization, or unresolved anomaly\nprevents pass." {
+    class: note
+    shape: page
+  }
+  note_stats: "[C] Statistical significance viewpoint\nEvidence basis is ≥30 stable voltage/current/temperature samples per relevant\ncondition or a complete logged charge profile. Retain raw data, sample timing,\nuncertainty, ambient, and setup records. This supports the inspected article;\nstronger reliability claims need separate statistical planning." {
+    class: note
+    shape: page
+  }
+  note_fault: "[C] Fault-hardening viewpoint\nAnalysis checks that the verification definition failed safe for wrong or\nuncertified charger, reverse/ambiguous setup, unsafe ambient, unresolved\ncalibration/status issue, missing documents, unsafe cell condition, and\novercurrent/overvoltage precursors before energizing." {
+    class: note
+    shape: page
+  }
+  note_evidence_path: "[C] Evidence path\nArchive raw charge logs, safety documents, calibration/status, ambient, photos,\nuncertainty calculations, hold records, deviations/anomalies, and report under\n../results/PDS-VV-CON-001/." {
+    class: note
+    shape: page
+  }
+}
+
+chain.import_charge_logs -> chain.import_hold_records: "[FE] V-I-T evidence" { class: fe }
+chain.import_hold_records -> chain.import_safety_documents: "[FE] Hold / abort evidence" { class: fe }
+chain.import_safety_documents -> chain.verify_activity_baseline: "[FE] Safety document set" { class: fe }
+chain.verify_activity_baseline -> chain.verify_calibration_ambient: "[FE] Baseline and article match" { class: fe }
+chain.verify_calibration_ambient -> chain.validate_data_integrity: "[FE] Valid calibration and ambient basis" { class: fe }
+chain.validate_data_integrity -> chain.determine_evidence_basis: "[FE] Validated raw records" { class: fe }
+chain.determine_evidence_basis -> chain.compute_uncertainty: "[FE] Sample/profile basis" { class: fe }
+chain.compute_uncertainty -> chain.compare_voltage_limit: "[FE] Uncertainty budget" { class: fe }
+chain.compare_voltage_limit -> chain.compare_current_limit: "[FE] Voltage margin" { class: fe }
+chain.compare_current_limit -> chain.record_termination: "[FE] Current margin" { class: fe }
+chain.record_termination -> chain.review_thermal_safety: "[FE] Termination record" { class: fe }
+chain.review_thermal_safety -> chain.review_protection_events: "[FE] Thermal/cell safety review" { class: fe }
+chain.review_protection_events -> chain.review_hold_effectiveness: "[FE] Protection/anomaly review" { class: fe }
+chain.review_hold_effectiveness -> chain.classify_document_status: "[FE] Hold-chain review" { class: fe }
+chain.classify_document_status -> chain.link_to_fc001: "[FE] Li-ion claim eligibility" { class: fe }
+chain.link_to_fc001 -> chain.link_to_safe001: "[FE] Functional-chain trace" { class: fe }
+chain.link_to_safe001 -> chain.classify_activity_result: "[FE] Safety-document trace" { class: fe }
+chain.classify_activity_result -> chain.write_report_reference: "[FE] Activity result" { class: fe }
+chain.write_report_reference -> chain.archive_analysis: "[FE] Report and caveats" { class: fe }

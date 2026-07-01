@@ -1,0 +1,192 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV4 — PDS-VV-CON-002 six-hour On-mode endurance chain.
+# Traceability: CON-002 6h readiness constraint + PDS-R2, PDS-R6, PDS-R7, PDS-R9, PDS-R10.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 2; font-size: 26 } }
+  cex: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea
+  authorize_plan: "[F] Read plan and approve On-mode profile" { class: func }
+  start_sequence: "[F] Start 6h sequence" { class: func }
+  monitor_progress: "[F] Monitor run progress" { class: func }
+  decision_gate: "[F] Final go/no-go decision" { class: func }
+}
+
+safety_observer: "[EA] Safety Operator" { class: ea
+  safety_gate: "[F] Verify ambient and containment" { class: func }
+  allow_run: "[F] Allow run/abort" { class: func }
+}
+
+loader: "[EA] Load-profile emulator" { class: ea
+  define_profile: "[F] Define full 6 h sequence" { class: func }
+  apply_segment: "[F] Apply next profile segment" { class: func }
+}
+
+preconditioner: "[EA] Precondition fixture" { class: ea
+  check_battery: "[F] Check pre-run battery state" { class: func }
+  check_source: "[F] Check source limits" { class: func }
+  precondition_battery: "[F] Apply precondition window" { class: func }
+}
+
+rail_logger: "[EA] Rail and telemetry logger" { class: ea
+  start_rails_logging: "[F] Start rail/current logging" { class: func }
+  record_sample: "[F] Record rail sample" { class: func }
+  check_sample_gaps: "[F] Check sampling continuity" { class: func }
+}
+
+ina219_host: "[EA] INA219 capture host" { class: ea
+  start_supervision_capture: "[F] Start V/I capture" { class: func }
+  read_supervision_pair: "[F] Read V/I pairs periodically" { class: func }
+  detect_stale_or_fault: "[F] Detect stale/timeout/fault" { class: func }
+}
+
+timer: "[EA] Timer" { class: ea
+  set_run_clock: "[F] Set 6 h counter" { class: func }
+  emit_checkpoint: "[F] Emit minute checkpoint" { class: func }
+}
+
+system: "[System] PDS-VV-CON-002 on-mode endurance chain" {
+  class: sys
+
+  phase0_precheck: "[LC] Pre-check phase" { class: lc
+    verify_preconditions: "[F] Verify preconditions" { class: func }
+    witness_safety_ready: "[F] Witness safety ready" { class: func }
+  }
+
+  phase1_setup: "[LC] Setup phase" { class: lc
+    precondition_battery: "[F] Hold preconditioned battery" { class: func }
+    program_profile: "[F] Load-profile programmed" { class: func }
+    arm_logging: "[F] Logger monitoring armed" { class: func }
+    start_clock: "[F] Start 6h run clock" { class: func }
+  }
+
+  phase2_run_loop: "[LC] 6 h run loop" { class: lc
+    apply_load_segment: "[F] Apply next load segment" { class: func }
+    sample_rails_and_current: "[F] Sample rails/current" { class: func }
+    sample_ina219: "[F] Sample INA219 V/I" { class: func }
+    verify_rail_stable: "[F] Verify rail stability" { class: func }
+    verify_no_stale: "[F] Verify sample freshness" { class: func }
+    verify_thermal_limits: "[F] Verify thermal limit margins" { class: func }
+    remaining_time_check: "[F] If remaining_time < 6 h continue loop" { class: func }
+  }
+
+  phase3_protection_response: "[LC] Protection/anomaly handling" { class: lc
+    catch_thermal_or_fault: "[F] Catch overload/reset/timeout" { class: func }
+    execute_safe_cutoff: "[F] Execute safe cutoff" { class: func }
+    classify_evidence: "[F] Classify fail as test stop" { class: func }
+  }
+
+  phase4_end_run: "[LC] End-of-run and review" { class: lc
+    stop_profile: "[F] Stop load profile / command off" { class: func }
+    force_safe_state: "[F] Force safe state" { class: func }
+    evaluate_evidence: "[F] Evaluate evidence against pass/fail constraints" { class: func }
+  }
+
+  chain_note: "[C] Chain semantics and traceability:\n1) Reuses On-mode power flow + protection intent from\n   PDS-VV-FC-001; 2) Reuses INA219 chain timing/fault semantics from\n   PDS-VV-FC-002; 3) Constraint framing aligns with CON-001, CON-003, CON-004 for\n   load, logging load, and rail tolerance assumptions.\nNo single node-by-node model of a full campaign timeline is required;\nthis chain defines the acceptance logic and evidence gating." {
+    class: note
+    shape: page
+  }
+}
+
+# Chain flow
+system.phase0_precheck.verify_preconditions -> system.phase1_setup.precondition_battery : "[PL] precheck" { class: fe }
+system.phase0_precheck.witness_safety_ready -> system.phase1_setup.precondition_battery { class: fe }
+system.phase1_setup.precondition_battery -> system.phase1_setup.program_profile : "[PL] pre-run config" { class: fe }
+system.phase1_setup.program_profile -> system.phase1_setup.arm_logging : "[PL] configure" { class: fe }
+system.phase1_setup.arm_logging -> system.phase1_setup.start_clock : "[PL] run enable" { class: fe }
+system.phase1_setup.start_clock -> system.phase2_run_loop.apply_load_segment : "[PL] start loop" { class: fe }
+
+system.phase2_run_loop.apply_load_segment -> system.phase2_run_loop.sample_rails_and_current : "[PL] load-driven operation" { class: fe }
+system.phase2_run_loop.sample_rails_and_current -> system.phase2_run_loop.sample_ina219 : "[PL] capture sample" { class: fe }
+system.phase2_run_loop.sample_ina219 -> system.phase2_run_loop.verify_no_stale : "[PL] freshness check" { class: fe }
+system.phase2_run_loop.verify_no_stale -> system.phase2_run_loop.verify_rail_stable : "[PL] validate" { class: fe }
+system.phase2_run_loop.verify_rail_stable -> system.phase2_run_loop.verify_thermal_limits : "[PL] thermal/limit check" { class: fe }
+system.phase2_run_loop.verify_thermal_limits -> system.phase2_run_loop.remaining_time_check : "[PL] loop condition" { class: fe }
+
+system.phase2_run_loop.remaining_time_check -> system.phase2_run_loop.apply_load_segment : "[PL] while remaining_time > 0" { class: fe }
+system.phase2_run_loop.remaining_time_check -> system.phase4_end_run.stop_profile : "[PL] on completion" { class: fe }
+
+# Fault/anomaly response path
+system.phase2_run_loop.verify_rail_stable -> system.phase3_protection_response.catch_thermal_or_fault : "[C] on anomaly" { class: cstr }
+system.phase2_run_loop.verify_no_stale -> system.phase3_protection_response.catch_thermal_or_fault : "[C] data stale/timeout" { class: cstr }
+system.phase2_run_loop.verify_thermal_limits -> system.phase3_protection_response.catch_thermal_or_fault : "[C] thermal margin breach" { class: cstr }
+system.phase3_protection_response.catch_thermal_or_fault -> system.phase3_protection_response.execute_safe_cutoff : "[PL] safe stop" { class: fe }
+system.phase3_protection_response.execute_safe_cutoff -> system.phase3_protection_response.classify_evidence : "[PL] classify" { class: fe }
+system.phase3_protection_response.classify_evidence -> system.phase4_end_run.evaluate_evidence : "[PL] fail evidence" { class: fe }
+
+system.phase4_end_run.stop_profile -> system.phase4_end_run.force_safe_state : "[PL] shutdown" { class: fe }
+system.phase4_end_run.force_safe_state -> system.phase4_end_run.evaluate_evidence : "[PL] finalization" { class: fe }
+system.phase4_end_run.evaluate_evidence -> system.chain_note : "[C] pass/fail criteria" { class: cstr }
+
+# Verification actor/function mappings
+test_operator.authorize_plan -> system.phase0_precheck.verify_preconditions { class: cex }
+safety_observer.safety_gate -> system.phase0_precheck.witness_safety_ready { class: cex }
+test_operator.start_sequence -> system.phase1_setup.start_clock { class: cex }
+safety_observer.allow_run -> loader.define_profile { class: cex }
+preconditioner.check_battery -> system.phase1_setup.precondition_battery { class: cex }
+preconditioner.check_source -> system.phase1_setup.precondition_battery { class: cex }
+preconditioner.precondition_battery -> system.phase1_setup.precondition_battery { class: cex }
+loader.define_profile -> system.phase1_setup.program_profile { class: cex }
+loader.apply_segment -> system.phase2_run_loop.apply_load_segment { class: cex }
+rail_logger.start_rails_logging -> system.phase1_setup.arm_logging { class: cex }
+rail_logger.record_sample -> system.phase2_run_loop.sample_rails_and_current { class: cex }
+rail_logger.check_sample_gaps -> system.phase2_run_loop.verify_no_stale { class: cex }
+ina219_host.start_supervision_capture -> system.phase1_setup.arm_logging { class: cex }
+ina219_host.read_supervision_pair -> system.phase2_run_loop.sample_ina219 { class: cex }
+ina219_host.detect_stale_or_fault -> system.phase2_run_loop.verify_no_stale { class: cex }
+timer.set_run_clock -> system.phase1_setup.start_clock { class: cex }
+timer.emit_checkpoint -> system.phase2_run_loop.verify_thermal_limits { class: cex }
+test_operator.monitor_progress -> system.phase2_run_loop.remaining_time_check { class: cex }
+test_operator.decision_gate -> system.phase4_end_run.evaluate_evidence { class: cex }
+
+# Constraint anchors
+system.chain_note -> system.phase2_run_loop.verify_no_stale { class: cstr }
+system.chain_note -> system.phase3_protection_response.classify_evidence { class: cstr }
+system.chain_note -> system.phase4_end_run.evaluate_evidence { class: cstr }
+
+# External layout only
+loader -> preconditioner { style: { opacity: 0 } }
+preconditioner -> rail_logger { style: { opacity: 0 } }
+rail_logger -> ina219_host { style: { opacity: 0 } }
+ina219_host -> timer { style: { opacity: 0 } }
+timer -> test_operator { style: { opacity: 0 } }
+test_operator -> safety_observer { style: { opacity: 0 } }

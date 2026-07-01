@@ -1,0 +1,96 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 14 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 16 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 18 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+user: "[EA] User" {
+  class: ea
+  direction: down
+
+  switch_on: "[F] Switch power on" { class: func }
+  switch_off: "[F] Switch power off" { class: func }
+}
+
+pds: "[System] PDS v0.1 Subsystem" {
+  class: sys
+  direction: right
+
+  battpack: "[PC] 1S1P Li-Ion" {
+    class: pc
+
+    battery_lc: "[LC] Battery" {
+      class: lc
+      direction: right
+
+      store_energy: "[F] Store energy" { class: func }
+      provide_power: "[F] Provide power" { class: func }
+    }
+  }
+
+  board: "[PC] PDS Circuitboard" {
+    class: pc
+    direction: down
+
+    protection: "[PC] Protection Circuit" {
+      class: pc
+
+      power_protection: "[LC] Power Protection" {
+        class: lc
+        direction: right
+
+        restore_power: "[F] Restore power" { class: func }
+        cut_off_power: "[F] Cut off power" { class: func }
+      }
+    }
+
+    regulator_block: "[PC] Regulator" {
+      class: pc
+
+      regulator_lc: "[LC] Regulator" {
+        class: lc
+
+        regulate_voltage: "[F] Regulate\nvoltage" { class: func }
+      }
+    }
+
+    connector_terminal: "[PC] Connector\nTerminal" { class: pc }
+  }
+}
+
+screw_terminals: "[C] Screw\nterminal or\ncrimped\ncables" {
+  class: note
+  shape: page
+}
+
+screw_terminals -> pds.board.connector_terminal { class: cstr }

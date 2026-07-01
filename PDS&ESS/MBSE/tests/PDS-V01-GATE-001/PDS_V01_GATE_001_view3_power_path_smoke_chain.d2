@@ -1,0 +1,101 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional Chain — PDS-V01-GATE-001 v0.1 power-path smoke sequence.
+# References: PM&SE/IVV.md; PDS-v0.1-AdvanceToV0.2;
+# PDS-UC-ProvideRegulatedPower; PDS-FE-ReversePolarityOrOpenPowerPath.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 18 }
+  }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 26
+    }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 14 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 14 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+chain: "PDS-V01-GATE-001 — v0.1 power-path smoke chain\nPDS & ESS increment v0.1 progression gate toward v0.2 — refs: IVV; PDS-v0.1-AdvanceToV0.2; PDS-UC-ProvideRegulatedPower; PDS-FE-ReversePolarityOrOpenPowerPath" {
+  class: chain
+  direction: down
+
+  ambient_check: "[F] Read ambient temperature / humidity" { class: func }
+  record_context: "[F] Record setup context" { class: func }
+  inspect_terminals: "[F] Inspect screw/cable terminations" { class: func }
+  verify_continuity: "[F] Verify continuity and polarity" { class: func }
+  configure_source: "[F] Configure and verify\nbench source limits" { class: func }
+  connect_source: "[F] Connect supervised source and UUT" { class: func }
+  switch_power_on: "[F] Switch power on" { class: func }
+  store_energy: "[F] Store energy" { class: func }
+  provide_power: "[F] Provide power" { class: func }
+  restore_power: "[F] Restore power" { class: func }
+  regulate_voltage: "[F] Regulate\nvoltage" { class: func }
+  apply_load: "[F] Apply representative load" { class: func }
+  measure_rails: "[F] Measure 5V/3V3 rail\nlevels and temperature" { class: func }
+  cut_off_power: "[F] Cut off power" { class: func }
+  switch_power_off: "[F] Switch power off" { class: func }
+  compare_constraints: "[F] Compare against pass/fail constraints" { class: func }
+  log_evidence: "[F] Log run, sample set,\nand decision" { class: func }
+
+  note_scope: "[C] Scenario: one short smoke gate,\nwith 3 repeat cycles for repeatability.\nRepeat count is conservative and not treated\nas statistical reliability evidence.\nPrimary evidence is modeled pass/fail conformity." { class: note; shape: page }
+  note_pass_pc: "[C] PC presence pass/fail\nAll modeled v0.1 PCs and required test PCs\nmust be present and in expected configuration." { class: note; shape: page }
+  note_pass_pl: "[C] PL pass/fail\nBattery cable JST, PC Out / GND,\nand 5V / 3V3 / GND links verified for continuity\nand polarity in the inspected setup." { class: note; shape: page }
+  note_constraint: "[C] Constraint pass/fail\n- [C] Screw terminal or crimped cables retained and secure.\n- Under light load, measured 5V in [4.75, 5.25] V\nand 3V3 in [3.14, 3.47] V.\n- No overcurrent trip, no smoke, no abnormal heat,\nand no reverse/undefined power-path residual on safe-off." { class: note; shape: page }
+  note_stats_fault: "[C] Viewpoints\nStatistical evidence: n=3 smoke cycles only (screening; no reliability claim), raw evidence recorded.\nFault-hardening: reverse polarity, loose/open path, and residual supply checks are screened in setup and execution." { class: note; shape: page }
+}
+
+bench_operator: "[EA] Bench Operator / gate tester" {
+  class: ea
+  authorize_cycle: "[F] Authorize 3-cycle gate" { class: func }
+}
+
+log_host: "[EA] Test logger" {
+  class: ea
+  submit_record: "[F] Submit record" { class: func }
+}
+
+# Chain and exchange progression.
+chain.ambient_check -> chain.record_context: "[FE] ambient" { class: fe }
+chain.record_context -> chain.inspect_terminals: "[FE] check" { class: fe }
+chain.inspect_terminals -> chain.verify_continuity: "[FE] visual/electrical inspection" { class: fe }
+chain.verify_continuity -> chain.configure_source: "[FE] pass gate setup" { class: fe }
+chain.configure_source -> chain.connect_source: "[FE] configure source limits" { class: fe }
+chain.connect_source -> chain.switch_power_on: "[FE] source connected" { class: fe }
+chain.switch_power_on -> chain.store_energy: "[FE] switch-on command" { class: fe }
+chain.store_energy -> chain.provide_power: "[FE] battery available" { class: fe }
+chain.provide_power -> chain.restore_power: "[FE] restoration path" { class: fe }
+chain.restore_power -> chain.regulate_voltage: "[FE] protected path active" { class: fe }
+chain.regulate_voltage -> chain.apply_load: "[FE] command representative load" { class: fe }
+chain.apply_load -> chain.measure_rails: "[FE] load-conditioned measurements" { class: fe }
+chain.measure_rails -> chain.cut_off_power: "[FE] decision/cleanup condition" { class: fe }
+chain.cut_off_power -> chain.switch_power_off: "[FE] commanded de-energization" { class: fe }
+chain.switch_power_off -> chain.compare_constraints: "[FE] post-off safety" { class: fe }
+chain.compare_constraints -> chain.log_evidence: "[FE] final decision" { class: fe }
+
+# Verification exchanges for gate control + reporting
+bench_operator.authorize_cycle -> chain.ambient_check: "[CE] start gate" { class: ce }
+log_host.submit_record -> chain.log_evidence: "[CE] evidence payload" { class: ce }
+
+# Constraint mapping
+chain.note_pass_pc -> chain.switch_power_on { class: cstr }
+chain.note_pass_pl -> chain.verify_continuity { class: cstr }
+chain.note_constraint -> chain.compare_constraints { class: cstr }
+chain.note_stats_fault -> chain.log_evidence { class: cstr }

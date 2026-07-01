@@ -1,0 +1,125 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# Functional Chain — PDS-VV-CON-001 normal charge acceptance.
+# Only functions, FEs, and constraints are directly inside the chain container.
+# References: IVV, PDS-R2, PDS-R4, PDS-R5, PDS-R6, PDS-R7.
+# Traceability: [C] At 4.2 V, 0.5 A; PDS-UC-ChargeESS; PDS-FE-LiIonUnsafeCondition;
+# PDS-FE-OvercurrentOvervoltage; PDS-VV-FC-001; PDS-VV-SAFE-001.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+chain: "PDS-VV-CON-001 — normal charge acceptance chain\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R2; PDS-R4; PDS-R5; PDS-R6; PDS-R7" {
+  class: chain
+  direction: down
+  grid-columns: 1
+
+  read_definition: "[F] Read PDS-VV-CON-001\nverification definition" { class: func }
+  inspect_liion_docs: "[F] Inspect cell identity,\nsafety documents, and limits" { class: func }
+  verify_cell_fit_for_charge: "[F] Verify flight pack is\nfit for normal non-abuse charge" { class: func }
+  read_ambient: "[F] Read ambient\nbefore charge repetition" { class: func }
+  verify_calibration_status: "[F] Verify instrument\ncalibration / status" { class: func }
+  arm_fire_safety: "[F] Arm fire-safe enclosure,\nE-stop, and observer" { class: func }
+  approve_energize: "[F] Safety Observer\napproves energize" { class: func }
+  verify_charger_certification: "[F] Verify certified\ncurrent-limited charger" { class: func }
+  set_charge_limits: "[F] Set 4.2 V /\n0.5 A charge limits" { class: func }
+  configure_logging: "[F] Configure V-I-T\ncharge profile logging" { class: func }
+  connect_charge_path: "[F] Connect USB-C /\ncell-protection charge path" { class: func }
+  provide_power: "[F] Provide power" { class: func }
+  regulate_voltage: "[F] Regulate voltage" { class: func }
+  store_energy: "[F] Store energy" { class: func }
+  measure_charge_voltage: "[F] Measure charge voltage\nat cell/protection path" { class: func }
+  measure_charge_current: "[F] Measure charge current\nat cell/protection path" { class: func }
+  measure_temperature: "[F] Measure battery, protection,\nconnector temperature" { class: func }
+  observe_no_unsafe_condition: "[F] Observe no swelling,\nsmoke, unsafe heating, anomaly" { class: func }
+  log_charge_profile: "[F] Log complete profile\nor stable sample set" { class: func }
+  compare_charge_constraint: "[F] Compare to 4.2 V /\n0.5 A constraint with uncertainty" { class: func }
+  classify_charge_acceptance: "[F] Classify final charge\nacceptance result" { class: func }
+  archive_evidence: "[F] Archive raw data, docs,\nuncertainty, and report inputs" { class: func }
+
+  note_scope: "[C] PDS-VV-CON-001 normal path scope\nFinal flight acceptance normal charge of the PDS & ESS v1.0 article.\nTrace: source charge constraint; PDS-UC-ChargeESS; PDS-FE-LiIonUnsafeCondition;\nPDS-FE-OvercurrentOvervoltage; PDS-VV-FC-001; PDS-VV-SAFE-001.\nEarlier versions are protoflight/out of scope." {
+    class: note
+    shape: page
+  }
+  note_pass: "[C] Charge pass/fail\nCharge voltage at the cell/protection charge path never exceeds modeled 4.2 V\nplus declared measurement uncertainty/tolerance. Charge current is limited to\nnominal 0.5 A with uncertainty considered. If charger terminates below 4.2 V,\nrecord actual termination; do not invent a tighter chemistry requirement." {
+    class: note
+    shape: page
+  }
+  note_safety_docs: "[C] Li-ion safety prerequisite\nPowered Li-ion charge is allowed only when cell/pack identity, datasheet/SDS or\nequivalent, charge/discharge/storage limits, and UN38.3/IEC62133 or equivalent\nevidence when available are recorded. Otherwise use emulator path checks only\nand make no final Li-ion charge acceptance claim." {
+    class: note
+    shape: page
+  }
+  note_environment: "[C] Environmental / safety conditions\nRead ambient before repetitions; instruments calibrated/status-checked; certified\ncurrent-limited charger; fire-safe enclosure and E-stop armed; Safety Observer\napproves. Destructive Li-ion abuse and accredited safety certification are out of scope." {
+    class: note
+    shape: page
+  }
+  note_stats: "[C] Statistical significance viewpoint\nUse ≥30 stable voltage/current/temperature samples per relevant condition or a\ncomplete logged charge profile. Retain raw samples, sample timing, charger settings,\nuncertainty, ambient, and anomaly data. Repeated runs on one article are\ncharacterization unless independence is justified." {
+    class: note
+    shape: page
+  }
+  note_fault: "[C] Fault-hardening viewpoint\nAny uncontrolled current, unexpected overcurrent/protection event, overvoltage,\nreverse current, unsafe temperature, smoke, swelling, connector/PCB heating,\nor cell anomaly is fail/hold/anomaly and stops the normal charge acceptance." {
+    class: note
+    shape: page
+  }
+}
+
+chain.read_definition -> chain.inspect_liion_docs: "[FE] Activity, SSIV,\ntrace baseline" { class: fe }
+chain.inspect_liion_docs -> chain.verify_cell_fit_for_charge: "[FE] Cell identity and\nsafety limits" { class: fe }
+chain.verify_cell_fit_for_charge -> chain.read_ambient: "[FE] Li-ion charge allowed" { class: fe }
+chain.read_ambient -> chain.verify_calibration_status: "[FE] Ambient record" { class: fe }
+chain.verify_calibration_status -> chain.arm_fire_safety: "[FE] Calibrated setup" { class: fe }
+chain.arm_fire_safety -> chain.approve_energize: "[FE] Containment ready" { class: fe }
+chain.approve_energize -> chain.verify_charger_certification: "[FE] Energize approved" { class: fe }
+chain.verify_charger_certification -> chain.set_charge_limits: "[FE] Certified charger" { class: fe }
+chain.set_charge_limits -> chain.configure_logging: "[FE] 4.2 V / 0.5 A limits" { class: fe }
+chain.configure_logging -> chain.connect_charge_path: "[FE] Logger ready" { class: fe }
+chain.connect_charge_path -> chain.provide_power: "[FE] Approved charge path" { class: fe }
+chain.provide_power -> chain.regulate_voltage: "[FE] Charge power" { class: fe }
+chain.regulate_voltage -> chain.store_energy: "[FE] Limited charge current" { class: fe }
+chain.store_energy -> chain.measure_charge_voltage: "[FE] Cell stores energy" { class: fe }
+chain.measure_charge_voltage -> chain.measure_charge_current: "[FE] Voltage samples" { class: fe }
+chain.measure_charge_current -> chain.measure_temperature: "[FE] Current samples" { class: fe }
+chain.measure_temperature -> chain.observe_no_unsafe_condition: "[FE] Thermal observations" { class: fe }
+chain.observe_no_unsafe_condition -> chain.log_charge_profile: "[FE] No unsafe condition" { class: fe }
+chain.log_charge_profile -> chain.compare_charge_constraint: "[FE] Raw charge evidence" { class: fe }
+chain.compare_charge_constraint -> chain.classify_charge_acceptance: "[FE] Constraint comparison" { class: fe }
+chain.classify_charge_acceptance -> chain.archive_evidence: "[FE] Pass/fail / hold decision" { class: fe }

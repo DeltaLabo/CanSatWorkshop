@@ -1,0 +1,133 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDS-V03-GATE-001 view3: protection fault chain (overcurrent / overvoltage)
+# References: IVV; PM&SE/IVV.md; PDS-R2, PDS-R4, PDS-R5, PDS-R6, PDS-R7, PDS-R8.
+# Traceability: PDS-UC-ProvideRegulatedPower, PDS-FE-OvercurrentOvervoltage,
+# PDS-FE-RailBrownout, PDS-FE-LiIonUnsafeCondition, [C] Probability < 1%.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 14 }
+  }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 18
+    }
+  }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 12 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+chain: "PDS-V03-GATE-001 — protection fault-demand chain\nPDS & ESS v0.3 gate toward v1.0 — refs: IVV; PM&SE/IVV.md; PDS-R2, R4, R5, R6, R7, R8" {
+  class: chain
+  direction: down
+
+  read_definition: "[F] Read gate definition" { class: func }
+  read_ambient: "[F] Record ambient" { class: func }
+  verify_setup: "[F] Verify calibration and interlocks" { class: func }
+  configure_source: "[F] Configure source and charger limits" { class: func }
+  configure_fixture: "[F] Configure interlocks" { class: func }
+  safety_approval: "[F] Receive safety approval" { class: func }
+  select_mode: "[F] Select demand mode: OC or OV" { class: func }
+
+  # Common execution
+  switch_power_on: "[F] Switch on / restore power" { class: func }
+  verify_nominal: "[F] Verify nominal rail + no brownout" { class: func }
+
+  # Overcurrent scenario
+  set_oc_demand: "[F] Configure overcurrent demand" { class: func }
+  apply_overcurrent: "[F] Inject overcurrent / short-equivalent" { class: func }
+  detect_overcurrent: "[F] Detect overcurrent" { class: func }
+  verify_cutoff_safe_oc: "[F] Verify cut off before unsafe limits" { class: func }
+  verify_rail_safe_oc: "[F] Verify rails de-energized or current-limited" { class: func }
+  attempt_restore_oc_blocked: "[F] Attempt restore while demand remains" { class: func }
+  verify_restore_inhibited_oc: "[F] Verify restore inhibited" { class: func }
+  clear_oc_demand: "[F] Clear overcurrent demand" { class: func }
+  restore_after_clear_oc: "[F] Restore power after clear" { class: func }
+
+  # Overvoltage scenario
+  set_ov_demand: "[F] Configure overvoltage demand" { class: func }
+  apply_overvoltage: "[F] Inject current-limited overvoltage" { class: func }
+  detect_overvoltage: "[F] Detect overvoltage" { class: func }
+  verify_cutoff_safe_ov: "[F] Verify cut off before unsafe limits" { class: func }
+  verify_rail_safe_ov: "[F] Verify rails safe" { class: func }
+  attempt_restore_ov_blocked: "[F] Attempt restore while demand remains" { class: func }
+  verify_restore_inhibited_ov: "[F] Verify restore inhibited" { class: func }
+  clear_ov_demand: "[F] Clear overvoltage demand" { class: func }
+  restore_after_clear_ov: "[F] Restore power after clear" { class: func }
+
+  # Common trial closeout
+  inspect_probe: "[F] Capture rail/thermal/I2C/Serial evidence" { class: func }
+  classify_trial: "[F] Classify pass/fail/hold/anomaly" { class: func }
+  update_trial_count: "[F] Update zero-miss trial counter" { class: func }
+  check_target: "[F] Continue until stop/target" { class: func }
+  stop_on_miss: "[F] Hold on miss or unsafe event" { class: func }
+  archive_trial_package: "[F] Archive trial package" { class: func }
+
+  note_passfail: "[C] Per-trial pass/fail constraints\n1. Demand is inside source-limited safe envelope.\n2. Detect function is observable and cut-off occurs before unsafe limits.\n3. Restore is inhibited until demand is fully cleared.\n4. Controlled restore returns nominal state without reset/restart.\n5. Trial evidence and raw samples retained and linked to this view." { class: note, shape: page }
+  note_prob: "[C] Probability policy\nConservative constraint interpretation: missed unsafe demanded-protection action probability <1% per mode.\nFormal acceptance needs 299 independent zero-miss trials for each mode (overcurrent and overvoltage).\nIf fewer trials run, final report carries exact one-sided Clopper-Pearson bound and classifies screening/characterization." { class: note, shape: page }
+  note_faults: "[C] Fault-hardening view\nFault scenarios include overcurrent, short-equivalent, overvoltage, inhibited restore, brownout/reset, and thermal run-up.\nAny unobservable detect or unsafe behavior classifies to hold/anomaly." { class: note, shape: page }
+
+  # Reuse shared functions
+  verify_no_ambient_drift: "[F] Verify ambient within limits" { class: func }
+  log_constraints: "[F] Record [C] probability and 6h constraints" { class: func }
+}
+
+# Sequence links
+chain.read_definition -> chain.read_ambient: "[FE] Setup context" { class: fe }
+chain.read_ambient -> chain.verify_setup: "[FE] Context read" { class: fe }
+chain.verify_setup -> chain.configure_source: "[FE] Status/capability checked" { class: fe }
+chain.configure_source -> chain.configure_fixture: "[FE] Source set" { class: fe }
+chain.configure_fixture -> chain.safety_approval: "[FE] Interlock status" { class: fe }
+chain.safety_approval -> chain.select_mode: "[FE] Approved for demand trial" { class: fe }
+chain.select_mode -> chain.switch_power_on: "[FE] Selected mode" { class: fe }
+chain.switch_power_on -> chain.verify_nominal: "[FE] Power-on success" { class: fe }
+chain.verify_nominal -> chain.set_oc_demand: "[FE] Mode path OC" { class: fe }
+chain.verify_nominal -> chain.set_ov_demand: "[FE] Mode path OV" { class: fe }
+
+chain.set_oc_demand -> chain.apply_overcurrent: "[FE] Apply OC demand" { class: fe }
+chain.apply_overcurrent -> chain.detect_overcurrent: "[FE] OC demand on" { class: fe }
+chain.detect_overcurrent -> chain.verify_cutoff_safe_oc: "[FE] Demand detectable" { class: fe }
+chain.verify_cutoff_safe_oc -> chain.verify_rail_safe_oc: "[FE] Safe cut-off achieved" { class: fe }
+chain.verify_rail_safe_oc -> chain.attempt_restore_oc_blocked: "[FE] Verify safe state hold" { class: fe }
+chain.attempt_restore_oc_blocked -> chain.verify_restore_inhibited_oc: "[FE] Restore-blocked check" { class: fe }
+chain.verify_restore_inhibited_oc -> chain.clear_oc_demand: "[FE] Demand clear step" { class: fe }
+chain.clear_oc_demand -> chain.restore_after_clear_oc: "[FE] Clear demand" { class: fe }
+chain.restore_after_clear_oc -> chain.inspect_probe: "[FE] Controlled recovery" { class: fe }
+
+chain.set_ov_demand -> chain.apply_overvoltage: "[FE] Apply OV demand" { class: fe }
+chain.apply_overvoltage -> chain.detect_overvoltage: "[FE] OV demand on" { class: fe }
+chain.detect_overvoltage -> chain.verify_cutoff_safe_ov: "[FE] Demand detectable" { class: fe }
+chain.verify_cutoff_safe_ov -> chain.verify_rail_safe_ov: "[FE] Safe cut-off achieved" { class: fe }
+chain.verify_rail_safe_ov -> chain.attempt_restore_ov_blocked: "[FE] Verify no unsafe restart" { class: fe }
+chain.attempt_restore_ov_blocked -> chain.verify_restore_inhibited_ov: "[FE] Restore-blocked check" { class: fe }
+chain.verify_restore_inhibited_ov -> chain.clear_ov_demand: "[FE] Demand clear step" { class: fe }
+chain.clear_ov_demand -> chain.restore_after_clear_ov: "[FE] Clear demand" { class: fe }
+chain.restore_after_clear_ov -> chain.inspect_probe: "[FE] Controlled recovery" { class: fe }
+
+chain.inspect_probe -> chain.verify_no_ambient_drift: "[FE] Probe captured" { class: fe }
+chain.verify_no_ambient_drift -> chain.classify_trial: "[FE] Review evidence" { class: fe }
+chain.classify_trial -> chain.update_trial_count: "[FE] pass/fail class" { class: fe }
+chain.update_trial_count -> chain.log_constraints: "[FE] Constraint bookkeeping" { class: fe }
+chain.log_constraints -> chain.check_target: "[FE] Campaign bookkeeping" { class: fe }
+chain.check_target -> chain.stop_on_miss: "[FE] Miss or unsafe" { class: fe }
+chain.check_target -> chain.archive_trial_package: "[FE] Target reached / campaign end" { class: fe }
+
+chain.note_passfail -> chain.classify_trial { class: cstr }
+chain.note_prob -> chain.check_target { class: cstr }
+chain.note_prob -> chain.stop_on_miss { class: cstr }
+chain.note_faults -> chain.set_oc_demand { class: cstr }
+chain.note_faults -> chain.set_ov_demand { class: cstr }
+
+# Layout-only hints
+chain.note_passfail -> chain.note_prob { style: { opacity: 0 } }
+chain.note_prob -> chain.note_faults { style: { opacity: 0 } }
+chain.read_definition -> chain.verify_no_ambient_drift { style: { opacity: 0 } }

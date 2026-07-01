@@ -1,0 +1,232 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV2 — PDS-VV-CON-002 logical interfaces for endurance verification.
+# References: IVV, PDS-R2, PDS-R6, PDS-R7, PDS-R9, PDS-R10.
+# Traceability: [C] Enough for 6 hours continuous operation in On mode;
+# PDS-UC-ProvideRegulatedPower; PDS-FE-RailBrownout; PDS-FE-LiIonUnsafeCondition.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Director" { class: ea
+  review_requirements: "[F] Read mission-profile constraints/assumptions" { class: func }
+  authorize_start: "[F] Authorize run start" { class: func }
+  monitor_runtime: "[F] Monitor live alarms and sample continuity" { class: func }
+  decide_go_no_go: "[F] Decide Go/No-Go at end" { class: func }
+}
+
+safety_observer: "[EA] Safety Observer" { class: ea
+  review_environment: "[F] Review ambient and safety envelope" { class: func }
+  witness_precheck: "[F] Witness safe precheck" { class: func }
+  witness_cutoff: "[F] Witness transition to safe-off" { class: func }
+}
+
+load_profile_player: "[EA] Load-profile emulator" { class: ea
+  define_profile: "[F] Configure 6 h profile" { class: func }
+  issue_step: "[F] Issue segment command" { class: func }
+  hold_segment: "[F] Hold segment timing" { class: func }
+}
+
+battery_precondition: "[EA] Precondition fixture" { class: ea
+  verify_soc: "[F] Verify pre-run SoC/voltage" { class: func }
+  verify_limits: "[F] Verify current/voltage limits" { class: func }
+  apply_preconditioning: "[F] Apply preconditioning" { class: func }
+}
+
+rail_telemetry: "[EA] Rail telemetry logger" { class: ea
+  start_continuous_rail: "[F] Start continuous logging" { class: func }
+  sample_rails: "[F] Sample 5V/3V3 current" { class: func }
+  detect_brownout_gaps: "[F] Detect sample dropouts" { class: func }
+}
+
+ina219_capture: "[EA] INA219 capture host" { class: ea
+  init_capture_chain: "[F] Init INA219 capture" { class: func }
+  periodic_read: "[F] Periodically read V/I" { class: func }
+  flag_stale_fault: "[F] Flag stale/fault status" { class: func }
+}
+
+evidence_host: "[EA] Evidence host" { class: ea
+  collect_config: "[F] Collect config and assumptions" { class: func }
+  archive_dataset: "[F] Archive logs and run artifacts" { class: func }
+}
+
+timer: "[EA] Timer / scheduler" { class: ea
+  enforce_6h_limit: "[F] Enforce 6 h wall clock" { class: func }
+  periodic_checkpoint: "[F] Emit health checkpoints" { class: func }
+}
+
+system: "[System] PDS-VV-CON-002 logical interface model\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R2; PDS-R6; PDS-R7; PDS-R9; PDS-R10" {
+  class: sys
+  direction: down
+
+  ess_module: "[PC] ESS Module" {
+    class: pc
+    battery_pack: "[PC] 1S1P Li-Ion" { class: pc }
+  }
+
+  pds_module: "[PC] PDS Module" {
+    class: pc
+    direction: down
+    pds_pcb: "[PC] PDS PCB" {
+      class: pc
+      battery_connector_ctx: "[LC] Battery-connector context" {
+        class: lc
+        accept_battery_input: "[F] Accept conditioned input" { class: func }
+        expose_battery_state: "[F] Expose state for supervision" { class: func }
+      }
+      protection_lc: "[LC] Power Protection" {
+        class: lc
+        detect_overcurrent: "[F] Detect overcurrent" { class: func }
+        detect_overvoltage: "[F] Detect overvoltage" { class: func }
+        cut_off_output: "[F] Cut off output" { class: func }
+        restore_output: "[F] Restore output" { class: func }
+      }
+      regulator_lc: "[LC] Regulator" {
+        class: lc
+        switch_on_mode: "[F] Switch into On mode" { class: func }
+        deliver_rails: "[F] Deliver 5V/3V3 rails" { class: func }
+        maintain_regulation: "[F] Maintain rail regulation" { class: func }
+      }
+      ina219_lc: "[LC] INA219" {
+        class: lc
+        respond_to_read: "[F] Respond to measurement request" { class: func }
+        report_fault_status: "[F] Report timeout/fault status" { class: func }
+      }
+    }
+  }
+
+  obcc_module: "[PC] OBCC Module" {
+    class: pc
+    direction: down
+    xiao: "[PC] XIAO ESP32-S3" {
+      class: pc
+      ess_processing_lc: "[LC] ESS Processing" {
+        class: lc
+        init_monitoring: "[F] Init monitoring state" { class: func }
+        read_measurements: "[F] Read V/I from INA219" { class: func }
+        process_measurements: "[F] Process measurement pipeline" { class: func }
+        detect_unhealthy: "[F] Detect unhealthy state" { class: func }
+      }
+      obcc_lc: "[LC] OBCC" {
+        class: lc
+        command_safe_off: "[F] Command safe-off" { class: func }
+      }
+    }
+  }
+
+  pretest_interface: "[LC] Pretest interface" {
+    class: lc
+    accept_safety_report: "[F] Accept safety/ambient report" { class: func }
+    request_start: "[F] Receive run-start authorization" { class: func }
+    accept_battery_state: "[F] Receive precondition state" { class: func }
+  }
+
+  runtime_interface: "[LC] Runtime supervision interface" {
+    class: lc
+    apply_profile_step: "[F] Receive load step" { class: func }
+    log_run_sample: "[F] Receive rail and load samples" { class: func }
+    log_ina_sample: "[F] Receive INA219 samples" { class: func }
+    receive_anomaly: "[F] Receive anomaly flag" { class: func }
+  }
+
+  end_state_interface: "[LC] End-state and cutoff interface" {
+    class: lc
+    request_cutoff: "[F] Receive cutoff command" { class: func }
+    observe_safe_state: "[F] Observe safe-state transition" { class: func }
+  }
+
+  note_ref: "[C] Interface scope:\nReuses protection/evidence intent from CON-001, CON-004, CON-003, FC-001, and FC-002. Adds explicit 6 h On-mode continuity, load-profile, and anomaly-handling interfaces." {
+    class: note
+    shape: page
+  }
+}
+
+# Pre-test and run-start exchanges (CE)
+test_operator.review_requirements -> system.pretest_interface.accept_safety_report { class: ce }
+test_operator.authorize_start -> system.pretest_interface.request_start { class: ce }
+safety_observer.review_environment -> system.pretest_interface.accept_safety_report { class: ce }
+safety_observer.witness_precheck -> system.pretest_interface.request_start { class: ce }
+battery_precondition.verify_soc -> system.pretest_interface.accept_battery_state { class: ce }
+battery_precondition.verify_limits -> system.pretest_interface.accept_battery_state { class: ce }
+battery_precondition.apply_preconditioning -> system.pretest_interface.accept_battery_state { class: ce }
+
+# Load profile and logging interface (CE)
+load_profile_player.define_profile -> test_operator.review_requirements { style: { opacity: 0.2; stroke-dash: 5 } }
+load_profile_player.issue_step -> system.runtime_interface.apply_profile_step { class: ce }
+load_profile_player.hold_segment -> system.runtime_interface.apply_profile_step { class: ce }
+rail_telemetry.start_continuous_rail -> system.runtime_interface.log_run_sample { class: ce }
+rail_telemetry.sample_rails -> system.runtime_interface.log_run_sample { class: ce }
+ina219_capture.init_capture_chain -> system.runtime_interface.log_ina_sample { class: ce }
+ina219_capture.periodic_read -> system.runtime_interface.log_ina_sample { class: ce }
+ina219_capture.flag_stale_fault -> system.runtime_interface.receive_anomaly { class: ce }
+timer.enforce_6h_limit -> test_operator.monitor_runtime { class: ce }
+timer.periodic_checkpoint -> test_operator.monitor_runtime { class: ce }
+evidence_host.collect_config -> system.runtime_interface.log_run_sample { class: ce }
+
+
+# Runtime function-to-function mapping and control
+system.pretest_interface.request_start -> system.pds_module.pds_pcb.regulator_lc.switch_on_mode { class: pl }
+system.runtime_interface.apply_profile_step -> system.pds_module.pds_pcb.regulator_lc.deliver_rails { class: pl }
+system.runtime_interface.log_run_sample -> system.pds_module.pds_pcb.ina219_lc.respond_to_read { class: pl }
+system.runtime_interface.log_ina_sample -> system.obcc_module.xiao.ess_processing_lc.read_measurements { class: pl }
+system.runtime_interface.receive_anomaly -> system.obcc_module.xiao.ess_processing_lc.detect_unhealthy { class: pl }
+system.obcc_module.xiao.ess_processing_lc.detect_unhealthy -> system.end_state_interface.request_cutoff { class: pl }
+system.end_state_interface.request_cutoff -> system.obcc_module.xiao.obcc_lc.command_safe_off { class: pl }
+system.end_state_interface.request_cutoff -> system.pds_module.pds_pcb.protection_lc.cut_off_output { class: pl }
+system.pds_module.pds_pcb.ina219_lc.respond_to_read -> system.pds_module.pds_pcb.ina219_lc.report_fault_status { class: pl }
+system.pds_module.pds_pcb.ina219_lc.report_fault_status -> system.runtime_interface.receive_anomaly { class: pl }
+
+# Constraint reference links
+system.note_ref -> system.pds_module.pds_pcb.regulator_lc.maintain_regulation { class: cstr }
+system.note_ref -> system.pds_module.pds_pcb.protection_lc.cut_off_output { class: cstr }
+system.note_ref -> system.obcc_module.xiao.ess_processing_lc.detect_unhealthy { class: cstr }
+system.note_ref -> system.end_state_interface.request_cutoff { class: cstr }
+
+# Layout helpers
+test_operator -> safety_observer { style: { opacity: 0 } }
+safety_observer -> load_profile_player { style: { opacity: 0 } }
+load_profile_player -> battery_precondition { style: { opacity: 0 } }
+battery_precondition -> rail_telemetry { style: { opacity: 0 } }
+rail_telemetry -> ina219_capture { style: { opacity: 0 } }
+ina219_capture -> timer { style: { opacity: 0 } }
+timer -> evidence_host { style: { opacity: 0 } }
+evidence_host -> system { style: { opacity: 0 } }

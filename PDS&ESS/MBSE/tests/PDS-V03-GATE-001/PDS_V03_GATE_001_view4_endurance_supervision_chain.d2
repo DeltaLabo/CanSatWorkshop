@@ -1,0 +1,108 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PDS-V03-GATE-001 view4: endurance + supervision regression chain
+# References: IVV; PM&SE/IVV.md; PDS-R2, PDS-R6, PDS-R7.
+# Traceability: PDS-UC-SuperviseBattery, PDS-UC-ProvideRegulatedPower,
+# PDS-FE-RailBrownout, [C] Enough for 6 hours continuous operation in On mode.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 14 }
+  }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 18
+    }
+  }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 12 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+chain: "PDS-V03-GATE-001 — endurance and battery supervision chain\nPDS & ESS v0.3 gate toward v1.0 — refs: IVV; PM&SE/IVV.md; PDS-R2, R6, R7" {
+  class: chain
+  direction: down
+
+  read_definition: "[F] Read gate definition and trace constraints" { class: func }
+  read_ambient: "[F] Record ambient before run" { class: func }
+  verify_setup: "[F] Verify calibration and interlocks" { class: func }
+  configure_power_source: "[F] Configure charger/battery emulation profile" { class: func }
+  configure_load: "[F] Configure representative On-mode load" { class: func }
+  switch_power_on: "[F] Switch power on / restore" { class: func }
+  verify_nominal_entry: "[F] Verify initial On-mode rail/state" { class: func }
+
+  # 6h endurance cycle
+  start_timer: "[F] Start 6h mission-profile timer" { class: func }
+  periodic_load_step: "[F] Apply representative load steps" { class: func }
+  get_init_state: "[F] Get INA219 init state" { class: func }
+  read_voltage: "[F] Read voltage" { class: func }
+  read_current: "[F] Read current" { class: func }
+  measure_voltage: "[F] Measure voltage" { class: func }
+  measure_current: "[F] Measure current" { class: func }
+  respond_i2c: "[F] Respond to I2C request" { class: func }
+  process_voltage: "[F] Process voltage" { class: func }
+  process_current: "[F] Process current" { class: func }
+  collect_measurements: "[F] Collect supervision measurements" { class: func }
+  log_supervision: "[F] Log to Serial0 / file" { class: func }
+  sample_thermal: "[F] Capture temperature sample" { class: func }
+  monitor_rails: "[F] Monitor 3V3/5V stability and brownout" { class: func }
+  check_no_reset: "[F] Confirm no reset/uncontrolled restart" { class: func }
+  check_no_overheat: "[F] Check thermal limit breach" { class: func }
+  run_6h_cycle: "[F] Continue cyclic monitoring for 6h" { class: func }
+  end_of_run: "[F] End run with controlled stop" { class: func }
+  switch_power_off: "[F] Command controlled power-off" { class: func }
+  evidence_package: "[F] Archive endurance evidence" { class: func }
+
+  note_energy: "[C] Energy constraint pass/fail\nMust demonstrate 6h continuous On-mode operation with representative load profile\nand no unexpected reset, brownout, unsafe cut-off, or safety stop.\nThis is model evidence-level coverage; execution results are separate in the\nresults package." { class: note, shape: page }
+  note_supervision: "[C] Supervision and logging constraints\nAt each supervision interval, collect:\n- I2C init/state response\n- voltage/current raw and processed\n- Serial0 log event\n- temperature sample (Li-Ion, protection, regulator)\nPass only if values remain within campaign limits and no unbounded delay occurs." { class: note, shape: page }
+  note_stats: "[C] Statistical significance\nThis gate models endurance evidence for v0.3 advancement. The chained evidence itself is not a\nreplacement for formal population reliability claims. Where probability is asserted, this gate\nreferences the same conservative interpretation as View3 and documents screening\nevidence unless full campaign evidence is available." { class: note, shape: page }
+}
+
+# Endurance-safety chain edges
+chain.read_definition -> chain.read_ambient: "[FE] Context prepared" { class: fe }
+chain.read_ambient -> chain.verify_setup: "[FE] Ambient recorded" { class: fe }
+chain.verify_setup -> chain.configure_power_source: "[FE] Interlock verified" { class: fe }
+chain.configure_power_source -> chain.configure_load: "[FE] Baseline state" { class: fe }
+chain.configure_load -> chain.switch_power_on: "[FE] Load profile ready" { class: fe }
+chain.switch_power_on -> chain.verify_nominal_entry: "[FE] Power-on transition" { class: fe }
+chain.verify_nominal_entry -> chain.start_timer: "[FE] Nominal entry reached" { class: fe }
+chain.start_timer -> chain.periodic_load_step: "[FE] Begin mission profile" { class: fe }
+chain.periodic_load_step -> chain.get_init_state: "[FE] Probe control/state" { class: fe }
+chain.get_init_state -> chain.read_voltage: "[FE] Init-state read" { class: fe }
+chain.read_voltage -> chain.measure_voltage: "[FE] Voltage raw" { class: fe }
+chain.read_current -> chain.measure_current: "[FE] Current raw" { class: fe }
+chain.measure_voltage -> chain.respond_i2c: "[FE] Processed value" { class: fe }
+chain.measure_current -> chain.respond_i2c: "[FE] Processed value" { class: fe }
+chain.respond_i2c -> chain.process_voltage: "[FE] I2C response" { class: fe }
+chain.respond_i2c -> chain.process_current: "[FE] I2C response" { class: fe }
+chain.process_voltage -> chain.collect_measurements: "[FE] Processed value" { class: fe }
+chain.process_current -> chain.collect_measurements: "[FE] Processed value" { class: fe }
+chain.collect_measurements -> chain.log_supervision: "[FE] Collection complete" { class: fe }
+chain.log_supervision -> chain.sample_thermal: "[FE] Log sample" { class: fe }
+chain.sample_thermal -> chain.monitor_rails: "[FE] Temp captured" { class: fe }
+chain.monitor_rails -> chain.check_no_reset: "[FE] Rail trace" { class: fe }
+chain.check_no_reset -> chain.check_no_overheat: "[FE] Reset state healthy" { class: fe }
+chain.check_no_overheat -> chain.run_6h_cycle: "[FE] Constraint pass" { class: fe }
+chain.run_6h_cycle -> chain.periodic_load_step: "[FE] Repeat until runtime=6h" { class: fe, style: { stroke-dash: 2 } }
+chain.run_6h_cycle -> chain.end_of_run: "[FE] Time elapsed" { class: fe }
+chain.end_of_run -> chain.switch_power_off: "[FE] Controlled stop" { class: fe }
+chain.switch_power_off -> chain.evidence_package: "[FE] Final state recorded" { class: fe }
+
+chain.note_energy -> chain.run_6h_cycle { class: cstr }
+chain.note_energy -> chain.switch_power_off { class: cstr }
+chain.note_supervision -> chain.log_supervision { class: cstr }
+chain.note_supervision -> chain.sample_thermal { class: cstr }
+chain.note_stats -> chain.note_energy { class: cstr }
+chain.note_stats -> chain.note_supervision { class: cstr }
+
+# Layout-only hints
+chain.read_definition -> chain.note_energy { style: { opacity: 0 } }
+chain.note_energy -> chain.note_supervision { style: { opacity: 0 } }
+chain.note_supervision -> chain.note_stats { style: { opacity: 0 } }

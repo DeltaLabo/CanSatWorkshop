@@ -1,0 +1,414 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV3 — PDS-VV-CON-003 functional allocation testbench.
+# Capella PA PV3 only: System/PCs/LCs/Functions, EAs with Functions, and constraints.
+# No PLs, CEs, or FEs. References: IVV, PDS-R4, PDS-R5, PDS-R6, PDS-R7, PDS-R8, PDS-R2.
+# Traceability: [C] Probability < 1%; PDS-VV-FC-001; PDS-FE-OvercurrentOvervoltage;
+# PDS-FE-LiIonUnsafeCondition; PDS-FE-RailBrownout; PDS-UC-ProvideRegulatedPower.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  read_definition: "[F] Read modeled\nverification definition" { class: func }
+  authorize_trial_step: "[F] Authorize trial\nstep execution" { class: func }
+  select_procedure_variant: "[F] Select approved\nprocedure variant" { class: func }
+  command_controlled_restore: "[F] Command controlled\nrestore" { class: func }
+  record_deviation: "[F] Record deviation\nor anomaly" { class: func }
+}
+
+safety_observer: "[EA] Safety Observer /\nWitness" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  verify_safety_setup: "[F] Verify ESD,\ncontainment, E-stop setup" { class: func }
+  approve_trial_set: "[F] Approve demanded\ntrial set" { class: func }
+  hold_abort: "[F] Hold or abort\nunsafe trial" { class: func }
+  witness_classification: "[F] Witness trial\nclassification" { class: func }
+}
+
+battery_emulator: "[EA] Battery emulator /\ncurrent-limited source" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  configure_source: "[F] Configure source\nvoltage / mode" { class: func }
+  set_current_limits: "[F] Set current and\nenergy limits" { class: func }
+  apply_emulated_power: "[F] Apply emulated\nbattery power" { class: func }
+  remove_source_energy: "[F] Remove source\nenergy on hold" { class: func }
+}
+
+overcurrent_harness: "[EA] Overcurrent /\nshort-equivalent harness" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  set_overcurrent_limit: "[F] Set overcurrent\nsafe limit" { class: func }
+  randomize_oc_demand: "[F] Randomize/procedure-select\novercurrent demand" { class: func }
+  inject_overcurrent: "[F] Inject overcurrent\ndemand" { class: func }
+  inject_short_equivalent: "[F] Inject short-equivalent\ndemand" { class: func }
+  clear_overcurrent_demand: "[F] Clear overcurrent /\nshort demand" { class: func }
+}
+
+overvoltage_source: "[EA] Current-limited\novervoltage source" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  configure_overvoltage: "[F] Configure safe\novervoltage source" { class: func }
+  set_overvoltage_current_limit: "[F] Set overvoltage\ncurrent limit" { class: func }
+  inject_overvoltage: "[F] Inject overvoltage\ndemand" { class: func }
+  remove_overvoltage: "[F] Remove overvoltage\ndemand" { class: func }
+}
+
+rail_loads: "[EA] Protected rail loads /\nrepresentative flight loads" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  apply_representative_loads: "[F] Apply representative\nrail loads" { class: func }
+  remove_loads: "[F] Remove loads for\nsafe-state checks" { class: func }
+}
+
+safety_controller: "[EA] Relay / interlock /\nsafety controller" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  arm_interlocks: "[F] Arm relay interlocks\nand E-stop" { class: func }
+  remove_fault_energy: "[F] Remove injected\nfault energy" { class: func }
+  report_interlock_status: "[F] Report interlock\nstatus" { class: func }
+}
+
+dmm_daq: "[EA] Calibrated DMM / DAQ" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  measure_rails_current: "[F] Measure rails\nand current" { class: func }
+  verify_safe_state: "[F] Verify rails safe /\nde-energized or current-limited" { class: func }
+  retain_raw_samples: "[F] Retain raw\nsample data" { class: func }
+}
+
+scope_logger: "[EA] Oscilloscope /\nlogger" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  capture_detect_cutoff: "[F] Capture detect\nand cut-off waveforms" { class: func }
+  capture_restore: "[F] Capture restore\nand inhibition evidence" { class: func }
+  observe_no_reset: "[F] Observe no brownout,\nreset, uncontrolled restart" { class: func }
+}
+
+thermal_instr: "[EA] Thermal camera /\nthermocouples" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  measure_temperature: "[F] Measure battery,\nprotection, regulator temperature" { class: func }
+}
+
+ambient_meter: "[EA] Ambient thermometer /\nhygrometer" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  read_ambient: "[F] Read ambient\nbefore trial set" { class: func }
+}
+
+fire_safety: "[EA] E-stop / fire-safe\nLi-ion containment" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  contain_flight_pack: "[F] Contain flight pack\nfor non-abuse presence" { class: func }
+  trip_emergency_stop: "[F] Trip emergency\nstop if unsafe" { class: func }
+}
+
+evidence_repo: "[EA] Evidence repository /\nhost PC" {
+  class: ea
+  direction: down
+  grid-columns: 1
+  log_raw_evidence: "[F] Log raw data,\nphotos, and waveforms" { class: func }
+  archive_package: "[F] Archive controlled\nPDS-VV-CON-003 package" { class: func }
+}
+
+system: "[System] PDS-VV-CON-003 functional allocation\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R4; PDS-R5; PDS-R6; PDS-R7; PDS-R8; PDS-R2" {
+  class: sys
+  direction: down
+  grid-columns: 2
+
+  uut: "[PC] Integrated PDS & ESS\nv1.0 UUT" {
+    class: pc
+    direction: down
+
+    ess_module: "[PC] ESS Module" {
+      class: pc
+      direction: down
+      battery_pack: "[PC] 1S1P Li-Ion" {
+        class: pc
+        battery_lc: "[LC] Battery" {
+          class: lc
+          direction: down
+          grid-columns: 1
+          provide_power: "[F] Provide power" { class: func }
+          remain_non_abuse: "[F] Remain within\nnon-abuse conditions" { class: func }
+        }
+      }
+    }
+
+    pds_module: "[PC] PDS Module" {
+      class: pc
+      direction: down
+
+      pds_pcb: "[PC] PDS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        battery_connector: "[PC] Battery Connector" {
+          class: pc
+          battery_input_lc: "[LC] Battery / fault\ninput interface" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            receive_emulated_power: "[F] Receive emulated\nbattery power" { class: func }
+            expose_input_state: "[F] Expose input state\nfor evidence" { class: func }
+          }
+        }
+
+        protection: "[PC] Protection Circuit" {
+          class: pc
+          direction: down
+          power_protection: "[LC] Power Protection" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            detect_overcurrent: "[F] Detect overcurrent" { class: func }
+            detect_overvoltage: "[F] Detect overvoltage" { class: func }
+            cut_off_power: "[F] Cut off power" { class: func }
+            restore_power: "[F] Restore power" { class: func }
+            inhibit_restore_until_cleared: "[F] Inhibit restore\nuntil fault cleared" { class: func }
+            expose_protection_state: "[F] Expose protection\nstate for observation" { class: func }
+          }
+        }
+
+        ina219: "[PC] INA219" {
+          class: pc
+          battery_monitoring: "[LC] Battery monitoring" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            measure_voltage: "[F] Measure voltage" { class: func }
+            measure_current: "[F] Measure current" { class: func }
+          }
+        }
+
+        regulator: "[PC] Regulator" {
+          class: pc
+          regulator_lc: "[LC] Regulator" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            regulate_voltage: "[F] Regulate voltage" { class: func }
+            indicate_thermal_margin: "[F] Indicate thermal\nmargin" { class: func }
+          }
+        }
+
+        pds_backplane_connector: "[PC] Backplane Connector" {
+          class: pc
+          rail_interface: "[LC] Protected output /\nbackplane rail interface" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            export_5v: "[F] Export protected\n5 V rail" { class: func }
+            export_3v3: "[F] Export protected\n3V3 rail" { class: func }
+            indicate_safe_off: "[F] Indicate rails safe /\nde-energized or limited" { class: func }
+          }
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      backplane_distribution: "[LC] Backplane power\ndistribution" {
+        class: lc
+        direction: down
+        grid-columns: 1
+        distribute_rails: "[F] Distribute protected\n5 V and 3V3 rails" { class: func }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          reset_observer: "[LC] Brownout / reset /\nrestart observer" {
+            class: lc
+            direction: down
+            grid-columns: 1
+            indicate_no_brownout: "[F] Indicate no\nbrownout / reset" { class: func }
+            indicate_no_uncontrolled_restart: "[F] Indicate no\nuncontrolled restart" { class: func }
+          }
+        }
+      }
+    }
+  }
+
+  test_harness: "[PC] PDS-VV-CON-003\nprobability trial harness" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    setup_context: "[LC] Setup, environment,\nand safety context" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      verify_calibration_status: "[F] Verify calibration /\nstatus checks" { class: func }
+      record_ambient: "[F] Record ambient T/RH\nbefore trial set" { class: func }
+      record_current_limits: "[F] Record source/load\ncurrent limits" { class: func }
+      verify_safety_approval: "[F] Verify safety observer\napproval" { class: func }
+    }
+
+    trial_control: "[LC] Trial sequencing and\nmode selection" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      randomize_or_select_trials: "[F] Randomize/procedure-select\ndemand trials" { class: func }
+      maintain_trial_count: "[F] Maintain 299 target\nper demanded mode" { class: func }
+      stop_on_miss_or_anomaly: "[F] Stop on miss,\nhold, or anomaly" { class: func }
+    }
+
+    fault_injection_control: "[LC] Demand injection\ncontrol" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      condition_overcurrent_trial: "[F] Condition overcurrent /\nshort-equivalent trial" { class: func }
+      condition_overvoltage_trial: "[F] Condition overvoltage\ntrial" { class: func }
+      clear_fault: "[F] Clear fault demand\nbefore restore" { class: func }
+    }
+
+    measurement_capture: "[LC] Protection and rail\nstate capture" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      verify_detect_observable: "[F] Verify detect function\ninvoked / observable" { class: func }
+      verify_cutoff_before_limits: "[F] Verify cut-off before\nunsafe limits" { class: func }
+      verify_safe_state: "[F] Verify rails safe /\nde-energized or current-limited" { class: func }
+      verify_restore_inhibited: "[F] Verify restore inhibited\nuntil cleared" { class: func }
+      verify_nominal_recovery: "[F] Verify nominal recovery\nwithout reset/restart" { class: func }
+    }
+
+    evidence_analysis: "[LC] Evidence and\nstatistical analysis" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      classify_pass_fail: "[F] Classify trial\npass/fail/miss/hold" { class: func }
+      compute_binomial_bound: "[F] Compute exact one-sided\nClopper-Pearson bound" { class: func }
+      check_independence: "[F] Check independence\nassumptions" { class: func }
+      reference_fc001: "[F] Reference PDS-VV-FC-001\nfunctional-chain evidence" { class: func }
+      package_final_evidence: "[F] Package final\nacceptance evidence" { class: func }
+    }
+
+    safety_anomaly: "[LC] Safety and anomaly\ndisposition" {
+      class: lc
+      direction: down
+      grid-columns: 1
+      enforce_no_waiver_on_miss: "[F] Enforce no waiver\ncan pass a miss" { class: func }
+      hold_on_unsafe_setup: "[F] Hold on unsafe setup\nor instrument status" { class: func }
+      disposition_anomaly: "[F] Disposition anomaly\nbefore retest" { class: func }
+    }
+  }
+
+  note_definition: "[C] PDS-VV-CON-003 definition\nConservative source interpretation: probability of a missed demanded unsafe\nprotection action is <1% for each demanded mode. If source intent differs,\nupdate model/test. Trace: constraint; PDS-VV-FC-001; PDS-FE-OvercurrentOvervoltage;\nPDS-FE-LiIonUnsafeCondition; PDS-FE-RailBrownout; PDS-UC-ProvideRegulatedPower." {
+    class: note
+    shape: page
+  }
+
+  note_pass: "[C] Per-trial pass/fail\nDemand inside safe/current-limited envelope; detect observable; cut-off before\nunsafe rail/cell/temperature limits; rails safe; restore inhibited until cleared;\ncontrolled restore returns nominal without reset/uncontrolled restart. Any miss\nis fail/hold/anomaly and cannot support a pass for the statistical claim." {
+    class: note
+    shape: page
+  }
+
+  note_stats: "[C] Statistical significance\nFormal <1% missed-demand probability at 95% confidence requires 299 independent\nzero-missed demanded-protection trials per mode. Fewer trials require exact\none-sided Clopper-Pearson upper bound and screening/characterization classification." {
+    class: note
+    shape: page
+  }
+
+  note_safety_fault: "[C] Safety and fault-hardening viewpoint\nAmbient read, calibration/status checks, current limits, safety approval, and\nraw evidence are mandatory. Use battery emulator for demand trials; no flight-pack\nshort/overcharge abuse. Cover overcurrent, short-equivalent, overvoltage, cut-off\nfailure, unsafe restore, brownout/reset, overheating, and Li-ion unsafe precursors.\nFor continuous rail/current/thermal limits, reference PDS-VV-CON-004 or collect ≥30 samples." {
+    class: note
+    shape: page
+  }
+}
+
+system.note_definition -> system.uut.pds_module.pds_pcb.protection.power_protection.detect_overcurrent { class: cstr }
+system.note_definition -> system.uut.pds_module.pds_pcb.protection.power_protection.detect_overvoltage { class: cstr }
+system.note_definition -> system.test_harness.evidence_analysis.reference_fc001 { class: cstr }
+system.note_pass -> system.uut.pds_module.pds_pcb.protection.power_protection.cut_off_power { class: cstr }
+system.note_pass -> system.uut.pds_module.pds_pcb.protection.power_protection.restore_power { class: cstr }
+system.note_pass -> system.uut.pds_module.pds_pcb.protection.power_protection.inhibit_restore_until_cleared { class: cstr }
+system.note_pass -> system.test_harness.measurement_capture.verify_cutoff_before_limits { class: cstr }
+system.note_pass -> system.test_harness.measurement_capture.verify_restore_inhibited { class: cstr }
+system.note_stats -> system.test_harness.trial_control.maintain_trial_count { class: cstr }
+system.note_stats -> system.test_harness.evidence_analysis.compute_binomial_bound { class: cstr }
+system.note_stats -> system.test_harness.evidence_analysis.check_independence { class: cstr }
+system.note_safety_fault -> system.test_harness.setup_context { class: cstr }
+system.note_safety_fault -> system.test_harness.safety_anomaly { class: cstr }
+system.note_safety_fault -> system.uut.ess_module.battery_pack.battery_lc.remain_non_abuse { class: cstr }
+system.note_safety_fault -> thermal_instr.measure_temperature { class: cstr }
+system.note_safety_fault -> dmm_daq.retain_raw_samples { class: cstr }
+
+# Layout-only rank hints to keep actors, UUT/harness, and constraints readable.
+test_operator -> safety_observer { style: { opacity: 0 } }
+safety_observer -> battery_emulator { style: { opacity: 0 } }
+battery_emulator -> overcurrent_harness { style: { opacity: 0 } }
+overcurrent_harness -> overvoltage_source { style: { opacity: 0 } }
+overvoltage_source -> rail_loads { style: { opacity: 0 } }
+rail_loads -> safety_controller { style: { opacity: 0 } }
+safety_controller -> dmm_daq { style: { opacity: 0 } }
+dmm_daq -> scope_logger { style: { opacity: 0 } }
+scope_logger -> thermal_instr { style: { opacity: 0 } }
+thermal_instr -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> fire_safety { style: { opacity: 0 } }
+fire_safety -> evidence_repo { style: { opacity: 0 } }
+evidence_repo -> system { style: { opacity: 0 } }
+system.uut -> system.test_harness { style: { opacity: 0 } }
+system.test_harness -> system.note_definition { style: { opacity: 0 } }
+system.note_definition -> system.note_pass { style: { opacity: 0 } }
+system.note_pass -> system.note_stats { style: { opacity: 0 } }
+system.note_stats -> system.note_safety_fault { style: { opacity: 0 } }

@@ -1,0 +1,201 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 16 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 18
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 16 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 18 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 14 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+bench_operator: "[EA] Bench Operator" {
+  class: ea
+  direction: down
+  authorize_gate: "[F] Authorize\nv0.1 gate" { class: func }
+  issue_power_on: "[F] Press power-on" { class: func }
+  issue_power_off: "[F] Press power-off" { class: func }
+  confirm_constraints: "[F] Confirm constraints\nand observed values" { class: func }
+  declare_pass_fail: "[F] Record decision and\nanomalies" { class: func }
+}
+
+bench_supply: "[EA] Current-limited bench supply" {
+  class: ea
+  direction: down
+  configure_safe_limits: "[F] Configure voltage/current\nlimits" { class: func }
+  deliver_source_power: "[F] Deliver source power" { class: func }
+  log_supply_state: "[F] Log source status" { class: func }
+}
+
+battery_fixture: "[EA] Supervised 1S1P\nLi-Ion fixture" {
+  class: ea
+  direction: down
+  attach_cell: "[F] Attach supervised cell" { class: func }
+  verify_cell_safety: "[F] Verify safety docs\nand limits" { class: func }
+}
+
+dmm: "[EA] Calibrated DMM / continuity meter" {
+  class: ea
+  direction: down
+  measure_rails: "[F] Measure rails,\nvoltage/current" { class: func }
+  verify_polarity_continuity: "[F] Verify continuity\nand polarity" { class: func }
+}
+
+load_bank: "[EA] Electronic load / rail load" {
+  class: ea
+  direction: down
+  apply_representative_load: "[F] Apply lightweight load" { class: func }
+  verify_no_fault: "[F] Verify no smoke or\nfault signs" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient thermometer / hygrometer" {
+  class: ea
+  direction: down
+  read_ambient: "[F] Read ambient\ntemperature/humidity" { class: func }
+}
+
+log_pc: "[EA] Data logger / test sheet" {
+  class: ea
+  direction: down
+  capture_results: "[F] Capture run trace" { class: func }
+  archive_evidence: "[F] Archive evidence\nreference" { class: func }
+}
+
+# Source and gate model for v0.1 power-path chain.
+system: "[System] PDS-V01-GATE-001 functional allocation\nv0.1 gate toward v0.2 — refs: IVV; PDS-v0.1-AdvanceToV0.2; PDS-UC-ProvideRegulatedPower; PDS-FE-ReversePolarityOrOpenPowerPath" {
+  class: sys
+  pds: "[PC] PDS v0.1 Subsystem" {
+    class: pc
+    direction: down
+
+    battpack: "[PC] 1S1P Li-Ion" {
+      class: pc
+      direction: down
+      battery_lc: "[LC] Battery" {
+        store_energy: "[F] Store energy" { class: func }
+        provide_power: "[F] Provide power" { class: func }
+      }
+    }
+
+    board: "[PC] PDS Circuitboard" {
+      class: pc
+      direction: down
+      protection: "[PC] Protection Circuit" {
+        class: pc
+        power_protection: "[LC] Power Protection" {
+          class: lc
+          restore_power: "[F] Restore power" { class: func }
+          cut_off_power: "[F] Cut off power" { class: func }
+        }
+      }
+
+      regulator_block: "[PC] Regulator" {
+        class: pc
+        regulator_lc: "[LC] Regulator" {
+          class: lc
+          regulate_voltage: "[F] Regulate\nvoltage" { class: func }
+        }
+      }
+
+      connector_terminal: "[PC] Connector\nTerminal" { class: pc }
+    }
+  }
+
+  gate_verification_context: "[PC] Verification harness context" {
+    class: pc
+    direction: down
+
+    source_interface: "[LC] Source / power interface" {
+      class: lc
+      set_gate_source: "[F] Accept source\nassignment" { class: func }
+      validate_source_state: "[F] Validate source\nsafely enters gate" { class: func }
+    }
+
+    measurement_interface: "[LC] Measurement and exchange" {
+      class: lc
+      collect_rail_values: "[F] Collect test voltage/current\nsamples" { class: func }
+      record_constraints: "[F] Record pass/fail\nconstraints" { class: func }
+      compare_constraints: "[F] Compare values to\nconstraint limits" { class: func }
+    }
+
+    reporting_interface: "[LC] Evidence and logging" {
+      class: lc
+      log_entry: "[F] Capture log entry" { class: func }
+      archive_results: "[F] Archive run\npackage" { class: func }
+    }
+  }
+
+  constraint_note: "[C] Verification-only functional allocation coverage\n- Gate setup, source, measurements, and evidence functions are modeled as separate test-only actors/context.\n- Source chain functions retain original v0.1 allocations unless explicitly overridden by this gate-only context." { class: note; shape: page }
+}
+
+screw_terminals: "[C] Screw\nterminal or\ncrimped\ncables" {
+  class: note
+  shape: page
+}
+
+# Source EA baseline retained for traceability and explicit switch functions.
+user: "[EA] User" {
+  class: ea
+  switch_on: "[F] Switch power on" { class: func }
+  switch_off: "[F] Switch power off" { class: func }
+}
+
+# Verification component exchanges (test context interfaces)
+system.constraint_note -> system.pds.board.connector_terminal: "[CE] Termination constraint trace" { class: cstr }
+screw_terminals -> system.pds.board.connector_terminal: "[CE] constraint link" { class: ce }
+
+bench_operator.issue_power_on -> user.switch_on: "[CE] Gate operator request" { class: ce }
+bench_operator.issue_power_off -> user.switch_off: "[CE] Gate operator request" { class: ce }
+bench_operator.confirm_constraints -> system.gate_verification_context.measurement_interface.compare_constraints: "[CE] Manual acceptance check" { class: ce }
+bench_operator.declare_pass_fail -> system.gate_verification_context.reporting_interface.archive_results: "[CE] Pass/fail declaration" { class: ce }
+bench_operator.authorize_gate -> system.gate_verification_context.source_interface.set_gate_source: "[CE] Gate-authorize" { class: ce }
+
+bench_supply.deliver_source_power -> system.pds.battpack.battery_lc.store_energy: "[CE] Power-source supply interface" { class: ce }
+bench_supply.configure_safe_limits -> system.gate_verification_context.source_interface.set_gate_source: "[CE] Configuration interface" { class: ce }
+battery_fixture.attach_cell -> system.pds.battpack.battery_lc.provide_power: "[CE] Source path setup" { class: ce }
+
+user.switch_on -> system.pds.battpack.battery_lc.store_energy: "[CE] Power-on command" { class: ce }
+user.switch_off -> system.pds.board.protection.power_protection.cut_off_power: "[CE] Power-off command" { class: ce }
+
+dmm.measure_rails -> system.gate_verification_context.measurement_interface.collect_rail_values: "[CE] Measurement input" { class: ce }
+dmm.verify_polarity_continuity -> system.gate_verification_context.measurement_interface.record_constraints: "[CE] Continuity/polarity result" { class: ce }
+load_bank.apply_representative_load -> system.gate_verification_context.measurement_interface.collect_rail_values: "[CE] Load condition interface" { class: ce }
+load_bank.verify_no_fault -> system.pds.board.protection.power_protection.restore_power: "[CE] Fault/abnormality feedback" { class: ce }
+ambient_thermometer.read_ambient -> system.gate_verification_context.source_interface.validate_source_state: "[CE] Ambient context" { class: ce }
+log_pc.capture_results -> system.gate_verification_context.reporting_interface.log_entry: "[CE] Evidence ingest" { class: ce }
+log_pc.archive_evidence -> system.gate_verification_context.reporting_interface.archive_results: "[CE] Evidence archival" { class: ce }
+
+# Layout hints
+bench_operator -> bench_supply.configure_safe_limits { style: { opacity: 0 } }
+bench_supply -> battery_fixture.attach_cell { style: { opacity: 0 } }
+battery_fixture -> dmm.measure_rails { style: { opacity: 0 } }
+dmm -> load_bank.apply_representative_load { style: { opacity: 0 } }
+load_bank -> ambient_thermometer.read_ambient { style: { opacity: 0 } }
+ambient_thermometer -> log_pc.capture_results { style: { opacity: 0 } }
+log_pc -> system { style: { opacity: 0 } }

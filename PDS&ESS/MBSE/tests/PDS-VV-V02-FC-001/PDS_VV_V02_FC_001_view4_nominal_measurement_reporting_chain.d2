@@ -1,0 +1,69 @@
+vars: { d2-config: { layout-engine: elk } }
+
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# Functional Chain — nominal measurement/reporting.
+chain: "PDS-VV-V02-FC-001 — nominal measurement/reporting chain\nPDS & ESS v0.2 gate to v0.3 — refs: IVV; PM&SE/IVV; PDS-R9; PDS-R10" {
+  class: chain
+  direction: down
+  inspect: "[F] Inspect PCs/PLs" { class: func }
+  read_ambient: "[F] Read ambient meter" { class: func }
+  configure_power: "[F] Configure charger/load" { class: func }
+  init_bus: "[F] Init Serial0 and I2C" { class: func }
+  get_init_state: "[F] Get INA219 init state" { class: func }
+  respond_init: "[F] Respond to init request" { class: func }
+  collect_init: "[F] Collect init states" { class: func }
+  read_voltage: "[F] Read voltage" { class: func }
+  read_current: "[F] Read current" { class: func }
+  measure_voltage: "[F] Measure voltage" { class: func }
+  measure_current: "[F] Measure current" { class: func }
+  respond_i2c: "[F] Respond to I2C requests" { class: func }
+  process_voltage: "[F] Process voltage" { class: func }
+  process_current: "[F] Process current" { class: func }
+  collect: "[F] Collect PDS measurements" { class: func }
+  log_serial0: "[F] Log via Serial0" { class: func }
+  capture_log: "[F] Capture Serial0 frames" { class: func }
+  compare_ref: "[F] Compare to reference V/I" { class: func }
+  archive: "[F] Archive evidence" { class: func }
+  c_trace: "[C] Trace: PDS-UC-SuperviseBattery-v0.2; PDS-FE-SensorBusFault-v0.2; PDS-UC-ProvideRegulatedPower-v0.2." { class: note; shape: page }
+  c_measure: "[C] Pass: n≥30 paired V/I samples per operating point; reference traceable." { class: note; shape: page }
+  c_timing: "[C] Pass: 5 Hz logging; unused fields 0; I2C ≤5 ms; process <5 ms; 59/59 for 95/95 timing claims." { class: note; shape: page }
+}
+chain.inspect -> chain.read_ambient: "[FE] setup accepted" { class: fe }
+chain.read_ambient -> chain.configure_power: "[FE] ambient recorded" { class: fe }
+chain.configure_power -> chain.init_bus: "[FE] powered UUT" { class: fe }
+chain.init_bus -> chain.get_init_state: "[FE] bus ready" { class: fe }
+chain.get_init_state -> chain.respond_init: "[FE] I2C init request" { class: fe }
+chain.respond_init -> chain.collect_init: "[FE] init status" { class: fe }
+chain.collect_init -> chain.read_voltage: "[FE] loop enabled" { class: fe }
+chain.read_voltage -> chain.respond_i2c: "[FE] V request" { class: fe }
+chain.read_current -> chain.respond_i2c: "[FE] I request" { class: fe }
+chain.measure_voltage -> chain.respond_i2c: "[FE] voltage signal" { class: fe }
+chain.measure_current -> chain.respond_i2c: "[FE] current signal" { class: fe }
+chain.respond_i2c -> chain.process_voltage: "[FE] V response" { class: fe }
+chain.respond_i2c -> chain.process_current: "[FE] I response" { class: fe }
+chain.process_voltage -> chain.collect: "[FE] V result/status" { class: fe }
+chain.process_current -> chain.collect: "[FE] I result/status" { class: fe }
+chain.collect -> chain.log_serial0: "[FE] PDS frame" { class: fe }
+chain.log_serial0 -> chain.capture_log: "[FE] Serial0 stream" { class: fe }
+chain.capture_log -> chain.compare_ref: "[FE] parsed INA219 samples" { class: fe }
+chain.measure_voltage -> chain.compare_ref: "[FE] reference V" { class: fe }
+chain.measure_current -> chain.compare_ref: "[FE] reference I" { class: fe }
+chain.compare_ref -> chain.archive: "[FE] pass/fail dataset" { class: fe }
+chain.c_trace -> chain.collect { class: cstr }
+chain.c_measure -> chain.compare_ref { class: cstr }
+chain.c_timing -> chain.capture_log { class: cstr }

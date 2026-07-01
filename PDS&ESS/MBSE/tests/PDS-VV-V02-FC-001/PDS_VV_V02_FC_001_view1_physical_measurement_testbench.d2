@@ -1,0 +1,89 @@
+vars: { d2-config: { layout-engine: elk } }
+
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# PV1 — physical testbench. Refs: IVV; PM&SE/IVV; v0.2 baseline; PDS-R9 INA219; PDS-R10 I2C.
+operator: "[EA] Bench operator" { class: ea }
+charger: "[EA] Current-limited\nUSB-C charger/supply" { class: ea }
+serial_host: "[EA] Host PC /\nSerial0 logger" { class: ea }
+i2c_analyzer: "[EA] I2C logic\nanalyzer" { class: ea }
+fault_fixture: "[EA] I2C fault\ninjection fixture" { class: ea }
+ref_meter: "[EA] Calibrated DMM /\ncurrent reference" { class: ea }
+load: "[EA] Programmable\nload/source" { class: ea }
+ambient: "[EA] Ambient thermometer /\nhygrometer" { class: ea }
+repo: "[EA] Evidence\nrepository" { class: ea }
+
+system: "[System] PDS-VV-V02-FC-001 physical measurement/reporting testbench\nPDS & ESS v0.2 gate to v0.3 — refs: IVV; PM&SE/IVV; PDS-R9; PDS-R10" {
+  class: sys
+  direction: down
+  uut: "[PC] PDS v0.2 UUT" {
+    class: pc
+    direction: down
+    board: "[PC] PDS Circuitboard" {
+      class: pc
+      direction: down
+      protection: "[PC] Protection Circuit" { class: pc }
+      ina219: "[PC] INA219" { class: pc }
+      regulator: "[PC] Regulator" { class: pc }
+      connector: "[PC] Connector\nTerminal" { class: pc }
+      xiao: "[PC] XIAO ESP32-S3" { class: pc }
+    }
+    batt: "[PC] 1S1P Li-Ion" { class: pc }
+  }
+  harness: "[PC] Verification\ntest harness" {
+    class: pc
+    direction: down
+    serial_adapter: "[PC] Serial0\nadapter" { class: pc }
+    i2c_probe: "[PC] SDA/SCL\nprobe clip" { class: pc }
+    fault_adapter: "[PC] SDA/SCL\nfault adapter" { class: pc }
+    ref_leads: "[PC] Reference\nV/I leads" { class: pc }
+    load_leads: "[PC] Load/source\nleads" { class: pc }
+    env_station: "[PC] Ambient\nrecord station" { class: pc }
+    log_storage: "[PC] Controlled\nlog storage" { class: pc }
+  }
+  c_presence: "[C] Pass: 100% of v0.2 PCs and PLs are present, identified, undamaged, and connected before powered trials." { class: note; shape: page }
+  c_measure: "[C] Pass: INA219 voltage/current are paired with reference-traceable readings; n≥30 samples per operating point." { class: note; shape: page }
+  c_timing: "[C] Pass: 5 Hz Serial0 logging; unused fields = 0; I2C reads succeed or timeout ≤5 ms; process functions <5 ms." { class: note; shape: page }
+  c_fault: "[C] Pass: absent, NACK, stuck SDA/SCL, and delayed INA219 faults do not block scheduler/logging." { class: note; shape: page }
+}
+
+charger -- system.uut.board.protection: "[PL] USB-C cable" { class: pl }
+system.uut.board.protection -- system.uut.board.ina219: "[PL] PC Out trace / GND" { class: pl }
+system.uut.board.ina219 -- system.uut.board.regulator: "[PL] INA Out / GND" { class: pl }
+system.uut.board.regulator -- system.uut.board.connector: "[PL] 3V3 / 5V / GND" { class: pl }
+system.uut.board.ina219 -- system.uut.board.xiao: "[PL] I2C cables" { class: pl }
+system.uut.board.connector -- system.uut.board.xiao: "[PL] 5V / GND" { class: pl }
+system.uut.batt -- system.uut.board.xiao: "[PL] Battery Cable" { class: pl }
+operator -- system.harness: "[PL] manual access" { class: pl }
+serial_host -- system.harness.serial_adapter: "[PL] USB/UART" { class: pl }
+system.harness.serial_adapter -- system.uut.board.xiao: "[PL] Serial0 log cable" { class: pl }
+i2c_analyzer -- system.harness.i2c_probe: "[PL] analyzer leads" { class: pl }
+system.harness.i2c_probe -- system.uut.board.ina219: "[PL] SDA/SCL probe" { class: pl }
+system.harness.i2c_probe -- system.uut.board.xiao: "[PL] SDA/SCL probe" { class: pl }
+fault_fixture -- system.harness.fault_adapter: "[PL] fault leads" { class: pl }
+system.harness.fault_adapter -- system.uut.board.ina219: "[PL] faultable SDA/SCL" { class: pl }
+system.harness.fault_adapter -- system.uut.board.xiao: "[PL] faultable SDA/SCL" { class: pl }
+ref_meter -- system.harness.ref_leads: "[PL] reference probes" { class: pl }
+system.harness.ref_leads -- system.uut.board.ina219: "[PL] V/I sense" { class: pl }
+load -- system.harness.load_leads: "[PL] load/source leads" { class: pl }
+system.harness.load_leads -- system.uut.board.connector: "[PL] controlled load" { class: pl }
+ambient -- system.harness.env_station: "[PL] ambient readout" { class: pl }
+repo -- system.harness.log_storage: "[PL] evidence transfer" { class: pl }
+system.c_presence -> system.uut { class: cstr }
+system.c_measure -> system.uut.board.ina219 { class: cstr }
+system.c_timing -> system.uut.board.xiao { class: cstr }
+system.c_fault -> system.harness.fault_adapter { class: cstr }

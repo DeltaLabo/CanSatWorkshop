@@ -1,0 +1,230 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV2 — PDS-VV-CON-001 logical normal-charge interfaces.
+# Capella PA PV2 only: System, PCs, LCs, EAs with Component Exchanges, CEs, constraints.
+# No PLs, Functions, or FEs. References: IVV, PDS-R2, PDS-R4, PDS-R5, PDS-R6, PDS-R7.
+# Traceability: [C] At 4.2 V, 0.5 A; PDS-UC-ChargeESS; PDS-FE-LiIonUnsafeCondition;
+# PDS-FE-OvercurrentOvervoltage; PDS-VV-FC-001; PDS-VV-SAFE-001.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea }
+safety_observer: "[EA] Safety Observer /\nWitness" { class: ea }
+charger_emulator: "[EA] Certified current-limited\ncharger / emulator" { class: ea }
+battery_emulator: "[EA] Battery emulator /\ncurrent-limited source" { class: ea }
+usb_meter: "[EA] USB power meter /\ncurrent-voltage logger" { class: ea }
+dmm_daq: "[EA] Calibrated DMM / DAQ" { class: ea }
+scope_logger: "[EA] Oscilloscope /\ncharge logger" { class: ea }
+thermal_instr: "[EA] Thermal camera /\nthermocouples" { class: ea }
+ambient_meter: "[EA] Ambient thermometer /\nhygrometer" { class: ea }
+fire_safety: "[EA] Fire-safe containment /\nE-stop equipment" { class: ea }
+evidence_repo: "[EA] Evidence repository /\nhost PC" { class: ea }
+
+system: "[System] PDS-VV-CON-001 logical normal-charge interfaces\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R2; PDS-R4; PDS-R5; PDS-R6; PDS-R7" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  test_harness: "[PC] PDS-VV-CON-001\nnormal-charge verification harness" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    procedure_control: "[LC] Test procedure\nand step control" { class: lc }
+    safety_control: "[LC] Safety witness, hold,\nand E-stop control" { class: lc }
+    document_control: "[LC] Li-ion safety document\nand limit record" { class: lc }
+    charger_control: "[LC] Charger certification,\nsetting, and status interface" { class: lc }
+    dry_run_source_control: "[LC] Emulator / non-cell\npath-check interface" { class: lc }
+    charge_measurement: "[LC] Charge voltage-current\nmeasurement interface" { class: lc }
+    thermal_ambient: "[LC] Thermal and ambient\ncontext interface" { class: lc }
+    anomaly_hold: "[LC] Wrong-charger / unsafe-setup\nhold and anomaly disposition" { class: lc }
+    evidence_capture: "[LC] Evidence capture,\nuncertainty, and trace package" { class: lc }
+  }
+
+  uut: "[PC] Integrated PDS & ESS\nv1.0 UUT" {
+    class: pc
+    direction: down
+
+    ess_module: "[PC] ESS Module" {
+      class: pc
+      battery_pack: "[PC] 1S1P Li-Ion" {
+        class: pc
+        battery_lc: "[LC] Battery\nnormal non-abuse charge item" { class: lc }
+      }
+    }
+
+    pds_module: "[PC] PDS Module" {
+      class: pc
+      direction: down
+
+      pds_pcb: "[PC] PDS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        battery_connector: "[PC] Battery Connector" {
+          class: pc
+          charge_path_interface: "[LC] Cell/protection\ncharge-path interface" { class: lc }
+        }
+
+        protection: "[PC] Protection Circuit" {
+          class: pc
+          direction: down
+          battery_charger: "[LC] Battery Charger" { class: lc }
+          power_protection: "[LC] Power Protection" { class: lc }
+          charger_safety_gate: "[LC] Charger safety\nhold interface" { class: lc }
+        }
+
+        ina219: "[PC] INA219" {
+          class: pc
+          battery_monitoring: "[LC] Battery monitoring" { class: lc }
+        }
+
+        regulator: "[PC] Regulator" {
+          class: pc
+          regulator_lc: "[LC] Regulator" { class: lc }
+        }
+      }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          status_observer: "[LC] Status / reset\nobservation interface" { class: lc }
+        }
+      }
+    }
+  }
+
+  note_trace: "[C] PDS-VV-CON-001 traceability\nConstraint At 4.2 V, 0.5 A; PDS-UC-ChargeESS;\nPDS-FE-LiIonUnsafeCondition; PDS-FE-OvercurrentOvervoltage;\nPDS-VV-FC-001; PDS-VV-SAFE-001. IADT Testing with\nsupporting Analysis / Inspection." {
+    class: note
+    shape: page
+  }
+
+  note_pass: "[C] Logical pass/fail interfaces\nCharger limits, charge path, cell voltage/current, temperature, ambient,\ncell documentation, calibration/status, Safety Observer approval, and\nwrong-charger hold status shall be observable and captured. Voltage\nlimit is 4.2 V plus declared measurement uncertainty/tolerance; current\nlimit is nominal 0.5 A with uncertainty considered." {
+    class: note
+    shape: page
+  }
+
+  note_hold: "[C] Safety hold rule\nWrong/uncertified charger, reverse polarity, ambiguous setup, unsafe\nambient, missing Li-ion limits, unsafe cell condition, unresolved\ncalibration/status issue, or Safety Observer hold prevents energizing.\nIf documents are absent, only emulator/non-cell path checks are allowed." {
+    class: note
+    shape: page
+  }
+
+  note_stats: "[C] Statistical and evidence rule\nUse ≥30 stable voltage/current/temperature samples per relevant condition\nor a complete logged charge profile; retain raw data, uncertainty, charger\nsettings, safety documents, ambient records, and trace to PDS-VV-FC-001\nand PDS-VV-SAFE-001." {
+    class: note
+    shape: page
+  }
+}
+
+# External actor and harness interfaces.
+test_operator -> system.test_harness.procedure_control: "[CE] Procedure commands,\nsetup declarations, deviations" { class: ce }
+safety_observer -> system.test_harness.safety_control: "[CE] Approval, hold,\nabort, witness status" { class: ce }
+fire_safety -> system.test_harness.safety_control: "[CE] Containment and\nE-stop status" { class: ce }
+ambient_meter -> system.test_harness.thermal_ambient: "[CE] Ambient T/RH" { class: ce }
+thermal_instr -> system.test_harness.thermal_ambient: "[CE] Battery/protection/\nconnector temperature" { class: ce }
+charger_emulator -> system.test_harness.charger_control: "[CE] Certification,\nCV/CC settings, status" { class: ce }
+battery_emulator -> system.test_harness.dry_run_source_control: "[CE] Emulated cell\nlimits and status" { class: ce }
+usb_meter -> system.test_harness.charge_measurement: "[CE] USB input\nvoltage/current log" { class: ce }
+dmm_daq -> system.test_harness.charge_measurement: "[CE] Cell/protection\nvoltage/current samples" { class: ce }
+scope_logger -> system.test_harness.charge_measurement: "[CE] Charge transients\nand profile waveform" { class: ce }
+system.test_harness.evidence_capture -> evidence_repo: "[CE] Controlled evidence,\nuncertainty, trace package" { class: ce }
+
+# Harness control and observation interfaces.
+system.test_harness.procedure_control -> system.test_harness.document_control: "[CE] Cell identity and\nsafety-document request" { class: ce }
+system.test_harness.document_control -> system.test_harness.safety_control: "[CE] Li-ion limits\nand document status" { class: ce }
+system.test_harness.safety_control -> system.test_harness.procedure_control: "[CE] Energize approval,\nhold, abort" { class: ce }
+system.test_harness.procedure_control -> system.test_harness.charger_control: "[CE] Configure certified\ncharge setup" { class: ce }
+system.test_harness.procedure_control -> system.test_harness.dry_run_source_control: "[CE] Emulator path-check\ncommand if needed" { class: ce }
+system.test_harness.safety_control -> system.test_harness.anomaly_hold: "[CE] Unsafe setup\nhold / abort" { class: ce }
+system.test_harness.charger_control -> system.uut.pds_module.pds_pcb.protection.battery_charger: "[CE] 4.2 V / 0.5 A\ncharge input" { class: ce }
+system.test_harness.charger_control -> system.uut.pds_module.pds_pcb.protection.charger_safety_gate: "[CE] Charger identity\nand setting status" { class: ce }
+system.test_harness.dry_run_source_control -> system.uut.pds_module.pds_pcb.battery_connector.charge_path_interface: "[CE] Non-cell path-check\nemulated charge input" { class: ce }
+system.uut.pds_module.pds_pcb.protection.charger_safety_gate -> system.test_harness.anomaly_hold: "[CE] Wrong/reverse/\nambiguous setup status" { class: ce }
+system.uut.pds_module.pds_pcb.battery_connector.charge_path_interface -> system.test_harness.charge_measurement: "[CE] Cell/protection\nV-I observations" { class: ce }
+system.uut.ess_module.battery_pack.battery_lc -> system.test_harness.thermal_ambient: "[CE] Cell condition\nand temperature context" { class: ce }
+system.uut.obcc_module.obcc_pcb.xiao.status_observer -> system.test_harness.evidence_capture: "[CE] Status/reset\nobservations if used" { class: ce }
+system.test_harness.charge_measurement -> system.test_harness.evidence_capture: "[CE] Raw V-I profile\nand samples" { class: ce }
+system.test_harness.thermal_ambient -> system.test_harness.evidence_capture: "[CE] Thermal and\nambient evidence" { class: ce }
+system.test_harness.document_control -> system.test_harness.evidence_capture: "[CE] Safety-document\nrecord" { class: ce }
+system.test_harness.anomaly_hold -> system.test_harness.evidence_capture: "[CE] Hold/abort and\nanomaly disposition" { class: ce }
+system.test_harness.evidence_capture -> system.test_harness.procedure_control: "[CE] Pass/fail status\nor no-Li-ion-claim status" { class: ce }
+
+# UUT logical charge path.
+system.uut.pds_module.pds_pcb.protection.battery_charger -> system.uut.pds_module.pds_pcb.battery_connector.charge_path_interface: "[CE] Regulated charge\nvoltage/current" { class: ce }
+system.uut.pds_module.pds_pcb.battery_connector.charge_path_interface -> system.uut.ess_module.battery_pack.battery_lc: "[CE] Normal non-abuse\ncharge current" { class: ce }
+system.uut.ess_module.battery_pack.battery_lc -> system.uut.pds_module.pds_pcb.protection.power_protection: "[CE] Stored cell energy\nwithin declared limits" { class: ce }
+system.uut.pds_module.pds_pcb.protection.power_protection -> system.uut.pds_module.pds_pcb.ina219.battery_monitoring: "[CE] Protected charge /\npower state" { class: ce }
+system.uut.pds_module.pds_pcb.ina219.battery_monitoring -> system.uut.pds_module.pds_pcb.regulator.regulator_lc: "[CE] Monitored input\nfor status context" { class: ce }
+
+system.note_trace -> system.uut.pds_module.pds_pcb.protection.battery_charger { class: cstr }
+system.note_trace -> system.uut.ess_module.battery_pack.battery_lc { class: cstr }
+system.note_pass -> system.test_harness.charge_measurement { class: cstr }
+system.note_pass -> system.uut.pds_module.pds_pcb.battery_connector.charge_path_interface { class: cstr }
+system.note_hold -> system.test_harness.safety_control { class: cstr }
+system.note_hold -> system.test_harness.anomaly_hold { class: cstr }
+system.note_hold -> system.uut.pds_module.pds_pcb.protection.charger_safety_gate { class: cstr }
+system.note_stats -> system.test_harness.evidence_capture { class: cstr }
+system.note_stats -> system.test_harness.document_control { class: cstr }
+
+# Layout-only rank hints to keep actors, system, and notes readable.
+test_operator -> safety_observer { style: { opacity: 0 } }
+safety_observer -> charger_emulator { style: { opacity: 0 } }
+charger_emulator -> battery_emulator { style: { opacity: 0 } }
+battery_emulator -> usb_meter { style: { opacity: 0 } }
+usb_meter -> dmm_daq { style: { opacity: 0 } }
+dmm_daq -> scope_logger { style: { opacity: 0 } }
+scope_logger -> thermal_instr { style: { opacity: 0 } }
+thermal_instr -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> fire_safety { style: { opacity: 0 } }
+fire_safety -> evidence_repo { style: { opacity: 0 } }
+evidence_repo -> system { style: { opacity: 0 } }
+system.test_harness -> system.uut { style: { opacity: 0 } }
+system.uut -> system.note_trace { style: { opacity: 0 } }
+system.note_trace -> system.note_pass { style: { opacity: 0 } }
+system.note_pass -> system.note_hold { style: { opacity: 0 } }
+system.note_hold -> system.note_stats { style: { opacity: 0 } }

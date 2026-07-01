@@ -1,0 +1,163 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV1 — PDS-V01-GATE-001 physical inspection and setup context.
+# Includes source v0.1 physical components/links plus verification-only actors,
+# equipment, and evidence-oriented links.
+# References: PM&SE/IVV.md; PDS-v0.1-AdvanceToV0.2;
+# PDS-UC-ProvideRegulatedPower; PDS-FE-ReversePolarityOrOpenPowerPath.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 14 }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 16 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 18 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 16
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+bench_operator: "[EA] Bench Operator" {
+  class: ea
+  direction: down
+  authorize_gate: "[F] Select / authorize\nv0.1 gate" { class: func }
+  monitor_safe_state: "[F] Monitor safe-state\nbefore power-on" { class: func }
+  stop_unsafe: "[F] Stop unsafe\naction" { class: func }
+}
+
+bench_supply: "[EA] Current-limited bench supply" {
+  class: ea
+  direction: down
+  configure_supply: "[F] Configure output and\ncurrent limit" { class: func }
+  provide_battery_path_power: "[F] Provide battery\npath power" { class: func }
+  limit_current: "[F] Enforce current and\npolarity limits" { class: func }
+}
+
+battery_fixture: "[EA] Supervised 1S1P\nLi-Ion fixture" {
+  class: ea
+  direction: down
+  connect_cell: "[F] Attach supervised\nLi-Ion pack" { class: func }
+  verify_doc: "[F] Verify cell ID,\ncertification notes" { class: func }
+}
+
+dmm: "[EA] DMM / continuity &\npolarity tester" {
+  class: ea
+  direction: down
+  probe_rails: "[F] Probe rails and\ncurrent paths" { class: func }
+  verify_continuity: "[F] Verify continuity\nand polarity" { class: func }
+}
+
+electronic_load: "[EA] Electronic load /\nrepresentative rail load" {
+  class: ea
+  direction: down
+  apply_load: "[F] Apply light load\nfor smoke test" { class: func }
+  remove_load: "[F] Remove load" { class: func }
+}
+
+ambient_thermometer: "[EA] Ambient thermometer /\nhygrometer" {
+  class: ea
+  direction: down
+  read_ambient: "[F] Read ambient\ntemperature/humidity" { class: func }
+}
+
+logger_pc: "[EA] Test log sheet /\ndata logger" {
+  class: ea
+  direction: down
+  record_context: "[F] Record setup,\nconditions, and outcomes" { class: func }
+}
+
+system: "[System] PDS-V01-GATE-001 physical\nv0.1 progression gate testbench\nRefs: IVV; PDS-v0.1-AdvanceToV0.2; PDS-UC-ProvideRegulatedPower; PDS-FE-ReversePolarityOrOpenPowerPath" {
+  class: sys
+  direction: down
+
+  uut: "[PC] PDS v0.1 Subsystem under verification" {
+    class: pc
+    direction: down
+
+    board: "[PC] PDS Circuitboard" {
+      class: pc
+      direction: right
+      protection: "[PC] Protection Circuit" { class: pc }
+      regulator_block: "[PC] Regulator" { class: pc }
+      connector_terminal: "[PC] Connector\nTerminal" { class: pc }
+    }
+    battpack: "[PC] 1S1P Li-Ion" { class: pc }
+  }
+
+  harness: "[PC] PDS-V01-GATE-001 Verification Fixture" {
+    class: pc
+    direction: right
+    lead_jig: "[PC] Probe / meter lead\njig" { class: pc }
+    logging_port: "[PC] Logging / evidence\nport" { class: pc }
+    ambient_station: "[PC] Ambient\nrecord station" { class: pc }
+  }
+
+  note_scope: "[C] Scope: v0.1 prototype gate\n- Inspect all v0.1 physical components and links in baseline.\n- Perform continuity/polarity and visual terminations checks.\n- Run one short smoke sequence + power-on/off checks with supervised source.\n- No destructive abuse; evidence is model-defined (execution pending)." { class: note; shape: page }
+  note_pc_pass: "[C] PC presence/condition target\nAll modeled PCs from v0.1 source must be physically present,\nidentified, and in expected containment/adjacency." { class: note; shape: page }
+  note_pl_pass: "[C] PL presence/condition target\nAll modeled PLs inspected for continuity,\npolarity (where applicable), retention,\nand workmanship for: battery cable JST,\nPC Out / GND, 5V / 3V3 / GND." { class: note; shape: page }
+  note_constraint_screw: "[C] Constraint: [C] Screw terminal or crimped cables\nPass if connector/terminal path and crimp/strain reliefs\nare secure, mechanically fixed, and electrically suitable.\nFailure if visible stray strands, loose terminal,\nor unsecured connector hardware is observed." { class: note; shape: page }
+  note_environment: "[C] Environment\nRead ambient before each repetition; use ESD-safe benchtop.\nReject run if ambient sensor or safety state is invalid,\nif Li-Ion evidence is incomplete,\nor unsafe temperature/humidity is observed." { class: note; shape: page }
+}
+
+screw_terminals: "[C] Screw\nterminal or\ncrimped\ncables" {
+  class: note
+  shape: page
+}
+
+# Baseline physical links from PDS_v0.1_view1_physical.d2
+system.uut.battpack -- system.uut.board.protection: "[PL] Battery\ncable JST" { class: pl }
+system.uut.board.protection -- system.uut.board.regulator_block: "[PL] PC Out /\nGND" { class: pl }
+system.uut.board.regulator_block -- system.uut.board.connector_terminal: "[PL] 5V / 3V3 / GND" { class: pl }
+screw_terminals -> system.uut.board.connector_terminal: "[CE] termination constraint source" { class: cstr }
+
+# Verification-only physical links
+bench_operator -> battery_fixture: "[PL] Test-authorize and\naction handoff" { class: pl }
+bench_supply -> battery_fixture: "[PL] Bench supply leads" { class: pl }
+battery_fixture -> system.uut.battpack: "[PL] Supervised\nLi-Ion leads" { class: pl }
+bench_operator -> bench_supply: "[PL] Human switch / safe-mode\nacknowledge" { class: pl }
+bench_operator -> dmm: "[PL] Procedure coordination" { class: pl }
+dmm -> system.uut.battpack: "[PL] Probe leads" { class: pl }
+dmm -> system.uut.board.connector_terminal: "[PL] Rail + continuity probes" { class: pl }
+electronic_load -> system.uut.board.connector_terminal: "[PL] Controlled load\nlead set" { class: pl }
+ambient_thermometer -> system: "[PL] Ambient station" { class: pl }
+logger_pc -> system.harness.logging_port: "[PL] Evidence copy/export" { class: pl }
+
+system.note_scope -> system.uut { class: cstr }
+system.note_pc_pass -> system.uut { class: cstr }
+system.note_pl_pass -> system.uut.board { class: cstr }
+system.note_pl_pass -> dmm { class: cstr }
+system.note_constraint_screw -> system.uut.board.connector_terminal { class: cstr }
+system.note_environment -> ambient_thermometer { class: cstr }
+system.note_environment -> battery_fixture { class: cstr }
+
+# Layout rank hints.
+bench_operator -> bench_supply { style: { opacity: 0 } }
+bench_supply -> battery_fixture { style: { opacity: 0 } }
+battery_fixture -> dmm { style: { opacity: 0 } }
+dmm -> electronic_load { style: { opacity: 0 } }
+electronic_load -> ambient_thermometer { style: { opacity: 0 } }
+ambient_thermometer -> logger_pc { style: { opacity: 0 } }
+logger_pc -> system { style: { opacity: 0 } }
+system.uut -> system.harness { style: { opacity: 0 } }
+system.harness -> system.note_scope { style: { opacity: 0 } }
+system.note_scope -> system.note_pc_pass { style: { opacity: 0 } }
+system.note_pc_pass -> system.note_pl_pass { style: { opacity: 0 } }
+system.note_pl_pass -> system.note_constraint_screw { style: { opacity: 0 } }
+system.note_constraint_screw -> system.note_environment { style: { opacity: 0 } }

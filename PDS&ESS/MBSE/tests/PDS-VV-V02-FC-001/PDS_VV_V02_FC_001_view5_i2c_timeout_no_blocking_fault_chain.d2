@@ -1,0 +1,73 @@
+vars: { d2-config: { layout-engine: elk } }
+
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# Functional Chain — I2C timeout/no-blocking fault hardening.
+chain: "PDS-VV-V02-FC-001 — I2C timeout/no-blocking fault chain\nPDS & ESS v0.2 gate to v0.3 — refs: IVV; PM&SE/IVV; PDS-R9; PDS-R10" {
+  class: chain
+  direction: down
+  select_fault: "[F] Select fault case" { class: func }
+  record_env: "[F] Record ambient/harness" { class: func }
+  start_logging: "[F] Start scheduler and Serial0" { class: func }
+  inject_absent: "[F] Emulate absent INA219" { class: func }
+  inject_nack: "[F] Inject NACK" { class: func }
+  inject_stuck: "[F] Inject stuck SDA/SCL" { class: func }
+  inject_delay: "[F] Delay/no response" { class: func }
+  init_bus: "[F] Init Serial0 and I2C" { class: func }
+  read_vi: "[F] Read voltage/current" { class: func }
+  fault_response: "[F] Fault or delay response" { class: func }
+  enforce_timeout: "[F] Enforce I2C timeout" { class: func }
+  bounded_status: "[F] Return bounded status" { class: func }
+  process_fault: "[F] Process fault result" { class: func }
+  invalidate_stale: "[F] Invalidate stale V/I" { class: func }
+  collect_status: "[F] Collect measurement status" { class: func }
+  log_fault: "[F] Log fault frame" { class: func }
+  verify_liveness: "[F] Verify heartbeat/liveness" { class: func }
+  clear_fault: "[F] Clear fault" { class: func }
+  verify_recovery: "[F] Verify recovery read/log" { class: func }
+  archive: "[F] Archive evidence" { class: func }
+  c_faults: "[C] Mandatory faults: absent INA219, NACK, stuck SDA/SCL, delayed/no response; classify each pass/fail." { class: note; shape: page }
+  c_timeout: "[C] Pass: every read succeeds or returns bounded timeout/fault within ≤5 ms; 59/59 for 95/95 timing claim." { class: note; shape: page }
+  c_liveness: "[C] Pass: no unbounded blocking except modeled I2C/UART waits; scheduler and Serial0 remain alive." { class: note; shape: page }
+  c_getter: "[C] Pass: valid/stale/timeout/fault status is explicit; no stale data reported valid; processing <5 ms." { class: note; shape: page }
+}
+chain.select_fault -> chain.record_env: "[FE] fault selected" { class: fe }
+chain.record_env -> chain.start_logging: "[FE] setup metadata" { class: fe }
+chain.start_logging -> chain.inject_absent: "[FE] absent trial" { class: fe }
+chain.start_logging -> chain.inject_nack: "[FE] NACK trial" { class: fe }
+chain.start_logging -> chain.inject_stuck: "[FE] stuck-line trial" { class: fe }
+chain.start_logging -> chain.inject_delay: "[FE] delay trial" { class: fe }
+chain.inject_absent -> chain.init_bus: "[FE] fault armed" { class: fe }
+chain.inject_nack -> chain.init_bus: "[FE] fault armed" { class: fe }
+chain.inject_stuck -> chain.init_bus: "[FE] fault armed" { class: fe }
+chain.inject_delay -> chain.init_bus: "[FE] fault armed" { class: fe }
+chain.init_bus -> chain.read_vi: "[FE] read attempt" { class: fe }
+chain.read_vi -> chain.fault_response: "[FE] I2C request" { class: fe }
+chain.fault_response -> chain.enforce_timeout: "[FE] no/late/error response" { class: fe }
+chain.enforce_timeout -> chain.bounded_status: "[FE] ≤5 ms result" { class: fe }
+chain.bounded_status -> chain.process_fault: "[FE] status/result" { class: fe }
+chain.process_fault -> chain.invalidate_stale: "[FE] validity metadata" { class: fe }
+chain.invalidate_stale -> chain.collect_status: "[FE] no stale valid data" { class: fe }
+chain.collect_status -> chain.log_fault: "[FE] fault-aware frame" { class: fe }
+chain.log_fault -> chain.verify_liveness: "[FE] Serial0 heartbeat" { class: fe }
+chain.verify_liveness -> chain.clear_fault: "[FE] liveness evidence" { class: fe }
+chain.clear_fault -> chain.verify_recovery: "[FE] fault cleared" { class: fe }
+chain.verify_recovery -> chain.archive: "[FE] recovery evidence" { class: fe }
+chain.c_faults -> chain.select_fault { class: cstr }
+chain.c_timeout -> chain.enforce_timeout { class: cstr }
+chain.c_liveness -> chain.verify_liveness { class: cstr }
+chain.c_getter -> chain.process_fault { class: cstr }

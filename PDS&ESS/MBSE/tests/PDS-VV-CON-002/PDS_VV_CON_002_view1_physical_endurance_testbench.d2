@@ -1,0 +1,180 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV1 — PDS-VV-CON-002 physical endurance testbench.
+# References: IVV, PDS-R2, PDS-R6, PDS-R7, PDS-R9, PDS-R10.
+# Traceability: [C] Enough for 6 hours continuous operation in On mode;
+# PDS-UC-ProvideRegulatedPower; PDS-FE-RailBrownout;
+# PDS-FE-LiIonUnsafeCondition; PDS-VV-CON-001; PDS-VV-CON-003; PDS-VV-CON-004; PDS-VV-FC-001; PDS-VV-FC-002.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_director: "[EA] Test Director / Authorizing Engineer" { class: ea }
+safety_observer: "[EA] Safety Observer / Witness" { class: ea }
+load_profile_equip: "[EA] On-mode load-profile emulator / load bank" { class: ea }
+battery_emulator: "[EA] Current-limited charger / precharge fixture" { class: ea }
+bench_supply: "[EA] Battery emulator / source fixture\n(current-limited)" { class: ea }
+thermocouple: "[EA] Thermocouples + IR thermal camera" { class: ea }
+ambient_meter: "[EA] Ambient thermometer / hygrometer" { class: ea }
+rail_logger: "[EA] Rail and current logger\n(calibrated DMM/DAQ)" { class: ea }
+ina219_capture: "[EA] INA219 data capture host\n(OBCC/serial + analysis PC)" { class: ea }
+daq_pc: "[EA] Evidence repository / campaign host" { class: ea }
+timer_watch: "[EA] Timer / run scheduler" { class: ea }
+liion_safe_box: "[EA] Li-ion safe enclosure / E-stop" { class: ea }
+
+system: "[System] PDS-VV-CON-002 integrated endurance UUT\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R2; PDS-R6; PDS-R7; PDS-R9; PDS-R10" {
+  class: sys
+  direction: down
+
+  ess_module: "[PC] ESS Module" {
+    class: pc
+    direction: down
+    battery_pack: "[PC] 1S1P Li-Ion" { class: pc }
+  }
+
+  pds_module: "[PC] PDS Module" {
+    class: pc
+    direction: down
+
+    pds_pcb: "[PC] PDS PCB" {
+      class: pc
+      direction: right
+
+      battery_connector: "[PC] Battery Connector" { class: pc }
+      protection: "[PC] Protection Circuit" { class: pc }
+      ina219: "[PC] INA219" { class: pc }
+      regulator: "[PC] Regulator" { class: pc }
+      pds_backplane_connector: "[PC] Backplane Connector" { class: pc }
+    }
+  }
+
+  obcc_module: "[PC] OBCC Module" {
+    class: pc
+    direction: down
+
+    obcc_pcb: "[PC] OBCC PCB" {
+      class: pc
+      direction: right
+
+      xiao: "[PC] XIAO ESP32-S3" { class: pc }
+      obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
+    }
+  }
+
+  backplane_pcb: "[PC] Backplane PCB" {
+    class: pc
+    direction: down
+    pds_headers: "[PC] 2mm 2x6 PDS Headers" { class: pc }
+    spine: "[PC] Spine" { class: pc }
+    obcc_headers: "[PC] 2mm 2x6 OBCC Headers" { class: pc }
+  }
+
+  note_pass: "[C] Pass/fail constraints for CON-002:\n6 h On-mode run duration must be ≥ 6 h; rails must remain within\napplicable supply model limits, voltage/current monitoring must\nremain non-stale and within uncertainty budgets, and there\nshall be no brownout/reset or unsafe thermal/Li-ion precursor." {
+    class: note
+    shape: page
+  }
+
+  note_stats: "[C] Statistical viewpoint:\ncontinuous 6-h evidence requires dense logging (≤1 s or campaign-declared cadence),\nno major gaps, and logged sample traceability to load-profile timestamps and\nbattery state. For survival-statistical interpretation, 59 independent failure-free\n6 h runs are needed for about R95/C95 one-sided binomial claim; one successful\nrun is functional readiness evidence for the tested configuration." {
+    class: note
+    shape: page
+  }
+
+  note_fault: "[C] Fault-hardening viewpoint:\ninclude load-variation, logging load, thermal rise, battery aging margin, stale\nmeasurement detection, and safe abort on loss of required monitoring.\nAny observed unsafe restore/restart or stale INA219 data is a fail candidate." {
+    class: note
+    shape: page
+  }
+
+  note_env: "[C] Environmental constraints:\nambient and humidity must be read/captured before run start and\nevery hour thereafter; run only with documented safe Li-ion\nconfiguration and approved run profile/current budget." {
+    class: note
+    shape: page
+  }
+}
+
+# Source-path and measurement links
+battery_emulator -- system.ess_module.battery_pack: "[PL] 4.2V precharge path" { class: pl }
+bench_supply -- system.pds_module.pds_pcb.battery_connector: "[PL] + / - battery/bench leads" { class: pl }
+load_profile_equip -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] Mission profile load profile" { class: pl }
+thermocouple -- system.pds_module.pds_pcb.regulator: "[PL] Regulator and PCB thermal probes" { class: pl }
+ambient_meter -- system: "[PL] Ambient and RH contact" { class: pl }
+rail_logger -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] 5 V/3V3 probes" { class: pl }
+ina219_capture -- system.pds_module.pds_pcb.ina219: "[PL] INA219 serial / logic capture" { class: pl }
+daq_pc -- system: "[PL] Evidence/log export channel" { class: pl }
+timer_watch -- system.pds_module: "[PL] On/off schedule and segment markers" { class: pl }
+liion_safe_box -- system.ess_module.battery_pack: "[PL] Safe containment and disconnect interlock" { class: pl }
+
+system.ess_module.battery_pack -- system.pds_module.pds_pcb.battery_connector: "[PL] Battery ± traces" { class: pl }
+system.pds_module.pds_pcb.battery_connector -- system.pds_module.pds_pcb.protection: "[PL] Battery +/− traces" { class: pl }
+system.pds_module.pds_pcb.protection -- system.pds_module.pds_pcb.ina219: "[PL] PC out trace" { class: pl }
+system.pds_module.pds_pcb.ina219 -- system.pds_module.pds_pcb.regulator: "[PL] INA out trace" { class: pl }
+system.pds_module.pds_pcb.regulator -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] 5V/3V3 traces" { class: pl }
+system.pds_module.pds_pcb.pds_backplane_connector -- system.backplane_pcb.pds_headers: "[PL] Parallel cable" { class: pl }
+system.backplane_pcb.pds_headers -- system.backplane_pcb.spine: "[PL] Backplane copper" { class: pl }
+system.backplane_pcb.spine -- system.backplane_pcb.obcc_headers: "[PL] Backplane copper" { class: pl }
+system.backplane_pcb.obcc_headers -- system.obcc_module.obcc_backplane_connector: "[PL] Parallel cable" { class: pl }
+system.obcc_module.obcc_pcb.xiao -- system.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] 3V3/PWM traces" { class: pl }
+system.obcc_module.obcc_pcb.xiao -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] Power/indication signal" { class: pl }
+
+# Constraint references to modeled targets
+system.note_pass -> system.pds_module.pds_pcb.regulator { class: cstr }
+system.note_pass -> system.pds_module.pds_pcb.ina219 { class: cstr }
+system.note_stats -> system.pds_module { class: cstr }
+system.note_stats -> system.backplane_pcb { class: cstr }
+system.note_fault -> system.pds_module.pds_pcb.protection { class: cstr }
+system.note_env -> system.ess_module.battery_pack { class: cstr }
+
+# Layout-only edges for readable actor/system rank ordering.
+test_director -> safety_observer { style: { opacity: 0 } }
+safety_observer -> battery_emulator { style: { opacity: 0 } }
+battery_emulator -> bench_supply { style: { opacity: 0 } }
+bench_supply -> load_profile_equip { style: { opacity: 0 } }
+load_profile_equip -> rail_logger { style: { opacity: 0 } }
+rail_logger -> ina219_capture { style: { opacity: 0 } }
+ina219_capture -> daq_pc { style: { opacity: 0 } }
+daq_pc -> timer_watch { style: { opacity: 0 } }
+timer_watch -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> thermocouple { style: { opacity: 0 } }
+thermocouple -> liion_safe_box { style: { opacity: 0 } }
+liion_safe_box -> system { style: { opacity: 0 } }
+system -> system.note_pass { style: { opacity: 0 } }
+system.note_pass -> system.note_stats { style: { opacity: 0 } }
+system.note_stats -> system.note_fault { style: { opacity: 0 } }
+system.note_fault -> system.note_env { style: { opacity: 0 } }

@@ -1,0 +1,58 @@
+vars: { d2-config: { layout-engine: elk } }
+
+direction: down
+
+classes: {
+  func: { shape: rectangle; style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 } }
+  lc: { style: { fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  pc: { style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 } }
+  sys: { style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 } }
+  ea: { shape: rectangle; style: { fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2; border-radius: 20; font-size: 40 } }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: { style: { fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2; border-radius: 20; font-size: 36 } }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl: { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+# PV3 — functional allocation testbench.
+operator: "[EA] Bench operator" { class: ea; inspect: "[F] Inspect PCs/PLs" { class: func }; read_ambient: "[F] Read ambient meter" { class: func }; start_run: "[F] Start nominal/fault run" { class: func } }
+serial_host: "[EA] Serial0 logging PC" { class: ea; capture_logs: "[F] Capture Serial0 logs" { class: func }; parse_frames: "[F] Parse cadence and fields" { class: func } }
+i2c_analyzer: "[EA] I2C analyzer" { class: ea; capture_i2c: "[F] Capture I2C transactions" { class: func }; measure_timeout: "[F] Measure read duration" { class: func } }
+fault_fixture: "[EA] I2C fault fixture" { class: ea; inject_absent: "[F] Emulate absent INA219" { class: func }; inject_nack: "[F] Inject NACK" { class: func }; inject_stuck: "[F] Inject stuck SDA/SCL" { class: func }; inject_delay: "[F] Delay/no response" { class: func } }
+ref_meter: "[EA] Reference V/I meter" { class: ea; measure_ref_v: "[F] Measure reference voltage" { class: func }; measure_ref_i: "[F] Measure reference current" { class: func } }
+
+system: "[System] PDS-VV-V02-FC-001 functional allocation testbench\nPDS & ESS v0.2 gate to v0.3 — refs: IVV; PM&SE/IVV; PDS-R9; PDS-R10" {
+  class: sys
+  direction: down
+  uut: "[PC] PDS v0.2 UUT" {
+    class: pc
+    direction: down
+    board: "[PC] PDS Circuitboard" {
+      class: pc
+      direction: down
+      protection: "[PC] Protection Circuit" { class: pc; battery_charger: "[LC] Battery Charger" { class: lc; charger_regulate_voltage: "[F] Regulate voltage" { class: func } }; power_protection: "[LC] Power Protection" { class: lc; restore_power: "[F] Restore power" { class: func }; cut_off_power: "[F] Cut off power" { class: func } } }
+      ina219: "[PC] INA219" { class: pc; battery_monitoring: "[LC] Battery monitoring" { class: lc; measure_voltage: "[F] Measure voltage" { class: func }; measure_current: "[F] Measure current" { class: func }; respond_i2c: "[F] Respond to I2C requests" { class: func } } }
+      regulator: "[PC] Regulator" { class: pc; regulator_lc: "[LC] Regulator" { class: lc; regulate_voltage: "[F] Regulate voltage" { class: func } } }
+      connector: "[PC] Connector Terminal" { class: pc; probe_lc: "[LC] Probe interface\n(verification-only)" { class: lc; probe_load: "[F] Probe/load terminal" { class: func } } }
+      xiao: "[PC] XIAO ESP32-S3" { class: pc; setup: "[LC] Setup" { class: lc; init_bus: "[F] Init Serial0 and I2C" { class: func }; get_init_state: "[F] Get INA219 init state" { class: func }; collect_init: "[F] Collect peripheral init states" { class: func } }; loop: "[LC] Loop" { class: lc; read_voltage: "[F] Read voltage" { class: func }; read_current: "[F] Read current" { class: func }; process_voltage: "[F] Process voltage" { class: func }; process_current: "[F] Process current" { class: func }; collect: "[F] Collect PDS measurements" { class: func }; log_serial0: "[F] Log measurements via Serial0" { class: func }; heartbeat: "[F] Emit heartbeat\n(verification-only)" { class: func }; getter_status: "[F] Expose getter status\n(verification-only)" { class: func } } }
+    }
+  }
+  harness: "[PC] Verification harness" { class: pc; timing: "[LC] Timing/evidence capture" { class: lc; check_5hz: "[F] Check 5 Hz cadence" { class: func }; check_zero: "[F] Check unused fields are 0" { class: func }; package: "[F] Package evidence" { class: func } } }
+  c_alloc: "[C] Allocation pass: source functions stay in intended LCs; verification-only hooks are explicitly labeled." { class: note; shape: page }
+  c_timing: "[C] Pass: I2C ≤5 ms, process <5 ms, 5 Hz collection/logging, unused fields = 0." { class: note; shape: page }
+  c_getter: "[C] Pass: variable getter ownership, units, freshness, status, and stale-data behavior are defined." { class: note; shape: page }
+  c_fault: "[C] Pass: fault injection returns bounded status and preserves scheduler/Serial0 liveness." { class: note; shape: page }
+}
+system.c_alloc -> system.uut.board.xiao.loop { class: cstr }
+system.c_timing -> system.uut.board.xiao.loop.collect { class: cstr }
+system.c_getter -> system.uut.board.xiao.loop.getter_status { class: cstr }
+system.c_fault -> system.uut.board.xiao.loop.heartbeat { class: cstr }
+
+# Layout-only ordering for disconnected actors.
+operator -> serial_host { style: { opacity: 0 } }
+serial_host -> i2c_analyzer { style: { opacity: 0 } }
+i2c_analyzer -> fault_fixture { style: { opacity: 0 } }
+fault_fixture -> ref_meter { style: { opacity: 0 } }
+ref_meter -> system { style: { opacity: 0 } }

@@ -1,0 +1,67 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 14 }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 12 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 18
+    }
+  }
+  fe: { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 12 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 11 } }
+}
+
+chain: "PDS v0.2 — Measurement and reporting chain" {
+  class: chain
+  direction: right
+
+  get_init_state: "[F] Get INA219\ninit state" { class: func }
+  collect_init_states: "[F] Collect peripheral\ninit states" { class: func }
+  init_bus: "[F] Init Serial0\nand I2C" { class: func }
+  read_voltage: "[F] Read voltage" { class: func }
+  read_current: "[F] Read current" { class: func }
+  measure_voltage: "[F] Measure\nvoltage" { class: func }
+  measure_current: "[F] Measure\ncurrent" { class: func }
+  respond_i2c: "[F] Respond to\nI2C Requests" { class: func }
+  process_voltage: "[F] Process\nvoltage" { class: func }
+  process_current: "[F] Process\ncurrent" { class: func }
+  collect_measurements: "[F] Collect PDS\nmeasurements" { class: func }
+  log_measurements: "[F] Log measurements\nvia Serial0" { class: func }
+
+  note_5hz: "[C] At 5 Hz" {
+    class: note
+    shape: page
+  }
+  note_unused_fields: "[C] Set unused\nframe fields\nto 0" {
+    class: note
+    shape: page
+  }
+}
+
+chain.get_init_state -> chain.respond_i2c: "[FE] I2C Requests" { class: fe }
+chain.read_voltage -> chain.respond_i2c: "[FE] I2C Requests" { class: fe }
+chain.read_current -> chain.respond_i2c: "[FE] I2C Requests" { class: fe }
+chain.measure_voltage -> chain.respond_i2c: "[FE] Voltage signal" { class: fe }
+chain.measure_current -> chain.respond_i2c: "[FE] Current signal" { class: fe }
+chain.respond_i2c -> chain.get_init_state: "[FE] I2C Response" { class: fe }
+chain.get_init_state -> chain.collect_init_states: "[FE] Result" { class: fe }
+chain.respond_i2c -> chain.process_voltage: "[FE] I2C Response" { class: fe }
+chain.respond_i2c -> chain.process_current: "[FE] I2C Response" { class: fe }
+chain.process_voltage -> chain.collect_measurements: "[FE] Result" { class: fe }
+chain.process_current -> chain.collect_measurements: "[FE] Result" { class: fe }
+chain.collect_init_states -> chain.log_measurements: "[FE] Result" { class: fe }
+chain.collect_measurements -> chain.log_measurements: "[FE] LoRa frame" { class: fe }
+
+chain.note_5hz -> chain.collect_measurements { class: cstr }
+chain.note_unused_fields -> chain.collect_measurements { class: cstr }

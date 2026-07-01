@@ -1,0 +1,167 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV5 — PDS-VV-CON-002 endurance margin and fault-hardening analysis chain.
+# Traces: On-mode endurance (CON-002) with shared protection/supervision models.
+direction: right
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  cex: { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 2; font-size: 26 } }
+}
+
+analysis_owner: "[EA] Test Analyst" { class: ea
+  define_perturbations: "[F] Define perturbation matrix" { class: func }
+  verify_data_plan: "[F] Verify minimum sample-size plan" { class: func }
+  run_post_analysis: "[F] Run post-run statistical analysis" { class: func }
+}
+
+bench_engineering: "[EA] Test bench engineer" { class: ea
+  load_perturbation: "[F] Configure load-variation envelopes" { class: func }
+  telemetry_load: "[F] Inject logging/telemetry burden" { class: func }
+  thermal_influence: "[F] Configure thermal soak scenario" { class: func }
+}
+
+battery_lab: "[EA] Battery characterization operator" { class: ea
+  aging_campaign: "[F] Define aging margin points" { class: func }
+  emulate_capacity_loss: "[F] Emulate reduced capacity/SoH" { class: func }
+}
+
+fault_injector: "[EA] Fault injector" { class: ea
+  inject_stale_ina219: "[F] Inject stale INA219 status" { class: func }
+  inject_comm_delay: "[F] Inject bus delay / timeout" { class: func }
+}
+
+analysis_store: "[EA] Analysis host" { class: ea
+  capture_raw: "[F] Capture run-level meta" { class: func }
+  compute_coverage: "[F] Compute coverage metrics" { class: func }
+  estimate_statistical_bound: "[F] Estimate conservative bound" { class: func }
+}
+
+system: "[System] PDS-VV-CON-002 margin and fault-hardening analysis chain" {
+  class: sys
+  direction: down
+
+  setup: "[LC] Analysis setup" { class: lc
+    load_plan: "[F] Publish perturbation matrix" { class: func }
+    logging_plan: "[F] Define sample cadence" { class: func }
+    thermal_plan: "[F] Define thermal checkpoints" { class: func }
+    soh_plan: "[F] Define SoH/aging cases" { class: func }
+  }
+
+  run_phase: "[LC] Stress and margin runs" { class: lc
+    apply_load_variation: "[F] Apply worst-case load variation" { class: func }
+    add_telemetry_load: "[F] Add worst-case logging burden" { class: func }
+    apply_thermal_rise: "[F] Apply thermal rise step" { class: func }
+    apply_aging_profile: "[F] Apply aged/low SoC campaign profile" { class: func }
+    inject_stale_supervision: "[F] Inject stale supervision case" { class: func }
+    inject_fault_bus_case: "[F] Inject bus fault/timeouts" { class: func }
+  }
+
+  observe_phase: "[LC] Observation and hardening decisions" { class: lc
+    collect_deltas: "[F] Collect rail, temperature, and measurement deltas" { class: func }
+    classify_faults: "[F] Classify fault/stale anomalies" { class: func }
+    compare_to_tolerances: "[F] Compare to FC-001/002 tolerances" { class: func }
+    decide_margin_adequacy: "[F] Decide campaign margin adequacy" { class: func }
+  }
+
+  evidence_phase: "[LC] Evidence and decision" { class: lc
+    compute_sample_size: "[F] Ensure ≥30/condition samples and event markers" { class: func }
+    compute_95_95: "[F] Compute conservative 95/95 or one-sided bounds" { class: func }
+    derive_execution_constraints: "[F] Derive execution-ready margins" { class: func }
+    report_results: "[F] Report analysis conclusion" { class: func }
+  }
+
+  note_ref: "[C] Analysis scope and reuse:\n- Power/protection behavior uses FC-001 intent + CON-003 protection demand semantics.\n- Measurement freshness and INA219 chain use FC-002 semantics.\n- Rail/nominal-load tolerances and load transitions reuse CON-004 context.\n- This model defines the explicit margin matrix for CON-002 execution campaign planning." {
+    class: note
+    shape: page
+  }
+}
+
+# Margin/fault chain flow
+system.setup.load_plan -> system.run_phase.apply_load_variation : "[PL] configure" { class: fe }
+system.setup.logging_plan -> system.run_phase.add_telemetry_load : "[PL] configure" { class: fe }
+system.setup.thermal_plan -> system.run_phase.apply_thermal_rise : "[PL] configure" { class: fe }
+system.setup.soh_plan -> system.run_phase.apply_aging_profile : "[PL] configure" { class: fe }
+
+system.run_phase.apply_load_variation -> system.observe_phase.collect_deltas : "[PL] execute" { class: fe }
+system.run_phase.add_telemetry_load -> system.observe_phase.collect_deltas : "[PL] execute" { class: fe }
+system.run_phase.apply_thermal_rise -> system.observe_phase.collect_deltas : "[PL] execute" { class: fe }
+system.run_phase.apply_aging_profile -> system.observe_phase.collect_deltas : "[PL] execute" { class: fe }
+system.run_phase.inject_stale_supervision -> system.observe_phase.classify_faults : "[PL] execute" { class: fe }
+system.run_phase.inject_fault_bus_case -> system.observe_phase.classify_faults : "[PL] execute" { class: fe }
+
+system.observe_phase.collect_deltas -> system.observe_phase.compare_to_tolerances : "[PL] validate" { class: fe }
+system.observe_phase.classify_faults -> system.observe_phase.compare_to_tolerances : "[PL] validate" { class: fe }
+system.observe_phase.compare_to_tolerances -> system.observe_phase.decide_margin_adequacy : "[PL] decision" { class: fe }
+
+system.observe_phase.decide_margin_adequacy -> system.evidence_phase.compute_sample_size : "[PL] if adequate" { class: fe }
+system.observe_phase.decide_margin_adequacy -> system.evidence_phase.report_results : "[PL] if not adequate" { class: fe }
+system.evidence_phase.compute_sample_size -> system.evidence_phase.compute_95_95 : "[PL] analysis" { class: fe }
+system.evidence_phase.compute_95_95 -> system.evidence_phase.derive_execution_constraints : "[PL] derive" { class: fe }
+system.evidence_phase.derive_execution_constraints -> system.evidence_phase.report_results : "[PL] report" { class: fe }
+
+# Actor mappings
+analysis_owner.define_perturbations -> system.setup.load_plan { class: cex }
+analysis_owner.verify_data_plan -> system.evidence_phase.compute_sample_size { class: cex }
+analysis_owner.run_post_analysis -> system.evidence_phase.report_results { class: cex }
+
+bench_engineering.load_perturbation -> system.run_phase.apply_load_variation { class: cex }
+bench_engineering.telemetry_load -> system.run_phase.add_telemetry_load { class: cex }
+bench_engineering.thermal_influence -> system.run_phase.apply_thermal_rise { class: cex }
+
+battery_lab.aging_campaign -> system.run_phase.apply_aging_profile { class: cex }
+battery_lab.emulate_capacity_loss -> system.run_phase.apply_aging_profile { class: cex }
+
+fault_injector.inject_stale_ina219 -> system.run_phase.inject_stale_supervision { class: cex }
+fault_injector.inject_comm_delay -> system.run_phase.inject_fault_bus_case { class: cex }
+
+analysis_store.capture_raw -> system.evidence_phase.compute_sample_size { class: cex }
+analysis_store.compute_coverage -> system.evidence_phase.derive_execution_constraints { class: cex }
+analysis_store.estimate_statistical_bound -> system.evidence_phase.compute_95_95 { class: cex }
+
+# Constraint traceability
+system.note_ref -> system.run_phase.apply_load_variation { class: cstr }
+system.note_ref -> system.run_phase.inject_stale_supervision { class: cstr }
+system.note_ref -> system.evidence_phase.compute_sample_size { class: cstr }
+system.note_ref -> system.evidence_phase.compute_95_95 { class: cstr }
+
+# Layout helpers
+analysis_owner -> bench_engineering { style: { opacity: 0 } }
+battery_lab -> fault_injector { style: { opacity: 0 } }
+fault_injector -> analysis_store { style: { opacity: 0 } }
+analysis_store -> system { style: { opacity: 0 } }

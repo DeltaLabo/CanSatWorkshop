@@ -1,0 +1,248 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+# PV2 — PDS-VV-CON-003 logical trial interfaces.
+# Capella PA PV2 only: System, PCs, LCs, EAs with CEs, Component Exchanges, constraints.
+# No PLs, Functions, or FEs. References: IVV, PDS-R4, PDS-R5, PDS-R6, PDS-R7, PDS-R8, PDS-R2.
+# Traceability: [C] Probability < 1%; PDS-VV-FC-001; PDS-FE-OvercurrentOvervoltage;
+# PDS-FE-LiIonUnsafeCondition; PDS-FE-RailBrownout; PDS-UC-ProvideRegulatedPower.
+direction: down
+
+classes: {
+  func: {
+    shape: rectangle
+    style: { fill: "#BDFB9B"; stroke: "#166534"; stroke-width: 2; font-size: 36 }
+  }
+  lc: {
+    style: {
+      fill: "#A9C7E6"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  pc: {
+    style: { fill: "#FFF8BF"; stroke: "#D1B24A"; stroke-width: 2; font-size: 40 }
+  }
+  sys: {
+    style: { fill: "#E6E6E6"; stroke: "#9A9A9A"; stroke-width: 2; font-size: 48 }
+  }
+  ea: {
+    shape: rectangle
+    style: {
+      fill: "#BFEAF4"; stroke: "#5B65C9"; stroke-width: 2
+      border-radius: 20; font-size: 40
+    }
+  }
+  note: { style: { fill: "#FFF5B0"; stroke: "#D1B24A"; font-size: 32 } }
+  chain: {
+    style: {
+      fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
+      border-radius: 20; font-size: 36
+    }
+  }
+  fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
+  ce:   { style: { stroke: "#5B65C9"; font-color: "#5B65C9"; stroke-width: 2; font-size: 30 } }
+  pl:   { style: { stroke: "#E11D28"; font-color: "#E11D28"; stroke-width: 2; font-size: 30 } }
+  cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
+}
+
+test_operator: "[EA] Test Operator" { class: ea }
+safety_observer: "[EA] Safety Observer /\nWitness" { class: ea }
+battery_emulator: "[EA] Battery emulator /\ncurrent-limited source" { class: ea }
+overcurrent_harness: "[EA] Overcurrent / short-equivalent\nharness" { class: ea }
+overvoltage_source: "[EA] Current-limited\novervoltage source" { class: ea }
+rail_loads: "[EA] Protected rail loads /\nflight loads" { class: ea }
+safety_controller: "[EA] Relay / interlock /\nsafety controller" { class: ea }
+dmm_daq: "[EA] Calibrated DMM / DAQ" { class: ea }
+scope_logger: "[EA] Oscilloscope /\nlogger" { class: ea }
+thermal_instr: "[EA] Thermal camera /\nthermocouples" { class: ea }
+ambient_meter: "[EA] Ambient thermometer /\nhygrometer" { class: ea }
+fire_safety: "[EA] E-stop / fire-safe\nLi-ion containment" { class: ea }
+evidence_repo: "[EA] Evidence repository /\nhost PC" { class: ea }
+
+system: "[System] PDS-VV-CON-003 logical probability-trial interfaces\nPDS & ESS v1.0 final flight acceptance — refs: IVV; PDS-R4; PDS-R5; PDS-R6; PDS-R7; PDS-R8; PDS-R2" {
+  class: sys
+  direction: down
+  grid-columns: 1
+
+  test_harness: "[PC] PDS-VV-CON-003\nprobability trial harness" {
+    class: pc
+    direction: down
+    grid-columns: 2
+
+    trial_control: "[LC] Trial randomization /\nprocedure control" { class: lc }
+    safety_interlock: "[LC] Safety witness /\ninterlock control" { class: lc }
+    source_control: "[LC] Battery-emulator\nsource control" { class: lc }
+    overcurrent_control: "[LC] Overcurrent /\nshort-equivalent demand control" { class: lc }
+    overvoltage_control: "[LC] Overvoltage demand\ncontrol" { class: lc }
+    load_control: "[LC] Protected rail\nload control" { class: lc }
+    measurement_capture: "[LC] Rail/current/cut-off/\nrestore measurement capture" { class: lc }
+    thermal_ambient: "[LC] Thermal and ambient\ncontext capture" { class: lc }
+    evidence_statistics: "[LC] Evidence, trial\nclassification, and statistics" { class: lc }
+  }
+
+  uut: "[PC] Integrated PDS & ESS\nv1.0 UUT" {
+    class: pc
+    direction: down
+
+    ess_module: "[PC] ESS Module" {
+      class: pc
+      battery_pack: "[PC] 1S1P Li-Ion" {
+        class: pc
+        battery_lc: "[LC] Battery\nnon-abuse containment status" { class: lc }
+      }
+    }
+
+    pds_module: "[PC] PDS Module" {
+      class: pc
+      direction: down
+
+      pds_pcb: "[PC] PDS PCB" {
+        class: pc
+        direction: down
+        grid-columns: 2
+
+        battery_connector: "[PC] Battery Connector" {
+          class: pc
+          battery_input: "[LC] Battery / emulator\ninput interface" { class: lc }
+        }
+
+        protection: "[PC] Protection Circuit" {
+          class: pc
+          direction: down
+          battery_charger: "[LC] Battery Charger" { class: lc }
+          power_protection: "[LC] Power Protection" { class: lc }
+          restore_control: "[LC] Restore / clear\ncontrol interface" { class: lc }
+          protection_state: "[LC] Protection state\nobservation interface" { class: lc }
+        }
+
+        ina219: "[PC] INA219" {
+          class: pc
+          battery_monitoring: "[LC] Battery monitoring" { class: lc }
+        }
+
+        regulator: "[PC] Regulator" {
+          class: pc
+          regulator_lc: "[LC] Regulator" { class: lc }
+        }
+
+        pds_backplane_connector: "[PC] Backplane Connector" {
+          class: pc
+          protected_rail_interface: "[LC] Protected output /\nbackplane rail interface" { class: lc }
+        }
+      }
+    }
+
+    backplane_pcb: "[PC] Backplane PCB" {
+      class: pc
+      backplane_distribution: "[LC] Protected rail\ndistribution" { class: lc }
+    }
+
+    obcc_module: "[PC] OBCC Module" {
+      class: pc
+      direction: down
+      obcc_pcb: "[PC] OBCC PCB" {
+        class: pc
+        xiao: "[PC] XIAO ESP32-S3" {
+          class: pc
+          reset_observer: "[LC] Brownout / reset /\nrestart observer" { class: lc }
+        }
+      }
+    }
+  }
+
+
+  note_trace: "[C] PDS-VV-CON-003 traceability\nConstraint [C] Probability < 1%; PDS-VV-FC-001;\nPDS-FE-OvercurrentOvervoltage; PDS-FE-LiIonUnsafeCondition;\nPDS-FE-RailBrownout; PDS-UC-ProvideRegulatedPower.\nIADT Testing with supporting Analysis." {
+    class: note
+    shape: page
+  }
+
+  note_interpretation: "[C] Source-constraint interpretation\nProbability <1% means missed demanded unsafe protection action\nprobability <1% for each demanded mode: overcurrent/short-equivalent\nand overvoltage. If source intent differs, update model/test." {
+    class: note
+    shape: page
+  }
+
+  note_acceptance: "[C] Interface pass/fail\nTrial interfaces shall show current-limited demand, observable detect,\ncut-off before unsafe limits, safe/de-energized or current-limited rails,\nrestore inhibition until cleared, controlled restore, and no reset/restart." {
+    class: note
+    shape: page
+  }
+
+  note_stats_safety: "[C] Statistics and safety\n299 independent zero-missed demanded-protection trials per mode for\n<1% failure probability at 95% confidence. Fewer trials: exact one-sided\nClopper-Pearson upper bound and screening classification only. Ambient,\ncalibration, current limits, interlocks, and no Li-ion abuse are mandatory." {
+    class: note
+    shape: page
+  }
+}
+
+# External actors and verification harness interfaces.
+test_operator -> system.test_harness.trial_control: "[CE] Procedure commands,\ntrial selection, restore intent" { class: ce }
+safety_observer -> system.test_harness.safety_interlock: "[CE] Approval, witness,\nhold, abort, anomaly disposition" { class: ce }
+fire_safety -> system.test_harness.safety_interlock: "[CE] E-stop / containment\nstatus" { class: ce }
+safety_controller -> system.test_harness.safety_interlock: "[CE] Interlock status\nand energy removal" { class: ce }
+ambient_meter -> system.test_harness.thermal_ambient: "[CE] Ambient T/RH" { class: ce }
+thermal_instr -> system.test_harness.thermal_ambient: "[CE] Battery/protection/\nregulator temperature" { class: ce }
+battery_emulator -> system.test_harness.source_control: "[CE] Source settings,\nlimits, and status" { class: ce }
+overcurrent_harness -> system.test_harness.overcurrent_control: "[CE] Overcurrent /\nshort-equivalent demand status" { class: ce }
+overvoltage_source -> system.test_harness.overvoltage_control: "[CE] Overvoltage\ndemand status" { class: ce }
+rail_loads -> system.test_harness.load_control: "[CE] Protected rail\nload profiles" { class: ce }
+dmm_daq -> system.test_harness.measurement_capture: "[CE] Rail voltage,\ncurrent, and safe-state samples" { class: ce }
+scope_logger -> system.test_harness.measurement_capture: "[CE] Detect / cut-off /\nrestore waveforms" { class: ce }
+
+# Harness control and observation interfaces to UUT.
+system.test_harness.safety_interlock -> system.test_harness.trial_control: "[CE] Energize approval,\nhold, abort" { class: ce }
+system.test_harness.trial_control -> system.test_harness.source_control: "[CE] Trial enable /\nreset between trials" { class: ce }
+system.test_harness.trial_control -> system.test_harness.overcurrent_control: "[CE] Randomized or\nprocedure-selected OC demand" { class: ce }
+system.test_harness.trial_control -> system.test_harness.overvoltage_control: "[CE] Randomized or\nprocedure-selected OV demand" { class: ce }
+system.test_harness.trial_control -> system.test_harness.load_control: "[CE] Pre-fault and\nrecovery load profile" { class: ce }
+system.test_harness.trial_control -> system.uut.pds_module.pds_pcb.protection.restore_control: "[CE] Clear fault,\nattempt restore, controlled restore" { class: ce }
+system.test_harness.source_control -> system.uut.pds_module.pds_pcb.battery_connector.battery_input: "[CE] Current-limited\nbattery-emulator input" { class: ce }
+system.test_harness.overcurrent_control -> system.uut.pds_module.pds_pcb.protection.power_protection: "[CE] Overcurrent /\nshort-equivalent demand" { class: ce }
+system.test_harness.overvoltage_control -> system.uut.pds_module.pds_pcb.protection.power_protection: "[CE] Current-limited\novervoltage demand" { class: ce }
+system.test_harness.load_control -> system.uut.pds_module.pds_pcb.pds_backplane_connector.protected_rail_interface: "[CE] Rail load\ncondition" { class: ce }
+system.uut.pds_module.pds_pcb.protection.power_protection -> system.uut.pds_module.pds_pcb.protection.protection_state: "[CE] Detect, cut-off,\nrestore state" { class: ce }
+system.uut.pds_module.pds_pcb.protection.protection_state -> system.test_harness.measurement_capture: "[CE] Protection state\nobservation" { class: ce }
+system.uut.pds_module.pds_pcb.pds_backplane_connector.protected_rail_interface -> system.test_harness.measurement_capture: "[CE] Rail safe /\nde-energized state" { class: ce }
+system.uut.obcc_module.obcc_pcb.xiao.reset_observer -> system.test_harness.evidence_statistics: "[CE] Brownout/reset/\nrestart observations" { class: ce }
+system.test_harness.measurement_capture -> system.test_harness.evidence_statistics: "[CE] Trial waveforms,\nraw samples, pass/fail features" { class: ce }
+system.test_harness.thermal_ambient -> system.test_harness.evidence_statistics: "[CE] Thermal and\nambient evidence" { class: ce }
+system.test_harness.evidence_statistics -> evidence_repo: "[CE] Controlled evidence,\nCP bound, independence analysis" { class: ce }
+system.test_harness.evidence_statistics -> system.test_harness.trial_control: "[CE] Next-trial status,\nstop on miss/anomaly" { class: ce }
+
+# UUT logical protected power path.
+system.uut.ess_module.battery_pack.battery_lc -> system.uut.pds_module.pds_pcb.battery_connector.battery_input: "[CE] Stored battery power\nif non-abuse use is approved" { class: ce }
+system.uut.pds_module.pds_pcb.battery_connector.battery_input -> system.uut.pds_module.pds_pcb.protection.power_protection: "[CE] Battery/fault input" { class: ce }
+system.uut.pds_module.pds_pcb.protection.restore_control -> system.uut.pds_module.pds_pcb.protection.power_protection: "[CE] Restore/cut-off\nauthority" { class: ce }
+system.uut.pds_module.pds_pcb.protection.power_protection -> system.uut.pds_module.pds_pcb.ina219.battery_monitoring: "[CE] Protected power" { class: ce }
+system.uut.pds_module.pds_pcb.ina219.battery_monitoring -> system.uut.pds_module.pds_pcb.regulator.regulator_lc: "[CE] Conditioned input" { class: ce }
+system.uut.pds_module.pds_pcb.regulator.regulator_lc -> system.uut.pds_module.pds_pcb.pds_backplane_connector.protected_rail_interface: "[CE] Regulated 5 V /\n3V3 protected rails" { class: ce }
+system.uut.pds_module.pds_pcb.pds_backplane_connector.protected_rail_interface -> system.uut.backplane_pcb.backplane_distribution: "[CE] Backplane rails" { class: ce }
+system.uut.backplane_pcb.backplane_distribution -> system.uut.obcc_module.obcc_pcb.xiao.reset_observer: "[CE] Powered reset\nwitness path" { class: ce }
+
+system.note_trace -> system.uut.pds_module.pds_pcb.protection.power_protection { class: cstr }
+system.note_trace -> system.test_harness.evidence_statistics { class: cstr }
+system.note_interpretation -> system.uut.pds_module.pds_pcb.protection.power_protection { class: cstr }
+system.note_acceptance -> system.test_harness.measurement_capture { class: cstr }
+system.note_acceptance -> system.uut.pds_module.pds_pcb.pds_backplane_connector.protected_rail_interface { class: cstr }
+system.note_stats_safety -> system.test_harness.safety_interlock { class: cstr }
+system.note_stats_safety -> system.test_harness.evidence_statistics { class: cstr }
+
+# Layout-only rank hints to keep actors, UUT/harness, and notes readable.
+test_operator -> safety_observer { style: { opacity: 0 } }
+safety_observer -> battery_emulator { style: { opacity: 0 } }
+battery_emulator -> overcurrent_harness { style: { opacity: 0 } }
+overcurrent_harness -> overvoltage_source { style: { opacity: 0 } }
+overvoltage_source -> rail_loads { style: { opacity: 0 } }
+rail_loads -> safety_controller { style: { opacity: 0 } }
+safety_controller -> dmm_daq { style: { opacity: 0 } }
+dmm_daq -> scope_logger { style: { opacity: 0 } }
+scope_logger -> thermal_instr { style: { opacity: 0 } }
+thermal_instr -> ambient_meter { style: { opacity: 0 } }
+ambient_meter -> fire_safety { style: { opacity: 0 } }
+fire_safety -> evidence_repo { style: { opacity: 0 } }
+evidence_repo -> system { style: { opacity: 0 } }
+system.test_harness -> system.uut { style: { opacity: 0 } }
+system.test_harness -> system.note_trace { style: { opacity: 0 } }
+system.note_trace -> system.note_interpretation { style: { opacity: 0 } }
+system.note_interpretation -> system.note_acceptance { style: { opacity: 0 } }
+system.note_acceptance -> system.note_stats_safety { style: { opacity: 0 } }

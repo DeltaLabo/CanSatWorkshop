@@ -65,7 +65,7 @@ These are proposed in `PM&SE/MBSE_Test_Plan_Assessment.md` §4 and are still can
 | PDM v0.1 | `PDM-V01-GAP-PL`, `PDM-V01-GAP-CE` | Documented source-model gaps/N/A, not executable tests. | Leave as N/A/gap unless source v0.1 PL/CE views are added. |
 | PDS & ESS | New candidate: `PDS-VV-CON-010` regulator-efficiency validation for the README 3.3 V and 5 V rail requirements at `1 A` / `95%` efficiency. | Candidate queued at definition-planning level; detailed modeled definition and execution remain pending, and no test has been executed. | Promote/model `PDS-VV-CON-010` only after measurement topology, instrumentation, load cases, uncertainty/guard-band treatment, thermal limits, and evidence paths are defined. |
 | PDS & ESS | Most other v1.0 rows are model-defined. | No broad planning-candidate backlog; remaining items are source-model/interface follow-ons or campaign/execution prerequisites listed in §2.6. | Keep final acceptance and execution credit pending until source follow-ons, campaign parameters, and evidence are closed. |
-| OBCC | Original v1.0 candidates are mapped to gate definitions. | No remaining candidate-definition gap; the v0.x source-baseline absence is dispositioned under `OBCC-BLK-001`; execution/configuration caveats remain. | Keep target-context reporting caveats, identify actual as-tested code/configuration baselines, and close final readiness prerequisites. |
+| OBCC | Original v1.0 candidates are mapped to gate definitions; no new OBCC candidate tests are selected by the §2.5 blocker pass. | No remaining candidate-definition gap; the v0.x source-baseline absence is dispositioned under `OBCC-BLK-001`, and `OBCC-BLK-002`..`006` are dispositioned as selected definition baselines or literal advancement/final-review gates. Detailed README/D2 updates and execution remain pending. | Use the OBCC/DPS LoRa telemetry contract and OBCC-owned deployment/fault policy in later test updates; preserve target-context reporting caveats and identify actual as-tested baselines in reports. |
 | S&A | All listed S&A activities are model-defined. | No remaining planning-candidate backlog; CE/allocation ownership gaps remain by design. | Execute `SAA-VV-CE-001`/`SAA-VV-ALLOC-001` ownership analyses and resolve holds. |
 
 ## 2. Open definition blockers
@@ -355,14 +355,75 @@ The 2026-07-02 DPS blocker-resolution issues produced the folded closure decisio
 
 ### 2.5 OBCC blockers
 
-| Blocker ID | Blocker | Blocks | Closure action |
+| Blocker ID | Disposition | Blocks | Follow-up action |
 |---|---|---|---|
 | OBCC-BLK-001 | Closed — dispositioned as a lifecycle/modeling non-issue: OBCC versions may jump from `v0.x` to `v1.0`; OBCC is mostly software-dependent and was not complex enough to require incremental source-model deliveries; no v0.x source baselines will be fabricated. | No blocker; historical gates remain target-context-only unless execution reports bind them to actual code/configuration baselines. | Resolved; preserve target-context caveats and require reports to identify actual code/configuration baselines and acknowledge target-context-only model references where applicable. |
-| OBCC-BLK-002 | Final readiness pass requires mission rehearsal closure. | `OBCC-V10-FLIGHT-001` final PASS. | Execute/disposition `OBCC-V09-GATE-001` before final readiness board. |
-| OBCC-BLK-003 | Payload schema, command schema, radio settings, firmware/configuration IDs, and any as-tested configuration identifiers beyond the selected `RFM96W`/`ICM20948`/`BME280` names are not frozen. | Telemetry/command/RF evidence validity. | Freeze as-tested configuration before execution. |
-| OBCC-BLK-004 | Emergency-deploy policy, descent-state observability criteria, safe/error-state behavior, and actuator status semantics need confirmation. | Runtime fault handling, mission rehearsal, deployment safety. | Define cross-subsystem policy with PDM/ADS/PM&SE and update affected tests. |
-| OBCC-BLK-005 | Telemetry cadence tolerance, range/PDR evidence, payload-schema traceability, and RF settings/evidence details require disposition; RF module naming is selected as `RFM96W`. | OBCC telemetry/range gate and DPS alignment. | Confirm cadence tolerance, final frame schema, radio settings/configuration, and range/PDR plan. |
-| OBCC-BLK-006 | Runtime fault telemetry-gap bound (`<=4 s`) and trace/stress load profile/tool IDs require confirmation. | `OBCC-V06-GATE-001` timing/fault-hardening claims. | Confirm or tailor degradation allowance and record trace/stress tools/load profiles. |
+| OBCC-BLK-002 | Closed/dispositioned as a literal final-readiness gate, not a candidate-definition gap. `OBCC-V10-FLIGHT-001` may not receive final PASS while `OBCC-V09-GATE-001` mission rehearsal is unresolved. | `OBCC-V10-FLIGHT-001` final PASS only. | Execute/disposition `OBCC-V09-GATE-001` before the final readiness board; no new or changed test definition is selected solely for this blocker. |
+| OBCC-BLK-003 | Closed at definition-decision level by [`PM&SE/contracts/obcc_dps_lora_telemetry_contract.md`](contracts/obcc_dps_lora_telemetry_contract.md): `OBCC-LORA-PAYLOAD-v1.0` traces to `OBCC/LoRa_Frame.md`, command evidence uses `OBCC-DPS-CMD-v1.0`, and RF uses 500 m horizontal LOS, `915 MHz`, `RFM96W`, matching 22 AWG 81.4 mm monopoles, SF7/BW125/CR4/5, explicit header, CRC on, preamble 8, 100-byte airtime basis, legal/site controls, `N=300`, `k>=279`. | No unresolved definition decision for telemetry/command/RF evidence validity; actual as-tested IDs remain execution records. | Update affected OBCC/DPS/SYS definitions to cite the contract, align source/configuration values before strict credit, and record firmware/build/configuration/hardware/site/equipment IDs in reports. |
+| OBCC-BLK-004 | Closed at definition-decision level by the OBCC-owned [`OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md`](../OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md). ADS/AMS provide data/status, PDM deploys when commanded and exposes actuator status, while OBCC owns mode, descent observability, normal trigger, emergency-deploy request, safe/error behavior, telemetry disclosure, and no-false-success interpretation. | No unresolved emergency/deployment/fault semantics blocker; README/D2/model updates and execution remain pending. | Apply the policy in `OBCC-V05-GATE-001`, `OBCC-V06-GATE-001`, `OBCC-V09-GATE-001`, `OBCC-V10-FLIGHT-001`, and future `SYS-DEPLOYMENT-SAFE-LIVE`; proper MBSE modeling follows later. |
+| OBCC-BLK-005 | Closed at definition-decision level by the OBCC/DPS LoRa telemetry contract, aligned with `DPS-BLK-007`: telemetry cadence is `2 s`, formal cadence tolerance is `2.0 s +/- 0.2 s` over `n=59` intervals, range/PDR uses `N=300`/`k>=279`, payload/command traceability is controlled, and DPS pipeline/concurrency uses the same 10 min/2 s stream with p95 `<1 s` where claimed. | No unresolved telemetry/range/DPS-alignment definition decision; detailed definitions and execution instrumentation remain pending. | Bind the contract into affected OBCC/DPS/SYS test READMEs and D2 views later, then execute with RSSI/SNR, schema, command, timing, queue/backlog, and legal/site evidence. |
+| OBCC-BLK-006 | Closed/dispositioned as a literal advancement gate, not a test-definition flaw. `OBCC-V06-GATE-001` remains the gate for runtime-fault timing/fault-hardening before subsequent closure. The selected `<=4 s` non-RF telemetry-degradation bound remains part of that gate; trace/stress tools and load profiles are execution records. | Advancement from runtime-fault gate to later OBCC readiness claims. | Execute/disposition `OBCC-V06-GATE-001` before relying on later gates; record actual trace/stress tools, load profiles, instrumentation, and deviations in the execution report. |
+
+#### 2.5.1 OBCC §2.5 closure detail folded into this register
+
+This subsection is a definition-planning closure record only. No tests were executed, no execution report was created, no D2/PNG diagrams or implementation source files were modified by this pass, and no pass/fail credit is claimed.
+
+**Controlled OBCC definition baselines added/selected:**
+
+- [`PM&SE/contracts/obcc_dps_lora_telemetry_contract.md`](contracts/obcc_dps_lora_telemetry_contract.md) controls OBCC/DPS LoRa telemetry, command, RF/range/PDR, cadence, payload traceability, and DPS pipeline-alignment parameters.
+- [`OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md`](../OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md) controls OBCC-owned descent observability, emergency-deploy, safe/error, and actuator-status semantics.
+- [`OBCC/LoRa_Frame.md`](../OBCC/LoRa_Frame.md) remains the active measurement-payload variable table for `OBCC-LORA-PAYLOAD-v1.0`; no relative-humidity field is selected.
+
+##### Folded OBCC candidate and update register
+
+| Candidate / update ID | Type | Purpose | Selected definition baseline | Later implementation path |
+|---|---|---|---|---|
+| OBCC v1.0 original candidates | No new candidate selected | Preserve the existing complete mapping from `OBCC-VV-*` rows to `OBCC-V01-GATE-001` through `OBCC-V10-FLIGHT-001`. | Existing OBCC gate definitions remain the candidate/test list; `OBCC-BLK-002` and `OBCC-BLK-006` are literal gates, not new tests. | Execute gates and update documentation/model references; do not create duplicate OBCC candidates solely for these blockers. |
+| `OBCC-DPS-LORA-TELEMETRY-v1.0` | Controlled contract / existing-test update | Close payload/command/RF/cadence/PDR/DPS-alignment decisions. | 500 m horizontal LOS; `915 MHz`; `RFM96W`; matching 22 AWG 81.4 mm monopoles; SF7/BW125/CR4/5; explicit header; CRC on; preamble 8; 100-byte basis; `2 s` cadence; `2.0 s +/-0.2 s` formal timing tolerance; `N=300`, `k>=279`; payload schema ID `OBCC-LORA-PAYLOAD-v1.0`; command schema ID `OBCC-DPS-CMD-v1.0`. | Apply to `OBCC-V03-GATE-001`, `OBCC-V04-GATE-001`, `OBCC-V09-GATE-001`, `OBCC-V10-FLIGHT-001`, DPS RF/load definitions, and `SYS-RF-RANGE-PDR`. |
+| `OBCC-DEPLOY-FAULT-POLICY-v1.0` | OBCC-owned policy / existing-test update | Close emergency-deploy, descent-state observability, safe/error, and actuator-status semantics. | ADS/AMS provide data/status under the freshness contract; PDM deploys when commanded and exposes status; OBCC owns mode, trigger/emergency decision, safe/error behavior, telemetry disclosure, and no-false-success interpretation. Stand-by inhibits all deployment; On-mode normal trigger or emergency request must produce confirmed open within `<=5 s` or fault/safe/error status. | Apply to `OBCC-V05-GATE-001`, `OBCC-V06-GATE-001`, `OBCC-V09-GATE-001`, `OBCC-V10-FLIGHT-001`, and future `SYS-DEPLOYMENT-SAFE-LIVE`; model in D2 later. |
+| `OBCC-V09-GATE-001` mission rehearsal | Literal final-readiness gate | Prevent final readiness PASS before integrated mission rehearsal evidence/disposition. | `OBCC-V10-FLIGHT-001` final PASS is blocked until `OBCC-V09-GATE-001` is executed, deferred, or held by approved board disposition. | Execute/disposition during OBCC readiness closure; no definition change required. |
+| `OBCC-V06-GATE-001` runtime fault gate | Literal advancement gate | Prevent later gates from relying on unresolved runtime-fault behavior. | The `<=4 s` non-RF telemetry-degradation bound remains selected; trace/stress tools and load profiles are execution evidence, not definition decisions. | Execute/disposition before relying on later OBCC readiness evidence. |
+
+##### Folded OBCC existing-test update list
+
+| Artifact / activity | Required update retained in this register |
+|---|---|
+| `OBCC/MBSE/tests/README.md` | Reference the OBCC/DPS telemetry contract and OBCC deployment/fault policy; keep the no-new-candidate conclusion and literal-gate dispositions visible. |
+| `OBCC/LoRa_Frame.md` | Treat the current variable table as `OBCC-LORA-PAYLOAD-v1.0`; keep relative humidity excluded; ensure any future envelope/status/schema additions trigger airtime and parser updates. |
+| `OBCC-V03-GATE-001` | Replace the planning `96/100` PDR point with `N=300`, `k>=279`; use horizontal 500 m LOS, `915 MHz`, `RFM96W`, matching 22 AWG 81.4 mm antennas, selected LoRa parameters, payload schema ID, legal/site controls, and RSSI/SNR evidence. |
+| `OBCC-V04-GATE-001` | Reference `OBCC-DPS-CMD-v1.0` for `DATA`, `ON`, and `STANDBY` command classes, accepted-exactly-once evidence, replay/duplicate rejection, invalid-command classes, and as-tested envelope mapping. |
+| `OBCC-V05-GATE-001` | Reference `OBCC-DEPLOY-FAULT-POLICY-v1.0` for Stand-by inhibit, On-mode normal/emergency deployment, descent observability, PDM/actuator status mapping, `<=5 s` deadline, and no-false-success checks. |
+| `OBCC-V06-GATE-001` | Reference the deployment/fault policy for runtime fault, emergency-deploy, safe/error, and `<=4 s` degradation interpretation; record trace/stress tools and load profiles as execution evidence. |
+| `OBCC-V09-GATE-001` | Use both controlled baselines for mission-rehearsal telemetry, command, deployment, fault, evidence, and gate interpretation; do not overclaim final PDR unless strict RF/PDR evidence is present or referenced. |
+| `OBCC-V10-FLIGHT-001` | Verify final closure against the two controlled baselines, `OBCC-V09-GATE-001` mission-rehearsal disposition, `OBCC-V06-GATE-001` runtime-fault disposition, and as-tested configuration records. |
+| `OBCC/main/settings.h` or equivalent as-tested configuration | Align strict execution with the selected `2 s` telemetry cadence and radio settings, or record a controlled deviation/waiver before strict credit. |
+| DPS/SYS affected tests | Reuse the same RF/range/PDR and concurrency baseline for `DPS-V10-C-001`, `DPS-V10-C-003`, and `SYS-RF-RANGE-PDR`; use OBCC ownership policy in future `SYS-DEPLOYMENT-SAFE-LIVE`. |
+
+##### Folded selected OBCC quantitative criteria
+
+- RF/range/PDR strict baseline: 500 m horizontal LOS; `915 MHz`; `RFM96W`; matching 22 AWG 81.4 mm straight-wire monopoles; SF7/BW125/CR4/5; explicit header; CRC on; preamble 8; low-data-rate optimization off; 100-byte airtime basis; legal/site approval required.
+- PDR acceptance: `N=300` scheduled unique frames at `2 s` cadence over 10 min, pass with `k>=279`, exact one-sided 95% lower confidence bound `>=0.90`.
+- Cadence timing: formal OBCC cadence claim uses at least `n=59` representative intervals, every interval `1.8 s` to `2.2 s` unless a later stricter definition supersedes it.
+- Runtime fault telemetry degradation: for non-RF getter/bus faults in `OBCC-V06-GATE-001`, worst inter-frame gap remains `<=4 s` without anomaly record; RF-loss cases require local bounded-behavior trace and post-restoration fault disclosure.
+- Deployment: Stand-by inhibits normal and emergency deployment; in On mode, a valid trigger or accepted emergency request must produce confirmed safe-fixture/actuator open within `<=5 s`, or a fault/safe/error status with no false success.
+- Sensor/deployment observability: ADS/AMS data used by OBCC must be fresh-valid under the shared enum (`VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`) and `age_ms <=400 ms` for normal trigger use; non-`VALID` required inputs are not normal triggers.
+
+##### Folded OBCC D2/model and artifact follow-up
+
+1. Update OBCC activity READMEs and D2/model views for `OBCC-V03-GATE-001`, `OBCC-V04-GATE-001`, `OBCC-V05-GATE-001`, `OBCC-V06-GATE-001`, `OBCC-V09-GATE-001`, and `OBCC-V10-FLIGHT-001` to cite the selected baselines.
+2. Regenerate PNGs only after D2/model edits are reviewed.
+3. Update or waive source/configuration mismatches such as telemetry request period, command-envelope implementation, payload metadata, or radio settings before strict execution credit.
+4. Bind these OBCC decisions into system-level `SYS-RF-RANGE-PDR`, `SYS-MISSION-REHEARSAL`, `SYS-END-TO-END-DATA`, and `SYS-DEPLOYMENT-SAFE-LIVE` definitions where applicable.
+5. Execute the selected gates and archive reports before claiming pass/fail credit.
+
+##### Folded residual OBCC execution-only uncertainties
+
+- Final UUT serials, hardware revisions, antenna build IDs, firmware commits, build/configuration files, source settings, parser/dashboard versions, and tool/script versions.
+- Legal/EIRP/site approval, final range geometry, endpoint coordinates, antenna heights/orientation, weather/interference, RF monitor configuration, and evidence archive paths.
+- Actual command-envelope encoding, sequence/replay discriminator, CRC/checksum, state-command opcode mapping, and command-result telemetry fields.
+- Actual payload envelope/status metadata, schema version field, timestamp source, monotonic clock/correlation, and ADS/AMS age/status mapping into telemetry/trace.
+- PDM feedback/status field names, actuator/fixture model, current/position observer calibration, live-release authorization if ever used, and exact safe/error telemetry encoding.
+- Trace/stress tooling, load profiles, instrumentation hooks, clock synchronization, and statistical independence rationale.
 
 ### 2.6 PDS & ESS blockers
 
@@ -378,39 +439,95 @@ The 2026-07-02 DPS blocker-resolution issues produced the folded closure decisio
 | PDS-BLK-008 | Closed at definition level by selected conservative missed-demand interpretation and quantitative setpoint/trial criteria for `PDS-VV-CON-003`. | Formal protection-probability credit remains execution-evidence pending. | Use missed demanded unsafe protection-action probability `<1%` per mode; strict claim requires 299 independent zero-miss demanded trials per mode, predeclared safe setpoints, safe-outcome rules, independence rationale, and exact-binomial reporting. |
 | PDS-BLK-009 | Reclassified as campaign/execution confirmation for rail-test parameters: no-load, nominal-load, and 1 A cases; thermal limits; settling windows; ripple treatment; sample count; and calibration status. | Not a `PDS-VV-CON-004` definition blocker. | Freeze the rail campaign parameters before execution and record actual settings/evidence in the report. |
 
-#### 2.6.1 PDS §2.6 closure detail folded into this register
+#### 2.6.1 PDS §2.6 folded resolution plan and closure record
 
-This subsection folds the 2026-07-02 PDS closure record into the CON-003 register at definition-planning level only. No tests are executed here, no execution report or pass/fail credit is created, and no `.d2` or `.png` source/model edits are performed by this PM&SE update.
+This subsection replaces the former standalone `PM&SE/PDS_Blocker_Resolution_Plan_2026-07-02.md` and `PM&SE/PDS_Blocker_Closure_Record_2026-07-02.md` files. It is a definition-planning record only: no tests are executed here, no execution report or pass/fail credit is created, no candidate folders are created here, and no `.d2` or `.png` source/model edits are performed by this PM&SE update. Earlier PDS & ESS development gates remain useful incremental definitions, but they do not substitute for v1.0 final flight-acceptance evidence.
 
-##### Folded PDS candidate and update register
+##### Folded PDS orchestration goal and controls
 
-| Candidate / update | Type | Status and follow-up |
+The 2026-07-02 PDS pass was scoped to resolve PDS & ESS definition blockers at decision level so the test suite has:
+
+1. a complete PDS candidate/detailed-definition backlog,
+2. a controlled list of updates to existing PDS tests and source-model artifacts,
+3. selected quantitative criteria for the protection-probability blocker, and
+4. PM&SE/PDS Markdown updates distinguishing definition blockers, pending source edits, candidate tests, and execution-only prerequisites.
+
+Coordination controls retained for any follow-on work: do not execute hardware tests or claim execution credit; keep source-model/D2 work separate from Markdown planning unless explicitly scoped; avoid editing `.d2`, `.png`, binary, or unrelated subsystem files in planning-only updates; use wording such as “definition decision selected”, “candidate queued”, “source-model edit pending”, “execution prerequisite”, or “execution pending”.
+
+##### Folded PDS user decisions
+
+| Blocker | Decision retained in this register |
+|---|---|
+| `PDS-BLK-002` | Add an explicit INA219 `[CE] I2C` / INA219 bus exchange between ESS Processing/XIAO and Battery monitoring/INA219 as a pending quick source-model fix. |
+| `PDS-BLK-003` | Add regulator-efficiency validation candidate `PDS-VV-CON-010` unless a later reviewed artifact establishes a better ID. |
+| `PDS-BLK-004` | Leave the On-mode load/current budget and 6 h endurance profile campaign-defined; do not create a separate modeled load-profile estimation activity. |
+| `PDS-BLK-005` | Document master-switch/accessibility hardware detail as a pending source-model/interface edit or controlled waiver path. |
+| `PDS-BLK-006` | Treat Li-ion safety documents, charger model/certification, and cell safety evidence as literal execution prerequisites, not definition blockers. |
+| `PDS-BLK-007` | Reference `S&A/PCB_General_Rules.md` from PDS DFM definitions and keep deviations as execution evidence. |
+| `PDS-BLK-008` | Retain the conservative `PDS-VV-CON-003` missed-demand interpretation and add quantitative setpoint/trial-validity criteria. |
+| `PDS-BLK-009` | Treat rail-test nominal load, thermal, and settling parameters as campaign/execution confirmations, not test-definition flaws. |
+
+##### Folded PDS quantitative criteria for `PDS-BLK-008`
+
+These criteria are selected for the existing demanded-protection probability verification path and do not constitute execution evidence.
+
+- Formal claim: source `[C] Probability < 1%` means missed demanded unsafe protection-action probability `<1%` per demanded mode: overcurrent/output-short-equivalent and overvoltage.
+- Statistics: strict verification requires **299 valid independent demanded trials with zero missed unsafe actions per mode**, supporting a one-sided 95% exact-binomial upper bound below 1%. Fewer trials are screening/characterization with the exact upper bound reported.
+- Overcurrent/output-short-equivalent demand: use a current-limited source/load or short-equivalent fixture; predeclare the nominal trip/current-limit threshold from the protection design or test article datasheet; valid trials demand at least **110%** of the declared trip threshold, or the minimum current that reliably enters the protection region while staying inside the testbench safe-energy envelope. Direct uncontrolled battery shorts are out of scope.
+- Overvoltage demand: use a current-limited injection source; predeclare the nominal overvoltage threshold from the protection design or datasheet; valid trials exceed that threshold by at least **5%**, or by the smallest campaign-approved margin that reliably demands protection without exceeding absolute maximum ratings.
+- Per-trial safe outcome: protection detects/acts, removes or limits unsafe output before declared rail/cell/PCB/temperature limits are violated, inhibits restore until the fault is cleared, and controlled restore returns to nominal without uncontrolled restart/reset.
+- Independence: trials require cooldown/reset or randomized/procedure-separated demand order, recorded source/load settings, independent instrumentation triggers, stable ambient/thermal preconditions, and anomaly/deviation disposition. If independence is not defensible, classify the evidence as screening.
+
+##### Folded PDS candidate and definition backlog
+
+| Category | Activity IDs | Planning status |
 |---|---|---|
-| `PDS-VV-CON-010` | New regulator-efficiency validation candidate | Queued for the README 3.3 V and 5 V rail `1 A` / `95%` efficiency requirements; detailed modeled definition and execution remain pending. |
-| INA219 `[CE] I2C` source follow-on | Pending source-model/D2 edit | Add explicit I2C exchange between ESS Processing/XIAO and Battery monitoring/INA219, then refresh derived artifacts as required before final CE completeness credit. |
-| Master switch/accessibility | Pending source-model/interface edit or waiver | Clarify hardware/interface detail in the PDS physical/source model or approve a controlled waiver before unqualified allocation/safe-power-off closure. |
+| Physical/component and safety inspections | `PDS-VV-PC-001`, `PDS-VV-PL-001`, `PDS-VV-SAFE-001` | Modeled definitions exist; execution evidence and exact as-tested configuration records remain pending. |
+| Component exchanges | `PDS-VV-CE-001`, `PDS-VV-CE-002`, `PDS-VV-CE-003` | Modeled/supporting definitions exist; INA219 I2C source CE follow-on remains pending for final CE completeness. |
+| Allocation analyses | `PDS-VV-ALLOC-001`, `PDS-VV-ALLOC-002`, `PDS-VV-ALLOC-003` | Modeled/supporting definitions exist; master switch/accessibility source/interface detail remains pending. |
+| Functional chains | `PDS-VV-FC-001`, `PDS-VV-FC-002` | Modeled definitions exist; execution pending and source-model caveats remain where listed in this register. |
+| Constraints | `PDS-VV-CON-001` through `PDS-VV-CON-009` | Modeled definitions exist directly or through linked FC definitions; execution and campaign confirmations remain pending. |
+| New candidate | `PDS-VV-CON-010` | Regulator-efficiency validation for the README 3.3 V and 5 V rail `1 A` / `95%` requirements; detailed modeled definition and execution remain pending. |
+| Incremental gates | `PDS-V01-GATE-001`, `PDS-VV-V02-FC-001`, `PDS-V03-GATE-001` | Already modeled as v0.1/v0.2/v0.3 development gates; not substitutes for v1.0 final acceptance. |
 
 ##### Folded existing PDS test update list
 
-| Artifact / activity | Definition-planning update retained here |
+| Artifact / activity | Definition-planning update retained here | Later artifact update |
+|---|---|---|
+| `PDS&ESS/MBSE/tests/README.md` | Record the selected dispositions, new efficiency candidate, incremental-gate caveat, and reclassification of campaign/execution prerequisites. | Keep candidate/update register entries and status wording visible without claiming execution credit. |
+| `PDS-VV-FC-002` / `PDS-VV-CE-003` | Selected closure path is an explicit INA219 I2C CE source edit, not a waiver. | After the source model is changed, align README, diagrams/baselines if required, and CE completeness wording. |
+| `PDS-VV-CON-002` | Retain the 6 h On-mode endurance definition; keep load profile/current budget campaign-defined. | Record representative load profile, current budget, logging cadence, and thermal envelope as execution campaign inputs rather than a new modeled estimation test. |
+| `PDS-VV-CON-003` | Use the selected quantitative missed-demand criteria, sample plan, setpoints, safe-outcome, and independence rules. | Update README/D2 definition text as needed; execution still supplies actual trials and exact-binomial evidence. |
+| `PDS-VV-CON-004` | Treat nominal-load, thermal, and settling values as execution confirmations. | Require campaign-declared no-load/nominal/1 A settings, thermal limit, settling windows, ripple treatment, and calibrated evidence. |
+| `PDS-VV-CON-009` | Reference `S&A/PCB_General_Rules.md` for Carvera Air/PCB rules. | Require board-specific DFM pre-checks, deviation/waiver records, and workmanship evidence as execution evidence. |
+| `PDS-VV-ALLOC-001` / `PDS-VV-ALLOC-003` | Master switch/accessibility needs a source/interface edit before unqualified allocation closure. | Update source-model caveat wording after the physical/interface model is clarified or a controlled waiver is approved. |
+| `PM&SE/MBSE_Test_Plan_Assessment.md` | Assessment rows now distinguish selected definition decisions from pending D2/source edits and execution. | Preserve no-execution/no-pass-credit wording until reports exist. |
+
+##### Folded PDS D2/source-model follow-on list
+
+1. Add explicit INA219 `[CE] I2C` exchange between ESS Processing/XIAO and Battery monitoring/INA219 to `PDS&ESS/MBSE/v1.0/PDS_v1.0_view2_logical.d2`, then regenerate the corresponding PNG.
+2. Refresh baseline copies in affected test folders after the source-model update if project policy requires baseline recopy for report-by-reference consistency.
+3. Add or clarify master switch/accessibility hardware/interface in the relevant PDS physical/source model and regenerate the corresponding PNG.
+4. Later create/model `PDS-VV-CON-010` if and when the efficiency candidate is promoted to a detailed verification definition.
+
+##### Folded PDS residual execution-only prerequisites
+
+| Area | Required execution record |
 |---|---|
-| `PDS-VV-FC-002` | Align battery-supervision and CE completeness wording with the pending INA219 I2C source edit; execution evidence remains pending. |
-| `PDS-VV-CON-002` | Keep the 6 h On-mode load profile/current budget campaign-defined; freeze profile, logging, thermal envelope, anomaly handling, and end criteria before execution. |
-| `PDS-VV-CON-003` | Use the selected conservative missed-demand interpretation, 299 zero-miss independent demanded trials per mode for strict `<1%` claim, predeclared setpoints, safe-outcome rules, independence rationale, and exact-binomial reporting. |
-| `PDS-VV-CON-004` | Treat nominal-load, no-load/1 A cases, thermal limits, settling windows, ripple treatment, sample counts, and calibration status as campaign execution parameters. |
-| `PDS-VV-CON-009` | Reference `S&A/PCB_General_Rules.md` for Carvera Air/PCB rules; board-specific DFM pre-checks, workmanship evidence, deviations, and waivers are execution records. |
-| `PDS-VV-ALLOC-001` | Keep master switch/accessibility as a pending source/interface update or waiver before unqualified allocation and external-actor safe-power-off credit. |
-| `PDS&ESS/MBSE/tests/README.md` | Keep the efficiency candidate, source follow-ons, existing-test caveats, incremental-gate caveat, and execution-only prerequisites visible in the PDS test index. |
+| As-tested configuration | Exact PDS & ESS article IDs, PCB assembly IDs, hardware revisions, regulator/protection/INA219 part identities, harness/backplane configuration, firmware/software commits, source/build maps, and any configuration deviations. |
+| Charger and cell safety | Certified charger model/settings, cell/pack identity, datasheet/SDS or equivalent safety documents, UN 38.3 / IEC 62133 or equivalent evidence when available, charge/discharge/storage limits, fire-safe containment, safety observer approval, and E-stop/abort controls. |
+| Equipment and calibration | Asset IDs and calibration/status for bench supplies, battery emulator, electronic loads, power analyzer, DMM/DAQ, oscilloscope/logger, logic analyzer, thermal camera/thermocouples, ambient meter, timing source, analysis scripts, and evidence workstation. |
+| Thermal and safety limits | Predeclared rail, cell, PCB, connector, regulator, and ambient temperature limits; safe-energy/current-limit envelope; protection cutoff/restore limits; unsafe-current, smoke, swelling, latch-up, reset, and anomaly stop conditions. |
+| 6 h campaign settings | Representative On-mode load profile, current budget, load-emulator settings, battery preconditioning, logging/sample cadence, rail/freshness monitoring, ambient/thermal envelope, anomaly ledger, and end-of-run safe-state criteria. |
+| Rail campaign settings | No-load, nominal-load, and 1 A load cases for both rails; actual nominal-load values; thermal-soak method; startup and load-step settling windows; ripple treatment; measurement uncertainty; and sample-count basis. |
+| Protection trial settings | Overcurrent/output-short-equivalent and overvoltage thresholds, demanded setpoints, fixture current limits, fault energy limits, sequence/randomization or procedure order, cooldown/reset criteria, independent instrumentation triggers, trial classification sheet, exact-binomial calculation, and independence rationale. |
+| DFM/manufacturing evidence | Board/coupon IDs, mapping to `S&A/PCB_General_Rules.md`, Carvera Air/toolpath rule checks, visual/dimensional/fit/continuity/isolation/workmanship evidence, high-current trace review, and deviation/waiver/disposition records. |
+| Deviation and waiver control | Owner, rationale, affected requirement/test, risk disposition, retest need, and approval record for every anomaly, deviation, waiver, unavailable document, or campaign assumption. |
+| Report/evidence archive | Raw logs, photos, waveforms, scripts, ambient records, calibration/status records, baseline/model references, final reports, and explicit statement that any unexecuted or limited evidence is not final pass/fail credit. |
 
-##### Folded residual PDS execution-only prerequisites
+##### Folded PDS execution status
 
-- As-tested article IDs, hardware revisions, regulator/protection/INA219 identities, harness/backplane configuration, firmware/software baselines, and deviations.
-- Li-ion cell/pack safety documents, charger model/certification/settings, charge/discharge/storage limits, containment, observer, and abort controls.
-- Equipment asset IDs/calibration/status for supplies, loads, power analyzer, DMM/DAQ, oscilloscope/logger, logic analyzer, thermal instruments, timebase, and analysis tools.
-- 6 h endurance, rail-load, thermal, settling, ripple, and sample-count campaign settings.
-- Protection thresholds, current-limited overcurrent/short-equivalent and overvoltage fixtures, trial sequence, cooldown/reset, independence evidence, exact-binomial analysis, and deviation handling.
-- DFM board/coupon mapping to `S&A/PCB_General_Rules.md`, Carvera/PCB rule checks, workmanship evidence, high-current trace review, and waiver/deviation records.
-- Final reports and archives must state any unexecuted, limited, or screening evidence without claiming final pass/fail credit.
+The PDS blocker-resolution work completed at definition-planning level on 2026-07-02. Temporary PDS issue files were removed. The former standalone plan and closure record have been folded into this CON-003 register. No PDS tests were executed, no pass/fail credit is claimed, and source-model/D2 edits remain follow-on where listed.
 
 ### 2.7 PDM blockers
 

@@ -278,9 +278,80 @@ The following work is intentionally not closed by this register update:
 | DPS-BLK-008 | Closed/dispositioned as conditional historical-closure work, not an active v1.0 blocker. v0.1/v0.2 rows become candidate promotions only if historical closure is required. | DPS v0.1/v0.2 closure if required by a future project decision. | Defer historical gates unless required; then create version-specific detailed definitions and reports. |
 | DPS-BLK-009 | Dispositioned as system/PM&SE traceability follow-up, not a DPS-only definition blocker once system-level tests and controlled traceability policy are introduced. | Controlled traceability and final requirement-to-test closure matrix. | Model system-level tests/source trace nodes or approve provisional-label policy; DPS may retain provisional trace labels until then. |
 
-DPS blocker closure record: [`PM&SE/DPS_Blocker_Closure_Record_2026-07-02.md`](DPS_Blocker_Closure_Record_2026-07-02.md).
-DPS-BLK-003 closure note: the selected top-left dashboard model renders CanSat attitude from pitch/roll/yaw.
-Altitude remains a two-dimensional telemetry plot/value in DPS dashboard artifacts.
+#### Folded DPS definition-closure plan and record
+
+The former standalone DPS plan and closure record for 2026-07-02 are folded into this register. This folded content is definition-decision scope only: it does not execute tests, create evidence, claim pass/fail credit, edit D2/PNG diagrams, or modify implementation/source code. v1.0 remains the active DPS detailed-definition baseline; v0.1/v0.2 closure is conditional historical work only if the project later requires it.
+
+DPS-BLK-003 closure note: the selected top-left dashboard model renders CanSat attitude from pitch/roll/yaw. Altitude remains a two-dimensional telemetry plot/value in DPS dashboard artifacts.
+
+##### Folded selected DPS baselines
+
+| Area | Selected baseline / decision | Remaining follow-up |
+|---|---|---|
+| RF/range/PDR (`DPS-BLK-005`) | `DPS-V10-C-001` uses 500 m horizontal line of sight or approved RF-equivalent setup; 915 MHz; matching 22 AWG straight-wire monopoles with 81.4 mm exposed conductor; RSSI/SNR and validity logs; legal/EIRP/site approval; `N=300` frames at 2 s cadence with `k>=279` for a one-sided 95% exact-binomial PDR lower bound `>=0.90`. | Bind into detailed D2 definitions, freeze as-tested configuration/site evidence, and execute later. |
+| LoRa airtime and concurrency (`DPS-BLK-007`) | LoRa calculation baseline is SF7, BW 125 kHz, CR 4/5, explicit header, CRC on, preamble 8, low-data-rate optimization off; calculate at least current `LORA_PAYLOAD_SIZE = 100 bytes`; note `OBCC/LoRa_Frame.md` variable table is 34 bytes before envelope/schema overhead. Concurrency baseline is a 10 min 2 s flight-cadence run plus optional 20 min 5 Hz synthetic/serial stress if over-air margin is inadequate. | Instrument queue depth, memory, backlog recovery, crash/deadlock, and p95 pipeline latency `<1 s`; execute after detailed definition. |
+| UI/browser/CSV/latency/layout (`DPS-BLK-006`) | Strict browser credit requires a declared primary browser and repeatable URL/start-command evidence; current non-browser/Tkinter implementation is HOLD/limited for browser credit. CSV requires unique no-overwrite session naming, monotonic rows, row count and checksum/content match to accepted source payload log. Latency alert: no alert for `<=1.0 s`; top alert for `>1.0 s`; invalid/non-monotonic timestamps rejected or flagged. Layout keeps top-left pitch/roll/yaw attitude model and selected v1.0 telemetry cells; no obsolete RH field. | Bind selected oracles into detailed D2 definitions and execution procedures; implement/browser-evidence path before browser credit. |
+| Ground-station UART (`DPS-BLK-004`) | Model intent is bidirectional UART, represented later either by one bidirectional CE (`LoRa Forwarder ↔ PC Decoder`) or paired telemetry/command UART CEs. | Update PV2/D2 source model or approve waiver before unconditional `DPS-V10-A-001` / `DPS-V10-T-002` pass credit. |
+| Traceability (`DPS-BLK-009`) | Provisional DPS trace labels are acceptable until system-level tests, source trace nodes, or a controlled provisional-label policy exist. | Close through system-level MBSE tests and requirement-to-test matrix, not a DPS-only test. |
+
+##### Folded active DPS v1.0 detailed-definition queue
+
+| Candidate ID | Coverage / purpose | Definition work queued | Status |
+|---|---|---|---|
+| `DPS-V10-T-004` | FC04 CanSat transmit path. | Define near-field/final receiver setup, sequence-number oracle, radio-busy/not-ready handling, and buffer-overrun hardening. | Candidate; detailed definition required before execution. |
+| `DPS-V10-T-005` | FC05 dashboard visualization and related UI constraints. | Define payload-to-plot mapping, attitude-rendering oracle, selected telemetry cells, stale/invalid-field behavior, browser evidence, and latency alert evidence using the selected UI/CSV/latency oracle. | Candidate; selected UI/layout oracle exists; detailed definition and execution required. |
+| `DPS-V10-T-006` | FC06 forwarder initialization. | Define restart campaign, SPI/radio/UART missing-fault injections, logging requirements, and false-ready prohibition. | Candidate; fault-injection detail required. |
+| `DPS-V10-C-001` | C01 500 m separation/range. | Define horizontal LOS or RF-equivalent setup, radio settings, antenna details, PDR sample/statistics, RSSI/SNR logging, and legal/site prerequisites using the selected RF/range/PDR baseline. | Candidate; selected RF/range/PDR baseline exists; detailed definition and execution required. |
+| `DPS-V10-C-003` | C03 concurrent Decoder/CSV/Dashboard execution. | Define 10 min flight-cadence run, optional 20 min 5 Hz stress, queue/memory/backlog instrumentation, and p95 latency criterion using the selected concurrency/load baseline. | Candidate; selected load profile exists; detailed definition and execution required. |
+| `DPS-V10-C-004` | C04 browser-accessible dashboard. | Apply the selected primary-browser strict-credit policy, define refresh/reconnect and user-operation evidence, and record limited/HOLD handling for non-browser implementation. | Candidate; browser/evidence policy selected; detailed definition, implementation, and execution required. |
+| `DPS-V10-C-005` | C05 unique CSV name and archive integrity. | Apply selected session/restart/same-second cases, no-overwrite oracle, filename uniqueness, monotonic rows, and row-count/checksum comparison to source log. | Candidate; selected CSV/session oracle exists; detailed definition and execution required. |
+| `DPS-V10-C-006` | C06 top alert when latency is greater than 1 s. | Apply selected monotonic timestamp source policy, threshold-boundary cases around `1.0 s`, alert placement, invalid timestamp handling, and evidence capture. | Candidate; selected latency threshold oracle exists; detailed definition and execution required. |
+| `DPS-V10-C-008` | C08 4x4 plot matrix and top-left attitude model. | Apply selected layout/mapping oracle, pitch/roll/yaw attitude rendering evidence, selected telemetry cells, missing-field behavior, and resize/display checks. | Candidate; selected UI layout oracle exists; detailed definition and execution required. |
+
+Optional separate signoffs: `DPS-V10-C-002` remains covered by `DPS-V10-I-001`; `DPS-V10-C-007` remains covered by `DPS-V10-T-002`. Keep separate reports only if a review board requires constraint-specific signoff.
+
+##### Folded conditional historical DPS backlog
+
+- v0.1 rows remain candidates only if historical v0.1 closure is required: `DPS-V01-I-001`, `DPS-V01-A-001`, `DPS-V01-A-002`, `DPS-V01-T-001` through `DPS-V01-T-006`, and `DPS-V01-C-001` through `DPS-V01-C-007`. If promoted, define the same categories of physical/link inspection, CE analysis, allocation review, downlink/storage, command/uplink, datalogger receive/transmit, dashboard visualization, initialization, range, concurrency, browser, CSV, latency, cooldown, and layout evidence.
+- No detailed v0.2 test plan exists under `DPS/MBSE/v0.2/tests/`. If historical v0.2 closure is required, create version-specific definitions for physical/link inspection, CE analysis, allocation, IMU downlink decode/storage, command/uplink, datalogger receive/transmit, dashboard visualization/no-jitter, forwarder initialization, IMU-only processing, range, concurrency, browser, CSV, latency, and layout. Otherwise keep v0.2 as view-only historical scope with an explicit defer/N/A rationale.
+
+##### Folded DPS existing-test update list
+
+| Artifact / activity | Required update or controlled status | Reason |
+|---|---|---|
+| `DPS/MBSE/tests/DPS-V10-A-001/README.md` | CE-03 analysis uses selected bidirectional or paired UART intent; until PV2/D2 is updated or waived, record limitation for unconditional pass. | Align CE analysis with command/uplink behavior. |
+| `DPS/MBSE/tests/DPS-V10-T-002/README.md` | Preserve command/cooldown definition, but require Decoder→Forwarder command-byte evidence and RF command capture; bind discrepancy watch to selected model-update follow-up. | Avoid overclaiming command/uplink pass while source PV2 arrow remains stale. |
+| `DPS/MBSE/tests/DPS-V10-T-001/README.md` | Align radio/PDR setup with selected 915 MHz baseline, 500 m horizontal LOS or RF-equivalent controls, `N=300`, `k>=279`, CSV uniqueness, p95 `<1 s`, and corrupt-frame rejection. | Keep downlink decode/storage consistent with selected RF, CSV, and latency oracles. |
+| `DPS/MBSE/tests/README.md` | Keep selected baselines, active v1.0 candidate backlog, optional `C-002`/`C-007`, and conditional v0.1/v0.2 work visible in the central DPS test plan. | Prevent `DPS-BLK-001` and `DPS-BLK-008` from reappearing as undefined blockers. |
+| `PM&SE/MBSE_Test_Plan_Assessment.md` | Continue to distinguish closed definition decisions from pending detailed modeling, D2/source updates, execution, system traceability, and historical closure. | Prevent finished-DPS or finished-CanSat overclaiming. |
+
+##### Folded DPS D2/source-model follow-up
+
+1. Update DPS v1.0 PV2/source model so CE-03 is either a bidirectional UART component exchange labeled `LoRa Forwarder ↔ PC Decoder` or two explicit paired UART exchanges.
+2. Regenerate corresponding PNGs only after the D2/source-model update is reviewed.
+3. Update `DPS-V10-A-001` and `DPS-V10-T-002` verification-specific diagrams/checklists to match the final UART modeling choice.
+4. Create detailed modeled definitions for active v1.0 candidates `DPS-V10-T-004`, `DPS-V10-T-005`, `DPS-V10-T-006`, `DPS-V10-C-001`, `DPS-V10-C-003`, `DPS-V10-C-004`, `DPS-V10-C-005`, `DPS-V10-C-006`, and `DPS-V10-C-008`.
+5. Add RF/range/PDR, LoRa airtime, concurrency, UI/browser/CSV/latency/layout assumptions to detailed views and source-model constraints where appropriate.
+6. Create v0.1/v0.2 detailed modeled definitions only if the project requires historical closure.
+7. Model system-level trace elements, requirement-to-test matrix entries, and final system-level tests so DPS provisional trace labels are replaced or explicitly controlled.
+
+##### Folded DPS execution status
+
+The 2026-07-02 DPS blocker-resolution issues produced the folded closure decisions above plus the two retained controlled DPS parameter/oracle documents (`DPS-V10_RF_Range_Concurrency_Parameters.md` and `DPS-V10_UI_CSV_Latency_Oracles.md`). Temporary DPS issue files were removed. No tests were executed, no pass/fail credit was claimed, and no D2, PNG, source-code, or implementation updates were claimed by that pass.
+
+##### Folded DPS residual execution-only uncertainties
+
+- Final hardware revisions, UUT serial numbers, radio modules, antenna build/installation details, firmware commits, PC software revisions, parser versions, and tool/script versions.
+- Final payload schema/version, field units, timestamp source, monotonic clock behavior, clock synchronization if needed, and OBCC-to-DPS field mapping.
+- Legal/EIRP approval, range site geometry, RF-equivalent validation if used, weather/interference conditions, antenna orientation, and independence rationale for packet trials.
+- Actual `LORA_PAYLOAD_SIZE`, envelope/schema overhead beyond the 34-byte OBCC variable-table basis, and final airtime/duty-cycle margin.
+- Browser start command and URL, whether the current UI is browser-accessible or non-browser/HOLD, UI automation method, screenshot/video evidence method, and dashboard field/layout oracle scripts.
+- CSV output location, session-naming implementation, restart/same-second collision handling, checksum method, and raw source-payload log retention.
+- Queue-depth, memory, backlog, p95 latency, and crash/deadlock instrumentation for concurrency and stress tests.
+- CE-03 source-model update or accepted waiver before unconditional component-exchange and command/uplink pass credit.
+- Equipment asset IDs, calibration certificates/function checks, RF monitor configuration, timebase accuracy, environmental limits, and lab configuration.
+- Decision on whether v0.1/v0.2 historical closure is required.
+- System-level mission/capability/use-case/feared-event trace nodes or controlled provisional-label policy, plus the final requirement-to-test matrix.
 
 ### 2.5 OBCC blockers
 

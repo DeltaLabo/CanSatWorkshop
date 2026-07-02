@@ -9,7 +9,7 @@
 
 ## Scope and assumptions
 
-This activity covers the v1.0 atmospheric measurement functional chain and associated pressure, temperature, altitude, currentness, and evidence-logging pass/fail constraints. It uses `AMS-VV-CON-003` as a dependency for detailed environmental I2C read timeout proof (`≤5 ms`) and does not duplicate that fault-injection/timing activity.
+This activity covers the v1.0 atmospheric measurement functional chain and associated pressure, temperature, altitude, currentness/freshness, and evidence-logging pass/fail constraints. It uses `AMS-VV-CON-003` as a dependency for detailed environmental I2C read timeout proof (`≤5 ms`) and does not duplicate that fault-injection/timing activity. It is the atmospheric-chain extension point for `AMS-V10-DATA-FRESHNESS`; it may also host `AMS-V10-TEMP-RESPONSE-60S` only if a clear temperature step-response oracle is added to the model/D2 views.
 
 Conservative assumptions recorded for execution:
 
@@ -18,10 +18,12 @@ Conservative assumptions recorded for execution:
 3. Temperature test point(s) are within `10–40 °C` and are established with a reference thermometer / stable thermal source.
 4. Altitude resolution is verified by a modeled pressure-step method equivalent to 10 m using the standard-atmosphere rationale and recorded reference uncertainty.
 5. OBCC result capture via VV-only logging/instrumentation does not bypass or replace the modeled BME280 → AMS Processing → OBCC chain.
+6. The shared ADS/AMS freshness contract applies whenever this activity claims OBCC currentness/freshness: AMS supports `5 Hz` request/response; every `2 s` telemetry push treats data as fresh only when `status == VALID` and `age_ms <= 400 ms`; non-valid data uses one of `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, or `INIT_FAIL`.
 
 ## References cited in the model
 
 - IVV skill / project IVV report-by-reference rules.
+- Shared ADS/AMS freshness contract: [`../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md`](../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md).
 - Source model baseline: `AMS/MBSE/v1.0/AMS_v1.0_view1` through `view5`.
 - AMS-R1: BME280 datasheet/product references in `AMS/MBSE/tests/references/`.
 - AMS-R3/R4: environmental measurement and standard-atmosphere references.
@@ -48,17 +50,29 @@ Untouched copies of all AMS v1.0 `.d2` and `.png` views are in `baseline/`:
 | `AMS_VV_FC_001_view4_atmospheric_measurement_acceptance_chain.d2/png` | Atmospheric measurement chain extended through reference measurement, AMS processing, OBCC collection, comparison, staleness/order checks, and evidence archive. |
 | `AMS_VV_FC_001_view5_altitude_resolution_pressure_step_chain.d2/png` | Dedicated altitude-resolution pressure-step sequence for the `Resolution < 10m` constraint. |
 
-## Pass/fail constraints modeled in D2
+## Temperature response-time candidate/update path
 
-Pass only if the modeled constraints in the D2 views are satisfied, including:
+`AMS-V10-TEMP-RESPONSE-60S` is not closed by the current accuracy/altitude chain alone. The conservative path is to model a standalone response-time activity unless adding the following oracle to this folder remains clearer:
+
+- apply a declared temperature step using a stable thermal source/chamber or documented fixture;
+- capture reference thermometer data and raw AMS temperature samples with synchronized or correlated timestamps;
+- verify the reported temperature reaches the defined final/reference condition within `<=60 s`;
+- record UUT ID, firmware/configuration ID, exposure/airflow state, uncertainty, deviations, and the response-time calculation.
+
+Until those D2/model elements and execution evidence exist, `AMS-VV-FC-001` continues to close accuracy/currentness only, not response time.
+
+## Pass/fail constraints and D2 update requirements
+
+Pass only if the modeled constraints in the D2 views are satisfied and the later D2/model update incorporates the Markdown-only freshness/response additions below, including:
 
 1. Collect `n ≥ 30` paired pressure and temperature samples per operating point before final acceptance statistics are computed.
 2. Pressure passes iff `abs(bias) + U95 ≤ 1 hPa` for AMS pressure paired with the reference pressure.
 3. Temperature passes iff `abs(bias) + U95 ≤ 0.5 °C` at tested point(s) inside the `10–40 °C` range.
 4. Altitude passes iff a 10 m-equivalent pressure change is resolved with correct sign and uncertainty; the confidence interval for the measured altitude delta excludes zero.
-5. OBCC collects current altitude and temperature results in the modeled order; stale data is not accepted as current.
-6. VV-only logging/instrumentation records sample IDs, order/currentness, reference values, uncertainty inputs, raw AMS results, deviations, and anomalies without bypassing the modeled chain.
-7. Detailed environmental I2C read timeout proof (`≤5 ms`) is a dependency on `AMS-VV-CON-003`, not duplicated here; any timeout or stale-current anomaly observed during this activity is still a failure or reportable anomaly.
+5. OBCC collects altitude and temperature results in the modeled order; values claimed current/fresh must have shared-contract evidence with `status == VALID` and `age_ms <= 400 ms` at the AMS-to-OBCC observation point.
+6. Non-valid values shall carry one of the shared statuses (`STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`) and shall not be treated as current or fresh; old values after timeout/fault/init/no-data conditions shall not remain marked `VALID`.
+7. VV-only logging/instrumentation records sample IDs, sequence/order, sample/request timestamps or equivalent monotonic correlation, `age_ms`, status, reference values, uncertainty inputs, raw AMS results, deviations, and anomalies without bypassing the modeled chain.
+8. Detailed environmental I2C read timeout proof (`≤5 ms`) is a dependency on `AMS-VV-CON-003`, not duplicated here; any `TIMEOUT`, `SENSOR_FAULT`, stale-valid, or currentness anomaly observed during this activity is still a failure or reportable anomaly.
 
 ## Environmental and configuration conditions
 
@@ -70,5 +84,5 @@ Pass only if the modeled constraints in the D2 views are satisfied, including:
 ## Viewpoints
 
 - **Statistical significance:** `n ≥ 30` paired pressure/temperature samples per operating point; bias and expanded uncertainty (`U95`) are reported for pressure, temperature, and altitude-step results.
-- **Fault hardening:** Detects BadExposure, stale measurements, swapped pressure/temperature branches, outliers, OBCC order/currentness errors, evidence gaps, and any observed timeout/stale OK behavior. Detailed I2C fault-timeout hardening is credited to `AMS-VV-CON-003`.
+- **Fault hardening:** Detects BadExposure, `STALE`/`NO_DATA` measurements, `TIMEOUT`/`SENSOR_FAULT` propagation gaps, swapped pressure/temperature branches, outliers, OBCC order/currentness errors, evidence gaps, and any old-data-as-`VALID` behavior. Detailed I2C fault-timeout hardening is credited to `AMS-VV-CON-003`.
 - **Report by reference:** The report should identify the as-tested article, firmware, instruments, raw data paths, statistical calculations, deviations, anomalies, waivers, and pass/fail rationale while referencing these model definitions rather than duplicating them.

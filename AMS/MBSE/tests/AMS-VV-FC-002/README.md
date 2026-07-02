@@ -4,8 +4,14 @@
 - **IADT method:** Testing / Demonstration.
 - **Purpose:** Verify the v1.0 peripheral initialisation functional chain covering BME280 init-state request/response, OBCC collection, and startup-fault behavior.
 - **Traceability:** `AMS-UC-InitializePeripheral`, `AMS-FE-SensorBusFault`, `AMS-FE-StartupFault`, and constraints for variable-getter semantics, I2C bounded timeout behavior, and no unbounded blocking.
-- **References cited in diagram titles/comments:** IVV, AMS-R1 (BME280), AMS-R2 (I2C), AMS-R5 (statistics).
+- **References cited in diagram titles/comments:** IVV, shared ADS/AMS freshness contract [`../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md`](../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md), AMS-R1 (BME280), AMS-R2 (I2C), AMS-R5 (statistics).
 - **Expected report path:** `AMS/MBSE/tests/results/AMS-VV-FC-002/report.md`.
+
+## Shared freshness/status contract alignment
+
+This activity is the startup/init-state leg of `AMS-V10-DATA-FRESHNESS`. The shared contract requires AMS-to-OBCC responses to support `5 Hz` request/response and requires each `2 s` telemetry push to treat AMS init/status data as fresh only when `status == VALID` and `age_ms <= 400 ms`. The only allowed external status values are `VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, and `INIT_FAIL`.
+
+Startup initialization failure shall map to `INIT_FAIL` or another applicable non-`VALID` status that preserves the safety-relevant cause. A previous boot result, default success value, or old init state shall not remain marked `VALID` after init failure, timeout, fault, reset, or no-data conditions.
 
 ## Baseline views copied
 
@@ -25,24 +31,25 @@ Rendered PNGs with matching names are generated beside each D2 file.
 
 ## Pass/fail constraints
 
-Pass only if all modeled constraints in the D2 views are satisfied, including:
+Pass only if all modeled constraints in the D2 views are satisfied and the execution report covers the Markdown-only freshness/status additions below; the D2/model views must be updated later before execution credit is claimed:
 
-1. Nominal boot/init returns a valid, current BME280 init state and OBCC collects the same state before flight-readiness OK.
+1. Nominal boot/init returns a current BME280 init state with shared status `VALID`; if freshness is claimed, the OBCC observation has `age_ms <= 400 ms`, and OBCC collects the same state before flight-readiness OK.
 2. Use `29/29` nominal boot successes for an R90/C95 binary success claim; smaller repetition counts are screening only.
-3. Induced startup faults for absent/disconnected or NACKing BME280 and held SDA/SCL return a bounded critical startup fault/status and do not create unbounded blocking.
-4. Faulted states are never reported as nominal OK; no stale init state, previous boot result, default success value, or ambiguous status is accepted.
-5. Ambient conditions, stable 3V3/common ground, exact power-cycle count, and fault-fixture configuration are recorded with the evidence.
+3. Induced startup faults for absent/disconnected or NACKing BME280 and held SDA/SCL return `INIT_FAIL`, `TIMEOUT`, `SENSOR_FAULT`, or another applicable non-`VALID` shared status and do not create unbounded blocking.
+4. Faulted states are never reported as nominal OK/`VALID`; no stale init state, previous boot result, default success value, old data, or ambiguous status is accepted.
+5. Ambient conditions, stable 3V3/common ground, exact power-cycle count, fault-fixture configuration, sample/boot IDs, timestamps or equivalent monotonic correlation, `age_ms` where applicable, and shared status values are recorded with the evidence.
 6. Detailed environmental read timeout proof and recovery after released runtime I2C faults are dependencies on `AMS-VV-CON-003`; this activity does not claim that coverage.
 
 ## Statistical and fault-hardening viewpoints
 
 - **Nominal statistical viewpoint:** `29/29` successful nominal boot/init trials support an R90/C95 binary success claim. Fewer nominal boots shall be labelled workshop screening in the report.
 - **Fault statistical viewpoint:** `29/29` pass per induced startup-fault mode is required for an R90/C95 binary fault-response claim. Smaller fault samples are screening.
-- **Fault hardening:** explicitly covers absent/disconnected BME280, forced NACK, held SDA low, held SCL low, stale/default OK prevention, startup responsiveness, and evidence preservation.
+- **Fault hardening:** explicitly covers absent/disconnected BME280, forced NACK, held SDA low, held SCL low, `INIT_FAIL`/`TIMEOUT`/`SENSOR_FAULT` status propagation, stale/default OK prevention, no old data marked `VALID`, startup responsiveness, and evidence preservation.
 - **Non-duplication:** `AMS-VV-CON-003` remains the owner for environmental measurement I2C read `≤ 5 ms` proof and recovery after released runtime I2C faults.
 
 ## Conservative assumptions recorded
 
 - Development version is fixed by orchestration as AMS v1.0 final acceptance; no user disambiguation was requested.
-- The BME280 init-state result is treated as a current status value compatible with the project variable-getter semantics.
+- The BME280 init-state result is treated as a current status value compatible with the project variable-getter semantics and the shared ADS/AMS freshness/status contract.
+- D2/model follow-up remains required to add the shared freshness/status fields and `INIT_FAIL`/no-stale-valid oracle to the modeled init-state views before execution credit is claimed.
 - A startup BME280 failure is treated as a critical startup fault that prevents false flight readiness.

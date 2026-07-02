@@ -12,7 +12,7 @@
 - **Expected evidence/report path:** `OBCC/MBSE/tests/results/OBCC-V07-GATE-001/`.
 - **Execution status:** modeled definition complete; review/execution evidence pending.
 
-No `v0.7` Capella/D2 source views exist in this repository. This definition uses copied `v1.0` OBCC views as target-architecture context and explicitly requires the execution report to identify the actual `v0.7` code/configuration baseline analyzed.
+The absence of a `v0.7` Capella/D2 source baseline is an accepted OBCC lifecycle/modeling decision, not a blocker: versions may jump from `v0.x` to `v1.0`, and the mostly software-dependent subsystem was not complex enough to require incremental source-model deliveries. This definition uses copied `v1.0` OBCC views as target-architecture context; execution reports must identify the actual `v0.7` code/configuration baseline analyzed and acknowledge the target-context-only model reference where applicable. Do not fabricate a `v0.7` source baseline.
 
 ## References
 
@@ -28,16 +28,16 @@ No `v0.7` Capella/D2 source views exist in this repository. This definition uses
 
 ## Baseline/source-view copies
 
-Copied source context is under `source_views/v1.0/` and includes the v1.0 README copy plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.7/` because no v0.x Capella/D2 baseline is present.
+Copied source context is under `source_views/v1.0/` and includes the v1.0 README copy plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.7/` per the accepted lifecycle disposition; the `v1.0` copies are target context only.
 
 ## Verification-specific diagram catalogue
 
 | View | D2 | Rendered PNG | Purpose |
 |---|---|---|---|
-| PV1 physical/artifact setup | `OBCC-V07-GATE-001_view1_test_physical_artifact_setup.d2` | `OBCC-V07-GATE-001_view1_test_physical_artifact_setup.png` | Review workstation, RTOS event logger, stress exerciser hook, controlled source/config snapshot, allocation matrix, RTOS inventory, trace pins, and inspection/source-gap constraints. |
+| PV1 physical/artifact setup | `OBCC-V07-GATE-001_view1_test_physical_artifact_setup.d2` | `OBCC-V07-GATE-001_view1_test_physical_artifact_setup.png` | Review workstation, RTOS event logger, stress exerciser hook, controlled source/config snapshot, allocation matrix, RTOS inventory, trace pins, and inspection/target-context constraints. |
 | PV2 logical interface analysis | `OBCC-V07-GATE-001_view2_rtos_interface_analysis.d2` | `OBCC-V07-GATE-001_view2_rtos_interface_analysis.png` | Aggregated logical CE analysis for FreeRTOS, getter, queue, state, mode-gate, IMU/altitude, command, payload, ground, and evidence interfaces. |
 | PV3 allocation inspection | `OBCC-V07-GATE-001_view3_allocation_inspection.d2` | `OBCC-V07-GATE-001_view3_allocation_inspection.png` | Function-level allocation view for reviewer/operator/tool functions plus OBCC and ground functions to be dispositioned against the v0.7 code/task matrix. |
-| Analysis/inspection chain | `OBCC-V07-GATE-001_view4_allocation_interface_analysis_chain.d2` | `OBCC-V07-GATE-001_view4_allocation_interface_analysis_chain.png` | End-to-end analysis workflow from source-gap declaration through artifact inspection, static extraction, allocation/CE analysis, optional trace-hook review, finding closure, and evidence archive. |
+| Analysis/inspection chain | `OBCC-V07-GATE-001_view4_allocation_interface_analysis_chain.d2` | `OBCC-V07-GATE-001_view4_allocation_interface_analysis_chain.png` | End-to-end analysis workflow from target-context caveat through artifact inspection, static extraction, allocation/CE analysis, optional trace-hook review, finding closure, and evidence archive. |
 
 All four D2 files render successfully with the required `d2 --layout=elk` command and ELK spacing flags.
 
@@ -60,7 +60,7 @@ All four D2 files render successfully with the required `d2 --layout=elk` comman
 - **PF-005 — software component-exchange contracts:** getter contracts, measurement queue, state, mode gate, IMU/altitude data, payload, command, and trace-evidence interfaces have modeled direction, data contract, accountable owner, and observable evidence endpoint.
 - **PF-006 — trace/liveness rationale:** if trace/stress hooks are used, RTOS event logs show no unexplained scheduler blocking, deadlock, priority inversion, queue overflow, or ISR misuse during the analyzed scenario; if hooks are not executed, no trace-based reliability or timing claim is made.
 - **PF-007 — evidence/report archive:** review notes, static-analysis outputs, allocation matrices, RTOS inventories, trace logs if used, UUT firmware/configuration ID, tool versions, findings/waivers, and decision record are archived under `OBCC/MBSE/tests/results/OBCC-V07-GATE-001/`.
-- **PF-008 — source-gap declaration:** diagrams and reports state that no v0.7 Capella/D2 baseline exists and that copied v1.0 views are target-context inputs only; the actual v0.7 code/configuration analyzed is identified.
+- **PF-008 — target-context report caveat:** diagrams and reports state that the v0.7 Capella/D2 source baseline was not delivered by accepted lifecycle decision and that copied v1.0 views are target-context inputs only; the actual v0.7 code/configuration analyzed is identified.
 
 ## Statistics and fault-hardening viewpoints
 
@@ -79,7 +79,7 @@ All four D2 files render successfully with the required `d2 --layout=elk` comman
 
 ## Assumptions and gaps for feedback / execution planning
 
-- No v0.x Capella/D2 baseline is present; v1.0 source views are context only and shall not be edited.
+- Lifecycle disposition: no `v0.7` Capella/D2 source baseline is required or fabricated; v1.0 source views are context only and shall not be edited, and the report identifies the actual v0.7 code/configuration baseline.
 - The actual v0.7 firmware/task configuration is not controlled by the model artifacts read here. The execution report must identify the code baseline, FreeRTOS configuration, build flags, toolchain, and board configuration used.
 - `OBCC/main/main.ino` appears to be a non-FreeRTOS Arduino-style loop context and must not be assumed to satisfy the modeled v1.0 FreeRTOS architecture unless confirmed by the team.
 - Exact task names, priorities, queue depths, timer periods, mutex names, ISR entry points, heap/allocation policy, watchdog policy, and trace/export hook mechanism are not specified in the repository artifacts read here.

@@ -12,7 +12,7 @@
 - **Expected evidence/report path:** `OBCC/MBSE/tests/results/OBCC-V08-GATE-001/`.
 - **Execution status:** modeled definition complete; execution and evidence report pending.
 
-No `v0.8` Capella/D2 source views exist in this repository. This definition uses copied `v1.0` physical, logical, functional-allocation, and functional-chain views only as target-behavior context for the `v0.8 -> v0.9` advancement gate.
+The absence of a `v0.8` Capella/D2 source baseline is an accepted OBCC lifecycle/modeling decision, not a blocker: versions may jump from `v0.x` to `v1.0`, and the mostly software-dependent subsystem was not complex enough to require incremental source-model deliveries. This definition uses copied `v1.0` physical, logical, functional-allocation, and functional-chain views only as target-behavior context for the `v0.8 -> v0.9` advancement gate; execution reports must identify the actual `v0.8` code/configuration baseline used and acknowledge the target-context-only model reference where applicable. Do not fabricate a `v0.8` source baseline.
 
 ## References
 
@@ -25,7 +25,7 @@ No `v0.8` Capella/D2 source views exist in this repository. This definition uses
 
 ## Baseline/source-view copies
 
-Copied source context is under `source_views/v1.0/` and includes the v1.0 README plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.8/` because no v0.x Capella/D2 baseline is present in the repository.
+Copied source context is under `source_views/v1.0/` and includes the v1.0 README plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.8/` per the accepted lifecycle disposition; the `v1.0` copies are target context only.
 
 ## Verification-specific diagram catalogue
 
@@ -50,7 +50,7 @@ All four verification D2 files were rendered with the required `d2 --layout=elk`
 
 ## Pass/fail constraints
 
-- **PF-001 — source and setup identity:** UUT hardware revision, PCB/backplane revision, firmware/configuration IDs, copied v1.0 source-context references, test equipment identities, and missing v0.8 source-baseline gap are recorded before pass/fail classification.
+- **PF-001 — source and setup identity:** UUT hardware revision, PCB/backplane revision, firmware/configuration IDs, copied v1.0 source-context references, test equipment identities, accepted v0.8 target-context caveat, and actual code/configuration baseline are recorded before pass/fail classification.
 - **PF-002 — component/link presence and workmanship:** 100% of modeled physical components and physical links in the gate are present, correct, oriented, seated, soldered/worked acceptably, and dispositioned as OBCC-owned or integration context. Missing, reversed, substituted, unseated, bridged, damaged, contaminated, or undispositioned elements fail unless formally waived with corrective action.
 - **PF-003 — electrical continuity, polarity, and protocol intent:** no unmodeled shorts; power/ground references, SPI, I2C, UART, PWM, USB-C bench link, backplane headers, and servo links pass continuity/polarity checks and align with modeled direction, voltage, addressing/chip-select, and bus topology intent.
 - **PF-004 — RF/antenna safety:** RFM96W footprint and antenna path are inspected and checked before any transmit attempt. LoRa TX occurs only with verified antenna or dummy load; open/unsafe antenna path is a failure before bring-up.
@@ -76,7 +76,7 @@ All four verification D2 files were rendered with the required `d2 --layout=elk`
 
 ## Assumptions and gaps for feedback
 
-- No v0.8 Capella/D2 source baseline is present; copied v1.0 views are target context only.
+- Lifecycle disposition: no `v0.8` Capella/D2 source baseline is required or fabricated; copied v1.0 views are target context only, and the report identifies the actual v0.8 code/configuration baseline.
 - The exact v0.8 PCB revision, backplane revision, antenna connector/antenna or dummy-load model, connector-retention load/acceptance values, and DMM/RF-checker equipment models are not controlled in the repository artifacts read here.
 - The source context and `LoRa_Frame.md` use the selected `RFM96W` radio and `ICM20948` IMU names; execution must still record the actual fitted hardware and configuration baseline.
 - USB-C is modeled only as a bench evidence/power path for this v0.8 gate; it is not a required v1.0 flight operator path.

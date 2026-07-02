@@ -11,7 +11,7 @@
 - **Expected evidence/report path:** `OBCC/MBSE/tests/results/OBCC-V01-GATE-001/`.
 - **Execution status:** modeled definition complete; execution and report evidence pending.
 
-No `v0.1` Capella/D2 source views exist in this repository. This definition uses the `v1.0` OBCC model only as target-architecture context and documents the source-baseline limitation in the diagrams.
+The absence of a `v0.1` Capella/D2 source baseline is an accepted OBCC lifecycle/modeling decision, not a blocker: versions may jump from `v0.x` to `v1.0`, and the mostly software-dependent subsystem was not complex enough to require incremental source-model deliveries. This definition uses the `v1.0` OBCC model only as target-architecture context; execution reports must identify the actual `v0.1` code/configuration baseline used and acknowledge the target-context-only model reference where applicable. Do not fabricate a `v0.1` source baseline.
 
 ## References
 
@@ -24,7 +24,7 @@ No `v0.1` Capella/D2 source views exist in this repository. This definition uses
 
 ## Baseline/source-view copies
 
-Copied source context is under `source_views/v1.0/` and includes the v1.0 README plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.1/` because no v0.x Capella/D2 baseline is present.
+Copied source context is under `source_views/v1.0/` and includes the v1.0 README plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.1/` per the accepted lifecycle disposition; the `v1.0` copies are target context only.
 
 ## Verification-specific diagram catalogue
 
@@ -65,7 +65,7 @@ All four D2 files were rendered with the required `d2 --layout=elk` command and 
 
 ## Assumptions and gaps for feedback
 
-- No v0.x Capella/D2 baseline is present; the copied v1.0 model is context only.
+- Lifecycle disposition: no `v0.1` Capella/D2 source baseline is required or fabricated; the copied v1.0 model is target context only, and the report identifies the actual v0.1 code/configuration baseline.
 - `LoRa_Frame.md`, the v1.0 model, and the current plan use the selected `RFM96W` radio name; execution should record the actual radio module fitted.
 - The IMU may be the selected `ICM20948`; execution should record the actual part and apply the corresponding non-critical trial.
 - Exact health/status encoding and serial/telemetry log schema are not specified in the repository; the report must attach raw logs and state how pass/fail was decoded.

@@ -19,7 +19,7 @@ Assessment date: 2026-07-01
 | CON-002 | The split-by-subsystem tests do not fully verify emergent cross-subsystem behavior. | Introduce system-level tests listed in §4. |
 | CON-003 | Execution-pending status is acceptable, but some tests are still only planning candidates or have open definition blockers. | Complete detailed definitions before execution credit. |
 | CON-004 | Several requirements from subsystem READMEs and the root `README.md` are not yet assigned to executable verification activities. | Add requirement-to-test closure matrix. |
-| CON-005 | The affected hardware names are now frozen as `RFM96W`, `ICM20948`, and `BME280`; remaining version-source gaps and broader execution configuration IDs still require report control. | Use the selected names in active artifacts and identify exact as-tested baselines in reports. |
+| CON-005 | The affected hardware names are now frozen as `RFM96W`, `ICM20948`, and `BME280`; the OBCC v0.x source-baseline absence is a dispositioned non-issue, while broader execution configuration IDs still require report control. | Use the selected names in active artifacts and identify exact as-tested baselines in reports. |
 | CON-006 | The project needs one CanSat-level final readiness review that references subsystem evidence rather than duplicating it. | Model and execute `SYS-FLIGHT-READINESS-CLOSURE`. |
 
 ## 2. Finish-readiness against root `README.md`
@@ -54,7 +54,7 @@ Assessment date: 2026-07-01
 | SUB-DPS-004 | DPS | DPS/OBCC payload field blocker closed. | The obsolete RH dashboard/frame field was removed from the controlled OBCC table and DPS dashboard artifacts. | Keep broader payload-schema/versioning control under `SYS-BLK-004`. |
 | SUB-DPS-005 | DPS | Dashboard requirement/model blocker closed. | The selected top-left dashboard model renders CanSat attitude from pitch/roll/yaw. | Altitude remains a two-dimensional telemetry plot/value; detailed UI oracle definition remains part of DPS candidate-definition work. |
 | SUB-OBCC-001 | OBCC | OBCC has broad gate coverage from v0.1 through v1.0 final closure. | Coverage includes startup health, buses/getters, telemetry, command/state, deployment gate, runtime faults, RTOS allocation, workmanship, mission rehearsal, and final review. | Execute and link evidence to final closure. |
-| SUB-OBCC-002 | OBCC | OBCC v0.x source baselines are absent. | All v0.x gates use v1.0 model copies as target context only. | Keep source-gap declarations and identify actual code/configuration baseline in reports. |
+| SUB-OBCC-002 | OBCC | OBCC v0.x source-baseline absence is dispositioned as a lifecycle/modeling non-issue. | Versions may jump from v0.x to v1.0; OBCC's mostly software-dependent scope did not require incremental source-model deliveries, so v0.x gates use v1.0 model copies as target context only. | Do not fabricate v0.x source baselines; reports must identify actual code/configuration baselines and target-context-only model references where applicable. |
 | SUB-OBCC-003 | OBCC | OBCC final pass depends on mission rehearsal evidence. | `OBCC-V10-FLIGHT-001` forbids final PASS if `OBCC-V09-GATE-001` is unresolved. | Execute mission rehearsal or record approved defer/hold. |
 | SUB-OBCC-004 | OBCC | Payload/radio/emergency/fault details remain open. | Exact payload schema, radio settings, emergency-deploy policy, safe fault matrix, firmware IDs, and execution configuration identifiers beyond the selected `RFM96W`/`ICM20948`/`BME280` names need confirmation. | Freeze as-tested configuration before execution. |
 | SUB-PDS-001 | PDS & ESS | PDS/ESS has strong coverage across v0.1, v0.2, v0.3, and v1.0. | Coverage includes power path, charge, endurance, protection probability, rails, supervision, physical inspection, and PCB DFM. | Execute with strict safety controls. |
@@ -99,7 +99,7 @@ Assessment date: 2026-07-01
 | GAP-009 | Mechanical environment | Final drop/vibration/landing levels and post-environment regression are not controlled. | Approve environmental screen plan. |
 | GAP-010 | Documentation/workshop | Root README administrative and educational deliverables are not tested. | Add documentation and workshop readiness tests. |
 | GAP-011 | Statistical claims | Several tests correctly label screening evidence, but final reliability/PDR/deadline claims require defined samples and independence. | Enforce `PM&SE/IVV.md` statistical policy in final closure. |
-| GAP-012 | Source baselines | OBCC v0.x source views are absent; S&A has only physical views; PDM has several candidate-only v1.0 tests. | Preserve source-gap declarations and avoid over-crediting. |
+| GAP-012 | Source baselines | OBCC v0.x source-view absence is dispositioned as a non-blocking lifecycle/modeling decision; S&A has only physical views; PDM has several candidate-only v1.0 tests. | Preserve target-context/reporting caveats for OBCC, avoid over-crediting, and separately address S&A/PDM model maturity. |
 
 ## 6. Testing-strategy consistency assessment
 
@@ -107,7 +107,7 @@ Assessment date: 2026-07-01
 |---|---|---|---|
 | STRAT-001 | IADT coverage | ADS, AMS, PDS/ESS, S&A, and OBCC generally implement Inspection/Analysis/Demonstration/Testing well. | Continue using `PM&SE/IVV.md` as common policy. |
 | STRAT-002 | Definition maturity | DPS and PDM lag behind the other subsystems in detailed definition completeness. | Prioritize detailed definition completion for DPS and PDM. |
-| STRAT-003 | Version handling | Some subsystems have actual v0.x MBSE views; OBCC v0.x gates are target-context-only because v0.x views are absent. | Do not compare OBCC v0.x gates as equivalent to source-backed gates without caveat. |
+| STRAT-003 | Version handling | Some subsystems have actual v0.x MBSE views; OBCC v0.x gates are target-context-only by accepted lifecycle decision rather than by an open blocker. | Do not compare OBCC v0.x gates as source-backed gates; execution reports must identify the actual code/configuration baselines used. |
 | STRAT-004 | Fault hardening | OBCC, ADS, and PDS/ESS have strong explicit fault-hardening. DPS and PDM need more detailed fault definitions; S&A needs approved environment levels. | Add/complete fault matrices and environmental levels. |
 | STRAT-005 | Statistics | Many tests use correct screening-vs-reliability wording; final closure must prevent overclaiming. | Require statistical claim review in system final readiness. |
 | STRAT-006 | Equipment/calibration | Most definitions call for equipment IDs/calibration, but exact equipment models are still TBD. | Build lab equipment availability matrix from §7. |

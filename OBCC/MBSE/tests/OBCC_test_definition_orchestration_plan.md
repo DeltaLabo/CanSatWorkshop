@@ -11,10 +11,10 @@ Use `/Users/antho/agent-tools/syseng/prompts/capella-pa-tests-definition.md` as 
 ## Constraints and assumptions
 
 - The repository currently contains only one OBCC Capella/D2 source baseline: `OBCC/MBSE/v1.0/`.
-- Earlier `v0.1`-`v0.9` OBCC Capella/D2 source folders are absent. To avoid blocking the requested multi-version coverage, the v0.x gate definitions will:
-  - state the absent source baselines as an explicit model/source gap,
+- Earlier `v0.1`-`v0.9` OBCC Capella/D2 source folders were not delivered by accepted lifecycle/modeling decision; this is not a blocker. OBCC versions may jump from `v0.x` to `v1.0`, and the mostly software-dependent subsystem was not complex enough to require incremental source-model deliveries. The v0.x gate definitions will:
+  - state the target-context-only caveat,
   - use `OBCC/README.md`, `OBCC/LoRa_Frame.md`, `OBCC/Variable_Getter_Template.md`, `OBCC/legacy_tests/`, and the v1.0 Capella model as available context,
-  - define transition-gate tests that progressively build toward v1.0 behavior without editing or inventing missing baseline source diagrams.
+  - define transition-gate tests that progressively build toward v1.0 behavior without editing, inventing, or requiring missing baseline source diagrams.
 - The existing `OBCC/MBSE/tests/README.md` is a v1.0 planning inventory, not a set of modeled test definitions. Subagents must reuse its candidate coverage where applicable instead of duplicating uncontrolled alternatives.
 - Use the `ivv` skill as controlling guidance and the `capella-d2` skill for D2/Capella semantics, rendering, and visual-quality checks.
 - Subagents must be launched with `-e ~/agent-tools/syseng`, `--no-session`, and the reusable prompt plus the issue file.
@@ -52,7 +52,7 @@ Each test-definition subagent must:
 1. Read the reusable prompt, this issue file, `OBCC/MBSE/tests/README.md`, `OBCC/MBSE/v1.0/README.md`, and relevant OBCC context (`OBCC/README.md`, `OBCC/LoRa_Frame.md`, `OBCC/Variable_Getter_Template.md`, legacy tests when useful).
 2. Use `ivv` and `capella-d2`; if the prompt says `capella2d2`, interpret it as the available `capella-d2` skill.
 3. Work only inside `OBCC/MBSE/tests/<activity-id>/` and `OBCC/MBSE/tests/_subagent_updates/<activity-id>.md`.
-4. Copy relevant v1.0 source D2/PNG views into `source_views/v1.0/` or `baseline/v1.0/`, and document that v0.x source Capella views are absent where applicable.
+4. Copy relevant v1.0 source D2/PNG views into `source_views/v1.0/` or `baseline/v1.0/`, and document target-context-only use of those copies where applicable.
 5. Create Capella-style verification-specific D2 definition views and render PNGs with:
 
    ```sh
@@ -71,7 +71,7 @@ Each test-definition subagent must:
 ## Acceptance criteria
 
 - Issues 001-010 each create a modeled test-definition folder with a README, baseline/source copies, D2 views, and rendered PNGs.
-- The definitions collectively cover every requested version gate from `v0.1` through `v1.0`, and they explicitly document that v0.x Capella source baselines are absent.
+- The definitions collectively cover every requested version gate from `v0.1` through `v1.0`, and they explicitly document the accepted target-context-only use of `v1.0` copies for `v0.1` through `v0.9` gates.
 - The final integration issue updates `OBCC/MBSE/tests/README.md` once, mapping the original v1.0 candidate rows to the new modeled definitions or documenting remaining gaps.
 - Temporary issue files and `_subagent_updates` fragments are removed after integration.
 - No push is performed.
@@ -82,15 +82,15 @@ Integration completed on 2026-07-01. Issues 001-010 produced modeled definition 
 
 | Issue | Activity ID | Completion status | Notes |
 |---|---|---|---|
-| 001 | `OBCC-V01-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.1` source gap documented |
-| 002 | `OBCC-V02-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.2` source gap documented |
-| 003 | `OBCC-V03-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.3` source gap documented |
-| 004 | `OBCC-V04-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.4` source gap documented |
-| 005 | `OBCC-V05-GATE-001` | Definition integrated; execution pending | 6 verification D2/PNG views; `v0.5` source gap documented |
-| 006 | `OBCC-V06-GATE-001` | Definition integrated; execution pending | 5 verification D2/PNG views; `v0.6` source gap documented |
-| 007 | `OBCC-V07-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.7` source gap documented |
-| 008 | `OBCC-V08-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.8` source gap documented |
-| 009 | `OBCC-V09-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.9` source gap documented; now maps `OBCC-VV-FC-006` |
+| 001 | `OBCC-V01-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.1` target-context caveat documented |
+| 002 | `OBCC-V02-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.2` target-context caveat documented |
+| 003 | `OBCC-V03-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.3` target-context caveat documented |
+| 004 | `OBCC-V04-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.4` target-context caveat documented |
+| 005 | `OBCC-V05-GATE-001` | Definition integrated; execution pending | 6 verification D2/PNG views; `v0.5` target-context caveat documented |
+| 006 | `OBCC-V06-GATE-001` | Definition integrated; execution pending | 5 verification D2/PNG views; `v0.6` target-context caveat documented |
+| 007 | `OBCC-V07-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.7` target-context caveat documented |
+| 008 | `OBCC-V08-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.8` target-context caveat documented |
+| 009 | `OBCC-V09-GATE-001` | Definition integrated; execution pending | 4 verification D2/PNG views; `v0.9` target-context caveat documented; now maps `OBCC-VV-FC-006` |
 | 010 | `OBCC-V10-FLIGHT-001` | Definition integrated; final review execution pending | 4 verification D2/PNG views; closure index updated to account for current `OBCC-V09-GATE-001` folder |
 | 011 | integration | Completed | `OBCC/MBSE/tests/README.md` updated; all original v1.0 candidates mapped; consumed fragments and temporary issue files removed |
 

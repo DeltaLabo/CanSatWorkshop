@@ -4,10 +4,11 @@ Integrated verification-definition index for the OBCC subsystem. The Capella/D2 
 
 Project-wide IVV conventions, evidence paths, statistical policy, fault semantics, and report-by-reference rules are defined in [`../../../PM&SE/IVV.md`](../../../PM&SE/IVV.md). Evidence for each modeled activity below is expected under `OBCC/MBSE/tests/results/<activity-id>/`.
 
-## 1. Source model and source-gap status
+## 1. Source model and target-context status
 
 - **Available source baseline:** `OBCC/MBSE/v1.0/` only.
-- **Absent source baselines:** no OBCC Capella/D2 source folders for `v0.1` through `v0.9` were found. The `v0.x` gate definitions explicitly record this source gap and use copied `v1.0` views as target-context only; they do not invent missing historical model views.
+- **Lifecycle/modeling disposition:** no OBCC Capella/D2 source folders for `v0.1` through `v0.9` were delivered, and this is an accepted non-issue: OBCC versions may jump from `v0.x` to `v1.0`, and the mostly software-dependent subsystem was not complex enough to require incremental source-model deliveries. The `v0.x` gate definitions use copied `v1.0` views as target-context only; they do not invent missing historical model views.
+- **Execution-report caveat:** historical gate reports must identify the actual code/configuration baseline IDs used and acknowledge target-context-only `v1.0` model references where applicable.
 - **Read-only source model:** files under `OBCC/MBSE/v1.0/` are not modified by these test definitions.
 - **Execution status:** modeled definitions are ready; execution evidence and controlled reports remain pending unless a downstream results folder states otherwise.
 
@@ -66,7 +67,7 @@ All original v1.0 candidate rows are now mapped to modeled definition folders. S
 ## 5. Current coverage and residual gaps
 
 - **Modeled definition coverage:** complete for the issued multi-version set `OBCC-V01-GATE-001` through `OBCC-V10-FLIGHT-001`. The mission-window rehearsal folder `OBCC-V09-GATE-001/` exists and maps `OBCC-VV-FC-006`.
-- **Source gaps preserved:** `v0.1` through `v0.9` Capella/D2 source baselines remain absent; each corresponding gate documents that it uses `v1.0` source copies as target context only.
+- **Target-context caveat preserved:** `v0.1` through `v0.9` Capella/D2 source baselines were not delivered by lifecycle decision; each corresponding gate documents that it uses `v1.0` source copies as target context only, and execution reports must name the actual code/configuration baseline analyzed or tested.
 - **Execution/evidence gap:** no final PASS is implied by definition readiness. Execution reports, raw logs, photos/video, RF/timing evidence, closure matrices, deviations, waivers, and board decisions must be stored under the expected `OBCC/MBSE/tests/results/<activity-id>/` paths.
 - **Technical assumptions to close during execution:** exact as-built hardware/firmware/radio settings, command and payload schemas, emergency-deploy policy, actuator status semantics, environment/instrument IDs, and statistical independence/sample-size claims.
 - **D2 render status at integration:** every verification-specific D2 view has a paired PNG and all 43 verification-specific D2 files rendered successfully with the required ELK command and spacing flags.

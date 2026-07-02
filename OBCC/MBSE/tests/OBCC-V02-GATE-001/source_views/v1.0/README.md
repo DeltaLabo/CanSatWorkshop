@@ -2,7 +2,7 @@
 
 This folder is a read-only copied baseline for the `OBCC-V02-GATE-001` v0.2 -> v0.3 bus/protocol and getter timing advancement-gate definition.
 
-No v0.2 Capella/D2 source baseline exists in the repository. The copied v1.0 views are used only as target-architecture context for the intended I2C, UART, SPI, PWM, getter, queue, state, mode-gate, and runtime-fault behavior.
+The v0.2 Capella/D2 source baseline was not delivered by accepted OBCC lifecycle/modeling decision; this is not a blocker and no v0.2 source baseline is fabricated here. The copied v1.0 views are used only as target-architecture context for the intended I2C, UART, SPI, PWM, getter, queue, state, mode-gate, and runtime-fault behavior; execution reports identify the actual v0.2 code/configuration baseline when this gate is run.
 
 Copied from `OBCC/MBSE/v1.0/`:
 

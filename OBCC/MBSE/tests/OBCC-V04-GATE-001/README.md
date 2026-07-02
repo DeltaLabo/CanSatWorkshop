@@ -12,7 +12,7 @@
 - **Expected evidence/report path:** `OBCC/MBSE/tests/results/OBCC-V04-GATE-001/`.
 - **Execution status:** modeled definition complete; execution and report evidence pending.
 
-No `v0.4` Capella/D2 source views exist in this repository. This definition uses the copied `v1.0` command/state, telemetry, logical, allocation, and physical views only as target-behavior context.
+The absence of a `v0.4` Capella/D2 source baseline is an accepted OBCC lifecycle/modeling decision, not a blocker: versions may jump from `v0.x` to `v1.0`, and the mostly software-dependent subsystem was not complex enough to require incremental source-model deliveries. This definition uses the copied `v1.0` command/state, telemetry, logical, allocation, and physical views only as target-behavior context; execution reports must identify the actual `v0.4` code/configuration baseline used and acknowledge the target-context-only model reference where applicable. Do not fabricate a `v0.4` source baseline.
 
 ## References
 
@@ -25,7 +25,7 @@ No `v0.4` Capella/D2 source views exist in this repository. This definition uses
 
 ## Baseline/source-view copies
 
-Copied source context is under `source_views/v1.0/` and includes the v1.0 README plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.4/` because no v0.x Capella/D2 baseline is present.
+Copied source context is under `source_views/v1.0/` and includes the v1.0 README plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.4/` per the accepted lifecycle disposition; the `v1.0` copies are target context only.
 
 ## Verification-specific diagram catalogue
 
@@ -69,7 +69,7 @@ All four D2 files were rendered with the required `d2 --layout=elk` command and 
 
 ## Assumptions and gaps for feedback
 
-- No v0.4 Capella/D2 source baseline is present; copied v1.0 views are target context only.
+- Lifecycle disposition: no `v0.4` Capella/D2 source baseline is required or fabricated; copied v1.0 views are target context only, and the report identifies the actual v0.4 code/configuration baseline.
 - The exact command frame schema, CRC field, sequence/trial ID, replay-protection mechanism, and command-result telemetry fields are not specified in the repository; execution must document the actual oracle used to determine “accepted exactly once.”
 - `LoRa_Frame.md` and the v1.0 model use the selected `RFM96W` radio name; execution should record the actual fitted radio module, settings, and configuration baseline.
 - v0.4 is before deployment control enablement; the modeled deployment monitor is a safe-load/logic-probe side-effect check, not a servo actuation test.

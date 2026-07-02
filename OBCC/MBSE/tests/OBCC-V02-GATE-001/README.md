@@ -12,7 +12,7 @@
 - **Expected evidence/report path:** `OBCC/MBSE/tests/results/OBCC-V02-GATE-001/`.
 - **Execution status:** modeled definition complete; execution and report evidence pending.
 
-No `v0.2` Capella/D2 source views exist in this repository. This definition uses the copied `v1.0` OBCC model as target-architecture context and documents the source-baseline limitation in the diagrams.
+The absence of a `v0.2` Capella/D2 source baseline is an accepted OBCC lifecycle/modeling decision, not a blocker: versions may jump from `v0.x` to `v1.0`, and the mostly software-dependent subsystem was not complex enough to require incremental source-model deliveries. This definition uses the copied `v1.0` OBCC model as target-architecture context; execution reports must identify the actual `v0.2` code/configuration baseline used and acknowledge the target-context-only model reference where applicable. Do not fabricate a `v0.2` source baseline.
 
 ## References
 
@@ -27,7 +27,7 @@ No `v0.2` Capella/D2 source views exist in this repository. This definition uses
 
 ## Baseline/source-view copies
 
-Copied source context is under `source_views/v1.0/` and includes the v1.0 README copy plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.2/` because no v0.x Capella/D2 baseline is present.
+Copied source context is under `source_views/v1.0/` and includes the v1.0 README copy plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.2/` per the accepted lifecycle disposition; the `v1.0` copies are target context only.
 
 ## Verification-specific diagram catalogue
 
@@ -59,7 +59,7 @@ All four D2 files were rendered successfully with the required `d2 --layout=elk`
 - **PF-005 — required fault matrix:** executed fault set includes I2C NACK or stuck bus, GPS UART silence, GPS malformed frame, SPI radio fault/busy, and PWM/servo unavailable.
 - **PF-006 — scheduler and data-path liveness:** scheduler heartbeat/timer activity continues during nominal and fault cases; queue, state, and mode-gate ownership remain as modeled and do not create a hidden bypass.
 - **PF-007 — evidence/environment:** raw logic-analyzer decodes, serial logs, trace timing tables, review notes, UUT firmware/configuration ID, test-equipment IDs, and ambient thermometer model/serial/reading are archived under the expected results folder.
-- **PF-008 — source-gap declaration:** the report and diagrams state that v0.2 Capella/D2 source views are absent and that v1.0 views are used only as intended-target context.
+- **PF-008 — target-context report caveat:** the report and diagrams state that the v0.2 Capella/D2 source baseline was not delivered by accepted lifecycle decision, that v1.0 views are used only as intended-target context, and that the actual v0.2 code/configuration baseline is identified.
 
 ## Statistics and fault-hardening viewpoints
 
@@ -77,7 +77,7 @@ All four D2 files were rendered successfully with the required `d2 --layout=elk`
 
 ## Assumptions and gaps for feedback / execution planning
 
-- No v0.x Capella/D2 baseline is present; v1.0 source views are context only and shall not be edited.
+- Lifecycle disposition: no `v0.2` Capella/D2 source baseline is required or fabricated; v1.0 source views are context only and shall not be edited, and the report identifies the actual v0.2 code/configuration baseline.
 - Exact v0.2 pin map, I2C addresses, UART baud, SPI mode, chip-select handling, PWM pulse-width policy, and timeout implementation are not controlled in the repository artifacts read here.
 - Bring-up context includes `BME280`, `ICM20948`, and serial/AT-command LoRa examples; execution must record the actual parts fitted and configuration baseline.
 - `LoRa_Frame.md` and the v1.0 model use the selected `RFM96W` radio name; execution must identify the actual radio module.

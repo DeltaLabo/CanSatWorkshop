@@ -37,7 +37,7 @@ Copied source context is under `source_views/v1.0/` and includes the v1.0 README
 - `OBCC_v1.0_view7_deployment_gating_chain.d2/.png`
 - `OBCC_v1.0_view8_runtime_fault_handling_chain.d2/.png`
 
-This issue targets v1.0 directly, so no v0.x source view copy is required for this activity. The repository still has no v0.x OBCC Capella/D2 source baselines; that remains relevant to the earlier advancement gates.
+This activity targets v1.0 directly, so no historical source-view copy is required. The absence of `v0.x` OBCC Capella/D2 source baselines for earlier gates is an accepted lifecycle/modeling non-issue; historical execution reports still need to identify the actual code/configuration baseline and target-context-only references used.
 
 ## Verification-specific diagram catalogue
 
@@ -124,5 +124,5 @@ Expected files or controlled references under `OBCC/MBSE/tests/results/OBCC-V10-
 - `OBCC-V01-GATE-001` through `OBCC-V09-GATE-001` modeled definitions are present, but their execution evidence is not present under `OBCC/MBSE/tests/results/` at this integration run.
 - `OBCC-VV-FC-006` is now modeled by `OBCC-V09-GATE-001`; final readiness still requires executed mission-window rehearsal evidence or an approved defer/hold disposition.
 - Explicit mission/capability/use-case/feared-event nodes are absent from the v1.0 source views; this activity uses the provisional trace targets from `OBCC/MBSE/tests/README.md`.
-- v0.x OBCC Capella/D2 source baselines are absent in the repository. This v1.0 final readiness definition uses the actual v1.0 source baseline; earlier v0.x gates should keep their source-gap declarations.
+- `OBCC-BLK-001` is dispositioned as a non-issue: no `v0.x` OBCC Capella/D2 source baselines are required or fabricated. This v1.0 final readiness definition uses the actual v1.0 source baseline; earlier `v0.x` gate reports preserve target-context caveats and identify actual code/configuration baselines.
 - Final readiness cannot be declared PASS from this definition alone; it requires executed evidence, accepted deviations/waivers, `OBCC-V09-GATE-001` mission-window rehearsal closure or approved disposition, and board go/no-go approval.

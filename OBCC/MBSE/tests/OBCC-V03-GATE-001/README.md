@@ -12,7 +12,7 @@
 - **Expected evidence/report path:** `OBCC/MBSE/tests/results/OBCC-V03-GATE-001/`.
 - **Execution status:** modeled definition complete; execution and report evidence pending.
 
-No `v0.3` Capella/D2 source views exist in this repository. This gate uses the copied `v1.0` OBCC telemetry/downlink model as target-architecture context and records the missing v0.x baseline as an explicit source gap.
+The absence of a `v0.3` Capella/D2 source baseline is an accepted OBCC lifecycle/modeling decision, not a blocker: versions may jump from `v0.x` to `v1.0`, and the mostly software-dependent subsystem was not complex enough to require incremental source-model deliveries. This gate uses the copied `v1.0` OBCC telemetry/downlink model as target-architecture context; execution reports must identify the actual `v0.3` code/configuration baseline used and acknowledge the target-context-only model reference where applicable. Do not fabricate a `v0.3` source baseline.
 
 ## References
 
@@ -26,13 +26,13 @@ No `v0.3` Capella/D2 source views exist in this repository. This gate uses the c
 
 ## Baseline/source-view copies
 
-Copied source context is under `source_views/v1.0/` and includes the v1.0 README plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.3/` because no v0.x Capella/D2 baseline is present.
+Copied source context is under `source_views/v1.0/` and includes the v1.0 README plus all eight source D2 views and rendered PNGs. There is no `source_views/v0.3/` per the accepted lifecycle disposition; the `v1.0` copies are target context only.
 
 ## Verification-specific diagram catalogue
 
 | View | D2 | Rendered PNG | Purpose |
 |---|---|---|---|
-| PV1 RF/range physical setup | `OBCC-V03-GATE-001_view1_rf_physical_setup.d2` | `OBCC-V03-GATE-001_view1_rf_physical_setup.png` | UUT, ground station, antennas, range/weather/time equipment, RF path, logging path, and source-baseline gap. |
+| PV1 RF/range physical setup | `OBCC-V03-GATE-001_view1_rf_physical_setup.d2` | `OBCC-V03-GATE-001_view1_rf_physical_setup.png` | UUT, ground station, antennas, range/weather/time equipment, RF path, logging path, and target-context caveat. |
 | PV2 logical CE analysis | `OBCC-V03-GATE-001_view2_logical_ce_analysis.d2` | `OBCC-V03-GATE-001_view2_logical_ce_analysis.png` | LoRa/Payload/UART exchanges, source stubs, decoder/store/display path, schema oracle, malformed-frame injection, and PDR analysis exchanges. |
 | PV3 functional allocation | `OBCC-V03-GATE-001_view3_functional_allocation.d2` | `OBCC-V03-GATE-001_view3_functional_allocation.png` | Verification-only functions and SUT/ground functions allocated to actors, equipment, LCs, and PCs. |
 | Functional chain | `OBCC-V03-GATE-001_view4_telemetry_gate_chain.d2` | `OBCC-V03-GATE-001_view4_telemetry_gate_chain.png` | Lab + range telemetry sequence, schema/cadence checks, malformed-frame hardening, PDR statistics, and gate classification. |
@@ -68,7 +68,7 @@ All four D2 files were rendered with the required `d2 --layout=elk` command and 
 
 ## Assumptions and gaps for feedback
 
-- No v0.x Capella/D2 baseline is present; copied v1.0 views are target-context only.
+- Lifecycle disposition: no `v0.3` Capella/D2 source baseline is required or fabricated; copied v1.0 views are target-context only, and the report identifies the actual v0.3 code/configuration baseline.
 - The exact v0.3 firmware, ground-station software, radio settings, CRC/checksum format, and frame metadata layout are not fully specified in the repository; execution must record the as-tested versions/configuration.
 - `LoRa_Frame.md` and the v1.0 model both exclude relative humidity and use the selected `RFM96W` radio name; this gate requires any actual module substitution to be dispositioned.
 - The `2.0 s +/- 0.2 s` cadence tolerance is a modeled planning assumption for this test definition and should be confirmed or replaced before formal execution.

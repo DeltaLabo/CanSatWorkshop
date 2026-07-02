@@ -65,7 +65,7 @@ These are proposed in `PM&SE/MBSE_Test_Plan_Assessment.md` §4 and are still can
 | PDM v0.1 | `PDM-V01-GAP-PL`, `PDM-V01-GAP-CE` | Documented source-model gaps/N/A, not executable tests. | Leave as N/A/gap unless source v0.1 PL/CE views are added. |
 | PDS & ESS | New candidate: regulator efficiency measurement. | Assessment flags README requirement for 95% efficiency not clearly verified. | Add efficiency campaign or update/retire requirement. |
 | PDS & ESS | Most v1.0 rows are model-defined. | No broad planning-candidate backlog, but several definitions have source/model blockers listed below. | Resolve blockers before final acceptance credit. |
-| OBCC | Original v1.0 candidates are mapped to gate definitions. | No remaining candidate-definition gap; execution/source/configuration caveats remain. | Keep source-gap declarations and close final readiness prerequisites. |
+| OBCC | Original v1.0 candidates are mapped to gate definitions. | No remaining candidate-definition gap; the v0.x source-baseline absence is dispositioned under `OBCC-BLK-001`; execution/configuration caveats remain. | Keep target-context reporting caveats, identify actual as-tested code/configuration baselines, and close final readiness prerequisites. |
 | S&A | All listed S&A activities are model-defined. | No remaining planning-candidate backlog; CE/allocation ownership gaps remain by design. | Execute `SAA-VV-CE-001`/`SAA-VV-ALLOC-001` ownership analyses and resolve holds. |
 
 ## 2. Open definition blockers
@@ -128,7 +128,7 @@ Altitude remains a two-dimensional telemetry plot/value in DPS dashboard artifac
 
 | Blocker ID | Blocker | Blocks | Closure action |
 |---|---|---|---|
-| OBCC-BLK-001 | OBCC v0.1 through v0.9 Capella/D2 source baselines are absent; gates use v1.0 target context only. | Historical gate source-backed equivalence. | Preserve source-gap declaration and identify actual code/configuration baselines in reports. |
+| OBCC-BLK-001 | Closed — dispositioned as a lifecycle/modeling non-issue: OBCC versions may jump from `v0.x` to `v1.0`; OBCC is mostly software-dependent and was not complex enough to require incremental source-model deliveries; no v0.x source baselines will be fabricated. | No blocker; historical gates remain target-context-only unless execution reports bind them to actual code/configuration baselines. | Resolved; preserve target-context caveats and require reports to identify actual code/configuration baselines and acknowledge target-context-only model references where applicable. |
 | OBCC-BLK-002 | Final readiness pass requires mission rehearsal closure. | `OBCC-V10-FLIGHT-001` final PASS. | Execute/disposition `OBCC-V09-GATE-001` before final readiness board. |
 | OBCC-BLK-003 | Payload schema, command schema, radio settings, firmware/configuration IDs, and any as-tested configuration identifiers beyond the selected `RFM96W`/`ICM20948`/`BME280` names are not frozen. | Telemetry/command/RF evidence validity. | Freeze as-tested configuration before execution. |
 | OBCC-BLK-004 | Emergency-deploy policy, descent-state observability criteria, safe/error-state behavior, and actuator status semantics need confirmation. | Runtime fault handling, mission rehearsal, deployment safety. | Define cross-subsystem policy with PDM/ADS/PM&SE and update affected tests. |

@@ -14,4 +14,4 @@ Copied artifacts:
 - `OBCC_v1.0_view7_deployment_gating_chain.d2/.png`
 - `OBCC_v1.0_view8_runtime_fault_handling_chain.d2/.png`
 
-No `v0.7` Capella/D2 source baseline exists in this repository. These copied `v1.0` views are used as target-architecture context for FreeRTOS allocation, software interface ownership, and fault-hardening analysis; they are not an as-built `v0.7` model baseline.
+The `v0.7` Capella/D2 source baseline was not delivered by accepted OBCC lifecycle/modeling decision; this is not a blocker and no `v0.7` source baseline is fabricated here. These copied `v1.0` views are used as target-architecture context for FreeRTOS allocation, software interface ownership, and fault-hardening analysis; they are not an as-built `v0.7` model baseline. Execution reports identify the actual `v0.7` code/configuration baseline when this gate is run.

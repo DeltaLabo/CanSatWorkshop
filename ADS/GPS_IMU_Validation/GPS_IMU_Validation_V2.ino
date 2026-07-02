@@ -130,6 +130,22 @@ void applyIMUConfig() {
 
 
 // ─────────────────────────────────────────────────────────────────────────────
+// IMU — Calibración del acelerómetro al arranque [NUEVO]
+// Corrige el offset/bias del acelerómetro. El sensor DEBE permanecer
+// plano y quieto durante esta calibración, igual que en la del giroscopio.
+// ─────────────────────────────────────────────────────────────────────────────
+void calibrateAccelAtStart() {
+  Serial.println(F("----------------------------------------------"));
+  Serial.println(F("[CAL] Coloca el sensor PLANO y QUIETO (~1 s)..."));
+  delay(1000);
+
+  myIMU.autoOffsets();   // Calibra offsets de acelerómetro (y giroscopio)
+
+  Serial.println(F("[CAL] Calibración de acelerómetro completada.\n"));
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
 // IMU — Calibración del giroscopio al arranque
 // ─────────────────────────────────────────────────────────────────────────────
 void calibrateGyroAtStart() {
@@ -552,6 +568,11 @@ void printSensorData() {
     Serial.print(imuData.ay, 3); Serial.print(F(", "));
     Serial.println(imuData.az, 3);
 
+    // [NUEVO] Diagnóstico: magnitud total del vector aceleración.
+    // Con el sensor quieto, esto debe dar ≈1.000 g sin importar la orientación.
+    float magG = sqrtf(imuData.ax*imuData.ax + imuData.ay*imuData.ay + imuData.az*imuData.az);
+    Serial.print(F("  |Accel| total (g): ")); Serial.println(magG, 3);
+
     Serial.print(F("  Gyro (dps):  "));
     Serial.print(imuData.gx, 3); Serial.print(F(", "));
     Serial.print(imuData.gy, 3); Serial.print(F(", "));
@@ -648,6 +669,7 @@ void setup() {
   applyIMUConfig();
   delay(100);
 
+  calibrateAccelAtStart();   // [NUEVO] Corrige el offset del acelerómetro
   calibrateGyroAtStart();
   initQuaternionFromSensors();
 
@@ -691,3 +713,4 @@ void loop() {
     printValidationReport();
   }
 }
+

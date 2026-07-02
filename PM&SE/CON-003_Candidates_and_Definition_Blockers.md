@@ -63,8 +63,8 @@ These are proposed in `PM&SE/MBSE_Test_Plan_Assessment.md` §4 and are still can
 | PDM v0.2 | `PDM-V02-ANA-CONSTRAINT-COVERAGE` | Candidate / covered in plan but not executed. | Model coverage analysis if separate closure evidence is needed. |
 | PDM v0.1 | `PDM-V01-INSP-PC`, `PDM-V01-ALLOC-DSC` | Candidates, partially covered by `PDM-V01-FC-FALL`; standalone reports pending. | Decide whether standalone v0.1 inspection/allocation reports are required. |
 | PDM v0.1 | `PDM-V01-GAP-PL`, `PDM-V01-GAP-CE` | Documented source-model gaps/N/A, not executable tests. | Leave as N/A/gap unless source v0.1 PL/CE views are added. |
-| PDS & ESS | New candidate: regulator efficiency measurement. | Assessment flags README requirement for 95% efficiency not clearly verified. | Add efficiency campaign or update/retire requirement. |
-| PDS & ESS | Most v1.0 rows are model-defined. | No broad planning-candidate backlog, but several definitions have source/model blockers listed below. | Resolve blockers before final acceptance credit. |
+| PDS & ESS | New candidate: `PDS-VV-CON-010` regulator-efficiency validation for the README 3.3 V and 5 V rail requirements at `1 A` / `95%` efficiency. | Candidate queued at definition-planning level; detailed modeled definition and execution remain pending, and no test has been executed. | Promote/model `PDS-VV-CON-010` only after measurement topology, instrumentation, load cases, uncertainty/guard-band treatment, thermal limits, and evidence paths are defined. |
+| PDS & ESS | Most other v1.0 rows are model-defined. | No broad planning-candidate backlog; remaining items are source-model/interface follow-ons or campaign/execution prerequisites listed in §2.6. | Keep final acceptance and execution credit pending until source follow-ons, campaign parameters, and evidence are closed. |
 | OBCC | Original v1.0 candidates are mapped to gate definitions. | No remaining candidate-definition gap; the v0.x source-baseline absence is dispositioned under `OBCC-BLK-001`; execution/configuration caveats remain. | Keep target-context reporting caveats, identify actual as-tested code/configuration baselines, and close final readiness prerequisites. |
 | S&A | All listed S&A activities are model-defined. | No remaining planning-candidate backlog; CE/allocation ownership gaps remain by design. | Execute `SAA-VV-CE-001`/`SAA-VV-ALLOC-001` ownership analyses and resolve holds. |
 
@@ -369,14 +369,48 @@ The 2026-07-02 DPS blocker-resolution issues produced the folded closure decisio
 | Blocker ID | Blocker | Blocks | Closure action |
 |---|---|---|---|
 | PDS-BLK-001 | Closed — final ESS battery architecture is frozen as `1S1P Li-Ion`; README, BOM, MBSE, and tests now align on the selected single-cell pack architecture. | No longer blocks on battery-architecture conflict; PDS/ESS and system power acceptance still depend on the remaining non-battery PDS blockers. | Resolved; preserve `1S1P Li-Ion` in execution reports and do not claim final power acceptance until the other PDS blockers are closed. |
-| PDS-BLK-002 | INA219 I2C CE is implied but missing from source logical view. | Final CE completeness, `PDS-VV-FC-002`, `PDS-VV-CON-007`. | Update source model or approve controlled justification/waiver. |
-| PDS-BLK-003 | 95% regulator efficiency requirement is not clearly verified. | PDS regulated-rail requirement closure. | Add efficiency measurement campaign or update requirement. |
-| PDS-BLK-004 | On-mode load/current budget and 6h endurance profile remain campaign-defined. | `PDS-VV-CON-002`, system power/endurance. | Freeze representative load profile, logging cadence, thermal envelope. |
-| PDS-BLK-005 | Master switch/accessibility hardware detail is not explicit in the physical source model. | Allocation/external actor safe power-off closure. | Update source model/interface definition or approve waiver path. |
-| PDS-BLK-006 | Li-ion safety documents, charger model/certification, and cell safety evidence are prerequisites. | Final powered charge acceptance. | Collect datasheet/SDS/UN38.3/limits and certified charger evidence. |
-| PDS-BLK-007 | Carvera Air DFM rule-set closure and deviation records are required. | `PDS-VV-CON-009` pass. | Record trace/space/drill/annular/isolation/milling/thickness/keepout rules and dispositions. |
-| PDS-BLK-008 | Protection probability setpoints, independence rationale, and demand-trial evidence are not fixed; source meaning of `<1%` remains ambiguous. | `PDS-VV-CON-003` formal claim. | Confirm conservative missed-demand interpretation or revise requirement; define setpoints/sample plan. |
-| PDS-BLK-009 | Rail-test nominal load, thermal, and settling parameters require campaign confirmation. | `PDS-VV-CON-004`. | Define no-load/nominal/1 A cases, thermal limits, settling/ripple treatment. |
+| PDS-BLK-002 | Definition-level decision selected: add an explicit INA219 `[CE] I2C` exchange between ESS Processing/XIAO and Battery monitoring/INA219; the source-model D2 edit remains pending. | Final CE completeness for `PDS-VV-FC-002`, `PDS-VV-CE-003`, and `PDS-VV-CON-007` remains pending. | Apply the pending source-model/D2 edit and baseline refresh, or approve controlled justification/waiver; no execution credit until the model is updated/justified and evidence is recorded. |
+| PDS-BLK-003 | Definition-level candidate added: `PDS-VV-CON-010` regulator-efficiency validation for the 3.3 V and 5 V rail `1 A` / `95%` requirements. | PDS efficiency closure remains candidate/detailed-definition pending. | Define the modeled measurement topology, instrumentation, load cases, uncertainty/guard band, thermal limits, and evidence paths before execution; no test has been executed. |
+| PDS-BLK-004 | Campaign-defined load/endurance profile accepted: On-mode load/current budget and 6 h endurance profile are execution parameters for `PDS-VV-CON-002` and system power tests. | Not a new model-definition blocker. | Freeze representative load profile, current budget, logging/sample cadence, ambient/thermal envelope, anomaly handling, and end criteria before execution. |
+| PDS-BLK-005 | Source-model/interface edit pending: master-switch/accessibility hardware detail must be added or clarified in the PDS physical/source model, or controlled waiver path approved. | Allocation/external-actor safe power-off closure remains pending source/interface update or waiver. | Update the source/interface definition or approve waiver; later execution records safe access, de-energized state, and any deviation evidence. |
+| PDS-BLK-006 | Reclassified as an execution prerequisite for final powered charge acceptance: Li-ion safety documents, charger model/certification, and cell safety evidence are required. | No unresolved definition blocker from this item. | Collect cell/pack datasheet/SDS or equivalent, certification evidence when available, charge/discharge/storage limits, certified charger settings, containment, and safety controls before powered acceptance. |
+| PDS-BLK-007 | Closed at definition level by referencing `S&A/PCB_General_Rules.md` as the baseline Carvera Air/PCB rule set; deviations/evidence remain execution records. | No unresolved DFM rule-definition blocker for `PDS-VV-CON-009`. | During execution, map applicable rules to board/coupon IDs and record Carvera/PCB pre-checks, workmanship evidence, deviations, and waivers. |
+| PDS-BLK-008 | Closed at definition level by selected conservative missed-demand interpretation and quantitative setpoint/trial criteria for `PDS-VV-CON-003`. | Formal protection-probability credit remains execution-evidence pending. | Use missed demanded unsafe protection-action probability `<1%` per mode; strict claim requires 299 independent zero-miss demanded trials per mode, predeclared safe setpoints, safe-outcome rules, independence rationale, and exact-binomial reporting. |
+| PDS-BLK-009 | Reclassified as campaign/execution confirmation for rail-test parameters: no-load, nominal-load, and 1 A cases; thermal limits; settling windows; ripple treatment; sample count; and calibration status. | Not a `PDS-VV-CON-004` definition blocker. | Freeze the rail campaign parameters before execution and record actual settings/evidence in the report. |
+
+#### 2.6.1 PDS §2.6 closure detail folded into this register
+
+This subsection folds the 2026-07-02 PDS closure record into the CON-003 register at definition-planning level only. No tests are executed here, no execution report or pass/fail credit is created, and no `.d2` or `.png` source/model edits are performed by this PM&SE update.
+
+##### Folded PDS candidate and update register
+
+| Candidate / update | Type | Status and follow-up |
+|---|---|---|
+| `PDS-VV-CON-010` | New regulator-efficiency validation candidate | Queued for the README 3.3 V and 5 V rail `1 A` / `95%` efficiency requirements; detailed modeled definition and execution remain pending. |
+| INA219 `[CE] I2C` source follow-on | Pending source-model/D2 edit | Add explicit I2C exchange between ESS Processing/XIAO and Battery monitoring/INA219, then refresh derived artifacts as required before final CE completeness credit. |
+| Master switch/accessibility | Pending source-model/interface edit or waiver | Clarify hardware/interface detail in the PDS physical/source model or approve a controlled waiver before unqualified allocation/safe-power-off closure. |
+
+##### Folded existing PDS test update list
+
+| Artifact / activity | Definition-planning update retained here |
+|---|---|
+| `PDS-VV-FC-002` | Align battery-supervision and CE completeness wording with the pending INA219 I2C source edit; execution evidence remains pending. |
+| `PDS-VV-CON-002` | Keep the 6 h On-mode load profile/current budget campaign-defined; freeze profile, logging, thermal envelope, anomaly handling, and end criteria before execution. |
+| `PDS-VV-CON-003` | Use the selected conservative missed-demand interpretation, 299 zero-miss independent demanded trials per mode for strict `<1%` claim, predeclared setpoints, safe-outcome rules, independence rationale, and exact-binomial reporting. |
+| `PDS-VV-CON-004` | Treat nominal-load, no-load/1 A cases, thermal limits, settling windows, ripple treatment, sample counts, and calibration status as campaign execution parameters. |
+| `PDS-VV-CON-009` | Reference `S&A/PCB_General_Rules.md` for Carvera Air/PCB rules; board-specific DFM pre-checks, workmanship evidence, deviations, and waivers are execution records. |
+| `PDS-VV-ALLOC-001` | Keep master switch/accessibility as a pending source/interface update or waiver before unqualified allocation and external-actor safe-power-off credit. |
+| `PDS&ESS/MBSE/tests/README.md` | Keep the efficiency candidate, source follow-ons, existing-test caveats, incremental-gate caveat, and execution-only prerequisites visible in the PDS test index. |
+
+##### Folded residual PDS execution-only prerequisites
+
+- As-tested article IDs, hardware revisions, regulator/protection/INA219 identities, harness/backplane configuration, firmware/software baselines, and deviations.
+- Li-ion cell/pack safety documents, charger model/certification/settings, charge/discharge/storage limits, containment, observer, and abort controls.
+- Equipment asset IDs/calibration/status for supplies, loads, power analyzer, DMM/DAQ, oscilloscope/logger, logic analyzer, thermal instruments, timebase, and analysis tools.
+- 6 h endurance, rail-load, thermal, settling, ripple, and sample-count campaign settings.
+- Protection thresholds, current-limited overcurrent/short-equivalent and overvoltage fixtures, trial sequence, cooldown/reset, independence evidence, exact-binomial analysis, and deviation handling.
+- DFM board/coupon mapping to `S&A/PCB_General_Rules.md`, Carvera/PCB rule checks, workmanship evidence, high-current trace review, and waiver/deviation records.
+- Final reports and archives must state any unexecuted, limited, or screening evidence without claiming final pass/fail credit.
 
 ### 2.7 PDM blockers
 

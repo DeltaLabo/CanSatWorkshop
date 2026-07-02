@@ -46,7 +46,7 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-system: "[System] PDM-V01-FC-FALL verification allocation\nRefs: PDM_v0.1 views 2-3; PDM-UC-V01-FallTestTerminalSpeed; PM&SE/IVV.md" {
+system: "[System] PDM-V01-FC-FALL verification allocation\nRefs: PDM_v0.1 views 2-3; PDM-UC-V01-FallTestTerminalSpeed; PM&SE/IVV.md; PDM-BLK-007" {
   class: sys
   direction: down
 
@@ -87,8 +87,9 @@ human_test_conductor: "[EA] Human Test Conductor" {
   release_dummy: "[F] Release dummy" { class: func }
   record_anomalies: "[F] Record deviations\nand anomalies" { class: func }
 
-  manual_open: "[C] Pass: parachute is\nfolded/released manually and\nopen for accepted segment." { class: note; shape: page }
-  fault_hardening: "[C] Fault-hardening checks:\nmisfold/tangle, partial opening,\nrelease bias, wind/gusts, and\ndrop damage." { class: note; shape: page }
+  manual_open: "[C] Pass: parachute is\nfolded/released manually and\nopen/stable for accepted segment." { class: note; shape: page }
+  fault_hardening: "[C] Fault-hardening checks:\nmisfold/tangle, partial opening,\nrelease bias, wind/gusts,\nand drop damage;\npredeclared rules required." { class: note; shape: page }
+  anomaly_rules: "[C] Run exclusions must be\npredeclared (non-open/partial-open,\nmajor tangle/misfold, off-camera,\nuncalibrated timing/distance,\nwind beyond criterion,\nor fixture bias). No\nsilent cherry-picking." { class: note; shape: page }
 }
 
 calibrated_scale: "[EA] Calibrated Scale" {
@@ -97,7 +98,7 @@ calibrated_scale: "[EA] Calibrated Scale" {
   grid-columns: 1
 
   measure_mass: "[F] Measure dummy\nmass/configuration" { class: func }
-  mass_input: "[C] Final-estimate mass/configuration\nis a pre-execution input; pass if\nmeasured UUT matches it or documented\ntolerance." { class: note; shape: page }
+  mass_input: "[C] Pass: mass/config matches\nfinal/as-representative value\nwithin +/-5% or +/-10 g (tighter),\nusing scale <=1 g or equivalent\nuncertainty evidence." { class: note; shape: page }
 }
 
 release_fixture: "[EA] Release/Drop Fixture" {
@@ -115,7 +116,7 @@ video_camera: "[EA] Calibrated Video Camera" {
   grid-columns: 1
 
   capture_video: "[F] Capture fall video\nwith time reference" { class: func }
-  calibration_check: "[C] Pass: video scale/time\nreference is visible and retained\nwith equipment identifiers." { class: note; shape: page }
+  calibration_check: "[C] Video/framebase\npass: known frame rate/timestamp\n>=30 fps unless calibrated\nequivalent; side-on view;\nsegment logged and justified." { class: note; shape: page }
 }
 
 reference_target: "[EA] Time/Distance\nReference Target" {
@@ -133,8 +134,11 @@ analysis_workstation: "[EA] Video Analysis Workstation" {
 
   extract_speed_trace: "[F] Extract descent\nspeed trace" { class: func }
   compare_limit: "[F] Compare speed\nagainst 11 m/s" { class: func }
-  speed_limit: "[C] Pass: terminal descent speed\nfrom retained video/time-distance\nevidence <= 11 m/s over accepted\nmeasurement segment." { class: note; shape: page }
-  stat_viewpoint: "[C] Statistical viewpoint:\n3 repetitions are development screening\nonly; reliability/confidence claims need\na stated statistical basis." { class: note; shape: page }
+  speed_limit: "[C] Pass: accepted segment\nis predeclared after open/stable and\nbefore ground-effect/landing\ndisturbance; terminal speed from\nretained evidence + uncertainty\n`<= 11 m/s`." { class: note; shape: page }
+  uncertainty: "[C] Distance calibration\nuncertainty `<=5%`;\nvideo/timebase evidence retained;\nscale uses `<=1 g` or uncertainty\nthat proves tolerance." { class: note; shape: page }
+  wind_gate: "[C] Wind gate:\nmeasured wind `<=3 m/s`\nor documented indoor/still-air\neqivalent for strict pass." { class: note; shape: page }
+  stat_viewpoint: "[C] Statistical viewpoint:\n3 repetitions are development\nscreening only unless separate\nstatistical basis is stated." { class: note; shape: page }
+  evidence_required: "[C] Evidence required for strict credit:\nraw video/calibration, scale/mass records,\nenvironment/wind logs, analysis worksheet/script,\naccepted/rejected segment rationale, repeat-level results,\ndeviations/waivers." { class: note; shape: page }
 }
 
 report_repository: "[EA] Verification Report\nRepository" {
@@ -143,7 +147,6 @@ report_repository: "[EA] Verification Report\nRepository" {
   grid-columns: 1
 
   archive_evidence: "[F] Archive evidence\nand report" { class: func }
-  evidence_required: "[C] Evidence includes model version,\nUUT configuration, video/log files,\nmeasurement method, environment,\ndeviations, and anomalies." { class: note; shape: page }
 }
 
 system.dummy_cansat.top_module.parachute.descent_speed_control.terminal_speed_max -> system.dummy_cansat.top_module.parachute.descent_speed_control.limit_terminal_speed { class: cstr }
@@ -151,8 +154,13 @@ system.dummy_cansat.top_module.parachute.descent_speed_control.allocation_analys
 human_test_conductor.manual_open -> human_test_conductor.inspect_parachute { class: cstr }
 human_test_conductor.manual_open -> human_test_conductor.release_dummy { class: cstr }
 human_test_conductor.fault_hardening -> human_test_conductor.inspect_parachute { class: cstr }
+human_test_conductor.anomaly_rules -> human_test_conductor.record_anomalies { class: cstr }
+human_test_conductor.fault_hardening -> human_test_conductor.release_dummy { class: cstr }
 calibrated_scale.mass_input -> calibrated_scale.measure_mass { class: cstr }
 video_camera.calibration_check -> video_camera.capture_video { class: cstr }
 analysis_workstation.speed_limit -> analysis_workstation.compare_limit { class: cstr }
+analysis_workstation.uncertainty -> analysis_workstation.compare_limit { class: cstr }
+analysis_workstation.wind_gate -> analysis_workstation.compare_limit { class: cstr }
 analysis_workstation.stat_viewpoint -> analysis_workstation.compare_limit { class: cstr }
-report_repository.evidence_required -> report_repository.archive_evidence { class: cstr }
+analysis_workstation.evidence_required -> analysis_workstation.extract_speed_trace { class: cstr }
+analysis_workstation.evidence_required -> report_repository.archive_evidence { class: cstr }

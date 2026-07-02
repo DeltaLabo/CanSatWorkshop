@@ -76,9 +76,10 @@ servo_camera: "[EA] High-speed camera / optical observer\nservo, cap, holder, pa
 ambient_monitor: "[EA] Calibrated ambient thermometer/hygrometer\nmodel, serial, and calibration recorded" { class: ea }
 recovery_net: "[EA] Recovery net / soft landing area\ncontains parachute/CanSat after release" { class: ea }
 
-note_source: "[C] Source-baseline setup constraint\nUse copied source views in source_views/v1.0/ and record UUT serial, hardware\nrevision, firmware commit/build, source baseline, equipment IDs, and calibration\nstatus before trial data is credited." { class: note; shape: page }
-note_nonintrusive: "[C] Non-intrusive probe constraint\nTemporary probe pads, witness marks, and harnesses shall not change the modeled\nADS IMU → OBCC/PDM → PWM → servo/holder deployment behavior or bypass safety gates." { class: note; shape: page }
-note_environment: "[C] Environmental condition constraint\nThe ambient monitor is physically present and read before repetitions and after\nfault/brownout cases. Record temperature/humidity, power limits, and deviations." { class: note; shape: page }
+note_source: "[C] Source-baseline setup constraint\nUse copied source views in source_views/v1.0/ and record UUT serial/article ID, hardware\nrevision, firmware/build map, source baseline, trial IDs, and source/algorithm variant\nbefore trial data is credited." { class: note; shape: page }
+note_readiness: "[C] Readiness and evidence prerequisites before credit\nPredeclare: ADS stimulus/fault set, freshness/status log schema,\ntimebase/clocks IDs for all log sources, equipment asset IDs, calibration certificates,\nenvironment/power/safety limits, safe-fixture vs live-release authorization,\nevidence archive ID/path, statistical claim type, and deviations/waivers." { class: note; shape: page }
+note_freshness: "[C] ADS freshness/status dependency\nOnly normal triggers use status=VALID with age_ms <= 400 ms.\nSTALE/NO_DATA/TIMEOUT/SENSOR_FAULT/INIT_FAIL inputs are not normal trigger inputs\nfor open-command acceptance." { class: note; shape: page }
+note_environment: "[C] Environmental condition constraint\nThe ambient monitor is physically present and read before repetitions and after\nfault/brownout cases. Record temperature/humidity, power limits, wind if applicable,\nand deviations before verdicting." { class: note; shape: page }
 note_safety: "[C] Test safety and recovery constraint\nThe motion/drop rig and recovery area prevent uncontrolled impact. If the servo,\ncap, holder, or parachute jams, preserve the as-found condition for evidence." { class: note; shape: page }
 note_physical_inspection: "[C] Supporting inspection pass/fail\nBefore functional trials, inspect presence/configuration of ADS IMU path, OBCC\nXIAO, backplane links, PDM JST/servo cable, cap fixture, rotating link, nylon\nthread, servo fixture, parachute, and ≤30 cm diameter gauge fit." { class: note; shape: page }
 
@@ -95,6 +96,9 @@ system.uut.parachute_module.diameter_gauge -- system.uut.parachute_module.parach
 system.uut.parachute_module.holder_witness -- system.uut.parachute_module.cap: "[PL] witness\nmark contact" { class: pl }
 
 note_source -> system.uut { class: cstr }
+note_readiness -> note_freshness { class: cstr }
+note_readiness -> system.uut { class: cstr }
+note_freshness -> system.uut.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }
 note_nonintrusive -> system.uut.ads_module.ads_pcb.ads_service_probe { class: cstr }
 note_nonintrusive -> system.uut.obcc_module.obcc_pcb.pwm_probe { class: cstr }
 note_environment -> ambient_monitor { class: cstr }
@@ -106,7 +110,9 @@ note_physical_inspection -> system.uut.backplane_pcb { class: cstr }
 
 # Layout-only rank hints for the constraint-note band.
 system -> note_source { style: { opacity: 0 } }
-note_source -> note_nonintrusive { style: { opacity: 0 } }
+note_source -> note_readiness { style: { opacity: 0 } }
+note_readiness -> note_freshness { style: { opacity: 0 } }
+note_freshness -> note_nonintrusive { style: { opacity: 0 } }
 note_nonintrusive -> note_environment { style: { opacity: 0 } }
 note_environment -> note_safety { style: { opacity: 0 } }
 note_safety -> note_physical_inspection { style: { opacity: 0 } }

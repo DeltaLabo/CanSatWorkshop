@@ -74,6 +74,7 @@ system: "[System] Physical System" {
 
       antenna_2_4ghz: "[PC] 2.4 GHz Antenna" { class: pc }
       note_preflight_ble: "[C] BLE connection\nestablished pre-flight" { class: note; shape: page }
+      note_ble_pwm_validity: "[C] BLE/PWM deployment path\npre-flight BLE; airborne open command\nconverted to PWM open intent;\nno actuation-caused reset/brownout,\nboot/watchdog marker, log discontinuity,\nor BLE reconnect" { class: note; shape: page }
     }
 
     parachute_module: "[PC] Parachute Module" {
@@ -112,10 +113,17 @@ system: "[System] Physical System" {
 
         voltage_regulation: "[LC] Voltage regulation" { class: lc }
       }
+
+      note_power_validity: "[C] Power-validity context\nVoltage regulation/Power storage support\nservo rail 5.0 V +/-10% (4.5-5.5 V)\nduring command/actuation;\ncurrent/thermal evidence shows\nno collapse or unsafe stall" { class: note; shape: page }
     }
   }
 }
 
 human_tester -> system.cansat.obcc_module.xiao_esp32_c3.obcc: "[CE] BLE\ncommand/control" { class: ce }
 system.cansat.obcc_module.note_preflight_ble -> system.cansat.obcc_module.xiao_esp32_c3.obcc { class: cstr }
+system.cansat.obcc_module.note_ble_pwm_validity -> system.cansat.obcc_module.xiao_esp32_c3.obcc { class: cstr }
+system.cansat.obcc_module.note_ble_pwm_validity -> system.cansat.parachute_module.servo.parachute_trigger { class: cstr }
+system.cansat.power_module.note_power_validity -> system.cansat.power_module.battery.power_storage { class: cstr }
+system.cansat.power_module.note_power_validity -> system.cansat.power_module.boost_converter.voltage_regulation { class: cstr }
+system.cansat.power_module.note_power_validity -> system.cansat.parachute_module.servo.parachute_trigger { class: cstr }
 system.cansat.obcc_module.xiao_esp32_c3.obcc -> system.cansat.parachute_module.servo.parachute_trigger: "[CE] PWM" { class: ce }

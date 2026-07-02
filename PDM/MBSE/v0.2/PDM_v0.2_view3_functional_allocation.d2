@@ -86,6 +86,7 @@ system: "[System] Physical System" {
           direction: down
 
           limit_terminal_speed: "[F] Limit terminal speed" { class: func }
+          note_terminal_speed_link: "[C] Terminal-speed evidence linkage\nLimit terminal speed criterion <= 11 m/s\nvia PDM-V02-TEST-TERMINAL-SPEED\nand/or applicable PDM-V01-FC-FALL evidence\nwith v0.2 applicability rationale" { class: note; shape: page }
         }
       }
 
@@ -98,6 +99,7 @@ system: "[System] Physical System" {
           direction: down
 
           open_parachute: "[F] Open parachute" { class: func }
+          note_open_validity: "[C] Open-command validity\nOpen parachute credit requires\npower-valid actuation and no\nactuation-caused reset/log discontinuity\nor BLE reconnect" { class: note; shape: page }
         }
       }
     }
@@ -116,6 +118,7 @@ system: "[System] Physical System" {
 
           maintain_ble_connection: "[F] Maintain BLE\nconnection" { class: func }
           set_pwm_open_position: "[F] Set PWM to open\nposition" { class: func }
+          note_ble_pwm_validity: "[C] BLE/PWM path validity\nPre-flight BLE and airborne open command\nshall remain connected; no reset,\nbrownout marker, boot/watchdog marker,\ntelemetry/log discontinuity, or BLE reconnect" { class: note; shape: page }
         }
       }
 
@@ -135,6 +138,7 @@ system: "[System] Physical System" {
           direction: down
 
           provide_power: "[F] Provide power" { class: func }
+          note_power_trace: "[C] Provide power validity\nServo/boost rail 5.0 V +/-10%\n(4.5 V to 5.5 V) during command/actuation;\nV/I trace pre-command baseline\nthrough >= 2 s after open/failure" { class: note; shape: page }
         }
       }
 
@@ -147,6 +151,7 @@ system: "[System] Physical System" {
           direction: down
 
           step_up_voltage: "[F] Step up voltage" { class: func }
+          note_regulation_current_thermal: "[C] Voltage/current/thermal evidence\nNo current-limit collapse, boost thermal shutdown,\nsmoke, swelling, connector heating,\nor sustained stall outside safe envelope" { class: note; shape: page }
         }
       }
     }
@@ -157,6 +162,12 @@ system: "[System] Physical System" {
 
 note_preflight_ble -> human_tester.establish_ble_connection { class: cstr }
 note_airborne -> human_tester.send_ble_open_command { class: cstr }
+system.cansat.parachute_module.parachute.descent_speed_control.note_terminal_speed_link -> system.cansat.parachute_module.parachute.descent_speed_control.limit_terminal_speed { class: cstr }
+system.cansat.parachute_module.servo.parachute_trigger.note_open_validity -> system.cansat.parachute_module.servo.parachute_trigger.open_parachute { class: cstr }
+system.cansat.obcc_module.xiao_esp32_c3.obcc.note_ble_pwm_validity -> system.cansat.obcc_module.xiao_esp32_c3.obcc.maintain_ble_connection { class: cstr }
+system.cansat.obcc_module.xiao_esp32_c3.obcc.note_ble_pwm_validity -> system.cansat.obcc_module.xiao_esp32_c3.obcc.set_pwm_open_position { class: cstr }
+system.cansat.power_module.battery.power_storage.note_power_trace -> system.cansat.power_module.battery.power_storage.provide_power { class: cstr }
+system.cansat.power_module.boost_converter.voltage_regulation.note_regulation_current_thermal -> system.cansat.power_module.boost_converter.voltage_regulation.step_up_voltage { class: cstr }
 system.cansat.note_pds_v0_1 -> system.cansat.power_module { class: cstr }
 
 # Layout-only edges keep the pre-flight and airborne notes close to their

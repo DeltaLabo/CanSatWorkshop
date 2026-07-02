@@ -55,7 +55,15 @@ chain: "PDM v0.1 — Fall test chain (3 reps)" {
   measure_terminal_speed: "[F] Measure\nterminal speed\nfrom video" { class: func }
 
   with_parachute_open: "[C] With\nparachute open" { class: note; shape: page }
-  terminal_speed_max: "[C] 11 m/s max." { class: note; shape: page }
+  terminal_speed_max: "[C] Terminal speed\n<= 11 m/s\n(measured + uncertainty/guard band)" { class: note; shape: page }
+  mass_tolerance: "[C] Dummy mass/config\nwithin +/-5% or +/-10 g\n(whichever is tighter)" { class: note; shape: page }
+  scale_resolution: "[C] Mass scale\nresolution <= 1 g\nor equivalent uncertainty" { class: note; shape: page }
+  video_timebase: "[C] Retained video\nwith known frame rate\nor timestamped frames\n>= 30 fps unless\ncalibrated timebase" { class: note; shape: page }
+  distance_uncertainty: "[C] Distance calibration\nuncertainty <= 5%" { class: note; shape: page }
+  accepted_measure_segment: "[C] Accepted measurement\nsegment after\nparachute open/stable\nbefore ground effect" { class: note; shape: page }
+  wind_condition: "[C] Wind <= 3 m/s\nor justified indoor/still-air\nequivalent" { class: note; shape: page }
+  anomaly_rules: "[C] Predeclared\nanomaly/exclusion rules" { class: note; shape: page }
+  repetitions_scope: "[C] 3 repetitions\nare development\nscreening only" { class: note; shape: page }
 }
 
 chain.record_fall -> chain.release_dummy: "[FE] Test Ready []" { class: fe }
@@ -64,3 +72,11 @@ chain.limit_terminal_speed -> chain.measure_terminal_speed: "[FE] Landing []" { 
 
 chain.with_parachute_open -> chain.release_dummy { class: cstr }
 chain.terminal_speed_max -> chain.limit_terminal_speed { class: cstr }
+chain.mass_tolerance -> chain.measure_terminal_speed { class: cstr }
+chain.scale_resolution -> chain.measure_terminal_speed { class: cstr }
+chain.video_timebase -> chain.measure_terminal_speed { class: cstr }
+chain.distance_uncertainty -> chain.measure_terminal_speed { class: cstr }
+chain.accepted_measure_segment -> chain.measure_terminal_speed { class: cstr }
+chain.wind_condition -> chain.measure_terminal_speed { class: cstr }
+chain.anomaly_rules -> chain.measure_terminal_speed { class: cstr }
+chain.repetitions_scope -> chain.measure_terminal_speed { class: cstr }

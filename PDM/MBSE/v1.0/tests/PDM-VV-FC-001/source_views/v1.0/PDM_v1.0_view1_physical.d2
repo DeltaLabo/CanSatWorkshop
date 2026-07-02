@@ -101,6 +101,7 @@ system: "[System] Physical System" {
       parachute: "[PC] Parachute" { class: pc }
       servo: "[PC] Servo" { class: pc }
       max_diameter_30cm: "[C] Max. diameter\n30 cm" { class: note; shape: page }
+      terminal_speed_11ms: "[C] Deployed parachute\nterminal descent speed\n<= 11 m/s" { class: note; shape: page }
     }
   }
 }
@@ -136,6 +137,7 @@ system.cansat.parachute_module.cap -- system.cansat.parachute_module.servo: "[PL
 system.cansat.parachute_module.servo -- system.cansat.backplane_pcb.pdm_jst_connector: "[PL] Servo cable\n(PWM + 5V)" { class: pl }
 
 system.cansat.parachute_module.max_diameter_30cm -> system.cansat.parachute_module.parachute { class: cstr }
+system.cansat.parachute_module.terminal_speed_11ms -> system.cansat.parachute_module.parachute { class: cstr }
 
 # Layout-only edges keep module order close to the combined ADS/PDM stack.
 # They carry no Capella semantics.

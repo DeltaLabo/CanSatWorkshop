@@ -46,7 +46,7 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-chain: "PDM-V02-FC-BLE-DEPLOY — source inventory and IVV coverage\nrefs: PDM v0.2 views 1-4; PDS v0.1; PM&SE/IVV.md" {
+chain: "PDM-V02-FC-BLE-DEPLOY — source inventory and IVV coverage\nrefs: PDM v0.2 views 1-4; PDM-BLK-006; PM&SE/IVV.md" {
   class: chain
   direction: right
 
@@ -54,6 +54,8 @@ chain: "PDM-V02-FC-BLE-DEPLOY — source inventory and IVV coverage\nrefs: PDM v
   note_source_views: "[C] Copied source views\nview1 physical\nview2 logical\nview3 allocation\nview4 parachute chain" { class: note; shape: page }
   note_ivv_minimum: "[C] IVV minimum coverage\nPC/PL inspection\nCE analysis\nLC allocation analysis\nFC/scenario + constraints" { class: note; shape: page }
   note_traceability: "[C] Trace targets\nPDM-UC-V02-ManualBLEDeployment\nPDM-UC-V02-LimitTerminalSpeed\nPDM-FE-V02-NonDeployment\nPDM-FE-V02-PrematureDeployment\nPDM-FE-V02-BLELinkLoss" { class: note; shape: page }
+  note_power_oracle: "[C] Power oracle\nServo rail command nominal `5.0 V` and bound to\n`5.0 V +/- 10%` (`4.5 V` to `5.5 V`) during command/actuation\nNo actuation-caused OBCC/XIAO reset, brownout, reconnect,\nor telemetry/log continuity loss\nCurrent/thermal envelope observed from pre-command baseline\nthrough >=2 s after open-state observation or branch failure" { class: note; shape: page }
+  note_terminal_speed: "[C] Terminal-speed evidence linkage\n`PDM-V02-FC-BLE-DEPLOY` requires explicit linkage to\n`PDM-V02-TEST-TERMINAL-SPEED` and/or applicable `PDM-V01-FC-FALL` evidence\nfor the selected `<= 11 m/s` criterion with as-tested mass/parachute/configuration\napplicability. If neither in-run nor linked evidence exists,\nreport a terminal-speed hold/gap." { class: note; shape: page }
 
   identify_baseline: "[F] Identify PDM v0.2\nsource baseline" { class: func }
   inspect_physical_inventory: "[F] Plan PC/PL\npresence inspection" { class: func }
@@ -76,3 +78,7 @@ chain.note_ivv_minimum -> chain.analyze_component_exchanges { class: cstr }
 chain.note_ivv_minimum -> chain.analyze_logical_allocation { class: cstr }
 chain.note_traceability -> chain.define_ble_deployment_activity { class: cstr }
 chain.note_traceability -> chain.bind_report_evidence { class: cstr }
+chain.note_power_oracle -> chain.define_ble_deployment_activity { class: cstr }
+chain.note_power_oracle -> chain.bind_report_evidence { class: cstr }
+chain.note_terminal_speed -> chain.define_ble_deployment_activity { class: cstr }
+chain.note_terminal_speed -> chain.bind_report_evidence { class: cstr }

@@ -95,7 +95,10 @@ system: "[System] Physical System" {
 
         obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
 
-        note_imu_trigger: "[C] Deployment trigger\nuses ADS IMU data" { class: note; shape: page }
+        note_imu_trigger: "[C] Deployment trigger\nuses ADS IMU data;\nno manual/BLE\nflight command" { class: note; shape: page }
+        note_ads_freshness: "[C] Pointers/Returns\nnormal-trigger input:\nstatus VALID, finite/in-range\nfields, age_ms <= 400 ms.\nNon-VALID (STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT,\nINIT_FAIL) is not\na normal trigger." { class: note; shape: page }
+        note_obcc_policy_boundary: "[C] OBCC owns mode,\ntrigger, emergency,\nsafe/error and\nno-false-success decisions.\nPDM executes command\nand exposes status." { class: note; shape: page }
+        note_status_mapping: "[C] PDM/actuator evidence\nmaps to deployment_status.\nCOMMAND_SENT is not\ndeployed/success;\nonly OPEN_CONFIRMED\nis strict success." { class: note; shape: page }
       }
     }
 
@@ -131,9 +134,16 @@ system: "[System] Physical System" {
 }
 
 system.cansat.ads_module.ads_pcb.imu.ads_kinematic_sensing -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing: "[CE] I2C" { class: ce }
-system.cansat.obcc_module.obcc_pcb.xiao.ads_processing -> system.cansat.obcc_module.obcc_pcb.xiao.obcc: "[CE] Pointers/\nReturns" { class: ce }
-system.cansat.obcc_module.obcc_pcb.xiao.obcc -> system.cansat.parachute_module.servo.trigger: "[CE] PWM" { class: ce }
-system.cansat.parachute_module.servo.trigger -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing: "[CE] PWM" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.ads_processing -> system.cansat.obcc_module.obcc_pcb.xiao.obcc: "[CE] Pointers/Returns\nVALID + age_ms <= 400 ms" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.obcc -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing: "[CE] Deploy command\n/ deployment_status" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing -> system.cansat.parachute_module.servo.trigger: "[CE] PWM command" { class: ce }
+system.cansat.parachute_module.servo.trigger -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing: "[CE] Status evidence" { class: ce }
 system.cansat.parachute_module.servo.trigger -> system.cansat.parachute_module.cap.parachute_holder: "[CE] Torque" { class: ce }
 
 system.cansat.obcc_module.obcc_pcb.note_imu_trigger -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_ads_freshness -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_ads_freshness -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_obcc_policy_boundary -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_obcc_policy_boundary -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_status_mapping -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_status_mapping -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }

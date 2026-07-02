@@ -11,7 +11,7 @@ This package defines a model-based verification activity for the PDM v1.0 IMU-tr
 
 - PDM uses the OBCC-owned deployment/fault policy baseline in [`../../../../../OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md`](../../../../../OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md). OBCC owns mode, trigger, emergency-deploy, descent observability, safe/error, and no-false-success decisions.
 - PDM deploys when commanded by OBCC and exposes available actuator/servo status evidence. This package does not redefine OBCC emergency policy. PDM/actuator evidence shall be mappable to the OBCC telemetry `deployment_status` / `Parachute Deployment Status` enum so downstream OBCC, DPS CSV, dashboard, and reports can preserve raw code/name/category without false success.
-- ADS input freshness/status evidence used at the PDM/OBCC trigger observation point follows [`../../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md`](../../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md): `VALID` is usable for normal triggers only when `age_ms <= 400 ms`; non-`VALID` statuses are not normal triggers.
+- ADS input freshness/status evidence used at the PDM/OBCC trigger observation point follows [`../../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md`](../../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md): `VALID` is usable for normal triggers only when `age_ms <= 400 ms` and all required fields are finite/in range; `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, and `INIT_FAIL` are not normal triggers.
 
 ## Source-view copies
 
@@ -48,14 +48,14 @@ All D2 views were rendered with the required ELK command and have PNGs next to t
 
 Pass only if all modeled criteria are satisfied and evidenced:
 
-1. A nominal OBCC-accepted IMU-derived trigger profile with fresh-valid ADS input produces exactly one complete ordered deployment chain.
-2. Negative/non-deploy profiles, manual/BLE attempts, stale/bad data profiles, and other non-`VALID` ADS inputs do not produce a normal flight-mode open command.
+1. A nominal OBCC-accepted IMU-derived trigger profile with fresh-valid ADS input (`status == VALID` and `age_ms <= 400 ms`) produces exactly one complete ordered deployment chain.
+2. Negative/non-deploy profiles, manual/BLE attempts, stale/bad data profiles, and other non-`VALID` ADS inputs (`STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`) do not produce a normal flight-mode open command.
 3. I2C reads succeed or time out within `≤5 ms`; I2C fault cases are bounded and reported.
 4. Process/calculate functions complete in `<5 ms`; no unexpected blocking outside modeled I2C communications.
 5. Startup/reset servo position is `0 degrees`/closed; no open pulse occurs before the deployment condition.
 6. Angular-rate error is `<30 deg/s` or deployment thresholds are analyzed robust to that error with documented truth/reference and guard-band handling.
 7. Parachute diameter is `≤30 cm`; terminal-speed evidence linked from `PDM-VV-FC-003` or an equivalent controlled activity demonstrates `<= 11 m/s` using representative as-tested mass/configuration, deployed parachute condition, calibrated video/time-distance or equivalent measurement, uncertainty/guard band, wind/environment record, and anomaly/deviation rules. If that evidence is absent, this activity cannot claim terminal-speed credit.
-8. Servo jam/no-open, brownout/reset, bad/stale IMU data, false-trigger profiles, and command-path faults do not create false success claims; deployment success requires `OPEN_CONFIRMED` backed by PDM feedback or independent safe-fixture/current/position observer evidence and mapped to OBCC `deployment_status`.
+8. Open-command timing and status must follow OBCC policy: for accepted On-mode normal or emergency deployment requests, deployment confirmation (or equivalent `OPEN_CONFIRMED` evidence) must be observed within `<=5 s`; otherwise verdict is fault (`TIMEOUT`, `JAM_DETECTED`, `PDM_FAULT`, `UNKNOWN`, etc.). Servo jam/no-open, brownout/reset, bad/stale IMU data, false-trigger profiles, and command-path faults do not create false success claims; deployment success requires `OPEN_CONFIRMED` backed by PDM feedback or independent safe-fixture/current/position observer evidence and mapped to OBCC `deployment_status`.
 9. Evidence package includes source model version, UUT configuration, firmware commit/build, stimulus profiles, raw logs/traces/video, timing/accuracy analysis, environmental conditions, deviations, anomalies, waivers, limitations, and retest status.
 
 ## Deployment status/no-false-success semantics
@@ -91,10 +91,10 @@ Outline-level evidence options are servo feedback if implemented, PWM trace, cur
 - UUT article ID; PDM, ADS, and OBCC hardware revisions; backplane and harness configuration.
 - Firmware commits, builds, and configuration for PDM, OBCC, and ADS; source/build maps where timing or source-analysis claims are made.
 - IMU stimulus/replay set covering nominal trigger profiles, negative/no-trigger profiles, stale/bad data profiles, I2C NACK/disconnect/stuck bus cases, brownout/reset, servo jam/no-open, and no-manual/BLE regression cases.
-- ADS input freshness/status evidence at the PDM/OBCC trigger observation point using the shared freshness contract: `VALID` only when `age_ms <= 400 ms`; `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, and `INIT_FAIL` are not normal triggers.
+- ADS input freshness/status evidence at the PDM/OBCC trigger observation point using the shared freshness contract: `VALID` only when `age_ms <= 400 ms`; `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, and `INIT_FAIL` are not normal triggers. Include consumer/request timestamps and clock-correlation IDs/method so cross-instrument timing can be reproduced.
 - Angular-rate truth or robust-threshold evidence where relevant: calibrated motor/tachometer or equivalent, `deg/s = RPM x 6` if using RPM, `n = 59` all-in-limit samples for strict timing/accuracy claims, and uncertainty/guard-band handling.
 - Timing instrumentation for I2C `<=5 ms`, process/calculate `<5 ms`, `<=5 s` deployment timing where applicable, no-blocking/heartbeat evidence, and instrumentation overhead handling.
-- Equipment asset IDs, calibration/status, environmental limits, safe fixture or live-release authorization, power conditions, evidence archive path, statistical claim type (development screening vs R90/C95 vs 95/95 timing), deviations, and waivers.
+- Equipment asset IDs, calibration/status, clock/timebase correlation IDs, environmental limits, safe fixture or live-release authorization, power conditions, evidence archive path, statistical claim type (development screening vs R90/C95 vs 95/95 timing), deviations, and waivers.
 
 ## Expected report/evidence location
 
@@ -108,6 +108,6 @@ The report shall identify referenced model elements, selected SSIV/version, as-t
 
 - PDM v1.0 → flight readiness remains the selected target context.
 - Traceability targets are provisional IDs because explicit mission/capability/use-case/feared-event nodes are not present in the PDM v1.0 source views.
-- The selected v1.0 terminal descent-speed criterion is `<= 11 m/s`; D2/model updates, a detailed `PDM-VV-FC-003` definition, and execution evidence remain pending.
+- The selected v1.0 terminal descent-speed criterion is `<= 11 m/s`; the existing `PDM-VV-FC-001` source/test D2 views now carry this linkage, while a detailed standalone `PDM-VV-FC-003` definition and execution evidence remain pending.
 - OBCC owns emergency deployment, lost-observability, safe/error, and no-false-success policy; PDM-specific implementation/status field names remain execution/model detail, but their meanings shall map to the controlled `deployment_status` enum above before any OBCC/DPS telemetry success claim.
 - The pre-execution readiness checklist above is not execution evidence; reports must record it before credit.

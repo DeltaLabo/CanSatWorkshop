@@ -38,11 +38,25 @@ It also provides linked coverage for `[PC] Dummy CanSat`, `[PC] Top module`, `[P
 
 Pass only if the as-executed evidence supports all applicable modeled constraints:
 
-- Dummy CanSat mass/configuration matches the final/as-representative PDM drop configuration within `+/- 5%` or `+/- 10 g`, whichever is tighter, unless a controlled execution rationale approves a different tolerance. Use a scale with `<= 1 g` resolution or measurement uncertainty showing the tolerance can be judged.
-- Parachute is folded/released manually as modeled and is open/stable for the accepted measurement segment; non-open/partial-open, major tangle, misfold, damage, or release-bias anomalies are failed or excluded only by predeclared anomaly rules.
-- Terminal descent speed is calculated from retained video/time-distance evidence or an equivalent calibrated timebase. Strict screening requires known frame rate/timestamped frames (`>= 30 fps` unless another calibrated timebase is used), distance calibration uncertainty `<= 5%`, a side-on accepted segment after open/stable descent and before ground-effect/landing disturbance, and measured speed plus uncertainty/guard band `<= 11 m/s`.
+- Dummy CanSat mass/configuration matches the final/as-representative PDM drop configuration within `+/- 5%` or `+/- 10 g`, whichever is tighter, unless a controlled execution rationale approves a different tolerance. Use a scale with `<= 1 g` resolution or measurement uncertainty that supports that tolerance.
+- Parachute is folded/released manually as modeled and is open/stable for the accepted measurement segment; non-open/partial-open parachute, major tangle, misfold, release-bias, or visible damage-related segment effects are failed or excluded only by predeclared anomaly rules.
+- Terminal descent speed is calculated from retained video/time-distance evidence or an equivalent calibrated timebase. Strict pass requires known frame rate/timestamped frames (`>= 30 fps` unless another calibrated timebase is used), distance calibration uncertainty `<= 5%`, a side-on accepted segment after parachute open/stable and before ground-effect/landing disturbance, and measured speed plus uncertainty/guard band `<= 11 m/s`.
 - Wind/environment satisfies the strict screening condition of measured wind `<= 3 m/s` or justified indoor/still-air equivalent, with ambient conditions recorded.
-- Evidence includes source model version, UUT configuration, dummy/reference mass records, scale ID/status, ballast/center-of-mass notes where relevant, raw video and calibration records, analysis worksheet/script, environment, accepted/rejected segment rationale, repeat-level results, deviations, and anomalies.
+- No silent cherry-picking: predeclared accepted/rejected rationale is required for each run.
+- Evidence includes source model version, UUT configuration, dummy/reference mass records, scale ID/status, ballast/center-of-mass notes where relevant, raw video and calibration records, analysis worksheet/script, ambient/wind records, accepted/rejected segment rationale, repeat-level results, anomalies, and waivers.
+
+## Execution-specific strict-credit prerequisites
+
+Strict-credit interpretation is allowed only if all of the following execution-specific items are predeclared:
+
+- final/as-tested mass (or applicability rationale if still unknown);
+- scale/camera/timebase IDs, model/serial/lot, and calibration status;
+- distance-calibration method and marker fixture IDs + raw references;
+- wind-meter/airstream sensor IDs + location + exposure log;
+- release-fixture ID and operation log; and
+- predeclared anomaly/exclusion rulebook and run-level accept/reject rationale.
+
+If any item is missing, results are characterization/development-screening only for that run.
 
 ## Quantitative interpretation criteria (`PDM-BLK-007`)
 

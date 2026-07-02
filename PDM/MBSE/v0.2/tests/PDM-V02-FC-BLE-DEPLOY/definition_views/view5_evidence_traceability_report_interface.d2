@@ -52,17 +52,18 @@ chain: "PDM-V02-FC-BLE-DEPLOY — evidence, traceability, and report interface\n
 
   note_traceability: "[C] Traceability targets\nPDM-UC-V02-ManualBLEDeployment\nPDM-UC-V02-LimitTerminalSpeed\nPDM-FE-V02-NonDeployment\nPDM-FE-V02-PrematureDeployment\nPDM-FE-V02-BLELinkLoss" { class: note; shape: page }
   note_report_location: "[C] Expected report reference\nPDM/MBSE/v0.2/tests/results/\nPDM-V02-FC-BLE-DEPLOY/report.md" { class: note; shape: page }
-  note_report_contents: "[C] Minimum report content\nmodel baseline, as-tested UUT, BLE config,\nrange/LOS, environment, logs/video/PWM/power,\nresults, deviations, anomalies, waivers" { class: note; shape: page }
-  note_constraint_mapping: "[C] Constraint mapping\nBLE >=20 m LOS; pre-flight BLE; airborne command;\nno premature actuation; PDS v0.1 power;\nterminal-speed evidence linkage" { class: note; shape: page }
+  note_report_contents: "[C] Minimum report content\nmodel baseline, source/UUT IDs, as-tested configuration,\nBLE controller/device IDs, range/LOS evidence, wind/environment,\npower trace start at pre-command baseline through >=2 s post-open/fail,\ntraces at servo/boost rail with logger/equipment IDs\nand calibration notes, constraints, pass/fail rationale,\ndeviations/anomalies, waivers" { class: note; shape: page }
+  note_constraint_mapping: "[C] Constraint mapping\nBLE >=20 m LOS; pre-flight BLE; airborne command;\nno premature actuation; `PDM-BLK-006` power and brownout/reconnect\nsemantics; terminal-speed evidence linkage (`<= 11 m/s`)" { class: note; shape: page }
   note_status: "[C] Status\nmodel definition complete; execution evidence not present\nstatus remains Planned / Ready for execution" { class: note; shape: page }
 
   record_model_baseline: "[F] Record model baseline\nand source-view refs" { class: func }
-  record_uut_configuration: "[F] Record UUT and\nverification instrumentation config" { class: func }
-  record_ble_range_environment: "[F] Record BLE device,\nrange/LOS, and environment" { class: func }
-  collect_logs_traces_video: "[F] Collect BLE logs, PWM traces,\npower traces, and video" { class: func }
+  record_uut_configuration: "[F] Record UUT and\nverification instrumentation\nsource/UUT/equipment IDs" { class: func }
+  record_ble_range_environment: "[F] Record BLE device,\nrange/LOS, and wind/environment" { class: func }
+  collect_logs_traces_video: "[F] Collect BLE logs, PWM traces,\npower traces (+ continuity markers),\nand video" { class: func }
   analyze_pass_fail_constraints: "[F] Analyze pass/fail\nconstraints" { class: func }
   classify_faults_deviations: "[F] Classify faults, deviations,\nanomalies, waivers" { class: func }
   bind_terminal_speed_evidence: "[F] Bind terminal-speed\ncompanion evidence if separate" { class: func }
+  validate_terminal_speed_criterion: "[F] Validate `<= 11 m/s` linkage\nwith mass/parachute/config applicability" { class: func }
   issue_report_reference: "[F] Issue controlled\nreport reference" { class: func }
   update_plan_status: "[F] Update v0.2 testing\nplan status" { class: func }
 }
@@ -73,7 +74,8 @@ chain.record_ble_range_environment -> chain.collect_logs_traces_video: "[FE] Exe
 chain.collect_logs_traces_video -> chain.analyze_pass_fail_constraints: "[FE] Evidence package []" { class: fe }
 chain.analyze_pass_fail_constraints -> chain.classify_faults_deviations: "[FE] Pass/fail rationale []" { class: fe }
 chain.classify_faults_deviations -> chain.bind_terminal_speed_evidence: "[FE] Limitations []" { class: fe }
-chain.bind_terminal_speed_evidence -> chain.issue_report_reference: "[FE] Complete record []" { class: fe }
+chain.bind_terminal_speed_evidence -> chain.validate_terminal_speed_criterion: "[FE] Candidate terminal-speed evidence []" { class: fe }
+chain.validate_terminal_speed_criterion -> chain.issue_report_reference: "[FE] Completed linkage []" { class: fe }
 chain.issue_report_reference -> chain.update_plan_status: "[FE] Report reference []" { class: fe }
 
 chain.note_traceability -> chain.record_model_baseline { class: cstr }
@@ -83,4 +85,5 @@ chain.note_report_contents -> chain.record_uut_configuration { class: cstr }
 chain.note_report_contents -> chain.collect_logs_traces_video { class: cstr }
 chain.note_constraint_mapping -> chain.analyze_pass_fail_constraints { class: cstr }
 chain.note_constraint_mapping -> chain.bind_terminal_speed_evidence { class: cstr }
+chain.note_constraint_mapping -> chain.validate_terminal_speed_criterion { class: cstr }
 chain.note_status -> chain.update_plan_status { class: cstr }

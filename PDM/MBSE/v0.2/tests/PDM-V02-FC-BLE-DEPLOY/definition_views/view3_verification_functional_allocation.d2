@@ -46,7 +46,7 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-diagram_title: "[C] PDM-V02-FC-BLE-DEPLOY — verification functional allocation\nrefs: PDM v0.2 views 2-4; PDS v0.1" { class: note; shape: page }
+diagram_title: "[C] PDM-V02-FC-BLE-DEPLOY — verification functional allocation\nrefs: PDM v0.2 views 2-4; PDM-BLK-006" { class: note; shape: page }
 
 human_ble_operator: "[EA] Human BLE test operator" {
   class: ea
@@ -98,6 +98,8 @@ power_logger: "[EA] Battery / boost power logger" {
   direction: down
 
   measure_voltage_current: "[F] Measure battery/boost\nvoltage and current" { class: func }
+  capture_power_window: "[F] Capture trace\npre-command baseline -> >=2 s\nafter open/fail" { class: func }
+  monitor_brownout_log: "[F] Monitor reset/brownout/reconnect\nand telemetry continuity" { class: func }
 }
 
 video_camera: "[EA] Video camera" {
@@ -148,6 +150,7 @@ system: "[System] Physical System UUT\nPDM v0.2 manual BLE deployment" {
 
           timestamp_ble_command: "[F] Timestamp BLE\ncommand receipt" { class: func }
           expose_pwm_probe_point: "[F] Expose PWM\nprobe point" { class: func }
+          correlate_evidence_markers: "[F] Correlate BLE/PWM/power\nwith video markers" { class: func }
         }
       }
 
@@ -220,10 +223,10 @@ system: "[System] Physical System UUT\nPDM v0.2 manual BLE deployment" {
 note_ble_preflight: "[C] Pass: BLE command/control path\nestablished and verified at >=20 m LOS\nbefore airborne/release" { class: note; shape: page }
 note_airborne_command: "[C] Pass: during airborne condition,\nhuman BLE open command leads to\nPWM open position and parachute opening" { class: note; shape: page }
 note_no_precommand: "[C] Pass: no parachute open actuation\nbefore modeled command + airborne condition" { class: note; shape: page }
-note_power: "[C] Pass: PDS v0.1 / battery / boost\nremain within needed voltage/current range\nduring command and servo actuation" { class: note; shape: page }
+note_power: "[C] Pass: servo/boost rail\n`5.0 V +/- 10%` (`4.5 V` to `5.5 V`)\nduring command and actuation\nNo OBCC/XIAO reset, brownout, reboot,\nBLE reconnect, or telemetry/log discontinuity\ndue to actuation\nNo current-limit collapse, thermal shutdown,\nor sustained stall outside safe envelope\nCapture voltage/current from baseline\npre-command through >=2 s after open/fail" { class: note; shape: page }
 note_environment: "[C] Environmental condition formalization\noperator reads identified thermometer\nbefore repetitions and records deviations" { class: note; shape: page }
 note_stat_fault: "[C] Viewpoints\nstatistical: repeated trials; 3 reps = screening\nfault-hardening: BLE loss, late command,\nlow battery, servo jam, antenna orientation,\nwind/gusts, partial deployment" { class: note; shape: page }
-note_terminal_speed: "[C] Terminal-speed limit evidence\nopen-state support is in this activity;\nquantified terminal-speed measurement may be\nlinked companion evidence/report" { class: note; shape: page }
+note_terminal_speed: "[C] Terminal-speed criterion `<= 11 m/s`\nQuantitative speed proof may be via\nlinked `PDM-V02-TEST-TERMINAL-SPEED` and/or\napplicable `PDM-V01-FC-FALL` evidence\nwith as-tested mass/parachute/config applicability.\nIf neither exists, report terminal-speed hold/gap." { class: note; shape: page }
 
 diagram_title -> system { class: cstr }
 note_ble_preflight -> human_ble_operator.confirm_los_range { class: cstr }
@@ -236,7 +239,10 @@ note_airborne_command -> system.cansat.parachute_module.servo.parachute_trigger.
 note_no_precommand -> system.cansat.parachute_module.servo.parachute_trigger.hold_closed_until_command { class: cstr }
 note_no_precommand -> video_camera.record_servo_parachute_state { class: cstr }
 note_power -> power_logger.measure_voltage_current { class: cstr }
+note_power -> power_logger.capture_power_window { class: cstr }
+note_power -> power_logger.monitor_brownout_log { class: cstr }
 note_power -> system.cansat.power_module.boost_converter.voltage_regulation.sustain_servo_power { class: cstr }
+note_power -> system.cansat.obcc_module.xiao_esp32_c3.obcc.maintain_ble_connection { class: cstr }
 note_environment -> ambient_thermometer.measure_ambient_temperature { class: cstr }
 note_environment -> human_ble_operator.read_ambient_thermometer { class: cstr }
 note_stat_fault -> human_ble_operator.record_deviations { class: cstr }

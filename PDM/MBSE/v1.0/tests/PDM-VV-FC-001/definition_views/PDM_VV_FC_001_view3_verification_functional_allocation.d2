@@ -165,14 +165,15 @@ system: "[System] PDM-VV-FC-001 verification functional allocation\nRefs: IVV; P
             direction: down
             grid-columns: 1
             log_firmware_build: "[F] Log firmware build,\nsource baseline, trial ID" { class: func }
-            timestamp_i2c_pwm: "[F] Timestamp I2C, PWM,\nand decision events" { class: func }
+            log_i2c_pwm_timing: "[F] Timestamp I2C, PWM,\ndecision events, and shared timebase" { class: func }
+            log_deployment_status: "[F] Preserve deployment_status\ncode/name/category + open-confirmation timing" { class: func }
             log_fault_markers: "[F] Log fault markers\nand reset events" { class: func }
           }
         }
         note_i2c_timeout: "[C] Every I2C read succeeds or\ntimes out within ≤5 ms" { class: note; shape: page }
         note_process_time: "[C] Process/calculate functions\ncomplete in <5 ms" { class: note; shape: page }
         note_no_blocking: "[C] No blocking operations\nbesides modeled I2C comms" { class: note; shape: page }
-        note_no_manual: "[C] Flight mode has no manual/BLE\nopen command path" { class: note; shape: page }
+        note_no_manual: "[C] Flight mode has no manual/BLE\nopen command path. OBCC owns mode/trigger policy. Only\n`OPEN_CONFIRMED` is deployment success; `COMMAND_SENT`/`OPEN_IN_PROGRESS`/\n`NO_OPEN_CONFIRMED`/`TIMEOUT`/`JAM_DETECTED`/`PDM_FAULT`/`UNKNOWN` are non-success." { class: note; shape: page }
         note_initial_servo: "[C] Startup/reset servo position\n0 degrees / closed; no early open pulse" { class: note; shape: page }
       }
     }
@@ -214,14 +215,14 @@ system: "[System] PDM-VV-FC-001 verification functional allocation\nRefs: IVV; P
         }
       }
       note_diameter: "[C] Parachute maximum\ndiameter ≤30 cm" { class: note; shape: page }
-      note_terminal_speed: "[C] Terminal-speed limiting\nevidence recorded or linked; numeric v1.0 limit pending" { class: note; shape: page }
+      note_terminal_speed: "[C] Terminal-speed limiting\nevidence recorded or linked with selected limit `<= 11 m/s`;\nlinked evidence shall identify as-tested mass/configuration and\ndeployment conditions." { class: note; shape: page }
     }
   }
 }
 
 note_environment: "[C] Environmental pass/fail precondition\nHuman conductor reads the calibrated ambient monitor before repetitions and after\nfault cases; power/current monitor records limits. Missing actual conditions make\nthe verdict blocked or limited." { class: note; shape: page }
 note_stats_faults: "[C] Statistical and fault-hardening viewpoint\nMinimum development screening: ≥10 nominal trials. R90/C95 release evidence needs\n29/29 positive and 29/29 negative no-failure trials. 95/95 timing claims need\n59/59 in-limit timings. Faults: bad/stale IMU, I2C NACK/disconnect/stuck bus,\nfalse profiles, jam/no-open, brownout/reset, and no-manual/BLE regression." { class: note; shape: page }
-note_nominal: "[C] Nominal deployment pass/fail\nExactly one commanded deployment for a nominal IMU trigger profile, with ordered\nADS data, PDM evaluation, PWM open pulse, servo open, holder separation, parachute\nunfolding, and recorded/linked terminal-speed evidence." { class: note; shape: page }
+note_nominal: "[C] Nominal deployment pass/fail\nExactly one commanded deployment for a nominal IMU trigger profile,\nwith ordered ADS data, PDM evaluation, PWM open pulse, servo open,\nholder separation, parachute unfolding, and recorded/linked terminal-speed\nevidence at `<= 11 m/s` where applicable." { class: note; shape: page }
 
 system.uut.ads_module.ads_pcb.imu.note_accuracy -> system.uut.ads_module.ads_pcb.imu.ads_kinematic_sensing.measure_angular_velocities { class: cstr }
 system.uut.obcc_module.obcc_pcb.note_i2c_timeout -> system.uut.obcc_module.obcc_pcb.xiao.ads_processing.read_angular_velocities { class: cstr }
@@ -231,6 +232,8 @@ system.uut.obcc_module.obcc_pcb.note_process_time -> system.uut.obcc_module.obcc
 system.uut.obcc_module.obcc_pcb.note_process_time -> system.uut.obcc_module.obcc_pcb.xiao.ads_processing.calculate_pitch_roll_yaw { class: cstr }
 system.uut.obcc_module.obcc_pcb.note_no_blocking -> system.uut.obcc_module.obcc_pcb.xiao.pdm_processing.evaluate_deployment_condition { class: cstr }
 system.uut.obcc_module.obcc_pcb.note_no_manual -> system.uut.obcc_module.obcc_pcb.xiao.pdm_processing.send_open_signal_to_servo { class: cstr }
+system.uut.obcc_module.obcc_pcb.note_no_manual -> system.uut.obcc_module.obcc_pcb.verification_probe.verification_evidence_interface.log_deployment_status { class: cstr }
+system.uut.obcc_module.obcc_pcb.note_i2c_timeout -> system.uut.obcc_module.obcc_pcb.verification_probe.verification_evidence_interface.log_i2c_pwm_timing { class: cstr }
 system.uut.obcc_module.obcc_pcb.note_initial_servo -> system.uut.obcc_module.obcc_pcb.xiao.pdm_processing.set_servo_init_state { class: cstr }
 system.uut.parachute_module.note_diameter -> system.uut.parachute_module.parachute { class: cstr }
 system.uut.parachute_module.note_terminal_speed -> system.uut.parachute_module.parachute.descent_speed_control.limit_terminal_speed { class: cstr }

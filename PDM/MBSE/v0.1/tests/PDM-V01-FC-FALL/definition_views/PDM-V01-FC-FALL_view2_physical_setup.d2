@@ -45,7 +45,7 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-system: "[System] PDM-V01-FC-FALL physical fall-test setup\nRefs: PDM_v0.1 view1; PDM-UC-V01-FallTestTerminalSpeed; PM&SE/IVV.md" {
+system: "[System] PDM-V01-FC-FALL physical fall-test setup\nRefs: PDM_v0.1 view1; PDM-UC-V01-FallTestTerminalSpeed; PM&SE/IVV.md; PDM-BLK-007" {
   class: sys
   direction: down
 
@@ -69,10 +69,14 @@ video_camera: "[EA] Calibrated video camera" { class: ea }
 time_distance_reference: "[EA] Time/distance\nreference target" { class: ea }
 ambient_wind_meter: "[EA] Ambient thermometer\n/ wind meter" { class: ea }
 
-same_weight: "[C] Same weight as final estimate\nor within documented pre-execution\nmass/configuration tolerance." { class: note; shape: page }
-manual_deploy: "[C] Parachute is foldable and\nreleased/deployed manually for\nthis v0.1 test condition." { class: note; shape: page }
-open_condition: "[C] Accepted fall segment must\nrepresent the parachute-open\ncondition." { class: note; shape: page }
-measurement_setup: "[C] Measurement environment:\nrecord drop height, video scale/time\nreference, ambient temperature, wind,\nand equipment identifiers." { class: note; shape: page }
+same_weight: "[C] Strict mass/config gate:\ndummy/as-tested mass must match final/as-representative\nconfiguration within `+/-5%` or `+/-10 g`,\nwhichever is tighter. Use scale `<=1 g`\nor equivalent documented uncertainty; record scale ID and\ncalibration status." { class: note; shape: page }
+manual_deploy: "[C] Parachute is foldable and\nreleased/deployed manually as modeled." { class: note; shape: page }
+accepted_segment: "[C] Accepted measurement segment\nmust be after full chute open and stable\nbut before ground-effect/landing disturbance." { class: note; shape: page }
+measurement_setup: "[C] Measurement/evidence gate:\nretain raw video with known frame rate\nor calibrated equivalent timebase (`>=30 fps`);\ninclude distance calibration with uncertainty\n`<=5%` and a side-on, low-parallax reference." { class: note; shape: page }
+wind_gate: "[C] Wind/environment:\nmeasured wind `<=3 m/s`, or\njustified indoor/still-air equivalent;\nambient conditions must be logged." { class: note; shape: page }
+evidence_requirements: "[C] Strict predeclared evidence:\nraw video+calibration, scale records, mass/config records,\nenvironment/wind logs, analysis worksheet/script,\naccepted/rejected segment rationale, and\nrepeat-level results." { class: note; shape: page }
+anomaly_rules: "[C] Predeclared anomaly/exclusion rules:\nnon-open/partial-open, major tangle/misfold,\noff-camera segment, fixture bias, or\nuncalibrated timing/distance must be handled\nby documented exclude/reject decisions;\nno silent cherry-picking." { class: note; shape: page }
+screening_reps: "[C] Repetitions:\nexisting 3 repetitions are development screening only\nunless separate statistical basis is declared." { class: note; shape: page }
 verification_links: "[C] Red [PL] links in this view are\nverification-only test setup links;\nthe source v0.1 model has no PLs." { class: note; shape: page }
 
 system.dummy_cansat -- calibrated_scale: "[PL] weighing contact" { class: pl }
@@ -85,8 +89,13 @@ system.dummy_cansat -- ambient_wind_meter: "[PL] co-located ambient/wind observa
 
 same_weight -> system.dummy_cansat { class: cstr }
 manual_deploy -> system.dummy_cansat.top_module.parachute { class: cstr }
-open_condition -> system.dummy_cansat.top_module.parachute { class: cstr }
+accepted_segment -> system.dummy_cansat.top_module.parachute { class: cstr }
 measurement_setup -> video_camera { class: cstr }
-measurement_setup -> ambient_wind_meter { class: cstr }
+wind_gate -> ambient_wind_meter { class: cstr }
 measurement_setup -> drop_height_marker { class: cstr }
+measurement_setup -> time_distance_reference { class: cstr }
+evidence_requirements -> video_camera { class: cstr }
+anomaly_rules -> release_fixture { class: cstr }
+anomaly_rules -> calibrated_scale { class: cstr }
+screening_reps -> measurement_setup { class: cstr }
 verification_links -> system { class: cstr }

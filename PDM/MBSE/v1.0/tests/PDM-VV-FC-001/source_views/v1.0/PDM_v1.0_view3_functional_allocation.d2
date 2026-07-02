@@ -128,6 +128,10 @@ system: "[System] Physical System" {
             grid-columns: 1
 
             collect_measurements: "[F] Collect\nmeasurements" { class: func }
+            gate_fresh_valid_ads_input: "[F] Gate fresh-valid\nADS input" { class: func }
+            evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+            command_pdm_deployment: "[F] Command PDM\ndeployment" { class: func }
+            map_deployment_status: "[F] Map deployment_status\n(no false success)" { class: func }
             collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
           }
 
@@ -137,16 +141,20 @@ system: "[System] Physical System" {
             grid-columns: 2
 
             set_servo_init_state: "[F] Set Servo\ninit state" { class: func }
-            evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+            execute_deployment_command: "[F] Execute PDM\ndeployment command" { class: func }
             send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
             send_close_signal_to_servo: "[F] Send close signal\nto Servo" { class: func }
+            expose_status_evidence: "[F] Expose PDM/actuator\nstatus evidence" { class: func }
             note_servo_initial_position: "[C] Initial servo\nposition = 0 degrees" { class: note; shape: page }
           }
         }
 
         obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
 
-        note_imu_trigger: "[C] No manual trigger:\ndeploy from ADS\nIMU data" { class: note; shape: page }
+        note_imu_trigger: "[C] No manual/BLE\nflight command:\nnormal trigger uses\nfresh-valid ADS IMU data" { class: note; shape: page }
+        note_ads_freshness: "[C] ADS normal-trigger input\nrequires status VALID,\nfinite/in-range fields,\nage_ms <= 400 ms.\nNon-VALID (STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT,\nINIT_FAIL) is not\na normal trigger." { class: note; shape: page }
+        note_obcc_policy_boundary: "[C] OBCC owns mode, trigger,\nemergency, safe/error and\nno-false-success decisions;\nPDM executes command\nand exposes status." { class: note; shape: page }
+        note_status_mapping: "[C] deployment_status mapping:\nCOMMAND_SENT is not\ndeployed/success;\nonly OPEN_CONFIRMED\nis strict success." { class: note; shape: page }
         note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" { class: note; shape: page }
         note_process_time: "[C] All Process or\nCalculate functions\nmust take < 5 ms" { class: note; shape: page }
         note_no_blocking: "[C] No blocking\noperations besides\nI2C comms" { class: note; shape: page }
@@ -183,7 +191,8 @@ system: "[System] Physical System" {
 
           fold: "[F] Fold" { class: func }
           unfold: "[F] Unfold" { class: func }
-          limit_terminal_speed: "[F] Limit terminal\nspeed" { class: func }
+          limit_terminal_speed: "[F] Limit terminal\nspeed <= 11 m/s" { class: func }
+          note_terminal_speed_11ms: "[C] Terminal descent-speed\ncriterion <= 11 m/s" { class: note; shape: page }
         }
       }
 
@@ -218,9 +227,16 @@ system: "[System] Physical System" {
 }
 
 system.cansat.parachute_module.max_diameter_30cm -> system.cansat.parachute_module.parachute { class: cstr }
+system.cansat.parachute_module.parachute.descent_speed_control.note_terminal_speed_11ms -> system.cansat.parachute_module.parachute.descent_speed_control.limit_terminal_speed { class: cstr }
 
 system.cansat.ads_module.ads_pcb.imu.note_accuracy_angular_rate -> system.cansat.ads_module.ads_pcb.imu.ads_kinematic_sensing.measure_angular_velocities { class: cstr }
-system.cansat.obcc_module.obcc_pcb.note_imu_trigger -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing.evaluate_deployment_condition { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_imu_trigger -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.evaluate_deployment_condition { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_ads_freshness -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.gate_fresh_valid_ads_input { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_ads_freshness -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.evaluate_deployment_condition { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_obcc_policy_boundary -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.evaluate_deployment_condition { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_obcc_policy_boundary -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing.execute_deployment_command { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_status_mapping -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing.expose_status_evidence { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_status_mapping -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.map_deployment_status { class: cstr }
 system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing.note_servo_initial_position -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing.set_servo_init_state { class: cstr }
 system.cansat.obcc_module.obcc_pcb.note_i2c_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }
 system.cansat.obcc_module.obcc_pcb.note_process_time -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing { class: cstr }

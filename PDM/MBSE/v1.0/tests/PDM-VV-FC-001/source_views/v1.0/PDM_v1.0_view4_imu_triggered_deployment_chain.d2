@@ -51,8 +51,12 @@ chain: "PDM v1.0 — IMU-triggered parachute deployment" {
   direction: down
 
   note_no_manual_trigger: "[C] No manual/BLE\nopen command" { class: note; shape: page }
+  note_fresh_valid_ads: "[C] Normal trigger input\nrequires ADS status VALID,\nfinite/in-range fields,\nage_ms <= 400 ms.\nNon-VALID (STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT,\nINIT_FAIL) is not\na normal trigger." { class: note; shape: page }
+  note_obcc_policy_boundary: "[C] OBCC owns mode, trigger,\nemergency, safe/error and\nno-false-success decisions.\nPDM executes command\nand exposes status." { class: note; shape: page }
   note_i2c_timeout: "[C] I2C read\ntimeout ≤ 5 ms" { class: note; shape: page }
   note_process_time: "[C] Process/Calculate\ntime < 5 ms" { class: note; shape: page }
+  note_status_evidence: "[C] PDM/actuator evidence\nmaps to OBCC deployment_status.\nCOMMAND_SENT is not deployed;\nonly OPEN_CONFIRMED\nis strict success." { class: note; shape: page }
+  note_terminal_speed_11ms: "[C] Terminal descent-speed\nlinkage <= 11 m/s" { class: note; shape: page }
 
   measure_angular_velocities: "[F] Measure angular\nvelocities" { class: func }
   measure_accelerations: "[F] Measure\naccelerations" { class: func }
@@ -68,13 +72,18 @@ chain: "PDM v1.0 — IMU-triggered parachute deployment" {
   calculate_pitch_roll_yaw: "[F] Calculate\npitch, roll, yaw" { class: func }
 
   collect_measurements: "[F] Collect\nmeasurements" { class: func }
+  gate_fresh_valid_ads_input: "[F] Gate fresh-valid\nADS input" { class: func }
   evaluate_deployment_condition: "[F] Evaluate deployment\ncondition" { class: func }
+  command_pdm_deployment: "[F] Command PDM\ndeployment" { class: func }
   send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
+  observe_actuator_status: "[F] Observe actuator\nstatus evidence" { class: func }
+  expose_status_to_obcc: "[F] Expose status\nevidence to OBCC" { class: func }
+  map_deployment_status: "[F] Map OBCC\ndeployment_status" { class: func }
   reach_open_position: "[F] Reach open\nposition" { class: func }
   retain_position: "[F] Retain position" { class: func }
   separate_from_module: "[F] Separate from\nModule" { class: func }
   unfold: "[F] Unfold" { class: func }
-  limit_terminal_speed: "[F] Limit terminal\nspeed" { class: func }
+  limit_terminal_speed: "[F] Limit terminal\nspeed <= 11 m/s" { class: func }
 }
 
 chain.measure_angular_velocities -> chain.respond_i2c_requests: "[FE] Angular velocity\nsignal" { class: fe }
@@ -97,18 +106,32 @@ chain.process_angular_velocities -> chain.collect_measurements: "[FE] Result\n[V
 chain.process_accelerations -> chain.collect_measurements: "[FE] Result\n[Accels]" { class: fe }
 chain.calculate_pitch_roll_yaw -> chain.collect_measurements: "[FE] Result\n[PRY]" { class: fe }
 
-chain.collect_measurements -> chain.evaluate_deployment_condition: "[FE] IMU data\n[Vels, Accels, PRY]" { class: fe }
-chain.evaluate_deployment_condition -> chain.send_open_signal_to_servo: "[FE] Deployment\ntrigger []" { class: fe }
+chain.collect_measurements -> chain.gate_fresh_valid_ads_input: "[FE] ADS IMU data\n+ status + age_ms" { class: fe }
+chain.gate_fresh_valid_ads_input -> chain.evaluate_deployment_condition: "[FE] Fresh-valid ADS input\n[VALID, age_ms <= 400 ms]" { class: fe }
+chain.evaluate_deployment_condition -> chain.command_pdm_deployment: "[FE] Accepted OBCC\ndeployment decision []" { class: fe }
+chain.command_pdm_deployment -> chain.send_open_signal_to_servo: "[FE] PDM deployment\ncommand []" { class: fe }
 chain.send_open_signal_to_servo -> chain.reach_open_position: "[FE] Open signal\n[PWM]" { class: fe }
+chain.send_open_signal_to_servo -> chain.observe_actuator_status: "[FE] Command path\n[COMMAND_SENT not deployed]" { class: fe }
+chain.reach_open_position -> chain.observe_actuator_status: "[FE] Open evidence\n[position/current]" { class: fe }
+chain.observe_actuator_status -> chain.expose_status_to_obcc: "[FE] PDM status\nevidence []" { class: fe }
+chain.expose_status_to_obcc -> chain.map_deployment_status: "[FE] deployment_status\n[mapped enum]" { class: fe }
 chain.reach_open_position -> chain.retain_position: "[FE] Servo reached\nopen position []" { class: fe }
 chain.retain_position -> chain.separate_from_module: "[FE] Servo open []" { class: fe }
 chain.separate_from_module -> chain.unfold: "[FE] Holder open []" { class: fe }
-chain.unfold -> chain.limit_terminal_speed: "[FE] Parachute\ndeployed []" { class: fe }
+chain.unfold -> chain.limit_terminal_speed: "[FE] Parachute deployed\n[<= 11 m/s linkage]" { class: fe }
 
 chain.note_no_manual_trigger -> chain.evaluate_deployment_condition { class: cstr }
+chain.note_fresh_valid_ads -> chain.gate_fresh_valid_ads_input { class: cstr }
+chain.note_fresh_valid_ads -> chain.evaluate_deployment_condition { class: cstr }
+chain.note_obcc_policy_boundary -> chain.evaluate_deployment_condition { class: cstr }
+chain.note_obcc_policy_boundary -> chain.command_pdm_deployment { class: cstr }
+chain.note_obcc_policy_boundary -> chain.send_open_signal_to_servo { class: cstr }
 chain.note_i2c_timeout -> chain.read_angular_velocities { class: cstr }
 chain.note_i2c_timeout -> chain.read_accelerations { class: cstr }
 chain.note_i2c_timeout -> chain.read_field_intensities { class: cstr }
 chain.note_process_time -> chain.process_angular_velocities { class: cstr }
 chain.note_process_time -> chain.process_accelerations { class: cstr }
 chain.note_process_time -> chain.calculate_pitch_roll_yaw { class: cstr }
+chain.note_status_evidence -> chain.expose_status_to_obcc { class: cstr }
+chain.note_status_evidence -> chain.map_deployment_status { class: cstr }
+chain.note_terminal_speed_11ms -> chain.limit_terminal_speed { class: cstr }

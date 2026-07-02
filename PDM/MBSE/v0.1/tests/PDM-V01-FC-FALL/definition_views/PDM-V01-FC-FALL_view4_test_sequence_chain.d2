@@ -36,7 +36,7 @@ classes: {
   chain: {
     style: {
       fill: "#FFFFFF"; stroke: "#D1B24A"; stroke-width: 2
-      border-radius: 20; font-size: 36
+      border-radius: 20; font-size:  36
     }
   }
   fe:   { style: { stroke: "#1F7A4D"; font-color: "#1F7A4D"; stroke-width: 2; font-size: 30 } }
@@ -45,51 +45,65 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-chain: "PDM-V01-FC-FALL — Fall-test terminal-speed verification chain\nRefs: PDM_v0.1 view4; PDM-UC-V01-FallTestTerminalSpeed; PDM-FE-V01-ExcessDescentSpeed; PM&SE/IVV.md" {
+chain: "PDM-V01-FC-FALL — Fall-test terminal-speed verification chain\nRefs: PDM_v0.1 view4; PDM-UC-V01-FallTestTerminalSpeed; PDM-FE-V01-ExcessDescentSpeed; PM&SE/IVV.md; PDM-BLK-007" {
   class: chain
   direction: down
 
   confirm_baseline: "[F] Confirm model\nbaseline and ID" { class: func }
   record_config_input: "[F] Record final-mass\nconfiguration input" { class: func }
+  record_scale: "[F] Record scale ID and\ncalibration" { class: func }
   measure_mass: "[F] Measure dummy\nmass/configuration" { class: func }
   inspect_parachute: "[F] Inspect manual fold\nand open condition" { class: func }
   read_environment: "[F] Read ambient\nwind/conditions" { class: func }
-  setup_calibration: "[F] Set drop height\nand video calibration" { class: func }
+  setup_calibration: "[F] Set drop height\nand video timebase" { class: func }
   arm_camera: "[F] Arm video camera" { class: func }
+  place_reference: "[F] Place distance\nreference marker/target" { class: func }
   release_dummy: "[F] Release dummy" { class: func }
   limit_terminal_speed: "[F] Limit terminal speed" { class: func }
   capture_video: "[F] Capture fall video\nand references" { class: func }
-  extract_speed: "[F] Extract descent\nspeed trace" { class: func }
+  extract_speed: "[F] Extract descent\nspeed" { class: func }
   compare_limit: "[F] Compare accepted\nsegment to 11 m/s" { class: func }
   archive_evidence: "[F] Archive evidence\nand anomalies" { class: func }
 
-  mass_input: "[C] Pass: dummy mass/configuration\nmatches final estimate or documented\npre-execution tolerance input." { class: note; shape: page }
-  manual_open: "[C] Pass: parachute is folded/released\nmanually and open for accepted\nmeasurement segment." { class: note; shape: page }
-  speed_limit: "[C] Pass: terminal descent speed\nfrom retained video/time-distance\nevidence is <= 11 m/s." { class: note; shape: page }
-  evidence_required: "[C] Pass: evidence includes source\nmodel version, UUT configuration,\nvideo/logs, method, environment,\ndeviations, and anomalies." { class: note; shape: page }
-  statistical_basis: "[C] Statistical viewpoint: execute\n3 v0.1 screening repetitions; do not\nclaim reliability/confidence unless\nstatistical basis is stated." { class: note; shape: page }
-  fault_hardening: "[C] Fault-hardening viewpoint:\nmisfold/tangle, partial opening,\nrelease bias, mass mismatch, video\ncalibration, wind/gusts, drop damage." { class: note; shape: page }
+  mass_input: "[C] Pass: mass/config matches\nfinal mass/config input\nwithin `+/-5%` or `+/-10 g` (tighter).\nUse scale `<=1 g` or equivalent uncertainty." { class: note; shape: page }
+  manual_open: "[C] Pass: parachute is folded\nand released manually; accepted segment\nis after chute-open/stable and before\nground-effect/landing disturbance." { class: note; shape: page }
+  video_timebase: "[C] Pass: retained video\nuses known frame rate or timestamped\ntimebase at `>=30 fps`, unless a\ncalibrated alternative is used." { class: note; shape: page }
+  distance_accuracy: "[C] Distance calibration\nuncertainty must be `<=5%` and\nsegment uses camera-visible marker/reference." { class: note; shape: page }
+  wind_condition: "[C] Pass: wind/equivalent is\nmeasured `<= 3 m/s` or\njustified indoor/still-air equivalent." { class: note; shape: page }
+  speed_limit: "[C] Pass: terminal speed from\nretained evidence + uncertainty/\nguard band is `<= 11 m/s` for a predeclared segment." { class: note; shape: page }
+  anomaly_rules: "[C] Anomaly rule: non-open/partial-open,\nmajor tangle/misfold, off-camera segment,\nuncalibrated timing/distance, wind\nexceedance, or fixture bias are\nrejected/excluded only by\npredeclared logic; no silent\ncherry-picking." { class: note; shape: page }
+  screening_reps: "[C] Repetitions: existing\n3 repetitions are development\nscreening only; no reliability/confidence\nclaim unless a separate statistical\nbasis is stated." { class: note; shape: page }
+  evidence_required: "[C] Evidence for strict credit:\nraw video + calibration, scale records,\nmass/config records, environment/wind logs,\nanalysis worksheet/script, accepted/rejected\nsegment rationale, repeat-level results,\nwaivers/anomalies." { class: note; shape: page }
+  status_constraint: "[C] Evidence status:\nModeled definition ready;\nexecution/report pending." { class: note; shape: page }
 }
 
 chain.confirm_baseline -> chain.record_config_input: "[FE] baseline/activity ID []" { class: fe }
-chain.record_config_input -> chain.measure_mass: "[FE] final mass/config estimate []" { class: fe }
-chain.measure_mass -> chain.inspect_parachute: "[FE] accepted UUT configuration []" { class: fe }
-chain.inspect_parachute -> chain.read_environment: "[FE] parachute setup accepted []" { class: fe }
-chain.read_environment -> chain.setup_calibration: "[FE] environmental record []" { class: fe }
-chain.setup_calibration -> chain.arm_camera: "[FE] calibrated drop setup []" { class: fe }
-chain.arm_camera -> chain.release_dummy: "[FE] ready-to-drop []" { class: fe }
-chain.release_dummy -> chain.limit_terminal_speed: "[FE] manual release []" { class: fe }
+chain.record_config_input -> chain.record_scale: "[FE] final mass/config input []" { class: fe }
+chain.record_scale -> chain.measure_mass: "[FE] scale evidence []" { class: fe }
+chain.measure_mass -> chain.inspect_parachute: "[FE] accepted mass trace []" { class: fe }
+chain.inspect_parachute -> chain.read_environment: "[FE] chute condition []" { class: fe }
+chain.read_environment -> chain.setup_calibration: "[FE] env record []" { class: fe }
+chain.setup_calibration -> chain.arm_camera: "[FE] calibration ready []" { class: fe }
+chain.arm_camera -> chain.place_reference: "[FE] camera armed []" { class: fe }
+chain.place_reference -> chain.release_dummy: "[FE] reference in place []" { class: fe }
+chain.release_dummy -> chain.limit_terminal_speed: "[FE] release []" { class: fe }
 chain.limit_terminal_speed -> chain.capture_video: "[FE] descent event []" { class: fe }
-chain.capture_video -> chain.extract_speed: "[FE] video/time-distance evidence []" { class: fe }
+chain.capture_video -> chain.extract_speed: "[FE] video/time-distance []" { class: fe }
 chain.extract_speed -> chain.compare_limit: "[FE] speed trace + uncertainty []" { class: fe }
 chain.compare_limit -> chain.archive_evidence: "[FE] result []" { class: fe }
 
 chain.mass_input -> chain.measure_mass { class: cstr }
-chain.mass_input -> chain.record_config_input { class: cstr }
+chain.mass_input -> chain.record_scale { class: cstr }
 chain.manual_open -> chain.inspect_parachute { class: cstr }
-chain.manual_open -> chain.release_dummy { class: cstr }
-chain.speed_limit -> chain.limit_terminal_speed { class: cstr }
+chain.manual_open -> chain.limit_terminal_speed { class: cstr }
+chain.video_timebase -> chain.setup_calibration { class: cstr }
+chain.video_timebase -> chain.capture_video { class: cstr }
+chain.distance_accuracy -> chain.extract_speed { class: cstr }
+chain.wind_condition -> chain.read_environment { class: cstr }
 chain.speed_limit -> chain.compare_limit { class: cstr }
-chain.statistical_basis -> chain.compare_limit { class: cstr }
-chain.fault_hardening -> chain.inspect_parachute { class: cstr }
-chain.fault_hardening -> chain.setup_calibration { class: cstr }
+chain.anomaly_rules -> chain.inspect_parachute { class: cstr }
+chain.anomaly_rules -> chain.extract_speed { class: cstr }
+chain.anomaly_rules -> chain.archive_evidence { class: cstr }
+chain.screening_reps -> chain.compare_limit { class: cstr }
+chain.evidence_required -> chain.archive_evidence { class: cstr }
+chain.status_constraint -> chain.archive_evidence { class: cstr }

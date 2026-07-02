@@ -56,8 +56,15 @@ human_tester: "[EA] Human Tester" {
   measure_terminal_speed: "[F] Measure\nterminal speed\nfrom video" { class: func }
 }
 
-same_weight: "[C] Same weight as\nfinal estimate" { class: note; shape: page }
+same_weight: "[C] Same weight as\nfinal estimate\n(+/-5% or +/-10 g,\nwhichever tighter)" { class: note; shape: page }
+mass_scale_resolution: "[C] Mass scale resolution\n<= 1 g\nor uncertainty judged\nfor selected tolerance" { class: note; shape: page }
 foldable_deployed_manually: "[C] Foldable, but\ndeployed manually" { class: note; shape: page }
+video_timebase: "[C] Retained video\n>=30 fps (or calibrated\ntimebase equivalent)" { class: note; shape: page }
+distance_calibration: "[C] Distance calibration\nuncertainty <= 5%" { class: note; shape: page }
+accepted_segment: "[C] Accepted segment\nafter parachute open\nand stable descent\nbefore ground effect\nor landing disturbance" { class: note; shape: page }
+wind_environment: "[C] Wind <= 3 m/s\nor justified indoor/still-air\nequivalent" { class: note; shape: page }
+anomaly_rules: "[C] Predeclared\nanomaly/exclusion rules" { class: note; shape: page }
+repetition_scope: "[C] 3 reps are\ndevelopment screening\nonly unless\nformal statistical\nbasis is added" { class: note; shape: page }
 
 dummy_cansat: "[PC] Dummy CanSat" {
   class: pc
@@ -75,7 +82,7 @@ dummy_cansat: "[PC] Dummy CanSat" {
         class: lc
         direction: down
 
-        terminal_speed_max: "[C] 11 m/s max." { class: note; shape: page }
+        terminal_speed_max: "[C] Terminal speed\n<= 11 m/s\n(measured + uncertainty/guard band)" { class: note; shape: page }
         limit_terminal_speed: "[F] Limit terminal speed" { class: func }
       }
     }
@@ -84,5 +91,13 @@ dummy_cansat: "[PC] Dummy CanSat" {
 
 human_tester.with_parachute_open -> human_tester.release_dummy { class: cstr }
 same_weight -> dummy_cansat { class: cstr }
+mass_scale_resolution -> dummy_cansat { class: cstr }
 foldable_deployed_manually -> dummy_cansat.top_module.parachute { class: cstr }
+video_timebase -> human_tester.measure_terminal_speed { class: cstr }
+distance_calibration -> human_tester.measure_terminal_speed { class: cstr }
+accepted_segment -> human_tester.measure_terminal_speed { class: cstr }
+wind_environment -> human_tester.measure_terminal_speed { class: cstr }
+anomaly_rules -> human_tester.measure_terminal_speed { class: cstr }
+repetition_scope -> human_tester.measure_terminal_speed { class: cstr }
 dummy_cansat.top_module.parachute.descent_speed_control.terminal_speed_max -> dummy_cansat.top_module.parachute.descent_speed_control.limit_terminal_speed { class: cstr }
+dummy_cansat.top_module.parachute.descent_speed_control.terminal_speed_max -> human_tester.measure_terminal_speed { class: cstr }

@@ -46,7 +46,7 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-diagram_title: "[C] PDM-V02-FC-BLE-DEPLOY — physical BLE deployment test setup\nrefs: PDM v0.2 views 1-4; PDS v0.1" { class: note; shape: page }
+diagram_title: "[C] PDM-V02-FC-BLE-DEPLOY — physical BLE deployment test setup\nrefs: PDM v0.2 views 1-4; PDM-BLK-006" { class: note; shape: page }
 
 ble_controller_phone: "[EA] BLE controller / phone" { class: ea }
 range_los_marker: "[EA] 20 m LOS range marker" { class: ea }
@@ -90,13 +90,14 @@ system: "[System] Physical System UUT\nPDM v0.2 manual BLE deployment" {
       battery: "[PC] Battery" { class: pc }
       boost_converter: "[PC] Boost Converter" { class: pc }
       power_probe_terminal: "[PC] Verification-only\npower probe terminal" { class: pc }
-      note_pds_power: "[C] PDS v0.1 / battery / boost\nremain within needed range\nduring command and servo actuation" { class: note; shape: page }
+      note_pds_power: "[C] Power-validity evidence target\nPDM-BLK-006 power threshold\nServo/boost rail `5.0 V +/- 10%` (`4.5 V` to `5.5 V`)\nduring command/actuation\nCapture pre-command baseline through >=2 s\nafter open-state observation or branch failure" { class: note; shape: page }
+      note_no_brownout: "[C] No actuation-caused control upset\nNo OBCC/XIAO reset, brownout, reconnect,\ntelemetry or log discontinuity due to command\nsequence; no current-limit collapse or thermal shutoff in\nactuation window" { class: note; shape: page }
     }
   }
 }
 
 note_airborne_surrogate: "[C] Airborne condition is represented by\nsafe drop/suspension surrogate\nunless a flight drop is authorized" { class: note; shape: page }
-note_environment: "[C] Ambient conditions recorded\nbefore repetitions begin\nusing identified thermometer" { class: note; shape: page }
+note_environment: "[C] Ambient and wind conditions recorded\nbefore repetitions begin using identified\nthermometer/weather source and wind gauge/data\nfor run context" { class: note; shape: page }
 
 ble_controller_phone -- system.cansat.obcc_module.antenna_2_4ghz: "[PL] BLE\n>=20 m LOS" { class: pl }
 range_los_marker -- ble_controller_phone: "[PL] Controller\nrange marker" { class: pl }
@@ -123,7 +124,10 @@ diagram_title -> system { class: cstr }
 system.cansat.obcc_module.note_ble_range -> system.cansat.obcc_module.antenna_2_4ghz { class: cstr }
 system.cansat.parachute_module.note_no_precommand_open -> system.cansat.parachute_module.servo { class: cstr }
 system.cansat.power_module.note_pds_power -> system.cansat.power_module.boost_converter { class: cstr }
+system.cansat.power_module.note_pds_power -> system.cansat.power_module.power_probe_terminal { class: cstr }
 system.cansat.power_module.note_pds_power -> system.cansat.power_module.battery { class: cstr }
+system.cansat.power_module.note_no_brownout -> system.cansat.obcc_module.xiao_esp32_c3 { class: cstr }
+system.cansat.power_module.note_no_brownout -> system.cansat.power_module.power_probe_terminal { class: cstr }
 note_airborne_surrogate -> drop_suspension_fixture { class: cstr }
 note_airborne_surrogate -> system.cansat { class: cstr }
 note_environment -> ambient_thermometer { class: cstr }

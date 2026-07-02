@@ -46,22 +46,22 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-chain: "PDM-V02-FC-BLE-DEPLOY — BLE/manual parachute deployment sequence and fault-hardening\nrefs: PDM v0.2 view4; PDM v0.2 views 1-3; PDS v0.1" {
+chain: "PDM-V02-FC-BLE-DEPLOY — BLE/manual parachute deployment sequence and fault-hardening\nrefs: PDM v0.2 view4; PDM v0.2 views 1-3; PDM-BLK-006" {
   class: chain
   direction: down
 
   note_ble_preflight: "[C] Pass: BLE connection and command/control path\nverified at >=20 m LOS before airborne/release" { class: note; shape: page }
   note_no_precommand: "[C] Pass: no parachute open actuation\nbefore command + airborne condition" { class: note; shape: page }
   note_airborne_command: "[C] Pass: while airborne, BLE open command\ncauses OBCC PWM open position and\nservo/parachute mechanism reaches open state" { class: note; shape: page }
-  note_power: "[C] Pass: power path remains within\nneeded range during command and servo actuation\nusing logged battery/boost evidence" { class: note; shape: page }
-  note_terminal_speed: "[C] Pass/trace: deployment reaches open state\nand supports terminal-speed limiting;\nif speed is not measured here, link companion evidence" { class: note; shape: page }
+  note_power: "[C] Pass: servo rail power satisfies\n`PDM-BLK-006`: `5.0 V +/- 10%` (`4.5 V` to `5.5 V`)\nduring command and actuation at servo/nearest measurable point\nNo OBCC/XIAO reset, brownout, BLE reconnect,\ntelemetry/log discontinuity, current-limit collapse,\nor thermal shutdown due to actuation\nVoltage/current trace starts at pre-command baseline\nand continues for >=2 s after open/failure" { class: note; shape: page }
+  note_terminal_speed: "[C] Terminal-speed criterion `<= 11 m/s`\nDeployment chain in this run verifies command/open support only\nQuantitative descent-speed closure must be in-run\nor linked to `PDM-V02-TEST-TERMINAL-SPEED` and/or applicable\n`PDM-V01-FC-FALL` evidence with as-tested mass/\nparachute/config applicability; otherwise hold/gap" { class: note; shape: page }
   note_statistics: "[C] Statistical viewpoint\n3 successful reps = development screening only;\nreliability/confidence claims require binomial basis\nand independent representative trials" { class: note; shape: page }
   note_fault_hardening: "[C] Fault-hardening viewpoint\nconsider BLE loss/out-of-range, late/missed command,\nlow battery/boost sag, servo jam/stall, antenna orientation,\nwind/gusts, partial deployment" { class: note; shape: page }
-  note_evidence: "[C] Evidence package\nsource/UUT/BLE/range/env\nlogs, video, PWM, power\ndeviations/anomalies" { class: note; shape: page }
+  note_evidence: "[C] Evidence package\nsource model baseline, source/UUT IDs\nBLE device/configuration, range/LOS data\npredefined environment/wind context\nBLE/PWM/power traces with timestamps\ncontinuity/log markers, deviations/anomalies" { class: note; shape: page }
 
   read_ambient_conditions: "[F] Read and log\nambient conditions" { class: func }
   set_range_los_20m: "[F] Set >=20 m\nline-of-sight range" { class: func }
-  configure_uut_logging: "[F] Configure UUT, BLE device,\nand evidence logging" { class: func }
+  configure_uut_logging: "[F] Configure UUT, BLE device,\nand evidence logging\n(record source/UUT IDs, calibration,\nlogger settings)" { class: func }
   establish_ble_connection: "[F] Establish BLE\nconnection" { class: func }
   maintain_ble_connection: "[F] Maintain BLE\nconnection" { class: func }
   verify_preflight_ble_path: "[F] Verify pre-flight\nBLE command/control path" { class: func }
@@ -70,9 +70,10 @@ chain: "PDM-V02-FC-BLE-DEPLOY — BLE/manual parachute deployment sequence and f
   mark_airborne_condition: "[F] Release or mark\nairborne condition" { class: func }
   send_ble_open_command: "[F] Send BLE open\ncommand" { class: func }
   set_pwm_open_position: "[F] Set PWM to open\nposition" { class: func }
-  capture_pwm_power_response: "[F] Capture PWM and\npower response" { class: func }
+  capture_pwm_power_response: "[F] Capture PWM and\npower traces and markers" { class: func }
   open_parachute: "[F] Open parachute" { class: func }
   observe_open_state: "[F] Observe servo/parachute\nopen state" { class: func }
+  link_terminal_speed_evidence: "[F] Link terminal-speed evidence\nto `<= 11 m/s` criterion" { class: func }
   limit_terminal_speed: "[F] Limit terminal speed\nor bind linked evidence" { class: func }
   calculate_trial_outcome: "[F] Calculate pass/fail\ntrial outcome" { class: func }
   evaluate_fault_cases: "[F] Evaluate fault-hardening\nobservations" { class: func }
@@ -92,7 +93,8 @@ chain.send_ble_open_command -> chain.set_pwm_open_position: "[FE] Open command [
 chain.set_pwm_open_position -> chain.capture_pwm_power_response: "[FE] Open signal [PWM]" { class: fe }
 chain.capture_pwm_power_response -> chain.open_parachute: "[FE] PWM/power evidence []" { class: fe }
 chain.open_parachute -> chain.observe_open_state: "[FE] Parachute opened []" { class: fe }
-chain.observe_open_state -> chain.limit_terminal_speed: "[FE] Open-state evidence []" { class: fe }
+chain.observe_open_state -> chain.link_terminal_speed_evidence: "[FE] Open-state evidence []" { class: fe }
+chain.link_terminal_speed_evidence -> chain.limit_terminal_speed: "[FE] Link terminal-speed evidence []" { class: fe }
 chain.limit_terminal_speed -> chain.calculate_trial_outcome: "[FE] Deployment outcome []" { class: fe }
 chain.calculate_trial_outcome -> chain.evaluate_fault_cases: "[FE] Pass/fail rationale []" { class: fe }
 chain.evaluate_fault_cases -> chain.archive_evidence_report: "[FE] Record []" { class: fe }
@@ -107,6 +109,7 @@ chain.note_airborne_command -> chain.set_pwm_open_position { class: cstr }
 chain.note_airborne_command -> chain.open_parachute { class: cstr }
 chain.note_power -> chain.capture_pwm_power_response { class: cstr }
 chain.note_terminal_speed -> chain.observe_open_state { class: cstr }
+chain.note_terminal_speed -> chain.link_terminal_speed_evidence { class: cstr }
 chain.note_terminal_speed -> chain.limit_terminal_speed { class: cstr }
 chain.note_statistics -> chain.calculate_trial_outcome { class: cstr }
 chain.note_fault_hardening -> chain.evaluate_fault_cases { class: cstr }

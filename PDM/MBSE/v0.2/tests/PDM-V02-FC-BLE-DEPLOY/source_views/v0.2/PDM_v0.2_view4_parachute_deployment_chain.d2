@@ -55,6 +55,10 @@ chain: "PDM v0.2 — Parachute deployment test (3 reps)" {
 
   note_preflight_ble: "[C] BLE connection\nestablished pre-flight" { class: note; shape: page }
   note_airborne: "[C] While CanSat\nis airborne" { class: note; shape: page }
+  note_command_vs_speed: "[C] Chain credit separation\nBLE command-to-open / open observation\nis separate from terminal-speed credit" { class: note; shape: page }
+  note_terminal_speed_evidence: "[C] Terminal-speed criterion <= 11 m/s\nIf not measured in-run, cite\nPDM-V02-TEST-TERMINAL-SPEED and/or\napplicable PDM-V01-FC-FALL evidence\nwith v0.2 applicability, or record\nterminal-speed evidence hold/gap" { class: note; shape: page }
+  note_power_validity: "[C] Power-valid run\nServo/boost rail 5.0 V +/-10%\n(4.5 V to 5.5 V) during command/actuation;\nvoltage/current trace from pre-command baseline\nthrough >= 2 s after open/failure" { class: note; shape: page }
+  note_no_brownout_current_thermal: "[C] No actuation-caused upset or unsafe power collapse\nNo reset, brownout marker, boot banner, watchdog reset,\ntelemetry/log discontinuity, or BLE reconnect;\nno current-limit collapse, boost thermal shutdown,\nsmoke, swelling, connector heating, or sustained stall\noutside safe envelope" { class: note; shape: page }
 
   establish_ble_connection: "[F] Establish BLE\nconnection" { class: func }
   maintain_ble_connection: "[F] Maintain BLE\nconnection" { class: func }
@@ -73,3 +77,12 @@ chain.open_parachute -> chain.limit_terminal_speed: "[FE] Parachute opened []" {
 chain.note_preflight_ble -> chain.establish_ble_connection { class: cstr }
 chain.note_preflight_ble -> chain.maintain_ble_connection { class: cstr }
 chain.note_airborne -> chain.send_ble_open_command { class: cstr }
+chain.note_command_vs_speed -> chain.open_parachute { class: cstr }
+chain.note_command_vs_speed -> chain.limit_terminal_speed { class: cstr }
+chain.note_terminal_speed_evidence -> chain.limit_terminal_speed { class: cstr }
+chain.note_power_validity -> chain.send_ble_open_command { class: cstr }
+chain.note_power_validity -> chain.set_pwm_open_position { class: cstr }
+chain.note_power_validity -> chain.open_parachute { class: cstr }
+chain.note_no_brownout_current_thermal -> chain.maintain_ble_connection { class: cstr }
+chain.note_no_brownout_current_thermal -> chain.set_pwm_open_position { class: cstr }
+chain.note_no_brownout_current_thermal -> chain.open_parachute { class: cstr }

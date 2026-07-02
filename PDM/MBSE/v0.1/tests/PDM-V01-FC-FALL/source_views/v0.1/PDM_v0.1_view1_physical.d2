@@ -57,8 +57,18 @@ dummy_cansat: "[PC] Dummy CanSat" {
   }
 }
 
-same_weight: "[C] Same weight as\nfinal estimate" { class: note; shape: page }
+same_weight: "[C] Same weight as\nfinal estimate\n(+/-5% or +/-10 g,\nwhichever is tighter)" { class: note; shape: page }
+scale_resolution: "[C] Mass scale resolution\n<= 1 g\nor uncertainty proves\njudgement" { class: note; shape: page }
 foldable_deployed_manually: "[C] Foldable, but\ndeployed manually" { class: note; shape: page }
+accepted_segment: "[C] Accepted segment\nafter parachute open\nand stable descent\nbefore ground-effect\nand landing disturbance" { class: note; shape: page }
+video_timebase: "[C] Retained video with\nknown frame rate\nor timestamped frames\n>= 30 fps\nunless calibrated\ntimebase used" { class: note; shape: page }
+distance_calibration: "[C] Distance calibration\nuncertainty <= 5%" { class: note; shape: page }
+wind_environment: "[C] Wind/environment\n<= 3 m/s\nor justified\nindoor/still-air\nequivalent" { class: note; shape: page }
 
 same_weight -> dummy_cansat { class: cstr }
+scale_resolution -> dummy_cansat { class: cstr }
 foldable_deployed_manually -> dummy_cansat.top_module.parachute { class: cstr }
+accepted_segment -> dummy_cansat.top_module.parachute { class: cstr }
+video_timebase -> dummy_cansat.top_module.parachute { class: cstr }
+distance_calibration -> dummy_cansat.top_module.parachute { class: cstr }
+wind_environment -> dummy_cansat.top_module.parachute { class: cstr }

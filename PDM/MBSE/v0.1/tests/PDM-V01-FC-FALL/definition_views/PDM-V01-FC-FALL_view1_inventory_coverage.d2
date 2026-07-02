@@ -45,7 +45,7 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-system: "[System] PDM v0.1 source inventory\nPDM-V01-FC-FALL coverage/gap view\nRefs: PDM_v0.1 views 1-4; PM&SE/IVV.md" {
+system: "[System] PDM v0.1 source inventory\nPDM-V01-FC-FALL coverage/gap view\nRefs: PDM_v0.1 views 1-4; PM&SE/IVV.md; CON-003 PDM-BLK-007" {
   class: sys
   direction: down
 
@@ -87,10 +87,11 @@ foldable_deployed_manually: "[C] Foldable, but\ndeployed manually" { class: note
 with_parachute_open: "[C] With\nparachute open" { class: note; shape: page }
 terminal_speed_max: "[C] 11 m/s max." { class: note; shape: page }
 
-activity_scope: "[C] PDM-V01-FC-FALL models the\nv0.1 fall-test chain, all four\nsource constraints, and linked\nPC/allocation evidence." { class: note; shape: page }
+activity_scope: "[C] PDM-V01-FC-FALL models the\nv0.1 fall-test chain, all relevant v0.1 constraints,\nand linked PC/allocation evidence." { class: note; shape: page }
 no_source_pl: "[C] Source v0.1 has no modeled\nphysical links; do not invent\nsource PL coverage." { class: note; shape: page }
 no_source_ce: "[C] Source v0.1 has no modeled\ncomponent exchanges; record CE\ncoverage as a v0.1 gap/N/A." { class: note; shape: page }
-allocation_scope: "[C] Allocation to analyze:\n[LC] Descent speed control is\nallocated to [PC] Parachute and\ncontains [F] Limit terminal speed." { class: note; shape: page }
+allocation_scope: "[C] Allocation target:\n[LC] Descent speed control is\nallocated to [PC] Parachute and\ncontains [F] Limit terminal speed." { class: note; shape: page }
+pdm_blk_criteria: "[C] PDM-BLK-007 strict interpretation\ncriteria: mass/config `+/-5%` or `+/-10 g` (tighter),\nscale resolution `<= 1 g` or equivalent uncertainty,\nretained video/timebase `>=30 fps` unless calibrated equivalent,\ndistance calibration uncertainty `<=5%`, accepted segment\nafter open/stable and before ground-effect/landing disturbance,\nterminal speed + uncertainty `<= 11 m/s`,\nwind `<= 3 m/s` or justified indoor/still-air equivalent,\npredeclared anomaly/exclusion rules, and\n3 repetitions as development screening only." { class: note; shape: page }
 
 same_weight -> system.dummy_cansat { class: cstr }
 foldable_deployed_manually -> system.dummy_cansat.top_module.parachute { class: cstr }
@@ -100,3 +101,4 @@ activity_scope -> system { class: cstr }
 no_source_pl -> system.dummy_cansat { class: cstr }
 no_source_ce -> system.dummy_cansat.top_module.parachute.descent_speed_control { class: cstr }
 allocation_scope -> system.dummy_cansat.top_module.parachute.descent_speed_control { class: cstr }
+pdm_blk_criteria -> system.dummy_cansat { class: cstr }

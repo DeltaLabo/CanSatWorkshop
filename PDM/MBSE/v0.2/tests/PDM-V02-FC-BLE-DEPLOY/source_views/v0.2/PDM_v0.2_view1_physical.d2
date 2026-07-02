@@ -87,6 +87,7 @@ system: "[System] Physical System" {
       battery: "[PC] Battery" { class: pc }
       boost_converter: "[PC] Boost Converter" { class: pc }
       note_pds_v0_1: "[C] PDS\nv0.1" { class: note; shape: page }
+      note_power_validity: "[C] v0.2 power-valid deployment\nServo/boost rail 5.0 V +/-10%\n(4.5 V to 5.5 V) during command/actuation;\nV/I trace from pre-command baseline\nto >= 2 s after open observation or failure;\nno current-limit collapse, boost thermal shutdown,\nsmoke, swelling, connector heating,\nor sustained stall outside safe envelope" { class: note; shape: page }
     }
   }
 }
@@ -103,3 +104,6 @@ system.cansat.power_module.boost_converter -- system.cansat.parachute_module.ser
 system.cansat.power_module.battery -- system.cansat.power_module.boost_converter: "[PL] Soldered Power\nCables (2x)" { class: pl }
 
 system.cansat.power_module.note_pds_v0_1 -> system.cansat.power_module { class: cstr }
+system.cansat.power_module.note_power_validity -> system.cansat.power_module.battery { class: cstr }
+system.cansat.power_module.note_power_validity -> system.cansat.power_module.boost_converter { class: cstr }
+system.cansat.power_module.note_power_validity -> system.cansat.parachute_module.servo { class: cstr }

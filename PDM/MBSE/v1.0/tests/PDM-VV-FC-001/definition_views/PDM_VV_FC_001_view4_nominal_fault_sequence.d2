@@ -34,8 +34,11 @@ chain: "PDM-VV-FC-001 — nominal and fault-hardening deployment sequence\nTesti
   configure_loggers: "[F] Configure loggers, camera,\nlogic analyzer, timebase" { class: func }
   initialize_servo: "[F] Power/reset UUT and verify\nservo 0 degrees / closed" { class: func }
   arm_flight_mode: "[F] Arm flight mode; confirm\nmanual/BLE open path unavailable" { class: func }
+  enforce_obcc_mode_gate: "[F] Enforce OBCC mode/command gate\nSTANDBY inhibits; On-mode accepts\nnormal or emergency request branches" { class: func }
+  validate_trigger_inputs: "[F] Validate trigger freshness\nVALID only + age_ms <= 400 ms" { class: func }
 
   stimulate_nominal: "[F] Stimulate nominal IMU\ndeployment profile" { class: func }
+  capture_status_timing: "[F] Capture deployment status and\nopen-confirmation timing evidence" { class: func }
   measure_imu: "[F] Measure and respond with\nIMU angular/accel/field data" { class: func }
   read_process_imu: "[F] Read, process, and calculate\nIMU state for deployment logic" { class: func }
   collect_measurements: "[F] Collect IMU measurements\nand init state" { class: func }
@@ -56,11 +59,11 @@ chain: "PDM-VV-FC-001 — nominal and fault-hardening deployment sequence\nTesti
   decide_verdict: "[F] Decide pass/fail, blocked,\nwaived, or retest verdict" { class: func }
   archive_report: "[F] Archive evidence and report\nunder tests/results/PDM-VV-FC-001/" { class: func }
 
-  note_nominal: "[C] Nominal pass/fail\nPass only if a nominal IMU-derived trigger produces exactly one complete ordered\ndeployment chain and the report links or records terminal-speed limiting evidence.\nFail on missing step, duplicate open command, or untraceable evidence." { class: note; shape: page }
-  note_no_deploy: "[C] Negative/no-manual pass/fail\nNegative/non-deploy profiles, manual/BLE attempts, and bad/stale IMU inputs shall\nnot produce a flight-mode open command. Legacy debug/manual paths are failures\nunless formally disabled or dispositioned before execution." { class: note; shape: page }
+  note_nominal: "[C] Nominal pass/fail\nPass only if a nominal IMU-derived trigger with `status=VALID` and\nage_ms <= 400 ms produces exactly one complete ordered deployment chain and\nthe report links or records terminal-speed evidence at `<= 11 m/s`.\nFail on missing step, duplicate open command, or untraceable evidence." { class: note; shape: page }
+  note_no_deploy: "[C] Negative/no-manual pass/fail\nNegative/non-deploy profiles, manual/BLE attempts, and non-`VALID` IMU\nstatuses (`STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`) shall\nnot produce a flight-mode open command. Legacy debug/manual paths are failures\nunless formally disabled or dispositioned before execution." { class: note; shape: page }
   note_i2c_fault: "[C] I2C fault pass/fail\nEvery read succeeds or times out within ≤5 ms. NACK, disconnect, and stuck-bus\ncases are bounded, logged, and do not block the scheduler or falsely satisfy the\ndeployment condition." { class: note; shape: page }
-  note_timing: "[C] Processing/timing pass/fail\nProcess/calculate functions complete in <5 ms for representative inputs. PWM and\nservo observations are timestamped against the same timebase. No blocking outside\nmodeled I2C comms is observed or found by supporting analysis." { class: note; shape: page }
-  note_servo: "[C] Startup/mechanical pass/fail\nInitial servo state is 0 degrees/closed after startup or reset, no open pulse occurs\nbefore the deployment condition, and servo jam/no-open is reported rather than\nclaimed as successful deployment." { class: note; shape: page }
+  note_timing: "[C] Processing/timing pass/fail\nProcess/calculate functions complete in <5 ms for representative inputs. PWM\nand servo/open-status observations are timestamped against the same timebase.\nNo blocking outside modeled I2C comms is observed or found by supporting\nanalysis. Accepted commands must be confirmed within `<=5 s`; otherwise\nstatus is timeout/fault and is not success." { class: note; shape: page }
+  note_servo: "[C] Startup/mechanical pass/fail\nInitial servo state is 0 degrees/closed after startup or reset, no open pulse occurs\nbefore the deployment condition. Servo jam/no-open is reported as\n`JAM_DETECTED` and is not success; success requires `OPEN_CONFIRMED`." { class: note; shape: page }
   note_accuracy_diameter: "[C] Accuracy/diameter pass/fail\nAngular-rate error is <30 deg/s or deployment thresholds are analyzed robust to\nthat error. Parachute diameter is ≤30 cm before credited deployment trials." { class: note; shape: page }
   note_stats: "[C] Statistical viewpoint\nMinimum development definition: ≥10 nominal trials plus enumerated faults. R90/C95\nrelease claim requires 29/29 independent positive and 29/29 independent negative\ntrials with no failures. 95/95 deadline claim requires 59/59 in-limit timings." { class: note; shape: page }
   note_report: "[C] Evidence/report content\nReport records source model version, UUT configuration, firmware build, stimulus\nprofiles, raw logs/traces/video, timing/accuracy analyses, environmental conditions,\ndeviations, anomalies, waivers, limitations, and retest status." { class: note; shape: page }
@@ -72,14 +75,17 @@ chain.inspect_diameter -> chain.record_environment: "[FE] Diameter result" { cla
 chain.record_environment -> chain.configure_loggers: "[FE] Conditions recorded" { class: fe }
 chain.configure_loggers -> chain.initialize_servo: "[FE] Instrumented UUT" { class: fe }
 chain.initialize_servo -> chain.arm_flight_mode: "[FE] Closed state confirmed" { class: fe }
-chain.arm_flight_mode -> chain.stimulate_nominal: "[FE] Flight-mode ready" { class: fe }
+chain.arm_flight_mode -> chain.enforce_obcc_mode_gate: "[FE] Flight-mode ready" { class: fe }
+chain.enforce_obcc_mode_gate -> chain.validate_trigger_inputs: "[FE] Mode/command path checked" { class: fe }
+chain.validate_trigger_inputs -> chain.stimulate_nominal: "[FE] Trigger inputs eligible" { class: fe }
 
 chain.stimulate_nominal -> chain.measure_imu: "[FE] Motion profile" { class: fe }
 chain.measure_imu -> chain.read_process_imu: "[FE] IMU data" { class: fe }
 chain.read_process_imu -> chain.collect_measurements: "[FE] Processed IMU\n[Vels, Accels, PRY]" { class: fe }
 chain.collect_measurements -> chain.evaluate_condition: "[FE] ADS IMU state" { class: fe }
-chain.evaluate_condition -> chain.command_open: "[FE] Deployment trigger" { class: fe }
-chain.command_open -> chain.observe_servo: "[FE] Open signal [PWM]" { class: fe }
+chain.evaluate_condition -> chain.command_open: "[FE] Normal trigger only on status=VALID and age_ms<=400ms" { class: fe }
+chain.command_open -> chain.capture_status_timing: "[FE] Command and start timer" { class: fe }
+chain.capture_status_timing -> chain.observe_servo: "[FE] ≤5 s open confirmation check" { class: fe }
 chain.observe_servo -> chain.observe_holder: "[FE] Servo open" { class: fe }
 chain.observe_holder -> chain.observe_parachute: "[FE] Holder open" { class: fe }
 chain.observe_parachute -> chain.log_nominal: "[FE] Deployment evidence" { class: fe }
@@ -95,6 +101,7 @@ chain.analyze_evidence -> chain.decide_verdict: "[FE] Analysis findings" { class
 chain.decide_verdict -> chain.archive_report: "[FE] Verdict package" { class: fe }
 
 chain.note_nominal -> chain.evaluate_condition { class: cstr }
+chain.note_nominal -> chain.capture_status_timing { class: cstr }
 chain.note_nominal -> chain.observe_parachute { class: cstr }
 chain.note_no_deploy -> chain.run_negative_profiles { class: cstr }
 chain.note_no_deploy -> chain.attempt_manual_ble { class: cstr }
@@ -102,6 +109,7 @@ chain.note_no_deploy -> chain.inject_bad_stale_imu { class: cstr }
 chain.note_i2c_fault -> chain.inject_i2c_faults { class: cstr }
 chain.note_i2c_fault -> chain.read_process_imu { class: cstr }
 chain.note_timing -> chain.read_process_imu { class: cstr }
+chain.note_timing -> chain.capture_status_timing { class: cstr }
 chain.note_timing -> chain.analyze_evidence { class: cstr }
 chain.note_servo -> chain.initialize_servo { class: cstr }
 chain.note_servo -> chain.inject_servo_jam { class: cstr }

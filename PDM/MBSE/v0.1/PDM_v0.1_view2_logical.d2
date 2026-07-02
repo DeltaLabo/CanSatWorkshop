@@ -57,7 +57,11 @@ dummy_cansat: "[PC] Dummy CanSat" {
       class: pc
       direction: down
 
-      descent_speed_control: "[LC] Descent speed control" { class: lc }
+      descent_speed_control: "[LC] Descent speed control" {
+        class: lc
+
+        terminal_speed_max: "[C] Terminal speed <= 11 m/s\n(measured + uncertainty/guard band)" { class: note; shape: page }
+      }
     }
   }
 }

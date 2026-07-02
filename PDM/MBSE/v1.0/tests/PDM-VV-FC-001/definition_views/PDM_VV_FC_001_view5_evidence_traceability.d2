@@ -85,17 +85,18 @@ motion_stimulus: "[EA] IMU profile stimulus set\nnominal, negative, false, bad/s
 host_logger: "[EA] Host/logger workstation\nfirmware logs, trial IDs, reset records" { class: ea }
 logic_analyzer: "[EA] I2C/PWM logic analyzer\nraw traces and timing markers" { class: ea }
 camera_evidence: "[EA] Video evidence store\nservo/cap/holder/parachute observations" { class: ea }
-power_environment: "[EA] Power and environment records\nvoltage/current, ambient, equipment calibration" { class: ea }
+power_environment: "[EA] Power and environment records\nvoltage/current, ambient, wind if applicable, equipment/timebase calibration" { class: ea }
 analysis_workstation: "[EA] Analysis workstation\ntiming, accuracy, stats, fault verdicts" { class: ea }
 report_store: "[EA] Expected report/evidence store\ntests/results/PDM-VV-FC-001/" { class: ea }
 configuration_authority: "[EA] Review / configuration authority\nwaivers, anomalies, limitations, retest status" { class: ea }
 
-target_deployment: "[C] Trace target: PDM-UC-IMUTriggeredDeployment\nDeployment is commanded only by ADS IMU-derived flight logic and completes the\nmodeled IMU → PDM → PWM → servo → holder → parachute chain." { class: note; shape: page }
-target_speed: "[C] Trace target: PDM-UC-LimitTerminalSpeed\nTerminal-speed limiting evidence is recorded or linked. The v1.0 model lacks an\nexplicit numeric descent-speed constraint, so the report shall identify the linked\nevidence requirement or limitation." { class: note; shape: page }
+target_deployment: "[C] Trace target: PDM-UC-IMUTriggeredDeployment\nDeployment is commanded only by ADS IMU-derived flight logic under the OBCC-owned policy boundary and completes the\nmodeled IMU → PDM → PWM → servo → holder → parachute chain.\nOpen success is asserted only when evidence proves OPEN_CONFIRMED." { class: note; shape: page }
+target_speed: "[C] Trace target: PDM-UC-LimitTerminalSpeed\nTerminal-speed limiting evidence is recorded or linked with selected `<= 11 m/s` criterion.\nLinked evidence should include as-tested mass/configuration, parachute deployment\nstate, uncertainty, wind/environment context, and any evidence gaps or limitations." { class: note; shape: page }
 target_faults: "[C] Feared-event targets\nPDM-FE-NonDeployment; PDM-FE-PrematureDeployment; PDM-FE-SensorBusFault;\nPDM-FE-MechanicalJam. Fault-hardening evidence covers bad/stale IMU, I2C faults,\nfalse profiles, jam/no-open, brownout/reset, and no-manual/BLE regression." { class: note; shape: page }
-linked_constraints: "[C] Linked pass/fail constraints\nParachute diameter ≤30 cm; angular-rate error <30 deg/s or robust threshold;\nI2C read timeout ≤5 ms; process/calculate <5 ms; no blocking besides I2C;\ninitial servo position 0 degrees/closed; no manual/BLE open command." { class: note; shape: page }
+linked_constraints: "[C] Linked pass/fail constraints\nParachute diameter ≤30 cm; angular-rate error <30 deg/s or robust threshold;\nI2C read timeout ≤5 ms; process/calculate <5 ms; no blocking besides I2C;\ninitial servo position 0 degrees/closed; no manual/BLE open command; normal trigger requires ADS status=VALID and age_ms <= 400 ms; terminal-speed criterion is <= 11 m/s; `OPEN_CONFIRMED` is the only deployment-success status." { class: note; shape: page }
 source_ce_coverage: "[C] Source CE coverage in referenced model\nPDM-VV-FC-001 covers source CEs I2C, Pointers/Returns, PWM, PWM feedback/status,\nand Torque through the copied logical view, physical probes, and evidence interfaces." { class: note; shape: page }
-report_content: "[C] Report status data\nReport identifies model baseline, UUT configuration, firmware build, source views,\nstimulus profiles, raw logs/traces/video, environmental conditions, analysis\nsettings, deviations, anomalies, waivers, limitations, pass/fail rationale, and\nretest status." { class: note; shape: page }
+status_oracle: "[C] Deployment status no-false-success oracle\nPreserve raw deployment_status code/name/category and classify every outcome.\nOnly OPEN_CONFIRMED is deployment success; non-success outcomes include `COMMAND_SENT`, `OPEN_IN_PROGRESS`, `NO_OPEN_CONFIRMED`, `TIMEOUT`, `JAM_DETECTED`, `PDM_FAULT`, and `UNKNOWN`." { class: note; shape: page }
+report_content: "[C] Report status data\nReport identifies model baseline, UUT configuration, firmware build, source views,\nstimulus profiles, raw logs/traces/video, environmental conditions, analysis\nsettings, timebase/correlation IDs, evidence archive path, deviations, anomalies, waivers, limitations, pass/fail rationale, and\nretest status." { class: note; shape: page }
 
 source_baseline -> system.uut.obcc_module.xiao.evidence_if: "[CE] Baseline ID" { class: ce }
 motion_stimulus -> system.uut.ads_module.imu.ads_kinematic_sensing: "[CE] IMU profiles" { class: ce }
@@ -110,6 +111,7 @@ configuration_authority -> report_store: "[CE] Review" { class: ce }
 
 target_deployment -> system.uut.obcc_module.xiao.pdm_processing { class: cstr }
 target_deployment -> system.uut.parachute_module.servo.trigger { class: cstr }
+target_deployment -> status_oracle { class: cstr }
 target_speed -> system.uut.parachute_module.parachute.descent_speed_control { class: cstr }
 target_faults -> analysis_workstation { class: cstr }
 target_faults -> report_store { class: cstr }
@@ -119,6 +121,7 @@ linked_constraints -> system.uut.obcc_module.xiao.pdm_processing { class: cstr }
 linked_constraints -> system.uut.parachute_module.parachute.descent_speed_control { class: cstr }
 source_ce_coverage -> system.uut.obcc_module.xiao.evidence_if { class: cstr }
 source_ce_coverage -> logic_analyzer { class: cstr }
+status_oracle -> report_store { class: cstr }
 report_content -> report_store { class: cstr }
 
 # Layout-only rank hints; no Capella semantics.

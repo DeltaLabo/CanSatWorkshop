@@ -8,9 +8,9 @@
 - **References cited in diagrams:** IVV, shared ADS/AMS freshness contract [`../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md`](../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md), AMS-R5 (statistics), PM&SE/IVV timing/fault semantics.
 - **Expected report path:** `AMS/MBSE/tests/results/AMS-VV-CON-004/report.md`.
 
-## Covered candidate activities
+## Covered activities
 
-This model-defined activity covers candidate `AMS-VV-CON-004` (`Process/Calculate functions < 5 ms`) and, if executed completely with the modeled static and dynamic coverage evidence, candidate `AMS-VV-CON-005` (`No blocking operations besides I2C or UART comms`). It is also the non-blocking/status-propagation leg of the `AMS-V10-DATA-FRESHNESS` update path.
+This model-defined activity covers row `AMS-VV-CON-004` (`Process/Calculate functions < 5 ms`) and, if executed completely with the modeled static and dynamic coverage evidence, verification row `AMS-VV-CON-005` (`No blocking operations besides I2C or UART comms`). It is also the non-blocking/status-propagation leg of the `AMS-V10-DATA-FRESHNESS` update path.
 
 ## AMS-BLK-004 evidence/report checklist
 

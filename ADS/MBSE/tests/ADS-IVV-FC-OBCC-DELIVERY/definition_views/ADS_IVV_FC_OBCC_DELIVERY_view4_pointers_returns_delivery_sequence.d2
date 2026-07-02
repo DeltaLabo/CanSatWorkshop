@@ -47,14 +47,14 @@ chain: "ADS-IVV-FC-OBCC-DELIVERY\nPointers/Returns delivery verification sequenc
   inject_slow: "[F] Inject slow/stuck-call\nno-blocking case" { class: func }
   evaluate_faults: "[F] Evaluate rejection,\nerror semantics, recovery" { class: func }
   analyze_contract: "[F] Analyze Pointers/Returns\nAPI and caller implementation" { class: func }
-  decide_verdict: "[F] Decide pass/fail or\nblocked/limited verdict" { class: func }
+  decide_verdict: "[F] Decide pass/fail\nor limited verdict" { class: func }
   record_report: "[F] Record evidence, traceability,\nanomalies, waivers, retest" { class: func }
 
   note_contract: "[C] Interface-contract pass/fail\nPass only if OBCC obtains modeled ADS data/handles through\nPointers/Returns and no unmodeled data path is used. Ownership,\nlifetime, freshness, validity, and error semantics are explicit." { class: note; shape: page }
   note_data_set: "[C] Data coverage pass/fail\nNominal records shall cover GPS lat/lon/init state, IMU angular\nvelocity/accel/field data, attitude pitch/roll/yaw, and OBCC\ncollection fields present in the v1.0 source inventory." { class: note; shape: page }
   note_faults: "[C] Fault-hardening pass/fail\nNull, dangling, stale, corrupt, invalid-return, and slow/stuck cases\nshall not be consumed as valid. Expected behavior is explicit error\nreturn, invalid/freshness flag, bounded retry/skip, or safe recovery." { class: note; shape: page }
-  note_timing: "[C] Timing/no-blocking pass/fail\nNo unexpected blocking outside modeled I2C/UART waits. Verify linked\nconstraints: Variable Getter template, process/calculate <5 ms, UART/I2C\nread timeout <=5 ms, plus recorded delivery watchdog threshold." { class: note; shape: page }
-  note_stats: "[C] Statistical significance\nMinimum engineering demonstration: >=30 nominal delivery observations\ncovering modeled fields plus all enumerated fault cases. Formal PDR or\ndeadline claims require a predeclared method and sample count." { class: note; shape: page }
+  note_timing: "[C] Timing/no-blocking pass/fail\nNo unexpected blocking outside modeled I2C/UART waits. Verify linked\nconstraints: Variable Getter template, process/calculate <5 ms, UART/I2C\nread timeout <=5 ms, and 400 ms max delivery progress/freshness gap." { class: note; shape: page }
+  note_stats: "[C] Statistical significance\nMinimum engineering demonstration: >=30 nominal delivery observations\ncovering modeled fields plus all enumerated fault cases. Formal freshness/\ndeadline claims use n=59 zero-violation observations; PDR is separate." { class: note; shape: page }
   note_environment: "[C] Execution conditions\nBefore repetitions, read ambient monitor, verify power limits and\ncalibration IDs, and record timebase, firmware, UUT serial, and source\nview copy. Deviations become report limitations." { class: note; shape: page }
 }
 

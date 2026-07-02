@@ -76,10 +76,10 @@ Each report shall identify referenced source and definition views, selected SSIV
 
 Modeled definition ready for review with mission duration and maximum-gap criteria selected. Execution remains pending; no pass/fail credit is claimed until reports bind evidence to the selected article and configuration.
 
-## Assumptions and gaps
+## Assumptions and execution records
 
 - Controlled SSIV/version labels are inferred from folder names; no separate SSIV document was found.
-- Mission/capability/feared-event IDs are placeholders until modeled explicitly.
-- Mission duration and maximum allowed internal freshness gap are selected in this README as 10 min and 400 ms respectively; existing D2/source views may still require follow-up to show these selected criteria explicitly.
-- Truth/reference equipment, calibration IDs, exact data schemas, hardware revisions, and firmware commits must be selected before execution.
+- Mission/capability/feared-event IDs are controlled ADS-plan trace labels until modeled explicitly.
+- Mission duration and maximum allowed internal freshness gap are selected as 10 min / 600 s and 400 ms respectively; the D2 definition views carry those selected criteria.
+- Truth/reference equipment, calibration IDs, exact implementation data-schema revision, hardware revisions, and firmware commits are report-time execution records.
 - `v0.2` does not model an explicit I2C `<=5 ms` timeout constraint; handle as a fault-hardening observation/gap unless superseded by implementation evidence.

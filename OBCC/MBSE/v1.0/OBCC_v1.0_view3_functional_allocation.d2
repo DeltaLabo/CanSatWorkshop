@@ -272,6 +272,9 @@ system: "[System] Physical System" {
             evaluate_emergency_deploy_need: "[F] Evaluate emergency\ndeploy need" { class: func }
             inhibit_deployment_in_standby: "[F] Inhibit deployment\nin Stand-by" { class: func }
             send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
+            observe_pdm_actuator_evidence: "[F] Observe PDM/\nactuator evidence" { class: func }
+            map_deployment_status: "[F] Map deployment\nstatus" { class: func }
+            publish_deployment_status: "[F] Publish deployment\nstatus" { class: func }
             send_close_signal_to_servo: "[F] Send close signal\nto Servo" { class: func }
           }
         }
@@ -374,6 +377,11 @@ note_payload: "[C] v1.0 telemetry excludes\nrelative humidity; keep Pitch, Roll,
   shape: page
 }
 
+note_deployment_status: "[C] PDM/fault-policy evidence maps\nto deployment_status code, symbol,\nand category. Only OPEN_CONFIRMED\nis success; command, in-progress,\ninhibited, no-open, timeout, jam,\nfault, unknown, missing, or\nunrecognized states are non-success." {
+  class: note
+  shape: page
+}
+
 note_deploy_deadline: "[C] In On mode, open parachute\n≤5 s after trigger conditions\nor emergency request are met" {
   class: note
   shape: page
@@ -386,4 +394,8 @@ system.pc_computer -> note_freertos { style: { opacity: 0 } }
 note_freertos -> note_health { style: { opacity: 0 } }
 note_health -> note_modes { style: { opacity: 0 } }
 note_modes -> note_payload { style: { opacity: 0 } }
-note_payload -> note_deploy_deadline { style: { opacity: 0 } }
+note_deployment_status -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing.map_deployment_status { class: cstr }
+note_deployment_status -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing.publish_deployment_status { class: cstr }
+
+note_payload -> note_deployment_status { style: { opacity: 0 } }
+note_deployment_status -> note_deploy_deadline { style: { opacity: 0 } }

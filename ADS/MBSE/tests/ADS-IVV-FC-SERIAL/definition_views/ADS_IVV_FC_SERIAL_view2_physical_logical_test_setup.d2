@@ -44,7 +44,7 @@ fault_harness: "[EA] Optional GPS/IMU\nstimulus and fault harness" { class: ea }
 time_env: "[EA] Timebase + ambient monitor\nclock, thermometer, hygrometer" { class: ea }
 analysis_script: "[EA] Serial log\nanalysis script" { class: ea }
 
-note_schema: "[C] Execution prerequisite\nDeclare Serial0 schema before execution: baud/port/settings,\nline framing, init-state fields, measurement fields,\nvalidity/freshness/unavailable markers, and parser version.\nIf absent, verdict is Blocked/Limited, not pass." { class: note; shape: page }
+note_schema: "[C] Controlled Serial0 schema\nUse ../schemas/ads_serial0_v0_1_v0_2.schema.json\nand parser ../tools/parse_ads_serial0.py; canonical JSON Lines,\ndefault 115200 8N1, declared init/measurement fields,\nvalidity/freshness/unavailable markers, and parser version." { class: note; shape: page }
 note_pass: "[C] Parseability pass condition\nFor v0.1/v0.2, the PC receives parseable init and\nmeasurement records matching the declared schema.\nMalformed or missing records are detected and reported." { class: note; shape: page }
 note_faults: "[C] Fault-hardening conditions\nUnavailable, stale, malformed, and missing GPS/IMU/init fields\nshall be explicit markers or parser-detectable errors;\nSerial0 shall not hide invalid data as valid." { class: note; shape: page }
 note_stats: "[C] Statistical/PDR viewpoint\nFrame counts, PDR, and binomial confidence are pass/fail only\nif expected frame count, campaign duration, schema, and\nacceptance threshold are declared before the run." { class: note; shape: page }

@@ -8,7 +8,7 @@
 - **IADT method(s):** Inspection + Analysis + Testing. Inspection is included to satisfy IVV component/link minimums; the issue-requested primary methods are Testing + Analysis.
 - **IVV source categories:** component/link, component exchange, allocation, functional chain/scenario, constraint.
 - **Traceability targets:** `OBCC-UC-RuntimeFaultHandling`, `OBCC-FE-SchedulerBlocked`, `OBCC-FE-NonDeployment`, `OBCC-FE-LostTelemetry`, and runtime fault constraint families `OBCC-VV-CON-004` / `OBCC-VV-CON-005`.
-- **Existing v1.0 candidate mapping:** `OBCC-VV-FC-005`, `OBCC-VV-CON-004`, and `OBCC-VV-CON-005`.
+- **Existing v1.0 verification-row mapping:** `OBCC-VV-FC-005`, `OBCC-VV-CON-004`, and `OBCC-VV-CON-005`.
 - **Expected evidence/report path:** `OBCC/MBSE/tests/results/OBCC-V06-GATE-001/`.
 - **Execution status:** modeled definition complete; execution and report evidence pending.
 
@@ -54,7 +54,7 @@ All five verification D2 files were rendered with the required `d2 --layout=elk`
 ## Pass/fail constraints
 
 - **PF-001 — setup/component/link inspection:** OBCC controller, RFM96W, bus/protocol fault-injection ports, RTOS queue/state trace hook, health/status telemetry output, mode-gate probe, emergency-deploy request probe, safe/error-state probe, fault-injection rack, trace/timing collector, RF monitor, bench power/reset controller, ambient thermometer, test operator, and safety observer are present, identified, connected as modeled, and dispositioned before fault injection.
-- **PF-002 — fault-class coverage and bounded result codes:** every declared I2C, UART, SPI/radio, RF, queue/state, mode-gate, power, and deployment-path fault case returns a bounded result/error code or modeled safe/error result. No function may hang, spin indefinitely, or return an unbounded/undefined status.
+- **PF-002 — fault-class coverage and bounded result codes:** every declared I2C, UART, SPI/radio, RF, queue/state, mode-gate, power, and deployment-path fault case returns a bounded result/error code or modeled safe/error result. No function may hang, spin indefinitely, or return an unbounded/unmodeled status.
 - **PF-003 — read timeout constraint:** faulted I2C/UART read attempts meet `<=5 ms` where applicable. SPI/radio busy/status faults are bounded by the modeled driver result. Timeout timing is measured at getter/driver entry and return, not inferred only from telemetry.
 - **PF-004 — health/status disclosure:** injected runtime faults update health/status telemetry and/or local trace evidence with fault class, result/error code, stale/missing-value marker, degraded-mode status, `deployment_status` where deployment-path interpretation is affected, and recovery/reset marker. Missing disclosure is a failure unless the only path under test is an RF-loss case and local trace preserves the evidence.
 - **PF-005 — scheduler liveness:** no FreeRTOS task, ISR path, queue, mutex, getter, mode gate, or telemetry path remains unboundedly blocked. Watchdog reset, blocked-task assertion, permanently held mutex, permanently full queue, or unrecoverable scheduler starvation is a failure unless explicitly expected by the safe/error-state scenario.
@@ -68,12 +68,12 @@ All five verification D2 files were rendered with the required `d2 --layout=elk`
 
 - This is a `v0.6 -> v0.7` advancement gate, not final v1.0 flight-readiness closure.
 - Timeout evidence should target `59/59` in-limit samples per applicable getter/fault class for a 95/95 non-parametric deadline claim. Smaller samples are characterization and must be labeled as such.
-- Fault-injection success is classified by declared equivalence class: I2C NACK/stuck bus, UART silence/malformed/late frame, SPI radio busy/status fault, RF loss, queue overflow, stale state/message, mode-gate delay, safe power fault, deployment-path critical fault, and recovery/restoration. For deployment-path classes, the report shall predeclare the expected `deployment_status` code/name/category sequence and any local-trace correlation method.
+- Fault-injection success is classified by declared equivalence class: I2C NACK/stuck bus, UART silence/malformed/late frame, SPI radio busy/status fault, RF loss, queue overflow, stale state/message, mode-gate delay, safe power fault, deployment-path critical fault, and recovery/restoration. For deployment-path classes, the report shall predeclare the expected `deployment_status` code/symbol/category sequence and any local-trace correlation method.
 - Telemetry cadence evidence records interval distribution, worst gap, stale/dropped frames, result codes, and health/status flags. Repeated intervals on one article are sustained-performance evidence, not automatically independent reliability trials.
 - Emergency-policy evidence separates Stand-by inhibit and On-mode emergency-request cases. The report must not pool cases unless it justifies common control logic and comparable fault stimulus. `INHIBITED_STANDBY` and `NOT_COMMANDED` are non-deployed outcomes, not missing evidence.
 - Fault-hardening emphasis: deadlock, priority inversion, stuck bus, malformed serial data, radio busy/loss, queue overflow, stale mode/state data, lost descent-state observability, lost telemetry, non-deployment, premature-deployment prevention, and safe/error diagnosability.
 
-## Candidate mapping and coverage notes
+## Verification-row mapping and coverage notes
 
 - **`OBCC-VV-FC-005`:** modeled by `OBCC-V06-GATE-001-T01/T02/T03` with verification means, injected fault classes, expected bounded codes, health/status evidence, pass/fail constraints, statistical interpretation, and scheduler/emergency-policy fault-hardening viewpoints added to the v1.0 runtime fault-handling chain.
 - **`OBCC-VV-CON-004`:** modeled by `OBCC-V06-GATE-001-I01/A01/T01/T02`, covering bounded getter/result codes, I2C/UART `<=5 ms` timeout evidence where applicable, shared-bus/mutex protection, queue/state/mode-gate liveness, startup-policy context, and no unbounded scheduler blocking. Full startup-health closure remains covered by the startup-health activity rather than this runtime gate.

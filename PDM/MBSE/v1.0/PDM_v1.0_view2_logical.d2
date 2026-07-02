@@ -98,7 +98,7 @@ system: "[System] Physical System" {
         note_imu_trigger: "[C] Deployment trigger\nuses ADS IMU data;\nno manual/BLE\nflight command" { class: note; shape: page }
         note_ads_freshness: "[C] Pointers/Returns\nnormal-trigger input:\nstatus VALID, finite/in-range\nfields, age_ms <= 400 ms.\nNon-VALID (STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT,\nINIT_FAIL) is not\na normal trigger." { class: note; shape: page }
         note_obcc_policy_boundary: "[C] OBCC owns mode,\ntrigger, emergency,\nsafe/error and\nno-false-success decisions.\nPDM executes command\nand exposes status." { class: note; shape: page }
-        note_status_mapping: "[C] PDM/actuator evidence\nmaps to deployment_status.\nCOMMAND_SENT is not\ndeployed/success;\nonly OPEN_CONFIRMED\nis strict success." { class: note; shape: page }
+        note_status_mapping: "[C] PDM/actuator evidence\nmaps to deployment_status.\nExposed evidence is non-success\nunless it proves OPEN_CONFIRMED.\nCOMMAND_SENT, in-progress,\ninhibited, no-open, timeout,\njam, fault, or unknown\nis not deployed/success." { class: note; shape: page }
       }
     }
 

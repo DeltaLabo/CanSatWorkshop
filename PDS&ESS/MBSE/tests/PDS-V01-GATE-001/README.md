@@ -96,7 +96,7 @@ The gate model covers all requested minimum IVV breadth for v0.1:
 - `PDS_V01_GATE_001_view3_power_path_smoke_chain.d2`
 - `PDS_V01_GATE_001_view3_power_path_smoke_chain.d2.png`
 
-## Evidence/report placeholder
+## Evidence/report path
 
 Execution evidence and reporting folder:
 

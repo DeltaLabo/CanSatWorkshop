@@ -1,0 +1,20 @@
+direction: right
+
+title: "SYS-FLIGHT-READINESS-CLOSURE — final CanSat-level readiness closure" { shape: text }
+assembled: "Assembled CanSat + DPS\nAssembled CanSat, DPS ground\nstation, subsystem reports,\nwaiver/deviation log,\nrequirement-to-test matrix" { shape: rectangle }
+means: "Verification means\nBoard inspection/analysis using\nclosure matrix, report archive\nreview, configuration audit and\nfinal review minutes" { shape: rectangle }
+stimulus: "Scenario / stimulus\nReview all subsystem and system\nrows after execution/disposition;\nverify matrix and evidence links" { shape: rectangle }
+env: "Environment / configuration\nFinal as-flown/as-demonstrated\nconfiguration frozen; no\nhardware/software changes after\nclosure except controlled retest" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff 100% required tests are\nexecuted PASS or have approved\nwaiver/defer disposition, all\ncritical waivers risk-accepted, no\nopen safety/definition blocker\nremains, configuration IDs match\nreports, and final board signs\nclosure. Any missing required\nreport/evidence/disposition is\nHOLD." { shape: page }
+stats: "Statistics\n100% closure-matrix census; no\nsampling claim" { shape: page }
+faults: "Fault hardening\nmissing report, unapproved\ndeviation, changed configuration\nafter test, unresolved safety\nissue, stale definition-backlog\nstatus" { shape: page }
+evidence: "Evidence\nclosure matrix, signed minutes,\nconfiguration list,\nwaiver/deviation register, report\narchive" { shape: rectangle }
+report: "Report\nPM&SE/MBSE/tests/results/SYS-FLIGHT-READINESS-CLOSURE/report.md" { shape: rectangle }
+assembled -> means: "configure"
+means -> stimulus: "execute"
+stimulus -> env: "under controls"
+env -> oracle: "evaluate"
+oracle -> stats: "statistics / gates"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "close"

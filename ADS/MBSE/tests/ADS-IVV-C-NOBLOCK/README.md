@@ -84,7 +84,7 @@ Modeled definition ready for review. Execution remains pending.
 
 ## Assumptions and gaps
 
-- Controlled SSIV IDs and formal capability/feared-event model elements are not present in the source D2; this definition uses the ADS-wide placeholder trace targets from `../README.md`.
+- Controlled SSIV IDs and formal capability/feared-event model elements are not present in the source D2; this definition uses the ADS-wide controlled trace labels from `../README.md`.
 - Firmware source/instrumentation access is not confirmed. A pass verdict requires such access or equivalent evidence.
 - `v0.2` does not explicitly model an I2C timeout constraint; this is retained as a model gap while still requiring bounded I2C error/timeout behavior before execution can pass.
 - Loop/progress heartbeat criteria are selected as 250 ms nominal and 400 ms maximum gap; instrumentation overhead allowance is selected as `<=5%` of the 200 ms period or `<=5 ms`, whichever is stricter for the claim. Exact instrumentation method and measured overhead remain execution prerequisites.

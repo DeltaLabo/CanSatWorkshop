@@ -1,0 +1,24 @@
+direction: right
+
+title: "ADS-IVV-C-ACCEL-3AXIS — 3-axis linear acceleration units and static accuracy" {
+  shape: text
+}
+
+item: "Item under verification\nADS v0.2/v1.0 ICM20948\nacceleration output at applicable\nADS observation point: v0.2\nSerial0/log/API or v1.0 ADS\nProcessing / OBCC collection" { shape: rectangle }
+means: "Verification means\nTesting with six-face static\ngravity fixture, calibrated\nalignment reference, timestamped\nADS log/API capture, and analysis\nscript" { shape: rectangle }
+stimulus: "Stimulus / conditions\nPlace +X, -X, +Y, -Y, +Z, -Z faces\nin 1 g static orientation; collect\nn=59 consecutive strict samples\nper face after settling; convert\nany g values with g0=9.80665 m/s^2" { shape: rectangle }
+env: "Environment / configuration\nNon-vibrating bench, stable power,\nambient temperature recorded,\nsensor calibrated/initialized per\nfirmware, fixture alignment\nuncertainty included" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff every face has correct\naxis/sign, driven-axis error plus\nexpanded uncertainty <=1.0 m/s^2,\noff-axis leakage plus uncertainty\n<=0.75 m/s^2, vector-norm error\nplus uncertainty <=1.0 m/s^2,\nunits are m/s^2 or controlled g\nconversion, and no stale/error/\nnon-finite/out-of-range sample is\ntreated VALID. v1.0 freshness uses\nstatus VALID, finite/in range,\nage_ms <=400 ms. Any deg/s^2\nacceleration oracle is FAIL." { shape: page }
+stats: "Statistics\nn=59 all-within-limit samples per\nface for strict claim; report\nexact sample count and\nuncertainty/guard-band method;\nfewer samples are characterization\nonly" { shape: page }
+faults: "Fault hardening\nwrong unit conversion, axis sign\nswap, stale/duplicate timestamp,\ninvalid sensor status, calibration\nfailure, vibration or fixture\nslip, missing uncertainty" { shape: page }
+evidence: "Evidence archive\nraw ADS log/API records, fixture\norientation photos,\ncalibration/alignment records,\nanalysis script/version, per-face\nCSV and guard-band table,\nstatus/age/field-validity mapping\nwhere applicable, report.md" { shape: rectangle }
+report: "Report\nresults/ADS-IVV-C-ACCEL-3AXIS/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

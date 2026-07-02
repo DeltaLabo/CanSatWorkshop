@@ -6,7 +6,7 @@
 
 **Selected SSIV/development scope:** ADS `v0.1`, `v0.2`, `v0.3`, and `v1.0`. Formal UART-timeout execution applies to `v0.1`, `v0.2`, and `v1.0`; `v0.3` is PCB-only N/A for runtime UART reads.
 
-**Traceability targets:** `ADS-IVV-C-UART-5MS` traces to the UART read timeout `<=5 ms` constraint, `ADS-CAP-GPS`, `ADS-FE-STUCK-LOOP`, and `ADS-FE-SILENT-SENSOR-FAIL`. Explicit mission/capability/use-case/feared-event elements are not yet modeled, so placeholder ADS plan IDs remain in use.
+**Traceability targets:** `ADS-IVV-C-UART-5MS` traces to the UART read timeout `<=5 ms` constraint, `ADS-CAP-GPS`, `ADS-FE-STUCK-LOOP`, and `ADS-FE-SILENT-SENSOR-FAIL`. Explicit mission/capability/use-case/feared-event elements are not yet separate source-model nodes, so the controlled ADS plan trace labels remain in use.
 
 **References cited in diagrams:** IVV, the ADS MBSE IVV plan `../README.md`, `ADS_MBSE_CORPUS.md`, `model_inventory.json`, and saved reference material under `../references/` or `../v0.2/tests/references/` as applicable. No external research was performed for this definition.
 
@@ -65,8 +65,8 @@ Each report shall identify referenced model views/elements, selected SSIV/versio
 
 ## Assumptions and residual gaps
 
-- Exact GPS UART fault injector equipment and firmware timing hooks are TBD.
-- Expected GPS data schema/freshness markers must be fixed before execution.
+- GPS UART fault injector equipment and firmware timing-hook names are report-time configuration records.
+- GPS data schema/freshness marker implementation names are report-time mappings to the required validity/freshness/status evidence; the `<=5 ms` UART deadline and stale/non-valid behavior are fixed by this definition.
 
 ## Status
 

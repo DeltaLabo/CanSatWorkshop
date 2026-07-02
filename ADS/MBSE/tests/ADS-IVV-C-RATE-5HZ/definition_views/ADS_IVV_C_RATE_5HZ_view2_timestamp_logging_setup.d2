@@ -33,7 +33,7 @@ system: "[System] ADS-IVV-C-RATE-5HZ\nTimestamp and logging setup\nRefs: IVV; SW
     v01: "[PC] v0.1 prototype\n5 Hz applicable" { class: pc }
     v02: "[PC] v0.2 prototype\n5 Hz applicable" { class: pc }
     v03: "[PC] v0.3 PCB article\nN/A for behavior" { class: pc }
-    v10: "[PC] v1.0 integrated article\nno explicit ADS 5 Hz" { class: pc }
+    v10: "[PC] v1.0 integrated article\nADS-to-OBCC freshness path" { class: pc }
   }
 }
 
@@ -44,9 +44,9 @@ reference_clock: "[EA] Reference clock /\ntimebase source" { class: ea }
 analysis_script: "[EA] Rate analysis script\nperiod/gap/stale checks" { class: ea }
 power_ambient: "[EA] Power and ambient\nmonitor" { class: ea }
 
-note_period: "[C] 5 Hz timing target\nNominal collection period is 200 ms.\nEvaluate mean collection rate, every per-sample\nperiod, worst gap, stale values, and dropped values." { class: note; shape: page }
-note_tolerance_gate: "[C] Pre-execution tolerance gate\nAllowed jitter and worst-gap limit must be selected\nand recorded before execution. If not selected, the\nrate verdict is BLOCKED/LIMITED; do not invent a\nhidden tolerance after data collection." { class: note; shape: page }
-note_formal_claim: "[C] Formal deadline/tolerance claim\nIf claiming a deadline/tolerance, use n = 59\nrepresentative collection samples and require every\nsample period/gap to be inside the selected limit." { class: note; shape: page }
+note_period: "[C] 5 Hz timing target\nNominal collection/request period is 200 ms.\nEvaluate expected opportunity/request count,\nmean rate, per-sample intervals, worst gap,\nstale values, and dropped values." { class: note; shape: page }
+note_tolerance_gate: "[C] Selected gap/freshness gate\nMaximum internal progress/freshness gap is 400 ms.\nJitter is characterization unless it violates count,\ngap, freshness, stale/drop, or a stricter declared limit." { class: note; shape: page }
+note_formal_claim: "[C] Formal deadline/freshness claim\nUse n = 59 representative scheduled observations\nand require zero violations of 200 ms opportunity\naccounting, 400 ms gap/freshness, status, and field validity." { class: note; shape: page }
 note_environment: "[C] Execution conditions\nRecord firmware commit/build, timestamp instrumentation\noverhead, logger configuration, reference-clock uncertainty,\nsupply voltage/current, ambient temperature/humidity,\nand calibration/function-check status before repetitions." { class: note; shape: page }
 note_faults: "[C] Fault-hardening viewpoint\nFail or limit if the loop stalls, timestamps stop, stale\nor dropped values are unflagged, serial logging backpressure\nchanges UUT behavior unrecorded, or clock drift/wrap is unresolved." { class: note; shape: page }
 
@@ -63,7 +63,7 @@ system.uut -> serial_logger: "[CE] ADS records\ncollection timestamp, sample ID,
 reference_clock -> serial_logger: "[CE] timebase\ncalibration and drift record" { class: ce }
 power_ambient -> serial_logger: "[CE] voltage/current/\nambient readings" { class: ce }
 serial_logger -> analysis_script: "[CE] raw log and\nhost timestamps" { class: ce }
-conductor -> analysis_script: "[CE] selected jitter and\nworst-gap tolerance" { class: ce }
+conductor -> analysis_script: "[CE] selected 400 ms\nmax-gap/freshness rule" { class: ce }
 analysis_script -> conductor: "[CE] rate analysis\nresult and limitations" { class: ce }
 
 note_period -> analysis_script { class: cstr }

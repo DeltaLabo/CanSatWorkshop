@@ -26,7 +26,7 @@ system: "[System] ADS-IVV-C-RATE-5HZ\nVerification-only functional allocation\nR
   class: sys
   direction: down
 
-  selected_uut: "[PC] Selected ADS UUT\nv0.1 or v0.2 for execution" {
+  selected_uut: "[PC] Selected ADS UUT\nv0.1/v0.2 collection or\nv1.0 ADS-to-OBCC freshness" {
     class: pc
     direction: down
     timing_interface: "[LC] Loop timing observation\ninterface" {
@@ -48,7 +48,7 @@ conductor: "[EA] IVV rate test conductor" {
   direction: down
   grid-columns: 2
   select_baseline: "[F] Select version, source\nview copy, firmware commit" { class: func }
-  select_tolerance: "[F] Select jitter and\nworst-gap tolerance before run" { class: func }
+  apply_gap_rule: "[F] Apply selected 400 ms\nmax gap/freshness rule" { class: func }
   start_stop: "[F] Start/stop run and\nmark repetitions" { class: func }
   review_environment: "[F] Read power/ambient\nconditions and calibration state" { class: func }
   record_deviations: "[F] Record anomalies,\nwaivers, limitations, retest" { class: func }
@@ -87,11 +87,11 @@ analysis_tool: "[EA] Rate analysis script" {
   direction: down
   grid-columns: 2
   parse_records: "[F] Parse timestamped\ncollection records" { class: func }
-  compute_periods: "[F] Compute periods,\nmean rate, and jitter" { class: func }
+  compute_periods: "[F] Compute periods, mean rate,\nopportunity count, and jitter" { class: func }
   compute_worst_gap: "[F] Compute worst gap\nand dropped-sample count" { class: func }
   check_stale: "[F] Check stale values\nand validity markers" { class: func }
   apply_n59: "[F] Apply n = 59 rule\nfor formal tolerance claim" { class: func }
-  produce_verdict: "[F] Produce pass/fail,\nblocked, or limited verdict" { class: func }
+  produce_verdict: "[F] Produce pass/fail\nor limited verdict" { class: func }
 }
 
 power_ambient: "[EA] Power and ambient\nmonitor" {
@@ -107,19 +107,19 @@ quality: "[EA] IVV reviewer /\nconfiguration authority" {
   direction: down
   grid-columns: 1
   review_trace: "[F] Review traceability\nand model baseline" { class: func }
-  approve_result: "[F] Approve verdict or\nblocked/limited rationale" { class: func }
+  approve_result: "[F] Approve verdict,\nlimitations, and rationale" { class: func }
 }
 
-note_pass: "[C] Pass/fail constraint\nNominal period is 200 ms. Pass only if selected\npre-execution mean-rate, per-sample period, worst-gap,\nstale-value, and dropped-value criteria are all met." { class: note; shape: page }
-note_gate: "[C] Blocking constraint\nIf allowed jitter/worst-gap tolerance is not fixed before\nexecution, final rate verdict is blocked/limited even if\nmeasurements were collected." { class: note; shape: page }
-note_stats: "[C] Statistical viewpoint\nUse complete campaign records. For a formal deadline/\ntolerance claim, use n = 59 representative samples and\nrequire every sample inside the chosen limit." { class: note; shape: page }
+note_pass: "[C] Pass/fail constraint\nNominal period is 200 ms. Pass only if expected\nopportunity/request count, 400 ms max gap/freshness,\nstale/drop, age/status, and field-validity criteria are met." { class: note; shape: page }
+note_gate: "[C] Selected gap/freshness gate\nMaximum internal progress/freshness gap is 400 ms.\nJitter is recorded as characterization unless it violates\ncount, gap, freshness, stale/drop, or stricter declared limits." { class: note; shape: page }
+note_stats: "[C] Statistical viewpoint\nUse complete campaign records. Formal timing/freshness\nclaims use n = 59 representative scheduled observations\nwith zero violations of the selected rules." { class: note; shape: page }
 note_faults: "[C] Fault-hardening viewpoint\nEvaluate loop stalls, serial backpressure, timestamp loss,\nclock drift/wrap, stale values, and dropped/duplicated records." { class: note; shape: page }
-note_na: "[C] N/A versions\nv0.3 has no behavior model. v1.0 has no explicit ADS 5 Hz\nconstraint in the current model; report observed rate only\nas information unless a new constraint is added." { class: note; shape: page }
+note_na: "[C] Version handling\nv0.3 has no behavior model. v1.0 rate/freshness is\nverified through ADS-V10-DATA-FRESHNESS at the\nADS-to-OBCC observation point; 2 s LoRa is packaging only." { class: note; shape: page }
 
 note_pass -> analysis_tool.compute_periods { class: cstr }
 note_pass -> analysis_tool.compute_worst_gap { class: cstr }
 note_pass -> analysis_tool.check_stale { class: cstr }
-note_gate -> conductor.select_tolerance { class: cstr }
+note_gate -> conductor.apply_gap_rule { class: cstr }
 note_gate -> analysis_tool.produce_verdict { class: cstr }
 note_stats -> analysis_tool.apply_n59 { class: cstr }
 note_faults -> system.selected_uut.timing_interface.expose_loop_progress { class: cstr }

@@ -49,23 +49,55 @@ chain: "AMS v1.0 — Atmospheric measurement chain" {
   direction: right
 
   measure_pressure: "[F] Measure\npressure" { class: func }
-  measure_temperature: "[F] Measure\ntemp." { class: func }
+  measure_temperature: "[F] Measure\ntemperature" { class: func }
   respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
+  obcc_getter_request: "[F] OBCC requests\nAMS getter" { class: func }
   read_pressure: "[F] Read\npressure" { class: func }
   read_temperature: "[F] Read\ntemperature" { class: func }
   calculate_altitude: "[F] Calculate\naltitude" { class: func }
   process_temperature: "[F] Process\ntemperature" { class: func }
   collect_measurements: "[F] Collect\nmeasurements" { class: func }
+  classify_freshness_status: "[F] Classify\nstatus + age" { class: func }
+  publish_obcc_getter_response: "[F] Publish OBCC\ngetter response" { class: func }
+  obcc_consume_response: "[F] OBCC consumes\nAMS response" { class: func }
 
-  note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
+  note_use_case: "[UC] AMS-UC-MeasureAtmosphere" {
     class: note
     shape: page
   }
-  note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+  note_accuracy_pressure: "[C] Pressure accuracy\n±1 hPa" {
     class: note
     shape: page
   }
-  note_resolution: "[C] Resolution\n< 10m" {
+  note_accuracy_temperature: "[C] Temp. accuracy\n±0.5 °C over\n10-40 °C" {
+    class: note
+    shape: page
+  }
+  note_temp_response: "[C] Temp. response\n≤60 s" {
+    class: note
+    shape: page
+  }
+  note_resolution: "[C] Altitude resolution\n≤10 m\n13 Pa/m = 130 Pa" {
+    class: note
+    shape: page
+  }
+  note_freshness_contract: "[C] Getter ≥5 Hz\n(200 ms); telemetry 2 s\nseparate; fresh iff\nVALID and age_ms ≤400 ms" {
+    class: note
+    shape: page
+  }
+  note_status_enum: "[C] Status enum exactly:\nVALID, STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT,\nINIT_FAIL" {
+    class: note
+    shape: page
+  }
+  note_no_stale_valid: "[C] No timeout/fault/init/\nno-data/stale condition\nreturns old samples\nas VALID" {
+    class: note
+    shape: page
+  }
+  note_feared_events: "AMS-FE-BadExposure\nAMS-FE-SensorBusFault\nAMS-FE-StaleMeasurement\nAMS-FE-SchedulerBlock" {
+    class: note
+    shape: page
+  }
+  note_statistics: "[C] Oracles:\naccuracy n≥30 with bias/std/CI/U;\ntiming/freshness 59/59;\nbinary faults 29/29" {
     class: note
     shape: page
   }
@@ -74,6 +106,8 @@ chain: "AMS v1.0 — Atmospheric measurement chain" {
 chain.measure_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nsignal" { class: fe }
 chain.measure_temperature -> chain.respond_i2c_requests: "[FE] Temperature\nsignal" { class: fe }
 
+chain.obcc_getter_request -> chain.read_pressure: "[FE] Getter req\n≥5 Hz" { class: fe }
+chain.obcc_getter_request -> chain.read_temperature: "[FE] Getter req\n≥5 Hz" { class: fe }
 chain.read_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nI2C Req" { class: fe }
 chain.read_temperature -> chain.respond_i2c_requests: "[FE] Temp.\nI2C Req" { class: fe }
 
@@ -85,10 +119,21 @@ chain.read_temperature -> chain.process_temperature: "[FE] Temperature" { class:
 
 chain.calculate_altitude -> chain.collect_measurements: "[FE] Result\n[Altitude]" { class: fe }
 chain.process_temperature -> chain.collect_measurements: "[FE] Result\n[Temperature]" { class: fe }
+chain.collect_measurements -> chain.classify_freshness_status: "[FE] Sample +\ntime/status inputs" { class: fe }
+chain.classify_freshness_status -> chain.publish_obcc_getter_response: "[FE] Envelope\nsample_id age_ms status" { class: fe }
+chain.publish_obcc_getter_response -> chain.obcc_consume_response: "[FE] Getter return\nsample + age/status" { class: fe }
 
+chain.note_use_case -> chain.collect_measurements { class: cstr }
 chain.note_accuracy_pressure -> chain.measure_pressure { class: cstr }
 chain.note_accuracy_temperature -> chain.measure_temperature { class: cstr }
+chain.note_temp_response -> chain.measure_temperature { class: cstr }
 chain.note_resolution -> chain.calculate_altitude { class: cstr }
+chain.note_freshness_contract -> chain.classify_freshness_status { class: cstr }
+chain.note_freshness_contract -> chain.publish_obcc_getter_response { class: cstr }
+chain.note_status_enum -> chain.classify_freshness_status { class: cstr }
+chain.note_no_stale_valid -> chain.classify_freshness_status { class: cstr }
+chain.note_feared_events -> chain.classify_freshness_status { class: cstr }
+chain.note_statistics -> chain.collect_measurements { class: cstr }
 
 # Layout-only edge to keep the two runtime branches grouped before collection.
 chain.calculate_altitude -> chain.process_temperature { style: { opacity: 0 } }

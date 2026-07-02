@@ -118,7 +118,7 @@ reviewer: "[EA] IVV reviewer /\nconfiguration authority" {
 }
 
 c_pass: "[C] Pass/fail constraints\nNo reset or unrecovered peripheral failure; expected modeled fields\nfor selected version are present/time-correlated; at least 95% of\nexpected cycles/frames are present when cadence is claimed; no gap\nexceeds selected maximum." { class: note; shape: page }
-c_prereq: "[C] Blocked verdict prerequisites\nMission duration, expected cadence/frame rule, maximum allowed gap,\ntruth/reference tools, firmware commit, hardware revision, and logger\ntimebase must be fixed before execution verdict can be closed." { class: note; shape: page }
+c_prereq: "[C] Selected verdict gate\nMission duration is 10 min / 600 s, expected 5 Hz opportunities are\n3000 for a full run, and maximum internal progress/freshness gap is\n400 ms. Truth tools, firmware, hardware, and timebase are report records." { class: note; shape: page }
 c_stats: "[C] Statistics viewpoint\nUse complete run records. Repeated samples on one article are\nscreening unless independence is justified. For deadline/timing 95/95\nclaims use n=59 all within limit; for PDR use exact binomial bounds." { class: note; shape: page }
 c_v03: "[C] v0.3 N/A rule\nRecord N/A after reviewing source_views/v0.3 and confirming no\nruntime LC, CE, allocation, or functional chain is modeled." { class: note; shape: page }
 

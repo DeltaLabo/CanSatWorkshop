@@ -48,9 +48,38 @@ chain: "AMS v1.0 — Peripheral initialisation chain" {
   class: chain
   direction: right
 
+  obcc_init_request: "[F] OBCC requests\ninit state" { class: func }
   get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
   respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
   collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
+  classify_init_status: "[F] Classify init\nstatus + age" { class: func }
+  publish_init_response: "[F] Publish OBCC\ninit response" { class: func }
+  obcc_consume_init: "[F] OBCC consumes\ninit response" { class: func }
+
+  note_use_case: "[UC] AMS-UC-InitializePeripheral" {
+    class: note
+    shape: page
+  }
+  note_startup_fault: "[C] Startup failure reports\nINIT_FAIL or NO_DATA;\nnever VALID" {
+    class: note
+    shape: page
+  }
+  note_status_enum: "[C] Status enum exactly:\nVALID, STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT,\nINIT_FAIL" {
+    class: note
+    shape: page
+  }
+  note_no_stale_valid: "[C] No timeout/fault/init/\nno-data/stale condition\nreturns old samples\nas VALID" {
+    class: note
+    shape: page
+  }
+  note_feared_events: "AMS-FE-StartupFault\nAMS-FE-SensorBusFault\nAMS-FE-SchedulerBlock" {
+    class: note
+    shape: page
+  }
+  note_statistics: "[C] Oracles:\ntiming/freshness 59/59;\nbinary fault trials 29/29;\nsmaller samples screening only" {
+    class: note
+    shape: page
+  }
 
   note_variable_getter: "[C] Implement each\n(Read X, Process X) or\n(Read X, Calculate Y)\npair as a Variable\nGetter template" {
     class: note
@@ -70,9 +99,24 @@ chain: "AMS v1.0 — Peripheral initialisation chain" {
   }
 }
 
+chain.obcc_init_request -> chain.get_bme280_init_state: "[FE] Getter req\n≥5 Hz" { class: fe }
 chain.get_bme280_init_state -> chain.respond_i2c_requests: "[FE] I2C Req" { class: fe }
 chain.respond_i2c_requests -> chain.get_bme280_init_state: "[FE] State info" { class: fe }
 chain.get_bme280_init_state -> chain.collect_peripheral_init_states: "[FE] Result\n[Init state]" { class: fe }
+chain.collect_peripheral_init_states -> chain.classify_init_status: "[FE] Init state\n+ timestamp" { class: fe }
+chain.classify_init_status -> chain.publish_init_response: "[FE] Envelope\nstatus age_ms" { class: fe }
+chain.publish_init_response -> chain.obcc_consume_init: "[FE] Getter return\nINIT_FAIL/NO_DATA/VALID" { class: fe }
+
+chain.note_use_case -> chain.collect_peripheral_init_states { class: cstr }
+chain.note_startup_fault -> chain.classify_init_status { class: cstr }
+chain.note_status_enum -> chain.classify_init_status { class: cstr }
+chain.note_no_stale_valid -> chain.classify_init_status { class: cstr }
+chain.note_feared_events -> chain.classify_init_status { class: cstr }
+chain.note_statistics -> chain.classify_init_status { class: cstr }
+chain.note_variable_getter -> chain.get_bme280_init_state { class: cstr }
+chain.note_i2c_timeout -> chain.get_bme280_init_state { class: cstr }
+chain.note_process_time -> chain.classify_init_status { class: cstr }
+chain.note_no_blocking -> chain.classify_init_status { class: cstr }
 
 # Layout-only edges to keep the implementation constraints grouped after the chain.
 chain.collect_peripheral_init_states -> chain.note_variable_getter { style: { opacity: 0 } }

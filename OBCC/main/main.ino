@@ -378,6 +378,7 @@ void setup() {
   LoRa.println("AT+PARAMETER=" + LORA_SF + "," + LORA_BANDWIDTH + "," + LORA_CODING_RATE + ",0");
 
   // Populate payload with its default values
+  memset(payload, 0, sizeof(payload));
   // Header
   for (int i=0;i<4;i++) payload[i] = LORA_HEADER[i];
   // Sender ID

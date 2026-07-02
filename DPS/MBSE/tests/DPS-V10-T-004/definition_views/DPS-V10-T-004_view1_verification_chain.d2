@@ -1,0 +1,24 @@
+direction: right
+
+title: "DPS-V10-T-004 — CanSat transmit path" {
+  shape: text
+}
+
+item: "Item under verification\nDPS datalogger/ground-station\ntransmit path from PC\ncommand/source payload to final or\nnear-field receiver" { shape: rectangle }
+means: "Verification means\nTesting with final receiver or\nnear-field RF-equivalent,\nsequence-number monitor, radio\nbusy/not-ready fault injection,\nand buffer-overrun stress" { shape: rectangle }
+stimulus: "Stimulus / conditions\nSend predeclared sequence of >=60\ntransmit requests plus\nbusy/not-ready/overrun cases;\ncapture receiver frames and\nforwarder logs" { shape: rectangle }
+env: "Environment / configuration\n915 MHz/RFM96W settings per\ncontract or near-field shielded\nequivalent; antennas/settings\nrecorded" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff every accepted transmit\nrequest produces exactly one\nordered frame at receiver, no\nmissing/duplicate sequence,\nradio-busy/not-ready cases are\nlogged and not falsely ready,\nbuffer overrun is\nbounded/recovered, and payload\nincluding deployment_status is not\ncorrupted" { shape: page }
+stats: "Statistics\n60/60 nominal sequence for\nfunctional acceptance; stronger\nPDR uses DPS-V10-C-001\nN=300/k>=279" { shape: page }
+faults: "Fault hardening\nradio not ready, busy channel,\nbuffer full, bad sequence, payload\nlength mismatch, deployment_status\ncorruption" { shape: page }
+evidence: "Evidence archive\nTX request log, receiver raw\nframes, sequence table, RSSI/SNR\nif RF, fault ledger, report.md" { shape: rectangle }
+report: "Report\nresults/DPS-V10-T-004/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

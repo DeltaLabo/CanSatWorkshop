@@ -5,7 +5,7 @@ vars: {
 }
 
 # Evidence and traceability view for ADS-IVV-C-RATE-5HZ.
-# Ensures reports reference modeled source constraints, verification means, and pass/fail/blocked rationale.
+# Ensures reports reference modeled source constraints, verification means, and verdict rationale.
 direction: right
 
 classes: {
@@ -56,17 +56,17 @@ system: "[System] ADS-IVV-C-RATE-5HZ\nEvidence and traceability record\nRefs: IV
     analysis_record: "[LC] Analysis record" {
       class: lc
       direction: down
-      period_stats: "[F] Store period series,\nmean rate, jitter" { class: func }
-      gap_stats: "[F] Store worst gap,\ndropped/duplicate count" { class: func }
-      stale_stats: "[F] Store stale-value and\nvalidity-marker results" { class: func }
-      tolerance_basis: "[F] Store chosen tolerance\nand n = 59 basis if claimed" { class: func }
+      period_stats: "[F] Store period series, mean rate,\nopportunity/request count, jitter" { class: func }
+      gap_stats: "[F] Store worst gap, 400 ms\ncheck, dropped/duplicate count" { class: func }
+      stale_stats: "[F] Store stale-value, age/status,\nand field-validity results" { class: func }
+      formal_basis: "[F] Store n = 59 zero-violation\nbasis if formally claimed" { class: func }
     }
 
     disposition_record: "[LC] Result and disposition" {
       class: lc
       direction: down
-      verdicts: "[F] Store v0.1/v0.2\npass, fail, blocked, or limited verdict" { class: func }
-      na_rationale: "[F] Store v0.3/v1.0\nN/A rationale" { class: func }
+      verdicts: "[F] Store pass, fail,\nor limited verdict" { class: func }
+      na_rationale: "[F] Store v0.3 N/A and\nv1.0 freshness-path rationale" { class: func }
       deviations: "[F] Store deviations,\nanomalies, waivers, retest status" { class: func }
     }
   }
@@ -74,7 +74,7 @@ system: "[System] ADS-IVV-C-RATE-5HZ\nEvidence and traceability record\nRefs: IV
 
 note_targets: "[C] Traceability targets\nConstraint 5 Hz; model element Collect measurements;\nGPS/collection/logging timestamps; loop timing context;\nADS-CAP-GPS; ADS-CAP-DELIVERY; ADS-FE-STUCK-LOOP." { class: note; shape: page }
 note_report_rule: "[C] Report rule\nReports reference this modeled definition and record exact\nversion, source baseline, hardware revision, firmware commit,\nas-executed equipment, raw evidence, analysis settings, actual\nconditions, deviations, limitations, and retest status." { class: note; shape: page }
-note_blocked: "[C] Blocked/limited rule\nIf jitter and worst-gap tolerance are not selected before\nexecution, the report may characterize observed timing but\nshall not issue an unqualified pass/fail verdict." { class: note; shape: page }
+note_gap_rule: "[C] Selected gap/freshness rule\nMax internal progress/freshness gap is 400 ms. Jitter is\ncharacterization unless it violates opportunity count, gap,\nfreshness, stale/drop, or stricter declared limits." { class: note; shape: page }
 note_reports: "[C] Expected report locations\n../results/ADS-IVV-C-RATE-5HZ/v0.1/\n../results/ADS-IVV-C-RATE-5HZ/v0.2/\n../results/ADS-IVV-C-RATE-5HZ/v0.3/\n../results/ADS-IVV-C-RATE-5HZ/v1.0/" { class: note; shape: page }
 
 ivv_reviewer -> system.record_package.disposition_record: "[CE] verdict review\nand approval" { class: ce }
@@ -83,10 +83,10 @@ firmware_repo -> system.record_package.evidence_record: "[CE] firmware commit,\n
 calibration_records -> system.record_package.evidence_record: "[CE] equipment IDs\nand calibration status" { class: ce }
 system.record_package.trace_matrix -> system.record_package.disposition_record: "[CE] model trace" { class: ce }
 system.record_package.evidence_record -> system.record_package.analysis_record: "[CE] analysis inputs" { class: ce }
-system.record_package.analysis_record -> system.record_package.disposition_record: "[CE] pass/fail and\nblocked rationale" { class: ce }
+system.record_package.analysis_record -> system.record_package.disposition_record: "[CE] pass/fail and\nlimitation rationale" { class: ce }
 
 note_targets -> system.record_package.trace_matrix { class: cstr }
 note_report_rule -> system.record_package.disposition_record { class: cstr }
-note_blocked -> system.record_package.analysis_record.tolerance_basis { class: cstr }
-note_blocked -> system.record_package.disposition_record.verdicts { class: cstr }
+note_gap_rule -> system.record_package.analysis_record.formal_basis { class: cstr }
+note_gap_rule -> system.record_package.disposition_record.verdicts { class: cstr }
 note_reports -> system.record_package.disposition_record { class: cstr }

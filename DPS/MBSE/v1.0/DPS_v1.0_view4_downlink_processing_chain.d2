@@ -68,7 +68,7 @@ chain: "DPS v1.0 — Downlink decode and storage chain" {
     shape: page
   }
 
-  note_deployment_status: "[C] CSV/dashboard consumers\npreserve deployment_status\ncode + symbol; only\nOPEN_CONFIRMED means deployed." {
+  note_deployment_status: "[C] CSV/dashboard consumers\npreserve deployment_status\ncode + symbol + category.\nCSV columns are deployment_status_code,\ndeployment_status, and\ndeployment_status_category.\nOnly OPEN_CONFIRMED means deployed;\nmissing/unrecognized are non-success." {
     class: note
     shape: page
   }
@@ -86,11 +86,11 @@ chain.get_rx_timestamp -> chain.calculate_latency: "[FE] Timestamp []" { class: 
 chain.get_rx_timestamp -> chain.push_to_payload_queue: "[FE] Timestamp []" { class: fe }
 chain.read_and_decode_frame -> chain.decode_deployment_status: "[FE] deployment_status\n[uint8 code]" { class: fe }
 chain.read_and_decode_frame -> chain.push_to_payload_queue: "[FE] Payload\n[Decoded Payload]" { class: fe }
-chain.decode_deployment_status -> chain.preserve_status_mapping: "[FE] Status\n[code + symbol]" { class: fe }
-chain.preserve_status_mapping -> chain.push_to_payload_queue: "[FE] deployment_status\n[preserved enum]" { class: fe }
+chain.decode_deployment_status -> chain.preserve_status_mapping: "[FE] Status\n[code + symbol + category]" { class: fe }
+chain.preserve_status_mapping -> chain.push_to_payload_queue: "[FE] deployment_status\n[preserved enum + category]" { class: fe }
 chain.calculate_latency -> chain.push_to_payload_queue: "[FE] Latency []" { class: fe }
 chain.push_to_payload_queue -> chain.csv_consume_payload_queue: "[FE] Payload\n[Timestamped Payload]" { class: fe }
-chain.csv_consume_payload_queue -> chain.append_to_csv: "[FE] Payload\n[Timestamped Payload]" { class: fe }
+chain.csv_consume_payload_queue -> chain.append_to_csv: "[FE] Payload\n[Timestamped Payload + status columns]" { class: fe }
 
 chain.note_csv_name -> chain.append_to_csv { class: cstr }
 chain.note_deployment_status -> chain.preserve_status_mapping { class: cstr }

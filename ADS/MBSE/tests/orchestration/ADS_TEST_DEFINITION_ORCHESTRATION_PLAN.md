@@ -30,7 +30,7 @@ Existing ADS-wide modeled definitions already present under `ADS/MBSE/tests/`:
 - `ADS-IVV-FC-ANG` — angular velocity functional-chain testing/analysis.
 - `ADS-IVV-FC-ATT` — attitude estimation demonstration/testing/analysis.
 
-Remaining candidate activities in `ADS/MBSE/tests/README.md` need modeled test definitions or explicit N/A/gap treatment.
+Stale note superseded 2026-07-02: active ADS activities in `ADS/MBSE/tests/README.md` now have modeled definitions or explicit N/A/gap treatment.
 
 ## Delegated issue set
 

@@ -1,0 +1,20 @@
+direction: right
+
+title: "SYS-END-TO-END-DATA — truth/reference stimulus to DPS CSV/dashboard" { shape: text }
+assembled: "Assembled CanSat + DPS\nADS/AMS/PDS/PDM/OBCC data paths,\nLoRa payload, DPS\nparser/CSV/dashboard" { shape: rectangle }
+means: "Verification means\nCanonical truth/reference payload\nand fault replay through OBCC/DPS,\nwith timestamp/age/status\ncorrelation and dashboard/CSV\nevidence" { shape: rectangle }
+stimulus: "Scenario / stimulus\nInject known sensor values, status\nenum cases, deployment_status enum\ncases,\ninvalid/stale/no-data/timeout/fault\ncases" { shape: rectangle }
+env: "Environment / configuration\nBench or integrated setup with\nsynchronized monotonic\ntime/sequence or documented\ncorrelation, parser/schema\nversions frozen" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff OBCC-LORA-PAYLOAD-v1.0\ncanonical values, units, timestamps,\nage/status, and deployment_status\ncode/symbol/category are preserved to DPS\nCSV/dashboard with exact CSV columns\ndeployment_status_code, deployment_status,\ndeployment_status_category; only\nOPEN_CONFIRMED is deployed/success;\nCOMMAND_SENT, in-progress, inhibited, no-open,\ntimeout, jam, fault, unknown, missing,\nand unrecognized are non-success; ADS/AMS\n>=5 Hz freshness evidence stays separate\nfrom 2 s LoRa packaging; fresh requires\nVALID and age_ms<=400 ms; stale/default/\nfault/no-data/timeout are never VALID or\nfresh; no obsolete RH." { shape: page }
+stats: "Statistics\n100% canonical field/status cases;\nN>=30 nominal frame replay for\nparser/display stability" { shape: page }
+faults: "Fault hardening\nschema drift, stale-valid, missing\ndeployment_status, wrong unit,\ntimestamp wrap, invalid/missing/\nunrecognized enum, CSV/dashboard\nmismatch, false deployed display/storage" { shape: page }
+evidence: "Evidence\ntruth payloads, source/OBCC/DPS\nlogs, CSV, screenshots, parser\nversion, comparison script" { shape: rectangle }
+report: "Report\nPM&SE/MBSE/tests/results/SYS-END-TO-END-DATA/report.md" { shape: rectangle }
+assembled -> means: "configure"
+means -> stimulus: "execute"
+stimulus -> env: "under controls"
+env -> oracle: "evaluate"
+oracle -> stats: "statistics / gates"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "close"

@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-CON-003 — no manual/BLE flight-command path" { shape: text }
+item: "Item\nFlight deployment command path\nboundary" { shape: rectangle }
+means: "Means\nStatic release review and\nblack-box command attempts" { shape: rectangle }
+stimulus: "Inputs / stimulus\nReview build flags/UI/BLE/debug\npaths; attempt legacy/manual/BLE\ncommands in flight mode" { shape: rectangle }
+oracle: "Oracle\nNo manual/BLE/debug command\nreaches open path in flight mode;\nonly OBCC policy path can command\nopen" { shape: page }
+stats: "Statistics\n100% release review; 29 no-open\nattempts for R90/C95 if claimed" { shape: page }
+faults: "Fault hardening\ndebug leakage, legacy BLE, standby\nbypass" { shape: page }
+evidence: "Evidence\nsource/build review, attempt logs" { shape: rectangle }
+report: "Report\nresults/PDM-VV-CON-003/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

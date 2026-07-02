@@ -79,7 +79,7 @@ system: "[System] ADS v0.1-0.2 Subsystem" {
       respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
     }
 
-    note_accuracy_angular_rate: "[C] Accuracy\n< 30 deg/s" {
+    note_accuracy_angular_rate: "[C] Accuracy < 30 deg/s.\nStrict angular-rate truth\nuses a calibrated rate\nreference with uncertainty\nguard band" {
       class: note
       shape: page
     }
@@ -113,14 +113,14 @@ system: "[System] ADS v0.1-0.2 Subsystem" {
       get_lon: "[F] Get lon" { class: func }
       process_angular_velocities: "[F] Process angular\nvelocities" { class: func }
       process_accelerations: "[F] Process\naccelerations" { class: func }
-      note_accuracy_position: "[C] Accuracy\n< 5 m" {
+      note_accuracy_position: "[C] GPS accuracy < 5 m.\nStrict truth: GNSS simulator\nor surveyed/open-sky\nreference" {
         class: note
         shape: page
       }
       calculate_pitch_roll_yaw: "[F] Calculate\npitch, roll, yaw" { class: func }
       collect_measurements: "[F] Collect\nmeasurements" { class: func }
       log_serial0: "[F] Log via Serial0" { class: func }
-      note_at_5hz: "[C] At 5 Hz" {
+      note_at_5hz: "[C] v0.2 collection at 5 Hz\n(200 ms nominal). Serial0\nPC logging is development\noutput only; no OBCC\nPointers/Returns or LoRa\ndelivery in v0.2" {
         class: note
         shape: page
       }

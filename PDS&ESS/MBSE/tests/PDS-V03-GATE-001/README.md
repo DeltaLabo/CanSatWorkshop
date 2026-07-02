@@ -90,7 +90,7 @@ The following requested scope is modeled:
 
 - No external parameters were provided by the issue; conservative values are documented here.
 - Battery capacity model, precise allowed battery temperature envelope, and final campaign-specific ambient acceptance bands are model-input assumptions for execution (execution pending).
-- This issue requires only modeled definition and controlled evidence placeholder; execution is pending.
+- This issue requires only modeled definition and controlled evidence path; execution is pending.
 
 ## Models created in this issue
 

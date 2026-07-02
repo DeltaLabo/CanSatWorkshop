@@ -109,6 +109,26 @@ system: "[System] Physical System" {
           class: note
           shape: page
         }
+        note_freshness_contract: "[C] AMS-to-OBCC freshness\ncontract: getter ≥5 Hz\n(200 ms); telemetry 2 s\nseparate; fresh iff\nVALID and age_ms ≤400 ms" {
+          class: note
+          shape: page
+        }
+        note_status_enum: "[C] Status enum exactly:\nVALID, STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT,\nINIT_FAIL" {
+          class: note
+          shape: page
+        }
+        note_no_stale_valid: "[C] No timeout/fault/init/\nno-data/stale condition\nreturns old samples\nas VALID" {
+          class: note
+          shape: page
+        }
+        note_use_cases: "[UC] AMS-UC-MeasureAtmosphere\n[UC] AMS-UC-InitializePeripheral" {
+          class: note
+          shape: page
+        }
+        note_feared_events: "AMS-FE-BadExposure\nAMS-FE-SensorBusFault\nAMS-FE-StaleMeasurement\nAMS-FE-StartupFault\nAMS-FE-SchedulerBlock" {
+          class: note
+          shape: page
+        }
       }
     }
 
@@ -116,11 +136,16 @@ system: "[System] Physical System" {
   }
 }
 
-system.cansat.ams_module.ams_pcb.bme280.ams_sensing -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing: "[CE] I2C" { class: ce }
-system.cansat.obcc_module.obcc_pcb.xiao.ams_processing -> system.cansat.obcc_module.obcc_pcb.xiao.obcc: "[CE] Pointers" { class: ce }
-system.cansat.obcc_module.obcc_pcb.xiao.ams_processing -> system.cansat.obcc_module.obcc_pcb.xiao.obcc: "[CE] Returns" { class: ce }
+system.cansat.ams_module.ams_pcb.bme280.ams_sensing -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing: "[CE] BME280 I2C" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing -> system.cansat.obcc_module.obcc_pcb.xiao.obcc: "[CE] Getter pointers" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.obcc -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing: "[CE] Getter request\n≥5 Hz / 200 ms" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.ams_processing -> system.cansat.obcc_module.obcc_pcb.xiao.obcc: "[CE] Returns sample\n+ age/status" { class: ce }
 
 system.cansat.obcc_module.obcc_pcb.note_variable_getter -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
 system.cansat.obcc_module.obcc_pcb.note_i2c_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
 system.cansat.obcc_module.obcc_pcb.note_process_time -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
 system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_freshness_contract -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_freshness_contract -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_status_enum -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_no_stale_valid -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }

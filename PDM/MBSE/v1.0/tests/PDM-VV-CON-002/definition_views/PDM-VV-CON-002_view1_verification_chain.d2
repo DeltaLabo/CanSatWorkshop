@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-CON-002 — angular-rate accuracy <30 deg/s" { shape: text }
+item: "Item\nADS angular-rate input used by\ndeployment trigger robustness" { shape: rectangle }
+means: "Means\nTesting/analysis referencing ADS\ngyro definition or\nrobust-threshold analysis" { shape: rectangle }
+stimulus: "Inputs / stimulus\nUse calibrated tachometer/motor or\nADS evidence and threshold\nrobustness review" { shape: rectangle }
+oracle: "Oracle\nAngular-rate error plus\nuncertainty <30 deg/s over trigger\nrange or deployment threshold\nrobustness proven" { shape: page }
+stats: "Statistics\nn=59 matched samples per axis/rate\nfor strict claim" { shape: page }
+faults: "Fault hardening\nbias drift, saturation, stale IMU" { shape: page }
+evidence: "Evidence\nADS evidence reference, analysis\ntable" { shape: rectangle }
+report: "Report\nresults/PDM-VV-CON-002/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

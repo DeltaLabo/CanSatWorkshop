@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-CON-001 — parachute diameter <=30 cm" { shape: text }
+item: "Item\nPDM parachute deployed/stowed\ndiameter and fit" { shape: rectangle }
+means: "Means\nInspection/demonstration with\ncalibrated ruler/calipers and\nstowed/ deployed photos" { shape: rectangle }
+stimulus: "Inputs / stimulus\nMeasure maximum deployed diameter\nand stowed clearance" { shape: rectangle }
+oracle: "Oracle\nDeployed maximum diameter <=30 cm\nand stowed pack does not interfere\nwith cap/servo path" { shape: page }
+stats: "Statistics\n100% measurement of each accepted\nparachute article" { shape: page }
+faults: "Fault hardening\npost-fold deformation, measurement\nuncertainty, interference" { shape: page }
+evidence: "Evidence\nmeasurements, photos, uncertainty" { shape: rectangle }
+report: "Report\nresults/PDM-VV-CON-001/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

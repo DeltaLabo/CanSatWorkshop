@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-ALLOC-002 — OBCC/PDM policy allocation review" { shape: text }
+item: "Item\nOBCC decision ownership and PDM\ncommand execution/status\nallocation" { shape: rectangle }
+means: "Means\n100% state-machine/allocation\nreview" { shape: rectangle }
+stimulus: "Inputs / stimulus\nReview OBCC\nmode/trigger/emergency/safe/error\nand PDM command execution boundary" { shape: rectangle }
+oracle: "Oracle\nOBCC owns deployment policy; PDM\nexecutes commanded actuation and\nexposes status; no manual/BLE\nflight path allocated" { shape: page }
+stats: "Statistics\n100% allocation census" { shape: page }
+faults: "Fault hardening\npremature deployment, lost\nobservability, policy redefinition\nin PDM" { shape: page }
+evidence: "Evidence\nallocation matrix, OBCC policy\ncross-reference" { shape: rectangle }
+report: "Report\nresults/PDM-VV-ALLOC-002/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

@@ -1,0 +1,20 @@
+direction: right
+
+title: "SYS-ENVIRONMENTAL-REGRESSION — critical functions after mechanical/environmental screens" { shape: text }
+assembled: "Assembled CanSat + DPS\nAssembled CanSat physical\nstructure, backplane, connectors,\nrails, RF, sensor, command,\ndeployment-safe and dashboard\ncritical functions" { shape: rectangle }
+means: "Verification means\nExecute approved screens, inspect\nbefore/after, then run functional\nregression subset" { shape: rectangle }
+stimulus: "Scenario / stimulus\nTailored screens per S&A\ndefinitions: controlled\norientations/axes/events/durations/surfaces,\nno reseat/tighten before\npost-check unless recorded as\nfail/hold" { shape: rectangle }
+env: "Environment / configuration\nApproved lab/workshop screen\nfixture, calibrated\nevent/measurement tools, safety\nboundary" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff no unapproved\nmovement/damage/loose link,\ncontinuity/isolation/rails remain\nvalid, RF/telemetry/dashboard\nbasic regression passes,\ndeployment clearance/safe status\npreserved, and any anomaly has\ndisposition/retest." { shape: page }
+stats: "Statistics\n100% post-screen inspection of\nrequired features plus regression\nsubset; no reliability claim\nunless repeated articles/trials\ndefined" { shape: page }
+faults: "Fault hardening\nconnector unseat, battery\nmovement, backplane crack, rail\nshort, RF antenna shift, parachute\ninterference" { shape: page }
+evidence: "Evidence\npre/post photos/witness marks,\nscreen logs,\ncontinuity/rail/RF/function logs,\nanomaly ledger" { shape: rectangle }
+report: "Report\nPM&SE/MBSE/tests/results/SYS-ENVIRONMENTAL-REGRESSION/report.md" { shape: rectangle }
+assembled -> means: "configure"
+means -> stimulus: "execute"
+stimulus -> env: "under controls"
+env -> oracle: "evaluate"
+oracle -> stats: "statistics / gates"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "close"

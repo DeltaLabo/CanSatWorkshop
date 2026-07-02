@@ -6,7 +6,7 @@
 
 **Selected SSIV/development scope:** ADS `v0.1`, `v0.2`, `v0.3`, and `v1.0`. Formal runtime execution applies to `v0.1`, `v0.2`, and `v1.0`; `v0.3` is a PCB-only N/A branch.
 
-**Traceability targets:** `ADS-IVV-C-PROC-5MS` traces to the process/calculate `<5 ms` constraint, `ADS-FE-STUCK-LOOP`, `ADS-CAP-IMU`, `ADS-CAP-ATT`, and `ADS-CAP-DELIVERY` where applicable. Explicit mission/capability/use-case/feared-event elements are not yet modeled, so placeholder ADS plan IDs remain in use.
+**Traceability targets:** `ADS-IVV-C-PROC-5MS` traces to the process/calculate `<5 ms` constraint, `ADS-FE-STUCK-LOOP`, `ADS-CAP-IMU`, `ADS-CAP-ATT`, and `ADS-CAP-DELIVERY` where applicable. Explicit mission/capability/use-case/feared-event elements are not yet separate source-model nodes, so the controlled ADS plan trace labels remain in use.
 
 **References cited in diagrams:** IVV, the ADS MBSE IVV plan `../README.md`, `ADS_MBSE_CORPUS.md`, `model_inventory.json`, and saved reference material under `../references/` or `../v0.2/tests/references/` as applicable. No external research was performed for this definition.
 
@@ -65,7 +65,7 @@ Each report shall identify referenced model views/elements, selected SSIV/versio
 
 ## Assumptions and residual gaps
 
-- Exact firmware instrumentation hook names and overhead allowances are execution-time TBDs.
+- Firmware instrumentation hook names are report-time mapping records. The overhead allowance is selected: instrumentation overhead shall be `<=5%` of the 200 ms period or `<=5 ms`, and measured overhead must be recorded or bounded before verdicts.
 - Traceability IDs remain placeholders until explicit Capella mission/capability/feared-event elements exist.
 
 ## Status

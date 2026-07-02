@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-V01-INSP-PC — v0.1 physical inspection" { shape: text }
+item: "Item\nv0.1 Dummy CanSat, Top module,\nParachute configuration" { shape: rectangle }
+means: "Means\nInspection with setup photos and\ndamage check" { shape: rectangle }
+stimulus: "Inputs / stimulus\nInspect before/after fall-test\ncampaign" { shape: rectangle }
+oracle: "Oracle\nAll modeled PCs\npresent/configured; no damage\ninvalidates accepted fall-test\nsegment" { shape: page }
+stats: "Statistics\n100% census" { shape: page }
+faults: "Fault hardening\ndamaged parachute, wrong mass/top\nmodule" { shape: page }
+evidence: "Evidence\nphotos/checklist" { shape: rectangle }
+report: "Report\nresults/PDM-V01-INSP-PC/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

@@ -19,7 +19,7 @@ The OBCC subsystem has established an architecture that manages sensor and actua
 
 ### Parachute deployment status telemetry
 
-OBCC-to-DPS LoRa telemetry includes `deployment_status` as a one-byte enum in the existing 100-byte payload. The field is sourced from PDM/actuator confirmation evidence when integrated, or from OBCC-owned deployment/fault policy interpretation. `COMMAND_SENT` means only that OBCC sent an open command; it is not deployment success. Only `OPEN_CONFIRMED` shall be treated as deployed/success, and ambiguous implementation states must remain `UNKNOWN` or fault rather than false success.
+OBCC-to-DPS LoRa telemetry includes `deployment_status` as a one-byte enum in the existing 100-byte payload (current firmware/DPS byte offset `48`; schema traceability through `OBCC-LORA-PAYLOAD-v1.0` final variable-table field at offset `34`). The field is sourced from PDM/actuator confirmation evidence when integrated, or from OBCC-owned deployment/fault policy interpretation. Consumers preserve the enum code, symbol, and category. `COMMAND_SENT` means only that OBCC sent an open command; it is not deployment success. Only `OPEN_CONFIRMED` shall be treated as deployed/success; `COMMAND_SENT`, `OPEN_IN_PROGRESS`, inhibited, no-open, timeout, jam, fault, unknown, missing, or unrecognized states must remain non-success rather than false success.
 
 ## Derived Requirements
 

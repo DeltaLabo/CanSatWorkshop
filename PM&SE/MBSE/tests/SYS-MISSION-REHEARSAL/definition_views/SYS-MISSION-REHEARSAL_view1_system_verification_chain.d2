@@ -1,0 +1,20 @@
+direction: right
+
+title: "SYS-MISSION-REHEARSAL — full assembled CanSat + DPS mission sequence" { shape: text }
+assembled: "Assembled CanSat + DPS\nFull assembled CanSat, PDS, ADS,\nAMS, OBCC, PDM, S&A, DPS\ndashboard/ground station" { shape: rectangle }
+means: "Verification means\nSafe-fixture rehearsal with\nscripted mission timeline,\ncanonical commands, telemetry\ncapture, dashboard/CSV evidence,\nand deployment inhibit/trigger\nbranches" { shape: rectangle }
+stimulus: "Scenario / stimulus\nBoot -> Stand-by telemetry -> On\n-> nominal sensor telemetry ->\ncommand/uplink -> deployment-safe\ntrigger/emergency branch -> fault\nbranch -> shutdown" { shape: rectangle }
+env: "Environment / configuration\nLab safe fixture for\nactuator/parachute, live release\ninhibited unless separately\nauthorized, legal RF or\ncabled/near-field setup" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff startup reaches readiness,\nStand-by inhibits deployment while\ntelemetry continues, On branch uses\nfresh-valid ADS/AMS data, accepted\ntrigger/emergency produces\ndeployment_status=OPEN_CONFIRMED within\n<=5 s in safe fixture with PDM/actuator\nevidence or fault status without false\nsuccess, DPS displays/records raw\ndeployment_status code/symbol/category,\nall non-OPEN_CONFIRMED statuses remain\nnon-success, and no reset/brownout/\nunbounded fault occurs." { shape: page }
+stats: "Statistics\nAt least one complete nominal\nrehearsal plus required branch\ncases; 29/29 if making R90/C95\nmission-rehearsal reliability\nclaim" { shape: page }
+faults: "Fault hardening\nstale sensor data, invalid\ncommand, RF loss, PDM jam/no-open,\nbrownout, dashboard disconnect,\nCSV restart" { shape: page }
+evidence: "Evidence\ntimeline log, OBCC/DPS raw frames,\nCSV columns deployment_status_code,\ndeployment_status, deployment_status_category,\nscreenshots/video, actuator observer\nevidence, fault ledger" { shape: rectangle }
+report: "Report\nPM&SE/MBSE/tests/results/SYS-MISSION-REHEARSAL/report.md" { shape: rectangle }
+assembled -> means: "configure"
+means -> stimulus: "execute"
+stimulus -> env: "under controls"
+env -> oracle: "evaluate"
+oracle -> stats: "statistics / gates"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "close"

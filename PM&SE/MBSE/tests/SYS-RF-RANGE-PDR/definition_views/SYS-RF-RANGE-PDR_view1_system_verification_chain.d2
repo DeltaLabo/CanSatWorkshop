@@ -1,0 +1,20 @@
+direction: right
+
+title: "SYS-RF-RANGE-PDR — final-article RF range/PDR" { shape: text }
+assembled: "Assembled CanSat + DPS\nOBCC transmitter, DPS ground\nstation receiver, final\nantennas/enclosure/orientation and\npayload schema" { shape: rectangle }
+means: "Verification means\nField test at 500 m horizontal LOS\nor approved RF-equivalent with\nRSSI/SNR, legal/site controls and\nexact-binomial PDR analysis" { shape: rectangle }
+stimulus: "Scenario / stimulus\nTransmit N=300 unique 2 s frames\ncarrying OBCC-LORA-PAYLOAD-v1.0\nincluding deployment_status" { shape: rectangle }
+env: "Environment / configuration\n915 MHz RFM96W, matching 22 AWG\n81.4 mm monopoles, SF7/BW125/CR4/5\nunless waived,\nlegal/EIRP/site/weather/interference\nrecorded" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff k>=279 valid unique\nframes out of N=300, one-sided 95%\nexact-binomial lower PDR bound\n>=0.90, schema/status preserved,\nRSSI/SNR retained, and no\nillegal/site deviation." { shape: page }
+stats: "Statistics\nExact binomial N=300/k>=279" { shape: page }
+faults: "Fault hardening\nantenna orientation, interference,\nduplicate frame, invalid\nCRC/schema, weather/site deviation" { shape: page }
+evidence: "Evidence\nscheduled/transmitted/received\nlogs, RSSI/SNR, site/legal\nevidence, PDR calculation, photos" { shape: rectangle }
+report: "Report\nPM&SE/MBSE/tests/results/SYS-RF-RANGE-PDR/report.md" { shape: rectangle }
+assembled -> means: "configure"
+means -> stimulus: "execute"
+stimulus -> env: "under controls"
+env -> oracle: "evaluate"
+oracle -> stats: "statistics / gates"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "close"

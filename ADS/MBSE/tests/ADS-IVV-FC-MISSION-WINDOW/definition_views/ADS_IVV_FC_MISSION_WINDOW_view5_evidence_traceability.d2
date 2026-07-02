@@ -69,7 +69,7 @@ system: "[System] ADS-IVV-FC-MISSION-WINDOW\nEvidence and traceability view\nRef
 c_targets: "[C] Traceability targets\nADS-MSN-CANSAT-DESCENT; ADS-CAP-GPS, ADS-CAP-IMU,\nADS-CAP-ATT, ADS-CAP-INIT, ADS-CAP-DELIVERY;\nfeared events ADS-FE-SILENT-SENSOR-FAIL,\nADS-FE-STUCK-LOOP, ADS-FE-CORRUPT-MEASUREMENT.\nv0.3 N/A also references ADS-CAP-PCB/DELIVERY." { class: note; shape: page }
 c_reports: "[C] Report rule\nReports reference this modeled definition and record selected SSIV/version,\nas-tested configuration, actual conditions, raw evidence, analysis settings,\npass/fail rationale, deviations, anomalies, waivers, limitations, and retest." { class: note; shape: page }
 c_expected_locations: "[C] Expected report locations\n../results/ADS-IVV-FC-MISSION-WINDOW/v0.1/\n../results/ADS-IVV-FC-MISSION-WINDOW/v0.2/\n../results/ADS-IVV-FC-MISSION-WINDOW/v0.3/\n../results/ADS-IVV-FC-MISSION-WINDOW/v1.0/" { class: note; shape: page }
-c_blocked: "[C] Open prerequisites before execution\nProject-defined mission duration and maximum allowed gap are not in the\nsource model. Until they are chosen, execution may collect evidence but\nfinal mission-window pass/fail is blocked." { class: note; shape: page }
+c_blocked: "[C] Selected mission-window evidence gate\nProject mission duration is 10 min / 600 s and maximum internal\nprogress/freshness gap is 400 ms. Reports must bind actual duration,\n3000 expected 5 Hz opportunities or measured equivalent, and deviations." { class: note; shape: page }
 
 reference_corpus -> system { class: ce }
 configuration_source -> system { class: ce }

@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-CON-005 — I2C timing/fault semantics" { shape: text }
+item: "Item\nI2C/process interaction used by\ndeployment trigger" { shape: rectangle }
+means: "Means\nTesting/analysis tied to CE-001\nand ADS freshness" { shape: rectangle }
+stimulus: "Inputs / stimulus\nInject I2C faults and observe no\nnormal trigger from non-VALID data" { shape: rectangle }
+oracle: "Oracle\nI2C faults/status propagate\nbounded non-VALID states; no\nstale-valid trigger" { shape: page }
+stats: "Statistics\nn=59 timing samples where deadline\nclaimed" { shape: page }
+faults: "Fault hardening\nstuck bus, timeout masked valid" { shape: page }
+evidence: "Evidence\nfault logs, timing table" { shape: rectangle }
+report: "Report\nresults/PDM-VV-CON-005/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

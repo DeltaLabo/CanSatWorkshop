@@ -1,0 +1,24 @@
+direction: right
+
+title: "DPS-V10-C-003 — concurrency/load" {
+  shape: text
+}
+
+item: "Item under verification\nConcurrent decoder, CSV/session\narchive, dashboard, and RF/serial\ningest under flight cadence and\nsynthetic stress" { shape: rectangle }
+means: "Verification means\nTesting with 10 min 2 s\nflight-cadence stream plus\noptional 20 min 5 Hz serial\nstress, queue/memory/latency\ninstrumentation" { shape: rectangle }
+stimulus: "Stimulus / conditions\nReplay or receive scheduled frames\nwhile dashboard and CSV logging\nrun; inject backlog burst and\nrecovery segment" { shape: rectangle }
+env: "Environment / configuration\nAs-built PC, OS, Python/browser\nversions, declared payload size,\ninstrumentation overhead recorded" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff no crash/deadlock/data\nloss beyond defined invalid\nrejects, queue/backlog returns to\nzero after burst, memory remains\nbounded, p95 pipeline latency <1.0\ns, CSV rows match accepted source\nlog, dashboard remains responsive" { shape: page }
+stats: "Statistics\n10 min flight cadence required; 20\nmin 5 Hz stress if over-air margin\ninsufficient; p95 over accepted\nframes" { shape: page }
+faults: "Fault hardening\nqueue growth, memory leak, slow\ndisk, UI freeze, invalid frames,\ndeployment_status under load" { shape: page }
+evidence: "Evidence archive\nsource/accepted logs,\nqueue/memory/latency CSV,\nscreenshots, CPU/memory monitor,\nreport.md" { shape: rectangle }
+report: "Report\nresults/DPS-V10-C-003/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

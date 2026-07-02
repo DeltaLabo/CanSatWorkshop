@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-PC-001 — physical component inspection" { shape: text }
+item: "Item\nAll PDM v1.0 physical components:\nparachute module, holder,\nservo/trigger, ADS/OBCC\ninterfaces, cap/top-module context" { shape: rectangle }
+means: "Means\n100% inspection with build record,\nphotos, part IDs,\norientation/condition checklist" { shape: rectangle }
+stimulus: "Inputs / stimulus\nInspect every flight/workshop\narticle before functional tests" { shape: rectangle }
+oracle: "Oracle\nEvery modeled PC\npresent/correct/undamaged/traceable;\nsubstitutions or missing critical\nPCs fail" { shape: page }
+stats: "Statistics\n100% census; no sampling\nreliability claim" { shape: page }
+faults: "Fault hardening\nwrong part/orientation, damage,\nmissing holder/servo/parachute/cap\ncontext, untraceable article" { shape: page }
+evidence: "Evidence\ninspection checklist, photos,\narticle IDs, deviations" { shape: rectangle }
+report: "Report\nresults/PDM-VV-PC-001/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

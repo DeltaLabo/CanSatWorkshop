@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-CE-002 — Pointers/Returns API analysis" { shape: text }
+item: "Item\nADS Processing to OBCC\nPointers/Returns semantics feeding\nPDM trigger decision" { shape: rectangle }
+means: "Means\nAPI/static analysis plus dynamic\nlog/checklist" { shape: rectangle }
+stimulus: "Inputs / stimulus\nReview ownership/lifetime/null\npolicy, units, freshness/status\nmapping and watchdog behavior" { shape: rectangle }
+oracle: "Oracle\nOBCC receives bounded\nvalid/stale/fault states only; no\nnull/dangling/stale data consumed\nas valid; status maps to shared\nenum" { shape: page }
+stats: "Statistics\n100% callable-path/API review" { shape: page }
+faults: "Fault hardening\nstale pointer, wrong units,\ninvalid return, no-data/timeout\nmasked as VALID" { shape: page }
+evidence: "Evidence\nAPI contract matrix, source/build\nmap, dynamic traces" { shape: rectangle }
+report: "Report\nresults/PDM-VV-CE-002/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

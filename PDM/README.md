@@ -45,7 +45,7 @@ The PDM subsystem has defined a reliable preliminary design capable of deploying
 
 ### Deployment confirmation evidence
 
-PDM shall expose actuator/servo status evidence to OBCC for the shared `deployment_status` telemetry mapping. Strict success requires `OPEN_CONFIRMED` from PDM feedback or independent safe-fixture/current/position observation; a command, PWM request, or servo intent alone is not success. If PDM reports a fault, jam, timeout, no-open condition, or cannot prove open, OBCC/DPS consumers must preserve that non-success status instead of inferring deployment.
+PDM shall expose actuator/servo status evidence to OBCC for the shared `deployment_status` telemetry mapping; it does not declare deployment success from a command alone. Strict success requires `OPEN_CONFIRMED` from PDM feedback or independent safe-fixture/current/position observation. A command, PWM request, servo intent, `COMMAND_SENT`, or `OPEN_IN_PROGRESS` state is not success. If PDM reports inhibited, no-open, timeout, jam, fault, unknown, or cannot-prove-open evidence, OBCC/DPS consumers must preserve that non-success status and derived category instead of inferring deployment.
 
 ## Components
 

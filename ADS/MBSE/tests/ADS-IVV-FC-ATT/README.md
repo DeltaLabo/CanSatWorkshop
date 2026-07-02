@@ -40,12 +40,12 @@ All D2 views for the selected ADS versions were copied under `source_views/` so 
 
 ## Quantitative accuracy handoff
 
-This activity demonstrates attitude-chain propagation, plausibility, repeatability, and fault handling. It does **not** close the separate quantitative acceleration or heading/north requirements unless the following candidate definitions, or equivalent modeled constraints, are executed and referenced by the report:
+This activity demonstrates attitude-chain propagation, plausibility, repeatability, and fault handling. It does **not** close the separate quantitative acceleration or heading/north requirements unless the following model-defined quantitative constraints are executed and referenced by the report:
 
 - `ADS-IVV-C-ACCEL-3AXIS` for 3-axis linear acceleration in `m/s²`, six-face gravity-reference sampling, and guard-banded static accuracy.
 - `ADS-IVV-C-HEADING-NORTH` for true/magnetic north reference control, circular heading error, and the selected `<=10°` guard-banded threshold.
 
-D2/model follow-up remains to add explicit links from the attitude definition views to those candidate packages; no D2/PNG files are edited in this Markdown-only update.
+The quantitative packages are model-defined; execution reports must link them before claiming acceleration or heading accuracy closure.
 
 ## Required execution conditions
 

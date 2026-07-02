@@ -156,7 +156,12 @@ system: "[System] Physical System" {
     shape: page
   }
 
-  note_payload: "[C] LoRa frame v1.0 excludes\nrelative humidity; active\nvariable table is 35 bytes\nbefore envelope/metadata,\nincluding deployment_status" {
+  note_payload: "[C] LoRa frame v1.0 excludes\nrelative humidity; active\nvariable table is 35 bytes\nbefore envelope/metadata;\ndeployment_status is final byte\n(schema offset 34 / packet byte 48)" {
+    class: note
+    shape: page
+  }
+
+  note_deployment_status: "[C] PDM/fault evidence maps\nto deployment_status;\nonly OPEN_CONFIRMED\nis deployed/success.\nCommand, in-progress, inhibited,\nno-open, fault, unknown, missing,\nor unrecognized is non-success." {
     class: note
     shape: page
   }
@@ -180,6 +185,7 @@ system.cansat.obcc_module.obcc_pcb.xiao.ams_processing -> system.cansat.obcc_mod
 system.cansat.obcc_module.obcc_pcb.xiao.ess_processing -> system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector: "[CE] Getters" { class: ce }
 system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector -> system.cansat.obcc_module.obcc_pcb.xiao.telemetry_encoder: "[CE] Queue" { class: ce }
 system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing: "[CE] IMU/alt" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing -> system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector: "[CE] deployment_status\nevidence" { class: ce }
 system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing -> system.cansat.parachute_module.servo.trigger: "[CE] PWM" { class: ce }
 
 system.cansat.obcc_module.obcc_pcb.xiao.telemetry_encoder -> system.cansat.obcc_module.obcc_pcb.rfm96w.cansat_lora: "[CE] SPI" { class: ce }
@@ -191,6 +197,8 @@ system.ground_station_pcb.ground_xiao.lora_forwarder -> system.pc_computer.decod
 system.pc_computer.decoder -> system.pc_computer.csv_writer: "[CE] Payload" { class: ce }
 system.pc_computer.decoder -> system.pc_computer.dashboard: "[CE] Payload" { class: ce }
 system.pc_computer.dashboard -> system.pc_computer.decoder: "[CE] Command" { class: ce }
+system.note_deployment_status -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing { class: cstr }
+system.note_deployment_status -> system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector { class: cstr }
 
 # Layout-only edges preserve the flight-to-ground reading order and keep notes below the system.
 system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
@@ -198,4 +206,5 @@ system.ground_station_pcb -> system.pc_computer { style: { opacity: 0 } }
 system.pc_computer -> system.note_freertos { style: { opacity: 0 } }
 system.note_freertos -> system.note_modes { style: { opacity: 0 } }
 system.note_modes -> system.note_payload { style: { opacity: 0 } }
-system.note_payload -> system.note_health { style: { opacity: 0 } }
+system.note_payload -> system.note_deployment_status { style: { opacity: 0 } }
+system.note_deployment_status -> system.note_health { style: { opacity: 0 } }

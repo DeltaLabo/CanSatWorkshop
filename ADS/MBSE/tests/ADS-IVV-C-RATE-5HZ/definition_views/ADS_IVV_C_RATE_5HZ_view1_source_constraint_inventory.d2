@@ -78,7 +78,7 @@ system: "[System] ADS-IVV-C-RATE-5HZ\nSource constraint inventory\nRefs: IVV; SW
         getters: "[F] Get lat / Get lon" { class: func }
         collect: "[F] Collect\nmeasurements" { class: func }
       }
-      note_na: "[C] N/A for ADS 5 Hz verdict\nv1.0 contains Collect measurements but no\nexplicit At 5 Hz ADS constraint and no Serial0\nlogging chain in the current model. Report any\nobserved rate only as information unless a new\nconstraint is added." { class: note; shape: page }
+      note_freshness: "[C] ADS-V10-DATA-FRESHNESS\nv1.0 internal ADS-to-OBCC evidence uses\n5 Hz request/response capability, 200 ms\nnominal opportunities, 400 ms max\nprogress/freshness gap, status VALID,\nfinite/in-range fields, and age_ms <=400 ms.\n2 s LoRa telemetry is packaging only." { class: note; shape: page }
     }
   }
 
@@ -90,7 +90,7 @@ system.versions.v01.note_5hz -> system.versions.v01.loop.collect { class: cstr }
 system.versions.v01.note_timing_context -> system.versions.v01.loop { class: cstr }
 system.versions.v02.note_5hz -> system.versions.v02.loop.collect { class: cstr }
 system.versions.v02.note_timing_context -> system.versions.v02.loop { class: cstr }
-system.versions.v10.note_na -> system.versions.v10.loop.collect { class: cstr }
+system.versions.v10.note_freshness -> system.versions.v10.loop.collect { class: cstr }
 system.note_trace -> system.versions { class: cstr }
 system.note_method -> system.versions.v01.loop.collect { class: cstr }
 system.note_method -> system.versions.v02.loop.collect { class: cstr }

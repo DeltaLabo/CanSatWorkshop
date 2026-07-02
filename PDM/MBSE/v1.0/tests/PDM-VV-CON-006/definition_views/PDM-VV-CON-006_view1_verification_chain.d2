@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-CON-006 — process/no-blocking timing" { shape: text }
+item: "Item\nPDM/OBCC deployment processing\npath timing" { shape: rectangle }
+means: "Means\nInstrumentation/static analysis" { shape: rectangle }
+stimulus: "Inputs / stimulus\nExercise nominal/fault decision\npath under load" { shape: rectangle }
+oracle: "Oracle\nProcess/calculate path remains\nbounded (<5 ms where applicable)\nand no unbounded blocking prevents\nsafe/error telemetry" { shape: page }
+stats: "Statistics\nn=59 zero-violation for strict\ndeadline" { shape: page }
+faults: "Fault hardening\ninfinite loop, blocking wait,\noverloaded scheduler" { shape: page }
+evidence: "Evidence\ntiming traces, source review" { shape: rectangle }
+report: "Report\nresults/PDM-VV-CON-006/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

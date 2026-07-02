@@ -117,7 +117,7 @@ system: "[System] OBCC-V03-GATE-001 — v0.3 telemetry logical interfaces and CE
     shape: page
   }
 
-  note_schema: "[C] Schema analysis pass/fail: decoder\nmaps the 35-byte target variable table,\npreserves sequence/timestamps and\ndeployment_status code/name/category,\nand rejects corrupt/malformed or\nunknown-status frames; relative\nhumidity is absent/error-coded." {
+  note_schema: "[C] Schema analysis pass/fail: decoder\nmaps the 35-byte target variable table,\nincluding deployment_status at variable-table\noffset 34 / payload byte 48, preserves\nsequence/timestamps and deployment_status\ncode/symbol/category, and rejects corrupt/\nmalformed or unknown-status frames; relative\nhumidity is absent/error-coded." {
     class: note
     shape: page
   }

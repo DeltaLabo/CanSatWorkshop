@@ -49,7 +49,7 @@ Pass for strict browser-access credit only if the primary browser opens the decl
 
 ### 3.1 Payload field baseline
 
-The display oracle uses the current v1.0 variable table in `OBCC/LoRa_Frame.md` and the DPS README requirements. The obsolete RH/relative-humidity field is not part of the v1.0 dashboard acceptance oracle and shall not be added as a placeholder.
+The display oracle uses the current v1.0 variable table in `OBCC/LoRa_Frame.md` and the DPS README requirements. The obsolete RH/relative-humidity field is not part of the v1.0 dashboard acceptance oracle and shall not be added as a stand-in field.
 
 Required v1.0 telemetry fields are:
 
@@ -181,7 +181,7 @@ For every session:
 - CSV row count equals the accepted-frame count from the decoder/source payload log;
 - invalid, rejected, stale, duplicate, malformed, missing-field, or unrecognized-status frames do not appear as valid CSV rows;
 - the CSV field order and units are controlled and traceable to the v1.0 payload schema used for the run;
-- the CSV preserves deployment status in three controlled columns named `deployment_status_code`, `deployment_status`, and `deployment_status_category` or explicitly approved equivalents; values shall match the accepted source code, enum symbol, and category in §3.2 for every row;
+- the CSV preserves deployment status in three controlled columns with the exact names `deployment_status_code`, `deployment_status`, and `deployment_status_category`; values shall match the accepted source code, enum symbol, and category in §3.2 for every row;
 - raw input logs are retained, including raw serial/RF bytes or the deterministic source payload log used for synthetic injection.
 
 The report shall include either:

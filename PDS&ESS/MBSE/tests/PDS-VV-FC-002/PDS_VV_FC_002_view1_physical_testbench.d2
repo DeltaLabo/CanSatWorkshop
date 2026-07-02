@@ -129,7 +129,7 @@ system: "[System] PDS-VV-FC-002 battery-supervision physical testbench\nPDS & ES
     shape: page
   }
 
-  gap_note: "[C] Source-model caveat:\nv1.0 lacks explicit INA219 I2C CE;\nthis testbench does not modify baseline;\nfinal I2C CE claim blocked until resolved" {
+  gap_note: "[C] Source-model alignment:\nv1.0 baseline includes explicit INA219 I2C CE;\nthis testbench verifies implemented bus evidence,\ntimeout/status mapping, and logs before CE credit" {
     class: note
     shape: page
   }

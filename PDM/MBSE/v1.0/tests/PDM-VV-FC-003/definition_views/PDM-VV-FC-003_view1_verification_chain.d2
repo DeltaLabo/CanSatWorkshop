@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-FC-003 — terminal descent-speed verification" { shape: text }
+item: "Item\nDeployed parachute descent-speed\nlimiting to <=11 m/s" { shape: rectangle }
+means: "Means\nDrop/descent-speed testing or\napplicable linked evidence\nanalysis" { shape: rectangle }
+stimulus: "Inputs / stimulus\nDrop representative\nmass/configuration with deployed\nparachute; calibrated\nvideo/time-distance or equivalent;\nwind recorded" { shape: rectangle }
+oracle: "Oracle\nMeasured terminal speed plus\nuncertainty/guard band <=11 m/s\nwith representative\nmass/configuration and accepted\nwind/environment;\nfailed/partial-open/tangle handled\nby predeclared anomaly rules" { shape: page }
+stats: "Statistics\n10 measured drops screening; 29\nindependent drops for R90/C95 if\nclaimed" { shape: page }
+faults: "Fault hardening\npartial unfold, tangle, mass\nmismatch, video calibration, wind\n>3 m/s" { shape: page }
+evidence: "Evidence\nraw video/logs, calibration, mass,\nwind, speed analysis" { shape: rectangle }
+report: "Report\nresults/PDM-VV-FC-003/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

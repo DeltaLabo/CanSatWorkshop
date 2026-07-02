@@ -10,7 +10,7 @@ Define AMS Capella/D2 verification activities by delegating one modeled test def
   - `v0.1` tests advance the breadboard/subsystem baseline to the PCB-delivery baseline.
   - `v0.2` tests advance the PCB-delivery baseline to the integrated flight-readiness baseline.
   - `v1.0` tests support final flight-readiness acceptance.
-- Existing model-defined v1.0 tests must not be duplicated: `AMS-VV-PC-001`, `AMS-VV-PL-001`, `AMS-VV-CE-001`, and `AMS-VV-CON-003`.
+- Already-present model-defined activities must not be duplicated. Before starting any work-breakdown row, inspect the existing folders; in the current working tree this includes the original v1.0 definitions, the later v1.0 final-acceptance definitions, and the blocker-alignment `AMS-V10-TEMP-RESPONSE-60S` and `AMS-V10-DATA-FRESHNESS` folders.
 - Each test-definition subagent creates or updates one activity folder under `AMS/MBSE/tests/<activity-id>/`, including baseline copies, Capella-style D2 test-definition views, rendered PNGs, and a local `README.md`.
 - To avoid concurrent edits to the shared plan, test-definition subagents write their proposed global-plan update to `AMS/MBSE/tests/_subagent_updates/<activity-id>.md` instead of editing `AMS/MBSE/tests/README.md` directly. A final integration issue merges those fragments into `AMS/MBSE/tests/README.md` and removes temporary fragments.
 - All D2 files must render with the Capella-D2 tight ELK settings:
@@ -28,6 +28,8 @@ d2 --layout=elk \
 
 ## Work breakdown
 
+The numbered `001`–`010` rows below are the original definition-creation phase plan. The existing `AMS-V10-*` blocker-alignment folders are current model-defined activities and are not additional rows to create in this table.
+
 | Issue | Activity ID | Version / transition | Verification definition to create | Primary IVV coverage |
 |---|---|---|---|---|
 | 001 | `AMS-V01-INTEG-001` | v0.1 → v0.2 | Breadboard physical/link/component-exchange/allocation readiness inspection and analysis | Physical components, physical links, I2C CE, logical allocation |
@@ -36,7 +38,7 @@ d2 --layout=elk \
 | 004 | `AMS-V02-BRINGUP-001` | v0.2 → v1.0 | PCB BME280 power/I2C continuity and bring-up demonstration using external fixture | PCB link implementation, BME280 presence, I2C stimulus/response |
 | 005 | `AMS-VV-FC-001` | v1.0 flight readiness | Atmospheric measurement accuracy and altitude functional-chain test | Pressure, temperature, altitude, atmospheric chain |
 | 006 | `AMS-VV-FC-002` | v1.0 flight readiness | Peripheral initialisation and startup-fault functional-chain test | Init-state chain, startup fault, bounded response |
-| 007 | `AMS-VV-API-001` | v1.0 flight readiness | Pointer/return API and allocation consistency analysis covering `AMS-VV-CE-002`, `AMS-VV-CE-003`, and allocation candidates | Component exchanges, LC allocations, variable-getter contract |
+| 007 | `AMS-VV-API-001` | v1.0 flight readiness | Pointer/return API and allocation consistency analysis covering `AMS-VV-CE-002`, `AMS-VV-CE-003`, and allocation rows | Component exchanges, LC allocations, variable-getter contract |
 | 008 | `AMS-VV-CON-004` | v1.0 flight readiness | Process/calculate timing and non-blocking path test/analysis covering `AMS-VV-CON-004` and `AMS-VV-CON-005` | Timing constraints, blocking/fault hardening |
 | 009 | `AMS-VV-CON-001` | v1.0 flight readiness | Sunlight-blocking and airflow exposure inspection/demonstration | Environmental physical constraint, exposure fault hardening |
 | 010 | integration | all | Merge subagent fragments into `AMS/MBSE/tests/README.md`; clean temporary coordination files | Plan consistency and coverage closure |
@@ -46,6 +48,6 @@ d2 --layout=elk \
 1. Every issue has produced a test-definition folder, unless the issue is the final integration issue.
 2. Each folder contains baseline copies from the targeted version, D2 test-definition files, rendered PNGs, and a local README.
 3. D2 render commands complete successfully.
-4. The global `AMS/MBSE/tests/README.md` covers v0.1, v0.2, and v1.0, distinguishes existing model-defined tests from newly defined ones, and references expected report/evidence paths.
+4. The global `AMS/MBSE/tests/README.md` covers v0.1, v0.2, and v1.0, distinguishes existing model-defined tests from newly defined/originally phase-planned rows (including the existing `AMS-V10-*` blocker-alignment definitions), and references expected report/evidence paths.
 5. Temporary issue files and `_subagent_updates` fragments are removed after integration.
 6. No unrelated repository paths are changed by this orchestration.

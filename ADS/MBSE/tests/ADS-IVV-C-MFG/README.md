@@ -6,7 +6,7 @@
 
 **Selected SSIV/development scope:** ADS `v0.1`, `v0.2`, `v0.3`, and `v1.0`. The primary formal scope is `v0.3` PCB delivery and `v1.0` integrated PCB/backplane/OBCC assembly. `v0.1`/`v0.2` are noted as prototype support contexts but are not forced into PCB/backplane workmanship criteria unless their as-built configuration uses those criteria.
 
-**Traceability targets:** `ADS-IVV-C-MFG` traces to the v0.3 manufacturing/workmanship note, `ADS-CAP-PCB`, `ADS-CAP-PHY`, `ADS-CAP-DELIVERY`, and `ADS-FE-OPEN-SHORT-LINK`. Explicit mission/capability/use-case/feared-event elements are not yet modeled, so placeholder ADS plan IDs remain in use.
+**Traceability targets:** `ADS-IVV-C-MFG` traces to the v0.3 manufacturing/workmanship note, `ADS-CAP-PCB`, `ADS-CAP-PHY`, `ADS-CAP-DELIVERY`, and `ADS-FE-OPEN-SHORT-LINK`. Explicit mission/capability/use-case/feared-event elements are not modeled as separate source nodes, so controlled ADS plan trace labels remain in use.
 
 **References cited in diagrams:** IVV, the ADS MBSE IVV plan `../README.md`, `ADS_MBSE_CORPUS.md`, `model_inventory.json`, and saved reference material under `../references/` or `../v0.2/tests/references/` as applicable. No external research was performed for this definition.
 
@@ -63,10 +63,10 @@ Reports should reference this modeled definition and store evidence under:
 
 Each report shall identify referenced model views/elements, selected SSIV/version, as-tested/as-inspected configuration, raw evidence, analysis settings, actual environmental and equipment conditions, pass/fail or N/A rationale, deviations, anomalies, waivers, limitations, and retest status.
 
-## Assumptions and residual gaps
+## Assumptions and execution records
 
-- Workmanship class/acceptance standard is TBD before execution.
-- Manufacturing route and as-built PCB/assembly revision must be fixed per report.
+- Workmanship acceptance basis is controlled for execution: NASA-STD-8739.3 solder/workmanship checks and NASA-STD-8739.4A harness/crimp checks where applicable, with IPC-A-610 Class 2 visual acceptability as the default PCB assembly screening level unless a project authority predeclares a stricter class. Any deviation or alternate class is a waiver/deviation record, not an open oracle.
+- Manufacturing route and as-built PCB/assembly revision are report-time configuration records.
 
 ## Status
 

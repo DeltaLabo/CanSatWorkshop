@@ -2,6 +2,13 @@
 
 Reference material collected for `../README.md`. Search result JSON files are in `searches/`; retrieved source artifacts are in `sources/`.
 
+Project-controlled references used with this corpus:
+
+| Ref | Project artifact | Use in test plan |
+|---|---|---|
+| IVV plan | `../../../PM&SE/IVV.md` | IADT/report-by-reference conventions, sample-size policy, and fault semantics |
+| Shared freshness/status contract | `../../../PM&SE/contracts/sensor_obcc_freshness_contract.md` | AMS-to-OBCC `5 Hz`/`400 ms` freshness, exact status enum, and no-stale-valid semantics |
+
 ## Source artifacts
 
 | Source | Local artifact | Use in test plan |

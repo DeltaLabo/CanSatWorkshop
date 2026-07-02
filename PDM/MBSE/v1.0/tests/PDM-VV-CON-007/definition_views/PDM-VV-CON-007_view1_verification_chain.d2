@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-CON-007 — non-VALID/fault deployment behavior" { shape: text }
+item: "Item\nNon-VALID ADS/PDM/fault statuses\nand OBCC safe/error behavior" { shape: rectangle }
+means: "Means\nFault-injection testing/analysis" { shape: rectangle }
+stimulus: "Inputs / stimulus\nInject\nstale/no-data/timeout/sensor-fault/init-fail/jam/no-open/unknown\ncases" { shape: rectangle }
+oracle: "Oracle\nNon-VALID required input is not a\nnormal trigger; no false success;\nsafe/error/fault status exposed" { shape: page }
+stats: "Statistics\n29 no-false-open attempts per\nclass if claiming R90/C95" { shape: page }
+faults: "Fault hardening\nstale valid, jam false open,\ntimeout hidden" { shape: page }
+evidence: "Evidence\nfault matrix, telemetry/status\nlogs" { shape: rectangle }
+report: "Report\nresults/PDM-VV-CON-007/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

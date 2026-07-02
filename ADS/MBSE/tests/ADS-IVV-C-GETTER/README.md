@@ -49,7 +49,7 @@ Pass requires all applicable criteria below for the selected runtime version:
 3. **Side-effect-light accessors:** getters/processors/calculators return coherent stored or derived values without hidden sensor reads, unrelated storage mutation, or freshness/validity bypass.
 4. **Failed-read preservation:** GPS no-fix/malformed/silent/stale and IMU NACK/stuck/partial/stale cases, where applicable, do not corrupt prior valid stored values.
 5. **Observable state:** freshness, validity, and error state are observable in return values, status fields, logs, or analysis evidence and are mappable to the shared enum `VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`.
-6. **Age/status rule:** when a getter result is claimed fresh for v1.0 OBCC use, the ADS-to-OBCC observation has `status == VALID` and `age_ms <= 400 ms`; otherwise the result is explicitly non-`VALID`. `2 s` LoRa telemetry cadence is not accepted as proof of the internal `5 Hz` getter freshness path.
+6. **Age/status rule:** when a getter result is claimed fresh for v1.0 OBCC use, the ADS-to-OBCC observation has `status == VALID`, all required fields are finite/in range, and `age_ms <= 400 ms`; otherwise the result is explicitly non-`VALID`. Report-level evidence includes `contract_version`, `subsystem_id=ADS`, `sample_id`/sequence, `sample_time_ms`, request/consumer time, `age_ms`, `status`, field-validity flags, and fault/init indicators. `2 s` LoRa telemetry cadence is not accepted as proof of the internal `5 Hz` getter freshness path.
 7. **Repeated-call stability:** repeated calls remain stable and coherent until a successful modeled update; after success, related outputs transition coherently.
 8. **v1.0 delivery protection:** Pointers/Returns do not bypass lifetime, ownership, freshness, validity, or error semantics.
 
@@ -83,7 +83,7 @@ Each report shall identify referenced model views/elements, selected SSIV/versio
 ## Status, assumptions, and gaps
 
 - **Status:** modeled definition ready for review; execution pending.
-- **Traceability gap:** capability and feared-event IDs are ADS-plan placeholders until formal mission/capability/feared-event elements exist in the model.
+- **Traceability note:** capability and feared-event IDs are controlled ADS-plan labels until formal mission/capability/feared-event elements exist in the source model.
 - **v0.3 N/A:** no runtime behavior is modeled, so only N/A source-review evidence is expected for this activity.
 - **v0.2 modeling gap:** no explicit I2C timeout constraint is modeled; this activity checks getter preservation/observability for IMU faults but does not close the timeout gap.
-- **Data-schema gap:** exact ADS-specific validity/freshness/error field names and implementation return-code mapping must be fixed in the execution report or in a later model update before claiming a fully formal software interface verdict; the stale-data threshold and status vocabulary are fixed by the shared PM&SE contract.
+- **Report-time mapping:** ADS-specific validity/freshness/error field names and implementation return-code names are recorded in the execution report as a mapping to the required evidence fields and shared enum; they are not open pass/fail gates. The stale-data threshold, finite/in-range rule, status vocabulary, and `400 ms` freshness limit are fixed by the shared PM&SE contract.

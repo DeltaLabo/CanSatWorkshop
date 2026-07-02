@@ -32,7 +32,7 @@ This activity covers the v0.1 fall-test functional chain and all source constrai
 - `[C] With parachute open`
 - `[C] 11 m/s max.`
 
-It also provides linked coverage for `[PC] Dummy CanSat`, `[PC] Top module`, `[PC] Parachute`, `[LC] Descent speed control`, and `[F] Limit terminal speed`. Standalone physical-component inspection and allocation-analysis rows remain candidates in `../README.md`.
+It also provides linked coverage for `[PC] Dummy CanSat`, `[PC] Top module`, `[PC] Parachute`, `[LC] Descent speed control`, and `[F] Limit terminal speed`. Standalone physical-component inspection and allocation-analysis rows are model-defined in `../PDM-V01-INSP-PC/` and `../PDM-V01-ALLOC-DSC/`.
 
 ## Pass/fail rules
 

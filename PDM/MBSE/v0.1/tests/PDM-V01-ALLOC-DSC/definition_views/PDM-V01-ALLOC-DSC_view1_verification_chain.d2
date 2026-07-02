@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-V01-ALLOC-DSC — v0.1 descent-speed allocation analysis" { shape: text }
+item: "Item\nv0.1 Descent speed control LC and\nLimit terminal speed function" { shape: rectangle }
+means: "Means\nAllocation analysis" { shape: rectangle }
+stimulus: "Inputs / stimulus\nReview v0.1 source allocation and\nfall-test evidence link" { shape: rectangle }
+oracle: "Oracle\nLC remains under parachute and\ncontains intended function only;\nno foreign allocation" { shape: page }
+stats: "Statistics\n100% allocation census" { shape: page }
+faults: "Fault hardening\nmissing/foreign allocation" { shape: page }
+evidence: "Evidence\nallocation matrix" { shape: rectangle }
+report: "Report\nresults/PDM-V01-ALLOC-DSC/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

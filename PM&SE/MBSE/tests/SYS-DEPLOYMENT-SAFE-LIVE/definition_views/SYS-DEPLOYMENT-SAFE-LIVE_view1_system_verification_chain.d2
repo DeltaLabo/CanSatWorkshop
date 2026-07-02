@@ -1,0 +1,20 @@
+direction: right
+
+title: "SYS-DEPLOYMENT-SAFE-LIVE — ADS/OBCC/PDM/PDS/S&A deployment interaction" { shape: text }
+assembled: "Assembled CanSat + DPS\nADS freshness/status, OBCC\ndeployment policy, PDM\nactuator/parachute, PDS power, S&A\nclearance/retention, DPS status\ndisplay" { shape: rectangle }
+means: "Verification means\nSafe-fixture branch testing of\nStand-by inhibit, On normal\ntrigger/emergency request,\nno-open/jam/fault, clearance and\npower interaction; live release\nonly with approved authorization" { shape: rectangle }
+stimulus: "Scenario / stimulus\nApply valid and invalid ADS\ntrigger stimuli, emergency\ncommand, Stand-by and On modes,\nPDM jam/no-open, power transient\nand S&A clearance checks" { shape: rectangle }
+env: "Environment / configuration\nSafe fixture blocks uncontrolled\nrelease; live deployment requires\nseparate hazard review and range\nauthorization" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff Stand-by inhibits all\ndeployment, On valid trigger/emergency\nproduces deployment_status=OPEN_CONFIRMED\nwithin <=5 s with PDM/actuator evidence\nor explicit fault/safe/error status with\nno false success; COMMAND_SENT,\nOPEN_IN_PROGRESS, inhibited, no-open,\ntimeout, jam, fault, unknown, missing,\nand unrecognized are never deployed;\nS&A clearance maintained, PDS rails safe,\nDPS shows raw code/symbol/category." { shape: page }
+stats: "Statistics\n29/29 positive and 29/29 negative\nno-failure trials for R90/C95 if\nclaimed; otherwise declared\nfunctional branch coverage" { shape: page }
+faults: "Fault hardening\npremature open, stale ADS trigger,\njam, no-open, PDS brownout, cap\ninterference, false GUI success" { shape: page }
+evidence: "Evidence\nmode/trigger logs, actuator\nvideo/current/position, raw\ndeployment_status code/symbol/category,\nDPS screenshots, power traces, S&A\nclearance photos" { shape: rectangle }
+report: "Report\nPM&SE/MBSE/tests/results/SYS-DEPLOYMENT-SAFE-LIVE/report.md" { shape: rectangle }
+assembled -> means: "configure"
+means -> stimulus: "execute"
+stimulus -> env: "under controls"
+env -> oracle: "evaluate"
+oracle -> stats: "statistics / gates"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "close"

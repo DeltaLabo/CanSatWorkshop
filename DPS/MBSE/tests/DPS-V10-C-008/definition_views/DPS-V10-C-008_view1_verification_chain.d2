@@ -1,0 +1,24 @@
+direction: right
+
+title: "DPS-V10-C-008 — 4x4 plot matrix/layout" {
+  shape: text
+}
+
+item: "Item under verification\nDPS dashboard 4x4 layout/mapping\nwith selected top-left attitude\nmodel, telemetry cells, and separate\ndeployment-status indicator/banner" { shape: rectangle }
+means: "Verification means\nInspection/demonstration with\ncanonical payload replay,\nresize/display checks,\nscreenshots, and mapping table" { shape: rectangle }
+stimulus: "Stimulus / conditions\nLoad dashboard, replay canonical\nvalid/missing/stale payloads, all\ndeployment_status codes 0..9, and\nmissing/unrecognized status cases;\nresize through declared window sizes" { shape: rectangle }
+env: "Environment / configuration\nDeclared screen/browser/Tkinter\nversion, selected v1.0 telemetry\ncells, top-left pitch/roll/yaw\nattitude model" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff 4x4 matrix is present,\ntop-left renders pitch/roll/yaw\nattitude, selected telemetry cells\nmatch oracle, deployment_status is\nvisible in a persistent adjacent\nindicator/banner without replacing\nrequired cells, raw code/symbol/category\nare shown, only OPEN_CONFIRMED is\ndisplayed as deployed, missing/unrecognized\nand non-success statuses are not shown as\ndeployed, missing/stale fields are flagged,\nand resize does not hide required data" { shape: page }
+stats: "Statistics\n100% layout/mapping inspection\nover declared display sizes; no\nsampling reliability claim" { shape: page }
+faults: "Fault hardening\ncell swap, hidden axis label,\nmissing/unrecognized deployment_status,\nfalse deployed display for non-OPEN_CONFIRMED\nstatus, stale field shown valid,\nresize clipping" { shape: page }
+evidence: "Evidence archive\nscreenshots/video, mapping checklist\nincluding status code/symbol/category\nand no-false-deployed cases, replay\nlog, display/version record, report.md" { shape: rectangle }
+report: "Report\nresults/DPS-V10-C-008/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

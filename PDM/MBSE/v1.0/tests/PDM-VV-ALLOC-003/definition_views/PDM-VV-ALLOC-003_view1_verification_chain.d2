@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-ALLOC-003 — mechanical/preparation/descent allocation review" { shape: text }
+item: "Item\nUser, holder, trigger, parachute,\ndescent speed control allocations" { shape: rectangle }
+means: "Means\n100% mechanical/function\nallocation review" { shape: rectangle }
+stimulus: "Inputs / stimulus\nReview\nfold/repack/cap/holder/servo/parachute/descent-speed\nfunctions" { shape: rectangle }
+oracle: "Oracle\nAll preparation,\nretain/open/unfold/limit functions\nare allocated to modeled\nactors/components; no\nmissing/foreign functions" { shape: page }
+stats: "Statistics\n100% allocation census" { shape: page }
+faults: "Fault hardening\nmisfold, cap mis-seat, missing\ndescent-speed owner" { shape: page }
+evidence: "Evidence\nallocation checklist, photos/model\nrefs" { shape: rectangle }
+report: "Report\nresults/PDM-VV-ALLOC-003/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

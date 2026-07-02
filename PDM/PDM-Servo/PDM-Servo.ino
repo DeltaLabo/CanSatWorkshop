@@ -11,6 +11,10 @@ WebServer server(80);
 
 int currentServoAngle = 0;
 
+// This PDM demo only accepts open-loop servo angle commands over HTTP. It has
+// no confirmation/status feedback API, so OBCC telemetry must not report
+// OPEN_CONFIRMED unless real PDM feedback or independent observer evidence is
+// integrated later.
 void setServoAngle(int angle) {
     currentServoAngle = angle;
     PDMServo.write(angle);

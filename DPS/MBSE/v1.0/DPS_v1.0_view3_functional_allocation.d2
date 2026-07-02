@@ -150,6 +150,8 @@ system: "[System] Physical System" {
 
       check_if_data_is_available: "[F] Check if data\nis available" { class: func }
       read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+      decode_deployment_status: "[F] Decode deployment\nstatus enum" { class: func }
+      preserve_status_mapping: "[F] Preserve status\ncode/symbol/category" { class: func }
       push_to_payload_queue: "[F] Push to\npayload queue" { class: func }
       get_rx_timestamp: "[F] Get RX\ntimestamp" { class: func }
       calculate_latency: "[F] Calculate\nlatency" { class: func }
@@ -163,6 +165,7 @@ system: "[System] Physical System" {
 
       csv_consume_payload_queue: "[F] Consume\npayload queue" { class: func }
       append_to_csv: "[F] Append to CSV" { class: func }
+      preserve_status_columns: "[F] Preserve deployment\nstatus CSV columns" { class: func }
 
       note_csv_name: "[C] Give each CSV a\nunique name based\non the initial\ntimestamp" {
         class: note
@@ -180,6 +183,7 @@ system: "[System] Physical System" {
       push_to_command_queue: "[F] Push to\ncommand queue" { class: func }
       update_temperature_2d_plot: "[F] Update temperature\n2D plot" { class: func }
       update_altitude_2d_plot: "[F] Update altitude\n2D plot" { class: func }
+      update_deployment_status_indicator: "[F] Update parachute\nstatus indicator" { class: func }
       catch_state_toggle: "[F] Catch State\ntoggle" { class: func }
       update_latency_alert: "[F] Update latency\nalert" { class: func }
       disable_toggle: "[F] Disable\ntoggle" { class: func }
@@ -199,6 +203,11 @@ system: "[System] Physical System" {
     }
 
     note_plots: "[C] 4x4 plot matrix;\ntop-left cell shows\nthe 3D CanSat attitude\nmodel" {
+      class: note
+      shape: page
+    }
+
+    note_deployment_status: "[C] deployment_status code/symbol/category\nis preserved through decoder,\nCSV columns, and dashboard indicator.\nOnly OPEN_CONFIRMED is deployed;\nmissing/unrecognized and all\nnon-success enum states remain distinct." {
       class: note
       shape: page
     }
@@ -240,6 +249,9 @@ system.pc.csv_writer.note_csv_name -> system.pc.csv_writer.append_to_csv { class
 system.pc.note_alert -> system.pc.dashboard.update_latency_alert { class: cstr }
 system.pc.note_cooldown -> system.pc.dashboard.cooldown { class: cstr }
 system.pc.note_plots -> system.pc.dashboard.create_plots { class: cstr }
+system.pc.note_deployment_status -> system.pc.decoder.preserve_status_mapping { class: cstr }
+system.pc.note_deployment_status -> system.pc.csv_writer.preserve_status_columns { class: cstr }
+system.pc.note_deployment_status -> system.pc.dashboard.update_deployment_status_indicator { class: cstr }
 system.pc.note_concurrent -> system.pc.decoder { class: cstr }
 system.pc.note_concurrent -> system.pc.csv_writer { class: cstr }
 system.pc.note_concurrent -> system.pc.dashboard { class: cstr }

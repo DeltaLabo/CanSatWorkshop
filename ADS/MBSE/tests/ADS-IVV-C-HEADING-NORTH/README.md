@@ -1,74 +1,39 @@
-# ADS-IVV-C-HEADING-NORTH — heading/north quantitative accuracy candidate
+# ADS-IVV-C-HEADING-NORTH — heading/north quantitative accuracy
 
-**IADT method:** Testing with supporting Analysis.
+**Status:** Defined / not executed. This activity is fully defined for MBSE/report-by-reference use; no execution credit is claimed until an execution report is archived under `results/ADS-IVV-C-HEADING-NORTH/`.
 
-**IVV source category:** constraint-derived candidate for `ADS-BLK-003` and supporting attitude-chain evidence.
+## Purpose
 
-**Selected SSIV/development scope:** ADS `v0.2` and `v1.0` where magnetometer/attitude data are modeled. `v0.1` has no IMU/attitude behavior and `v0.3` is PCB-only unless a later behavior baseline is added.
+Defines the quantitative ADS heading/north verification and links it to attitude-chain closure.
 
-**Traceability targets:** ADS north/orientation requirement, `ADS-CAP-ATT`, `ADS-CAP-IMU`, `ADS-FE-CORRUPT-MEASUREMENT`, and `ADS-FE-STUCK-LOOP`.
+## Controlled references
 
-**Status:** README-only candidate definition ready for review; execution and D2/model update are pending. This file intentionally does not edit D2/PNG source or definition views.
+- PM&SE/IVV.md
+- PM&SE/CON-003_Candidates_and_Definition_Blockers.md ADS-BLK-003
+- ADS/MBSE/v0.2 and ADS/MBSE/v1.0 source views
 
-## Requirement interpretation and selected criteria
+## Verification definition
 
-- The candidate verifies a quantitative heading/north claim, not only attitude plausibility.
-- Controlled heading may be referenced to either:
-  - **true north**, using a surveyed/known reference line, GNSS baseline, sun-shadow/survey method, or equivalent documented method; or
-  - **magnetic north**, using a calibrated magnetic reference with local declination treatment explicitly recorded.
-- The reported ADS heading shall state whether it is true or magnetic heading. If the ADS output and the reference use different north conventions, apply the declared declination correction before comparison.
-- Strict pass threshold: circular heading error plus expanded uncertainty/guard band **`<= 10°`** at every tested orientation.
-- Minimum orientation set for a strict claim: headings near **0°, 90°, 180°, and 270°**.
+| Definition field | Controlled value |
+|---|---|
+| Item under verification | ADS v0.2 and v1.0 heading/yaw output at the applicable ADS observation point: v0.2 Serial0/log/API development evidence or v1.0 ADS Processing / OBCC collection evidence |
+| Verification means | Testing with surveyed true-north line or calibrated magnetic reference with declination correction, non-magnetic fixture/site survey, timestamped ADS logs, and circular-error analysis |
+| Stimulus / input conditions | Orient UUT near 0, 90, 180, and 270 degrees; collect n=59 consecutive strict samples per heading after settling; record reference heading, declination, and local magnetic-disturbance survey |
+| Environment / configuration | Non-magnetic test area, stable power, fixed mounting, reference uncertainty recorded, disturbed/invalid marker policy active |
+| Statistical method | n=59 all-within-limit samples per heading for strict claim; circular statistics with wrap-around handling; report uncertainty and any exclusions |
+| Fault-hardening cases | magnetic disturbance, reference misalignment, wrap-around error near 0/360, stale/duplicate sample, calibration failure, invalid/disturbed marker ignored |
+| Pass/fail oracle | PASS iff circular heading error plus expanded uncertainty <=10 degrees for every strict sample at all four headings, timestamps/status are valid, and disturbed/invalid/no-calibration cases are marked non-valid rather than credited. For v1.0, freshness/status follows the shared PM&SE contract (`status == VALID`, finite/in range, `age_ms <= 400 ms`, exact enum). Ambiguous true/magnetic reference is HOLD. |
+| Required evidence archive | raw ADS log/API records, reference survey/calibration, fixture photos, analysis script/version, per-heading circular-error CSV, disturbance log, status/age/field-validity mapping where applicable, report.md |
 
-## Reference setup and controls
+## Execution and reporting rules
 
-Use a non-magnetic fixture/site and heading reference that can hold repeatable yaw orientations. The setup shall include:
+1. Predeclare UUT identifiers, hardware revisions, firmware/software commits, tool versions, equipment asset IDs, calibration status, environment, and deviations before execution.
+2. Retain raw logs, scripts, screenshots/photos/video/waveforms where applicable, derived analysis files, and the final report under `results/ADS-IVV-C-HEADING-NORTH/`.
+3. A run with missing required evidence is **HOLD**, not pass. A failed guard band, missing required status field, false success, unbounded timing, or unapproved deviation is **FAIL**.
+4. Any execution-specific value may refine the as-tested configuration but shall not weaken the oracle in this definition without an approved waiver/deviation record.
 
-- non-magnetic turntable, board, jig, or marked ground reference; no ferrous tools, magnets, high-current wiring, motors, or active radios close enough to disturb the measurement;
-- declared true-north or magnetic-north reference method, including declination source/date when needed;
-- magnetometer/IMU calibration state before and after the run;
-- local magnetic disturbance survey or comparison check against the reference before collecting nominal data;
-- level/alignment notes, yaw index marks, fixture photos, ambient/power record, and UUT/logging configuration.
+## Definition views
 
-## Procedure
-
-1. Record UUT ID, hardware revision, firmware commit/build, logger/schema version, operator, date/time, heading reference method, equipment IDs, calibration status, declination value if used, and site/fixture identification.
-2. Perform the declared IMU/magnetometer calibration and record the calibration state. If calibration fails or is not repeatable, place the activity on HOLD.
-3. Establish the reference north line or magnetic reference away from disturbances. Record the disturbance survey result before nominal sampling.
-4. Place the UUT at minimum yaw orientations near 0°, 90°, 180°, and 270° relative to the selected reference. Additional intermediate headings may be added but do not replace the cardinal set.
-5. At each heading, wait for stable readings and collect **`n = 59`** valid heading samples for a strict tolerance-style claim. Smaller sets or `n >= 30` continuous-accuracy sets are characterization unless the report states the weaker confidence basis.
-6. Compute circular error for each sample, e.g. `wrap_to_180(ADS_heading_deg - reference_heading_deg)` after any declination correction.
-7. Apply the predeclared expanded uncertainty/guard band covering reference setup, alignment, declination, calibration residuals, magnetic disturbance, sensor noise, timestamp matching, and analysis rounding.
-8. Repeat or hold the run if the fixture shifts, the reference is disturbed, calibration state changes, or invalid/fault markers appear during nominal sampling.
-
-## Sample/statistical basis
-
-- Strict workshop acceptance uses **`n = 59` all-within-limit samples per heading orientation**. Every retained nominal sample shall have `|circular_error| + U <= 10°` and valid/fresh status.
-- Reports shall also retain continuous-measurement statistics from `PM&SE/IVV.md`: mean circular error, circular standard deviation, confidence/expanded uncertainty, raw samples, and analysis output.
-- A campaign with fewer than `n = 59` valid samples per heading, uncontrolled reference uncertainty, missing declination treatment, or missing calibration/disturbance records is **characterization only** and shall not close the strict heading/north requirement.
-
-## HOLD/fail rules
-
-Place the activity on HOLD, or mark the strict claim failed/limited, if any of the following occurs:
-
-- magnetic contamination, moving ferrous objects, motors, high-current wiring, or RF/electrical disturbances are present and not quantified/guard-banded;
-- true-vs-magnetic north convention is unknown or declination correction is missing when needed;
-- the fixture cannot repeatably hold cardinal yaw orientations;
-- magnetometer/IMU calibration is stale, failed, or unrecorded;
-- ADS heading is stale, missing, non-finite, saturated, disturbed, I2C-faulted, no-data, timeout, or init-fail but still marked valid;
-- circular error plus guard band exceeds `10°` for any retained strict sample.
-
-## Required evidence
-
-- Site/reference method description, declination treatment, disturbance survey, and fixture/reference photos.
-- Raw ADS heading/magnetic/attitude samples, timestamps, status/freshness fields, and reference-heading records for each orientation.
-- Calibration status before/after, uncertainty/guard-band calculation, and circular-error analysis script/output.
-- UUT serial/identifier, hardware revision, firmware commit/build, logger/schema version, equipment IDs/calibration or function-check records, ambient/power records, deviations, anomalies, and retest status.
-
-## Relation to attitude plausibility
-
-`ADS-IVV-FC-ATT` remains a plausibility/repeatability activity unless this candidate, or an equivalent modeled heading constraint, is executed with the controls above. A plausible yaw change alone shall not be credited as quantitative north accuracy closure.
-
-## D2/model follow-up
-
-Add a modeled constraint/activity package and regenerated D2/PNG views for this candidate, then link it from `ADS-IVV-FC-ATT` and the ADS test index. Until that model update is made, this README is the controlled textual candidate definition and execution planning source.
+| View | Source | Rendered |
+|---|---|---|
+| Modeled verification chain | [`definition_views/ADS-IVV-C-HEADING-NORTH_view1_verification_chain.d2`](definition_views/ADS-IVV-C-HEADING-NORTH_view1_verification_chain.d2) | [`definition_views/ADS-IVV-C-HEADING-NORTH_view1_verification_chain.png`](definition_views/ADS-IVV-C-HEADING-NORTH_view1_verification_chain.png) |

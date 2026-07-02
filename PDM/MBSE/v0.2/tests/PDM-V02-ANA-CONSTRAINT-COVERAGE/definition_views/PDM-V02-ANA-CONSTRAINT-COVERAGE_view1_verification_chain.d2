@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-V02-ANA-CONSTRAINT-COVERAGE — v0.2 constraint coverage analysis" { shape: text }
+item: "Item\nv0.2\nBLE/range/power/terminal-speed\nconstraints" { shape: rectangle }
+means: "Means\nCoverage analysis" { shape: rectangle }
+stimulus: "Inputs / stimulus\nMap each v0.2 constraint to\nmodeled definition/evidence" { shape: rectangle }
+oracle: "Oracle\nEvery active constraint assigned\nto definition/evidence or\ncontrolled N/A/deferred rationale" { shape: page }
+stats: "Statistics\n100% coverage census" { shape: page }
+faults: "Fault hardening\norphan constraint, obsolete power\ncriteria" { shape: page }
+evidence: "Evidence\ncoverage matrix" { shape: rectangle }
+report: "Report\nresults/PDM-V02-ANA-CONSTRAINT-COVERAGE/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

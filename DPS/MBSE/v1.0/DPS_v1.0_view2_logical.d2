@@ -117,6 +117,11 @@ system: "[System] Physical System" {
     dashboard: "[LC] Dashboard" { class: lc }
     csv_writer: "[LC] CSV Writer" { class: lc }
 
+    note_deployment_status: "[C] Decoder preserves\ndeployment_status code, symbol,\nand category. CSV keeps\ndeployment_status_code,\ndeployment_status, and\ndeployment_status_category;\ndashboard shows a separate status\nindicator. Only OPEN_CONFIRMED\nis deployed." {
+      class: note
+      shape: page
+    }
+
     note_browser: "[C] Accesible via\na web browser" {
       class: note
       shape: page
@@ -142,14 +147,18 @@ note_ground_pcb_reuse: "[C] Ground Station PCB\nreuses OBCC PCB;\nBackplane Conn
 
 system.cansat.obcc_module.obcc_pcb.cansat_rfm.cansat_lora -> system.cansat.obcc_module.obcc_pcb.cansat_xiao.obcc: "[CE] SPI" { class: ce }
 system.ground_station_pcb.ground_xiao.ground_forwarder -> system.ground_station_pcb.ground_rfm.ground_lora: "[CE] SPI" { class: ce }
-system.ground_station_pcb.ground_xiao.ground_forwarder -> system.pc.decoder: "[CE] UART" { class: ce }
-system.pc.decoder -> system.pc.csv_writer: "[CE] Payload" { class: ce }
-system.pc.decoder -> system.pc.dashboard: "[CE] Payload" { class: ce }
+system.ground_station_pcb.ground_xiao.ground_forwarder -> system.pc.decoder: "[CE] UART telemetry" { class: ce }
+system.pc.decoder -> system.ground_station_pcb.ground_xiao.ground_forwarder: "[CE] UART command" { class: ce }
+system.pc.decoder -> system.pc.csv_writer: "[CE] Payload +\ndeployment_status" { class: ce }
+system.pc.decoder -> system.pc.dashboard: "[CE] Payload +\ndeployment_status" { class: ce }
 system.pc.dashboard -> system.pc.decoder: "[CE] Command" { class: ce }
 
 system.pc.note_concurrent -> system.pc.decoder { class: cstr }
 system.pc.note_concurrent -> system.pc.csv_writer { class: cstr }
 system.pc.note_concurrent -> system.pc.dashboard { class: cstr }
+system.pc.note_deployment_status -> system.pc.decoder { class: cstr }
+system.pc.note_deployment_status -> system.pc.csv_writer { class: cstr }
+system.pc.note_deployment_status -> system.pc.dashboard { class: cstr }
 system.pc.note_browser -> system.pc.dashboard { class: cstr }
 note_separation -> system.cansat { class: cstr }
 note_separation -> system.ground_station_pcb { class: cstr }
@@ -160,3 +169,4 @@ system.cansat -> system.ground_station_pcb { style: { opacity: 0 } }
 system.ground_station_pcb -> system.pc { style: { opacity: 0 } }
 system.pc.decoder -> system.pc.note_concurrent { style: { opacity: 0 } }
 system.pc.note_concurrent -> system.pc.dashboard { style: { opacity: 0 } }
+system.pc.dashboard -> system.pc.note_deployment_status { style: { opacity: 0 } }

@@ -44,26 +44,26 @@ Strict OBCC/DPS RF range and PDR evidence shall use this baseline unless superse
 - Controlled payload schema ID for the current OBCC measurement/status table: `OBCC-LORA-PAYLOAD-v1.0`.
 - Payload source: `OBCC/LoRa_Frame.md` is the controlled variable table for the active v1.0 OBCC payload unless a later schema document supersedes it.
 - Current variable-table size: `35 bytes` before LoRa envelope, IDs, command/request fields, schema/version, sequence/timestamp, health/status metadata outside the listed fields, RSSI/SNR logging fields, delimiters, or other envelope overhead.
-- Required in-payload deployment disclosure: `Parachute Deployment Status` / field name `deployment_status` is a one-byte unsigned enum carried in the existing 100-byte OBCC-to-DPS LoRa telemetry frame.
+- Required in-payload deployment disclosure: `Parachute Deployment Status` / field name `deployment_status` is a one-byte unsigned enum carried in the existing 100-byte OBCC-to-DPS LoRa telemetry frame. Schema traceability: in `OBCC/LoRa_Frame.md` it is the final field at variable-table byte offset `34` (zero-based; 35th byte). The current 100-byte firmware/DPS packet mapping carries it at payload byte offset `48`, after the `CSWS`/sender/receiver envelope and legacy measurement slots, with bytes `49..95` reserved.
 
-| Code | `deployment_status` symbol | Consumer meaning |
-|---|---|---|
-| 0 | `NOT_COMMANDED` | No accepted deployment command/current trigger context. |
-| 1 | `INHIBITED_STANDBY` | Request suppressed because OBCC is in Stand-by. |
-| 2 | `COMMAND_SENT` | OBCC sent open command; not success by itself. |
-| 3 | `OPEN_IN_PROGRESS` | Actuator/PDM response underway, not confirmed. |
-| 4 | `OPEN_CONFIRMED` | PDM feedback or independent safe-fixture/current/position observer confirms open; only success/deployed state. |
-| 5 | `NO_OPEN_CONFIRMED` | Observer/feedback confirms no open. |
-| 6 | `TIMEOUT` | No open confirmation within declared timing window. |
-| 7 | `JAM_DETECTED` | Current/position/feedback indicates jam/blocked travel. |
-| 8 | `PDM_FAULT` | PDM reports fault or command path unavailable. |
-| 9 | `UNKNOWN` | Cannot prove status; never success. |
+| Code | `deployment_status` symbol | Category | Consumer meaning |
+|---|---|---|---|
+| 0 | `NOT_COMMANDED` | `not-deployed` | No accepted deployment command/current trigger context. |
+| 1 | `INHIBITED_STANDBY` | `not-deployed` | Request suppressed because OBCC is in Stand-by. |
+| 2 | `COMMAND_SENT` | `in-progress` | OBCC sent open command; not success by itself. |
+| 3 | `OPEN_IN_PROGRESS` | `in-progress` | Actuator/PDM response underway, not confirmed. |
+| 4 | `OPEN_CONFIRMED` | `deployed` | PDM feedback or independent safe-fixture/current/position observer confirms open; only success/deployed state. |
+| 5 | `NO_OPEN_CONFIRMED` | `not-deployed` | Observer/feedback confirms no open. |
+| 6 | `TIMEOUT` | `fault` | No open confirmation within declared timing window. |
+| 7 | `JAM_DETECTED` | `fault` | Current/position/feedback indicates jam/blocked travel. |
+| 8 | `PDM_FAULT` | `fault` | PDM reports fault or command path unavailable. |
+| 9 | `UNKNOWN` | `unknown` | Cannot prove status; never success. |
 
-- Deployment-status source/semantics: OBCC shall populate `deployment_status` from PDM/actuator confirmation evidence exposed to OBCC or from OBCC-owned deployment/fault-policy interpretation. `COMMAND_SENT` shall not be interpreted as deployed; only `OPEN_CONFIRMED` may be treated as deployed/success.
+- Deployment-status source/semantics: OBCC shall populate `deployment_status` from PDM/actuator confirmation evidence exposed to OBCC or from OBCC-owned deployment/fault-policy interpretation. `COMMAND_SENT`, `OPEN_IN_PROGRESS`, inhibited, no-open, timeout, jam, fault, unknown, missing, or unrecognized statuses shall not be interpreted as deployed; only `OPEN_CONFIRMED` may be treated as deployed/success.
 - Relative humidity is not part of the active v1.0 OBCC payload. A frame or dashboard column shall not silently map any obsolete RH field to another quantity.
-- Required traceability: every strict telemetry, CSV, dashboard, or end-to-end data report shall identify the payload schema ID/version, field order, units, scale/encoding, payload length, deployment-status enum code/name mapping, code/configuration source, parser/decoder version, and any deviations.
+- Required traceability: every strict telemetry, CSV, dashboard, or end-to-end data report shall identify the payload schema ID/version, field order, units, scale/encoding, payload length, deployment-status enum code/symbol/category mapping, code/configuration source, parser/decoder version, and any deviations.
 - Health/status metadata and deployment disclosure: telemetry shall carry `deployment_status` and shall include, or be losslessly traceable in synchronized logs to, frame sequence, transmit/receive timestamp or slot number, OBCC mode (`Stand-by` or `On`), command-result state where applicable, runtime health/result codes, and ADS/AMS freshness status/age evidence when those samples are packaged.
-- DPS CSV, dashboard, and report consumers shall preserve the `deployment_status` numeric code and symbol mapping and shall treat only `OPEN_CONFIRMED` as deployed. Fault, inhibited, timeout, unknown, no-open, in-progress, and command-sent states shall remain distinguishable.
+- DPS CSV, dashboard, and report consumers shall preserve the `deployment_status` numeric code, symbol, and category and shall treat only `OPEN_CONFIRMED` / `deployed` as deployed. Fault, inhibited, timeout, unknown, missing, unrecognized, no-open, in-progress, and command-sent states shall remain distinguishable and non-success.
 - If an implementation carries some required metadata only in local trace rather than over the RF payload, the report must retain the correlation method. Missing correlation limits the claim to characterization for the affected field.
 
 ## 5. Command schema traceability baseline

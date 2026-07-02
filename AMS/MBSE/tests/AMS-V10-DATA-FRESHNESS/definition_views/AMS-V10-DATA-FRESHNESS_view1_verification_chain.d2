@@ -1,0 +1,24 @@
+direction: right
+
+title: "AMS-V10-DATA-FRESHNESS — AMS-to-OBCC 5 Hz freshness/status verification" {
+  shape: text
+}
+
+item: "Item under verification\nAMS v1.0\ntemperature/pressure/altitude\nupdate records exposed to OBCC\ncollection/API observation point" { shape: rectangle }
+means: "Verification means\nTesting and analysis with OBCC\nrequest harness at 5 Hz, AMS\nlog/API capture, fault injection\nfor I2C/no-data/init-fail, and\ntimestamp/age/status analysis" { shape: rectangle }
+stimulus: "Stimulus / conditions\nRun 10 min mission-window\nequivalent with 5 Hz OBCC\nrequests; package/observe 2 s\ntelemetry snapshots separately;\ninject stale, no-data, timeout,\nsensor-fault, and init-fail cases" { shape: rectangle }
+env: "Environment / configuration\nStable powered AMS/OBCC bench,\nsynchronized monotonic timestamp\nor age source, firmware/build map\nrecorded, instrumentation overhead\nmeasured" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff fresh records have status\nVALID and age_ms <=400 ms at\nobservation point, enum is exactly\nVALID/STALE/NO_DATA/TIMEOUT/SENSOR_FAULT/INIT_FAIL,\nnon-VALID cases never leave old\ndata marked VALID, 5 Hz request\npath has no silent\nmissing/duplicate catch-up, and 2\ns LoRa packaging is not misused as\ninternal freshness evidence." { shape: page }
+stats: "Statistics\n10 min/3000 scheduled request\nopportunities for mission-window\nclaim; formal timing sample n=59\nintervals all 150-250 ms and no\nprogress gap >400 ms; report\noverhead <=5 ms or\nbounded/subtracted" { shape: page }
+faults: "Fault hardening\nI2C timeout, sensor disconnect,\nstartup init fail, stale cached\nvalue, duplicate sequence, slow\ngetter, missing timestamp/age, old\nvalue marked VALID" { shape: page }
+evidence: "Evidence archive\nraw AMS/OBCC logs, request\nschedule, sequence/age/status CSV,\ninjected-fault ledger,\nsource/build map, overhead\nmeasurement, analysis\nscript/version, report.md" { shape: rectangle }
+report: "Report\nresults/AMS-V10-DATA-FRESHNESS/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

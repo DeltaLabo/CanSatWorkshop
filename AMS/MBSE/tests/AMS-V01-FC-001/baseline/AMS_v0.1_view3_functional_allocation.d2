@@ -59,16 +59,20 @@ system: "[System] AMS v0.1 Subsystem" {
       direction: down
       grid-columns: 2
 
-      note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
+      note_accuracy_pressure: "[C] Pressure accuracy\n±1 hPa" {
         class: note
         shape: page
       }
       measure_pressure: "[F] Measure\npressure" { class: func }
-      note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+      note_accuracy_temperature: "[C] Temp. accuracy\n±0.5 °C over\n10-40 °C" {
         class: note
         shape: page
       }
       measure_temperature: "[F] Measure\ntemperature" { class: func }
+      note_temp_response: "[C] Temp. response\n≤60 s" {
+        class: note
+        shape: page
+      }
       respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
     }
   }
@@ -85,7 +89,7 @@ system: "[System] AMS v0.1 Subsystem" {
       get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
       read_pressure: "[F] Read\npressure" { class: func }
       read_temperature: "[F] Read\ntemperature" { class: func }
-      note_resolution: "[C] Resolution\n< 10m" {
+      note_resolution: "[C] Altitude resolution\n≤10 m\n13 Pa/m = 130 Pa" {
         class: note
         shape: page
       }
@@ -123,6 +127,7 @@ host_pc: "[EA] PC" {
 
 system.bme280.ams_sensing.note_accuracy_pressure -> system.bme280.ams_sensing.measure_pressure { class: cstr }
 system.bme280.ams_sensing.note_accuracy_temperature -> system.bme280.ams_sensing.measure_temperature { class: cstr }
+system.bme280.ams_sensing.note_temp_response -> system.bme280.ams_sensing.measure_temperature { class: cstr }
 system.xiao.ams_processing.note_resolution -> system.xiao.ams_processing.calculate_altitude { class: cstr }
 
 system.xiao.note_no_blocking -> system.xiao.ams_processing { class: cstr }

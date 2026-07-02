@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-V02-TEST-TERMINAL-SPEED — v0.2 terminal-speed companion" { shape: text }
+item: "Item\nv0.2 parachute terminal speed <=11\nm/s or linked applicable evidence" { shape: rectangle }
+means: "Means\nDrop testing or applicability\nanalysis" { shape: rectangle }
+stimulus: "Inputs / stimulus\nMeasure v0.2 descent or cite\napplicable v0.1 evidence with\nmass/parachute/config rationale" { shape: rectangle }
+oracle: "Oracle\nMeasured/linked speed plus\nuncertainty <=11 m/s; otherwise\nHOLD evidence gap" { shape: page }
+stats: "Statistics\n10 drops screening; 29 if\nreliability claimed" { shape: page }
+faults: "Fault hardening\nmass mismatch, wind, tangle,\nlinked evidence invalid" { shape: page }
+evidence: "Evidence\nvideo/calibration/applicability\nreport" { shape: rectangle }
+report: "Report\nresults/PDM-V02-TEST-TERMINAL-SPEED/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

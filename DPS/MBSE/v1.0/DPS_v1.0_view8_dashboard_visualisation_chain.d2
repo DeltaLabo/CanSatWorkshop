@@ -77,7 +77,7 @@ chain: "DPS v1.0 — Dashboard visualisation chain" {
     shape: page
   }
 
-  note_deployment_status: "[C] Dashboard displays\ndeployment_status distinctly;\nonly OPEN_CONFIRMED is\nshown as deployed." {
+  note_deployment_status: "[C] Dashboard displays\ndeployment_status code, symbol,\nand category distinctly; only\nOPEN_CONFIRMED is shown as deployed.\nCommand, in-progress, inhibited,\nno-open, fault, unknown, missing,\nor unrecognized states are non-success." {
     class: note
     shape: page
   }
@@ -87,7 +87,7 @@ chain.push_to_payload_queue -> chain.dashboard_consume_payload_queue: "[FE] Payl
 chain.dashboard_consume_payload_queue -> chain.update_orientation_3d_plot: "[FE] Pitch, roll, yaw []" { class: fe }
 chain.dashboard_consume_payload_queue -> chain.update_temperature_2d_plot: "[FE] Temperature []" { class: fe }
 chain.dashboard_consume_payload_queue -> chain.update_altitude_2d_plot: "[FE] Altitude []" { class: fe }
-chain.dashboard_consume_payload_queue -> chain.update_deployment_status_indicator: "[FE] deployment_status\n[code + symbol]" { class: fe }
+chain.dashboard_consume_payload_queue -> chain.update_deployment_status_indicator: "[FE] deployment_status\n[code + symbol + category]" { class: fe }
 chain.dashboard_consume_payload_queue -> chain.update_latency_alert: "[FE] Latency []" { class: fe }
 
 chain.note_plots -> chain.create_plots { class: cstr }

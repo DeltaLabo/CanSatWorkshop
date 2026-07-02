@@ -73,6 +73,6 @@ Modeled definition ready for review. Execution remains pending.
 
 - Controlled SSIV/current-development labels are inferred from `v0.1`, `v0.2`, `v0.3`, and `v1.0` folders.
 - Mission/capability/feared-event IDs are placeholders from the ADS MBSE-wide IVV plan and need confirmation in a controlled trace model.
-- Motor/tachometer is the selected workshop truth method for strict gyro claims when calibrated/reliable; exact motor, tachometer asset/calibration record, ambient monitor model, axis/rate matrix, timing tolerance method, and guard-band calculation must be fixed before execution.
+- Motor/tachometer is the selected workshop truth method for strict gyro claims when calibrated/reliable; motor/tachometer asset IDs, calibration records, ambient monitor model, axis/rate matrix, timestamp-correlation method, and guard-band calculation details are report-time records.
 - `v0.2` has no explicit modeled I2C timeout constraint; report this as a modeling gap while observing no-blocking/fault recovery behavior.
-- `v1.0` delivery schema, timestamp source, and OBCC evidence capture mechanism must be identified for the as-tested configuration.
+- `v1.0` delivery schema names, timestamp source, and OBCC evidence capture mechanism are as-tested configuration records mapped to the shared freshness evidence fields when delivery/freshness is claimed.

@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-CE-004 — status feedback/no-false-success analysis" { shape: text }
+item: "Item\nPDM/actuator status evidence\nmapped to OBCC deployment_status" { shape: rectangle }
+means: "Means\nAnalysis/testing of\nfeedback/current/position/video/safe-fixture\nobserver mapping" { shape: rectangle }
+stimulus: "Inputs / stimulus\nExercise not-commanded, inhibited,\ncommand-sent, in-progress, open,\nno-open, timeout, jam, PDM fault,\nunknown cases" { shape: rectangle }
+oracle: "Oracle\nOnly OPEN_CONFIRMED is\nsuccess/deployed; COMMAND_SENT is\nnot success;\nfaults/timeouts/no-open/unknown\nremain distinguishable" { shape: page }
+stats: "Statistics\n100% status mapping; 29/29 if\nclaiming R90/C95 binary\nopen/no-open behavior" { shape: page }
+faults: "Fault hardening\nfalse success, ambiguous feedback,\njam, timeout, observer failure" { shape: page }
+evidence: "Evidence\nstatus mapping table, raw\nfeedback/video/current traces,\ntelemetry logs" { shape: rectangle }
+report: "Report\nresults/PDM-VV-CE-004/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

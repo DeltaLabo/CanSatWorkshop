@@ -1,0 +1,24 @@
+direction: right
+
+title: "AMS-V10-TEMP-RESPONSE-60S — temperature step response <=60 s" {
+  shape: text
+}
+
+item: "Item under verification\nAMS v1.0 BME280 temperature\nmeasurement as collected by AMS\nprocessing and exposed to OBCC/API\nobservation point" { shape: rectangle }
+means: "Verification means\nTesting with controlled\ntemperature step source or\nchamber, calibrated reference\ntemperature sensor, synchronized\nAMS log, and response-time\nanalysis script" { shape: rectangle }
+stimulus: "Stimulus / conditions\nApply a predeclared temperature\nstep of at least 10 C between\nstable initial and final plateaus;\nstart t0 when reference sensor\ncrosses 10% of step; sample AMS\nand reference at >=1 Hz until\nfinal condition is reached or 120\ns expires" { shape: rectangle }
+env: "Environment / configuration\nSensor exposure matches\nflight/workshop mounting or\ndocumented fixture;\nairflow/sunlight context recorded;\nstable power; ambient and\nchamber/source model recorded" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff AMS reported temperature\nenters and remains within the\nguard-banded final acceptance band\nby t0+60 s. Final band is\nreference final value +/- max(1.0\nC, expanded reference+AMS\nuncertainty) unless the source\nrequirement is stricter. Missing\ntimestamps, hidden filtering\ndelay, or default/stale valid\nvalue is FAIL/HOLD." { shape: page }
+stats: "Statistics\nAt least 5 valid rising or falling\nstep repetitions for acceptance\nscreening; report each response\ntime and max; stricter reliability\nclaims use PM&SE/IVV\nbinomial/timing policy" { shape: page }
+faults: "Fault hardening\npoor sensor exposure,\nairflow/sunlight mismatch,\nreference lag, timestamp drift,\nstale/default value marked VALID,\nI2C timeout, sensor init failure" { shape: page }
+evidence: "Evidence archive\nraw reference and AMS logs with\ntimestamps/status, fixture/chamber\nphotos, calibration records,\nanalysis script/version,\nresponse-time table, deviations,\nreport.md" { shape: rectangle }
+report: "Report\nresults/AMS-V10-TEMP-RESPONSE-60S/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

@@ -80,7 +80,7 @@ Modeled definition ready for review. Execution remains pending.
 ## Assumptions and gaps
 
 - The orchestrator selected all current ADS MBSE versions; no user disambiguation was requested.
-- `ADS-CAP-GPS`, `ADS-FE-SILENT-SENSOR-FAIL`, and `ADS-FE-CORRUPT-MEASUREMENT` are planning trace placeholders because explicit Capella mission/capability/feared-event elements are not modeled in the source views.
+- `ADS-CAP-GPS`, `ADS-FE-SILENT-SENSOR-FAIL`, and `ADS-FE-CORRUPT-MEASUREMENT` are controlled trace labels because explicit Capella mission/capability/feared-event elements are not modeled in the source views.
 - Strict truth path is selected as GNSS simulator or surveyed/open-sky reference; exact equipment asset, surveyed coordinates or simulator scenario, guard-band calculation, and any 95/95 method must still be recorded before execution.
-- ADS/OBCC validity/freshness field names and log schema are TBD before execution.
+- ADS/OBCC validity/freshness evidence uses the shared contract fields `sample_id` or sequence, `sample_time_ms`, consumer/request time, `age_ms`, `status`, finite/in-range validity flags, and fault/init indicators. Implementation field names are report-time mappings to those required evidence fields, not open schema gates.
 - `v0.3` remains N/A for this constraint unless behavior chains are later added to that baseline.

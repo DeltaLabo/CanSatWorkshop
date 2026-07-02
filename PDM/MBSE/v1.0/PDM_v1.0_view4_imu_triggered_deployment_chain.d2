@@ -55,7 +55,7 @@ chain: "PDM v1.0 — IMU-triggered parachute deployment" {
   note_obcc_policy_boundary: "[C] OBCC owns mode, trigger,\nemergency, safe/error and\nno-false-success decisions.\nPDM executes command\nand exposes status." { class: note; shape: page }
   note_i2c_timeout: "[C] I2C read\ntimeout ≤ 5 ms" { class: note; shape: page }
   note_process_time: "[C] Process/Calculate\ntime < 5 ms" { class: note; shape: page }
-  note_status_evidence: "[C] PDM/actuator evidence\nmaps to OBCC deployment_status.\nCOMMAND_SENT is not deployed;\nonly OPEN_CONFIRMED\nis strict success." { class: note; shape: page }
+  note_status_evidence: "[C] PDM/actuator evidence\nmaps to OBCC deployment_status.\nExposed evidence remains non-success\nunless it proves OPEN_CONFIRMED.\nCOMMAND_SENT, in-progress,\ninhibited, no-open, timeout,\njam, fault, and unknown\nare not strict success." { class: note; shape: page }
   note_terminal_speed_11ms: "[C] Terminal descent-speed\nlinkage <= 11 m/s" { class: note; shape: page }
 
   measure_angular_velocities: "[F] Measure angular\nvelocities" { class: func }
@@ -114,7 +114,7 @@ chain.send_open_signal_to_servo -> chain.reach_open_position: "[FE] Open signal\
 chain.send_open_signal_to_servo -> chain.observe_actuator_status: "[FE] Command path\n[COMMAND_SENT not deployed]" { class: fe }
 chain.reach_open_position -> chain.observe_actuator_status: "[FE] Open evidence\n[position/current]" { class: fe }
 chain.observe_actuator_status -> chain.expose_status_to_obcc: "[FE] PDM status\nevidence []" { class: fe }
-chain.expose_status_to_obcc -> chain.map_deployment_status: "[FE] deployment_status\n[mapped enum]" { class: fe }
+chain.expose_status_to_obcc -> chain.map_deployment_status: "[FE] deployment_status\n[code/symbol/category mapping]" { class: fe }
 chain.reach_open_position -> chain.retain_position: "[FE] Servo reached\nopen position []" { class: fe }
 chain.retain_position -> chain.separate_from_module: "[FE] Servo open []" { class: fe }
 chain.separate_from_module -> chain.unfold: "[FE] Holder open []" { class: fe }

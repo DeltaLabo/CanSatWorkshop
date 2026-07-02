@@ -2,7 +2,7 @@
 
 Owners: @darielmj, @anthonyarguedas
 
-This subsystem collects atmospheric data, such as temperature and pressure, which are fundamental for the scientific and research objectives of the mission. Data is sent in real-time to the DPS for analysis, helping to monitor the CanSat’s environmental conditions in flight.
+This subsystem collects atmospheric data, such as temperature and pressure, which are fundamental for the scientific and research objectives of the mission. AMS data needed by flight logic is delivered internally to the OBCC at `>=5 Hz` (`200 ms` nominal request period). The OBCC then packages the latest values into the v1.0 LoRa telemetry stream to the DPS at the separate `2 s` telemetry cadence, preserving each sample's status and age.
 
 See [Understanding Capella Physical Diagrams](./../PM&SE//Understanding%20Capella%20Physical%20Diagrams/Understanding%20Capella%20Physical%20Diagrams.md) if needed.
 
@@ -44,6 +44,15 @@ View 5 — peripheral initialisation reporting chain ([D2 source](./MBSE/v1.0/AM
 ![v0.2 PCB delivery](./MBSE/v0.2/AMS_v0.2_view1_physical.png)
 AMS v0.2 — PCB-only delivery physical view ([D2 source](./MBSE/v0.2/AMS_v0.2_view1_physical.d2))
 
+### Controlled v1.0 source semantics
+
+- **Use cases:** `AMS-UC-MeasureAtmosphere` and `AMS-UC-InitializePeripheral`.
+- **Feared events covered by the source views:** `AMS-FE-BadExposure`, `AMS-FE-SensorBusFault`, `AMS-FE-StaleMeasurement`, `AMS-FE-StartupFault`, and `AMS-FE-SchedulerBlock`.
+- **Freshness/status contract:** AMS-to-OBCC getter responses support `>=5 Hz` internal consumers (`200 ms` nominal period). A response is fresh only when `status == VALID` and `age_ms <= 400 ms`; timeout, bus/sensor fault, initialization failure, no-data, and stale conditions must not return old samples as `VALID`.
+- **Required status enum:** exactly `VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`.
+- **Telemetry separation:** v1.0 LoRa telemetry packaging is `2 s` and uses the latest internally acquired sample plus preserved `status`/`age_ms`; telemetry cadence does not weaken the `5 Hz` internal AMS-to-OBCC freshness requirement.
+- **Verification statistics:** continuous accuracy uses `n >= 30` stable samples per operating point with bias, standard deviation, confidence interval, and expanded uncertainty; timing/deadline/freshness claims use `59/59` representative samples for 95/95; binary success/fault claims use `29/29` for R90/C95. Smaller samples are screening only.
+
 ## Requirements
 
 ## System Requirements
@@ -58,8 +67,8 @@ Requirements based on the following norms:
 | --- | --- |
 | The Atmospheric Measurement System must be capable of collecting temperature data in the immediate environment of the CanSat with an accuracy of ±0.5 °C within the range of 10 °C to 40 °C. | Temperature Test |
 | The Atmospheric Measurement System must have a response time of no more than 60 seconds for temperature measurements. | Response Time Test |
-| The Atmospheric Measurement System must be capable of measuring atmospheric pressure with a precision of at least ±1 hPa and a resolution sufficient to detect altitude changes of 10 meters or less, based on the standard pressure-altitude relationship of 13 Pa per meter. | Flight Test |
-| The Atmospheric Measurement System must transmit data in real-time to the On-Board Computer and Communication System (OBCC) with an update rate of at least 5 Hz. | Communication Test |
+| The Atmospheric Measurement System must be capable of measuring atmospheric pressure with an accuracy of ±1 hPa and a resolution sufficient to detect altitude changes of 10 meters or less, based on the standard pressure-altitude relationship of 13 Pa per meter. | Flight Test |
+| The Atmospheric Measurement System data needed by flight logic must be delivered internally to the On-Board Computer and Communication System (OBCC) with an update rate of at least 5 Hz; this is separate from the v1.0 LoRa telemetry cadence of 2 s. | Communication Test |
 | The Atmospheric Measurement System must be shaded from direct sunlight and properly ventilated to prevent overheating and to ensure accurate temperature readings. | Visual Inspection Test |
 
 ### Pressure Accuracy Estimation
@@ -71,12 +80,12 @@ $$
 $$
 
 $$
-\Delta h_{min}= 5 \ \textrm{m} \Rightarrow \Delta P_{min} = 65 \ \textrm{Pa}
+\Delta h_{min}= 10 \ \textrm{m} \Rightarrow \Delta P_{min} = 130 \ \textrm{Pa}
 $$
 
 ### Success Criteria
 
-The AMS has established a preliminary design capable of accurately measuring temperature and atmospheric pressure, and transmitting this data in real time to the OBCC.
+The AMS has established a preliminary design capable of accurately measuring temperature and atmospheric pressure, delivering fresh internal responses to the OBCC at `>=5 Hz`, and supporting `2 s` telemetry packaging with preserved `status` and `age_ms`.
 
 ### Old Requirements before PDR
 

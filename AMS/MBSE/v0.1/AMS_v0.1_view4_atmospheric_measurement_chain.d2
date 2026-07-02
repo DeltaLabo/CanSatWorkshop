@@ -57,15 +57,19 @@ chain: "AMS v0.1 — Atmospheric measurement chain" {
   process_temperature: "[F] Process\ntemperature" { class: func }
   collect_measurements: "[F] Collect\nmeasurements" { class: func }
 
-  note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
+  note_accuracy_pressure: "[C] Pressure accuracy\n±1 hPa" {
     class: note
     shape: page
   }
-  note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+  note_accuracy_temperature: "[C] Temp. accuracy\n±0.5 °C over\n10-40 °C" {
     class: note
     shape: page
   }
-  note_resolution: "[C] Resolution\n< 10m" {
+  note_temp_response: "[C] Temp. response\n≤60 s" {
+    class: note
+    shape: page
+  }
+  note_resolution: "[C] Altitude resolution\n≤10 m\n13 Pa/m = 130 Pa" {
     class: note
     shape: page
   }
@@ -88,6 +92,7 @@ chain.process_temperature -> chain.collect_measurements: "[FE] Result\n[Temperat
 
 chain.note_accuracy_pressure -> chain.measure_pressure { class: cstr }
 chain.note_accuracy_temperature -> chain.measure_temperature { class: cstr }
+chain.note_temp_response -> chain.measure_temperature { class: cstr }
 chain.note_resolution -> chain.calculate_altitude { class: cstr }
 
 # Layout-only edge to keep the two processing branches grouped before collection.

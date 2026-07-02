@@ -46,7 +46,7 @@ ambient_monitor: "[EA] Ambient monitor\nthermometer / hygrometer" { class: ea }
 analysis_station: "[EA] Analysis and review station\ncoverage, statistics, verdict" { class: ea }
 
 c_runtime_pass: "[C] Mission-window pass intent\nFor v0.1/v0.2/v1.0, selected ADS version runs the\nrepresentative descent window with no reset, no stuck loop,\nand no unrecovered peripheral failure. Expected modeled fields\nfor that version are present and time-correlated." { class: note; shape: page }
-c_cadence: "[C] Cadence / gap prerequisite\nIf a cadence is claimed, at least 95% of expected cycles/frames\nshall be present and no gap may exceed the project-defined maximum.\nv0.1/v0.2 use modeled 5 Hz; v1.0 cadence is blocked until selected.\nIf mission duration or max gap is not chosen, verdict is BLOCKED." { class: note; shape: page }
+c_cadence: "[C] Cadence / gap rule\nMission-window duration is 10 min / 600 s. v0.1/v0.2 use modeled 5 Hz;\nv1.0 uses ADS-to-OBCC 5 Hz freshness, not 2 s LoRa packaging.\nExpected opportunities are 3000 for 600 s, and no internal\nprogress/freshness gap may exceed 400 ms." { class: note; shape: page }
 c_environment: "[C] Execution conditions\nRecord UUT version, hardware revision, firmware commit, power mode,\nmission-window duration, timebase, ambient temperature/humidity,\nstimulus/truth calibration, and logger configuration before running." { class: note; shape: page }
 c_faults: "[C] Fault-hardening conditions\nExercise or disposition silent GPS/IMU, UART/I2C timeout, corrupt\nmeasurement, stale data, loop stall, reset/brownout, and v1.0\nOBCC pointer/return integrity. Invalid data shall not be accepted as valid." { class: note; shape: page }
 

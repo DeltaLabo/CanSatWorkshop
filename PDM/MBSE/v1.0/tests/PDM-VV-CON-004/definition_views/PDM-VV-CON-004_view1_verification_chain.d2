@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-CON-004 — 0-degree init/no false open" { shape: text }
+item: "Item\nServo initial closed/0-degree\nstate and no false open" { shape: rectangle }
+means: "Means\nBoot/standby/reset demonstration\nwith PWM/position observer" { shape: rectangle }
+stimulus: "Inputs / stimulus\nPower cycle and mode changes with\ncap/holder installed" { shape: rectangle }
+oracle: "Oracle\nServo initializes closed/0-degree,\nno false open pulse, no status\nsuccess unless OPEN_CONFIRMED" { shape: page }
+stats: "Statistics\n59/59 timing/position samples for\nstrict timing claim" { shape: page }
+faults: "Fault hardening\nboot pulse, reset, brownout, servo\ndrift" { shape: page }
+evidence: "Evidence\nPWM/position traces, video" { shape: rectangle }
+report: "Report\nresults/PDM-VV-CON-004/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

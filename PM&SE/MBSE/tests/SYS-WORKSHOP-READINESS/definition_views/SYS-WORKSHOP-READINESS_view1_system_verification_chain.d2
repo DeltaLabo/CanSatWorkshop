@@ -1,0 +1,20 @@
+direction: right
+
+title: "SYS-WORKSHOP-READINESS — educational/reproducibility closure" { shape: text }
+assembled: "Assembled CanSat + DPS\nWorkshop guide, root/subsystem\nREADMEs, BOM/materials, code/MBSE\ntest suite, build procedure" { shape: rectangle }
+means: "Verification means\nIndependent-user dry-run/rebuild\nreview with checklist, BOM\nprocurement check, documentation\ntrace and learning-objective\nassessment" { shape: rectangle }
+stimulus: "Scenario / stimulus\nAt least one independent user\nfollows guide to identify parts,\nbuild/configure or dry-run safe\nequivalent, run smoke checks and\nlocate MBSE tests" { shape: rectangle }
+env: "Environment / configuration\nWorkshop-safe tools/materials, no\nhazardous powered Li-ion work\nwithout safety controls,\ndocumented deviations" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff guide enables independent\nuser to identify materials,\nassemble/configure safe article or\ndry-run equivalent, run smoke\nchecks, locate evidence/report\ntemplates, and explain learning\nobjectives; BOM/materials complete\nand no critical undocumented step\nremains." { shape: page }
+stats: "Statistics\nAt least one independent-user\nrebuild/dry-run; 100% checklist\nclosure" { shape: page }
+faults: "Fault hardening\nmissing part, ambiguous wiring,\nunsafe step, undocumented software\nsetup, inaccessible report\ntemplate" { shape: page }
+evidence: "Evidence\ncompleted user checklist, issue\nlog, BOM snapshot, guide version,\nphotos/screenshots" { shape: rectangle }
+report: "Report\nPM&SE/MBSE/tests/results/SYS-WORKSHOP-READINESS/report.md" { shape: rectangle }
+assembled -> means: "configure"
+means -> stimulus: "execute"
+stimulus -> env: "under controls"
+env -> oracle: "evaluate"
+oracle -> stats: "statistics / gates"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "close"

@@ -65,11 +65,14 @@ void loop() {
     if (LoRa.available() > 0) {
       // Read from LoRa serial port
       String RXString = LoRa.readString();
-      if (RXString.indexOf(LORA_HEADER) != -1) {
-        RXString.remove(0, 16);
-        if (RXString.substring(0, 4) == LORA_HEADER) {
-          RXString.remove(LORA_PAYLOAD_SIZE, sizeof(RXString));
-          Serial.println(RXString);
+      int headerIndex = RXString.indexOf(LORA_HEADER);
+      if (headerIndex != -1) {
+        RXString.remove(0, headerIndex);
+        if (RXString.substring(0, 4) == LORA_HEADER && RXString.length() >= LORA_PAYLOAD_SIZE) {
+          // Forward exactly one 100-byte OBCC payload to the PC parser. Do not
+          // append CR/LF or radio trailer bytes; deployment_status remains byte 48.
+          RXString.remove(LORA_PAYLOAD_SIZE);
+          Serial.write((const uint8_t*)RXString.c_str(), LORA_PAYLOAD_SIZE);
         }
       }
       // Transition back to NORMAL state

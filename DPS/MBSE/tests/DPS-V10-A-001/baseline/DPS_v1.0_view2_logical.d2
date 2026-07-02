@@ -142,7 +142,8 @@ note_ground_pcb_reuse: "[C] Ground Station PCB\nreuses OBCC PCB;\nBackplane Conn
 
 system.cansat.obcc_module.obcc_pcb.cansat_rfm.cansat_lora -> system.cansat.obcc_module.obcc_pcb.cansat_xiao.obcc: "[CE] SPI" { class: ce }
 system.ground_station_pcb.ground_xiao.ground_forwarder -> system.ground_station_pcb.ground_rfm.ground_lora: "[CE] SPI" { class: ce }
-system.ground_station_pcb.ground_xiao.ground_forwarder -> system.pc.decoder: "[CE] UART" { class: ce }
+system.ground_station_pcb.ground_xiao.ground_forwarder -> system.pc.decoder: "[CE] UART telemetry" { class: ce }
+system.pc.decoder -> system.ground_station_pcb.ground_xiao.ground_forwarder: "[CE] UART command" { class: ce }
 system.pc.decoder -> system.pc.csv_writer: "[CE] Payload" { class: ce }
 system.pc.decoder -> system.pc.dashboard: "[CE] Payload" { class: ce }
 system.pc.dashboard -> system.pc.decoder: "[CE] Command" { class: ce }

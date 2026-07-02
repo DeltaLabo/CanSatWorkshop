@@ -70,12 +70,12 @@ chain: "OBCC v1.0 — Telemetry downlink chain" {
   append_to_csv: "[F] Append\nto CSV" { class: func }
   update_plots: "[F] Update\nplots" { class: func }
 
-  note_payload: "[C] v1.0 payload excludes relative humidity.\nVariable table is 35 bytes before\nenvelope/metadata: measurements plus\ndeployment_status." {
+  note_payload: "[C] v1.0 payload excludes relative humidity.\nVariable table is 35 bytes before\nenvelope/metadata; deployment_status is\nthe final schema byte (offset 34) and\npacket byte 48 in the 100-byte frame." {
     class: note
     shape: page
   }
 
-  note_deployment_status: "[C] deployment_status uint8 enum:\nCOMMAND_SENT is not deployed;\nonly OPEN_CONFIRMED is success." {
+  note_deployment_status: "[C] deployment_status uint8 enum\npreserves code/symbol/category.\nOnly OPEN_CONFIRMED is success;\ncommand, in-progress, inhibited,\nno-open, timeout, jam, fault, unknown,\nmissing, or unrecognized is non-success." {
     class: note
     shape: page
   }
@@ -98,7 +98,7 @@ chain.publish_health_flags -> chain.add_heartbeat_status: "[FE] Health flags []"
 chain.publish_health_flags -> chain.include_deployment_status: "[FE] PDM/fault\nevidence []" { class: fe }
 chain.publish_state_metadata -> chain.add_heartbeat_status: "[FE] State\n[On / Stand-by]" { class: fe }
 chain.publish_state_metadata -> chain.include_deployment_status: "[FE] Mode/inhibit\ncontext []" { class: fe }
-chain.include_deployment_status -> chain.add_heartbeat_status: "[FE] deployment_status\n[uint8 enum]" { class: fe }
+chain.include_deployment_status -> chain.add_heartbeat_status: "[FE] deployment_status\n[uint8 code + category mapping]" { class: fe }
 chain.replace_missing_value_with_error_code -> chain.add_heartbeat_status: "[FE] Corrected\nmeasurements []" { class: fe }
 chain.add_heartbeat_status -> chain.push_to_measurement_queue: "[FE] Telemetry set\n[Measurements + deployment_status + status]" { class: fe }
 chain.push_to_measurement_queue -> chain.consume_measurement_queue: "[FE] Queued telemetry []" { class: fe }
@@ -113,6 +113,7 @@ chain.read_and_decode_frame -> chain.push_to_payload_queue: "[FE] Payload\n[Deco
 chain.push_to_payload_queue -> chain.append_to_csv: "[FE] Payload\n[Timestamped Payload]" { class: fe }
 chain.push_to_payload_queue -> chain.update_plots: "[FE] Payload\n[Timestamped Payload]" { class: fe }
 
+chain.note_payload -> chain.generate_frame { class: cstr }
 chain.note_deployment_status -> chain.include_deployment_status { class: cstr }
 chain.note_standby -> chain.enforce_two_second_cadence { class: cstr }
 chain.note_radio -> chain.transmit_outgoing_data { class: cstr }

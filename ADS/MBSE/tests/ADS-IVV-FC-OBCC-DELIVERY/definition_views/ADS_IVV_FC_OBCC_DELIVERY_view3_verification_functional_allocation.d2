@@ -69,7 +69,7 @@ system: "[System] ADS-IVV-FC-OBCC-DELIVERY\nverification functional allocation\n
         monitor_lifetime: "[F] Monitor pointer\nlifetime and freshness" { class: func }
         mark_faults: "[F] Mark injected fault\ncase boundaries" { class: func }
         expose_heartbeat: "[F] Expose loop progress\nand no-block heartbeat" { class: func }
-        note_timing: "[C] Bounded/no-blocking\nApply Variable Getter, process/calculate <5 ms,\nUART/I2C read <=5 ms constraints. Record the\ndelivery watchdog threshold before execution." { class: note; shape: page }
+        note_timing: "[C] Bounded/no-blocking\nApply Variable Getter, process/calculate <5 ms,\nUART/I2C read <=5 ms constraints. Delivery\nprogress/freshness max gap is 400 ms; no\nseparate watchdog threshold is used." { class: note; shape: page }
       }
     }
   }
@@ -151,7 +151,7 @@ analysis_script: "[EA] Analysis script / report generator" {
   compute_coverage: "[F] Compute field, fault,\nand version coverage" { class: func }
   evaluate_timing: "[F] Evaluate bounded\ndelivery/no-blocking" { class: func }
   produce_report: "[F] Produce verdict and\nevidence index" { class: func }
-  note_statistics: "[C] Statistical viewpoint\nMinimum nominal evidence: >=30 delivery observations\ncovering GPS, IMU, attitude, and init-state fields.\nFormal deadline/PDR claims need a predeclared method." { class: note; shape: page }
+  note_statistics: "[C] Statistical viewpoint\nMinimum nominal evidence: >=30 delivery observations\ncovering GPS, IMU, attitude, and init-state fields.\nFormal freshness/deadline claims use n=59 zero-violation\nrequest/response observations; PDR is separate." { class: note; shape: page }
 }
 
 quality: "[EA] Quality / configuration reviewer" {

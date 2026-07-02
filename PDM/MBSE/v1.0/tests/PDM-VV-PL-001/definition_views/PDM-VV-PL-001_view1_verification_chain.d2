@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-PL-001 — physical link retention/continuity inspection" { shape: text }
+item: "Item\nAll PDM v1.0\nphysical/electrical/mechanical\nlinks: servo cable/PWM/power,\ntrigger-holder linkage,\nparachute/cap retention, ADS/OBCC\npaths" { shape: rectangle }
+means: "Means\n100%\ncontinuity/polarity/retention/workmanship\ninspection with pre/post handling\nchecks" { shape: rectangle }
+stimulus: "Inputs / stimulus\nInspect links before actuation and\nafter representative\nhandling/environmental screens" { shape: rectangle }
+oracle: "Oracle\nElectrical links\ncontinuous/polarized with no\nshorts; mechanical links retain,\nmove freely, and show no\njam/looseness; post-screen checks\nremain within thresholds" { shape: page }
+stats: "Statistics\n100% census; post-screen repeat\nfor affected article" { shape: page }
+faults: "Fault hardening\nintermittent servo cable, reversed\npolarity, jammed holder, loose\ncap, thread/cap interference" { shape: page }
+evidence: "Evidence\ncontinuity logs, photos/video,\nwitness marks, retention notes" { shape: rectangle }
+report: "Report\nresults/PDM-VV-PL-001/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

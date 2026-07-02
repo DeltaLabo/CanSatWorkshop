@@ -14,11 +14,12 @@ This activity covers functional-chain/scenario behavior and constraint evidence 
 Conservative assumptions recorded for execution:
 
 1. The selected development version is AMS `v0.1` only.
-2. The breadboard characterization point is a stable ambient bench point within `10–40 °C`.
-3. The atmospheric test collects at least `n ≥ 30` paired pressure/temperature samples at that point.
+2. The breadboard characterization point is a stable ambient bench point within `10–40 °C`; the BME280 is shaded from direct radiant heating, ventilated, and co-located with the reference instruments.
+3. The atmospheric test collects at least `n ≥ 30` stable paired pressure/temperature samples at that point and reports bias, standard deviation, confidence interval, and expanded uncertainty (`U95`).
 4. The serial/init smoke chain executes at least `5` nominal power-up/log repetitions as readiness screening only, not as a reliability claim.
-5. If an adequate pressure delta is not available on the bench, altitude `<10 m` resolution is recorded as a v0.1-to-v0.2 readiness limitation rather than claimed closed.
-6. Detailed I2C fault-timeout hardening may be deferred to later v0.2/v1.0 I2C fault tests; this activity still checks nominal timing and records any bus hang/unbounded blocking as a readiness failure or dependency.
+5. Altitude readiness uses `13 Pa/m`; a `10 m` equivalent pressure change is `130 Pa`. If a controlled/reference pressure delta sufficient to resolve that step is not available, altitude resolution is recorded as a v0.1-to-v0.2 readiness limitation rather than claimed closed.
+6. Temperature-response `≤60 s` is not claimed by this ambient characterization unless the as-run report derives the result from `AMS-V10-TEMP-RESPONSE-60S` or adds a controlled annex defining t0, final/reference condition, and timestamp correlation.
+7. Detailed I2C fault-timeout hardening is not closed here unless controlled fault evidence is included; otherwise the derivation path is `AMS-VV-CON-003`, or the report records a readiness limitation.
 
 ## References cited in the model
 
@@ -55,17 +56,18 @@ Untouched copies of all AMS v0.1 `.d2` and `.png` views are in `baseline/`:
 
 Pass only if the modeled constraints in the D2 views are satisfied, including:
 
-1. Collect `n ≥ 30` paired pressure/temperature samples for the breadboard characterization point before computing atmospheric pass/fail statistics.
-2. Pressure passes iff `|P_AMS - P_ref| + U95 < 1 hPa` for the paired sample set.
-3. Temperature passes iff `|T_AMS - T_ref| + U95 < 0.5 °C` and the test point is inside `10–40 °C`.
-4. Altitude readiness passes iff the tested pressure delta demonstrates `<10 m` equivalent resolution; otherwise record a readiness limitation.
-5. Serial output contains BME280 init state plus measurement fields in expected v0.1 order/units; no stale measurement may be logged as current.
-6. Nominal read/process/calculate/logging steps complete within modeled constraints (`I2C read timeout ≤5 ms`, process/calculate `<5 ms`) or record a later-test dependency for detailed fault-timeout proof.
-7. No unbounded blocking occurs during nominal serial logging; only modeled I2C/UART waits are allowed.
-8. Reference instrument IDs/calibration, ambient/reference readings, voltage/current, raw serial logs, timing traces if used, deviations, and anomalies are archived for the report.
+1. Collect `n ≥ 30` stable paired pressure/temperature samples for the breadboard characterization point before computing atmospheric pass/fail statistics.
+2. Pressure passes iff `|P_AMS - P_ref| + U95 ≤ 1 hPa` for the paired sample set.
+3. Temperature passes iff `|T_AMS - T_ref| + U95 ≤ 0.5 °C` and the test point is inside `10–40 °C` with shaded/ventilated BME280 exposure.
+4. Altitude readiness passes iff the tested pressure delta demonstrates `≤10 m` equivalent resolution using `13 Pa/m = 130 Pa`; otherwise record a readiness limitation.
+5. Temperature-response `≤60 s` is not credited unless derived from `AMS-V10-TEMP-RESPONSE-60S` or an execution annex defining t0, final/reference condition, and timestamp correlation.
+6. Serial output contains BME280 init state plus measurement fields in expected v0.1 order/units; no stale, old, or default measurement may be logged as current.
+7. Nominal read/process/calculate/logging steps complete within modeled constraints (`I2C read timeout ≤5 ms`, process/calculate `<5 ms`) or explicitly reference `AMS-VV-CON-003` for detailed fault-timeout proof.
+8. No unbounded blocking occurs during nominal serial logging; only modeled I2C/UART waits are allowed.
+9. Reference instrument IDs/calibration, ambient/reference readings, shaded/ventilated exposure state, voltage/current, raw serial logs, timing traces if used, deviations, and anomalies are archived for the report.
 
 ## Viewpoints
 
-- **Statistical significance:** Atmospheric characterization uses `n ≥ 30` paired samples at the v0.1 breadboard point and reports bias plus expanded uncertainty (`U95`). Smoke repetitions are readiness screening only.
-- **Fault hardening:** The activity detects stale data, swapped/missing serial fields, missing init state, bus non-response/hang symptoms, and unbounded blocking. It does not claim full I2C fault-injection coverage unless the as-run report adds controlled fault evidence.
+- **Statistical significance:** Atmospheric characterization uses `n ≥ 30` stable paired samples at the v0.1 breadboard point and reports bias, standard deviation, confidence interval, and expanded uncertainty (`U95`). Smoke repetitions are readiness screening only.
+- **Fault hardening:** The activity detects stale/old/default data, swapped/missing serial fields, missing init state, bus non-response/hang symptoms, and unbounded blocking. It does not claim full I2C fault-injection or temperature-response coverage unless the as-run report adds controlled evidence or references the explicit derivation paths above.
 - **Report by reference:** The report should identify the as-tested breadboard, firmware, instruments, raw data paths, deviations, anomalies, waivers, and pass/fail rationale while referencing these model definitions rather than duplicating them.

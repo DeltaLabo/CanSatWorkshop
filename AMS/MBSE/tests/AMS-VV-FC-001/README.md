@@ -50,16 +50,11 @@ Refreshed copies of all AMS v1.0 `.d2` and `.png` views are in `baseline/` and m
 | `AMS_VV_FC_001_view4_atmospheric_measurement_acceptance_chain.d2/png` | Atmospheric measurement chain extended through reference measurement, AMS processing, OBCC collection, comparison, staleness/order checks, and evidence archive. |
 | `AMS_VV_FC_001_view5_altitude_resolution_pressure_step_chain.d2/png` | Dedicated altitude-resolution pressure-step sequence for the `Resolution < 10m` constraint. |
 
-## Temperature response-time candidate/update path
+## Temperature response-time cross-reference
 
-`AMS-V10-TEMP-RESPONSE-60S` is not closed by the current accuracy/altitude chain alone. The conservative path is to model a standalone response-time activity unless adding the following oracle to this folder remains clearer:
+`AMS-V10-TEMP-RESPONSE-60S` is model-defined in `../AMS-V10-TEMP-RESPONSE-60S/` and is the controlled standalone response-time activity. `AMS-VV-FC-001` closes pressure/temperature accuracy, altitude resolution, and currentness/freshness for the atmospheric-measurement chain; response-time credit is taken only by executing `AMS-V10-TEMP-RESPONSE-60S` or by explicitly referencing its executed evidence.
 
-- apply a declared temperature step using a stable thermal source/chamber or documented fixture;
-- capture reference thermometer data and raw AMS temperature samples with synchronized or correlated timestamps;
-- verify the reported temperature reaches the defined final/reference condition within `<=60 s`;
-- record UUT ID, firmware/configuration ID, exposure/airflow state, uncertainty, deviations, and the response-time calculation.
-
-Until that separate phase-2 modeled definition or explicit FC-001 extension and execution evidence exist, `AMS-VV-FC-001` closes accuracy/currentness only, not response time. No `AMS-V10-TEMP-RESPONSE-60S` folder is created here.
+The response-time oracle is controlled there: apply a declared temperature step using a stable thermal source/chamber or documented fixture, capture reference thermometer data and raw AMS temperature samples with synchronized or correlated timestamps, verify the reported temperature reaches the defined final/reference condition within `<=60 s`, and record UUT ID, firmware/configuration ID, exposure/airflow state, uncertainty, deviations, and response-time calculation.
 
 ## Pass/fail constraints
 

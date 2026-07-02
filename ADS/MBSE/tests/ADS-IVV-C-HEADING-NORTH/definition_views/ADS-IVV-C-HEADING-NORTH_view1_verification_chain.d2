@@ -1,0 +1,24 @@
+direction: right
+
+title: "ADS-IVV-C-HEADING-NORTH — heading/north quantitative accuracy" {
+  shape: text
+}
+
+item: "Item under verification\nADS v0.2/v1.0 heading/yaw output\nat applicable ADS observation point:\nv0.2 Serial0/log/API or v1.0 ADS\nProcessing / OBCC collection" { shape: rectangle }
+means: "Verification means\nTesting with surveyed true-north\nline or calibrated magnetic\nreference with declination\ncorrection, non-magnetic\nfixture/site survey, timestamped\nADS logs, and circular-error\nanalysis" { shape: rectangle }
+stimulus: "Stimulus / conditions\nOrient UUT near 0, 90, 180, and\n270 degrees; collect n=59\nconsecutive strict samples per\nheading after settling; record\nreference heading, declination,\nand local magnetic-disturbance\nsurvey" { shape: rectangle }
+env: "Environment / configuration\nNon-magnetic test area, stable\npower, fixed mounting, reference\nuncertainty recorded,\ndisturbed/invalid marker policy\nactive" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff circular heading error\nplus expanded uncertainty <=10\ndegrees for every strict sample at\nall four headings, timestamps/status\nare valid, and disturbed/invalid/\nno-calibration cases are marked\nnon-valid rather than credited.\nv1.0 freshness uses status VALID,\nfinite/in range, age_ms <=400 ms.\nAmbiguous true/magnetic reference\nis HOLD." { shape: page }
+stats: "Statistics\nn=59 all-within-limit samples per\nheading for strict claim; circular\nstatistics with wrap-around\nhandling; report uncertainty and\nany exclusions" { shape: page }
+faults: "Fault hardening\nmagnetic disturbance, reference\nmisalignment, wrap-around error\nnear 0/360, stale/duplicate\nsample, calibration failure,\ninvalid/disturbed marker ignored" { shape: page }
+evidence: "Evidence archive\nraw ADS log/API records, reference\nsurvey/calibration, fixture\nphotos, analysis script/version,\nper-heading circular-error CSV,\ndisturbance log, status/age/field-\nvalidity mapping where applicable,\nreport.md" { shape: rectangle }
+report: "Report\nresults/ADS-IVV-C-HEADING-NORTH/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

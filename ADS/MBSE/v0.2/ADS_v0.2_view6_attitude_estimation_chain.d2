@@ -56,6 +56,15 @@ chain: "ADS v0.2 — Attitude estimation chain" {
   process_accelerations: "[F] Process\naccelerations" { class: func }
   calculate_pitch_roll_yaw: "[F] Calculate\npitch, roll, yaw" { class: func }
   collect_measurements: "[F] Collect\nmeasurements" { class: func }
+
+  note_quant_delegated: "[C] Quantitative acceleration\nand heading/north closure\ndelegated to ADS-IVV-C-ACCEL-3AXIS\nand ADS-IVV-C-HEADING-NORTH;\nno additional folder needed" {
+    class: note
+    shape: page
+  }
+  note_at_5hz: "[C] v0.2 collection at 5 Hz\n(200 ms nominal). Serial0\nPC logging only; no OBCC\nPointers/Returns or LoRa" {
+    class: note
+    shape: page
+  }
 }
 
 chain.measure_accelerations -> chain.respond_i2c_requests: "[FE] Acceleration\nsignal" { class: fe }
@@ -69,3 +78,7 @@ chain.read_accelerations -> chain.calculate_pitch_roll_yaw: "[FE] Accelerations"
 chain.read_field_intensities -> chain.calculate_pitch_roll_yaw: "[FE] Field\nintensities" { class: fe }
 chain.process_accelerations -> chain.collect_measurements: "[FE] Result\n[Accels]" { class: fe }
 chain.calculate_pitch_roll_yaw -> chain.collect_measurements: "[FE] Result\n[PRY]" { class: fe }
+
+chain.note_quant_delegated -> chain.process_accelerations { class: cstr }
+chain.note_quant_delegated -> chain.calculate_pitch_roll_yaw { class: cstr }
+chain.note_at_5hz -> chain.collect_measurements { class: cstr }

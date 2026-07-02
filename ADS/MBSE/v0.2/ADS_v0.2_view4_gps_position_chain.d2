@@ -56,11 +56,11 @@ chain: "ADS v0.2 — GPS position chain" {
   get_lon: "[F] Get lon" { class: func }
   collect_measurements: "[F] Collect\nmeasurements" { class: func }
 
-  note_accuracy_position: "[C] Accuracy < 5 m" {
+  note_accuracy_position: "[C] GPS accuracy < 5 m.\nStrict truth: GNSS simulator\nor surveyed/open-sky\nreference" {
     class: note
     shape: page
   }
-  note_at_5hz: "[C] At 5 Hz" {
+  note_at_5hz: "[C] v0.2 collection at 5 Hz\n(200 ms nominal). Serial0\nPC logging only; no OBCC\nPointers/Returns or LoRa" {
     class: note
     shape: page
   }

@@ -1,0 +1,24 @@
+direction: right
+
+title: "DPS-V10-T-005 — dashboard visualization" {
+  shape: text
+}
+
+item: "Item under verification\nDPS decoder-to-dashboard\nvisualization of v1.0 telemetry\nincluding pitch/roll/yaw attitude,\ndeployment_status, stale/invalid\nfields, and latency alert" { shape: rectangle }
+means: "Verification means\nDemonstration/testing with\ncanonical payload replay, browser\nevidence where applicable,\nscreenshots/video, DOM/UI/CSV\nmapping checks" { shape: rectangle }
+stimulus: "Stimulus / conditions\nReplay canonical valid, stale,\ninvalid, missing-field,\nhigh-latency, all deployment_status\ncodes 0..9, and\nmissing/unrecognized status\npayloads" { shape: rectangle }
+env: "Environment / configuration\nPrimary Chrome/Chromium\nstrict-credit path if browser\nimplementation exists; Tkinter\nevidence is limited/HOLD for\nbrowser-only claim" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff each payload field maps\nto selected plot/cell, top-left\nattitude renders pitch/roll/yaw,\na persistent deployment_status\nindicator preserves code/symbol/category,\nonly OPEN_CONFIRMED shows deployed,\nCOMMAND_SENT, in-progress, inhibited,\nno-open, timeout, jam, fault, unknown,\nmissing, and unrecognized states remain\nnon-success, stale/invalid fields are\nvisibly flagged/rejected, and latency\nalert follows threshold" { shape: page }
+stats: "Statistics\nN=30 canonical payload cases\ncovering valid/boundary/fault\nclasses; no unmapped UI cells" { shape: page }
+faults: "Fault hardening\ninvalid timestamp, stale values,\nmissing deployment_status,\nunrecognized enum, browser\nrefresh/reconnect, plot resize" { shape: page }
+evidence: "Evidence archive\npayload replay log, screenshots/video\nfor deployed/non-success/fault/unknown/\nmissing-status states, browser start\ncommand/URL or Tkinter limitation,\nmapping table with status\ncode/symbol/category, report.md" { shape: rectangle }
+report: "Report\nresults/DPS-V10-T-005/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

@@ -58,7 +58,7 @@ chain: "PDS-V01-GATE-001 — v0.1 power-path smoke chain\nPDS & ESS increment v0
   note_scope: "[C] Scenario: one short smoke gate,\nwith 3 repeat cycles for repeatability.\nRepeat count is conservative and not treated\nas statistical reliability evidence.\nPrimary evidence is modeled pass/fail conformity." { class: note; shape: page }
   note_pass_pc: "[C] PC presence pass/fail\nAll modeled v0.1 PCs and required test PCs\nmust be present and in expected configuration." { class: note; shape: page }
   note_pass_pl: "[C] PL pass/fail\nBattery cable JST, PC Out / GND,\nand 5V / 3V3 / GND links verified for continuity\nand polarity in the inspected setup." { class: note; shape: page }
-  note_constraint: "[C] Constraint pass/fail\n- [C] Screw terminal or crimped cables retained and secure.\n- Under light load, measured 5V in [4.75, 5.25] V\nand 3V3 in [3.14, 3.47] V.\n- No overcurrent trip, no smoke, no abnormal heat,\nand no reverse/undefined power-path residual on safe-off." { class: note; shape: page }
+  note_constraint: "[C] Constraint pass/fail\n- [C] Screw terminal or crimped cables retained and secure.\n- Under light load, measured 5V in [4.75, 5.25] V\nand 3V3 in [3.14, 3.47] V.\n- No overcurrent trip, no smoke, no abnormal heat,\nand no reverse/uncontrolled power-path residual on safe-off." { class: note; shape: page }
   note_stats_fault: "[C] Viewpoints\nStatistical evidence: n=3 smoke cycles only (screening; no reliability claim), raw evidence recorded.\nFault-hardening: reverse polarity, loose/open path, and residual supply checks are screened in setup and execution." { class: note; shape: page }
 }
 

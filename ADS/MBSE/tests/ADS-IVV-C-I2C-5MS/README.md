@@ -6,7 +6,7 @@
 
 **Selected SSIV/development scope:** ADS `v0.1`, `v0.2`, `v0.3`, and `v1.0`. Formal source-modeled pass/fail applies to `v1.0`; `v0.2` is included as a controlled constraint-derived **code-analysis/instrumentation branch** because I2C behavior is modeled without an explicit source-D2 `<=5 ms` timeout constraint. The user-approved resolution is to verify bounded v0.2 I2C timeout/no-blocking behavior through code review and instrumentation rather than adding convoluted v0.2 source diagrams. `v0.1` and `v0.3` are N/A.
 
-**Traceability targets:** `ADS-IVV-C-I2C-5MS` traces to the v1.0 I2C timeout `<=5 ms` constraint, `ADS-CAP-IMU`, `ADS-CAP-ATT`, `ADS-CAP-INIT`, `ADS-FE-STUCK-LOOP`, and `ADS-FE-CORRUPT-MEASUREMENT`. Explicit mission/capability/use-case/feared-event elements are not yet modeled, so placeholder ADS plan IDs remain in use.
+**Traceability targets:** `ADS-IVV-C-I2C-5MS` traces to the v1.0 I2C timeout `<=5 ms` constraint, `ADS-CAP-IMU`, `ADS-CAP-ATT`, `ADS-CAP-INIT`, `ADS-FE-STUCK-LOOP`, and `ADS-FE-CORRUPT-MEASUREMENT`. Explicit mission/capability/use-case/feared-event elements are not modeled as separate source nodes, so controlled ADS plan trace labels remain in use.
 
 **References cited in diagrams:** IVV, the ADS MBSE IVV plan `../README.md`, `ADS_MBSE_CORPUS.md`, `model_inventory.json`, and saved reference material under `../references/` or `../v0.2/tests/references/` as applicable. No external research was performed for this definition.
 

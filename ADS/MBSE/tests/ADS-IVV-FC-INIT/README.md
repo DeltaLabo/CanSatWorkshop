@@ -82,5 +82,5 @@ Modeled definition ready for review. Execution remains pending.
 
 - Controlled SSIV documents and mission/capability/feared-event model elements remain inferred from the ADS MBSE plan; IDs used here are placeholders from that plan.
 - v0.2 lacks an explicit modeled I2C timeout constraint; only observed no-hang behavior can be reported for v0.2 IMU fault cases unless the model is updated.
-- Exact boot record schema, readiness/degraded/error enum names, logger timebase tolerance, and firmware instrumentation hooks must be fixed before execution.
+- Boot record schema names, readiness/degraded/error implementation names, logger timebase details, and firmware instrumentation hooks are report-time mapping/configuration records. They must preserve the fixed pass/fail semantics: no invalid, unavailable, timeout, sensor-fault, or init-fail state may be reported as nominal/ready/`VALID`.
 - v1.0 does not model ADS Serial0 logging; use OBCC/debug capture as the evidence path unless a later model update adds a Serial0 test interface.

@@ -42,7 +42,7 @@ This activity is the API/status leg of `AMS-V10-DATA-FRESHNESS`. The report shal
 - Local implementation statuses such as NACK or bus-error codes may be retained as subordinate evidence, but the external AMS-to-OBCC result shall map losslessly to the shared enum.
 - Timeout, runtime sensor/bus fault, initialization failure, and no-data conditions shall not leave an old sample marked `VALID`.
 
-## Covered candidate activities
+## Covered activities
 
 If accepted by the global plan, this model-defined activity can cover or supersede:
 
@@ -51,7 +51,7 @@ If accepted by the global plan, this model-defined activity can cover or superse
 - `AMS-VV-ALLOC-001` — AMS Sensing allocation analysis.
 - `AMS-VV-ALLOC-002` — AMS Processing allocation analysis.
 - `AMS-VV-ALLOC-003` — OBCC allocation analysis.
-- `AMS-VV-CON-002` — variable-getter template constraint analysis/testing candidate, by analysis with supporting inspection.
+- `AMS-VV-CON-002` — variable-getter template constraint analysis/testing row, by analysis with supporting inspection.
 - `AMS-V10-DATA-FRESHNESS` — API/status update alias when combined with `AMS-VV-FC-001`, `AMS-VV-FC-002`, `AMS-VV-CON-003`, and `AMS-VV-CON-004`.
 
 ## Pass/fail constraints
@@ -75,7 +75,7 @@ Pass only if all modeled constraints in the D2 views are satisfied and the execu
 
 ## Assumptions and limitations
 
-- The v1.0 model does not define explicit mission/capability/use-case/feared-event nodes; traceability targets are the candidate IDs already used in the global plan.
+- The v1.0 model does not define explicit mission/capability/use-case/feared-event nodes; traceability targets are the controlled verification IDs already used in the global plan.
 - The API contract is treated as a controlled model/code contract to be inspected during execution. No additional API standard was available in the model.
 - This definition does not prove environmental accuracy, I2C timing, process/calculate timing, or physical PC/PL presence; those remain assigned to other AMS v1.0 activities.
 - Shared freshness/status/API extensions are represented in this README and the D2 views for this phase; execution evidence, actual API/header names, code/build IDs, dynamic trace locations, and any deviations remain report-time records.

@@ -1,0 +1,24 @@
+direction: right
+
+title: "DPS-V10-C-004 — browser-accessible dashboard" {
+  shape: text
+}
+
+item: "Item under verification\nBrowser-accessible DPS dashboard\nstrict-credit path and\nfallback/limited handling for\nnon-browser implementation" { shape: rectangle }
+means: "Verification means\nInspection/demonstration with\ndeclared Chrome/Chromium version,\nURL/start command,\nrefresh/reconnect tests, and\nevidence capture" { shape: rectangle }
+stimulus: "Stimulus / conditions\nLaunch dashboard from clean\nsession, connect/reconnect,\nrefresh, operate controls, replay\ncanonical payloads" { shape: rectangle }
+env: "Environment / configuration\nPrimary Chrome/Chromium\nstrict-credit environment; if only\nTkinter exists, record\nHOLD/limited for browser\nrequirement" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff dashboard is accessible\nin declared browser at repeatable\nURL/start command, required data\nand deployment_status are visible\nafter refresh/reconnect without\ndeveloper console dependence, and\nstale/invalid cases remain\nflagged. Tkinter-only\nimplementation cannot pass browser\nstrict credit." { shape: page }
+stats: "Statistics\n100% of declared browser\noperations; no statistical\nreliability claim" { shape: page }
+faults: "Fault hardening\nbad URL, refresh loses state,\nreconnect corrupts data, browser\nincompatibility, non-browser-only\nUI" { shape: page }
+evidence: "Evidence archive\nbrowser version/start command,\nscreenshots/video, replay log,\nlimitation/waiver if Tkinter-only,\nreport.md" { shape: rectangle }
+report: "Report\nresults/DPS-V10-C-004/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

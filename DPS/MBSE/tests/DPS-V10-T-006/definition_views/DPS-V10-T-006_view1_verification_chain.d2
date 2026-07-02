@@ -1,0 +1,24 @@
+direction: right
+
+title: "DPS-V10-T-006 — forwarder initialization" {
+  shape: text
+}
+
+item: "Item under verification\nDPS LoRa forwarder startup,\nreadiness reporting, and missing\nSPI/radio/UART fault handling" { shape: rectangle }
+means: "Verification means\nTesting with 59 restart trials\nplus deliberate missing\nradio/SPI/UART/fault-injection\ncases and log capture" { shape: rectangle }
+stimulus: "Stimulus / conditions\nPower/software restart, disconnect\nor disable radio/SPI/UART paths\nbefore startup, then restore and\nretest" { shape: rectangle }
+env: "Environment / configuration\nAs-built ground station\nhardware/software, selected\nserial/radio settings, clean power\nand declared tool versions" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff all nominal restarts\nreach ready with correct\nconfiguration, injected missing\ninterfaces produce explicit\nnot-ready/error logs, and no\nfalse-ready state occurs; recovery\nafter restoration is bounded and\nlogged" { shape: page }
+stats: "Statistics\n59/59 nominal in-limit restarts\nfor 95/95 timing/readiness claim;\ninjected fault cases are 100%\npass/fail" { shape: page }
+faults: "Fault hardening\nmissing radio, wrong band/SF/BW,\nUART absent, SPI fail, stale ready\nflag, crash/deadlock" { shape: page }
+evidence: "Evidence archive\nstartup logs, fault-injection\nphotos/configs, readiness timing\ntable, versions, report.md" { shape: rectangle }
+report: "Report\nresults/DPS-V10-T-006/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

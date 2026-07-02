@@ -16,7 +16,7 @@ This activity verifies that the v0.1 breadboard is complete and consistent enoug
 - target component exchange: `[CE] I2C`;
 - all v0.1 allocated functions and the model constraints visible in the baseline functional allocation and chain views.
 
-Performance, timing, and accuracy constraints are reviewed here for coverage and non-contradiction only; full statistical verification remains future constraint-specific testing.
+Performance, timing, and accuracy constraints are reviewed here for coverage and non-contradiction only against the fixed source baseline (`±1 hPa`, `±0.5 °C` over `10–40 °C`, altitude `≤10 m` using `13 Pa/m = 130 Pa`, temperature response `≤60 s`, I2C timeout `≤5 ms`, process/calculate `<5 ms`, and no unbounded blocking). Full statistical, temperature-response, and I2C fault-timeout closure remains assigned to the explicit test definitions or derivation paths (`AMS-V01-FC-001`, `AMS-V10-TEMP-RESPONSE-60S`, and `AMS-VV-CON-003` as applicable).
 
 ## Baseline views copied
 
@@ -43,7 +43,8 @@ Pass only if all modeled constraints in the D2 views are satisfied, including:
 5. `[CE] I2C` implementation is consistent with modeled endpoints, protocol, direction/intent, XIAO requester/master role, BME280 addressed-responder role, and no UART/SPI/GPIO/proxy substitute.
 6. All v0.1 functions remain allocated to `[LC] AMS Sensing` or `[LC] AMS Processing` as modeled; no foreign sensing, processing, collection, or serial function is allocated to the wrong LC.
 7. Breadboard wiring, evidence, and analysis are sufficiently unambiguous to translate I2C, 3V3, GND, and USB links into v0.2 PCB traces/connectors.
-8. Inspection environment is ESD-controlled; breadboard is strain-free; bench power is current-limited; continuity checks are power-off unless scan/log capture is active.
+8. Constraint-status evidence records the fixed v0.1 source limits and does not claim full accuracy, altitude, temperature-response, or fault-timeout closure without the explicit downstream derivation path.
+9. Inspection environment is ESD-controlled; breadboard is strain-free; bench power is current-limited; continuity checks are power-off unless scan/log capture is active.
 
 ## Statistical and fault-hardening viewpoints
 

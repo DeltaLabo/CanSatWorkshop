@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-V02-ANA-LC-FUNC-ALLOC — v0.2 allocation review" { shape: text }
+item: "Item\nv0.2 OBCC/parachute\ntrigger/descent-speed/power\nallocations" { shape: rectangle }
+means: "Means\n100% allocation analysis" { shape: rectangle }
+stimulus: "Inputs / stimulus\nReview source v0.2 allocation view\nand evidence" { shape: rectangle }
+oracle: "Oracle\nFunctions allocated to modeled\nLCs/EAs with no foreign\nIMU/altitude fallback; power\nfunctions owned by PDS context" { shape: page }
+stats: "Statistics\n100% allocation census" { shape: page }
+faults: "Fault hardening\nforeign function, missing owner" { shape: page }
+evidence: "Evidence\nallocation matrix" { shape: rectangle }
+report: "Report\nresults/PDM-V02-ANA-LC-FUNC-ALLOC/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

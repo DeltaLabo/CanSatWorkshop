@@ -1,0 +1,24 @@
+direction: right
+
+title: "DPS-V10-C-005 — CSV/session archive integrity" {
+  shape: text
+}
+
+item: "Item under verification\nDPS CSV file/session naming,\nno-overwrite policy, monotonic\nrows, checksum/source-log match\nincluding deployment_status\ncolumns" { shape: rectangle }
+means: "Verification means\nTesting with repeated\nstarts/restarts/same-second\nsessions, canonical payload\nreplay, file-system\nchecksum/content comparison" { shape: rectangle }
+stimulus: "Stimulus / conditions\nRun at least 10 sessions including\nrapid restart and same-second\ncollision cases; replay all\ndeployment_status codes 0..9 plus\nmissing/unrecognized invalid cases" { shape: rectangle }
+env: "Environment / configuration\nDeclared CSV directory,\nclock/timezone, file naming\npattern, source accepted-payload\nlog retained" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff every session creates\nunique non-overwriting filename,\nrows are monotonic by source\nsequence/timestamp, row count and\nchecksum/content match accepted\nsource log, exact CSV columns\ndeployment_status_code,\ndeployment_status, and\ndeployment_status_category are\npreserved, only OPEN_CONFIRMED is\ndeployed, and partial/corrupt\nwrites are detected" { shape: page }
+stats: "Statistics\n10/10 sessions no overwrite; 100%\nrow/content match for replayed\naccepted frames" { shape: page }
+faults: "Fault hardening\nsame-second collision, restart\nduring write, invalid timestamp,\ndisk permission/full, missing\ndeployment_status columns,\nmissing/unrecognized deployment\nstatus" { shape: page }
+evidence: "Evidence archive\ndirectory listing, file\nhashes/checksums, source/replayed\nlogs, CSVs, report.md" { shape: rectangle }
+report: "Report\nresults/DPS-V10-C-005/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

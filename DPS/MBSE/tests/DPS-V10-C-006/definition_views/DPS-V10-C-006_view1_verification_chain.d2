@@ -1,0 +1,24 @@
+direction: right
+
+title: "DPS-V10-C-006 — latency alert threshold" {
+  shape: text
+}
+
+item: "Item under verification\nDPS latency computation and top\nalert behavior around the >1.0 s\nthreshold" { shape: rectangle }
+means: "Verification means\nTesting with monotonic timestamp\nsource/replay harness and UI/CSV\nevidence for boundary values" { shape: rectangle }
+stimulus: "Stimulus / conditions\nInject frames with latency 0.0,\n0.5, 1.0, 1.001, >1.0 s,\nnegative/non-monotonic/invalid\ntimestamps" { shape: rectangle }
+env: "Environment / configuration\nClock source,\nsynchronization/monotonic method,\nbrowser/Tkinter evidence path\ndeclared" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff no top alert for latency\n<=1.0 s, top alert for >1.0 s,\ninvalid/non-monotonic timestamps\nare rejected or flagged, and p95\nlatency reporting uses the same\nmonotonic basis" { shape: page }
+stats: "Statistics\nAt least 30 boundary/fault\nsamples, all classified correctly" { shape: page }
+faults: "Fault hardening\nclock jump, stale timestamp,\nstring parse error, duplicate\nsequence, UI alert not topmost" { shape: page }
+evidence: "Evidence archive\ntimestamp replay file, UI\nscreenshots/video, classification\nCSV, report.md" { shape: rectangle }
+report: "Report\nresults/DPS-V10-C-006/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

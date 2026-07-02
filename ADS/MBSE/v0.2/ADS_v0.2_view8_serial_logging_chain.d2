@@ -53,9 +53,16 @@ chain: "ADS v0.2 — Serial logging chain" {
   collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
   collect_measurements: "[F] Collect\nmeasurements" { class: func }
   log_serial0: "[F] Log via Serial0" { class: func }
+
+  note_v02_scope: "[C] v0.2 development output:\nSerial0 PC logging only.\nDo not treat this as OBCC\nPointers/Returns or LoRa\ndelivery evidence" {
+    class: note
+    shape: page
+  }
 }
 
 chain.get_ubx_init_state -> chain.collect_peripheral_init_states: "[FE] Result\n[Init state]" { class: fe }
 chain.get_icm20948_init_state -> chain.collect_peripheral_init_states: "[FE] Result\n[Init state]" { class: fe }
 chain.collect_peripheral_init_states -> chain.log_serial0: "[FE] Init states" { class: fe }
-chain.collect_measurements -> chain.log_serial0: "[FE] Measurements\n[LoRa Frame]" { class: fe }
+chain.collect_measurements -> chain.log_serial0: "[FE] Measurements\n[Serial0 record]" { class: fe }
+
+chain.note_v02_scope -> chain.log_serial0 { class: cstr }

@@ -76,7 +76,7 @@ chain: "OBCC-V03-GATE-001 — v0.3 LoRa telemetry frame/cadence/range advancemen
   compute_pdr_bound: "[F] Statistics Tool: compute\nexact one-sided 95%\nbinomial PDR lower bound" { class: func }
   classify_gate: "[F] Test Director: classify\npass/fail, staged-open\nrange condition, deviations,\nand report references" { class: func }
 
-  note_pf_schema: "[C] PF-001 schema/content: valid frames\ncarry OBCC-LORA-PAYLOAD-v1.0\n(pitch, roll, yaw; 3 angular speeds;\n3 accelerations; altitude; temperature;\nlatitude; longitude; battery voltage;\nbattery current; deployment_status =\n35 bytes before envelope/metadata).\nOnly OPEN_CONFIRMED is deployed; RH is absent\nand never silently misdecoded." {
+  note_pf_schema: "[C] PF-001 schema/content: valid frames\ncarry OBCC-LORA-PAYLOAD-v1.0\n(pitch, roll, yaw; 3 angular speeds;\n3 accelerations; altitude; temperature;\nlatitude; longitude; battery voltage;\nbattery current; deployment_status at variable-table\noffset 34 / current payload byte 48 =\n35 bytes before envelope/metadata).\nOnly OPEN_CONFIRMED is deployed; RH is absent\nand never silently misdecoded." {
     class: note
     shape: page
   }
@@ -86,7 +86,7 @@ chain: "OBCC-V03-GATE-001 — v0.3 LoRa telemetry frame/cadence/range advancemen
     shape: page
   }
 
-  note_pf_decode: "[C] PF-003 decode/store: sequence, timestamps,\nand deployment_status code/name/category are\npreserved through raw log, decoder, dashboard,\nand CSV. Corrupt, truncated, wrong-length,\nbad-CRC, extra-RH, or invalid-status frames\nare rejected/logged invalid, not stored or\nshown as deployed." {
+  note_pf_decode: "[C] PF-003 decode/store: sequence, timestamps,\nand deployment_status code/symbol/category are\npreserved through raw log, decoder, dashboard,\nand CSV. Corrupt, truncated, wrong-length,\nbad-CRC, extra-RH, or invalid-status frames\nare rejected/logged invalid, not stored or\nshown as deployed." {
     class: note
     shape: page
   }

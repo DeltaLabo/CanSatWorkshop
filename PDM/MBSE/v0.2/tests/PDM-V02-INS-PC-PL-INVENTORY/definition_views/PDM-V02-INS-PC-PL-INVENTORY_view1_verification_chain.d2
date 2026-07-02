@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-V02-INS-PC-PL-INVENTORY — v0.2 PC/PL inventory inspection" { shape: text }
+item: "Item\nPDM v0.2 physical components/links\nfor BLE/manual deployment" { shape: rectangle }
+means: "Means\n100%\ninspection/continuity/retention\nchecklist" { shape: rectangle }
+stimulus: "Inputs / stimulus\nInspect source v0.2 article and\nBLE/servo/power paths" { shape: rectangle }
+oracle: "Oracle\nAll modeled PCs/PLs\npresent/correct,\nBLE/range/power/servo paths\ntraceable; no unsafe open/short" { shape: page }
+stats: "Statistics\n100% census" { shape: page }
+faults: "Fault hardening\nmissing component, wrong wiring,\nloose servo cable" { shape: page }
+evidence: "Evidence\nchecklist/photos/continuity" { shape: rectangle }
+report: "Report\nresults/PDM-V02-INS-PC-PL-INVENTORY/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

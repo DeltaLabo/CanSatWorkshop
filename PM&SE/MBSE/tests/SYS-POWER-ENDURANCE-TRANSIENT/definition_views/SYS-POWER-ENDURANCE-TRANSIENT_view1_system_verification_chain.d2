@@ -1,0 +1,20 @@
+direction: right
+
+title: "SYS-POWER-ENDURANCE-TRANSIENT — full-system power under mission load" { shape: text }
+assembled: "Assembled CanSat + DPS\nAssembled CanSat PDS/ESS rails,\nOBCC/ADS/AMS/PDM/S&A loads, DPS\nwhere applicable" { shape: rectangle }
+means: "Verification means\n6 h On-mode load profile plus\nstartup, RF transmit, sensor\ncollection, command, servo\ntransient and fault branches" { shape: rectangle }
+stimulus: "Scenario / stimulus\nRun representative mission load\nprofile, load steps, servo\nactuation safe fixture, RF\ntransmit cadence, sensor updates;\nmonitor\nrails/current/thermal/reset" { shape: rectangle }
+env: "Environment / configuration\nCurrent-limited safe setup,\nbattery/emulator policy, thermal\nlimits, ambient recorded, Li-ion\nsafety controls if cell used" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff required rails remain in\ntolerance, no\nbrownout/reset/watchdog/reconnect\ncaused by transients,\nthermal/current limits remain\nsafe, 6 h endurance completes\nunder predeclared load profile,\nand anomalies are dispositioned." { shape: page }
+stats: "Statistics\n6 h single-run functional\nevidence; repeated survival claims\nper IVV; continuous samples >=1 Hz\nor declared cadence" { shape: page }
+faults: "Fault hardening\nservo stall, RF transmit current,\nload step, low battery, regulator\nthermal shutdown, connector\nheating" { shape: page }
+evidence: "Evidence\nrail/current/thermal logs, reset\nmarkers, load profile, photos,\nsafety records, report" { shape: rectangle }
+report: "Report\nPM&SE/MBSE/tests/results/SYS-POWER-ENDURANCE-TRANSIENT/report.md" { shape: rectangle }
+assembled -> means: "configure"
+means -> stimulus: "execute"
+stimulus -> env: "under controls"
+env -> oracle: "evaluate"
+oracle -> stats: "statistics / gates"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "close"

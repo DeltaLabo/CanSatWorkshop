@@ -96,7 +96,7 @@ chain: "OBCC-V09-GATE-001 — End-to-end mission-window rehearsal advancement ga
     shape: page
   }
 
-  note_pf004: "[C] PF-004 telemetry downlink:\nStand-by and On telemetry continue at the modeled 2 s cadence;\nframes use OBCC-LORA-PAYLOAD-v1.0 with 35-byte variable table,\ndeployment_status, and no relative humidity; received frames are\ndecoded, displayed, and stored with raw status code/name/category.\nStrict ≥500 m / PDR ≥0.90 claims need N=300, k≥279, exact one-sided\n95% bounds and RF/site evidence, not just this rehearsal." {
+  note_pf004: "[C] PF-004 telemetry downlink:\nStand-by and On telemetry continue at the modeled 2 s cadence;\nframes use OBCC-LORA-PAYLOAD-v1.0 with 35-byte variable table,\ndeployment_status at variable-table offset 34 / payload byte 48,\nand no relative humidity; received frames are decoded, displayed,\nand stored with raw status code/symbol/category.\nStrict ≥500 m / PDR ≥0.90 claims need N=300, k≥279, exact one-sided\n95% bounds and RF/site evidence, not just this rehearsal." {
     class: note
     shape: page
   }

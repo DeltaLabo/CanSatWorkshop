@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-V02-ANA-CE-INTENT — v0.2 BLE/PWM CE intent analysis" { shape: text }
+item: "Item\nBLE command/control and PWM\ncommand intent in v0.2 manual\ndeployment" { shape: rectangle }
+means: "Means\nInterface analysis plus\nlogs/waveforms" { shape: rectangle }
+stimulus: "Inputs / stimulus\nReview BLE command, PWM, power\nvalidity, terminal-speed linkage" { shape: rectangle }
+oracle: "Oracle\nBLE/PWM intent matches model;\ncommand-to-open bounded; no\nstale/manual ambiguity; power\nvalidity evidence linked" { shape: page }
+stats: "Statistics\n100% interface review" { shape: page }
+faults: "Fault hardening\nBLE loss, late command, PWM jitter" { shape: page }
+evidence: "Evidence\nCE matrix, logs/waveforms" { shape: rectangle }
+report: "Report\nresults/PDM-V02-ANA-CE-INTENT/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

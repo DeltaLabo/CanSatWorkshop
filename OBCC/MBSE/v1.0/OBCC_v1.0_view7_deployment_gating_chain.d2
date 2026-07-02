@@ -86,12 +86,12 @@ chain: "OBCC v1.0 — Deployment gating chain" {
     shape: page
   }
 
-  note_status: "[C] deployment_status comes from\nPDM feedback or independent\ncurrent/position/safe-fixture\nobserver, or OBCC policy." {
+  note_status: "[C] deployment_status comes from\nPDM feedback, independent\ncurrent/position/safe-fixture\nobserver, or OBCC policy;\nconsumers preserve code, symbol,\nand category." {
     class: note
     shape: page
   }
 
-  note_no_false_success: "[C] No false success:\nCOMMAND_SENT, OPEN_IN_PROGRESS,\nTIMEOUT, JAM_DETECTED, PDM_FAULT,\nUNKNOWN are not deployed.\nOnly OPEN_CONFIRMED succeeds." {
+  note_no_false_success: "[C] No false success:\nNOT_COMMANDED, INHIBITED_STANDBY,\nCOMMAND_SENT, OPEN_IN_PROGRESS,\nNO_OPEN_CONFIRMED, TIMEOUT,\nJAM_DETECTED, PDM_FAULT, UNKNOWN,\nmissing, or unrecognized are not deployed.\nOnly OPEN_CONFIRMED succeeds." {
     class: note
     shape: page
   }
@@ -123,8 +123,8 @@ chain.send_open_signal_to_servo -> chain.reach_open_position: "[FE] Open signal\
 chain.send_open_signal_to_servo -> chain.observe_pdm_actuator_evidence: "[FE] Command sent\n[COMMAND_SENT]" { class: fe }
 chain.reach_open_position -> chain.observe_pdm_actuator_evidence: "[FE] Open evidence\n[position/current]" { class: fe }
 chain.observe_pdm_actuator_evidence -> chain.map_deployment_status: "[FE] Confirmation or\nfault evidence []" { class: fe }
-chain.map_deployment_status -> chain.publish_deployment_status: "[FE] deployment_status\n[uint8 enum]" { class: fe }
-chain.map_deployment_status -> chain.retain_position: "[FE] Confirmed result\n[OPEN_CONFIRMED only success]" { class: fe }
+chain.map_deployment_status -> chain.publish_deployment_status: "[FE] deployment_status\n[uint8 code + category]" { class: fe }
+chain.map_deployment_status -> chain.retain_position: "[FE] Confirmed result\n[OPEN_CONFIRMED only success;\nothers non-success]" { class: fe }
 chain.reach_open_position -> chain.retain_position: "[FE] Servo reached\nopen position []" { class: fe }
 
 chain.note_trigger -> chain.evaluate_deployment_condition { class: cstr }

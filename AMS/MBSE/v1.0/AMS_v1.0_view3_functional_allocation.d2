@@ -73,15 +73,19 @@ system: "[System] Physical System" {
             grid-columns: 3
 
             measure_pressure: "[F] Measure\npressure" { class: func }
-            measure_temperature: "[F] Measure\ntemp." { class: func }
+            measure_temperature: "[F] Measure\ntemperature" { class: func }
             respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
           }
 
-          note_accuracy_pressure: "[C] Accuracy\n< 1 hPa" {
+          note_accuracy_pressure: "[C] Pressure accuracy\n±1 hPa" {
             class: note
             shape: page
           }
-          note_accuracy_temperature: "[C] Accuracy < 0.5 Celsius,\n10-40 °C range" {
+          note_accuracy_temperature: "[C] Temp. accuracy\n±0.5 °C over\n10-40 °C" {
+            class: note
+            shape: page
+          }
+          note_temp_response: "[C] Temp. response\n≤60 s" {
             class: note
             shape: page
           }
@@ -114,8 +118,10 @@ system: "[System] Physical System" {
             read_temperature: "[F] Read\ntemperature" { class: func }
             calculate_altitude: "[F] Calculate\naltitude" { class: func }
             process_temperature: "[F] Process\ntemperature" { class: func }
+            classify_freshness_status: "[F] Classify\nstatus + age" { class: func }
+            publish_obcc_getter_response: "[F] Publish OBCC\ngetter response" { class: func }
 
-            note_resolution: "[C] Resolution\n< 10m" {
+            note_resolution: "[C] Altitude resolution\n≤10 m\n13 Pa/m = 130 Pa" {
               class: note
               shape: page
             }
@@ -126,8 +132,11 @@ system: "[System] Physical System" {
             direction: down
             grid-columns: 1
 
+            request_ams_getter: "[F] Request AMS\ngetter ≥5 Hz" { class: func }
             collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
             collect_measurements: "[F] Collect\nmeasurements" { class: func }
+            consume_ams_response: "[F] Consume AMS\nresponse envelope" { class: func }
+            package_ams_telemetry: "[F] Package AMS\ntelemetry at 2 s" { class: func }
           }
         }
 
@@ -149,6 +158,26 @@ system: "[System] Physical System" {
           class: note
           shape: page
         }
+        note_freshness_contract: "[C] Getter ≥5 Hz\n(200 ms); telemetry 2 s\nseparate; fresh iff\nVALID and age_ms ≤400 ms" {
+          class: note
+          shape: page
+        }
+        note_status_no_stale_valid: "[C] Status enum exactly:\nVALID, STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT,\nINIT_FAIL; never old VALID\non timeout/fault/init/no-data/stale" {
+          class: note
+          shape: page
+        }
+        note_statistics: "[C] IVV statistics:\naccuracy n≥30 with bias/std/CI/U;\ntiming/freshness 59/59;\nbinary faults 29/29" {
+          class: note
+          shape: page
+        }
+        note_use_cases: "[UC] AMS-UC-MeasureAtmosphere\n[UC] AMS-UC-InitializePeripheral" {
+          class: note
+          shape: page
+        }
+        note_feared_events: "AMS-FE-BadExposure\nAMS-FE-SensorBusFault\nAMS-FE-StaleMeasurement\nAMS-FE-StartupFault\nAMS-FE-SchedulerBlock" {
+          class: note
+          shape: page
+        }
       }
     }
 
@@ -166,9 +195,15 @@ system: "[System] Physical System" {
 
 system.cansat.ams_module.ams_pcb.bme280.note_accuracy_pressure -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_pressure { class: cstr }
 system.cansat.ams_module.ams_pcb.bme280.note_accuracy_temperature -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
+system.cansat.ams_module.ams_pcb.bme280.note_temp_response -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
 system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.note_resolution -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.calculate_altitude { class: cstr }
 
 system.cansat.obcc_module.obcc_pcb.note_variable_getter -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
 system.cansat.obcc_module.obcc_pcb.note_i2c_timeout -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
 system.cansat.obcc_module.obcc_pcb.note_process_time -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
 system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_freshness_contract -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.classify_freshness_status { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_freshness_contract -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.request_ams_getter { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_status_no_stale_valid -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.classify_freshness_status { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_status_no_stale_valid -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.publish_obcc_getter_response { class: cstr }
+system.cansat.obcc_module.obcc_pcb.note_statistics -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }

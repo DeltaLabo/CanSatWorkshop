@@ -104,12 +104,12 @@ system: "[System] DPS v1.0\nDPS-V10-A-001 PV2 component-exchange analysis\nIADT:
     shape: page
   }
 
-  note_ce_presence: "[C] CE analysis pass constraint: all six modeled CEs exist in implementation,\nmatch direction and model intent, and have no hidden substitute protocol" {
+  note_ce_presence: "[C] CE analysis pass constraint: all modeled CEs exist in implementation,\nincluding CE-03a telemetry and CE-03b command UART;\nmatch direction and model intent, and have no hidden substitute protocol" {
     class: note
     shape: page
   }
 
-  note_protocols: "[C] Protocol/data viewpoints: CE-01/02 SPI use RFM96W/SX1276-compatible SPI;\nCE-03 UART uses agreed serial framing; CE-04/05 Payload preserve typed payload,\ntimestamp and ordering; CE-06 Command carries only valid state commands" {
+  note_protocols: "[C] Protocol/data viewpoints: CE-01/02 SPI use RFM96W/SX1276-compatible SPI;\nCE-03a/03b UART use agreed serial framing for telemetry and command;\nCE-04/05 Payload preserve typed payload, timestamp and ordering;\nCE-06 Command carries only valid state commands" {
     class: note
     shape: page
   }
@@ -127,7 +127,8 @@ system: "[System] DPS v1.0\nDPS-V10-A-001 PV2 component-exchange analysis\nIADT:
 
 system.cansat.cansat_rfm.cansat_lora -> system.cansat.cansat_xiao.obcc: "[CE-01] SPI" { class: ce }
 system.ground_station_pcb.ground_xiao.ground_forwarder -> system.ground_station_pcb.ground_rfm.ground_lora: "[CE-02] SPI" { class: ce }
-system.ground_station_pcb.ground_xiao.ground_forwarder -> system.pc.decoder: "[CE-03] UART" { class: ce }
+system.ground_station_pcb.ground_xiao.ground_forwarder -> system.pc.decoder: "[CE-03a] UART telemetry" { class: ce }
+system.pc.decoder -> system.ground_station_pcb.ground_xiao.ground_forwarder: "[CE-03b] UART command" { class: ce }
 system.pc.decoder -> system.pc.csv_writer: "[CE-04]" { class: ce }
 system.pc.decoder -> system.pc.dashboard: "[CE-05]" { class: ce }
 system.pc.dashboard -> system.pc.decoder: "[CE-06]" { class: ce }

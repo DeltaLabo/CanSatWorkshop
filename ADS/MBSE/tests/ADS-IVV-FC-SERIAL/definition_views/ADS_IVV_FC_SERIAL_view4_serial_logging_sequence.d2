@@ -46,7 +46,7 @@ chain: "ADS-IVV-FC-SERIAL\nSerial0 logging verification sequence\nRefs: IVV; NAS
   decide_result: "[F] Decide pass/fail,\nBlocked, or N/A" { class: func }
   record_report: "[F] Record evidence, anomalies,\nwaivers, limitations, retest" { class: func }
 
-  note_schema: "[C] Schema prerequisite\nPass/fail is blocked or limited until Serial0 schema, parser version,\nexpected fields, marker vocabulary, and serial settings are declared." { class: note; shape: page }
+  note_schema: "[C] Controlled schema/parser\nPass/fail uses ../schemas/ads_serial0_v0_1_v0_2.schema.json,\n../tools/parse_ads_serial0.py, expected fields, marker vocabulary,\ncanonical JSON Lines, and default 115200 8N1 serial settings." { class: note; shape: page }
   note_parse: "[C] Parseability constraint\nEach applicable v0.1/v0.2 execution shall produce parseable\ninit and measurement records at the PC, or explicit parser errors\nfor malformed/missing records." { class: note; shape: page }
   note_fields: "[C] Field and validity constraint\nv0.1: UBX init state and GPS measurement fields.\nv0.2: UBX and ICM20948 init states plus GPS/IMU/attitude fields.\nUnavailable/stale values require explicit markers." { class: note; shape: page }
   note_faults: "[C] Fault-hardening constraint\nUnavailable, stale, malformed, and missing data shall not be logged\nas false-valid measurements and shall not cause unrecovered loop blockage." { class: note; shape: page }

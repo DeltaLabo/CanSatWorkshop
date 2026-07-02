@@ -74,7 +74,7 @@ chain.record_ble_range_environment -> chain.collect_logs_traces_video: "[FE] Exe
 chain.collect_logs_traces_video -> chain.analyze_pass_fail_constraints: "[FE] Evidence package []" { class: fe }
 chain.analyze_pass_fail_constraints -> chain.classify_faults_deviations: "[FE] Pass/fail rationale []" { class: fe }
 chain.classify_faults_deviations -> chain.bind_terminal_speed_evidence: "[FE] Limitations []" { class: fe }
-chain.bind_terminal_speed_evidence -> chain.validate_terminal_speed_criterion: "[FE] Candidate terminal-speed evidence []" { class: fe }
+chain.bind_terminal_speed_evidence -> chain.validate_terminal_speed_criterion: "[FE] Terminal-speed evidence []" { class: fe }
 chain.validate_terminal_speed_criterion -> chain.issue_report_reference: "[FE] Completed linkage []" { class: fe }
 chain.issue_report_reference -> chain.update_plan_status: "[FE] Report reference []" { class: fe }
 

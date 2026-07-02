@@ -38,7 +38,7 @@ Rendered PNGs with matching names are generated beside each D2 file.
 
 Pass only if all modeled constraints in the D2 views are satisfied, including:
 
-1. Current-limited 3V3/GND power-up has no short, overcurrent/current-limit trip, reversed power, abnormal heating, smoke, smell, visible damage, or operator safety concern.
+1. Current-limited 3V3/GND power-up uses a current-limit value predeclared from the fixture SOP, schematic, or build record before energizing, and has no short, overcurrent/current-limit trip, reversed power, abnormal heating, smoke, smell, visible damage, or operator safety concern.
 2. DMM confirms correct polarity and `3.3 V ±5%` at the Backplane Connector and BME280 pads before I2C scanning is credited.
 3. The fixture enters through the modeled Backplane Connector and PCB `[PL] I2C + 3V3 traces`; any direct sensor clip, fixture-only jumper, or unmodeled bypass fails the attempt.
 4. I2C scan finds the BME280 at the expected build-record address (`0x76` or `0x77`), and chip ID/status/register evidence is logged. Chip ID pass value is `0x60`.
@@ -55,5 +55,5 @@ Pass only if all modeled constraints in the D2 views are satisfied, including:
 ## Assumptions recorded
 
 - The exact BME280 I2C address is not specified in the v0.2 physical view; the activity accepts the expected address from build/schematic evidence (`0x76` or `0x77`) and requires it to be recorded.
-- Current limit threshold is fixture-specific and must be recorded in the report; pass/fail is based on no current-limit trip/overcurrent and correct 3V3 measurements.
+- Current limit threshold is fixture-specific but must be predeclared from the fixture SOP, schematic, or build record and recorded before energizing; pass/fail is based on no current-limit trip/overcurrent and correct 3V3 measurements, not on adjusting the limit after observing behavior.
 - Manufacturing/visual acceptance of footprints/traces is assumed to be performed by `AMS-V02-PCB-001`; this activity does not duplicate that inspection.

@@ -1,0 +1,24 @@
+direction: right
+
+title: "PDS-VV-CON-010 — 3.3 V and 5 V regulator efficiency at 1 A" {
+  shape: text
+}
+
+item: "Item under verification\nPDS & ESS v1.0 3.3 V and 5 V\nregulation paths and associated\ninput/output measurement points" { shape: rectangle }
+means: "Verification means\nTesting with current-limited bench\nsupply or battery emulator,\ncalibrated power analyzer/DMMs,\nelectronic loads, oscilloscope for\nripple, thermocouples/thermal\ncamera, and efficiency analysis\nsheet" { shape: rectangle }
+stimulus: "Stimulus / conditions\nFor each rail: no-load sanity,\nnominal load from released load\nmatrix, and 1.000 A +/-0.5% load\nafter settling; record input\nvoltage/current and rail\nvoltage/current at converter\nterminals and required endpoint;\nhold each load at least 60 s after\n10 s settling" { shape: rectangle }
+env: "Environment / configuration\nAmbient 20-30 C or recorded\nequivalent, current-limited\nsafe-energy envelope, stable\nharness, charger/cell safety\ncontrols if battery used, thermal\nlimits predeclared" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff at the 1 A case each rail\nremains within its voltage\ntolerance at required endpoint and\nguard-banded efficiency\neta=Pout/Pin >=95.0%, ripple\nremains within campaign limit or\n<=50 mVpp if no stricter source\nexists, no\nbrownout/current-limit/thermal\nshutdown/smoke/swelling/unsafe\nheating occurs. If as-built\nhardware cannot meet 95%, result\nis FAIL or controlled requirement\nwaiver, not open." { shape: page }
+stats: "Statistics\n100% of required rail/load cases\nexecuted; continuous samples at\n>=1 Hz during hold; report\nmean/min/max and expanded\nuncertainty guard band for\nefficiency and voltage" { shape: page }
+faults: "Fault hardening\nload-step sag, thermal rise,\ncurrent-limit collapse, wrong\nmeasurement point, uncalibrated\ncurrent, endpoint voltage drop,\nripple/outlier hidden by averaging" { shape: page }
+evidence: "Evidence archive\nraw power analyzer/DMM/load logs,\nscope ripple captures, thermal\nrecords, calibration/status\nrecords, topology photo, load\nmatrix/waiver, efficiency\nspreadsheet/script, report.md" { shape: rectangle }
+report: "Report\nresults/PDS-VV-CON-010/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

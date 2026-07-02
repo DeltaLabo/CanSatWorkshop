@@ -1,0 +1,18 @@
+direction: right
+
+title: "PDM-VV-CE-001 — I2C CE analysis" { shape: text }
+item: "Item\nADS kinematic sensing to ADS\nprocessing I2C exchange used by\ndeployment trigger data" { shape: rectangle }
+means: "Means\nInterface analysis plus\nsource/build/log evidence for bus\ntopology and timeout behavior" { shape: rectangle }
+stimulus: "Inputs / stimulus\nReview\naddress/pullups/voltage/transactions\nand inject NACK/disconnect/stuck\nbus evidence if tested" { shape: rectangle }
+oracle: "Oracle\nI2C topology/direction/addressing\nmatch model and every read returns\ndata or timeout/error within\ndeclared <=5 ms evidence;\nnon-valid data not used for normal\ntrigger" { shape: page }
+stats: "Statistics\n100% interface review; n=59 timing\nsamples for strict deadline claim" { shape: page }
+faults: "Fault hardening\nNACK, stuck SDA/SCL, wrong\naddress, stale IMU data marked\nvalid" { shape: page }
+evidence: "Evidence\ninterface matrix, logic/source\nevidence, timing/fault logs" { shape: rectangle }
+report: "Report\nresults/PDM-VV-CE-001/report.md" { shape: rectangle }
+item -> means: "select/configure"
+means -> stimulus: "inspect/analyze/test"
+stimulus -> oracle: "observe/evaluate"
+oracle -> stats: "guard band / confidence"
+stats -> faults: "fault coverage"
+faults -> evidence: "archive"
+evidence -> report: "bind to model"

@@ -41,7 +41,7 @@ All D2/PNG views for the selected all-version scope were copied under `source_vi
 - Legacy output: legacy firmware logs must conform directly or be transformed by a documented adapter; actual logs/reports shall identify firmware commit/build and adapter ID/revision (`none` for native canonical output).
 - Campaign count: a 10 min mission-window campaign at 5 Hz expects `3000` measurement records. Shorter serial functional checks compute expected records as `configured_duration_s * nominal_rate_hz` and may enforce that count with the parser only when duration/rate are predeclared.
 
-Execution remains pending; this baseline only removes the undefined schema/parser blocker for future Serial0 verdicts.
+Execution remains pending; this baseline only closes the schema/parser blocker for future Serial0 verdicts.
 
 ## Model elements covered
 
@@ -111,4 +111,4 @@ Each report shall identify referenced model views/elements, selected SSIV/versio
 
 ## Status
 
-Modeled definition ready for review. Execution remains pending. The local Serial0 schema/parser baseline is declared, so future v0.1/v0.2 Serial0 verdicts are no longer blocked by an undefined schema/parser.
+Modeled definition ready for review. Execution remains pending. The local Serial0 schema/parser baseline is declared, so future v0.1/v0.2 Serial0 verdicts are no longer blocked by schema/parser selection.

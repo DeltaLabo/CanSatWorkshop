@@ -1,0 +1,24 @@
+direction: right
+
+title: "DPS-V10-C-001 — 500 m RF range/PDR" {
+  shape: text
+}
+
+item: "Item under verification\nDPS/OBCC RF downlink path and\nground-station reception at 500 m\nhorizontal LOS or approved\nRF-equivalent" { shape: rectangle }
+means: "Verification means\nField RF test or validated\nRF-equivalent with RSSI/SNR\nlogging and exact-binomial PDR\nanalysis" { shape: rectangle }
+stimulus: "Stimulus / conditions\nSchedule N=300 unique 2 s frames\nover 10 min with legal 915 MHz\nsettings and matching antennas" { shape: rectangle }
+env: "Environment / configuration\n500 m horizontal LOS or\nRF-equivalent, RFM96W, 22 AWG 81.4\nmm monopoles,\nlegal/EIRP/site/weather/interference\nrecorded" { shape: rectangle }
+oracle: "Pass/fail oracle\nPASS iff k>=279 of N=300 scheduled\nunique frames are valid with\none-sided 95% exact-binomial lower\nbound >=0.90; RSSI/SNR and\ninvalid/lost reason logs retained;\npayload schema including\ndeployment_status preserved" { shape: page }
+stats: "Statistics\nExact binomial N=300/k>=279 strict\nPDR; independence rationale\nrequired" { shape: page }
+faults: "Fault hardening\nantenna orientation, interference,\nduplicate/lost frames, invalid\nCRC/schema, illegal settings,\nweather/site deviations" { shape: page }
+evidence: "Evidence archive\nraw receive log, scheduled-frame\nlist, RSSI/SNR, site/legal\nevidence, exact-binomial\ncalculation, report.md" { shape: rectangle }
+report: "Report\nresults/DPS-V10-C-001/report.md" { shape: rectangle }
+
+item -> means: "select UUT and test means"
+means -> stimulus: "apply controlled stimulus"
+stimulus -> env: "under declared conditions"
+env -> oracle: "observe outputs/status"
+oracle -> stats: "evaluate guard bands"
+stats -> faults: "include fault cases"
+faults -> evidence: "retain raw + derived evidence"
+evidence -> report: "bind evidence to model"

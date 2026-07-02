@@ -68,8 +68,28 @@ Required v1.0 telemetry fields are:
 13. `Longitude`
 14. `Battery Voltage` (`V`)
 15. `Battery Current` (`mA`)
+16. `Parachute Deployment Status` / `deployment_status` (`uint8` enum, code `0..9`)
 
-### 3.2 Selected `4x4` cell mapping
+### 3.2 Deployment status display-category oracle
+
+`deployment_status` is a mandatory payload field, but it is not one of the numeric/trend cells in the selected `4x4` plot matrix. The dashboard shall display it in a separate persistent parachute-status indicator or top/banner region that remains visible with the `4x4` matrix. A strict pass requires the indicator to show the raw numeric code, enum symbol, and high-level category for the latest accepted payload. The indicator shall never show “deployed” unless the accepted code is `4` / `OPEN_CONFIRMED`.
+
+| Code | Symbol | UI/CSV category | Strict display meaning |
+|---:|---|---|---|
+| `0` | `NOT_COMMANDED` | `not-deployed` | No accepted deployment command/current trigger context. |
+| `1` | `INHIBITED_STANDBY` | `not-deployed` | Request inhibited in Stand-by; not deployed. |
+| `2` | `COMMAND_SENT` | `in-progress` | Open command sent; not deployed/success by itself. |
+| `3` | `OPEN_IN_PROGRESS` | `in-progress` | Actuator/PDM response underway; not deployed/success yet. |
+| `4` | `OPEN_CONFIRMED` | `deployed` | Only deployed/success state; requires accepted payload and upstream PDM/actuator confirmation evidence. |
+| `5` | `NO_OPEN_CONFIRMED` | `not-deployed` | Observer/feedback confirms no open. |
+| `6` | `TIMEOUT` | `fault` | Open confirmation timed out; not deployed. |
+| `7` | `JAM_DETECTED` | `fault` | Jam/blocked travel evidence; not deployed. |
+| `8` | `PDM_FAULT` | `fault` | PDM fault or command path unavailable; not deployed. |
+| `9` | `UNKNOWN` | `unknown` | Cannot prove status; never deployed. |
+
+If an implementation receives a `deployment_status` code outside `0..9`, a missing status byte, an enum-name/code mismatch, or a payload whose declared schema/order/offset cannot prove the status value, the frame is schema-invalid for strict accepted dashboard/CSV credit. It shall be rejected from the accepted payload stream with a logged reject reason, or visibly flagged as `UNKNOWN`/invalid only in a separate diagnostic/rejected-frame view; in either case it shall not update the dashboard as deployed and shall not create a valid CSV row.
+
+### 3.3 Selected `4x4` cell mapping
 
 The required dashboard matrix is four rows by four columns. Cell `(1,1)` is the attitude model. The remaining cells display current value and trend/plot or equivalent recent-history visualization for the controlled v1.0 fields.
 
@@ -92,9 +112,9 @@ The required dashboard matrix is four rows by four columns. Cell `(1,1)` is the 
 | `(4,3)` | `Battery Voltage`, `V` |
 | `(4,4)` | `Battery Current`, `mA` |
 
-A strict pass requires all cells to be present, labeled with field name and unit where a unit is defined, and updated from the same accepted payload stream used for CSV evidence. Pressure and RH are not acceptance cells for v1.0 because they are not in the current OBCC frame table.
+A strict pass requires all cells to be present, labeled with field name and unit where a unit is defined, and updated from the same accepted payload stream used for CSV evidence. Pressure and RH are not acceptance cells for v1.0 because they are not in the current OBCC frame table. The `deployment_status` field is accepted outside the `4x4` matrix only through the persistent status indicator/banner defined in §3.2; absence of that indicator, loss of raw code/symbol/category, or any display that treats `COMMAND_SENT`, `OPEN_IN_PROGRESS`, `UNKNOWN`, or fault states as deployed is a failure.
 
-### 3.3 Attitude rendering oracle
+### 3.4 Attitude rendering oracle
 
 The top-left cell shall render CanSat attitude from `Pitch`, `Roll`, and `Yaw` using a documented convention. For strict credit, the detailed definition shall include a deterministic known-payload sequence that isolates each axis and a reference expected-rendering record.
 
@@ -110,19 +130,19 @@ Minimum attitude sequence:
 
 Failure modes include swapped axes, ignored yaw/pitch/roll, stale attitude after a new accepted payload, attitude sourced from obsolete fields, or an altitude-only display in the top-left cell.
 
-### 3.4 Payload-to-display and hardening cases
+### 3.5 Payload-to-display and hardening cases
 
 Use at least `N=300` known accepted v1.0 payloads at the flight cadence for the normal display sequence when this oracle is executed with `DPS-V10-T-005`. For every accepted payload, the displayed current values shall match the source payload after the declared decode/scaling rules.
 
 Fault and stale-data behavior:
 
-- Missing mandatory field, malformed frame, checksum/integrity failure, non-finite value, or out-of-range value for a field with a controlled range shall be rejected or visibly flagged; it shall not silently update the display as valid current data.
+- Missing mandatory field, malformed frame, checksum/integrity failure, non-finite value, out-of-range numeric value for a field with a controlled range, missing `deployment_status`, or unrecognized `deployment_status` code shall be rejected or visibly flagged; it shall not silently update the display as valid current data.
 - If any mandatory field in a frame is invalid and the detailed definition does not support field-level validity, the whole frame is rejected from accepted dashboard and CSV streams.
-- If field-level validity is supported, invalid cells shall show `INVALID`/equivalent, not a plausible numeric value; previous valid values may remain visible only when marked stale/non-current.
-- If no accepted payload is received for more than two expected flight-cadence intervals (`>4 s` at the v1.0 `2 s` cadence), affected cells shall visibly indicate stale or disconnected status.
-- Browser refresh/reconnect shall not duplicate, reorder, or invent display points.
+- If field-level validity is supported, invalid cells shall show `INVALID`/equivalent, not a plausible numeric value; previous valid values may remain visible only when marked stale/non-current. Invalid or unrecognized deployment status shall show `UNKNOWN`/invalid in the status indicator or rejected-frame diagnostic view and shall never be treated as deployed.
+- If no accepted payload is received for more than two expected flight-cadence intervals (`>4 s` at the v1.0 `2 s` cadence), affected cells and the deployment-status indicator shall visibly indicate stale or disconnected status.
+- Browser refresh/reconnect shall not duplicate, reorder, invent display points, or invent a deployed status.
 
-Evidence shall include the source payload log, dashboard update log, screenshots/video at selected sequence IDs, invalid/stale-case screenshots, and a mapping comparison table or script output showing expected versus displayed values by cell.
+Evidence shall include the source payload log with the predeclared expected `deployment_status` code sequence, dashboard update log, screenshots/video at selected sequence IDs covering deployed/not-deployed/in-progress/fault/unknown states, invalid/stale-case screenshots, PDM/actuator confirmation evidence for any `OPEN_CONFIRMED` step, and a mapping comparison table or script output showing expected versus displayed values by cell and expected versus displayed status code/symbol/category.
 
 ## 4. CSV/session oracle for `DPS-V10-C-005`
 
@@ -159,14 +179,15 @@ For every session:
 - rows are append-only and monotonically ordered by row index and accepted frame sequence/time;
 - each accepted decoded frame appears exactly once in the CSV;
 - CSV row count equals the accepted-frame count from the decoder/source payload log;
-- invalid, rejected, stale, duplicate, malformed, or missing-field frames do not appear as valid CSV rows;
+- invalid, rejected, stale, duplicate, malformed, missing-field, or unrecognized-status frames do not appear as valid CSV rows;
 - the CSV field order and units are controlled and traceable to the v1.0 payload schema used for the run;
+- the CSV preserves deployment status in three controlled columns named `deployment_status_code`, `deployment_status`, and `deployment_status_category` or explicitly approved equivalents; values shall match the accepted source code, enum symbol, and category in §3.2 for every row;
 - raw input logs are retained, including raw serial/RF bytes or the deterministic source payload log used for synthetic injection.
 
 The report shall include either:
 
 1. a checksum/hash over a normalized canonical representation of accepted source payloads and normalized CSV rows, with matching hashes; or
-2. a deterministic comparison table/script output showing every accepted source frame mapped to exactly one CSV row with matching field values, scaling, timestamp/sequence, and session ID.
+2. a deterministic comparison table/script output showing every accepted source frame mapped to exactly one CSV row with matching field values, scaling, timestamp/sequence, session ID, and deployment-status code/symbol/category.
 
 A strict pass requires zero mismatches, zero overwrites, zero duplicate accepted rows, and retained raw input evidence.
 
@@ -222,10 +243,10 @@ Each affected report shall reference this oracle document and record, as applica
 - model baseline and test/activity ID;
 - as-tested DPS software commit/build, dashboard implementation, decoder/CSV implementation, browser product/version, OS/workstation, display settings, serial/RF/input configuration, and payload schema/version;
 - exact dashboard start command, working directory, environment, URL, and browser-launch method;
-- source payload log and raw input log retained unchanged;
-- accepted/rejected frame log with sequence, timestamps, reject reasons, and field values;
-- CSV session files, session IDs, row counts, file hashes, canonical comparison output, and overwrite/collision evidence;
-- dashboard screenshots/video for initial load, `4x4` layout, attitude sequence, normal payload updates, stale/invalid/missing-field cases, refresh/reconnect, and latency alert boundary cases;
+- source payload log and raw input log retained unchanged, including the expected `deployment_status` sequence and payload schema/version, field order, byte offset/encoding, and decoder/parser version used for the run;
+- accepted/rejected frame log with sequence, timestamps, reject reasons, field values, raw deployment-status code, enum symbol, and category;
+- CSV session files, session IDs, row counts, file hashes, canonical comparison output, deployment-status column comparison, and overwrite/collision evidence;
+- dashboard screenshots/video for initial load, `4x4` layout, persistent deployment-status indicator/banner, attitude sequence, normal payload updates, deployed/not-deployed/in-progress/fault/unknown status states, stale/invalid/missing-field cases, refresh/reconnect, and latency alert boundary cases;
 - browser console/network/backend logs;
 - monotonic time source description and timing uncertainty/guard band;
 - pass/fail rationale, deviations, anomalies, waivers, limitations, and any HOLD/limited status.
@@ -234,20 +255,20 @@ Each affected report shall reference this oracle document and record, as applica
 
 | Target | Required use of this oracle baseline |
 |---|---|
-| `DPS-V10-T-005` | Use the v1.0 payload-to-display mapping, top-left pitch/roll/yaw attitude sequence, stale/invalid/missing-field behavior, browser evidence policy, and latency-alert evidence when dashboard visualization is exercised. |
+| `DPS-V10-T-005` | Use the v1.0 payload-to-display mapping, separate persistent `deployment_status` indicator/banner, top-left pitch/roll/yaw attitude sequence, stale/invalid/missing-field/status behavior, browser evidence policy, and latency-alert evidence when dashboard visualization is exercised. |
 | `DPS-V10-C-004` | Use the primary Chrome/Chromium strict-credit browser, declared URL/start-command evidence, refresh/reconnect checks, console/network logs, and HOLD/limited disposition for the current Tkinter-only implementation. |
-| `DPS-V10-C-005` | Use the no-overwrite session naming rule, `10` session/restart campaign including same-second collision hardening, monotonic row/order checks, row-count match, canonical hash/comparison, and raw input log retention. |
+| `DPS-V10-C-005` | Use the no-overwrite session naming rule, `10` session/restart campaign including same-second collision hardening, monotonic row/order checks, row-count match, deployment-status columns, canonical hash/comparison, and raw input log retention. |
 | `DPS-V10-C-006` | Use the monotonic RX-to-dashboard latency definition, strict `<=1.0 s` no-alert / `>1.0 s` top-alert rule, threshold sample set, and invalid timestamp hardening. |
-| `DPS-V10-C-008` | Use the selected `4x4` cell map, required labels/units, top-left CanSat attitude model, no RH/pressure acceptance cell, resize/refresh evidence, and stale/invalid display behavior. |
+| `DPS-V10-C-008` | Use the selected `4x4` cell map, separate persistent deployment-status indicator/banner, required labels/units, top-left CanSat attitude model, no RH/pressure acceptance cell, resize/refresh evidence, and stale/invalid display behavior. |
 
 ## 8. Residual prerequisites and D2/model follow-up
 
 Before strict execution credit:
 
 1. Provide or implement a browser-accessible dashboard entry point; the current Tkinter `DPS/dashboard.py` leaves `DPS-V10-C-004` HOLD/limited.
-2. Freeze the concrete payload schema/envelope, decode/scaling rules, sequence/timestamp fields, CSV column order, and source payload generator/log format used for the campaign.
-3. Create/update detailed modeled definitions for `DPS-V10-T-005`, `DPS-V10-C-004`, `DPS-V10-C-005`, `DPS-V10-C-006`, and `DPS-V10-C-008` so their pass/fail constraints reference this oracle.
-4. Update D2/source-model views and regenerate PNGs only in the later model-update pass; no D2 or PNG updates are made by this oracle file.
+2. Freeze the concrete payload schema/envelope, decode/scaling rules, `deployment_status` field order/byte offset/encoding, sequence/timestamp fields, CSV column order, and source payload generator/log format used for the campaign.
+3. Create/update detailed modeled definitions for `DPS-V10-T-005`, `DPS-V10-C-004`, `DPS-V10-C-005`, `DPS-V10-C-006`, and `DPS-V10-C-008` so their pass/fail constraints reference this oracle, including the status-category mapping and invalid-status no-false-deployed behavior.
+4. Ensure any affected D2/source-model views that reference this oracle are updated and their PNGs regenerated; this oracle document remains a definition-level baseline, not execution evidence.
 5. Define the actual browser start command, URL/port, input mode, CSV output directory, logging switches, and analysis/comparison scripts in the execution procedure.
 6. Execute only after the detailed definitions and evidence paths are approved; archive results under the applicable `DPS/MBSE/tests/results/<test-id>/` paths.
 

@@ -54,6 +54,7 @@ chain: "DPS v1.0 — Dashboard visualisation chain" {
   update_orientation_3d_plot: "[F] Update CanSat\norientation 3D model" { class: func }
   update_temperature_2d_plot: "[F] Update temperature\n2D plot" { class: func }
   update_altitude_2d_plot: "[F] Update altitude\n2D plot" { class: func }
+  update_deployment_status_indicator: "[F] Update parachute\nstatus indicator" { class: func }
   update_latency_alert: "[F] Update latency\nalert" { class: func }
 
   note_concurrent: "[C] Concurrent\nexecution" {
@@ -75,16 +76,23 @@ chain: "DPS v1.0 — Dashboard visualisation chain" {
     class: note
     shape: page
   }
+
+  note_deployment_status: "[C] Dashboard displays\ndeployment_status distinctly;\nonly OPEN_CONFIRMED is\nshown as deployed." {
+    class: note
+    shape: page
+  }
 }
 
 chain.push_to_payload_queue -> chain.dashboard_consume_payload_queue: "[FE] Payload\n[Timestamped Payload]" { class: fe }
 chain.dashboard_consume_payload_queue -> chain.update_orientation_3d_plot: "[FE] Pitch, roll, yaw []" { class: fe }
 chain.dashboard_consume_payload_queue -> chain.update_temperature_2d_plot: "[FE] Temperature []" { class: fe }
 chain.dashboard_consume_payload_queue -> chain.update_altitude_2d_plot: "[FE] Altitude []" { class: fe }
+chain.dashboard_consume_payload_queue -> chain.update_deployment_status_indicator: "[FE] deployment_status\n[code + symbol]" { class: fe }
 chain.dashboard_consume_payload_queue -> chain.update_latency_alert: "[FE] Latency []" { class: fe }
 
 chain.note_plots -> chain.create_plots { class: cstr }
 chain.note_alert -> chain.update_latency_alert { class: cstr }
+chain.note_deployment_status -> chain.update_deployment_status_indicator { class: cstr }
 
 # Chain-wide UI notes and a layout edge that keeps Create plots beside the updates.
 chain.note_concurrent -> chain.dashboard_consume_payload_queue { style: { opacity: 0 } }

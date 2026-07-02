@@ -35,7 +35,7 @@ String CANSAT_LORA_IDS[] = {String("M1"), String("M2"), String("M3")};
 #define LORA_CODING_RATE String("1")
 
 // Period between ground station TX requests
-#define GS_TX_REQUEST_PERIOD 1000 // ms
+#define GS_TX_REQUEST_PERIOD 2000 // ms
 
 // Time that the ground station waits for a response after a TX Request
 #define GS_LISTEN_PERIOD 500 // ms

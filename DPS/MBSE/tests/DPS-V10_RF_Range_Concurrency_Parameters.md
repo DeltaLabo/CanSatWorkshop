@@ -68,7 +68,7 @@ T_packet = 12.544 ms + 161.792 ms = 174.336 ms
 
 At a `2 s` flight cadence this is about `8.72%` raw RF time-on-air per transmitting node before turn-around/listen margins. A `5 Hz` over-air stress would consume about `87.17%` raw RF time-on-air for this 100-byte frame, so the optional high-rate stress should use synthetic, serial-injected, or RF-cabled frames whenever legal/duty-cycle margin is inadequate.
 
-`OBCC/LoRa_Frame.md` currently totals `34 bytes` in the variable table before LoRa envelope, IDs, schema/version, delimiters, command/request fields, RSSI/SNR logging fields, or future schema overhead. Any schema or envelope change shall trigger a new airtime calculation before execution.
+`OBCC/LoRa_Frame.md` currently totals `35 bytes` in the variable table, including the one-byte `deployment_status` enum, before LoRa envelope, IDs, schema/version, delimiters, command/request fields, RSSI/SNR logging fields, or future schema overhead. This remains within the `LORA_PAYLOAD_SIZE = 100 bytes` airtime basis; any schema or envelope change outside that basis shall trigger a new airtime calculation before execution.
 
 ## 4. PDR/statistical acceptance
 

@@ -57,20 +57,22 @@ OBCC shall use the shared ADS/AMS status vocabulary when those data are consumed
 
 OBCC-facing deployment status shall be mapped to these meanings for tests and reports, even if implementation names differ:
 
-| Status | Meaning for OBCC verification |
-|---|---|
-| `NOT_COMMANDED` | No deployment command has been accepted for the current mode/trigger context. |
-| `INHIBITED_STANDBY` | A normal or emergency deployment request was suppressed because OBCC is in `STANDBY`. |
-| `COMMAND_SENT` | OBCC sent an open command to PDM/deployment path; this is not deployment success by itself. |
-| `OPEN_IN_PROGRESS` | PDM/actuator response is underway and not yet confirmed. |
-| `OPEN_CONFIRMED` | PDM feedback or independent safe-fixture/current/position observer confirms open. This is the only success state. |
-| `NO_OPEN_CONFIRMED` | Observer/feedback confirms no open after a command or at the end of an inhibit/no-trigger branch. |
-| `TIMEOUT` | Required open confirmation was not observed within the declared timing window. |
-| `JAM_DETECTED` | Current/position/feedback evidence indicates jam or blocked travel. |
-| `PDM_FAULT` | PDM reports fault or command path unavailable. |
-| `UNKNOWN` | Status cannot be proven; never count as success. |
+| Code | Status | Meaning for OBCC verification |
+|---|---|---|
+| 0 | `NOT_COMMANDED` | No deployment command has been accepted for the current mode/trigger context. |
+| 1 | `INHIBITED_STANDBY` | A normal or emergency deployment request was suppressed because OBCC is in `STANDBY`. |
+| 2 | `COMMAND_SENT` | OBCC sent an open command to PDM/deployment path; this is not deployment success by itself. |
+| 3 | `OPEN_IN_PROGRESS` | PDM/actuator response is underway and not yet confirmed. |
+| 4 | `OPEN_CONFIRMED` | PDM feedback or independent safe-fixture/current/position observer confirms open. This is the only success state. |
+| 5 | `NO_OPEN_CONFIRMED` | Observer/feedback confirms no open after a command or at the end of an inhibit/no-trigger branch. |
+| 6 | `TIMEOUT` | Required open confirmation was not observed within the declared timing window. |
+| 7 | `JAM_DETECTED` | Current/position/feedback evidence indicates jam or blocked travel. |
+| 8 | `PDM_FAULT` | PDM reports fault or command path unavailable. |
+| 9 | `UNKNOWN` | Status cannot be proven; never count as success. |
 
-For strict OBCC tests, `COMMAND_SENT`, `OPEN_IN_PROGRESS`, `TIMEOUT`, `JAM_DETECTED`, `PDM_FAULT`, and `UNKNOWN` shall not be credited as successful deployment.
+Telemetry disclosure rule: OBCC shall publish this mapped one-byte enum as `deployment_status` / `Parachute Deployment Status` in OBCC-to-DPS telemetry. The source shall be PDM/actuator confirmation evidence exposed to OBCC or OBCC-owned deployment/fault-policy interpretation. `COMMAND_SENT` shall not be reported or consumed as deployed; only `OPEN_CONFIRMED` is the deployed/success state.
+
+For strict OBCC tests, no status other than `OPEN_CONFIRMED` shall be credited as successful deployment; in particular, `COMMAND_SENT`, `OPEN_IN_PROGRESS`, `NO_OPEN_CONFIRMED`, `TIMEOUT`, `JAM_DETECTED`, `PDM_FAULT`, and `UNKNOWN` are not success.
 
 ## 5. Runtime fault and safe/error criteria
 

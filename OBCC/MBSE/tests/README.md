@@ -14,8 +14,8 @@ Project-wide IVV conventions, evidence paths, statistical policy, fault semantic
 
 ## 1.1 Controlled blocker-resolution baselines
 
-- OBCC/DPS telemetry, command, RF/range/PDR, cadence, and payload traceability are selected at definition level by [`../../../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md`](../../../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md).
-- OBCC-owned deployment, descent-observability, emergency-deploy, safe/error, and actuator-status semantics are selected at definition level by [`OBCC-V10_Deployment_Fault_Policy.md`](OBCC-V10_Deployment_Fault_Policy.md).
+- OBCC/DPS telemetry, command, RF/range/PDR, cadence, and payload traceability are selected at definition level by [`../../../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md`](../../../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md). The controlled `OBCC-LORA-PAYLOAD-v1.0` variable table includes `Parachute Deployment Status` / `deployment_status` as a one-byte enum in the existing 100-byte LoRa frame; the active variable-table size is 35 bytes before envelope/metadata and relative humidity remains excluded.
+- OBCC-owned deployment, descent-observability, emergency-deploy, safe/error, actuator-status semantics, and no-false-success interpretation are selected at definition level by [`OBCC-V10_Deployment_Fault_Policy.md`](OBCC-V10_Deployment_Fault_Policy.md). Only `OPEN_CONFIRMED` may be credited as deployed/success; `COMMAND_SENT`, in-progress, inhibited, no-open, timeout, jam, PDM fault, and unknown states remain distinct and are not success.
 - `OBCC-V09-GATE-001` remains a literal final-readiness prerequisite for `OBCC-V10-FLIGHT-001`; `OBCC-V06-GATE-001` remains a literal runtime-fault advancement gate. These are not unresolved candidate-definition gaps.
 - Detailed activity README/D2 updates and execution evidence remain pending; the baselines above prevent the §2.5 blockers in the PM&SE register from remaining undefined.
 

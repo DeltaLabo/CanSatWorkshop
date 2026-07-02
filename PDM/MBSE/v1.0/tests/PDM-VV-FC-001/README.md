@@ -10,7 +10,7 @@ This package defines a model-based verification activity for the PDM v1.0 IMU-tr
 ## Definition-level policy boundaries
 
 - PDM uses the OBCC-owned deployment/fault policy baseline in [`../../../../../OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md`](../../../../../OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md). OBCC owns mode, trigger, emergency-deploy, descent observability, safe/error, and no-false-success decisions.
-- PDM deploys when commanded by OBCC and exposes available actuator/servo status evidence. This package does not redefine OBCC emergency policy.
+- PDM deploys when commanded by OBCC and exposes available actuator/servo status evidence. This package does not redefine OBCC emergency policy. PDM/actuator evidence shall be mappable to the OBCC telemetry `deployment_status` / `Parachute Deployment Status` enum so downstream OBCC, DPS CSV, dashboard, and reports can preserve raw code/name/category without false success.
 - ADS input freshness/status evidence used at the PDM/OBCC trigger observation point follows [`../../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md`](../../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md): `VALID` is usable for normal triggers only when `age_ms <= 400 ms`; non-`VALID` statuses are not normal triggers.
 
 ## Source-view copies
@@ -55,25 +55,27 @@ Pass only if all modeled criteria are satisfied and evidenced:
 5. Startup/reset servo position is `0 degrees`/closed; no open pulse occurs before the deployment condition.
 6. Angular-rate error is `<30 deg/s` or deployment thresholds are analyzed robust to that error with documented truth/reference and guard-band handling.
 7. Parachute diameter is `≤30 cm`; terminal-speed evidence linked from `PDM-VV-FC-003` or an equivalent controlled activity demonstrates `<= 11 m/s` using representative as-tested mass/configuration, deployed parachute condition, calibrated video/time-distance or equivalent measurement, uncertainty/guard band, wind/environment record, and anomaly/deviation rules. If that evidence is absent, this activity cannot claim terminal-speed credit.
-8. Servo jam/no-open, brownout/reset, bad/stale IMU data, false-trigger profiles, and command-path faults do not create false success claims; deployment success requires `OPEN_CONFIRMED`.
+8. Servo jam/no-open, brownout/reset, bad/stale IMU data, false-trigger profiles, and command-path faults do not create false success claims; deployment success requires `OPEN_CONFIRMED` backed by PDM feedback or independent safe-fixture/current/position observer evidence and mapped to OBCC `deployment_status`.
 9. Evidence package includes source model version, UUT configuration, firmware commit/build, stimulus profiles, raw logs/traces/video, timing/accuracy analysis, environmental conditions, deviations, anomalies, waivers, limitations, and retest status.
 
 ## Deployment status/no-false-success semantics
 
-Future PDM/OBCC tests shall map implementation-specific names to these meanings for `PDM-VV-CE-004`, this activity, and related no-false-success closure:
+Future PDM/OBCC tests shall map implementation-specific names to these controlled meanings for `PDM-VV-CE-004`, this activity, and related no-false-success closure. The same mapping feeds OBCC telemetry `deployment_status` in the OBCC-to-DPS frame.
 
-| Status | Meaning for PDM verification |
-|---|---|
-| `NOT_COMMANDED` | No accepted deployment command for the current context. |
-| `COMMAND_SENT` | PWM/open command issued; not success by itself. |
-| `OPEN_IN_PROGRESS` | Actuation underway, not confirmed. |
-| `OPEN_CONFIRMED` | Feedback or independent observer confirms open; only strict success state. |
-| `NO_OPEN_CONFIRMED` | Observer/feedback confirms no open after a command or branch. |
-| `TIMEOUT` | Open confirmation missing within the declared timing window. |
-| `JAM_DETECTED` / `PDM_FAULT` | Jam, overcurrent, blocked travel, or command-path fault. |
-| `UNKNOWN` | Cannot prove state; never count as success. |
+| Code | Status | Meaning for PDM verification |
+|---:|---|---|
+| `0` | `NOT_COMMANDED` | No accepted deployment command for the current context. |
+| `1` | `INHIBITED_STANDBY` | Request suppressed because OBCC is in Stand-by. |
+| `2` | `COMMAND_SENT` | PWM/open command issued; not success by itself. |
+| `3` | `OPEN_IN_PROGRESS` | Actuation underway, not confirmed. |
+| `4` | `OPEN_CONFIRMED` | Feedback or independent observer confirms open; only strict success state. |
+| `5` | `NO_OPEN_CONFIRMED` | Observer/feedback confirms no open after a command or branch. |
+| `6` | `TIMEOUT` | Open confirmation missing within the declared timing window. |
+| `7` | `JAM_DETECTED` | Jam, overcurrent, or blocked travel evidence. |
+| `8` | `PDM_FAULT` | PDM fault or command path unavailable. |
+| `9` | `UNKNOWN` | Cannot prove state; never count as success. |
 
-Outline-level evidence options are servo feedback if implemented, PWM trace, current signature, position/witness mark, safe-fixture video, or explicit PDM feedback. `COMMAND_SENT`, `OPEN_IN_PROGRESS`, `NO_OPEN_CONFIRMED`, `TIMEOUT`, `JAM_DETECTED`, `PDM_FAULT`, and `UNKNOWN` shall not be counted as successful deployment.
+Outline-level evidence options are servo feedback if implemented, PWM trace, current signature, position/witness mark, safe-fixture video, or explicit PDM feedback. `COMMAND_SENT`, `OPEN_IN_PROGRESS`, `NO_OPEN_CONFIRMED`, `TIMEOUT`, `JAM_DETECTED`, `PDM_FAULT`, `UNKNOWN`, and `INHIBITED_STANDBY` shall not be counted as successful deployment. Reports that feed OBCC/DPS shall preserve raw code/name/category and the PDM/actuator confirmation evidence for `OPEN_CONFIRMED`.
 
 ## Statistical and fault-hardening viewpoints
 
@@ -107,5 +109,5 @@ The report shall identify referenced model elements, selected SSIV/version, as-t
 - PDM v1.0 → flight readiness remains the selected target context.
 - Traceability targets are provisional IDs because explicit mission/capability/use-case/feared-event nodes are not present in the PDM v1.0 source views.
 - The selected v1.0 terminal descent-speed criterion is `<= 11 m/s`; D2/model updates, a detailed `PDM-VV-FC-003` definition, and execution evidence remain pending.
-- OBCC owns emergency deployment, lost-observability, safe/error, and no-false-success policy; PDM-specific implementation/status field names and evidence mappings remain future model/report detail.
+- OBCC owns emergency deployment, lost-observability, safe/error, and no-false-success policy; PDM-specific implementation/status field names remain execution/model detail, but their meanings shall map to the controlled `deployment_status` enum above before any OBCC/DPS telemetry success claim.
 - The pre-execution readiness checklist above is not execution evidence; reports must record it before credit.

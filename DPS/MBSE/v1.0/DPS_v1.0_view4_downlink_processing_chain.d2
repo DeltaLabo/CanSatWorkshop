@@ -54,6 +54,8 @@ chain: "DPS v1.0 — Downlink decode and storage chain" {
   forward_to_pc: "[F] Forward to PC" { class: func }
   check_if_data_is_available: "[F] Check if data\nis available" { class: func }
   read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+  decode_deployment_status: "[F] Decode deployment\nstatus enum" { class: func }
+  preserve_status_mapping: "[F] Preserve status\ncode mapping" { class: func }
   get_rx_timestamp: "[F] Get RX\ntimestamp" { class: func }
   calculate_latency: "[F] Calculate\nlatency" { class: func }
   push_to_payload_queue: "[F] Push to\npayload queue" { class: func }
@@ -62,6 +64,11 @@ chain: "DPS v1.0 — Downlink decode and storage chain" {
   log_error: "[F] Log error" { class: func }
 
   note_csv_name: "[C] Give each CSV a\nunique name based\non the initial\ntimestamp" {
+    class: note
+    shape: page
+  }
+
+  note_deployment_status: "[C] CSV/dashboard consumers\npreserve deployment_status\ncode + symbol; only\nOPEN_CONFIRMED means deployed." {
     class: note
     shape: page
   }
@@ -77,9 +84,13 @@ chain.check_if_data_is_available -> chain.read_and_decode_frame: "[FE] Available
 chain.check_if_data_is_available -> chain.get_rx_timestamp: "[FE] UART is\navailable []" { class: fe }
 chain.get_rx_timestamp -> chain.calculate_latency: "[FE] Timestamp []" { class: fe }
 chain.get_rx_timestamp -> chain.push_to_payload_queue: "[FE] Timestamp []" { class: fe }
+chain.read_and_decode_frame -> chain.decode_deployment_status: "[FE] deployment_status\n[uint8 code]" { class: fe }
 chain.read_and_decode_frame -> chain.push_to_payload_queue: "[FE] Payload\n[Decoded Payload]" { class: fe }
+chain.decode_deployment_status -> chain.preserve_status_mapping: "[FE] Status\n[code + symbol]" { class: fe }
+chain.preserve_status_mapping -> chain.push_to_payload_queue: "[FE] deployment_status\n[preserved enum]" { class: fe }
 chain.calculate_latency -> chain.push_to_payload_queue: "[FE] Latency []" { class: fe }
 chain.push_to_payload_queue -> chain.csv_consume_payload_queue: "[FE] Payload\n[Timestamped Payload]" { class: fe }
 chain.csv_consume_payload_queue -> chain.append_to_csv: "[FE] Payload\n[Timestamped Payload]" { class: fe }
 
 chain.note_csv_name -> chain.append_to_csv { class: cstr }
+chain.note_deployment_status -> chain.preserve_status_mapping { class: cstr }

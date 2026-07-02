@@ -46,11 +46,11 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-telemetry_stimulus_fixture: "[EA] Telemetry stimulus fixture\nknown payload values\n(model TBD)" { class: ea }
-range_survey_kit: "[EA] Range survey kit\nGNSS / laser rangefinder\n(model TBD)" { class: ea }
-weather_meter: "[EA] Weather station\nthermometer / anemometer\n(model TBD)" { class: ea }
-time_reference: "[EA] Reference time source\nNTP or GPS-disciplined\n(model TBD)" { class: ea }
-antenna_orientation_fixture: "[EA] Antenna orientation\ncheck fixture / compass\n(model TBD)" { class: ea }
+telemetry_stimulus_fixture: "[EA] Telemetry stimulus fixture\nknown payload values\n(model recorded)" { class: ea }
+range_survey_kit: "[EA] Range survey kit\nGNSS / laser rangefinder\n(model recorded)" { class: ea }
+weather_meter: "[EA] Weather station\nthermometer / anemometer\n(model recorded)" { class: ea }
+time_reference: "[EA] Reference time source\nNTP or GPS-disciplined\n(model recorded)" { class: ea }
+antenna_orientation_fixture: "[EA] Antenna orientation\ncheck fixture / compass\n(model recorded)" { class: ea }
 
 system: "[System] OBCC-V03-GATE-001 — v0.3 LoRa telemetry RF/range gate physical setup\nRefs: IVV, OBCC README, LoRa_Frame, v1.0 PV1/PV2/PV3/Telemetry chain" {
   class: sys
@@ -104,7 +104,7 @@ system: "[System] OBCC-V03-GATE-001 — v0.3 LoRa telemetry RF/range gate physic
     shape: page
   }
 
-  note_payload: "[C] Payload/schema condition: v1.0 target\nmeasurement payload is 34 bytes before\nframe/status metadata and excludes\nrelative humidity; RH must not be\nsilently decoded as another field." {
+  note_payload: "[C] Payload/schema condition: v1.0 target\nvariable table is 35 bytes before\nenvelope/status metadata, includes\ndeployment_status, and excludes\nrelative humidity; RH must not be\nsilently decoded as another field." {
     class: note
     shape: page
   }

@@ -69,7 +69,7 @@ chain: "OBCC v1.0 — Telemetry downlink chain" {
   append_to_csv: "[F] Append\nto CSV" { class: func }
   update_plots: "[F] Update\nplots" { class: func }
 
-  note_payload: "[C] v1.0 payload excludes relative humidity.\nMeasurement payload: pitch, roll, yaw,\n3 angular speeds, 3 accelerations,\naltitude, temperature, lat, lon,\nbattery voltage, battery current." {
+  note_payload: "[C] v1.0 payload excludes relative humidity.\nMeasurement/status payload: pitch, roll, yaw,\n3 angular speeds, 3 accelerations,\naltitude, temperature, lat, lon,\nbattery voltage, battery current,\ndeployment_status; only OPEN_CONFIRMED\nmeans deployed/success." {
     class: note
     shape: page
   }

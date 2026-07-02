@@ -60,6 +60,9 @@ chain: "OBCC v1.0 — Deployment gating chain" {
   evaluate_emergency_deploy_need: "[F] Evaluate emergency\ndeploy need" { class: func }
   inhibit_deployment_in_standby: "[F] Inhibit deployment\nin Stand-by" { class: func }
   send_open_signal_to_servo: "[F] Send open signal\nto Servo" { class: func }
+  observe_pdm_actuator_evidence: "[F] Observe PDM/\nactuator evidence" { class: func }
+  map_deployment_status: "[F] Map deployment\nstatus" { class: func }
+  publish_deployment_status: "[F] Publish deployment\nstatus" { class: func }
   reach_open_position: "[F] Reach open\nposition" { class: func }
   retain_position: "[F] Retain\nposition" { class: func }
 
@@ -82,6 +85,16 @@ chain: "OBCC v1.0 — Deployment gating chain" {
     class: note
     shape: page
   }
+
+  note_status: "[C] deployment_status comes from\nPDM feedback or independent\ncurrent/position/safe-fixture\nobserver, or OBCC policy." {
+    class: note
+    shape: page
+  }
+
+  note_no_false_success: "[C] No false success:\nCOMMAND_SENT, OPEN_IN_PROGRESS,\nTIMEOUT, JAM_DETECTED, PDM_FAULT,\nUNKNOWN are not deployed.\nOnly OPEN_CONFIRMED succeeds." {
+    class: note
+    shape: page
+  }
 }
 
 chain.set_servo_init_state -> chain.reach_closed_position: "[FE] Close signal\n[PWM]" { class: fe }
@@ -101,13 +114,22 @@ chain.publish_state_metadata -> chain.evaluate_emergency_deploy_need: "[FE] Stat
 chain.evaluate_deployment_condition -> chain.inhibit_deployment_in_standby: "[FE] Trigger met\n+ Stand-by []" { class: fe }
 chain.evaluate_emergency_deploy_need -> chain.inhibit_deployment_in_standby: "[FE] Emergency needed\n+ Stand-by []" { class: fe }
 chain.inhibit_deployment_in_standby -> chain.retain_position: "[FE] Keep closed []" { class: fe }
+chain.inhibit_deployment_in_standby -> chain.map_deployment_status: "[FE] Inhibit reason\n[INHIBITED_STANDBY]" { class: fe }
 chain.evaluate_deployment_condition -> chain.send_open_signal_to_servo: "[FE] Trigger met\n+ On []" { class: fe }
 chain.evaluate_emergency_deploy_need -> chain.send_open_signal_to_servo: "[FE] Emergency needed\n+ On []" { class: fe }
 chain.evaluate_deployment_condition -> chain.retain_position: "[FE] Trigger not\nmet []" { class: fe }
+chain.evaluate_deployment_condition -> chain.map_deployment_status: "[FE] No command\n[NOT_COMMANDED]" { class: fe }
 chain.send_open_signal_to_servo -> chain.reach_open_position: "[FE] Open signal\n[PWM]" { class: fe }
+chain.send_open_signal_to_servo -> chain.observe_pdm_actuator_evidence: "[FE] Command sent\n[COMMAND_SENT]" { class: fe }
+chain.reach_open_position -> chain.observe_pdm_actuator_evidence: "[FE] Open evidence\n[position/current]" { class: fe }
+chain.observe_pdm_actuator_evidence -> chain.map_deployment_status: "[FE] Confirmation or\nfault evidence []" { class: fe }
+chain.map_deployment_status -> chain.publish_deployment_status: "[FE] deployment_status\n[uint8 enum]" { class: fe }
+chain.map_deployment_status -> chain.retain_position: "[FE] Confirmed result\n[OPEN_CONFIRMED only success]" { class: fe }
 chain.reach_open_position -> chain.retain_position: "[FE] Servo reached\nopen position []" { class: fe }
 
 chain.note_trigger -> chain.evaluate_deployment_condition { class: cstr }
 chain.note_standby -> chain.inhibit_deployment_in_standby { class: cstr }
 chain.note_emergency -> chain.evaluate_emergency_deploy_need { class: cstr }
 chain.note_deadline -> chain.send_open_signal_to_servo { class: cstr }
+chain.note_status -> chain.map_deployment_status { class: cstr }
+chain.note_no_false_success -> chain.publish_deployment_status { class: cstr }

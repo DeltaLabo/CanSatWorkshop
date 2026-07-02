@@ -61,6 +61,91 @@ dataTem4 = []
 dataVol4 = []
 dataCor4 = []
 
+# OBCC-DPS LoRa payload constants. Bytes 8..47 remain the ten legacy floats;
+# byte 48 is deployment_status and bytes 49..95 remain reserved before the
+# footer at 96..99, so the payload stays exactly 100 bytes.
+LORA_PAYLOAD_SIZE = 100
+DEPLOYMENT_STATUS_OFFSET = 48
+DEPLOYMENT_STATUS_NAMES = {
+    0: "NOT_COMMANDED",
+    1: "INHIBITED_STANDBY",
+    2: "COMMAND_SENT",
+    3: "OPEN_IN_PROGRESS",
+    4: "OPEN_CONFIRMED",
+    5: "NO_OPEN_CONFIRMED",
+    6: "TIMEOUT",
+    7: "JAM_DETECTED",
+    8: "PDM_FAULT",
+    9: "UNKNOWN",
+}
+DEPLOYMENT_STATUS_CATEGORIES = {
+    0: "not-deployed",
+    1: "not-deployed",
+    2: "in-progress",
+    3: "in-progress",
+    4: "deployed",
+    5: "not-deployed",
+    6: "fault",
+    7: "fault",
+    8: "fault",
+    9: "unknown",
+}
+# The current dashboard does not write CSV. If CSV output is added, preserve
+# these columns without collapsing COMMAND_SENT into deployed/success.
+DEPLOYMENT_STATUS_CSV_COLUMNS = (
+    "deployment_status_code",
+    "deployment_status",
+    "deployment_status_category",
+)
+DEFAULT_DEPLOYMENT_STATUS = {
+    "code": 9,
+    "name": "UNKNOWN",
+    "category": "unknown",
+}
+deploymentStatusBySender = {
+    "M1": DEFAULT_DEPLOYMENT_STATUS.copy(),
+    "M2": DEFAULT_DEPLOYMENT_STATUS.copy(),
+    "M3": DEFAULT_DEPLOYMENT_STATUS.copy(),
+    "M4": DEFAULT_DEPLOYMENT_STATUS.copy(),
+}
+deploymentStatusLabels = {}
+
+
+def decode_deployment_status(packet):
+    if len(packet) <= DEPLOYMENT_STATUS_OFFSET:
+        code = 9
+    else:
+        code = packet[DEPLOYMENT_STATUS_OFFSET]
+
+    return {
+        "code": code,
+        "name": DEPLOYMENT_STATUS_NAMES.get(code, f"UNRECOGNIZED_{code}"),
+        "category": DEPLOYMENT_STATUS_CATEGORIES.get(code, "unknown"),
+    }
+
+
+def format_deployment_status(status):
+    return (
+        "Parachute: "
+        f"{status['category']} — {status['name']} (code {status['code']})"
+    )
+
+
+def update_deployment_status(sender, status):
+    deploymentStatusBySender[sender] = status
+    label = deploymentStatusLabels.get(sender)
+    if label is not None:
+        label.configure(text=format_deployment_status(status))
+
+
+def create_deployment_status_label(sender, parent):
+    label = customtkinter.CTkLabel(
+        parent,
+        text=format_deployment_status(deploymentStatusBySender[sender]),
+    )
+    label.grid(row=1, column=0, columnspan=10, padx=2, pady=(2, 6), sticky="w")
+    deploymentStatusLabels[sender] = label
+
 ################################################################
 #                                                              #
 #              FUNCIÓN DE COMUNICAIÓN UART                     #
@@ -68,7 +153,7 @@ dataCor4 = []
 ################################################################
 
 def read_serial_data():
-    if ser.in_waiting >= 100:  # Check if there's enough data for a full packet
+    if ser.in_waiting >= LORA_PAYLOAD_SIZE:  # Check if there's enough data for a full packet
         packet = ser.read_all()
         print("Datos recividos:")
         print(packet)
@@ -85,6 +170,7 @@ def process_serial_data(packet):
     sender = packet[4:6].decode('ascii')
     receiver = packet[6:8].decode('ascii')
     values = struct.unpack('10f', packet[8:48])
+    deployment_status = decode_deployment_status(packet)
     tail = packet[96:100].decode('ascii')
 
     if (sender == 'M1' and header == 'CSWS'):  # Assuming sender '01' is CANSAT1
@@ -98,6 +184,7 @@ def process_serial_data(packet):
         dataTem1.append(values[7])
         dataVol1.append(values[8])
         dataCor1.append(values[9])
+        update_deployment_status(sender, deployment_status)
         update_graphs1()
     
     if (sender == 'M2' and header == 'CSWS'):  # Assuming sender '01' is CANSAT1
@@ -111,6 +198,7 @@ def process_serial_data(packet):
         dataTem2.append(values[7])
         dataVol2.append(values[8])
         dataCor2.append(values[9])
+        update_deployment_status(sender, deployment_status)
         update_graphs2()
 
     if (sender == 'M3' and header == 'CSWS'):  # Assuming sender '01' is CANSAT1
@@ -124,6 +212,7 @@ def process_serial_data(packet):
         dataTem3.append(values[7])
         dataVol3.append(values[8])
         dataCor3.append(values[9])
+        update_deployment_status(sender, deployment_status)
         update_graphs3()
 
     if (sender == 'M4' and header == 'CSWS'):  # Assuming sender '01' is CANSAT1
@@ -137,6 +226,7 @@ def process_serial_data(packet):
         dataTem4.append(values[7])
         dataVol4.append(values[8])
         dataCor4.append(values[9])
+        update_deployment_status(sender, deployment_status)
         update_graphs4()
 
 
@@ -557,6 +647,10 @@ frame_CAN_SAT_3 = customtkinter.CTkScrollableFrame(frame, orientation="horizonta
 frame_CAN_SAT_3.grid(row=3, column=0, padx=10, pady=10, sticky="nsew")
 frame_CAN_SAT_3.grid_rowconfigure(0, weight=1)
 frame_CAN_SAT_3.grid_columnconfigure(0, weight=1)
+
+create_deployment_status_label("M1", frame_CAN_SAT_1)
+create_deployment_status_label("M2", frame_CAN_SAT_2)
+create_deployment_status_label("M3", frame_CAN_SAT_3)
 
 """
 # CAN_SAT 4

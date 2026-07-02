@@ -141,7 +141,8 @@ system: "[System] OBCC-V03-GATE-001 — v0.3 LoRa telemetry frame/cadence/range 
         grid-columns: 2
         enforce_two_second_cadence: "[F] Enforce 2 s\ntelemetry cadence" { class: func }
         consume_measurement_queue: "[F] Consume measurement\nqueue" { class: func }
-        generate_frame: "[F] Generate LoRa frame\nwith 34-byte target payload" { class: func }
+        generate_frame: "[F] Generate LoRa frame\nwith 35-byte variable table" { class: func }
+        include_deployment_status: "[F] Include deployment\nstatus enum" { class: func }
         omit_relative_humidity: "[F] Omit / error-code\nrelative humidity" { class: func }
         attach_sequence_time: "[F] Attach sequence,\ntime, health/status metadata" { class: func }
         send_lora_packet: "[F] Send LoRa\npacket" { class: func }
@@ -228,7 +229,7 @@ system: "[System] OBCC-V03-GATE-001 — v0.3 LoRa telemetry frame/cadence/range 
     }
   }
 
-  note_constraints: "[C] Allocation analysis pass/fail:\ntelemetry collection/encoding, LoRa TX/RX,\ndecode/display/store, RSSI/SNR logging,\nand packet analysis are allocated to\nthe modeled LCs with no hidden path." {
+  note_constraints: "[C] Allocation analysis pass/fail:\ntelemetry collection/encoding, deployment_status\nmapping, LoRa TX/RX, decode/display/store,\nRSSI/SNR logging, and packet analysis are\nallocated to the modeled LCs with no hidden path." {
     class: note
     shape: page
   }

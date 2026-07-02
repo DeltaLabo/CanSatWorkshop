@@ -46,7 +46,7 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-chain: "OBCC-V09-GATE-001 — End-to-end mission-window rehearsal advancement gate\nRefs: IVV, PM&SE/IVV, OBCC README, LoRa_Frame, Variable Getter Template, OBCC v1.0 views 1-8; trace: OBCC-UC-StartupHealth, TelemetryDownlink, WirelessCommand, DeploymentGate, RuntimeFaultHandling, feared events SilentCriticalFault/LostTelemetry/InvalidCommand/PrematureDeployment/NonDeployment/SchedulerBlocked" {
+chain: "OBCC-V09-GATE-001 — End-to-end mission-window rehearsal advancement gate\nRefs: IVV, PM&SE/IVV, OBCC README, OBCC-DPS telemetry contract, deployment/fault policy, LoRa_Frame, Variable Getter Template, OBCC v1.0 views 1-8; trace: OBCC-UC-StartupHealth, TelemetryDownlink, WirelessCommand, DeploymentGate, RuntimeFaultHandling, feared events SilentCriticalFault/LostTelemetry/InvalidCommand/PrematureDeployment/NonDeployment/SchedulerBlocked" {
   class: chain
   direction: down
 
@@ -68,7 +68,7 @@ chain: "OBCC-V09-GATE-001 — End-to-end mission-window rehearsal advancement ga
   transition_on: "[F] SUT: receive, validate,\nhandle On command and\npublish On state metadata" { class: func }
   collect_measurements: "[F] SUT: collect measurements,\ncall getters, add health/status,\nqueue telemetry at 2 s cadence" { class: func }
   downlink_decode_store: "[F] SUT + ground PC:\ngenerate frame, LoRa downlink,\ndecode/display/store CSV" { class: func }
-  verify_payload: "[F] Evidence manager:\nverify v1.0 payload schema,\n34-byte measurement payload,\nno relative humidity field" { class: func }
+  verify_payload: "[F] Evidence manager:\nverify v1.0 payload schema,\n35-byte variable table,\ndeployment_status mapping,\nand no relative humidity field" { class: func }
   run_no_trigger_branch: "[F] Fixture controller:\nrun no-trigger branch\nwith On state active" { class: func }
   verify_no_trigger_closed: "[F] SUT + observer:\nverify no open command and\nservo/fixture remains closed" { class: func }
   run_safe_trigger_branch: "[F] Fixture controller:\napply safe deployment trigger\nor safe emergency-request proxy" { class: func }
@@ -96,7 +96,7 @@ chain: "OBCC-V09-GATE-001 — End-to-end mission-window rehearsal advancement ga
     shape: page
   }
 
-  note_pf004: "[C] PF-004 telemetry downlink:\nStand-by and On telemetry continue at the modeled 2 s cadence;\nframes use the v1.0 payload without relative humidity; received\nframes are decoded, displayed, and stored. ≥500 m / ≥90% PDR\nclaims require independent packet evidence and exact one-sided\n95% confidence bounds, not just this rehearsal." {
+  note_pf004: "[C] PF-004 telemetry downlink:\nStand-by and On telemetry continue at the modeled 2 s cadence;\nframes use OBCC-LORA-PAYLOAD-v1.0 with 35-byte variable table,\ndeployment_status, and no relative humidity; received frames are\ndecoded, displayed, and stored with raw status code/name/category.\nStrict ≥500 m / PDR ≥0.90 claims need N=300, k≥279, exact one-sided\n95% bounds and RF/site evidence, not just this rehearsal." {
     class: note
     shape: page
   }
@@ -106,7 +106,7 @@ chain: "OBCC-V09-GATE-001 — End-to-end mission-window rehearsal advancement ga
     shape: page
   }
 
-  note_pf006: "[C] PF-006 deployment gate:\nStand-by shall never produce an open-servo command, including\nemergency-deploy requests. In On mode, valid trigger or safe\nemergency proxy produces open command/fixture travel within ≤5 s;\nno-trigger branch remains closed." {
+  note_pf006: "[C] PF-006 deployment gate:\nStand-by shall never produce an open-servo command, including\nemergency-deploy requests, and telemetry shows non-success status.\nIn On mode, valid trigger or safe emergency proxy produces open\ncommand/fixture travel within ≤5 s; deployed verdict requires\nOPEN_CONFIRMED from PDM/actuator evidence. COMMAND_SENT, in-progress,\ntimeout, jam, PDM fault, unknown, and no-trigger states are not deployed." {
     class: note
     shape: page
   }
@@ -153,13 +153,13 @@ chain.send_invalid_command -> chain.verify_invalid_rejected: "[FE] Invalid frame
 chain.verify_invalid_rejected -> chain.send_on_command: "[FE] Command rejection\nevidence [state unchanged]" { class: fe }
 chain.send_on_command -> chain.transition_on: "[FE] Valid On command\n[LoRa command frame]" { class: fe }
 chain.transition_on -> chain.collect_measurements: "[FE] On state update\n[state metadata]" { class: fe }
-chain.collect_measurements -> chain.downlink_decode_store: "[FE] Telemetry set\n[measurements + status]" { class: fe }
-chain.downlink_decode_store -> chain.verify_payload: "[FE] Downlinked frames\n[decoded payloads]" { class: fe }
-chain.verify_payload -> chain.run_no_trigger_branch: "[FE] Payload oracle\nresult [schema/cadence]" { class: fe }
+chain.collect_measurements -> chain.downlink_decode_store: "[FE] Telemetry set\n[measurements + deployment_status]" { class: fe }
+chain.downlink_decode_store -> chain.verify_payload: "[FE] Downlinked frames\n[decoded payloads + status]" { class: fe }
+chain.verify_payload -> chain.run_no_trigger_branch: "[FE] Payload/status oracle\nresult [schema/cadence]" { class: fe }
 chain.run_no_trigger_branch -> chain.verify_no_trigger_closed: "[FE] No-trigger profile\n[On active]" { class: fe }
 chain.verify_no_trigger_closed -> chain.run_safe_trigger_branch: "[FE] Closed fixture\nevidence [no open]" { class: fe }
 chain.run_safe_trigger_branch -> chain.verify_open_deadline: "[FE] Safe trigger or\nemergency proxy [On]" { class: fe }
-chain.verify_open_deadline -> chain.inject_runtime_faults: "[FE] Deployment timing\nevidence [≤5 s]" { class: fe }
+chain.verify_open_deadline -> chain.inject_runtime_faults: "[FE] Deployment timing/status\nevidence [≤5 s + OPEN_CONFIRMED]" { class: fe }
 chain.inject_runtime_faults -> chain.verify_fault_response: "[FE] Fault stimulus\n[selected safe class]" { class: fe }
 chain.verify_fault_response -> chain.restore_nominal: "[FE] Fault response\nevidence [codes/status]" { class: fe }
 chain.restore_nominal -> chain.export_evidence: "[FE] Recovery or safe\nstate evidence" { class: fe }

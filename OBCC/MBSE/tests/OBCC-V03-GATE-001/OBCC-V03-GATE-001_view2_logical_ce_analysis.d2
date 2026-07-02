@@ -117,12 +117,12 @@ system: "[System] OBCC-V03-GATE-001 — v0.3 telemetry logical interfaces and CE
     shape: page
   }
 
-  note_schema: "[C] Schema analysis pass/fail: decoder\nmaps the 34-byte target payload fields,\npreserves sequence/timestamps/status,\nand rejects corrupt/malformed frames;\nrelative humidity is absent/error-coded." {
+  note_schema: "[C] Schema analysis pass/fail: decoder\nmaps the 35-byte target variable table,\npreserves sequence/timestamps and\ndeployment_status code/name/category,\nand rejects corrupt/malformed or\nunknown-status frames; relative\nhumidity is absent/error-coded." {
     class: note
     shape: page
   }
 
-  note_statistics: "[C] Statistical viewpoint: range PDR\npasses only if the one-sided 95% exact\nbinomial lower bound is >=0.90. 96/100\nvalid frames is a planning point." {
+  note_statistics: "[C] Statistical viewpoint: range PDR\npasses only with N=300 scheduled frames\nat 2 s cadence and k>=279 successes,\ngiving one-sided 95% exact binomial\nlower bound >=0.90." {
     class: note
     shape: page
   }

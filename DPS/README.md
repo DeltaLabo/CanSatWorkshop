@@ -46,3 +46,7 @@ This order goes from structure to allocation, then follows the main DPS operatio
 ### Success Criteria
 
 The DPS demonstrates the capability to acquire, process, store, and display real-time data received from the OBCC, with a functional user interface and complete traceability of the processed information.
+
+### Parachute deployment status display
+
+DPS decoders and dashboard consumers preserve the OBCC `deployment_status` code and enum name from telemetry. The dashboard displays the high-level category `deployed`, `not-deployed`, `in-progress`, `fault`, or `unknown` together with the raw enum. Only `OPEN_CONFIRMED` is displayed/consumed as deployed; `COMMAND_SENT` and `OPEN_IN_PROGRESS` remain in-progress and are not success. Future CSV consumers should keep `deployment_status_code`, `deployment_status`, and `deployment_status_category` columns.

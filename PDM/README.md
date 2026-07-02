@@ -43,6 +43,10 @@ The v0.1 fall-test chain uses the terminal-speed context from the [ESA](https://
 
 The PDM subsystem has defined a reliable preliminary design capable of deploying the parachute within specified atmospheric conditions and timing constraints, while mitigating failure risks through electromechanical safeguards.
 
+### Deployment confirmation evidence
+
+PDM shall expose actuator/servo status evidence to OBCC for the shared `deployment_status` telemetry mapping. Strict success requires `OPEN_CONFIRMED` from PDM feedback or independent safe-fixture/current/position observation; a command, PWM request, or servo intent alone is not success. If PDM reports a fault, jam, timeout, no-open condition, or cannot prove open, OBCC/DPS consumers must preserve that non-success status instead of inferring deployment.
+
 ## Components
 
 - [ ]  Micro Servo Motor 180 degrees.

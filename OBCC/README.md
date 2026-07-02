@@ -17,6 +17,10 @@ This subsystem is the “brain” of the CanSat, coordinating all sensors and ac
 
 The OBCC subsystem has established an architecture that manages sensor and actuator coordination in the Cansat, enables reliable long-range data transmission, and supports multiple operational states commanded by the DPS. For v1.0, operational observability is through LoRa health/state telemetry; USB/serial diagnostics may be used as a bench aid but are not a required flight-operator path.
 
+### Parachute deployment status telemetry
+
+OBCC-to-DPS LoRa telemetry includes `deployment_status` as a one-byte enum in the existing 100-byte payload. The field is sourced from PDM/actuator confirmation evidence when integrated, or from OBCC-owned deployment/fault policy interpretation. `COMMAND_SENT` means only that OBCC sent an open command; it is not deployment success. Only `OPEN_CONFIRMED` shall be treated as deployed/success, and ambiguous implementation states must remain `UNKNOWN` or fault rather than false success.
+
 ## Derived Requirements
 
 | Requirement | Verification method |

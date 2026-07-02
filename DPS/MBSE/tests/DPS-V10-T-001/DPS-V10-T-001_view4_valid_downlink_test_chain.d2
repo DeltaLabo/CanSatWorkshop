@@ -51,7 +51,7 @@ chain: "DPS-V10-T-001A — Valid downlink decode/storage test\nIADT: Testing; Re
   display_ambient_temperature: "[F] Display ambient\ntemperature" { class: func }
   op_read_ambient: "[F] Operator reads\nambient thermometer" { class: func }
   op_verify_setup: "[F] Operator verifies\nRF path and antennas" { class: func }
-  tx_configure: "[F] Configure LoRa settings\nand 300-frame payload set" { class: func }
+  tx_configure: "[F] Configure LoRa settings\nand 300-frame payload +\ndeployment-status set" { class: func }
   op_start_capture: "[F] Start DPS capture\nand evidence logging" { class: func }
   tx_generate_valid: "[F] Generate valid\nLoRa frames" { class: func }
   tx_log_sequence: "[F] Log sent sequence\nand TX timestamps" { class: func }
@@ -63,6 +63,8 @@ chain: "DPS-V10-T-001A — Valid downlink decode/storage test\nIADT: Testing; Re
   check_if_data_is_available: "[F] Check if data\nis available" { class: func }
   get_rx_timestamp: "[F] Get RX\ntimestamp" { class: func }
   read_and_decode_frame: "[F] Read and\ndecode frame" { class: func }
+  decode_deployment_status: "[F] Decode deployment\nstatus enum" { class: func }
+  preserve_status_mapping: "[F] Preserve status\ncode/name/category" { class: func }
   calculate_latency: "[F] Calculate\nlatency" { class: func }
   push_to_payload_queue: "[F] Push to\npayload queue" { class: func }
   csv_consume_payload_queue: "[F] Consume\npayload queue" { class: func }
@@ -74,7 +76,7 @@ chain: "DPS-V10-T-001A — Valid downlink decode/storage test\nIADT: Testing; Re
   compute_pdr_latency: "[F] Compute PDR, p95 latency\nand pass/fail verdict" { class: func }
   archive_evidence: "[F] Archive evidence\nin results folder" { class: func }
 
-  note_trace: "[C] Traceability target: inferred use case\n'receive, decode, timestamp and store OBCC telemetry';\nconstraint C05 unique CSV name. Mission/capability IDs remain TBD." {
+  note_trace: "[C] Traceability target: inferred use case\n'receive, decode, timestamp and store OBCC telemetry';\nconstraint C05 unique CSV name. Mission/capability IDs are\nnot present in the source model." {
     class: note
     shape: page
   }
@@ -84,7 +86,12 @@ chain: "DPS-V10-T-001A — Valid downlink decode/storage test\nIADT: Testing; Re
     shape: page
   }
 
-  note_stimulus: "[C] Stimulus constraint: N≥300 valid LoRa frames,\n2.0s ±0.2s cadence, monotonically increasing sequence numbers,\nknown payload fields and no intentional corruption in this sequence." {
+  note_stimulus: "[C] Stimulus constraint: N≥300 valid LoRa frames,\n2.0s ±0.2s cadence, monotonically increasing sequence numbers,\nknown payload fields, expected deployment_status code sequence,\nand no intentional corruption in this sequence." {
+    class: note
+    shape: page
+  }
+
+  note_status_pass: "[C] deployment_status pass constraint: accepted frames include a\nrecognized uint8 code 0..9 mapped to code/name/category; CSV\npreserves deployment_status_code, deployment_status, and category.\nOnly OPEN_CONFIRMED is deployed; COMMAND_SENT is not success." {
     class: note
     shape: page
   }
@@ -94,7 +101,7 @@ chain: "DPS-V10-T-001A — Valid downlink decode/storage test\nIADT: Testing; Re
     shape: page
   }
 
-  note_latency_pass: "[C] Timing/data pass constraints: p95 RX-to-CSV latency <1s;\nCSV row count equals accepted frames; row payload and sequence match TX log;\nCSV filename is unique from initial timestamp and no overwrite occurs." {
+  note_latency_pass: "[C] Timing/data pass constraints: p95 RX-to-CSV latency <1s;\nCSV row count equals accepted frames; row payload, sequence, and\ndeployment_status code/name/category match TX log; CSV filename is\nunique from initial timestamp and no overwrite occurs." {
     class: note
     shape: page
   }
@@ -122,7 +129,10 @@ chain.check_if_data_is_available -> chain.get_rx_timestamp: "[FE] UART available
 chain.check_if_data_is_available -> chain.read_and_decode_frame: "[FE] UART bytes []" { class: fe }
 chain.get_rx_timestamp -> chain.calculate_latency: "[FE] Timestamp []" { class: fe }
 chain.get_rx_timestamp -> chain.push_to_payload_queue: "[FE] Timestamp []" { class: fe }
+chain.read_and_decode_frame -> chain.decode_deployment_status: "[FE] deployment_status\n[uint8 code]" { class: fe }
 chain.read_and_decode_frame -> chain.push_to_payload_queue: "[FE] Payload\n[Decoded payload]" { class: fe }
+chain.decode_deployment_status -> chain.preserve_status_mapping: "[FE] Status\n[code/name/category]" { class: fe }
+chain.preserve_status_mapping -> chain.push_to_payload_queue: "[FE] deployment_status\n[preserved]" { class: fe }
 chain.calculate_latency -> chain.push_to_payload_queue: "[FE] Latency []" { class: fe }
 chain.push_to_payload_queue -> chain.csv_consume_payload_queue: "[FE] Payload\n[Timestamped payload]" { class: fe }
 chain.csv_consume_payload_queue -> chain.append_to_csv: "[FE] Payload\n[Timestamped payload]" { class: fe }
@@ -137,6 +147,8 @@ chain.compute_pdr_latency -> chain.archive_evidence: "[FE] Verdict and evidence\
 
 chain.note_environment -> chain.op_read_ambient { class: cstr }
 chain.note_stimulus -> chain.tx_generate_valid { class: cstr }
+chain.note_status_pass -> chain.decode_deployment_status { class: cstr }
+chain.note_status_pass -> chain.compare_csv_to_reference { class: cstr }
 chain.note_stat_pass -> chain.compute_pdr_latency { class: cstr }
 chain.note_latency_pass -> chain.append_to_csv { class: cstr }
 chain.note_latency_pass -> chain.compare_csv_to_reference { class: cstr }

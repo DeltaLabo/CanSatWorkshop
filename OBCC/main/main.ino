@@ -23,6 +23,30 @@ union {
 
 // LoRa payload with a size of 100 bytes
 byte payload[LORA_PAYLOAD_SIZE];
+
+// deployment_status occupies byte 48: the first byte that was previously
+// reserved after the ten 4-byte telemetry floats (payload bytes 8..47).
+// This preserves LORA_PAYLOAD_SIZE == 100 and the existing footer at 96..99.
+const uint8_t DEPLOYMENT_STATUS_PAYLOAD_OFFSET = 48;
+
+enum DeploymentStatus : uint8_t {
+  DEPLOYMENT_NOT_COMMANDED = 0,
+  DEPLOYMENT_INHIBITED_STANDBY = 1,
+  DEPLOYMENT_COMMAND_SENT = 2,
+  DEPLOYMENT_OPEN_IN_PROGRESS = 3,
+  DEPLOYMENT_OPEN_CONFIRMED = 4,
+  DEPLOYMENT_NO_OPEN_CONFIRMED = 5,
+  DEPLOYMENT_TIMEOUT = 6,
+  DEPLOYMENT_JAM_DETECTED = 7,
+  DEPLOYMENT_PDM_FAULT = 8,
+  DEPLOYMENT_UNKNOWN = 9
+};
+
+// Current firmware has no accepted PDM open-command path or PDM/observer
+// confirmation API wired into OBCC. Keep the telemetry safe by defaulting to
+// NOT_COMMANDED until such a command is accepted; if a future command path is
+// added without confirmation evidence, report UNKNOWN/fault instead of success.
+bool deploymentCommandAccepted = false;
 /******* End Comms Global Variables *******/
 
 /******* Begin Sensor Global Variables *******/
@@ -49,6 +73,17 @@ uint32_t lastIMUUPdateTime = 0;
 /******* End Position and Orientation Global Variables *******/
 
 /******* Begin Comms Functions *******/
+DeploymentStatus readDeploymentStatusFromPolicyOrFeedback() {
+  // No-false-success rule: COMMAND_SENT is never deployed/success. Only a
+  // future PDM feedback or independent actuator/current/position observer may
+  // return DEPLOYMENT_OPEN_CONFIRMED.
+  if (!deploymentCommandAccepted) {
+    return DEPLOYMENT_NOT_COMMANDED;
+  }
+
+  return DEPLOYMENT_UNKNOWN;
+}
+
 // Read all variables and package them into a LoRa payload
 void PackagePayload() {
   /*******
@@ -90,6 +125,11 @@ void PackagePayload() {
 
   floatUnion.value = readCurrent(); // Replace with actual function, which must return a float
   for (int i=0;i<4;i++) payload[i+44] = floatUnion.bytes[i];
+
+  // Parachute deployment status is a one-byte enum at payload byte 48.
+  // It uses previously reserved space and does not alter the 100-byte frame.
+  // Only DEPLOYMENT_OPEN_CONFIRMED is deployed/success; command sent is not.
+  payload[DEPLOYMENT_STATUS_PAYLOAD_OFFSET] = (byte)readDeploymentStatusFromPolicyOrFeedback();
 }
 
 // Sends the populated payload via LoRa
@@ -344,8 +384,9 @@ void setup() {
   for (int i=0;i<2;i++) payload[i+4] = CANSAT_LORA_ID[i];
   // Receiver ID
   for (int i=0;i<2;i++) payload[i+6] = GS_LORA_ID[i];
-  // Space reserved for future development
-  for (int i=0;i<48;i++) payload[i+48] = 0;
+  // Byte 48 is deployment_status; bytes 49..95 remain reserved.
+  payload[DEPLOYMENT_STATUS_PAYLOAD_OFFSET] = (byte)DEPLOYMENT_NOT_COMMANDED;
+  for (int i=0;i<47;i++) payload[i+49] = 0;
   // Footer
   for (int i=0;i<4;i++) payload[i+96] = LORA_FOOTER[i];
 

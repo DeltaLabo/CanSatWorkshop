@@ -60,15 +60,15 @@ chain: "OBCC-V03-GATE-001 — v0.3 LoRa telemetry frame/cadence/range advancemen
   release_timer: "[F] OBCC: release telemetry\nproduction on 2 s timer" { class: func }
   collect_measurements: "[F] OBCC: collect measurements\nfrom getters or stubs" { class: func }
   add_status_metadata: "[F] OBCC: add heartbeat,\nstate, health, sequence,\nand timestamp metadata" { class: func }
-  encode_frame: "[F] OBCC: encode v1.0 target\nLoRa frame payload without\nrelative humidity" { class: func }
+  encode_frame: "[F] OBCC: encode v1.0 target\nLoRa frame payload with\ndeployment_status and no\nrelative humidity" { class: func }
   transmit_frame: "[F] OBCC RFM96W: transmit\nLoRa telemetry frame" { class: func }
   receive_log_frame: "[F] Ground Station: receive\nframe and log RSSI/SNR\nwith raw bytes" { class: func }
   forward_decode: "[F] PC Decoder: decode frame,\npreserve sequence/timestamps,\nand report errors" { class: func }
   display_store: "[F] PC Dashboard/CSV: display\nand store decoded payload\nrecords" { class: func }
-  compare_schema: "[F] Analyzer: compare fields,\norder, units, and missing/RH\nhandling to schema oracle" { class: func }
+  compare_schema: "[F] Analyzer: compare fields,\norder, units, deployment_status\nmapping, and missing/RH\nhandling to schema oracle" { class: func }
   evaluate_cadence: "[F] Analyzer: evaluate 2 s\nintervals, stale frames,\nduplicates, and gaps" { class: func }
 
-  inject_malformed: "[F] Injection Tool: replay or\ninject corrupt, truncated,\nwrong-length, and extra-RH\nframe cases" { class: func }
+  inject_malformed: "[F] Injection Tool: replay or\ninject corrupt, truncated,\nwrong-length, extra-RH, and\ninvalid-status frame cases" { class: func }
   reject_malformed: "[F] Decoder: reject malformed\nframes without updating\nvalid dashboard/CSV data" { class: func }
   record_rejections: "[F] Analyzer: record rejected\nframe classes and confirm\nno silent misinterpretation" { class: func }
 
@@ -76,7 +76,7 @@ chain: "OBCC-V03-GATE-001 — v0.3 LoRa telemetry frame/cadence/range advancemen
   compute_pdr_bound: "[F] Statistics Tool: compute\nexact one-sided 95%\nbinomial PDR lower bound" { class: func }
   classify_gate: "[F] Test Director: classify\npass/fail, staged-open\nrange condition, deviations,\nand report references" { class: func }
 
-  note_pf_schema: "[C] PF-001 schema/content: valid frames\ncarry the modeled v1.0 target payload\n(pitch, roll, yaw; 3 angular speeds;\n3 accelerations; altitude; temperature;\nlatitude; longitude; battery voltage;\nbattery current = 34 bytes before\nmetadata). Relative humidity is absent\nor explicitly error-coded, never silently\nmisdecoded as another field." {
+  note_pf_schema: "[C] PF-001 schema/content: valid frames\ncarry OBCC-LORA-PAYLOAD-v1.0\n(pitch, roll, yaw; 3 angular speeds;\n3 accelerations; altitude; temperature;\nlatitude; longitude; battery voltage;\nbattery current; deployment_status =\n35 bytes before envelope/metadata).\nOnly OPEN_CONFIRMED is deployed; RH is absent\nand never silently misdecoded." {
     class: note
     shape: page
   }
@@ -86,12 +86,12 @@ chain: "OBCC-V03-GATE-001 — v0.3 LoRa telemetry frame/cadence/range advancemen
     shape: page
   }
 
-  note_pf_decode: "[C] PF-003 decode/store: sequence and\ntimestamps are preserved through raw log,\ndecoder, dashboard, and CSV. Corrupt,\ntruncated, wrong-length, bad-CRC, or\nextra-RH frames are rejected and logged\nas invalid, not stored as valid telemetry." {
+  note_pf_decode: "[C] PF-003 decode/store: sequence, timestamps,\nand deployment_status code/name/category are\npreserved through raw log, decoder, dashboard,\nand CSV. Corrupt, truncated, wrong-length,\nbad-CRC, extra-RH, or invalid-status frames\nare rejected/logged invalid, not stored or\nshown as deployed." {
     class: note
     shape: page
   }
 
-  note_pf_range: "[C] PF-004 range/PDR: at >=500 m separation\nor justified RF-equivalent setup, packet\ndelivery passes only if the one-sided\n95% exact binomial lower confidence bound\nis >=0.90. 96/100 valid received frames\nis a planning point. Lab-only evidence\nleaves this gate condition open." {
+  note_pf_range: "[C] PF-004 range/PDR: at >=500 m horizontal LOS\nor justified RF-equivalent setup, packet delivery passes\nonly with N=300 scheduled frames at 2 s cadence and\nk>=279 successes, giving a one-sided 95% exact binomial\nlower confidence bound >=0.90. Lab-only evidence\nleaves this gate condition open." {
     class: note
     shape: page
   }
@@ -122,7 +122,7 @@ chain.load_known_payloads -> chain.release_timer: "[FE] Known variable set\n[fie
 chain.release_timer -> chain.collect_measurements: "[FE] Timer release\n[2 s]" { class: fe }
 chain.collect_measurements -> chain.add_status_metadata: "[FE] Measurements\n[values + result codes]" { class: fe }
 chain.add_status_metadata -> chain.encode_frame: "[FE] Telemetry set\n[payload + metadata]" { class: fe }
-chain.encode_frame -> chain.transmit_frame: "[FE] LoRa frame\n[34-byte target payload + metadata]" { class: fe }
+chain.encode_frame -> chain.transmit_frame: "[FE] LoRa frame\n[35-byte variable table + metadata]" { class: fe }
 chain.transmit_frame -> chain.receive_log_frame: "[FE] RF signal\n[LoRa frame]" { class: fe }
 chain.receive_log_frame -> chain.forward_decode: "[FE] Raw frame + RF metrics\n[RSSI/SNR/time]" { class: fe }
 chain.forward_decode -> chain.display_store: "[FE] Decoded payload\n[sequence + timestamp]" { class: fe }
@@ -130,7 +130,7 @@ chain.display_store -> chain.compare_schema: "[FE] Stored/displayed record\n[CSV
 chain.compare_schema -> chain.evaluate_cadence: "[FE] Schema verdict\n[field-by-field]" { class: fe }
 
 chain.start_loggers -> chain.inject_malformed: "[FE] Decoder hardening\nsubsequence ready []" { class: fe }
-chain.inject_malformed -> chain.reject_malformed: "[FE] Invalid frame set\n[CRC/length/RH/corrupt]" { class: fe }
+chain.inject_malformed -> chain.reject_malformed: "[FE] Invalid frame set\n[CRC/length/RH/status/corrupt]" { class: fe }
 chain.reject_malformed -> chain.record_rejections: "[FE] Rejection result\n[invalid, not stored]" { class: fe }
 chain.record_rejections -> chain.run_repetition_set: "[FE] Hardening evidence\n[classes covered]" { class: fe }
 

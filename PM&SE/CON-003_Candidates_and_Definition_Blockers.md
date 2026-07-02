@@ -46,7 +46,7 @@ These are proposed in `PM&SE/MBSE_Test_Plan_Assessment.md` §4 and are still can
 | DPS v1.0 | `DPS-V10-C-004` | Candidate, browser set TBD. | Select supported browser(s), refresh/reconnect behavior, user-operation oracle. |
 | DPS v1.0 | `DPS-V10-C-005` | Candidate, filesystem oracle needed. | Define session/restart cases, filename uniqueness oracle, overwrite/checksum checks. |
 | DPS v1.0 | `DPS-V10-C-006` | Candidate, threshold oracle needed. | Define timestamp source, boundary cases around `>1 s`, expected alert placement/behavior. |
-| DPS v1.0 | `DPS-V10-C-008` | Candidate, requirement/model discrepancy open. | Decide whether top-left 3D plot is altitude or orientation; update README/model/test. |
+| DPS v1.0 | `DPS-V10-C-008` | Candidate, UI oracle detail required. | Define the detailed layout/mapping oracle for the top-left attitude model and selected telemetry cells. |
 | DPS v1.0 | `DPS-V10-C-002`, `DPS-V10-C-007` | Covered by `DPS-V10-I-001` and `DPS-V10-T-002`, respectively; optional separate sign-off only. | Retire as separate rows or keep optional constraint-specific sign-off definitions. |
 | DPS v0.1 | `DPS-V01-A-001`, `DPS-V01-T-001`..`DPS-V01-T-006`, `DPS-V01-C-001`..`DPS-V01-C-007` | All rows in `DPS/MBSE/v0.1/tests/README.md` remain candidates if v0.1 closure is required. | Either defer historical v0.1 closure, or convert selected rows to detailed modeled definitions. |
 | DPS v0.2 | Version-specific DPS v0.2 gates | No detailed `DPS/MBSE/v0.2/tests/README.md` found. | Create v0.2 test plan/definitions if v0.2 must be closed. |
@@ -112,14 +112,17 @@ These are proposed in `PM&SE/MBSE_Test_Plan_Assessment.md` §4 and are still can
 | Blocker ID | Blocker | Blocks | Closure action |
 |---|---|---|---|
 | DPS-BLK-001 | Multiple DPS v1.0 rows remain planning candidates (`T-004`, `T-005`, `T-006`, `C-001`, `C-003`, `C-004`, `C-005`, `C-006`, `C-008`). | DPS v1.0 definition completeness. | Convert candidate rows to detailed modeled definitions. |
-| DPS-BLK-002 | DPS model/UI includes relative humidity while OBCC v1.0 excludes it. | Dashboard/CSV/payload closure. | Decide remove RH, display absent/error-coded value, or update OBCC payload. |
-| DPS-BLK-003 | Dashboard visualization mismatch: README says 3D altitude model; PA/test candidate says 3D orientation plot. | `DPS-V10-T-005` / `DPS-V10-C-008`. | Decide intended 3D plot and update README/model/tests. |
+| DPS-BLK-002 | Closed — obsolete RH dashboard/payload field removed from the OBCC frame table and DPS dashboard model/test baselines. | Dashboard/CSV/payload closure. | Resolved; no placeholder was added and the OBCC payload was not expanded. |
+| DPS-BLK-003 | Closed — dashboard top-left attitude model selected and README/model/tests aligned. | `DPS-V10-T-005` / `DPS-V10-C-008`. | Resolved; detailed UI oracle work remains under `DPS-BLK-001` / `DPS-BLK-006`. |
 | DPS-BLK-004 | PV2 CE-03 UART direction is Forwarder -> Decoder, but command/uplink uses Decoder -> Forwarder. | `DPS-V10-T-002` unqualified pass and CE analysis. | Update model to bidirectional CE or approve waiver/disposition. |
 | DPS-BLK-005 | RF/range/PDR conditions are not fixed: range site/RF-equivalent setup, legal settings, antennas, PDR threshold, independence/statistics. | `DPS-V10-C-001`, `SYS-RF-RANGE-PDR`. | Define RF campaign and exact-binomial acceptance method. |
 | DPS-BLK-006 | UI/browser/CSV/latency test oracles are missing. | `DPS-V10-T-005`, `C-004`, `C-005`, `C-006`, `C-008`. | Define browser set, UI automation/oracle, filesystem/checksum oracle, latency timestamp oracle. |
 | DPS-BLK-007 | Concurrency load and mission-duration stress profile are not defined. | `DPS-V10-C-003`. | Define frame rate/duration, queues, memory, backlog, p95 latency acceptance. |
 | DPS-BLK-008 | Earlier delivery versions are not detailed consistently. | DPS v0.1/v0.2 closure if needed. | Either defer historical gates or add v0.1/v0.2 detailed definitions. |
 | DPS-BLK-009 | Formal mission/capability/use-case/feared-event trace elements are absent. | Controlled traceability. | Confirm provisional trace labels or add trace model elements. |
+
+DPS-BLK-003 closure note: the selected top-left dashboard model renders CanSat attitude from pitch/roll/yaw.
+Altitude remains a two-dimensional telemetry plot/value in DPS dashboard artifacts.
 
 ### 2.5 OBCC blockers
 
@@ -129,7 +132,7 @@ These are proposed in `PM&SE/MBSE_Test_Plan_Assessment.md` §4 and are still can
 | OBCC-BLK-002 | Final readiness pass requires mission rehearsal closure. | `OBCC-V10-FLIGHT-001` final PASS. | Execute/disposition `OBCC-V09-GATE-001` before final readiness board. |
 | OBCC-BLK-003 | Payload schema, command schema, radio settings, hardware variants, firmware/configuration IDs are not frozen. | Telemetry/command/RF evidence validity. | Freeze as-tested configuration before execution. |
 | OBCC-BLK-004 | Emergency-deploy policy, descent-state observability criteria, safe/error-state behavior, and actuator status semantics need confirmation. | Runtime fault handling, mission rehearsal, deployment safety. | Define cross-subsystem policy with PDM/ADS/PM&SE and update affected tests. |
-| OBCC-BLK-005 | Telemetry cadence tolerance, range/PDR evidence, RH exclusion, and RF module naming drift require disposition. | OBCC telemetry/range gate and DPS alignment. | Confirm cadence tolerance, final frame schema, actual radio module, range/PDR plan. |
+| OBCC-BLK-005 | Telemetry cadence tolerance, range/PDR evidence, payload-schema traceability, and RF module naming drift require disposition. | OBCC telemetry/range gate and DPS alignment. | Confirm cadence tolerance, final frame schema, actual radio module, range/PDR plan. |
 | OBCC-BLK-006 | Runtime fault telemetry-gap bound (`<=4 s`) and trace/stress load profile/tool IDs require confirmation. | `OBCC-V06-GATE-001` timing/fault-hardening claims. | Confirm or tailor degradation allowance and record trace/stress tools/load profiles. |
 
 ### 2.6 PDS & ESS blockers

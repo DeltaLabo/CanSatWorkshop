@@ -10,7 +10,7 @@ Key scope decisions:
   - `[LC] Dummy Datalogger`
   - `[LC] AMS Processing IMU Only`
 - IMU-only processing is based on the IMU flows from `ADS/MBSE/v0.2/`.
-- `[F] Update orientation 3D plot` has the constraint `[C] No perceptible orientation jitter`.
+- `[F] Update CanSat orientation 3D model` has the constraint `[C] No perceptible orientation jitter`.
 
 ## Views
 

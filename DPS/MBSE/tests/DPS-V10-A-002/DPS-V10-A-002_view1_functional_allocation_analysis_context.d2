@@ -220,8 +220,7 @@ system: "[System] DPS v1.0\nDPS-V10-A-002 PV3 functional-allocation analysis\nIA
       grid-columns: 2
 
       dashboard_consume_payload_queue: "[F] Consume\npayload queue" { class: func }
-      update_orientation_3d_plot: "[F] Update orientation\n3D plot" { class: func }
-      update_rel_humidity_2d_plot: "[F] Update rel.\nhumidity 2D plot" { class: func }
+      update_orientation_3d_plot: "[F] Update CanSat\norientation 3D model" { class: func }
       push_to_command_queue: "[F] Push to\ncommand queue" { class: func }
       update_temperature_2d_plot: "[F] Update temperature\n2D plot" { class: func }
       update_altitude_2d_plot: "[F] Update altitude\n2D plot" { class: func }
@@ -255,7 +254,7 @@ system: "[System] DPS v1.0\nDPS-V10-A-002 PV3 functional-allocation analysis\nIA
       shape: page
     }
 
-    note_plots: "[C] A 4x4 matrix of\nplots, 3D on top left" {
+    note_plots: "[C] 4x4 plot matrix;\ntop-left cell shows\nthe 3D CanSat attitude\nmodel" {
       class: note
       shape: page
     }

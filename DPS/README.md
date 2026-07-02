@@ -40,7 +40,7 @@ This order goes from structure to allocation, then follows the main DPS operatio
 | The data processing system must be capable of receiving, storing, and processing OBCC LoRa telemetry at the v1.0 flight cadence of one frame every 2 seconds; optional lab stress tests may exercise higher rates such as 5 Hz. | Communication Test |
 | The data processing system must allow access to processed data through a user-friendly interface. | Interface inspection |
 | The interface of the system must show  a real-time report of all the atmospheric measurements in the CanSat. | Interface inspection |
-| The interface of the system must generate a real-time report with a 3D model that displays the CanSat's altitude. | Interface inspection |
+| The interface of the system must generate a real-time report with a 3D model that displays the CanSat's orientation (pitch, roll and yaw attitude). | Interface inspection |
 | The Data Processing System must store all information send by OBCC, locally. | File inspection |
 
 ### Success Criteria

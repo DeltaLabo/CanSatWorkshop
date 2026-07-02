@@ -51,8 +51,7 @@ chain: "DPS v0.2 — Dashboard visualisation chain" {
   push_to_payload_queue: "[F] Push to\npayload queue" { class: func }
   dashboard_consume_payload_queue: "[F] Consume\npayload queue" { class: func }
   create_plots: "[F] Create plots" { class: func }
-  update_orientation_3d_plot: "[F] Update orientation\n3D plot" { class: func }
-  update_rel_humidity_2d_plot: "[F] Update rel.\nhumidity 2D plot" { class: func }
+  update_orientation_3d_plot: "[F] Update CanSat\norientation 3D model" { class: func }
   update_temperature_2d_plot: "[F] Update temperature\n2D plot" { class: func }
   update_altitude_2d_plot: "[F] Update altitude\n2D plot" { class: func }
   update_latency_alert: "[F] Update latency\nalert" { class: func }
@@ -67,7 +66,7 @@ chain: "DPS v0.2 — Dashboard visualisation chain" {
     shape: page
   }
 
-  note_plots: "[C] A 4x4 matrix of\nplots, 3D on top left" {
+  note_plots: "[C] 4x4 plot matrix;\ntop-left cell shows\nthe 3D CanSat attitude\nmodel" {
     class: note
     shape: page
   }
@@ -85,7 +84,6 @@ chain: "DPS v0.2 — Dashboard visualisation chain" {
 
 chain.push_to_payload_queue -> chain.dashboard_consume_payload_queue: "[FE] Payload\n[Timestamped Payload]" { class: fe }
 chain.dashboard_consume_payload_queue -> chain.update_orientation_3d_plot: "[FE] Pitch, roll, yaw []" { class: fe }
-chain.dashboard_consume_payload_queue -> chain.update_rel_humidity_2d_plot: "[FE] Rel. humidity []" { class: fe }
 chain.dashboard_consume_payload_queue -> chain.update_temperature_2d_plot: "[FE] Temperature []" { class: fe }
 chain.dashboard_consume_payload_queue -> chain.update_altitude_2d_plot: "[FE] Altitude []" { class: fe }
 chain.dashboard_consume_payload_queue -> chain.update_latency_alert: "[FE] Latency []" { class: fe }

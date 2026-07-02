@@ -51,8 +51,8 @@ Assessment date: 2026-07-01
 | SUB-DPS-001 | DPS | DPS v1.0 has detailed definitions for physical inspection, CE analysis, allocation, downlink decode/storage, command/uplink, and CanSat receive path. | Good start but incomplete. | Continue detailed definition pass. |
 | SUB-DPS-002 | DPS | Multiple DPS v1.0 activities remain candidates. | Pending detailed definitions include CanSat transmit path, dashboard visualization, forwarder initialization, 500 m separation/range, concurrency, browser access, CSV uniqueness, latency alert, and plot layout. | Convert candidate rows to modeled definitions. |
 | SUB-DPS-003 | DPS | DPS v0.1/v0.2 are not detailed to the same level as v1.0. | Earlier delivery versions are acknowledged but not fully defined under `DPS/MBSE/tests/`. | Add version-specific DPS gates if v0.1/v0.2 must be closed. |
-| SUB-DPS-004 | DPS | DPS/OBCC payload mismatch exists. | DPS model/UI references relative humidity while OBCC v1.0 excludes it. | Decide remove, display absent/error-coded value, or update OBCC payload. |
-| SUB-DPS-005 | DPS | Dashboard requirement/model mismatch exists. | DPS README says 3D model displays altitude; PA model/test candidates mention 3D orientation plot. | Decide intended visualization and update model/tests. |
+| SUB-DPS-004 | DPS | DPS/OBCC payload field blocker closed. | The obsolete RH dashboard/frame field was removed from the controlled OBCC table and DPS dashboard artifacts. | Keep broader payload-schema/versioning control under `SYS-BLK-004`. |
+| SUB-DPS-005 | DPS | Dashboard requirement/model blocker closed. | The selected top-left dashboard model renders CanSat attitude from pitch/roll/yaw. | Altitude remains a two-dimensional telemetry plot/value; detailed UI oracle definition remains part of DPS candidate-definition work. |
 | SUB-OBCC-001 | OBCC | OBCC has broad gate coverage from v0.1 through v1.0 final closure. | Coverage includes startup health, buses/getters, telemetry, command/state, deployment gate, runtime faults, RTOS allocation, workmanship, mission rehearsal, and final review. | Execute and link evidence to final closure. |
 | SUB-OBCC-002 | OBCC | OBCC v0.x source baselines are absent. | All v0.x gates use v1.0 model copies as target context only. | Keep source-gap declarations and identify actual code/configuration baseline in reports. |
 | SUB-OBCC-003 | OBCC | OBCC final pass depends on mission rehearsal evidence. | `OBCC-V10-FLIGHT-001` forbids final PASS if `OBCC-V09-GATE-001` is unresolved. | Execute mission rehearsal or record approved defer/hold. |
@@ -91,7 +91,7 @@ Assessment date: 2026-07-01
 | GAP-001 | Cadence semantics | Internal ≥5 Hz and v1.0 LoRa 2 s cadence are documented, but subsystem-to-OBCC 5 Hz closure is inconsistent for ADS/AMS. | Add explicit internal data-rate/freshness tests or update requirements. |
 | GAP-002 | Hardware naming | `RFM95W` vs `RFM96W`, `ICM20948` vs legacy `MPU6050`, and `BME280` vs legacy `BMP280` appear across artifacts. | Freeze actual as-built part list and disposition naming drift. |
 | GAP-003 | Battery architecture | PDS/ESS README `2S1P` conflicts with MBSE/tests `1S1P`. | Resolve before PDS/ESS and system power tests. |
-| GAP-004 | Payload schema | DPS expects fields not aligned with OBCC v1.0 payload, especially relative humidity. | Freeze payload schema and dashboard behavior. |
+| GAP-004 | Payload schema | The DPS/OBCC RH field mismatch is closed; broader schema versioning, timestamps, units and freshness/error markers still need project-level control. | Freeze payload schema and dashboard behavior. |
 | GAP-005 | Deployment policy | OBCC/PDM emergency deployment and descent observability policies are not fully specified. | Define cross-subsystem safety policy. |
 | GAP-006 | Power efficiency | README 95% regulator efficiency is not clearly verified. | Add efficiency test or change requirement. |
 | GAP-007 | Full-system transients | Servo actuation, RF TX current, brownout and reset behavior need system-level verification beyond subsystem bench tests. | Add `SYS-POWER-ENDURANCE-TRANSIENT`. |
@@ -230,7 +230,7 @@ Assessment date: 2026-07-01
 |---|---|---|
 | ACT-001 | Create a system-level MBSE tests folder and define `SYS-FLIGHT-READINESS-CLOSURE`. | PM&SE / system IVV owner. |
 | ACT-002 | Add `SYS-MISSION-REHEARSAL`, `SYS-RF-RANGE-PDR`, `SYS-END-TO-END-DATA`, and `SYS-POWER-ENDURANCE-TRANSIENT`. | PM&SE with all subsystem owners. |
-| ACT-003 | Resolve requirement/model conflicts: battery 1S/2S, RF module, IMU name, DPS humidity, DPS 3D plot, ADS/AMS update rate, PDM descent speed. | PM&SE configuration control. |
+| ACT-003 | Resolve remaining requirement/model conflicts: battery 1S/2S, RF module, IMU name, DPS detailed UI oracles, ADS/AMS update rate, PDM descent speed. | PM&SE configuration control. |
 | ACT-004 | Complete detailed definitions for DPS candidate rows and PDM v1.0 candidate rows. | DPS and PDM owners. |
 | ACT-005 | Define final mission-window duration, allowable gaps, timing tolerances, and payload schema. | OBCC/DPS/PM&SE. |
 | ACT-006 | Add missing explicit tests for AMS 60 s response time, AMS 5 Hz, ADS v1.0 5 Hz/freshness, ADS acceleration, ADS north heading, and PDS efficiency. | Respective subsystem owners. |

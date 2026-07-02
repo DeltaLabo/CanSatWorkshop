@@ -28,7 +28,6 @@
 | Acceleration Z | m/s2 | float | ]-327.68, 327.68[ | 2 | int16 | 2 |
 | Altitude | m | float | [0, 500] | 0 | int16 | 2 |
 | Temperature | Celsius | int | [10.0, 40.0] | 1 | int16 | 2 |
-| Rel. humidity | % | int | [20, 80] | 0 | int16 | 2 |
 | Latitude |  | float | NA | 5 | float | 4 |
 | Longitude |  | float | NA | 5 | float | 4 |
 | Battery Voltage | V | float | [0.0, 3.7] | 2 | int16 | 2 |

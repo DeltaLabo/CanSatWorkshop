@@ -12,7 +12,7 @@ This document freezes definition-level oracles only for:
 - `DPS-V10-C-006` — top latency alert when latency is greater than `1.0 s`;
 - `DPS-V10-C-008` — `4x4` dashboard plot matrix with top-left attitude model.
 
-It is not an execution report and does not grant pass/fail credit. Execution, detailed activity READMEs, D2/source-model updates, PNG regeneration, implementation changes, and system-level integration updates remain pending.
+It is not an execution report and does not grant pass/fail credit. Definition decisions in this document are closed at definition level. Execution evidence, as-tested configuration capture, exact payload/log/session configuration, browser-access implementation for `DPS-V10-C-004`, legal/site approvals where applicable, and results archival remain future execution prerequisites.
 
 The current `DPS/dashboard.py` implementation is a Tkinter/customtkinter desktop application, not a browser-accessible dashboard. Strict browser-access execution for `DPS-V10-C-004` is therefore **HOLD/limited** until a browser-accessible dashboard exists. This does not weaken the browser-access requirement.
 
@@ -261,15 +261,17 @@ Each affected report shall reference this oracle document and record, as applica
 | `DPS-V10-C-006` | Use the monotonic RX-to-dashboard latency definition, strict `<=1.0 s` no-alert / `>1.0 s` top-alert rule, threshold sample set, and invalid timestamp hardening. |
 | `DPS-V10-C-008` | Use the selected `4x4` cell map, separate persistent deployment-status indicator/banner, required labels/units, top-left CanSat attitude model, no RH/pressure acceptance cell, resize/refresh evidence, and stale/invalid display behavior. |
 
-## 8. Residual prerequisites and D2/model follow-up
+Current modeled definitions use this oracle baseline. Future D2/source-model or PNG updates are only for controlled future changes or representation maintenance, not an open `CON-003` definition blocker.
+
+## 8. Residual execution prerequisites and controlled follow-up
 
 Before strict execution credit:
 
 1. Provide or implement a browser-accessible dashboard entry point; the current Tkinter `DPS/dashboard.py` leaves `DPS-V10-C-004` HOLD/limited.
 2. Freeze the concrete payload schema/envelope, decode/scaling rules, `deployment_status` field order/byte offset/encoding, sequence/timestamp fields, CSV column order, and source payload generator/log format used for the campaign.
-3. Create/update detailed modeled definitions for `DPS-V10-T-005`, `DPS-V10-C-004`, `DPS-V10-C-005`, `DPS-V10-C-006`, and `DPS-V10-C-008` so their pass/fail constraints reference this oracle, including the status-category mapping and invalid-status no-false-deployed behavior.
-4. Ensure any affected D2/source-model views that reference this oracle are updated and their PNGs regenerated; this oracle document remains a definition-level baseline, not execution evidence.
+3. Current modeled definitions use this oracle baseline for `DPS-V10-T-005`, `DPS-V10-C-004`, `DPS-V10-C-005`, `DPS-V10-C-006`, and `DPS-V10-C-008`; future related definitions or controlled changes shall continue to reference it, including the status-category mapping and invalid-status no-false-deployed behavior.
+4. Perform D2/source-model view updates and PNG regeneration only for controlled future changes or representation maintenance; they are not open `CON-003` definition blockers.
 5. Define the actual browser start command, URL/port, input mode, CSV output directory, logging switches, and analysis/comparison scripts in the execution procedure.
-6. Execute only after the detailed definitions and evidence paths are approved; archive results under the applicable `DPS/MBSE/tests/results/<test-id>/` paths.
+6. Execute only after execution procedures and evidence paths are approved; archive results under the applicable `DPS/MBSE/tests/results/<test-id>/` paths.
 
-With these definition decisions, `DPS-BLK-006` is closed at definition level after final integration, while execution, implementation, and D2/model updates remain pending.
+With these definition decisions, `DPS-BLK-006` is closed at definition level. Browser-access implementation for `DPS-V10-C-004`, execution evidence, as-tested configuration, exact payload/log/session evidence, legal/site approvals where applicable, and results archival remain pending where explicitly stated.

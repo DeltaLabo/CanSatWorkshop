@@ -105,9 +105,9 @@ Before strict execution credit, reports shall record:
 | `DPS-V10-C-001` / `SYS-RF-RANGE-PDR` | Reuse the same horizontal LOS RF/range/PDR baseline unless stricter system-level conditions are approved. |
 | `DPS-V10-C-003` | Use the same 10 min/2 s stream and p95 `<1 s` pipeline criterion for concurrency/load claims where OBCC telemetry is the source. |
 
-## 9. Residual follow-up
+## 9. Residual execution follow-up
 
-1. Update affected Markdown READMEs and D2/model views to cite this contract.
+1. Keep affected Markdown READMEs and D2/model views aligned with this contract when future controlled changes are made; current CON-003 definitions cite/use this baseline.
 2. Recalculate airtime if the payload/envelope differs from the 100-byte basis.
 3. Align source/configuration values with the selected `2 s` telemetry cadence before strict credit, or record a controlled deviation.
 4. Execute only after legal/site approval, as-tested configuration records, evidence paths, and analysis scripts are controlled.

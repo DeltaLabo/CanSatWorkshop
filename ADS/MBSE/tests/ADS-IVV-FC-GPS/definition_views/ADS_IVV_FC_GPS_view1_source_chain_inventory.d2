@@ -79,7 +79,7 @@ system: "[System] ADS-IVV-FC-GPS\nGPS functional-chain source inventory\nRefs: I
         getters: "[F] Get lat / Get lon" { class: func }
         collect: "[F] Collect measurements" { class: func }
       }
-      note_c: "[C] v1.0 pass constraints\nAccuracy < 5 m. No ADS 5 Hz note is modeled.\nGPS data are delivered through ADS Processing\nto OBCC via Pointers/Returns in related views." { class: note; shape: page }
+      note_c: "[C] v1.0 pass constraints\nGPS accuracy < 5 m remains this chain's main oracle.\nInternal ADS-to-OBCC 5 Hz freshness/status\nis controlled by the shared freshness path,\nADS-V10-DATA-FRESHNESS, and rate definitions." { class: note; shape: page }
     }
   }
 

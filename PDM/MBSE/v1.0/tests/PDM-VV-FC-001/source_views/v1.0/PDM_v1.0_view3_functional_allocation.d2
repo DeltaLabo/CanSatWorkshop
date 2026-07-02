@@ -154,7 +154,7 @@ system: "[System] Physical System" {
         note_imu_trigger: "[C] No manual/BLE\nflight command:\nnormal trigger uses\nfresh-valid ADS IMU data" { class: note; shape: page }
         note_ads_freshness: "[C] ADS normal-trigger input\nrequires status VALID,\nfinite/in-range fields,\nage_ms <= 400 ms.\nNon-VALID (STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT,\nINIT_FAIL) is not\na normal trigger." { class: note; shape: page }
         note_obcc_policy_boundary: "[C] OBCC owns mode, trigger,\nemergency, safe/error and\nno-false-success decisions;\nPDM executes command\nand exposes status." { class: note; shape: page }
-        note_status_mapping: "[C] deployment_status mapping:\nCOMMAND_SENT is not\ndeployed/success;\nonly OPEN_CONFIRMED\nis strict success." { class: note; shape: page }
+        note_status_mapping: "[C] deployment_status mapping\npreserves exposed PDM/actuator\nevidence. Only OPEN_CONFIRMED\nis strict success; command,\nin-progress, inhibited, no-open,\ntimeout, jam, fault, and unknown\nstates are non-success." { class: note; shape: page }
         note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" { class: note; shape: page }
         note_process_time: "[C] All Process or\nCalculate functions\nmust take < 5 ms" { class: note; shape: page }
         note_no_blocking: "[C] No blocking\noperations besides\nI2C comms" { class: note; shape: page }

@@ -1,6 +1,6 @@
 # AMS multi-version IVV-aligned verification plan
 
-Planning artifact for the Capella/D2 views in `AMS/MBSE/`. The model remains the source of truth; baseline diagrams in `AMS/MBSE/v0.1`, `AMS/MBSE/v0.2`, and `AMS/MBSE/v1.0` are not modified. Modeled test-definition copies are added under this `tests/` folder.
+Planning artifact for the Capella/D2 views in `AMS/MBSE/`. The model remains the source of truth; modeled test definitions and execution records are organized under this `tests/` folder.
 
 Project-wide IVV conventions, evidence paths, statistical policy, fault semantics, and report-by-reference rules are defined in [`../../../PM&SE/IVV.md`](../../../PM&SE/IVV.md). Evidence for any activity below should be stored under `results/<activity-id>/` in this `tests/` folder unless a campaign-level folder is later agreed.
 
@@ -10,7 +10,7 @@ Project-wide IVV conventions, evidence paths, statistical policy, fault semantic
 - **AMS v0.2:** PCB-delivery baseline. Tests support advancement to the v1.0 integrated flight-readiness baseline.
 - **AMS v1.0:** final acceptance / flight readiness baseline.
 - The only version directories present under `AMS/MBSE/` are `v0.1`, `v0.2`, and `v1.0`; this plan treats them as the controlled AMS development baselines.
-- Explicit mission, capability, use-case, and feared-event nodes are not present in the AMS D2 views; traceability targets below are provisional project-level labels derived from model intent and IVV fault semantics. Per `AMS-BLK-005`, those provisional labels are acceptable until system/source trace elements are modeled; no AMS-only trace test is created by this Markdown update.
+- Current AMS v1.0 source D2 includes use-case/feared-event notes; v0.1/v0.2 traceability labels may remain provisional project-level labels derived from model intent and IVV fault semantics. Those provisional labels are controlled by this plan and the current system requirement-to-test matrix; no execution credit is claimed by this Markdown update.
 - Shared ADS/AMS freshness contract: [`../../../PM&SE/contracts/sensor_obcc_freshness_contract.md`](../../../PM&SE/contracts/sensor_obcc_freshness_contract.md) governs AMS-to-OBCC delivery planning. AMS shall support OBCC request/response at `5 Hz` (`200 ms` period); each `2 s` LoRa telemetry push treats AMS data as fresh only when `status == VALID` and `age_ms <= 400 ms`; the exact status enum is `VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`; timeout, runtime fault, initialization failure, and no-data conditions shall not leave old data marked `VALID`.
 - Fault semantics from project IVV: a BME280 startup failure is treated as a critical startup fault; runtime getter/sensor failures shall return bounded error/result codes and shall not block the scheduler.
 - AMS `v0.2` PCB-ready non-issue: per `AMS-BLK-003`, `v0.2` was the PCB delivery baseline only. `AMS-V02-PCB-001` and `AMS-V02-BRINGUP-001` may demonstrate PCB/build and powered reachability over the modeled physical path, but no native `v0.2` logical, CE, allocation, or functional-chain closure is required unless a future controlled decision adds those source views.
@@ -152,7 +152,7 @@ Activities below are model-defined unless their status says otherwise. Detailed 
 - **Allocation coverage:** all modeled logical components and allocated functions are covered by `AMS-VV-API-001`.
 - **Functional-chain coverage:** atmospheric measurement is covered by `AMS-VV-FC-001`; peripheral initialisation is covered by `AMS-VV-FC-002`.
 - **Constraint coverage:** sunlight/airflow (`AMS-VV-CON-001`), variable getter/API semantics (`AMS-VV-API-001`), I2C timeout (`AMS-VV-CON-003`), process/calculate timing and no-blocking (`AMS-VV-CON-004`), and pressure/temperature/altitude constraints (`AMS-VV-FC-001`) are all assigned to model-defined activities.
-- **Remaining modeling gap:** explicit mission/capability/use-case/feared-event nodes remain absent from AMS views; per `AMS-BLK-005`, traceability targets in this plan remain acceptable provisional labels until system/source trace nodes and the final requirement-to-test matrix are modeled.
+- **Traceability note:** v1.0 source views now include use-case/feared-event notes; v0.1/v0.2 trace labels remain controlled provisional labels mapped through the current system requirement-to-test matrix. Execution/report evidence remains pending per activity status.
 
 ## 7. Model-defined activity index
 

@@ -112,7 +112,7 @@ Activities indexed here are model-defined, covered by a model-defined activity, 
 
 **Definition pass 2026-06-30 incremental gate continuation:** issue 002 selected `PDS-VV-V02-FC-001` as the PDS & ESS `v0.2` INA219 measurement/reporting advancement gate to v0.3. The modeled definition is now at `tests/PDS-VV-V02-FC-001/` with expected evidence/report path `tests/results/PDS-VV-V02-FC-001/`.
 
-**PDS blocker closure alignment 2026-07-02:** definition decisions from `PM&SE/PDS_Blocker_Closure_Record_2026-07-02.md` are applied at planning level only; execution evidence and pass/fail credit remain pending.
+**PDS blocker closure alignment 2026-07-02:** definition decisions folded into `PM&SE/CON-003_Candidates_and_Definition_Blockers.md` are applied at planning level only; execution evidence and pass/fail credit remain pending.
 
 - `PDS-VV-CON-010` is now a model-defined regulator-efficiency validation for the PDS README requirements that the 3.3 V and 5 V rails each supply `1 A` with `95%` efficiency. The activity folder defines measurement topology, instrumentation, load cases, uncertainty/guard band, thermal limits, and evidence paths; execution remains pending.
 - `PDS-VV-CE-003` / INA219 I2C CE source closure is aligned: updated PV2 now includes explicit `[CE] I2C / INA219 bus` between ESS Processing/XIAO and Battery monitoring/INA219. This is not an unresolved definition decision; final CE completeness credit remains execution pending until implemented topology, endpoint pins/net names, INA219 address, pullups, voltage levels, transaction direction, `≤5 ms` timeout policy, fault-status mapping, and raw logs/source/build evidence are complete.

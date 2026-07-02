@@ -9,7 +9,7 @@
 
 ## Scope and assumptions
 
-This activity covers the v1.0 atmospheric measurement functional chain and associated pressure, temperature, altitude, currentness/freshness, and evidence-logging pass/fail constraints. It uses `AMS-VV-CON-003` as a dependency for detailed environmental I2C read timeout proof (`≤5 ms`) and does not duplicate that fault-injection/timing activity. It is the atmospheric-chain extension point for `AMS-V10-DATA-FRESHNESS`. `AMS-V10-TEMP-RESPONSE-60S` is not created or closed in this folder during this phase; response-time `<=60 s` requires a separate modeled phase-2 chain/folder or an explicitly modeled FC-001 extension with the response oracle below.
+This activity covers the v1.0 atmospheric measurement functional chain and associated pressure, temperature, altitude, currentness/freshness, and evidence-logging pass/fail constraints. It uses `AMS-VV-CON-003` as a dependency for detailed environmental I2C read timeout proof (`≤5 ms`) and does not duplicate that fault-injection/timing activity. It is the atmospheric-chain extension point for `AMS-V10-DATA-FRESHNESS`. The standalone model-defined `AMS-V10-TEMP-RESPONSE-60S` activity controls the response-time oracle; `AMS-VV-FC-001` may reference it but does not by itself claim execution credit.
 
 Conservative assumptions recorded for execution:
 

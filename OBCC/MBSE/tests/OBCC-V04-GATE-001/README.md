@@ -19,6 +19,7 @@ The absence of a `v0.4` Capella/D2 source baseline is an accepted OBCC lifecycle
 - Project IVV: `PM&SE/IVV.md`
 - OBCC requirements and state-transition requirement: `OBCC/README.md`
 - LoRa frame/peripheral context: `OBCC/LoRa_Frame.md`
+- OBCC/DPS LoRa telemetry and command contract: `PM&SE/contracts/obcc_dps_lora_telemetry_contract.md` (controlled command schema `OBCC-DPS-CMD-v1.0`)
 - Getter/result-code context, where telemetry/status observability is relevant: `OBCC/Variable_Getter_Template.md`
 - Test planning inventory: `OBCC/MBSE/tests/README.md`
 - Source context copied from: `OBCC/MBSE/v1.0/`
@@ -52,11 +53,11 @@ All four D2 files were rendered with the required `d2 --layout=elk` command and 
 
 - **PF-001 — setup/component/link inspection:** command-state UUT, RFM96W, antenna/RF path, telemetry observer, RF link monitor, command transmitter, deployment safe-load/logic probe, and ambient thermometer are present, identified, connected as modeled, and dispositioned before command trials begin.
 - **PF-002 — no serial-console flight operator path:** On/Stand-by command authority and state observability are provided over LoRa command uplink and LoRa telemetry. USB serial may be used only for flashing/setup or bench diagnostics and must be disconnected, disabled, or shown non-authoritative for command trials.
-- **PF-003 — valid command behavior:** each valid wireless On or Stand-by command is accepted exactly once, causes the modeled state transition, updates the command/state transition count or equivalent oracle once, is reflected in telemetry, and produces no deployment side effect.
-- **PF-004 — invalid command rejection:** each invalid/corrupt/malformed/unsupported/out-of-context/stale-context vector is rejected or ignored, produces telemetry/log evidence of the rejection class when supported, preserves the previous On/Stand-by state, and produces no deployment side effect.
-- **PF-005 — replay/duplicate hardening:** replaying or duplicating a previously accepted command frame does not increment the accepted-transition count a second time, does not create an unintended state transition, and does not produce deployment side effects.
-- **PF-006 — environmental/evidence condition:** before repetitions, record calibrated ambient thermometer model/serial and reading, radio settings, firmware/configuration IDs, RF monitor and telemetry observer clock synchronization, and as-tested UUT configuration. Missing records are report deviations.
-- **PF-007 — exchange/allocation consistency:** implemented command/state component exchanges and allocations match the modeled LoRa/SPI/Command Handler/State Manager/Telemetry path; no hidden serial-console command path or unmodeled deployment bypass is required for flight operation.
+- **PF-003 — valid command behavior:** execution uses controlled command schema `OBCC-DPS-CMD-v1.0`; each valid wireless `ON` or `STANDBY`/`STAND-BY` command is accepted exactly once, causes the modeled state transition, updates the command/state transition count or equivalent oracle once, is reflected in telemetry, and produces no deployment side effect.
+- **PF-004 — invalid command rejection:** each invalid/corrupt/malformed/unsupported/out-of-context/stale-context vector is tested against `OBCC-DPS-CMD-v1.0`, is rejected or ignored, produces telemetry/log evidence of the invalid class when supported, preserves the previous On/Stand-by state, and produces no deployment side effect.
+- **PF-005 — replay/duplicate hardening:** replaying or duplicating a previously accepted `OBCC-DPS-CMD-v1.0` command frame does not increment the accepted-transition count a second time, does not create an unintended state transition, and does not produce deployment side effects.
+- **PF-006 — environmental/evidence condition:** before repetitions, record calibrated ambient thermometer model/serial and reading, radio settings, firmware/configuration IDs, RF monitor and telemetry observer clock synchronization, as-tested UUT configuration, and as-tested `OBCC-DPS-CMD-v1.0` command-envelope mapping for `DATA`, `ON`, and `STANDBY`/`STAND-BY`. Missing records are report deviations.
+- **PF-007 — exchange/allocation consistency:** implemented command/state component exchanges and allocations match the modeled LoRa/SPI/Command Handler/State Manager/Telemetry path and `OBCC-DPS-CMD-v1.0` classes: `DATA` requests solicit telemetry only, while `ON` and `STANDBY`/`STAND-BY` are the state-transition commands; no hidden serial-console command path or unmodeled deployment bypass is required for flight operation.
 - **PF-008 — statistical and coverage interpretation:** valid-command statistics follow the project binomial policy; invalid command coverage is by declared equivalence class, and any forbidden event is counted as a failure.
 
 ## Statistics and fault-hardening viewpoints
@@ -70,7 +71,7 @@ All four D2 files were rendered with the required `d2 --layout=elk` command and 
 ## Assumptions and gaps for feedback
 
 - Lifecycle disposition: no `v0.4` Capella/D2 source baseline is required or fabricated; copied v1.0 views are target context only, and the report identifies the actual v0.4 code/configuration baseline.
-- The exact command frame schema, CRC field, sequence/trial ID, replay-protection mechanism, and command-result telemetry fields are not specified in the repository; execution must document the actual oracle used to determine “accepted exactly once.”
+- Command execution uses `OBCC-DPS-CMD-v1.0` from `PM&SE/contracts/obcc_dps_lora_telemetry_contract.md` for `DATA`, `ON`, and `STANDBY`/`STAND-BY`; reports must document the as-tested command envelope mapping, integrity/CRC field, sequence/trial ID or equivalent replay discriminator, accepted-once/replay/invalid-class evidence, command-result telemetry fields, and actual oracle used to determine “accepted exactly once.”
 - `LoRa_Frame.md` and the v1.0 model use the selected `RFM96W` radio name; execution should record the actual fitted radio module, settings, and configuration baseline.
 - v0.4 is before deployment control enablement; the modeled deployment monitor is a safe-load/logic-probe side-effect check, not a servo actuation test.
 - USB serial may exist as a bench aid, but any command success requiring serial operator input is a failure for this gate.

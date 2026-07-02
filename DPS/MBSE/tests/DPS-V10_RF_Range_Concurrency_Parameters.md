@@ -6,7 +6,7 @@ Date: 2026-07-02
 
 This document freezes definition parameters only for `DPS-V10-C-001`, `DPS-V10-C-003`, and related future detailed definitions that need the same RF/range/PDR, LoRa airtime, or concurrency assumptions. It is not an execution report and does not grant pass/fail credit.
 
-Execution, detailed activity READMEs, D2/source-model updates, PNG regeneration, and system-level integration updates remain pending.
+Definition decisions in this document are closed at definition level. Execution evidence, as-tested configuration capture, exact radio/payload/log configuration, legal/site approvals, and results archival remain future execution prerequisites.
 
 ## 2. RF/range campaign parameters
 
@@ -117,16 +117,16 @@ If over-air airtime, duty-cycle, or legal margin is inadequate, perform optional
 | `DPS-V10-C-001` | Use the 500 m horizontal LOS RF/range campaign, matching 81.4 mm 22 AWG antennas, RSSI/SNR logging, legal/site prerequisites, and `N=300`, `k>=279` PDR acceptance. |
 | `DPS-V10-C-003` | Use the 10 min flight-cadence concurrency run and optional 20 min/5 Hz synthetic or RF-cabled stress profile with bounded queue/memory/backlog and p95 latency criteria. |
 | `DPS-V10-T-001` | Align valid downlink/storage frame count and PDR/statistical handling with `N=300`, `k>=279`, 2 s cadence, 100-byte airtime, and invalid/stale/duplicate rules. |
-| `DPS-V10-T-005` | Use the same flight-cadence payload stream when dashboard visualization is exercised; dashboard-specific UI/browser/mapping oracles remain in the separate UI/CSV/latency definition work. |
+| `DPS-V10-T-005` | Use the same flight-cadence payload stream when dashboard visualization is exercised; dashboard-specific UI/browser/mapping oracles are governed by `DPS-V10_UI_CSV_Latency_Oracles.md`. |
 | `SYS-RF-RANGE-PDR` | Reuse these RF campaign and exact-binomial parameters for final-article system range/PDR unless the system-level MBSE definition approves stricter conditions. |
-| Final `CON-003` integration | Reference this file to close `DPS-BLK-005` and `DPS-BLK-007` at definition-decision level while preserving detailed-definition, D2/model, and execution follow-up. |
+| Final `CON-003` integration | Reference this file to close `DPS-BLK-005` and `DPS-BLK-007` at definition-decision level; current modeled definitions use this baseline, future D2/PNG work is only for controlled future changes, and execution evidence remains the explicit follow-up. |
 
 ## 7. Residual prerequisites and follow-up
 
 Before strict execution credit:
 
-1. Create/update detailed modeled definitions for `DPS-V10-C-001`, `DPS-V10-C-003`, affected `DPS-V10-T-001`/`DPS-V10-T-005` material, and `SYS-RF-RANGE-PDR` as applicable.
-2. Update D2/source-model views and regenerate PNGs where the project decides to represent these parameters in the model.
+1. Current modeled definitions use this parameter baseline; future related definitions or controlled changes shall continue to use it unless superseded by an approved baseline.
+2. Future D2/source-model view updates and PNG regeneration are required only for controlled future changes or representation maintenance, not as an open `CON-003` definition blocker.
 3. Freeze as-tested article/configuration IDs, firmware/build commits, exact radio settings including TX power, antenna installations, payload schema/envelope, timestamp source, logging paths, and analysis scripts.
 4. Confirm legal RF operation, EIRP/duty-cycle compliance, site approval, weather/interference controls, and safety plan.
-5. Execute only after the detailed definitions and evidence paths are approved; archive results under the applicable `tests/results/<test-id>/` paths.
+5. Execute only after execution procedures and evidence paths are approved; archive results under the applicable `tests/results/<test-id>/` paths.

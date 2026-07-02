@@ -91,6 +91,10 @@ For each inspected article and selected baseline (`v0.1` or `v1.0`):
 8. QA witness reviews the completed census and evidence package.
 9. Close the version gate as pass, fail, or hold.
 
+## Environmental-screen evidence interface
+
+When this PL inspection is used as pre/post evidence for the approved S&A tailored environmental screen, it remains a 100% PC/PL/interface census and evidence-control activity, not environmental pass/fail credit by itself. Before the screen, predeclare article/build IDs, installed state, ballast/surrogate rationale, fixture adapters, safety boundary, equipment calibration/status, ambient, camera/logger setup and evidence path; capture witness-mark/gap photos for every affected link group. After the screen, repeat the 100% PC/PL/interface census and compare against the `SAA-BLK-007` thresholds used by `SAA-VV-CON-005`. Do not tighten, reseat or rework between pre/post checks unless an anomaly is opened and affected screen events/checks are re-run.
+
 ## Pass/fail constraints
 
 Pass for the selected version only if **every** modeled PL in that version is:
@@ -119,16 +123,16 @@ The execution report in `S&A/MBSE/tests/results/SAA-VV-PL-001/` should reference
 
 ## Viewpoints
 
-- **Statistical significance:** 100% census of modeled physical links for every inspected `v0.1` and `v1.0` article. This activity makes no sampling or population reliability claim; the report shall state the actual article count and any repeated inspections. Environmental or reliability demonstrations remain separate unless explicitly referenced.
+- **Statistical significance:** 100% census of modeled physical links for every inspected `v0.1` and `v1.0` article. This activity makes no sampling, population reliability, qualification, or system environmental-regression claim; the report shall state the actual article count and any repeated inspections. Environmental article/workmanship screens remain separate unless explicitly referenced.
 - **Fault hardening:** The inspection intentionally screens for loose or missing stack screws, wrong endpoints, stripped bosses, blocked backplane slot, clearance interference, PCB standoff/screw failures, battery fixture slip, header/backplane misalignment, bent pins, servo connector unseat, open/short indications, parachute/cap/servo/backplane interference, damage, unapproved bypasses, and evidence-control escapes.
 
 ## Constraint coverage note
 
-This activity covers physical-link presence, endpoint correctness, routing/mating, retention/alignment, immediate damage/interference condition, and evidence recording. Quantitative envelope/mass, electrical rail tolerance, signal-integrity performance, DRC/ERC, print-process, vibration/drop, and proof-load reliability constraints remain assigned in the top-level plan to `SAA-VV-CON-001` through `SAA-VV-CON-005` and related interface activities unless an execution report explicitly invokes this inspection as supporting evidence.
+This activity covers physical-link presence, endpoint correctness, routing/mating, retention/alignment, immediate damage/interference condition, and evidence recording. Quantitative envelope/mass, electrical rail tolerance, signal-integrity performance, DRC/ERC, print-process, vibration/drop, and proof-load article/workmanship-screen criteria remain assigned in the top-level plan to `SAA-VV-CON-001` through `SAA-VV-CON-005` and related interface activities unless an execution report explicitly invokes this inspection as supporting evidence.
 
 ## Assumptions
 
 - The only available S&A baselines are `v0.1` and `v1.0`; both are covered separately.
 - A link may be inspected as a grouped interface only when the checklist still records each modeled PL row and its endpoints.
-- This pure PL inspection does not by itself impose torque or proof-load values. When quantitative retention evidence is invoked, use the `SAA-VV-CON-004` screw-torque/proof-load criteria and the `SAA-VV-CON-005` movement/witness-mark thresholds; this activity still requires retention/no-looseness evidence and records any approved project or work-instruction criteria used during execution.
+- This pure PL inspection does not by itself impose torque or proof-load values. When quantitative retention evidence is invoked, use the `SAA-VV-CON-004` screw-torque/coupon criteria plus the approved S&A tailored environmental-screen criteria in `SAA-VV-CON-005` (`20 g` equivalent proof retention with `20 N` ESS / `10 N` PCB-backplane-connector-top-module minimums, `10 s` holds, `60 s` low-level vibration/handling where used, and `SAA-BLK-007` movement thresholds). This activity still requires retention/no-looseness evidence, records any approved project or work-instruction criteria used during execution, and does not claim `SYS-ENVIRONMENTAL-REGRESSION`.
 - The gate may be placed on hold rather than failed when a discrepancy is correctable but not yet dispositioned.

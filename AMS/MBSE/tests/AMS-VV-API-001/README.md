@@ -8,7 +8,7 @@
 
 ## Baseline views copied
 
-Untouched baseline copies of all AMS v1.0 D2/PNG views are in `baseline/`.
+Baseline copies of all AMS v1.0 D2/PNG views are in `baseline/` and are refreshed to the selected v1.0 freshness/status/API definition baseline.
 
 ## Test-definition views
 
@@ -56,7 +56,7 @@ If accepted by the global plan, this model-defined activity can cover or superse
 
 ## Pass/fail constraints
 
-Pass only if all modeled constraints in the D2 views are satisfied and the execution report covers the Markdown-only blocker-alignment additions below; the D2/model views must be updated later before execution credit is claimed:
+Pass only if all modeled constraints in the D2 views are satisfied and the execution report supplies the predeclared evidence below:
 
 1. Pointer ownership, lifetime, null/invalid pointer policy, units/scaling, and concurrency/aliasing assumptions are explicit and consistent with variable-getter semantics.
 2. Return values/statuses map implementation results to the exact shared enum (`VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`) and distinguish valid measurement, stale sample, no data, startup initialization failure, runtime sensor fault, timeout/bus error, and invalid-input cases as applicable.
@@ -65,7 +65,7 @@ Pass only if all modeled constraints in the D2 views are satisfied and the execu
 5. All crossings between LCs use modeled CEs (`I2C`, `Pointers`, `Returns`) and no foreign/unmodeled exchange, global data path, bypass, or substitute interface is required.
 6. The analysis checklist covers 100% of modeled AMS Processing getters and 100% of OBCC collection paths from the atmospheric-measurement and peripheral-initialisation chains, including every getter/OBCC path that can feed `AMS-V10-DATA-FRESHNESS` evidence.
 7. Pointer ownership, lifetime, null/invalid pointer behavior, units/scaling, aliasing/concurrency assumptions, and caller/callee responsibility are explicitly documented for each pointer/return path.
-8. The report includes the `AMS-BLK-004` evidence checklist: 100% getter/OBCC collection-path inventory, explicit shared-status mapping, pointer ownership/lifetime/null policy, static callable-path review, dynamic getter/collection timing and non-blocking traces, and an explicit dependency on `AMS-VV-CON-003` for I2C timeout/fault evidence.
+8. The report includes the `AMS-BLK-004` evidence checklist: 100% getter/OBCC collection-path inventory, explicit shared-status mapping, pointer ownership/lifetime/null/invalid-pointer policy, units/scaling and aliasing/concurrency policy, static callable-path review, dynamic getter/collection timing and non-blocking traces, an explicit dependency on `AMS-VV-CON-003` for I2C timeout/fault evidence, and an explicit dependency on `AMS-VV-CON-004` for scheduler liveness/non-blocking timing evidence where this API evidence claims non-blocking closure.
 9. Missing, ambiguous, inconsistent, unauditable, partial, or waived API/freshness evidence is classified in the report; unresolved items fail or remain on hold unless a controlled model update/waiver exists.
 
 ## Statistical and fault-hardening viewpoints
@@ -78,4 +78,4 @@ Pass only if all modeled constraints in the D2 views are satisfied and the execu
 - The v1.0 model does not define explicit mission/capability/use-case/feared-event nodes; traceability targets are the candidate IDs already used in the global plan.
 - The API contract is treated as a controlled model/code contract to be inspected during execution. No additional API standard was available in the model.
 - This definition does not prove environmental accuracy, I2C timing, process/calculate timing, or physical PC/PL presence; those remain assigned to other AMS v1.0 activities.
-- D2/model follow-up remains required to add the shared freshness/status extensions to the AMS API views; this Markdown update only controls the planning/report checklist.
+- Shared freshness/status/API extensions are represented in this README and the D2 views for this phase; execution evidence, actual API/header names, code/build IDs, dynamic trace locations, and any deviations remain report-time records.

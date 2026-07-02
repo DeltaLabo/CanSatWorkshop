@@ -5,7 +5,7 @@ vars: {
 }
 
 # Functional chain — AMS-VV-API-001 variable-getter API/component-exchange/allocation analysis
-# Verification references: IVV; model/API-contract analysis; AMS-R1 (BME280 context); AMS-R2 (I2C context).
+# Verification references: IVV; shared ADS/AMS freshness contract; model/API-contract analysis; AMS-R1 (BME280 context); AMS-R2 (I2C context).
 # IADT: Analysis with supporting Inspection. SSIV: AMS v1.0 final acceptance / flight readiness.
 # Traceability: AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault; AMS-FE-StaleMeasurement; variable-getter constraint.
 direction: down
@@ -47,7 +47,7 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-chain: "AMS-VV-API-001 — Variable-getter API / CE / allocation analysis\nAnalysis with supporting Inspection; AMS v1.0 final acceptance; Refs: IVV; model/API-contract analysis; AMS-R1/R2 context\nTrace: AMS-UC-MeasureAtmosphere, AMS-UC-InitializePeripheral, AMS-FE-SensorBusFault, AMS-FE-StaleMeasurement, variable-getter constraint" {
+chain: "AMS-VV-API-001 — Variable-getter API / CE / allocation analysis\nAnalysis with supporting Inspection; AMS v1.0 final acceptance; Refs: IVV; shared freshness contract; API analysis; AMS-R1/R2\nTrace: AMS-UC-MeasureAtmosphere, AMS-UC-InitializePeripheral, AMS-FE-SensorBusFault, AMS-FE-StaleMeasurement, variable-getter constraint" {
   class: chain
   direction: down
 
@@ -63,18 +63,19 @@ chain: "AMS-VV-API-001 — Variable-getter API / CE / allocation analysis\nAnaly
   analyze_stale_prevention: "[F] Analyze stale/no-data\nprevention" { class: func }
   analyze_bounded_errors: "[F] Analyze bounded error\nbehavior" { class: func }
   run_static_analysis: "[F] Run static call-graph\nand crossing analysis" { class: func }
-  inspect_log_evidence: "[F] Inspect unit-test /\nlog evidence" { class: func }
+  inspect_log_evidence: "[F] Inspect dynamic getter /\ncollection timing traces" { class: func }
   classify_results: "[F] Classify pass/fail,\nwaivers, anomalies" { class: func }
   archive_report_inputs: "[F] Archive coverage matrix\nand report inputs" { class: func }
 
   note_scope: "[C] Scope: target [CE] Pointers, [CE] Returns, variable-getter\nconstraint, AMS Sensing/Processing/OBCC allocations, and the two\nmodeled v1.0 chains; [CE] I2C is context from AMS-VV-CE-001" { class: note; shape: page }
   note_stat: "[C] Statistical basis: 100% model/API review of the enumerated\ngetter and OBCC collection paths; analysis/inspection only, no\nsampling or fleet reliability claim" { class: note; shape: page }
   note_pointer: "[C] Pointer pass/fail: ownership, lifetime, null/invalid pointer\npolicy, units/scaling, and concurrency/aliasing assumptions are\nexplicit and consistent with variable-getter semantics" { class: note; shape: page }
-  note_return: "[C] Return pass/fail: valid measurement, startup fault, runtime\nsensor fault, timeout/bus error, invalid input, and stale/no-data\nstatuses/data are distinguishable where applicable" { class: note; shape: page }
+  note_return: "[C] Return pass/fail: implementation codes map to exactly\nVALID, STALE, NO_DATA, TIMEOUT, SENSOR_FAULT, INIT_FAIL;\nstartup/runtime faults, timeout/no-response, no-data, stale,\nand invalid input remain distinguishable" { class: note; shape: page }
   note_allocation: "[C] Allocation pass/fail: no AMS Sensing functions are foreign\nto AMS Processing/OBCC; no OBCC collection functions are foreign\nto AMS Sensing/Processing except through modeled API exchanges" { class: note; shape: page }
   note_crossings: "[C] Crossing pass/fail: all LC crossings require only modeled\nI2C, Pointers, and Returns CEs; no unmodeled foreign exchange,\nglobal data path, or bypass is required" { class: note; shape: page }
-  note_coverage: "[C] Coverage pass/fail: checklist marks 100% of modeled AMS\nprocessing getters and OBCC collection paths complete; missing,\nambiguous, or unauditable item fails unless formally waived" { class: note; shape: page }
-  note_fault: "[C] Fault-hardening viewpoint: invalid pointer, stale data, sensor\nstartup fault, runtime sensor fault, timeout/bus error, unit mismatch,\noverflow/NaN, and scheduler non-blocking error propagation" { class: note; shape: page }
+  note_freshness: "[C] Freshness/API evidence: AMS→OBCC supports 5 Hz / 200 ms;\n2 s LoRa packaging is separate; fresh only status == VALID\nand age_ms <= 400 ms; record timestamp, sequence/sample-ID,\nage at observation point; no old/default/previous VALID" { class: note; shape: page }
+  note_coverage: "[C] Coverage pass/fail: checklist marks 100% of modeled AMS\nprocessing getters and OBCC collection paths complete, with pointer\npolicy, static callable-path review, and dynamic timing/non-blocking\ntraces; missing, ambiguous, or unauditable item fails unless waived" { class: note; shape: page }
+  note_fault: "[C] Fault-hardening viewpoint: invalid pointer, STALE/NO_DATA,\nINIT_FAIL, SENSOR_FAULT, TIMEOUT, stale-valid masking, unit mismatch,\noverflow/NaN, and bounded non-blocking error propagation.\nI2C evidence: AMS-VV-CON-003; scheduler evidence: AMS-VV-CON-004." { class: note; shape: page }
 }
 
 chain.identify_baseline -> chain.inventory_getters: "[FE] Baseline model\nand API contract" { class: fe }
@@ -97,6 +98,8 @@ chain.note_scope -> chain.map_modeled_ces { class: cstr }
 chain.note_stat -> chain.inventory_getters { class: cstr }
 chain.note_pointer -> chain.analyze_pointer_contract { class: cstr }
 chain.note_return -> chain.analyze_return_semantics { class: cstr }
+chain.note_freshness -> chain.analyze_stale_prevention { class: cstr }
+chain.note_freshness -> chain.inspect_log_evidence { class: cstr }
 chain.note_allocation -> chain.map_allocations { class: cstr }
 chain.note_crossings -> chain.map_modeled_ces { class: cstr }
 chain.note_crossings -> chain.run_static_analysis { class: cstr }
@@ -110,7 +113,8 @@ chain.archive_report_inputs -> chain.note_scope { style: { opacity: 0 } }
 chain.note_scope -> chain.note_stat { style: { opacity: 0 } }
 chain.note_stat -> chain.note_pointer { style: { opacity: 0 } }
 chain.note_pointer -> chain.note_return { style: { opacity: 0 } }
-chain.note_return -> chain.note_allocation { style: { opacity: 0 } }
+chain.note_return -> chain.note_freshness { style: { opacity: 0 } }
+chain.note_freshness -> chain.note_allocation { style: { opacity: 0 } }
 chain.note_allocation -> chain.note_crossings { style: { opacity: 0 } }
 chain.note_crossings -> chain.note_coverage { style: { opacity: 0 } }
 chain.note_coverage -> chain.note_fault { style: { opacity: 0 } }

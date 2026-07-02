@@ -27,7 +27,7 @@ The shared freshness contract remains applicable to any freshness/non-blocking c
 
 ## Baseline views copied
 
-Untouched baseline copies of all AMS v1.0 D2/PNG views are in `baseline/`.
+Baseline copies of all AMS v1.0 D2/PNG views are in `baseline/` and are refreshed to the selected v1.0 freshness/status/non-blocking definition baseline.
 
 ## Test-definition views
 
@@ -43,12 +43,12 @@ Rendered PNGs with matching names are generated beside each D2 file.
 
 ## Pass/fail constraints
 
-Pass only if all modeled constraints in the D2 views are satisfied and the execution report covers the Markdown-only AMS-BLK-004/status additions below; the D2/model views must be updated later before execution credit is claimed:
+Pass only if all modeled constraints in the D2 views are satisfied and the execution report supplies the predeclared timing, non-blocking, and status-propagation evidence below:
 
 1. `Calculate altitude` completes with `t_exec + U95 < 5.000 ms` for representative and boundary input sets.
 2. `Process temperature` completes with `t_exec + U95 < 5.000 ms` for representative and boundary input sets.
 3. A final 95/95 deadline claim uses `59/59` in-limit timings per function/input-set; smaller sets must be labeled screening or characterization only.
-4. Invalid/boundary sensor values and non-`VALID` shared-status inputs do not cause overflow, unhandled infinite values, memory corruption, infinite loops, or scheduler blockage; NaN propagation is accepted for invalid/NaN inputs only when control returns normally and status/error handling remains explicit.
+4. Invalid/boundary sensor values and non-`VALID` shared-status inputs (`STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`) do not cause overflow, unhandled infinite values, memory corruption, infinite loops, unbounded retry, scheduler blockage, stale success masking, or conversion to fresh `VALID`; invalid/NaN inputs may produce flagged non-`VALID` outputs only when control returns normally and status/error handling remains explicit.
 5. No unbounded blocking exists outside allowed I2C or UART communication waits.
 6. Runtime sensor/getter faults return bounded error/result codes mapped to the shared enum (`TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`, `STALE`, or `NO_DATA` as applicable) and do not block or brick the scheduler; old data is not returned as fresh `VALID`.
 7. I2C read wait timing, timeout/fault status mapping, stale-valid prevention, and recovery are excluded from this activity and must reference `AMS-VV-CON-003` evidence.
@@ -65,4 +65,4 @@ Pass only if all modeled constraints in the D2 views are satisfied and the execu
 - No user disambiguation was requested per orchestration instructions; the selected SSIV is AMS v1.0 final acceptance.
 - Representative and boundary vectors are to be bound in the execution report to the implemented units/ranges; the model defines the coverage intent and pass/fail constraints.
 - The optional fault/stimulus injector may be implemented by host-driven firmware inputs if no separate hardware injector is used; the report must record the as-tested configuration.
-- D2/model follow-up remains required to add the AMS-BLK-004 checklist and shared-status propagation to the modeled non-blocking views before execution credit is claimed.
+- The AMS-BLK-004 checklist and shared-status propagation are represented in this README and the D2 views for this phase; execution evidence, actual vectors, code/build IDs, scheduler hook names, and deviations remain report-time records.

@@ -56,7 +56,15 @@ chain: "ADS v1.0 — GPS position chain" {
   get_lon: "[F] Get lon" { class: func }
   collect_measurements: "[F] Collect\nmeasurements" { class: func }
 
-  note_accuracy_position: "[C] Accuracy < 5 m" {
+  note_accuracy_position: "[C] Accuracy < 5 m.\nStrict GPS truth: GNSS\nsimulator or surveyed/open-sky\nreference; phones auxiliary/\nlimited unless uncertainty-controlled" {
+    class: note
+    shape: page
+  }
+  note_internal_freshness: "[C] Internal ADS-to-OBCC\ndelivery is 5 Hz (200 ms\nnominal) through getter/\ncollection path; LoRa packaging\nremains separate at 2 s" {
+    class: note
+    shape: page
+  }
+  note_fresh_status: "[C] Fresh position at\nADS-to-OBCC point requires\nstatus == VALID, finite/\nin-range lat/lon, and\nage_ms <= 400 ms. Enum:\nVALID, STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT, INIT_FAIL;\nnon-VALID/default not VALID" {
     class: note
     shape: page
   }
@@ -73,3 +81,8 @@ chain.get_lon -> chain.collect_measurements: "[FE] Result\n[Lon]" { class: fe }
 
 chain.note_accuracy_position -> chain.get_lat { class: cstr }
 chain.note_accuracy_position -> chain.get_lon { class: cstr }
+chain.note_internal_freshness -> chain.collect_measurements { class: cstr }
+chain.note_fresh_status -> chain.collect_measurements { class: cstr }
+
+# Layout-only edge to keep chain-level freshness constraints grouped.
+chain.note_internal_freshness -> chain.note_fresh_status { style: { opacity: 0 } }

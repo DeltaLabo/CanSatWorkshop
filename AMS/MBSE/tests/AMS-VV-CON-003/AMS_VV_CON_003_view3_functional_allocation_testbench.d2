@@ -250,7 +250,11 @@ note_nominal_samples: "[C] 59/59 nominal samples per environmental\nI2C read fun
   class: note
   shape: page
 }
-note_fault_trials: "[C] Fault modes: NACK, absent sensor,\nheld SDA, held SCL; classify pass/fail;\n29/29 per mode/read function if R90/C95 claimed;\nrecovery without reset is mandatory" {
+note_fault_trials: "[C] Fault modes per environmental read function: NACK/absent\nsensor, held SDA, held SCL, and timeout/no-response; classify\npass/fail with low-level cause codes; recovery without reset is mandatory" {
+  class: note
+  shape: page
+}
+note_status_mapping: "[C] Shared status mapping: timeout/no-response -> TIMEOUT;\nruntime sensor/bus/value fault -> SENSOR_FAULT or applicable\nnon-VALID; init/no-data -> INIT_FAIL or NO_DATA.\nNo stale/old sample as VALID; record sequence/sample IDs,\ntimestamps/age where freshness is claimed, overhead, deviations." {
   class: note
   shape: page
 }
@@ -277,6 +281,8 @@ note_fault_trials -> fault_harness.force_nack_absent_sensor { class: cstr }
 note_fault_trials -> fault_harness.hold_sda_low { class: cstr }
 note_fault_trials -> fault_harness.hold_scl_low { class: cstr }
 note_fault_trials -> system.cansat.obcc_module.obcc_pcb.xiao.timeout_test_instrumentation.monitor_scheduler_alive { class: cstr }
+note_status_mapping -> system.cansat.obcc_module.obcc_pcb.xiao.timeout_test_instrumentation.emit_result_record { class: cstr }
+note_status_mapping -> host_pc.receive_timestamped_log { class: cstr }
 note_environment -> bench_supply.supply_stable_power { class: cstr }
 note_environment -> ambient_thermometer.read_ambient_temperature { class: cstr }
 note_environment -> test_operator.record_ambient_conditions { class: cstr }
@@ -291,4 +297,5 @@ bench_supply -> ambient_thermometer { style: { opacity: 0 } }
 ambient_thermometer -> note_timing_boundary { style: { opacity: 0 } }
 note_timing_boundary -> note_nominal_samples { style: { opacity: 0 } }
 note_nominal_samples -> note_fault_trials { style: { opacity: 0 } }
-note_fault_trials -> note_environment { style: { opacity: 0 } }
+note_fault_trials -> note_status_mapping { style: { opacity: 0 } }
+note_status_mapping -> note_environment { style: { opacity: 0 } }

@@ -66,7 +66,7 @@ chain: "AMS-VV-FC-001 — Altitude resolution pressure-step chain\nTesting/Demon
   read_pressure: "[F] Read\npressure" { class: func }
   calculate_altitude: "[F] Calculate\naltitude" { class: func }
   collect_measurements: "[F] Collect\nmeasurements" { class: func }
-  emit_current_measurement_record: "[F] Emit current\nmeasurement record" { class: func }
+  emit_current_measurement_record: "[F] Emit status/age\npressure-altitude record" { class: func }
   capture_obcc_results: "[F] Capture OBCC\naltitude results" { class: func }
   pair_levels_with_references: "[F] Pair P0/P1\nlevels with references" { class: func }
   compute_altitude_delta_u95: "[F] Compute altitude\ndelta and U95" { class: func }
@@ -76,8 +76,8 @@ chain: "AMS-VV-FC-001 — Altitude resolution pressure-step chain\nTesting/Demon
   note_step_method: "[C] Pressure step shall represent a 10 m-equivalent\naltitude change using AMS-R4 standard-atmosphere rationale\nwith AMS-R7 low-cost altitude context recorded" { class: note; shape: page }
   note_n30_levels: "[C] Collect n ≥ 30 paired AMS/reference samples\nat each pressure level P0 and P1; any reduced scope\nshall be labeled screening only, not final acceptance" { class: note; shape: page }
   note_altitude_pass: "[C] Altitude passes iff the 10 m-equivalent pressure\nchange is resolved with correct sign and uncertainty;\nthe confidence interval for the measured delta excludes zero" { class: note; shape: page }
-  note_stale: "[C] P1 samples must carry current sample IDs; stale P0\npressure/altitude results shall not be accepted as P1 current data" { class: note; shape: page }
-  note_i2c_dependency: "[C] Detailed I2C ≤5 ms timeout proof remains\nAMS-VV-CON-003; this chain checks altitude-result\ncurrentness and pressure-to-altitude behavior" { class: note; shape: page }
+  note_stale: "[C] Fresh/current oracle: P0/P1 samples must carry timestamp,\nsequence/sample-ID, status, and age_ms. A level is current only\nwhen status == VALID and age_ms <= 400 ms; stale P0 or any\nnon-VALID value shall not be accepted as P1 current data." { class: note; shape: page }
+  note_i2c_dependency: "[C] Detailed I2C ≤5 ms timeout proof remains\nAMS-VV-CON-003; this chain checks altitude-result\ncurrentness, pressure-to-altitude behavior, and no old VALID\nafter TIMEOUT/SENSOR_FAULT/STALE/NO_DATA/INIT_FAIL" { class: note; shape: page }
 }
 
 chain.configure_pressure_step_test -> chain.record_instrument_ids: "[FE] Test setup" { class: fe }
@@ -97,15 +97,15 @@ chain.collect_level_p1_samples -> chain.tag_pressure_step_level: "[FE] P1 level 
 chain.measure_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nsignal" { class: fe }
 chain.tag_pressure_step_level -> chain.read_pressure: "[FE] Pressure read\nrequest + level tag" { class: fe }
 chain.read_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nI2C Req" { class: fe }
-chain.respond_i2c_requests -> chain.read_pressure: "[FE] Pressure" { class: fe }
-chain.read_pressure -> chain.calculate_altitude: "[FE] Pressure" { class: fe }
-chain.calculate_altitude -> chain.collect_measurements: "[FE] Result\n[Altitude]" { class: fe }
+chain.respond_i2c_requests -> chain.read_pressure: "[FE] Pressure\n+ status" { class: fe }
+chain.read_pressure -> chain.calculate_altitude: "[FE] Pressure\n+ status" { class: fe }
+chain.calculate_altitude -> chain.collect_measurements: "[FE] Result\n[Altitude]\nstatus+age" { class: fe }
 chain.tag_pressure_step_level -> chain.collect_measurements: "[FE] Level/sample ID" { class: fe }
-chain.read_pressure -> chain.emit_current_measurement_record: "[FE] Current pressure\nevidence" { class: fe }
-chain.calculate_altitude -> chain.emit_current_measurement_record: "[FE] Current altitude\nevidence" { class: fe }
-chain.collect_measurements -> chain.capture_obcc_results: "[FE] OBCC altitude\nrecord" { class: fe }
+chain.read_pressure -> chain.emit_current_measurement_record: "[FE] Pressure status,\nage, sample ID" { class: fe }
+chain.calculate_altitude -> chain.emit_current_measurement_record: "[FE] Altitude status,\nage, sample ID" { class: fe }
+chain.collect_measurements -> chain.capture_obcc_results: "[FE] OBCC altitude\nrecord + status/age" { class: fe }
 chain.emit_current_measurement_record -> chain.capture_obcc_results: "[FE] VV pressure/altitude\nrecord" { class: fe }
-chain.capture_obcc_results -> chain.pair_levels_with_references: "[FE] P0/P1 AMS\nresults" { class: fe }
+chain.capture_obcc_results -> chain.pair_levels_with_references: "[FE] P0/P1 AMS results,\nstatus, age, sample IDs" { class: fe }
 chain.measure_reference_pressure_p0 -> chain.pair_levels_with_references: "[FE] P0 ref." { class: fe }
 chain.measure_reference_pressure_p1 -> chain.pair_levels_with_references: "[FE] P1 ref." { class: fe }
 chain.pair_levels_with_references -> chain.compute_altitude_delta_u95: "[FE] Paired levels" { class: fe }

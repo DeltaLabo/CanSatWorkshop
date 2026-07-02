@@ -70,7 +70,19 @@ chain: "ADS v1.0 — Peripheral initialisation chain" {
     class: note
     shape: page
   }
-  note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+  note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms;\n250 ms nominal heartbeat;\n400 ms max progress/\nfreshness gap; hook overhead\n<=5% of 200 ms or <=5 ms" {
+    class: note
+    shape: page
+  }
+  note_internal_freshness: "[C] Init/status delivery to OBCC\nuses 5 Hz internal collection\n(200 ms nominal); LoRa\npackaging remains separate at 2 s" {
+    class: note
+    shape: page
+  }
+  note_status_enum: "[C] External status enum exactly:\nVALID, STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT, INIT_FAIL.\nINIT_FAIL/default/no-data/\ntimeout/fault data must not\nremain marked VALID" {
+    class: note
+    shape: page
+  }
+  note_mission_window: "[C] Mission-window strict pass:\n10 min / 600 s / 3000\nexpected 5 Hz slots; max\ninternal progress/freshness\ngap 400 ms; no reset,\nbrownout, stuck loop, or\nunrecovered peripheral failure" {
     class: note
     shape: page
   }
@@ -87,3 +99,6 @@ chain.note_variable_getter -> chain.note_i2c_timeout { style: { opacity: 0 } }
 chain.note_i2c_timeout -> chain.note_process_time { style: { opacity: 0 } }
 chain.note_process_time -> chain.note_uart_timeout { style: { opacity: 0 } }
 chain.note_uart_timeout -> chain.note_no_blocking { style: { opacity: 0 } }
+chain.note_no_blocking -> chain.note_internal_freshness { style: { opacity: 0 } }
+chain.note_internal_freshness -> chain.note_status_enum { style: { opacity: 0 } }
+chain.note_status_enum -> chain.note_mission_window { style: { opacity: 0 } }

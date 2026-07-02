@@ -59,21 +59,21 @@ chain: "AMS-VV-FC-002 — Nominal BME280 init-state boot chain\nTesting / Demons
   command_nominal_boot_batch: "[F] Command nominal\nboot batch" { class: func }
   power_cycle_uut: "[F] Power-cycle\nUUT" { class: func }
   command_boot_init_trial: "[F] Command boot /\ninit trial" { class: func }
-  timestamp_boot_init_result: "[F] Timestamp boot\nand init result" { class: func }
+  timestamp_boot_init_result: "[F] Timestamp boot/init\nand compute age_ms" { class: func }
   get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
   respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
   collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
   capture_boot_init_log: "[F] Capture boot /\ninit log" { class: func }
   compare_obcc_status: "[F] Compare OBCC status\nto expected nominal" { class: func }
-  emit_init_evidence_record: "[F] Emit init\nevidence record" { class: func }
+  emit_init_evidence_record: "[F] Emit init status/age\nevidence record" { class: func }
   compute_binary_statistics: "[F] Compute binary\nstatistics" { class: func }
   generate_evidence_manifest: "[F] Generate evidence\nmanifest" { class: func }
   archive_evidence: "[F] Archive\nevidence" { class: func }
 
-  note_nominal_pass: "[C] Pass iff every nominal boot/init sequence returns\na valid BME280 init state and OBCC collects the\nsame current state before flight-readiness OK" { class: note; shape: page }
+  note_nominal_pass: "[C] Pass iff every nominal boot/init sequence returns\nstatus == VALID and age_ms <= 400 ms when freshness is claimed;\nOBCC collects the same init state before flight-readiness OK" { class: note; shape: page }
   note_stats: "[C] Use 29/29 successful nominal boots for an\nR90/C95 binary success claim; smaller batches\nshall be labelled screening" { class: note; shape: page }
-  note_variable_getter: "[C] Init-state getter shall return a current value\nor bounded status with explicit validity; no default\nor stale OK value is accepted" { class: note; shape: page }
-  note_environment: "[C] Ambient 20-30 °C recorded before repetitions;\nstable 3V3/common ground and power-cycle count\nrecorded for every batch" { class: note; shape: page }
+  note_variable_getter: "[C] Init-state getter shall return explicit shared status\nVALID, STALE, NO_DATA, TIMEOUT, SENSOR_FAULT, or INIT_FAIL;\nno default/previous/stale OK value is accepted as VALID" { class: note; shape: page }
+  note_environment: "[C] Exact evidence: boot IDs, power-cycle count, stable\n3V3/common ground, sample/boot timestamps or monotonic correlation,\nage_ms where applicable, status values, ambient, UUT/firmware/build IDs" { class: note; shape: page }
   note_no_blocking: "[C] Nominal boot/init shall not cause unbounded blocking;\nlogger remains responsive and captures each trial outcome" { class: note; shape: page }
   note_con003_dep: "[C] Context only: detailed environmental-read timeout proof\nand recovery after released runtime I2C fault are verified by\nAMS-VV-CON-003, not credited by this nominal chain" { class: note; shape: page }
 }
@@ -91,12 +91,12 @@ chain.command_boot_init_trial -> chain.timestamp_boot_init_result: "[FE] Start t
 chain.timestamp_boot_init_result -> chain.get_bme280_init_state: "[FE] Init-state\nrequest" { class: fe }
 
 chain.get_bme280_init_state -> chain.respond_i2c_requests: "[FE] BME280 init\nI2C Req" { class: fe }
-chain.respond_i2c_requests -> chain.get_bme280_init_state: "[FE] State info" { class: fe }
-chain.get_bme280_init_state -> chain.collect_peripheral_init_states: "[FE] Result\n[Init state]" { class: fe }
+chain.respond_i2c_requests -> chain.get_bme280_init_state: "[FE] State info\n+ status" { class: fe }
+chain.get_bme280_init_state -> chain.collect_peripheral_init_states: "[FE] Result\n[Init state]\nstatus+age" { class: fe }
 
 chain.collect_peripheral_init_states -> chain.capture_boot_init_log: "[FE] OBCC init\nrecord" { class: fe }
 chain.collect_peripheral_init_states -> chain.compare_obcc_status: "[FE] Collected\nstate" { class: fe }
-chain.timestamp_boot_init_result -> chain.emit_init_evidence_record: "[FE] Timestamp +\ntrial ID" { class: fe }
+chain.timestamp_boot_init_result -> chain.emit_init_evidence_record: "[FE] Boot/sample ID,\ntimestamp, age_ms" { class: fe }
 chain.compare_obcc_status -> chain.emit_init_evidence_record: "[FE] Pass/fail\nclassification" { class: fe }
 chain.capture_boot_init_log -> chain.compute_binary_statistics: "[FE] Trial log" { class: fe }
 chain.emit_init_evidence_record -> chain.compute_binary_statistics: "[FE] Trial result" { class: fe }

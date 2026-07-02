@@ -52,8 +52,8 @@ witness: "[EA] Safety / QA Witness" { class: ea }
 envelope_gauge: "[EA] 355 ml Envelope /\nCan Gauge\nØ66.0 mm × H122.0 mm" { class: ea }
 caliper_height: "[EA] Calibrated Caliper /\nHeight Gauge\nU_D, U_H" { class: ea }
 scale: "[EA] Calibrated Scale\nU_M, ≤0.1 g target" { class: ea }
-drop_fixture: "[EA] Drop / Landing-Impact\nScreen Fixture\napproved tailored level or hold" { class: ea }
-impact_surface: "[EA] Tailored Impact Surface\nheight/material/orientation record" { class: ea }
+drop_fixture: "[EA] Drop / Landing-Impact\nScreen Fixture\n1.0 m free-fall release" { class: ea }
+impact_surface: "[EA] Flat Plywood/Hardwood\nImpact Plate over rigid base\nmaterial/thickness/support record" { class: ea }
 accel_logger: "[EA] Shock / Acceleration\nLogger or Witness Indicator" { class: ea }
 inspection_kit: "[EA] Post-Impact Integration\nInspection Kit" { class: ea }
 camera: "[EA] Photo / Video\nEvidence Camera" { class: ea }
@@ -143,12 +143,12 @@ system: "[System] SAA-VV-CON-001 v1.0 As-Flown Envelope/Mass/Impact Testbench\nR
     shape: page
   }
 
-  impact_constraint: "[C] v1.0 landing-impact pass-fail:\nExecute only with approved tailored screen level, impact surface,\norientation set, article state and safety boundary, or record analysis-backed\nhold. Pass only if no structural/integration failure occurs and no stack screw,\nPCB standoff, battery fixture, backplane/header/PDM servo connector, cap,\nparachute, servo or module interface loosens, fractures, shifts, shorts, jams\nor becomes unserviceable; post-impact envelope/mass checks remain acceptable." {
+  impact_constraint: "[C] v1.0 landing-impact pass-fail:\nUse the full as-flown article and 1.0 m free fall from lowest point to flat\nplywood/hardwood over rigid base, no spin, no hand assist, no preload, full\nvideo and +X/-X/+Y/-Y/+Z/-Z single-drop coverage unless a reduced set is\npreapproved as hold/limited. Pass only if no structural/integration failure\noccurs and no stack screw, PCB standoff, battery fixture, backplane/header/PDM\nservo connector, cap, parachute, servo or module interface loosens, fractures,\nshifts, shorts, jams or exceeds SAA-BLK-007 thresholds; post-impact envelope,\nmass and interface checks remain acceptable." {
     class: note
     shape: page
   }
 
-  evidence_constraint: "[C] Evidence/environment constraint:\nRecord baseline copy, article ID, calibration, ambient temperature/humidity,\ntailored level or hold rationale, raw readings, uncertainties, photos/video,\npre/post integration inspection, witness decision and anomaly dispositions\nunder results/SAA-VV-CON-001/." {
+  evidence_constraint: "[C] Evidence/environment constraint:\nRecord baseline copy, article/build ID, equipment calibration/status, ambient\ntemperature/humidity, fixture adapters, safety boundary, camera/logger setup,\n1.0 m drop surface/orientation validity, raw readings, uncertainties,\nphotos/video, pre/post integration inspection, witness decision and anomaly\ndispositions under results/SAA-VV-CON-001/." {
     class: note
     shape: page
   }

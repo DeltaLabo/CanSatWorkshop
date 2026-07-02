@@ -103,11 +103,11 @@ note_airflow: "[C] Block sunlight,\nallow airflow" {
   class: note
   shape: page
 }
-note_testbench: "[C] VV-only bench connections shall not\nbypass the modeled I2C path; record\nharness pullups/capacitance" {
+note_testbench: "[C] VV-only bench connections shall not bypass the modeled\nI2C path; record harness pullups/capacitance, fault mode,\nlow-level cause codes, instrumentation overhead, and recovery notes" {
   class: note
   shape: page
 }
-note_power_env: "[C] Stable 3V3/common ground required;\nrecord voltage/current before and\nafter each timing batch" {
+note_power_env: "[C] Stable 3V3/common ground required; record voltage/current\nbefore/after each timing batch plus sample IDs, timestamps/age\nwhere freshness is claimed, and shared status mapping" {
   class: note
   shape: page
 }

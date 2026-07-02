@@ -95,7 +95,7 @@ system: "[System] Physical System" {
             respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
           }
 
-          note_accuracy_angular_rate: "[C] Accuracy\n< 30 deg/s" {
+          note_accuracy_angular_rate: "[C] Accuracy < 30 deg/s.\nStrict truth may use motor\nplus calibrated tachometer;\ndeg/s = RPM × 6; require\ntime/axis alignment and\nuncertainty guard band" {
             class: note
             shape: page
           }
@@ -133,7 +133,23 @@ system: "[System] Physical System" {
             process_accelerations: "[F] Process\naccelerations" { class: func }
             calculate_pitch_roll_yaw: "[F] Calculate\npitch, roll, yaw" { class: func }
 
-            note_accuracy_position: "[C] Accuracy < 5 m" {
+            note_internal_freshness: "[C] v1.0 internal ADS-to-OBCC\ndelivery is 5 Hz (200 ms\nnominal); LoRa packaging\nremains separate at 2 s" {
+              class: note
+              shape: page
+            }
+            note_valid_freshness: "[C] Fresh at ADS-to-OBCC:\nstatus == VALID, finite/\nin-range required fields,\nage_ms <= 400 ms. Enum exactly:\nVALID, STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT, INIT_FAIL;\nnon-VALID/default not VALID" {
+              class: note
+              shape: page
+            }
+            note_mission_window: "[C] Mission-window strict pass:\n10 min / 600 s / 3000\nexpected 5 Hz slots; max gap\n400 ms; no reset, brownout,\nstuck loop, or unrecovered\nperipheral failure" {
+              class: note
+              shape: page
+            }
+            note_attitude_delegated: "[C] Quantitative acceleration\nand heading claims remain\ndelegated to ADS-IVV-C-ACCEL-3AXIS\nand ADS-IVV-C-HEADING-NORTH;\nno new candidate package here" {
+              class: note
+              shape: page
+            }
+            note_accuracy_position: "[C] Accuracy < 5 m.\nStrict GPS truth: GNSS\nsimulator or surveyed/open-sky\nreference; phones auxiliary/\nlimited unless uncertainty-controlled" {
               class: note
               shape: page
             }
@@ -167,7 +183,7 @@ system: "[System] Physical System" {
           class: note
           shape: page
         }
-        note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+        note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms;\n250 ms nominal heartbeat;\n400 ms max progress/\nfreshness gap; hook overhead\n<=5% of 200 ms or <=5 ms" {
           class: note
           shape: page
         }
@@ -187,6 +203,11 @@ system: "[System] Physical System" {
 }
 
 system.cansat.ads_module.ads_pcb.imu.note_accuracy_angular_rate -> system.cansat.ads_module.ads_pcb.imu.imu_lc.measure_angular_velocities { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.note_internal_freshness -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.collect_measurements { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.note_valid_freshness -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.collect_measurements { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.note_mission_window -> system.cansat.obcc_module.obcc_pcb.xiao.obcc.collect_measurements { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.note_attitude_delegated -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.process_accelerations { class: cstr }
+system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.note_attitude_delegated -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.calculate_pitch_roll_yaw { class: cstr }
 system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.note_accuracy_position -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.get_lat { class: cstr }
 system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.note_accuracy_position -> system.cansat.obcc_module.obcc_pcb.xiao.ads_processing.get_lon { class: cstr }
 

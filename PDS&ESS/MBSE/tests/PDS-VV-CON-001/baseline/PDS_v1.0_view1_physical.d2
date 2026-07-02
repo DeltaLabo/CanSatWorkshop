@@ -69,9 +69,14 @@ system: "[System] CanSat" {
 
       battery_connector: "[PC] Battery Connector" { class: pc }
       protection: "[PC] Protection Circuit" { class: pc }
+      master_switch: "[PC] Accessible Master Switch" { class: pc }
       ina219: "[PC] INA219" { class: pc }
       regulator: "[PC] Regulator" { class: pc }
       pds_backplane_connector: "[PC] Backplane Connector" { class: pc }
+      master_switch_note: "[C] User-operable master\nswitch actuator accessible\nafter assembly; OFF opens\nprotected-power path before\nINA219/regulator and leaves\n5V/3V3 backplane rails\nde-energized safe-off." {
+        class: note
+        shape: page
+      }
     }
   }
 
@@ -111,6 +116,7 @@ system.pds_module -- system.backplane_pcb: "[PL] Backplane fixture" { class: pl 
 system.obcc_module -- system.backplane_pcb: "[PL] Backplane fixture" { class: pl }
 
 system.pds_module.pds_pcb.protection -- system.pds_module.pds_pcb: "[PL] Footprint" { class: pl }
+system.pds_module.pds_pcb.master_switch -- system.pds_module.pds_pcb: "[PL] Switch footprint" { class: pl }
 system.pds_module.pds_pcb.ina219 -- system.pds_module.pds_pcb: "[PL] Footprint" { class: pl }
 system.pds_module.pds_pcb.regulator -- system.pds_module.pds_pcb: "[PL] Footprint" { class: pl }
 system.pds_module.pds_pcb.battery_connector -- system.pds_module.pds_pcb: "[PL] Footprint" { class: pl }
@@ -122,7 +128,8 @@ system.pds_module.pds_pcb -- system.pds_module: "[PL] Screws" { class: pl }
 system.obcc_module.obcc_pcb -- system.obcc_module: "[PL] Screws" { class: pl }
 
 system.pds_module.pds_pcb.battery_connector -- system.pds_module.pds_pcb.protection: "[PL] Battery ± traces" { class: pl }
-system.pds_module.pds_pcb.protection -- system.pds_module.pds_pcb.ina219: "[PL] PC out trace" { class: pl }
+system.pds_module.pds_pcb.protection -- system.pds_module.pds_pcb.master_switch: "[PL] Protected power trace" { class: pl }
+system.pds_module.pds_pcb.master_switch -- system.pds_module.pds_pcb.ina219: "[PL] Switched power trace" { class: pl }
 system.pds_module.pds_pcb.ina219 -- system.pds_module.pds_pcb.regulator: "[PL] INA out trace" { class: pl }
 system.pds_module.pds_pcb.regulator -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] 5V / 3V3 traces" { class: pl }
 system.obcc_module.obcc_pcb.xiao -- system.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] 3V3 / PWM traces" { class: pl }
@@ -130,6 +137,8 @@ system.obcc_module.obcc_pcb.xiao -- system.obcc_module.obcc_pcb.obcc_backplane_c
 system.pds_module.pds_pcb.pds_backplane_connector -- system.backplane_pcb.pds_headers: "[PL] Parallel cable" { class: pl }
 system.obcc_module.obcc_pcb.obcc_backplane_connector -- system.backplane_pcb.obcc_headers: "[PL] Parallel cable" { class: pl }
 
+system.pds_module.pds_pcb.master_switch_note -> system.pds_module.pds_pcb.master_switch { class: cstr }
+system.pds_module.pds_pcb.master_switch_note -> system.pds_module.pds_pcb.pds_backplane_connector { class: cstr }
 system.pcb_cnc_note -> system.pds_module.pds_pcb { class: cstr }
 system.pcb_cnc_note -> system.obcc_module.obcc_pcb { class: cstr }
 system.pcb_cnc_note -> system.backplane_pcb { class: cstr }

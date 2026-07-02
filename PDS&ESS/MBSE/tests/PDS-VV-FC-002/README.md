@@ -2,7 +2,7 @@
 
 Primary activity: **PDS-VV-FC-002**. SSIV/version: **PDS & ESS v1.0 final flight acceptance**. Earlier versions are protoflight/development baselines and are out of scope for this folder. IADT method: **Testing / Demonstration** with supporting **Analysis**.
 
-This folder is an individual model-based verification definition for the PDS & ESS v1.0 battery-supervision functional chain and the related variable-getter, I2C, timing, blocking, exchange, and allocation constraints. The source model remains unchanged; baseline source views are copied in `baseline/` for report-by-reference traceability.
+This folder is an individual model-based verification definition for the PDS & ESS v1.0 battery-supervision functional chain and the related variable-getter, I2C, timing, blocking, exchange, and allocation constraints. The v1.0 source model now explicitly includes the INA219 I2C component exchange; baseline source views are copied in `baseline/` for report-by-reference traceability.
 
 ## Scope and traceability
 
@@ -18,11 +18,11 @@ This folder is an individual model-based verification definition for the PDS & E
 | File | Purpose |
 |---|---|
 | `PDS_VV_FC_002_view1_physical_testbench.d2` | PV1 physical testbench: UUT, source components, test harness, external equipment, physical links, environment/setup constraints. |
-| `PDS_VV_FC_002_view2_logical_test_interfaces.d2` | PV2 logical test interfaces: source LCs, verification LCs, getter API CEs, evidence interfaces, and the missing INA219 I2C CE analysis note. |
+| `PDS_VV_FC_002_view2_logical_test_interfaces.d2` | PV2 logical test interfaces: source LCs, verification LCs, getter API CEs, explicit INA219 I2C CE, evidence interfaces, and bus-evidence analysis note. |
 | `PDS_VV_FC_002_view3_functional_allocation_testbench.d2` | PV3 functional allocation: UUT and verification-only functions allocated to source/test LCs and external actors. |
 | `PDS_VV_FC_002_view4_nominal_measurement_timing_chain.d2` | Nominal measurement/timing chain for init, read, process, collect, timestamp, reference comparison, and logging. |
 | `PDS_VV_FC_002_view5_i2c_fault_timeout_recovery_chain.d2` | Fault-hardening chain for absent INA219, NACK, stuck SDA, stuck SCL, delayed/no-response, timeout, recovery, and live logging. |
-| `PDS_VV_FC_002_view6_api_allocation_analysis_chain.d2` | Supporting analysis chain for CE-001/CE-002, ALLOC-002, getter coverage, blocking review, and residual source-model gap. |
+| `PDS_VV_FC_002_view6_api_allocation_analysis_chain.d2` | Supporting analysis chain for CE-001/CE-002/CE-003, ALLOC-002, getter coverage, blocking review, and residual execution evidence. |
 
 Rendered PNGs with the same names plus `.png` are generated in this folder.
 
@@ -39,7 +39,8 @@ A final PDS-VV-FC-002 claim is pass only if all applicable conditions below are 
 7. Each read/process pair implements the modeled Variable Getter template with documented ownership, units, freshness/age metadata, valid/stale distinction, and bounded status/result codes.
 8. No unbounded blocking occurs except modeled I2C or UART communication waits; scheduler/logging remain live during nominal and injected-fault cases.
 9. Fault cases cover absent INA219, NACK, stuck SDA, stuck SCL, and delayed/no response. Each trial returns a bounded error/result code, reports no stale data as valid, and preserves scheduler/logging liveness.
-10. Supporting analysis confirms CE-001 pointer behavior, CE-002 return behavior, and ALLOC-002 functional allocation intent.
+10. Supporting analysis confirms CE-001 pointer behavior, CE-002 return behavior, CE-003 INA219 I2C bus/interface consistency, and ALLOC-002 functional allocation intent.
+11. CE-003 final credit requires predeclared execution evidence for implemented topology, endpoint pins/net names, INA219 7-bit address, pullup resistor values/locations, bus voltage levels, transaction direction, `≤5 ms` timeout policy, fault-status mapping, and raw logic-analyzer/serial logs plus source/build evidence.
 
 ## Environmental and setup conditions
 
@@ -66,5 +67,5 @@ If constraint, exchange, or allocation activities covered by this model are repo
 ## Assumptions and caveats
 
 - The campaign is PDS & ESS v1.0 final flight acceptance; the report still identifies the exact article ID, firmware/software commit, harness configuration, and accepted deviations.
-- The v1.0 source PV2 lacks an explicit INA219 I2C component exchange between ESS Processing/XIAO and Battery monitoring/INA219. Closure planning has selected the follow-on source edit: add explicit `[CE] I2C` between ESS Processing/XIAO and Battery monitoring/INA219 in the v1.0 logical/source model. This folder records the verification-analysis target and caveat only; the D2/source baseline is not changed here. Until that source update and any required baseline refresh are complete, final CE completeness credit remains pending.
+- The v1.0 source PV2 now includes explicit `[CE] I2C / INA219 bus` from ESS Processing/XIAO to Battery monitoring/INA219. Final CE completeness credit remains execution-only until the report records implemented topology, endpoint pins/net names, INA219 7-bit address, pullups, voltage levels, transaction direction, `≤5 ms` timeout policy, fault-status mapping, and raw logs/source/build evidence.
 - This definition does not invent a tighter measurement-accuracy requirement than the INA219/reference uncertainty budget available to the campaign.

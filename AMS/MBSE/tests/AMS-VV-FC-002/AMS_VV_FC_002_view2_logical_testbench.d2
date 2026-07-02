@@ -97,11 +97,11 @@ system: "[System] AMS-VV-FC-002 Peripheral initialisation\nFinal acceptance; Ref
 
         obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
 
-        note_variable_getter: "[C] Init-state getter shall use current\nvalue/status semantics compatible with\nthe Variable Getter pattern; no stale OK" {
+        note_variable_getter: "[C] Init-state getter shall use shared status:\nVALID, STALE, NO_DATA, TIMEOUT, SENSOR_FAULT, INIT_FAIL.\nCurrent/fresh only VALID with age_ms <= 400 ms;\nno stale/default/previous OK as VALID" {
           class: note
           shape: page
         }
-        note_i2c_timeout: "[C] Startup I2C access shall have bounded\nfailure/status behavior; detailed environmental-read\n≤ 5 ms proof is AMS-VV-CON-003 context" {
+        note_i2c_timeout: "[C] Startup I2C access has bounded failure/status behavior:\ninit failure -> INIT_FAIL or applicable non-VALID; timeout -> TIMEOUT;\nruntime bus/sensor fault -> SENSOR_FAULT. Detailed environmental-read\n≤ 5 ms proof is AMS-VV-CON-003 context" {
           class: note
           shape: page
         }
@@ -127,11 +127,11 @@ note_iadt: "[C] Final acceptance IADT: Testing / Demonstration;\nreport by refer
   class: note
   shape: page
 }
-note_scope: "[C] Scope: BME280 init-state request/response,\nOBCC collection, nominal boot statistics, and startup-fault\nbehavior for absent/NACK BME280 or held bus" {
+note_scope: "[C] Scope: BME280 init-state request/response, OBCC collection,\nnominal VALID init with timestamp/sample-ID/age evidence, and\nstartup-fault behavior for absent/NACK BME280 or held SDA/SCL" {
   class: note
   shape: page
 }
-note_con003_dep: "[C] Dependency: AMS-VV-CON-003 owns detailed\nenvironmental Read pressure/Read temperature timeout proof\nand recovery after released runtime I2C fault" {
+note_con003_dep: "[C] Dependency: AMS-VV-CON-003 owns detailed environmental\nRead pressure/Read temperature timeout/fault evidence and recovery;\nthis test records boot IDs, power cycles, fixture config, 3V3/GND,\ntimestamps/age where applicable, and shared status values" {
   class: note
   shape: page
 }

@@ -25,7 +25,7 @@ chain: "PDS-VV-CON-009 — Carvera Air DFM analysis chain\nrefs: IVV; PDS-R8" {
   record_chain_evidence: "[F] Log deviations, closure, operator IDs,\nand rule-by-rule evidence" { class: func }
   report_chain_result: "[F] Report chain result as inspection constraint evidence\nfor PDS-VV-CON-009" { class: func }
 
-  note_pre: "[C] Mandatory rule block: execution is blocked\nbefore powered integration when required\nrule sets are incomplete or unknown." { class: note; shape: page }
+  note_pre: "[C] Mandatory rule block from S&A/PCB_General_Rules.md:\ntrack ≥0.8 mm; via dia ≥1.2 mm; via drill ≥0.8 mm;\npad dia ≥75 mil; pad drill ≥45 mil; wire spacing ≥0.8 mm;\nWCS origin top-stock corner; Bore unavailable pin holes; 2D Contour tracks;\nRamp outer border; Drill exact tool-size holes.\nMap each rule to board/coupon evidence before powered integration." { class: note; shape: page }
   note_stats: "[C] Statistical view: 100% of flight boards/coupons\ncovered for this v1.0 campaign.\nSample size rationale = complete enumeration." { class: note; shape: page }
   note_fault: "[C] Fault hardening: explicitly classify\nshorts, opens, wrong footprint/orientation, clearance intrusion,\nthermal overstress, retention failures, vibration/handling workmanship." { class: note; shape: page }
 }

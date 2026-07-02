@@ -37,11 +37,11 @@ Pass/fail review intent for both is **100% allocation completeness against sourc
 
 | File | Purpose |
 |---|---|
-| `PDS_VV_ALLOC_001_view1_physical_allocation_context.d2/png` | PV1 physical allocation context: source power-path topology, baseline actor interfaces, and source-model switch-access caveat. |
-| `PDS_VV_ALLOC_001_view2_logical_allocation_analysis.d2/png` | PV2 logical allocation boundary analysis: LC ownership map, modeled links/exchanges, and ALLOC-003 actor-interface gap. |
+| `PDS_VV_ALLOC_001_view1_physical_allocation_context.d2/png` | PV1 physical allocation context: source power-path topology, baseline actor interfaces, and modeled Accessible Master Switch evidence target. |
+| `PDS_VV_ALLOC_001_view2_logical_allocation_analysis.d2/png` | PV2 logical allocation boundary analysis: LC ownership map, modeled links/exchanges, and ALLOC-003 actor-interface evidence target. |
 | `PDS_VV_ALLOC_001_view3_functional_allocation_review.d2/png` | PV3 functional allocation matrix for intended functions and actor-owned control functions. |
 | `PDS_VV_ALLOC_001_view4_power_path_allocation_chain.d2/png` | Power-path allocation analysis chain for charge/regulation/protection ownership and modeled flow boundary checks (with required fault-hardening touchpoints). |
-| `PDS_VV_ALLOC_001_view5_external_actor_interface_chain.d2/png` | External actor interface analysis chain for charger setup, wrong-setup hold, user switch control, safe power-off, and source-model blocker/waiver path. |
+| `PDS_VV_ALLOC_001_view5_external_actor_interface_chain.d2/png` | External actor interface analysis chain for charger setup, wrong-setup hold, user switch control through the modeled Accessible Master Switch, safe power-off, evidence capture, and deviation/waiver disposition if as-built evidence differs. |
 
 ## Pass/fail constraints
 
@@ -49,16 +49,16 @@ A final ALLOC-001/ALLOC-003 claim is pass only if all are true:
 
 1. **100% review completeness:** all scoped source functions and actor functions above are reviewed against the source model baseline and recorded in this activity.
 2. **No foreign/unmodeled ownership:** no unmodeled function is allocated to in-scope LCs; any gap is explicitly recorded as discrepancy with disposition status.
-3. **Boundary correctness:** power/resource flows cross only modeled links/exchanges (`USB-C`, `Battery cable`, `Battery connector`, protected rail paths). Additional modeled interfaces are blocked for discrepancy and must be justified by waiver or source-model update.
+3. **Boundary correctness:** power/resource flows cross only modeled links/exchanges (`USB-C`, `Battery cable`, `Battery connector`, `Accessible Master Switch`, protected/switched rail paths). Additional as-built interfaces are blocked for discrepancy and must be justified by controlled deviation/waiver or source-model update.
 4. **Source constraints preserved:** ALLOC-001 ownership checks align to existing chain/constraints from **FC-001/CON-004** (power path/rail behavior) and **CON-001** (safe charge setup).
 5. **Fault-hardening reviewed:** overcurrent, overvoltage, restore, wrong charger, power-off safety, and Li-ion preconditions are reviewed as allocation assumptions/discrepancy conditions for each actor-controlled function.
-6. **Master-switch/accessibility source/interface closure:** ALLOC-003 requires explicit evidence of a safe switch/access path. Where the source model does not expose explicit master-switch hardware, the selected closure path is a source-model/interface edit or controlled waiver, not a reason to create another test candidate; final allocation closure remains pending until that edit/waiver and later execution evidence are controlled.
+6. **Master-switch/accessibility source/interface closure:** ALLOC-003 uses the source-modeled `[PC] Accessible Master Switch` and requires exact execution evidence before unqualified allocation credit: as-built switch part/location, accessibility photo after assembly, OFF-state rail measurements at PDS/backplane endpoints, continuity/isolation evidence, switch labeling/orientation/polarity, and any deviation/waiver record.
 
 ## Environmental and procedural constraints attached
 
 - Charger/interface checks use `4.2 V` and `0.5 A` limit setup controls as setup controls for review context, consistent with **CON-001**.
 - Li-ion prerequisites and safety prerequisites are assumed from the safety-document evidence path in `PDS-VV-SAFE-001` and/or campaign acceptance evidence before actor interface closure.
-- Master-switch/accessibility gaps remain **blocked** for unqualified allocation closure until the selected source-model/interface edit is made or a controlled waiver path is approved.
+- Master-switch/accessibility is source-modeled; unqualified allocation closure remains **execution pending** until the as-built evidence listed above proves accessible operation and de-energized safe-off behavior, or a controlled deviation/waiver explains any mismatch.
 
 ## Evidence path
 

@@ -59,8 +59,8 @@ chain: "PDS-VV-FC-002 — API, CE, and allocation analysis chain\nRefs: IVV, PDS
   check_units_freshness: "[F] Check units, age,\nfreshness, validity" { class: func }
   review_bounded_status: "[F] Review bounded\nstatus/result codes" { class: func }
   review_blocking_paths: "[F] Review blocking\nand scheduler paths" { class: func }
-  analyze_i2c_gap: "[F] Analyze missing\nINA219 I2C CE" { class: func }
-  record_coverage: "[F] Record coverage\nand residual gaps" { class: func }
+  analyze_i2c_gap: "[F] Analyze modeled\nINA219 I2C CE" { class: func }
+  record_coverage: "[F] Record coverage\nand residual evidence" { class: func }
   archive_analysis: "[F] Archive analysis\nevidence" { class: func }
 
   definition_note: "[C] PDS-VV-FC-002 supporting Analysis:\nprovides context for PDS-VV-CE-001,\nPDS-VV-CE-002, PDS-VV-ALLOC-002;\ntraces PDS-UC-SuperviseBattery and PDS-FE-SensorBusFault" {
@@ -83,7 +83,7 @@ chain: "PDS-VV-FC-002 — API, CE, and allocation analysis chain\nRefs: IVV, PDS
     class: note
     shape: page
   }
-  gap_note: "[C] Residual blocked source-model gap:\nPV2 lacks explicit INA219 I2C CE.\nThis analysis can identify the target,\nbut final I2C CE completeness/execution claim\nrequires source model update or formal justification" {
+  gap_note: "[C] CE-003 source aligned; execution pending:\nPV2 now includes explicit INA219 I2C CE.\nFinal I2C CE completeness requires evidence of topology,\npins/nets, INA219 address, pullups, voltage levels,\ntransaction direction, ≤5 ms timeout, fault-status mapping,\nand raw logs/source/build records." {
     class: note
     shape: page
   }
@@ -100,8 +100,8 @@ chain.analyze_returns -> chain.check_units_freshness: "[FE] Data field semantics
 chain.verify_getter_template -> chain.check_units_freshness: "[FE] Getter contract" { class: fe }
 chain.check_units_freshness -> chain.review_bounded_status: "[FE] Valid/stale/error semantics" { class: fe }
 chain.review_bounded_status -> chain.review_blocking_paths: "[FE] Fault return paths" { class: fe }
-chain.open_baseline -> chain.analyze_i2c_gap: "[FE] Missing I2C CE observation" { class: fe }
-chain.analyze_i2c_gap -> chain.record_coverage: "[FE] Blocked gap note" { class: fe }
+chain.open_baseline -> chain.analyze_i2c_gap: "[FE] Modeled I2C CE observation" { class: fe }
+chain.analyze_i2c_gap -> chain.record_coverage: "[FE] Execution evidence checklist" { class: fe }
 chain.review_blocking_paths -> chain.record_coverage: "[FE] CON-005/008 analysis result" { class: fe }
 chain.map_allocations -> chain.record_coverage: "[FE] ALLOC-002 result" { class: fe }
 chain.record_coverage -> chain.archive_analysis: "[FE] Analysis evidence package" { class: fe }

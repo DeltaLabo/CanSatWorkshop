@@ -39,7 +39,7 @@ Pass only if all of the following are true for the as-tested configuration:
 2. **Sampling/statistical significance:** at each load case, collect at least `n ≥ 30` settled voltage samples per rail. Retain raw data and compute bias, spread, confidence interval, and expanded uncertainty. A limit is met only when the measured voltage plus/minus expanded uncertainty remains inside the rail limit.
 3. **Voltage limits:** 5 V rail remains in `[4.9, 5.1] V`; 3V3 rail remains in `[3.2, 3.4] V` for all accepted settled samples, including uncertainty.
 4. **Brownout/reset:** no OBCC/PDS brownout, reset, uncontrolled restart, or loss of required power state occurs during load cases, startup, or load-step checks.
-5. **Startup/transient:** startup overshoot and load transients are recorded. After the allowed settling window, rails meet the same voltage limits. Placeholder settling windows are `≤100 ms` after startup and `≤50 ms` after load step; both are campaign-configurable.
+5. **Startup/transient:** startup overshoot and load transients are recorded. The campaign must predeclare startup and load-step settling windows before execution; after those windows, rails meet the same voltage limits. If no windows are predeclared, the transient evidence is characterization only and cannot support strict final acceptance.
 6. **Safety:** no unsafe regulator/PCB temperature, uncontrolled current, smoke, swelling, latch-up, connector heating, or unexpected protection cut-off occurs.
 
 ## Environmental and setup conditions
@@ -65,6 +65,6 @@ Store execution evidence under `PDS&ESS/MBSE/tests/results/PDS-VV-CON-004/` (`..
 
 ## Assumptions and caveats
 
-- The campaign is final flight acceptance; exact nominal-load values, final thermal limit, thermal-soak method, final settling windows, ripple treatment, and sample-count basis are campaign execution parameters to record in the report, not open definition blockers.
+- The campaign is final flight acceptance; before execution the report package must predeclare exact nominal-load values, no-load/nominal/1 A load application method for both rails, final thermal limits, thermal-soak method, startup/load-step settling windows, ripple measurement/treatment, measurement uncertainty/guard bands, sample-count basis (`n ≥ 30` settled samples per rail/load case unless a stricter approved rule is declared), and equipment calibration/status. Missing predeclarations limit the result to characterization, not strict acceptance.
 - The modeled 1 A requirement is interpreted as an individual rail-load requirement to be checked for both rails; if the campaign later defines aggregate loading differently, record the deviation.
 - This is workshop/subsystem verification evidence unless a later campaign defines independence, sample size, and environmental levels sufficient for a stronger qualification claim.

@@ -107,11 +107,11 @@ note_testbench: "[C] VV-only bench links shall not bypass the\nmodeled BME280-to
   class: note
   shape: page
 }
-note_power_env: "[C] Stable 3V3/common ground and controlled\npower-cycle/reset stimulus required; record\nvoltage/current and ambient 20-30 °C before repetitions" {
+note_power_env: "[C] Predeclare and record boot IDs, power-cycle count,\nstable 3V3/common-ground evidence, voltage/current,\nambient 20-30 °C, sample/boot timestamps or monotonic\ncorrelation, age_ms where applicable, and status values" {
   class: note
   shape: page
 }
-note_scope: "[C] Physical testbench supports nominal boot\nand startup-fault trials only; detailed environmental-read\ntimeout proof remains AMS-VV-CON-003" {
+note_scope: "[C] Physical testbench supports nominal boot and startup-fault\ntrials only; fault-fixture configuration is exact evidence.\nDetailed environmental-read timeout proof remains AMS-VV-CON-003" {
   class: note
   shape: page
 }

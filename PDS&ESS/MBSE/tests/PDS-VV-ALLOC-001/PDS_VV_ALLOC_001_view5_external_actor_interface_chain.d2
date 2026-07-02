@@ -84,11 +84,11 @@ system: "[System] PDS-VV-ALLOC-001 external actor interface analysis\nPDS & ESS 
     direction: down
     charger_setup: "[F] Charger setup and authorization" { class: func }
     wrong_charger_hold: "[F] Wrong/uncertified charger hold" { class: func }
-    unsafe_switch_assess: "[F] Ambiguous switch/access assessment" { class: func }
+    unsafe_switch_assess: "[F] Verify modeled switch/access evidence" { class: func }
     command_on: "[F] Command power on" { class: func }
     command_off: "[F] Command safe power off" { class: func }
     controlled_restore: "[F] Controlled restore criteria check" { class: func }
-    blocker_waiver_path: "[F] Blocker/waiver path for missing hardware detail" { class: func }
+    blocker_waiver_path: "[F] Record switch evidence or deviation" { class: func }
   }
 
   interface_evidence: "[PC] Actor-interface evidence/control" {
@@ -108,10 +108,10 @@ system: "[System] PDS-VV-ALLOC-001 external actor interface analysis\nPDS & ESS 
     explicit_interfaces: "[LC] Explicit actor/procedure interfaces" { class: lc }
     safe_poweroff: "[LC] Power-off leaves system safe" { class: lc }
     no_undescribed_paths: "[LC] No undocumented power-control paths" { class: lc }
-    no_ambiguous_master_switch: "[LC] No ambiguous/missing master-switch path tolerated without waiver" { class: lc }
+    no_ambiguous_master_switch: "[LC] Accessible Master Switch evidence complete" { class: lc }
   }
 
-  gap_reference: "[C] Source-model / allocation caveat\nPhysical master switch/access mechanism is not explicit in source model.\nThis chain requires an approved procedure control or waiver before actor-control testing is closed." {
+  gap_reference: "[C] Source-model / allocation evidence\nAccessible Master Switch is explicit in source PV1.\nBefore actor-control closure, record switch part/location, accessibility photo after assembly,\nOFF-state rail measurements at PDS/backplane endpoints, continuity/isolation,\nlabel/orientation/polarity, and any deviation/waiver record." {
     class: note
     shape: page
   }
@@ -126,10 +126,10 @@ user_eq.switch_on -> system.actor_interface_chain.command_on: "[FE] Execute powe
 user_eq.switch_off -> system.actor_interface_chain.command_off: "[FE] Execute power-off command" { class: fe }
 user_eq.confirm_safe_state -> system.expected_chain.safe_poweroff: "[FE] Verify safe-off state" { class: fe }
 system.actor_interface_chain.charger_setup -> system.expected_chain.explicit_interfaces: "[FE] Expected output" { class: fe }
-system.actor_interface_chain.wrong_charger_hold -> system.actor_interface_chain.blocker_waiver_path: "[FE] Block to waiver" { class: fe }
-system.actor_interface_chain.unsafe_switch_assess -> system.actor_interface_chain.blocker_waiver_path: "[FE] Blocker decision" { class: fe }
+system.actor_interface_chain.wrong_charger_hold -> system.actor_interface_chain.blocker_waiver_path: "[FE] Safety hold/deviation record" { class: fe }
+system.actor_interface_chain.unsafe_switch_assess -> system.actor_interface_chain.blocker_waiver_path: "[FE] Switch evidence decision" { class: fe }
 system.actor_interface_chain.command_off -> system.actor_interface_chain.controlled_restore: "[FE] Safe-off then controlled restore check" { class: fe }
-system.actor_interface_chain.blocker_waiver_path -> system.expected_chain.no_ambiguous_master_switch: "[FE] Exception handling" { class: fe }
+system.actor_interface_chain.blocker_waiver_path -> system.expected_chain.no_ambiguous_master_switch: "[FE] Evidence/deviation closure" { class: fe }
 
 system.actor_interface_chain.controlled_restore -> system.interface_evidence.check_wrong_restart: "[FE] No unsafe restart" { class: fe }
 system.interface_evidence.record_liion_docs -> system.expected_chain.explicit_interfaces: "[FE] Document prerequisite" { class: fe }
@@ -143,9 +143,9 @@ safety_observer.authorize -> test_operator.log_interlock: "[FE] Test authorizati
 safety_observer.block_if_unsafe -> system.interface_evidence.record_discrepancies: "[FE] Unsafe condition hold" { class: fe }
 test_operator.archive -> system.expected_chain.no_undescribed_paths: "[FE] Evidence closure for actor paths" { class: fe }
 
-system.gap_reference -> system.expected_chain.no_ambiguous_master_switch: "[CSTR] Model gap applies to ALLOC-003" { class: cstr }
-system.expected_chain.no_ambiguous_master_switch -> system.actor_interface_chain.blocker_waiver_path: "[CSTR] Waiver required if source remains unchanged" { class: cstr }
-system.actor_interface_chain.wrong_charger_hold -> system.gap_reference: "[CSTR] Documented blocker path" { class: cstr }
+system.gap_reference -> system.expected_chain.no_ambiguous_master_switch: "[CSTR] ALLOC-003 evidence target" { class: cstr }
+system.expected_chain.no_ambiguous_master_switch -> system.actor_interface_chain.blocker_waiver_path: "[CSTR] Deviation only if as-built mismatch" { class: cstr }
+system.actor_interface_chain.wrong_charger_hold -> system.gap_reference: "[CSTR] Safety-hold evidence path" { class: cstr }
 system.expected_chain.explicit_interfaces -> system.actor_interface_chain.charger_setup: "[CSTR] Explicit procedures recorded" { class: cstr }
 
 # Layout order hints.

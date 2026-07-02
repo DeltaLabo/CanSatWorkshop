@@ -5,7 +5,7 @@ vars: {
 }
 
 # SAA-VV-CON-001 verification-only Functional Chain view.
-# Testing chain for landing-impact/drop-screen verification, with analysis-backed hold when exact levels are unresolved.
+# Testing chain for landing-impact/drop-screen verification using the approved 1.0 m S&A tailored article/workmanship screen.
 # References cited in the rendered chain title: IVV, SAA-R1, SAA-R2, SAA-R5.
 # This chain defines the verification activity only; it is not a baseline S&A functional chain.
 direction: down
@@ -52,9 +52,9 @@ impact_chain: "[Functional Chain] SAA-VV-CON-001 Landing-Impact / Drop-Screen Ve
   direction: down
 
   select_version: "[F] Operator/Witness: select\nv0.1 structural readiness or\nv1.0 final flight-readiness screen" { class: func }
-  load_screen: "[F] Test team: load approved\ndrop/impact screen definition,\nreferences and safety boundary" { class: func }
-  verify_screen: "[F] Acceptance gate: verify\ndrop height/energy, impact surface,\norientation set, configuration and\narticle state are controlled" { class: func }
-  hold_unresolved: "[F] Acceptance gate: classify\nanalysis-backed hold when exact\nimpact levels or article state\nremain unresolved" { class: func }
+  load_screen: "[F] Test team: load approved\n1.0 m S&A tailored drop/impact\nscreen definition, references\nand safety boundary" { class: func }
+  verify_screen: "[F] Acceptance gate: verify\n1.0 m free fall, plywood/hardwood\nsurface, orientation set, configuration\nand article state are controlled" { class: func }
+  hold_unresolved: "[F] Acceptance gate: classify\nhold/limited result for missing\npredeclared evidence, invalid setup\nor unapproved reduced orientation set" { class: func }
   confirm_config: "[F] Operator/Witness: confirm\narticle configuration and mass/ballast\nstate for selected version" { class: func }
   pre_inspect: "[F] Inspection kit: perform\npre-screen PC/PL, crack, connector,\nbattery, cap/parachute/servo and\nmeasurement baseline checks" { class: func }
   record_ambient: "[F] Ambient meter: record\ntemperature, humidity, fixture state\nand safety condition" { class: func }
@@ -68,12 +68,12 @@ impact_chain: "[Functional Chain] SAA-VV-CON-001 Landing-Impact / Drop-Screen Ve
   witness_decision: "[F] Safety / QA Witness: approve\npass, fail, hold, or required re-run" { class: func }
   archive: "[F] Evidence repository: archive\nscreen definition, video/photos, logs,\npost-impact inspection, remeasurements\nand decisions" { class: func }
 
-  pass_fail: "[C] Landing-impact pass/fail constraints:\nPass only when the tailored drop/impact screen is approved and executed, the complete\nrelease/impact is evidenced, no structural/integration failure occurs, and post-impact\ninspection plus remeasurement are acceptable. Failure/hold triggers include cracks, permanent\ndeformation, stack screw/standoff/battery/backplane/header/PDM servo connector loosening,\nmodule shift, electrical short/open evidence, cap/parachute/servo jam, mass/envelope guard-band\nexceedance after impact, ambiguous video, missing calibration/evidence, or open anomaly." {
+  pass_fail: "[C] Landing-impact pass/fail constraints:\nPass only when the 1.0 m free-fall drop to flat plywood/hardwood over rigid base is executed\nwith full video, no spin/hand assist/preload, required orientation coverage, no structural or\nintegration failure, SAA-BLK-007 threshold compliance, and acceptable post-impact interface\ninspection plus remeasurement. Failure/hold triggers include cracks, permanent deformation,\nstack screw/standoff/battery/backplane/header/PDM servo connector loosening, module shift,\nelectrical short/open evidence, cap/parachute/servo jam, mass/envelope guard-band exceedance\nafter impact, ambiguous video, missing calibration/evidence, under/over-test or open anomaly." {
     class: note
     shape: page
   }
 
-  unresolved_level: "[C] Analysis-backed hold rule:\nExact drop height/energy, impact surface, orientation set and article state are unresolved in\nthe baseline. If these are not approved before execution, do not release the article and do not\nclaim landing-impact pass. Record an analysis-backed hold referencing IVV, SAA-R2, the proposed\nASTM D5276-style or tailored CanSat environmental screen, and the missing level decision." {
+  unresolved_level: "[C] Screen validity / limited-execution rule:\nSAA-VV-CON-001 strict drop credit uses 1.0 m free fall from the article lowest point to flat\nplywood/hardwood over rigid floor/concrete in +X/-X/+Y/-Y/+Z/-Z single-drop orientations. A\nreduced set is hold/limited unless approved before execution. Invalid release/video/fixture\nerrors may be re-run only when no damage occurred; damage or threshold exceedance opens an\nanomaly and is not erased by silent re-run." {
     class: note
     shape: page
   }
@@ -100,9 +100,9 @@ impact_chain: "[Functional Chain] SAA-VV-CON-001 Landing-Impact / Drop-Screen Ve
 }
 
 impact_chain.select_version -> impact_chain.load_screen: "[FE] Selected SSIV /\nreadiness gate" { class: fe }
-impact_chain.load_screen -> impact_chain.verify_screen: "[FE] Proposed screen\nlevel and references" { class: fe }
-impact_chain.verify_screen -> impact_chain.hold_unresolved: "[FE] Missing approved\nlevel, surface, orientation,\narticle state or safety boundary" { class: fe }
-impact_chain.hold_unresolved -> impact_chain.archive: "[FE] Analysis-backed\nhold package" { class: fe }
+impact_chain.load_screen -> impact_chain.verify_screen: "[FE] Approved 1.0 m\nscreen baseline and references" { class: fe }
+impact_chain.verify_screen -> impact_chain.hold_unresolved: "[FE] Missing predeclared\nevidence, invalid setup,\narticle state or safety boundary" { class: fe }
+impact_chain.hold_unresolved -> impact_chain.archive: "[FE] Hold/limited\nvalidity package" { class: fe }
 impact_chain.verify_screen -> impact_chain.confirm_config: "[FE] Approved tailored\nscreen definition" { class: fe }
 impact_chain.confirm_config -> impact_chain.pre_inspect: "[FE] Configuration and\nballast state" { class: fe }
 impact_chain.pre_inspect -> impact_chain.record_ambient: "[FE] Pre-screen\ninspection baseline" { class: fe }

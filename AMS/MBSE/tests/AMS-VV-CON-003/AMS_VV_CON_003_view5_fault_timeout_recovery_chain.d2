@@ -74,10 +74,11 @@ chain: "AMS-VV-CON-003 — Environmental I2C timeout fault-hardening and recover
 
   note_scope: "[C] Scope confirmed for final acceptance:\nfault trials apply to environmental reads only\n(Read pressure, Read temperature)" { class: note; shape: page }
   note_fault_modes: "[C] Execute NACK/absent-sensor, held SDA,\nheld SCL, and timeout/no-response cases\nfor each environmental I2C read function" { class: note; shape: page }
-  note_fault_pass: "[C] Faulted read passes only if returned status\nis TIMEOUT, NACK, BUS_ERROR, or SENSOR_UNAVAILABLE\nwithin 5.000 ms incl. U95" { class: note; shape: page }
-  note_no_forbidden: "[C] Forbidden: stale OK data, watchdog reset,\npower-cycle requirement, deadlock, or lost\ntest-command responsiveness" { class: note; shape: page }
+  note_fault_pass: "[C] Faulted read passes only if returned status maps to\nTIMEOUT for timeout/no-response or SENSOR_FAULT for runtime\nsensor/bus/value faults (or applicable non-VALID) within\n5.000 ms incl. U95 while preserving low-level cause" { class: note; shape: page }
+  note_no_forbidden: "[C] Forbidden: stale/old/default data as VALID, watchdog\nreset, power-cycle requirement, deadlock, lost test-command\nresponsiveness, or stale success masking" { class: note; shape: page }
   note_recovery: "[C] Mandatory: after fault release, next modeled recovery read\nsucceeds without reset and t_read + U95 ≤ 5.000 ms" { class: note; shape: page }
   note_binary_stats: "[C] Use 29/29 pass per fault mode/read function\nfor R90/C95 binary fault-response claim; otherwise\nreport as workshop screening" { class: note; shape: page }
+  note_evidence: "[C] Evidence required: low-level cause codes, shared status\nmapping, sequence/sample IDs, timestamps/age where freshness is\nclaimed, instrumentation overhead, recovery and deviation notes" { class: note; shape: page }
   note_environment: "[C] Ambient 20-30 °C recorded; stable 3V3/common\nground; harness pullups and bus capacitance recorded" { class: note; shape: page }
 }
 
@@ -100,16 +101,16 @@ chain.timestamp_read_entry_return -> chain.read_temperature: "[FE] Faulted temp.
 
 chain.read_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nI2C Req" { class: fe }
 chain.read_temperature -> chain.respond_i2c_requests: "[FE] Temp.\nI2C Req" { class: fe }
-chain.respond_i2c_requests -> chain.read_pressure: "[FE] Error / timeout" { class: fe }
-chain.respond_i2c_requests -> chain.read_temperature: "[FE] Error / timeout" { class: fe }
+chain.respond_i2c_requests -> chain.read_pressure: "[FE] Error/timeout\n+ low-level cause" { class: fe }
+chain.respond_i2c_requests -> chain.read_temperature: "[FE] Error/timeout\n+ low-level cause" { class: fe }
 
 chain.respond_i2c_requests -> chain.capture_sda_scl_timing: "[FE] SDA/SCL trace" { class: fe }
-chain.read_pressure -> chain.emit_result_record: "[FE] Error code +\nduration" { class: fe }
-chain.read_temperature -> chain.emit_result_record: "[FE] Error code +\nduration" { class: fe }
+chain.read_pressure -> chain.emit_result_record: "[FE] Shared status,\ncause, duration" { class: fe }
+chain.read_temperature -> chain.emit_result_record: "[FE] Shared status,\ncause, duration" { class: fe }
 chain.emit_result_record -> chain.monitor_scheduler_alive: "[FE] Responsiveness\ncheck" { class: fe }
 chain.monitor_scheduler_alive -> chain.release_fault: "[FE] Safe to\nrelease fault" { class: fe }
 chain.release_fault -> chain.command_timed_read_batch: "[FE] Recovery read\nrequest" { class: fe }
-chain.emit_result_record -> chain.receive_timestamped_log: "[FE] Fault trial\nrecord" { class: fe }
+chain.emit_result_record -> chain.receive_timestamped_log: "[FE] Fault trial\nstatus/age record" { class: fe }
 chain.capture_sda_scl_timing -> chain.compute_timing_statistics: "[FE] Fault trace" { class: fe }
 chain.receive_timestamped_log -> chain.compute_timing_statistics: "[FE] Trial outcomes" { class: fe }
 chain.record_ambient_conditions -> chain.compute_timing_statistics: "[FE] Ambient\nconditions" { class: fe }
@@ -123,6 +124,8 @@ chain.note_fault_pass -> chain.emit_result_record { class: cstr }
 chain.note_no_forbidden -> chain.monitor_scheduler_alive { class: cstr }
 chain.note_recovery -> chain.release_fault { class: cstr }
 chain.note_binary_stats -> chain.compute_timing_statistics { class: cstr }
+chain.note_evidence -> chain.emit_result_record { class: cstr }
+chain.note_evidence -> chain.archive_evidence { class: cstr }
 chain.note_environment -> chain.record_ambient_conditions { class: cstr }
 chain.note_environment -> chain.record_voltage_current { class: cstr }
 

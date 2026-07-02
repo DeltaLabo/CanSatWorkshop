@@ -71,7 +71,7 @@ chain: "PDS-VV-CON-004 — transient / fault-hardening chain\n(IVV, PDS-R2, PDS-
   compare_fault_constraints: "[F] Compare transient and\nfault-hardening constraints" { class: func }
   store_evidence: "[F] Store waveforms, logs,\nand pass/fail result" { class: func }
 
-  note_transient: "[C] Startup / transient pass:\nafter campaign-configurable settling\n(placeholder: ≤100 ms startup,\n≤50 ms load step), 5 V is in [4.9, 5.1] V\nand 3.3 V is in [3.2, 3.4] V." {
+  note_transient: "[C] Startup / transient pass:\nsettling windows must be predeclared before execution\nfor startup and load steps. After the declared windows,\n5 V is in [4.9, 5.1] V and 3.3 V is in [3.2, 3.4] V.\nIf no windows are predeclared, transient evidence is characterization only." {
     class: note
     shape: page
   }

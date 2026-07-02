@@ -5,7 +5,7 @@ vars: {
 }
 
 # Functional allocation view — AMS-VV-API-001 API/component-exchange/allocation analysis functions
-# Verification references: IVV; model/API-contract analysis; AMS-R1 (BME280 context); AMS-R2 (I2C context).
+# Verification references: IVV; shared ADS/AMS freshness contract; model/API-contract analysis; AMS-R1 (BME280 context); AMS-R2 (I2C context).
 # IADT: Analysis with supporting Inspection. SSIV: AMS v1.0 final acceptance / flight readiness.
 # Traceability: AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault; AMS-FE-StaleMeasurement; variable-getter constraint.
 # Shows UUT functions plus VV-only analysis, review, checklist, static-analysis, and evidence functions. No CEs/FEs/PLs in PV3.
@@ -48,7 +48,7 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-system: "[System] AMS-VV-API-001 API/CE/allocation analysis\nAMS v1.0 final acceptance\nRefs: IVV; model/API-contract analysis; AMS-R1/R2 context" {
+system: "[System] AMS-VV-API-001 API/CE/allocation analysis\nAMS v1.0 final acceptance\nRefs: IVV; shared freshness contract; API analysis; AMS-R1/R2" {
   class: sys
   direction: down
 
@@ -146,7 +146,7 @@ system: "[System] AMS-VV-API-001 API/CE/allocation analysis\nAMS v1.0 final acce
             map_allocations: "[F] Map LC function\nallocations" { class: func }
             map_data_resource_crossings: "[F] Map data/resource\ncrossings" { class: func }
             run_static_checks: "[F] Run static\nanalysis checks" { class: func }
-            inspect_unit_logs: "[F] Inspect unit-test /\nlog evidence" { class: func }
+            inspect_unit_logs: "[F] Inspect dynamic getter /\ncollection timing traces" { class: func }
             compile_coverage_matrix: "[F] Compile 100% API\ncoverage matrix" { class: func }
             classify_api_anomalies: "[F] Classify pass/fail\nand anomalies" { class: func }
             archive_report_inputs: "[F] Archive report\ninputs" { class: func }
@@ -167,7 +167,7 @@ system: "[System] AMS-VV-API-001 API/CE/allocation analysis\nAMS v1.0 final acce
           class: note
           shape: page
         }
-        note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+        note_no_blocking: "[C] No blocking operations besides\nbounded I2C or UART comms;\nI2C evidence from AMS-VV-CON-003,\nscheduler traces from AMS-VV-CON-004" {
           class: note
           shape: page
         }
@@ -224,8 +224,8 @@ unit_test_log_repo: "[EA] Unit-test / Log\nEvidence Repository" {
   direction: down
   grid-columns: 1
 
-  provide_nominal_getter_logs: "[F] Provide nominal\ngetter logs" { class: func }
-  provide_fault_case_logs: "[F] Provide fault-case\nlogs" { class: func }
+  provide_nominal_getter_logs: "[F] Provide nominal getter /\ncollection timing logs" { class: func }
+  provide_fault_case_logs: "[F] Provide fault/status and\nnon-blocking traces" { class: func }
   store_coverage_matrix: "[F] Store API coverage\nmatrix" { class: func }
   store_report_inputs: "[F] Store report\ninputs" { class: func }
 }
@@ -248,7 +248,11 @@ note_pointer_contract: "[C] Pointer pass/fail: ownership, lifetime, null/invalid
   class: note
   shape: page
 }
-note_return_contract: "[C] Return pass/fail: statuses/data distinguish OK valid\nmeasurement, startup fault, runtime sensor fault, timeout/bus\nerror, invalid input, and stale/no-data cases as applicable" {
+note_return_contract: "[C] Return pass/fail: implementation codes map to\nVALID, STALE, NO_DATA, TIMEOUT, SENSOR_FAULT,\nINIT_FAIL; startup/runtime faults, timeout, no-data,\nstale, and invalid input remain distinguishable" {
+  class: note
+  shape: page
+}
+note_freshness_contract: "[C] Freshness pass/fail at AMS→OBCC: support\n5 Hz / 200 ms request-response; 2 s LoRa separate;\nfresh only status == VALID and age_ms <= 400 ms;\nrecord timestamp, sequence/sample-ID, and age;\nno old/default/previous value as VALID" {
   class: note
   shape: page
 }
@@ -264,11 +268,11 @@ note_crossings: "[C] Crossing pass/fail: all LC data/resource crossings are\nacc
   class: note
   shape: page
 }
-note_coverage: "[C] Coverage pass/fail: checklist includes 100% of modeled\nAMS Processing getters and 100% of OBCC collection paths from\nboth v1.0 functional chains" {
+note_coverage: "[C] Coverage pass/fail: checklist includes 100% of modeled\nAMS Processing getters and 100% of OBCC collection paths from\nboth v1.0 functional chains, plus static callable-path review\nand dynamic getter/collection timing traces" {
   class: note
   shape: page
 }
-note_fault_hardening: "[C] Fault-hardening viewpoint: invalid pointers, aliasing,\nunit mismatch, stale data, startup fault, runtime sensor fault,\ntimeout/bus error, and bounded error propagation" {
+note_fault_hardening: "[C] Fault-hardening viewpoint: invalid pointers, aliasing,\nunit mismatch, STALE/NO_DATA/TIMEOUT/SENSOR_FAULT/\nINIT_FAIL, stale-valid masking, and bounded non-blocking\nerror propagation" {
   class: note
   shape: page
 }
@@ -288,6 +292,9 @@ note_pointer_contract -> static_analysis_tool.detect_pointer_hazards { class: cs
 note_pointer_contract -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record.inspect_pointer_contract { class: cstr }
 note_return_contract -> api_contract_checklist.list_status_cases { class: cstr }
 note_return_contract -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record.inspect_return_contract { class: cstr }
+note_freshness_contract -> api_contract_checklist.list_status_cases { class: cstr }
+note_freshness_contract -> unit_test_log_repo.provide_nominal_getter_logs { class: cstr }
+note_freshness_contract -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record.inspect_return_contract { class: cstr }
 note_allocation_sensing -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_pressure { class: cstr }
 note_allocation_sensing -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.measure_temperature { class: cstr }
 note_allocation_sensing -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing.respond_i2c_requests { class: cstr }
@@ -311,7 +318,8 @@ unit_test_log_repo -> qa_reviewer { style: { opacity: 0 } }
 qa_reviewer -> note_final_acceptance { style: { opacity: 0 } }
 note_final_acceptance -> note_pointer_contract { style: { opacity: 0 } }
 note_pointer_contract -> note_return_contract { style: { opacity: 0 } }
-note_return_contract -> note_allocation_sensing { style: { opacity: 0 } }
+note_return_contract -> note_freshness_contract { style: { opacity: 0 } }
+note_freshness_contract -> note_allocation_sensing { style: { opacity: 0 } }
 note_allocation_sensing -> note_allocation_obcc { style: { opacity: 0 } }
 note_allocation_obcc -> note_crossings { style: { opacity: 0 } }
 note_crossings -> note_coverage { style: { opacity: 0 } }

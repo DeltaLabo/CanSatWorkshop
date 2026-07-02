@@ -77,6 +77,7 @@ system: "[System] PDS-VV-ALLOC-001 physical allocation context\nPDS & ESS v1.0 f
       direction: right
       battery_connector: "[PC] Battery Connector" { class: pc }
       protection: "[PC] Protection Circuit" { class: pc }
+      master_switch: "[PC] Accessible Master Switch" { class: pc }
       ina219: "[PC] INA219" { class: pc }
       regulator: "[PC] Regulator" { class: pc }
       pds_backplane_connector: "[PC] Backplane Connector" { class: pc }
@@ -116,7 +117,7 @@ system: "[System] PDS-VV-ALLOC-001 physical allocation context\nPDS & ESS v1.0 f
   }
 }
 
-master_switch_caveat: "[C] Source-model caveat\nNo physical master-switch/accessibility element is explicit in v1.0 PV1.\nIf no safe and verifiable access procedure is approved, use blocker/waiver path before powered runs." {
+master_switch_caveat: "[C] Master-switch evidence target\nSource PV1 now includes Accessible Master Switch in the protected-power path.\nFinal ALLOC-003 credit requires as-built switch part/location, accessibility photo,\nOFF-state rail measurements at PDS/backplane endpoints, continuity/isolation,\nlabel/orientation/polarity, and any deviation/waiver record." {
   class: note
   shape: page
 }
@@ -125,7 +126,8 @@ master_switch_caveat: "[C] Source-model caveat\nNo physical master-switch/access
 charger_eq -- system.pds_module.pds_pcb.protection: "[PL] USB-C cable" { class: pl }
 system.ess_module.battery_pack -- system.pds_module.pds_pcb.battery_connector: "[PL] Battery cable" { class: pl }
 system.pds_module.pds_pcb.battery_connector -- system.pds_module.pds_pcb.protection: "[PL] Battery ± traces" { class: pl }
-system.pds_module.pds_pcb.protection -- system.pds_module.pds_pcb.ina219: "[PL] PC out trace" { class: pl }
+system.pds_module.pds_pcb.protection -- system.pds_module.pds_pcb.master_switch: "[PL] Protected power trace" { class: pl }
+system.pds_module.pds_pcb.master_switch -- system.pds_module.pds_pcb.ina219: "[PL] Switched power trace" { class: pl }
 system.pds_module.pds_pcb.ina219 -- system.pds_module.pds_pcb.regulator: "[PL] INA out trace" { class: pl }
 system.pds_module.pds_pcb.regulator -- system.pds_module.pds_pcb.pds_backplane_connector: "[PL] 5V / 3V3 traces" { class: pl }
 system.pds_module.pds_pcb.pds_backplane_connector -- system.backplane_pcb.pds_headers: "[PL] Parallel cable" { class: pl }
@@ -138,8 +140,9 @@ test_operator.archive_links -> system.test_bench_linkage.allocation_trace: "[FE]
 safety_observer -> system.test_bench_linkage.safety_cutoff: "[FE] Witness and stop-control approvals" { class: fe }
 
 # Codelink source caveat to context record.
-master_switch_caveat -> user_eq: "[CSTR] Unmodeled physical switch access" { class: cstr }
-master_switch_caveat -> system.test_bench_linkage.safety_cutoff: "[CSTR] Blocker/waiver decision point" { class: cstr }
+master_switch_caveat -> user_eq: "[CSTR] Accessibility evidence" { class: cstr }
+master_switch_caveat -> system.pds_module.pds_pcb.master_switch: "[CSTR] Modeled switch" { class: cstr }
+master_switch_caveat -> system.test_bench_linkage.safety_cutoff: "[CSTR] Safe-off evidence" { class: cstr }
 system.note_scope -> system.test_bench_linkage { class: cstr }
 
 # Layout-only ordering hints.

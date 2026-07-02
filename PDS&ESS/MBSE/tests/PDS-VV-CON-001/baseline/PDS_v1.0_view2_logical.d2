@@ -110,6 +110,7 @@ system: "[System] CanSat" {
 
 system.obcc_module.obcc_pcb.xiao.obcc -> system.obcc_module.obcc_pcb.xiao.ess_processing: "[CE] Pointers" { class: ce }
 system.obcc_module.obcc_pcb.xiao.ess_processing -> system.obcc_module.obcc_pcb.xiao.obcc: "[CE] Returns" { class: ce }
+system.obcc_module.obcc_pcb.xiao.ess_processing -> system.pds_module.pds_pcb.ina219.battery_monitoring: "[CE] I2C / INA219 bus" { class: ce }
 
 system.pcb_cnc_note -> system.pds_module.pds_pcb { class: cstr }
 system.pcb_cnc_note -> system.obcc_module.obcc_pcb { class: cstr }

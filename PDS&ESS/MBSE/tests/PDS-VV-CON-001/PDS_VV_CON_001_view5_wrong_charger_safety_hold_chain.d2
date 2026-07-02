@@ -76,7 +76,7 @@ chain: "PDS-VV-CON-001 — wrong-charger / unsafe-setup safety-hold chain\nPDS &
     class: note
     shape: page
   }
-  note_hold_pass: "[C] Hold pass/fail\nA wrong/uncertified charger, wrong voltage/current capability, reverse polarity,\nambiguous setup, missing safety documents or limits, unsafe cell condition,\nunsafe ambient, unresolved calibration/status issue, or Safety Observer hold\nshall prevent energizing. Safety hold passes only if no unsafe energization occurs." {
+  note_hold_pass: "[C] Hold pass/fail\nWrong/uncertified charger, wrong or unverified voltage/current capability, reverse polarity,\nambiguous setup, missing cell/pack evidence or limits, missing containment/E-stop/abort\ncontrols, unsafe cell, unsafe ambient, unresolved calibration/status, open anomaly/deviation,\nor Safety Observer hold shall prevent energizing. Hold passes only if no unsafe energization occurs." {
     class: note
     shape: page
   }
@@ -84,15 +84,15 @@ chain: "PDS-VV-CON-001 — wrong-charger / unsafe-setup safety-hold chain\nPDS &
     class: note
     shape: page
   }
-  note_no_claim: "[C] No-Li-ion-claim condition\nIf cell identity, safety documentation, charge/discharge/storage limits, or\nrequired safety evidence are absent, only supervised emulator/non-cell path\nchecks may proceed. The result shall report no final powered Li-ion charge\nacceptance until documents are available." {
+  note_no_claim: "[C] No-Li-ion-claim condition\nIf charger model/settings/certification/current limits, cell/pack identity, datasheet/SDS,\nUN38.3/IEC62133 evidence or controlled limitation, charge/discharge/storage limits,\ncontainment, Safety Observer approval, E-stop/abort controls, or anomaly/deviation\nprocess are absent, only supervised emulator/non-cell checks may proceed." {
     class: note
     shape: page
   }
-  note_environment: "[C] Environmental and safety controls\nAmbient is read before setup decision; instruments are calibrated/status-checked;\nfire-safe enclosure and E-stop remain available; Safety Observer/Witness can hold\nfor any ambiguity. Destructive Li-ion abuse and accredited certification are out of scope." {
+  note_environment: "[C] Environmental and safety controls\nAmbient is read before setup decision; instruments are calibrated/status-checked;\ncertified charger settings/current limit are verified; containment and E-stop/abort\nremain available; Safety Observer/Witness can hold for any ambiguity; anomaly/deviation\nprocess is active. Destructive Li-ion abuse and accredited certification are out of scope." {
     class: note
     shape: page
   }
-  note_fault: "[C] Fault-hardening viewpoint\nFault-hardening evidence is the safe refusal to energize for wrong charger,\nreverse/ambiguous connection, calibration issue, unsafe ambient, missing\ndocuments, unsafe cell condition, or overcurrent/overvoltage precursor." {
+  note_fault: "[C] Fault-hardening viewpoint\nEvidence is safe refusal to energize for wrong charger/settings/current limit,\nreverse/ambiguous connection, calibration issue, unsafe ambient, missing documents/\nlimits/containment/E-stop/observer approval, unsafe cell, open anomaly/deviation,\nor overcurrent/overvoltage precursor." {
     class: note
     shape: page
   }

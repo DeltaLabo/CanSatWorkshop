@@ -5,7 +5,7 @@ vars: {
 }
 
 # Logical view — AMS-VV-API-001 pointer/return API component-exchange analysis testbench
-# Verification references: IVV; model/API-contract analysis; AMS-R1 (BME280 context); AMS-R2 (I2C context).
+# Verification references: IVV; shared ADS/AMS freshness contract; model/API-contract analysis; AMS-R1 (BME280 context); AMS-R2 (I2C context).
 # IADT: Analysis with supporting Inspection. SSIV: AMS v1.0 final acceptance / flight readiness.
 # Traceability: AMS-UC-MeasureAtmosphere; AMS-UC-InitializePeripheral; AMS-FE-SensorBusFault; AMS-FE-StaleMeasurement; variable-getter constraint.
 # Shows target same-XIAO [CE] Pointers and [CE] Returns plus VV-only analysis/evidence exchanges.
@@ -48,7 +48,7 @@ classes: {
   cstr: { style: { stroke: "#333333"; stroke-dash: 3; font-size: 26 } }
 }
 
-system: "[System] AMS-VV-API-001 API/CE/allocation analysis\nAMS v1.0 final acceptance\nRefs: IVV; model/API-contract analysis; AMS-R1/R2 context" {
+system: "[System] AMS-VV-API-001 API/CE/allocation analysis\nAMS v1.0 final acceptance\nRefs: IVV; shared freshness contract; API analysis; AMS-R1/R2" {
   class: sys
   direction: down
 
@@ -117,7 +117,15 @@ note_pointer_contract: "[C] Pass iff pointer ownership, lifetime, null/invalid\n
   class: note
   shape: page
 }
-note_return_contract: "[C] Pass iff returns/statuses distinguish valid\nmeasurement, startup fault, runtime sensor fault, timeout/bus\nerror, invalid input, and stale/no-data cases as applicable" {
+note_return_contract: "[C] Pass iff implementation return/status codes\nmap to exactly VALID, STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT, INIT_FAIL;\ninvalid input and startup/runtime faults remain\nnon-VALID when applicable" {
+  class: note
+  shape: page
+}
+note_freshness_contract: "[C] AMS→OBCC API baseline: 5 Hz / 200 ms;\n2 s LoRa packaging is separate. Fresh only\nstatus == VALID and age_ms <= 400 ms;\nneed timestamp, sequence/sample-ID, age.\nNo old/default/previous value as VALID." {
+  class: note
+  shape: page
+}
+note_dynamic_contract: "[C] Closure requires static callable-path review\nand dynamic getter/collection timing + non-blocking\ntraces. I2C timeout/fault evidence depends on\nAMS-VV-CON-003; scheduler liveness timing depends\non AMS-VV-CON-004 where claimed." {
   class: note
   shape: page
 }
@@ -150,6 +158,11 @@ note_pointer_contract -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing 
 note_pointer_contract -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
 note_return_contract -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
 note_return_contract -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+note_freshness_contract -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
+note_freshness_contract -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+note_dynamic_contract -> static_analysis_tool { class: cstr }
+note_dynamic_contract -> unit_test_log_repo { class: cstr }
+note_dynamic_contract -> system.cansat.obcc_module.obcc_pcb.xiao.api_analysis_record { class: cstr }
 note_crossing_contract -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing { class: cstr }
 note_crossing_contract -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
 note_crossing_contract -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
@@ -165,6 +178,8 @@ unit_test_log_repo -> qa_reviewer { style: { opacity: 0 } }
 qa_reviewer -> note_scope { style: { opacity: 0 } }
 note_scope -> note_pointer_contract { style: { opacity: 0 } }
 note_pointer_contract -> note_return_contract { style: { opacity: 0 } }
-note_return_contract -> note_crossing_contract { style: { opacity: 0 } }
+note_return_contract -> note_freshness_contract { style: { opacity: 0 } }
+note_freshness_contract -> note_dynamic_contract { style: { opacity: 0 } }
+note_dynamic_contract -> note_crossing_contract { style: { opacity: 0 } }
 note_crossing_contract -> note_allocation_contract { style: { opacity: 0 } }
 note_allocation_contract -> note_coverage_contract { style: { opacity: 0 } }

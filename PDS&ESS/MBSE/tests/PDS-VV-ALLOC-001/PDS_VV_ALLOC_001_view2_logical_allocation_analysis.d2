@@ -83,6 +83,7 @@ system: "[System] PDS-VV-ALLOC-001 logical allocation analysis\nPDS & ESS v1.0; 
         battery_charger: "[LC] Battery Charger" { class: lc }
         power_protection: "[LC] Power Protection" { class: lc }
       }
+      master_switch: "[PC] Accessible Master Switch" { class: pc }
       ina219: "[PC] INA219" { class: pc }
       regulator: "[PC] Regulator" {
         class: pc
@@ -124,8 +125,8 @@ system: "[System] PDS-VV-ALLOC-001 logical allocation analysis\nPDS & ESS v1.0; 
 
 # Source logical component exchanges (modeled) plus explicit analysis of boundary crossings.
 charger.charger_power -> system.pds_module.pds_pcb.protection.battery_charger: "[CE] Charge power" { class: ce }
-user.switch_on -> system.pds_module.pds_pcb.protection.power_protection: "[CE] Power-on intent (implicit physical switch path)" { class: ce }
-user.switch_off -> system.pds_module.pds_pcb.protection.power_protection: "[CE] Power-off intent" { class: ce }
+user.switch_on -> system.pds_module.pds_pcb.protection.power_protection: "[CE] Power-on intent via\nAccessible Master Switch" { class: ce }
+user.switch_off -> system.pds_module.pds_pcb.protection.power_protection: "[CE] Power-off intent via\nAccessible Master Switch" { class: ce }
 
 # Power-path allocation-relevant modeled exchanges reviewed by this activity.
 system.ess_module.battery_pack -> system.pds_module.pds_pcb.battery_connector: "[CE] Stored battery power" { class: ce }
@@ -142,13 +143,14 @@ system.allocation_scope.discrepancy_log -> system.allocation_scope.alloc_check: 
 system.note_scope -> system.allocation_scope.alloc_check { class: cstr }
 system.note_scope -> system.allocation_scope.flow_check { class: cstr }
 
-# Blocker note kept explicit for actor-interface gap (for ALLOC-003). 
-master_switch_gap: "[C] ALLOC-003 actor-interface caveat\nNo explicit master switch/accessibility hardware is modeled in source PV1/PV2.\nProceed via controlled operator procedure and blocker/waiver decision unless updated source model is provided." {
+# Actor-interface note kept explicit for ALLOC-003 execution evidence.
+master_switch_gap: "[C] ALLOC-003 actor-interface evidence\nSource PV1 now models Accessible Master Switch.\nFinal allocation credit requires as-built switch part/location,\naccessibility photo, OFF-state rail measurements at PDS/backplane endpoints,\ncontinuity/isolation, label/orientation/polarity, and deviation/waiver record if any." {
   class: note
   shape: page
 }
 
 master_switch_gap -> user { class: cstr }
+master_switch_gap -> system.pds_module.pds_pcb.master_switch { class: cstr }
 master_switch_gap -> system.allocation_scope.discrepancy_log { class: cstr }
 
 # Layout order hints.

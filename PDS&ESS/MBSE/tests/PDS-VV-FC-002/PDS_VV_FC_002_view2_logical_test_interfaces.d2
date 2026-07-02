@@ -143,7 +143,7 @@ system: "[System] PDS-VV-FC-002 battery-supervision logical test interfaces\nPDS
     shape: page
   }
 
-  i2c_gap_note: "[C] Verification-analysis target:\nsource PV2 has no explicit INA219 I2C CE\nbetween ESS Processing and Battery monitoring.\nDo not modify baseline here;\nfinal execution claim blocked until resolved/justified.\nRefs IVV, PDS-R9, PDS-R10" {
+  i2c_gap_note: "[C] CE-003 execution evidence target:\nsource PV2 now shows explicit INA219 I2C CE\nfrom ESS Processing to Battery monitoring.\nFinal claim still needs topology, pins/nets, address,\npullups, voltage levels, direction, ≤5 ms timeout,\nfault-status mapping, and raw logs/source/build evidence.\nRefs IVV, PDS-R9, PDS-R10" {
     class: note
     shape: page
   }
@@ -151,6 +151,7 @@ system: "[System] PDS-VV-FC-002 battery-supervision logical test interfaces\nPDS
 
 system.uut.obcc_module.obcc_pcb.xiao.obcc -> system.uut.obcc_module.obcc_pcb.xiao.ess_processing: "[CE] Pointers /\ngetter API" { class: ce }
 system.uut.obcc_module.obcc_pcb.xiao.ess_processing -> system.uut.obcc_module.obcc_pcb.xiao.obcc: "[CE] Returns /\nstatus data" { class: ce }
+system.uut.obcc_module.obcc_pcb.xiao.ess_processing -> system.uut.pds_module.pds_pcb.ina219.battery_monitoring: "[CE] I2C / INA219 bus" { class: ce }
 
 test_operator -> system.test_harness.test_control: "[CE] Test case commands" { class: ce }
 system.test_harness.test_control -> system.uut.obcc_module.obcc_pcb.xiao.obcc: "[CE] UART/console\ncommand hooks" { class: ce }

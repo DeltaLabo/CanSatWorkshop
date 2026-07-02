@@ -72,11 +72,11 @@ chain: "AMS-VV-FC-001 — Atmospheric measurement final-acceptance chain\nTestin
   calculate_altitude: "[F] Calculate\naltitude" { class: func }
   process_temperature: "[F] Process\ntemperature" { class: func }
   collect_measurements: "[F] Collect\nmeasurements" { class: func }
-  emit_current_measurement_record: "[F] Emit current\nmeasurement record" { class: func }
+  emit_current_measurement_record: "[F] Emit status/age\nmeasurement record" { class: func }
 
   capture_obcc_results: "[F] Capture OBCC\nresult log" { class: func }
   parse_result_order_units: "[F] Parse result\norder / units" { class: func }
-  check_current_not_stale: "[F] Check current /\nnot stale" { class: func }
+  check_current_not_stale: "[F] Check VALID and\nage_ms <= 400 ms" { class: func }
   pair_samples_with_references: "[F] Pair samples\nwith references" { class: func }
   compare_pressure_to_reference: "[F] Compare pressure\nto reference" { class: func }
   compare_temperature_to_reference: "[F] Compare temperature\nto reference" { class: func }
@@ -86,11 +86,13 @@ chain: "AMS-VV-FC-001 — Atmospheric measurement final-acceptance chain\nTestin
   note_n30: "[C] Pass condition: collect n ≥ 30 paired\npressure and temperature samples per operating point\nbefore computing final acceptance statistics" { class: note; shape: page }
   note_pressure: "[C] Pressure passes iff abs(bias) + U95 ≤ 1 hPa\nfor AMS pressure paired with the reference pressure" { class: note; shape: page }
   note_temperature: "[C] Temperature passes iff abs(bias) + U95 ≤ 0.5 °C\nfor tested point(s) inside 10-40 °C" { class: note; shape: page }
-  note_obcc_current: "[C] OBCC shall collect current altitude and\ntemperature results in the modeled order; stale data\nshall not be accepted as current" { class: note; shape: page }
+  note_obcc_current: "[C] Fresh/current oracle at AMS→OBCC: collect altitude\nand temperature in modeled order; current only when\nstatus == VALID and age_ms <= 400 ms. Non-VALID\n(STALE, NO_DATA, TIMEOUT, SENSOR_FAULT, INIT_FAIL)\nshall not be treated as current." { class: note; shape: page }
   note_altitude: "[C] Altitude calculation participates in this chain;\n10 m-equivalent pressure-step resolution pass/fail is\nmodeled in AMS_VV_FC_001_view5" { class: note; shape: page }
-  note_i2c_dependency: "[C] Detailed I2C ≤5 ms timeout proof is a dependency\non AMS-VV-CON-003 and is not duplicated here" { class: note; shape: page }
+  note_i2c_dependency: "[C] Detailed I2C ≤5 ms timeout proof is a dependency\non AMS-VV-CON-003 and is not duplicated here; any TIMEOUT,\nSENSOR_FAULT, stale-valid, or currentness anomaly fails" { class: note; shape: page }
+  note_evidence: "[C] Evidence required: timestamp, sequence/sample-ID, age_ms,\nstatus, raw AMS pressure/temperature/altitude values, reference\nvalues, uncertainty inputs, order evidence, deviations/anomalies" { class: note; shape: page }
+  note_response_phase2: "[C] Temperature response <=60 s is phase-2 only unless\nthis folder is explicitly extended with declared temperature step,\nreference data, synchronized/correlated timestamps, exposure state,\nand response calculation; not closed here." { class: note; shape: page }
   note_environment: "[C] Environment: ambient thermometer is read before\nrepetitions; pressure and temperature references are\nco-located with BME280; stable 3V3/common ground and\nsunlight-blocking/airflow configuration are recorded" { class: note; shape: page }
-  note_fault: "[C] Fault-hardening viewpoint: BadExposure, stale\nmeasurement, swapped pressure/temperature branches,\nunexplained outliers, or evidence gaps fail or require\nanomaly/waiver in the report" { class: note; shape: page }
+  note_fault: "[C] Fault-hardening viewpoint: BadExposure, non-VALID or stale\nmeasurement, swapped pressure/temperature branches, unexplained\noutliers, evidence gaps, or old/default values marked VALID fail\nor require anomaly/waiver in the report" { class: note; shape: page }
 }
 
 chain.configure_test_case -> chain.record_instrument_ids: "[FE] Test setup" { class: fe }
@@ -117,20 +119,20 @@ chain.timestamp_measurement_steps -> chain.read_pressure: "[FE] Timed pressure\n
 chain.timestamp_measurement_steps -> chain.read_temperature: "[FE] Timed temperature\nread request" { class: fe }
 chain.read_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nI2C Req" { class: fe }
 chain.read_temperature -> chain.respond_i2c_requests: "[FE] Temp.\nI2C Req" { class: fe }
-chain.respond_i2c_requests -> chain.read_pressure: "[FE] Pressure" { class: fe }
-chain.respond_i2c_requests -> chain.read_temperature: "[FE] Temperature" { class: fe }
-chain.read_pressure -> chain.calculate_altitude: "[FE] Pressure" { class: fe }
-chain.read_temperature -> chain.process_temperature: "[FE] Temperature" { class: fe }
-chain.calculate_altitude -> chain.collect_measurements: "[FE] Result\n[Altitude]" { class: fe }
-chain.process_temperature -> chain.collect_measurements: "[FE] Result\n[Temperature]" { class: fe }
+chain.respond_i2c_requests -> chain.read_pressure: "[FE] Pressure\n+ status" { class: fe }
+chain.respond_i2c_requests -> chain.read_temperature: "[FE] Temperature\n+ status" { class: fe }
+chain.read_pressure -> chain.calculate_altitude: "[FE] Pressure\n+ status" { class: fe }
+chain.read_temperature -> chain.process_temperature: "[FE] Temperature\n+ status" { class: fe }
+chain.calculate_altitude -> chain.collect_measurements: "[FE] Result\n[Altitude]\nstatus+age" { class: fe }
+chain.process_temperature -> chain.collect_measurements: "[FE] Result\n[Temperature]\nstatus+age" { class: fe }
 chain.tag_sample_sequence -> chain.collect_measurements: "[FE] Sample ID /\ncurrentness tag" { class: fe }
-chain.read_pressure -> chain.emit_current_measurement_record: "[FE] Current pressure\nevidence" { class: fe }
-chain.read_temperature -> chain.emit_current_measurement_record: "[FE] Current temperature\nevidence" { class: fe }
-chain.calculate_altitude -> chain.emit_current_measurement_record: "[FE] Current altitude\nevidence" { class: fe }
-chain.collect_measurements -> chain.capture_obcc_results: "[FE] OBCC current results\nin modeled order" { class: fe }
+chain.read_pressure -> chain.emit_current_measurement_record: "[FE] Pressure status,\nage, sample ID" { class: fe }
+chain.read_temperature -> chain.emit_current_measurement_record: "[FE] Temperature status,\nage, sample ID" { class: fe }
+chain.calculate_altitude -> chain.emit_current_measurement_record: "[FE] Altitude status,\nage, sample ID" { class: fe }
+chain.collect_measurements -> chain.capture_obcc_results: "[FE] OBCC results in\nmodeled order + status/age" { class: fe }
 chain.emit_current_measurement_record -> chain.capture_obcc_results: "[FE] VV measurement\nrecord" { class: fe }
 chain.capture_obcc_results -> chain.parse_result_order_units: "[FE] Raw OBCC log" { class: fe }
-chain.parse_result_order_units -> chain.check_current_not_stale: "[FE] Parsed values\n+ sample ID" { class: fe }
+chain.parse_result_order_units -> chain.check_current_not_stale: "[FE] Parsed values,\nstatus, age, sample ID" { class: fe }
 chain.check_current_not_stale -> chain.pair_samples_with_references: "[FE] Current sample\nonly" { class: fe }
 chain.record_reference_conditions -> chain.pair_samples_with_references: "[FE] Reference\nconditions" { class: fe }
 chain.pair_samples_with_references -> chain.compare_pressure_to_reference: "[FE] Pressure pairs" { class: fe }
@@ -153,6 +155,10 @@ chain.note_altitude -> chain.calculate_altitude { class: cstr }
 chain.note_altitude -> chain.collect_measurements { class: cstr }
 chain.note_i2c_dependency -> chain.read_pressure { class: cstr }
 chain.note_i2c_dependency -> chain.read_temperature { class: cstr }
+chain.note_evidence -> chain.emit_current_measurement_record { class: cstr }
+chain.note_evidence -> chain.capture_obcc_results { class: cstr }
+chain.note_response_phase2 -> chain.set_stable_thermal_point { class: cstr }
+chain.note_response_phase2 -> chain.archive_evidence { class: cstr }
 chain.note_environment -> chain.read_ambient_temperature { class: cstr }
 chain.note_environment -> chain.record_reference_conditions { class: cstr }
 chain.note_environment -> chain.record_voltage_current { class: cstr }
@@ -168,5 +174,7 @@ chain.note_pressure -> chain.note_temperature { style: { opacity: 0 } }
 chain.note_temperature -> chain.note_obcc_current { style: { opacity: 0 } }
 chain.note_obcc_current -> chain.note_altitude { style: { opacity: 0 } }
 chain.note_altitude -> chain.note_i2c_dependency { style: { opacity: 0 } }
-chain.note_i2c_dependency -> chain.note_environment { style: { opacity: 0 } }
+chain.note_i2c_dependency -> chain.note_evidence { style: { opacity: 0 } }
+chain.note_evidence -> chain.note_response_phase2 { style: { opacity: 0 } }
+chain.note_response_phase2 -> chain.note_environment { style: { opacity: 0 } }
 chain.note_environment -> chain.note_fault { style: { opacity: 0 } }

@@ -56,6 +56,19 @@ chain: "ADS v1.0 — Attitude estimation chain" {
   process_accelerations: "[F] Process\naccelerations" { class: func }
   calculate_pitch_roll_yaw: "[F] Calculate\npitch, roll, yaw" { class: func }
   collect_measurements: "[F] Collect\nmeasurements" { class: func }
+
+  note_internal_freshness: "[C] Internal ADS-to-OBCC\ndelivery is 5 Hz (200 ms\nnominal) through attitude\nprocessing/collection path;\nLoRa packaging remains\nseparate at 2 s" {
+    class: note
+    shape: page
+  }
+  note_fresh_status: "[C] Fresh attitude-related data\nrequires status == VALID,\nfinite/in-range required fields,\nand age_ms <= 400 ms. Enum:\nVALID, STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT, INIT_FAIL;\nnon-VALID/default not VALID" {
+    class: note
+    shape: page
+  }
+  note_quant_delegated: "[C] Quantitative acceleration\nand heading/north claims remain\ndelegated to ADS-IVV-C-ACCEL-3AXIS\nand ADS-IVV-C-HEADING-NORTH;\ndo not create a new candidate\nfolder in this source view" {
+    class: note
+    shape: page
+  }
 }
 
 chain.measure_accelerations -> chain.respond_i2c_requests: "[FE] Acceleration\nsignal" { class: fe }
@@ -69,3 +82,12 @@ chain.read_accelerations -> chain.calculate_pitch_roll_yaw: "[FE] Accelerations"
 chain.read_field_intensities -> chain.calculate_pitch_roll_yaw: "[FE] Field\nintensities" { class: fe }
 chain.process_accelerations -> chain.collect_measurements: "[FE] Result\n[Accels]" { class: fe }
 chain.calculate_pitch_roll_yaw -> chain.collect_measurements: "[FE] Result\n[PRY]" { class: fe }
+
+chain.note_internal_freshness -> chain.collect_measurements { class: cstr }
+chain.note_fresh_status -> chain.collect_measurements { class: cstr }
+chain.note_quant_delegated -> chain.process_accelerations { class: cstr }
+chain.note_quant_delegated -> chain.calculate_pitch_roll_yaw { class: cstr }
+
+# Layout-only edges to keep chain-level constraints grouped.
+chain.note_internal_freshness -> chain.note_fresh_status { style: { opacity: 0 } }
+chain.note_fresh_status -> chain.note_quant_delegated { style: { opacity: 0 } }

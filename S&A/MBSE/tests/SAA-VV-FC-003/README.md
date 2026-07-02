@@ -33,6 +33,10 @@ The UUT is the integrated `v1.0` S&A top-module deployment-clearance configurati
 - Standard Carrier Module Stack (Type 1), ADS/AMS/OBCC/PDS/ESS Modules, PCBs/standoffs, ESS Battery Pack, stack screws and top-module attachment as pre/post movement checks;
 - v1.0 physical links for stack screws, perpendicular fixture/header mating, backplane fixture + servo connector, PCB standoffs/screws and battery fixture.
 
+## Post-environmental deployment-clearance claim rule
+
+`SAA-VV-FC-003` uses the environmental-screen levels defined in `SAA-VV-CON-001` and `SAA-VV-CON-005`; it does not claim screen credit by itself. If any deployment-clearance claim is made after the approved S&A tailored environmental screen, the report must reference the as-run `SAA-VV-CON-001` and/or `SAA-VV-CON-005` screen record, including article/build IDs, installed state, pre/post PC/PL/interface census, witness-mark/gap photos, fixture/adapters, camera/logger evidence, and any limitations. Accepted deployment trials must be re-run after the screen on the as-found/as-dispositioned article. Ambiguous evidence, missing predeclared evidence, open anomaly, unapproved waiver/rework, forced reseat/tightening, under/over-test, unresolved limitation or required re-run incomplete is hold/fail. This activity does not claim qualification, reliability, or `SYS-ENVIRONMENTAL-REGRESSION` phase-3/system-level environmental regression.
+
 ## Verification means and allocated functions
 
 | Actor / equipment | Verification-only functions |
@@ -44,7 +48,7 @@ The UUT is the integrated `v1.0` S&A top-module deployment-clearance configurati
 | High-speed / Video Camera | Capture cap motion, servo horn/linkage, parachute extraction, snags, rubs and evidence-lighting context. |
 | Clearance Gauge / Snag Witness Markers | Check cap/servo path against top-module structure, backplane spine and PDM servo connector keep-outs; reveal rub or snag contact. |
 | Pre/Post PC-PL Inspection Kit | Inspect stack screws, top-module attachment, backplane fixture, PDM servo connector, PCB standoffs and battery fixture before/after repetitions or environmental screens. |
-| Vibration / Drop Screen Record | Provide condition context when the deployment test is executed after environmental screens. |
+| Vibration / Drop Screen Record | Provide the as-run approved S&A tailored environmental-screen record when the deployment test is executed after proof/vibration/drop screens, including limitations and affected re-run scope. |
 | Ambient Thermo-Hygrometer | Record ambient temperature/humidity before repetitions. |
 | Evidence Repository | Store controlled report, trial log, video/photos, PC-PL inspection records, ambient data, witness decision and anomaly dispositions under `S&A/MBSE/tests/results/SAA-VV-FC-003/`. |
 
@@ -52,7 +56,7 @@ The UUT is the integrated `v1.0` S&A top-module deployment-clearance configurati
 
 1. Identify the `v1.0` article, build/configuration record, baseline copy, operator, witness, equipment IDs, calibration/status records and this model definition revision.
 2. Establish the safety boundary, no-hand-assist rule, camera/lighting/FOV/frame-rate setup, clearance/rub witness markers, pack/reset fixture setting and evidence repository path.
-3. Record ambient temperature/humidity and any referenced pre/post vibration/drop screen condition.
+3. Record ambient temperature/humidity and, when this is a post-environmental claim, reference the as-run approved S&A tailored environmental-screen record and its pre/post PC/PL/interface results, limitations and anomaly disposition.
 4. Perform pre-test PC/PL checks for stack screws, top-module attachment, backplane fixture, PDM Servo Connector, PCB standoffs/screws, battery fixture and visible module/backplane alignment.
 5. Pack the parachute using the defined pack/reset fixture and place the cap/servo in the serviceable closed state.
 6. Command the servo/open-cap motion through the servo command interface, or use the controlled manual actuation means if the flight command path is unavailable; keep hands clear and record the method.
@@ -61,9 +65,9 @@ The UUT is the integrated `v1.0` S&A top-module deployment-clearance configurati
 9. Perform post-trial PC/PL checks for connector/backplane/module/screw/standoff/battery-fixture movement or looseness. When movement or seating gaps are measured, use the released `SAA-VV-CON-005` thresholds and treat ambiguous evidence as hold, not pass.
 10. Reset the cap, servo and parachute to the serviceable closed state without unapproved rework; record reset status.
 11. Log the trial result, pack condition, command method, video/evidence IDs and any anomaly.
-12. Repeat for `10` zero-snag deployments for the workshop screen. Use `29` representative independent zero-snag trials only if the report claims R90/C95 reliability.
-13. Execute the fault-hardening chain when cap rub, pack variability, backplane/PDM-servo-connector interference, post-vibration/drop looseness, ambiguous video, forced reset or any movement is suspected.
-14. Apply the pass/fail constraints below. If any exception occurs, disposition the anomaly and re-run affected nominal checks before claiming pass.
+12. Repeat for `10` zero-snag deployments for the workshop screen. If clearance is claimed after an environmental screen, these accepted deployment trials must be re-run after the as-run screen record. Use `29` representative independent zero-snag trials only if a separate report claims R90/C95 reliability.
+13. Execute the fault-hardening chain when cap rub, pack variability, backplane/PDM-servo-connector interference, post-environmental-screen looseness, ambiguous video, forced reset or any movement is suspected.
+14. Apply the pass/fail constraints below. If any exception occurs, disposition the anomaly and re-run affected nominal checks before claiming pass; missing as-run screen evidence or incomplete required re-run is hold/fail.
 15. QA witness approves pass/fail/hold and the evidence repository releases the report-by-reference package.
 
 ## Pass/fail constraints
@@ -74,16 +78,17 @@ Pass only if all of the following are true for the `v1.0` article:
 - parachute extracts without snagging, hang-up, hand assistance, dragging the UUT, or ambiguous video evidence;
 - reset/serviceability is preserved after every trial without unapproved rework, permanent deformation or forced closure;
 - no connector, backplane, module, top-module attachment, stack screw, PCB standoff, PCB, battery fixture or other modeled physical link/component movement exceeds the released `SAA-VV-CON-005` thresholds or creates rattle, new gap, crack, contact hazard, unseat, intermittent continuity, or deployment-clearance interference;
-- pre/post PC-PL inspection records are acceptable before and after repeated deployments and after any referenced vibration/drop screen;
-- the workshop screen has `10/10` zero-snag deployments, or a reliability claim explicitly has `29/29` representative independent zero-snag trials for R90/C95;
+- pre/post PC-PL inspection records are acceptable before and after repeated deployments and after any referenced approved S&A tailored environmental screen;
+- when a post-screen deployment-clearance claim is made, the report references the as-run environmental-screen record and re-runs the accepted deployment trials after the screen;
+- the workshop screen has `10/10` zero-snag deployments, or a separate reliability claim explicitly has `29/29` representative independent zero-snag trials for R90/C95;
 - ambient conditions, camera settings, fixture settings, actuation method, trial log, video/photos, inspection records, witness review and anomaly dispositions are complete;
 - every anomaly, waiver, rework or deviation is closed with approved disposition and affected checks have been re-run.
 
-Fail or hold for any cap rub/contact mark judged as interference, insufficient servo travel, no-release, parachute snag/hang-up, hand-assisted extraction, forced reset, backplane or PDM-servo-connector contact, connector/backplane/module/screw/standoff/battery-fixture movement beyond released thresholds, post-screen looseness, missing/ambiguous movement or video evidence, expired/unknown equipment status affecting the result, unresolved anomaly disposition, or unapproved waiver.
+Fail or hold for any cap rub/contact mark judged as interference, insufficient servo travel, no-release, parachute snag/hang-up, hand-assisted extraction, forced reset, backplane or PDM-servo-connector contact, connector/backplane/module/screw/standoff/battery-fixture movement beyond released thresholds, post-screen looseness, missing as-run screen record when claimed, missing/ambiguous movement or video evidence, expired/unknown equipment status affecting the result, unresolved anomaly disposition, unapproved waiver/rework, forced reseat/tightening, unresolved limitation, or required re-run incomplete.
 
 ## Viewpoints
 
-- **Statistical significance:** This is a repeated deployment screen of the v1.0 article. The workshop acceptance screen is `10` repeated deployments with zero snags and zero disallowed movement. It makes no population reliability claim. Claim R90/C95 only with `29` representative independent zero-snag trials and documented independence/representativeness.
+- **Statistical significance:** This is a repeated deployment article/workmanship screen of the v1.0 article. The workshop acceptance screen is `10` repeated deployments with zero snags and zero disallowed movement. It makes no population reliability or qualification claim. Claim R90/C95 only with `29` representative independent zero-snag trials and documented independence/representativeness.
 - **Fault hardening:** The model requires explicit screening for cap rub, servo travel margin, packed-parachute variability, backplane spine/PDM Servo Connector interference, post-vibration/drop looseness, false pass from ambiguous video, and evidence-control escape. Any trigger causes hold/disposition/re-run rather than a pass.
 
 ## Required report content
@@ -93,17 +98,18 @@ The execution report in `S&A/MBSE/tests/results/SAA-VV-FC-003/` should reference
 - model definition revision and v1.0 baseline copy used;
 - inspected article identifier, version and build/configuration record;
 - operator, witness, equipment IDs, camera settings, fixture settings, gauge IDs, calibration/status records, safety boundary and ambient record;
-- pre/post PC-PL inspection checklist for stack screws, top-module attachment, backplane fixture, PDM Servo Connector, PCB standoffs/screws, battery fixture and module/backplane alignment, including any movement/gap measurements against `SAA-VV-CON-005` thresholds;
+- pre/post PC-PL inspection checklist for stack screws, top-module attachment, backplane fixture, PDM Servo Connector, PCB standoffs/screws, battery fixture and module/backplane alignment, including any movement/gap measurements against `SAA-VV-CON-005` thresholds and any referenced as-run environmental-screen record/limitations;
 - trial-by-trial pack condition, command/manual actuation method, cap/servo motion result, parachute extraction result, reset/serviceability result and evidence IDs;
 - video/photo file paths and any rub/snag witness-marker observations;
 - statistical basis used (`10/10` workshop screen or `29/29` R90/C95 claim);
 - pass/fail/hold rationale;
 - deviations, anomalies, waivers, rework and re-run evidence.
 
-## Assumptions and blockers
+## Assumptions and execution prerequisites
 
 - The executable scenario is for `SAA-v1.0`; `v0.1` is retained as copied context because it does not include the cap/parachute/servo/backplane/PDM-servo-connector integration required for this activity.
 - The baseline S&A v1.0 source view contains no `[CE]`, `[LC]`, `[F]`, `[FE]` or functional-chain elements; this folder adds verification-only definitions rather than editing the baseline.
 - Servo actuation may be by the flight command path or a controlled manual/test interface; the report must state which method was used and whether it is representative for the acceptance claim.
-- Environmental screen levels are not defined in this activity; when executed after vibration/drop screens, this activity references the as-executed screen record and performs mandatory pre/post PC-PL checks.
+- Environmental-screen levels are defined in `SAA-VV-CON-001` and `SAA-VV-CON-005`; when this activity is executed after proof/vibration/drop screens, it references the as-run screen record, performs mandatory pre/post PC-PL checks, and re-runs accepted deployment trials after the screen.
+- `SYS-ENVIRONMENTAL-REGRESSION` remains phase-3/system-level work; this S&A activity does not claim system environmental regression.
 - The gate may be placed on hold rather than failed when a discrepancy is correctable by approved rework, model/evidence update, or accepted dependency before flight-readiness closure.

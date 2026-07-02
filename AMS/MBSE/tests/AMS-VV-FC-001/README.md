@@ -9,7 +9,7 @@
 
 ## Scope and assumptions
 
-This activity covers the v1.0 atmospheric measurement functional chain and associated pressure, temperature, altitude, currentness/freshness, and evidence-logging pass/fail constraints. It uses `AMS-VV-CON-003` as a dependency for detailed environmental I2C read timeout proof (`≤5 ms`) and does not duplicate that fault-injection/timing activity. It is the atmospheric-chain extension point for `AMS-V10-DATA-FRESHNESS`; it may also host `AMS-V10-TEMP-RESPONSE-60S` only if a clear temperature step-response oracle is added to the model/D2 views.
+This activity covers the v1.0 atmospheric measurement functional chain and associated pressure, temperature, altitude, currentness/freshness, and evidence-logging pass/fail constraints. It uses `AMS-VV-CON-003` as a dependency for detailed environmental I2C read timeout proof (`≤5 ms`) and does not duplicate that fault-injection/timing activity. It is the atmospheric-chain extension point for `AMS-V10-DATA-FRESHNESS`. `AMS-V10-TEMP-RESPONSE-60S` is not created or closed in this folder during this phase; response-time `<=60 s` requires a separate modeled phase-2 chain/folder or an explicitly modeled FC-001 extension with the response oracle below.
 
 Conservative assumptions recorded for execution:
 
@@ -32,7 +32,7 @@ Conservative assumptions recorded for execution:
 
 ## Baseline views copied
 
-Untouched copies of all AMS v1.0 `.d2` and `.png` views are in `baseline/`:
+Refreshed copies of all AMS v1.0 `.d2` and `.png` views are in `baseline/` and match the selected v1.0 freshness/status definition baseline:
 
 - `AMS_v1.0_view1_physical.*`
 - `AMS_v1.0_view2_logical.*`
@@ -59,19 +59,19 @@ Untouched copies of all AMS v1.0 `.d2` and `.png` views are in `baseline/`:
 - verify the reported temperature reaches the defined final/reference condition within `<=60 s`;
 - record UUT ID, firmware/configuration ID, exposure/airflow state, uncertainty, deviations, and the response-time calculation.
 
-Until those D2/model elements and execution evidence exist, `AMS-VV-FC-001` continues to close accuracy/currentness only, not response time.
+Until that separate phase-2 modeled definition or explicit FC-001 extension and execution evidence exist, `AMS-VV-FC-001` closes accuracy/currentness only, not response time. No `AMS-V10-TEMP-RESPONSE-60S` folder is created here.
 
-## Pass/fail constraints and D2 update requirements
+## Pass/fail constraints
 
-Pass only if the modeled constraints in the D2 views are satisfied and the later D2/model update incorporates the Markdown-only freshness/response additions below, including:
+Pass only if the modeled constraints in the D2 views are satisfied and the following oracle/evidence requirements are met:
 
 1. Collect `n ≥ 30` paired pressure and temperature samples per operating point before final acceptance statistics are computed.
 2. Pressure passes iff `abs(bias) + U95 ≤ 1 hPa` for AMS pressure paired with the reference pressure.
 3. Temperature passes iff `abs(bias) + U95 ≤ 0.5 °C` at tested point(s) inside the `10–40 °C` range.
 4. Altitude passes iff a 10 m-equivalent pressure change is resolved with correct sign and uncertainty; the confidence interval for the measured altitude delta excludes zero.
-5. OBCC collects altitude and temperature results in the modeled order; values claimed current/fresh must have shared-contract evidence with `status == VALID` and `age_ms <= 400 ms` at the AMS-to-OBCC observation point.
-6. Non-valid values shall carry one of the shared statuses (`STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`) and shall not be treated as current or fresh; old values after timeout/fault/init/no-data conditions shall not remain marked `VALID`.
-7. VV-only logging/instrumentation records sample IDs, sequence/order, sample/request timestamps or equivalent monotonic correlation, `age_ms`, status, reference values, uncertainty inputs, raw AMS results, deviations, and anomalies without bypassing the modeled chain.
+5. OBCC collects altitude and temperature results in the modeled order; the fresh/current value oracle is exactly `status == VALID` and `age_ms <= 400 ms` at the AMS-to-OBCC observation point.
+6. Non-valid values shall carry one of the shared statuses (`STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`) and shall not be treated as current or fresh; old/default/previous values after timeout/fault/init/no-data/stale conditions shall not remain marked `VALID`.
+7. VV-only logging/instrumentation records timestamp/sample-ID/sequence/order evidence, sample/request timestamps or equivalent monotonic correlation, `age_ms`, status, reference pressure/temperature values, uncertainty inputs, raw AMS pressure/temperature/altitude values, deviations, and anomalies without bypassing the modeled chain.
 8. Detailed environmental I2C read timeout proof (`≤5 ms`) is a dependency on `AMS-VV-CON-003`, not duplicated here; any `TIMEOUT`, `SENSOR_FAULT`, stale-valid, or currentness anomaly observed during this activity is still a failure or reportable anomaly.
 
 ## Environmental and configuration conditions

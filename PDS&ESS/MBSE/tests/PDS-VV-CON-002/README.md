@@ -51,13 +51,14 @@ This provides reuse without re-instantiating full chain internals already covere
 - End: clean safe cutoff and safe-state observation with complete evidence package.
 - Failure handling: stale data, telemetry-load overload indicators, thermal margin violations, or repeated protection anomalies fail the run and move to safe-state path.
 
-## Assumptions / blockers
-- Full 6h endurance load profile/current budget, expected thermal envelope, and maximum logging/sample cadence are campaign execution parameters to be fixed before execution; no separate load-profile estimation candidate is selected.
-- Protection-demonstration and failure-probability claim evidence thresholds remain campaign-defined; this activity defines the chain and evidence structure, not final statistical proof.
+## Execution-only prerequisites (predeclared before run)
+- The 6 h On-mode run is valid only after the campaign records the exact representative load profile/current budget, load-emulator settings, battery preconditioning/SOC method, logging/sample cadence, rail/freshness monitoring points, ambient/thermal envelope, anomaly ledger fields, stop/abort criteria, and end-of-run safe-state criteria.
+- If the representative load profile/current budget is not predeclared and approved before the run, the evidence is limited to characterization and shall not be used for strict final flight acceptance.
+- Protection-demonstration and failure-probability credit is not claimed by this activity unless linked to accepted `PDS-VV-CON-003` evidence; this activity defines 6 h endurance behavior and records any protection anomaly as a run failure/hold.
 
 ## Evidence path
 - Planned evidence: `tests/results/PDS-VV-CON-002/`
-- Execution data expected: raw logging, sampling metadata, anomaly ledger, pre/post environmental and safety checks, and run-termination artifacts.
+- Execution data expected: raw rail/current/INA219/status logs, declared load profile/current-budget sheet, load-emulator settings, battery preconditioning/SOC evidence, sampling metadata, ambient/thermal records, anomaly ledger, stop/abort decisions, pre/post environmental and safety checks, and run-termination/safe-state artifacts.
 
 ## Baseline artifacts
 - Baseline files are copied from `v1.0` into `baseline/`:

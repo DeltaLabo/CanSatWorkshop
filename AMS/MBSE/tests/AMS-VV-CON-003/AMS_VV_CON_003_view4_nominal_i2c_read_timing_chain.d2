@@ -70,9 +70,9 @@ chain: "AMS-VV-CON-003 — Nominal environmental I2C read timing\nTesting; AMS v
 
   note_scope: "[C] Scope confirmed for final acceptance:\nonly environmental measurement I2C reads\n(Read pressure, Read temperature);\ninit/chip-ID reads are out of scope" { class: note; shape: page }
   note_timing: "[C] Pass if each of 59 nominal samples per\nenvironmental I2C read function has\nt_read + U95 ≤ 5.000 ms" { class: note; shape: page }
-  note_boundary: "[C] Timing boundary: read-function entry\nto returned OK/error status; record\ninstrumentation overhead" { class: note; shape: page }
+  note_boundary: "[C] Timing boundary: read-function entry\nto returned VALID/error status; record\ninstrumentation overhead and uncertainty" { class: note; shape: page }
   note_environment: "[C] Ambient 20-30 °C recorded before repetitions;\nstable 3V3/common ground; harness pullups\nand bus capacitance recorded" { class: note; shape: page }
-  note_no_stale: "[C] Nominal result shall be OK, current,\nand not stale/error" { class: note; shape: page }
+  note_no_stale: "[C] Nominal result shall be VALID, current,\nand not stale/error: status == VALID, age_ms <= 400 ms\nwhen freshness is claimed, with sequence/sample ID,\ntimestamps, status, and low-level result retained" { class: note; shape: page }
 }
 
 chain.configure_test_case -> chain.read_ambient_temperature: "[FE] Environment\nsetup" { class: fe }
@@ -91,13 +91,13 @@ chain.timestamp_read_entry_return -> chain.read_temperature: "[FE] Timed temp.\n
 
 chain.read_pressure -> chain.respond_i2c_requests: "[FE] Pressure\nI2C Req" { class: fe }
 chain.read_temperature -> chain.respond_i2c_requests: "[FE] Temp.\nI2C Req" { class: fe }
-chain.respond_i2c_requests -> chain.read_pressure: "[FE] Pressure" { class: fe }
-chain.respond_i2c_requests -> chain.read_temperature: "[FE] Temperature" { class: fe }
+chain.respond_i2c_requests -> chain.read_pressure: "[FE] Pressure\n+ VALID status" { class: fe }
+chain.respond_i2c_requests -> chain.read_temperature: "[FE] Temperature\n+ VALID status" { class: fe }
 
 chain.pass_nominal_i2c -> chain.capture_sda_scl_timing: "[FE] SDA/SCL\nedges" { class: fe }
-chain.read_pressure -> chain.emit_result_record: "[FE] Pressure status +\nduration" { class: fe }
-chain.read_temperature -> chain.emit_result_record: "[FE] Temp. status +\nduration" { class: fe }
-chain.emit_result_record -> chain.receive_timestamped_log: "[FE] Timestamped\nsample log" { class: fe }
+chain.read_pressure -> chain.emit_result_record: "[FE] Pressure status,\nduration, sample ID" { class: fe }
+chain.read_temperature -> chain.emit_result_record: "[FE] Temp. status,\nduration, sample ID" { class: fe }
+chain.emit_result_record -> chain.receive_timestamped_log: "[FE] Timestamped\nsample/status/age log" { class: fe }
 chain.capture_sda_scl_timing -> chain.compute_timing_statistics: "[FE] Timing trace" { class: fe }
 chain.receive_timestamped_log -> chain.compute_timing_statistics: "[FE] Durations and\nresult codes" { class: fe }
 chain.record_ambient_conditions -> chain.compute_timing_statistics: "[FE] Ambient\nconditions" { class: fe }

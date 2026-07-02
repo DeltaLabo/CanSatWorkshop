@@ -61,7 +61,7 @@ chain: "AMS-VV-FC-002 — BME280 startup-fault init-state chain\nTesting / Demon
   command_faulted_boot_batch: "[F] Command faulted\nboot batch" { class: func }
   power_cycle_uut: "[F] Power-cycle\nUUT" { class: func }
   command_boot_init_trial: "[F] Command boot /\ninit trial" { class: func }
-  timestamp_boot_init_result: "[F] Timestamp boot\nand init result" { class: func }
+  timestamp_boot_init_result: "[F] Timestamp boot/init\nand compute age_ms" { class: func }
   get_bme280_init_state: "[F] Get BME280\ninit state" { class: func }
   respond_i2c_requests: "[F] Respond to I2C\nRequests" { class: func }
   collect_peripheral_init_states: "[F] Collect peripheral\ninit states" { class: func }
@@ -69,17 +69,17 @@ chain: "AMS-VV-FC-002 — BME280 startup-fault init-state chain\nTesting / Demon
   monitor_startup_responsiveness: "[F] Monitor startup\nresponsiveness" { class: func }
   compare_obcc_status: "[F] Compare OBCC status\nto fault condition" { class: func }
   capture_boot_init_log: "[F] Capture boot /\ninit log" { class: func }
-  emit_init_evidence_record: "[F] Emit init\nevidence record" { class: func }
+  emit_init_evidence_record: "[F] Emit init status/age\nevidence record" { class: func }
   compute_binary_statistics: "[F] Compute binary\nstatistics" { class: func }
   record_anomalies: "[F] Record\nanomalies" { class: func }
   release_fault_between_trials: "[F] Release fault\nbetween startup trials" { class: func }
   archive_evidence: "[F] Archive\nevidence" { class: func }
 
   note_fault_modes: "[C] Induced startup-fault modes: absent/disconnected\nBME280 or forced NACK, held SDA low, and held SCL low;\nfixture mode is recorded for every trial" { class: note; shape: page }
-  note_fault_pass: "[C] Pass iff each induced startup fault returns a\nbounded critical startup fault/status, OBCC collects it,\nand startup does not block indefinitely" { class: note; shape: page }
-  note_no_nominal_ok: "[C] Faulted states shall never be reported as\nnominal OK; no stale init state, previous boot result,\nor default success value is accepted" { class: note; shape: page }
+  note_fault_pass: "[C] Pass iff each induced startup fault returns INIT_FAIL,\nTIMEOUT, SENSOR_FAULT, or another applicable non-VALID shared\nstatus; OBCC collects it and startup does not block indefinitely" { class: note; shape: page }
+  note_no_nominal_ok: "[C] Faulted states shall never be reported as VALID;\nno stale init state, previous boot result, default success value,\nor ambiguous status is accepted after init failure/timeout/fault/reset/no-data" { class: note; shape: page }
   note_stats: "[C] Use 29/29 pass per induced fault mode for an\nR90/C95 binary fault-response claim; smaller batches\nshall be labelled screening" { class: note; shape: page }
-  note_environment: "[C] Ambient 20-30 °C recorded; stable 3V3/common\nground, power-cycle count, and exact harness electrical\nconfiguration recorded" { class: note; shape: page }
+  note_environment: "[C] Exact evidence: boot IDs, power-cycle count, fault-fixture\nconfiguration, stable 3V3/common ground, sample/boot timestamps\nor monotonic correlation, age_ms where applicable, status values,\nambient, UUT/firmware/build IDs, deviations" { class: note; shape: page }
   note_con003_dep: "[C] Dependency only: AMS-VV-CON-003 owns detailed\nenvironmental-read timeout proof and recovery after\nreleased runtime I2C fault; release here only resets the\nfixture between independent startup trials" { class: note; shape: page }
 }
 
@@ -102,14 +102,14 @@ chain.command_boot_init_trial -> chain.timestamp_boot_init_result: "[FE] Start t
 chain.timestamp_boot_init_result -> chain.get_bme280_init_state: "[FE] Faulted init\nrequest" { class: fe }
 
 chain.get_bme280_init_state -> chain.respond_i2c_requests: "[FE] BME280 init\nI2C Req" { class: fe }
-chain.respond_i2c_requests -> chain.get_bme280_init_state: "[FE] Error /\ntimeout / no state" { class: fe }
-chain.get_bme280_init_state -> chain.collect_peripheral_init_states: "[FE] Result\n[Init status]" { class: fe }
+chain.respond_i2c_requests -> chain.get_bme280_init_state: "[FE] Error / timeout / no state\n+ low-level cause" { class: fe }
+chain.get_bme280_init_state -> chain.collect_peripheral_init_states: "[FE] Result\n[Init status]\nnon-VALID status+age" { class: fe }
 chain.collect_peripheral_init_states -> chain.collect_critical_startup_fault: "[FE] Critical startup\nfault/status" { class: fe }
 
 chain.collect_critical_startup_fault -> chain.monitor_startup_responsiveness: "[FE] Fault recorded\nwithout hang" { class: fe }
 chain.collect_critical_startup_fault -> chain.compare_obcc_status: "[FE] Collected\nfault status" { class: fe }
-chain.compare_obcc_status -> chain.capture_boot_init_log: "[FE] Classification" { class: fe }
-chain.timestamp_boot_init_result -> chain.emit_init_evidence_record: "[FE] Timestamp +\ntrial ID" { class: fe }
+chain.compare_obcc_status -> chain.capture_boot_init_log: "[FE] Shared status\nclassification" { class: fe }
+chain.timestamp_boot_init_result -> chain.emit_init_evidence_record: "[FE] Boot/sample ID,\ntimestamp, age_ms" { class: fe }
 chain.monitor_startup_responsiveness -> chain.emit_init_evidence_record: "[FE] Responsiveness\nresult" { class: fe }
 chain.capture_boot_init_log -> chain.compute_binary_statistics: "[FE] Trial log" { class: fe }
 chain.emit_init_evidence_record -> chain.compute_binary_statistics: "[FE] Trial outcome" { class: fe }

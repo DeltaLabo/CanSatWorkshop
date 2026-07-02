@@ -54,7 +54,15 @@ chain: "ADS v1.0 — Angular velocity chain" {
   process_angular_velocities: "[F] Process angular\nvelocities" { class: func }
   collect_measurements: "[F] Collect\nmeasurements" { class: func }
 
-  note_accuracy_angular_rate: "[C] Accuracy\n< 30 deg/s" {
+  note_accuracy_angular_rate: "[C] Accuracy < 30 deg/s.\nStrict angular-rate truth may\nuse motor plus calibrated\ntachometer; deg/s = RPM × 6;\nrequire time/axis alignment\nand uncertainty guard band" {
+    class: note
+    shape: page
+  }
+  note_internal_freshness: "[C] Internal ADS-to-OBCC\ndelivery is 5 Hz (200 ms\nnominal) through process/\ncollection path; LoRa packaging\nremains separate at 2 s" {
+    class: note
+    shape: page
+  }
+  note_fresh_status: "[C] Fresh angular-rate data\nrequires status == VALID,\nfinite/in-range required fields,\nand age_ms <= 400 ms. Enum:\nVALID, STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT, INIT_FAIL;\nnon-VALID/default not VALID" {
     class: note
     shape: page
   }
@@ -67,3 +75,8 @@ chain.read_angular_velocities -> chain.process_angular_velocities: "[FE] Angular
 chain.process_angular_velocities -> chain.collect_measurements: "[FE] Result\n[Vels]" { class: fe }
 
 chain.note_accuracy_angular_rate -> chain.measure_angular_velocities { class: cstr }
+chain.note_internal_freshness -> chain.collect_measurements { class: cstr }
+chain.note_fresh_status -> chain.collect_measurements { class: cstr }
+
+# Layout-only edge to keep chain-level freshness constraints grouped.
+chain.note_internal_freshness -> chain.note_fresh_status { style: { opacity: 0 } }

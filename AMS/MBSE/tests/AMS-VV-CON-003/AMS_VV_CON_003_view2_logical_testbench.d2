@@ -130,6 +130,10 @@ note_iadt: "[C] Final acceptance IADT: Testing with supporting Analysis;\nrecove
   class: note
   shape: page
 }
+note_status_mapping: "[C] External status mapping: timeout/no-response -> TIMEOUT;\nruntime sensor/bus/value fault -> SENSOR_FAULT or applicable\nnon-VALID; init/no-data -> INIT_FAIL or NO_DATA.\nNo stale/old/default data as VALID; record sample IDs,\ntimestamps/age where freshness is claimed, and low-level causes." {
+  class: note
+  shape: page
+}
 
 system.cansat.ams_module.ams_pcb.bme280.ams_sensing -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing: "[CE] I2C" { class: ce }
 system.cansat.obcc_module.obcc_pcb.xiao.ams_processing -> system.cansat.obcc_module.obcc_pcb.xiao.obcc: "[CE] Pointers" { class: ce }
@@ -146,3 +150,8 @@ system.cansat.obcc_module.obcc_pcb.note_no_blocking -> system.cansat.obcc_module
 note_test_scope -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
 note_test_scope -> system.cansat.obcc_module.obcc_pcb.xiao.timeout_test_instrumentation { class: cstr }
 note_iadt -> test_operator { class: cstr }
+note_status_mapping -> system.cansat.obcc_module.obcc_pcb.xiao.timeout_test_instrumentation { class: cstr }
+note_status_mapping -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+
+# Layout-only edge keeps status mapping near the IADT note.
+note_iadt -> note_status_mapping { style: { opacity: 0 } }

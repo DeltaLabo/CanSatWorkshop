@@ -436,10 +436,10 @@ This subsection is a definition-planning closure record only. No tests were exec
 | Blocker ID | Blocker | Blocks | Closure action |
 |---|---|---|---|
 | PDS-BLK-001 | Closed — final ESS battery architecture is frozen as `1S1P Li-Ion`; README, BOM, MBSE, and tests now align on the selected single-cell pack architecture. | No longer blocks on battery-architecture conflict; PDS/ESS and system power acceptance still depend on the remaining non-battery PDS blockers. | Resolved; preserve `1S1P Li-Ion` in execution reports and do not claim final power acceptance until the other PDS blockers are closed. |
-| PDS-BLK-002 | Definition-level decision selected: add an explicit INA219 `[CE] I2C` exchange between ESS Processing/XIAO and Battery monitoring/INA219; the source-model D2 edit remains pending. | Final CE completeness for `PDS-VV-FC-002`, `PDS-VV-CE-003`, and `PDS-VV-CON-007` remains pending. | Apply the pending source-model/D2 edit and baseline refresh, or approve controlled justification/waiver; no execution credit until the model is updated/justified and evidence is recorded. |
+| PDS-BLK-002 | Closed at source-model level — explicit INA219 `[CE] I2C / INA219 bus` exchange is now modeled between ESS Processing/XIAO and Battery monitoring/INA219, with affected v1.0 baselines refreshed. | Final CE completeness for `PDS-VV-FC-002`, `PDS-VV-CE-003`, and `PDS-VV-CON-007` remains execution-evidence pending. | Execute/report only after implemented bus topology, endpoint pins/net names, INA219 address, pullups, voltage levels, transaction direction, `≤5 ms` timeout policy, fault-status mapping, and raw logs/source/build evidence are recorded. |
 | PDS-BLK-003 | Definition-level candidate added: `PDS-VV-CON-010` regulator-efficiency validation for the 3.3 V and 5 V rail `1 A` / `95%` requirements. | PDS efficiency closure remains candidate/detailed-definition pending. | Define the modeled measurement topology, instrumentation, load cases, uncertainty/guard band, thermal limits, and evidence paths before execution; no test has been executed. |
 | PDS-BLK-004 | Campaign-defined load/endurance profile accepted: On-mode load/current budget and 6 h endurance profile are execution parameters for `PDS-VV-CON-002` and system power tests. | Not a new model-definition blocker. | Freeze representative load profile, current budget, logging/sample cadence, ambient/thermal envelope, anomaly handling, and end criteria before execution. |
-| PDS-BLK-005 | Source-model/interface edit pending: master-switch/accessibility hardware detail must be added or clarified in the PDS physical/source model, or controlled waiver path approved. | Allocation/external-actor safe power-off closure remains pending source/interface update or waiver. | Update the source/interface definition or approve waiver; later execution records safe access, de-energized state, and any deviation evidence. |
+| PDS-BLK-005 | Closed at source-model level — the PDS physical/source model now includes `[PC] Accessible Master Switch` in the protected-power path with safe-off/accessibility constraint notes and affected v1.0 baselines refreshed. | Allocation/external-actor safe power-off closure remains execution-evidence pending. | Execute/report only after as-built switch part/location, accessibility photo after assembly, OFF-state rail measurements at PDS/backplane endpoints, continuity/isolation, labeling/orientation/polarity, and any deviation/waiver record are archived. |
 | PDS-BLK-006 | Reclassified as an execution prerequisite for final powered charge acceptance: Li-ion safety documents, charger model/certification, and cell safety evidence are required. | No unresolved definition blocker from this item. | Collect cell/pack datasheet/SDS or equivalent, certification evidence when available, charge/discharge/storage limits, certified charger settings, containment, and safety controls before powered acceptance. |
 | PDS-BLK-007 | Closed at definition level by referencing `S&A/PCB_General_Rules.md` as the baseline Carvera Air/PCB rule set; deviations/evidence remain execution records. | No unresolved DFM rule-definition blocker for `PDS-VV-CON-009`. | During execution, map applicable rules to board/coupon IDs and record Carvera/PCB pre-checks, workmanship evidence, deviations, and waivers. |
 | PDS-BLK-008 | Closed at definition level by selected conservative missed-demand interpretation and quantitative setpoint/trial criteria for `PDS-VV-CON-003`. | Formal protection-probability credit remains execution-evidence pending. | Use missed demanded unsafe protection-action probability `<1%` per mode; strict claim requires 299 independent zero-miss demanded trials per mode, predeclared safe setpoints, safe-outcome rules, independence rationale, and exact-binomial reporting. |
@@ -447,7 +447,7 @@ This subsection is a definition-planning closure record only. No tests were exec
 
 #### 2.6.1 PDS §2.6 folded resolution plan and closure record
 
-This subsection replaces the former standalone `PM&SE/PDS_Blocker_Resolution_Plan_2026-07-02.md` and `PM&SE/PDS_Blocker_Closure_Record_2026-07-02.md` files. It is a definition-planning record only: no tests are executed here, no execution report or pass/fail credit is created, no candidate folders are created here, and no `.d2` or `.png` source/model edits are performed by this PM&SE update. Earlier PDS & ESS development gates remain useful incremental definitions, but they do not substitute for v1.0 final flight-acceptance evidence.
+This subsection replaces the former standalone `PM&SE/PDS_Blocker_Resolution_Plan_2026-07-02.md` and `PM&SE/PDS_Blocker_Closure_Record_2026-07-02.md` files. It remains a definition-planning record: no tests are executed here, no execution report or pass/fail credit is created, and no candidate folders are created here. Phase-1 follow-on source `.d2`/`.png` edits for INA219 I2C and Accessible Master Switch are now applied in the PDS & ESS v1.0 model and refreshed baselines. Earlier PDS & ESS development gates remain useful incremental definitions, but they do not substitute for v1.0 final flight-acceptance evidence.
 
 ##### Folded PDS orchestration goal and controls
 
@@ -464,10 +464,10 @@ Coordination controls retained for any follow-on work: do not execute hardware t
 
 | Blocker | Decision retained in this register |
 |---|---|
-| `PDS-BLK-002` | Add an explicit INA219 `[CE] I2C` / INA219 bus exchange between ESS Processing/XIAO and Battery monitoring/INA219 as a pending quick source-model fix. |
+| `PDS-BLK-002` | Source-model fix applied: explicit INA219 `[CE] I2C / INA219 bus` exchange between ESS Processing/XIAO and Battery monitoring/INA219 is present in v1.0 PV2; execution evidence remains pending. |
 | `PDS-BLK-003` | Add regulator-efficiency validation candidate `PDS-VV-CON-010` unless a later reviewed artifact establishes a better ID. |
 | `PDS-BLK-004` | Leave the On-mode load/current budget and 6 h endurance profile campaign-defined; do not create a separate modeled load-profile estimation activity. |
-| `PDS-BLK-005` | Document master-switch/accessibility hardware detail as a pending source-model/interface edit or controlled waiver path. |
+| `PDS-BLK-005` | Source-model fix applied: `[PC] Accessible Master Switch` is present in v1.0 PV1; execution evidence for access and safe-off remains pending. |
 | `PDS-BLK-006` | Treat Li-ion safety documents, charger model/certification, and cell safety evidence as literal execution prerequisites, not definition blockers. |
 | `PDS-BLK-007` | Reference `S&A/PCB_General_Rules.md` from PDS DFM definitions and keep deviations as execution evidence. |
 | `PDS-BLK-008` | Retain the conservative `PDS-VV-CON-003` missed-demand interpretation and add quantitative setpoint/trial-validity criteria. |
@@ -501,20 +501,20 @@ These criteria are selected for the existing demanded-protection probability ver
 | Artifact / activity | Definition-planning update retained here | Later artifact update |
 |---|---|---|
 | `PDS&ESS/MBSE/tests/README.md` | Record the selected dispositions, new efficiency candidate, incremental-gate caveat, and reclassification of campaign/execution prerequisites. | Keep candidate/update register entries and status wording visible without claiming execution credit. |
-| `PDS-VV-FC-002` / `PDS-VV-CE-003` | Selected closure path is an explicit INA219 I2C CE source edit, not a waiver. | After the source model is changed, align README, diagrams/baselines if required, and CE completeness wording. |
+| `PDS-VV-FC-002` / `PDS-VV-CE-003` | Explicit INA219 I2C CE source edit and v1.0 baseline refresh are applied. | CE completeness remains execution-evidence pending: bus topology, pins/nets, INA219 address, pullups, voltage levels, transaction direction, `≤5 ms` timeout, fault-status mapping, and raw logs/source/build evidence. |
 | `PDS-VV-CON-002` | Retain the 6 h On-mode endurance definition; keep load profile/current budget campaign-defined. | Record representative load profile, current budget, logging cadence, and thermal envelope as execution campaign inputs rather than a new modeled estimation test. |
 | `PDS-VV-CON-003` | Use the selected quantitative missed-demand criteria, sample plan, setpoints, safe-outcome, and independence rules. | Update README/D2 definition text as needed; execution still supplies actual trials and exact-binomial evidence. |
 | `PDS-VV-CON-004` | Treat nominal-load, thermal, and settling values as execution confirmations. | Require campaign-declared no-load/nominal/1 A settings, thermal limit, settling windows, ripple treatment, and calibrated evidence. |
 | `PDS-VV-CON-009` | Reference `S&A/PCB_General_Rules.md` for Carvera Air/PCB rules. | Require board-specific DFM pre-checks, deviation/waiver records, and workmanship evidence as execution evidence. |
-| `PDS-VV-ALLOC-001` / `PDS-VV-ALLOC-003` | Master switch/accessibility needs a source/interface edit before unqualified allocation closure. | Update source-model caveat wording after the physical/interface model is clarified or a controlled waiver is approved. |
+| `PDS-VV-ALLOC-001` / `PDS-VV-ALLOC-003` | Master switch/accessibility source/interface edit and v1.0 baseline refresh are applied. | Allocation closure remains execution-evidence pending: as-built switch part/location, accessibility photo, OFF-state rail measurements at PDS/backplane endpoints, continuity/isolation, labeling/orientation/polarity, and any deviation/waiver record. |
 | `PM&SE/MBSE_Test_Plan_Assessment.md` | Assessment rows now distinguish selected definition decisions from pending D2/source edits and execution. | Preserve no-execution/no-pass-credit wording until reports exist. |
 
 ##### Folded PDS D2/source-model follow-on list
 
-1. Add explicit INA219 `[CE] I2C` exchange between ESS Processing/XIAO and Battery monitoring/INA219 to `PDS&ESS/MBSE/v1.0/PDS_v1.0_view2_logical.d2`, then regenerate the corresponding PNG.
-2. Refresh baseline copies in affected test folders after the source-model update if project policy requires baseline recopy for report-by-reference consistency.
-3. Add or clarify master switch/accessibility hardware/interface in the relevant PDS physical/source model and regenerate the corresponding PNG.
-4. Later create/model `PDS-VV-CON-010` if and when the efficiency candidate is promoted to a detailed verification definition.
+1. Completed in phase 1: explicit INA219 `[CE] I2C / INA219 bus` exchange added to `PDS&ESS/MBSE/v1.0/PDS_v1.0_view2_logical.d2`; PNG regenerated.
+2. Completed in phase 1: affected v1.0 baseline copies in existing test folders refreshed for report-by-reference consistency.
+3. Completed in phase 1: `[PC] Accessible Master Switch` hardware/interface added to the PDS physical/source model; PNG regenerated.
+4. Later create/model `PDS-VV-CON-010` only in phase 2 if and when the efficiency candidate is promoted to a detailed verification definition.
 
 ##### Folded PDS residual execution-only prerequisites
 
@@ -533,7 +533,7 @@ These criteria are selected for the existing demanded-protection probability ver
 
 ##### Folded PDS execution status
 
-The PDS blocker-resolution work completed at definition-planning level on 2026-07-02. Temporary PDS issue files were removed. The former standalone plan and closure record have been folded into this CON-003 register. No PDS tests were executed, no pass/fail credit is claimed, and source-model/D2 edits remain follow-on where listed.
+The PDS blocker-resolution work completed at definition-planning level on 2026-07-02, and the phase-1 PDS source-model updates were applied afterward: INA219 I2C CE and Accessible Master Switch source D2 edits were rendered and v1.0 baselines refreshed. Temporary PDS issue files were removed. The former standalone plan and closure record have been folded into this CON-003 register. No PDS tests were executed and no pass/fail credit is claimed; remaining items listed above are execution-only prerequisites or future phase-2 candidate modeling.
 
 ### 2.7 PDM blockers
 

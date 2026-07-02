@@ -15,7 +15,7 @@ Startup initialization failure shall map to `INIT_FAIL` or another applicable no
 
 ## Baseline views copied
 
-Untouched baseline copies of all AMS v1.0 D2/PNG views are in `baseline/`.
+Baseline copies of all AMS v1.0 D2/PNG views are in `baseline/` and are refreshed to the selected v1.0 freshness/status definition baseline.
 
 ## Test-definition views
 
@@ -31,13 +31,13 @@ Rendered PNGs with matching names are generated beside each D2 file.
 
 ## Pass/fail constraints
 
-Pass only if all modeled constraints in the D2 views are satisfied and the execution report covers the Markdown-only freshness/status additions below; the D2/model views must be updated later before execution credit is claimed:
+Pass only if all modeled constraints in the D2 views are satisfied and the execution report supplies the predeclared freshness/status evidence below:
 
-1. Nominal boot/init returns a current BME280 init state with shared status `VALID`; if freshness is claimed, the OBCC observation has `age_ms <= 400 ms`, and OBCC collects the same state before flight-readiness OK.
+1. Nominal boot/init returns a current BME280 init state with shared status `VALID`; if freshness/currentness is claimed, the OBCC observation has timestamp/sample-ID or boot-ID evidence, monotonic correlation, status `VALID`, and `age_ms <= 400 ms`, and OBCC collects the same state before flight-readiness OK.
 2. Use `29/29` nominal boot successes for an R90/C95 binary success claim; smaller repetition counts are screening only.
 3. Induced startup faults for absent/disconnected or NACKing BME280 and held SDA/SCL return `INIT_FAIL`, `TIMEOUT`, `SENSOR_FAULT`, or another applicable non-`VALID` shared status and do not create unbounded blocking.
 4. Faulted states are never reported as nominal OK/`VALID`; no stale init state, previous boot result, default success value, old data, or ambiguous status is accepted.
-5. Ambient conditions, stable 3V3/common ground, exact power-cycle count, fault-fixture configuration, sample/boot IDs, timestamps or equivalent monotonic correlation, `age_ms` where applicable, and shared status values are recorded with the evidence.
+5. Exact execution evidence is predeclared and recorded: boot IDs, power-cycle count, fault-fixture configuration, stable 3V3/common-ground evidence, sample/boot timestamps or equivalent monotonic correlation, `age_ms` where applicable, shared status values, ambient conditions, UUT/firmware/build IDs, and deviations/anomalies.
 6. Detailed environmental read timeout proof and recovery after released runtime I2C faults are dependencies on `AMS-VV-CON-003`; this activity does not claim that coverage.
 
 ## Statistical and fault-hardening viewpoints
@@ -51,5 +51,5 @@ Pass only if all modeled constraints in the D2 views are satisfied and the execu
 
 - Development version is fixed by orchestration as AMS v1.0 final acceptance; no user disambiguation was requested.
 - The BME280 init-state result is treated as a current status value compatible with the project variable-getter semantics and the shared ADS/AMS freshness/status contract.
-- D2/model follow-up remains required to add the shared freshness/status fields and `INIT_FAIL`/no-stale-valid oracle to the modeled init-state views before execution credit is claimed.
+- Shared freshness/status fields and the `INIT_FAIL`/no-stale-valid oracle are represented in this README and the D2 views for this phase; execution evidence, actual harness IDs, code/build IDs, and deviations remain report-time records.
 - A startup BME280 failure is treated as a critical startup fault that prevents false flight readiness.

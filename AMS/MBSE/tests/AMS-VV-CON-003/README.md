@@ -18,7 +18,7 @@ This activity supplies the I2C timeout/fault evidence dependency for `AMS-V10-DA
 
 ## Baseline views copied
 
-Untouched baseline copies of all AMS v1.0 D2/PNG views are in `baseline/`.
+Baseline copies of all AMS v1.0 D2/PNG views are in `baseline/` and are refreshed to the selected v1.0 freshness/status definition baseline.
 
 ## Test-definition views
 
@@ -33,13 +33,13 @@ Untouched baseline copies of all AMS v1.0 D2/PNG views are in `baseline/`.
 
 ## Pass/fail constraints
 
-Pass only if all modeled constraints in the D2 views are satisfied and the execution report covers the Markdown-only freshness/status additions below; the D2/model views must be updated later before execution credit is claimed:
+Pass only if all modeled constraints in the D2 views are satisfied and the execution report supplies the predeclared timeout/fault/status evidence below:
 
 1. For each environmental I2C read function (`Read pressure`, `Read temperature`), collect `59/59` nominal samples with `t_read + U95 ≤ 5.000 ms`.
 2. Timing boundary is read-function entry to returned success/error status; instrumentation overhead is recorded.
 3. Fault modes include NACK/absent sensor, held SDA, held SCL, and timeout/no-response cases for each environmental I2C read function.
 4. Faulted reads return only bounded statuses within `5.000 ms` including uncertainty and map externally to the shared enum: `TIMEOUT` for timeout/no-response, `SENSOR_FAULT` for runtime sensor/bus/value faults such as NACK/held SDA/held SCL/absent sensor after initialization, and `INIT_FAIL` or `NO_DATA` for initialization/no-data conditions as applicable.
-5. No stale or old data is reported as `OK`/`VALID`; no watchdog reset, power-cycle requirement, deadlock, or lost test-command responsiveness occurs.
+5. No stale, old, default, or previous data is reported as `VALID`; no watchdog reset, power-cycle requirement, deadlock, or lost test-command responsiveness occurs.
 6. **Mandatory:** after fault release, the next modeled recovery read succeeds without reset and with `t_read + U95 ≤ 5.000 ms`.
 7. Supporting analysis maps 100% of environmental AMS Processing I2C read functions to implementation call paths and finds no additional environmental read path without a `≤ 5 ms` timeout.
 8. Evidence records preserve low-level I2C cause codes, shared status mapping, sample/sequence IDs, timestamps or monotonic correlation, `age_ms` where freshness is claimed, instrumentation overhead, and any recovery/deviation notes.
@@ -49,4 +49,4 @@ Pass only if all modeled constraints in the D2 views are satisfied and the execu
 - Ambient temperature is recorded before repetitions using the modeled ambient thermometer function; nominal bench acceptance range is `20–30 °C` unless the campaign defines a stricter condition.
 - Bench supply provides stable 3V3/common ground and records voltage/current before and after each timing batch.
 - Harness pullups, capacitance, and any fault-adapter deviations are recorded in the evidence report because the harness can alter I2C timing.
-- D2/model follow-up remains required to add the shared freshness/status mapping and no-stale-valid oracle to the timeout/fault views before execution credit is claimed.
+- Shared freshness/status mapping and the no-stale-valid oracle are represented in this README and the D2 views for this phase; execution evidence, actual harness IDs, code/build IDs, low-level cause-code names, and deviations remain report-time records.

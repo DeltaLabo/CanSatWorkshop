@@ -104,6 +104,18 @@ system: "[System] Physical System" {
           class: note
           shape: page
         }
+        note_data_freshness: "[C] v1.0 ADS-to-OBCC\ninternal delivery is 5 Hz\n(200 ms nominal) through\nADS Processing/OBCC\nPointers/Returns; LoRa\npackaging remains separate\nat 2 s" {
+          class: note
+          shape: page
+        }
+        note_fresh_status: "[C] Fresh at ADS-to-OBCC\nrequires status == VALID,\nfinite/in-range required\nfields, and age_ms <= 400 ms.\nEnum: VALID, STALE, NO_DATA,\nTIMEOUT, SENSOR_FAULT, INIT_FAIL.\nNon-VALID/default data\nmust not remain VALID" {
+          class: note
+          shape: page
+        }
+        note_mission_window: "[C] Mission-window strict pass:\n10 min / 600 s / 3000\nexpected 5 Hz slots; max\ninternal freshness/progress\ngap 400 ms; no reset,\nbrownout, stuck loop, or\nunrecovered peripheral failure" {
+          class: note
+          shape: page
+        }
         note_i2c_timeout: "[C] All I2C read\nfunctions must have\na timeout ≤ 5 ms" {
           class: note
           shape: page
@@ -116,7 +128,7 @@ system: "[System] Physical System" {
           class: note
           shape: page
         }
-        note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms" {
+        note_no_blocking: "[C] No blocking\noperations besides\nI2C or UART comms;\n250 ms nominal heartbeat;\n400 ms max progress/\nfreshness gap; hook overhead\n<=5% of 200 ms or <=5 ms" {
           class: note
           shape: page
         }

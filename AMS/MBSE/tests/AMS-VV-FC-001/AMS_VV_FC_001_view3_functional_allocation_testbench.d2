@@ -140,8 +140,8 @@ system: "[System] AMS-VV-FC-001 atmospheric chain acceptance\nAMS v1.0 final; Re
 
             tag_sample_sequence: "[F] Tag sample\nsequence ID" { class: func }
             timestamp_measurement_steps: "[F] Timestamp read /\nprocess / collect steps" { class: func }
-            emit_current_measurement_record: "[F] Emit current\nmeasurement record" { class: func }
-            detect_stale_measurement: "[F] Detect stale\nmeasurement candidate" { class: func }
+            emit_current_measurement_record: "[F] Emit status/age\nmeasurement record" { class: func }
+            detect_stale_measurement: "[F] Detect non-VALID /\nage >400 ms candidate" { class: func }
             assert_obcc_collection_order: "[F] Assert OBCC\ncollection order" { class: func }
             mark_pressure_step_level: "[F] Mark pressure-step\nlevel" { class: func }
           }
@@ -221,7 +221,7 @@ host_pc_logger: "[EA] Host PC /\nData Logger" {
   compare_temperature_to_reference: "[F] Compare temperature\nto reference" { class: func }
   compute_bias_u95: "[F] Compute bias\nand U95" { class: func }
   verify_altitude_step: "[F] Verify altitude\npressure-step result" { class: func }
-  check_current_not_stale: "[F] Check current /\nnot stale" { class: func }
+  check_current_not_stale: "[F] Check VALID and\nage_ms <= 400 ms" { class: func }
   store_raw_evidence: "[F] Store raw\nevidence" { class: func }
 }
 
@@ -288,11 +288,15 @@ note_altitude_pass: "[C] Altitude passes iff a 10 m-equivalent pressure\nchange 
   class: note
   shape: page
 }
-note_obcc_current: "[C] OBCC pass condition: collect current altitude and\ntemperature results in the modeled order; stale data\nshall not be accepted as current" {
+note_obcc_current: "[C] OBCC pass condition: collect altitude and temperature\nin modeled order; current/fresh only if status == VALID\nand age_ms <= 400 ms at AMS→OBCC. Non-VALID statuses\n(STALE, NO_DATA, TIMEOUT, SENSOR_FAULT, INIT_FAIL)\nshall not be treated as current." {
   class: note
   shape: page
 }
-note_i2c_dependency: "[C] Detailed I2C ≤5 ms timeout proof is a dependency\non AMS-VV-CON-003 and is not duplicated here; this\nactivity records any timeout/stale anomaly as a failure" {
+note_i2c_dependency: "[C] Detailed I2C ≤5 ms timeout proof is a dependency\non AMS-VV-CON-003 and is not duplicated here; this\nactivity records any TIMEOUT/SENSOR_FAULT/stale-valid\nor currentness anomaly as a failure" {
+  class: note
+  shape: page
+}
+note_response_phase2: "[C] Temperature response <=60 s needs phase-2 modeled\nactivity/extension with declared step, reference data,\nsynchronized/correlated timestamps, exposure state, and\nresponse calculation; not closed by this accuracy chain" {
   class: note
   shape: page
 }
@@ -300,7 +304,7 @@ note_environment: "[C] Environmental conditions: ambient thermometer read\nbefor
   class: note
   shape: page
 }
-note_fault_hardening: "[C] Fault-hardening viewpoint: BadExposure, stale\nmeasurement, swapped pressure/temperature branches,\noutliers, and evidence gaps fail or require anomaly/waiver" {
+note_fault_hardening: "[C] Fault-hardening viewpoint: BadExposure, stale/non-VALID\nmeasurement, swapped pressure/temperature branches, outliers,\nmissing timestamp/sample-ID/age/status evidence, and old data\nmarked VALID fail or require anomaly/waiver" {
   class: note
   shape: page
 }
@@ -332,6 +336,8 @@ note_obcc_current -> host_pc_logger.check_current_not_stale { class: cstr }
 note_i2c_dependency -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.read_pressure { class: cstr }
 note_i2c_dependency -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing.read_temperature { class: cstr }
 note_i2c_dependency -> system.cansat.obcc_module.obcc_pcb.xiao.fc_acceptance_instrumentation.detect_stale_measurement { class: cstr }
+note_response_phase2 -> thermal_reference.set_stable_temperature_point { class: cstr }
+note_response_phase2 -> evidence_repo.store_report_inputs { class: cstr }
 note_environment -> ambient_thermometer.read_ambient_temperature { class: cstr }
 note_environment -> thermal_reference.set_stable_temperature_point { class: cstr }
 note_environment -> pressure_reference.provide_reference_pressure { class: cstr }
@@ -354,5 +360,6 @@ note_pressure_pass -> note_temperature_pass { style: { opacity: 0 } }
 note_temperature_pass -> note_altitude_pass { style: { opacity: 0 } }
 note_altitude_pass -> note_obcc_current { style: { opacity: 0 } }
 note_obcc_current -> note_i2c_dependency { style: { opacity: 0 } }
-note_i2c_dependency -> note_environment { style: { opacity: 0 } }
+note_i2c_dependency -> note_response_phase2 { style: { opacity: 0 } }
+note_response_phase2 -> note_environment { style: { opacity: 0 } }
 note_environment -> note_fault_hardening { style: { opacity: 0 } }

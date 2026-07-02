@@ -140,17 +140,17 @@ system: "[System] AMS-VV-FC-002 Peripheral initialisation\nFinal acceptance; Ref
             grid-columns: 2
 
             command_boot_init_trial: "[F] Command boot /\ninit trial" { class: func }
-            timestamp_boot_init_result: "[F] Timestamp boot\nand init result" { class: func }
+            timestamp_boot_init_result: "[F] Timestamp boot/init\nand compute age_ms" { class: func }
             tag_fault_mode_trial: "[F] Tag fault mode\nand trial ID" { class: func }
             monitor_startup_responsiveness: "[F] Monitor startup\nresponsiveness" { class: func }
             compare_obcc_status: "[F] Compare OBCC status\nto fault condition" { class: func }
-            emit_init_evidence_record: "[F] Emit init\nevidence record" { class: func }
+            emit_init_evidence_record: "[F] Emit init status/age\nevidence record" { class: func }
           }
         }
 
         obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
 
-        note_variable_getter: "[C] Init-state getter shall report a\ncurrent value or bounded status; no stale\ndefault OK is accepted" {
+        note_variable_getter: "[C] Init-state getter reports shared status.\nFresh/current only status == VALID and age_ms <= 400 ms;\nno stale/default/previous OK as VALID" {
           class: note
           shape: page
         }
@@ -241,7 +241,7 @@ evidence_repository: "[EA] Evidence Repository\nControlled Storage" {
   store_report_artifacts: "[F] Store report\nartifacts" { class: func }
 }
 
-note_nominal_pass: "[C] Nominal pass: boot/init sequence returns a\nvalid BME280 init state and OBCC collects the\nsame current state before readiness is accepted" {
+note_nominal_pass: "[C] Nominal pass: boot/init sequence returns shared status\nVALID with timestamp/sample-ID or boot-ID evidence and age_ms\n<= 400 ms when freshness is claimed; OBCC collects same\nstate before readiness is accepted" {
   class: note
   shape: page
 }
@@ -249,11 +249,11 @@ note_nominal_stats: "[C] Use 29/29 nominal boot successes for an\nR90/C95 binary
   class: note
   shape: page
 }
-note_startup_fault: "[C] Startup-fault pass: absent/NACK BME280 or\nheld SDA/SCL returns a bounded critical startup\nfault/status and does not create unbounded blocking" {
+note_startup_fault: "[C] Startup-fault pass: absent/NACK BME280 or held SDA/SCL\nreturns INIT_FAIL, TIMEOUT, SENSOR_FAULT, or other applicable\nnon-VALID shared status and does not create unbounded blocking" {
   class: note
   shape: page
 }
-note_no_stale_ok: "[C] Faulted states shall not be reported as\nnominal OK; no stale init state or default success\nvalue is accepted" {
+note_no_stale_ok: "[C] Previous/default OK values are never accepted as VALID\nafter init failure, timeout, fault, reset, stale, or no-data;\nambiguous status is hold/fail" {
   class: note
   shape: page
 }
@@ -261,7 +261,7 @@ note_con003_dep: "[C] Dependency only: AMS-VV-CON-003 owns detailed\nenvironment
   class: note
   shape: page
 }
-note_environment: "[C] Record ambient 20-30 °C, stable 3V3/common\nground, power-cycle count, and exact fault-fixture\nmode before repetitions" {
+note_environment: "[C] Exact evidence: boot IDs, power-cycle count, fault-fixture\nconfiguration, stable 3V3/common ground, sample/boot timestamps\nor monotonic correlation, age_ms where applicable, status values,\nambient, UUT/firmware/build IDs, deviations" {
   class: note
   shape: page
 }

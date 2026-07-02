@@ -61,9 +61,9 @@ chain: "AMS-VV-CON-003 — Environmental I2C timeout implementation coverage ana
   note_scope: "[C] Scope confirmed for final acceptance:\nRead pressure and Read temperature only;\nperipheral-init, chip-ID, and hidden driver setup reads\nare out of scope unless reachable from these functions" { class: note; shape: page }
   note_analyzed_elements: "[C] Analyzed elements: [CE] I2C, [LC] AMS Processing,\nRead pressure, Read temperature, and implementation\ncall paths reachable from environmental measurement reads" { class: note; shape: page }
   note_coverage: "[C] Pass requires 100% environmental measurement I2C\nread functions mapped to implementation; no environmental\nAMS Processing I2C read path lacks a ≤ 5 ms timeout" { class: note; shape: page }
-  note_wrapper: "[C] Retries, wrappers, bus-recovery attempts, or driver calls\nshall not make one environmental read exceed 5.000 ms\nfrom entry to returned status" { class: note; shape: page }
-  note_recovery: "[C] Recovery without reset after released I2C fault is mandatory\nand shall be supported by static rationale and dynamic evidence" { class: note; shape: page }
-  note_rationale: "[C] Analysis viewpoint: design/API consistency and fault hardening;\nrationale checked against timing-test evidence and code/API contracts" { class: note; shape: page }
+  note_wrapper: "[C] Retries, wrappers, bus-recovery attempts, or driver calls\nshall not make one environmental read exceed 5.000 ms\nfrom entry to returned status; low-level causes shall map to\nTIMEOUT/SENSOR_FAULT/INIT_FAIL/NO_DATA as applicable" { class: note; shape: page }
+  note_recovery: "[C] Recovery without reset after released I2C fault is mandatory\nand shall be supported by static rationale and dynamic evidence;\nno stale/old/default value may be marked VALID during fault or recovery" { class: note; shape: page }
+  note_rationale: "[C] Analysis viewpoint: design/API consistency and fault hardening;\nrationale checked against timing-test evidence, code/API contracts,\nstatus mapping, sequence/sample IDs, timestamps/age where claimed,\ninstrumentation overhead, and deviation notes" { class: note; shape: page }
 }
 
 chain.generate_coverage_matrix -> chain.map_i2c_callsites: "[FE] Environmental read\ninventory" { class: fe }

@@ -9,7 +9,7 @@
 
 ## Baseline views copied
 
-Untouched copies of all AMS v1.0 D2/PNG views are in `baseline/`.
+Baseline copies of all AMS v1.0 D2/PNG views are in `baseline/` and are refreshed to the selected v1.0 definition baseline.
 
 ## Test-definition views
 
@@ -30,12 +30,12 @@ Pass only if all modeled constraints in the D2 views are satisfied:
 2. No direct solar or bright-lamp line of sight reaches the BME280 in the modeled installed configuration.
 3. The airflow path to the BME280 / AMS module is not obstructed by the shade/vent fixture, wiring, evidence equipment, or CanSat structure.
 4. Ambient/reference conditions are recorded before demonstration repetitions, including instrument identity, location, timestamp, and uncertainty/tolerance.
-5. Optional paired temperature-bias screening, if used, records `n ≥ 30` paired samples and passes only when `|bias| + U95 ≤ 0.5 °C`; this hardens the exposure assessment but does **not** replace `AMS-VV-FC-001` measurement-accuracy verification.
+5. Optional paired temperature-bias screening, if used, records `n ≥ 30` paired samples and passes only when `|bias| + U95 ≤ 0.5 °C`; this hardens the exposure assessment but does **not** replace `AMS-VV-FC-001` measurement-accuracy verification and does not close temperature response time.
 6. Any blocked airflow, direct radiation path, heat-soak bias without mitigation, or unmodeled temporary shielding fails unless controlled by waiver and/or model update.
 
 ## Environmental conditions and equipment formalization
 
-The model includes explicit external actors/equipment for the inspector/operator, inspection light or sun-simulator, airflow indicator/anemometer or smoke/flow indicator, ambient/reference thermometer, camera/video recorder, evidence repository, and shade/ventilation fixture. The ambient/reference thermometer is read before demonstration evidence is credited.
+The model includes explicit external actors/equipment for the inspector/operator, inspection light or sun-simulator, airflow indicator/anemometer or smoke/flow indicator, ambient/reference thermometer, camera/video recorder, evidence repository, and shade/ventilation fixture. The exact execution evidence shall be predeclared before the run: instrument IDs and calibration status or function checks, ambient/reference readings, timestamps, photos/video or flow evidence, fixture configuration, and optional `n >= 30` paired temperature-bias data if used. The ambient/reference thermometer is read before demonstration evidence is credited.
 
 ## Statistical and fault-hardening viewpoints
 
@@ -44,9 +44,9 @@ The model includes explicit external actors/equipment for the inspector/operator
 
 ## Scope boundary
 
-This activity verifies physical/environmental exposure suitability for the AMS installation. It does not duplicate the full atmospheric measurement accuracy verification planned under `AMS-VV-FC-001`.
+This activity verifies physical/environmental exposure suitability for the AMS installation. It provides context for `AMS-VV-FC-001` accuracy evidence and for later phase-2 temperature response-time interpretation, but it does not duplicate the full atmospheric measurement accuracy verification and it does not claim response-time closure. Response-time `<=60 s` requires the future response-time activity/extension with declared temperature step, reference data, synchronized/correlated timestamps, exposure state, and response calculation.
 
 ## Assumptions
 
-- The exact lamp model, airflow indicator model, ambient thermometer model, and fixture design are selected at execution time and recorded in the report.
+- The lamp model, airflow indicator model, ambient thermometer model, fixture design, instrument IDs/calibration or function checks, timestamps, photo/video/flow evidence method, and optional paired-sample plan are predeclared before execution and recorded in the report.
 - A sun-simulator or bright inspection lamp is an acceptable conservative proxy for checking direct line-of-sight exposure when real sunlight is not safely repeatable.

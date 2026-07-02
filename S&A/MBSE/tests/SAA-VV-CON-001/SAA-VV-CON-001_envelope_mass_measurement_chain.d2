@@ -65,7 +65,7 @@ measurement_chain: "[Functional Chain] SAA-VV-CON-001 Envelope and Mass Constrai
   witness_decision: "[F] Safety / QA Witness: approve\npass, fail, hold, or re-run\nfor the selected gate" { class: func }
   release_package: "[F] Evidence repository: release\nreport-by-reference package" { class: func }
 
-  pass_fail: "[C] Pass/fail constraints:\nDiameter passes only if D_max + U_D ≤ 66.0 mm. Height passes only if H_max + U_H ≤\n122.0 mm using the modeled 355 ml envelope unless a stricter requirement is confirmed\nbefore execution. v1.0 total mass passes only if measured mass + U_M < 350.0 g.\nAny forced gauge fit, missing calibration, missing evidence, open anomaly, or unresolved\nheight/mass interpretation = hold/fail." {
+  pass_fail: "[C] Pass/fail constraints:\nDiameter passes only if D_max + U_D ≤ 66.0 mm. Height passes only if H_max + U_H ≤\n122.0 mm using the modeled 355 ml envelope unless a stricter requirement is confirmed\nbefore execution. v1.0 total mass passes only if measured mass + U_M < 350.0 g.\nAny forced gauge fit, missing calibration, missing evidence, open anomaly, or unresolved\nmeasurement/configuration evidence = hold/fail." {
     class: note
     shape: page
   }

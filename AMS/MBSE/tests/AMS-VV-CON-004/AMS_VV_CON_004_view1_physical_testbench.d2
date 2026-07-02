@@ -104,7 +104,7 @@ note_airflow: "[C] Block sunlight,\nallow airflow" {
   class: note
   shape: page
 }
-note_testbench: "[C] VV-only bench connections shall not bypass\nthe modeled AMS Processing call paths; I2C read\ntiming is excluded and referenced to AMS-VV-CON-003" {
+note_testbench: "[C] VV-only bench connections shall not bypass modeled AMS\nProcessing, getter, or OBCC call paths; I2C read timing/fault\nevidence is referenced to AMS-VV-CON-003 and pointer policy\nto AMS-VV-API-001" {
   class: note
   shape: page
 }
@@ -116,7 +116,7 @@ note_power_env: "[C] Stable 3V3/common ground required;\nrecord voltage/current 
   class: note
   shape: page
 }
-note_evidence: "[C] Raw timing logs, input vectors, static\npath matrix, and anomalies are archived\nunder results/AMS-VV-CON-004/" {
+note_evidence: "[C] Raw timing logs, input vectors, static callable-path matrix,\nscheduler heartbeat/progress traces, shared-status propagation,\ninstrumentation overhead, and anomalies are archived under\nresults/AMS-VV-CON-004/" {
   class: note
   shape: page
 }

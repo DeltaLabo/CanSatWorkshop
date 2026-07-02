@@ -142,7 +142,15 @@ note_stat: "[C] Statistical viewpoint: n ≥ 30 paired\npressure and temperature
   class: note
   shape: page
 }
-note_fault: "[C] Fault-hardening viewpoint: BadExposure and\nStaleMeasurement are explicit trace targets; swapped\nbranches, stale/currentness errors, and outlier handling\nare pass/fail concerns" {
+note_fault: "[C] Fault-hardening viewpoint: BadExposure, swapped\nbranches, outliers, OBCC order errors, and any\nSTALE/NO_DATA/TIMEOUT/SENSOR_FAULT/INIT_FAIL value\ntreated as current are pass/fail concerns" {
+  class: note
+  shape: page
+}
+note_freshness: "[C] Fresh/current oracle: AMS→OBCC supports 5 Hz / 200 ms;\n2 s LoRa packaging is separate. Current only when\nstatus == VALID and age_ms <= 400 ms; record timestamp,\nsequence/sample-ID, age, status, raw AMS values,\nreference values, uncertainty inputs, and order evidence." {
+  class: note
+  shape: page
+}
+note_response_phase2: "[C] Temperature response <=60 s is not closed here.\nPhase-2 activity/extension must declare temperature step,\nreference data, synchronized/correlated timestamps,\nexposure state, and response calculation." {
   class: note
   shape: page
 }
@@ -181,6 +189,10 @@ note_stat -> host_pc_logger { class: cstr }
 note_stat -> evidence_repo { class: cstr }
 note_fault -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
 note_fault -> system.cansat.ams_module.ams_pcb.bme280.ams_sensing { class: cstr }
+note_freshness -> system.cansat.obcc_module.obcc_pcb.xiao.obcc { class: cstr }
+note_freshness -> system.cansat.obcc_module.obcc_pcb.xiao.fc_acceptance_instrumentation { class: cstr }
+note_response_phase2 -> thermal_reference { class: cstr }
+note_response_phase2 -> system.cansat.obcc_module.obcc_pcb.xiao.fc_acceptance_instrumentation { class: cstr }
 note_dependency -> system.cansat.obcc_module.obcc_pcb.xiao.ams_processing { class: cstr }
 note_dependency -> system.cansat.obcc_module.obcc_pcb.xiao.fc_acceptance_instrumentation { class: cstr }
 note_report -> evidence_repo { class: cstr }
@@ -196,5 +208,7 @@ bench_supply -> evidence_repo { style: { opacity: 0 } }
 evidence_repo -> note_scope { style: { opacity: 0 } }
 note_scope -> note_stat { style: { opacity: 0 } }
 note_stat -> note_fault { style: { opacity: 0 } }
-note_fault -> note_dependency { style: { opacity: 0 } }
+note_fault -> note_freshness { style: { opacity: 0 } }
+note_freshness -> note_response_phase2 { style: { opacity: 0 } }
+note_response_phase2 -> note_dependency { style: { opacity: 0 } }
 note_dependency -> note_report { style: { opacity: 0 } }

@@ -10,6 +10,8 @@ The decisions below use the AMS blocker resolution plan, `PM&SE/CON-003_Candidat
 
 ## Shared ADS/AMS sensor-to-OBCC freshness rule
 
+Controlled contract: [`PM&SE/contracts/sensor_obcc_freshness_contract.md`](contracts/sensor_obcc_freshness_contract.md).
+
 ADS and AMS shall use one shared sensor-to-OBCC freshness/status contract for v1.0 internal delivery planning:
 
 - ADS/AMS respond to OBCC collection requests at `5 Hz` internal cadence.

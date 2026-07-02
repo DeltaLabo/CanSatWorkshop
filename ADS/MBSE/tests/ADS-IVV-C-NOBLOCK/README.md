@@ -47,13 +47,14 @@ Pass requires all applicable criteria for the selected version:
 1. 100% of modeled no-blocking target functions and discovered blocking/wait call sites are reviewed against the copied source views and implementation evidence.
 2. Non-I2C/non-UART functions do not block while waiting for external data.
 3. UART and I2C waits are confined to modeled communication functions and are bounded by timeout/error behavior; modeled `<=5 ms` UART/I2C timeout constraints are enforced where present.
-4. Loop or ADS Processing heartbeat/cycle progress remains observable during nominal execution and during applicable silent/malformed GPS and I2C NACK/stuck-bus fault cases.
-5. No hidden wait state, unbounded retry loop, indefinite delay, blocking logger path, unsafe pointer/return wait, or unreported reset/stall is found.
-6. If firmware source, build map, symbols, or equivalent runtime instrumentation access is absent, execution status is **blocked/limited** and no pass verdict may be claimed.
+4. Loop or ADS Processing heartbeat/cycle progress remains observable during nominal execution and during applicable silent/malformed GPS and I2C NACK/stuck-bus fault cases. The selected heartbeat/progress deadline is **250 ms nominal** during 5 Hz operation, with no mission-window/freshness progress gap greater than **400 ms** under fault cases unless a non-`VALID` status is reported and safe behavior is maintained.
+5. Timing hooks/logging overhead is measured and is `<=5%` of the 200 ms period or `<=5 ms`, whichever is stricter for the claim being made; otherwise the timing verdict is limited/blocked or the overhead is subtracted/bounded with documented uncertainty.
+6. No hidden wait state, unbounded retry loop, indefinite delay, blocking logger path, unsafe pointer/return wait, or unreported reset/stall is found.
+7. If firmware source, build map, symbols, or equivalent runtime instrumentation access is absent, execution status is **blocked/limited** and no pass verdict may be claimed.
 
 ## Viewpoints
 
-- **Statistical significance:** source/model review is complete enumeration of the targeted model functions and discovered blocking call sites, not sampling. Runtime timing evidence supports fault-hardening and deadline claims; use `n=59` zero-violation samples for any formal 95/95 deadline/timeout claim. If no formal statistical claim is made, report runtime samples as supporting evidence only.
+- **Statistical significance:** source/model review is complete enumeration of the targeted model functions and discovered blocking call sites, not sampling. Runtime timing evidence supports fault-hardening and deadline claims; use `n=59` zero-violation samples for any formal 95/95 deadline/timeout or heartbeat/progress claim. If no formal statistical claim is made, report runtime samples as supporting evidence only.
 - **Fault hardening:** silent GPS/UART, malformed or partial GPS payload, UART timeout, stale GPS state, IMU NACK, wrong address, partial I2C read, stuck SDA/SCL/bus lock, recovery, reset/stall, logger loss, stale getter state, and hidden waits in Pointers/Returns for `v1.0`.
 - **Configuration control:** each report shall name ADS version/SSIV, source-view copy, hardware revision, firmware commit/build, instrumentation build, equipment IDs/calibration status, operator/reviewer, deviations, anomalies, waivers, limitations, and retest status.
 - **Environmental context:** before runtime repetitions, the human operator records bench voltage/current and ambient temperature/humidity from the modeled bench supply and ambient monitor. If these are not recorded, the run is limited for interpretation rather than silently passed.
@@ -61,10 +62,10 @@ Pass requires all applicable criteria for the selected version:
 ## Required execution conditions
 
 - Select and record one target version per execution (`v0.1`, `v0.2`, `v0.3`, or `v1.0`) and reference this definition package.
-- For runtime versions, provide firmware source or equivalent instrumentation access, build map/symbols, instrumented firmware image, logger timebase, watchdog/heartbeat method, and fault-injector configuration.
+- For runtime versions, provide firmware source or equivalent instrumentation access, build map/symbols, instrumented firmware image, compiler/toolchain ID, logger timebase, watchdog/heartbeat method, timing-overhead measurement, analysis script revision, and fault-injector configuration.
 - Execute or explicitly disposition nominal runtime, silent/malformed GPS, and recovery cases for `v0.1`, `v0.2`, and `v1.0`.
 - Execute or explicitly disposition IMU NACK/stuck-bus/partial-read cases for `v0.2` and `v1.0`; they are N/A for `v0.1` and runtime-N/A for `v0.3`.
-- Preserve raw logs, timing analysis outputs, call graph/blocking-call inventory, fault markers, environmental readings, analysis scripts/settings, deviations, anomalies, limitations, and retest data.
+- Preserve raw logs, timing analysis outputs, heartbeat/progress traces, instrumentation-overhead measurements, call graph/blocking-call inventory, fault markers, environmental readings, analysis scripts/settings, deviations, anomalies, limitations, and retest data.
 
 ## Expected report locations
 
@@ -86,5 +87,5 @@ Modeled definition ready for review. Execution remains pending.
 - Controlled SSIV IDs and formal capability/feared-event model elements are not present in the source D2; this definition uses the ADS-wide placeholder trace targets from `../README.md`.
 - Firmware source/instrumentation access is not confirmed. A pass verdict requires such access or equivalent evidence.
 - `v0.2` does not explicitly model an I2C timeout constraint; this is retained as a model gap while still requiring bounded I2C error/timeout behavior before execution can pass.
-- Exact loop-period/heartbeat deadline and allowed instrumentation overhead must be fixed before execution if a formal deadline/statistical claim is made.
+- Loop/progress heartbeat criteria are selected as 250 ms nominal and 400 ms maximum gap; instrumentation overhead allowance is selected as `<=5%` of the 200 ms period or `<=5 ms`, whichever is stricter for the claim. Exact instrumentation method and measured overhead remain execution prerequisites.
 - `v1.0` has no ADS Serial0 chain; use OBCC/runtime logger evidence for progress and delivery observations.

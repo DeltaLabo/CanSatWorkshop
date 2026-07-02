@@ -43,7 +43,8 @@ The selected source D2/PNG views were copied into this activity package for stab
 ## Pass/fail criteria
 
 - **Nominal accuracy:** each applicable campaign shall collect at least `n >= 30` matched valid ADS/truth samples. The accepted horizontal position error plus truth/reference uncertainty guard band shall be `<5 m`, or, when a formal statistical claim is made, the predeclared 95/95 bound shall be `<5 m`.
-- **Truth/reference control:** use either a GNSS simulator or a surveyed/high-confidence reference receiver. Record calibration status, truth uncertainty, antenna placement, sky/multipath conditions, warm-up, power mode, and timebase.
+- **Strict truth/reference control:** use either a GNSS simulator with declared scenario/uncertainty or a surveyed/open-sky reference point or reference antenna setup with coordinate uncertainty small relative to `5 m` (preferred `<=1 m` 95% truth uncertainty, or otherwise explicitly guard-banded). Record calibration/status, truth uncertainty, antenna placement, sky/multipath conditions, warm-up, power mode, and timebase.
+- **Phone limitation:** consumer mobile phones may be used for photos, field notes, sanity checks, or auxiliary logs only. A phone-only truth source is limited/characterization unless its position uncertainty is independently controlled and guard-banded enough that ADS horizontal error plus truth/measurement uncertainty remains `<5 m`.
 - **Validity/fault handling:** invalid, no-fix, stale, malformed, or silent GPS samples may be excluded from the accuracy calculation only if ADS/OBCC visibly flags or handles them as invalid. They shall not be accepted as valid positions.
 - **v1.0 observation:** v1.0 passes only when evidence is taken at the ADS/OBCC observation point, not solely at the GPS receiver or intermediate UART stream.
 - **Supporting constraints:** UART timeout and no-blocking/validity behavior are supporting fault-hardening evidence for this activity; separate rate/timing constraint activities remain responsible for primary verdicts on `5 Hz` and timeout limits.
@@ -57,7 +58,7 @@ The selected source D2/PNG views were copied into this activity package for stab
 ## Required execution conditions
 
 - Record selected ADS version/SSIV, copied source-view baseline, hardware revision, UUT identifier, firmware commit/build, logger configuration, operator, and equipment IDs/calibration status.
-- Select the truth method before execution: GNSS simulator or surveyed/high-confidence reference receiver.
+- Select the strict truth method before execution: GNSS simulator, surveyed/open-sky reference point, or reference antenna setup. If execution uses only phones or other uncontrolled references, mark the result limited/characterization and do not claim strict `<5 m` closure.
 - Synchronize or correlate ADS and truth timestamps with the modeled timebase.
 - Preserve raw ADS logs, raw truth/reference logs, validity/fault markers, environmental records, analysis scripts/settings, generated plots/tables, deviations, anomalies, waivers, and retest status.
 
@@ -80,6 +81,6 @@ Modeled definition ready for review. Execution remains pending.
 
 - The orchestrator selected all current ADS MBSE versions; no user disambiguation was requested.
 - `ADS-CAP-GPS`, `ADS-FE-SILENT-SENSOR-FAIL`, and `ADS-FE-CORRUPT-MEASUREMENT` are planning trace placeholders because explicit Capella mission/capability/feared-event elements are not modeled in the source views.
-- Exact truth equipment model, surveyed coordinates or simulator scenario, guard-band method, and 95/95 method are TBD before execution.
+- Strict truth path is selected as GNSS simulator or surveyed/open-sky reference; exact equipment asset, surveyed coordinates or simulator scenario, guard-band calculation, and any 95/95 method must still be recorded before execution.
 - ADS/OBCC validity/freshness field names and log schema are TBD before execution.
 - `v0.3` remains N/A for this constraint unless behavior chains are later added to that baseline.

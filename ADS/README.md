@@ -58,8 +58,8 @@ ADS v0.3 — PCB-only delivery physical view ([D2 source](./MBSE/v0.3/ADS_v0.3_v
 | --- | --- |
 | The Altitute determination system must determine the position of the CanSat with an accuracy of less than 5m under open sky. | Integration Test |
 | The ADS must determine the angles of rotation in 3 axes with an accuracy of 30 deg/s. | Communication Test |
-| The ADS must determine the acceleration in 3 axes with an accuracy of 30 deg/s^2. | Communication Test |
-| The ADS  must determine the orientation  to the north. | Integration Test |
+| The ADS must determine linear acceleration in 3 axes in `m/s²` (or `g` converted to `m/s²`); the verification threshold is controlled by `ADS-IVV-C-ACCEL-3AXIS`. The legacy `30 deg/s^2` wording is not used as the acceleration oracle. | Communication Test |
+| The ADS  must determine the orientation  to the north with quantitative heading criteria controlled by `ADS-IVV-C-HEADING-NORTH`. | Integration Test |
 | All ADS data needed by flight logic must be delivered internally to the OBCC with an update rate of at least 5 Hz; this is separate from the v1.0 LoRa telemetry cadence. | Communication Test |
 
 ### Success Criteria

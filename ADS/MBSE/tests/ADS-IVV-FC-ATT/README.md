@@ -38,12 +38,21 @@ All D2 views for the selected ADS versions were copied under `source_views/` so 
 | `v0.3` | No attitude functional chain is modeled. Source package is a PV1-only PCB delivery model with physical GPS/IMU/backplane elements and UART/I2C/3V3 traces. | Pass/N/A if 1/1 v0.3 source view is reviewed, no attitude LC/CE/allocation/functional-chain behavior exists, and physical I2C traces are not credited as functional-chain behavior. Fail if behavior is claimed from v0.3 without a modeled logical/functional chain. |
 | `v1.0` | Attitude estimation chain: Measure accelerations, Measure magnetic field intensities, Respond to I2C Requests, Read accelerations, Read field intensities, Process accelerations, Calculate pitch/roll/yaw, Collect measurements. IMU/attitude data flow through ADS Processing and may be delivered to OBCC through related Pointers/Returns interfaces. | Pass if acceleration/magnetic-field data and PRY outputs propagate through the modeled chain to the ADS/OBCC observation point, PRY is finite, bounded to the selected convention/range, plausible for known static orientations and yaw changes, repeatability is recorded, v1.0 I2C reads return data or timeout/error in `<=5 ms`, Process/Calculate operations remain `<5 ms` where instrumented, and invalid/stale/disturbed/I2C-fault data are not accepted as valid by ADS Processing or OBCC. No formal numerical attitude accuracy claim is permitted unless a new constraint is added. |
 
+## Quantitative accuracy handoff
+
+This activity demonstrates attitude-chain propagation, plausibility, repeatability, and fault handling. It does **not** close the separate quantitative acceleration or heading/north requirements unless the following candidate definitions, or equivalent modeled constraints, are executed and referenced by the report:
+
+- `ADS-IVV-C-ACCEL-3AXIS` for 3-axis linear acceleration in `m/s²`, six-face gravity-reference sampling, and guard-banded static accuracy.
+- `ADS-IVV-C-HEADING-NORTH` for true/magnetic north reference control, circular heading error, and the selected `<=10°` guard-banded threshold.
+
+D2/model follow-up remains to add explicit links from the attitude definition views to those candidate packages; no D2/PNG files are edited in this Markdown-only update.
+
 ## Required execution conditions
 
 - Select and record ADS version, source-model package, hardware revision, firmware commit/build, UUT serial/identifier, and data-logging configuration.
 - Select the orientation/magnetic reference method before execution: non-magnetic 6-face fixture, known static orientations, yaw/heading reference or relative yaw-change procedure, and magnetic context or controlled field source. Record axis/sign convention, level/alignment, local magnetic field survey, nearby ferrous/electrical disturbance sources, vibration/slip, temperature, warm-up, timebase, power mode, calibration status, and uncertainty.
 - Collect and preserve raw ADS acceleration/magnetic/PRY logs, raw reference orientation/magnetic logs, timestamps, fault-injection markers, analysis scripts/settings, and any OBCC logs used for v1.0 delivery evidence.
-- This activity is a demonstration and repeatability characterization. Record sample counts, repeatability, plausibility checks, and any execution-approved plausibility tolerance. Do not claim formal attitude accuracy unless a new modeled constraint and statistical criterion are added.
+- This activity is a demonstration and repeatability characterization. Record sample counts, repeatability, plausibility checks, and any execution-approved plausibility tolerance. Do not claim formal attitude, acceleration, or heading/north accuracy unless `ADS-IVV-C-ACCEL-3AXIS`, `ADS-IVV-C-HEADING-NORTH`, or an equivalent modeled constraint with a statistical criterion is executed.
 - Execute or disposition fault-hardening cases: I2C NACK, stuck bus, wrong address, partial read, invalid acceleration, magnetic disturbance, stale data, non-finite PRY behavior, and recovery. Invalid/faulted samples shall be excluded from plausibility/repeatability only if ADS marks or handles them as invalid; they shall not be accepted as valid attitude outputs.
 - For `v1.0`, include modeled I2C `<=5 ms` timeout and Process/Calculate `<5 ms` as pass/fail timing viewpoints where instrumented. For `v0.2`, record the absence of an explicit I2C timeout constraint as a modeling gap and still report observed no-blocking behavior.
 

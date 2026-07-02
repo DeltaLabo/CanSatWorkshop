@@ -10,6 +10,8 @@
 
 **References cited in diagrams:** IVV, the ADS MBSE IVV plan `../README.md`, NASA-SE, and SW/statistics references from the ADS plan. No external research was performed for this definition.
 
+**Shared freshness contract:** v1.0 ADS delivery uses `ADS-V10-DATA-FRESHNESS` as an alias/extension through this activity, `ADS-IVV-C-GETTER`, and `ADS-IVV-C-RATE-5HZ`. The controlling contract is [`PM&SE/contracts/sensor_obcc_freshness_contract.md`](../../../../PM&SE/contracts/sensor_obcc_freshness_contract.md): OBCC requests/responses at `5 Hz`, `2 s` LoRa telemetry packaging remains separate from internal `5 Hz` evidence, fresh age is `<=400 ms` only when status is `VALID`, and the exact enum is `VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`.
+
 ## Source-view copies
 
 All currently present ADS MBSE source D2/PNG views were copied into this activity package so reports can reference a stable test-definition baseline:
@@ -36,25 +38,26 @@ All currently present ADS MBSE source D2/PNG views were copied into this activit
 | `v0.1` | N/A for this activity | Source views show GPS-only XIAO prototype with delivery through Serial0 logging to a PC, not ADS Processing → OBCC `Pointers`/`Returns`. | Record N/A if this activity is used for all-version closure; use a Serial0 delivery activity instead. |
 | `v0.2` | N/A for this activity | Source views show GPS/IMU XIAO prototype with Serial0 logging to a PC. No OBCC LC or `Pointers`/`Returns` CE exists. | Record N/A if this activity is used for all-version closure; use a Serial0 delivery activity instead. |
 | `v0.3` | N/A for this activity | PCB-only delivery: physical PCB, GPS, IMU, connector, footprints, UART/I2C/3V3 traces. No behavior, LC, CE, allocation, or functional chain exists. | Pass/N/A only after confirming source view is PV1-only and physical traces are not credited as OBCC delivery behavior. |
-| `v1.0` | Applicable | ADS Processing and OBCC LCs are co-located on the OBCC XIAO. ADS Processing receives GPS/IMU data via UART/I2C, computes stored GPS, processed IMU, attitude, and init-state data, and exposes data/status to OBCC via modeled `Pointers` and `Returns` CEs. | Demonstration/testing with supporting analysis shall produce pass/fail evidence for delivery contract, field coverage, fault rejection, and bounded/no-blocking behavior. |
+| `v1.0` | Applicable | ADS Processing and OBCC LCs are co-located on the OBCC XIAO. ADS Processing receives GPS/IMU data via UART/I2C, computes stored GPS, processed IMU, attitude, and init-state data, and exposes data/status to OBCC via modeled `Pointers` and `Returns` CEs. | Demonstration/testing with supporting analysis shall produce pass/fail evidence for the shared freshness contract, field coverage, fault rejection, and bounded/no-blocking behavior. |
 
 ## Pass/fail criteria
 
 Pass for `v1.0` only if all criteria below are satisfied and evidenced:
 
 1. **Modeled-interface use:** OBCC obtains ADS data/handles only through modeled `Pointers`/`Returns`; no unmodeled global/shared/private consumer path is used for GPS, IMU, attitude, or init-state delivery.
-2. **Explicit semantics:** pointer ownership, pointer lifetime, data freshness, validity flags/status, and return/error behavior are explicit in the firmware/interface contract and observed in logs or supporting code-review evidence.
+2. **Explicit semantics:** pointer ownership, pointer lifetime, data freshness, validity flags/status, and return/error behavior are explicit in the firmware/interface contract and observed in logs or supporting code-review evidence; ADS-specific return codes shall map to the shared enum without losing fault evidence.
 3. **Data coverage:** nominal evidence covers GPS lat/lon/init state, IMU angular velocity/acceleration/field data, attitude pitch/roll/yaw, and OBCC collection fields present in the v1.0 source inventory.
-4. **Fault hardening:** null, dangling, out-of-lifetime, stale, corrupt, invalid-return, and slow/stuck-call cases are rejected or reported as errors and are not consumed as valid measurements.
-5. **Bounded/no-blocking behavior:** no unexpected blocking occurs outside modeled I2C/UART waits. Linked constraints remain applicable: Variable Getter pattern, process/calculate `<5 ms`, UART read timeout `<=5 ms`, and I2C read timeout `<=5 ms`. A delivery watchdog/timeout threshold must be recorded before execution; without it, the timing verdict is blocked/limited.
-6. **Evidence integrity:** raw logs, fault markers, firmware/build metadata, code-review notes, analysis settings, actual environmental/power conditions, deviations, anomalies, waivers, and retest status are preserved in the report package.
+4. **Shared freshness/status:** ADS-to-OBCC responses support `5 Hz` requests/responses and carry or trace timestamp/sequence/age/status evidence. Fresh data requires `status == VALID` and `age_ms <= 400 ms`; `2 s` LoRa telemetry cadence is packaging evidence, not a substitute for internal `5 Hz` delivery evidence. The only accepted status vocabulary is `VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`.
+5. **Fault hardening:** null, dangling, out-of-lifetime, stale, no-data, timeout, sensor-fault, init-fail, corrupt, invalid-return, and slow/stuck-call cases are rejected or reported as non-`VALID` and are not consumed as valid measurements. Old ADS data shall not remain marked `VALID` after timeout, runtime fault, no-data, or init-fail conditions.
+6. **Bounded/no-blocking behavior:** no unexpected blocking occurs outside modeled I2C/UART waits. Linked constraints remain applicable: Variable Getter pattern, process/calculate `<5 ms`, UART read timeout `<=5 ms`, and I2C read timeout `<=5 ms`. A delivery watchdog/timeout threshold must be recorded before execution; without it, the timing verdict is blocked/limited.
+7. **Evidence integrity:** raw logs, fault markers, firmware/build metadata, code-review notes, analysis settings, actual environmental/power conditions, deviations, anomalies, waivers, and retest status are preserved in the report package.
 
 Fail on any unmodeled data path, missing or ambiguous ownership/lifetime/freshness/validity/error semantics, invalid/stale/corrupt data consumed as valid, unexpected blocking, missing required field/fault coverage, missing source baseline, or unreported execution deviation affecting interpretation.
 
 ## Statistical and fault-hardening viewpoints
 
-- **Statistical significance:** this definition is an engineering demonstration/test unless a formal population or PDR/deadline claim is predeclared. Minimum nominal evidence is `>=30` delivery observations spanning the modeled GPS, IMU, attitude, and init-state fields. Formal deadline/PDR claims require a predeclared method and sample count, e.g. `59/59` zero deadline misses for 95/95 planning if that method is selected before execution.
-- **Fault hardening:** explicitly execute or disposition null pointer, missing return, dangling/out-of-lifetime handle, stale freshness epoch, corrupt data, invalid return/status, slow/stuck call, recovery, and no-unmodeled-bypass cases.
+- **Statistical significance:** this definition is an engineering demonstration/test unless a formal population or PDR/deadline/freshness claim is predeclared. Minimum nominal evidence is `>=30` delivery observations spanning the modeled GPS, IMU, attitude, and init-state fields. Formal freshness/deadline/PDR claims require a predeclared method and sample count; use `n = 59` representative request/response observations with every observation meeting the age/status limit for the project IVV 95/95 timing-planning path.
+- **Fault hardening:** explicitly execute or disposition null pointer, missing return, dangling/out-of-lifetime handle, stale freshness epoch, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`, corrupt data, invalid return/status, slow/stuck call, recovery, and no-unmodeled-bypass cases.
 - **Constraint coverage:** this activity directly covers delivery/no-corruption/no-blocking aspects of the source constraints. GPS position `<5 m` and angular-rate `<30 deg/s` accuracy are not re-verified here; they are preserved by non-corruption/validity checks and are verified by the GPS/ANG activities.
 
 ## Required execution conditions
@@ -63,7 +66,7 @@ Fail on any unmodeled data path, missing or ambiguous ownership/lifetime/freshne
 - Configure current-limited power or battery simulation and record voltage/current limits, resets, brownouts, and current anomalies.
 - Human conductor reads the ambient thermometer/hygrometer before repetitions and after fault cases; record temperature/humidity and calibration ID.
 - Configure the OBCC firmware/log harness, ADS stimulus/logger, pointer lifetime/freshness monitor or code-review station, and analysis script without creating an unmodeled ADS data path to OBCC.
-- Preserve raw OBCC delivery logs, ADS stimulus/fault markers, timing/heartbeat records, pointer/freshness observations, code-review notes, analysis scripts/settings, and generated plots/tables.
+- Preserve raw OBCC delivery logs, ADS stimulus/fault markers, timing/heartbeat records, pointer/freshness observations, `contract_version` where implemented, sample IDs, timestamps, `age_ms`, status values, code-review notes, analysis scripts/settings, and generated plots/tables.
 
 ## Expected report locations
 
@@ -82,5 +85,6 @@ Modeled definition ready for review. Execution remains pending.
 
 - Controlled SSIV/version identifiers remain inferred from folder names and D2 titles.
 - Traceability targets are placeholder IDs from the ADS-wide plan; no formal mission/capability/feared-event model elements were found.
-- Final Pointers/Returns data schema, delivery watchdog threshold, timing instrumentation overhead, hardware revision, firmware commit, and exact statistical claim must be fixed before execution.
+- Final ADS-specific Pointers/Returns field names/data schema, delivery watchdog threshold, timing instrumentation overhead, hardware revision, firmware commit, and exact statistical claim must be fixed before execution; freshness thresholds/status vocabulary are fixed by the shared PM&SE contract.
+- D2/model follow-up remains to add the exact shared-contract text to definition views if those views still show only generic freshness/status wording.
 - This activity does not replace the all-version PC/PL inspection, CE analysis, allocation analysis, GPS, angular velocity, or attitude verification definitions.

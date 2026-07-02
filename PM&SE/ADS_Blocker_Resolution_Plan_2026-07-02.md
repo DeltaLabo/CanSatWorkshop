@@ -90,9 +90,10 @@ These are the starting criteria subagents should apply unless they discover a st
 
 ## Execution status
 
-In progress.
+Cleanup completed on 2026-07-02 for the temporary issue-file set only.
 
 - `ISSUE-ADS-001` completed in commit `6c36860`.
 - `ISSUE-ADS-002` completed in commit `936e478`.
-- Scope was expanded after `ISSUE-ADS-002` to add one shared ADS/AMS sensor-to-OBCC freshness contract and aligned AMS/SYS freshness tests.
-- Remaining issue files are under `PM&SE/ads_blocker_resolution_issues/` and will be removed after final validation.
+- The shared ADS/AMS freshness portions added after `ISSUE-ADS-002` were completed by the later AMS freshness closure commits: the shared PM&SE contract, AMS freshness alignment, ADS/SYS freshness planning alignment, and PM&SE register/assessment consistency updates are now recorded in the closure artifacts and commit history.
+- Temporary ADS/AMS issue files under `PM&SE/ads_blocker_resolution_issues/` were removed as stale orchestration cleanup.
+- This cleanup does not claim the broader ADS blocker plan is fully executed, fully modeled, or ready for pass/fail credit. Remaining ADS D2/model/execution follow-up is captured in `PM&SE/ADS_Blocker_Closure_Record_2026-07-02.md`, `PM&SE/CON-003_Candidates_and_Definition_Blockers.md`, and the commit history.

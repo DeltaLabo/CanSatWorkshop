@@ -33,9 +33,9 @@ Rendered PNGs have been generated beside the D2 sources.
 5. **Fault hardening:** stale command replay, duplicate UI event, command queue bypass, direct Dashboard-to-radio path, UART write failure, SPI/radio-not-ready error and missing RF capture are failures unless explicitly dispositioned as limitations/waivers.
 6. **Statistics viewpoint:** the valid-command sequence is exact-binomial screening; the cooldown sequence is duplicate-suppression screening. Reports shall record `k/N`, timing min/median/max and anomalies by trial/burst ID.
 
-## Model discrepancy watch
+## Selected UART model-update follow-up
 
-The source PV2 models the UART component exchange as **LoRa Forwarder → PC Decoder**, while FC02 uses command bytes from **Decoder back to LoRa Forwarder** over the same serial/USB path. This verification definition records the reverse-use evidence and requires report disposition. An unconditional pass requires either: (a) evidence that the UART path is intentionally bidirectional despite the PV2 arrow, or (b) an accepted model/update waiver.
+The source PV2 currently models CE-03 as **LoRa Forwarder → PC Decoder**, while FC02 uses command bytes from **Decoder back to LoRa Forwarder** over the same serial/USB path. The selected model intent is bidirectional ground-station UART, represented later either as one bidirectional CE or as paired telemetry/command UART CEs. This is no longer an unresolved definition blocker, but the D2/source-model update or approved waiver remains pending before unconditional CE/command pass credit. Reports must include Decoder→Forwarder command-byte evidence, Forwarder→Decoder telemetry-byte evidence where applicable, and RF command capture.
 
 ## Test sequence checklist
 
@@ -50,8 +50,8 @@ The source PV2 models the UART component exchange as **LoRa Forwarder → PC Dec
 - **C07** is directly assigned to this activity as a pass/fail condition.
 - This activity verifies FC02 command/uplink behavior on the ground-station side. It does not claim the CanSat-side command receive path; that remains assigned to `DPS-V10-T-003`.
 - It does not claim C01 range performance; range remains assigned to `DPS-V10-C-001`.
-- It does not replace the component-exchange presence/intent analysis in `DPS-V10-A-001`; it supplies behavioral evidence for the command path and the CE-03 direction discrepancy.
+- It does not replace the component-exchange presence/intent analysis in `DPS-V10-A-001`; it supplies behavioral evidence for the command path and the selected CE-03 bidirectional-UART model-update follow-up.
 
 ## Evidence expected in report
 
-The report in `tests/results/DPS-V10-T-002/` should reference these modeled diagrams and record: model baseline, as-tested hardware/software configuration, browser/UI automation details, serial/radio/RF-monitor configuration, monotonic timebase, UI event log, decoder/command queue log, forwarder/serial log, RF capture log, valid-command `k/N`, cooldown burst `k/N`, re-enable timing distribution, pass/fail rationale, CE-03 direction-discrepancy disposition, deviations, anomalies, waivers and limitations.
+The report in `tests/results/DPS-V10-T-002/` should reference these modeled diagrams and record: model baseline, as-tested hardware/software configuration, browser/UI automation details, serial/radio/RF-monitor configuration, monotonic timebase, UI event log, decoder/command queue log, forwarder/serial log, RF capture log, valid-command `k/N`, cooldown burst `k/N`, re-enable timing distribution, pass/fail rationale, CE-03 bidirectional-UART source-model update or waiver disposition, deviations, anomalies, waivers and limitations.

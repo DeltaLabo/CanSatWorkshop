@@ -90,10 +90,13 @@ These are the starting criteria subagents should apply unless they discover a st
 
 ## Execution status
 
-Cleanup completed on 2026-07-02 for the temporary issue-file set only.
+Completed at definition-planning level on 2026-07-02.
 
 - `ISSUE-ADS-001` completed in commit `6c36860`.
 - `ISSUE-ADS-002` completed in commit `936e478`.
-- The shared ADS/AMS freshness portions added after `ISSUE-ADS-002` were completed by the later AMS freshness closure commits: the shared PM&SE contract, AMS freshness alignment, ADS/SYS freshness planning alignment, and PM&SE register/assessment consistency updates are now recorded in the closure artifacts and commit history.
-- Temporary ADS/AMS issue files under `PM&SE/ads_blocker_resolution_issues/` were removed as stale orchestration cleanup.
-- This cleanup does not claim the broader ADS blocker plan is fully executed, fully modeled, or ready for pass/fail credit. Remaining ADS D2/model/execution follow-up is captured in `PM&SE/ADS_Blocker_Closure_Record_2026-07-02.md`, `PM&SE/CON-003_Candidates_and_Definition_Blockers.md`, and the commit history.
+- Shared ADS/AMS freshness contract work completed in commits including `0415641`, `20fbfd0`, `33fa305`, and `84abe1f`.
+- ADS acceleration/heading candidate definitions completed in commit `c30b193`.
+- ADS timing, mission-window, v0.2 I2C, and no-blocking criteria completed in commits `243fbe6` and `ec1d496`.
+- PM&SE ADS/AMS blocker-record integration completed in commits including `08b414c` and `a1c70ba`.
+- Temporary ADS/AMS issue files were removed; this plan and the closure records remain as high-level documentation.
+- No execution pass/fail credit is claimed. Remaining follow-up is D2/model update and test execution, as captured in `PM&SE/ADS_Blocker_Closure_Record_2026-07-02.md`, `PM&SE/CON-003_Candidates_and_Definition_Blockers.md`, and the subsystem test READMEs.

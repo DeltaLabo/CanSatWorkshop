@@ -93,12 +93,12 @@ No additional ADS planning candidates are selected by this record. Serial0 schem
 
 - Linear acceleration units are **`m/s²`**. If firmware or logs use `g`, convert using **`g0 = 9.80665 m/s²`** before comparison.
 - The existing `deg/s²` acceleration wording is contradictory and shall be corrected or overridden by test text; `deg/s` remains the angular-rate unit for gyro tests.
-- Candidate static acceleration criterion: six-face fixture, `n >= 30` stable samples per face, correct axis/sign convention, and per-axis error plus expanded uncertainty **`<= 1.0 m/s²`** for expected `+g`, `-g`, or `0` conditions.
+- Candidate static acceleration criterion: six-face fixture, **`n = 59` all-within-limit samples per face for strict claims** (smaller `n >= 30` sets are characterization unless the report states the weaker basis), correct axis/sign convention, driven-axis error plus expanded uncertainty **`<= 1.0 m/s²`**, off-axis leakage plus uncertainty **`<= 0.75 m/s²`**, and vector-norm error plus uncertainty **`<= 1.0 m/s²`**.
 
 ### Heading / north criterion
 
 - Quantitative heading claim: circular heading error plus expanded uncertainty **`<= 10°`** at each tested heading.
-- Minimum heading set: near **0°, 90°, 180°, and 270°** with `n >= 30` stable samples per heading.
+- Minimum heading set: near **0°, 90°, 180°, and 270°** with **`n = 59` all-within-limit samples per heading for strict claims** (smaller `n >= 30` sets are characterization unless the report states the weaker basis).
 - Required controls: non-magnetic fixture/site, declared true-north or magnetic-north reference, declination correction when needed, calibration state before/after, local disturbance survey, axis/sign convention, timestamp correlation, and explicit invalid/disturbed marker handling.
 - If these controls are absent, `ADS-IVV-FC-ATT` remains plausibility/repeatability only and may not claim heading accuracy closure.
 
@@ -122,7 +122,7 @@ No additional ADS planning candidates are selected by this record. Serial0 schem
 
 - Runtime progress heartbeat for `Loop` / `ADS Processing` shall be observable under nominal and fault cases with no progress gap greater than **400 ms**.
 - Formal timeout/deadline claims use **`n = 59` zero-violation samples** unless a stricter project rule is later selected.
-- Instrumentation overhead shall be measured before verdicts. As a planning allowance, overhead shall be `<= 10 ms` per 200 ms loop/delivery cycle and `<= 1 ms` for any individual 5 ms function/timeout timing hook, or it shall be subtracted/bounded with a documented uncertainty. Higher or unknown overhead makes timing evidence limited/characterization.
+- Instrumentation overhead shall be measured before verdicts. As a planning allowance, timing hooks/logging overhead shall be `<=5%` of the 200 ms period or `<=5 ms`, whichever is stricter for the claim being made; otherwise the timing verdict is limited/blocked or the overhead is subtracted/bounded with documented uncertainty.
 - External lab equipment listed in the assessment is considered available, but every execution report still needs actual equipment asset IDs, calibration/function-check status, tool versions, and environmental readings.
 
 ## Contradictions resolved by this record
@@ -141,15 +141,15 @@ No additional ADS planning candidates are selected by this record. Serial0 schem
 
 The following updates are intentionally not performed in this pass:
 
-1. Update `ADS-IVV-C-RATE-5HZ` definition views/README and the ADS test index so v1.0 is no longer N/A for internal ADS-to-OBCC `5 Hz` delivery/freshness, or add a clearly linked `ADS-V10-DATA-FRESHNESS` rate/freshness definition view. Any D2 views that still say v1.0 rate is N/A require model/D2 follow-up; they are not edited in this Markdown alignment pass.
-2. Update `ADS-IVV-FC-MISSION-WINDOW` definition views/README for the 10 min mission, 3000 expected update slots, strict reset/stuck-loop/freshness rules, and 400 ms maximum gap.
-3. Create the Serial0 schema/parser/campaign baseline and reference it from `ADS-IVV-FC-SERIAL`.
-4. Create any ADS-specific `Pointers`/`Returns` contract/header/code supplement for field/schema, ownership/lifetime, return-code mapping, and watchdog implementation; it shall reference the shared PM&SE freshness/status contract from `ADS-IVV-FC-OBCC-DELIVERY` rather than redefining freshness.
-5. Add or update acceleration and heading/north candidate test-definition packages and regenerate any D2/PNG views.
-6. Update `ADS-IVV-C-I2C-5MS` and linked activities to show the v0.2 code-analysis/instrumentation or controlled-gap path without adding cluttered v0.2 source-model diagrams.
-7. Update `ADS-IVV-C-NOBLOCK` and timing activities with source/build-map/symbol prerequisites, heartbeat deadline, overhead allowance, and blocked/limited wording when instrumentation is absent.
-8. Update `ADS-IVV-C-POS-5M`, `ADS-IVV-C-GYRO-30DPS`, `ADS-IVV-FC-GPS`, `ADS-IVV-FC-ANG`, and `ADS-IVV-FC-ATT` with the selected truth/reference methods, phone limitation, motor/tachometer method, and strict statistics.
-9. Later integration shall update `PM&SE/CON-003_Candidates_and_Definition_Blockers.md` and `PM&SE/MBSE_Test_Plan_Assessment.md`; this issue intentionally does not edit those files.
+1. D2/model follow-up remains for `ADS-IVV-C-RATE-5HZ` definition views so v1.0 is no longer shown only as N/A for internal ADS-to-OBCC `5 Hz` delivery/freshness; Markdown READMEs and the ADS index now document the `ADS-V10-DATA-FRESHNESS` path.
+2. D2/model follow-up remains for `ADS-IVV-FC-MISSION-WINDOW` views to show the 10 min mission, 3000 expected update slots, strict reset/stuck-loop/freshness rules, and 400 ms maximum gap; Markdown READMEs now contain the criteria.
+3. Serial0 schema/parser/campaign baseline is created and referenced from `ADS-IVV-FC-SERIAL`; execution reports still need actual firmware/log adapter details.
+4. Create any ADS-specific `Pointers`/`Returns` supplement for field/schema, ownership/lifetime, return-code mapping, and watchdog implementation if needed; it shall reference the shared PM&SE freshness/status contract from `ADS-IVV-FC-OBCC-DELIVERY` rather than redefining freshness.
+5. Acceleration and heading/north README-only candidate packages are created; D2/model packages and regenerated PNGs remain follow-up.
+6. `ADS-IVV-C-I2C-5MS` now documents the v0.2 code-analysis/instrumentation or controlled-gap path; D2 source-model diagrams remain unchanged by design.
+7. `ADS-IVV-C-NOBLOCK` now documents source/build-map/symbol prerequisites, heartbeat deadline, overhead allowance, and blocked/limited wording when instrumentation is absent.
+8. `ADS-IVV-C-POS-5M`, `ADS-IVV-C-GYRO-30DPS`, and `ADS-IVV-FC-ATT` now document the selected truth/reference methods, phone limitation, motor/tachometer method, and strict statistics; related D2 view updates remain follow-up.
+9. `PM&SE/CON-003_Candidates_and_Definition_Blockers.md` and `PM&SE/MBSE_Test_Plan_Assessment.md` are updated to reflect the definition decisions without claiming execution credit.
 
 ## Residual uncertainties before execution
 
@@ -158,4 +158,16 @@ The following updates are intentionally not performed in this pass:
 - UUT serials, hardware revisions, firmware commits, build maps/symbols, and instrumentation hook names.
 - Actual equipment asset IDs, calibration certificates/function checks, tool versions, and environmental limits.
 - Surveyed GPS coordinates or simulator scenario, tachometer calibration/reliability, motor stability, and heading-reference calibration.
-- Whether acceleration and heading are implemented as new standalone D2 packages or folded into existing attitude-related packages.
+- Acceleration and heading are implemented as README-only candidate packages for this pass; later work must decide whether their D2 packages remain standalone or are folded into existing attitude-related packages.
+
+## Final status
+
+Completed at definition-planning level on 2026-07-02.
+
+- Shared ADS/AMS sensor-to-OBCC freshness contract created under `PM&SE/contracts/` and referenced from IVV, ADS, AMS, and PM&SE records.
+- ADS Serial0 schema/parser baseline created under `ADS/MBSE/tests/schemas/` and `ADS/MBSE/tests/tools/`.
+- ADS v1.0 freshness aligned through `ADS-V10-DATA-FRESHNESS` extensions to OBCC-delivery, getter, rate, mission-window, and no-blocking text.
+- ADS acceleration and heading/north README-only candidates created.
+- ADS mission-window duration, gap, 5 Hz, v0.2 I2C, no-blocking, GPS truth, and gyro truth/statistics criteria selected in the relevant READMEs.
+- PM&SE CON-003 and assessment records updated. Execution evidence and D2/model updates remain pending follow-up; no pass/fail credit is claimed here.
+- Temporary issue files were removed; this closure record and the plan remain as documentation.

@@ -52,13 +52,13 @@ A final ALLOC-001/ALLOC-003 claim is pass only if all are true:
 3. **Boundary correctness:** power/resource flows cross only modeled links/exchanges (`USB-C`, `Battery cable`, `Battery connector`, protected rail paths). Additional modeled interfaces are blocked for discrepancy and must be justified by waiver or source-model update.
 4. **Source constraints preserved:** ALLOC-001 ownership checks align to existing chain/constraints from **FC-001/CON-004** (power path/rail behavior) and **CON-001** (safe charge setup).
 5. **Fault-hardening reviewed:** overcurrent, overvoltage, restore, wrong charger, power-off safety, and Li-ion preconditions are reviewed as allocation assumptions/discrepancy conditions for each actor-controlled function.
-6. **Source-model gap documented:** ALLOC-003 requires explicit evidence of safe switch/access path; where source model does not expose explicit master-switch hardware, the blocker/waiver path is used and recorded before closure.
+6. **Master-switch/accessibility source/interface closure:** ALLOC-003 requires explicit evidence of a safe switch/access path. Where the source model does not expose explicit master-switch hardware, the selected closure path is a source-model/interface edit or controlled waiver, not a reason to create another test candidate; final allocation closure remains pending until that edit/waiver and later execution evidence are controlled.
 
 ## Environmental and procedural constraints attached
 
 - Charger/interface checks use `4.2 V` and `0.5 A` limit setup controls as setup controls for review context, consistent with **CON-001**.
 - Li-ion prerequisites and safety prerequisites are assumed from the safety-document evidence path in `PDS-VV-SAFE-001` and/or campaign acceptance evidence before actor interface closure.
-- Unresolvable actor-accessibility gaps remain **blocked** until either source model updates the physical interface or a controlled waiver path is approved.
+- Master-switch/accessibility gaps remain **blocked** for unqualified allocation closure until the selected source-model/interface edit is made or a controlled waiver path is approved.
 
 ## Evidence path
 

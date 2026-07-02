@@ -52,7 +52,7 @@ This provides reuse without re-instantiating full chain internals already covere
 - Failure handling: stale data, telemetry-load overload indicators, thermal margin violations, or repeated protection anomalies fail the run and move to safe-state path.
 
 ## Assumptions / blockers
-- Full 6h endurance campaign profile, expected thermal envelope, and maximum logging/sample cadence are treated as campaign parameters and must be fixed before execution.
+- Full 6h endurance load profile/current budget, expected thermal envelope, and maximum logging/sample cadence are campaign execution parameters to be fixed before execution; no separate load-profile estimation candidate is selected.
 - Protection-demonstration and failure-probability claim evidence thresholds remain campaign-defined; this activity defines the chain and evidence structure, not final statistical proof.
 
 ## Evidence path

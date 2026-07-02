@@ -65,6 +65,6 @@ Store execution evidence under `PDS&ESS/MBSE/tests/results/PDS-VV-CON-004/` (`..
 
 ## Assumptions and caveats
 
-- The campaign is final flight acceptance; exact nominal-load values, final thermal limit, and final settling windows are still campaign parameters to record in the report.
+- The campaign is final flight acceptance; exact nominal-load values, final thermal limit, thermal-soak method, final settling windows, ripple treatment, and sample-count basis are campaign execution parameters to record in the report, not open definition blockers.
 - The modeled 1 A requirement is interpreted as an individual rail-load requirement to be checked for both rails; if the campaign later defines aggregate loading differently, record the deviation.
 - This is workshop/subsystem verification evidence unless a later campaign defines independence, sample size, and environmental levels sufficient for a stronger qualification claim.

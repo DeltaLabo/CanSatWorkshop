@@ -12,7 +12,7 @@ Model-based verification definition for the PDS & ESS v1.0 constraint `[C] Proba
 
 ## Source-constraint interpretation
 
-The source model states `[C] Probability < 1%` and attaches it to both detection functions without defining the probability event. For this verification definition, the constraint is interpreted conservatively as:
+The source model states `[C] Probability < 1%` and attaches it to both detection functions without defining the probability event. For this verification definition, the selected conservative interpretation is:
 
 > The probability of a **missed demanded unsafe protection action** is `<1%` for each demanded protection mode: overcurrent/output-short-equivalent and overvoltage.
 
@@ -44,10 +44,10 @@ A demanded unsafe protection action is missed if a valid current-limited demand 
 Pass only if all applicable final-acceptance conditions below are satisfied and evidence is archived:
 
 1. **Zero missed unsafe actions:** any missed unsafe action in any valid demanded-protection trial is a fail/hold/anomaly. No waiver may convert a miss into a pass for the `<1%` statistical claim.
-2. **Per-mode acceptance:** because the source constraint is attached to both `[F] Detect overcurrent` and `[F] Detect overvoltage`, formal acceptance requires **299 independent demanded-protection trials with zero missed unsafe actions per demanded protection mode** unless a project-approved allocation states otherwise.
+2. **Per-mode acceptance:** because the source constraint is attached to both `[F] Detect overcurrent` and `[F] Detect overvoltage`, formal acceptance requires **299 valid independent demanded-protection trials with zero missed unsafe actions per demanded protection mode** unless a project-approved allocation states otherwise.
 3. **Confidence basis:** `299/299` zero misses supports a one-sided 95% exact binomial upper bound below 1% for missed-demand probability. If fewer trials are executed, report the exact one-sided Clopper-Pearson upper bound and classify the result as screening/characterization, not verification of `<1%`.
-4. **Overcurrent/output-short-equivalent trials:** each trial shows the demand is applied inside a current-limited safe envelope; `[F] Detect overcurrent` is invoked/observable; `[F] Cut off power` reaches safe state before unsafe rail/cell/PCB/temperature limits; rails are de-energized or current-limited as applicable; restore is inhibited until the fault is cleared; controlled restore returns to nominal without reset or uncontrolled restart.
-5. **Overvoltage trials:** each trial shows the overvoltage demand is current-limited and preconfigured; `[F] Detect overvoltage` is invoked/observable; `[F] Cut off power` reaches safe state before unsafe rail/cell/PCB/temperature limits; rails are safe; restore is inhibited until overvoltage is removed; controlled restore returns to nominal without reset or uncontrolled restart.
+4. **Overcurrent/output-short-equivalent demand validity and outcome:** each trial uses a current-limited source/load or short-equivalent fixture inside the safe-energy envelope; predeclares the nominal trip/current-limit threshold from the protection design or test-article datasheet; and demands at least **110%** of that threshold or the minimum campaign-approved current that reliably enters the protection region without exceeding safe limits. Direct uncontrolled battery shorts are out of scope. `[F] Detect overcurrent` is invoked/observable; protection detects/acts and cuts off or limits unsafe output before rail/cell/PCB/temperature limits; restore is inhibited until the fault is cleared; controlled restore returns to nominal without reset or uncontrolled restart.
+5. **Overvoltage demand validity and outcome:** each trial uses a current-limited injection source; predeclares the nominal overvoltage threshold from the protection design or datasheet; and exceeds that threshold by at least **5%** or by the smallest campaign-approved margin that reliably demands protection without exceeding absolute maximum ratings. `[F] Detect overvoltage` is invoked/observable; protection detects/acts and cuts off or limits unsafe output before rail/cell/PCB/temperature limits; restore is inhibited until overvoltage is removed; controlled restore returns to nominal without reset or uncontrolled restart.
 6. **Continuous observations:** rail voltage/current/thermal observations use calibrated or status-checked instruments and retain raw data. Reference accepted `PDS-VV-CON-004` rail evidence where continuous limits are reused, or collect at least `n ≥ 30` samples for each stable continuous condition claimed in this activity.
 7. **Stop conditions:** unsafe current, heating, smoke, swelling, cell anomaly, uncontrolled restart, rail brownout/reset, instrument/status failure, unsafe ambient condition, or unresolved anomaly prevents pass until disposition and retest are complete.
 
@@ -63,7 +63,7 @@ Pass only if all applicable final-acceptance conditions below are satisfied and 
 
 ## Statistical significance and fault-hardening viewpoint
 
-- **Statistical significance:** binary outcomes are analyzed with exact one-sided binomial/Clopper-Pearson bounds. The verification claim is per demanded mode: overcurrent/short-equivalent and overvoltage. Repeated trials must be documented as independent enough for the claim: reset/thermal conditions controlled, demand sequence randomized or procedure-selected, source/load limits verified, and instrumentation triggers independent of the UUT response. If independence is not defensible, report the evidence as screening only.
+- **Statistical significance:** binary outcomes are analyzed with exact one-sided binomial/Clopper-Pearson bounds. The verification claim is per demanded mode: overcurrent/short-equivalent and overvoltage. Repeated trials must be documented as independent enough for the claim: cooldown/reset or randomized/procedure-separated demand order, recorded source/load settings, independent instrumentation triggers, stable ambient/thermal preconditions, verified current/voltage limits, and anomaly/deviation disposition. If independence is not defensible, report the evidence as screening only.
 - **Fault hardening:** trials cover overcurrent, output short-equivalent, overvoltage, cut-off failure, unsafe restore, rail brownout/reset, overheating, high-current path stress, and Li-ion unsafe-condition precursors. The design must fail safe: hold/abort rather than continue after any ambiguous or unsafe protection behavior.
 
 ## Evidence path
@@ -72,6 +72,6 @@ Store execution evidence under `PDS&ESS/MBSE/tests/results/PDS-VV-CON-003/` (`..
 
 ## Assumptions and caveats
 
-- The campaign defines final article ID, safe rail/cell/temperature thresholds, fault-demand setpoints, reset/restart observation method, cooldown/spacing between trials, and independence rationale.
+- The campaign predeclares final article ID, safe rail/cell/PCB/temperature thresholds, overcurrent and overvoltage thresholds, demanded setpoints consistent with the `110%` / `5%` validity rules or approved safe minimum margins, fixture current limits, trial sequence, reset/restart observation method, cooldown/spacing between trials, instrumentation triggers, and independence rationale.
 - This activity verifies the source constraint under the conservative missed-demand interpretation above; a different project interpretation requires a source-model/test update.
 - This folder defines final flight acceptance evidence for the inspected article. It is not a qualification, production-lot reliability, destructive abuse, UN 38.3, or IEC 62133 compliance test.

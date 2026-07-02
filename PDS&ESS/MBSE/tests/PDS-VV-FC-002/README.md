@@ -66,5 +66,5 @@ If constraint, exchange, or allocation activities covered by this model are repo
 ## Assumptions and caveats
 
 - The campaign is PDS & ESS v1.0 final flight acceptance; the report still identifies the exact article ID, firmware/software commit, harness configuration, and accepted deviations.
-- The v1.0 source PV2 lacks an explicit INA219 I2C component exchange between ESS Processing/XIAO and Battery monitoring/INA219. This folder models a verification-analysis target and caveat only; the source baseline is not modified. A final execution claim that relies on I2C CE completeness remains blocked until that source-model gap is resolved or formally justified.
+- The v1.0 source PV2 lacks an explicit INA219 I2C component exchange between ESS Processing/XIAO and Battery monitoring/INA219. Closure planning has selected the follow-on source edit: add explicit `[CE] I2C` between ESS Processing/XIAO and Battery monitoring/INA219 in the v1.0 logical/source model. This folder records the verification-analysis target and caveat only; the D2/source baseline is not changed here. Until that source update and any required baseline refresh are complete, final CE completeness credit remains pending.
 - This definition does not invent a tighter measurement-accuracy requirement than the INA219/reference uncertainty budget available to the campaign.

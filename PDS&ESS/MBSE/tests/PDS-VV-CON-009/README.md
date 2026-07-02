@@ -9,7 +9,21 @@ Model-based verification definition for the PDS & ESS v1.0 final-flight acceptan
 - **IVV source category:** Constraint, with supporting component/context presence inspection for PCB manufacturability.
 - **Model elements:** `[C] All PCBs must be machined in a Carvera Air CNC`; `[PC] PDS PCB`; `[PC] OBCC PCB`; `[PC] Backplane PCB`; `[PC] PDS Headers`; `[PC] OBCC Headers`; traces and features for battery/protection/INA/5V/3V3 paths; `1S1P Li-Ion` context; `Backplane Connector` context.
 - **Traceability targets:** source constraint `[C] All PCBs machinable in a Carvera Air CNC`; `PDS-FE-LiIonUnsafeCondition` (for workmanship/retention risks); `PDS-FE-RailBrownout` (for high-resistance or thermal overstress precursors).
-- **References cited in view titles/comments:** IVV, PDS-R8 (IPC-2152), PDS-R1, PDS-R2.
+- **References cited in view titles/comments:** IVV, PDS-R8 (IPC-2152), PDS-R1, PDS-R2, and the controlled Carvera/PCB baseline [`../../../../S&A/PCB_General_Rules.md`](../../../../S&A/PCB_General_Rules.md).
+
+## Controlled Carvera/PCB rule baseline
+
+Use [`../../../../S&A/PCB_General_Rules.md`](../../../../S&A/PCB_General_Rules.md) as the controlled baseline for current Carvera/PCB general rules. Visible baseline values for reviewers:
+
+- Minimum track width: `0.8 mm`
+- Minimum via diameter: `1.2 mm`
+- Minimum via drill: `0.8 mm`
+- Minimum pad diameter: `75 mil`
+- Minimum pad drill diameter: `45 mil`
+- Wire-to-wire spacing: `0.8 mm`
+- Carvera operation notes: place WCS origin on a corner of the top stock surface; use a Bore operation for pin holes not available in the tool set; use a 2D Contour operation for tracks; use a Ramp operation for the outer border; use a Drill operation for holes that exactly match available tool sizes.
+
+Board-specific deviations, DFM pre-check records, tool/library choices, and waiver/disposition records remain execution evidence.
 
 ## Baseline views (copied)
 
@@ -33,7 +47,7 @@ All PDS & ESS v1.0 source views are copied for report-by-reference under `baseli
 
 ## Pass/fail constraints
 
-1. **Mandatory DFM pre-check:** execution is blocked until **all** Carvera Air rules are identified as available/assessed and recorded: trace/space, drill/tool size, annular ring, isolation/clearance, milling depth, board thickness, keepouts. Any unknown/failed mandatory rule prevents proceeding.
+1. **Mandatory DFM pre-check:** execution uses the controlled baseline in `S&A/PCB_General_Rules.md` (including `0.8 mm` minimum track width and wire-to-wire spacing, `1.2 mm` minimum via diameter, `0.8 mm` minimum via drill, `75 mil` minimum pad diameter, and `45 mil` minimum pad drill) plus applicable Carvera operation notes. Record trace/space, drill/tool size, annular ring/pads, isolation/clearance, milling depth, board thickness, keepouts, and any unknown/failed mandatory rule before proceeding.
 2. **Coverage:** 100% of v1.0 PDS flight boards/coupons in scope are reviewed, including PDS PCB, OBCC PCB, and backplane context.
 3. **Context completeness:** review includes backplane connectors, headers, footprints, screw holes, and retention interfaces shown in the v1.0 model.
 4. **Trace review scope:** battery/protection/INA and 5V/3V3 high-current or power-trace features are analyzed against IPC/DFM assumptions for modeled `1 A` load behavior.
@@ -60,13 +74,13 @@ Store evidence under `PDS&ESS/MBSE/tests/results/PDS-VV-CON-009/` (`../results/P
 - Ambient condition captures
 - Inspection checklists (visual, dimensional, continuity/isolation, fit)
 - Thermal/workmanship observations and photos
-- Carvera Air rule-by-rule evidence for each of:
-  trace/space, drill/tool, annular ring, isolation, milling depth, thickness, keepouts
+- Carvera Air rule-by-rule evidence mapped to `S&A/PCB_General_Rules.md` for each of:
+  trace/space, drill/tool, via/pad/drill dimensions, annular ring, isolation, milling depth, thickness, keepouts, and operation notes
 - High-current trace review notes tied to battery/protection/INA/5V/3V3 features
 - Hold/waiver/disposition records and final pass/fail rationale
 
 ## Assumptions and caveats
 
 - This is a **constraint-derived pre-powered inspection definition** for PDS & ESS v1.0 final acceptance evidence planning.
-- Rule thresholds beyond model scope (exact numeric Carvera process limits, tool libraries, and panelization allowances) must be finalized by manufacturing/test management and then reflected in this definition.
-- If any required toolpath or rule specification is unavailable, the activity remains in hold with an explicit disposition and no progression to powered tests.
+- The controlled general-rule baseline is `S&A/PCB_General_Rules.md`; board-specific deviations, tool-library/panelization allowances, and DFM pre-check records remain execution evidence.
+- If any required toolpath, board-specific rule, or deviation disposition is unavailable, the activity remains in hold with an explicit disposition and no progression to powered tests.

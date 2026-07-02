@@ -1,0 +1,335 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cansat.local/ads/serial0/ads_serial0_v0_1_v0_2.schema.json",
+  "title": "ADS v0.1/v0.2 Serial0 canonical JSON Lines record",
+  "description": "Controlled local newline-delimited UTF-8 JSON Lines schema for ADS v0.1/v0.2 Serial0 development logging evidence. Legacy firmware output must either emit this canonical record directly or be transformed by a documented adapter before parser verdicts are claimed.",
+  "type": "object",
+  "additionalProperties": false,
+  "x-schema-version": "ads.serial0.v1",
+  "x-parser-version": "ads.serial0.parser.v1",
+  "x-interface": {
+    "name": "Serial0",
+    "link": "USB CDC/UART from ADS XIAO ESP32 Serial0 to development PC logger",
+    "encoding": "UTF-8",
+    "framing": "newline-delimited JSON Lines; one complete JSON object per line",
+    "default_baud": 115200,
+    "uart_framing": "8N1 when a CDC virtual port exposes UART framing",
+    "line_ending": "LF or CRLF accepted by logger; archived canonical evidence stores one JSON record per newline"
+  },
+  "x-campaign-baseline": {
+    "nominal_measurement_rate_hz": 5,
+    "mission_window_duration_s": 600,
+    "expected_mission_window_measurement_records": 3000,
+    "short_check_expected_count_rule": "expected_measurement_records = configured_duration_s * nominal_measurement_rate_hz; strict count checks require an integer result and a predeclared duration/rate before execution"
+  },
+  "x-marker-vocabulary": {
+    "valid": "Field contains current valid data.",
+    "missing": "Field is required by this schema but no source value was available; the JSON field remains present with a null or unavailable value.",
+    "stale": "Field contains an old value and shall not be consumed as fresh.",
+    "error": "Field source produced an error or corrupt value.",
+    "unavailable": "Field is not available from the selected hardware/sensor state for this record.",
+    "not_applicable": "Field is outside the selected record or version scope; not used for required measurement fields."
+  },
+  "required": [
+    "schema_version",
+    "ads_version",
+    "sample_id",
+    "timestamp_ms",
+    "record_type",
+    "validity",
+    "status",
+    "stale",
+    "field_markers"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ads.serial0.v1"
+    },
+    "ads_version": {
+      "enum": ["v0.1", "v0.2"]
+    },
+    "sample_id": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Strictly increasing record sequence number across the canonical log unless a test procedure explicitly allows otherwise."
+    },
+    "timestamp_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Monotonic milliseconds from firmware boot, test start, or another declared run epoch."
+    },
+    "record_type": {
+      "enum": ["init", "measurement", "fault", "heartbeat"]
+    },
+    "validity": {
+      "enum": ["valid", "degraded", "invalid", "unknown"]
+    },
+    "status": {
+      "enum": ["ok", "degraded", "fault", "unavailable"]
+    },
+    "stale": {
+      "type": "boolean"
+    },
+    "field_markers": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "gps_init_status",
+          "imu_init_status",
+          "gps_latitude_deg",
+          "gps_longitude_deg",
+          "gps_fix_status",
+          "gps_status",
+          "gps_stale",
+          "gps_age_ms",
+          "imu_status",
+          "imu_stale",
+          "imu_age_ms",
+          "imu_gyro_dps_x",
+          "imu_gyro_dps_y",
+          "imu_gyro_dps_z",
+          "imu_accel_mps2_x",
+          "imu_accel_mps2_y",
+          "imu_accel_mps2_z",
+          "imu_mag_uT_x",
+          "imu_mag_uT_y",
+          "imu_mag_uT_z",
+          "attitude_pitch_deg",
+          "attitude_roll_deg",
+          "attitude_yaw_deg",
+          "firmware_commit",
+          "firmware_build",
+          "adapter_id",
+          "fault_code"
+        ]
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/field_marker"
+      },
+      "default": {}
+    },
+    "firmware_commit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "firmware_build": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adapter_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Use 'none' for native canonical firmware output; otherwise identify the legacy-output adapter and revision."
+    },
+    "serial0_port": {
+      "type": "string"
+    },
+    "serial0_baud": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 115200
+    },
+    "serial0_framing": {
+      "type": "string",
+      "default": "8N1"
+    },
+    "gps_init_status": {
+      "$ref": "#/$defs/sensor_status"
+    },
+    "imu_init_status": {
+      "$ref": "#/$defs/sensor_status"
+    },
+    "gps_latitude_deg": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "gps_longitude_deg": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "gps_fix_status": {
+      "enum": ["no_fix", "fix_2d", "fix_3d", "dgps", "rtk", "unknown", "unavailable", "error"]
+    },
+    "gps_status": {
+      "$ref": "#/$defs/sensor_status"
+    },
+    "gps_stale": {
+      "type": "boolean"
+    },
+    "gps_age_ms": {
+      "$ref": "#/$defs/nonnegative_integer_or_null"
+    },
+    "imu_status": {
+      "$ref": "#/$defs/sensor_status"
+    },
+    "imu_stale": {
+      "type": "boolean"
+    },
+    "imu_age_ms": {
+      "$ref": "#/$defs/nonnegative_integer_or_null"
+    },
+    "imu_gyro_dps_x": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "imu_gyro_dps_y": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "imu_gyro_dps_z": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "imu_accel_mps2_x": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "imu_accel_mps2_y": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "imu_accel_mps2_z": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "imu_mag_uT_x": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "imu_mag_uT_y": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "imu_mag_uT_z": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "attitude_pitch_deg": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "attitude_roll_deg": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "attitude_yaw_deg": {
+      "$ref": "#/$defs/number_or_null"
+    },
+    "fault_code": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fault_message": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "init"
+          }
+        },
+        "required": ["record_type"]
+      },
+      "then": {
+        "required": [
+          "firmware_commit",
+          "firmware_build",
+          "adapter_id",
+          "serial0_baud",
+          "serial0_framing",
+          "gps_init_status"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "init"
+          },
+          "ads_version": {
+            "const": "v0.2"
+          }
+        },
+        "required": ["record_type", "ads_version"]
+      },
+      "then": {
+        "required": ["imu_init_status"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "measurement"
+          }
+        },
+        "required": ["record_type"]
+      },
+      "then": {
+        "required": [
+          "gps_latitude_deg",
+          "gps_longitude_deg",
+          "gps_fix_status",
+          "gps_status",
+          "gps_stale",
+          "gps_age_ms"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "measurement"
+          },
+          "ads_version": {
+            "const": "v0.2"
+          }
+        },
+        "required": ["record_type", "ads_version"]
+      },
+      "then": {
+        "required": [
+          "imu_init_status",
+          "imu_status",
+          "imu_stale",
+          "imu_age_ms",
+          "imu_gyro_dps_x",
+          "imu_gyro_dps_y",
+          "imu_gyro_dps_z",
+          "imu_accel_mps2_x",
+          "imu_accel_mps2_y",
+          "imu_accel_mps2_z",
+          "imu_mag_uT_x",
+          "imu_mag_uT_y",
+          "imu_mag_uT_z",
+          "attitude_pitch_deg",
+          "attitude_roll_deg",
+          "attitude_yaw_deg"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "fault"
+          }
+        },
+        "required": ["record_type"]
+      },
+      "then": {
+        "required": ["fault_code"]
+      }
+    }
+  ],
+  "$defs": {
+    "field_marker": {
+      "enum": ["valid", "missing", "stale", "error", "unavailable", "not_applicable"]
+    },
+    "sensor_status": {
+      "enum": ["valid", "initializing", "no_fix", "stale", "error", "unavailable", "unknown"]
+    },
+    "number_or_null": {
+      "type": ["number", "null"]
+    },
+    "nonnegative_integer_or_null": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    }
+  }
+}

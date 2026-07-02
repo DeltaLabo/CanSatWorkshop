@@ -63,9 +63,24 @@ Pass only if all applicable constraints below are satisfied or explicitly waived
 1. BLE connection and command/control path are established and verified at `>= 20 m` line-of-sight before airborne/release.
 2. No parachute open actuation occurs before the modeled command and airborne condition.
 3. During the modeled airborne condition, the human BLE open command results in OBCC PWM open position and the servo/parachute mechanism reaches open state.
-4. PDS v0.1 / battery / boost converter power remains within the needed range during command and servo actuation, using logged evidence.
-5. The deployment mechanism reaches the open state and supports terminal-speed limiting. If terminal-speed measurement is not part of the same execution, the report must cite linked companion evidence or record the gap.
+4. PDS v0.1 / battery / boost converter / servo power validity satisfies the selected quantitative criteria: starting source is identified and safe, the nominal `5 V` servo rail remains within `4.5 V` to `5.5 V` during command/actuation, the OBCC/XIAO does not reset/brown out/reconnect because of actuation, and current/thermal evidence shows no unsafe collapse, shutdown, heating, swelling, smoke, or sustained stall outside the safe envelope.
+5. This activity verifies BLE command-to-open behavior, no premature opening, BLE/range setup, and power validity. Terminal-speed limiting may be credited by citing `PDM-V02-TEST-TERMINAL-SPEED` and/or v0.1 `PDM-V01-FC-FALL` evidence when mass/parachute/configuration applicability is justified to the selected `<= 11 m/s` descent-speed criterion; if not measured in-run or linked, record a terminal-speed evidence gap/hold rather than claiming closure.
 6. Evidence includes source model version, UUT configuration, BLE device/configuration, range/LOS conditions, logs/video/PWM/power traces, environmental conditions, deviations, and anomalies.
+
+## Quantitative power validity criteria (`PDM-BLK-006`)
+
+These are definition-level execution criteria only; they do not assert that a run has occurred or that any equipment ID/value has been recorded.
+
+- **Starting power condition:** before a credited BLE deployment run, identify the v0.2 PDS/battery/boost configuration and confirm that the battery/pre-boost source is within its declared safe operating range. For a Li-ion cell, record open-circuit voltage and verify it against the approved usable range for the cell/charger policy; if no approved range is available, require a controlled execution input before strict credit.
+- **Servo/boost rail:** the servo supply commanded as nominal `5 V` shall remain within `5.0 V +/- 10%` (`4.5 V` to `5.5 V`) at the servo or nearest measurable servo rail during command and actuation.
+- **Controller brownout:** the OBCC/XIAO logic rail shall remain within the board/regulator valid range and shall show no reset, brownout marker, boot banner, watchdog reset, telemetry/log discontinuity, or BLE reconnect caused by actuation. If the exact board threshold is not controlled, report-time datasheet/configuration evidence is required.
+- **Current/thermal:** log battery/boost/servo current where instrumented. There shall be no current-limit collapse, boost thermal shutdown, smoke, swelling, connector heating, or sustained stall current beyond the servo/boost safe envelope. Exact current maxima may be execution-configuration inputs, but absence of current/thermal evidence limits credit.
+- **Timing/evidence:** capture voltage/current from pre-command baseline through at least `2 s` after the open-state observation or until the branch is declared failed. Correlate the power trace with BLE command timestamp, PWM trace, and video/observer evidence.
+- **Pass/fail interpretation:** a deployment that opens only after reset/reconnect, rail collapse, or uncontrolled brownout is not a strict pass even if the parachute eventually opens.
+
+## Terminal-speed evidence linkage
+
+`PDM-V02-FC-BLE-DEPLOY` does not require terminal-speed demonstration inside the BLE/manual deployment run. The run verifies command-to-open, no-premature-open, BLE/range, and power-validity behavior. Terminal-speed limiting may be credited by linked `PDM-V02-TEST-TERMINAL-SPEED` and/or v0.1 `PDM-V01-FC-FALL` evidence if the report justifies applicability of the as-tested mass, parachute, and configuration to v0.2 and uses `<= 11 m/s` as the numeric descent-speed criterion. Without in-run or linked evidence, the report shall state a terminal-speed evidence gap/hold.
 
 ## Viewpoints
 
@@ -82,7 +97,7 @@ Reports should reference these model views instead of duplicating the full model
 ## Assumptions and open items
 
 - The issue file disambiguates the development version as PDM v0.2 -> PDM v1.0.
-- The power pass/fail threshold must be derived from the as-tested PDS v0.1 / battery / boost converter / servo configuration before execution.
+- The selected definition-level power criteria above are the default validity thresholds; execution still records the exact PDS v0.1 / battery / boost converter / servo configuration, Li-ion policy if applicable, current limits, thermal envelope, and equipment IDs.
 - The safe airborne condition may be represented by a drop/suspension surrogate unless a flight drop is authorized.
-- Quantified terminal-speed measurement may be a companion activity; this activity still verifies open-state support and records the linkage.
+- Quantified terminal-speed measurement may be a companion activity; this activity still verifies open-state support and records the `<= 11 m/s` linkage or a hold/gap.
 - No execution has been performed by this definition package.

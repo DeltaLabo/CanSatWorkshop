@@ -51,4 +51,6 @@ Non-D2 documentation may be updated. Do not edit source D2 diagrams in this pass
 
 ## Execution status
 
-Pending. Temporary issue files are under `PM&SE/ams_blocker_resolution_issues/`.
+Completed on 2026-07-02. PM&SE register and assessment updates now disposition `AMS-BLK-001` through `AMS-BLK-005` at definition level, align ADS/AMS freshness planning to the shared PM&SE contract, and keep execution/modeling gaps explicit. Validation run included `git status --short`, the required cross-artifact `rg` consistency scan, and `find "PM&SE/ams_blocker_resolution_issues" -type f` before cleanup; the find output showed only the five temporary AMS issue files. The temporary AMS issue directory was removed after validation, while `PM&SE/ads_blocker_resolution_issues/` was intentionally preserved.
+
+Residual follow-up: create/update the AMS D2/model definitions and regenerated PNGs for `AMS-V10-TEMP-RESPONSE-60S` and the `AMS-V10-DATA-FRESHNESS` extensions; complete ADS D2/model follow-up for `ADS-V10-DATA-FRESHNESS` where old v1.0 N/A rate rationale remains; model `SYS-END-TO-END-DATA` and the final requirement-to-test matrix; freeze payload/schema/configuration details; execute tests and archive reports before claiming pass/fail credit.

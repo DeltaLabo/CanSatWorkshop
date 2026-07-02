@@ -58,7 +58,7 @@ Assessment date: 2026-07-01
 | SUB-OBCC-003 | OBCC | OBCC final pass depends on mission rehearsal evidence. | `OBCC-V10-FLIGHT-001` forbids final PASS if `OBCC-V09-GATE-001` is unresolved. | Execute mission rehearsal or record approved defer/hold. |
 | SUB-OBCC-004 | OBCC | Payload/radio/emergency/fault details remain open. | Exact payload schema, radio settings, emergency-deploy policy, safe fault matrix, firmware IDs, and execution configuration identifiers beyond the selected `RFM96W`/`ICM20948`/`BME280` names need confirmation. | Freeze as-tested configuration before execution. |
 | SUB-PDS-001 | PDS & ESS | PDS/ESS has strong coverage across v0.1, v0.2, v0.3, and v1.0. | Coverage includes power path, charge, endurance, protection probability, rails, supervision, physical inspection, and PCB DFM. | Execute with strict safety controls. |
-| SUB-PDS-002 | PDS & ESS | Battery architecture conflict exists. | README says ESS battery must use `2S1P`; MBSE/tests repeatedly model `1S1P Li-Ion`. | Resolve model/README/BOM battery configuration before final tests. |
+| SUB-PDS-002 | PDS & ESS | Battery architecture conflict is closed. | PDS/ESS README, BOM, and MBSE/tests now align on `1S1P Li-Ion`; this does not close remaining PDS power/safety blockers. | Maintain the selected architecture in execution reports and close the remaining non-battery PDS blockers before final power acceptance. |
 | SUB-PDS-003 | PDS & ESS | Regulator efficiency is not clearly tested. | README requires 3.3 V and 5 V rails at 1 A with 95% efficiency; MBSE rail tests focus voltage/current, not efficiency. | Add efficiency measurement or update requirement. |
 | SUB-PDS-004 | PDS & ESS | INA219 I2C CE is missing from source logical view. | Tests document this as a blocker/gap for final CE completeness. | Update source model or justify with controlled waiver. |
 | SUB-PDS-005 | PDS & ESS | Master switch and On-mode load profile are unresolved. | Final endurance and safety acceptance depend on campaign-defined load/current budget and switch/accessibility semantics. | Freeze load profile and switch/interface details. |
@@ -90,7 +90,7 @@ Assessment date: 2026-07-01
 |---|---|---|---|
 | GAP-001 | Cadence semantics | Internal ≥5 Hz and v1.0 LoRa 2 s cadence are documented, but subsystem-to-OBCC 5 Hz closure is inconsistent for ADS/AMS. | Add explicit internal data-rate/freshness tests or update requirements. |
 | GAP-002 | Hardware naming | Closed for the affected hardware: active artifacts now use the selected `RFM96W` radio, `ICM20948` IMU, and `BME280` environmental sensor names. | Maintain these names in controlled artifacts and record exact as-tested hardware/configuration in execution reports. |
-| GAP-003 | Battery architecture | PDS/ESS README `2S1P` conflicts with MBSE/tests `1S1P`. | Resolve before PDS/ESS and system power tests. |
+| GAP-003 | Battery architecture | Closed: PDS/ESS README, BOM, and MBSE/tests select `1S1P Li-Ion`. | Maintain this selection in reports; final PDS/ESS and system power tests still require the non-battery PDS blockers to close. |
 | GAP-004 | Payload schema | The DPS/OBCC RH field mismatch is closed; broader schema versioning, timestamps, units and freshness/error markers still need project-level control. | Freeze payload schema and dashboard behavior. |
 | GAP-005 | Deployment policy | OBCC/PDM emergency deployment and descent observability policies are not fully specified. | Define cross-subsystem safety policy. |
 | GAP-006 | Power efficiency | README 95% regulator efficiency is not clearly verified. | Add efficiency test or change requirement. |
@@ -230,7 +230,7 @@ Assessment date: 2026-07-01
 |---|---|---|
 | ACT-001 | Create a system-level MBSE tests folder and define `SYS-FLIGHT-READINESS-CLOSURE`. | PM&SE / system IVV owner. |
 | ACT-002 | Add `SYS-MISSION-REHEARSAL`, `SYS-RF-RANGE-PDR`, `SYS-END-TO-END-DATA`, and `SYS-POWER-ENDURANCE-TRANSIENT`. | PM&SE with all subsystem owners. |
-| ACT-003 | Resolve remaining requirement/model conflicts: battery 1S/2S, RF module, IMU name, DPS detailed UI oracles, ADS/AMS update rate, PDM descent speed. | PM&SE configuration control. |
+| ACT-003 | Resolve remaining requirement/model conflicts: DPS detailed UI oracles, ADS/AMS update rate, PDM descent speed, and any unresolved execution configuration details; preserve closed selections for `1S1P Li-Ion`, `RFM96W`, `ICM20948`, and `BME280`. | PM&SE configuration control. |
 | ACT-004 | Complete detailed definitions for DPS candidate rows and PDM v1.0 candidate rows. | DPS and PDM owners. |
 | ACT-005 | Define final mission-window duration, allowable gaps, timing tolerances, and payload schema. | OBCC/DPS/PM&SE. |
 | ACT-006 | Add missing explicit tests for AMS 60 s response time, AMS 5 Hz, ADS v1.0 5 Hz/freshness, ADS acceleration, ADS north heading, and PDS efficiency. | Respective subsystem owners. |

@@ -69,7 +69,7 @@ system: "[System] OBCC-V08-GATE-001 — PCB/backplane/link CE and allocation ana
       grid-columns: 2
       workmanship_gate_harness: "[LC] Workmanship gate\nharness\n(verification-only)" { class: lc }
       xiao_host_interface: "[LC] XIAO host /\nUSB bench interface" { class: lc }
-      rfm95w_interface: "[LC] RFM95W LoRa\nSPI/RF interface" { class: lc }
+      rfm96w_interface: "[LC] RFM96W LoRa\nSPI/RF interface" { class: lc }
       obcc_header_interface: "[LC] OBCC header\nI2C/UART/PWM/power\ninterface" { class: lc }
       power_ground_reference: "[LC] Power and ground\nreference matrix" { class: lc }
     }
@@ -134,12 +134,12 @@ ambient_thermometer -> system.uut.obcc_pcb.workmanship_gate_harness: "[CE] Ambie
 bench_power_usb -> system.uut.obcc_pcb.xiao_host_interface: "[CE] Current-limited\npower + USB enum" { class: ce }
 dmm_analyzer -> system.uut.obcc_pcb.power_ground_reference: "[CE] No-short,\ncontinuity,\npolarity evidence" { class: ce }
 dmm_analyzer -> system.uut.backplane.rail_distribution: "[CE] Rail continuity\nand reference ground" { class: ce }
-rf_path_checker -> system.uut.obcc_pcb.rfm95w_interface: "[CE] RF path safety,\nantenna/dummy-load\nstatus" { class: ce }
+rf_path_checker -> system.uut.obcc_pcb.rfm96w_interface: "[CE] RF path safety,\nantenna/dummy-load\nstatus" { class: ce }
 retention_fixture -> system.uut.backplane.connector_matrix: "[CE] Header mating,\nkeying, retention\nresult" { class: ce }
 retention_fixture -> system.uut.backplane.servo_link_interface: "[CE] Servo cable\nretention result" { class: ce }
 
-system.uut.obcc_pcb.xiao_host_interface -> system.uut.obcc_pcb.rfm95w_interface: "[CE] SPI\nLoRa bring-up" { class: ce }
-system.uut.obcc_pcb.rfm95w_interface -> system.uut.ground_context.ground_lora_interface: "[CE] LoRa\nsafe bring-up" { class: ce }
+system.uut.obcc_pcb.xiao_host_interface -> system.uut.obcc_pcb.rfm96w_interface: "[CE] SPI\nLoRa bring-up" { class: ce }
+system.uut.obcc_pcb.rfm96w_interface -> system.uut.ground_context.ground_lora_interface: "[CE] LoRa\nsafe bring-up" { class: ce }
 system.uut.ground_context.ground_lora_interface -> system.uut.ground_context.ground_usb_evidence: "[CE] Payload /\nRSSI/SNR evidence" { class: ce }
 system.uut.obcc_pcb.xiao_host_interface -> system.uut.obcc_pcb.obcc_header_interface: "[CE] I2C / UART /\nPWM + power intent" { class: ce }
 system.uut.obcc_pcb.obcc_header_interface -> system.uut.backplane.connector_matrix: "[CE] Header map\nand pinout" { class: ce }
@@ -154,7 +154,7 @@ system.note_analysis -> system.uut.obcc_pcb.obcc_header_interface { class: cstr 
 system.note_analysis -> system.uut.backplane.connector_matrix { class: cstr }
 system.note_short_faults -> system.uut.obcc_pcb.power_ground_reference { class: cstr }
 system.note_short_faults -> system.uut.backplane.servo_link_interface { class: cstr }
-system.note_rf_safe -> system.uut.obcc_pcb.rfm95w_interface { class: cstr }
+system.note_rf_safe -> system.uut.obcc_pcb.rfm96w_interface { class: cstr }
 system.note_usb -> system.uut.obcc_pcb.xiao_host_interface { class: cstr }
 system.note_source_gap -> system { class: cstr }
 

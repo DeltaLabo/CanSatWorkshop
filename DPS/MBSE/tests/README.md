@@ -14,7 +14,7 @@ Derived from `DPS/MBSE/v1.0/` Capella/D2 Physical Architecture views. Source arc
 - **P0:** `PM&SE/IVV.md` project MBSE IVV, IADT and statistics policy.
 - **R1-R3:** ECSS-E-ST-10-03C and ISO/IEC/IEEE 29119-2/3 test process/documentation artifacts.
 - **R4-R5:** NIST/SEMATECH binomial/sample-size artifacts.
-- **R6-R10:** ETSI/TTN/RFM95W/SX1276/LoRa radio artifacts.
+- **R6-R10:** ETSI/TTN/RFM96W/SX1276/LoRa radio artifacts.
 - **R11-R13:** CanSat/Andøya telemetry and ground-station artifacts.
 - **R14-R15:** LoRa PDR/path-loss literature artifacts.
 
@@ -26,8 +26,8 @@ PV1 `DPS_v1.0_view1_physical.d2`; PV2 `DPS_v1.0_view2_logical.d2`; PV3 `DPS_v1.0
 
 ### 3.2 Physical components and links
 
-- **PCs:** CanSat; OBCC Module; OBCC PCB; CanSat RFM95W LoRa; CanSat XIAO ESP32-S3; Backplane Connector; Ground Station PCB; ground RFM95W LoRa; ground XIAO ESP32; PC; PC USB Port.
-- **PLs:** OBCC Module-to-OBCC PCB screws; CanSat RFM footprint; CanSat XIAO footprint; Backplane Connector footprint; CanSat RFM95W-to-XIAO SPI traces; ground RFM footprint; ground XIAO footprint; ground RFM95W-to-XIAO SPI traces; ground RFM95W-to-XIAO 5 V power traces; ground XIAO-to-PC USB-C cable.
+- **PCs:** CanSat; OBCC Module; OBCC PCB; CanSat RFM96W LoRa; CanSat XIAO ESP32-S3; Backplane Connector; Ground Station PCB; ground RFM96W LoRa; ground XIAO ESP32; PC; PC USB Port.
+- **PLs:** OBCC Module-to-OBCC PCB screws; CanSat RFM footprint; CanSat XIAO footprint; Backplane Connector footprint; CanSat RFM96W-to-XIAO SPI traces; ground RFM footprint; ground XIAO footprint; ground RFM96W-to-XIAO SPI traces; ground RFM96W-to-XIAO 5 V power traces; ground XIAO-to-PC USB-C cable.
 
 ### 3.3 Component exchanges
 

@@ -6,7 +6,7 @@ Key v1.0 modeling decisions:
 
 - Uses the existing project style: `[System] Physical System` includes the integrated CanSat, ground-station electronics, and PC context; external subsystem modules shown on OBCC views are integration context, not OBCC ownership.
 - OBCC runs on the XIAO ESP32-S3 with multiple FreeRTOS tasks, queues, timers, ISRs, and shared-bus protection.
-- Correct hardware names are `RFM95W LoRa` and `ICM20948 IMU`.
+- Correct hardware names are `RFM96W LoRa` and `ICM20948 IMU`.
 - `Stand-by` still sends heartbeat/status telemetry and measurement telemetry at the modeled 2 s downlink cadence; it only inhibits parachute deployment.
 - Relative humidity is excluded from OBCC v1.0 telemetry.
 - v1.0 is flight-ready and wireless; no serial-console test operator is modeled.

@@ -79,7 +79,7 @@ system: "[System] OBCC-V03-GATE-001 — v0.3 telemetry logical interfaces and CE
       cadence_monitor: "[LC] 2 s cadence\nmonitor\n(verification-only)" { class: lc }
     }
 
-    rfm95w: "[PC] RFM95W LoRa" {
+    rfm96w: "[PC] RFM96W LoRa" {
       class: pc
       cansat_lora: "[LC] LoRa Transceiver" { class: lc }
     }
@@ -89,7 +89,7 @@ system: "[System] OBCC-V03-GATE-001 — v0.3 telemetry logical interfaces and CE
     class: pc
     direction: right
 
-    ground_rfm95w: "[PC] RFM95W LoRa" {
+    ground_rfm96w: "[PC] RFM96W LoRa" {
       class: pc
       ground_lora: "[LC] LoRa Transceiver" { class: lc }
     }
@@ -138,9 +138,9 @@ system.cansat.source_context.source_provider -> system.cansat.xiao.telemetry_col
 system.cansat.xiao.health_status -> system.cansat.xiao.telemetry_collector: "[CE] Health/status metadata" { class: ce }
 system.cansat.xiao.cadence_monitor -> system.cansat.xiao.telemetry_encoder: "[CE] Timer release\n2 s cadence" { class: ce }
 system.cansat.xiao.telemetry_collector -> system.cansat.xiao.telemetry_encoder: "[CE] Queue\nmeasurements + status" { class: ce }
-system.cansat.xiao.telemetry_encoder -> system.cansat.rfm95w.cansat_lora: "[CE] SPI\nLoRa frame" { class: ce }
-system.cansat.rfm95w.cansat_lora -> system.ground_station.ground_rfm95w.ground_lora: "[CE] LoRa\ndownlink frame" { class: ce }
-system.ground_station.ground_rfm95w.ground_lora -> system.ground_station.ground_xiao.lora_forwarder: "[CE] SPI\nraw frame + RSSI/SNR" { class: ce }
+system.cansat.xiao.telemetry_encoder -> system.cansat.rfm96w.cansat_lora: "[CE] SPI\nLoRa frame" { class: ce }
+system.cansat.rfm96w.cansat_lora -> system.ground_station.ground_rfm96w.ground_lora: "[CE] LoRa\ndownlink frame" { class: ce }
+system.ground_station.ground_rfm96w.ground_lora -> system.ground_station.ground_xiao.lora_forwarder: "[CE] SPI\nraw frame + RSSI/SNR" { class: ce }
 system.ground_station.ground_xiao.lora_forwarder -> system.pc_computer.raw_frame_logger: "[CE] UART\nraw frame + RF metrics" { class: ce }
 system.pc_computer.raw_frame_logger -> system.pc_computer.decoder: "[CE] Raw payload\nwith sequence/time" { class: ce }
 system.pc_computer.decoder -> system.pc_computer.csv_writer: "[CE] Payload\nCSV record" { class: ce }
@@ -152,11 +152,11 @@ malformed_frame_injector -> system.pc_computer.decoder: "[CE] Corrupt/malformed\
 frame_schema_oracle -> system.pc_computer.packet_analyzer: "[CE] Expected schema\nfield map" { class: ce }
 system.pc_computer.packet_analyzer -> pdr_statistics_tool: "[CE] Success/failure\ncounts" { class: ce }
 test_director -> system.pc_computer.packet_analyzer: "[CE] Analysis plan\nand acceptance rules" { class: ce }
-ground_operator -> system.ground_station.ground_rfm95w.ground_lora: "[CE] Antenna/radio\nsettings log" { class: ce }
+ground_operator -> system.ground_station.ground_rfm96w.ground_lora: "[CE] Antenna/radio\nsettings log" { class: ce }
 range_operator -> system.pc_computer.raw_frame_logger: "[CE] Range geometry\nand orientation log" { class: ce }
 time_environment_log -> system.pc_computer.raw_frame_logger: "[CE] Time sync and\nenvironment record" { class: ce }
 
-system.note_ce_analysis -> system.cansat.rfm95w.cansat_lora { class: cstr }
+system.note_ce_analysis -> system.cansat.rfm96w.cansat_lora { class: cstr }
 system.note_ce_analysis -> system.ground_station.ground_xiao.lora_forwarder { class: cstr }
 system.note_schema -> system.pc_computer.decoder { class: cstr }
 system.note_statistics -> system.pc_computer.packet_analyzer { class: cstr }

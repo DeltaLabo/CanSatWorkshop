@@ -74,7 +74,7 @@ system: "[System] OBCC-V10-FLIGHT-001 — final flight-readiness physical setup\
           class: pc
           direction: right
           xiao: "[PC] XIAO ESP32-S3" { class: pc }
-          rfm95w: "[PC] RFM95W LoRa" { class: pc }
+          rfm96w: "[PC] RFM96W LoRa" { class: pc }
           obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
         }
       }
@@ -107,7 +107,7 @@ system: "[System] OBCC-V10-FLIGHT-001 — final flight-readiness physical setup\
     ground_station_pcb: "[PC] Ground Station PCB" {
       class: pc
       direction: right
-      ground_rfm95w: "[PC] RFM95W LoRa" { class: pc }
+      ground_rfm96w: "[PC] RFM96W LoRa" { class: pc }
       ground_xiao: "[PC] XIAO ESP32" { class: pc }
     }
     pc_computer: "[PC] PC" {
@@ -139,8 +139,8 @@ system: "[System] OBCC-V10-FLIGHT-001 — final flight-readiness physical setup\
 
 system.flight_article.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector -- system.flight_article.backplane_pcb.obcc_headers: "[PL] OBCC header\nmating" { class: pl }
 system.flight_article.standard_stack.obcc_module.obcc_pcb.xiao -- system.flight_article.standard_stack.obcc_module.obcc_pcb: "[PL] XIAO footprint" { class: pl }
-system.flight_article.standard_stack.obcc_module.obcc_pcb.rfm95w -- system.flight_article.standard_stack.obcc_module.obcc_pcb: "[PL] RFM footprint" { class: pl }
-system.flight_article.standard_stack.obcc_module.obcc_pcb.xiao -- system.flight_article.standard_stack.obcc_module.obcc_pcb.rfm95w: "[PL] SPI + 3V3 traces" { class: pl }
+system.flight_article.standard_stack.obcc_module.obcc_pcb.rfm96w -- system.flight_article.standard_stack.obcc_module.obcc_pcb: "[PL] RFM footprint" { class: pl }
+system.flight_article.standard_stack.obcc_module.obcc_pcb.xiao -- system.flight_article.standard_stack.obcc_module.obcc_pcb.rfm96w: "[PL] SPI + 3V3 traces" { class: pl }
 system.flight_article.standard_stack.obcc_module.obcc_pcb.xiao -- system.flight_article.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C / UART / PWM\n+ power traces" { class: pl }
 system.flight_article.standard_stack.ads_module -- system.flight_article.backplane_pcb.ads_headers: "[PL] ADS header\nmating" { class: pl }
 system.flight_article.standard_stack.ams_module -- system.flight_article.backplane_pcb.ams_headers: "[PL] AMS header\nmating" { class: pl }

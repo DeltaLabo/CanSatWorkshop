@@ -66,7 +66,7 @@ chain: "OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing gate chain\nRe
   capture_uart: "[F] Logic analyzer: capture\nUART baud, framing,\ndirection, and timing" { class: func }
   log_uart_results: "[F] Serial/trace: log GPS\nvalue/status and duration" { class: func }
 
-  exercise_spi_radio: "[F] OBCC: exercise RFM95W\nSPI transaction" { class: func }
+  exercise_spi_radio: "[F] OBCC: exercise RFM96W\nSPI transaction" { class: func }
   capture_spi: "[F] Logic analyzer: capture\nSPI mode, CS ownership,\nvoltage, and timing" { class: func }
   log_spi_results: "[F] Serial/trace: log radio\nstatus and bounded result" { class: func }
 
@@ -153,7 +153,7 @@ chain.call_uart_getter -> chain.capture_uart: "[FE] UART transaction\n[GPS paylo
 chain.capture_uart -> chain.log_uart_results: "[FE] Decoded UART evidence\n[baud/frame/timing]" { class: fe }
 chain.log_uart_results -> chain.exercise_spi_radio: "[FE] GPS getter status\n[value/error code]" { class: fe }
 
-chain.exercise_spi_radio -> chain.capture_spi: "[FE] SPI transaction\n[RFM95W]" { class: fe }
+chain.exercise_spi_radio -> chain.capture_spi: "[FE] SPI transaction\n[RFM96W]" { class: fe }
 chain.capture_spi -> chain.log_spi_results: "[FE] Decoded SPI evidence\n[mode/CS/status]" { class: fe }
 chain.log_spi_results -> chain.exercise_pwm_servo: "[FE] Radio status\n[bounded result]" { class: fe }
 

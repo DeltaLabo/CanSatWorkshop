@@ -67,7 +67,7 @@ system: "[System] OBCC-V03-GATE-001 — v0.3 LoRa telemetry RF/range gate physic
       grid-columns: 3
 
       xiao: "[PC] XIAO ESP32-S3" { class: pc }
-      rfm95w: "[PC] RFM95W LoRa" { class: pc }
+      rfm96w: "[PC] RFM96W LoRa" { class: pc }
       flight_antenna: "[PC] Flight LoRa antenna\n/ feedline" { class: pc }
       backplane_connector: "[PC] OBCC backplane\n/ stimulus connector" { class: pc }
     }
@@ -87,7 +87,7 @@ system: "[System] OBCC-V03-GATE-001 — v0.3 LoRa telemetry RF/range gate physic
     direction: right
     grid-columns: 3
 
-    ground_rfm95w: "[PC] RFM95W LoRa" { class: pc }
+    ground_rfm96w: "[PC] RFM96W LoRa" { class: pc }
     ground_antenna: "[PC] Ground LoRa antenna\n/ feedline" { class: pc }
     ground_xiao: "[PC] XIAO ESP32\nforwarder" { class: pc }
   }
@@ -123,14 +123,14 @@ time_reference -- system.logging_pc.usb_port: "[PL] Time-sync\nUSB/NTP/GPS" { cl
 antenna_orientation_fixture -- system.cansat_test_article.obcc_module.flight_antenna: "[PL] Azimuth/elevation\norientation check" { class: pl }
 antenna_orientation_fixture -- system.ground_station.ground_antenna: "[PL] Azimuth/elevation\norientation check" { class: pl }
 
-system.cansat_test_article.obcc_module.xiao -- system.cansat_test_article.obcc_module.rfm95w: "[PL] SPI + 3V3\ntraces/harness" { class: pl }
-system.cansat_test_article.obcc_module.rfm95w -- system.cansat_test_article.obcc_module.flight_antenna: "[PL] RF feedline\n/ antenna mount" { class: pl }
+system.cansat_test_article.obcc_module.xiao -- system.cansat_test_article.obcc_module.rfm96w: "[PL] SPI + 3V3\ntraces/harness" { class: pl }
+system.cansat_test_article.obcc_module.rfm96w -- system.cansat_test_article.obcc_module.flight_antenna: "[PL] RF feedline\n/ antenna mount" { class: pl }
 system.cansat_test_article.obcc_module.xiao -- system.cansat_test_article.obcc_module.backplane_connector: "[PL] I2C/UART/power\nbackplane traces" { class: pl }
 system.cansat_test_article.obcc_module.backplane_connector -- system.cansat_test_article.source_context: "[PL] Source-module\ninterface harness" { class: pl }
 
 system.cansat_test_article.obcc_module.flight_antenna -- system.ground_station.ground_antenna: "[PL] LoRa RF path\n>=500 m / equivalent" { class: pl }
-system.ground_station.ground_antenna -- system.ground_station.ground_rfm95w: "[PL] RF feedline\n/ antenna mount" { class: pl }
-system.ground_station.ground_rfm95w -- system.ground_station.ground_xiao: "[PL] SPI + power\ntraces/harness" { class: pl }
+system.ground_station.ground_antenna -- system.ground_station.ground_rfm96w: "[PL] RF feedline\n/ antenna mount" { class: pl }
+system.ground_station.ground_rfm96w -- system.ground_station.ground_xiao: "[PL] SPI + power\ntraces/harness" { class: pl }
 system.ground_station.ground_xiao -- system.logging_pc.usb_port: "[PL] USB-C serial\nraw-frame log" { class: pl }
 system.logging_pc.usb_port -- system.logging_pc.evidence_storage: "[PL] File-system\nwrite path" { class: pl }
 

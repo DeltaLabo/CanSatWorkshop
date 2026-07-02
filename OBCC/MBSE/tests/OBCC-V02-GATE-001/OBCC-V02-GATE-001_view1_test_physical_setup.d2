@@ -72,7 +72,7 @@ system: "[System] OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing setu
       grid-columns: 4
       i2c_bus: "[PC] I2C + 3V3 bus\nBME280 / IMU / INA219" { class: pc }
       uart_bus: "[PC] UART + power\nGPS" { class: pc }
-      spi_bus: "[PC] SPI + 3V3 bus\nRFM95W" { class: pc }
+      spi_bus: "[PC] SPI + 3V3 bus\nRFM96W" { class: pc }
       pwm_lead: "[PC] PWM + servo\npower lead" { class: pc }
     }
 
@@ -81,10 +81,10 @@ system: "[System] OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing setu
       direction: right
       grid-columns: 4
       bme280: "[PC] BME280\npressure/temperature" { class: pc }
-      imu: "[PC] ICM20948 IMU\n(or legacy MPU6050)" { class: pc }
+      imu: "[PC] ICM20948 IMU" { class: pc }
       ina219: "[PC] INA219\npower monitor" { class: pc }
       gps: "[PC] UBX-G7020-KT GPS" { class: pc }
-      rfm95w: "[PC] RFM95W LoRa" { class: pc }
+      rfm96w: "[PC] RFM96W LoRa" { class: pc }
       servo_fixture: "[PC] Servo safe-load /\ndisconnect fixture" {
         class: pc
         servo: "[PC] Servo" { class: pc }
@@ -129,7 +129,7 @@ system.bringup_article.harness.i2c_bus -- system.bringup_article.interface_set.b
 system.bringup_article.harness.i2c_bus -- system.bringup_article.interface_set.imu: "[PL] I2C drop" { class: pl }
 system.bringup_article.harness.i2c_bus -- system.bringup_article.interface_set.ina219: "[PL] I2C drop" { class: pl }
 system.bringup_article.harness.uart_bus -- system.bringup_article.interface_set.gps: "[PL] UART drop" { class: pl }
-system.bringup_article.harness.spi_bus -- system.bringup_article.interface_set.rfm95w: "[PL] SPI drop" { class: pl }
+system.bringup_article.harness.spi_bus -- system.bringup_article.interface_set.rfm96w: "[PL] SPI drop" { class: pl }
 system.bringup_article.harness.pwm_lead -- system.bringup_article.interface_set.servo_fixture.servo: "[PL] Servo PWM /\npower" { class: pl }
 
 system.bringup_article.note_source_gap -> system { class: cstr }

@@ -653,12 +653,12 @@ void setup() {
 #endif
 
   // ── Iniciar IMU ──
-  Serial.println(F("[IMU] Inicializando ICM-20948..."));
+  Serial.println(F("[IMU] Inicializando ICM20948..."));
   if (!myIMU.init()) {
-    Serial.println(F("[ERROR] ICM-20948 no responde. Revisa I2C/dirección."));
+    Serial.println(F("[ERROR] ICM20948 no responde. Revisa I2C/dirección."));
     while (1) delay(100);
   }
-  Serial.println(F("[IMU] ICM-20948 OK"));
+  Serial.println(F("[IMU] ICM20948 OK"));
 
   if (!myIMU.initMagnetometer()) {
     Serial.println(F("[ERROR] AK09916 (magnetómetro) no responde."));

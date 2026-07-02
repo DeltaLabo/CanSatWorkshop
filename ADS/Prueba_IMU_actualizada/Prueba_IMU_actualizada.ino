@@ -8,7 +8,7 @@
 #include <ICM20948_WE.h>
 #include <math.h>
 
-#define ICM20948_ADDR 0x68  // Dirección I2C del ICM-20948 con AD0 a GND
+#define ICM20948_ADDR 0x68  // Dirección I2C del ICM20948 con AD0 a GND
 
 ICM20948_WE myIMU = ICM20948_WE(ICM20948_ADDR);
 
@@ -72,7 +72,7 @@ void setup(){
   // Escanear dispositivos I2C
   //scanI2C();
 
-  // Intentar inicializar el ICM-20948
+  // Intentar inicializar el ICM20948
   if(!myIMU.init()){ 
     Serial.println("ICM20948 no responde");
   }

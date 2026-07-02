@@ -13,7 +13,7 @@ Project-wide IVV conventions, evidence paths, statistical policy, fault semantic
 
 ## 2. v1.0 model views used as source context
 
-- `OBCC_v1.0_view1_physical.d2`: integrated CanSat, OBCC module/PCB, XIAO ESP32-S3, RFM95W, sensors, PDS/ESS/PDM context, ground station, PC, and physical links.
+- `OBCC_v1.0_view1_physical.d2`: integrated CanSat, OBCC module/PCB, XIAO ESP32-S3, RFM96W, sensors, PDS/ESS/PDM context, ground station, PC, and physical links.
 - `OBCC_v1.0_view2_logical.d2`: FreeRTOS/task topology, queues, drivers, getters, telemetry, command/state, deployment, and ground-station logical components.
 - `OBCC_v1.0_view3_functional_allocation.d2`: startup health, sensor acquisition, telemetry payload, LoRa downlink/uplink, On/Stand-by modes, deployment gating, and runtime fault functions.
 - `OBCC_v1.0_view4_startup_health_chain.d2`: startup critical/non-critical peripheral health chain.

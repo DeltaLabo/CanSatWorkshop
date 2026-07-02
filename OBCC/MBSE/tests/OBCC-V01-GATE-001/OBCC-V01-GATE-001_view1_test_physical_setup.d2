@@ -77,13 +77,13 @@ system: "[System] OBCC-V01-GATE-001 — Breadboard startup-health physical setup
       class: pc
       direction: right
       grid-columns: 4
-      rfm95w: "[PC] RFM95W LoRa\ncritical" { class: pc }
+      rfm96w: "[PC] RFM96W LoRa\ncritical" { class: pc }
       i2c_sensors: "[PC] I2C sensor\nbreakout set" {
         class: pc
         direction: down
         grid-columns: 1
         bme280: "[PC] BME280\ncritical" { class: pc }
-        imu: "[PC] ICM20948 or legacy\nMPU6050 IMU\nnon-critical" { class: pc }
+        imu: "[PC] ICM20948 IMU\nnon-critical" { class: pc }
         ina219: "[PC] INA219\nnon-critical" { class: pc }
       }
       gps: "[PC] UBX-G7020 GPS\nnon-critical" { class: pc }
@@ -103,7 +103,7 @@ system: "[System] OBCC-V01-GATE-001 — Breadboard startup-health physical setup
 }
 
 bench_pc -- system.breadboard.usb_connector: "[PL] USB-C\npower/log" { class: pl }
-ground_monitor -- system.breadboard.peripheral_set.rfm95w: "[PL] Antenna path\nRF separation" { class: pl }
+ground_monitor -- system.breadboard.peripheral_set.rfm96w: "[PL] Antenna path\nRF separation" { class: pl }
 ambient_thermometer -- system.breadboard: "[PL] Bench air\nobservation" { class: pl }
 
 system.breadboard.usb_connector -- system.breadboard.xiao: "[PL] USB pads" { class: pl }
@@ -113,7 +113,7 @@ system.breadboard.xiao -- system.breadboard.harness.i2c_bus: "[PL] I2C" { class:
 system.breadboard.xiao -- system.breadboard.harness.uart_jumpers: "[PL] UART" { class: pl }
 system.breadboard.xiao -- system.breadboard.harness.pwm_leads: "[PL] PWM" { class: pl }
 
-system.breadboard.harness.spi_jumpers -- system.breadboard.peripheral_set.rfm95w: "[PL] SPI drop" { class: pl }
+system.breadboard.harness.spi_jumpers -- system.breadboard.peripheral_set.rfm96w: "[PL] SPI drop" { class: pl }
 system.breadboard.harness.i2c_bus -- system.breadboard.peripheral_set.i2c_sensors: "[PL] 3x I2C drops" { class: pl }
 system.breadboard.harness.uart_jumpers -- system.breadboard.peripheral_set.gps: "[PL] UART drop" { class: pl }
 system.breadboard.harness.pwm_leads -- system.breadboard.peripheral_set.servo: "[PL] Servo lead" { class: pl }

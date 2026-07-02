@@ -5,30 +5,31 @@
 #include <math.h>
 
 #include "Adafruit_Sensor.h"
-#include "Adafruit_BMP280.h"
+#include "Adafruit_BME280.h"
 
-#define BMP280_ADDRESS 0x76
+#define BME280_ADDRESS 0x76
 #define SEA_LEVEL_HPA 1013.25
 #define TIMEOUT_US 5000
 
-Adafruit_BMP280 bmp;
+Adafruit_BME280 bme;
 
 // ============================================================
 // INIT
 // ============================================================
 
-bool initBMP280() {
+bool initBME280() {
 
-  if (!bmp.begin(BMP280_ADDRESS)) {
+  if (!bme.begin(BME280_ADDRESS)) {
     return false;
   }
 
-  bmp.setSampling(
-    Adafruit_BMP280::MODE_NORMAL,
-    Adafruit_BMP280::SAMPLING_X1,
-    Adafruit_BMP280::SAMPLING_X1,
-    Adafruit_BMP280::FILTER_OFF,
-    Adafruit_BMP280::STANDBY_MS_1
+  bme.setSampling(
+    Adafruit_BME280::MODE_NORMAL,
+    Adafruit_BME280::SAMPLING_X1,
+    Adafruit_BME280::SAMPLING_X1,
+    Adafruit_BME280::SAMPLING_NONE,
+    Adafruit_BME280::FILTER_OFF,
+    Adafruit_BME280::STANDBY_MS_1
   );
 
   return true;
@@ -39,7 +40,7 @@ bool initBMP280() {
 // ============================================================
 
 /**
- * @brief Reads raw temperature from BMP280.
+ * @brief Reads raw temperature from BME280.
  *
  * @param output Address to store raw temperature.
  *
@@ -51,7 +52,7 @@ unsigned short readRawTemperature(float* output) {
 
   unsigned long start = micros();
 
-  float rawTemperature = bmp.readTemperature();
+  float rawTemperature = bme.readTemperature();
 
   if ((micros() - start) > TIMEOUT_US) {
     return 3;
@@ -67,7 +68,7 @@ unsigned short readRawTemperature(float* output) {
 }
 
 /**
- * @brief Reads raw pressure from BMP280.
+ * @brief Reads raw pressure from BME280.
  *
  * @param output Address to store raw pressure.
  *
@@ -79,7 +80,7 @@ unsigned short readRawPressure(float* output) {
 
   unsigned long start = micros();
 
-  float rawPressure = bmp.readPressure();
+  float rawPressure = bme.readPressure();
 
   if ((micros() - start) > TIMEOUT_US) {
     return 3;
@@ -95,7 +96,7 @@ unsigned short readRawPressure(float* output) {
 }
 
 /**
- * @brief Reads raw altitude from BMP280.
+ * @brief Reads raw altitude from BME280.
  *
  * @param output Address to store raw altitude.
  *
@@ -107,7 +108,7 @@ unsigned short readRawAltitude(float* output) {
 
   unsigned long start = micros();
 
-  float rawAltitude = bmp.readAltitude(SEA_LEVEL_HPA);
+  float rawAltitude = bme.readAltitude(SEA_LEVEL_HPA);
 
   if ((micros() - start) > TIMEOUT_US) {
     return 3;
@@ -134,7 +135,7 @@ unsigned short readRawAltitude(float* output) {
  */
 float processTemperature(float rawTemperature) {
 
-  // BMP280 already returns Celsius
+  // BME280 already returns Celsius
   return rawTemperature;
 }
 
@@ -409,14 +410,14 @@ void setup() {
 
   Wire.begin();
 
-  if (!initBMP280()) {
+  if (!initBME280()) {
 
-    Serial.println("BMP280 INIT FAILED");
+    Serial.println("BME280 INIT FAILED");
 
     while (1);
   }
 
-  Serial.println("BMP280 INIT OK");
+  Serial.println("BME280 INIT OK");
 }
 
 // ============================================================

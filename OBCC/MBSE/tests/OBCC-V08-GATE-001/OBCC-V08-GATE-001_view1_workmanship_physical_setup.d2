@@ -77,7 +77,7 @@ system: "[System] OBCC-V08-GATE-001 — PCB/backplane/link workmanship physical 
           direction: right
           grid-columns: 2
           xiao: "[PC] XIAO ESP32-S3\nfootprint" { class: pc }
-          rfm95w: "[PC] RFM95W LoRa\nfootprint" { class: pc }
+          rfm96w: "[PC] RFM96W LoRa\nfootprint" { class: pc }
           antenna_path: "[PC] LoRa antenna path\n(trace / connector / antenna)" { class: pc }
           obcc_backplane_connector: "[PC] OBCC backplane\nconnector footprint" { class: pc }
           obcc_test_pads: "[PC] OBCC continuity /\nprobe pads" { class: pc }
@@ -134,7 +134,7 @@ system: "[System] OBCC-V08-GATE-001 — PCB/backplane/link workmanship physical 
       ground_station_pcb: "[PC] Ground Station PCB" {
         class: pc
         direction: right
-        ground_rfm95w: "[PC] RFM95W LoRa" { class: pc }
+        ground_rfm96w: "[PC] RFM96W LoRa" { class: pc }
         ground_xiao: "[PC] XIAO ESP32" { class: pc }
       }
       pc_computer: "[PC] PC" {
@@ -153,7 +153,7 @@ system: "[System] OBCC-V08-GATE-001 — PCB/backplane/link workmanship physical 
       shape: page
     }
 
-    note_rf: "[C] PF-004 RF safety pass:\nRFM95W footprint and antenna path are\npresent and safe before any TX; use an\nantenna or dummy load, not an open path." {
+    note_rf: "[C] PF-004 RF safety pass:\nRFM96W footprint and antenna path are\npresent and safe before any TX; use an\nantenna or dummy load, not an open path." {
       class: note
       shape: page
     }
@@ -185,8 +185,8 @@ evidence_camera -- system.uut: "[PL] Photo/video\nevidence" { class: pl }
 bench_power_usb -- system.uut.carrier_stack.obcc_module.obcc_pcb.xiao: "[PL] USB-C bench link\n+ current-limited power" { class: pl }
 ambient_thermometer -- system.uut: "[PL] Bench air\nobservation" { class: pl }
 
-system.uut.carrier_stack.obcc_module.obcc_pcb.xiao -- system.uut.carrier_stack.obcc_module.obcc_pcb.rfm95w: "[PL] SPI + 3V3\ntraces" { class: pl }
-system.uut.carrier_stack.obcc_module.obcc_pcb.rfm95w -- system.uut.carrier_stack.obcc_module.obcc_pcb.antenna_path: "[PL] RF trace /\nantenna connector" { class: pl }
+system.uut.carrier_stack.obcc_module.obcc_pcb.xiao -- system.uut.carrier_stack.obcc_module.obcc_pcb.rfm96w: "[PL] SPI + 3V3\ntraces" { class: pl }
+system.uut.carrier_stack.obcc_module.obcc_pcb.rfm96w -- system.uut.carrier_stack.obcc_module.obcc_pcb.antenna_path: "[PL] RF trace /\nantenna connector" { class: pl }
 system.uut.carrier_stack.obcc_module.obcc_pcb.xiao -- system.uut.carrier_stack.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C / UART /\nPWM + power traces" { class: pl }
 system.uut.carrier_stack.obcc_module.obcc_pcb.obcc_backplane_connector -- system.uut.backplane_pcb.obcc_headers: "[PL] OBCC header\nmating" { class: pl }
 
@@ -200,7 +200,7 @@ system.uut.carrier_stack.pds_module.pds_header -- system.uut.backplane_pcb.pds_h
 system.uut.backplane_pcb.pdm_servo_connector -- system.uut.deployment_context.servo_cable: "[PL] Servo cable" { class: pl }
 system.uut.deployment_context.servo_cable -- system.uut.deployment_context.servo_fixture: "[PL] Servo fixture\nretention" { class: pl }
 
-system.uut.ground_context.ground_station_pcb.ground_rfm95w -- system.uut.ground_context.ground_station_pcb.ground_xiao: "[PL] SPI + 5V\ntraces" { class: pl }
+system.uut.ground_context.ground_station_pcb.ground_rfm96w -- system.uut.ground_context.ground_station_pcb.ground_xiao: "[PL] SPI + 5V\ntraces" { class: pl }
 system.uut.ground_context.ground_station_pcb.ground_xiao -- system.uut.ground_context.pc_computer.usb_port: "[PL] USB-C cable" { class: pl }
 
 system.uut.note_presence -> system.uut.carrier_stack { class: cstr }

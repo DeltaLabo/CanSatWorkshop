@@ -1,5 +1,5 @@
 #include <Wire.h>           // Librería I2C de Arduino (para comunicarse con el IMU)
-#include <ICM20948_WE.h>    // Librería específica del sensor ICM-20948
+#include <ICM20948_WE.h>    // Librería específica del sensor ICM20948
 #include <math.h>           // Funciones matemáticas: sqrt, sin, cos, atan2, etc.
 
 
@@ -348,21 +348,21 @@ void setup() {
 
   // ---- Iniciar bus I2C ----
   Wire.begin();
-  Wire.setClock(400000);        // 400 kHz (modo rápido I2C, soportado por el ICM-20948)
+  Wire.setClock(400000);        // 400 kHz (modo rápido I2C, soportado por el ICM20948)
 #if defined(ARDUINO_ARCH_ESP32)
   Wire.setTimeOut(50);          // Timeout de 50 ms en caso de fallo de bus
 #endif
 
-  Serial.println(F("\n=== ICM-20948 9-DOF Madgwick ==="));
+  Serial.println(F("\n=== ICM20948 9-DOF Madgwick ==="));
 
   // ---- Inicializar el sensor principal (accel + gyro) ----
   if (!myIMU.init()) {
-    Serial.println(F("ERROR: ICM-20948 no responde. Revisa cableado/direccion."));
+    Serial.println(F("ERROR: ICM20948 no responde. Revisa cableado/direccion."));
     while (1) delay(100);   // Quedarse aquí para siempre (error crítico)
   }
-  Serial.println(F("ICM-20948 OK"));
+  Serial.println(F("ICM20948 OK"));
 
-  // ---- Inicializar el magnetómetro (AK09916, chip interno del ICM-20948) ----
+  // ---- Inicializar el magnetómetro (AK09916, chip interno del ICM20948) ----
   if (!myIMU.initMagnetometer()) {
     Serial.println(F("ERROR: AK09916 (magnetometro) no responde."));
     while (1) delay(100);
@@ -409,7 +409,7 @@ void loop() {
   float gy = g.y * PI / 180.0f;
   float gz = g.z * PI / 180.0f;
 
-  // Porque en el ICM-20948 el chip del magnetómetro (AK09916) tiene sus ejes orientados distinto que el chip principal. Hay que corregirlo.
+  // Porque en el ICM20948 el chip del magnetómetro (AK09916) tiene sus ejes orientados distinto que el chip principal. Hay que corregirlo.
   float mx_aligned =  my;
   float my_aligned =  mx;
   float mz_aligned = -mz;

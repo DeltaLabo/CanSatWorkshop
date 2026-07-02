@@ -3,7 +3,7 @@
   - Prueba varias parejas SDA/SCL comunes en XIAO S3.
   - Incluye "bus recovery" si SDA está atascada en LOW.
   - Escanea @100 kHz y si no encuentra, reintenta @50 kHz.
-  - Prueba WHO_AM_I en 0x68/0x69 (ICM-20948 esperado = 0xEA).
+  - Prueba WHO_AM_I en 0x68/0x69 (ICM20948 esperado = 0xEA).
 */
 
 #include <Wire.h>
@@ -96,7 +96,7 @@ void scanOnce(int sda, int scl, uint32_t hz){
   if (!found) {
     Serial.println("  (nada encontrado en esta pareja de pines)");
   } else {
-    // Intento WHO_AM_I en posibles direcciones de ICM-20948
+    // Intento WHO_AM_I en posibles direcciones de ICM20948
     for (uint8_t tryAddr : { (uint8_t)0x68, (uint8_t)0x69 }) {
       uint8_t who = readReg(tryAddr, 0x00); // WHO_AM_I en Bank0 = 0x00
       if (who != 0xFF) {
@@ -104,7 +104,7 @@ void scanOnce(int sda, int scl, uint32_t hz){
         Serial.print(tryAddr, HEX);
         Serial.print(" = 0x");
         Serial.println(who, HEX);
-        if (who == 0xEA) Serial.println("  -> ICM-20948 detectado.");
+        if (who == 0xEA) Serial.println("  -> ICM20948 detectado.");
       }
     }
   }

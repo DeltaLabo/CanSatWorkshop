@@ -19,7 +19,7 @@ Assessment date: 2026-07-01
 | CON-002 | The split-by-subsystem tests do not fully verify emergent cross-subsystem behavior. | Introduce system-level tests listed in §4. |
 | CON-003 | Execution-pending status is acceptable, but some tests are still only planning candidates or have open definition blockers. | Complete detailed definitions before execution credit. |
 | CON-004 | Several requirements from subsystem READMEs and the root `README.md` are not yet assigned to executable verification activities. | Add requirement-to-test closure matrix. |
-| CON-005 | Hardware/configuration naming drift and version-source gaps could invalidate otherwise good test evidence if not controlled. | Freeze as-built configuration and disposition model/code naming differences. |
+| CON-005 | The affected hardware names are now frozen as `RFM96W`, `ICM20948`, and `BME280`; remaining version-source gaps and broader execution configuration IDs still require report control. | Use the selected names in active artifacts and identify exact as-tested baselines in reports. |
 | CON-006 | The project needs one CanSat-level final readiness review that references subsystem evidence rather than duplicating it. | Model and execute `SYS-FLIGHT-READINESS-CLOSURE`. |
 
 ## 2. Finish-readiness against root `README.md`
@@ -56,7 +56,7 @@ Assessment date: 2026-07-01
 | SUB-OBCC-001 | OBCC | OBCC has broad gate coverage from v0.1 through v1.0 final closure. | Coverage includes startup health, buses/getters, telemetry, command/state, deployment gate, runtime faults, RTOS allocation, workmanship, mission rehearsal, and final review. | Execute and link evidence to final closure. |
 | SUB-OBCC-002 | OBCC | OBCC v0.x source baselines are absent. | All v0.x gates use v1.0 model copies as target context only. | Keep source-gap declarations and identify actual code/configuration baseline in reports. |
 | SUB-OBCC-003 | OBCC | OBCC final pass depends on mission rehearsal evidence. | `OBCC-V10-FLIGHT-001` forbids final PASS if `OBCC-V09-GATE-001` is unresolved. | Execute mission rehearsal or record approved defer/hold. |
-| SUB-OBCC-004 | OBCC | Payload/radio/emergency/fault details remain open. | Exact payload schema, radio settings, emergency-deploy policy, safe fault matrix, and hardware variants need confirmation. | Freeze as-tested configuration before execution. |
+| SUB-OBCC-004 | OBCC | Payload/radio/emergency/fault details remain open. | Exact payload schema, radio settings, emergency-deploy policy, safe fault matrix, firmware IDs, and execution configuration identifiers beyond the selected `RFM96W`/`ICM20948`/`BME280` names need confirmation. | Freeze as-tested configuration before execution. |
 | SUB-PDS-001 | PDS & ESS | PDS/ESS has strong coverage across v0.1, v0.2, v0.3, and v1.0. | Coverage includes power path, charge, endurance, protection probability, rails, supervision, physical inspection, and PCB DFM. | Execute with strict safety controls. |
 | SUB-PDS-002 | PDS & ESS | Battery architecture conflict exists. | README says ESS battery must use `2S1P`; MBSE/tests repeatedly model `1S1P Li-Ion`. | Resolve model/README/BOM battery configuration before final tests. |
 | SUB-PDS-003 | PDS & ESS | Regulator efficiency is not clearly tested. | README requires 3.3 V and 5 V rails at 1 A with 95% efficiency; MBSE rail tests focus voltage/current, not efficiency. | Add efficiency measurement or update requirement. |
@@ -89,7 +89,7 @@ Assessment date: 2026-07-01
 | ID | Area | Finding | Required action |
 |---|---|---|---|
 | GAP-001 | Cadence semantics | Internal ≥5 Hz and v1.0 LoRa 2 s cadence are documented, but subsystem-to-OBCC 5 Hz closure is inconsistent for ADS/AMS. | Add explicit internal data-rate/freshness tests or update requirements. |
-| GAP-002 | Hardware naming | `RFM95W` vs `RFM96W`, `ICM20948` vs legacy `MPU6050`, and `BME280` vs legacy `BMP280` appear across artifacts. | Freeze actual as-built part list and disposition naming drift. |
+| GAP-002 | Hardware naming | Closed for the affected hardware: active artifacts now use the selected `RFM96W` radio, `ICM20948` IMU, and `BME280` environmental sensor names. | Maintain these names in controlled artifacts and record exact as-tested hardware/configuration in execution reports. |
 | GAP-003 | Battery architecture | PDS/ESS README `2S1P` conflicts with MBSE/tests `1S1P`. | Resolve before PDS/ESS and system power tests. |
 | GAP-004 | Payload schema | The DPS/OBCC RH field mismatch is closed; broader schema versioning, timestamps, units and freshness/error markers still need project-level control. | Freeze payload schema and dashboard behavior. |
 | GAP-005 | Deployment policy | OBCC/PDM emergency deployment and descent observability policies are not fully specified. | Define cross-subsystem safety policy. |

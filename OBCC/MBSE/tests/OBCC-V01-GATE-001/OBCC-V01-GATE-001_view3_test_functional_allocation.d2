@@ -144,12 +144,12 @@ system: "[System] OBCC-V01-GATE-001 — Breadboard startup-health functional all
       }
     }
 
-    rfm95w: "[PC] RFM95W LoRa" {
+    rfm96w: "[PC] RFM96W LoRa" {
       class: pc
       lora_transceiver: "[LC] LoRa Transceiver" {
         class: lc
         direction: down
-        get_rfm95w_init_state: "[F] Get RFM95W\ninit state" { class: func }
+        get_rfm96w_init_state: "[F] Get RFM96W\ninit state" { class: func }
         transmit_status_packet: "[F] Transmit status\npacket" { class: func }
       }
     }
@@ -172,7 +172,7 @@ system: "[System] OBCC-V01-GATE-001 — Breadboard startup-health functional all
       }
     }
 
-    imu: "[PC] ICM20948 or legacy\nMPU6050 IMU" {
+    imu: "[PC] ICM20948 IMU" {
       class: pc
       imu_sensing: "[LC] Kinematic sensing" {
         class: lc
@@ -207,7 +207,7 @@ note_v01_source_gap: "[C] No v0.1 Capella/D2 source baseline\nexists in the repo
   shape: page
 }
 
-note_fault_policy: "[C] Pass/fail policy: nominal all-connected\nboot reports startup checks complete and\nallows runtime; missing RFM95W/BME280/Servo\nblocks runtime; missing GPS/IMU/INA219\nallows degraded telemetry-visible operation." {
+note_fault_policy: "[C] Pass/fail policy: nominal all-connected\nboot reports startup checks complete and\nallows runtime; missing RFM96W/BME280/Servo\nblocks runtime; missing GPS/IMU/INA219\nallows degraded telemetry-visible operation." {
   class: note
   shape: page
 }

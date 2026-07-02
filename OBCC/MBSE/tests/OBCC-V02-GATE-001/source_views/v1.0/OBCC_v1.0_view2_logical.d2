@@ -87,7 +87,7 @@ system: "[System] Physical System" {
         class: pc
         direction: right
 
-        rfm95w: "[PC] RFM95W LoRa" {
+        rfm96w: "[PC] RFM96W LoRa" {
           class: pc
           cansat_lora: "[LC] LoRa Transceiver" { class: lc }
         }
@@ -127,7 +127,7 @@ system: "[System] Physical System" {
     class: pc
     direction: right
 
-    ground_rfm95w: "[PC] RFM95W LoRa" {
+    ground_rfm96w: "[PC] RFM96W LoRa" {
       class: pc
       ground_lora: "[LC] LoRa Transceiver" { class: lc }
     }
@@ -161,7 +161,7 @@ system: "[System] Physical System" {
     shape: page
   }
 
-  note_health: "[C] Startup critical peripherals:\nRFM95W LoRa, BME280, Servo.\nRuntime sensor faults return\nerror-coded values without\nscheduler blocking." {
+  note_health: "[C] Startup critical peripherals:\nRFM96W LoRa, BME280, Servo.\nRuntime sensor faults return\nerror-coded values without\nscheduler blocking." {
     class: note
     shape: page
   }
@@ -182,11 +182,11 @@ system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector -> system.cansat.obc
 system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing: "[CE] IMU/alt" { class: ce }
 system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing -> system.cansat.parachute_module.servo.trigger: "[CE] PWM" { class: ce }
 
-system.cansat.obcc_module.obcc_pcb.xiao.telemetry_encoder -> system.cansat.obcc_module.obcc_pcb.rfm95w.cansat_lora: "[CE] SPI" { class: ce }
-system.cansat.obcc_module.obcc_pcb.rfm95w.cansat_lora -> system.cansat.obcc_module.obcc_pcb.xiao.command_handler: "[CE] SPI" { class: ce }
-system.cansat.obcc_module.obcc_pcb.rfm95w.cansat_lora -> system.ground_station_pcb.ground_rfm95w.ground_lora: "[CE] LoRa" { class: ce }
-system.ground_station_pcb.ground_rfm95w.ground_lora -> system.ground_station_pcb.ground_xiao.lora_forwarder: "[CE] SPI" { class: ce }
-system.ground_station_pcb.ground_xiao.lora_forwarder -> system.ground_station_pcb.ground_rfm95w.ground_lora: "[CE] SPI" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.telemetry_encoder -> system.cansat.obcc_module.obcc_pcb.rfm96w.cansat_lora: "[CE] SPI" { class: ce }
+system.cansat.obcc_module.obcc_pcb.rfm96w.cansat_lora -> system.cansat.obcc_module.obcc_pcb.xiao.command_handler: "[CE] SPI" { class: ce }
+system.cansat.obcc_module.obcc_pcb.rfm96w.cansat_lora -> system.ground_station_pcb.ground_rfm96w.ground_lora: "[CE] LoRa" { class: ce }
+system.ground_station_pcb.ground_rfm96w.ground_lora -> system.ground_station_pcb.ground_xiao.lora_forwarder: "[CE] SPI" { class: ce }
+system.ground_station_pcb.ground_xiao.lora_forwarder -> system.ground_station_pcb.ground_rfm96w.ground_lora: "[CE] SPI" { class: ce }
 system.ground_station_pcb.ground_xiao.lora_forwarder -> system.pc_computer.decoder: "[CE] UART" { class: ce }
 system.pc_computer.decoder -> system.pc_computer.csv_writer: "[CE] Payload" { class: ce }
 system.pc_computer.decoder -> system.pc_computer.dashboard: "[CE] Payload" { class: ce }

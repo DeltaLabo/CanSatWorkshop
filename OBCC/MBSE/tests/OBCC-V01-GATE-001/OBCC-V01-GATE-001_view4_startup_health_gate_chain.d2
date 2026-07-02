@@ -58,13 +58,13 @@ chain: "OBCC-V01-GATE-001 — v0.1 breadboard startup-health gate chain\nRefs: I
   connect_all: "[F] Operator: connect\nall required peripherals" { class: func }
   reset_nominal: "[F] Operator: reset /\npower-cycle UUT" { class: func }
   bootstrap_nominal: "[F] OBCC: bootstrap\nand init UART/PWM/SPI/I2C" { class: func }
-  check_critical_nominal: "[F] OBCC: check critical\nRFM95W, BME280, Servo" { class: func }
+  check_critical_nominal: "[F] OBCC: check critical\nRFM96W, BME280, Servo" { class: func }
   check_noncritical_nominal: "[F] OBCC: check non-critical\nGPS, IMU, INA219" { class: func }
   publish_ready: "[F] OBCC: publish startup\ncomplete and readiness" { class: func }
   observe_ready: "[F] Monitor: capture serial\nlog or LoRa health/status" { class: func }
   record_nominal_pass: "[F] Operator: record\nnominal boot result" { class: func }
 
-  disconnect_critical: "[F] Operator: disconnect one\ncritical peripheral\n(RFM95W/BME280/Servo)" { class: func }
+  disconnect_critical: "[F] Operator: disconnect one\ncritical peripheral\n(RFM96W/BME280/Servo)" { class: func }
   reset_critical: "[F] Operator: reset /\npower-cycle UUT" { class: func }
   detect_critical_fault: "[F] OBCC: detect missing\nstartup-critical peripheral" { class: func }
   block_runtime: "[F] OBCC: block operational\nmode and enter safe/error" { class: func }
@@ -90,7 +90,7 @@ chain: "OBCC-V01-GATE-001 — v0.1 breadboard startup-health gate chain\nRefs: I
     shape: page
   }
 
-  note_critical: "[C] Critical-fault pass/fail:\nfor each RFM95W, BME280, and Servo\nmissing-at-startup case, OBCC reports\nthe named critical fault and does not\nenter operational mode." {
+  note_critical: "[C] Critical-fault pass/fail:\nfor each RFM96W, BME280, and Servo\nmissing-at-startup case, OBCC reports\nthe named critical fault and does not\nenter operational mode." {
     class: note
     shape: page
   }

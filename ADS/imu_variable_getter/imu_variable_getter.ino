@@ -15,7 +15,7 @@
  ***************************************************************************/
 
 #include <Wire.h>           // Librería I2C de Arduino (para comunicarse con el IMU)
-#include <ICM20948_WE.h>    // Librería específica del sensor ICM-20948
+#include <ICM20948_WE.h>    // Librería específica del sensor ICM20948
 #include <math.h>           // Funciones matemáticas: sqrt, sin, cos, atan2, etc.
 
 
@@ -585,13 +585,13 @@ void setup() {
   Wire.setTimeOut(50);
 #endif
 
-  Serial.println(F("\n=== ICM-20948 9-DOF Madgwick (LoRa getters) ==="));
+  Serial.println(F("\n=== ICM20948 9-DOF Madgwick (LoRa getters) ==="));
 
   if (!myIMU.init()) {
-    Serial.println(F("ERROR: ICM-20948 no responde. Revisa cableado/direccion."));
+    Serial.println(F("ERROR: ICM20948 no responde. Revisa cableado/direccion."));
     while (1) delay(100);
   }
-  Serial.println(F("ICM-20948 OK"));
+  Serial.println(F("ICM20948 OK"));
 
   if (!myIMU.initMagnetometer()) {
     Serial.println(F("ERROR: AK09916 (magnetometro) no responde."));

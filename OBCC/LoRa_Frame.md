@@ -11,7 +11,7 @@
 | Servo | Critical |
 | UBX G7020 | Non-critical |
 | INA219 | Non-critical |
-| MPU6050 | Non-critical |
+| ICM20948 | Non-critical |
 
 ## Variables
 

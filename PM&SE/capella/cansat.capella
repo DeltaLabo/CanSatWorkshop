@@ -845,7 +845,7 @@
                 id="5af600f8-1bbf-47cf-8649-ebfd3f16e27b" name="FOP 2"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
-              id="566cab0e-9300-4d0c-9e00-62f071a100c6" name="Get MPU6050 init state"
+              id="566cab0e-9300-4d0c-9e00-62f071a100c6" name="Get ICM20948 init state"
               availableInStates="#b9d273a0-2934-40f0-9d9c-0b7f51933902">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="9b5818fc-0b66-4d43-afd4-206916306f06" name="FIP 1"/>
@@ -2198,7 +2198,7 @@
                 id="a17c51fb-3d5a-4696-a8e8-55efa944ebc6" name="FOP 2_1"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
-              id="fe5adade-562d-41f7-a037-69f582abc700" name="Get MPU6050 init state"
+              id="fe5adade-562d-41f7-a037-69f582abc700" name="Get ICM20948 init state"
               availableInStates="#b9d273a0-2934-40f0-9d9c-0b7f51933902">
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="afe5ac27-2b22-4196-a109-c2213cca72d8" name="FOP 1"/>
@@ -4330,7 +4330,7 @@
                 <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="3d061b8d-7674-4c7e-910a-5d89a7a64ecb"
                     name="Backplane Connector" abstractType="#0447a71a-1892-4ae5-92c5-afa7df4bfaf6"/>
                 <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="614e4891-79cf-461d-a982-e58846001604"
-                    name="RFM95W LoRa" abstractType="#5f480d3b-ec71-4f23-8049-4abfa72e6388">
+                    name="RFM96W LoRa" abstractType="#5f480d3b-ec71-4f23-8049-4abfa72e6388">
                   <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
                       id="f67391c9-ce64-491c-925c-70edaf4b7b7f" deployedElement="#d20a1dcd-6573-48eb-bc0f-be0808bb35c8"
                       location="#614e4891-79cf-461d-a982-e58846001604"/>
@@ -4371,7 +4371,7 @@
                       id="81fc8fe5-bc25-4a86-8da0-fb67b609d4a2" name="PP 2"/>
                 </ownedPhysicalComponents>
                 <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-                    id="5f480d3b-ec71-4f23-8049-4abfa72e6388" name="RFM95W LoRa" nature="NODE">
+                    id="5f480d3b-ec71-4f23-8049-4abfa72e6388" name="RFM96W LoRa" nature="NODE">
                   <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
                       id="16c40f99-2c37-4662-946f-954422f52c1a" name="PP 1"/>
                 </ownedPhysicalComponents>
@@ -5224,7 +5224,7 @@
               id="e44d9216-3d62-4ee2-ac31-3321c58f2317" name="Ground Station PCB"
               nature="NODE">
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="d4adc90e-8e64-438c-8a61-771eea9b2226"
-                name="RFM95W LoRa" abstractType="#e6f805d9-4874-4b9d-a1ec-71e35dc096b8">
+                name="RFM96W LoRa" abstractType="#e6f805d9-4874-4b9d-a1ec-71e35dc096b8">
               <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
                   id="deea8d0c-1261-4e2b-bd4e-42a4074bd7c2" deployedElement="#b353b821-5b92-4440-97b1-bb77e75cbe11"
                   location="#d4adc90e-8e64-438c-8a61-771eea9b2226"/>
@@ -5248,7 +5248,7 @@
             <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
                 id="4b503651-4690-4df7-9e85-4304eaa774fe" name="SPI Traces" linkEnds="#737a48a1-a839-435f-aeef-fcbf4bf3cf07 #e806ce40-e65e-4029-a09e-351a69c82fe3"/>
             <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-                id="e6f805d9-4874-4b9d-a1ec-71e35dc096b8" name="RFM95W LoRa" nature="NODE">
+                id="e6f805d9-4874-4b9d-a1ec-71e35dc096b8" name="RFM96W LoRa" nature="NODE">
               <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
                   id="cd3d574b-1bd7-4777-b4a2-508cc0d1474f" name="PP 2"/>
             </ownedPhysicalComponents>

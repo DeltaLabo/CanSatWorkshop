@@ -48,7 +48,7 @@ classes: {
 
 test_operator: "[EA] Test Operator" { class: ea }
 
-lora_test_transmitter: "[EA] LoRa Test Transmitter\nRFM95W/SX1276" { class: ea }
+lora_test_transmitter: "[EA] LoRa Test Transmitter\nRFM96W/SX1276" { class: ea }
 
 system: "[System] DPS v1.0\nDPS-V10-T-001 PV2 logical test context\nIADT: Testing; Refs: P0,R1-R5,R8-R15; Trace: FC01,C05" {
   class: sys
@@ -59,7 +59,7 @@ system: "[System] DPS v1.0\nDPS-V10-T-001 PV2 logical test context\nIADT: Testin
     class: pc
     direction: right
 
-    ground_rfm: "[PC] RFM95W LoRa" {
+    ground_rfm: "[PC] RFM96W LoRa" {
       class: pc
       direction: down
       ground_lora: "[LC] LoRa Transceiver" { class: lc }

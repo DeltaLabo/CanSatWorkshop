@@ -65,7 +65,7 @@ system: "[System] OBCC-V04-GATE-001 — v0.4 wireless command/state logical inte
       class: pc
       direction: right
 
-      rfm95w: "[PC] RFM95W LoRa" {
+      rfm96w: "[PC] RFM96W LoRa" {
         class: pc
         lora_transceiver: "[LC] LoRa Transceiver" { class: lc }
       }
@@ -109,17 +109,17 @@ system: "[System] OBCC-V04-GATE-001 — v0.4 wireless command/state logical inte
 test_operator -> system.uut.obcc_pcb.xiao.trace_publisher: "[CE] Trial-control checklist\nand evidence annotation" { class: ce }
 ambient_thermometer -> system.uut.obcc_pcb.xiao.trace_publisher: "[CE] Ambient readout\nentered in evidence" { class: ce }
 bench_pc -> system.uut.obcc_pcb.xiao.usb_flash_interface: "[CE] Flash/setup;\nno flight command" { class: ce }
-command_station -> system.uut.obcc_pcb.rfm95w.lora_transceiver: "[CE] LoRa command uplink\nOn / Stand-by / invalid" { class: ce }
-system.uut.obcc_pcb.rfm95w.lora_transceiver -> rf_link_monitor: "[CE] RF observation\nuplink/downlink RSSI/SNR" { class: ce }
-system.uut.obcc_pcb.rfm95w.lora_transceiver -> system.uut.obcc_pcb.xiao.command_handler: "[CE] SPI RX command frame" { class: ce }
+command_station -> system.uut.obcc_pcb.rfm96w.lora_transceiver: "[CE] LoRa command uplink\nOn / Stand-by / invalid" { class: ce }
+system.uut.obcc_pcb.rfm96w.lora_transceiver -> rf_link_monitor: "[CE] RF observation\nuplink/downlink RSSI/SNR" { class: ce }
+system.uut.obcc_pcb.rfm96w.lora_transceiver -> system.uut.obcc_pcb.xiao.command_handler: "[CE] SPI RX command frame" { class: ce }
 system.uut.obcc_pcb.xiao.command_handler -> system.uut.obcc_pcb.xiao.state_manager: "[CE] Valid state request /\ninvalid-command result" { class: ce }
 system.uut.obcc_pcb.xiao.state_manager -> system.uut.obcc_pcb.xiao.telemetry_encoder: "[CE] State metadata\nOn / Stand-by" { class: ce }
 system.uut.obcc_pcb.xiao.command_handler -> system.uut.obcc_pcb.xiao.trace_publisher: "[CE] Acceptance/rejection event\nand command class" { class: ce }
 system.uut.obcc_pcb.xiao.trace_publisher -> system.uut.obcc_pcb.xiao.telemetry_encoder: "[CE] Command result\nfor evidence" { class: ce }
 system.uut.obcc_pcb.xiao.state_manager -> system.uut.obcc_pcb.xiao.deployment_guard: "[CE] No deployment enable\nbefore v0.5" { class: ce }
 system.uut.obcc_pcb.xiao.deployment_guard -> deployment_monitor: "[CE] Logic-probe/no-edge\nside-effect evidence" { class: ce }
-system.uut.obcc_pcb.xiao.telemetry_encoder -> system.uut.obcc_pcb.rfm95w.lora_transceiver: "[CE] SPI state telemetry" { class: ce }
-system.uut.obcc_pcb.rfm95w.lora_transceiver -> telemetry_observer: "[CE] LoRa state telemetry\nand command result" { class: ce }
+system.uut.obcc_pcb.xiao.telemetry_encoder -> system.uut.obcc_pcb.rfm96w.lora_transceiver: "[CE] SPI state telemetry" { class: ce }
+system.uut.obcc_pcb.rfm96w.lora_transceiver -> telemetry_observer: "[CE] LoRa state telemetry\nand command result" { class: ce }
 
 system.note_commands -> system.uut.obcc_pcb.xiao.command_handler { class: cstr }
 system.note_invalid -> system.uut.obcc_pcb.xiao.command_handler { class: cstr }

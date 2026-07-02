@@ -71,7 +71,7 @@ system: "[System] OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing logi
         ams_sensing: "[LC] AMS sensing" { class: lc }
       }
 
-      imu: "[PC] ICM20948 IMU\n(or legacy MPU6050)" {
+      imu: "[PC] ICM20948 IMU" {
         class: pc
         imu_sensing: "[LC] Kinematic sensing" { class: lc }
       }
@@ -96,7 +96,7 @@ system: "[System] OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing logi
       class: pc
       direction: down
 
-      rfm95w: "[PC] RFM95W LoRa" {
+      rfm96w: "[PC] RFM96W LoRa" {
         class: pc
         cansat_lora: "[LC] LoRa transceiver" { class: lc }
       }
@@ -158,8 +158,8 @@ system.bringup_article.data_targets.bme280.ams_sensing -> system.bringup_article
 system.bringup_article.data_targets.ina219.battery_monitoring -> system.bringup_article.obcc_module.xiao.ess_processing: "[CE] I2C" { class: ce }
 system.bringup_article.obcc_module.xiao.pdm_processing -> system.bringup_article.data_targets.servo.trigger: "[CE] PWM" { class: ce }
 
-system.bringup_article.obcc_module.xiao.telemetry_encoder -> system.bringup_article.obcc_module.rfm95w.cansat_lora: "[CE] SPI" { class: ce }
-system.bringup_article.obcc_module.rfm95w.cansat_lora -> system.bringup_article.obcc_module.xiao.command_handler: "[CE] SPI" { class: ce }
+system.bringup_article.obcc_module.xiao.telemetry_encoder -> system.bringup_article.obcc_module.rfm96w.cansat_lora: "[CE] SPI" { class: ce }
+system.bringup_article.obcc_module.rfm96w.cansat_lora -> system.bringup_article.obcc_module.xiao.command_handler: "[CE] SPI" { class: ce }
 
 system.bringup_article.obcc_module.xiao.ads_processing -> system.bringup_article.obcc_module.xiao.telemetry_collector: "[CE] Getters" { class: ce }
 system.bringup_article.obcc_module.xiao.ams_processing -> system.bringup_article.obcc_module.xiao.telemetry_collector: "[CE] Getters" { class: ce }

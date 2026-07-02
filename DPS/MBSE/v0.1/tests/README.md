@@ -16,7 +16,7 @@ Derived from `DPS/MBSE/v0.1/` Capella/D2 Physical Architecture views. Diagrams w
 - **R2:** ISO/IEC/IEEE 29119-2/3 software test process/documentation artifacts.
 - **R3:** NIST/SEMATECH binomial/sample-size artifacts.
 - **R4:** ETSI EN 300 220 and TTN EU868 radio constraints.
-- **R5:** RFM95W/SX1276/LoRa references.
+- **R5:** RFM96W/SX1276/LoRa references.
 - **R6:** CanSat/Andøya telemetry and ground-station references.
 - **R7:** LoRa PDR/path-loss literature artifacts.
 
@@ -28,8 +28,8 @@ PV1 `DPS_v0.1_view1_physical.d2`; PV2 `DPS_v0.1_view2_logical.d2`; PV3 `DPS_v0.1
 
 ### 3.2 Physical components and links
 
-- **PCs:** Datalogger Circuitboard; datalogger RFM95W LoRa; datalogger XIAO ESP32-S3; Ground Station Circuitboard; ground RFM95W LoRa; ground XIAO ESP32; PC; PC USB Port.
-- **PLs:** datalogger RFM95W-to-XIAO SPI wires; ground RFM95W-to-XIAO SPI + 5 V power wires; ground XIAO-to-PC USB-C cable.
+- **PCs:** Datalogger Circuitboard; datalogger RFM96W LoRa; datalogger XIAO ESP32-S3; Ground Station Circuitboard; ground RFM96W LoRa; ground XIAO ESP32; PC; PC USB Port.
+- **PLs:** datalogger RFM96W-to-XIAO SPI wires; ground RFM96W-to-XIAO SPI + 5 V power wires; ground XIAO-to-PC USB-C cable.
 
 ### 3.3 Component exchanges
 

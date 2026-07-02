@@ -5,8 +5,8 @@
 #include "Wire.h"
 #include "Adafruit_Sensor.h"
 #include "Adafruit_INA219.h"
-#include "Adafruit_BMP280.h"
-#include "Adafruit_MPU6050.h"
+#include "Adafruit_BME280.h"
+#include <ICM20948_WE.h>
 #include <math.h>
 #include "settings.h"
 #include "pins.h"
@@ -27,11 +27,14 @@ byte payload[LORA_PAYLOAD_SIZE];
 
 /******* Begin Sensor Global Variables *******/
 Adafruit_INA219 ina219;
-Adafruit_BMP280 bmp;
+Adafruit_BME280 bme;
 /******* End Sensor Global Variables *******/
 
 /******* Begin Position and Orientation Global Variables *******/
-Adafruit_MPU6050 mpu;
+#define ICM20948_ADDR 0x68
+const float STANDARD_GRAVITY_MPS2 = 9.80665f;
+const float DEG_TO_RAD_FACTOR = PI / 180.0f;
+ICM20948_WE imu = ICM20948_WE(ICM20948_ADDR);
 TinyGPSPlus gps;
 HardwareSerial GPS_Serial(1);
 // Variables for Orientation calculations
@@ -104,11 +107,11 @@ void SendPayload() {
 /******* End Comms Functions *******/
 
 /******* Begin Sensor Functions *******/
-// BMP280 Functions
+// BME280 Functions
 float readTemperature(){
   // Read Temperature
   float temperature = 0;
-  temperature = bmp.readTemperature();
+  temperature = bme.readTemperature();
   Serial.print("[DATA]: Temperature = ");
   Serial.print(temperature);
   Serial.println(" °C");
@@ -118,7 +121,7 @@ float readTemperature(){
 float readPressure(){
   // Read pressure
   float pressure = 0;
-  pressure = bmp.readPressure() / 1000;
+  pressure = bme.readPressure() / 1000;
   Serial.print("[DATA]: Pressure = ");
   Serial.print(pressure);
   Serial.println(" MPa");
@@ -128,7 +131,7 @@ float readPressure(){
 float readAltitude(){
   // Calculate altitude
   float altitude = 0;
-  altitude = bmp.readAltitude(1013.25);
+  altitude = bme.readAltitude(1013.25);
   Serial.print("[DATA]: Approx. altitude = ");
   Serial.print(altitude);
   Serial.println(" m");
@@ -158,77 +161,83 @@ float readCurrent(){
 /******* End Sensor Functions *******/
 
 /******* Begin Position and Orientation Functions *******/
-// MPU Functions
+// ICM20948 Functions
+void readIMU(xyzFloat& accelerationG, xyzFloat& gyroDps) {
+  imu.readSensor();
+  imu.getGValues(&accelerationG);
+  imu.getGyrValues(&gyroDps);
+}
+
 float readRotx(){
-  // Get new sensor events with the readings
-  sensors_event_t a, g, temp;
-  mpu.getEvent(&a, &g, &temp);
+  xyzFloat accelerationG, gyroDps;
+  readIMU(accelerationG, gyroDps);
+  float rotation = gyroDps.x * DEG_TO_RAD_FACTOR;
 
   Serial.print("[DATA]: Rotation (x): ");
-  Serial.print(g.gyro.x);
+  Serial.print(rotation);
   Serial.println(" rad/s");
   // Return gyro reading for x axis
-  return g.gyro.x;
+  return rotation;
 }
 
 float readRoty(){
-  // Get new sensor events with the readings
-  sensors_event_t a, g, temp;
-  mpu.getEvent(&a, &g, &temp);
+  xyzFloat accelerationG, gyroDps;
+  readIMU(accelerationG, gyroDps);
+  float rotation = gyroDps.y * DEG_TO_RAD_FACTOR;
 
   Serial.print("[DATA]: Rotation (y): ");
-  Serial.print(g.gyro.y);
+  Serial.print(rotation);
   Serial.println(" rad/s");
   // Return gyro reading for y axis
-  return g.gyro.y;
+  return rotation;
 }
 
 float readRotz(){
-  // Get new sensor events with the readings
-  sensors_event_t a, g, temp;
-  mpu.getEvent(&a, &g, &temp);
+  xyzFloat accelerationG, gyroDps;
+  readIMU(accelerationG, gyroDps);
+  float rotation = gyroDps.z * DEG_TO_RAD_FACTOR;
 
   Serial.print("[DATA]: Rotation (z): ");
-  Serial.print(g.gyro.z);
+  Serial.print(rotation);
   Serial.println(" rad/s");
   // Return gyro reading for z axis
-  return g.gyro.z;
+  return rotation;
 }
 
 float readAx(){
-  // Get new sensor events with the readings
-  sensors_event_t a, g, temp;
-  mpu.getEvent(&a, &g, &temp);
+  xyzFloat accelerationG, gyroDps;
+  readIMU(accelerationG, gyroDps);
+  float acceleration = accelerationG.x * STANDARD_GRAVITY_MPS2;
 
   Serial.print("[DATA]: Acceleration (x): ");
-  Serial.print(a.acceleration.x);
+  Serial.print(acceleration);
   Serial.println(" m/s2");
   // Return accel reading for x axis
-  return a.acceleration.x;
+  return acceleration;
 }
 
 float readAy(){
-  // Get new sensor events with the readings
-  sensors_event_t a, g, temp;
-  mpu.getEvent(&a, &g, &temp);
+  xyzFloat accelerationG, gyroDps;
+  readIMU(accelerationG, gyroDps);
+  float acceleration = accelerationG.y * STANDARD_GRAVITY_MPS2;
 
   Serial.print("[DATA]: Acceleration (y): ");
-  Serial.print(a.acceleration.y);
+  Serial.print(acceleration);
   Serial.println(" m/s2");
   // Return accel reading for y axis
-  return a.acceleration.y;
+  return acceleration;
 }
 
 float readAz(){
-  // Get new sensor events with the readings
-  sensors_event_t a, g, temp;
-  mpu.getEvent(&a, &g, &temp);
+  xyzFloat accelerationG, gyroDps;
+  readIMU(accelerationG, gyroDps);
+  float acceleration = accelerationG.z * STANDARD_GRAVITY_MPS2;
 
   Serial.print("[DATA]: Acceleration (z): ");
-  Serial.print(a.acceleration.z);
+  Serial.print(acceleration);
   Serial.println(" m/s2");
   // Return accel reading for z axis
-  return a.acceleration.z;
+  return acceleration;
 }
 
 float readPitch() {
@@ -253,9 +262,9 @@ float readYaw() {
 }
 
 void updateOrientation() {
-  // Get a new sensor event
-  sensors_event_t a, g, temp;
-  mpu.getEvent(&a, &g, &temp);
+  // Get a new sensor sample
+  xyzFloat accelerationG, gyroDps;
+  readIMU(accelerationG, gyroDps);
 
   // Calculate the time difference
   unsigned long currentTime = millis();
@@ -263,11 +272,11 @@ void updateOrientation() {
   lastOrientationUPdateTime = currentTime;
 
   // Calculate roll and pitch from accelerometer data
-  roll = atan2(a.acceleration.y, a.acceleration.z) * 180 / PI;
-  pitch = atan2(-a.acceleration.x, sqrt(a.acceleration.y * a.acceleration.y + a.acceleration.z * a.acceleration.z)) * 180 / PI;
+  roll = atan2(accelerationG.y, accelerationG.z) * 180 / PI;
+  pitch = atan2(-accelerationG.x, sqrt(accelerationG.y * accelerationG.y + accelerationG.z * accelerationG.z)) * 180 / PI;
 
-  // Integrate gyroscope data to estimate yaw
-  yaw += g.gyro.z * deltaTime;
+  // Integrate gyroscope data to estimate yaw in degrees
+  yaw += gyroDps.z * deltaTime;
 }
 
 // GPS Functions
@@ -345,9 +354,11 @@ void setup() {
   /******* End Comms Setup *******/
 
   /******* Begin Sensor Setup *******/
-  // Initialize BMP280 (temperature and pressure sensor)
-  if (!bmp.begin(0x76)) {
-    Serial.println("[ERROR]: Could not find a valid BMP280 sensor, check wiring");
+  Wire.begin();
+
+  // Initialize BME280 (temperature and pressure sensor)
+  if (!bme.begin(0x76)) {
+    Serial.println("[ERROR]: Could not find a valid BME280 sensor, check wiring");
   }
   // Initialize INA219 sensor (voltage and current sensor)
   if (!ina219.begin()) {
@@ -356,15 +367,17 @@ void setup() {
   /******* End Sensor Setup *******/
 
   /******* Begin Position and Orientation Setup *******/
-  // Initialize MPU6050 (Orientation sensor)
-  if(!mpu.begin()) Serial.println("[ERROR]: Could not find a valid MPU6050 sensor, check wiring");
-  // Set the MPU to measure up to 8 times gravity
-  mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
-  // Set the gyro range to 500 degrees
-  mpu.setGyroRange(MPU6050_RANGE_500_DEG);
-  // Set the digital low-pass filter bandwidth to 21 Hz
-  // for the accelerometer and gyro to reduce high-frequency noise
-  mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
+  // Initialize ICM20948 (orientation sensor)
+  if(!imu.init()) {
+    Serial.println("[ERROR]: Could not find a valid ICM20948 sensor, check wiring");
+  } else {
+    // Use the same ICM20948_WE configuration pattern used by ADS sketches.
+    imu.setAccRange(ICM20948_ACC_RANGE_2G);
+    imu.setAccDLPF(ICM20948_DLPF_6);
+    imu.setGyrRange(ICM20948_GYRO_RANGE_250);
+    imu.setGyrDLPF(ICM20948_DLPF_6);
+    imu.setTempDLPF(ICM20948_DLPF_6);
+  }
 
   // Initialize GPS
   GPS_Serial.begin(38400, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);

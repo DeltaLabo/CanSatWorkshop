@@ -73,7 +73,7 @@ system: "[System] Physical System" {
           class: pc
           direction: right
 
-          rfm95w: "[PC] RFM95W LoRa" { class: pc }
+          rfm96w: "[PC] RFM96W LoRa" { class: pc }
           xiao: "[PC] XIAO ESP32-S3" { class: pc }
           obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
         }
@@ -107,7 +107,7 @@ system: "[System] Physical System" {
     class: pc
     direction: right
 
-    ground_rfm95w: "[PC] RFM95W LoRa" { class: pc }
+    ground_rfm96w: "[PC] RFM96W LoRa" { class: pc }
     ground_xiao: "[PC] XIAO ESP32" { class: pc }
   }
 
@@ -134,17 +134,17 @@ system.cansat.standard_stack.pds_module -- system.cansat.backplane_pcb.pds_heade
 system.cansat.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.backplane_pcb.obcc_headers: "[PL] OBCC header\nmating" { class: pl }
 system.cansat.parachute_module.servo -- system.cansat.backplane_pcb.pdm_servo_connector: "[PL] Servo cable" { class: pl }
 
-system.cansat.standard_stack.obcc_module.obcc_pcb.rfm95w -- system.cansat.standard_stack.obcc_module.obcc_pcb: "[PL] RFM footprint" { class: pl }
+system.cansat.standard_stack.obcc_module.obcc_pcb.rfm96w -- system.cansat.standard_stack.obcc_module.obcc_pcb: "[PL] RFM footprint" { class: pl }
 system.cansat.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat.standard_stack.obcc_module.obcc_pcb: "[PL] XIAO footprint" { class: pl }
 system.cansat.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat.standard_stack.obcc_module.obcc_pcb: "[PL] Connector footprint" { class: pl }
-system.cansat.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat.standard_stack.obcc_module.obcc_pcb.rfm95w: "[PL] SPI + 3V3 traces" { class: pl }
+system.cansat.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat.standard_stack.obcc_module.obcc_pcb.rfm96w: "[PL] SPI + 3V3 traces" { class: pl }
 system.cansat.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C / UART / PWM\n+ power traces" { class: pl }
 
 system.cansat.parachute_module.servo -- system.cansat.parachute_module: "[PL] Servo fixture" { class: pl }
 
-system.ground_station_pcb.ground_rfm95w -- system.ground_station_pcb: "[PL] RFM footprint" { class: pl }
+system.ground_station_pcb.ground_rfm96w -- system.ground_station_pcb: "[PL] RFM footprint" { class: pl }
 system.ground_station_pcb.ground_xiao -- system.ground_station_pcb: "[PL] XIAO footprint" { class: pl }
-system.ground_station_pcb.ground_rfm95w -- system.ground_station_pcb.ground_xiao: "[PL] SPI + 5V traces" { class: pl }
+system.ground_station_pcb.ground_rfm96w -- system.ground_station_pcb.ground_xiao: "[PL] SPI + 5V traces" { class: pl }
 system.ground_station_pcb.ground_xiao -- system.pc_computer.usb_port: "[PL] USB-C cable" { class: pl }
 
 # Layout-only edges keep the physical bands stacked.

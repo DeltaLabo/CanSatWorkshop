@@ -148,7 +148,7 @@ system: "[System] OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing allo
           direction: down
           grid-columns: 1
           read_gps_uart: "[F] Read UBX-G7020\nUART payload" { class: func }
-          read_imu_i2c: "[F] Read ICM20948 / MPU\nI2C data" { class: func }
+          read_imu_i2c: "[F] Read ICM20948\nI2C data" { class: func }
           return_ads_getters: "[F] Return ADS typed\nvalues or error status" { class: func }
         }
 
@@ -182,7 +182,7 @@ system: "[System] OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing allo
           direction: down
           grid-columns: 1
           consume_measurement_queue: "[F] Consume measurement\nqueue without blocking" { class: func }
-          exercise_spi_radio: "[F] Exercise RFM95W\nSPI transaction" { class: func }
+          exercise_spi_radio: "[F] Exercise RFM96W\nSPI transaction" { class: func }
         }
 
         command_handler: "[LC] Command Handler" {
@@ -205,7 +205,7 @@ system: "[System] OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing allo
         }
       }
 
-      rfm95w: "[PC] RFM95W LoRa" {
+      rfm96w: "[PC] RFM96W LoRa" {
         class: pc
         cansat_lora: "[LC] LoRa transceiver" {
           class: lc
@@ -228,7 +228,7 @@ system: "[System] OBCC-V02-GATE-001 — v0.2 bus/protocol and getter timing allo
         }
       }
 
-      imu: "[PC] ICM20948 IMU\n(or legacy MPU6050)" {
+      imu: "[PC] ICM20948 IMU" {
         class: pc
         imu_sensing: "[LC] Kinematic sensing" {
           class: lc

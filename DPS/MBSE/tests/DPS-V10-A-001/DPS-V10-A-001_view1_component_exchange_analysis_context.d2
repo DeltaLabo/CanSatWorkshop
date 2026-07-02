@@ -57,7 +57,7 @@ system: "[System] DPS v1.0\nDPS-V10-A-001 PV2 component-exchange analysis\nIADT:
     class: pc
     direction: right
 
-    cansat_rfm: "[PC] RFM95W LoRa" {
+    cansat_rfm: "[PC] RFM96W LoRa" {
       class: pc
       direction: down
       cansat_lora: "[LC] LoRa Transceiver" { class: lc }
@@ -80,7 +80,7 @@ system: "[System] DPS v1.0\nDPS-V10-A-001 PV2 component-exchange analysis\nIADT:
       ground_forwarder: "[LC] LoRa Forwarder" { class: lc }
     }
 
-    ground_rfm: "[PC] RFM95W LoRa" {
+    ground_rfm: "[PC] RFM96W LoRa" {
       class: pc
       direction: down
       ground_lora: "[LC] LoRa Transceiver" { class: lc }
@@ -109,7 +109,7 @@ system: "[System] DPS v1.0\nDPS-V10-A-001 PV2 component-exchange analysis\nIADT:
     shape: page
   }
 
-  note_protocols: "[C] Protocol/data viewpoints: CE-01/02 SPI use RFM95W/SX1276-compatible SPI;\nCE-03 UART uses agreed serial framing; CE-04/05 Payload preserve typed payload,\ntimestamp and ordering; CE-06 Command carries only valid state commands" {
+  note_protocols: "[C] Protocol/data viewpoints: CE-01/02 SPI use RFM96W/SX1276-compatible SPI;\nCE-03 UART uses agreed serial framing; CE-04/05 Payload preserve typed payload,\ntimestamp and ordering; CE-06 Command carries only valid state commands" {
     class: note
     shape: page
   }

@@ -40,11 +40,11 @@ Rendered PNGs are generated beside the D2 sources.
 | PC-01 | CanSat | CanSat assembly present for the v1.0 DPS/CanSat interface. | Present, identifiable, no visible damage affecting DPS integration. | Photo + checklist. |
 | PC-02 | OBCC Module | OBCC module present inside CanSat. | Present and mechanically seated; screws interface available. | Photo + checklist. |
 | PC-03 | OBCC PCB | OBCC PCB present inside OBCC Module. | Correct PCB/revision; no visible damage/contamination. | Photo + article ID. |
-| PC-04 | CanSat RFM95W LoRa | RFM95W LoRa present on OBCC PCB. | Correct radio variant, soldered to modeled footprint, antenna readiness noted. | Photo + marking check. |
+| PC-04 | CanSat RFM96W LoRa | RFM96W LoRa present on OBCC PCB. | Correct radio variant, soldered to modeled footprint, antenna readiness noted. | Photo + marking check. |
 | PC-05 | CanSat XIAO ESP32-S3 | XIAO ESP32-S3 present on OBCC PCB. | Correct variant, soldered/installed to modeled footprint. | Photo + marking check. |
 | PC-06 | Backplane Connector | Backplane Connector present on CanSat OBCC PCB. | Present on CanSat OBCC PCB as modeled. | Photo + checklist. |
 | PC-07 | Ground Station PCB | Ground station PCB present. | Reuses OBCC PCB as modeled; no ground backplane connector soldered. | Photo + C02 check. |
-| PC-08 | Ground RFM95W LoRa | RFM95W LoRa present on ground-station PCB. | Correct radio variant, soldered to modeled footprint, antenna readiness noted. | Photo + marking check. |
+| PC-08 | Ground RFM96W LoRa | RFM96W LoRa present on ground-station PCB. | Correct radio variant, soldered to modeled footprint, antenna readiness noted. | Photo + marking check. |
 | PC-09 | Ground XIAO ESP32 | XIAO ESP32 present on ground-station PCB. | Correct variant, soldered/installed to modeled footprint. | Photo + marking check. |
 | PC-10 | PC | Ground-station PC present for USB connection and evidence record. | Identified as test/as-inspected PC if used. | Checklist. |
 | PC-11 | PC USB Port | USB port used for ground-station connection present. | Physically available and not visibly damaged. | Photo/checklist. |
@@ -57,11 +57,11 @@ Rendered PNGs are generated beside the D2 sources.
 | PL-02 | CanSat RFM Footprint | Radio-to-OBCC PCB footprint. | Footprint populated/soldered; no lifted pads/bridges. | Close-up photo. |
 | PL-03 | CanSat XIAO Footprint | XIAO-to-OBCC PCB footprint. | Footprint populated/soldered; no lifted pads/bridges. | Close-up photo. |
 | PL-04 | CanSat Backplane Footprint | Backplane connector footprint on OBCC PCB. | Footprint/link present for CanSat OBCC PCB. | Close-up photo. |
-| PL-05 | CanSat RFM95W ↔ XIAO SPI traces | SPI traces on OBCC PCB. | Continuity/resistance acceptable; no shorts found. | DMM readings. |
+| PL-05 | CanSat RFM96W ↔ XIAO SPI traces | SPI traces on OBCC PCB. | Continuity/resistance acceptable; no shorts found. | DMM readings. |
 | PL-06 | Ground RFM Footprint | Ground radio-to-PCB footprint. | Footprint populated/soldered; no lifted pads/bridges. | Close-up photo. |
 | PL-07 | Ground XIAO Footprint | Ground XIAO-to-PCB footprint. | Footprint populated/soldered; no lifted pads/bridges. | Close-up photo. |
-| PL-08 | Ground RFM95W ↔ XIAO SPI traces | SPI traces on ground-station PCB. | Continuity/resistance acceptable; no shorts found. | DMM readings. |
-| PL-09 | Ground RFM95W ↔ XIAO 5 V power traces | 5 V/GND power traces. | 5 V continuity and polarity pass; no 5 V/GND short. | DMM readings. |
+| PL-08 | Ground RFM96W ↔ XIAO SPI traces | SPI traces on ground-station PCB. | Continuity/resistance acceptable; no shorts found. | DMM readings. |
+| PL-09 | Ground RFM96W ↔ XIAO 5 V power traces | 5 V/GND power traces. | 5 V continuity and polarity pass; no 5 V/GND short. | DMM readings. |
 | PL-10 | Ground XIAO ↔ PC USB-C cable | USB-C cable/endpoint link. | Cable present; continuity/short check passes; endpoints fit without visible damage. | Cable tester/DMM + photo. |
 
 ## Constraint coverage disposition

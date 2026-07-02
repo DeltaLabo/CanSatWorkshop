@@ -73,7 +73,7 @@ test_clock: "[EA] Monotonic Test Clock" {
   provide_timebase: "[F] Provide monotonic\ntimebase for cooldown" { class: func }
 }
 
-command_rf_monitor: "[EA] Command RF Monitor\nRFM95W/SX1276 reference receiver" {
+command_rf_monitor: "[EA] Command RF Monitor\nRFM96W/SX1276 reference receiver" {
   class: ea
   direction: down
   grid-columns: 2
@@ -150,7 +150,7 @@ system: "[System] DPS v1.0 Physical System\nDPS-V10-T-002 functional allocation 
       }
     }
 
-    ground_rfm: "[PC] RFM95W LoRa" {
+    ground_rfm: "[PC] RFM96W LoRa" {
       class: pc
       direction: down
 

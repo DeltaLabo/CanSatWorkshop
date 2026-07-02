@@ -136,7 +136,7 @@ system: "[System] OBCC-V08-GATE-001 — workmanship gate functional allocation\n
         class: lc
         direction: down
         grid-columns: 1
-        identify_footprints: "[F] Identify XIAO,\nRFM95W, antenna,\nand connector footprints" { class: func }
+        identify_footprints: "[F] Identify XIAO,\nRFM96W, antenna,\nand connector footprints" { class: func }
         inspect_sensor_context: "[F] Verify sensor/power\ncontext interfaces for\nBME280, ICM20948,\nUBX-G7020, INA219" { class: func }
         tag_owned_context: "[F] Tag OBCC-owned\nand integration-context\nitems in evidence" { class: func }
       }
@@ -156,7 +156,7 @@ system: "[System] OBCC-V08-GATE-001 — workmanship gate functional allocation\n
         grid-columns: 1
         enumerate_i2c_devices: "[F] Enumerate I2C\nBME/IMU/INA endpoints\nwhere connected" { class: func }
         read_gps_uart: "[F] Read UBX-G7020\nUART presence or\ndisposition context" { class: func }
-        read_lora_spi_id: "[F] Read RFM95W\nSPI identity/status" { class: func }
+        read_lora_spi_id: "[F] Read RFM96W\nSPI identity/status" { class: func }
         drive_pwm_test_point: "[F] Exercise PWM test\npoint without unsafe\ndeployment" { class: func }
       }
 

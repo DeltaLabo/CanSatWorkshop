@@ -3,6 +3,10 @@
 #include <string.h>
 #include <TinyGPS++.h>
 #include <TinyGPSPlus.h>
+#include "Adafruit_Sensor.h"
+#include "Adafruit_INA219.h"
+#include "Adafruit_BME280.h"
+#include <ICM20948_WE.h>
 
 #include "settings.h"
 #include "pins.h"
@@ -23,11 +27,12 @@ byte payload[LORA_PAYLOAD_SIZE];
 
 /******* Begin Sensor Global Variables *******/
 Adafruit_INA219 ina219;
-Adafruit_BMP280 bmp;
+Adafruit_BME280 bme;
 /******* End Sensor Global Variables *******/
 
 /******* Begin Position and Orientation Global Variables *******/
-Adafruit_MPU6050 mpu;
+#define ICM20948_ADDR 0x68
+ICM20948_WE imu = ICM20948_WE(ICM20948_ADDR);
 TinyGPS gps;
 HardwareSerial GPS_Serial(1);
 /******* End Position and Orientation Global Variables *******/

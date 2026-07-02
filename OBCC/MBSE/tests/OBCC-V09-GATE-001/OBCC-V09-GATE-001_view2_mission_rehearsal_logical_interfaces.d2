@@ -84,7 +84,7 @@ system: "[System] OBCC mission-window rehearsal logical interface view\nRefs: IV
         class: pc
         direction: right
 
-        rfm95w: "[PC] RFM95W LoRa" {
+        rfm96w: "[PC] RFM96W LoRa" {
           class: pc
           cansat_lora: "[LC] LoRa Transceiver" { class: lc }
         }
@@ -121,7 +121,7 @@ system: "[System] OBCC mission-window rehearsal logical interface view\nRefs: IV
     class: pc
     direction: right
 
-    ground_rfm95w: "[PC] RFM95W LoRa" {
+    ground_rfm96w: "[PC] RFM96W LoRa" {
       class: pc
       ground_lora: "[LC] LoRa Transceiver" { class: lc }
     }
@@ -183,11 +183,11 @@ system.cansat.obcc_module.obcc_pcb.xiao.command_handler -> system.cansat.obcc_mo
 system.cansat.obcc_module.obcc_pcb.xiao.obcc_supervisor -> system.cansat.obcc_module.obcc_pcb.xiao.pdm_processing: "[CE] Mode gate" { class: ce }
 system.cansat.obcc_module.obcc_pcb.xiao.free_rtos -> system.cansat.obcc_module.obcc_pcb.xiao.telemetry_collector: "[CE] Timer / task release" { class: ce }
 
-system.cansat.obcc_module.obcc_pcb.xiao.telemetry_encoder -> system.cansat.obcc_module.obcc_pcb.rfm95w.cansat_lora: "[CE] SPI" { class: ce }
-system.cansat.obcc_module.obcc_pcb.rfm95w.cansat_lora -> system.cansat.obcc_module.obcc_pcb.xiao.command_handler: "[CE] SPI" { class: ce }
-system.cansat.obcc_module.obcc_pcb.rfm95w.cansat_lora -> system.ground_station_pcb.ground_rfm95w.ground_lora: "[CE] LoRa" { class: ce }
-system.ground_station_pcb.ground_rfm95w.ground_lora -> system.ground_station_pcb.ground_xiao.lora_forwarder: "[CE] SPI" { class: ce }
-system.ground_station_pcb.ground_xiao.lora_forwarder -> system.ground_station_pcb.ground_rfm95w.ground_lora: "[CE] SPI command" { class: ce }
+system.cansat.obcc_module.obcc_pcb.xiao.telemetry_encoder -> system.cansat.obcc_module.obcc_pcb.rfm96w.cansat_lora: "[CE] SPI" { class: ce }
+system.cansat.obcc_module.obcc_pcb.rfm96w.cansat_lora -> system.cansat.obcc_module.obcc_pcb.xiao.command_handler: "[CE] SPI" { class: ce }
+system.cansat.obcc_module.obcc_pcb.rfm96w.cansat_lora -> system.ground_station_pcb.ground_rfm96w.ground_lora: "[CE] LoRa" { class: ce }
+system.ground_station_pcb.ground_rfm96w.ground_lora -> system.ground_station_pcb.ground_xiao.lora_forwarder: "[CE] SPI" { class: ce }
+system.ground_station_pcb.ground_xiao.lora_forwarder -> system.ground_station_pcb.ground_rfm96w.ground_lora: "[CE] SPI command" { class: ce }
 system.ground_station_pcb.ground_xiao.lora_forwarder -> system.ground_pc.decoder: "[CE] UART payload" { class: ce }
 system.ground_pc.decoder -> system.ground_pc.csv_writer: "[CE] Payload" { class: ce }
 system.ground_pc.decoder -> system.ground_pc.dashboard: "[CE] Payload" { class: ce }

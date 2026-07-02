@@ -63,7 +63,7 @@ system: "[System] OBCC-V06-GATE-001 — v0.6 runtime fault-handling physical tes
       direction: right
       grid-columns: 3
       xiao: "[PC] XIAO ESP32-S3" { class: pc }
-      rfm95w: "[PC] RFM95W LoRa" { class: pc }
+      rfm96w: "[PC] RFM96W LoRa" { class: pc }
       obcc_backplane_connector: "[PC] OBCC backplane /\ntest header" { class: pc }
     }
 
@@ -87,7 +87,7 @@ system: "[System] OBCC-V06-GATE-001 — v0.6 runtime fault-handling physical tes
       safe_error_probe: "[PC] Safe/error-state\nprobe" { class: pc }
     }
 
-    note_presence: "[C] Inspection pass: controller, RFM95W,\nbus-fault ports, trace hooks, RF monitor path,\nmode/emergency/safe-error probes, bench power/reset,\nand environmental thermometer are present and identified." {
+    note_presence: "[C] Inspection pass: controller, RFM96W,\nbus-fault ports, trace hooks, RF monitor path,\nmode/emergency/safe-error probes, bench power/reset,\nand environmental thermometer are present and identified." {
       class: note
       shape: page
     }
@@ -109,16 +109,16 @@ test_bench -- system.uut.bus_fault_ports.uart_fault_port: "[PL] UART" { class: p
 test_bench -- system.uut.bus_fault_ports.spi_fault_port: "[PL] SPI/RF" { class: pl }
 test_bench -- system.uut.bus_fault_ports.queue_trace_port: "[PL] Queue/trace" { class: pl }
 test_bench -- system.uut.obcc_controller.obcc_backplane_connector: "[PL] Trace" { class: pl }
-test_bench -- system.uut.obcc_controller.rfm95w: "[PL] RF" { class: pl }
+test_bench -- system.uut.obcc_controller.rfm96w: "[PL] RF" { class: pl }
 test_bench -- system.uut.obcc_controller.xiao: "[PL] Power/reset" { class: pl }
 test_bench -- system.uut.policy_observers: "[PL] Policy probes" { class: pl }
 ambient_thermometer -- system.uut: "[PL] Ambient" { class: pl }
 
-system.uut.obcc_controller.xiao -- system.uut.obcc_controller.rfm95w: "[PL] SPI + power" { class: pl }
+system.uut.obcc_controller.xiao -- system.uut.obcc_controller.rfm96w: "[PL] SPI + power" { class: pl }
 system.uut.obcc_controller.xiao -- system.uut.obcc_controller.obcc_backplane_connector: "[PL] I2C/UART/GPIO" { class: pl }
 system.uut.obcc_controller.obcc_backplane_connector -- system.uut.bus_fault_ports: "[PL] Fault harness" { class: pl }
 system.uut.obcc_controller.obcc_backplane_connector -- system.uut.policy_observers: "[PL] Probe harness" { class: pl }
-system.uut.policy_observers.health_telem_port -- system.uut.obcc_controller.rfm95w: "[PL] Telemetry/RF" { class: pl }
+system.uut.policy_observers.health_telem_port -- system.uut.obcc_controller.rfm96w: "[PL] Telemetry/RF" { class: pl }
 system.uut.policy_observers.mode_gate_probe -- system.uut.policy_observers.emergency_request_probe: "[PL] Gate/request" { class: pl }
 
 system.uut.note_presence -> system.uut.obcc_controller { class: cstr }

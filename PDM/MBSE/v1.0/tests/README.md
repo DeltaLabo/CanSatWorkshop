@@ -29,7 +29,7 @@ No new external research was performed. References are the existing corpus in `t
 | PDM-R5 | CanSat Mission Guide environmental/drop-test artifact |
 | PDM-R6–R7 | ECSS verification and testing standards artifacts |
 | PDM-R8 | NXP UM10204 I2C artifact |
-| PDM-R9–R10 | ICM-20948 datasheet/product artifacts |
+| PDM-R9–R10 | ICM20948 datasheet/product artifacts |
 | PDM-R11 | Servo PWM timing artifact |
 | PDM-R12–R13 | Binomial confidence / reliability-demonstration artifacts |
 | PDM-R14–R16 | MIL-STD-810H environmental, vibration, and shock artifacts |

@@ -1,13 +1,16 @@
-#include <Adafruit_MPU6050.h>
-#include <Adafruit_Sensor.h>
+#include <ICM20948_WE.h>
 #include <Wire.h>
 #include <math.h>
 
-Adafruit_MPU6050 mpu;
+#define ICM20948_ADDR 0x68
+#define STANDARD_GRAVITY_MPS2 9.80665f
+#define DEG_TO_RAD_FACTOR (PI / 180.0f)
+
+ICM20948_WE imu = ICM20948_WE(ICM20948_ADDR);
 
 // Variables de orientación
 float pitch = 0.0, roll = 0.0, yaw = 0.0;
-float gyroYawBias = 0.0; // Sesgo del giroscopio en Yaw
+float gyroYawBias = 0.0; // Sesgo del giroscopio en Yaw (deg/s)
 
 // Parámetro del Filtro Complementario (ajustable)
 const float alpha = 0.98;
@@ -18,9 +21,17 @@ float deltaTime;
 
 // Estructura para almacenar datos del sensor
 struct SensorData {
-    float ax, ay, az;
-    float gx, gy, gz;
+    float ax, ay, az; // m/s^2
+    float gx, gy, gz; // deg/s
 };
+
+void applyIMUConfig() {
+    imu.setAccRange(ICM20948_ACC_RANGE_2G);
+    imu.setAccDLPF(ICM20948_DLPF_6);
+    imu.setGyrRange(ICM20948_GYRO_RANGE_250);
+    imu.setGyrDLPF(ICM20948_DLPF_6);
+    imu.setTempDLPF(ICM20948_DLPF_6);
+}
 
 // ------------------------- SETUP -------------------------
 void setup() {
@@ -28,14 +39,12 @@ void setup() {
     Wire.begin();
     Wire.setClock(400000);
     
-    if (!mpu.begin()) {
-        Serial.println("Error: No se pudo inicializar el MPU6050");
+    if (!imu.init()) {
+        Serial.println("Error: No se pudo inicializar el ICM20948");
         while (1);
     }
 
-    mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
-    mpu.setGyroRange(MPU6050_RANGE_500_DEG);
-    mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
+    applyIMUConfig();
     
     calibrateGyro();
     lastUpdateTime = millis();
@@ -56,9 +65,10 @@ void calibrateGyro() {
     int numSamples = 500;
 
     for (int i = 0; i < numSamples; i++) {
-        sensors_event_t a, g, temp;
-        mpu.getEvent(&a, &g, &temp);
-        sum += g.gyro.z; // Sesgo en Z (Yaw)
+        xyzFloat gyroDps;
+        imu.readSensor();
+        imu.getGyrValues(&gyroDps);
+        sum += gyroDps.z; // Sesgo en Z (Yaw)
         delay(3);
     }
     
@@ -69,20 +79,24 @@ void calibrateGyro() {
 
 // ------------------------- LECTURA DEL SENSOR -------------------------
 SensorData readSensorData() {
-    sensors_event_t a, g, temp;
+    xyzFloat accelerationG, gyroDps;
 
-    if (!mpu.getEvent(&a, &g, &temp)) {
-        Serial.println("⚠️ ERROR: No se pudo leer el sensor.");
-        delay(100);
-        return {0, 0, 0, 0, 0, 0};
-    }
+    imu.readSensor();
+    imu.getGValues(&accelerationG);
+    imu.getGyrValues(&gyroDps);
 
     uint32_t currentTime = millis();
     deltaTime = (currentTime - lastUpdateTime) / 1000.0;
     lastUpdateTime = currentTime;
 
-    return { a.acceleration.x, a.acceleration.y, a.acceleration.z, 
-             g.gyro.x, g.gyro.y, g.gyro.z - gyroYawBias };
+    return {
+        accelerationG.x * STANDARD_GRAVITY_MPS2,
+        accelerationG.y * STANDARD_GRAVITY_MPS2,
+        accelerationG.z * STANDARD_GRAVITY_MPS2,
+        gyroDps.x,
+        gyroDps.y,
+        gyroDps.z - gyroYawBias
+    };
 }
 
 // ------------------------- CÁLCULO DE ORIENTACIÓN -------------------------
@@ -91,7 +105,7 @@ void computeOrientation(SensorData data) {
     float pitchAcc = atan2(-data.ax, sqrt(data.ay * data.ay + data.az * data.az)) * 180 / PI;
     float rollAcc = atan2(data.ay, data.az) * 180 / PI;
 
-    // 2. Integración del giroscopio para estimar ángulos
+    // 2. Integración del giroscopio para estimar ángulos (deg/s -> deg)
     float pitchGyro = pitch + data.gy * deltaTime;
     float rollGyro = roll + data.gx * deltaTime;
 

@@ -71,7 +71,7 @@ system: "[System] OBCC-V01-GATE-001 — Breadboard startup-health logical interf
       telemetry_status: "[LC] Telemetry / status\nindicator" { class: lc }
     }
 
-    rfm95w: "[PC] RFM95W LoRa" {
+    rfm96w: "[PC] RFM96W LoRa" {
       class: pc
       lora_transceiver: "[LC] LoRa Transceiver" { class: lc }
     }
@@ -86,7 +86,7 @@ system: "[System] OBCC-V01-GATE-001 — Breadboard startup-health logical interf
       gps_sensing: "[LC] GPS sensing" { class: lc }
     }
 
-    imu: "[PC] ICM20948 or legacy\nMPU6050 IMU" {
+    imu: "[PC] ICM20948 IMU" {
       class: pc
       imu_sensing: "[LC] Kinematic sensing" { class: lc }
     }
@@ -107,7 +107,7 @@ system: "[System] OBCC-V01-GATE-001 — Breadboard startup-health logical interf
     shape: page
   }
 
-  note_fault_policy: "[C] Critical startup faults:\nRFM95W LoRa, BME280, Servo.\nMissing critical blocks operational\nreadiness; missing non-critical GPS,\nIMU, or INA219 allows degraded operation." {
+  note_fault_policy: "[C] Critical startup faults:\nRFM96W LoRa, BME280, Servo.\nMissing critical blocks operational\nreadiness; missing non-critical GPS,\nIMU, or INA219 allows degraded operation." {
     class: note
     shape: page
   }
@@ -124,11 +124,11 @@ system.breadboard.xiao.diagnostic_interface -> serial_monitor: "[CE] USB CDC ser
 system.breadboard.xiao.health_monitor -> system.breadboard.xiao.diagnostic_interface: "[CE] Health/status log" { class: ce }
 system.breadboard.xiao.health_monitor -> system.breadboard.xiao.obcc_supervisor: "[CE] Startup health state" { class: ce }
 system.breadboard.xiao.obcc_supervisor -> system.breadboard.xiao.telemetry_status: "[CE] Operational readiness /\ndegraded state" { class: ce }
-system.breadboard.xiao.telemetry_status -> system.breadboard.rfm95w.lora_transceiver: "[CE] SPI status frame" { class: ce }
-system.breadboard.rfm95w.lora_transceiver -> ground_monitor: "[CE] LoRa health/status" { class: ce }
+system.breadboard.xiao.telemetry_status -> system.breadboard.rfm96w.lora_transceiver: "[CE] SPI status frame" { class: ce }
+system.breadboard.rfm96w.lora_transceiver -> ground_monitor: "[CE] LoRa health/status" { class: ce }
 ambient_thermometer -> system.breadboard.xiao.test_harness: "[CE] Ambient readout\nentered in test log" { class: ce }
 
-system.breadboard.xiao.health_monitor -> system.breadboard.rfm95w.lora_transceiver: "[CE] SPI init status" { class: ce }
+system.breadboard.xiao.health_monitor -> system.breadboard.rfm96w.lora_transceiver: "[CE] SPI init status" { class: ce }
 system.breadboard.xiao.health_monitor -> system.breadboard.bme280.ams_sensing: "[CE] I2C init status" { class: ce }
 system.breadboard.xiao.health_monitor -> system.breadboard.servo.trigger: "[CE] PWM init status" { class: ce }
 system.breadboard.xiao.health_monitor -> system.breadboard.gps.gps_sensing: "[CE] UART init status" { class: ce }

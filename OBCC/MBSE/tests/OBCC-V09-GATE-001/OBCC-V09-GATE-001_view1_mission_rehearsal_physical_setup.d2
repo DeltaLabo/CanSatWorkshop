@@ -72,7 +72,7 @@ system: "[System] OBCC mission-window rehearsal physical setup\nRefs: IVV, PM&SE
           class: pc
           direction: right
 
-          rfm95w: "[PC] RFM95W LoRa" { class: pc }
+          rfm96w: "[PC] RFM96W LoRa" { class: pc }
           xiao: "[PC] XIAO ESP32-S3" { class: pc }
           obcc_backplane_connector: "[PC] Backplane Connector" { class: pc }
         }
@@ -106,7 +106,7 @@ system: "[System] OBCC mission-window rehearsal physical setup\nRefs: IVV, PM&SE
     class: pc
     direction: right
 
-    ground_rfm95w: "[PC] RFM95W LoRa" { class: pc }
+    ground_rfm96w: "[PC] RFM96W LoRa" { class: pc }
     ground_xiao: "[PC] XIAO ESP32" { class: pc }
   }
 
@@ -145,16 +145,16 @@ system.cansat_under_test.standard_stack.ams_module -- system.cansat_under_test.b
 system.cansat_under_test.standard_stack.pds_module -- system.cansat_under_test.backplane_pcb.pds_headers: "[PL] PDS header\nmating" { class: pl }
 system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector -- system.cansat_under_test.backplane_pcb.obcc_headers: "[PL] OBCC header\nmating" { class: pl }
 system.cansat_under_test.parachute_module.servo -- system.cansat_under_test.backplane_pcb.pdm_servo_connector: "[PL] Servo cable" { class: pl }
-system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.rfm95w: "[PL] SPI + 3V3 traces" { class: pl }
+system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.rfm96w: "[PL] SPI + 3V3 traces" { class: pl }
 system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.xiao -- system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] I2C / UART / PWM\n+ power traces" { class: pl }
 system.cansat_under_test.parachute_module.servo -- system.cansat_under_test.parachute_module: "[PL] Servo fixture" { class: pl }
 
-system.ground_station_pcb.ground_rfm95w -- system.ground_station_pcb.ground_xiao: "[PL] SPI + 5V traces" { class: pl }
+system.ground_station_pcb.ground_rfm96w -- system.ground_station_pcb.ground_xiao: "[PL] SPI + 5V traces" { class: pl }
 system.ground_station_pcb.ground_xiao -- system.ground_pc.usb_port: "[PL] USB-C evidence\nand command cable" { class: pl }
 system.ground_pc.usb_port -- system.evidence_workstation.evidence_usb: "[PL] Evidence export\nUSB/LAN cable" { class: pl }
 
 bench_power -- system.cansat_under_test.standard_stack.obcc_module.obcc_pcb.obcc_backplane_connector: "[PL] Current-limited\nservice power/probe harness" { class: pl }
-rf_monitor -- system.ground_station_pcb.ground_rfm95w: "[PL] RF sniffer antenna\nplacement / optional coax" { class: pl }
+rf_monitor -- system.ground_station_pcb.ground_rfm96w: "[PL] RF sniffer antenna\nplacement / optional coax" { class: pl }
 ambient_station -- system.evidence_workstation.evidence_usb: "[PL] Weather log\nUSB/LAN cable" { class: pl }
 deployment_fixture -- system.cansat_under_test.parachute_module: "[PL] Mechanical restraint\nand travel marker" { class: pl }
 evidence_archive -- system.evidence_workstation.storage: "[PL] Controlled evidence\narchive export" { class: pl }

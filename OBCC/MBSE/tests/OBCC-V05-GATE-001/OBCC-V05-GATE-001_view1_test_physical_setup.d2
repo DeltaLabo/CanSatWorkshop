@@ -64,7 +64,7 @@ system: "[System] OBCC-V05-GATE-001 — v0.5 deployment gate physical test setup
       direction: right
       grid-columns: 3
       xiao: "[PC] XIAO ESP32-S3" { class: pc }
-      rfm95w: "[PC] RFM95W LoRa" { class: pc }
+      rfm96w: "[PC] RFM96W LoRa" { class: pc }
       obcc_backplane_connector: "[PC] OBCC backplane /\ntest header" { class: pc }
     }
 
@@ -104,12 +104,12 @@ system: "[System] OBCC-V05-GATE-001 — v0.5 deployment gate physical test setup
 
 test_bench -- system.uut.obcc_controller.xiao: "[PL] USB/power/reset" { class: pl }
 test_bench -- system.uut.ads_interface_harness: "[PL] Stimulus harness" { class: pl }
-test_bench -- system.uut.obcc_controller.rfm95w: "[PL] RF/trace capture" { class: pl }
+test_bench -- system.uut.obcc_controller.rfm96w: "[PL] RF/trace capture" { class: pl }
 test_bench -- system.uut.pdm_actuation_path: "[PL] Probe harness" { class: pl }
 test_bench -- system.uut.pdm_actuation_path.safe_servo: "[PL] Capture mount" { class: pl }
 ambient_thermometer -- system.uut: "[PL] Bench air observation" { class: pl }
 
-system.uut.obcc_controller.xiao -- system.uut.obcc_controller.rfm95w: "[PL] SPI + power" { class: pl }
+system.uut.obcc_controller.xiao -- system.uut.obcc_controller.rfm96w: "[PL] SPI + power" { class: pl }
 system.uut.obcc_controller.xiao -- system.uut.obcc_controller.obcc_backplane_connector: "[PL] GPIO/PWM/backplane" { class: pl }
 system.uut.obcc_controller.obcc_backplane_connector -- system.uut.ads_interface_harness: "[PL] ADS + emergency wiring" { class: pl }
 system.uut.obcc_controller.obcc_backplane_connector -- system.uut.pdm_actuation_path.pwm_driver_test_point: "[PL] Mode-gated PWM" { class: pl }

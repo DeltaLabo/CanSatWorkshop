@@ -67,13 +67,13 @@ system: "[System] OBCC-V04-GATE-001 — v0.4 wireless command/state physical set
       grid-columns: 3
 
       xiao: "[PC] XIAO ESP32-S3" { class: pc }
-      rfm95w: "[PC] RFM95W LoRa" { class: pc }
+      rfm96w: "[PC] RFM96W LoRa" { class: pc }
       usb_port: "[PC] USB-C port\nfor flashing only" { class: pc }
       deployment_test_point: "[PC] Deployment output\ntest point / safe load" { class: pc }
       status_indicator: "[PC] State/status\ntelemetry indicator" { class: pc }
     }
 
-    note_presence: "[C] Inspection pass:\nRFM95W, XIAO, antenna path,\nstate/status observation path, and\nsafe deployment-output monitor are\npresent and identified." {
+    note_presence: "[C] Inspection pass:\nRFM96W, XIAO, antenna path,\nstate/status observation path, and\nsafe deployment-output monitor are\npresent and identified." {
       class: note
       shape: page
     }
@@ -90,14 +90,14 @@ system: "[System] OBCC-V04-GATE-001 — v0.4 wireless command/state physical set
   }
 }
 
-command_station -- system.uut.obcc_pcb.rfm95w: "[PL] RF command uplink\nLoRa separation" { class: pl }
-system.uut.obcc_pcb.rfm95w -- telemetry_observer: "[PL] RF telemetry downlink\nLoRa separation" { class: pl }
-system.uut.obcc_pcb.rfm95w -- rf_link_monitor: "[PL] Monitor antenna\nRF observation" { class: pl }
+command_station -- system.uut.obcc_pcb.rfm96w: "[PL] RF command uplink\nLoRa separation" { class: pl }
+system.uut.obcc_pcb.rfm96w -- telemetry_observer: "[PL] RF telemetry downlink\nLoRa separation" { class: pl }
+system.uut.obcc_pcb.rfm96w -- rf_link_monitor: "[PL] Monitor antenna\nRF observation" { class: pl }
 bench_pc -- system.uut.obcc_pcb.usb_port: "[PL] USB-C flash/setup\nnot flight command" { class: pl }
 deployment_monitor -- system.uut.obcc_pcb.deployment_test_point: "[PL] Logic probe /\nsafe load" { class: pl }
 ambient_thermometer -- system.uut: "[PL] Bench ambient\nobservation" { class: pl }
 
-system.uut.obcc_pcb.xiao -- system.uut.obcc_pcb.rfm95w: "[PL] SPI + power\nradio link" { class: pl }
+system.uut.obcc_pcb.xiao -- system.uut.obcc_pcb.rfm96w: "[PL] SPI + power\nradio link" { class: pl }
 system.uut.obcc_pcb.xiao -- system.uut.obcc_pcb.usb_port: "[PL] USB pads" { class: pl }
 system.uut.obcc_pcb.xiao -- system.uut.obcc_pcb.deployment_test_point: "[PL] GPIO/PWM path\nmonitored only" { class: pl }
 system.uut.obcc_pcb.xiao -- system.uut.obcc_pcb.status_indicator: "[PL] Internal status\ntelemetry path" { class: pl }

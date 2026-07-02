@@ -53,14 +53,14 @@ These are the starting criteria subagents should apply unless they discover a st
 
 | Issue | Delegated work | Main files / outputs | Dependencies / status |
 |---|---|---|---|
-| `ISSUE-ADS-001_criteria_candidate_register.md` | Create the central ADS blocker closure record with closure decisions, candidate test list, and existing-test update list. | `PM&SE/ADS_Blocker_Closure_Record_2026-07-02.md`. | Completed by commit `6c36860`; later issues may update it for shared ADS/AMS freshness. |
+| `ISSUE-ADS-001_criteria_candidate_register.md` | Create the central ADS blocker closure record with closure decisions, candidate test list, and existing-test update list. | Folded into `PM&SE/CON-003_Candidates_and_Definition_Blockers.md` §2.2.1. | Completed by commit `6c36860`; later folded into the CON-003 register for shared ADS/AMS freshness and final ADS closure details. |
 | `ISSUE-ADS-002_serial0_schema_parser.md` | Resolve `ADS-BLK-006` by creating local Serial0 schema/parser/campaign baseline and referencing them from ADS serial test docs. | `ADS/MBSE/tests/schemas/`, `ADS/MBSE/tests/tools/`, `ADS-IVV-FC-SERIAL/README.md`. | Completed by commit `936e478`. |
-| `ISSUE-ADSAMS-003_shared_sensor_obcc_freshness_contract.md` | Create the one shared ADS/AMS sensor-to-OBCC freshness contract and reusable ESP32/FreeRTOS-compatible status/type reference. | `PM&SE/contracts/`, closure record updates. | Next; required before ADS/AMS freshness test alignment. |
+| `ISSUE-ADSAMS-003_shared_sensor_obcc_freshness_contract.md` | Create the one shared ADS/AMS sensor-to-OBCC freshness contract and reusable ESP32/FreeRTOS-compatible status/type reference. | `PM&SE/contracts/`, CON-003 folded closure updates. | Completed; required before ADS/AMS freshness test alignment. |
 | `ISSUE-ADS-004_accuracy_candidate_tests.md` | Resolve candidate/criteria work for `ADS-BLK-002`, `ADS-BLK-003`, and accuracy-method portions of `ADS-BLK-010`. | ADS README/test index plus candidate README files or clearly listed future modeled-definition updates. | After issue 001; avoid editing files already touched by freshness issues except with care. |
 | `ISSUE-ADS-005_timing_timeout_noblock_updates.md` | Apply ADS text updates for `ADS-BLK-001`, `ADS-BLK-004`, `ADS-BLK-005`, `ADS-BLK-008`, and `ADS-BLK-009`, using the shared freshness contract for v1.0 freshness/status. | `ADS-IVV-C-RATE-5HZ`, `ADS-IVV-FC-MISSION-WINDOW`, `ADS-IVV-C-I2C-5MS`, `ADS-IVV-C-NOBLOCK`, ADS test index as needed. | After issues 003/004 if editing shared test index. |
 | `ISSUE-AMS-007_data_freshness_alignment.md` | Add or extend AMS v1.0 data-freshness verification so AMS uses the same shared sensor-to-OBCC contract. | `AMS/MBSE/tests/AMS-V10-DATA-FRESHNESS/` or AMS API/FC READMEs/test index. | After issue 003; can run before final PM&SE integration. |
 | `ISSUE-ADS-008_ads_shared_freshness_alignment.md` | Ensure ADS OBCC-delivery/getter/rate tests explicitly reference the shared contract rather than an ADS-only freshness rule. | ADS OBCC-delivery/getter/rate READMEs and optional ADS local contract supplement. | After issue 003; coordinate with issue 005 if both edit the same files. |
-| `ISSUE-ADS-006_pmse_integration_validation_cleanup.md` | Integrate all outputs, update PM&SE blocker/assessment records including AMS/SYS freshness alignment, validate consistency, and remove temporary issue files. | `PM&SE/CON-003_Candidates_and_Definition_Blockers.md`, `PM&SE/MBSE_Test_Plan_Assessment.md`, closure record final status, deletion of `PM&SE/ads_blocker_resolution_issues/`. | Last. |
+| `ISSUE-ADS-006_pmse_integration_validation_cleanup.md` | Integrate all outputs, update PM&SE blocker/assessment records including AMS/SYS freshness alignment, validate consistency, and remove temporary issue files. | `PM&SE/CON-003_Candidates_and_Definition_Blockers.md`, `PM&SE/MBSE_Test_Plan_Assessment.md`, CON-003 folded ADS final status, deletion of `PM&SE/ads_blocker_resolution_issues/`. | Completed last. |
 
 ## Coordination rules for subagents
 
@@ -75,7 +75,7 @@ These are the starting criteria subagents should apply unless they discover a st
 
 ## Final acceptance criteria
 
-- `PM&SE/ADS_Blocker_Closure_Record_2026-07-02.md` exists and lists every `ADS-BLK-001` through `ADS-BLK-010` with selected decision, candidate test impact, existing-test updates, and execution prerequisites.
+- `PM&SE/CON-003_Candidates_and_Definition_Blockers.md` §2.2/§2.2.1 lists every `ADS-BLK-001` through `ADS-BLK-010` with selected decision, candidate test impact, existing-test updates, and execution prerequisites.
 - `PM&SE/contracts/` contains one shared ADS/AMS sensor-to-OBCC freshness contract and reusable status/type reference defining 5 Hz request/response, 400 ms max age at 2 s telemetry, the required status enum, and no-old-data-as-valid behavior.
 - ADS tests include or reference `ADS-V10-DATA-FRESHNESS` behavior via ADS OBCC-delivery/getter/rate tests using the shared contract.
 - AMS tests include `AMS-V10-DATA-FRESHNESS` or an explicit extension of AMS API/FC tests using the shared contract.
@@ -98,5 +98,5 @@ Completed at definition-planning level on 2026-07-02.
 - ADS acceleration/heading candidate definitions completed in commit `c30b193`.
 - ADS timing, mission-window, v0.2 I2C, and no-blocking criteria completed in commits `243fbe6` and `ec1d496`.
 - PM&SE ADS/AMS blocker-record integration completed in commits including `08b414c` and `a1c70ba`.
-- Temporary ADS/AMS issue files were removed; this plan and the closure records remain as high-level documentation.
-- No execution pass/fail credit is claimed. Remaining follow-up is D2/model update and test execution, as captured in `PM&SE/ADS_Blocker_Closure_Record_2026-07-02.md`, `PM&SE/CON-003_Candidates_and_Definition_Blockers.md`, and the subsystem test READMEs.
+- Temporary ADS/AMS issue files were removed; this plan and the folded CON-003 closure sections remain as high-level documentation.
+- No execution pass/fail credit is claimed. Remaining follow-up is D2/model update and test execution, as captured in `PM&SE/CON-003_Candidates_and_Definition_Blockers.md` and the subsystem test READMEs.

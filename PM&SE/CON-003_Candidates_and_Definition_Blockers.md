@@ -97,6 +97,98 @@ These are proposed in `PM&SE/MBSE_Test_Plan_Assessment.md` §4 and are still can
 | ADS-BLK-009 | Closed at definition level — no-blocking source/instrumentation, heartbeat, and overhead criteria are selected. | `ADS-IVV-C-NOBLOCK` execution remains pending. | Reports need firmware source/build map/symbols or equivalent instrumentation, 250 ms nominal heartbeat, 400 ms max progress/freshness gap, measured overhead `<=5%` of 200 ms or `<=5 ms`, and equipment/tool IDs. |
 | ADS-BLK-010 | Closed at definition level — accuracy truth/reference methods and statistics are selected. | Accuracy execution remains pending with actual equipment IDs/calibration. | GPS strict pass uses GNSS simulator or surveyed/open-sky reference; phones are auxiliary/limited unless uncertainty-controlled. Gyro strict pass may use motor plus calibrated tachometer (`RPM × 6`, `n=59`, guard-banded `<30 deg/s`). |
 
+#### 2.2.1 ADS §2.2 closure detail folded into this register
+
+This subsection replaces the former standalone ADS blocker closure record. It is a definition-planning closure record only: no tests are executed here, no execution report is created, and no pass/fail credit is claimed. Later ADS, AMS, PM&SE, and model artifacts must still be updated/executed where the follow-up below says so.
+
+**Folded execution status:** the ADS §2.2 blocker-resolution orchestration completed at definition-planning level on 2026-07-02. Temporary ADS issue files were removed after validation. The shared ADS/AMS freshness contract, Serial0 schema/parser baseline, ADS freshness alignment, acceleration/heading candidates, timing/no-blocking updates, and PM&SE register/assessment updates are now represented in controlled repository files and commit history. Residual follow-up remains explicitly D2/model/update/execution work, not an open ADS definition decision.
+
+**ADS shared sensor-to-OBCC freshness rule:** controlled by [`PM&SE/contracts/sensor_obcc_freshness_contract.md`](contracts/sensor_obcc_freshness_contract.md).
+
+- ADS v1.0 uses `ADS-V10-DATA-FRESHNESS` as the candidate/alias implemented by explicit extensions of `ADS-IVV-FC-OBCC-DELIVERY`, `ADS-IVV-C-GETTER`, and `ADS-IVV-C-RATE-5HZ`; no new standalone ADS folder is required unless those extensions become unclear.
+- ADS shall make update records/slots available to OBCC at `5 Hz` (`200 ms` nominal) for the 10 min mission window.
+- OBCC LoRa telemetry remains a separate `2 s` push cadence; it may carry the latest ADS record plus age/status metadata, but it is not the internal `5 Hz` evidence.
+- Fresh ADS data requires `status == VALID`, required fields finite/in range, and `age_ms <= 400 ms`.
+- The external ADS/AMS-to-OBCC status enum is exactly `VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`.
+- `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, and `INIT_FAIL` conditions shall not leave old ADS data marked `VALID`; old values may be carried only as non-`VALID` with age/status evidence.
+- ADS `Pointers`/`Returns` ownership, lifetime, API names, return-code mapping, and watchdog implementation remain ADS-specific supplemental detail and shall reference the shared PM&SE contract.
+- `SYS-END-TO-END-DATA` shall use the same shared freshness rule as the sensor freshness oracle for ADS/AMS age/status fields and stale/error behavior.
+
+##### Folded ADS candidate and update register
+
+| Candidate / update ID | Type | Purpose | Selected definition baseline | Later implementation path |
+|---|---|---|---|---|
+| `ADS-V10-DATA-FRESHNESS` | ADS alignment update / alias through existing tests | Close v1.0 ADS-to-OBCC internal delivery-rate/freshness. | ADS shall provide a `5 Hz` internal OBCC request/response path for the 10 min mission window using the shared PM&SE contract: `2 s` LoRa telemetry remains separate, fresh age is `<=400 ms` only with `VALID`, the exact six-status enum is used, and stale/no-data/timeout/fault/init-fail values are not marked `VALID`. | Implement through `ADS-IVV-FC-OBCC-DELIVERY`, `ADS-IVV-C-GETTER`, `ADS-IVV-C-RATE-5HZ`, mission-window, and no-blocking tests unless a standalone activity becomes clearer. D2/model follow-up remains where old v1.0 N/A rationale remains. |
+| `ADS-IVV-C-ACCEL-3AXIS` | New README-only ADS candidate test | Close acceleration quantity, units, sign, and static accuracy. | Use `m/s²` as the comparison unit, convert raw `g` with `g0 = 9.80665 m/s²`, reject `deg/s²` as an acceleration oracle, use a six-face static gravity fixture, and require `n = 59` all-within-limit samples per face for strict claims with the selected guard-banded thresholds. | Model the candidate in D2 later and execute with UUT/firmware/equipment IDs, uncertainty guard band, axis/sign convention, and retained raw logs. |
+| `ADS-IVV-C-HEADING-NORTH` | New README-only ADS candidate test | Close north/heading quantitative acceptance. | Use a non-magnetic fixture/site and a surveyed true-north line or calibrated magnetic reference with declination correction; test stable headings near 0°, 90°, 180°, and 270° with `n = 59` all-within-limit samples per heading for strict claims; require circular heading error plus expanded uncertainty `<=10°`. | Model the candidate in D2 later or explicitly fold it into `ADS-IVV-FC-ATT`; execution must include calibration state, local disturbance survey, timestamp correlation, and invalid/disturbed marker handling. |
+| Serial0 schema/parser baseline | Definition artifact for existing test | Close the v0.1/v0.2 Serial0 schema/parser blocker. | Use `ADS/MBSE/tests/schemas/ads_serial0_v0_1_v0_2.schema.json` and `ADS/MBSE/tests/tools/parse_ads_serial0.py` as the controlled local baseline; reports must identify firmware/log adapter and retain raw evidence. | Keep as an artifact for `ADS-IVV-FC-SERIAL`; no additional mission-behavior candidate is selected solely for the parser. |
+| ADS-specific `Pointers`/`Returns` supplement | Optional definition artifact | Preserve ADS API/ownership/watchdog detail without redefining freshness. | Any ADS-specific field schema, pointer ownership/lifetime, return/error-code mapping, and watchdog implementation shall reference the shared PM&SE freshness/status contract. | Create only if needed for execution clarity; do not create a contradictory ADS-only freshness rule. |
+
+##### Folded existing ADS test update list
+
+| Artifact / activity | Required update/status retained in this register |
+|---|---|
+| `ADS-IVV-C-RATE-5HZ` | Use the `ADS-V10-DATA-FRESHNESS` branch for v1.0. Retain `200 ms` nominal period, `3000` expected internal update opportunities over 10 min, jitter/sample rule, worst-gap rule, stale/drop/duplicate criteria, contract age/status evidence, no stale/no-data/timeout/fault/init-fail data marked `VALID`, and instrumentation-overhead handling. Keep `2 s` LoRa telemetry separate from internal `5 Hz` evidence. |
+| `ADS-IVV-FC-MISSION-WINDOW` | Use the 10 min mission window, 3000 expected internal update opportunities at 5 Hz, mandatory field/marker presence, no reset/brownout/stuck-loop acceptance, no unrecovered peripheral failure, invalid/stale/corrupt marker handling, and maximum ADS internal delivery gap `<=400 ms`. |
+| `ADS-IVV-FC-SERIAL` | Reference the controlled Serial0 schema/parser/campaign baseline for v0.1/v0.2: port/baud/framing, fields, units, validity/stale/error markers, parser version, expected count/campaign duration, and raw-byte retention. Keep v0.3/v1.0 N/A rationale. |
+| `ADS-IVV-FC-OBCC-DELIVERY` | Reference the shared PM&SE freshness contract for `5 Hz` delivery/freshness, `<=400 ms` age, exact six-status enum, telemetry age/status, and no-old-data-as-`VALID` behavior after stale/no-data/timeout/fault/init-fail conditions. Add ADS-specific watchdog thresholds, pointer ownership/lifetime, return/error-code mapping, and null/dangling/stale/corrupt/slow-call fault cases as needed. |
+| `ADS-IVV-C-GETTER` | Map ADS getter/process/collector validity and return/error semantics to the shared PM&SE enum or a controlled one-to-one evidence mapping; require timestamp/sequence/age evidence at the ADS-to-OBCC observation point; prove stale/no-data/timeout/fault/init-fail paths do not leave old data marked `VALID`. |
+| `ADS-IVV-C-I2C-5MS` | Treat v0.2 as a selected code-analysis/instrumentation or documented-gap path, not an unresolved model gap that requires cluttered v0.2 source D2 changes. Preserve the v1.0 formal `<=5 ms` I2C timeout baseline. |
+| `ADS-IVV-C-NOBLOCK` | Require source/build map/symbols or equivalent instrumentation; heartbeat/progress deadline `<=400 ms`; measured instrumentation-overhead allowance; and explicit blocked/limited status if source/instrumentation access is absent. |
+| `ADS-IVV-C-POS-5M` | Use strict GPS truth policy: GNSS simulator or surveyed/open-sky reference with uncertainty guard band. Consumer phones are auxiliary/limited unless their uncertainty is independently controlled and guard-banded. Preserve matched valid sample and invalid/no-fix/stale handling. |
+| `ADS-IVV-C-GYRO-30DPS` | Use motor plus calibrated tachometer as an approved angular-rate truth path. Require tachometer reliability/calibration, motor stability, `deg/s = RPM × 6`, axis alignment, time correlation, uncertainty guard band, and `n = 59` all-within-limit evidence for strict claims. |
+| `ADS-IVV-FC-ATT` | Reference the acceleration and heading candidates for quantitative claims; otherwise current attitude evidence remains plausibility/repeatability only. |
+| `ADS-IVV-FC-GPS` | Align v1.0 delivery/rate notes with the selected ADS-to-OBCC `5 Hz` decision and strict GPS truth policy. |
+| `ADS-IVV-FC-ANG` | Align angular-rate truth/reference assumptions with the motor/tachometer method and strict-statistics rule. |
+| `ADS-IVV-C-PROC-5MS` / `ADS-IVV-C-UART-5MS` | Align instrumentation overhead and `n = 59` zero-violation deadline wording with no-blocking and timing decisions. |
+
+##### Folded selected ADS quantitative criteria
+
+- ADS mission-window duration is **10 min = 600 s**; expected internal ADS update opportunities at **5 Hz** are **3000** per mission window.
+- Mission-window timing starts after the declared ADS ready/start marker. Any reset, brownout, stuck loop, unrecovered peripheral failure, unreported logger loss, or unmodeled bypass invalidates a strict mission-window pass.
+- Nominal internal ADS update period is **200 ms**. Strict rate/freshness pass requires at least 3000 scheduled slots/events over 600 s, observed mean delivery rate `>=5.0 Hz`, no silent missing slot, no duplicate/catch-up burst compensating for a missed slot, no update gap `>400 ms`, timestamp/sequence/freshness evidence, and stale/error data explicitly marked non-fresh.
+- Formal jitter/deadline timing samples use **`n = 59` representative consecutive intervals** with every interval **150 ms to 250 ms** inclusive for the selected claim.
+- Linear acceleration units are **`m/s²`**. If firmware/logs use `g`, convert with **`g0 = 9.80665 m/s²`** before comparison. `deg/s²` is not an acceleration oracle.
+- Strict static acceleration claim uses a six-face fixture with **`n = 59` all-within-limit samples per face**, correct axis/sign convention, driven-axis error plus expanded uncertainty **`<=1.0 m/s²`**, off-axis leakage plus uncertainty **`<=0.75 m/s²`**, and vector-norm error plus uncertainty **`<=1.0 m/s²`**.
+- Quantitative heading claim requires circular heading error plus expanded uncertainty **`<=10°`** at headings near **0°, 90°, 180°, and 270°** with **`n = 59` all-within-limit samples per heading** for strict claims.
+- Strict GPS `<5 m` pass requires a GNSS simulator or surveyed/open-sky reference point/reference antenna setup with coordinate uncertainty small relative to 5 m; phone-only truth is limited/characterization unless uncertainty-controlled and guard-banded.
+- Motors plus tachometer are approved for angular-rate truth when tachometer calibration/reliability and motor stability are adequate. Convert speed with **`deg/s = RPM × 6`**; strict angular-rate claims use **`n = 59`** matched samples per axis/rate and require every guard-banded absolute error **`<30 deg/s`**.
+- Runtime progress heartbeat for `Loop` / `ADS Processing` shall be observable under nominal and fault cases with no progress gap greater than **400 ms**.
+- Formal timeout/deadline claims use **`n = 59` zero-violation samples** unless a stricter project rule is later selected.
+- Timing hooks/logging overhead shall be measured before verdicts and shall be `<=5%` of the 200 ms period or `<=5 ms`, whichever is stricter for the claim being made; otherwise the timing verdict is limited/blocked or the overhead is subtracted/bounded with documented uncertainty.
+
+##### Folded ADS contradictions resolved
+
+| Contradiction or TBD | Selected resolution |
+|---|---|
+| ADS README requires v1.0 internal delivery to OBCC at least 5 Hz, while `ADS-IVV-C-RATE-5HZ` treated v1.0 as N/A. | v1.0 internal ADS-to-OBCC 5 Hz is required; LoRa 2 s cadence is separate. |
+| ADS README acceleration unit said `deg/s²`, while acceleration is linear. | Use `m/s²` or converted `g`; do not use `deg/s²` as the acceleration oracle. |
+| `ADS-IVV-FC-ATT` forbids formal numerical attitude accuracy unless a new constraint exists. | Keep attitude plausibility unless a heading/north constraint candidate is added or explicitly folded in. |
+| Mission duration, maximum gap, and jitter tolerance were TBD. | Use 10 min, 3000 expected updates, 200 ms nominal, 150-250 ms formal jitter sample, and 400 ms maximum gap/watchdog threshold. |
+| v0.2 I2C timeout was a model gap. | Resolve by code-analysis/instrumentation or controlled gap text; do not force cluttered v0.2 source diagrams. |
+| GPS truth equipment and phone use were ambiguous. | Use surveyed/open-sky or simulator truth for strict `<5 m`; phones are auxiliary unless uncertainty-controlled. |
+| Angular-rate truth fixture was assumed but not fixed. | Motors plus calibrated tachometer are approved with `n=59` all-within-limit strict evidence if reliable/calibrated. |
+
+##### Folded follow-on ADS D2/model and artifact work
+
+The following work is intentionally not closed by this register update:
+
+1. Update `ADS-IVV-C-RATE-5HZ` D2/model definition views so v1.0 is no longer shown only as N/A for internal ADS-to-OBCC `5 Hz` delivery/freshness; Markdown READMEs and the ADS index already document the `ADS-V10-DATA-FRESHNESS` path.
+2. Update `ADS-IVV-FC-MISSION-WINDOW` D2/model views to show the 10 min mission, 3000 expected update slots, strict reset/stuck-loop/freshness rules, and 400 ms maximum gap; Markdown READMEs already contain the criteria.
+3. Create any ADS-specific `Pointers`/`Returns` supplement for field/schema, ownership/lifetime, return-code mapping, and watchdog implementation if needed; it shall reference the shared PM&SE freshness/status contract rather than redefining freshness.
+4. Model the README-only `ADS-IVV-C-ACCEL-3AXIS` and `ADS-IVV-C-HEADING-NORTH` candidates in D2, or explicitly fold them into existing attitude-related packages, then regenerate matching PNGs.
+5. Preserve the `ADS-IVV-C-I2C-5MS` v0.2 code-analysis/instrumentation or controlled-gap path; do not add cluttered v0.2 source-model diagrams solely to satisfy this closure.
+6. Complete D2/model follow-up for related `ADS-IVV-C-POS-5M`, `ADS-IVV-C-GYRO-30DPS`, `ADS-IVV-FC-GPS`, `ADS-IVV-FC-ANG`, and `ADS-IVV-FC-ATT` views where the selected truth/reference/statistics decisions are not yet represented.
+7. Execute the selected tests and archive reports before claiming pass/fail credit.
+
+##### Folded residual ADS execution-only uncertainties
+
+- Exact ADS/OBCC `Pointers`/`Returns` field schema, header/API names, ownership/lifetime details, watchdog implementation, and OBCC log harness; freshness/status semantics are controlled by the shared PM&SE contract.
+- UUT serial numbers, hardware revisions, firmware commits, build maps/symbols, instrumentation hook names, parser/log adapter revision, and raw evidence locations.
+- Actual equipment asset IDs, calibration certificates/function checks, tool versions, environmental limits, power/ambient readings, and lab configuration.
+- Surveyed GPS coordinates or simulator scenario, tachometer calibration/reliability, motor stability, heading-reference calibration, and acceleration fixture alignment.
+- Whether acceleration and heading/north D2 packages remain standalone or are folded into existing attitude-related packages.
+
 ### 2.3 AMS blocker dispositions (definition decisions closed)
 
 | Blocker ID | Disposition | Blocks | Follow-up action |

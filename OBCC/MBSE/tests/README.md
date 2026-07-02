@@ -12,6 +12,13 @@ Project-wide IVV conventions, evidence paths, statistical policy, fault semantic
 - **Read-only source model:** files under `OBCC/MBSE/v1.0/` are not modified by these test definitions.
 - **Execution status:** modeled definitions are ready; execution evidence and controlled reports remain pending unless a downstream results folder states otherwise.
 
+## 1.1 Controlled blocker-resolution baselines
+
+- OBCC/DPS telemetry, command, RF/range/PDR, cadence, and payload traceability are selected at definition level by [`../../../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md`](../../../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md).
+- OBCC-owned deployment, descent-observability, emergency-deploy, safe/error, and actuator-status semantics are selected at definition level by [`OBCC-V10_Deployment_Fault_Policy.md`](OBCC-V10_Deployment_Fault_Policy.md).
+- `OBCC-V09-GATE-001` remains a literal final-readiness prerequisite for `OBCC-V10-FLIGHT-001`; `OBCC-V06-GATE-001` remains a literal runtime-fault advancement gate. These are not unresolved candidate-definition gaps.
+- Detailed activity README/D2 updates and execution evidence remain pending; the baselines above prevent the §2.5 blockers in the PM&SE register from remaining undefined.
+
 ## 2. v1.0 model views used as source context
 
 - `OBCC_v1.0_view1_physical.d2`: integrated CanSat, OBCC module/PCB, XIAO ESP32-S3, RFM96W, sensors, PDS/ESS/PDM context, ground station, PC, and physical links.
@@ -69,5 +76,5 @@ All original v1.0 candidate rows are now mapped to modeled definition folders. S
 - **Modeled definition coverage:** complete for the issued multi-version set `OBCC-V01-GATE-001` through `OBCC-V10-FLIGHT-001`. The mission-window rehearsal folder `OBCC-V09-GATE-001/` exists and maps `OBCC-VV-FC-006`.
 - **Target-context caveat preserved:** `v0.1` through `v0.9` Capella/D2 source baselines were not delivered by lifecycle decision; each corresponding gate documents that it uses `v1.0` source copies as target context only, and execution reports must name the actual code/configuration baseline analyzed or tested.
 - **Execution/evidence gap:** no final PASS is implied by definition readiness. Execution reports, raw logs, photos/video, RF/timing evidence, closure matrices, deviations, waivers, and board decisions must be stored under the expected `OBCC/MBSE/tests/results/<activity-id>/` paths.
-- **Technical assumptions to close during execution:** exact as-built hardware/firmware/radio settings, command and payload schemas, emergency-deploy policy, actuator status semantics, environment/instrument IDs, and statistical independence/sample-size claims.
+- **Definition baselines selected / execution records still pending:** payload and command schema traceability, RF/range/PDR setup, telemetry cadence/PDR criteria, emergency-deploy criteria, descent observability, safe/error behavior, and actuator status semantics are selected by the controlled documents listed in §1.1. Exact as-built hardware IDs, firmware/build IDs, source/configuration values, environment/instrument IDs, legal/site approvals, and statistical independence/sample-size claims remain execution/report evidence.
 - **D2 render status at integration:** every verification-specific D2 view has a paired PNG and all 43 verification-specific D2 files rendered successfully with the required ELK command and spacing flags.

@@ -1,5 +1,7 @@
 # LoRa Frame
 
+Controlled verification baseline: this measurement table is the active `OBCC-LORA-PAYLOAD-v1.0` variable baseline referenced by [`../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md`](../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md). It defines the measurement payload fields only; envelope IDs, command/request fields, schema/version, sequence/timestamp, health/status metadata, RSSI/SNR evidence, and parser/decoder mappings are controlled by the contract or by execution-specific configuration records. Relative humidity is not part of this active v1.0 payload.
+
 - int16 range: [-32768, 32767]
 
 ## Peripherals

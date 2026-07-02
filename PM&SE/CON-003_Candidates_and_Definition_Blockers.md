@@ -371,6 +371,8 @@ The 2026-07-02 DPS blocker-resolution issues produced the folded closure decisio
 
 This subsection is a definition-planning closure record only. No tests were executed, no execution report was created, no D2/PNG diagrams or implementation source files were modified by this pass, and no pass/fail credit is claimed.
 
+**Folded execution status:** OBCC §2.5 blocker resolution completed at definition-planning level on 2026-07-02; residual work is explicitly README/D2/model update and execution, not an open OBCC definition decision.
+
 **Controlled OBCC definition baselines added/selected:**
 
 - [`PM&SE/contracts/obcc_dps_lora_telemetry_contract.md`](contracts/obcc_dps_lora_telemetry_contract.md) controls OBCC/DPS LoRa telemetry, command, RF/range/PDR, cadence, payload traceability, and DPS pipeline-alignment parameters.

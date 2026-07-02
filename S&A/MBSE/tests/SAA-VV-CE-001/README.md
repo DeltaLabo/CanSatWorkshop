@@ -1,6 +1,6 @@
 # SAA-VV-CE-001 — Backplane/interface component-exchange presence/absence analysis
 
-Model-defined verification activity for the S&A v1.0 backplane/interface component-exchange gap. The baseline S&A views are physical-only and contain no `[CE]` elements, so this activity defines a verification-only analysis bench that confirms traceable ownership in subsystem models or records hold/fail for S&A-owned missing or ambiguous exchanges.
+Model-defined verification activity for S&A v1.0 backplane/interface component-exchange ownership. Baseline S&A remains intentionally physical-only; the absence of baseline S&A `[CE]` elements is an accepted modeling-scope decision, not an unresolved definition blocker. Strict execution credit for this analysis comes from the 100% ownership/cross-reference matrix against released pin/net/interface evidence and subsystem model references, not from adding baseline S&A CEs in this pass. The activity still records hold/fail for missing, stale, or ambiguous ownership/evidence at execution time.
 
 - **IADT method:** Analysis
 - **IVV source category:** Component exchange
@@ -21,7 +21,7 @@ Model-defined verification activity for the S&A v1.0 backplane/interface compone
 | Functional allocation / analysis | `SAA-VV-CE-001_functional_allocation_analysis.d2` | `SAA-VV-CE-001_functional_allocation_analysis.png` | Verification-only PV3 view allocating analysis functions to reviewer, owners, tools, evidence packages, and UUT interface-analysis elements. |
 | Analysis chain | `SAA-VV-CE-001_analysis_chain.d2` | `SAA-VV-CE-001_analysis_chain.png` | Functional-chain-style analysis scenario: collect evidence, compare to constraints, check ownership/power/fast-lines/servo path, and classify pass/hold/fail. |
 
-The LCs, functions, CEs, PLs, and functional chain in this folder are **verification-only**. They do not add baseline S&A design exchanges and must not be treated as closing the baseline modeling gap until the execution report references actual subsystem CE definitions or approved S&A model updates.
+The LCs, functions, CEs, PLs, and functional chain in this folder are **verification-only**. They do not add baseline S&A design exchanges. Because the physical-only baseline scope is accepted, baseline S&A CEs are not a prerequisite for definition-decision closure; execution/report credit still requires actual subsystem CE definitions, approved S&A model updates, or controlled ownership/cross-reference dispositions.
 
 ## Required interface review census
 
@@ -91,7 +91,7 @@ This activity covers the component-exchange presence/absence and consistency por
 
 ## Assumptions and blockers
 
-- The baseline S&A v1.0 source view contains no `[CE]`, `[LC]`, `[F]`, `[FE]`, or functional-chain elements; this folder adds verification-only definitions rather than editing the baseline.
-- The analysis can pass by cross-referencing subsystem-owned CE/interface models if S&A is only the physical/backplane owner; it must hold/fail if S&A-owned component exchanges remain absent or ambiguous.
+- The baseline S&A v1.0 source view intentionally contains no `[CE]`, `[LC]`, `[F]`, `[FE]`, or functional-chain elements as an accepted physical-only scope decision; this folder adds verification-only definitions rather than editing the baseline, and no forced CE source-model update is required for definition-decision closure.
+- The analysis can pass by cross-referencing subsystem-owned CE/interface models or by controlled S&A physical/backplane ownership dispositions if S&A is only the physical/backplane owner; it must hold/fail at execution time if implemented interfaces, ownership, or evidence remain absent or ambiguous.
 - PDM/servo ownership is assumed to be external to the S&A physical view unless a subsystem owner identifies the authoritative model reference during execution.
 - The gate may be placed on hold rather than failed when a discrepancy is correctable by approved model/evidence update before flight readiness closure.

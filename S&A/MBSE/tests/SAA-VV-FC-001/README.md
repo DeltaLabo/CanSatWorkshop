@@ -67,7 +67,7 @@ The UUT is the full `v1.0` CanSat Assembly in as-flown configuration, including:
 Pass only if all of the following are true for the final `v1.0` as-flown article:
 
 - maximum outside diameter plus expanded uncertainty satisfies `D_max + U_D ≤ 66.0 mm`;
-- maximum height plus expanded uncertainty satisfies `H_max + U_H ≤ 122.0 mm` using the modeled height limit; any later-confirmed stricter competition limit supersedes this value;
+- maximum height plus expanded uncertainty satisfies `H_max + U_H ≤ 122.0 mm` using the closure-record S&A height authority; any later project authority-selected stricter competition limit supersedes this value;
 - mass satisfies `measured mass + U_M < 350.0 g`;
 - all Type 1 standard modules have verified `44 mm × 44 mm` PCB accommodation, with installed ADS/AMS/OBCC/PDS flight PCBs or controlled fit gauges seated without forced fit, PCB bending, blocked standoffs, visible stress, or unapproved access limitation, and any ESS battery-module accommodation evidence bound to controlled pre-closure fit-gauge/build records;
 - backplane PCB remains within its `100 mm × 28 mm` allocation, is seated/mated to headers/connectors, and does not create protrusion/interference;
@@ -75,7 +75,7 @@ Pass only if all of the following are true for the final `v1.0` as-flown article
 - instrument calibration status, ambient record, raw readings, uncertainty values, photos/video, and witness review are complete;
 - every anomaly, waiver, rework or deviation is closed with approved disposition and any affected check has been re-run in full as-flown configuration.
 
-Fail or hold for any guard-band exceedance, forced fit, missing/removed flight item, temporary omission, external protrusion exception, missing evidence, expired/unknown calibration affecting a result, unresolved interference, unresolved mass/height/diameter ambiguity, or unapproved anomaly disposition.
+Fail or hold for any guard-band exceedance, forced fit, missing/removed flight item, temporary omission, external protrusion exception, missing evidence, expired/unknown calibration affecting a result, unresolved interference, unresolved measurement/configuration ambiguity, or unapproved anomaly disposition.
 
 ## Viewpoints
 
@@ -96,9 +96,9 @@ The execution report in `S&A/MBSE/tests/results/SAA-VV-FC-001/` should reference
 - pass/fail/hold rationale;
 - deviations, anomalies, waivers, rework and re-run evidence.
 
-## Assumptions and open ambiguities
+## Assumptions and execution notes
 
 - The executable scenario is for `SAA-v1.0`; `v0.1` is retained as copied context because it lacks the flight PCBs/backplane/battery/parachute hardware needed for this integrated final-article demonstration.
-- The modeled height limit is `122.0 mm`. Existing plan notes a possible stricter competition-height ambiguity; this activity uses the modeled value unless the execution authority adopts a stricter requirement before test.
-- The modeled mass wording `<350 ±0.1 g` is interpreted as actual total mass `<350.0 g` with a measurement uncertainty guard band. If `U_M = 0.1 g`, the indicated mass must be `<349.9 g`; otherwise use the reported expanded uncertainty.
+- The closure record confirms the modeled height limit `122.0 mm` as the S&A authority unless a later project authority adopts a stricter competition requirement before test.
+- The closure record controls the mass policy as actual total mass `<350.0 g` with a measurement uncertainty guard band: `measured mass + U_M < 350.0 g`. If `U_M = 0.1 g`, the indicated mass must be `<349.9 g`; otherwise use the reported expanded uncertainty.
 - The gate may be placed on hold rather than failed when a discrepancy is correctable but not yet dispositioned.

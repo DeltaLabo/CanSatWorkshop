@@ -58,7 +58,7 @@ The UUT is the integrated `v1.0` S&A top-module deployment-clearance configurati
 6. Command the servo/open-cap motion through the servo command interface, or use the controlled manual actuation means if the flight command path is unavailable; keep hands clear and record the method.
 7. Capture cap, servo and parachute motion with video; observe whether cap/servo motion clears the structure, backplane spine and PDM servo connector.
 8. Confirm the parachute extracts without snagging, hang-up, hand assistance, dragging the UUT or pulling on the backplane/connector/module stack.
-9. Perform post-trial PC/PL checks for connector/backplane/module/screw/standoff/battery-fixture movement or looseness.
+9. Perform post-trial PC/PL checks for connector/backplane/module/screw/standoff/battery-fixture movement or looseness. When movement or seating gaps are measured, use the released `SAA-VV-CON-005` thresholds and treat ambiguous evidence as hold, not pass.
 10. Reset the cap, servo and parachute to the serviceable closed state without unapproved rework; record reset status.
 11. Log the trial result, pack condition, command method, video/evidence IDs and any anomaly.
 12. Repeat for `10` zero-snag deployments for the workshop screen. Use `29` representative independent zero-snag trials only if the report claims R90/C95 reliability.
@@ -73,13 +73,13 @@ Pass only if all of the following are true for the `v1.0` article:
 - cap and servo motion clear the top-module structure, standard stack, backplane spine and PDM Servo Connector in every accepted trial;
 - parachute extracts without snagging, hang-up, hand assistance, dragging the UUT, or ambiguous video evidence;
 - reset/serviceability is preserved after every trial without unapproved rework, permanent deformation or forced closure;
-- no connector, backplane, module, top-module attachment, stack screw, PCB standoff, PCB, battery fixture or other modeled physical link/component movement is introduced;
+- no connector, backplane, module, top-module attachment, stack screw, PCB standoff, PCB, battery fixture or other modeled physical link/component movement exceeds the released `SAA-VV-CON-005` thresholds or creates rattle, new gap, crack, contact hazard, unseat, intermittent continuity, or deployment-clearance interference;
 - pre/post PC-PL inspection records are acceptable before and after repeated deployments and after any referenced vibration/drop screen;
 - the workshop screen has `10/10` zero-snag deployments, or a reliability claim explicitly has `29/29` representative independent zero-snag trials for R90/C95;
 - ambient conditions, camera settings, fixture settings, actuation method, trial log, video/photos, inspection records, witness review and anomaly dispositions are complete;
 - every anomaly, waiver, rework or deviation is closed with approved disposition and affected checks have been re-run.
 
-Fail or hold for any cap rub/contact mark judged as interference, insufficient servo travel, no-release, parachute snag/hang-up, hand-assisted extraction, forced reset, backplane or PDM-servo-connector contact, connector/backplane/module/screw/standoff/battery-fixture movement, post-screen looseness, missing/ambiguous evidence, expired/unknown equipment status affecting the result, unresolved anomaly disposition, or unapproved waiver.
+Fail or hold for any cap rub/contact mark judged as interference, insufficient servo travel, no-release, parachute snag/hang-up, hand-assisted extraction, forced reset, backplane or PDM-servo-connector contact, connector/backplane/module/screw/standoff/battery-fixture movement beyond released thresholds, post-screen looseness, missing/ambiguous movement or video evidence, expired/unknown equipment status affecting the result, unresolved anomaly disposition, or unapproved waiver.
 
 ## Viewpoints
 
@@ -93,7 +93,7 @@ The execution report in `S&A/MBSE/tests/results/SAA-VV-FC-003/` should reference
 - model definition revision and v1.0 baseline copy used;
 - inspected article identifier, version and build/configuration record;
 - operator, witness, equipment IDs, camera settings, fixture settings, gauge IDs, calibration/status records, safety boundary and ambient record;
-- pre/post PC-PL inspection checklist for stack screws, top-module attachment, backplane fixture, PDM Servo Connector, PCB standoffs/screws, battery fixture and module/backplane alignment;
+- pre/post PC-PL inspection checklist for stack screws, top-module attachment, backplane fixture, PDM Servo Connector, PCB standoffs/screws, battery fixture and module/backplane alignment, including any movement/gap measurements against `SAA-VV-CON-005` thresholds;
 - trial-by-trial pack condition, command/manual actuation method, cap/servo motion result, parachute extraction result, reset/serviceability result and evidence IDs;
 - video/photo file paths and any rub/snag witness-marker observations;
 - statistical basis used (`10/10` workshop screen or `29/29` R90/C95 claim);

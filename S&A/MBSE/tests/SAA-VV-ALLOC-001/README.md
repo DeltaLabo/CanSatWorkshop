@@ -1,6 +1,6 @@
 # SAA-VV-ALLOC-001 — S&A integration-function allocation and ownership analysis
 
-Model-defined verification activity for the S&A v1.0 allocation gap. The baseline S&A views are physical-only and contain no source `[LC]`, `[F]`, `[FE]`, `[CE]`, or functional-chain views, while S&A owns physical integration constraints around structure, module retention, backplane fit, PCB accommodation, testpoint access, battery/connector retention, and deployment clearance. This activity defines the analysis bench used to decide whether explicit S&A logical/functional allocation views are required, or whether subsystem models own behavior while S&A owns physical constraints only.
+Model-defined verification activity for S&A v1.0 integration-function allocation and ownership. Baseline S&A remains intentionally physical-only; the absence of source `[LC]`, `[F]`, `[FE]`, `[CE]`, or functional-chain views is an accepted modeling-scope decision, not an unresolved definition blocker. S&A owns physical integration constraints around structure, module retention, backplane fit, PCB accommodation, testpoint access, battery/connector retention, and deployment clearance. Strict execution credit may pass with controlled physical-constraint-only S&A responsibilities plus subsystem model references, provided the ownership/disposition matrix closes 100% of candidates.
 
 - **IADT method:** Analysis
 - **IVV source category:** Allocation / functional allocation to logical components
@@ -20,7 +20,7 @@ Model-defined verification activity for the S&A v1.0 allocation gap. The baselin
 | Functional allocation / ownership analysis | `SAA-VV-ALLOC-001_functional_allocation_analysis.d2` | `SAA-VV-ALLOC-001_functional_allocation_analysis.png` | Verification-only PV3 view mapping candidate functions to physical integration areas and requiring owner/disposition. |
 | Analysis chain | `SAA-VV-ALLOC-001_analysis_chain.d2` | `SAA-VV-ALLOC-001_analysis_chain.png` | Functional-chain-style analysis scenario for enumerating candidate functions, collecting owner responses, assigning owner/disposition, screening gaps, and releasing the pass/hold/fail decision. |
 
-The LCs, functions, CEs, and analysis chain in this folder are **verification-only**. They do not modify the baseline S&A design model and do not close the allocation gap until an execution report references approved S&A allocation views, subsystem model cross-references, or controlled constraint-only dispositions.
+The LCs, functions, CEs, and analysis chain in this folder are **verification-only**. They do not modify the baseline S&A design model. Because the physical-only baseline scope is accepted, explicit baseline S&A LC/F/allocation views are not required solely for definition-decision closure; execution/report credit still requires approved S&A allocation views, subsystem model cross-references, or controlled physical-constraint-only dispositions.
 
 ## Required ownership review census
 
@@ -47,7 +47,7 @@ The execution report shall include one row for every candidate S&A integration f
 2. Enumerate the complete candidate integration-function set from v1.0 PCs, PLs, and constraints, including backplane, harness/connector, retention, deployment clearance, physical fit, testpoint access, and environmental screening responsibilities.
 3. Collect controlled evidence: subsystem owner responses, subsystem model references, prior CE/PC/PL verification definitions, constraint references, and any proposed S&A model-change requests.
 4. For every candidate and any additional foreign/ambiguous function, fill the ownership matrix with: owner, S&A-owned vs subsystem-owned vs foreign/out-of-scope disposition, model reference or required model update, affected PC/PL/constraint, traceability target, fault-hardening concern, evidence ID, and status.
-5. Analyze whether each S&A-owned function needs explicit S&A `[LC]`/`[F]` allocation or can remain a physical constraint-only responsibility with controlled rationale.
+5. Confirm each S&A-owned function is either explicitly allocated in an S&A `[LC]`/`[F]` view if the project elects to model it, or remains a physical constraint-only responsibility with controlled rationale.
 6. Confirm subsystem-owned behaviors have authoritative model references or owner waivers, especially for sensing, deployment command logic, power regulation, SPI/I2C/UART operation, and servo electrical/control behavior.
 7. Screen ownership gaps for hazards: backplane mislocation/mismate, harness or connector unseat, module/battery retention escape, blocked parachute clearance, physical-fit/mass/envelope noncompliance, and environmental-screening escape.
 8. Classify each candidate and the overall activity as pass, hold, or fail.
@@ -90,7 +90,7 @@ This activity covers the allocation/ownership aspect of the S&A envelope, module
 
 ## Assumptions and blockers
 
-- The baseline S&A v1.0 source view contains no `[LC]`, `[F]`, `[FE]`, `[CE]`, or functional-chain source elements; this folder adds verification-only definitions rather than editing the baseline.
+- The baseline S&A v1.0 source view intentionally contains no `[LC]`, `[F]`, `[FE]`, `[CE]`, or functional-chain source elements as an accepted physical-only scope decision; this folder adds verification-only definitions rather than editing the baseline, and no forced LC/F/allocation source-model update is required for definition-decision closure.
 - The analysis may pass with a decision that S&A owns only physical constraints while subsystem models own behavior, provided all functions have explicit owner/disposition and traceable references.
 - PDM/servo behavior, OBCC deployment command logic, subsystem sensing, power regulation, and bus protocol operation are assumed foreign to S&A unless the execution report identifies an approved S&A ownership decision.
 - The gate may be placed on hold rather than failed when a discrepancy is correctable by approved model/evidence update before flight-readiness closure.

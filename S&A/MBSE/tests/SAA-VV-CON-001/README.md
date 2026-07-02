@@ -93,8 +93,8 @@ The v1.0 UUT is the integrated CanSat Assembly defined by `S&A/MBSE/v1.0/SAA_v1.
 Pass only if all applicable constraints below are satisfied:
 
 - `D_max + U_D ≤ 66.0 mm` for the selected article.
-- `H_max + U_H ≤ 122.0 mm` using the modeled height limit. Existing references include stricter `115 mm` competition-height wording; this activity uses `122.0 mm` unless the execution authority confirms a stricter limit before test.
-- For `v1.0`, measured mass plus expanded uncertainty satisfies `measured mass + U_M < 350.0 g`. The modeled `<350 ±0.1 g` wording is ambiguous and is interpreted conservatively as actual total mass `<350.0 g` with a measurement guard band; if `U_M = 0.1 g`, the displayed mass must be `<349.9 g`.
+- `H_max + U_H ≤ 122.0 mm` using the closure-record S&A height authority. This activity uses `122.0 mm` unless a later project authority selects a stricter competition limit before test.
+- For `v1.0`, measured mass plus expanded uncertainty satisfies `measured mass + U_M < 350.0 g`. The closure record controls the modeled `<350 ±0.1 g` wording as actual total mass `<350.0 g` with a measurement guard band; if `U_M = 0.1 g`, the displayed mass must be `<349.9 g`.
 - For `v0.1`, mass is recorded as structural/reference or ballasted structural evidence and is not a final flight mass pass unless final-like hardware and ballast state are documented.
 - Impact/drop-screen pass requires an approved tailored level, surface, fixture, orientation set, article state and safety boundary. If exact levels remain unresolved, the only valid modeled outcome is analysis-backed hold.
 - After impact, no structural/integration failure is allowed: no crack, permanent deformation, stack screw/standoff loosening, battery movement, module shift, backplane/header/PDM-servo connector unseat, electrical short/open evidence, cap/parachute/servo jam, loss of serviceability, or hidden damage left unresolved.
@@ -125,6 +125,6 @@ The execution report in `S&A/MBSE/tests/results/SAA-VV-CON-001/` should referenc
 
 - The baseline S&A views contain only physical architecture; this folder adds verification-only PV2, PV3 and functional-chain definitions rather than editing baseline source views.
 - `v0.1` is an incremental structural readiness gate and cannot by itself close final flight mass/impact acceptance without documented representative ballast or final-like configuration.
-- The modeled height limit is `122.0 mm`; stricter CanSat references exist and must supersede if selected by the execution authority.
+- The closure record confirms the modeled height limit `122.0 mm` as the S&A authority unless a later project authority selects a stricter competition limit.
 - The impact/drop levels are not resolved in the baseline. The model therefore includes both an executable tailored-screen path and an analysis-backed hold path; execution cannot claim pass until the tailored level, impact surface, orientation set and article state are approved.
 - The gate may be held rather than failed when a discrepancy is correctable by approved rework, model/evidence update, or accepted dependency before flight-readiness closure.

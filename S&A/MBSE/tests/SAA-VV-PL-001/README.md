@@ -130,5 +130,5 @@ This activity covers physical-link presence, endpoint correctness, routing/matin
 
 - The only available S&A baselines are `v0.1` and `v1.0`; both are covered separately.
 - A link may be inspected as a grouped interface only when the checklist still records each modeled PL row and its endpoints.
-- Torque or pull values are not imposed here because the baseline model does not define torque/proof-load limits; the activity still requires retention/no-looseness evidence and records any approved project or work-instruction criteria used during execution.
+- This pure PL inspection does not by itself impose torque or proof-load values. When quantitative retention evidence is invoked, use the `SAA-VV-CON-004` screw-torque/proof-load criteria and the `SAA-VV-CON-005` movement/witness-mark thresholds; this activity still requires retention/no-looseness evidence and records any approved project or work-instruction criteria used during execution.
 - The gate may be placed on hold rather than failed when a discrepancy is correctable but not yet dispositioned.

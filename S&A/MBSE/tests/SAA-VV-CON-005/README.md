@@ -36,6 +36,20 @@ The UUT is the integrated `v1.0` CanSat Assembly defined by `S&A/MBSE/v1.0/SAA_v
 
 `v0.1` is retained as a copied baseline because the prompt requires all S&A baselines to be preserved in the test folder, but it does not contain the battery, PCBs, backplane PCB, headers or PDM Servo Connector required for this executable retention activity.
 
+## Released movement/witness-mark thresholds (`SAA-BLK-007`)
+
+These thresholds select definition values for later execution/reporting; they do not state that any retention screen has passed. Use measurement uncertainty guard bands wherever measurements are taken. Any crack, rattle, loss of continuity/isolation, rail failure, connector unseat, bent pin, forced reseat, unapproved post-screen tightening, or ambiguous evidence is hold/fail regardless of measured displacement.
+
+| Feature | Released threshold |
+|---|---|
+| ESS battery pack / battery fixture | No detachment; witness-mark shift or measured movement `<=0.5 mm` in any direction after screen; no new gap, rattle, fixture crack, cell damage, harness strain, or contact with prohibited neighbors. |
+| ADS/AMS/OBCC/PDS PCBs and PCB standoffs/screws | Board-edge or standoff displacement `<=0.25 mm`; no new gap, board flex set, cracked/stripped boss, loose standoff, or screw witness-mark rotation beyond `10°`. |
+| Backplane PCB / backplane spine / header mating | Displacement or seating-gap increase `<=0.25 mm`; no partial unseat, bent pin, intermittent continuity, new short/open, or rail/testpoint failure. |
+| PDM servo connector and other connectors/harnesses | Connector seating-gap increase or relative movement `<=0.25 mm`; latch/friction retention remains engaged; no polarity/orientation shift, bent pin, intermittent continuity, insulation damage, or harness strain-relief failure. |
+| Stack screws / top-module / cap / parachute context | No new visible gap over `0.25 mm`; no screw witness-mark rotation beyond `10°`; no new interference with parachute/cap/servo clearance. |
+
+If a feature cannot be measured to the above resolution, use before/after witness marks, macro photos, and continuity/functional checks; ambiguous evidence is hold, not pass.
+
 ## Verification means and allocated functions
 
 | Actor / equipment | Verification-only functions |
@@ -62,7 +76,7 @@ The UUT is the integrated `v1.0` CanSat Assembly defined by `S&A/MBSE/v1.0/SAA_v
 8. Repeat the configured sequence for every approved axis, orientation, level or event in the screen definition.
 9. Safe the fixture and remove the UUT without tightening, reseating or altering the as-found condition unless the anomaly chain has been opened.
 10. Perform mandatory 100% post-screen retention inspection for detachment, looseness, witness-mark shift, new gap, rattle, crack, bent pin, connector unseat and hidden damage.
-11. Measure or bound battery, PCB, backplane, connector and top-module movement against released acceptance thresholds. If no measured threshold is released, any visible movement or new gap is hold/fail until dispositioned.
+11. Measure or bound battery, PCB/standoff, backplane/header, connector/harness and stack/top-module/cap/parachute movement against the released thresholds above. If a feature cannot be measured to the required resolution, use before/after witness marks, macro photos and continuity/functional checks; ambiguous evidence is hold, not pass.
 12. Check post-screen mass/part census and envelope compliance. Verify no retained part was lost and that `D_max + U_D ≤ 66.0 mm` and `H_max + U_H ≤ 122.0 mm` remain true for the modeled envelope.
 13. Run post-screen backplane/header/PDM-servo-connector seating checks, continuity/isolation and required rail/testpoint checks. Apply `5.0 ±0.1 V` and `3.3 ±0.1 V` only under recorded safe-load or no-load conditions when power is applied.
 14. Apply pass/fail constraints and statistical/fault-hardening viewpoints. If any hold trigger occurs, execute the anomaly disposition chain, preserve as-found evidence, quarantine the article, disposition corrective action and re-run affected checks or full screen as required.
@@ -74,14 +88,17 @@ Pass only if all of the following are true for the `v1.0` article:
 
 - tailored screen levels, axes, orientations, duration, fixture coupling, limitations, safety controls and abort criteria are approved and recorded before execution;
 - no retained mass detaches and no hardware is lost; post-screen mass/part census has no unexplained change outside measurement uncertainty;
-- no battery fixture, stack screw, PCB standoff/screw, backplane fixture, ADS/AMS/OBCC/PDS header, PDM Servo Connector, top-module interface or related printed feature loosens, unseats, cracks, bends, rattles or shifts outside the approved acceptance threshold;
-- if no measured movement threshold is released, no visible witness-mark shift, new gap, rattle, crack, bent pin or connector movement is permitted without hold/disposition/re-run;
+- ESS battery pack/battery fixture has no detachment; witness-mark shift or measured movement is `<=0.5 mm` in any direction, with no new gap, rattle, fixture crack, cell damage, harness strain or contact with prohibited neighbors;
+- ADS/AMS/OBCC/PDS PCBs and PCB standoffs/screws have board-edge or standoff displacement `<=0.25 mm`, no new gap, no board flex set, no cracked/stripped boss, no loose standoff and no screw witness-mark rotation beyond `10°`;
+- Backplane PCB/backplane spine/header mating displacement or seating-gap increase is `<=0.25 mm`, with no partial unseat, bent pin, intermittent continuity, new short/open or rail/testpoint failure;
+- PDM Servo Connector and other connectors/harnesses have connector seating-gap increase or relative movement `<=0.25 mm`; latch/friction retention remains engaged with no polarity/orientation shift, bent pin, intermittent continuity, insulation damage or harness strain-relief failure;
+- stack screws/top-module/cap/parachute context has no new visible gap over `0.25 mm`, no screw witness-mark rotation beyond `10°` and no new deployment-clearance interference;
 - post-screen envelope remains compliant with `D_max + U_D ≤ 66.0 mm` and `H_max + U_H ≤ 122.0 mm`;
 - post-screen PC/PL/interface inspection passes for 100% of target retention features;
 - backplane seating, header mating, PDM Servo Connector seating, continuity/isolation and required rail/interface checks pass; powered rail checks meet `5.0 ±0.1 V` and `3.3 ±0.1 V` at required testpoints under recorded safe-load or no-load conditions;
 - acceleration/event logs, photos/video, ambient records, equipment status, screen definition, limitations, pre/post inspections, measurements, witness review and anomaly/waiver/rework/re-run dispositions are complete.
 
-Fail or hold for any detachment, looseness, shifted witness mark, new gap, rattle, crack, bent pin, connector unseat, backplane movement, post-test rail/signal failure, uncontrolled or unapproved screen level, fixture-induced hidden preload/damage, missing or ambiguous evidence, unapproved rework/tightening/reseating, unresolved anomaly, unapproved waiver or required re-run not completed.
+Fail or hold for any detachment, looseness, movement or seating-gap increase beyond the released thresholds, shifted witness mark beyond threshold, new gap beyond threshold, rattle, crack, bent pin, connector unseat, intermittent continuity, new short/open, rail/testpoint failure, deployment-clearance interference, uncontrolled or unapproved screen level, fixture-induced hidden preload/damage, missing or ambiguous evidence, unapproved rework/tightening/reseating, unresolved anomaly, unapproved waiver or required re-run not completed.
 
 ## Viewpoints
 
@@ -97,7 +114,7 @@ The execution report in `S&A/MBSE/tests/results/SAA-VV-CON-005/` should referenc
 - operator, witness, equipment IDs, calibration/status records, ambient record, safety boundary and camera/logger setup;
 - tailored screen definition: type, level, axis, orientation, duration, fixture coupling, abort criteria, impact surface or proof-load adapter, limitations and approval/hold rationale;
 - pre/post PC/PL/interface inspection checklist for battery fixture, stack screws, PCB standoffs/screws, backplane fixture, headers, PDM Servo Connector and top-module context;
-- witness-mark/gap/movement measurements or threshold rationale;
+- witness-mark/gap/movement measurements for each released threshold, measurement uncertainty/guard-band method, macro-photo references, and any use of witness marks when direct measurement resolution is unavailable;
 - acceleration/event logs, photos/video and screen validity/over-test/under-test/abort notes;
 - post-screen mass/part census and envelope check results;
 - post-screen backplane/header/PDM-servo-connector seating, continuity/isolation and rail/interface check results;
@@ -109,6 +126,6 @@ The execution report in `S&A/MBSE/tests/results/SAA-VV-CON-005/` should referenc
 
 - The baseline S&A views contain only physical architecture; this folder adds verification-only PV2, PV3 and functional-chain definitions rather than editing baseline source views.
 - The executable activity is for `SAA-v1.0`; `v0.1` is retained as copied context only.
-- Environmental levels are not fixed in the baseline. The model therefore requires approved tailored levels and records all limitations before a pass can be claimed; unresolved levels produce hold/no-pass.
-- Movement thresholds for battery, PCB, backplane and connector shift are assumed to be released before execution. If absent, any visible movement, new gap, rattle, witness-mark shift or connector motion is treated as hold/fail until dispositioned.
+- The closure record approves the environmental-screen decision, but detailed test-definition edits for environmental levels, surfaces, orientations/axes, durations/events, limitations and success criteria are pending and are not inserted here. This definition therefore continues to require an approved controlled screen record and records all limitations before a pass can be claimed; unresolved detailed levels produce hold/no-pass.
+- Movement thresholds for battery, PCB/standoff, backplane/header, connector/harness and stack/top-module/cap/parachute context are released in this README from the closure record. Ambiguous movement evidence is hold, not pass.
 - The gate may be held rather than failed when a discrepancy is correctable by approved rework, model/evidence update, or accepted limitation before flight-readiness closure; all affected checks or screen events must then be re-run.

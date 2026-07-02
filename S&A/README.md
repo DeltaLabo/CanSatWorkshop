@@ -36,6 +36,8 @@ View 1 — v1.0 integrated physical assembly with PCBs mounted.
 | The CanSat structure must be printed with a precision of 0.2 mm. | Printer software configuration inspection |
 | The CanSat structure must be printed with a fill of 15%. | Printer software configuration inspection |
 
+Definition-authority notes from the 2026-07-02 S&A closure record: use the modeled `12.2 cm` / `122 mm` height and conservative mass guard band `measured mass + U_M < 350.0 g` unless a later project authority selects a stricter competition limit. PLA is the selected structural print material due to availability; preserve the controlled `0.2 mm` print precision/layer policy and `15%` fill/infill. Verification execution/reporting remains pending.
+
 ### Success Criteria
 
 The S&A subsystem has defined a modular structure that meets the dimensional constraints of the CanSat format, enables proper integration of all functional modules, and ensures a robust assembly capable of parachute deployment.
@@ -47,7 +49,9 @@ The S&A subsystem has defined a modular structure that meets the dimensional con
 The port that i being used in the whole CanSat is [TMM-106-01-L-D-RA SAMTEC](https://www.tme.com/cl/es/details/tmm-106-01-l-d-ra/conectores-placa-placa/samtec/).
 
 ![Pin Assignment](Pin Interface_page-0001.jpg)
-This is the pin assignment we will use for the CanSat. If any changes are needed, you can find the [Excel](https://estudianteccr-my.sharepoint.com/:x:/g/personal/kalebgranac13_estudiantec_cr/ETmAzbKWU1ZBgWh_Ee5cvZABLW6a4r9ywtOAFayDHpDFFA?e=c6SHXV) file here.
+This is the pin assignment we will use for the CanSat. The [Excel](https://estudianteccr-my.sharepoint.com/:x:/g/personal/kalebgranac13_estudiantec_cr/ETmAzbKWU1ZBgWh_Ee5cvZABLW6a4r9ywtOAFayDHpDFFA?e=c6SHXV) file remains a working reference; any verification-credit change requires a released Fusion 360/design-package and exported pin-interface update.
+
+For S&A verification closure, the released Fusion 360 backplane design package and exported pin-interface evidence are the frozen pinout source of truth. Strict execution credit requires a 100% match between the released design, installed headers/connectors, netlist, this controlled pin-interface evidence or successor, and the inspected article; no undocumented alternate pins or unowned extra nets are allowed. `S&A/PCB_General_Rules.md` is the binding local workshop/Carvera-Air DFM rule set, with IPC Class 2 only an external-comparison intent unless later authority selects otherwise.
 
 This is not a standalone subsystem, but the BackPlane helps reduce the rigidity of traditional wiring while providing greater stability for the power and data connections of the entire CanSat.
 

@@ -107,6 +107,71 @@ These are proposed in `PM&SE/MBSE_Test_Plan_Assessment.md` §4 and are still can
 | AMS-BLK-004 | Closed at definition level by the required API/non-blocking evidence checklist: 100% getter/OBCC collection-path inventory, explicit statuses, pointer ownership/lifetime/null policy, static callable-path review, dynamic timing/non-blocking traces, and dependency on `AMS-VV-CON-003` for I2C timeout evidence. | Execution credit for variable-getter and scheduler/no-blocking closure remains on hold until complete evidence exists. | Execute/update `AMS-VV-API-001`, `AMS-VV-CON-004`, and dependent FC/CON evidence with the full checklist; partial evidence is not a pass. |
 | AMS-BLK-005 | Closed/dispositioned non-issue for AMS definition planning: provisional AMS trace IDs are acceptable pending system-level tests and source trace nodes. | No AMS-only trace blocker; system/source trace modeling and the final requirement-to-test matrix remain pending. | Model `SYS-*` tests, source mission/capability/use-case/feared-event trace elements, or a controlled provisional-label policy in later system work. |
 
+
+#### 2.3.1 AMS §2.3 closure detail folded into this register
+
+This subsection replaces the standalone `PM&SE/AMS_Blocker_Resolution_Plan_2026-07-02.md` and `PM&SE/AMS_Blocker_Closure_Record_2026-07-02.md` files. It is a definition-planning closure record only: no tests are executed here, no execution report is created, and no pass/fail credit is claimed. Later AMS, ADS, PM&SE, and model artifacts must still be updated/executed where the follow-up below says so.
+
+**Folded execution status:** the AMS §2.3 blocker-resolution orchestration completed on 2026-07-02. The temporary AMS issue files were removed after validation. The shared ADS/AMS freshness contract, IVV reference, AMS test-documentation alignment, ADS/SYS freshness planning alignment, and PM&SE register/assessment updates are now represented in controlled repository files and commit history. Residual follow-up remains explicitly model/update/execution work, not an open AMS definition decision.
+
+**Shared ADS/AMS sensor-to-OBCC freshness rule:** controlled by [`PM&SE/contracts/sensor_obcc_freshness_contract.md`](contracts/sensor_obcc_freshness_contract.md).
+
+- ADS and AMS respond to OBCC collection requests at `5 Hz` internal cadence for parachute-control consumers.
+- OBCC LoRa telemetry remains a separate `2 s` push cadence.
+- At each `2 s` telemetry push, each required ADS/AMS sensor value shall either be fresh with age `<=400 ms` or explicitly non-valid.
+- Freshness evidence shall include timestamp, sequence, age, or equivalent monotonic proof at the ADS/AMS-to-OBCC observation point.
+- The external ADS/AMS-to-OBCC status enum is exactly `VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`.
+- Only `VALID` may be consumed or reported as fresh data. Timeout, runtime sensor fault, startup init failure, or no-data conditions shall not leave old values marked `VALID`.
+- Local implementation codes may exist, but test definitions and reports shall map them to the shared enum without losing low-level fault evidence.
+
+##### Folded AMS candidate and update register
+
+| Candidate / update ID | Type | Purpose | Selected definition baseline | Later implementation path |
+|---|---|---|---|---|
+| `AMS-V10-TEMP-RESPONSE-60S` | New AMS candidate test | Close the AMS temperature response-time requirement. | Apply a controlled temperature step to the AMS/BME280 environment and verify the reported temperature reaches the defined final/reference condition within `<=60 s`; retain raw timestamps, reference data, AMS data, exposure state, and uncertainty/deviation notes. | Prefer a standalone modeled activity if the response oracle needs its own D2 chain; otherwise extend `AMS-VV-FC-001` clearly and update the AMS test index. |
+| `AMS-V10-DATA-FRESHNESS` | AMS candidate or existing-test extension | Close AMS-to-OBCC internal data freshness/rate planning. | Use the shared rule: `5 Hz` OBCC requests, `2 s` telemetry pushes, fresh age `<=400 ms` only when status is `VALID`, the six-status enum, and no old data marked valid after timeout/fault/init/no-data. | Prefer extending `AMS-VV-API-001`, `AMS-VV-FC-001`, `AMS-VV-FC-002`, `AMS-VV-CON-003`, and `AMS-VV-CON-004`; create a new folder only if the extensions become unclear. |
+| `ADS-V10-DATA-FRESHNESS` | ADS alignment update | Align ADS v1.0 freshness/rate planning with the same ADS/AMS rule. | ADS uses the same `5 Hz` internal OBCC request/response freshness contract, `2 s` LoRa cadence separation, `<=400 ms` fresh age, six-status enum, timestamp/age evidence, and stale-valid prohibition. | Implement through existing ADS OBCC-delivery, getter/API, rate, mission-window, and no-blocking tests unless a standalone ADS activity becomes clearer. |
+| `SYS-END-TO-END-DATA` freshness/status update | PM&SE system candidate update | Ensure end-to-end system data validation uses the same sensor freshness/status oracle from truth/reference stimulus to DPS CSV/dashboard. | Require canonical payload fields, units, timestamps, freshness age, shared six-status enum, no stale-valid behavior, and observability from ADS/AMS through OBCC LoRa to DPS storage/display. | Model this in the future system-level MBSE test package and final requirement-to-test matrix. |
+| AMS API/non-blocking evidence checklist | Existing-test update, no new behavioral candidate | Make API/getter and scheduler/no-blocking closure auditable. | `AMS-VV-API-001` and `AMS-VV-CON-004` must together provide 100% getter/OBCC collection inventory, explicit status mapping, pointer ownership/lifetime/null policy, static callable-path review, dynamic timing/non-blocking traces, and `AMS-VV-CON-003` dependency. | Update AMS READMEs/D2 definitions and require complete execution evidence; partial evidence remains a hold. |
+| AMS `v0.2` native logical/CE/allocation/FC closure | Not selected | Prevent over-scoping historical `v0.2` closure. | `v0.2` remains PCB delivery plus bring-up reachability only; no native logical/CE/allocation/FC closure is created. | Preserve caveat text in planning and reports; only add native views if a future controlled decision requires them. |
+| AMS provisional trace-label closure | Not selected as AMS-only test | Avoid creating AMS-only trace work when the issue is system/source modeling. | AMS provisional trace IDs are acceptable until system tests and source trace elements are modeled. | Update system model and requirement-to-test matrix later. |
+
+##### Folded existing-test update list
+
+| Artifact / activity | Required update retained in this register |
+|---|---|
+| `AMS/MBSE/tests/README.md` | Add/reference `AMS-V10-TEMP-RESPONSE-60S`; record the preferred implementation path for `AMS-V10-DATA-FRESHNESS`; keep the `v0.2` PCB-only disposition and provisional trace-label caveat aligned. |
+| `AMS-VV-API-001` | Include the shared six-status enum, age/timestamp evidence, stale-valid prohibition, 100% getter and OBCC collection-path inventory, pointer ownership/lifetime/null policy, and mapping from implementation return codes to `VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`. |
+| `AMS-VV-FC-001` | Add freshness/currentness criteria for atmospheric measurement collection; valid fresh values have age `<=400 ms`, non-valid values carry the shared status, and stale data is not accepted as current. Reference or incorporate the temperature response-time activity. |
+| `AMS-VV-FC-002` | Align BME280 init-state and startup-fault evidence with `INIT_FAIL` and the stale-valid prohibition; prevent default/previous boot OK values from being treated as current valid status. |
+| `AMS-VV-CON-003` | Map environmental I2C timeout/fault outcomes to the shared contract for external OBCC-facing status while retaining low-level evidence; timed-out or faulted reads must not return old data as `VALID`. |
+| `AMS-VV-CON-004` | Add static callable-path review, dynamic non-blocking/timing traces, bounded error/status propagation, and explicit dependency on `AMS-VV-CON-003` for I2C wait timing/recovery. |
+| `AMS-VV-CON-001` | Keep sunlight/airflow exposure evidence available as context for temperature accuracy and response-time interpretation, without claiming response-time closure unless the response oracle is present. |
+| ADS OBCC-delivery / getter / rate / mission-window / no-blocking tests | Reference the shared ADS/AMS freshness rule, status enum, timestamp/age evidence, pointer/return policy where applicable, watchdog/timeout behavior, `5 Hz` internal delivery separated from `2 s` LoRa telemetry, and no stale-valid behavior. |
+| `SYS-END-TO-END-DATA` | Add canonical payload, units, timestamps, freshness age, shared six-status enum, no stale-valid behavior, and observability from ADS/AMS through OBCC to DPS CSV/dashboard. |
+
+##### Folded follow-on D2/model and execution work
+
+The following work is intentionally not closed by this register update:
+
+1. Create or update AMS D2 test-definition views for `AMS-V10-TEMP-RESPONSE-60S`, then regenerate matching PNGs.
+2. Update AMS API/FC/CON D2 definition views to include the shared freshness/status contract, age/timestamp evidence, stale-valid prohibition, and evidence checklist items.
+3. Complete ADS D2/test-definition updates for OBCC delivery, getter/API, rate/freshness, mission-window, and no-blocking alignment where old v1.0 N/A rate rationale remains.
+4. Model the system-level `SYS-END-TO-END-DATA` package with payload, timestamp, freshness/status, and DPS CSV/dashboard observability criteria.
+5. Add source model trace elements for missions, capabilities, use cases, and feared events, or approve a controlled provisional-label policy until those elements exist.
+6. Do not create native AMS `v0.2` logical, CE, allocation, or FC source views unless a later controlled decision changes the PCB-only delivery disposition.
+7. Execute the selected tests and archive reports before claiming pass/fail credit.
+
+##### Folded residual execution-only uncertainties
+
+- Exact temperature step method, final-value/settling definition, sample count, thermal fixture or chamber model, and response-time analysis script.
+- Exact ADS/AMS API/header names, field names, status-code mapping, timestamp source, clock synchronization or monotonic-age method, and sequence/age encoding.
+- OBCC harness/logging implementation, telemetry payload schema version, and DPS CSV/dashboard field mapping for system end-to-end evidence.
+- UUT serial numbers, hardware revisions, firmware commits, source/build maps, symbols, instrumentation hooks, and instrumentation overhead.
+- Actual equipment asset IDs, calibration certificates or function checks, tool versions, environmental limits, and lab configuration.
+- Whether AMS freshness and temperature response are implemented as standalone folders or extensions to existing AMS activities; choose the path that keeps the modeled definition clearest.
+- How and when system/source trace nodes will be modeled versus retaining provisional trace labels under controlled rationale.
+
 ### 2.4 DPS blockers
 
 | Blocker ID | Blocker | Blocks | Closure action |

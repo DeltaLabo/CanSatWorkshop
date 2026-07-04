@@ -37,23 +37,39 @@ class ServoImpl {
 
 public:
     ServoImpl(const uint8_t _pin, const uint8_t _channel) : pin(_pin) {
+#if defined(ESP_ARDUINO_VERSION_MAJOR) && ESP_ARDUINO_VERSION_MAJOR >= 3
+      ledcAttachChannel(pin, (1000000 / REFRESH_INTERVAL), LEDC_MAX_BIT_WIDTH, _channel);
+#else
       // Setup timer
       ledcSetup(_channel, (1000000 / REFRESH_INTERVAL), LEDC_MAX_BIT_WIDTH);
 
       // Attach timer to a LED pin
       ledcAttachPin(pin, _channel);
+#endif
     }
 
     ~ServoImpl() {
+#if defined(ESP_ARDUINO_VERSION_MAJOR) && ESP_ARDUINO_VERSION_MAJOR >= 3
+      ledcDetach(pin);
+#else
       ledcDetachPin(pin);
+#endif
     }
 
     void set(const uint8_t _channel, const uint32_t duration_us) {
+#if defined(ESP_ARDUINO_VERSION_MAJOR) && ESP_ARDUINO_VERSION_MAJOR >= 3
+      ledcWrite(pin, LEDC_US_TO_TICKS(duration_us));
+#else
       ledcWrite(_channel, LEDC_US_TO_TICKS(duration_us));
+#endif
     }
 
     uint32_t get(const uint8_t _channel) const {
+#if defined(ESP_ARDUINO_VERSION_MAJOR) && ESP_ARDUINO_VERSION_MAJOR >= 3
+      return LEDC_TICKS_TO_US(ledcRead(pin));
+#else
       return LEDC_TICKS_TO_US(ledcRead(_channel));
+#endif
     }
 };
 

@@ -7,17 +7,17 @@ See you corresponding subsystem folder for more documentation, including archite
 
 ## Resources
 
-[General PCB Rules](S&A/PCB_General_Rules.md)
+- [General PCB Rules](S&A/PCB_General_Rules.md)
 
-[Variable Getter Template](OBCC/Variable_Getter_Template.md)
+- [Variable Getter Template](OBCC/Variable_Getter_Template.md)
 
-[LoRa Frame](OBCC/LoRa_Frame.md)
+- [LoRa Frame](OBCC/LoRa_Frame.md)
 
-[Pin Assignment](OBCC/main/pins.h)
+- [Pin Assignment](OBCC/main/pins.h)
 
-[Systems Engineering References](https://estudianteccr-my.sharepoint.com/:f:/g/personal/kalebgranac13_estudiantec_cr/ElI-9aJQazhGnh5G5kcrWZkB65sbdSAl9rwuSII5qyaB7Q?e=dnkzEI)
+- [Systems Engineering References](https://estudianteccr-my.sharepoint.com/:f:/g/personal/kalebgranac13_estudiantec_cr/ElI-9aJQazhGnh5G5kcrWZkB65sbdSAl9rwuSII5qyaB7Q?e=dnkzEI)
 
-[Bill of Materials](https://estudianteccr-my.sharepoint.com/:x:/g/personal/kalebgranac13_estudiantec_cr/EeUVlwbXuAFEvggyGM2W0XwBwfjurpy7WgbWl5BY9J1BnA?e=q1pwpY)
+- [Bill of Materials](https://estudianteccr-my.sharepoint.com/:x:/g/personal/kalebgranac13_estudiantec_cr/EeUVlwbXuAFEvggyGM2W0XwBwfjurpy7WgbWl5BY9J1BnA?e=q1pwpY)
 
 ## Requirements
 

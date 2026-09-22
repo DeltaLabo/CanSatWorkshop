@@ -1,244 +1,195 @@
+"""VPython dashboard with a scalar Kalman filter for an MPU6050.
+
+The filter follows the supplied paper: gyro angular rate predicts roll/pitch
+and the gravity angle calculated from the accelerometer corrects that estimate.
+The Arduino sketch paired with this file sends the M2 packet format documented
+in ``read_telemetry`` below.
+"""
+
 from vpython import *
-from collections import deque
 import struct
 import time
+
 import numpy as np
 import serial
-from filterpy.common import Q_discrete_white_noise
-from filterpy.kalman import KalmanFilter
+
 
 # ---------------------------------------------------------------------------
-# CONFIGURACIÓN
+# SERIAL PROTOCOL AND TUNING
 # ---------------------------------------------------------------------------
 
 SERIAL_PORT = "COM9"
 BAUD_RATE = 115200
 PACKET_SIZE = 100
 
-# Tras este tiempo sin una medición válida se muestra la predicción.
-MAX_PREDICTION_SECONDS = 3.0
+# M2 is the updated form of the supplied sketch. It changes only floats 3..5:
+# M1: roll, pitch, yaw already calculated by Madgwick.
+# M2: gyro X, gyro Y, gyro Z in degrees/second, after bias calibration.
+EXPECTED_SENDER = b"M2"
+FLOAT_COUNT = 10
 
-# Tras este tiempo se indica pérdida importante de telemetría.
-STALE_AFTER_SECONDS = 5.0
+# The dashboard is declared offline after one second without a real packet.
+# It holds the last pose; it does not invent motion while disconnected.
+STALE_AFTER_SECONDS = 1.0
+SERIAL_RETRY_SECONDS = 2.0
 
-# Ventana de mediciones válidas para estimar la velocidad angular.
-VELOCITY_HISTORY_SECONDS = 1.0
+# Kalman noise terms. Both use degree units because the filter state is angle.
+# - Raise GYRO_RATE_STD_DPS if the prediction follows the gyro too strongly.
+# - Raise ACCEL_ANGLE_STD_DEG if gravity angles visibly shake while stationary.
+GYRO_RATE_STD_DPS = 4.0
+ACCEL_ANGLE_STD_DEG = 3.0
 
-# Rechaza mediciones a más de 3 desviaciones estándar de la predicción.
-MEASUREMENT_GATE_SIGMA = 3.0
+# Acceleration represents the gravity vector only when its norm is near 1 g.
+# In free fall or under a strong thrust/impact we therefore skip the accel
+# correction. This is essential for a CanSat and avoids false tilt readings.
+ACCEL_GRAVITY_MIN_G = 0.85
+ACCEL_GRAVITY_MAX_G = 1.15
 
-# Dos outliers similares consecutivos se consideran una maniobra real.
-OUTLIER_CONFIRMATION_COUNT = 2
-OUTLIER_CONFIRMATION_WINDOW_SECONDS = 0.7
-OUTLIER_MATCH_DEGREES = 12.0
+# A severe isolated accelerometer angle is down-weighted rather than accepted
+# as a full correction. This is a robust extension around the paper's S term.
+ACCEL_SOFT_INNOVATION_DEG = 25.0
 
-# Ajustes de Kalman.
-MEASUREMENT_STD_DEG = 4.0
-PROCESS_ACCELERATION_VARIANCE = 4.0
-
-# Ajustes visuales.
-DISPLAY_RATE_HZ = 30
-VISUAL_SMOOTHING_HZ = 12.0
+DISPLAY_RATE_HZ = 60
 GRAPH_HISTORY_POINTS = 600
 
 
-class AngleKalmanFilter:
-    # Estado: [ángulo en grados, velocidad angular en grados/s].
+def wrap_degrees(angle):
+    """Map an angle difference into [-180, 180), avoiding 360 degree jumps."""
+    return (angle + 180.0) % 360.0 - 180.0
+
+
+class PaperKalmanAngle:
+    """One-dimensional Kalman filter for either roll or pitch.
+
+    State: angle in degrees.
+    Input: gyro angular speed in degrees per second.
+    Measurement: angle computed from the accelerometer gravity vector.
+    """
 
     def __init__(self):
-        self.filter = KalmanFilter(dim_x=2, dim_z=1)
-
-        self.filter.x = np.array([[0.0], [0.0]])
-        self.filter.H = np.array([[1.0, 0.0]])
-        self.filter.P = np.diag([25.0, 100.0])
-        self.filter.R = np.array([[MEASUREMENT_STD_DEG**2]])
-
-        # Historial de mediciones aceptadas.
-        self.history = deque()
-
-        # Se usa para detectar maniobras reales bruscas.
-        self.outlier_candidate = None
-        self.outlier_candidate_time = 0.0
-        self.outlier_candidate_count = 0
-
+        self.angle = 0.0
+        self.variance = ACCEL_ANGLE_STD_DEG ** 2  # Paper's Psi.
         self.initialized = False
+        self.last_correction_used = False
+        self.last_correction_softened = False
+        self.last_gain = 0.0
 
-    @property
-    def angle(self):
-        return float(self.filter.x[0, 0])
+    def update(self, gyro_rate_dps, accel_angle_deg, dt, accel_reliable):
+        """Make one prediction and one possible accelerometer correction."""
 
-    def predict(self, dt, signal_age):
-        # Este método se ejecuta siempre.
-        self.filter.F = np.array([
-            [1.0, dt],
-            [0.0, 1.0]
-        ])
-
-        self.filter.Q = Q_discrete_white_noise(
-            dim=2,
-            dt=dt,
-            var=PROCESS_ACCELERATION_VARIANCE
-        )
-
-        self.filter.predict()
-
-        # Si no hay señal por mucho tiempo, frena la velocidad estimada.
-        if signal_age > MAX_PREDICTION_SECONDS:
-            self.filter.x[1, 0] *= np.exp(-1.5 * dt)
-
-    def update_if_plausible(self, measurement, now):
-        # Devuelve True si la medición es aceptada.
-
+        # An initial pose requires gravity. Hold the model until the CanSat is
+        # still enough for at least one valid accelerometer reading.
         if not self.initialized:
-            self.filter.x[0, 0] = measurement
-            self.initialized = True
-            self.history.append((now, measurement))
-            return True
-
-        # Evita saltos grandes al cruzar -180 / 180 grados.
-        residual = (measurement - self.angle + 180.0) % 360.0 - 180.0
-        aligned_measurement = self.angle + residual
-
-        # S = HPH' + R
-        innovation_covariance = (
-            self.filter.H @ self.filter.P @ self.filter.H.T + self.filter.R
-        )
-
-        innovation_std = float(np.sqrt(innovation_covariance[0, 0]))
-
-        # Si la lectura se aleja demasiado, puede ser un outlier.
-        if abs(residual) > MEASUREMENT_GATE_SIGMA * innovation_std:
-            # Si se repite de forma coherente, se acepta como maniobra real.
-            if self._confirm_outlier(measurement, now):
-                self.filter.x[0, 0] = aligned_measurement
-                self.filter.P[0, 0] = MEASUREMENT_STD_DEG**2
-                self.filter.P[1, 1] = max(self.filter.P[1, 1], 100.0)
-
-                self.history.append((now, self.angle))
-                self._update_velocity_from_history(now)
-                return True
-
-            return False
-
-        # Medición normal: corrige el filtro.
-        self.filter.update(np.array([[aligned_measurement]]))
-
-        self.history.append((now, self.angle))
-        self._update_velocity_from_history(now)
-        self._clear_outlier_candidate()
-
-        return True
-
-    def _confirm_outlier(self, measurement, now):
-        # Requiere varios outliers similares para aceptar una maniobra brusca.
-
-        if self.outlier_candidate is None:
-            self.outlier_candidate = measurement
-            self.outlier_candidate_time = now
-            self.outlier_candidate_count = 1
-            return False
-
-        candidate_difference = (
-            (measurement - self.outlier_candidate + 180.0) % 360.0 - 180.0
-        )
-
-        is_recent = (
-            now - self.outlier_candidate_time
-            <= OUTLIER_CONFIRMATION_WINDOW_SECONDS
-        )
-
-        is_similar = abs(candidate_difference) <= OUTLIER_MATCH_DEGREES
-
-        if is_recent and is_similar:
-            self.outlier_candidate_count += 1
-        else:
-            self.outlier_candidate = measurement
-            self.outlier_candidate_count = 1
-
-        self.outlier_candidate_time = now
-
-        confirmed = (
-            self.outlier_candidate_count >= OUTLIER_CONFIRMATION_COUNT
-        )
-
-        if confirmed:
-            self._clear_outlier_candidate()
-
-        return confirmed
-
-    def _clear_outlier_candidate(self):
-        self.outlier_candidate = None
-        self.outlier_candidate_time = 0.0
-        self.outlier_candidate_count = 0
-
-    def _update_velocity_from_history(self, now):
-        # Usa la pendiente de los últimos valores válidos.
-
-        while (
-            self.history
-            and now - self.history[0][0] > VELOCITY_HISTORY_SECONDS
-        ):
-            self.history.popleft()
-
-        if len(self.history) < 2:
+            self.last_correction_used = False
+            self.last_correction_softened = False
+            self.last_gain = 0.0
+            if accel_reliable:
+                self.angle = accel_angle_deg
+                self.variance = ACCEL_ANGLE_STD_DEG ** 2
+                self.initialized = True
+                self.last_correction_used = True
+                self.last_gain = 1.0
             return
 
-        times = np.array([sample[0] for sample in self.history])
-        angles = np.array([sample[1] for sample in self.history])
+        # Paper prediction equations:
+        #   theta_pred = theta_previous + gyro_rate * dt
+        #   Psi_pred   = Psi_previous + (dt * sigma_gyro)^2
+        predicted_angle = self.angle + gyro_rate_dps * dt
+        predicted_variance = self.variance + (dt * GYRO_RATE_STD_DPS) ** 2
 
-        relative_times = times - times[0]
-        recent_velocity = np.polyfit(relative_times, angles, 1)[0]
+        self.last_correction_used = False
+        self.last_correction_softened = False
+        self.last_gain = 0.0
 
-        # Combina la estimación Kalman con la velocidad reciente.
-        self.filter.x[1, 0] = (
-            0.5 * self.filter.x[1, 0]
-            + 0.5 * recent_velocity
+        if not accel_reliable:
+            # No gravity reference exists in free fall, so retain gyro result.
+            self.angle = predicted_angle
+            self.variance = predicted_variance
+            return
+
+        # Accelerometer roll/pitch is periodic. Align it to the prediction
+        # before computing the innovation so a -180/180 crossing is harmless.
+        innovation = wrap_degrees(accel_angle_deg - predicted_angle)
+
+        # The paper has a fixed accelerometer variance S. A very large single
+        # innovation often comes from impact or linear acceleration, so use a
+        # larger S and make that correction proportionally weaker.
+        measurement_variance = ACCEL_ANGLE_STD_DEG ** 2
+        if abs(innovation) > ACCEL_SOFT_INNOVATION_DEG:
+            scale = abs(innovation) / ACCEL_SOFT_INNOVATION_DEG
+            measurement_variance *= scale ** 2
+            self.last_correction_softened = True
+
+        # Paper correction equations:
+        #   G     = Psi_pred / (Psi_pred + S)
+        #   theta = theta_pred + G * innovation
+        #   Psi   = (1 - G) * Psi_pred
+        self.last_gain = (
+            predicted_variance / (predicted_variance + measurement_variance)
         )
+        self.angle = predicted_angle + self.last_gain * innovation
+        self.variance = (1.0 - self.last_gain) * predicted_variance
+        self.last_correction_used = True
+
+
+def accelerometer_angles(acc_x, acc_y, acc_z):
+    """Calculate roll and pitch from acceleration expressed in g."""
+    roll = np.degrees(np.arctan2(acc_y, acc_z))
+    pitch = np.degrees(
+        np.arctan2(-acc_x, np.sqrt(acc_y ** 2 + acc_z ** 2))
+    )
+    return roll, pitch
+
+
+def gravity_is_reliable(acc_x, acc_y, acc_z):
+    """Return whether the sample can be used as a gravity measurement."""
+    magnitude = float(np.sqrt(acc_x ** 2 + acc_y ** 2 + acc_z ** 2))
+    return ACCEL_GRAVITY_MIN_G <= magnitude <= ACCEL_GRAVITY_MAX_G
 
 
 def open_serial_port():
+    """Open the COM port, but leave the graphical UI alive when it fails."""
     try:
         connection = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=0)
         connection.reset_input_buffer()
-
-        print(
-            f"Leyendo telemetría desde {SERIAL_PORT} "
-            f"a {BAUD_RATE} baud."
-        )
-
+        print(f"Reading M2 telemetry from {SERIAL_PORT} at {BAUD_RATE} baud.")
         return connection
-
     except serial.SerialException as error:
-        raise SystemExit(
-            f"No se pudo abrir {SERIAL_PORT}: {error}\n"
-            "Cierra el Monitor Serie y revisa SERIAL_PORT."
-        )
+        print(f"Cannot open {SERIAL_PORT}: {error}")
+        return None
 
 
 def read_telemetry(connection, buffer):
-    # Paquete esperado:
-    # bytes 0-3: CSWS
-    # bytes 8-47: 10 floats
-    # byte 48: estado de paracaídas
-    # bytes 96-99: DTLB
+    """Return the newest valid M2 packet and whether a legacy M1 was seen.
 
+    M2 packet (100 bytes):
+      0..3   CSWS header
+      4..5   M2 sender identifier
+      6..7   GS receiver identifier
+      8..47  10 little-endian floats:
+              accX, accY, accZ, gyroX, gyroY, gyroZ,
+              temperature, pressure, humidity, speed
+      48     parachute status (preserved from the original protocol)
+      49     I2C validity: 0 means a fresh MPU6050 sample; 255 means that the
+             board could not obtain a fresh reading and sent its last values
+             only to keep the telemetry heartbeat alive.
+      96..99 DTLB footer
+    """
     available = connection.in_waiting
-
     if available:
         buffer.extend(connection.read(available))
 
-    latest_packet = None
+    newest = None
+    saw_legacy_m1 = False
 
     while len(buffer) >= PACKET_SIZE:
         header_index = buffer.find(b"CSWS")
-
         if header_index == -1:
+            # Keep possible first bytes of the next header.
             del buffer[:-3]
             break
-
         if header_index:
             del buffer[:header_index]
-
         if len(buffer) < PACKET_SIZE:
             break
 
@@ -247,34 +198,36 @@ def read_telemetry(connection, buffer):
 
         if packet[96:100] != b"DTLB":
             continue
+        if packet[4:6] != EXPECTED_SENDER:
+            saw_legacy_m1 = saw_legacy_m1 or packet[4:6] == b"M1"
+            continue
 
         values = struct.unpack("<10f", packet[8:48])
-
-        latest_packet = {
+        newest = {
             "acceleration": values[0:3],
-            "roll": values[3],
-            "pitch": values[4],
-            "yaw": values[5],
+            "gyro": values[3:6],
             "temperature": values[6],
             "pressure": values[7],
             "humidity": values[8],
             "speed": values[9],
             "parachute_status": packet[48],
+            # Zero is deliberately the normal value so an early M2 sketch
+            # without this diagnostic byte remains compatible.
+            "imu_valid": packet[49] != 0xFF,
         }
 
-    return latest_packet
+    return newest, saw_legacy_m1
 
 
 # ---------------------------------------------------------------------------
-# INTERFAZ VPYTHON
+# VPYTHON VIEW
 # ---------------------------------------------------------------------------
 
 cansat_canvas = canvas(
     align="left",
     background=vec(0.15, 0.15, 0.15),
-    width=750
+    width=750,
 )
-
 cansat_canvas.forward = vec(0, 1, 0)
 
 cansat_body = cylinder(
@@ -284,107 +237,81 @@ cansat_body = cylinder(
     radius=0.8,
     color=vec(1, 0.84, 0),
     shininess=0.8,
-    opacity=0.9
+    opacity=0.9,
 )
-
 rotating_parts = [cansat_body]
 
-angle_x = 0
-angle_y = 0
-angle_z = 0
+angle_x = 0.0
+angle_y = 0.0
+angle_z = 0.0
 
 warning_label = label(
     pos=vec(0, 2, 0),
-    text="",
+    text="Waiting for M2 IMU telemetry",
     color=color.red,
     height=18,
     box=True,
     background=color.white * 0.1,
-    opacity=0.6
+    opacity=0.6,
 )
 
 
 def update_rotation():
-    Rz = np.array([
+    """Rotate the cylinder using current roll, pitch and yaw in radians."""
+    rotation_z = np.array([
         [np.cos(angle_z), -np.sin(angle_z), 0],
         [np.sin(angle_z), np.cos(angle_z), 0],
-        [0, 0, 1]
+        [0, 0, 1],
     ])
-
-    Ry = np.array([
+    rotation_y = np.array([
         [np.cos(angle_y), 0, np.sin(angle_y)],
         [0, 1, 0],
-        [-np.sin(angle_y), 0, np.cos(angle_y)]
+        [-np.sin(angle_y), 0, np.cos(angle_y)],
     ])
-
-    Rx = np.array([
+    rotation_x = np.array([
         [1, 0, 0],
         [0, np.cos(angle_x), -np.sin(angle_x)],
-        [0, np.sin(angle_x), np.cos(angle_x)]
+        [0, np.sin(angle_x), np.cos(angle_x)],
     ])
 
-    new_axis = np.dot(
-        Rz,
-        np.dot(Ry, np.dot(Rx, [0, 0, 3]))
-    )
-
+    new_axis = rotation_z @ rotation_y @ rotation_x @ np.array([0, 0, 3])
     for part in rotating_parts:
-        part.axis = vec(
-            new_axis[0],
-            new_axis[1],
-            new_axis[2]
-        )
-
-
-def smooth_angle(current, target, dt):
-    # Suaviza solo el dibujo del modelo 3D.
-    delta = (target - current + np.pi) % (2.0 * np.pi) - np.pi
-    alpha = 1.0 - np.exp(-VISUAL_SMOOTHING_HZ * dt)
-
-    return current + alpha * delta
+        part.axis = vec(new_axis[0], new_axis[1], new_axis[2])
 
 
 atmospheric_pressure_graph = graph(
     title="<b>Atmospheric Pressure</b>",
-    xtitle="<b>Time (s)</b>",
+    xtitle="<b>Sample</b>",
     ytitle="<b>Pressure (Pa)</b>",
     xmin=0,
     ymin=90000,
     fast=True,
     align="right",
     background=color.black,
-    foreground=color.black,
-    width=750
+    foreground=color.white,
+    width=750,
 )
-
 atmospheric_pressure_curve = gcurve(
-    graph=atmospheric_pressure_graph,
-    color=color.red,
-    width=4
+    graph=atmospheric_pressure_graph, color=color.red, width=4
 )
 
 temperature_graph = graph(
     title="<b>Temperature</b>",
-    xtitle="<b>Time (s)</b>",
-    ytitle="<b>Temperature (°C)</b>",
+    xtitle="<b>Sample</b>",
+    ytitle="<b>Temperature (C)</b>",
     xmin=0,
     ymin=-10,
     fast=True,
     align="left",
     background=color.black,
-    foreground=color.black,
-    width=750
+    foreground=color.white,
+    width=750,
 )
-
-temperature_curve = gcurve(
-    graph=temperature_graph,
-    color=color.cyan,
-    width=4
-)
+temperature_curve = gcurve(graph=temperature_graph, color=color.cyan, width=4)
 
 relative_humidity_graph = graph(
     title="<b>Relative Humidity</b>",
-    xtitle="<b>Time (s)</b>",
+    xtitle="<b>Sample</b>",
     ytitle="<b>Humidity (%)</b>",
     xmin=0,
     ymin=0,
@@ -392,20 +319,16 @@ relative_humidity_graph = graph(
     fast=True,
     align="right",
     background=color.black,
-    foreground=color.black,
-    width=750
+    foreground=color.white,
+    width=750,
 )
-
 relative_humidity_curve = gcurve(
-    graph=relative_humidity_graph,
-    color=color.green,
-    width=4
+    graph=relative_humidity_graph, color=color.green, width=4
 )
 
 
 def reset_graph_curves():
-    # Evita acumulación infinita de puntos.
-
+    """Prevent unbounded graph memory while preserving the dashboard layout."""
     global atmospheric_pressure_curve
     global temperature_curve
     global relative_humidity_curve
@@ -415,173 +338,136 @@ def reset_graph_curves():
     relative_humidity_curve.delete()
 
     atmospheric_pressure_curve = gcurve(
-        graph=atmospheric_pressure_graph,
-        color=color.red,
-        width=4
+        graph=atmospheric_pressure_graph, color=color.red, width=4
     )
-
     temperature_curve = gcurve(
-        graph=temperature_graph,
-        color=color.cyan,
-        width=4
+        graph=temperature_graph, color=color.cyan, width=4
     )
-
     relative_humidity_curve = gcurve(
-        graph=relative_humidity_graph,
-        color=color.green,
-        width=4
+        graph=relative_humidity_graph, color=color.green, width=4
     )
 
 
 # ---------------------------------------------------------------------------
-# TELEMETRÍA Y KALMAN
+# LIVE TELEMETRY LOOP
 # ---------------------------------------------------------------------------
 
-i = 0
-
-serial_connection = open_serial_port()
+sample_index = 0
+serial_connection = None
 serial_buffer = bytearray()
-
+next_serial_attempt = 0.0
 last_packet_time = 0.0
-last_filter_time = time.monotonic()
+last_imu_time = None
+legacy_m1_seen = False
+last_packet_sensor_valid = False
 
-roll_filter = AngleKalmanFilter()
-pitch_filter = AngleKalmanFilter()
-yaw_filter = AngleKalmanFilter()
-
-display_angle_x = 0.0
-display_angle_y = 0.0
-display_angle_z = 0.0
-display_initialized = False
+roll_filter = PaperKalmanAngle()
+pitch_filter = PaperKalmanAngle()
+yaw_angle = 0.0
 
 
 while True:
     now = time.monotonic()
 
-    # Evita saltos de tiempo si Windows pausa el programa.
-    dt = min(now - last_filter_time, 0.25)
-    last_filter_time = now
+    # An unplugged/reset board no longer terminates the dashboard. The program
+    # holds the last real pose and automatically retries the port every 2 s.
+    if serial_connection is None and now >= next_serial_attempt:
+        serial_connection = open_serial_port()
+        next_serial_attempt = now + SERIAL_RETRY_SECONDS
+        serial_buffer.clear()
 
-    # Un paquete rechazado no cuenta como medición válida.
-    signal_age = (
-        now - last_packet_time
-        if last_packet_time
-        else float("inf")
-    )
-
-    telemetry = read_telemetry(
-        serial_connection,
-        serial_buffer
-    )
-
-    # Kalman predice siempre.
-    roll_filter.predict(dt, signal_age)
-    pitch_filter.predict(dt, signal_age)
-    yaw_filter.predict(dt, signal_age)
-
-    accepted_axes = []
+    telemetry = None
+    if serial_connection is not None:
+        try:
+            telemetry, saw_legacy = read_telemetry(
+                serial_connection, serial_buffer
+            )
+            legacy_m1_seen = legacy_m1_seen or saw_legacy
+        except serial.SerialException as error:
+            print(f"Serial connection lost: {error}")
+            try:
+                serial_connection.close()
+            except serial.SerialException:
+                pass
+            serial_connection = None
+            next_serial_attempt = now + SERIAL_RETRY_SECONDS
 
     if telemetry is not None:
-        accepted_axes = [
-            roll_filter.update_if_plausible(
-                telemetry["roll"],
-                now
-            ),
-            pitch_filter.update_if_plausible(
-                telemetry["pitch"],
-                now
-            ),
-            yaw_filter.update_if_plausible(
-                telemetry["yaw"],
-                now
-            ),
-        ]
+        # A packet is proof that the serial link is alive, even if the board
+        # reports a temporary I2C read failure. That condition has its own
+        # warning below and must not be confused with a disconnected USB link.
+        last_packet_time = now
+        last_packet_sensor_valid = telemetry["imu_valid"]
+        legacy_m1_seen = False
+        if not telemetry["imu_valid"]:
+            # Do not integrate a guessed multi-second interval when a valid
+            # MPU sample returns after an I2C fault. The last real pose stays
+            # fixed until the next fresh packet supplies a normal dt.
+            last_imu_time = now
 
-        if i >= GRAPH_HISTORY_POINTS:
+    if telemetry is not None and telemetry["imu_valid"]:
+        # dt is based only on real packets. If data is absent no Kalman
+        # prediction runs, which prevents the model from spinning on its own.
+        dt = 0.0 if last_imu_time is None else min(now - last_imu_time, 0.25)
+        last_imu_time = now
+
+        acc_x, acc_y, acc_z = telemetry["acceleration"]
+        gyro_x, gyro_y, gyro_z = telemetry["gyro"]
+        accel_roll, accel_pitch = accelerometer_angles(acc_x, acc_y, acc_z)
+        accel_reliable = gravity_is_reliable(acc_x, acc_y, acc_z)
+
+        # The supplied sketch uses its body X gyro for roll and Y gyro for
+        # pitch. If the board is mounted differently, change the mapping/sign
+        # only on these two lines after checking the physical axes.
+        roll_filter.update(gyro_x, accel_roll, dt, accel_reliable)
+        pitch_filter.update(gyro_y, accel_pitch, dt, accel_reliable)
+
+        # A 6-axis MPU6050 has no absolute yaw reference. Gyro Z can provide a
+        # short-term heading, but it will drift over time without a magnetometer.
+        yaw_angle = wrap_degrees(yaw_angle + gyro_z * dt)
+
+        if roll_filter.initialized and pitch_filter.initialized:
+            angle_x = np.radians(roll_filter.angle)
+            angle_y = np.radians(pitch_filter.angle)
+            angle_z = np.radians(yaw_angle)
+            update_rotation()
+
+        if sample_index >= GRAPH_HISTORY_POINTS:
             reset_graph_curves()
-            i = 0
+            sample_index = 0
 
-        atmospheric_pressure_curve.plot(
-            i,
-            telemetry["pressure"]
-        )
+        # Graph exactly the values received; the provided sketch still uses
+        # placeholders for these environmental measurements.
+        atmospheric_pressure_curve.plot(sample_index, telemetry["pressure"])
+        temperature_curve.plot(sample_index, telemetry["temperature"])
+        relative_humidity_curve.plot(sample_index, telemetry["humidity"])
+        sample_index += 1
+    signal_age = now - last_packet_time if last_packet_time else float("inf")
 
-        temperature_curve.plot(
-            i,
-            telemetry["temperature"]
-        )
-
-        relative_humidity_curve.plot(
-            i,
-            telemetry["humidity"]
-        )
-
-        i += 1
-
-        if all(accepted_axes):
-            last_packet_time = now
-
-    signal_age = (
-        now - last_packet_time
-        if last_packet_time
-        else float("inf")
-    )
-
-    # El modelo 3D usa el ángulo filtrado.
-    if roll_filter.initialized:
-        target_angle_x = np.radians(roll_filter.angle)
-        target_angle_y = np.radians(pitch_filter.angle)
-        target_angle_z = np.radians(yaw_filter.angle)
-    else:
-        target_angle_x = None
-
-    if target_angle_x is not None:
-        if not display_initialized:
-            display_angle_x = target_angle_x
-            display_angle_y = target_angle_y
-            display_angle_z = target_angle_z
-            display_initialized = True
-        else:
-            display_angle_x = smooth_angle(
-                display_angle_x,
-                target_angle_x,
-                dt
-            )
-
-            display_angle_y = smooth_angle(
-                display_angle_y,
-                target_angle_y,
-                dt
-            )
-
-            display_angle_z = smooth_angle(
-                display_angle_z,
-                target_angle_z,
-                dt
-            )
-
-        angle_x = display_angle_x
-        angle_y = display_angle_y
-        angle_z = display_angle_z
-
-        update_rotation()
-
-    if not roll_filter.initialized:
-        warning_label.text = "Waiting for telemetry"
+    if legacy_m1_seen and last_packet_time == 0.0:
+        warning_label.text = "M1 detected: upload the M2 MPU sketch"
         warning_label.color = color.red
-
+    elif last_packet_time == 0.0:
+        warning_label.text = "Waiting for M2 IMU telemetry"
+        warning_label.color = color.red
     elif signal_age > STALE_AFTER_SECONDS:
-        warning_label.text = "Telemetry lost - Kalman estimate only"
+        warning_label.text = "IMU offline: last real attitude held"
         warning_label.color = color.red
-
-    elif telemetry is not None and not all(accepted_axes):
-        warning_label.text = "Outlier rejected - using Kalman estimate"
+    elif not last_packet_sensor_valid:
+        warning_label.text = "MPU6050 read error: last valid pose held"
+        warning_label.color = color.red
+    elif not (roll_filter.initialized and pitch_filter.initialized):
+        warning_label.text = "Waiting for a stable gravity sample"
         warning_label.color = color.orange
-
-    elif signal_age > MAX_PREDICTION_SECONDS:
-        warning_label.text = "Kalman prediction - no valid measurement"
+    elif not roll_filter.last_correction_used:
+        warning_label.text = "Accel correction paused: free fall / acceleration"
         warning_label.color = color.orange
-
+    elif (
+        roll_filter.last_correction_softened
+        or pitch_filter.last_correction_softened
+    ):
+        warning_label.text = "Large accel reading: Kalman correction softened"
+        warning_label.color = color.orange
     else:
         warning_label.text = ""
 

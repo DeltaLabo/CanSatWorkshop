@@ -49,6 +49,12 @@ ACCEL_GRAVITY_MAX_G = 1.15
 # as a full correction. This is a robust extension around the paper's S term.
 ACCEL_SOFT_INNOVATION_DEG = 25.0
 
+# If the board reports a temporary invalid IMU sample, retain the last valid
+# gyro rate for a short Kalman-only prediction. The rate then decays smoothly
+# to zero, so a longer hardware fault never makes the CanSat spin forever.
+INVALID_SAMPLE_FULL_GYRO_SECONDS = 0.25
+INVALID_SAMPLE_GYRO_DECAY_SECONDS = 0.50
+
 DISPLAY_RATE_HZ = 60
 GRAPH_HISTORY_POINTS = 600
 
@@ -131,6 +137,23 @@ class PaperKalmanAngle:
         self.variance = (1.0 - self.last_gain) * predicted_variance
         self.last_correction_used = True
 
+    def predict_only(self, gyro_rate_dps, dt):
+        """Advance the state without trusting an accelerometer measurement.
+
+        This is used only while the microcontroller explicitly flags a
+        temporary invalid I2C sample. Increasing the variance here means that
+        the next valid measurement will be allowed to correct promptly.
+        """
+        self.last_correction_used = False
+        self.last_correction_softened = False
+        self.last_gain = 0.0
+
+        if not self.initialized:
+            return
+
+        self.angle += gyro_rate_dps * dt
+        self.variance += (dt * GYRO_RATE_STD_DPS) ** 2
+
 
 def accelerometer_angles(acc_x, acc_y, acc_z):
     """Calculate roll and pitch from acceleration expressed in g."""
@@ -145,6 +168,12 @@ def gravity_is_reliable(acc_x, acc_y, acc_z):
     """Return whether the sample can be used as a gravity measurement."""
     magnitude = float(np.sqrt(acc_x ** 2 + acc_y ** 2 + acc_z ** 2))
     return ACCEL_GRAVITY_MIN_G <= magnitude <= ACCEL_GRAVITY_MAX_G
+
+
+def telemetry_values_are_finite(telemetry):
+    """Reject NaN/Infinity packets before they reach the Kalman state."""
+    values = (*telemetry["acceleration"], *telemetry["gyro"])
+    return bool(np.all(np.isfinite(values)))
 
 
 def open_serial_port():
@@ -358,8 +387,11 @@ serial_buffer = bytearray()
 next_serial_attempt = 0.0
 last_packet_time = 0.0
 last_imu_time = None
+last_valid_imu_time = None
 legacy_m1_seen = False
 last_packet_sensor_valid = False
+last_good_gyro = (0.0, 0.0, 0.0)
+last_good_environment = None
 
 roll_filter = PaperKalmanAngle()
 pitch_filter = PaperKalmanAngle()
@@ -393,55 +425,75 @@ while True:
             next_serial_attempt = now + SERIAL_RETRY_SECONDS
 
     if telemetry is not None:
-        # A packet is proof that the serial link is alive, even if the board
-        # reports a temporary I2C read failure. That condition has its own
-        # warning below and must not be confused with a disconnected USB link.
+        # A packet proves that serial is working. The packet may still contain
+        # an invalid IMU sample, in which case only Kalman prediction is used.
         last_packet_time = now
-        last_packet_sensor_valid = telemetry["imu_valid"]
+        sample_is_valid = (
+            telemetry["imu_valid"] and telemetry_values_are_finite(telemetry)
+        )
+        last_packet_sensor_valid = sample_is_valid
         legacy_m1_seen = False
-        if not telemetry["imu_valid"]:
-            # Do not integrate a guessed multi-second interval when a valid
-            # MPU sample returns after an I2C fault. The last real pose stays
-            # fixed until the next fresh packet supplies a normal dt.
-            last_imu_time = now
 
-    if telemetry is not None and telemetry["imu_valid"]:
-        # dt is based only on real packets. If data is absent no Kalman
-        # prediction runs, which prevents the model from spinning on its own.
+        # Every heartbeat advances the model by a normal, bounded time step.
+        # This is what prevents a transient invalid sample from freezing it.
         dt = 0.0 if last_imu_time is None else min(now - last_imu_time, 0.25)
         last_imu_time = now
 
-        acc_x, acc_y, acc_z = telemetry["acceleration"]
-        gyro_x, gyro_y, gyro_z = telemetry["gyro"]
-        accel_roll, accel_pitch = accelerometer_angles(acc_x, acc_y, acc_z)
-        accel_reliable = gravity_is_reliable(acc_x, acc_y, acc_z)
+        if sample_is_valid:
+            last_valid_imu_time = now
+            acc_x, acc_y, acc_z = telemetry["acceleration"]
+            gyro_x, gyro_y, gyro_z = telemetry["gyro"]
+            last_good_gyro = (gyro_x, gyro_y, gyro_z)
 
-        # The supplied sketch uses its body X gyro for roll and Y gyro for
-        # pitch. If the board is mounted differently, change the mapping/sign
-        # only on these two lines after checking the physical axes.
-        roll_filter.update(gyro_x, accel_roll, dt, accel_reliable)
-        pitch_filter.update(gyro_y, accel_pitch, dt, accel_reliable)
+            accel_roll, accel_pitch = accelerometer_angles(acc_x, acc_y, acc_z)
+            accel_reliable = gravity_is_reliable(acc_x, acc_y, acc_z)
 
-        # A 6-axis MPU6050 has no absolute yaw reference. Gyro Z can provide a
-        # short-term heading, but it will drift over time without a magnetometer.
-        yaw_angle = wrap_degrees(yaw_angle + gyro_z * dt)
+            # The supplied sketch uses X gyro for roll and Y gyro for pitch.
+            roll_filter.update(gyro_x, accel_roll, dt, accel_reliable)
+            pitch_filter.update(gyro_y, accel_pitch, dt, accel_reliable)
+            yaw_angle = wrap_degrees(yaw_angle + gyro_z * dt)
+        elif last_valid_imu_time is not None:
+            # The microcontroller sends the last good values while I2C is
+            # recovering. Use them only as a short-term state prediction, not
+            # as a new measurement. The exponential decay prevents a stale
+            # gyro rate from rotating the 3D model indefinitely.
+            invalid_age = now - last_valid_imu_time
+            excess_age = max(0.0, invalid_age - INVALID_SAMPLE_FULL_GYRO_SECONDS)
+            gyro_weight = np.exp(-excess_age / INVALID_SAMPLE_GYRO_DECAY_SECONDS)
+            gyro_x, gyro_y, gyro_z = last_good_gyro
 
+            roll_filter.predict_only(gyro_x * gyro_weight, dt)
+            pitch_filter.predict_only(gyro_y * gyro_weight, dt)
+            yaw_angle = wrap_degrees(yaw_angle + gyro_z * gyro_weight * dt)
+
+        # Draw both corrected and predicted states. Nothing is redrawn from a
+        # raw invalid angle, so a bad packet cannot force a visible jump.
         if roll_filter.initialized and pitch_filter.initialized:
             angle_x = np.radians(roll_filter.angle)
             angle_y = np.radians(pitch_filter.angle)
             angle_z = np.radians(yaw_angle)
             update_rotation()
 
-        if sample_index >= GRAPH_HISTORY_POINTS:
-            reset_graph_curves()
-            sample_index = 0
+        # The environmental plots also remain alive during an IMU recovery.
+        # If those values are non-finite, repeat their last usable values.
+        environment = (
+            telemetry["pressure"],
+            telemetry["temperature"],
+            telemetry["humidity"],
+        )
+        if np.all(np.isfinite(environment)):
+            last_good_environment = environment
 
-        # Graph exactly the values received; the provided sketch still uses
-        # placeholders for these environmental measurements.
-        atmospheric_pressure_curve.plot(sample_index, telemetry["pressure"])
-        temperature_curve.plot(sample_index, telemetry["temperature"])
-        relative_humidity_curve.plot(sample_index, telemetry["humidity"])
-        sample_index += 1
+        if last_good_environment is not None:
+            if sample_index >= GRAPH_HISTORY_POINTS:
+                reset_graph_curves()
+                sample_index = 0
+
+            pressure, temperature, humidity = last_good_environment
+            atmospheric_pressure_curve.plot(sample_index, pressure)
+            temperature_curve.plot(sample_index, temperature)
+            relative_humidity_curve.plot(sample_index, humidity)
+            sample_index += 1
     signal_age = now - last_packet_time if last_packet_time else float("inf")
 
     if legacy_m1_seen and last_packet_time == 0.0:
@@ -454,8 +506,8 @@ while True:
         warning_label.text = "IMU offline: last real attitude held"
         warning_label.color = color.red
     elif not last_packet_sensor_valid:
-        warning_label.text = "MPU6050 read error: last valid pose held"
-        warning_label.color = color.red
+        warning_label.text = "IMU sample invalid: Kalman prediction active"
+        warning_label.color = color.orange
     elif not (roll_filter.initialized and pitch_filter.initialized):
         warning_label.text = "Waiting for a stable gravity sample"
         warning_label.color = color.orange

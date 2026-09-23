@@ -20,6 +20,7 @@ float accX, accY, accZ;
 float gyroX, gyroY, gyroZ;
 float gyroBiasX = 0.0f, gyroBiasY = 0.0f, gyroBiasZ = 0.0f;
 uint8_t consecutiveI2cFailures = 0;
+bool freshSampleSinceTelemetry = false;
 
 // Madgwick is retained from the original sketch. It is not used by the Python
 // Kalman roll/pitch filter, but can be kept for future local attitude use.
@@ -230,6 +231,10 @@ void loop() {
 
   if (imuSampleIsFresh) {
     consecutiveI2cFailures = 0;
+    // Telemetry is sent at 20 Hz while the MPU is read at 400 Hz. Remember
+    // that at least one good sample arrived in this 50 ms interval, so a
+    // single NACK on the final 400 Hz read cannot mark the whole packet bad.
+    freshSampleSinceTelemetry = true;
     gyroX -= gyroBiasX;
     gyroY -= gyroBiasY;
     gyroZ -= gyroBiasZ;
@@ -251,6 +256,7 @@ void loop() {
 
   if (millis() - lastTelemetry >= TELEMETRY_PERIOD_MS) {
     lastTelemetry = millis();
-    sendTelemetry(imuSampleIsFresh);
+    sendTelemetry(freshSampleSinceTelemetry);
+    freshSampleSinceTelemetry = false;
   }
 }

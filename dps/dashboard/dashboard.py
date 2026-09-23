@@ -49,7 +49,20 @@ ACCEL_GRAVITY_MAX_G = 1.15
 # as a full correction. This is a robust extension around the paper's S term.
 ACCEL_SOFT_INNOVATION_DEG = 25.0
 
+# Short bridge used only while byte 49 reports that the MPU sample is stale.
+INVALID_SAMPLE_FULL_GYRO_SECONDS = 0.25
+INVALID_SAMPLE_GYRO_DECAY_SECONDS = 0.50
+INVALID_BRIDGE_RATE_STD_DPS = 60.0
+INVALID_BRIDGE_MAX_VARIANCE_DEG2 = 400.0
+
+# After a sensor outage, a trustworthy gravity measurement must rapidly
+# re-anchor roll/pitch instead of being mistaken for a large outlier.
+REACQUISITION_MIN_GAIN = 0.90
+
 DISPLAY_RATE_HZ = 60
+# This affects only the drawing, never the Kalman state. At 10 Hz a large
+# re-acquisition correction becomes a smooth transition of roughly 0.3 s.
+VISUAL_SMOOTHING_HZ = 10.0
 GRAPH_HISTORY_POINTS = 600
 
 
@@ -74,7 +87,14 @@ class PaperKalmanAngle:
         self.last_correction_softened = False
         self.last_gain = 0.0
 
-    def update(self, gyro_rate_dps, accel_angle_deg, dt, accel_reliable):
+    def update(
+        self,
+        gyro_rate_dps,
+        accel_angle_deg,
+        dt,
+        accel_reliable,
+        reacquire=False,
+    ):
         """Make one prediction and one possible accelerometer correction."""
 
         # An initial pose requires gravity. Hold the model until the CanSat is
@@ -115,7 +135,19 @@ class PaperKalmanAngle:
         # innovation often comes from impact or linear acceleration, so use a
         # larger S and make that correction proportionally weaker.
         measurement_variance = ACCEL_ANGLE_STD_DEG ** 2
-        if abs(innovation) > ACCEL_SOFT_INNOVATION_DEG:
+        if reacquire:
+            # Force a high, but still Kalman-weighted, correction after an
+            # outage. P is chosen so the gain is at least 90 percent.
+            minimum_reacquisition_variance = (
+                measurement_variance
+                * REACQUISITION_MIN_GAIN
+                / (1.0 - REACQUISITION_MIN_GAIN)
+            )
+            predicted_variance = max(
+                predicted_variance,
+                minimum_reacquisition_variance,
+            )
+        elif abs(innovation) > ACCEL_SOFT_INNOVATION_DEG:
             scale = abs(innovation) / ACCEL_SOFT_INNOVATION_DEG
             measurement_variance *= scale ** 2
             self.last_correction_softened = True
@@ -130,6 +162,21 @@ class PaperKalmanAngle:
         self.angle = predicted_angle + self.last_gain * innovation
         self.variance = (1.0 - self.last_gain) * predicted_variance
         self.last_correction_used = True
+
+    def predict_only(self, gyro_rate_dps, dt):
+        """Advance with stale gyro data without accepting a measurement."""
+        self.last_correction_used = False
+        self.last_correction_softened = False
+        self.last_gain = 0.0
+
+        if not self.initialized:
+            return
+
+        self.angle += gyro_rate_dps * dt
+        self.variance = min(
+            self.variance + (dt * INVALID_BRIDGE_RATE_STD_DPS) ** 2,
+            INVALID_BRIDGE_MAX_VARIANCE_DEG2,
+        )
 
 
 def accelerometer_angles(acc_x, acc_y, acc_z):
@@ -170,6 +217,8 @@ def read_telemetry(connection, buffer):
               accX, accY, accZ, gyroX, gyroY, gyroZ,
               temperature, pressure, humidity, speed
       48     parachute status
+      49     IMU validity: 0 = fresh sample, 255 = stale values after I2C
+             failure (the serial heartbeat is still healthy)
       96..99 DTLB footer
     """
     available = connection.in_waiting
@@ -208,6 +257,7 @@ def read_telemetry(connection, buffer):
             "humidity": values[8],
             "speed": values[9],
             "parachute_status": packet[48],
+            "imu_valid": packet[49] == 0x00,
         }
 
     return newest, saw_legacy_m1
@@ -297,6 +347,13 @@ def update_rotation():
         marker_direction[0], marker_direction[1], marker_direction[2]
     )
 
+
+def smooth_visual_angle(current, target, dt):
+    """Move a displayed angle smoothly along the shortest circular path."""
+    difference = (target - current + np.pi) % (2.0 * np.pi) - np.pi
+    blend = 1.0 - np.exp(-VISUAL_SMOOTHING_HZ * dt)
+    return current + blend * difference
+
 atmospheric_pressure_graph = graph(
     title="<b>Atmospheric Pressure</b>",
     xtitle="<b>Sample</b>",
@@ -376,11 +433,23 @@ serial_buffer = bytearray()
 next_serial_attempt = 0.0
 last_packet_time = 0.0
 last_imu_time = None
+last_valid_imu_time = None
 legacy_m1_seen = False
+last_packet_sensor_valid = False
+last_good_gyro = (0.0, 0.0, 0.0)
+reacquisition_pending = False
 
 roll_filter = PaperKalmanAngle()
 pitch_filter = PaperKalmanAngle()
 yaw_angle = 0.0
+
+# Kalman targets update with telemetry; the visible angles interpolate at the
+# 60 Hz display rate. This removes abrupt jumps without delaying the filter.
+target_angle_x = 0.0
+target_angle_y = 0.0
+target_angle_z = 0.0
+visual_initialized = False
+last_visual_time = time.monotonic()
 
 
 while True:
@@ -410,31 +479,70 @@ while True:
             next_serial_attempt = now + SERIAL_RETRY_SECONDS
 
     if telemetry is not None:
-        # dt is based only on real packets. If data is absent no Kalman
-        # prediction runs, which prevents the model from spinning on its own.
-        dt = 0.0 if last_imu_time is None else min(now - last_imu_time, 0.25)
+        # Separate a healthy serial heartbeat from a valid MPU measurement.
+        packet_gap = now - last_packet_time if last_packet_time else None
+        if packet_gap is not None and packet_gap > STALE_AFTER_SECONDS:
+            reacquisition_pending = True
+
+        last_packet_time = now
+        last_packet_sensor_valid = telemetry["imu_valid"]
+        legacy_m1_seen = False
+
+        # Never integrate a made-up 0.25 s interval after a true serial gap.
+        if last_imu_time is None or (
+            packet_gap is not None and packet_gap > STALE_AFTER_SECONDS
+        ):
+            dt = 0.0
+        else:
+            dt = min(now - last_imu_time, 0.25)
         last_imu_time = now
 
-        acc_x, acc_y, acc_z = telemetry["acceleration"]
-        gyro_x, gyro_y, gyro_z = telemetry["gyro"]
-        accel_roll, accel_pitch = accelerometer_angles(acc_x, acc_y, acc_z)
-        accel_reliable = gravity_is_reliable(acc_x, acc_y, acc_z)
+        if telemetry["imu_valid"]:
+            last_valid_imu_time = now
+            acc_x, acc_y, acc_z = telemetry["acceleration"]
+            gyro_x, gyro_y, gyro_z = telemetry["gyro"]
+            last_good_gyro = (gyro_x, gyro_y, gyro_z)
+            accel_roll, accel_pitch = accelerometer_angles(acc_x, acc_y, acc_z)
+            accel_reliable = gravity_is_reliable(acc_x, acc_y, acc_z)
 
-        # The supplied sketch uses its body X gyro for roll and Y gyro for
-        # pitch. If the board is mounted differently, change the mapping/sign
-        # only on these two lines after checking the physical axes.
-        roll_filter.update(gyro_x, accel_roll, dt, accel_reliable)
-        pitch_filter.update(gyro_y, accel_pitch, dt, accel_reliable)
+            # Re-anchor only when gravity is trustworthy. If the CanSat is in
+            # free fall, keep this pending until a usable gravity sample arrives.
+            reacquire_now = reacquisition_pending and accel_reliable
+            roll_filter.update(
+                gyro_x,
+                accel_roll,
+                dt,
+                accel_reliable,
+                reacquire=reacquire_now,
+            )
+            pitch_filter.update(
+                gyro_y,
+                accel_pitch,
+                dt,
+                accel_reliable,
+                reacquire=reacquire_now,
+            )
+            yaw_angle = wrap_degrees(yaw_angle + gyro_z * dt)
 
-        # A 6-axis MPU6050 has no absolute yaw reference. Gyro Z can provide a
-        # short-term heading, but it will drift over time without a magnetometer.
-        yaw_angle = wrap_degrees(yaw_angle + gyro_z * dt)
+            if reacquire_now:
+                reacquisition_pending = False
+        elif last_valid_imu_time is not None:
+            reacquisition_pending = True
+
+            # The payload contains the last good gyro, not a new reading. Use
+            # it briefly, decay it smoothly, and increase filter uncertainty.
+            invalid_age = now - last_valid_imu_time
+            excess_age = max(0.0, invalid_age - INVALID_SAMPLE_FULL_GYRO_SECONDS)
+            gyro_weight = np.exp(-excess_age / INVALID_SAMPLE_GYRO_DECAY_SECONDS)
+            gyro_x, gyro_y, gyro_z = last_good_gyro
+            roll_filter.predict_only(gyro_x * gyro_weight, dt)
+            pitch_filter.predict_only(gyro_y * gyro_weight, dt)
+            yaw_angle = wrap_degrees(yaw_angle + gyro_z * gyro_weight * dt)
 
         if roll_filter.initialized and pitch_filter.initialized:
-            angle_x = np.radians(roll_filter.angle)
-            angle_y = np.radians(pitch_filter.angle)
-            angle_z = np.radians(yaw_angle)
-            update_rotation()
+            target_angle_x = np.radians(roll_filter.angle)
+            target_angle_y = np.radians(pitch_filter.angle)
+            target_angle_z = np.radians(yaw_angle)
 
         if sample_index >= GRAPH_HISTORY_POINTS:
             reset_graph_curves()
@@ -446,8 +554,22 @@ while True:
         temperature_curve.plot(sample_index, telemetry["temperature"])
         relative_humidity_curve.plot(sample_index, telemetry["humidity"])
         sample_index += 1
-        last_packet_time = now
-        legacy_m1_seen = False
+
+    # Animate toward the latest filtered target every display frame. The first
+    # valid pose is placed immediately; subsequent changes are interpolated.
+    visual_dt = min(now - last_visual_time, 0.1)
+    last_visual_time = now
+    if roll_filter.initialized and pitch_filter.initialized:
+        if not visual_initialized:
+            angle_x = target_angle_x
+            angle_y = target_angle_y
+            angle_z = target_angle_z
+            visual_initialized = True
+        else:
+            angle_x = smooth_visual_angle(angle_x, target_angle_x, visual_dt)
+            angle_y = smooth_visual_angle(angle_y, target_angle_y, visual_dt)
+            angle_z = smooth_visual_angle(angle_z, target_angle_z, visual_dt)
+        update_rotation()
 
     signal_age = now - last_packet_time if last_packet_time else float("inf")
 
@@ -460,6 +582,9 @@ while True:
     elif signal_age > STALE_AFTER_SECONDS:
         warning_label.text = "IMU offline: last real attitude held"
         warning_label.color = color.red
+    elif not last_packet_sensor_valid:
+        warning_label.text = "IMU invalid: Kalman prediction active"
+        warning_label.color = color.orange
     elif not (roll_filter.initialized and pitch_filter.initialized):
         warning_label.text = "Waiting for a stable gravity sample"
         warning_label.color = color.orange

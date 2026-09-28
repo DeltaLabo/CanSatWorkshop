@@ -1,5 +1,7 @@
 #include <Wire.h>
 #include <math.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BME280.h>
 
 // M2 version of the sketch supplied with the dashboard.
 // It keeps the same MPU6050 acquisition, gyro calibration and Madgwick code.
@@ -7,6 +9,19 @@
 // rates, allowing it to execute the Kalman prediction from the paper.
 
 const int MPU_ADDR = 0x68;
+
+// BME280: comparte el bus I2C con el MPU sin modificar su configuración.
+constexpr uint8_t BME_ADDRESS_PRIMARY = 0x76;
+constexpr uint8_t BME_ADDRESS_SECONDARY = 0x77;
+constexpr uint32_t BME_PERIOD_MS = 100;
+constexpr uint32_t BME_TIMEOUT_US = 5000;
+
+Adafruit_BME280 bme;
+bool bmeReady = false;
+uint32_t lastBmeUpdate = 0;
+float bmeTemperatureC = 0.0f;
+float bmePressurePa = 0.0f;
+float bmeHumidityPercent = 0.0f;
 
 constexpr uint32_t IMU_PERIOD_US = 2500;       // 400 Hz sensor readout.
 constexpr uint32_t TELEMETRY_PERIOD_MS = 50;   // 20 Hz to the dashboard.
@@ -178,6 +193,72 @@ bool calibrateGyro() {
 }
 
 
+bool configureBme() {
+  bmeReady = bme.begin(BME_ADDRESS_PRIMARY, &Wire);
+  if (!bmeReady) {
+    bmeReady = bme.begin(BME_ADDRESS_SECONDARY, &Wire);
+  }
+  if (!bmeReady) return false;
+
+  bme.setSampling(
+    Adafruit_BME280::MODE_NORMAL,
+    Adafruit_BME280::SAMPLING_X1,
+    Adafruit_BME280::SAMPLING_X1,
+    Adafruit_BME280::SAMPLING_X1,
+    Adafruit_BME280::FILTER_OFF,
+    Adafruit_BME280::STANDBY_MS_10
+  );
+  return true;
+}
+
+
+float truncateToHundredths(float value) {
+  return ((long)(value * 100.0f)) / 100.0f;
+}
+
+
+bool readBmeEnvironment() {
+  if (!bmeReady) return false;
+
+  uint32_t startedAt = micros();
+  const float temperature = bme.readTemperature();
+  if (micros() - startedAt > BME_TIMEOUT_US || !isfinite(temperature)) {
+    return false;
+  }
+
+  startedAt = micros();
+  const float pressurePa = bme.readPressure();
+  if (micros() - startedAt > BME_TIMEOUT_US || !isfinite(pressurePa)) {
+    return false;
+  }
+
+  startedAt = micros();
+  const float humidity = bme.readHumidity();
+  if (micros() - startedAt > BME_TIMEOUT_US || !isfinite(humidity)) {
+    return false;
+  }
+
+  if (temperature < -40.0f || temperature > 85.0f) return false;
+  if (pressurePa < 10000.0f || pressurePa > 120000.0f) return false;
+  if (humidity < 0.0f || humidity > 100.0f) return false;
+
+  // Misma precisión del documento: dos decimales. Para presión, el documento
+  // conserva 0.01 kPa, equivalente a pasos de 10 Pa en el dashboard.
+  bmeTemperatureC = truncateToHundredths(temperature);
+  bmePressurePa = truncateToHundredths(pressurePa / 1000.0f) * 1000.0f;
+  bmeHumidityPercent = truncateToHundredths(humidity);
+  return true;
+}
+
+
+void updateBmeWhenDue() {
+  const uint32_t nowMs = millis();
+  if (nowMs - lastBmeUpdate < BME_PERIOD_MS) return;
+  lastBmeUpdate = nowMs;
+  readBmeEnvironment();
+}
+
+
 void sendTelemetry(bool imuSampleIsFresh) {
   uint8_t payload[100];
   memset(payload, 0, sizeof(payload));
@@ -186,17 +267,12 @@ void sendTelemetry(bool imuSampleIsFresh) {
   memcpy(&payload[4], "M2", 2);  // M2 tells Python to expect raw gyro data.
   memcpy(&payload[6], "GS", 2);
 
-  // Retained placeholders from the original sketch. Replace these four with
-  // real environmental sensor values when those sensors are connected.
-  float fakeTemp = 25.0f + sin(millis() / 1000.0f) * 5.0f;
-  float fakePressure = 101325.0f + cos(millis() / 1000.0f) * 100.0f;
-
   // IMPORTANT: floats 3..5 are now gyro rates, not Euler angles.
   // The packet remains 100 bytes and status stays at byte 48.
   float values[10] = {
     accX, accY, accZ,
     gyroX, gyroY, gyroZ,
-    fakeTemp, fakePressure, 50.0f, 12.5f
+    bmeTemperatureC, bmePressurePa, bmeHumidityPercent, 12.5f
   };
   memcpy(&payload[8], values, sizeof(values));
 
@@ -217,6 +293,8 @@ void setup() {
   configureMpu();
 
   calibrateGyro();
+  configureBme();
+  readBmeEnvironment();
   lastUpdate = micros();
   lastTelemetry = millis();
 }
@@ -253,6 +331,8 @@ void loop() {
       consecutiveI2cFailures = 0;
     }
   }
+
+  updateBmeWhenDue();
 
   if (millis() - lastTelemetry >= TELEMETRY_PERIOD_MS) {
     lastTelemetry = millis();

@@ -1,8 +1,19 @@
-# LoRa Frame
+# LoRa Frame — `OBCC-LORA-PAYLOAD-v1.0` byte-level realization
 
-Controlled verification baseline: this table is the active `OBCC-LORA-PAYLOAD-v1.0` variable baseline referenced by [`../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md`](../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md). It defines the active measurement/status payload fields; envelope IDs, command/request fields, schema/version, sequence/timestamp, health/status metadata outside the listed fields, RSSI/SNR evidence, and parser/decoder mappings are controlled by the contract or by execution-specific configuration records. Relative humidity is not part of this active v1.0 payload.
+This file is the byte-level realization of the modeled `OBCC-LORA-PAYLOAD-v1.0` payload. Product semantics are owned by:
 
-- int16 range: [-32768, 32767]
+- `PM&SE/MBSE/v1.0/CANSAT_v1.0_view6_telemetry_downlink_chain.d2`
+- `PM&SE/MBSE/v1.0/CANSAT_v1.0_view8_deployment_safety_status_chain.d2`
+- `OBCC/MBSE/v1.0/OBCC_v1.0_view5_telemetry_downlink_chain.d2`
+- `OBCC/MBSE/v1.0/OBCC_v1.0_view7_deployment_gating_chain.d2`
+- `DPS/MBSE/v1.0/DPS_v1.0_view4_downlink_processing_chain.d2`
+
+This table keeps the derived realization detail that the model intentionally summarizes: field order, types, scaling, byte offsets, and the current 100-byte frame basis mapping. It does **not** supersede the model or [`../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md`](../PM&SE/contracts/obcc_dps_lora_telemetry_contract.md).
+
+**Change rule:** product semantic changes start in the PM&SE system model, then flow into subsystem baselines and verification packages, and only then into this byte-level realization.
+
+- `int16` range: `[-32768, 32767]`
+- Relative humidity is not part of the active v1.0 payload.
 
 ## Peripherals
 
@@ -36,7 +47,7 @@ Controlled verification baseline: this table is the active `OBCC-LORA-PAYLOAD-v1
 | Battery Current | mA | int | [0, 1500] | 0 | int16 | 2 | 32 |
 | Parachute Deployment Status (`deployment_status`) | code | uint8 enum | [0, 9] | 0 | uint8 | 1 | 34 |
 
-Current variable-table size: **35 bytes** before LoRa envelope, IDs, command/request fields, schema/version, sequence/timestamp, health/status metadata outside the listed fields, RSSI/SNR logging fields, delimiters, or other envelope overhead. `deployment_status` is the final variable-table byte at zero-based offset **34**. This remains within the existing 100-byte OBCC-to-DPS LoRa telemetry frame basis; the current firmware/DPS packet mapping carries the same one-byte status at payload byte offset **48**, with bytes 49..95 reserved before the footer.
+Current variable-table size: **35 bytes** inside the current **100-byte frame basis**, before envelope identities, command/request fields, schema/version, sequence/timestamp, health/status metadata outside the listed fields, RSSI/SNR logging fields, delimiters, or other overhead. `deployment_status` is the final variable-table byte at zero-based offset **34**. The current firmware/DPS packet mapping carries the same one-byte status at payload byte offset **48**, with bytes `49..95` reserved before the footer.
 
 ## Parachute deployment status enum
 
@@ -45,7 +56,7 @@ Current variable-table size: **35 bytes** before LoRa envelope, IDs, command/req
 | Code | Symbol | Category | Meaning |
 | --- | --- | --- | --- |
 | 0 | `NOT_COMMANDED` | `not-deployed` | No accepted deployment command/current trigger context. |
-| 1 | `INHIBITED_STANDBY` | `not-deployed` | Request suppressed because OBCC is in Stand-by. |
+| 1 | `INHIBITED_STANDBY` | `not-deployed` | Request suppressed because OBCC is in Standby. |
 | 2 | `COMMAND_SENT` | `in-progress` | OBCC sent open command; not success by itself. |
 | 3 | `OPEN_IN_PROGRESS` | `in-progress` | Actuator/PDM response underway, not confirmed. |
 | 4 | `OPEN_CONFIRMED` | `deployed` | PDM feedback or independent safe-fixture/current/position observer confirms open; only success/deployed state. |

@@ -8,51 +8,6 @@ See [Understanding Capella Physical Diagrams](./../PM&SE//Understanding%20Capell
 
 See [Variable Getter Template](./../OBCC/Variable%20Getter%20Template.md) if needed.
 
-## Diagram Sources
-
-- [`MBSE/v0.1/`](./MBSE/v0.1/)
-- [`MBSE/v0.2/`](./MBSE/v0.2/)
-- [`MBSE/v1.0/`](./MBSE/v1.0/)
-
-## Integration, Verification, and Validation (IVV) Plan
-
-### Diagram sets by version
-
-- **v0.1** — [physical PNG](./MBSE/v0.1/AMS_v0.1_view1_physical.png) · [logical PNG](./MBSE/v0.1/AMS_v0.1_view2_logical.png) · [functional allocation PNG](./MBSE/v0.1/AMS_v0.1_view3_functional_allocation.png) · [atmospheric measurement chain PNG](./MBSE/v0.1/AMS_v0.1_view4_atmospheric_measurement_chain.png) · [peripheral initialisation chain PNG](./MBSE/v0.1/AMS_v0.1_view5_peripheral_initialisation_chain.png) · [serial logging chain PNG](./MBSE/v0.1/AMS_v0.1_view6_serial_logging_chain.png)
-- **v0.2** — [PCB delivery physical PNG](./MBSE/v0.2/AMS_v0.2_view1_physical.png) · [D2 source](./MBSE/v0.2/AMS_v0.2_view1_physical.d2)
-- **v1.0** — [physical PNG](./MBSE/v1.0/AMS_v1.0_view1_physical.png) · [logical PNG](./MBSE/v1.0/AMS_v1.0_view2_logical.png) · [functional allocation PNG](./MBSE/v1.0/AMS_v1.0_view3_functional_allocation.png) · [atmospheric measurement chain PNG](./MBSE/v1.0/AMS_v1.0_view4_atmospheric_measurement_chain.png) · [peripheral initialisation chain PNG](./MBSE/v1.0/AMS_v1.0_view5_peripheral_initialisation_chain.png)
-
-### Latest split views
-
-Latest complete split views are grouped under [`./MBSE/v1.0/`](./MBSE/v1.0/). The PCB-only delivery view is under [`./MBSE/v0.2/`](./MBSE/v0.2/).
-
-![view 1 physical](./MBSE/v1.0/AMS_v1.0_view1_physical.png)
-View 1 — physical architecture and physical links ([D2 source](./MBSE/v1.0/AMS_v1.0_view1_physical.d2))
-
-![view 2 logical](./MBSE/v1.0/AMS_v1.0_view2_logical.png)
-View 2 — logical components and component exchanges ([D2 source](./MBSE/v1.0/AMS_v1.0_view2_logical.d2))
-
-![view 3 functional allocation](./MBSE/v1.0/AMS_v1.0_view3_functional_allocation.png)
-View 3 — functional allocation across physical and logical components ([D2 source](./MBSE/v1.0/AMS_v1.0_view3_functional_allocation.d2))
-
-![view 4 atmospheric measurement](./MBSE/v1.0/AMS_v1.0_view4_atmospheric_measurement_chain.png)
-View 4 — atmospheric pressure/temperature polling and processing chain ([D2 source](./MBSE/v1.0/AMS_v1.0_view4_atmospheric_measurement_chain.d2))
-
-![view 5 peripheral initialisation](./MBSE/v1.0/AMS_v1.0_view5_peripheral_initialisation_chain.png)
-View 5 — peripheral initialisation reporting chain ([D2 source](./MBSE/v1.0/AMS_v1.0_view5_peripheral_initialisation_chain.d2))
-
-![v0.2 PCB delivery](./MBSE/v0.2/AMS_v0.2_view1_physical.png)
-AMS v0.2 — PCB-only delivery physical view ([D2 source](./MBSE/v0.2/AMS_v0.2_view1_physical.d2))
-
-### Controlled v1.0 source semantics
-
-- **Use cases:** `AMS-UC-MeasureAtmosphere` and `AMS-UC-InitializePeripheral`.
-- **Feared events covered by the source views:** `AMS-FE-BadExposure`, `AMS-FE-SensorBusFault`, `AMS-FE-StaleMeasurement`, `AMS-FE-StartupFault`, and `AMS-FE-SchedulerBlock`.
-- **Freshness/status contract:** AMS-to-OBCC getter responses support `>=5 Hz` internal consumers (`200 ms` nominal period). A response is fresh only when `status == VALID` and `age_ms <= 400 ms`; timeout, bus/sensor fault, initialization failure, no-data, and stale conditions must not return old samples as `VALID`.
-- **Required status enum:** exactly `VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`.
-- **Telemetry separation:** v1.0 LoRa telemetry packaging is `2 s` and uses the latest internally acquired sample plus preserved `status`/`age_ms`; telemetry cadence does not weaken the `5 Hz` internal AMS-to-OBCC freshness requirement.
-- **Verification statistics:** continuous accuracy uses `n >= 30` stable samples per operating point with bias, standard deviation, confidence interval, and expanded uncertainty; timing/deadline/freshness claims use `59/59` representative samples for 95/95; binary success/fault claims use `29/29` for R90/C95. Smaller samples are screening only.
-
 ## Requirements
 
 ## System Requirements

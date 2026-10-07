@@ -204,68 +204,226 @@ Once the system has been decommissioned and retrieved, returned data, samples (i
 Note that these are not ad-hoc procedures. If they are of importance to stakeholders, specialized viewpoints should have been introduced early on to provide the system with the appropiate structure and behavior to support them.
 Whenever applicable, decommissioning, sample retrieval, degradation analysis, de-integration, etc. have to be modelled as expected use cases as late as the physical architecture definition stage.
 
-## Github as a practical platform for engineering project management
+## GitHub as a practical platform for engineering project management
 
-A project following the life cycle described in this document might have the following structure as a Github repository:
+The idealized MBSE-first repository structure can be adapted when a project starts from, or only maintains, the Physical Architecture (PA). This CanSat workshop repository is intentionally subsystem-first: each subsystem owns its PA model, functional-version folders, implementation files, and verification definitions, while PM&SE owns cross-subsystem policy, contracts, and system-level tests.
+
+In this project, “physical-architecture-first” does not mean “structure-only.” A PA version may still include physical views, logical views, functional allocation views, and functional-chain views because the PA is where the actual hardware/software components, interfaces, behavior, and verification definitions are tied together.
+
+A repository following the structure that this project evolved toward looks like this:
 
 ```
 └── repo-root/
-    ├── systems-engineering/
-    │   ├── operational-analysis/
-    │   │   ├── organization-structure.d2
-    │   │   ├── operational-activity-allocation.d2
-    │   │   ├── oc1-collect-data.d2 # Example Operational Chain
-    │   │   ├── operational-missions.md
-    │   │   └── operational-capabilities.md
-    │   ├── system-needs-analysis/
-    │   │   ├── system-boundary.d2
-    │   │   ├── fc1-telemetry.d2 # Example Functional Chain
-    │   │   ├── system-missions.md
-    │   │   └── system-capabilities.md
-    │   │   └── viewpoints.md # Exhaustive list of viewpoints for the entire lifecycle 
-    │   ├── informal-needs-and-desires/ # Any evidence: photos, CAD, interviews, textual requirements...
-    │   │   ├── operation-site.jpg
-    │   │   ├── operation-site-blueprint.dwg
-    │   │   ├── existing-components.md
-    │   │   ├── stakeholder1-feedback-grid.md
-    │   │   └── stakeholder2-empathy-map.md
-    │   │   └── stakeholder2-requirement-list.md
-    │   ├── logical-architecture/
-    │   │   ├── logical-structure.d2
-    │   │   ├── logical-function-allocation.d2
-    │   │   └── fc1-telemetry.d2 # Example Functional Chain
-    │   └── physical-architecture/ # Note the recursivity in functional versions and tests
-    │       ├── physical-structure.d2
-    │       ├── logical-component-allocation.d2
-    │       ├── physical-function-allocation.d2
-    │       ├── fc1-telemetry.d2 # Example Functional Chain
-    │       ├── functional-versions/
-    │       │   └── v0.1/
-    │       │       ├── physical-structure.d2
-    │       │       ├── logical-component-allocation.d2
-    │       │       ├── fc1-telemetry.d2 # Example Functional Chain
-    │       │       ├── physical-function-allocation.d2
-    │       │       └── tests/
-    │       │           └── some-unit-test/
-    │       │               ├── physical-structure.d2
-    │       │               ├── logical-component-allocation.d2
-    │       │               ├── physical-function-allocation.d2
-    │       │               ├── fc1-bootstrap.d2 # Example Functional Chain within a test
-    │       │               ├── experimental-data.csv
-    │       │               └── report.tex
-    │       └── tests/
-    │           └── some-system-test/
-    │               ├── physical-structure.d2
-    │               ├── logical-component-allocation.d2
-    │               ├── physical-function-allocation.d2
-    │               ├── fc1-telemetry.d2 # Example Functional Chain within a test
-    │               ├── experimental-data.csv
-    │               ├── experimental-evidence.jpg
-    │               └── report.tex
-    └── some_specialty_engineering_or_subsystem_or_team/ # Non-MBSE files
-        ├── code.c
-        ├── blueprint.dwg
-        └── test.py
+    ├── README.md                         # Project entry point and subsystem navigation
+    ├── PM&SE/
+    │   ├── README.md                     # Systems-engineering hub
+    │   ├── Life Cycle Model.md           # Lifecycle and repository-management guidance
+    │   ├── IVV.md                        # Project-wide verification policy and statistics
+    │   ├── MBSE/
+    │   │   └── tests/
+    │   │       ├── README.md             # System-level test index
+    │   │       ├── requirements_to_test_matrix.md
+    │   │       └── SYS-.../              # System-level modeled verification activities
+    │   ├── contracts/                    # Controlled subsystem interface contracts
+    │   ├── BOM/                          # Bill of materials and datasheets
+    │   └── Understanding Capella Physical Diagrams/
+    ├── ADS/                              # Attitude Determination System
+    │   ├── README.md                     # Subsystem overview, latest views, requirements, IVV links
+    │   ├── MBSE/
+    │   │   ├── v0.1/                     # Functional/development baseline model views
+    │   │   ├── v0.2/
+    │   │   ├── v0.3/
+    │   │   ├── v1.0/
+    │   │   └── tests/                    # Subsystem-wide modeled verification activities
+    │   └── ...                           # Prototypes, firmware, scripts, local evidence
+    ├── AMS/
+    │   ├── README.md
+    │   ├── MBSE/
+    │   │   ├── v0.1/
+    │   │   ├── v0.2/
+    │   │   ├── v1.0/
+    │   │   └── tests/
+    │   └── ...
+    ├── DPS/
+    │   ├── README.md
+    │   ├── MBSE/
+    │   │   ├── v0.1/
+    │   │   ├── v0.2/
+    │   │   ├── v1.0/
+    │   │   └── tests/
+    │   └── ...
+    ├── OBCC/
+    │   ├── README.md
+    │   ├── MBSE/
+    │   │   ├── v1.0/
+    │   │   └── tests/                    # Includes multi-version gate definitions using v1.0 as target context
+    │   └── main/
+    ├── PDM/
+    │   ├── README.md
+    │   ├── MBSE/
+    │   │   ├── README.md                 # MBSE conversion/context index
+    │   │   ├── v0.1/
+    │   │   │   └── tests/                # Version-local tests where historically used
+    │   │   ├── v0.2/
+    │   │   │   └── tests/
+    │   │   └── v1.0/
+    │   │       └── tests/
+    │   └── PDM-Servo/
+    ├── PDS&ESS/
+    │   ├── README.md
+    │   ├── MBSE/
+    │   │   ├── v0.1/
+    │   │   ├── v0.2/
+    │   │   ├── v0.3/
+    │   │   ├── v1.0/
+    │   │   └── tests/
+    │   └── ...
+    ├── S&A/
+    │   ├── README.md
+    │   ├── MBSE/
+    │   │   ├── README.md
+    │   │   ├── v0.1/                     # Physical-only S&A baseline
+    │   │   ├── v1.0/
+    │   │   └── tests/
+    │   └── ...
+    └── Workshop/
+        └── README.md                     # Pedagogy/workshop delivery artifacts
 ```
 
-By linking issues and commits to decision gates, tests, and viewpoints, model updates can be comfortably tracked.
+The minimum MBSE folder contract for this physical-architecture-first structure is:
+
+- `*/MBSE/vX.Y/` stores the model source for one functional version or subsystem integration version. Use `.d2` sources and rendered `.png` files side by side. Prefer stable names such as `*_view1_physical`, `*_view2_logical`, `*_view3_functional_allocation`, and `*_viewN_<functional_chain>_chain` when those views exist.
+- `*/MBSE/tests/README.md` is the subsystem verification-plan index. It lists activity IDs, covered model elements, IADT method, pass/fail criteria, status, and expected evidence path.
+- `*/MBSE/tests/<activity-id>/README.md` is the entry point for one modeled verification activity. It may copy baseline views, add verification-only views, and define report-by-reference pass/fail criteria.
+- `*/MBSE/tests/results/<activity-id>/` is the default evidence/report location. If a subsystem uses version-local tests such as `*/MBSE/vX.Y/tests/`, the nearest MBSE README must index them so they are not hidden.
+- `PM&SE/MBSE/tests/` contains system-level tests that integrate more than one subsystem.
+- `PM&SE/contracts/` contains interface contracts that multiple subsystem models and tests must reference.
+- Implementation files, sketches, firmware, scripts, CAD, spreadsheets, and ad-hoc experiments live beside the MBSE folder in the subsystem directory. They are implementation evidence, not replacements for the model or verification report.
+
+### Interlinked README strategy
+
+The repository should use a “README ladder” so the model can be discovered from the root without prior knowledge of the folder layout. No MBSE directory, version, or test definition should be more than two clicks away from a human-readable index.
+
+| README level | Purpose | Required links |
+|---|---|---|
+| `README.md` | Project entry point. | PM&SE hub, subsystem READMEs, project requirements, issue board/filter, latest system-level test index. |
+| `PM&SE/README.md` | Governance hub. | `IVV.md`, this lifecycle model, system-level tests, contracts, BOM, diagram-reading guide, and issue strategy. |
+| `<subsystem>/README.md` | Subsystem entry point. | Owners, mission, requirements, latest MBSE version, rendered latest views, version list, test-plan index, contracts used, and current issue/milestone links. |
+| `<subsystem>/MBSE/README.md` | MBSE navigation layer, especially when tests are split by version. | Version matrix, current baseline, scope notes, render command, version-local tests, subsystem-wide tests, and known modeling gaps. |
+| `<subsystem>/MBSE/vX.Y/README.md` when present | Version-specific reading guide. | View order, change from prior version, source diagrams, rendered diagrams, linked tests, and implementation baseline. |
+| `<subsystem>/MBSE/tests/README.md` | Verification-plan index. | Activity table, status, source model versions, expected evidence folders, linked GitHub issues, and linked reports. |
+| `<subsystem>/MBSE/tests/<activity-id>/README.md` | Test-definition entry point. | Source views, verification-specific views, pass/fail criteria, required evidence, expected report path, owner, status, and linked issue. |
+
+Rules for keeping the README ladder healthy:
+
+1. Every new model version must be linked from the subsystem README and from the nearest MBSE README or tests README.
+2. Every new test activity must have a stable activity ID, a README, an expected results path, and a link from a tests index.
+3. Every activity README must link back upward to the subsystem test index and outward to the model version(s), contracts, and IVV policy it uses.
+4. Every subsystem README should show at least the latest rendered PA view or a clearly labeled “latest views” section so diagrams are seen before readers reach source files.
+5. If a README says a version or test is “model-defined,” it must also say whether execution evidence is pending, passed, failed, blocked, or waived.
+6. Pull requests that add or rename MBSE files should update the corresponding README ladder in the same change.
+
+### Turning MBSE-defined versions and tests into GitHub issues
+
+Treat each functional version and each modeled verification activity as backlog source material. The model defines what work exists; GitHub Issues track who will execute it, by when, and with what evidence.
+
+Use these issue types:
+
+| Issue type | Source artifact | When to create | Definition of done |
+|---|---|---|---|
+| Functional-version issue | `*/MBSE/vX.Y/` | When a subsystem version is defined or selected for delivery. | Version model is linked, implementation/build artifacts are identified, required tests are linked, and the version gate is either passed, blocked, waived, or intentionally deferred. |
+| Verification-activity issue | `*/MBSE/tests/<activity-id>/README.md` or `*/MBSE/vX.Y/tests/<activity-id>/README.md` | When a test is model-defined and ready to execute. | Evidence and report are committed under the expected results path, pass/fail rationale is recorded, README status is updated, and anomalies/waivers are linked. |
+| Gate-closure issue | Subsystem or system test-plan table | When a functional version needs approval to advance. | All required verification-activity issues are closed or explicitly waived/deferred by the gate owner. |
+| Anomaly / model-update issue | Failed report, missing evidence, or model mismatch | Immediately after a failed/blocked execution or design mismatch. | Root cause is dispositioned, model/test/implementation updates are committed, and any required retest issue is linked. |
+
+Recommended labels:
+
+- `mbse`, `ivv`, `gate`, `contract`, `anomaly`
+- `subsystem:ADS`, `subsystem:AMS`, `subsystem:DPS`, `subsystem:OBCC`, `subsystem:PDM`, `subsystem:PDS-ESS`, `subsystem:SAA`, `subsystem:PMSE`
+- `version:v0.1`, `version:v0.2`, `version:v0.3`, `version:v1.0`
+- `kind:functional-version`, `kind:test-definition`, `kind:test-execution`, `kind:gate-closure`, `kind:model-update`
+- `method:I`, `method:A`, `method:D`, `method:T`
+- `status:model-defined`, `status:ready-for-execution`, `status:executing`, `status:report-review`, `status:passed`, `status:failed`, `status:blocked`, `status:waived`
+
+Recommended milestones:
+
+- One milestone per subsystem functional version, for example `ADS v1.0`, `PDM v0.2`, or `S&A v1.0`.
+- One milestone for cross-subsystem closure, for example `CanSat v1.0 Flight Readiness`.
+- Optional review milestones for major gates such as `PDR`, `CDR`, `SIR`, or `FRR` when the team is using formal gate reviews.
+
+Recommended verification issue body:
+
+```md
+## MBSE source
+- Activity ID:
+- Subsystem / version:
+- Test-definition README:
+- Source model view(s):
+- Contract(s) / IVV policy:
+
+## Execution scope
+- IADT method:
+- Article / firmware / configuration to be tested:
+- Required equipment and environment:
+- Preconditions / blockers:
+
+## Pass/fail criteria
+- Copy or link the exact model-defined criteria here.
+- Do not weaken criteria in the issue; update the model/test definition if the criteria are wrong.
+
+## Evidence and report
+- Expected evidence path: `<subsystem>/MBSE/tests/results/<activity-id>/`
+- Required raw evidence:
+- Required report:
+
+## Closure checklist
+- [ ] Evidence captured under the expected path
+- [ ] Report references model baseline and as-tested configuration
+- [ ] Pass/fail rationale recorded
+- [ ] Deviations, waivers, and anomalies linked
+- [ ] Tests README status updated
+- [ ] Functional-version or gate issue updated
+```
+
+Recommended functional-version issue body:
+
+```md
+## Functional version
+- Subsystem:
+- Version / SSIV:
+- MBSE folder:
+- Delivery purpose:
+
+## Model scope
+- Physical components and links:
+- Component exchanges:
+- Allocated functions / chains:
+- Constraints:
+- Known model gaps or accepted scope decisions:
+
+## Required implementation work
+- [ ] Hardware/build artifacts identified
+- [ ] Firmware/software artifacts identified
+- [ ] Interface contracts checked
+- [ ] README ladder updated
+
+## Required verification
+- [ ] Link required activity issues
+- [ ] Link gate-closure issue, if any
+- [ ] Link expected results paths
+
+## Closure
+- [ ] Required activity issues passed or dispositioned
+- [ ] Reports committed
+- [ ] Version status updated in README(s)
+- [ ] Gate decision recorded
+```
+
+Operational rules:
+
+1. The activity ID or version ID must appear in the issue title, branch name when practical, report path, and commit message.
+2. Issues should link to README entries, not just raw `.d2` or `.png` files, so reviewers see context and pass/fail criteria.
+3. Commits that update models or reports should reference the issue with `Refs #<issue>`; commits that close an execution activity should use `Closes #<issue>` only after the report and README status are updated.
+4. A failed test should not disappear into comments. Open an anomaly or model-update issue, link it from the failed execution issue, and record whether the next action is model correction, implementation correction, waiver, or retest.
+5. The GitHub project board should move work through: `Model-defined` → `Ready for execution` → `Executing` → `Report review` → `Passed/Closed`, `Failed/Anomaly`, or `Waived`.
+6. A future automation script can parse `*/MBSE/**/tests/**/README.md` tables and create or update issues by stable activity ID. Until then, the README activity tables are the authoritative backlog seed.

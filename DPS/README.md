@@ -8,31 +8,6 @@ See [Understanding Capella Physical Diagrams](./../PM&SE//Understanding%20Capell
 
 See [Variable Getter Template](./../OBCC/Variable%20Getter%20Template.md) if needed.
 
-## Integration, Verification, and Validation (IVV) Plan
-
-The IMU-downlink DPS v0.2 MBSE views are available in [`./MBSE/v0.2/`](./MBSE/v0.2/). v0.2 keeps circuitboard-only hardware, adds IMU-only processing on the datalogger XIAO, and sends IMU payloads to the ground station. The earlier PCB-only v0.2 scope was retired because v1.0 reuses the OBCC PCB for the ground station.
-
-The hardware-downgraded DPS v0.1 MBSE views are available in [`./MBSE/v0.1/`](./MBSE/v0.1/). v0.1 keeps the v1.0 functional chains, but represents the hardware as simple datalogger and ground-station circuitboards.
-
-The DPS v1.0 MBSE views translated from Capella XML to D2 are available in [`./MBSE/v1.0/`](./MBSE/v1.0/). In v1.0, the `[PC] Ground Station PCB` is the OBCC PCB reused without the Backplane Connector soldered:
-
-### Architecture views
-- [View 1 — Physical view (PNG)](./MBSE/v1.0/DPS_v1.0_view1_physical.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view1_physical.d2)
-- [View 2 — Logical view (PNG)](./MBSE/v1.0/DPS_v1.0_view2_logical.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view2_logical.d2)
-- [View 3 — Functional allocation view (PNG)](./MBSE/v1.0/DPS_v1.0_view3_functional_allocation.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view3_functional_allocation.d2)
-
-### Functional chain views
-- [View 4 — Downlink decode and storage chain (PNG)](./MBSE/v1.0/DPS_v1.0_view4_downlink_processing_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view4_downlink_processing_chain.d2)
-- [View 5 — Dashboard command and uplink chain (PNG)](./MBSE/v1.0/DPS_v1.0_view5_command_uplink_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view5_command_uplink_chain.d2)
-- [View 6 — CanSat receive path (PNG)](./MBSE/v1.0/DPS_v1.0_view6_cansat_receive_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view6_cansat_receive_chain.d2)
-- [View 7 — CanSat transmit path (PNG)](./MBSE/v1.0/DPS_v1.0_view7_cansat_transmit_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view7_cansat_transmit_chain.d2)
-- [View 8 — Dashboard visualisation chain (PNG)](./MBSE/v1.0/DPS_v1.0_view8_dashboard_visualisation_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view8_dashboard_visualisation_chain.d2)
-- [View 9 — Forwarder initialisation chain (PNG)](./MBSE/v1.0/DPS_v1.0_view9_forwarder_initialisation_chain.png) · [D2 source](./MBSE/v1.0/DPS_v1.0_view9_forwarder_initialisation_chain.d2)
-
-Recommended reading order: View 1 → View 2 → View 3 → View 4 → View 8 → View 5 → View 6 → View 7 → View 9.
-
-This order goes from structure to allocation, then follows the main DPS operational flows: downlink decoding and storage, dashboard visualisation, command uplink, CanSat-side receive/transmit behavior, and finally forwarder initialisation.
-
 ## Requirements
 
 | **Requirement** | **Verification method** |
@@ -46,7 +21,3 @@ This order goes from structure to allocation, then follows the main DPS operatio
 ### Success Criteria
 
 The DPS demonstrates the capability to acquire, process, store, and display real-time data received from the OBCC, with a functional user interface and complete traceability of the processed information.
-
-### Parachute deployment status display
-
-DPS decoders and dashboard consumers preserve the OBCC `deployment_status` code, enum symbol, and category from telemetry. The parser reads the one-byte field at payload byte `48`; missing or unrecognized status bytes remain `unknown`/non-success. The dashboard displays the high-level category `deployed`, `not-deployed`, `in-progress`, `fault`, or `unknown` together with the raw enum. Only `OPEN_CONFIRMED` is displayed/consumed as deployed; `COMMAND_SENT`, `OPEN_IN_PROGRESS`, inhibited, no-open, timeout, jam, fault, unknown, missing, and unrecognized states are not success. CSV definitions and helper constants preserve `deployment_status_code`, `deployment_status`, and `deployment_status_category` columns.

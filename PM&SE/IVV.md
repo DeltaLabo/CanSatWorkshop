@@ -7,6 +7,8 @@
 ### 1. Model as source of truth
 For model-based verification, the ARCADIA model is the authoritative definition of the verification activity. When a verification activity is represented by a functional chain or scenario, the model should define the test item, test means, interfaces, stimuli, expected behavior, constraints, and relevant operational context.
 
+For the integrated CanSat `v1.0` baseline, `PM&SE/MBSE/v1.0/` is the controlling cross-subsystem product baseline. Subsystem `v1.0` models refine implementation and allocation. Verification packages under `*/MBSE/tests/` own test means, oracles, statistics, and fault cases derived from those product baselines.
+
 ### 2. Reports by reference
 Verification reports should reference the modeled verification definition rather than duplicate it. A report exists to bind evidence to a specific modeled verification activity, baseline, and as-executed configuration.
 
@@ -16,9 +18,11 @@ Information already controlled in the model need not be restated in the report u
 - explain the observed results, or
 - document deviations from the modeled verification definition.
 
+When a verification package carries copied product views under `source_views/` or `baseline/`, those files are controlled verification snapshots for report-by-reference use. They do not transfer product ownership away from the source baseline.
+
 ## Project-wide test-plan conventions
 
-Text files under `*/tests/` are temporary planning references from which the verification scenarios should later be modeled in ARCADIA/Capella. The model remains the source of truth.
+Verification packages under `*/tests/` shall derive from the owning product baseline. Older plain-text planning references may still exist, but where a PV1/PV2/PV3/functional-chain package exists that package is the controlled verification definition. Any `source_views/` or `baseline/` copies inside a test package are unchanged controlled snapshots of the owning baseline used for report-by-reference traceability; ownership remains with the source baseline.
 
 Use these conventions for every subsystem test folder:
 
@@ -43,6 +47,7 @@ Use this policy unless a safety standard, launch provider, component datasheet, 
 
 ## CanSat MBSE glossary and cross-subsystem semantics
 
+- **System baseline ownership:** `PM&SE/MBSE/v1.0/` owns the integrated cross-subsystem product baseline; subsystem `v1.0` baselines refine their internal implementation and allocation; verification packages own test means/oracles/statistics/fault cases; Markdown contracts and realization tables publish or realize the selected model values but do not supersede them.
 - **Internal acquisition / control rate:** subsystem sensing and control loops may run at `≥5 Hz`; this is the internal rate used especially by parachute-trigger logic.
 - **Telemetry cadence:** the v1.0 LoRa heartbeat/status/measurement downlink cadence is `2 s`. Telemetry frames may contain the latest internally acquired values plus age/stale/error metadata.
 - **Shared ADS/AMS sensor-to-OBCC freshness contract:** [`PM&SE/contracts/sensor_obcc_freshness_contract.md`](contracts/sensor_obcc_freshness_contract.md) governs ADS/AMS data offered to OBCC and parachute-control consumers. ADS and AMS shall support OBCC requests at `5 Hz` (`200 ms` period); at every `2 s` telemetry push, required data is fresh only when status is `VALID` and sample age is `<=400 ms` (two failed `5 Hz` samples). The required status enum is exactly `VALID`, `STALE`, `NO_DATA`, `TIMEOUT`, `SENSOR_FAULT`, `INIT_FAIL`; timeout, fault, initialization failure, and no-data conditions shall not leave old data marked `VALID`.

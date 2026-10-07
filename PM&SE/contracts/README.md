@@ -1,13 +1,31 @@
-# PM&SE controlled contracts
+# PM&SE controlled contract publications
 
-This directory contains cross-subsystem interface and verification contracts controlled by PM&SE.
+These files are controlled human-readable integration and traceability publications derived from the model baselines. They do **not** supersede the model.
 
-| Contract | Purpose |
-|---|---|
-| [`sensor_obcc_freshness_contract.md`](sensor_obcc_freshness_contract.md) | Shared ADS/AMS sensor-to-OBCC freshness, status, and telemetry-packaging rule for v1.0 internal OBCC consumers and telemetry evidence. |
-| [`sensor_obcc_freshness_contract.h`](sensor_obcc_freshness_contract.h) | ESP32/FreeRTOS Arduino-compatible reference constants, status enum, response metadata, and fresh-valid predicate for the shared contract. |
-| [`obcc_dps_lora_telemetry_contract.md`](obcc_dps_lora_telemetry_contract.md) | Shared OBCC/DPS LoRa telemetry, command, RF/range/PDR, cadence, payload traceability, and one-byte `deployment_status` code/symbol/category no-false-success baseline for definition and later execution evidence. |
+## Authority hierarchy
 
-Subsystem-specific API details, such as ADS or AMS pointer ownership/lifetime naming, may be added as supplements, but they shall reference this shared contract and shall not redefine contradictory freshness or status semantics.
+1. [`PM&SE/MBSE/v1.0/`](../MBSE/v1.0/README.md) owns the cross-subsystem product architecture, interfaces, behavior, and shared constraints.
+2. Subsystem `v1.0` baselines refine subsystem-internal implementation and allocation:
+   - `ADS/MBSE/v1.0/`
+   - `AMS/MBSE/v1.0/`
+   - `OBCC/MBSE/v1.0/`
+   - `DPS/MBSE/v1.0/`
+   - `PDM/MBSE/v1.0/`
+3. Modeled verification packages under `*/MBSE/tests/` own test means, oracles, statistics, and fault cases.
+4. Markdown contracts in this folder publish the selected model semantics for integration use and traceability; they shall not redefine contradictory values.
+5. [`sensor_obcc_freshness_contract.h`](sensor_obcc_freshness_contract.h) and [`../../OBCC/LoRa_Frame.md`](../../OBCC/LoRa_Frame.md) are implementation/encoding realizations traced to the model.
 
-Related OBCC-owned behavior policy: [`../../OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md`](../../OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md).
+## Controlled publications
+
+| Publication | Kind | Role |
+|---|---|---|
+| [`sensor_obcc_freshness_contract.md`](sensor_obcc_freshness_contract.md) | Markdown publication | Human-readable publication of the modeled ADS/AMS-to-OBCC freshness, status, and telemetry-packaging semantics. |
+| [`sensor_obcc_freshness_contract.h`](sensor_obcc_freshness_contract.h) | C realization header | Reference constants, enum values, envelope metadata type, and predicates realizing the modeled freshness contract. |
+| [`obcc_dps_lora_telemetry_contract.md`](obcc_dps_lora_telemetry_contract.md) | Markdown publication | Human-readable publication of the modeled OBCC/DPS telemetry, command, RF, deployment-status, and evidence semantics. |
+| [`../../OBCC/LoRa_Frame.md`](../../OBCC/LoRa_Frame.md) | Byte-level realization | Payload field order, types, offsets, and current 100-byte frame basis mapping for `OBCC-LORA-PAYLOAD-v1.0`. |
+
+Related OBCC deployment/fault policy realization: [`../../OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md`](../../OBCC/MBSE/tests/OBCC-V10_Deployment_Fault_Policy.md).
+
+## Change rule
+
+Any product semantic change starts in the PM&SE system model, then flows into the subsystem baselines and modeled verification packages, and only then into these publications and realization artifacts.

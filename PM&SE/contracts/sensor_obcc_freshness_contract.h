@@ -1,6 +1,25 @@
 #ifndef PMSE_SENSOR_OBCC_FRESHNESS_CONTRACT_H
 #define PMSE_SENSOR_OBCC_FRESHNESS_CONTRACT_H
 
+/*
+ * PMSE-SENSOR-OBCC-FRESHNESS-v1.0 realization header.
+ *
+ * Owning model views:
+ * - PM&SE/MBSE/v1.0/CANSAT_v1.0_view4_sensor_sample_delivery_chain.d2
+ * - PM&SE/MBSE/v1.0/CANSAT_v1.0_view5_sensor_fault_handling_chain.d2
+ * - PM&SE/MBSE/v1.0/CANSAT_v1.0_view6_telemetry_downlink_chain.d2
+ * - ADS/MBSE/v1.0/ADS_v1.0_view2_logical.d2
+ * - ADS/MBSE/v1.0/ADS_v1.0_view8_degraded_fault_chain.d2
+ * - AMS/MBSE/v1.0/AMS_v1.0_view3_functional_allocation.d2
+ * - AMS/MBSE/v1.0/AMS_v1.0_view4_atmospheric_measurement_chain.d2
+ * - OBCC/MBSE/v1.0/OBCC_v1.0_view9_sensor_sample_delivery_chain.d2
+ *
+ * The constants, enum values, and metadata types below realize the modeled
+ * sensor freshness semantics. Product semantic changes start in the PM&SE
+ * system model, then flow through subsystem baselines and verification
+ * definitions, and only then into this header.
+ */
+
 #include <stdint.h>
 #ifndef __cplusplus
 #include <stdbool.h>
@@ -13,6 +32,7 @@
 #define SENSOR_OBCC_MAX_FRESH_AGE_MS (400U)
 #define SENSOR_OBCC_TELEMETRY_PERIOD_MS (2000U)
 
+/* Numeric values realize the modeled status vocabulary; keep stable unless the model changes. */
 typedef enum SensorObccFreshnessStatus {
     VALID = 0,
     STALE = 1,
@@ -22,6 +42,7 @@ typedef enum SensorObccFreshnessStatus {
     INIT_FAIL = 5
 } SensorObccFreshnessStatus;
 
+/* Realization of the modeled SensorSampleEnvelope metadata. */
 typedef struct SensorObccResponseMetadata {
     const char *contract_version;
     const char *subsystem_id;       /* "ADS" or "AMS" */
